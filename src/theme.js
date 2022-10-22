@@ -1,14 +1,18 @@
-export const THEME = {
-    COLOR:{
+export const THEME = (() => {
+    const COLOR = {
         PRIMARY: '#FF3937',
         SECONDARY: '#FF7E5B',
         LIGHT: '#fff',
         DARK: '#000'
-    },
-    GRADIENT: {
-      FROM: '#FF7E5B',
-      TO: '#FF3937'
+    }
+    const GRADIENT = {
+      FROM: COLOR.SECONDARY,
+      TO: COLOR.PRIMARY,
     }
 
-}
+    return {
+        COLOR,
+        GRADIENT
+    }
+})()
 
