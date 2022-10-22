@@ -1,11 +1,26 @@
-import {Link} from "react-router-dom";
+import {NavLink } from "react-router-dom";
 
 import {Wrapper} from "./LinkMenu.style";
+import {THEME} from "../../theme";
+
+let activeStyle = {
+    textDecoration: "underline",
+    color: THEME.COLOR.PRIMARY,
+};
 
 function LinkMenu({items}) {
     return (
        <Wrapper>
-           {items.map(i => <Link to={i.to}>{i.title}</Link>)}
+           {items.map(i =>
+               <NavLink
+                   key={i.to}
+                   to={i.to}
+                   style={({ isActive }) =>
+                       isActive ? activeStyle : undefined
+                   }
+               >
+                   {i.title}
+               </NavLink >)}
        </Wrapper>
     )
 }

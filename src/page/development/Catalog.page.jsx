@@ -1,10 +1,11 @@
 import React from "react";
 
 import {MobileWrapper} from './Catalog.style'
-import MobileDevice from '../component/MobileDevice';
+import MobileDevice from '../../component/MobileDevice';
+import LoadingPage from "../Loading.page";
 
 const pages = [
-    {title: 'Loading', component: 'c loading'},
+    {title: 'Loading', component: <LoadingPage/>},
     {title: 'Intro 1', component: 'c intro 1'},
     {title: 'Intro 2', component: 'c intro 2'},
     {title: 'Intro 3', component: 'c intro 3'},
@@ -40,7 +41,7 @@ function CatalogPage() {
     return (
         <MobileWrapper>
             {pages.map((page, index) =>
-                <MobileDevice title={index + '. ' + page.title}>{page.component}</MobileDevice>
+                <MobileDevice key={page.title} title={index + '. ' + page.title}>{page.component}</MobileDevice>
             )}
         </MobileWrapper>
     )

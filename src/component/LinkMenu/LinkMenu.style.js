@@ -7,7 +7,6 @@ export const Wrapper = styled.div`
     justify-content: center;
   
     & > a {
-      border: solid;
       padding: 10px;
       color: black;
       text-decoration: none;
