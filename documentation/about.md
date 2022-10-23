@@ -14,9 +14,3 @@ We start from 1 for now.
 Later we discuss roles: owner, administrator.
 
 
-#### Contributors:
-* QA - irinayarmolenko84@gmail.com
-* FE developer - Chorniy315@gmail.com
-* FE develover - vlad.serhiychuk@gmail.com
-
-
