@@ -4,7 +4,6 @@ import ReduxIntroductionPage from './page/development/Redux-introduction.page'
 
 import LinkMenu from './component/LinkMenu'
 
-import HomePage from './page/development/Home.page'
 import CatalogPage from './page/development/Catalog.page'
 import ComponentsPage from './page/development/Components.page'
 

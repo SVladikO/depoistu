@@ -6,7 +6,7 @@ export const button = styled.button`
   padding: 12px;
   border: none;
   border-radius: 5px;
-  color: ${THEME.COLOR.LIGHT};
+  color: ${THEME.COLOR.ACCENT4};
   font-family: LatoRegular;
 `;
 
@@ -20,7 +20,7 @@ export const withIcon = styled(button)`
   padding: 12px 26px;
 
   & > svg {
-    fill: ${THEME.COLOR.LIGHT};
+    fill: ${THEME.COLOR.ACCENT4};
     width: 12.8px;
     height: 13.05px;
     margin: 0 12px 0 0;
@@ -43,17 +43,17 @@ export const PrimaryWithIconButton = styled(withIcon)`
 
 export const SecondaryButton = styled(button)`
     color: ${THEME.COLOR.PRIMARY};
-    background: ${hexToRgbA(THEME.COLOR.SECONDARY, 0.1)};
+    background: ${hexToRgbA(THEME.COLOR.ACCENT3, 0.1)};
     font-family: LatoBold;
     padding: 12px 24px;
 `;
 
 export const SecondaryWithIconButton = styled(withIcon)`
-  color: ${THEME.COLOR.SECONDARY};
-  background: ${hexToRgbA(THEME.COLOR.SECONDARY, 0.1)};
+  color: ${THEME.COLOR.ACCENT3};
+  background: ${hexToRgbA(THEME.COLOR.ACCENT3, 0.1)};
   
   & > svg {
-    fill: ${THEME.COLOR.SECONDARY}
+    fill: ${THEME.COLOR.ACCENT3}
   }
 `;
 

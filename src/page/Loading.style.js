@@ -17,8 +17,8 @@ export const Content = styled(flex)`
   width: 266px;
   height: 266px;
   border-radius: 50%;
-  background: ${THEME.COLOR.LIGHT};
-  border: solid 13px ${THEME.COLOR.SECONDARY};
+  background: ${THEME.COLOR.ACCENT4};
+  border: solid 13px ${THEME.COLOR.ACCENT3};
 `;
 
 export const LogoText = styled(flex)`
