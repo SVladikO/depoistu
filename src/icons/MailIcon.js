@@ -1,8 +1,8 @@
 import React from "react";
-
+import {THEME} from "../theme";
 const MailIcon = ({
       style = {},
-      fill = "#000";
+      fill = `${THEME.COLOR.ACCENT3}`,
       width = "100%",
       className = "",
       viewBox = "0 0 16 12"
