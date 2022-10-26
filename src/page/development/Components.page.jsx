@@ -8,9 +8,11 @@ import {
     SecondaryWithIconButton,
     ThirdButton,
 } from "../../component/Button/Button.style";
-
+import NavigationHeader from "../../component/TopNavigation/NavigationHeader";
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
+import {ReactComponent as BackArrow} from "../../icons/back_arrow.svg";
+
 
 const components = [
     {title: 'PrimaryWithIconButton', component: <PrimaryWithIconButton><GoogleIcon/>Google</PrimaryWithIconButton>},
@@ -19,6 +21,7 @@ const components = [
     {title: 'SecondaryButton', component: <SecondaryButton>Cancel</SecondaryButton>},
     {title: 'SecondaryWithIconButton', component: <SecondaryWithIconButton><FacebookIcon/>facebook</SecondaryWithIconButton>},
     {title: 'ThirdButton', component: <ThirdButton>Payment</ThirdButton>},
+    {title: 'NavigationHeader', component: <NavigationHeader icon={BackArrow} title="category"></NavigationHeader>},
 ]
 
 function ComponentsPage() {
