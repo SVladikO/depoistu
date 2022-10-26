@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import {THEME} from "../../theme";
-import {ReactComponent as MailIcon} from '../../icons/mail.svg';
 
 export const Input = styled.input`
   background: ${THEME.COLOR.ACCENT2};
@@ -16,13 +15,7 @@ export const Input = styled.input`
     color: #3F3D56;
   }
 `;
-export const StyledSvgIcon = styled(MailIcon)`
-  height: ${({height}) => height || '14px'};
-  width: ${({width}) => width || '16px'};
-  & path {
-    fill: ${({color}) => color || `linear-gradient(${THEME.GRADIENT.FROM}, ${THEME.GRADIENT.TO})}`};
-  }  
-`
+
 export const InputIconWrapper = styled.div`
     position: relative;
     & > svg {
