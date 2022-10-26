@@ -8,9 +8,10 @@ import {
     SecondaryWithIconButton,
     ThirdButton,
 } from "../../component/Button/Button.style";
-import InputWithIcon from "../../component/InputWithIcon/InputWithIcon";
+import {Input, InputIconWrapper, StyledSvgIcon} from "../../component/InputWithIcon/InputWithIcon.style";
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
+
 
 const components = [
     {title: 'PrimaryWithIconButton', component: <PrimaryWithIconButton><GoogleIcon/>Google</PrimaryWithIconButton>},
@@ -19,7 +20,7 @@ const components = [
     {title: 'SecondaryButton', component: <SecondaryButton>Cancel</SecondaryButton>},
     {title: 'SecondaryWithIconButton', component: <SecondaryWithIconButton><FacebookIcon/>facebook</SecondaryWithIconButton>},
     {title: 'ThirdButton', component: <ThirdButton>Payment</ThirdButton>},
-    {title: 'InputWithIcon', component: <InputWithIcon/>},
+    {title: 'InputWithIcon', component: <InputIconWrapper><StyledSvgIcon/><Input placeholder="johndoe@mail.com"/></InputIconWrapper>},
 ]
 
 function ComponentsPage() {
