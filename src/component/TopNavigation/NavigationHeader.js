@@ -1,14 +1,16 @@
 import React from 'react';
 import {Wrapper, Title} from "./NavigationHeader.style";
+import {ReactComponent as BackArrow} from "../../icons/back_arrow.svg";
 
 const NavigationHeader = (props) => {
-    const {title, icon} = props;
+    const {title, href } = props;
     return (
         <Wrapper>
-            {icon && <props.icon />}
+            {href && <a href={href}><BackArrow /></a>}
             <Title>{title}</Title>
         </Wrapper>
     );
 };
 
 export default NavigationHeader;
+

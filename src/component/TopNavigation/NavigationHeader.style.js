@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import {THEME} from "../../theme";
 
+
 export const Wrapper = styled.div`
   min-height: 30px;
   width: 100%;
@@ -8,9 +9,10 @@ export const Wrapper = styled.div`
   justify-content: center;
   background: #fff;
   position: relative;
-  & > svg {
+  & > a > svg {
     position: absolute;
     display: block;
+    fill: #000;
     left: 15px;
     top: 50%;
     transform: translateY(-50%);

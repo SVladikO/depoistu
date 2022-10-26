@@ -11,7 +11,6 @@ import {
 import NavigationHeader from "../../component/TopNavigation/NavigationHeader";
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
-import {ReactComponent as BackArrow} from "../../icons/back_arrow.svg";
 
 
 const components = [
@@ -21,7 +20,7 @@ const components = [
     {title: 'SecondaryButton', component: <SecondaryButton>Cancel</SecondaryButton>},
     {title: 'SecondaryWithIconButton', component: <SecondaryWithIconButton><FacebookIcon/>facebook</SecondaryWithIconButton>},
     {title: 'ThirdButton', component: <ThirdButton>Payment</ThirdButton>},
-    {title: 'NavigationHeader', component: <NavigationHeader icon={BackArrow} title="category"></NavigationHeader>},
+    {title: 'NavigationHeader', component: <NavigationHeader href={' '} title="category"></NavigationHeader>},
 ]
 
 function ComponentsPage() {
