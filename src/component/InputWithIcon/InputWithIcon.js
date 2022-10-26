@@ -2,10 +2,10 @@ import React from "react";
 import {InputIconWrapper,Input} from "./InputWithIcon.style";
 
 function InputWithIcon(props) {
-    const {icon, placeholder} = props;
+    const {Icon, placeholder} = props;
     return(
             <InputIconWrapper>
-                 {icon && <props.icon />}
+                 {Icon && <Icon />}
                  <Input placeholder={placeholder}/>
             </InputIconWrapper>
          )
