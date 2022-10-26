@@ -1,5 +1,5 @@
 import React from "react";
-import {InputIconWrapper,Input,StyledSvgIcon} from "./InputWithIcon.style";
+import {InputIconWrapper,Input} from "./InputWithIcon.style";
 
 function InputWithIcon(props) {
     const {icon, placeholder} = props;
