@@ -20,7 +20,8 @@ const components = [
     {title: 'SecondaryButton', component: <SecondaryButton>Cancel</SecondaryButton>},
     {title: 'SecondaryWithIconButton', component: <SecondaryWithIconButton><FacebookIcon/>facebook</SecondaryWithIconButton>},
     {title: 'ThirdButton', component: <ThirdButton>Payment</ThirdButton>},
-    {title: 'NavigationHeader', component: <NavigationHeader href={' '} title="category"></NavigationHeader>},
+    {title: "<NavigationHeader title=\"category\"/>", component: <NavigationHeader title="category"/>},
+    {title: "<NavigationHeader href={\' \'} title=\"category\"/>", component: <NavigationHeader href={' '} title="category"/>},
 ]
 
 function ComponentsPage() {
