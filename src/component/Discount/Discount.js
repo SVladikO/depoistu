@@ -1,11 +1,10 @@
-import React from 'react';
-import {StyledDiscount} from "./Discount.style";
+import {Wrapper} from "./Discount.style";
 
 const Discount = (props) => {
     return (
-        <StyledDiscount>
+        <Wrapper>
             {props.value}
-        </StyledDiscount>
+        </Wrapper>
     );
 };
 
