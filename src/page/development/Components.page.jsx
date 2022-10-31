@@ -20,7 +20,7 @@ const components = [
     {title: 'SecondaryButton', component: <SecondaryButton>Cancel</SecondaryButton>},
     {title: 'SecondaryWithIconButton', component: <SecondaryWithIconButton><FacebookIcon/>facebook</SecondaryWithIconButton>},
     {title: 'ThirdButton', component: <ThirdButton>Payment</ThirdButton>},
-    {title: 'Rating', component: <Rating Icon={RateIcon} value={`4.9`}/>},
+    {title: 'Rating', component: <Rating>{`4.9`}<RateIcon/></Rating>},
 ]
 
 function ComponentsPage() {
