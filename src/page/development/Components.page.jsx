@@ -8,6 +8,7 @@ import {
     SecondaryWithIconButton,
     ThirdButton,
 } from "../../component/Button/Button.style";
+import CheckBoxWithLabel from "../../component/CheckBoxWithLabel/CheckBoxWithLabel";
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
 
@@ -18,6 +19,8 @@ const components = [
     {title: 'SecondaryButton', component: <SecondaryButton>Cancel</SecondaryButton>},
     {title: 'SecondaryWithIconButton', component: <SecondaryWithIconButton><FacebookIcon/>facebook</SecondaryWithIconButton>},
     {title: 'ThirdButton', component: <ThirdButton>Payment</ThirdButton>},
+    {title: 'CheckBoxWithLabel', component: <CheckBoxWithLabel labelValue="By creating an account you agree to our
+Terms of Service and Privacy Policy"/>},
 ]
 
 function ComponentsPage() {
