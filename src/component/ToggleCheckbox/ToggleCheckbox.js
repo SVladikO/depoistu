@@ -1,12 +1,12 @@
 import React from 'react';
-import {CheckBoxWrapper, CheckBoxLabel, CheckBox} from "./ToggleCheckbox.style";
+import {Wrapper, Label, CheckBox} from "./ToggleCheckbox.style";
 
 const ToggleCheckbox = () => {
     return (
-        <CheckBoxWrapper>
-            <CheckBox id="checkbox" type="checkbox" />
-            <CheckBoxLabel htmlFor="checkbox" />
-        </CheckBoxWrapper>
+        <Wrapper>
+            <CheckBox id="CheckBox" type="checkbox" />
+            <Label htmlFor="CheckBox" />
+        </Wrapper>
     );
 };
 

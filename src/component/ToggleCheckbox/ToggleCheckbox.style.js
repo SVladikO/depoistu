@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import {THEME} from "../../theme";
 
-export const CheckBoxWrapper = styled.div`
+export const Wrapper = styled.div`
   position: relative;
 `;
-export const CheckBoxLabel = styled.label`
+export const Label = styled.label`
   position: absolute;
   top: 0;
   left: 0;
@@ -33,7 +33,7 @@ export const CheckBox = styled.input`
   border-radius: 15px;
   width: 42px;
   height: 26px;
-  &:checked + ${CheckBoxLabel} {
+  &:checked + ${Label} {
     background: ${THEME.COLOR.ACCENT4};
     outline: 1px solid ${THEME.COLOR.PRIMARY};
     &::after {
