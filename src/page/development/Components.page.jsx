@@ -11,7 +11,6 @@ import {
 import Rating from "../../component/Rating/Rating";
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
-import {ReactComponent as RateIcon} from '../../icons/rate_star.svg';
 
 const components = [
     {title: 'PrimaryWithIconButton', component: <PrimaryWithIconButton><GoogleIcon/>Google</PrimaryWithIconButton>},
@@ -20,14 +19,14 @@ const components = [
     {title: 'SecondaryButton', component: <SecondaryButton>Cancel</SecondaryButton>},
     {title: 'SecondaryWithIconButton', component: <SecondaryWithIconButton><FacebookIcon/>facebook</SecondaryWithIconButton>},
     {title: 'ThirdButton', component: <ThirdButton>Payment</ThirdButton>},
-    {title: 'Rating', component: <Rating>{`4.9`}<RateIcon/></Rating>},
+    {title: 'Rating', component: <Rating>{`4.9`}</Rating>},
 ]
 
 function ComponentsPage() {
     return (
         <div>
             {components.map(c =>
-                <Row>
+                <Row key={c.title}>
                     {c.title}
                     <ComponentWrapper>
                         {c.component}
