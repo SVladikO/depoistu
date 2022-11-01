@@ -12,7 +12,7 @@ export const Input = styled.input`
   border-radius: 3px;
   ::placeholder {
     font-size: 16px;
-    color: #3F3D56;
+    color: ${THEME.COLOR.ACCENT1};
   }
 `;
 
