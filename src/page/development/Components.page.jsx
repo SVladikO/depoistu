@@ -8,7 +8,7 @@ import {
     SecondaryWithIconButton,
     ThirdButton,
 } from "../../component/Button/Button.style";
-import Discount from "../../component/Discount/Discount";
+import {Discount} from "../../component/Discount/Discount.style";
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
 
@@ -19,7 +19,7 @@ const components = [
     {title: 'SecondaryButton', component: <SecondaryButton>Cancel</SecondaryButton>},
     {title: 'SecondaryWithIconButton', component: <SecondaryWithIconButton><FacebookIcon/>facebook</SecondaryWithIconButton>},
     {title: 'ThirdButton', component: <ThirdButton>Payment</ThirdButton>},
-    {title: 'Discount', component: <Discount value={`-10%`} />}
+    {title: '<Discount>{`-10%`}</Discount>', component: <Discount>{`-10%`}</Discount>}
 ]
 
 function ComponentsPage() {

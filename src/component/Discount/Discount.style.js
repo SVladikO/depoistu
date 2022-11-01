@@ -2,7 +2,7 @@ import styled from "styled-components";
 import {THEME} from "../../theme";
 
 
-export const Wrapper = styled.div`
+export const Discount = styled.div`
   width: 40px;
   background-color: ${THEME.COLOR.PRIMARY};
   font-weight: 700;
