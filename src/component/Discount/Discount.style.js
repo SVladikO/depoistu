@@ -7,7 +7,8 @@ export const Discount = styled.div`
   background-color: ${THEME.COLOR.PRIMARY};
   font-weight: 700;
   font-size: 12px;
-  line-height: 14px;
+  padding: 0 3px 0 0;
+  line-height: 16px;
   border-radius: 8px;
   color: ${THEME.COLOR.ACCENT4};
   display: flex;
