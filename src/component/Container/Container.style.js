@@ -7,4 +7,5 @@ export const ContentContainer = styled.div`
   min-height: 30px;
   text-align: center;
   padding: 20px 14px 35px 15px;
+  border-radius: 10px;
 `
