@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
   justify-content: center;
   background: ${THEME.COLOR.ACCENT4};
   position: relative;
+  border-radius: 0 0 5px 5px;
   & > a > svg {
     position: absolute;
     display: block;
