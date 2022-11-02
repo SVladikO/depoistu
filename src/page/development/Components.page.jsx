@@ -19,7 +19,7 @@ const components = [
     {title: 'SecondaryButton', component: <SecondaryButton>Cancel</SecondaryButton>},
     {title: 'SecondaryWithIconButton', component: <SecondaryWithIconButton><FacebookIcon/>facebook</SecondaryWithIconButton>},
     {title: 'ThirdButton', component: <ThirdButton>Payment</ThirdButton>},
-    {title: 'ContentContainer', component: <Container/>},
+    {title: 'ContentContainer', component: <Container>Sign up with</Container>},
 ]
 
 function ComponentsPage() {
