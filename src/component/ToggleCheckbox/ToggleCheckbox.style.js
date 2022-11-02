@@ -8,8 +8,8 @@ export const Label = styled.label`
   position: absolute;
   top: 0;
   left: 0;
-  width: 42px;
-  height: 26px;
+  width: 32px;
+  height: 18px;
   border-radius: 15px;
   background: ${THEME.COLOR.ACCENT4};
   outline: 1px solid ${THEME.COLOR.ACCENT2};
@@ -18,9 +18,9 @@ export const Label = styled.label`
     content: "";
     display: block;
     border-radius: 50%;
-    width: 18px;
-    height: 18px;
-    margin: 3px;
+    width: 12px;
+    height: 12px;
+    margin: 2px;
     background: ${THEME.COLOR.ACCENT2};
     outline: 1px solid ${THEME.COLOR.ACCENT2};
     box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.2);
