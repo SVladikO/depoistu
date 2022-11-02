@@ -8,7 +8,7 @@ import {
     SecondaryWithIconButton,
     ThirdButton,
 } from "../../component/Button/Button.style";
-import Container from "../../component/Container/Container";
+import {ContentContainer} from "../../component/ContentContainer/ContentContainer.style.js";
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
 
@@ -19,7 +19,7 @@ const components = [
     {title: 'SecondaryButton', component: <SecondaryButton>Cancel</SecondaryButton>},
     {title: 'SecondaryWithIconButton', component: <SecondaryWithIconButton><FacebookIcon/>facebook</SecondaryWithIconButton>},
     {title: 'ThirdButton', component: <ThirdButton>Payment</ThirdButton>},
-    {title: 'ContentContainer', component: <Container>Sign up with</Container>},
+    {title: 'ContentContainer', component: <ContentContainer>Sign up with</ContentContainer>},
 ]
 
 function ComponentsPage() {
