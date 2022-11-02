@@ -6,10 +6,8 @@ export const Input = styled.input`
   width: 100%;
   height: 50px;
   border: none;
-  padding: 0 0 0 20px;
-  line-height: 19px;
   outline: none;
-  border-radius: 3px;
+  padding: 14px 0 17px 20px;
   ::placeholder {
     font-size: 16px;
     color: ${THEME.COLOR.ACCENT1};
