@@ -8,8 +8,10 @@ import {
     SecondaryWithIconButton,
     ThirdButton,
 } from "../../component/Button/Button.style";
+import NavigationHeader from "../../component/TopNavigation/NavigationHeader";
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
+
 
 const components = [
     {title: 'PrimaryWithIconButton', component: <PrimaryWithIconButton><GoogleIcon/>Google</PrimaryWithIconButton>},
@@ -18,6 +20,8 @@ const components = [
     {title: 'SecondaryButton', component: <SecondaryButton>Cancel</SecondaryButton>},
     {title: 'SecondaryWithIconButton', component: <SecondaryWithIconButton><FacebookIcon/>facebook</SecondaryWithIconButton>},
     {title: 'ThirdButton', component: <ThirdButton>Payment</ThirdButton>},
+    {title: "<NavigationHeader title=\"category\"/>", component: <NavigationHeader title="category"/>},
+    {title: "<NavigationHeader href={\' \'} title=\"category\"/>", component: <NavigationHeader href={' '} title="category"/>},
 ]
 
 function ComponentsPage() {
