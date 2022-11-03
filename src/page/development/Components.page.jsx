@@ -8,9 +8,16 @@ import {
     SecondaryWithIconButton,
     ThirdButton,
 } from "../../component/Button/Button.style";
+
 import {Input} from "../../component/Input/Input.style";
+import InputWithIcon from "../../component/InputWithIcon/InputWithIcon";
+import NavigationHeader from "../../component/TopNavigation/NavigationHeader";
+
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
+import {ReactComponent as MailIcon} from '../../icons/mail.svg';
+
+
 
 const components = [
     {title: 'PrimaryWithIconButton', component: <PrimaryWithIconButton><GoogleIcon/>Google</PrimaryWithIconButton>},
@@ -20,6 +27,9 @@ const components = [
     {title: 'SecondaryWithIconButton', component: <SecondaryWithIconButton><FacebookIcon/>facebook</SecondaryWithIconButton>},
     {title: 'ThirdButton', component: <ThirdButton>Payment</ThirdButton>},
     {title: 'Input', component: <Input placeholder="Full Name"/>},
+    {title: 'InputWithIcon', component: <InputWithIcon Icon={MailIcon} placeholder={`johndoe@mail.com`}/>},
+    {title: "<NavigationHeader title=\"category\"/>", component: <NavigationHeader title="category"/>},
+    {title: "<NavigationHeader href={\' \'} title=\"category\"/>", component: <NavigationHeader href={' '} title="category"/>},
 ]
 
 function ComponentsPage() {
