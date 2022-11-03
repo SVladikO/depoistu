@@ -9,10 +9,10 @@ import {
     ThirdButton,
 } from "../../component/Button/Button.style";
 
+import {Discount} from "../../component/Discount/Discount.style";
 import {Input} from "../../component/Input/Input.style";
 import InputWithIcon from "../../component/InputWithIcon/InputWithIcon";
 import NavigationHeader from "../../component/TopNavigation/NavigationHeader";
-import {Discount} from "../../component/Discount/Discount.style";
 
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
@@ -31,7 +31,6 @@ const components = [
     {title: 'InputWithIcon', component: <InputWithIcon Icon={MailIcon} placeholder={`johndoe@mail.com`}/>},
     {title: "<NavigationHeader title=\"category\"/>", component: <NavigationHeader title="category"/>},
     {title: "<NavigationHeader href={\' \'} title=\"category\"/>", component: <NavigationHeader href={' '} title="category"/>},
-    {title: 'Discount', component: <Discount value={`-10%`} />},
     {title: '<Discount>{`-10%`}</Discount>', component: <Discount>{`-10%`}</Discount>}
 ]
 
