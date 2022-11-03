@@ -10,7 +10,6 @@ import {
 } from "../../component/Button/Button.style";
 
 import {Discount} from "../../component/Discount/Discount.style";
-import {Input} from "../../component/Input/Input.style";
 import InputWithIcon from "../../component/InputWithIcon/InputWithIcon";
 import NavigationHeader from "../../component/TopNavigation/NavigationHeader";
 
@@ -27,7 +26,6 @@ const components = [
     {title: 'SecondaryButton', component: <SecondaryButton>Cancel</SecondaryButton>},
     {title: 'SecondaryWithIconButton', component: <SecondaryWithIconButton><FacebookIcon/>facebook</SecondaryWithIconButton>},
     {title: 'ThirdButton', component: <ThirdButton>Payment</ThirdButton>},
-    {title: 'Input', component: <Input placeholder="Full Name"/>},
     {title: 'InputWithIcon', component: <InputWithIcon Icon={MailIcon} placeholder={`johndoe@mail.com`}/>},
     {title: "<NavigationHeader title=\"category\"/>", component: <NavigationHeader title="category"/>},
     {title: "<NavigationHeader href={\' \'} title=\"category\"/>", component: <NavigationHeader href={' '} title="category"/>},
