@@ -1,51 +1,48 @@
 import styled from 'styled-components';
 import {THEME} from "../../theme";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.label`
   position: relative;
 `;
-export const Label = styled.label`
+export const Input = styled.input`
   position: absolute;
   top: 0;
   left: 0;
-  width: 32px;
-  height: 18px;
-  border-radius: 15px;
-  background: ${THEME.COLOR.ACCENT4};
-  outline: 1px solid ${THEME.COLOR.ACCENT2};
-  cursor: pointer;
-  &::after {
-    content: "";
-    display: block;
-    border-radius: 50%;
-    width: 12px;
-    height: 12px;
-    margin: 2px;
-    background: ${THEME.COLOR.ACCENT2};
-    outline: 1px solid ${THEME.COLOR.ACCENT2};
-    box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.2);
-    transition: 0.2s;
-  }
-`;
-export const CheckBox = styled.input`
-  opacity: 0;
-  z-index: 1;
-  border-radius: 15px;
-  width: 42px;
-  height: 26px;
-  &:checked + ${Label} {
-    background: ${THEME.COLOR.ACCENT4};
+  
+  &:checked + span {
     outline: 1px solid ${THEME.COLOR.PRIMARY};
-    &::after {
-      content: "";
-      display: block;
-      border-radius: 50%;
-      width: 18px;
-      height: 18px;
-      margin-left: 21px;
-      transition: 0.2s;
-      outline: 1px solid ${THEME.COLOR.PRIMARY};
-      background-color: ${THEME.COLOR.PRIMARY};
+    &:before {
+      left: calc(100% - 2px);
+      transform: translateX(-100%);
     }
+  }
+  &:checked + span:before {
+    background-color: ${THEME.COLOR.PRIMARY};
+  }
+  
+`;
+export const RoundSlider = styled.span`
+  display: flex;
+  cursor: pointer;
+  width: 31px;
+  height: 17px;
+  border-radius: 100px;
+  background: ${THEME.COLOR.ACCENT4};
+  position: relative;
+  transition: background-color 0.2s;
+  outline: 1px solid #B4C2CD;
+  &:before{
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 14px;
+    height: 14px;
+    border-radius: 45px;
+    transition: 0.2s;
+    background-color: #B4C2CD;
+  }
+  &:active:before{
+    width: 28px;
   }
 `;
