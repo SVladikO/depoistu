@@ -8,10 +8,11 @@ import {
     SecondaryWithIconButton,
     ThirdButton,
 } from "../../component/Button/Button.style";
-
+import {ContentContainer} from "../../component/ContentContainer/ContentContainer.style.js";
 import {Discount} from "../../component/Discount/Discount.style";
 import InputWithIcon from "../../component/InputWithIcon/InputWithIcon";
 import NavigationHeader from "../../component/TopNavigation/NavigationHeader";
+
 
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
@@ -26,6 +27,7 @@ const components = [
     {title: 'SecondaryButton', component: <SecondaryButton>Cancel</SecondaryButton>},
     {title: 'SecondaryWithIconButton', component: <SecondaryWithIconButton><FacebookIcon/>facebook</SecondaryWithIconButton>},
     {title: 'ThirdButton', component: <ThirdButton>Payment</ThirdButton>},
+    {title: 'ContentContainer', component: <ContentContainer>Sign up with</ContentContainer>},
     {title: 'InputWithIcon', component: <InputWithIcon Icon={MailIcon} placeholder={`johndoe@mail.com`}/>},
     {title: "<NavigationHeader title=\"category\"/>", component: <NavigationHeader title="category"/>},
     {title: "<NavigationHeader href={\' \'} title=\"category\"/>", component: <NavigationHeader href={' '} title="category"/>},
