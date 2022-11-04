@@ -13,7 +13,6 @@ import {Discount} from "../../component/Discount/Discount.style";
 import Input from "../../component/Input/Input";
 import NavigationHeader from "../../component/TopNavigation/NavigationHeader";
 
-
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
 import {ReactComponent as MailIcon} from '../../icons/mail.svg';
@@ -21,7 +20,7 @@ import {ReactComponent as MailIcon} from '../../icons/mail.svg';
 import {THEME} from "../../theme";
 
 const colors = Object.keys(THEME.COLOR).map(key =>
-    ({title: key, component: <ColorCircle bg={THEME.COLOR[key]} />})
+    ({title: key, component: <ColorCircle bg={THEME.COLOR[key]}/>})
 )
 
 const columns = [
@@ -48,8 +47,8 @@ const columns = [
         {title: 'Discount', component: <Discount>{`-10%`}</Discount>}
     ],
     [
-    {title: 'ContentContainer', component: <ContentContainer>Sign up with</ContentContainer>},
-    {title: 'InputWithIcon', component: <InputWithIcon Icon={MailIcon} placeholder={`johndoe@mail.com`}/>},
+        {title: 'ContentContainer', component: <ContentContainer>Sign up with</ContentContainer>},
+    ]
 ]
 
 function ComponentsPage() {
