@@ -4,10 +4,10 @@ Web application to order pizza or other fast food.
 ## Quick Start 
 Open terminal in folder with your git repositories:
 
-#### `git clone https://github.com/SVladikO/pizza-mobile-app.git`
-#### `cd pizza-mobile-app`
-#### `npm init`
-#### `npm start`
+1. Clone project from remote to your laptop `git clone https://github.com/SVladikO/pizza-mobile-app.git`
+2. Move to project folder `cd pizza-mobile-app`
+3. Install dependencies `npm i` 
+4. Run project locally `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
@@ -42,7 +42,7 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
  
 
 #### Contributors:
-* QA - irinayarmolenko84@gmail.com
+* QA - serhiichuk.irina@gmail.com
 * FE developer - Chorniy315@gmail.com
 * FE develover - vlad.serhiychuk@gmail.com
 
