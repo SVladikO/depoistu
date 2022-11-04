@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   background-color: ${THEME.COLOR.PRIMARY};
   font-weight: 700;
   font-size: 12px;
-  line-height: 16px;
+  line-height: 14px;
   border-radius: 8px;
   color: ${THEME.COLOR.ACCENT4};
   display: flex;
@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
   & > svg {
     fill: ${THEME.COLOR.ACCENT4};
     padding: 0 0 0 5px;
-    width: 9px;
-    height: 10px;
+    width: 9.61px;
+    height: 9.2px;
   }
 `
