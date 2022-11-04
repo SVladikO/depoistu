@@ -14,8 +14,13 @@ export const Wrapper = styled.div`
   align-items: center;
   & > svg {
     fill: ${THEME.COLOR.ACCENT4};
-    padding: 0 0 0 5px;
     width: 9.61px;
     height: 9.2px;
   }
 `
+
+
+export const Text = styled.span`
+  box-sizing: border-box;
+  margin: 0 5px 0 0;  
+`;
