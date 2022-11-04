@@ -1,5 +1,5 @@
-import React from "react";
-import {Wrapper, Column, ComponentWrapper, Row, ColorCircle} from './Components.style';
+import React, {useState} from "react";
+import {Wrapper, Column, Component, Row, ColorCircle, Header, Shift} from './Components.style';
 import {
     PrimaryRoundedButton,
     PrimaryWideButton,
@@ -20,11 +20,11 @@ import {ReactComponent as MailIcon} from '../../icons/mail.svg';
 import {THEME} from "../../theme";
 
 const colors = Object.keys(THEME.COLOR).map(key =>
-    ({title: key, component: <ColorCircle bg={THEME.COLOR[key]}/>})
+    ({title: key, component: <ColorCircle bg={THEME.COLOR[key]}/>, value: THEME.COLOR[key], width: '50px'})
 )
 
 const columns = [
-    colors,
+    // colors,
     [
         {title: 'PrimaryWithIconButton', component: <PrimaryWithIconButton><GoogleIcon/>Google</PrimaryWithIconButton>},
         {title: 'PrimaryWideButton', component: <PrimaryWideButton>Sing in</PrimaryWideButton>},
@@ -51,23 +51,43 @@ const columns = [
     ]
 ]
 
+const defaultRowColor = '#ffffff'
+
 function ComponentsPage() {
+    const [rowBackround, setRowBackground] = useState(defaultRowColor)
+
+    console.log(rowBackround)
+
+    function renderRows(components) {
+        return components.map(c =>
+            <Row bg={rowBackround}>
+                {c.title}
+                <Component width={c.width}>{c.component}</Component>
+                {c.value}
+            </Row>
+        )
+    }
+
     return (
-        <Wrapper>
-            {columns.map(columnComponents =>
-                <Column>
-                    {columnComponents.map(c =>
-                        <Row>
-                            {c.title}
-                            <ComponentWrapper>
-                                {c.component}
-                            </ComponentWrapper>
-                        </Row>
-                    )
-                    }
-                </Column>)
-            }
-        </Wrapper>
+        <div>
+            <Header>
+                <Shift/>
+                <input type="color" value={rowBackround} onChange={e => setRowBackground(e.target.value)}/>
+                <Shift/>
+                <span>Change row background  </span>
+                <Shift/>
+                <ThirdButton onClick={() => setRowBackground(defaultRowColor)}>Reset color</ThirdButton>
+                <Shift/>
+                <Shift/>
+                {renderRows(colors)}
+            </Header>
+            <Wrapper>
+
+                {columns.map(components =>
+                    <Column>{renderRows(components)}</Column>)
+                }
+            </Wrapper>
+        </div>
     )
 }
 

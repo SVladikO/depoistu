@@ -1,28 +1,36 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
- display: flex;  
+    display: flex;
 `;
 export const Column = styled.div`
-    border: solid .5px;
-  width: 400px;
+  border: solid .5px;
+  width: 340px;
   padding: 10px;
-  
+
 `;
 
-export const Row = styled.div`
-    padding: 10px;
+export const Shift = styled.span`
+    margin: 0 10px;
 `;
-export const ComponentWrapper = styled.div`
-  width: 300px;
+
+export const Header = styled.div`
+  display: flex;
+  align-items: center;
+`;
+export const Row = styled.div`
+  padding: 10px;
+  background: ${p => p.bg};
+`;
+export const Component = styled.div`
+  width: ${p => p.width || '300px'};
   border: solid 1px blue;
   margin: 10px 0;
 `;
 
 export const ColorCircle = styled.div`
   background: ${p => p.bg};
-  border-radius: 40px;
-  width: 80px;
-  height: 80px;
-;
+  border-radius: 20px;
+  width: 40px;
+  height: 40px;;
 `;
