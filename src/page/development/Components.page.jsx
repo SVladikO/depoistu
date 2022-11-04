@@ -8,10 +8,11 @@ import {
     SecondaryWithIconButton,
     ThirdButton,
 } from "../../component/Button/Button.style";
-
+import {ContentContainer} from "../../component/ContentContainer/ContentContainer.style.js";
 import {Discount} from "../../component/Discount/Discount.style";
 import Input from "../../component/Input/Input";
 import NavigationHeader from "../../component/TopNavigation/NavigationHeader";
+
 
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
@@ -23,7 +24,6 @@ const colors = Object.keys(THEME.COLOR).map(key =>
     ({title: key, component: <ColorCircle bg={THEME.COLOR[key]} />})
 )
 
-// We grouped to have columns
 const columns = [
     colors,
     [
@@ -46,7 +46,10 @@ const columns = [
             component: <NavigationHeader href={' '} title="category"/>
         },
         {title: 'Discount', component: <Discount>{`-10%`}</Discount>}
-    ]
+    ],
+    [
+    {title: 'ContentContainer', component: <ContentContainer>Sign up with</ContentContainer>},
+    {title: 'InputWithIcon', component: <InputWithIcon Icon={MailIcon} placeholder={`johndoe@mail.com`}/>},
 ]
 
 function ComponentsPage() {
