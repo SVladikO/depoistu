@@ -27,11 +27,11 @@ const components = [
     {title: 'SecondaryButton', component: <SecondaryButton>Cancel</SecondaryButton>},
     {title: 'SecondaryWithIconButton', component: <SecondaryWithIconButton><FacebookIcon/>facebook</SecondaryWithIconButton>},
     {title: 'ThirdButton', component: <ThirdButton>Payment</ThirdButton>},
-    {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
     {title: 'InputWithIcon', component: <InputWithIcon Icon={MailIcon} placeholder={`johndoe@mail.com`}/>},
     {title: "<NavigationHeader title=\"category\"/>", component: <NavigationHeader title="category"/>},
     {title: "<NavigationHeader href={\' \'} title=\"category\"/>", component: <NavigationHeader href={' '} title="category"/>},
-    {title: '<Discount>{`-10%`}</Discount>', component: <Discount>{`-10%`}</Discount>}
+    {title: '<Discount>{`-10%`}</Discount>', component: <Discount>{`-10%`}</Discount>},
+    {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
 ]
 
 function ComponentsPage() {
