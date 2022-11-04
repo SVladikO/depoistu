@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
  display: flex;  
 `;
 export const Column = styled.div`
-    border: solid ;
+    border: solid .5px;
   width: 400px;
   padding: 10px;
   
