@@ -1,16 +1,13 @@
-import Wrapper from './CheckBoxWithLabel.style';
-import {useState} from "react";
+import React, {useState} from "react";
+import {Wrapper} from './CheckBoxWithLabel.style';
 
-const CheckBoxWithLabel = (props) => {
-    const [value, setCheckbox] = useState(true);
-    const {labelValue} = props;
+const CheckBoxWithLabel = ({label,id}) => {
+    const [isChecked, setIsChecked] = useState(false);
     return (
-        <Wrapper
-            label={labelValue}
-            value={value}
-            checked={value}
-            onChange={({ target }) => setCheckbox(!value)}
-        />
+        <Wrapper checked={isChecked} onChange={() => setIsChecked((prev) => !prev)}>
+            <input type="checkbox" id={id}/>
+            <label htmlFor={id}>{label}</label>
+        </Wrapper>
     );
 };
 

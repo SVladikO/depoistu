@@ -19,7 +19,7 @@ const components = [
     {title: 'SecondaryButton', component: <SecondaryButton>Cancel</SecondaryButton>},
     {title: 'SecondaryWithIconButton', component: <SecondaryWithIconButton><FacebookIcon/>facebook</SecondaryWithIconButton>},
     {title: 'ThirdButton', component: <ThirdButton>Payment</ThirdButton>},
-    {title: 'CheckBoxWithLabel', component: <CheckBoxWithLabel labelValue="By creating an account you agree to our
+    {title: 'CheckBoxWithLabel', component: <CheckBoxWithLabel label="By creating an account you agree to our
 Terms of Service and Privacy Policy"/>},
 ]
 

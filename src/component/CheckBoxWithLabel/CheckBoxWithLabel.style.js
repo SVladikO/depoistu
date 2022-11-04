@@ -1,101 +1,43 @@
-import React from "react";
-import styled, {keyframes} from "styled-components";
+import styled from "styled-components";
 import {THEME} from "../../theme";
 
-const Input = styled.input`
-  height: 0;
-  width: 0;
-  opacity: 0;
-  z-index: -1;
-`;
-
-const Label = styled.label`
-  position: relative;
+export const Wrapper = styled.div`
   display: flex;
-  cursor: ${props => (props.disabled ? "not-allowed" : "pointer")};
-  padding: 0 0 0 13px;
-  text-align: center;
-  color: ${THEME.COLOR.ACCENT1};
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 17px;
-`;
-
-const rotate = keyframes`
-  from {
-    opacity: 0;
-    transform: rotate(0deg);
+  align-items: baseline;
+  position: relative;
+  label{
+    font-weight: 400;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 17px;
+    color: ${THEME.COLOR.ACCENT1};
+    text-align: center;
+    display: flex;
+    padding-right: 12px;
+    &:hover{
+      &::before{
+        background-color: ${THEME.COLOR.ACCENT2};
+      }
+    }
   }
-  to {
-    opacity: 1;
-    transform: rotate(45deg);
-  }
-`;
-
-const Indicator = styled.div`
-  width: 15px;
-  height: 15px;
-  background: ${THEME.COLOR.ACCENT4};
-  position: absolute;
-  top: 0;
-  left: 0;
-  outline: 2px solid ${THEME.COLOR.ACCENT2};
-  border-radius: 2px;
-
-  ${Input}:not(:disabled):checked & {
-    background: ${THEME.COLOR.ACCENT4};
-  }
-
-  ${Label}:hover & {
-    background: ${THEME.COLOR.ACCENT2};
-  }
-
-  &::after {
+  label::before{
     content: "";
+    border: 1px solid #D8DEFE;
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+  input{
+    cursor: pointer;
+    opacity: 0;
     position: absolute;
-    display: none;
   }
-
-  ${Input}:checked + &::after {
-    display: block;
-    top: -2px;
-    left: 3px;
-    width: 35%;
-    height: 70%;
-    border: solid ${THEME.COLOR.PRIMARY};
-    border-width: 0 4px 4px 0;
-    animation-name: ${rotate};
-    animation-duration: 0.3s;
-    animation-fill-mode: forwards;
-  }
-
-  &:disabled {
-    cursor: not-allowed;
+  input:checked{
+    &+label::before{
+      content: "\\002714";
+      display: block;
+      justify-content: center;
+      align-items: center;
+    }
   }
 `;
-
-export default function Wrapper({
-                                    value,
-                                    checked,
-                                    onChange,
-                                    name,
-                                    id,
-                                    label,
-                                    disabled
-                                }) {
-    return (
-        <Label htmlFor={id} disabled={disabled}>
-            {label}
-            <Input
-                id={id}
-                type="checkbox"
-                name={name}
-                value={value}
-                disabled={disabled}
-                checked={checked}
-                onChange={onChange}
-            />
-            <Indicator/>
-        </Label>
-    );
-}
