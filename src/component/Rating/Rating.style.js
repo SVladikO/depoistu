@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   background-color: ${THEME.COLOR.PRIMARY};
   font-weight: 700;
   font-size: 12px;
-  line-height: 14px;
+  line-height: 16px;
   border-radius: 8px;
   color: ${THEME.COLOR.ACCENT4};
   display: flex;
