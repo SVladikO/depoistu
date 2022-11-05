@@ -35,9 +35,10 @@ export const Wrapper = styled.div`
   input:checked{
     &+label::before{
       content: "\\002714";
-      display: block;
+      display: flex;
       justify-content: center;
       align-items: center;
+      line-height: 12px;
     }
   }
 `;
