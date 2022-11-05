@@ -8,7 +8,7 @@ export const Input = styled.input`
   position: absolute;
   top: 0;
   left: 0;
-  
+  opacity: 0;
   &:checked + span {
     outline: 1px solid ${THEME.COLOR.PRIMARY};
     &:before {
@@ -34,8 +34,8 @@ export const RoundSlider = styled.span`
   &:before{
     content: "";
     position: absolute;
-    top: 2px;
-    left: 2px;
+    top: 1.5px;
+    left: 1.5px;
     width: 14px;
     height: 14px;
     border-radius: 45px;
