@@ -9,6 +9,7 @@ import {
     ThirdButton,
 } from "../../component/Button/Button.style";
 
+import CheckBoxWithLabel from "../../component/CheckBoxWithLabel/CheckBoxWithLabel";
 import ToggleCheckbox from "../../component/ToggleCheckbox/ToggleCheckbox";
 import {ContentContainer} from "../../component/ContentContainer/ContentContainer.style.js";
 import {Discount} from "../../component/Discount/Discount.style";
@@ -51,6 +52,8 @@ const columns = [
     [
         {title: 'ContentContainer', component: <ContentContainer>Sign up with</ContentContainer>},
         {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
+        {title: 'CheckBoxWithLabel', component: <CheckBoxWithLabel label="By creating an account you agree to our
+Terms of Service and Privacy Policy"/>},
         
     ]
 ]
