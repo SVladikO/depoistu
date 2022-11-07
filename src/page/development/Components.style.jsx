@@ -10,7 +10,7 @@ export const Column = styled.div`
 
 `;
 
-export const Shift = styled.span`
+export const Space = styled.span`
     margin: 0 10px;
 `;
 

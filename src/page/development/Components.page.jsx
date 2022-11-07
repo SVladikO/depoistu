@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Wrapper, Column, Component, Row, ColorCircle, Header, Shift} from './Components.style';
+import {Wrapper, Column, Component, Row, ColorCircle, Header, Space} from './Components.style';
 import {
     PrimaryRoundedButton,
     PrimaryWideButton,
@@ -71,14 +71,14 @@ function ComponentsPage() {
     return (
         <div>
             <Header>
-                <Shift/>
+                <Space/>
                 <input type="color" value={rowBackround} onChange={e => setRowBackground(e.target.value)}/>
-                <Shift/>
+                <Space/>
                 <span>Change row background  </span>
-                <Shift/>
+                <Space/>
                 <ThirdButton onClick={() => setRowBackground(defaultRowColor)}>Reset color</ThirdButton>
-                <Shift/>
-                <Shift/>
+                <Space/>
+                <Space/>
                 {renderRows(colors)}
             </Header>
             <Wrapper>
