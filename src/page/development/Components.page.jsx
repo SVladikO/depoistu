@@ -9,6 +9,7 @@ import {
     ThirdButton,
 } from "../../component/Button/Button.style";
 
+import Rating from "../../component/Rating/Rating";
 import CheckBoxWithLabel from "../../component/CheckBoxWithLabel/CheckBoxWithLabel";
 import ToggleCheckbox from "../../component/ToggleCheckbox/ToggleCheckbox";
 import {ContentContainer} from "../../component/ContentContainer/ContentContainer.style.js";
@@ -47,14 +48,13 @@ const columns = [
             title: "NavigationHeader",
             component: <NavigationHeader href={' '} title="category"/>
         },
+        {title: 'Rating', component: <Rating>{`4.9`}</Rating>},
         {title: 'Discount', component: <Discount>{`-10%`}</Discount>}
     ],
     [
         {title: 'ContentContainer', component: <ContentContainer>Sign up with</ContentContainer>},
         {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
         {title: 'CheckBoxWithLabel', component: <CheckBoxWithLabel label="By creating an account you agree to our
-Terms of Service and Privacy Policy"/>},
-        
     ]
 ]
 
@@ -88,7 +88,6 @@ function ComponentsPage() {
                 {renderRows(colors)}
             </Header>
             <Wrapper>
-
                 {columns.map(components =>
                     <Column>{renderRows(components)}</Column>)
                 }
