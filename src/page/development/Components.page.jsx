@@ -74,11 +74,12 @@ function ComponentsPage() {
         <div>
             <Header>
                 <Space/>
+                <span>Bg: </span>
                 <input type="color" value={rowBackround} onChange={e => setRowBackground(e.target.value)}/>
                 <Space/>
-                <span>Change row background  </span>
+                <ThirdButton onClick={() => setRowBackground(defaultRowColor)}>Set light</ThirdButton>
                 <Space/>
-                <ThirdButton onClick={() => setRowBackground(defaultRowColor)}>Reset color</ThirdButton>
+                <ThirdButton onClick={() => setRowBackground('#0063e6')}>Set dark</ThirdButton>
                 <Space/>
                 <Space/>
                 {renderRows(colors)}
