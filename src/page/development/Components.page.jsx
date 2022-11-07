@@ -8,7 +8,7 @@ import {
     SecondaryWithIconButton,
     ThirdButton,
 } from "../../component/Button/Button.style";
-
+import Price from "../../component/Price/Price";
 import ToggleCheckbox from "../../component/ToggleCheckbox/ToggleCheckbox";
 import {ContentContainer} from "../../component/ContentContainer/ContentContainer.style.js";
 import {Discount} from "../../component/Discount/Discount.style";
@@ -51,7 +51,8 @@ const columns = [
     [
         {title: 'ContentContainer', component: <ContentContainer>Sign up with</ContentContainer>},
         {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
-        
+        {title: 'Price', component: <Price>{`$`}{`50.00`}</Price>},
+
     ]
 ]
 
