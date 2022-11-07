@@ -12,7 +12,7 @@ import {
 import ToggleCheckbox from "../../component/ToggleCheckbox/ToggleCheckbox";
 import {ContentContainer} from "../../component/ContentContainer/ContentContainer.style.js";
 import {Discount} from "../../component/Discount/Discount.style";
-import {StyledCategoryTitle} from "../../component/CategoryTitle/CategoryTitle.style";
+import {CategoryTitle} from "../../component/CategoryTitle/CategoryTitle.style";
 import Input from "../../component/Input/Input";
 import NavigationHeader from "../../component/TopNavigation/NavigationHeader";
 
@@ -52,7 +52,7 @@ const columns = [
     [
         {title: 'ContentContainer', component: <ContentContainer>Sign up with</ContentContainer>},
         {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
-        {title: 'CategoryTitle', component: <StyledCategoryTitle>All Category</StyledCategoryTitle>}
+        {title: 'CategoryTitle', component: <CategoryTitle>All Category</CategoryTitle>}
     ]
 ]
 
