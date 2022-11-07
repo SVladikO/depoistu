@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 2.3px;
+  margin-right: 2.4px;
   & > svg {
     fill: ${THEME.COLOR.ACCENT4};
     width: 9.61px;
