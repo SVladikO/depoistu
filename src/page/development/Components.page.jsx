@@ -60,8 +60,6 @@ const defaultRowColor = '#ffffff'
 function ComponentsPage() {
     const [rowBackround, setRowBackground] = useState(defaultRowColor)
 
-    console.log(rowBackround)
-
     function renderRows(components) {
         return components.map(c =>
             <Row bg={rowBackround}>
