@@ -8,6 +8,8 @@ import {
     SecondaryWithIconButton,
     ThirdButton,
 } from "../../component/Button/Button.style";
+
+import ToggleCheckbox from "../../component/ToggleCheckbox/ToggleCheckbox";
 import {ContentContainer} from "../../component/ContentContainer/ContentContainer.style.js";
 import {Discount} from "../../component/Discount/Discount.style";
 import Input from "../../component/Input/Input";
@@ -48,6 +50,8 @@ const columns = [
     ],
     [
         {title: 'ContentContainer', component: <ContentContainer>Sign up with</ContentContainer>},
+        {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
+        
     ]
 ]
 
