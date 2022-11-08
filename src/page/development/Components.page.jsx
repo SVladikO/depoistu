@@ -63,11 +63,11 @@ Terms of Service and Privacy Policy"/> }
 const defaultRowColor = '#ffffff'
 
 function ComponentsPage() {
-    const [rowBackround, setRowBackground] = useState(defaultRowColor)
+    const [rowBackground, setRowBackground] = useState(defaultRowColor)
 
     function renderRows(components) {
         return components.map(c =>
-            <Row bg={rowBackround}>
+            <Row bg={rowBackground}>
                 {c.title}
                 <Component width={c.width}>{c.component}</Component>
                 {c.value}
