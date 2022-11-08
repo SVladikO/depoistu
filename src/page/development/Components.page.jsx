@@ -21,9 +21,9 @@ import NavigationHeader from "../../component/TopNavigation/NavigationHeader";
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
 import {ReactComponent as MailIcon} from '../../icons/mail.svg';
-import {ReactComponent as Lock} from '../../icons/lock.svg';
-import {ReactComponent as LogOut} from "../../icons/logout.svg";
-import {ReactComponent as Language} from "../../icons/language.svg";
+import {ReactComponent as LockIcon} from '../../icons/lock.svg';
+import {ReactComponent as LogOutIcon} from "../../icons/logout.svg";
+import {ReactComponent as LanguageIcon} from "../../icons/language.svg";
 
 import {THEME} from "../../theme";
 
@@ -61,9 +61,9 @@ const columns = [
         {title: 'CheckBoxWithLabel',
             component: <CheckBoxWithLabel label="By creating an account you agree to our
                                                 Terms of Service and Privacy Policy"/> },
-        {title: 'AccountMenuRow', component: <AccountMenuRow toggleHandler={true} toggleStatus={true} icon={Lock} title={`Change Password`}/>},
-        {title: 'AccountMenuRow', component: <AccountMenuRow href={true} icon={LogOut} title={`Sign Out`}/>},
-        {title: 'AccountMenuRow', component: <AccountMenuRow changeHandler={true} icon={Language} label={`English`} title={`Language`}/>}
+        {title: 'AccountMenuRow', component: <AccountMenuRow toggleHandler={() => alert('clicked toggle')} toggleStatus={true} icon={LockIcon} title={`Change Password`}/>},
+        {title: 'AccountMenuRow', component: <AccountMenuRow href="https://www.youtube.com" icon={LogOutIcon} title="YouTube"/>},
+        {title: 'AccountMenuRow', component: <AccountMenuRow changeHandler={() => alert('clicked')} icon={LanguageIcon} label="English" title="Language"/>}
     ]
 ]
 

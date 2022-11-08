@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import {THEME} from "../../theme";
 import {Link} from "react-router-dom";
-import {ReactComponent as RightArrow} from "../../icons/right_arrow.svg";
+import {ReactComponent as RightArrow} from "../../icons/right-anchor.svg";
 
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  padding: 19px 20px 22px 20px;
 `;
 export const LeftContent = styled.div`
   display: flex;
@@ -43,18 +43,13 @@ export const RightAnchor = styled.div`
   display: block;
   border: none;
   fill: #1C2340;
-  &:hover{
-    cursor: pointer;
-  }
 `;
-export const Label = styled.span`
+export const Label = styled.div`
   color: #B4C2CD;
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
-  display: block;
   margin-right: 11.5px;
-  cursor: pointer;
 `;
 export const CustomLink = styled(Link)`
   text-decoration: none;
