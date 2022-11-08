@@ -54,7 +54,9 @@ const columns = [
     [
         {title: 'ContentContainer', component: <ContentContainer>Sign up with</ContentContainer>},
         {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
-        {title: 'CheckBoxWithLabel', component: <CheckBoxWithLabel label="By creating an account you agree to our
+        {title: 'CheckBoxWithLabel',
+            component: <CheckBoxWithLabel label="By creating an account you agree to our
+Terms of Service and Privacy Policy"/> }
     ]
 ]
 
