@@ -80,7 +80,7 @@ function ComponentsPage() {
             <Header>
                 <Space/>
                 <span>Bg: </span>
-                <input type="color" value={rowBackround} onChange={e => setRowBackground(e.target.value)}/>
+                <input type="color" value={rowBackground} onChange={e => setRowBackground(e.target.value)}/>
                 <Space/>
                 <ThirdButton onClick={() => setRowBackground(defaultRowColor)}>Set light</ThirdButton>
                 <Space/>
