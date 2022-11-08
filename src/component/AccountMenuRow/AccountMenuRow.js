@@ -1,12 +1,12 @@
 import React from 'react';
-import {Wrapper, Title, LeftContent, RightContent,RightAnchor} from "./AccountMenuRow.style";
-import {Link} from "react-router-dom";
+import {Wrapper, Title, LeftContent, RightContent, RightAnchor, CustomLink, Label} from "./AccountMenuRow.style";
 import ToggleCheckbox from "../ToggleCheckbox/ToggleCheckbox";
 
 const AccountMenuRow = ({
                             icon: Icon,
                             title,
                             href,
+                            label,
                             changeHandler,
                             toggleHandler,
                             toggleStatus
@@ -27,24 +27,27 @@ const AccountMenuRow = ({
     }
     const renderAsLink = () => {
         return (
-            <Link href={href}>
+            <CustomLink href={href}>
                 <Wrapper>
                     <LeftContent>
                         <Icon/>
                         <Title>{title}</Title>
                     </LeftContent>
-                    <RightContent>
-                        <RightAnchor/>
-                    </RightContent>
                 </Wrapper>
-            </Link>
+            </CustomLink>
         )
     }
     const renderWithHandler = () => {
         return (
-            <Wrapper onChange={changeHandler}>
-                <Icon/>
-                <Title>{title}</Title>
+            <Wrapper onChange={() => changeHandler}>
+                <LeftContent>
+                    <Icon/>
+                    <Title>{title}</Title>
+                </LeftContent>
+                <RightContent>
+                    <Label>{label}</Label>
+                    <RightAnchor/>
+                </RightContent>
             </Wrapper>
         )
     }

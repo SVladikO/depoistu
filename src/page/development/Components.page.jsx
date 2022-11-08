@@ -22,7 +22,8 @@ import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
 import {ReactComponent as MailIcon} from '../../icons/mail.svg';
 import {ReactComponent as Lock} from '../../icons/lock.svg';
-import {ReactComponent as RightAnchor} from '../../icons/right_arrow.svg';
+import {ReactComponent as LogOut} from "../../icons/logout.svg";
+import {ReactComponent as Language} from "../../icons/language.svg";
 
 import {THEME} from "../../theme";
 
@@ -60,9 +61,9 @@ const columns = [
         {title: 'CheckBoxWithLabel',
             component: <CheckBoxWithLabel label="By creating an account you agree to our
                                                 Terms of Service and Privacy Policy"/> },
-        {title: 'AccountMenuRow', component: <AccountMenuRow toggleHandler={true} icon={Lock} title={`Change Password`}/>},
-        {title: 'AccountMenuRow', component: <AccountMenuRow icon={Lock} title={`Change Password`}/>},
-        {title: 'AccountMenuRow', component: <AccountMenuRow icon={Lock} title={`Change Password`}/>}
+        {title: 'AccountMenuRow', component: <AccountMenuRow toggleHandler={true} toggleStatus={true} icon={Lock} title={`Change Password`}/>},
+        {title: 'AccountMenuRow', component: <AccountMenuRow href={true} icon={LogOut} title={`Sign Out`}/>},
+        {title: 'AccountMenuRow', component: <AccountMenuRow changeHandler={true} icon={Language} label={`English`} title={`Language`}/>}
     ]
 ]
 
