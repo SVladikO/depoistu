@@ -1,5 +1,8 @@
 import React from 'react';
-import {Wrapper, Title, LeftContent, RightContent, RightAnchor, CustomLink, Label} from "./AccountMenuRow.style";
+import {Link} from "react-router-dom";
+
+import {Wrapper, Title, LeftContent, RightContent, RightAnchor, Label} from "./AccountMenuRow.style";
+
 import ToggleCheckbox from "../ToggleCheckbox/ToggleCheckbox";
 
 const AccountMenuRow = ({
@@ -27,27 +30,28 @@ const AccountMenuRow = ({
     }
     const renderAsLink = () => {
         return (
-            <CustomLink href={href}>
+            <Link to={href}>
                 <Wrapper>
                     <LeftContent>
                         <Icon/>
                         <Title>{title}</Title>
                     </LeftContent>
+                    <RightContent>
+                        <Label>{label}</Label>
+                        <RightAnchor/>
+                    </RightContent>
                 </Wrapper>
-            </CustomLink>
+            </Link>
         )
     }
     const renderWithHandler = () => {
         return (
-            <Wrapper onChange={() => changeHandler}>
+            <Wrapper onClick={changeHandler}>
                 <LeftContent>
                     <Icon/>
                     <Title>{title}</Title>
                 </LeftContent>
-                <RightContent>
-                    <Label>{label}</Label>
-                    <RightAnchor/>
-                </RightContent>
+
             </Wrapper>
         )
     }

@@ -28,11 +28,10 @@ import {ReactComponent as LanguageIcon} from "../../icons/language.svg";
 import {THEME} from "../../theme";
 
 const colors = Object.keys(THEME.COLOR).map(key =>
-    ({title: key, component: <ColorCircle bg={THEME.COLOR[key]}/>, value: THEME.COLOR[key], width: '50px'})
+    ({title: key, component: <ColorCircle key={key} bg={THEME.COLOR[key]}/>, value: THEME.COLOR[key], width: '50px'})
 )
 
 const columns = [
-    // colors,
     [
         {title: 'PrimaryWithIconButton', component: <PrimaryWithIconButton><GoogleIcon/>Google</PrimaryWithIconButton>},
         {title: 'PrimaryWideButton', component: <PrimaryWideButton>Sing in</PrimaryWideButton>},
@@ -61,9 +60,9 @@ const columns = [
         {title: 'CheckBoxWithLabel',
             component: <CheckBoxWithLabel label="By creating an account you agree to our
                                                 Terms of Service and Privacy Policy"/> },
-        {title: 'AccountMenuRow', component: <AccountMenuRow toggleHandler={() => alert('clicked toggle')} toggleStatus={true} icon={LockIcon} title={`Change Password`}/>},
-        {title: 'AccountMenuRow', component: <AccountMenuRow href="https://www.youtube.com" icon={LogOutIcon} title="YouTube"/>},
-        {title: 'AccountMenuRow', component: <AccountMenuRow changeHandler={() => alert('clicked')} icon={LanguageIcon} label="English" title="Language"/>}
+        {title: 'AccountMenuRow', component: <AccountMenuRow  icon={LockIcon} title={`Change Password`} toggleHandler={() => alert('clicked toggle')} toggleStatus={true} />},
+        {title: 'AccountMenuRow', component: <AccountMenuRow  icon={LogOutIcon}  title="Only change handler" changeHandler={() => alert('clicked')} />},
+        {title: 'AccountMenuRow', component: <AccountMenuRow  icon={LanguageIcon}  title="Language"  href="/catalog" label="English" />}
     ]
 ]
 
@@ -73,8 +72,8 @@ function ComponentsPage() {
     const [rowBackround, setRowBackground] = useState(defaultRowColor)
 
     function renderRows(components) {
-        return components.map(c =>
-            <Row bg={rowBackround}>
+        return components.map((c, index) =>
+            <Row bg={rowBackround} key={c.title+index}>
                 {c.title}
                 <Component width={c.width}>{c.component}</Component>
                 {c.value}
@@ -97,8 +96,8 @@ function ComponentsPage() {
                 {renderRows(colors)}
             </Header>
             <Wrapper>
-                {columns.map(components =>
-                    <Column>{renderRows(components)}</Column>)
+                {columns.map((components, index) =>
+                    <Column key={index}>{renderRows(components)}</Column>)
                 }
             </Wrapper>
         </div>

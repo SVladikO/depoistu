@@ -1,13 +1,14 @@
 import styled from "styled-components";
 import {THEME} from "../../theme";
-import {Link} from "react-router-dom";
-import {ReactComponent as RightArrow} from "../../icons/right-anchor.svg";
 
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 19px 20px 22px 20px;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 `;
 export const LeftContent = styled.div`
   display: flex;
@@ -50,7 +51,4 @@ export const Label = styled.div`
   font-size: 14px;
   line-height: 17px;
   margin-right: 11.5px;
-`;
-export const CustomLink = styled(Link)`
-  text-decoration: none;
 `;
