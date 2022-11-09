@@ -4,7 +4,7 @@ import {Wrapper} from "./Price.style";
 const Price = (props) => {
     return (
        <Wrapper>
-           {props.children}
+           ${props.children}
        </Wrapper>
     );
 };

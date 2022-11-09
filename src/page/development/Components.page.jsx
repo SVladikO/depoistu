@@ -51,7 +51,7 @@ const columns = [
     [
         {title: 'ContentContainer', component: <ContentContainer>Sign up with</ContentContainer>},
         {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
-        {title: 'Price', component: <Price>$50.00</Price>},
+        {title: 'Price', component: <Price>50.00</Price>},
 
     ]
 ]
