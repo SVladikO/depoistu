@@ -12,6 +12,7 @@ import {
 import Rating from "../../component/Rating/Rating";
 import CheckBoxWithLabel from "../../component/CheckBoxWithLabel/CheckBoxWithLabel";
 import ToggleCheckbox from "../../component/ToggleCheckbox/ToggleCheckbox";
+import AccountMenuRow from "../../component/AccountMenuRow/AccountMenuRow";
 import {ContentContainer} from "../../component/ContentContainer/ContentContainer.style.js";
 import {Discount} from "../../component/Discount/Discount.style";
 import Input from "../../component/Input/Input";
@@ -20,15 +21,17 @@ import NavigationHeader from "../../component/TopNavigation/NavigationHeader";
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
 import {ReactComponent as MailIcon} from '../../icons/mail.svg';
+import {ReactComponent as LockIcon} from '../../icons/lock.svg';
+import {ReactComponent as LogOutIcon} from "../../icons/logout.svg";
+import {ReactComponent as LanguageIcon} from "../../icons/language.svg";
 
 import {THEME} from "../../theme";
 
 const colors = Object.keys(THEME.COLOR).map(key =>
-    ({title: key, component: <ColorCircle bg={THEME.COLOR[key]}/>, value: THEME.COLOR[key], width: '50px'})
+    ({title: key, component: <ColorCircle key={key} bg={THEME.COLOR[key]}/>, value: THEME.COLOR[key], width: '50px'})
 )
 
 const columns = [
-    // colors,
     [
         {title: 'PrimaryWithIconButton', component: <PrimaryWithIconButton><GoogleIcon/>Google</PrimaryWithIconButton>},
         {title: 'PrimaryWideButton', component: <PrimaryWideButton>Sing in</PrimaryWideButton>},
@@ -56,7 +59,10 @@ const columns = [
         {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
         {title: 'CheckBoxWithLabel',
             component: <CheckBoxWithLabel label="By creating an account you agree to our
-Terms of Service and Privacy Policy"/> }
+                                                Terms of Service and Privacy Policy"/> },
+        {title: 'AccountMenuRow', component: <AccountMenuRow  icon={LockIcon} title={`Change Password`} toggleHandler={() => alert('clicked toggle')} toggleStatus={true} />},
+        {title: 'AccountMenuRow', component: <AccountMenuRow  icon={LogOutIcon}  title="Only change handler" changeHandler={() => alert('clicked')} />},
+        {title: 'AccountMenuRow', component: <AccountMenuRow  icon={LanguageIcon}  title="Language"  href="/catalog" label="English" />}
     ]
 ]
 
@@ -66,8 +72,8 @@ function ComponentsPage() {
     const [rowBackground, setRowBackground] = useState(defaultRowColor)
 
     function renderRows(components) {
-        return components.map(c =>
-            <Row bg={rowBackground}>
+        return components.map((c, index) =>
+            <Row bg={rowBackround} key={c.title+index}>
                 {c.title}
                 <Component width={c.width}>{c.component}</Component>
                 {c.value}
@@ -90,8 +96,8 @@ function ComponentsPage() {
                 {renderRows(colors)}
             </Header>
             <Wrapper>
-                {columns.map(components =>
-                    <Column>{renderRows(components)}</Column>)
+                {columns.map((components, index) =>
+                    <Column key={index}>{renderRows(components)}</Column>)
                 }
             </Wrapper>
         </div>
