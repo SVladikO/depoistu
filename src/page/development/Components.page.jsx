@@ -17,7 +17,7 @@ import {ContentContainer} from "../../component/ContentContainer/ContentContaine
 import {Discount} from "../../component/Discount/Discount.style";
 import Input from "../../component/Input/Input";
 import NavigationHeader from "../../component/TopNavigation/NavigationHeader";
-
+import {CategoryTitle} from "../../component/CategoryTitle/CategoryTitle.style";
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
 import {ReactComponent as MailIcon} from '../../icons/mail.svg';
@@ -57,9 +57,8 @@ const columns = [
     [
         {title: 'ContentContainer', component: <ContentContainer>Sign up with</ContentContainer>},
         {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
-        {title: 'CheckBoxWithLabel',
-            component: <CheckBoxWithLabel label="By creating an account you agree to our
-                                                Terms of Service and Privacy Policy"/> },
+        {title: 'CheckBoxWithLabel', component: <CheckBoxWithLabel label="By creating an account you agree to our Terms of Service and Privacy Policy"/> },
+        {title:'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
         {title: 'AccountMenuRow', component: <AccountMenuRow  icon={LockIcon} title={`Change Password`} toggleHandler={() => alert('clicked toggle')} toggleStatus={true} />},
         {title: 'AccountMenuRow', component: <AccountMenuRow  icon={LogOutIcon}  title="Only change handler" changeHandler={() => alert('clicked')} />},
         {title: 'AccountMenuRow', component: <AccountMenuRow  icon={LanguageIcon}  title="Language"  href="/catalog" label="English" />}
