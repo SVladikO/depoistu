@@ -16,7 +16,7 @@ import {ContentContainer} from "../../component/ContentContainer/ContentContaine
 import {Discount} from "../../component/Discount/Discount.style";
 import Input from "../../component/Input/Input";
 import NavigationHeader from "../../component/TopNavigation/NavigationHeader";
-import ProductSize from "../../component/ProductSize/ProductSize";
+import ProductSizeBar from "../../component/ProductSizeBar/ProductSize";
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
 import {ReactComponent as MailIcon} from '../../icons/mail.svg';
@@ -57,7 +57,7 @@ const columns = [
         {title: 'CheckBoxWithLabel',
             component: <CheckBoxWithLabel label="By creating an account you agree to our
 Terms of Service and Privacy Policy"/> },
-        {title: 'ProductSize', component: <ProductSize label="Size :"/>}
+        {title: 'ProductSizeBar', component: <ProductSizeBar label="Size :"/>}
     ]
 ]
 
