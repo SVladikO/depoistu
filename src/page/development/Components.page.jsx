@@ -9,6 +9,7 @@ import {
     ThirdButton,
 } from "../../component/Button/Button.style";
 
+import Price from "../../component/Price/Price";
 import Rating from "../../component/Rating/Rating";
 import CheckBoxWithLabel from "../../component/CheckBoxWithLabel/CheckBoxWithLabel";
 import ToggleCheckbox from "../../component/ToggleCheckbox/ToggleCheckbox";
@@ -58,6 +59,7 @@ const columns = [
     [
         {title: 'ContentContainer', component: <ContentContainer>Sign up with</ContentContainer>},
         {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
+        {title: 'Price', component: <Price>50.00</Price>},
         {title: 'CheckBoxWithLabel',
             component:
                 <CheckBoxWithLabel
