@@ -25,7 +25,7 @@ export const SizeBlock = styled.div`
   justify-content: center;
   
   border-radius: 50%;
-  ${p => p.active && `border: 1px solid ${THEME.COLOR.PRIMARY}`};
+  ${p => !p.active && `border: 1px solid ${THEME.COLOR.ACCENT1}`};
   color:       ${p => p.active ? THEME.COLOR.ACCENT4 : THEME.COLOR.ACCENT1};
   background:  ${p => p.active ? `linear-gradient(${THEME.GRADIENT.FROM}, ${THEME.GRADIENT.TO})` : THEME.COLOR.ACCENT4};
 `;
