@@ -112,7 +112,7 @@ function ComponentsPage() {
 
     function renderRows(components) {
         return components.map((c, index) =>
-            <Row bg={rowBackround} key={c.title+index}>
+            <Row bg={rowBackground} key={c.title+index}>
                 {c.title}
                 <Component width={c.width}>{c.component}</Component>
                 {c.value}
