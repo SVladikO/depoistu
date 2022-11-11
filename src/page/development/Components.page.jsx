@@ -17,6 +17,7 @@ import {ContentContainer} from "../../component/ContentContainer/ContentContaine
 import {Discount} from "../../component/Discount/Discount.style";
 import Input from "../../component/Input/Input";
 import NavigationHeader from "../../component/TopNavigation/NavigationHeader";
+import ProductSizeBar from "../../component/ProductSizeBar/ProductSizeBar";
 import {CategoryTitle} from "../../component/CategoryTitle/CategoryTitle.style";
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
@@ -57,6 +58,45 @@ const columns = [
     [
         {title: 'ContentContainer', component: <ContentContainer>Sign up with</ContentContainer>},
         {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
+        {title: 'CheckBoxWithLabel',
+            component:
+                <CheckBoxWithLabel
+                    label="By creating an account you agree to our Terms of Service and Privacy Policy"
+                />
+        },
+        {title: 'ProductSizeBar', component:
+                (function ()  {
+                  const selectedSize = 1;
+                  const buttons = [
+                      {price: 10, size: 1},
+                      {price: 20, size: 2},
+                      {price: 30, size: 3},
+                  ];
+
+                  function handleClick(m) {
+                      alert('Clicked on size: ' + m.size + ' with price: ' + m.price)
+                  }
+
+                  return <ProductSizeBar buttons={buttons} selectedSize={selectedSize} handleClick={handleClick} label="Size:"/>
+              })()
+
+        },
+        {title: 'ProductSizeBar', component:
+                (function ()  {
+                  const selectedSize = 3;
+                  const buttons = [
+                      {price: 20, size: 2},
+                      {price: 30, size: 3},
+                  ];
+
+                    function handleClick(m) {
+                        alert('Clicked on size: ' + m.size + ' with price: ' + m.price)
+                    }
+
+                  return <ProductSizeBar buttons={buttons} handleClick={handleClick} selectedSize={selectedSize} />
+              })()
+
+        },
         {title: 'CheckBoxWithLabel', component: <CheckBoxWithLabel label="By creating an account you agree to our Terms of Service and Privacy Policy"/> },
         {title:'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
         {title: 'AccountMenuRow', component: <AccountMenuRow  icon={LockIcon} title={`Change Password`} toggleHandler={() => alert('clicked toggle')} toggleStatus={true} />},
