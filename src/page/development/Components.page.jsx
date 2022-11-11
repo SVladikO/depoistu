@@ -59,6 +59,8 @@ const columns = [
         {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
         {title: 'CheckBoxWithLabel', component: <CheckBoxWithLabel label="By creating an account you agree to our Terms of Service and Privacy Policy"/> },
         {title:'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
+    ],
+    [
         {title: 'AccountMenuRow', component: <AccountMenuRow  icon={LockIcon} title={`Change Password`} toggleHandler={() => alert('clicked toggle')} toggleStatus={true} />},
         {title: 'AccountMenuRow', component: <AccountMenuRow  icon={LogOutIcon}  title="Only change handler" changeHandler={() => alert('clicked')} />},
         {title: 'AccountMenuRow', component: <AccountMenuRow  icon={LanguageIcon}  title="Language"  href="/catalog" label="English" />}
@@ -68,7 +70,7 @@ const columns = [
 const defaultRowColor = '#ffffff'
 
 function ComponentsPage() {
-    const [rowBackground, setRowBackground] = useState(defaultRowColor)
+    const [rowBackround, setRowBackround] = useState(defaultRowColor)
 
     function renderRows(components) {
         return components.map((c, index) =>
@@ -85,11 +87,11 @@ function ComponentsPage() {
             <Header>
                 <Space/>
                 <span>Bg: </span>
-                <input type="color" value={rowBackground} onChange={e => setRowBackground(e.target.value)}/>
+                <input type="color" value={rowBackround} onChange={e => setRowBackround(e.target.value)}/>
                 <Space/>
-                <ThirdButton onClick={() => setRowBackground(defaultRowColor)}>Set light</ThirdButton>
+                <ThirdButton onClick={() => setRowBackround(defaultRowColor)}>Set light</ThirdButton>
                 <Space/>
-                <ThirdButton onClick={() => setRowBackground('#0063e6')}>Set dark</ThirdButton>
+                <ThirdButton onClick={() => setRowBackround('#0063e6')}>Set dark</ThirdButton>
                 <Space/>
                 <Space/>
                 {renderRows(colors)}
