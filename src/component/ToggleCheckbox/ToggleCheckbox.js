@@ -1,10 +1,10 @@
 import React from 'react';
 import {Wrapper, RoundSlider, Input} from "./ToggleCheckbox.style";
 
-const ToggleCheckbox = () => {
+const ToggleCheckbox = ({changeHandler}) => {
     return (
-        <Wrapper>
-            <Input type="checkbox"/>
+        <Wrapper >
+            <Input onChange={changeHandler} type="checkbox"/>
             <RoundSlider/>
         </Wrapper>
     );
