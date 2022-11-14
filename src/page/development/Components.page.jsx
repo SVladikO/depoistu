@@ -112,7 +112,7 @@ const columns = [
 const defaultRowColor = '#ffffff'
 
 function ComponentsPage() {
-    const [rowBackround, setRowBackround] = useState(defaultRowColor)
+    const [rowBackground, setRowBackground] = useState(defaultRowColor)
 
     function renderRows(components) {
         return components.map((c, index) =>
@@ -129,11 +129,11 @@ function ComponentsPage() {
             <Header>
                 <Space/>
                 <span>Bg: </span>
-                <input type="color" value={rowBackround} onChange={e => setRowBackround(e.target.value)}/>
+                <input type="color" value={rowBackground} onChange={e => setRowBackground(e.target.value)}/>
                 <Space/>
-                <ThirdButton onClick={() => setRowBackround(defaultRowColor)}>Set light</ThirdButton>
+                <ThirdButton onClick={() => setRowBackground(defaultRowColor)}>Set light</ThirdButton>
                 <Space/>
-                <ThirdButton onClick={() => setRowBackround('#0063e6')}>Set dark</ThirdButton>
+                <ThirdButton onClick={() => setRowBackground('#0063e6')}>Set dark</ThirdButton>
                 <Space/>
                 <Space/>
                 {renderRows(colors)}
