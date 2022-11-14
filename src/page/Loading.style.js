@@ -19,6 +19,12 @@ export const Content = styled(flex)`
   border-radius: 50%;
   background: ${COLOR.ACCENT4};
   border: solid 13px ${COLOR.ACCENT3};
+  
+  & > svg {
+    width: 140px;
+    height: 140px;
+    fill: ${COLOR.PRIMARY};
+  }
 `;
 
 export const LogoText = styled(flex)`
