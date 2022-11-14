@@ -1,25 +1,26 @@
 import React, {useState} from "react";
 import {Wrapper, Column, Component, Row, ColorCircle, Header, Space} from './Components.style';
-import {
-    PrimaryRoundedButton,
-    PrimaryWideButton,
-    PrimaryWithIconButton,
-    SecondaryButton,
-    SecondaryWithIconButton,
+import
+    {
+    Input,
+    Price,
+    Rating,
+    Discount,
     ThirdButton,
-} from "../../component/Button/Button.style";
+    AccountMenuRow,
+    ToggleCheckbox,
+    CheckBoxWithLabel,
+    SecondaryButton,
+    PrimaryWideButton,
+    PrimaryRoundedButton,
+    PrimaryWithIconButton,
+    SecondaryWithIconButton,
+    ContentContainer,
+    NavigationHeader,
+    ProductSizeBar,
+    CategoryTitle,
+} from "../../components";
 
-import Price from "../../component/Price/Price";
-import Rating from "../../component/Rating/Rating";
-import CheckBoxWithLabel from "../../component/CheckBoxWithLabel/CheckBoxWithLabel";
-import ToggleCheckbox from "../../component/ToggleCheckbox/ToggleCheckbox";
-import AccountMenuRow from "../../component/AccountMenuRow/AccountMenuRow";
-import {ContentContainer} from "../../component/ContentContainer/ContentContainer.style.js";
-import {Discount} from "../../component/Discount/Discount.style";
-import Input from "../../component/Input/Input";
-import NavigationHeader from "../../component/TopNavigation/NavigationHeader";
-import ProductSizeBar from "../../component/ProductSizeBar/ProductSizeBar";
-import {CategoryTitle} from "../../component/CategoryTitle/CategoryTitle.style";
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
 import {ReactComponent as MailIcon} from '../../icons/mail.svg';
@@ -124,9 +125,10 @@ function ComponentsPage() {
                 <span>Bg: </span>
                 <input type="color" value={rowBackground} onChange={e => setRowBackground(e.target.value)}/>
                 <Space/>
-                <ThirdButton onClick={() => setRowBackground(defaultRowColor)}>Set light</ThirdButton>
+                {/*<ThirdButton onClick={() => setRowBackground(defaultRowColor)}>Set light</ThirdButton>*/}
                 <Space/>
-                <ThirdButton onClick={() => setRowBackground('#0063e6')}>Set dark</ThirdButton>
+                {/*<ThirdButton onClick={() => setRowBackground('#0063e6')}>Set dark</ThirdButton>*/}
+                <Space/>
                 <Space/>
                 <Space/>
                 {renderRows(colors)}

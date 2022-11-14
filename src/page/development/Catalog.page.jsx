@@ -1,7 +1,7 @@
 import React from "react";
 
 import {MobileWrapper} from './Catalog.style'
-import MobileDevice from '../../component/MobileDevice';
+import MobileDevice from '../../components/MobileDevice';
 import LoadingPage from "../Loading.page";
 
 const pages = [
