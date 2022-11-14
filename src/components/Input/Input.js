@@ -1,12 +1,44 @@
-import React from "react";
-import {Wrapper, InputText} from "./Input.style";
+import React, {useState} from "react";
+import {Wrapper, InputText, SwitchIconWrapper, CenterWrapper} from "./Input.style";
 
-function Input(props) {
-    const {Icon, placeholder} = props;
+import {ReactComponent as ShowEyeIcon} from "../../icons/show-eye.svg";
+import {ReactComponent as HideEyeIcon} from "../../icons/hide-eye.svg";
+
+function Input({
+                   Icon,
+                   value,
+                   placeholder,
+                   changeHandler = () => {
+                   },
+                   withSwitcher = false,
+
+               }) {
+
+    const [showData, setShowData] = useState(false);
+
+    const showValue = () => {
+        setShowData(true);
+    }
+    const hideValue = () => setShowData(false);
+
     return (
         <Wrapper>
             {Icon && <Icon/>}
-            <InputText placeholder={placeholder} withIcon={!!Icon}/>
+            <InputText
+                type={!withSwitcher ? 'text' : showData ? 'text' : 'password'}
+                value={value}
+                withIcon={!!Icon}
+                onChange={changeHandler}
+                withSwitcher={withSwitcher}
+                placeholder={placeholder}
+            />
+            {withSwitcher &&
+                <SwitchIconWrapper onClick={showData ? hideValue : showValue}>
+                    <CenterWrapper>
+                        {showData ? <HideEyeIcon/> : <ShowEyeIcon/>}
+                    </CenterWrapper>
+                </SwitchIconWrapper>
+            }
         </Wrapper>
     )
 }
