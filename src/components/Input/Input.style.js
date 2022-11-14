@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {THEME} from "../../theme";
+import {COLOR} from "../../theme";
 
 export const Wrapper = styled.div`
     position: relative;
@@ -13,8 +13,8 @@ export const Wrapper = styled.div`
 `;
 
 export const InputText = styled.input`
-  background: ${THEME.COLOR.ACCENT2};
-  color: ${THEME.COLOR.ACCENT1};
+  background: ${COLOR.ACCENT2};
+  color: ${COLOR.ACCENT1};
   width: 100%;
   height: 50px;
   border: none;
@@ -22,6 +22,6 @@ export const InputText = styled.input`
   padding: 14px 20px 17px ${p => p.withIcon ? '50px' : '20px'};
   
   ::placeholder {
-    color: ${THEME.COLOR.ACCENT1};
+    color: ${COLOR.ACCENT1};
   }
 `;

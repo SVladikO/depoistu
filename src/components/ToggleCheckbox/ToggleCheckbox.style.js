@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {THEME} from "../../theme";
+import {COLOR} from "../../theme";
 
 export const Wrapper = styled.label`
   position: relative;
@@ -10,14 +10,14 @@ export const Input = styled.input`
   left: 0;
   opacity: 0;
   &:checked + span {
-    outline: 1px solid ${THEME.COLOR.PRIMARY};
+    outline: 1px solid ${COLOR.PRIMARY};
     &:before {
       left: calc(100% - 2px);
       transform: translateX(-100%);
     }
   }
   &:checked + span:before {
-    background-color: ${THEME.COLOR.PRIMARY};
+    background-color: ${COLOR.PRIMARY};
   }
   
 `;
@@ -27,7 +27,7 @@ export const RoundSlider = styled.span`
   width: 31px;
   height: 17px;
   border-radius: 100px;
-  background: ${THEME.COLOR.ACCENT4};
+  background: ${COLOR.ACCENT4};
   position: relative;
   transition: background-color 0.2s;
   outline: 1px solid #B4C2CD;

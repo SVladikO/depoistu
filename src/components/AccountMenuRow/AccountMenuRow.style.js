@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {THEME} from "../../theme";
+import {COLOR} from "../../theme";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -16,7 +16,7 @@ export const LeftContent = styled.div`
     width: 16.82px;
     height: 19.22px;
     margin-right: 16px;
-    fill: ${THEME.COLOR.ACCENT1};
+    fill: ${COLOR.ACCENT1};
   }
 `;
 export const RightContent = styled.div`
@@ -28,7 +28,7 @@ export const Title = styled.div`
   font-weight: 500;
   font-size: 16px;
   line-height: 19px;
-  color: ${THEME.COLOR.ACCENT1};
+  color: ${COLOR.ACCENT1};
 `
 export const RightAnchor = styled.div`
   background-image: url("data:image/svg+xml,%3Csvg width='8' 

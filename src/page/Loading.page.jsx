@@ -12,7 +12,7 @@ function LoadingPage() {
     return (
         <Wrapper>
             <Content>
-                <LogoIcon style={{width:'140px',height: '140px', fill: THEME.COLOR.PRIMARY}}/>
+                <LogoIcon style={{width:'140px',height: '140px', fill: COLOR.PRIMARY}}/>
                 <LogoText>{translations.company_name}</LogoText>
             </Content>
         </Wrapper>
