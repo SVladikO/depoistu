@@ -16,10 +16,7 @@ function Input({
 
     const [showData, setShowData] = useState(false);
 
-    console.log({showData})
-
     const showValue = () => {
-        console.log('clicked')
         setShowData(true);
     }
     const hideValue = () => setShowData(false);

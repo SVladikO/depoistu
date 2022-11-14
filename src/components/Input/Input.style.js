@@ -11,10 +11,6 @@ export const Wrapper = styled.div`
     top: 50%;
     transform: translateY(-50%);
   }
-
-  & > span:last-child {
-    
-  }
 `;
 
 export const SwitchIconWrapper = styled.div`
