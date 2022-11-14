@@ -28,10 +28,10 @@ import {ReactComponent as LockIcon} from '../../icons/lock.svg';
 import {ReactComponent as LogOutIcon} from "../../icons/logout.svg";
 import {ReactComponent as LanguageIcon} from "../../icons/language.svg";
 
-import {THEME} from "../../theme";
+import {COLOR} from "../../theme";
 
-const colors = Object.keys(THEME.COLOR).map(key =>
-    ({title: key, component: <ColorCircle key={key} bg={THEME.COLOR[key]}/>, value: THEME.COLOR[key], width: '50px'})
+const colors = Object.keys(COLOR).map(key =>
+    ({title: key, component: <ColorCircle key={key} bg={COLOR[key]}/>, value: COLOR[key], width: '50px'})
 )
 
 const columns = [
@@ -125,9 +125,9 @@ function ComponentsPage() {
                 <span>Bg: </span>
                 <input type="color" value={rowBackground} onChange={e => setRowBackground(e.target.value)}/>
                 <Space/>
-                {/*<ThirdButton onClick={() => setRowBackground(defaultRowColor)}>Set light</ThirdButton>*/}
+                <ThirdButton onClick={() => setRowBackground(defaultRowColor)}>Set light</ThirdButton>
                 <Space/>
-                {/*<ThirdButton onClick={() => setRowBackground('#0063e6')}>Set dark</ThirdButton>*/}
+                <ThirdButton onClick={() => setRowBackground('#0063e6')}>Set dark</ThirdButton>
                 <Space/>
                 <Space/>
                 <Space/>
