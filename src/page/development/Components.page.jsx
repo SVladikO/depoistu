@@ -49,6 +49,7 @@ const columns = [
     [
         {title: 'Input', component: <Input placeholder={`johndoe@mail.com`}/>},
         {title: 'Input', component: <Input Icon={MailIcon} placeholder={`johndoe@mail.com`}/>},
+        {title: 'Input', component: <Input withSwitcher placeholder={`New password`} />},
         {title: 'CheckBoxWithLabel', component: <CheckBoxWithLabel label="By creating an account you agree to our Terms of Service and Privacy Policy" />},
         {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
 
