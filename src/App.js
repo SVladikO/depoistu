@@ -1,8 +1,8 @@
 import React from 'react';
-import {Routes, Route, Link} from "react-router-dom";
+import {Routes, Route} from "react-router-dom";
 import ReduxIntroductionPage from './page/development/Redux-introduction.page'
 
-import LinkMenu from './component/LinkMenu'
+import LinkMenu from './components/LinkMenu'
 
 import CatalogPage from './page/development/Catalog.page'
 import ComponentsPage from './page/development/Components.page'
