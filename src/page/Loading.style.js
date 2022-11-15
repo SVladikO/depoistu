@@ -14,8 +14,8 @@ export const Wrapper = styled(flex)`
 
 export const Content = styled(flex)`
   flex-direction: column;
-  width: 266px;
-  height: 266px;
+  width: 228px;
+  height: 228px;
   border-radius: 50%;
   background: ${COLOR.ACCENT4};
   border: solid 13px ${COLOR.ACCENT3};

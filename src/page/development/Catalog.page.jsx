@@ -3,13 +3,14 @@ import React from "react";
 import {MobileWrapper} from './Catalog.style'
 import MobileDevice from '../../components/MobileDevice';
 import LoadingPage from "../Loading.page";
+import SignInPage from "../SignInPage/SignIn.page";
 
 const pages = [
     {title: 'Loading', component: <LoadingPage/>},
     {title: 'Intro 1', component: 'c intro 1'},
     {title: 'Intro 2', component: 'c intro 2'},
     {title: 'Intro 3', component: 'c intro 3'},
-    {title: 'Sing in', component: 'c sing in'},
+    {title: 'Sing in', component: <SignInPage/>},
     {title: 'Sing up', component: 'c sing up'},
     {title: 'Sing up phone | email', component: 'c sing up phone | email'},
     {title: 'Phone verification', component: 'c Phone verification'},

@@ -6,6 +6,7 @@ export const ContentContainer = styled.div`
   width: 100%;
   min-height: 30px;
   text-align: center;
-  padding: 20px 25px 35px 25px;
+  padding: 20px 25px 25px 25px;
   border-radius: 10px;
+  margin: 28px auto 25px auto;
 `
