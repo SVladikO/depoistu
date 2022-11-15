@@ -7,6 +7,7 @@ export const button = styled.button`
   border: none;
   border-radius: 5px;
   color: ${COLOR.ACCENT4};
+  font-family: Lato;
 `;
 
 export const primary = styled(button)`
