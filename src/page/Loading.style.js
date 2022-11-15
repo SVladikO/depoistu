@@ -31,7 +31,7 @@ export const LogoText = styled(flex)`
   color: ${COLOR.PRIMARY};
   font-size: 40px;
   text-transform: uppercase;
-  font-family: LatoBold;
+  font-weight: 700;;
 `;
 
 

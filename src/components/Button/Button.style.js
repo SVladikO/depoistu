@@ -7,7 +7,6 @@ export const button = styled.button`
   border: none;
   border-radius: 5px;
   color: ${COLOR.ACCENT4};
-  font-family: LatoRegular;
 `;
 
 export const primary = styled(button)`
@@ -28,7 +27,7 @@ export const withIcon = styled(button)`
 `;
 
 export const PrimaryWideButton = styled(primary)`
-  font-family: LatoBold;
+  font-weight: 700;
   width: 100%;
 `;
 
@@ -44,7 +43,7 @@ export const PrimaryWithIconButton = styled(withIcon)`
 export const SecondaryButton = styled(button)`
     color: ${COLOR.PRIMARY};
     background: ${hexToRgbA(COLOR.ACCENT3, 0.1)};
-    font-family: LatoBold;
+    font-weight: 700;
     padding: 12px 24px;
 `;
 
@@ -59,6 +58,6 @@ export const SecondaryWithIconButton = styled(withIcon)`
 
 export const ThirdButton = styled(button)`
   background: ${COLOR.PRIMARY};
-  font-family: LatoBold;
+  font-weight: 700;
   padding: 12px 24px;
 `;
