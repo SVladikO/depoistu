@@ -1,11 +1,11 @@
 import {NavLink } from "react-router-dom";
 
 import {Wrapper} from "./LinkMenu.style";
-import {THEME} from "../../theme";
+import {COLOR} from "../../theme";
 
 let activeStyle = {
     textDecoration: "underline",
-    color: THEME.COLOR.PRIMARY,
+    color: COLOR.PRIMARY,
 };
 
 function LinkMenu({items}) {

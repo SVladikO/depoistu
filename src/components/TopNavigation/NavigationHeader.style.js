@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {THEME} from "../../theme";
+import {COLOR} from "../../theme";
 
 
 export const Wrapper = styled.div`
@@ -7,13 +7,13 @@ export const Wrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  background: ${THEME.COLOR.ACCENT4};
+  background: ${COLOR.ACCENT4};
   position: relative;
   border-radius: 0 0 5px 5px;
   & > a > svg {
     position: absolute;
     display: block;
-    fill: ${THEME.COLOR.ACCENT1};
+    fill: ${COLOR.ACCENT1};
     left: 15px;
     top: 50%;
     transform: translateY(-50%);
@@ -25,5 +25,5 @@ export const Title = styled.div`
   line-height: 29px;
   justify-self: center;
   padding: 16px;
-  color: ${THEME.COLOR.ACCENT1};
+  color: ${COLOR.ACCENT1};
 `
