@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {THEME} from "../../theme";
+import {COLOR} from "../../theme";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -10,13 +10,13 @@ export const Wrapper = styled.div`
     cursor: pointer;
     font-size: 14px;
     line-height: 17px;
-    color: ${THEME.COLOR.ACCENT1};
+    color: ${COLOR.ACCENT1};
     text-align: center;
     display: flex;
     padding-right: 12px;
     &:hover{
       &::before{
-        background-color: ${THEME.COLOR.ACCENT2};
+        background-color: ${COLOR.ACCENT2};
       }
     }
   }

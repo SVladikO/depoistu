@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import {THEME} from "../../theme";
+import {COLOR, GRADIENT} from "../../theme";
 
 export const Wrapper = styled.div`
   display: flex;
   font-weight: 700;
 `;
 export const Label = styled.span`
-  color: ${THEME.COLOR.PRIMARY};
+  color: ${COLOR.PRIMARY};
   font-size: 16px;
   line-height: 19px;
   margin: 0 9px 0 0;
@@ -25,8 +25,8 @@ export const SizeBlock = styled.div`
   justify-content: center;
   
   border-radius: 50%;
-  ${p => !p.active && `border: 1px solid ${THEME.COLOR.ACCENT1}`};
-  color:       ${p => p.active ? THEME.COLOR.ACCENT4 : THEME.COLOR.ACCENT1};
-  background:  ${p => p.active ? `linear-gradient(${THEME.GRADIENT.FROM}, ${THEME.GRADIENT.TO})` : THEME.COLOR.ACCENT4};
+  ${p => !p.active && `border: 1px solid ${COLOR.ACCENT1}`};
+  color:       ${p => p.active ? COLOR.ACCENT4 : COLOR.ACCENT1};
+  background:  ${p => p.active ? `linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO})` : COLOR.ACCENT4};
 `;
 
