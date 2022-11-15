@@ -2,13 +2,13 @@ import React from 'react';
 import './App.css';
 
 import {Wrapper} from "./App.style";
-import LinksPage from "./page/LinksPage/Links.page";
-
+import {getNavigation, getPages} from "./page/LinksPage/Links.page";
 
 function App() {
     return (
         <Wrapper>
-            <LinksPage/>
+            {getNavigation()}
+            {getPages()}
         </Wrapper>
     );
 }
