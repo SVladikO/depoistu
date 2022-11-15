@@ -2,12 +2,9 @@ import React from 'react';
 import {Route, Routes} from "react-router-dom";
 import CatalogPage from '../development/Catalog.page';
 import ComponentsPage from '../development/Components.page';
-import LoadingPage from "../Loading.page";
-import LinkMenu from "../../component/LinkMenu";
+import LinkMenu from '../../components/LinkMenu';
 import ReduxIntroductionPage from "../development/Redux-introduction.page";
-import {host, LINKS, ROUTER_MAP} from "../../config";
-
-
+import {LINKS, ROUTER_MAP} from "../../config";
 
 export const getNavigation = () => {
     return (

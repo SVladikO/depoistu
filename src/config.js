@@ -1,7 +1,7 @@
 export const ROUTER_MAP = {
     COMPONENTS: 'components',
-    REDUX: 'redux',
     PAGES: 'pages',
+    REDUX: 'redux',
 };
 
 export const ROUTER_KEYS = Object.keys(ROUTER_MAP)
