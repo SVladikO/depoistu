@@ -1,16 +1,16 @@
 import styled from 'styled-components'
-import {THEME} from "../../theme";
+import {COLOR, GRADIENT} from "../../theme";
 import {hexToRgbA} from "../../utils";
 
 export const button = styled.button`
   padding: 12px;
   border: none;
   border-radius: 5px;
-  color: ${THEME.COLOR.ACCENT4};
+  color: ${COLOR.ACCENT4};
 `;
 
 export const primary = styled(button)`
-  background-image: linear-gradient(${THEME.GRADIENT.FROM}, ${THEME.GRADIENT.TO});
+  background-image: linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO});
 `;
 
 export const withIcon = styled(button)`
@@ -19,7 +19,7 @@ export const withIcon = styled(button)`
   padding: 12px 26px;
 
   & > svg {
-    fill: ${THEME.COLOR.ACCENT4};
+    fill: ${COLOR.ACCENT4};
     width: 12.8px;
     height: 13.05px;
     margin: 0 12px 0 0;
@@ -37,27 +37,27 @@ export const PrimaryRoundedButton = styled(primary)`
 `;
 
 export const PrimaryWithIconButton = styled(withIcon)`
-  background-image: linear-gradient(${THEME.GRADIENT.FROM}, ${THEME.GRADIENT.TO});
+  background-image: linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO});
 `;
 
 export const SecondaryButton = styled(button)`
-    color: ${THEME.COLOR.PRIMARY};
-    background: ${hexToRgbA(THEME.COLOR.ACCENT3, 0.1)};
+    color: ${COLOR.PRIMARY};
+    background: ${hexToRgbA(COLOR.ACCENT3, 0.1)};
     font-weight: 700;
     padding: 12px 24px;
 `;
 
 export const SecondaryWithIconButton = styled(withIcon)`
-  color: ${THEME.COLOR.ACCENT3};
-  background: ${hexToRgbA(THEME.COLOR.ACCENT3, 0.1)};
+  color: ${COLOR.ACCENT3};
+  background: ${hexToRgbA(COLOR.ACCENT3, 0.1)};
   
   & > svg {
-    fill: ${THEME.COLOR.ACCENT3}
+    fill: ${COLOR.ACCENT3}
   }
 `;
 
 export const ThirdButton = styled(button)`
-  background: ${THEME.COLOR.PRIMARY};
+  background: ${COLOR.PRIMARY};
   font-weight: 700;
   padding: 12px 24px;
 `;

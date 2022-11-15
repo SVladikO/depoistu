@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {THEME} from "../theme";
+import {COLOR, GRADIENT} from "../theme";
 
 const flex = styled.div`
   display: flex;
@@ -8,7 +8,7 @@ const flex = styled.div`
 `
 
 export const Wrapper = styled(flex)`
-  background-image: linear-gradient(${THEME.GRADIENT.FROM}, ${THEME.GRADIENT.TO});
+  background-image: linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO});
   min-height: 100%;
 `;
 
@@ -17,12 +17,18 @@ export const Content = styled(flex)`
   width: 266px;
   height: 266px;
   border-radius: 50%;
-  background: ${THEME.COLOR.ACCENT4};
-  border: solid 13px ${THEME.COLOR.ACCENT3};
+  background: ${COLOR.ACCENT4};
+  border: solid 13px ${COLOR.ACCENT3};
+  
+  & > svg {
+    width: 140px;
+    height: 140px;
+    fill: ${COLOR.PRIMARY};
+  }
 `;
 
 export const LogoText = styled(flex)`
-  color: ${THEME.COLOR.PRIMARY};
+  color: ${COLOR.PRIMARY};
   font-size: 40px;
   text-transform: uppercase;
   font-weight: 700;;

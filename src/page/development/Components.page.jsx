@@ -1,25 +1,26 @@
 import React, {useState} from "react";
 import {Wrapper, Column, Component, Row, ColorCircle, Header, Space} from './Components.style';
-import {
-    PrimaryRoundedButton,
-    PrimaryWideButton,
-    PrimaryWithIconButton,
-    SecondaryButton,
-    SecondaryWithIconButton,
+import
+    {
+    Input,
+    Price,
+    Rating,
+    Discount,
     ThirdButton,
-} from "../../component/Button/Button.style";
+    AccountMenuRow,
+    ToggleCheckbox,
+    CheckBoxWithLabel,
+    SecondaryButton,
+    PrimaryWideButton,
+    PrimaryRoundedButton,
+    PrimaryWithIconButton,
+    SecondaryWithIconButton,
+    ContentContainer,
+    NavigationHeader,
+    ProductSizeBar,
+    CategoryTitle,
+} from "../../components";
 
-import Price from "../../component/Price/Price";
-import Rating from "../../component/Rating/Rating";
-import CheckBoxWithLabel from "../../component/CheckBoxWithLabel/CheckBoxWithLabel";
-import ToggleCheckbox from "../../component/ToggleCheckbox/ToggleCheckbox";
-import AccountMenuRow from "../../component/AccountMenuRow/AccountMenuRow";
-import {ContentContainer} from "../../component/ContentContainer/ContentContainer.style.js";
-import {Discount} from "../../component/Discount/Discount.style";
-import Input from "../../component/Input/Input";
-import NavigationHeader from "../../component/TopNavigation/NavigationHeader";
-import ProductSizeBar from "../../component/ProductSizeBar/ProductSizeBar";
-import {CategoryTitle} from "../../component/CategoryTitle/CategoryTitle.style";
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
 import {ReactComponent as MailIcon} from '../../icons/mail.svg';
@@ -27,10 +28,10 @@ import {ReactComponent as LockIcon} from '../../icons/lock.svg';
 import {ReactComponent as LogOutIcon} from "../../icons/logout.svg";
 import {ReactComponent as LanguageIcon} from "../../icons/language.svg";
 
-import {THEME} from "../../theme";
+import {COLOR} from "../../theme";
 
-const colors = Object.keys(THEME.COLOR).map(key =>
-    ({title: key, component: <ColorCircle key={key} bg={THEME.COLOR[key]}/>, value: THEME.COLOR[key], width: '50px'})
+const colors = Object.keys(COLOR).map(key =>
+    ({title: key, component: <ColorCircle key={key} bg={COLOR[key]}/>, value: COLOR[key], width: '50px'})
 )
 
 const columns = [
@@ -48,24 +49,16 @@ const columns = [
     [
         {title: 'Input', component: <Input placeholder={`johndoe@mail.com`}/>},
         {title: 'Input', component: <Input Icon={MailIcon} placeholder={`johndoe@mail.com`}/>},
-        {title: "NavigationHeader", component: <NavigationHeader title="category"/>},
-        {
-            title: "NavigationHeader",
-            component: <NavigationHeader href={' '} title="category"/>
-        },
-        {title: 'Rating', component: <Rating>{`4.9`}</Rating>},
-        {title: 'Discount', component: <Discount>{`-10%`}</Discount>}
+        {title: 'Input', component: <Input withSwitcher placeholder={`New password`} />},
+        {title: 'CheckBoxWithLabel', component: <CheckBoxWithLabel label="By creating an account you agree to our Terms of Service and Privacy Policy" />},
+        {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
+
+        {title: 'Price', component: <Price>50.00</Price>},
     ],
     [
-        {title: 'ContentContainer', component: <ContentContainer>Sign up with</ContentContainer>},
-        {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
-        {title: 'Price', component: <Price>50.00</Price>},
-        {title: 'CheckBoxWithLabel',
-            component:
-                <CheckBoxWithLabel
-                    label="By creating an account you agree to our Terms of Service and Privacy Policy"
-                />
-        },
+
+        {title: 'Rating', component: <Rating>{`4.9`}</Rating>},
+        {title: 'Discount', component: <Discount>{`-10%`}</Discount>},
         {title: 'ProductSizeBar', component:
                 (function ()  {
                   const selectedSize = 1;
@@ -99,8 +92,12 @@ const columns = [
               })()
 
         },
-        {title: 'CheckBoxWithLabel', component: <CheckBoxWithLabel label="By creating an account you agree to our Terms of Service and Privacy Policy"/> },
         {title:'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
+    ],
+    [
+        {title: "NavigationHeader", component: <NavigationHeader title="category"/>},
+        {title: "NavigationHeader", component: <NavigationHeader href={' '} title="category"/>},
+        {title: 'ContentContainer', component: <ContentContainer>Sign up with</ContentContainer>},
         {title: 'AccountMenuRow', component: <AccountMenuRow  icon={LockIcon} title={`Change Password`} toggleHandler={() => alert('clicked toggle')} toggleStatus={true} />},
         {title: 'AccountMenuRow', component: <AccountMenuRow  icon={LogOutIcon}  title="Only change handler" changeHandler={() => alert('clicked')} />},
         {title: 'AccountMenuRow', component: <AccountMenuRow  icon={LanguageIcon}  title="Language"  href="/catalog" label="English" />}
@@ -132,6 +129,7 @@ function ComponentsPage() {
                 <ThirdButton onClick={() => setRowBackground(defaultRowColor)}>Set light</ThirdButton>
                 <Space/>
                 <ThirdButton onClick={() => setRowBackground('#0063e6')}>Set dark</ThirdButton>
+                <Space/>
                 <Space/>
                 <Space/>
                 {renderRows(colors)}
