@@ -5,10 +5,10 @@ export const Wrapper = styled.div`
   //display: flex;
   //flex-direction: column;
 `;
-export const Title = styled.div`
+export const Link = styled.a`
   font-size: 20px;
   font-weight: 500;
-
+  text-transform: uppercase;
 `;
 
 export const Screen = styled.div`

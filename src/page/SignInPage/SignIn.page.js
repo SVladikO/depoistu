@@ -1,49 +1,47 @@
 import React from 'react';
+
+import {Content, LogoText} from "../Loading.style";
+import {Wrapper, Label, LeftSideContent, RightSideContent, ContentWrapper, TextContent} from "./SignIn.style";
+
 import {
     ContentContainer,
     Input,
     PrimaryWideButton,
     PrimaryWithIconButton,
-    SecondaryWithIconButton
+    SecondaryWithIconButton,
+    NavigationHeader
 } from "../../components";
-import NavigationHeader from "../../components/TopNavigation/NavigationHeader";
-import {Wrapper,Label,LeftSideContent, RightSideContent,ContentWrapper,TextContent} from "./SignIn.style";
-import {Content, LogoText} from "../Loading.style";
+
 import translations from "../../translations";
+
 import {ReactComponent as LogoIcon} from "../../icons/logo.svg";
 import {ReactComponent as LockIcon} from "../../icons/lock.svg";
 import {ReactComponent as MailIcon} from "../../icons/mail.svg";
 
-import {ReactComponent as FacebookIcon} from "../../icons/facebook.svg";
 import {ReactComponent as GoogleIcon} from "../../icons/google.svg";
+import {ReactComponent as FacebookIcon} from "../../icons/facebook.svg";
 
 const SignInPage = () => {
     return (
         <>
             <NavigationHeader href={' '} title="Sign in"/>
             <Wrapper>
-                <Content style={{border:'none', margin: ' 0 auto 28px auto', padding: '45px'}}>
-                    <LogoIcon />
+                <Content style={{border: 'none', margin: ' 0 auto 28px auto', padding: '45px'}}>
+                    <LogoIcon/>
                     <LogoText>{translations.company_name}</LogoText>
                 </Content>
                 <ContentContainer>
-                    <div>
-                        <Input Icon={MailIcon} placeholder={`johndoe@mail.com`}/>
-                    </div>
+                    <Input Icon={MailIcon} placeholder={`johndoe@mail.com`}/>
                     <div style={{marginTop: '11px'}}>
-                        <Input Icon={LockIcon}  placeholder={`*********************`}/>
+                        <Input Icon={LockIcon} placeholder={`*********************`}/>
                     </div>
                     <ContentWrapper>
                         <LeftSideContent>
-                            <Label primary={false}>
-                                Or login with
-                            </Label>
+                            <Label primary={false}>Or login with</Label>
                             <SecondaryWithIconButton><FacebookIcon/>facebook</SecondaryWithIconButton>
                         </LeftSideContent>
                         <RightSideContent>
-                            <Label primary={true}>
-                                Forget password ?
-                            </Label>
+                            <Label primary>Forget password ?</Label>
                             <PrimaryWithIconButton><GoogleIcon/>Google</PrimaryWithIconButton>
                         </RightSideContent>
                     </ContentWrapper>
