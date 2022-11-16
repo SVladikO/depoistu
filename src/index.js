@@ -7,10 +7,13 @@ import packageInfo from '../package.json';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
+import {showDevelopmentPageUrls} from "./development-log";
 
 const container = document.getElementById('root');
 const root = createRoot(container);
-console.log("version:", packageInfo.version);
+
+showDevelopmentPageUrls()
+
 root.render(
     <React.StrictMode>
         <BrowserRouter>
