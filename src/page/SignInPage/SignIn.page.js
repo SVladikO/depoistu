@@ -1,7 +1,6 @@
 import React from 'react';
 
-import {Content, LogoText} from "../Loading.style";
-import {Wrapper, Label, LeftSideContent, RightSideContent, ContentWrapper, TextContent} from "./SignIn.style";
+import {Wrapper, Label, LeftSideContent, RightSideContent, ContentWrapper, TextContent, Content, LogoText} from "./SignIn.style";
 
 import {
     ContentContainer,
