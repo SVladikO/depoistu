@@ -8,29 +8,19 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
 `;
-export const ButtonIncrement = styled.button`
+export const Button = styled.button`
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background-color: ${COLOR.PRIMARY};
+  background-color: ${p => p.increment ? `${COLOR.PRIMARY}` : `${hexToRgbA(COLOR.ACCENT3, 0.1)}` };
   font-size: 8px;
   font-weight: 700;
-  color: ${COLOR.ACCENT4};
+  color: ${p => p.increment ? `${COLOR.ACCENT4}` : `${COLOR.PRIMARY}` };
   line-height: 10px;
-  margin-left: 4px;
+  margin: 0 4px;
   display: block;
 `;
-export const ButtonDecrement = styled.button`
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background-color: ${hexToRgbA(COLOR.ACCENT3, 0.1)};
-  color: ${COLOR.PRIMARY};
-  font-size: 8px;
-  font-weight: 700;
-  line-height: 10px;
-  margin-right: 4px;
-`;
+
 export const Counter = styled.div`
   color: ${COLOR.ACCENT1};
   font-weight: 700;

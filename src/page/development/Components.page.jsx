@@ -99,7 +99,9 @@ const columns = [
                 })()
 
         },
+        {title: 'CountMealAccumulator', component: <CountMealAccumulator count={16}/>},
         {title: 'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
+
     ],
     [
         {title: "NavigationHeader", component: <NavigationHeader title="category"/>},
@@ -119,9 +121,7 @@ const columns = [
             title: 'AccountMenuRow',
             component: <AccountMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
         },
-        {
-            title: 'CountMealAccumulator', component: <CountMealAccumulator count={16}/>
-        }
+
     ]
 ]
 

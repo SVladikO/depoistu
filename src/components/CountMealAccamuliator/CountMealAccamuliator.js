@@ -1,19 +1,21 @@
 import React from 'react';
-import {Wrapper, ButtonIncrement, ButtonDecrement, Counter} from "./CountMealAccamuliator.style";
+import {Wrapper, Button, Counter} from "./CountMealAccamuliator.style";
 
-const CountMealAccumulator = ({count}) => {
+const CountMealAccumulator = ({count,changeHandler = () => {}}) => {
     function increment() {
-        return count += 1;
+        changeHandler(count + 1);
+        alert (`increment`);
     }
     function decrement() {
-        return count -= 1;
+        changeHandler(count - 1);
+        alert (`decrement`);
     }
 
     return (
         <Wrapper>
-            <ButtonDecrement onClick={() => alert(`decrement`)}>-</ButtonDecrement>
+            <Button onClick={decrement}>-</Button>
             <Counter>{count}</Counter>
-            <ButtonIncrement onClick={() => alert(`increment`)}>+</ButtonIncrement>
+            <Button increment onClick={increment}>+</Button>
         </Wrapper>
     );
 };
