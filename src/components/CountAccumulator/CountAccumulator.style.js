@@ -12,10 +12,10 @@ export const Button = styled.button`
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background-color: ${p => p.increment ? `${COLOR.PRIMARY}` : `${hexToRgbA(COLOR.ACCENT3, 0.1)}` };
+  background-color: ${p => p.increment ? COLOR.PRIMARY : 'hexToRgbA(${COLOR.ACCENT3}, 0.1)' };
   font-size: 8px;
   font-weight: 700;
-  color: ${p => p.increment ? `${COLOR.ACCENT4}` : `${COLOR.PRIMARY}` };
+  color: ${p => p.increment ? COLOR.ACCENT4 : COLOR.PRIMARY };
   line-height: 10px;
   margin: 0 4px;
   display: block;

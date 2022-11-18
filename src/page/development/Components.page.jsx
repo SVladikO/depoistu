@@ -20,7 +20,7 @@ import
     ProductSizeBar,
     CategoryTitle,
 } from "../../components";
-import CountMealAccumulator from '../../components/CountMealAccamuliator/CountMealAccamuliator';
+import CountAccumulator from '../../components/CountAccumulator/CountAccumulator';
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
 import {ReactComponent as MailIcon} from '../../icons/mail.svg';
@@ -99,7 +99,7 @@ const columns = [
                 })()
 
         },
-        {title: 'CountMealAccumulator', component: <CountMealAccumulator count={16}/>},
+        {title: 'CountAccumulator', component: <CountAccumulator count={16}/>},
         {title: 'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
 
     ],
