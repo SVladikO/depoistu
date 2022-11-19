@@ -1,4 +1,3 @@
-import React from 'react';
 import {Wrapper, Button, Counter} from "./CountAccumulator.style";
 
 const CountMealAccumulator = ({count,changeHandler = () => {}}) => {
@@ -7,10 +6,10 @@ const CountMealAccumulator = ({count,changeHandler = () => {}}) => {
         alert (`increment`);
     }
     function decrement() {
-        changeHandler(count - 1);
-        if(count < 0){
+        if(!count){
             return;
         }
+        changeHandler(count - 1);
         alert (`decrement`);
     }
 
