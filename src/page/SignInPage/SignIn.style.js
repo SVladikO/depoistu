@@ -5,27 +5,23 @@ export const Wrapper = styled.div`
   background-color: ${COLOR.ACCENT2};
   display: flex;
   flex-direction: column;
-  height: calc(100% - 60px);
-  position: relative;
-  justify-content: center;
-  z-index: -1;
-  padding: 28px 25px 25px 25px;
+  min-height: 100%;
+  justify-content: start;
+  //z-index: -1;
+  padding: 0 25px 25px 25px;
 `;
 
-const flex = styled.div`
+export const Content = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-export const Content = styled(flex)`
   flex-direction: column;
   width: 228px;
   height: 228px;
   border-radius: 50%;
   background: ${COLOR.ACCENT4};
   border: none;
-  margin: 0 auto 28px auto; 
+  margin: 28px auto 28px auto; 
   padding: 45px;
   & > svg {
     width: 140px;
@@ -34,7 +30,10 @@ export const Content = styled(flex)`
   }
 `;
 
-export const LogoText = styled(flex)`
+export const LogoText = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: ${COLOR.PRIMARY};
   font-size: 40px;
   text-transform: uppercase;
@@ -44,7 +43,6 @@ export const LogoText = styled(flex)`
 export const ContentWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  min-width: 276px;
 `;
 
 export const LeftSideContent = styled.div`
@@ -76,6 +74,6 @@ export const TextContent = styled.div`
   display: flex;
   justify-content: center;
   & > div{
-    margin:  21px 0 0 3px;
+    margin: 21px 0 0 3px;
   }
 `;

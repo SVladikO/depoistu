@@ -25,7 +25,7 @@ const SignInPage = () => {
         <>
             <NavigationHeader href={' '} title="Sign in"/>
             <Wrapper>
-                <Content style={{border: 'none', margin: ' 0 auto 28px auto', padding: '45px'}}>
+                <Content>
                     <LogoIcon/>
                     <LogoText>{translations.company_name}</LogoText>
                 </Content>
