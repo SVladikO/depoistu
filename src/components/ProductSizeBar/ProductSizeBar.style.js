@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {COLOR, GRADIENT} from "../../theme";
+import {BorderRadius, COLOR, GRADIENT} from "../../theme";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -24,7 +24,7 @@ export const SizeBlock = styled.div`
   align-items: center;
   justify-content: center;
   
-  border-radius: 50%;
+  border-radius: ${BorderRadius.CIRCLE};
   ${p => !p.active && `border: 1px solid ${COLOR.ACCENT1}`};
   color:       ${p => p.active ? COLOR.ACCENT4 : COLOR.ACCENT1};
   background:  ${p => p.active ? `linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO})` : COLOR.ACCENT4};
