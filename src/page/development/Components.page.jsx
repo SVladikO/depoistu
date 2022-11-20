@@ -20,7 +20,7 @@ import
     ProductSizeBar,
     CategoryTitle,
 } from "../../components";
-
+import TabBar from "../../components/TabBar/TabBar";
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
 import {ReactComponent as MailIcon} from '../../icons/mail.svg';
@@ -93,6 +93,31 @@ const columns = [
 
         },
         {title:'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
+        {title:'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
+        {title:'TabBar', component:
+                (function (){
+                const tabs = ['Completed', 'Upcoming', 'Cancelled'];
+                const selectedTab = tabs[0];
+                console.log(selectedTab);
+                function handleClick(c){
+                    alert(`${tabs[c]}`)
+                }
+                    return <TabBar selectedTab={selectedTab}  tabs={tabs} handleClick={handleClick}/>
+                })()
+        },
+        {title:'NavigationHeader', component:
+            <NavigationHeader href={' '} title="category">
+                {(function (){
+                    const tabs = ['Completed', 'Upcoming', 'Cancelled'];
+                    const selectedTab = tabs[0];
+                    console.log(selectedTab);
+                    function handleClick(c){
+                        alert(`${tabs[c]}`)
+                    }
+                    return <TabBar selectedTab={selectedTab}  tabs={tabs} handleClick={handleClick}/>
+                })()}
+            </NavigationHeader>
+        },
     ],
     [
         {title: "NavigationHeader", component: <NavigationHeader title="category"/>},

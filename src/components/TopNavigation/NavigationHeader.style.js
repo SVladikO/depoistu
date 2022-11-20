@@ -3,6 +3,21 @@ import {COLOR} from "../../theme";
 
 
 export const Wrapper = styled.div`
+  
+`
+export const Title = styled.div`
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  justify-self: center;
+  padding: 16px;
+  color: ${COLOR.ACCENT1};
+  display: block;
+`
+export const NestedContent = styled.div`
+
+`;
+export const MainContent = styled.div`
   min-height: 30px;
   width: 100%;
   display: flex;
@@ -18,12 +33,4 @@ export const Wrapper = styled.div`
     top: 50%;
     transform: translateY(-50%);
   }
-`
-export const Title = styled.div`
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 29px;
-  justify-self: center;
-  padding: 16px;
-  color: ${COLOR.ACCENT1};
-`
+`;
