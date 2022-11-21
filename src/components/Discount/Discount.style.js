@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {BorderRadius, COLOR} from "../../theme";
+import {BORDER_RADIUS, COLOR} from "../../theme";
 
 
 export const Discount = styled.div`
@@ -9,7 +9,7 @@ export const Discount = styled.div`
   font-size: 12px;
   padding: 0 3px 0 0;
   line-height: 16px;
-  border-radius: ${BorderRadius.THIRD};
+  border-radius: ${BORDER_RADIUS.THIRD};
   color: ${COLOR.ACCENT4};
   display: flex;
   justify-content: center;

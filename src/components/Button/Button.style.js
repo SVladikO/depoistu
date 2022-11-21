@@ -1,11 +1,11 @@
 import styled from 'styled-components'
-import {BorderRadius, COLOR, GRADIENT} from "../../theme";
+import {BORDER_RADIUS, COLOR, GRADIENT} from "../../theme";
 import {hexToRgbA} from "../../utils";
 
 export const button = styled.button`
   padding: 12px;
   border: none;
-  border-radius: ${BorderRadius.FOURTH};
+  border-radius: ${BORDER_RADIUS.FOURTH};
   color: ${COLOR.ACCENT4};
   font-family: Lato;
 `;
@@ -33,7 +33,7 @@ export const PrimaryWideButton = styled(primary)`
 `;
 
 export const PrimaryRoundedButton = styled(primary)`
-  border-radius: ${BorderRadius.FIRST};
+  border-radius: ${BORDER_RADIUS.FIRST};
   width: 100%;
 `;
 

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {BorderRadius, COLOR} from "../../theme";
+import {BORDER_RADIUS, COLOR} from "../../theme";
 
 export const Wrapper = styled.div`
   width: 40px;
@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   font-weight: 700;
   font-size: 12px;
   line-height: 16px;
-  border-radius: ${BorderRadius.THIRD};
+  border-radius: ${BORDER_RADIUS.THIRD};
   color: ${COLOR.ACCENT4};
   display: flex;
   justify-content: center;
