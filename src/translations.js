@@ -1,3 +1,3 @@
 export default {
-    company_name: 'Armato',
+    company_name: 'DOMONO',
 }

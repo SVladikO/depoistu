@@ -30,6 +30,13 @@ export const withIcon = styled(button)`
 export const PrimaryWideButton = styled(primary)`
   font-weight: 700;
   width: 100%;
+  height: 50px;
+  & > span {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: ${COLOR.ACCENT4};
+  }
 `;
 
 export const PrimaryRoundedButton = styled(primary)`
@@ -39,6 +46,12 @@ export const PrimaryRoundedButton = styled(primary)`
 
 export const PrimaryWithIconButton = styled(withIcon)`
   background-image: linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO});
+  @media (max-width: 390px) and (min-width: 320px)  {
+    min-width: 110px;
+    height: 45px;
+    justify-content: stretch;
+    padding: 12px 24px;
+  }
 `;
 
 export const SecondaryButton = styled(button)`
@@ -53,7 +66,18 @@ export const SecondaryWithIconButton = styled(withIcon)`
   background: ${hexToRgbA(COLOR.ACCENT3, 0.1)};
   
   & > svg {
-    fill: ${COLOR.ACCENT3}
+    fill: ${COLOR.ACCENT3};
+    display: block;
+  }
+  @media (max-width: 390px) and (min-width: 320px)  {
+    max-width: 130px;
+    height: 45px;
+    padding: 12px 17px 12px 20px;
+  }
+  @media (max-width: 350px) and (min-width: 320px)  {
+    max-width: 110px;
+    height: 45px;
+    padding: 12px 12px;
   }
 `;
 

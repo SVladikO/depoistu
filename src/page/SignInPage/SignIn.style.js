@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import {COLOR} from '../../theme';
+import {COLOR,GRADIENT} from '../../theme';
+
 
 export const Wrapper = styled.div`
   background-color: ${COLOR.ACCENT2};
@@ -26,7 +27,6 @@ export const Content = styled.div`
   & > svg {
     width: 140px;
     height: 140px;
-    fill: ${COLOR.PRIMARY};
   }
 `;
 
@@ -34,15 +34,16 @@ export const LogoText = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${COLOR.PRIMARY};
-  font-size: 40px;
-  text-transform: uppercase;
-  font-weight: 700;;
+  color: #FF3937;
+  font-weight: 900;
+  font-size: 28px;
+  line-height: 34px;
 `;
 
 export const ContentWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  width: 100%;
 `;
 
 export const LeftSideContent = styled.div`
@@ -53,11 +54,14 @@ export const LeftSideContent = styled.div`
 `;
 
 export const Label = styled.div`
-  color: ${props => props.primary ? COLOR.PRIMARY : COLOR.ACCENT1};
+  color: ${props => props.primary ? COLOR.ACCENT3 : COLOR.ACCENT1};
   margin: 11px auto 15px 0;
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
+  @media (max-width: 360px) and (min-width: 320px)  {
+    font-size: 14px;
+  }
 `;
 
 export const RightSideContent = styled.div`
@@ -67,6 +71,9 @@ export const RightSideContent = styled.div`
   justify-content: flex-end;
   & > ${Label}{
     margin-right: 0;
+  }
+  @media (max-width: 390px) and (min-width: 320px)  {
+    font-size: 14px;
   }
 `;
 

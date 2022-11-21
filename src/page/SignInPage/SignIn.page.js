@@ -49,7 +49,7 @@ const SignInPage = () => {
                         <Label primary={true}>Sing up !</Label>
                     </TextContent>
                 </ContentContainer>
-                <PrimaryWideButton>Sing in</PrimaryWideButton>
+                <PrimaryWideButton><span>Sing in</span></PrimaryWideButton>
             </Wrapper>
         </>
     );
