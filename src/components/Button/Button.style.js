@@ -17,7 +17,7 @@ export const primary = styled(button)`
 export const withIcon = styled(button)`
   display: flex;
   align-items: center;
-  padding: 12px 26px;
+  padding: 12px 24px;
   height: 45px;
   min-width: 132px;
 
@@ -49,7 +49,7 @@ export const PrimaryRoundedButton = styled(primary)`
 
 export const PrimaryWithIconButton = styled(withIcon)`
   background-image: linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO});
-  
+  font-size: 16px;
   justify-content: stretch;
   padding: 12px 24px;
 `;
@@ -57,7 +57,7 @@ export const PrimaryWithIconButton = styled(withIcon)`
 export const SecondaryWithIconButton = styled(withIcon)`
   color: ${COLOR.ACCENT3};
   background: ${hexToRgbA(COLOR.ACCENT3, 0.1)};
-
+  font-size: 16px;
   & > svg {
     fill: ${COLOR.ACCENT3};
     display: block;

@@ -1,11 +1,10 @@
 <svg width="29" height="26" viewBox="0 0 29 26" xmlns="http://www.w3.org/2000/svg">
-    <linearGradient id="linear-gradient">
+    <linearGradient id="linear-gradient" x1="100%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stop-color="#FF7E5B"/>
         <stop offset="100%" stop-color="#FF3937"/>
     </linearGradient>
-
-    <circle cx="19.9019" cy="11.529" r="0.904" fill="url(#linear-gradient)"/>
     <circle cx="8.89997" cy="11.529" r="0.904" fill="url(#linear-gradient)"/>
+    <circle cx="19.9019" cy="11.529" r="0.904" fill="url(#linear-gradient)"/>
     <path fill="url(#linear-gradient)"
           fill-rule="evenodd" clip-rule="evenodd"
           d="M12.2159 9.721C12.2159 8.22265 13.4306 7.008 14.9289 7.008C16.4266 7.00965 17.6403 8.22333 17.6419 9.721C17.6419 11.2193 16.4273 12.434 14.9289 12.434C13.4306 12.434 12.2159 11.2193 12.2159 9.721ZM14.0289 9.725C14.0289 10.2221 14.4319 10.625 14.9289 10.625C15.4249 10.6223 15.8262 10.2209 15.8289 9.725C15.8289 9.22794 15.426 8.825 14.9289 8.825C14.4319 8.825 14.0289 9.22794 14.0289 9.725Z"/>
