@@ -49,8 +49,8 @@ export const ContentWrapper = styled.div`
 export const LeftSideContent = styled.div`
   display: flex;
   flex-direction: column;
-  width: calc(50% - 11px);
   justify-content: flex-start;
+  width: calc(50% - 5px);
 `;
 
 export const Label = styled.div`
@@ -67,8 +67,8 @@ export const Label = styled.div`
 export const RightSideContent = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50%;
   justify-content: flex-end;
+  width: calc(50% - 5px);
   & > ${Label}{
     margin-right: 0;
   }

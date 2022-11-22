@@ -3,7 +3,7 @@ import React from "react";
 import {MobileWrapper} from './Catalog.style'
 import MobileDevice from '../../components/MobileDevice';
 import LoadingPage from "../Loading.page";
-import SignInPage from "../SignInPage/SignIn.page";
+import SignInPage from "../sing-in/SignIn.page";
 
 import {ROUTER_MAP} from "../../config";
 
