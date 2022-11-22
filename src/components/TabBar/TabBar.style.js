@@ -9,7 +9,7 @@ export const Wrapper =  styled.div`
 `;
 export const Tab = styled.div`
   font-weight: 500;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 19px;
   position: relative;
   color: ${p => p.active ? COLOR.PRIMARY: COLOR.ACCENT1};
@@ -19,7 +19,7 @@ export const Tab = styled.div`
     color: ${COLOR.ACCENT1};
     position: absolute;
     top: 0;
-    left: calc(100% + 10px);
+    left: calc(100% + 20px);
   }
   &:last-child::after{
     display: none;

@@ -106,7 +106,6 @@ const columns = [
                 (function () {
                     const tabs = ['Completed', 'Upcoming', 'Cancelled'];
                     const selectedTab = tabs[0];
-                    console.log(selectedTab);
 
                     function handleClick(c) {
                         alert(`${tabs[c]}`)
@@ -121,7 +120,6 @@ const columns = [
                     {(function () {
                         const tabs = ['Completed', 'Upcoming', 'Cancelled'];
                         const selectedTab = tabs[0];
-                        console.log(selectedTab);
 
                         function handleClick(c) {
                             alert(`${tabs[c]}`)
