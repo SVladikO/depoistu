@@ -25,7 +25,7 @@ export const withIcon = styled(button)`
     fill: ${COLOR.ACCENT4};
     width: 12.8px;
     height: 13.05px;
-    margin: 0 12px 0 0;
+    margin: 2px 12px 0 0;
   }
 `;
 
