@@ -11,3 +11,6 @@ export const GRADIENT = {
     TO: COLOR.PRIMARY,
 }
 
+export const MEDIA = {
+    phone: "(max-width: 414px) and (min-width: 370px)"
+}

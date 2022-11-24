@@ -1,17 +1,16 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-    display: flex;
+  display: flex;
+  justify-content: center;
 `;
 export const Column = styled.div`
   border: solid .5px;
-  width: 340px;
-  padding: 10px;
-
+  min-width: 370px;
 `;
 
 export const Space = styled.span`
-    margin: 0 10px;
+  margin: 0 10px;
 `;
 
 export const Header = styled.div`
@@ -23,7 +22,7 @@ export const Row = styled.div`
   background: ${p => p.bg};
 `;
 export const Component = styled.div`
-  width: ${p => p.width || '300px'};
+  width: ${p => p.width || '360px'};
   border: solid 1px blue;
   margin: 10px 0;
 `;
