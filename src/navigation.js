@@ -1,17 +1,20 @@
 import React from 'react';
 import {Route, Routes} from "react-router-dom";
+
+import {DEV_ROUTER, ROUTER} from "./config";
+
+import SignInPage from "./page/sing-in/SignIn.page";
+import LoadingPage from "./page/Loading.page";
 import CatalogPage from './page/development/Catalog.page';
 import ComponentsPage from './page/development/Components.page';
 import ReduxIntroductionPage from "./page/development/Redux-introduction.page";
-import {DEV_ROUTER, ROUTER} from "./config";
-import LoadingPage from "./page/Loading.page";
-import SignInPage from "./page/sing-in/SignIn.page";
 
 import styled from 'styled-components'
+import {DEVICE_WIDTH} from "./theme";
 
 export const PageWrapper = styled.div`
-  min-width: 370px;
-  max-width: 414px;
+  min-width: ${DEVICE_WIDTH.MIN};
+  max-width: ${DEVICE_WIDTH.MAX};
   margin: 0 auto;
   height: 100vh;
 `;

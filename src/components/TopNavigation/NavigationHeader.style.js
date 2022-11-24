@@ -2,6 +2,9 @@ import styled from "styled-components";
 import {BORDER_RADIUS, COLOR} from "../../theme";
 
 
+export const BackgroundWrapper = styled.div`
+  background: ${COLOR.ACCENT2};
+`;
 export const Wrapper = styled.div`
   min-height: 30px;
   width: 100%;

@@ -19,3 +19,7 @@ export const BORDER_RADIUS = {
     CIRCLE: '50%'
 }
 
+export const DEVICE_WIDTH = {
+    MIN: '370px',
+    MAX: '414px',
+}
