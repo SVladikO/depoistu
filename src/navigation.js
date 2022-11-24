@@ -3,7 +3,7 @@ import {Route, Routes} from "react-router-dom";
 import CatalogPage from './page/development/Catalog.page';
 import ComponentsPage from './page/development/Components.page';
 import ReduxIntroductionPage from "./page/development/Redux-introduction.page";
-import {DEV_ROUTER_MAP, ROUTER_MAP} from "./config";
+import {DEV_ROUTER, ROUTER} from "./config";
 import LoadingPage from "./page/Loading.page";
 import SignInPage from "./page/sing-in/SignIn.page";
 
@@ -17,10 +17,10 @@ export const PageWrapper = styled.div`
 `;
 
 const routes = [
-    {path: ROUTER_MAP.HOME, element: SignInPage},
-    {path: ROUTER_MAP.LOADING, element: LoadingPage},
-    {path: ROUTER_MAP.SING_IN, element: SignInPage},
-].map(r => <Route path={r.path} element={<PageWrapper><r.element /></PageWrapper>} /> );
+    {path: '/', element: SignInPage},
+    {path: ROUTER.LOADING, element: LoadingPage},
+    {path: ROUTER.SING_IN, element: SignInPage},
+].map(r => <Route key={r.path} path={r.path} element={<PageWrapper><r.element /></PageWrapper>} /> );
 
 export const getRoutes = () => {
     return (
@@ -30,9 +30,9 @@ export const getRoutes = () => {
                 {routes}
 
                 {/* Development pages start */}
-                <Route path={DEV_ROUTER_MAP.COMPONENTS} element={<ComponentsPage/>}/>
-                <Route path={DEV_ROUTER_MAP.REDUX} element={<ReduxIntroductionPage/>}/>
-                <Route path={DEV_ROUTER_MAP.PAGES} element={<CatalogPage/>}/>
+                <Route path={DEV_ROUTER.COMPONENTS} element={<ComponentsPage/>}/>
+                <Route path={DEV_ROUTER.REDUX} element={<ReduxIntroductionPage/>}/>
+                <Route path={DEV_ROUTER.PAGES} element={<CatalogPage/>}/>
                 {/* Development pages end */}
 
             </Routes>

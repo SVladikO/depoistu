@@ -5,14 +5,14 @@ import MobileDevice from '../../components/MobileDevice';
 import LoadingPage from "../Loading.page";
 import SignInPage from "../sing-in/SignIn.page";
 
-import {ROUTER_MAP} from "../../config";
+import {ROUTER} from "../../config";
 
 const pages = [
-    {href: ROUTER_MAP.LOADING, component: <LoadingPage/>},
+    {href: ROUTER.LOADING, component: <LoadingPage/>},
     {href: 'Intro 1', component: 'c intro 1'},
     {href: 'Intro 2', component: 'c intro 2'},
     {href: 'Intro 3', component: 'c intro 3'},
-    {href: ROUTER_MAP.SING_IN, component: <SignInPage/>},
+    {href: ROUTER.SING_IN, component: <SignInPage/>},
     {href: 'Sing up', component: 'c sing up'},
     {href: 'Sing up phone | email', component: 'c sing up phone | email'},
     {href: 'Phone verification', component: 'c Phone verification'},
