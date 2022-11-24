@@ -1,9 +1,15 @@
 import packageInfo from '../package.json';
-import {host, ROUTER_MAP} from "./config";
+import {host, DEV_ROUTER_KEYS, DEV_ROUTER_MAP, ROUTER_MAP, ROUTER_KEYS} from "./config";
+
+function getUrls(title, keys, map) {
+    console.log('')
+    console.log(title)
+    keys.forEach(key => console.log(`${host}${map[key]}`))
+}
 
 export function showDevelopmentPageUrls() {
     console.log("Current version: ", packageInfo.version);
-    console.log(`${host}${ROUTER_MAP.REDUX}`);
-    console.log(`${host}${ROUTER_MAP.COMPONENTS}`);
-    console.log(`${host}${ROUTER_MAP.PAGES}`);
+    getUrls('DEV urls:', DEV_ROUTER_KEYS, DEV_ROUTER_MAP)
+    getUrls('App pages:', ROUTER_KEYS, ROUTER_MAP)
+
 }
