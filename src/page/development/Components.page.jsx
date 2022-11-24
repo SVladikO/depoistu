@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Wrapper, Column, Component, Row, ColorCircle, Header, Space} from './Components.style';
 import
-    {
+{
     Input,
     Price,
     Rating,
@@ -20,7 +20,7 @@ import
     ProductSizeBar,
     CategoryTitle,
 } from "../../components";
-
+import CountAccumulator from '../../components/CountAccumulator/CountAccumulator';
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
 import {ReactComponent as MailIcon} from '../../icons/mail.svg';
@@ -49,8 +49,12 @@ const columns = [
     [
         {title: 'Input', component: <Input placeholder={`johndoe@mail.com`}/>},
         {title: 'Input', component: <Input Icon={MailIcon} placeholder={`johndoe@mail.com`}/>},
-        {title: 'Input', component: <Input withSwitcher placeholder={`New password`} />},
-        {title: 'CheckBoxWithLabel', component: <CheckBoxWithLabel label="By creating an account you agree to our Terms of Service and Privacy Policy" />},
+        {title: 'Input', component: <Input withSwitcher placeholder={`New password`}/>},
+        {
+            title: 'CheckBoxWithLabel',
+            component: <CheckBoxWithLabel
+                label="By creating an account you agree to our Terms of Service and Privacy Policy"/>
+        },
         {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
         {title: 'Price', component: <Price>50.00</Price>},
     ],
@@ -58,48 +62,65 @@ const columns = [
 
         {title: 'Rating', component: <Rating>{`4.9`}</Rating>},
         {title: 'Discount', component: <Discount>{`-10%`}</Discount>},
-        {title: 'ProductSizeBar', component:
-                (function ()  {
-                  const selectedSize = 1;
-                  const buttons = [
-                      {price: 10, size: 1},
-                      {price: 20, size: 2},
-                      {price: 30, size: 3},
-                  ];
-
-                  function handleClick(m) {
-                      alert('Clicked on size: ' + m.size + ' with price: ' + m.price)
-                  }
-
-                  return <ProductSizeBar buttons={buttons} selectedSize={selectedSize} handleClick={handleClick} label="Size:"/>
-              })()
-
-        },
-        {title: 'ProductSizeBar', component:
-                (function ()  {
-                  const selectedSize = 3;
-                  const buttons = [
-                      {price: 20, size: 2},
-                      {price: 30, size: 3},
-                  ];
+        {
+            title: 'ProductSizeBar', component:
+                (function () {
+                    const selectedSize = 1;
+                    const buttons = [
+                        {price: 10, size: 1},
+                        {price: 20, size: 2},
+                        {price: 30, size: 3},
+                    ];
 
                     function handleClick(m) {
                         alert('Clicked on size: ' + m.size + ' with price: ' + m.price)
                     }
 
-                  return <ProductSizeBar buttons={buttons} handleClick={handleClick} selectedSize={selectedSize} />
-              })()
+                    return <ProductSizeBar buttons={buttons} selectedSize={selectedSize} handleClick={handleClick}
+                                           label="Size:"/>
+                })()
 
         },
-        {title:'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
+        {
+            title: 'ProductSizeBar', component:
+                (function () {
+                    const selectedSize = 3;
+                    const buttons = [
+                        {price: 20, size: 2},
+                        {price: 30, size: 3},
+                    ];
+
+                    function handleClick(m) {
+                        alert('Clicked on size: ' + m.size + ' with price: ' + m.price)
+                    }
+
+                    return <ProductSizeBar buttons={buttons} handleClick={handleClick} selectedSize={selectedSize}/>
+                })()
+
+        },
+        {title: 'CountAccumulator', component: <CountAccumulator count={16}/>},
+        {title: 'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
+
     ],
     [
         {title: "NavigationHeader", component: <NavigationHeader title="category"/>},
         {title: "NavigationHeader", component: <NavigationHeader href={' '} title="category"/>},
         {title: 'ContentContainer', component: <ContentContainer>Sign up with</ContentContainer>},
-        {title: 'AccountMenuRow', component: <AccountMenuRow  icon={LockIcon} title={`Change Password`} toggleHandler={() => alert('clicked toggle')} toggleStatus={true} />},
-        {title: 'AccountMenuRow', component: <AccountMenuRow  icon={LogOutIcon}  title="Only change handler" changeHandler={() => alert('clicked')} />},
-        {title: 'AccountMenuRow', component: <AccountMenuRow  icon={LanguageIcon}  title="Language"  href="/catalog" label="English" />}
+        {
+            title: 'AccountMenuRow',
+            component: <AccountMenuRow icon={LockIcon} title={`Change Password`}
+                                       toggleHandler={() => alert('clicked toggle')} toggleStatus={true}/>
+        },
+        {
+            title: 'AccountMenuRow',
+            component: <AccountMenuRow icon={LogOutIcon} title="Only change handler"
+                                       changeHandler={() => alert('clicked')}/>
+        },
+        {
+            title: 'AccountMenuRow',
+            component: <AccountMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
+        },
+
     ]
 ]
 
@@ -110,7 +131,7 @@ function ComponentsPage() {
 
     function renderRows(components) {
         return components.map((c, index) =>
-            <Row bg={rowBackground} key={c.title+index}>
+            <Row bg={rowBackground} key={c.title + index}>
                 {c.title}
                 <Component width={c.width}>{c.component}</Component>
                 {c.value}
