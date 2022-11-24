@@ -11,3 +11,11 @@ export const GRADIENT = {
     TO: COLOR.PRIMARY,
 }
 
+export const BORDER_RADIUS = {
+    FIRST: '20px',
+    SECOND: '10px',
+    THIRD: '8px',
+    FOURTH: '5px',
+    CIRCLE: '50%'
+}
+

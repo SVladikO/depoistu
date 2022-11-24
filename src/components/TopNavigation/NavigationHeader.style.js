@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {COLOR} from "../../theme";
+import {BORDER_RADIUS, COLOR} from "../../theme";
 
 
 export const Wrapper = styled.div`
@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
   justify-content: center;
   background: ${COLOR.ACCENT4};
   position: relative;
-  border-radius: 0 0 5px 5px;
+  border-radius: 0 0 ${BORDER_RADIUS.FOURTH} ${BORDER_RADIUS.FOURTH};
   & > a > svg {
     position: absolute;
     display: block;
