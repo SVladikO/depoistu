@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import {BORDER_RADIUS, COLOR, GRADIENT} from "../../theme";
-import {hexToRgbA} from "../../utils";
+import {BORDER_RADIUS, COLOR, GRADIENT} from "../../utils/theme";
+import {hexToRgbA} from "../../utils/utils";
 
 export const button = styled.button`
   padding: 12px;

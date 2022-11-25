@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import {COLOR} from "../../theme";
-import {hexToRgbA} from "../../utils";
+import {COLOR} from "../../utils/theme";
+import {hexToRgbA} from "../../utils/utils";
 
 export const Wrapper = styled.div`
   min-width: 46px;

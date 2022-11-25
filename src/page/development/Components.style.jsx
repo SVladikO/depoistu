@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {DEVICE_WIDTH} from "../../theme";
+import {COLOR, DEVICE_WIDTH} from "../../utils/theme";
 
 export const Wrapper = styled.div`
     display: flex;
@@ -8,7 +8,6 @@ export const Column = styled.div`
   border: solid .5px;
   width: ${DEVICE_WIDTH.MAX};
   padding: 10px;
-
 `;
 
 export const Space = styled.span`
@@ -21,7 +20,6 @@ export const Header = styled.div`
 `;
 export const Row = styled.div`
   padding: 10px;
-  background: ${p => p.bg};
 `;
 export const Component = styled.div`
   width: ${p => p.width || DEVICE_WIDTH.MIN};

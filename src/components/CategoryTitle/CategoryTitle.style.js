@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {COLOR} from "../../theme";
+import {COLOR} from "../../utils/theme";
 
 export const CategoryTitle = styled.div`
   font-weight: 700;

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {BORDER_RADIUS, COLOR} from "../../theme";
+import {BORDER_RADIUS, COLOR} from "../../utils/theme";
 
 export const ContentContainer = styled.div`
   background: ${COLOR.ACCENT4};

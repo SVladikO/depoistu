@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {COLOR, GRADIENT} from "../theme";
+import {COLOR, GRADIENT} from "../utils/theme";
 
 const flex = styled.div`
   display: flex;

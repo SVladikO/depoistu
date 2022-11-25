@@ -1,4 +1,4 @@
-import packageInfo from '../package.json';
+import packageInfo from '../../package.json';
 import {DEV_ROUTER, ROUTER} from "./config";
 
 export const host = 'http://localhost:3000/';

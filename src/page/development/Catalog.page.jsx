@@ -5,7 +5,7 @@ import MobileDevice from '../../components/MobileDevice';
 import LoadingPage from "../Loading.page";
 import SignInPage from "../sing-in/SignIn.page";
 
-import {ROUTER} from "../../config";
+import {ROUTER} from "../../utils/config";
 
 const pages = [
     {href: ROUTER.LOADING, component: <LoadingPage/>},

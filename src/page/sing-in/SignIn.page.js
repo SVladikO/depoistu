@@ -11,7 +11,7 @@ import {
     NavigationHeader
 } from "../../components";
 
-import translations from "../../translations";
+import translations from "../../utils/translations";
 
 import {ReactComponent as LogoIcon} from "../../icons/logo.svg";
 import {ReactComponent as LockIcon} from "../../icons/lock.svg";

@@ -1,9 +1,7 @@
 import React from 'react';
 
-import './App.css';
-
 import {Wrapper} from "./App.style";
-import {getRoutes} from "./navigation";
+import {getRoutes} from "./utils/navigation";
 
 function App() {
     return (

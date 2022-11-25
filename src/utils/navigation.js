@@ -3,11 +3,11 @@ import {Route, Routes} from "react-router-dom";
 
 import {DEV_ROUTER, ROUTER} from "./config";
 
-import SignInPage from "./page/sing-in/SignIn.page";
-import LoadingPage from "./page/Loading.page";
-import CatalogPage from './page/development/Catalog.page';
-import ComponentsPage from './page/development/Components.page';
-import ReduxIntroductionPage from "./page/development/Redux-introduction.page";
+import SignInPage from "../page/sing-in/SignIn.page";
+import LoadingPage from "../page/Loading.page";
+import CatalogPage from '../page/development/Catalog.page';
+import ComponentsPage from '../page/development/Components.page';
+import ReduxIntroductionPage from "../page/development/Redux-introduction.page";
 
 import styled from 'styled-components'
 import {DEVICE_WIDTH} from "./theme";
