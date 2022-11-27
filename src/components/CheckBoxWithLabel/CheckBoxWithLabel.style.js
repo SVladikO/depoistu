@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
     color: ${COLOR.ACCENT1};
     text-align: center;
     display: flex;
-    padding-right: 12px;
+    //padding-right: 12px;
     &:hover{
       &::before{
         background-color: ${COLOR.ACCENT2};
@@ -26,6 +26,8 @@ export const Wrapper = styled.div`
     width: 14px;
     height: 14px;
     flex-shrink: 0;
+    display: block;
+    margin-right: 12px;
   }
   input{
     cursor: pointer;

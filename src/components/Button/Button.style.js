@@ -33,7 +33,7 @@ export const PrimaryWideButton = styled(primary)`
   font-weight: 700;
   width: 100%;
   height: 50px;
-
+  
   & > span {
     font-weight: 400;
     font-size: 16px;

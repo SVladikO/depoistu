@@ -6,6 +6,7 @@ import LoadingPage from "../Loading.page";
 import SignInPage from "../sing-in/SignIn.page";
 
 import {ROUTER} from "../../utils/config";
+import SingUpPage from "../sing-up/SingUp.page";
 
 const pages = [
     {href: ROUTER.LOADING, component: <LoadingPage/>},
@@ -13,7 +14,7 @@ const pages = [
     {href: 'Intro 2', component: 'c intro 2'},
     {href: 'Intro 3', component: 'c intro 3'},
     {href: ROUTER.SING_IN, component: <SignInPage/>},
-    {href: 'Sing up', component: 'c sing up'},
+    {href: ROUTER.SING_UP, component: <SingUpPage pageTitle="Create an Account"/>},
     {href: 'Sing up phone | email', component: 'c sing up phone | email'},
     {href: 'Phone verification', component: 'c Phone verification'},
     {href: 'OTP verification', component: 'c OTP verification'},
