@@ -4,7 +4,7 @@ import {COLOR} from "../../utils/theme";
 export const Wrapper =  styled.div`
   display: flex;
   justify-content: space-evenly;
-  padding: 7px 28px 22px 28px;
+  padding: 7px 31px 22px 31px;
   margin: 0;
 `;
 export const Tab = styled.div`
