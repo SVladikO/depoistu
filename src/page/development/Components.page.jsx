@@ -112,7 +112,7 @@ const columns = [
         {title: 'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
         {title: 'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
         {
-            title: 'TabBar', component:
+            title: 'HistoryTabBar', component:
                 (function () {
                     const tabs = ['Completed', 'Upcoming', 'Cancelled'];
                     const selectedTab = tabs[0];
@@ -125,7 +125,7 @@ const columns = [
                 })()
         },
         {
-            title: 'NavigationHeader', component:
+            title: 'HistoryTabBar in NavigationHeader', component:
                 <NavigationHeader href={' '} title="category">
                     {(function () {
                         const tabs = ['Completed', 'Upcoming', 'Cancelled'];
