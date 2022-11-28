@@ -4,6 +4,7 @@ import
 {
     Input,
     Price,
+    TabBar,
     Rating,
     Discount,
     ThirdButton,
@@ -21,7 +22,7 @@ import
     CategoryTitle,
 } from "../../components";
 import CountAccumulator from '../../components/CountAccumulator/CountAccumulator';
-import TabBar from "../../components/TabBar/TabBar";
+
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
 import {ReactComponent as MailIcon} from '../../icons/mail.svg';
@@ -102,45 +103,12 @@ const columns = [
         {title: 'CountAccumulator', component: <CountAccumulator count={16}/>},
         {title: 'CountAccumulator', component: <CountAccumulator count={16}/>},
         {title: 'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
-
     ],
     [
         {title: "NavigationHeader", component: <NavigationHeader title="category"/>},
         {title: "NavigationHeader", component: <NavigationHeader href={' '} title="category"/>},
         {title: 'ContentContainer', component: <ContentContainer>Sign up with</ContentContainer>},
-        {
-            title: 'AccountMenuRow',
-            component: <AccountMenuRow icon={LockIcon} title={`Change Password`}
-                                       toggleHandler={() => alert('clicked toggle')} toggleStatus={true}/>
-        },
-        {
-            title: 'AccountMenuRow',
-            component: <AccountMenuRow icon={LogOutIcon} title="Only change handler"
-                                       changeHandler={() => alert('clicked')}/>
-        },
-        {
-            title: 'AccountMenuRow',
-            component: <AccountMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
-        }
-    ]
-    [
-        {title: "NavigationHeader", component: <NavigationHeader title="category"/>},
-        {title: "NavigationHeader", component: <NavigationHeader href={' '} title="category"/>},
-        {title: 'ContentContainer', component: <ContentContainer>Sign up with</ContentContainer>},
-        {
-            title: 'AccountMenuRow',
-            component: <AccountMenuRow icon={LockIcon} title={`Change Password`}
-                                       toggleHandler={() => alert('clicked toggle')} toggleStatus={true}/>
-        },
-        {
-            title: 'AccountMenuRow',
-            component: <AccountMenuRow icon={LogOutIcon} title="Only change handler"
-                                       changeHandler={() => alert('clicked')}/>
-        },
-        {
-            title: 'AccountMenuRow',
-            component: <AccountMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
-        },
+
         {title: 'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
         {title: 'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
         {
@@ -170,13 +138,30 @@ const columns = [
                         return <TabBar selectedTab={selectedTab} tabs={tabs} handleClick={handleClick}/>
                     })()}
                 </NavigationHeader>
+        }
+    ],
+    [
+        {
+            title: 'AccountMenuRow',
+            component: <AccountMenuRow icon={LockIcon} title={`Change Password`}
+                                       toggleHandler={() => alert('clicked toggle')} toggleStatus={true}/>
+        },
+        {
+            title: 'AccountMenuRow',
+            component: <AccountMenuRow icon={LogOutIcon} title="Only change handler"
+                                       changeHandler={() => alert('clicked')}/>
+        },
+        {
+            title: 'AccountMenuRow',
+            component: <AccountMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
         },
     ]
+
 ]
 
 function ComponentsPage() {
-    const setLightBackground = useCallback(() =>  document.body.style.backgroundColor = '#ffffff');
-    const setDarkBackground = useCallback(() =>  document.body.style.backgroundColor = '#001993');
+    const setLightBackground = useCallback(() => document.body.style.backgroundColor = '#ffffff');
+    const setDarkBackground = useCallback(() => document.body.style.backgroundColor = '#001993');
 
     function renderRows(components) {
         return components.map((c, index) =>

@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import {COLOR, MEDIA} from "../../theme";
+import {COLOR} from "../../utils/theme";
 
 export const Wrapper =  styled.div`
-  width: 370px;
   display: flex;
   justify-content: space-evenly;
   padding: 7px 28px 22px 28px;

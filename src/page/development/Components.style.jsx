@@ -3,7 +3,6 @@ import {COLOR, DEVICE_WIDTH} from "../../utils/theme";
 
 export const Wrapper = styled.div`
   display: flex;
-  justify-content: center;
 `;
 export const Column = styled.div`
   border: solid .5px;
