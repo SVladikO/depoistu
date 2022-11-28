@@ -4,7 +4,7 @@ import
 {
     Input,
     Price,
-    TabBar,
+    HistoryTabBar,
     Rating,
     Discount,
     ThirdButton,
@@ -121,7 +121,7 @@ const columns = [
                         alert(`${tabs[c]}`)
                     }
 
-                    return <TabBar selectedTab={selectedTab} tabs={tabs} handleClick={handleClick}/>
+                    return <HistoryTabBar selectedTab={selectedTab} tabs={tabs} handleClick={handleClick}/>
                 })()
         },
         {
@@ -135,7 +135,7 @@ const columns = [
                             alert(`${tabs[c]}`)
                         }
 
-                        return <TabBar selectedTab={selectedTab} tabs={tabs} handleClick={handleClick}/>
+                        return <HistoryTabBar selectedTab={selectedTab} tabs={tabs} handleClick={handleClick}/>
                     })()}
                 </NavigationHeader>
         }

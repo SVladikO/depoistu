@@ -1,6 +1,6 @@
-import {Tab, Wrapper} from "./TabBar.style";
+import {Tab, Wrapper} from "./HistoryTabBar.style";
 
-const TabBar = ({tabs, handleClick, selectedTab}) => {
+const HistoryTabBar = ({tabs, handleClick, selectedTab}) => {
     return (
         <Wrapper>
             {tabs.map((tab, index) => <Tab
@@ -11,4 +11,4 @@ const TabBar = ({tabs, handleClick, selectedTab}) => {
     );
 };
 
-export default TabBar;
+export default HistoryTabBar;
