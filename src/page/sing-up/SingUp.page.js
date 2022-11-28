@@ -11,9 +11,7 @@ const SingUpPage = () => {
         <Wrapper>
             <NavigationHeader href={' '} title="category"/>
             <Container>
-                <Title>
-                    Create an Account
-                </Title>
+                <Title>Create an Account</Title>
                 <InputWrapper>
                     <Input placeholder="Full Name"/>
                     <Input placeholder="Phone Number"/>
