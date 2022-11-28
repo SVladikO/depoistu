@@ -1,9 +1,10 @@
-import {Wrapper, Title, Screen} from "./MobileDevice.style";
+import {Wrapper, Link, Screen} from "./MobileDevice.style";
 
-function MobileDevice({title, children}) {
+function MobileDevice({href, index, children}) {
     return (
         <Wrapper>
-            <Title>{title}</Title>
+            {index}{" "}
+            <Link href={href}>{href}</Link>
             <Screen>{children}</Screen>
         </Wrapper>
     )

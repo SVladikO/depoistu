@@ -14,3 +14,16 @@ export const GRADIENT = {
 export const MEDIA = {
     phone: "(max-width: 414px) and (min-width: 370px)"
 }
+
+export const BORDER_RADIUS = {
+    FIRST: '20px',
+    SECOND: '10px',
+    THIRD: '8px',
+    FOURTH: '5px',
+    CIRCLE: '50%'
+}
+
+export const DEVICE_WIDTH = {
+    MIN: '370px',
+    MAX: '414px',
+}

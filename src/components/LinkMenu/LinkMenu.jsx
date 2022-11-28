@@ -1,7 +1,7 @@
 import {NavLink } from "react-router-dom";
 
 import {Wrapper} from "./LinkMenu.style";
-import {COLOR} from "../../theme";
+import {COLOR} from "../../utils/theme";
 
 let activeStyle = {
     textDecoration: "underline",

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useCallback, useState} from "react";
 import {Wrapper, Column, Component, Row, ColorCircle, Header, Space} from './Components.style';
 import
 {
@@ -20,6 +20,7 @@ import
     ProductSizeBar,
     CategoryTitle,
 } from "../../components";
+import CountAccumulator from '../../components/CountAccumulator/CountAccumulator';
 import TabBar from "../../components/TabBar/TabBar";
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
@@ -28,7 +29,7 @@ import {ReactComponent as LockIcon} from '../../icons/lock.svg';
 import {ReactComponent as LogOutIcon} from "../../icons/logout.svg";
 import {ReactComponent as LanguageIcon} from "../../icons/language.svg";
 
-import {COLOR} from "../../theme";
+import {COLOR} from "../../utils/theme";
 
 const colors = Object.keys(COLOR).map(key =>
     ({title: key, component: <ColorCircle key={key} bg={COLOR[key]}/>, value: COLOR[key], width: '50px'})
@@ -56,7 +57,6 @@ const columns = [
                 label="By creating an account you agree to our Terms of Service and Privacy Policy"/>
         },
         {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
-
         {title: 'Price', component: <Price>50.00</Price>},
     ],
     [
@@ -99,6 +99,48 @@ const columns = [
                 })()
 
         },
+        {title: 'CountAccumulator', component: <CountAccumulator count={16}/>},
+        {title: 'CountAccumulator', component: <CountAccumulator count={16}/>},
+        {title: 'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
+
+    ],
+    [
+        {title: "NavigationHeader", component: <NavigationHeader title="category"/>},
+        {title: "NavigationHeader", component: <NavigationHeader href={' '} title="category"/>},
+        {title: 'ContentContainer', component: <ContentContainer>Sign up with</ContentContainer>},
+        {
+            title: 'AccountMenuRow',
+            component: <AccountMenuRow icon={LockIcon} title={`Change Password`}
+                                       toggleHandler={() => alert('clicked toggle')} toggleStatus={true}/>
+        },
+        {
+            title: 'AccountMenuRow',
+            component: <AccountMenuRow icon={LogOutIcon} title="Only change handler"
+                                       changeHandler={() => alert('clicked')}/>
+        },
+        {
+            title: 'AccountMenuRow',
+            component: <AccountMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
+        }
+    ]
+    [
+        {title: "NavigationHeader", component: <NavigationHeader title="category"/>},
+        {title: "NavigationHeader", component: <NavigationHeader href={' '} title="category"/>},
+        {title: 'ContentContainer', component: <ContentContainer>Sign up with</ContentContainer>},
+        {
+            title: 'AccountMenuRow',
+            component: <AccountMenuRow icon={LockIcon} title={`Change Password`}
+                                       toggleHandler={() => alert('clicked toggle')} toggleStatus={true}/>
+        },
+        {
+            title: 'AccountMenuRow',
+            component: <AccountMenuRow icon={LogOutIcon} title="Only change handler"
+                                       changeHandler={() => alert('clicked')}/>
+        },
+        {
+            title: 'AccountMenuRow',
+            component: <AccountMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
+        },
         {title: 'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
         {title: 'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
         {
@@ -129,36 +171,16 @@ const columns = [
                     })()}
                 </NavigationHeader>
         },
-    ],
-    [
-        {title: "NavigationHeader", component: <NavigationHeader title="category"/>},
-        {title: "NavigationHeader", component: <NavigationHeader href={' '} title="category"/>},
-        {title: 'ContentContainer', component: <ContentContainer>Sign up with</ContentContainer>},
-        {
-            title: 'AccountMenuRow',
-            component: <AccountMenuRow icon={LockIcon} title={`Change Password`}
-                                       toggleHandler={() => alert('clicked toggle')} toggleStatus={true}/>
-        },
-        {
-            title: 'AccountMenuRow',
-            component: <AccountMenuRow icon={LogOutIcon} title="Only change handler"
-                                       changeHandler={() => alert('clicked')}/>
-        },
-        {
-            title: 'AccountMenuRow',
-            component: <AccountMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
-        }
     ]
 ]
 
-const defaultRowColor = '#ffffff'
-
 function ComponentsPage() {
-    const [rowBackground, setRowBackground] = useState(defaultRowColor)
+    const setLightBackground = useCallback(() =>  document.body.style.backgroundColor = '#ffffff');
+    const setDarkBackground = useCallback(() =>  document.body.style.backgroundColor = '#001993');
 
     function renderRows(components) {
         return components.map((c, index) =>
-            <Row bg={rowBackground} key={c.title + index}>
+            <Row key={c.title + index}>
                 {c.title}
                 <Component width={c.width}>{c.component}</Component>
                 {c.value}
@@ -170,12 +192,9 @@ function ComponentsPage() {
         <div>
             <Header>
                 <Space/>
-                <span>Bg: </span>
-                <input type="color" value={rowBackground} onChange={e => setRowBackground(e.target.value)}/>
+                <ThirdButton onClick={setLightBackground}>Light</ThirdButton>
                 <Space/>
-                <ThirdButton onClick={() => setRowBackground(defaultRowColor)}>Set light</ThirdButton>
-                <Space/>
-                <ThirdButton onClick={() => setRowBackground('#0063e6')}>Set dark</ThirdButton>
+                <ThirdButton onClick={setDarkBackground}>Dark</ThirdButton>
                 <Space/>
                 <Space/>
                 <Space/>

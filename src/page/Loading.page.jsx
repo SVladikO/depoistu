@@ -1,6 +1,6 @@
 import React from "react";
 
-import translations from "../translations";
+import translations from "../utils/translations";
 
 import {ReactComponent as LogoIcon} from "../icons/logo.svg";
 

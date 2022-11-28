@@ -1,15 +1,16 @@
 import styled from 'styled-components'
-import {COLOR} from "../../theme";
+import {COLOR} from "../../utils/theme";
 
 export const Wrapper = styled.div`
   position: relative;
-
+  
   & > svg:first-child {
     position: absolute;
     display: block;
     left: 15px;
     top: 50%;
     transform: translateY(-50%);
+    fill: ${COLOR.PRIMARY};
   }
 `;
 
