@@ -13,7 +13,7 @@ function ReduxIntroductionPage() {
           <span>Learn </span>
           <a
               className="App-link"
-              href="src/page/development/Redux-introduction.page"
+              href="client/src/page/development/Redux-introduction.page"
               target="_blank"
               rel="noopener noreferrer"
           >
@@ -22,7 +22,7 @@ function ReduxIntroductionPage() {
           <span>, </span>
           <a
               className="App-link"
-              href="src/page/development/Redux-introduction.page"
+              href="client/src/page/development/Redux-introduction.page"
               target="_blank"
               rel="noopener noreferrer"
           >
@@ -31,7 +31,7 @@ function ReduxIntroductionPage() {
           <span>, </span>
           <a
               className="App-link"
-              href="src/page/development/Redux-introduction.page"
+              href="client/src/page/development/Redux-introduction.page"
               target="_blank"
               rel="noopener noreferrer"
           >
@@ -40,7 +40,7 @@ function ReduxIntroductionPage() {
           ,<span> and </span>
           <a
               className="App-link"
-              href="src/page/development/Redux-introduction.page"
+              href="client/src/page/development/Redux-introduction.page"
               target="_blank"
               rel="noopener noreferrer"
           >
