@@ -7,6 +7,7 @@ import
     Rating,
     Discount,
     ThirdButton,
+    CategoryItem,
     AccountMenuRow,
     ToggleCheckbox,
     CheckBoxWithLabel,
@@ -21,11 +22,12 @@ import
     CategoryTitle,
 } from "../../components";
 import CountAccumulator from '../../components/CountAccumulator/CountAccumulator';
-import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
-import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
 import {ReactComponent as MailIcon} from '../../icons/mail.svg';
 import {ReactComponent as LockIcon} from '../../icons/lock.svg';
+import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as LogOutIcon} from "../../icons/logout.svg";
+import {ReactComponent as SandwichIcon} from '../../icons/sandwich.svg';
+import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
 import {ReactComponent as LanguageIcon} from "../../icons/language.svg";
 
 import {COLOR} from "../../utils/theme";
@@ -60,6 +62,7 @@ const columns = [
     ],
     [
 
+        {title: 'CategoryItem', component: <CategoryItem title="Sandwich"><SandwichIcon/></CategoryItem>},
         {title: 'Rating', component: <Rating>{`4.9`}</Rating>},
         {title: 'Discount', component: <Discount>{`-10%`}</Discount>},
         {
