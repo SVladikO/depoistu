@@ -21,7 +21,8 @@ export const Wrapper = styled.div`
 `;
 export const Title = styled.div`
   color: ${COLOR.ACCENT1};
-  font-size: 24px;
+  font-size: 20px;
+  font-weight: 700;
   margin: 10px 0 0;
   text-align: center;
   line-height: 24px;
