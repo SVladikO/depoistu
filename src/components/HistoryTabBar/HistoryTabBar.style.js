@@ -8,14 +8,14 @@ export const Wrapper =  styled.div`
   margin: 0;
   width: 100%;
   height: 100%;
-  background: ${COLOR.ACCENT4};
+  background: inherit;
 `;
 export const Tab = styled.div`
   width: 33%;
   font-weight: 500;
   font-size: 16px;
   line-height: 19px;
-  position: relative;
+  z-index: 2;
   color: ${p => p.active ? COLOR.PRIMARY: COLOR.ACCENT1};
   &:not(:last-child) {
     margin-right: 6%;

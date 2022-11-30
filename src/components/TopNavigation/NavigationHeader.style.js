@@ -3,8 +3,9 @@ import {BORDER_RADIUS, COLOR} from "../../utils/theme";
 
 
 export const BackgroundWrapper = styled.div`
-  background: ${COLOR.ACCENT2};
+  background: ${COLOR.ACCENT4};
   height: 100%;
+  width: 100%;
   border-radius: 0 0 ${BORDER_RADIUS.FOURTH} ${BORDER_RADIUS.FOURTH};
 `;
 export const Wrapper = styled.div`
@@ -20,7 +21,6 @@ export const Title = styled.div`
   display: block;
 `
 export const NestedContent = styled.div`
-  background: ${COLOR.ACCENT2};
   width: 100%;
 `;
 export const MainContent = styled.div`
@@ -28,7 +28,6 @@ export const MainContent = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  background: ${COLOR.ACCENT4};
   position: relative;
   
   & > a > svg {
