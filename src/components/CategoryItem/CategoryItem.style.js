@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   padding: 23px 0;
   width: 155px;
   height: 155px;
-  border-radius: ${BORDER_RADIUS.FOURTH};
+  border-radius: ${BORDER_RADIUS.SECOND};
   background: ${COLOR.ACCENT4};
 
   &:active {
@@ -21,10 +21,17 @@ export const Wrapper = styled.div`
 `;
 export const Title = styled.div`
   color: ${COLOR.ACCENT1};
-  font-size: 28px;
+  font-size: 24px;
   margin: 10px 0 0;
   text-align: center;
-  line-height: 34px;
+  line-height: 24px;
+
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
   
 `;
 
