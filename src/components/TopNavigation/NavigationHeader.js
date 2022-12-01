@@ -1,5 +1,5 @@
 import React from 'react';
-import {BackgroundWrapper, Wrapper, Title} from "./NavigationHeader.style";
+import {BackgroundWrapper, Wrapper, Title, NestedContent, MainContent} from "./NavigationHeader.style";
 import {ReactComponent as BackArrow} from "../../icons/back_arrow.svg";
 
 const NavigationHeader = (props) => {
@@ -7,8 +7,13 @@ const NavigationHeader = (props) => {
     return (
         <BackgroundWrapper>
             <Wrapper>
-                {href && <a href={href}><BackArrow/></a>}
-                <Title>{title}</Title>
+                <MainContent>
+                    {href && <a href={href}><BackArrow /></a>}
+                    <Title>{title}</Title>
+                </MainContent>
+                <NestedContent>
+                    {props.children}
+                </NestedContent>
             </Wrapper>
         </BackgroundWrapper>
     );

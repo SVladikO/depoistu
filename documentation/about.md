@@ -23,6 +23,10 @@ We are currently on 1.
    doesn't exist in palette try to find the closest and inform me (Vladislav) to change it in 
    the design too. To be consistent.
 
+### File naming convention
+We don't use index.js or .jsx in folders because
+1. Yes we have duplication of folder and file names
+2. But we save place in tab names. Let's imagine if it called index.js
 
-
+![img_1.png](img_1.png)
 

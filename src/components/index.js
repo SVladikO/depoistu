@@ -16,6 +16,8 @@ import ToggleCheckbox from "./ToggleCheckbox/ToggleCheckbox";
 import AccountMenuRow from "./AccountMenuRow/AccountMenuRow";
 import {ContentContainer} from "./ContentContainer/ContentContainer.style.js";
 import {Discount} from "./Discount/Discount.style";
+import Input from "./Input/Input";
+import HistoryTabBar from "./HistoryTabBar/HistoryTabBar";
 import NavigationHeader from "./TopNavigation/NavigationHeader";
 import ProductSizeBar from "./ProductSizeBar/ProductSizeBar";
 import {CategoryTitle} from "./CategoryTitle/CategoryTitle.style";
@@ -25,6 +27,7 @@ export {
     Input,
     Price,
     Rating,
+    HistoryTabBar,
     Discount,
     ThirdButton,
     CategoryItem,
