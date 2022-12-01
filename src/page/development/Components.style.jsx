@@ -2,16 +2,17 @@ import styled from "styled-components";
 import {COLOR, DEVICE_WIDTH} from "../../utils/theme";
 
 export const Wrapper = styled.div`
-    display: flex;
+  display: flex;
 `;
 export const Column = styled.div`
   border: solid .5px;
   width: ${DEVICE_WIDTH.MAX};
   padding: 10px;
+
 `;
 
 export const Space = styled.span`
-    margin: 0 10px;
+  margin: 0 10px;
 `;
 
 export const Header = styled.div`
