@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
 export const Container = styled(ContentContainer)`
   margin: 30px 25px 25px 25px;
   width: auto;
+  padding: 20px 25px 32px 25px;
 `;
 
 export const Title = styled.div`
@@ -20,12 +21,9 @@ export const Title = styled.div`
   color: ${COLOR.ACCENT1};
 `;
 export const InputWrapper = styled.div`
-  margin: 22px auto 32px auto;
-  & input {
+  margin: 22px auto 0 auto;
+  input {
     margin-bottom: 15px;
-  }
-  & input:last-child {
-    margin-bottom: 29px;
   }
 `;
 export const ButtonWrapper = styled.div`

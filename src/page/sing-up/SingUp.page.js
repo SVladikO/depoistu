@@ -17,7 +17,9 @@ const SingUpPage = () => {
                     <Input placeholder="Phone Number"/>
                     <Input placeholder="Email"/>
                     <Input placeholder="Password"/>
-                    <Input placeholder="Confirm Password"/>
+                    <div style={{marginBottom: '17px'}}>
+                        <Input placeholder="Confirm Password"/>
+                    </div>
                     <CheckBoxWithLabel
                         label="By creating an account you agree to our Terms of Service and Privacy Policy"/>
                 </InputWrapper>
