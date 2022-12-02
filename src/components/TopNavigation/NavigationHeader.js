@@ -1,5 +1,5 @@
 import React from 'react';
-import {BackgroundWrapper, Wrapper, Title, NestedContent, MainContent} from "./NavigationHeader.style";
+import {Wrapper, Title, NestedContent, MainContent} from "./NavigationHeader.style";
 import {ReactComponent as BackArrow} from "../../icons/back_arrow.svg";
 
 const NavigationHeader = (props) => {

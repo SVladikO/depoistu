@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from "react";
+import React, {useCallback} from "react";
 import {Wrapper, Column, Component, Row, ColorCircle, Header, Space} from './Components.style';
 import
 {
@@ -29,10 +29,8 @@ import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
 import {ReactComponent as MailIcon} from '../../icons/mail.svg';
 import {ReactComponent as LockIcon} from '../../icons/lock.svg';
-import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as LogOutIcon} from "../../icons/logout.svg";
 import {ReactComponent as SandwichIcon} from '../../icons/sandwich.svg';
-import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
 import {ReactComponent as LanguageIcon} from "../../icons/language.svg";
 
 import {COLOR} from "../../utils/theme";
@@ -166,8 +164,8 @@ const columns = [
 ]
 
 function ComponentsPage() {
-    const setLightBackground = useCallback(() => document.body.style.backgroundColor = '#ffffff');
-    const setDarkBackground = useCallback(() => document.body.style.backgroundColor = '#001993');
+    const setLightBackground = useCallback(() => document.body.style.backgroundColor = '#ffffff', []);
+    const setDarkBackground = useCallback(() => document.body.style.backgroundColor = '#001993', []);
 
     function renderRows(components) {
         return components.map((c, index) =>

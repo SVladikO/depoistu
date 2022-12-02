@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {COLOR, DEVICE_WIDTH} from "../../utils/theme";
+import {DEVICE_WIDTH} from "../../utils/theme";
 
 export const Wrapper = styled.div`
   display: flex;

@@ -18,7 +18,6 @@ export const PageWrapper = styled.div`
   min-width: ${DEVICE_WIDTH.MIN};
   max-width: ${DEVICE_WIDTH.MAX};
   margin: 0 auto;
-  height: 100vh;
 `;
 
 const routes = [
