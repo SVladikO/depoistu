@@ -1,0 +1,105 @@
+{
+  "pizza": {
+    "0": {
+      "name": "tomato",
+      "description": "tomato, souse",
+      "sizes": [
+        {
+          "size": 0,
+          "price": 90
+        },
+        {
+          "size": 0,
+          "price": 140
+        },
+        {
+          "size": 0,
+          "price": 210
+        }
+      ]
+    },
+    "1": {
+      "name": "hawaii",
+      "description": "ananas, chicken",
+      "sizes": [
+        {
+          "size": 0,
+          "price": 110
+        },
+        {
+          "size": 1,
+          "price": 150
+        },
+        {
+          "size": 2,
+          "price": 200
+        }
+      ]
+    },
+    "2": {
+      "name": "cheese",
+      "description": "four cheese",
+      "sizes": [
+        {
+          "size": 0,
+          "price": 120
+        },
+        {
+          "size": 1,
+          "price": 145
+        },
+        {
+          "size": 2,
+          "price": 189
+        }
+      ]
+    },
+    "3": {
+      "name": "sea",
+      "description": "calmar, octupus ",
+      "sizes": [
+        {
+          "size": 0,
+          "price": 115
+        },
+        {
+          "size": 1,
+          "price": 145
+        },
+        {
+          "size": 2,
+          "price": 199
+        }
+      ]
+    }
+  },
+  "drinks": {
+    "0": {
+      "name": "white beer",
+      "description": "Lviv classic",
+      "sizes": [
+        {
+          "price": 800
+        }
+      ]
+    },
+    "1": {
+      "name": "tea",
+      "description": "green",
+      "sizes": [
+        {
+          "price": 650
+        }
+      ]
+    },
+    "2": {
+      "name": "dark beer",
+      "description": "Uman classic",
+      "sizes": [
+        {
+          "price": 300
+        }
+      ]
+    }
+  }
+ }

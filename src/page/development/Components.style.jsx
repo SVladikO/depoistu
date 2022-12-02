@@ -1,17 +1,18 @@
 import styled from "styled-components";
+import {DEVICE_WIDTH} from "../../utils/theme";
 
 export const Wrapper = styled.div`
-    display: flex;
+  display: flex;
 `;
 export const Column = styled.div`
   border: solid .5px;
-  width: 340px;
+  width: ${DEVICE_WIDTH.MAX};
   padding: 10px;
 
 `;
 
 export const Space = styled.span`
-    margin: 0 10px;
+  margin: 0 10px;
 `;
 
 export const Header = styled.div`
@@ -20,10 +21,9 @@ export const Header = styled.div`
 `;
 export const Row = styled.div`
   padding: 10px;
-  background: ${p => p.bg};
 `;
 export const Component = styled.div`
-  width: ${p => p.width || '300px'};
+  width: ${p => p.width || DEVICE_WIDTH.MIN};
   border: solid 1px blue;
   margin: 10px 0;
 `;

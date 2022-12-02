@@ -1,18 +1,16 @@
 import React from "react";
 
-import translations from "../translations";
+import translations from "../utils/translations";
 
 import {ReactComponent as LogoIcon} from "../icons/logo.svg";
 
 import {Content, Wrapper, LogoText} from './Loading.style';
-import {THEME} from "../theme";
-
 
 function LoadingPage() {
     return (
         <Wrapper>
             <Content>
-                <LogoIcon style={{width:'140px',height: '140px', fill: THEME.COLOR.PRIMARY}}/>
+                <LogoIcon />
                 <LogoText>{translations.company_name}</LogoText>
             </Content>
         </Wrapper>

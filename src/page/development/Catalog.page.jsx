@@ -1,47 +1,51 @@
 import React from "react";
 
 import {MobileWrapper} from './Catalog.style'
-import MobileDevice from '../../component/MobileDevice';
+import MobileDevice from '../../components/MobileDevice';
 import LoadingPage from "../Loading.page";
+import SignInPage from "../sing-in/SignIn.page";
+
+import {ROUTER} from "../../utils/config";
+import SingUpPage from "../sing-up/SingUp.page";
 
 const pages = [
-    {title: 'Loading', component: <LoadingPage/>},
-    {title: 'Intro 1', component: 'c intro 1'},
-    {title: 'Intro 2', component: 'c intro 2'},
-    {title: 'Intro 3', component: 'c intro 3'},
-    {title: 'Sing in', component: 'c sing in'},
-    {title: 'Sing up', component: 'c sing up'},
-    {title: 'Sing up phone | email', component: 'c sing up phone | email'},
-    {title: 'Phone verification', component: 'c Phone verification'},
-    {title: 'OTP verification', component: 'c OTP verification'},
-    {title: 'Category', component: 'c Category'},
-    {title: 'Pizza', component: 'c Pizza'},
-    {title: 'Change password', component: 'c Change password'},
-    {title: 'Product details burger', component: 'c Product details burger'},
-    {title: 'Product details pizza', component: 'c Product details pizza'},
-    {title: 'Product details pizza 2', component: 'c Product details pizza'},
-    {title: 'Order review', component: 'c Order review'},
-    {title: 'Checkout', component: 'c Checkout'},
-    {title: 'Payment enter data', component: 'c Payment enter data'},
-    {title: 'Payment enter result', component: 'c Payment enter result'},
-    {title: 'Order history', component: 'c Order history'},
-    {title: 'Pizza with category', component: 'c Pizza with category'},
-    {title: 'Order history completed', component: 'c Order history completed'},
-    {title: 'Order history upcoming', component: 'c Order history upcoming'},
-    {title: 'Order history cancelled', component: 'c Order history cancelled'},
-    {title: 'Favorite', component: 'c Favorite'},
-    {title: 'Profile', component: 'c Profile'},
-    {title: 'Track your order', component: 'c Track your order'},
-    {title: 'Support', component: 'c Support'},
-    {title: 'Order', component: 'c Order'},
-    {title: 'Settings', component: 'c Settings'},
+    {href: ROUTER.LOADING, component: <LoadingPage/>},
+    {href: 'Intro 1', component: 'c intro 1'},
+    {href: 'Intro 2', component: 'c intro 2'},
+    {href: 'Intro 3', component: 'c intro 3'},
+    {href: ROUTER.SING_IN, component: <SignInPage/>},
+    {href: ROUTER.SING_UP, component: <SingUpPage pageTitle="Create an Account"/>},
+    {href: 'Sing up phone | email', component: 'c sing up phone | email'},
+    {href: 'Phone verification', component: 'c Phone verification'},
+    {href: 'OTP verification', component: 'c OTP verification'},
+    {href: 'Category', component: 'c Category'},
+    {href: 'Pizza', component: 'c Pizza'},
+    {href: 'Change password', component: 'c Change password'},
+    {href: 'Product details burger', component: 'c Product details burger'},
+    {href: 'Product details pizza', component: 'c Product details pizza'},
+    {href: 'Product details pizza 2', component: 'c Product details pizza'},
+    {href: 'Order review', component: 'c Order review'},
+    {href: 'Checkout', component: 'c Checkout'},
+    {href: 'Payment enter data', component: 'c Payment enter data'},
+    {href: 'Payment enter result', component: 'c Payment enter result'},
+    {href: 'Order history', component: 'c Order history'},
+    {href: 'Pizza with category', component: 'c Pizza with category'},
+    {href: 'Order history completed', component: 'c Order history completed'},
+    {href: 'Order history upcoming', component: 'c Order history upcoming'},
+    {href: 'Order history cancelled', component: 'c Order history cancelled'},
+    {href: 'Favorite', component: 'c Favorite'},
+    {href: 'Profile', component: 'c Profile'},
+    {href: 'Track your order', component: 'c Track your order'},
+    {href: 'Support', component: 'c Support'},
+    {href: 'Order', component: 'c Order'},
+    {href: 'Settings', component: 'c Settings'},
 ];
 
 function CatalogPage() {
     return (
         <MobileWrapper>
             {pages.map((page, index) =>
-                <MobileDevice key={page.title} title={index + '. ' + page.title}>{page.component}</MobileDevice>
+                <MobileDevice key={page.href} href={page.href} index={index}>{page.component}</MobileDevice>
             )}
         </MobileWrapper>
     )
