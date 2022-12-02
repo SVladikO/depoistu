@@ -21,7 +21,6 @@ export const NestedContent = styled.div`
   width: 100%;
 `;
 export const MainContent = styled.div`
-  //min-height: 30px;
   width: 100%;
   display: flex;
   justify-content: center;

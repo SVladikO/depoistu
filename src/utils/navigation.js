@@ -18,6 +18,7 @@ export const PageWrapper = styled.div`
   min-width: ${DEVICE_WIDTH.MIN};
   max-width: ${DEVICE_WIDTH.MAX};
   margin: 0 auto;
+  height: 100vh;
 `;
 
 const routes = [
@@ -25,22 +26,23 @@ const routes = [
     {path: ROUTER.LOADING, element: LoadingPage},
     {path: ROUTER.SING_IN, element: SignInPage},
     {path: ROUTER.SING_UP, element: SingUpPage},
-].map(r => <Route key={r.path} path={r.path} element={<PageWrapper><r.element /></PageWrapper>} /> );
+].map(r => <Route key={r.path} path={r.path} element={<r.element/>}/>);
 
 export const getRoutes = () => {
     return (
         <>
             <Routes>
-                {/* WEB APP PAGES */}
-                {routes}
-
                 {/* Development pages start */}
                 <Route path={DEV_ROUTER.COMPONENTS} element={<ComponentsPage/>}/>
                 <Route path={DEV_ROUTER.REDUX} element={<ReduxIntroductionPage/>}/>
                 <Route path={DEV_ROUTER.PAGES} element={<CatalogPage/>}/>
                 {/* Development pages end */}
-
             </Routes>
+
+            <PageWrapper>
+                {/* WEB APP PAGES */}
+                <Routes>{routes}</Routes>
+            </PageWrapper>
         </>
     );
 };
