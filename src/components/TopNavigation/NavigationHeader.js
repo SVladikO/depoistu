@@ -5,7 +5,6 @@ import {ReactComponent as BackArrow} from "../../icons/back_arrow.svg";
 const NavigationHeader = (props) => {
     const {title, href} = props;
     return (
-        <BackgroundWrapper>
             <Wrapper>
                 <MainContent>
                     {href && <a href={href}><BackArrow /></a>}
@@ -15,7 +14,6 @@ const NavigationHeader = (props) => {
                     {props.children}
                 </NestedContent>
             </Wrapper>
-        </BackgroundWrapper>
     );
 };
 
