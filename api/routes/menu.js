@@ -15,13 +15,23 @@ router.get('/categories', function (req, res) {
 
 /* GET category details. */
 router.get('/:categoryId', function (req, res) {
-    const {categoryId} = req.params;
-    res.json(db[categoryId]);
+    res.json(getCategory(req));
 });
+
 
 /* GET food from specific category. */
 router.get('/:categoryId/:foodId', function (req, res) {
-    res.render('index', {title: 'Express'});
+    res.json(getFood(req));
 });
+
+function getCategory(req) {
+    const {categoryId} = req.params;
+    return db[categoryId]
+}
+
+function getFood(req) {
+    const {foodId} = req.params;
+    return getCategory(req)[foodId]
+}
 
 module.exports = router;
