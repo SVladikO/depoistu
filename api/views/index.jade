@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  div
+    a(href="http://localhost:3001/menu") menu
+  div
+    a(href="http://localhost:3001/menu/categories") categories
+  div
+    a(href="http://localhost:3001/menu/pizza") pizza list
+  div
+    a(href="http://localhost:3001/menu/drinks") drinks list
+  div
+    a(href="http://localhost:3001/menu/pizza/0") one pizza
+  div
+    a(href="http://localhost:3001/menu/drinks/0") one drinks
