@@ -6,15 +6,15 @@
       "sizes": [
         {
           "size": 0,
-          "price": 100
+          "price": 90
         },
         {
           "size": 0,
-          "price": 100
+          "price": 140
         },
         {
           "size": 0,
-          "price": 100
+          "price": 210
         }
       ]
     },
@@ -24,15 +24,15 @@
       "sizes": [
         {
           "size": 0,
-          "price": 100
+          "price": 110
         },
         {
-          "size": 0,
-          "price": 100
+          "size": 1,
+          "price": 150
         },
         {
-          "size": 0,
-          "price": 100
+          "size": 2,
+          "price": 200
         }
       ]
     },
@@ -42,15 +42,15 @@
       "sizes": [
         {
           "size": 0,
-          "price": 100
+          "price": 120
         },
         {
-          "size": 0,
-          "price": 100
+          "size": 1,
+          "price": 145
         },
         {
-          "size": 0,
-          "price": 100
+          "size": 2,
+          "price": 189
         }
       ]
     },
@@ -60,15 +60,15 @@
       "sizes": [
         {
           "size": 0,
-          "price": 100
+          "price": 115
         },
         {
-          "size": 0,
-          "price": 100
+          "size": 1,
+          "price": 145
         },
         {
-          "size": 0,
-          "price": 100
+          "size": 2,
+          "price": 199
         }
       ]
     }
@@ -76,11 +76,10 @@
   "drinks": {
     "0": {
       "name": "white beer",
-      "description": "Lviv classical",
+      "description": "Lviv classic",
       "sizes": [
         {
-          "size": 0,
-          "price": 100
+          "price": 800
         }
       ]
     },
@@ -89,18 +88,16 @@
       "description": "green",
       "sizes": [
         {
-          "size": 0,
-          "price": 100
+          "price": 650
         }
       ]
     },
     "2": {
       "name": "dark beer",
-      "description": "Uman classical",
+      "description": "Uman classic",
       "sizes": [
         {
-          "size": 0,
-          "price": 100
+          "price": 300
         }
       ]
     }
