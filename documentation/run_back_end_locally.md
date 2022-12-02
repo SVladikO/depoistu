@@ -10,3 +10,5 @@ It's without DB (database) and locally but it's enough to start work with it.
 4. Install dependencies `npm install`
 5. Run project `npm start`
 6. In the terminal you will see url where it was run.
+
+#### And you need to install chrome extensions `JSON formatter` to see the response in more comfortable way
