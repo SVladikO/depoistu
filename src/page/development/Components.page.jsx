@@ -4,9 +4,11 @@ import
 {
     Input,
     Price,
+    HistoryTabBar,
     Rating,
     Discount,
     ThirdButton,
+    CategoryItem,
     AccountMenuRow,
     ToggleCheckbox,
     CheckBoxWithLabel,
@@ -20,12 +22,17 @@ import
     ProductSizeBar,
     CategoryTitle,
 } from "../../components";
+
 import CountAccumulator from '../../components/CountAccumulator/CountAccumulator';
+
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
 import {ReactComponent as MailIcon} from '../../icons/mail.svg';
 import {ReactComponent as LockIcon} from '../../icons/lock.svg';
+import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as LogOutIcon} from "../../icons/logout.svg";
+import {ReactComponent as SandwichIcon} from '../../icons/sandwich.svg';
+import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
 import {ReactComponent as LanguageIcon} from "../../icons/language.svg";
 
 import {COLOR} from "../../utils/theme";
@@ -60,6 +67,7 @@ const columns = [
     ],
     [
 
+        {title: 'CategoryItem', component: <CategoryItem title="Sandwich"><SandwichIcon/></CategoryItem>},
         {title: 'Rating', component: <Rating>{`4.9`}</Rating>},
         {title: 'Discount', component: <Discount>{`-10%`}</Discount>},
         {
@@ -99,13 +107,46 @@ const columns = [
 
         },
         {title: 'CountAccumulator', component: <CountAccumulator count={16}/>},
+        {title: 'CountAccumulator', component: <CountAccumulator count={16}/>},
         {title: 'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
-
     ],
     [
         {title: "NavigationHeader", component: <NavigationHeader title="category"/>},
         {title: "NavigationHeader", component: <NavigationHeader href={' '} title="category"/>},
         {title: 'ContentContainer', component: <ContentContainer>Sign up with</ContentContainer>},
+
+        {title: 'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
+        {title: 'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
+        {
+            title: 'HistoryTabBar', component:
+                (function () {
+                    const tabs = ['Completed', 'Upcoming', 'Cancelled'];
+                    const selectedTab = tabs[0];
+
+                    function handleClick(c) {
+                        alert(`${tabs[c]}`)
+                    }
+
+                    return <HistoryTabBar selectedTab={selectedTab} tabs={tabs} handleClick={handleClick}/>
+                })()
+        },
+        {
+            title: 'HistoryTabBar in NavigationHeader', component:
+                <NavigationHeader href={' '} title="category">
+                    {(function () {
+                        const tabs = ['Completed', 'Upcoming', 'Cancelled'];
+                        const selectedTab = tabs[0];
+
+                        function handleClick(c) {
+                            alert(`${tabs[c]}`)
+                        }
+
+                        return <HistoryTabBar selectedTab={selectedTab} tabs={tabs} handleClick={handleClick}/>
+                    })()}
+                </NavigationHeader>
+        }
+    ],
+    [
         {
             title: 'AccountMenuRow',
             component: <AccountMenuRow icon={LockIcon} title={`Change Password`}
@@ -121,11 +162,12 @@ const columns = [
             component: <AccountMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
         },
     ]
+
 ]
 
 function ComponentsPage() {
-    const setLightBackground = useCallback(() =>  document.body.style.backgroundColor = '#ffffff');
-    const setDarkBackground = useCallback(() =>  document.body.style.backgroundColor = '#001993');
+    const setLightBackground = useCallback(() => document.body.style.backgroundColor = '#ffffff');
+    const setDarkBackground = useCallback(() => document.body.style.backgroundColor = '#001993');
 
     function renderRows(components) {
         return components.map((c, index) =>
