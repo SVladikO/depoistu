@@ -1,7 +1,8 @@
 {
   "pizza": {
     "0": {
-      "name": "Tomato",
+      "name": "tomato",
+      "description": "tomato, souse",
       "sizes": [
         {
           "size": 0,
@@ -19,6 +20,7 @@
     },
     "1": {
       "name": "hawaii",
+      "description": "ananas, chicken",
       "sizes": [
         {
           "size": 0,
@@ -36,6 +38,7 @@
     },
     "2": {
       "name": "cheese",
+      "description": "four cheese",
       "sizes": [
         {
           "size": 0,
@@ -53,6 +56,7 @@
     },
     "3": {
       "name": "sea",
+      "description": "calmar, octupus ",
       "sizes": [
         {
           "size": 0,
@@ -68,5 +72,37 @@
         }
       ]
     }
+  },
+  "drinks": {
+    "0": {
+      "name": "white beer",
+      "description": "Lviv classical",
+      "sizes": [
+        {
+          "size": 0,
+          "price": 100
+        }
+      ]
+    },
+    "1": {
+      "name": "tea",
+      "description": "green",
+      "sizes": [
+        {
+          "size": 0,
+          "price": 100
+        }
+      ]
+    },
+    "2": {
+      "name": "dark beer",
+      "description": "Uman classical",
+      "sizes": [
+        {
+          "size": 0,
+          "price": 100
+        }
+      ]
+    }
   }
-}
+ }
