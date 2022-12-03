@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Container = styled(ContentContainer)`
-  margin: 30px 25px 25px 25px;
+  margin: 30px 25px 0 25px;
   width: auto;
   padding: 20px 25px 32px 25px;
 `;

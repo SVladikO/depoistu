@@ -24,7 +24,7 @@ import
 } from "../../components";
 
 import CountAccumulator from '../../components/CountAccumulator/CountAccumulator';
-
+import SingNavigation from "../../components/SingNavigation/SingNavigation";
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
 import {ReactComponent as MailIcon} from '../../icons/mail.svg';
@@ -159,6 +159,7 @@ const columns = [
             title: 'AccountMenuRow',
             component: <AccountMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
         },
+        {title: 'SingNavigation', component: <SingNavigation label="Sing up!"/>}
     ]
 
 ]

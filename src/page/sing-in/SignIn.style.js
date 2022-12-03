@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import {COLOR} from '../../utils/theme';
-
+import {ContentContainer} from "../../components";
+import {Label} from "../../components/SingNavigation/SingNavigation.style";
 
 export const Wrapper = styled.div`
   background-color: ${COLOR.ACCENT2};
@@ -11,7 +12,9 @@ export const Wrapper = styled.div`
   //z-index: -1;
   padding: 0 25px 25px 25px;
 `;
-
+export const Container = styled(ContentContainer)`
+  padding: 20px 25px 0 25px;
+`
 export const Content = styled.div`
   display: flex;
   justify-content: center;
@@ -53,7 +56,7 @@ export const LeftSideContent = styled.div`
   width: calc(50% - 5px);
 `;
 
-export const Label = styled.div`
+export const NavLabel = styled(Label)`
   color: ${props => props.primary ? COLOR.ACCENT3 : COLOR.ACCENT1};
   margin: 11px auto 15px 0;
   font-weight: 400;
@@ -77,10 +80,3 @@ export const RightSideContent = styled.div`
   }
 `;
 
-export const TextContent = styled.div`
-  display: flex;
-  justify-content: center;
-  & > div{
-    margin: 21px 0 0 3px;
-  }
-`;

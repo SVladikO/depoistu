@@ -1,10 +1,10 @@
 import NavigationHeader from "../../components/TopNavigation/NavigationHeader";
 import Input from "../../components/Input/Input";
-import {Wrapper, Title, Container,InputWrapper, ButtonWrapper} from "./SingUp.style";
+import {Wrapper, Title, Container, InputWrapper, ButtonWrapper} from "./SingUp.style";
 import {CheckBoxWithLabel, PrimaryWideButton} from "../../components";
-
-
-
+import SingNavigation from "../../components/SingNavigation/SingNavigation";
+import {Link} from "react-router-dom";
+import SignInPage from "../sing-in/SignIn.page";
 
 const SingUpPage = () => {
     return (
@@ -24,10 +24,12 @@ const SingUpPage = () => {
                         label="By creating an account you agree to our Terms of Service and Privacy Policy"/>
                 </InputWrapper>
             </Container>
+                <Link to="/sign-in">
+                    <SingNavigation label="Sing in!"></SingNavigation>
+                </Link>
             <ButtonWrapper>
                 <PrimaryWideButton>Sing up</PrimaryWideButton>
             </ButtonWrapper>
-
         </Wrapper>
     );
 };
