@@ -13,4 +13,7 @@ export const Discount = styled.div`
   color: ${COLOR.ACCENT4};
   display: flex;
   justify-content: center;
+  &::after {
+    content: "%";
+  }
 `
