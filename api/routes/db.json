@@ -393,29 +393,72 @@
   },
   "drinks": {
     "0": {
-      "name": "white beer",
-      "description": "Lviv classic",
+      "image": "drinks/cola.png",
+      "name": "Coca-Cola",
       "sizes": [
         {
-          "price": 800
+          "size": 0.5,
+          "price": 80
+        },
+        {
+          "size": 1,
+          "price": 100
         }
       ]
     },
     "1": {
-      "name": "tea",
-      "description": "green",
+      "image": "drinks/bon_aqua_gaz.png",
+      "name": "BonAqua carbonated water",
       "sizes": [
         {
-          "price": 650
+          "size": 0.5,
+          "price": 65
+        },
+        {
+          "size": 1,
+          "price": 75
         }
       ]
     },
     "2": {
-      "name": "dark beer",
-      "description": "Uman classic",
+      "image": "drinks/bon_aqua.png",
+      "name": "BonAqua water",
       "sizes": [
         {
-          "price": 300
+          "size": 0.5,
+          "price": 65
+        },
+        {
+          "size": 1,
+          "price": 75
+        }
+      ]
+    },
+    "3": {
+      "image": "drinks/leffe_brun.jpg",
+      "name": "Leffe Brunе",
+      "sizes": [
+        {
+          "size": 0.5,
+          "price": 95
+        },
+        {
+          "size": 1,
+          "price": 125
+        }
+      ]
+    },
+    "4": {
+      "image": "drinks/stellaartois.jpg",
+      "name": "Stella artois",
+      "sizes": [
+        {
+          "size": 0.5,
+          "price": 99
+        },
+        {
+          "size": 1,
+          "price": 129
         }
       ]
     }
