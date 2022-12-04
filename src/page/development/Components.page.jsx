@@ -23,6 +23,8 @@ import
     CategoryTitle,
 } from "../../components";
 
+import CatalogPage from "./Catalog.page";
+
 import CountAccumulator from '../../components/CountAccumulator/CountAccumulator';
 
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
@@ -194,6 +196,7 @@ function ComponentsPage() {
                     <Column key={index}>{renderRows(components)}</Column>)
                 }
             </Wrapper>
+            <CatalogPage />
         </div>
     )
 }

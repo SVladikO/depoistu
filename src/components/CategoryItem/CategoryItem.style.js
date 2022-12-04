@@ -26,14 +26,6 @@ export const Title = styled.div`
   margin: 10px 0 0;
   text-align: center;
   line-height: 24px;
-
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Old versions of Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none;
-  
 `;
 
 export const IconWrapper = styled.div`
