@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {COLOR} from '../../utils/theme';
 import {ContentContainer} from "../../components";
-import {Label} from "../../components/SingNavigation/SingNavigation.style";
+import {Label} from "../../components/NavigationLabelHref/NavigationLabelHref.style";
 
 export const Wrapper = styled.div`
   background-color: ${COLOR.ACCENT2};

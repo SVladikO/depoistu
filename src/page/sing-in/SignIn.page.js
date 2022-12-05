@@ -27,7 +27,7 @@ import {ReactComponent as MailIcon} from "../../icons/mail.svg";
 
 import {ReactComponent as GoogleIcon} from "../../icons/google.svg";
 import {ReactComponent as FacebookIcon} from "../../icons/facebook.svg";
-import SingNavigation from "../../components/SingNavigation/SingNavigation";
+import NavigationLabelHref from "../../components/NavigationLabelHref/NavigationLabelHref";
 import {Link} from "react-router-dom";
 
 const SignInPage = () => {
@@ -54,9 +54,7 @@ const SignInPage = () => {
                             <PrimaryWithIconButton><GoogleIcon/>Google</PrimaryWithIconButton>
                         </RightSideContent>
                     </ContentWrapper>
-                    <Link to="/sing-up">
-                        <SingNavigation label="Sing up!"/>
-                    </Link>
+                    <NavigationLabelHref hrefText="Sing in!" href={'sing-up'} label="Already have an account?"/>
                 </Container>
                 <PrimaryWideButton><span>Sing in</span></PrimaryWideButton>
             </Wrapper>
