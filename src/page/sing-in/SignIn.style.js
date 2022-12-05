@@ -6,7 +6,6 @@ export const Wrapper = styled.div`
   background-color: ${COLOR.ACCENT2};
   display: flex;
   flex-direction: column;
-  min-height: 100%;
   justify-content: start;
   //z-index: -1;
   padding: 0 25px 25px 25px;
