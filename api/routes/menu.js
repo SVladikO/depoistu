@@ -15,6 +15,8 @@ Object.keys(db).map(x => {
     })
 })
 
+const categories = Object.keys(db);
+
 /* GET menu page. */
 router.get('/', function (req, res) {
     res.json(db);
