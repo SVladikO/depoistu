@@ -15,7 +15,7 @@ const ProductCard = ({data}) => {
         <Wrapper>
             <Flex></Flex>
             <Flex flexDirection='column'>
-                <Flex justifyContent={"space-between"}>
+                <Flex justifyContent="space-between">
                     <Discount>{discont}</Discount>
                     <Rating>{rating}</Rating>
                 </Flex>
