@@ -19,6 +19,8 @@ export const Title = styled.div`
   font-weight: 700;
   font-size: 16px;
   line-height: 19px;
+  color: ${COLOR.ACCENT1};
+  text-align: center;
 `;
 
 export const Wrapper = styled.div`
