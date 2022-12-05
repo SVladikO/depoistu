@@ -1,6 +1,20 @@
 var express = require('express');
 var router = express.Router();
 var db = require('./db.json')
+
+//temporary image wrapper. Fill be fixed in the real DB
+Object.keys(db).map(x => {
+    const categories = db[x]
+
+    Object.keys(categories).map(y => {
+        const food = categories[y];
+
+        if (food.image) {
+            db[x][y].image = 'http://localhost:3001/images/' + food.image;
+        }
+    })
+})
+
 const categories = Object.keys(db);
 
 /* GET menu page. */
