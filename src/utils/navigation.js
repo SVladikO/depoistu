@@ -36,11 +36,14 @@ const routes = [
     {path: ROUTER.SING_UP, element: SingUpPage},
     {path: ROUTER.CATEGORY, element: CategoryPage},
     {path: ROUTER.CHANGE_PASSWORD, element: ChangePasswordPage},
-].map(r =>
-
-    <Route key={r.path} path={r.path} element={<r.element/>}/>
-
-);
+].map(r => <Route key={r.path} path={r.path} element={
+    <MobileDevice>
+        <NavigationHeader href={' '} title="Sign in"/>
+        <Centralicer>
+            <r.element/>
+        </Centralicer>
+    </MobileDevice>
+}/>);
 
 export const getRoutes = () => {
     return (
@@ -58,13 +61,7 @@ export const getRoutes = () => {
                 <Route path={ROUTER.LOADING} element={<LoadingPage/>}/>
             </Routes>
 
-            <MobileDevice>
-                <NavigationHeader href={' '} title="Sign in"/>
-                {/* WEB APP PAGES */}
-                <Centralicer>
-                    <Routes>{routes}</Routes>
-                </Centralicer>
-            </MobileDevice>
+            <Routes>{routes}</Routes>
 
 
         </>

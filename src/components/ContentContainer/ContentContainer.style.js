@@ -6,5 +6,5 @@ export const ContentContainer = styled.div`
   text-align: center;
   padding: 30px 25px;
   border-radius: ${BORDER_RADIUS.SECOND};
-  margin: 0 auto 20px;
+  margin-bottom: 20px;
 `
