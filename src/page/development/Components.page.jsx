@@ -21,10 +21,10 @@ import
     NavigationHeader,
     ProductSizeBar,
     CategoryTitle,
+    NavigationLabelHref
 } from "../../components";
 
 import CountAccumulator from '../../components/CountAccumulator/CountAccumulator';
-import NavigationLabelHref from "../../components/NavigationLabelHref/NavigationLabelHref";
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
 import {ReactComponent as MailIcon} from '../../icons/mail.svg';

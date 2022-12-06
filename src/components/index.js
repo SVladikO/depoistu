@@ -20,7 +20,7 @@ import HistoryTabBar from "./HistoryTabBar/HistoryTabBar";
 import NavigationHeader from "./TopNavigation/NavigationHeader";
 import ProductSizeBar from "./ProductSizeBar/ProductSizeBar";
 import {CategoryTitle} from "./CategoryTitle/CategoryTitle.style";
-
+import NavigationLabelHref from './NavigationLabelHref/NavigationLabelHref';
 
 export {
     Input,
@@ -42,5 +42,6 @@ export {
     NavigationHeader,
     ProductSizeBar,
     CategoryTitle,
+    NavigationLabelHref
 }
 

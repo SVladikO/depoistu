@@ -8,7 +8,7 @@ import {
     ContentWrapper,
     Content,
     LogoText,
-    NavLabel, Container
+    NavLabel, Form
 } from "./SignIn.style";
 
 import {
@@ -28,7 +28,7 @@ import {ReactComponent as MailIcon} from "../../icons/mail.svg";
 import {ReactComponent as GoogleIcon} from "../../icons/google.svg";
 import {ReactComponent as FacebookIcon} from "../../icons/facebook.svg";
 import NavigationLabelHref from "../../components/NavigationLabelHref/NavigationLabelHref";
-import {Link} from "react-router-dom";
+import {ROUTER} from '../../utils/config';
 
 const SignInPage = () => {
     return (
@@ -39,7 +39,7 @@ const SignInPage = () => {
                     <LogoIcon/>
                     <LogoText>{translations.company_name}</LogoText>
                 </Content>
-                <Container>
+                <Form>
                     <Input Icon={MailIcon} placeholder={`johndoe@mail.com`}/>
                     <div style={{marginTop: '11px'}}>
                         <Input Icon={LockIcon} placeholder={`*********************`}/>
@@ -54,8 +54,8 @@ const SignInPage = () => {
                             <PrimaryWithIconButton><GoogleIcon/>Google</PrimaryWithIconButton>
                         </RightSideContent>
                     </ContentWrapper>
-                    <NavigationLabelHref hrefText="Sing in!" href={'sing-up'} label="Already have an account?"/>
-                </Container>
+                    <NavigationLabelHref hrefText="Sing in!" href={`${ROUTER.SING_UP}`} label="Already have an account?"/>
+                </Form>
                 <PrimaryWideButton><span>Sing in</span></PrimaryWideButton>
             </Wrapper>
         </>

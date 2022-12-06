@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
   //z-index: -1;
   padding: 0 25px 25px 25px;
 `;
-export const Container = styled(ContentContainer)`
+export const Form = styled(ContentContainer)`
   padding: 20px 25px 0 25px;
 `
 export const Content = styled.div`
