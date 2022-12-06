@@ -8,7 +8,6 @@ import {
     PrimaryWideButton,
     PrimaryWithIconButton,
     SecondaryWithIconButton,
-    NavigationHeader
 } from "../../components";
 
 import translations from "../../utils/translations";
@@ -23,7 +22,6 @@ import {ReactComponent as FacebookIcon} from "../../icons/facebook.svg";
 const SignInPage = () => {
     return (
         <>
-            <NavigationHeader href={' '} title="Sign in"/>
             <Wrapper>
                 <Content>
                     <LogoIcon/>

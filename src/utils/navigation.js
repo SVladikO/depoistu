@@ -14,30 +14,33 @@ import styled from 'styled-components'
 import {DEVICE_WIDTH} from "./theme";
 import CategoryPage from "../page/category/Category.page";
 import ChangePasswordPage from "../page/change-password/ChangePassword.page";
+import {NavigationHeader} from "../components";
 
 export const MobileDevice = styled.div`
   min-width: ${DEVICE_WIDTH.MIN};
   max-width: ${DEVICE_WIDTH.MAX};
   margin: 0 auto;
   height: 100vh;
-  
-  & > * {
-    padding: 0 25px 25px 25px;
-  }
-  
-  & > div:first-child {
-    padding: 0;
-    border: solid 1px red;
-  }
+
+`;
+
+export const Centralicer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding: 0 25px 25px 25px;
 `;
 
 const routes = [
-    {path: ROUTER.LOADING, element: LoadingPage},
     {path: ROUTER.SING_IN, element: SignInPage},
     {path: ROUTER.SING_UP, element: SingUpPage},
     {path: ROUTER.CATEGORY, element: CategoryPage},
     {path: ROUTER.CHANGE_PASSWORD, element: ChangePasswordPage},
-].map(r => <Route key={r.path} path={r.path} element={<r.element/>}/>);
+].map(r =>
+
+    <Route key={r.path} path={r.path} element={<r.element/>}/>
+
+);
 
 export const getRoutes = () => {
     return (
@@ -51,10 +54,19 @@ export const getRoutes = () => {
                 {/* Development pages end */}
             </Routes>
 
+            <Routes>
+                <Route path={ROUTER.LOADING} element={<LoadingPage/>}/>
+            </Routes>
+
             <MobileDevice>
+                <NavigationHeader href={' '} title="Sign in"/>
                 {/* WEB APP PAGES */}
-                <Routes>{routes}</Routes>
+                <Centralicer>
+                    <Routes>{routes}</Routes>
+                </Centralicer>
             </MobileDevice>
+
+
         </>
     );
 };

@@ -7,7 +7,6 @@ import {
 } from "./Category.style";
 
 import {
-    NavigationHeader,
     CategoryItem,
 } from "../../components";
 
@@ -35,7 +34,6 @@ const categories = [
 const CategoryPage = () => {
     return (
         <Wrapper>
-            <NavigationHeader href={' '} title="Category"/>
             <Content>
                 <Flex>
                     {categories.map(c => <CategoryItem key={c.title} title={c.title}>{<c.icon/>}</CategoryItem>)}

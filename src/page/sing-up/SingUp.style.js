@@ -24,6 +24,3 @@ export const InputWrapper = styled.div`
     margin-bottom: 15px;
   }
 `;
-export const ButtonWrapper = styled.div`
-  margin: 0 25px 0 25px;
-`;
