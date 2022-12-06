@@ -13,13 +13,22 @@ import ReduxIntroductionPage from "../page/development/Redux-introduction.page";
 import styled from 'styled-components'
 import {DEVICE_WIDTH} from "./theme";
 import CategoryPage from "../page/category/Category.page";
+import ChangePasswordPage from "../page/change-password/ChangePassword.page";
 
-
-export const PageWrapper = styled.div`
+export const MobileDevice = styled.div`
   min-width: ${DEVICE_WIDTH.MIN};
   max-width: ${DEVICE_WIDTH.MAX};
   margin: 0 auto;
   height: 100vh;
+  
+  & > * {
+    padding: 0 25px 25px 25px;
+  }
+  
+  & > div:first-child {
+    padding: 0;
+    border: solid 1px red;
+  }
 `;
 
 const routes = [
@@ -27,6 +36,7 @@ const routes = [
     {path: ROUTER.SING_IN, element: SignInPage},
     {path: ROUTER.SING_UP, element: SingUpPage},
     {path: ROUTER.CATEGORY, element: CategoryPage},
+    {path: ROUTER.CHANGE_PASSWORD, element: ChangePasswordPage},
 ].map(r => <Route key={r.path} path={r.path} element={<r.element/>}/>);
 
 export const getRoutes = () => {
@@ -41,10 +51,10 @@ export const getRoutes = () => {
                 {/* Development pages end */}
             </Routes>
 
-            <PageWrapper>
+            <MobileDevice>
                 {/* WEB APP PAGES */}
                 <Routes>{routes}</Routes>
-            </PageWrapper>
+            </MobileDevice>
         </>
     );
 };

@@ -55,9 +55,9 @@ const columns = [
         {title: 'ThirdButton', component: <ThirdButton>Payment</ThirdButton>},
     ],
     [
-        {title: 'Input', component: <Input placeholder={`johndoe@mail.com`}/>},
-        {title: 'Input', component: <Input Icon={MailIcon} placeholder={`johndoe@mail.com`}/>},
-        {title: 'Input', component: <Input withSwitcher placeholder={`New password`}/>},
+        {title: 'Input 1', component: <Input placeholder={`johndoe@mail.com`}/>},
+        {title: 'Input 2', component: <Input Icon={MailIcon} placeholder={`johndoe@mail.com`}/>},
+        {title: 'Input 3', component: <Input withSwitcher placeholder={`New password`}/>},
         {
             title: 'CheckBoxWithLabel',
             component: <CheckBoxWithLabel

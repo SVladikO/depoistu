@@ -11,6 +11,11 @@ export const Flex = styled.div`
   & > div {
     margin: 15px 0 0;
   }
+  
+  & > div:first-child,
+  & > div:nth-child(2) {
+    margin: 0;
+  }
 `;
 export const Wrapper = styled.div`
   background-color: ${COLOR.ACCENT2};
@@ -22,6 +27,6 @@ export const Wrapper = styled.div`
 
 export const Content = styled.div`
   width: 325px;
-  margin: 18px auto 0;
+  margin: 0 auto;
 `;
 

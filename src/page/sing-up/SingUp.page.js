@@ -1,16 +1,16 @@
 import NavigationHeader from "../../components/TopNavigation/NavigationHeader";
 import Input from "../../components/Input/Input";
 import {Wrapper, Title, Container,InputWrapper, ButtonWrapper} from "./SingUp.style";
-import {CheckBoxWithLabel, PrimaryWideButton} from "../../components";
+import {CheckBoxWithLabel, ContentContainer, PrimaryWideButton} from "../../components";
 
 
 
 
 const SingUpPage = () => {
     return (
-        <Wrapper>
-            <NavigationHeader href={' '} title="category"/>
-            <Container>
+        <>
+            <NavigationHeader href={' '} title="Sign up"/>
+            <ContentContainer>
                 <Title>Create an Account</Title>
                 <InputWrapper>
                     <Input placeholder="Full Name"/>
@@ -23,12 +23,12 @@ const SingUpPage = () => {
                     <CheckBoxWithLabel
                         label="By creating an account you agree to our Terms of Service and Privacy Policy"/>
                 </InputWrapper>
-            </Container>
+            </ContentContainer>
             <ButtonWrapper>
                 <PrimaryWideButton>Sing up</PrimaryWideButton>
             </ButtonWrapper>
 
-        </Wrapper>
+        </>
     );
 };
 

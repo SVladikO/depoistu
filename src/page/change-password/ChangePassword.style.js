@@ -20,7 +20,7 @@ export const Content = styled.div`
   border-radius: 50%;
   background: ${COLOR.ACCENT4};
   border: none;
-  margin: 0 auto 28px; 
+  margin: 28px auto 28px auto; 
   padding: 45px;
   & > svg {
     width: 140px;
