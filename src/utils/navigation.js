@@ -12,6 +12,7 @@ import ReduxIntroductionPage from "../page/development/Redux-introduction.page";
 
 import styled from 'styled-components'
 import {DEVICE_WIDTH} from "./theme";
+import CategoryPage from "../page/category/Category.page";
 
 
 export const PageWrapper = styled.div`
@@ -22,10 +23,10 @@ export const PageWrapper = styled.div`
 `;
 
 const routes = [
-    {path: '/', element: SignInPage},
     {path: ROUTER.LOADING, element: LoadingPage},
     {path: ROUTER.SING_IN, element: SignInPage},
     {path: ROUTER.SING_UP, element: SingUpPage},
+    {path: ROUTER.CATEGORY, element: CategoryPage},
 ].map(r => <Route key={r.path} path={r.path} element={<r.element/>}/>);
 
 export const getRoutes = () => {
@@ -33,6 +34,7 @@ export const getRoutes = () => {
         <>
             <Routes>
                 {/* Development pages start */}
+                <Route path={'/'} element={<ComponentsPage/>}/>
                 <Route path={DEV_ROUTER.COMPONENTS} element={<ComponentsPage/>}/>
                 <Route path={DEV_ROUTER.REDUX} element={<ReduxIntroductionPage/>}/>
                 <Route path={DEV_ROUTER.PAGES} element={<CatalogPage/>}/>
