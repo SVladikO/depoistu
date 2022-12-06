@@ -4,6 +4,10 @@ import {BORDER_RADIUS, COLOR, GRADIENT} from "../../utils/theme";
 export const Wrapper = styled.div`
   display: flex;
   font-weight: 700;
+  
+  & > div:last-child {
+    margin: 0;
+  }
 `;
 export const Label = styled.span`
   color: ${COLOR.PRIMARY};

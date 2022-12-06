@@ -20,6 +20,7 @@ import
     ContentContainer,
     NavigationHeader,
     ProductSizeBar,
+    ProductCard,
     CategoryTitle,
 } from "../../components";
 
@@ -66,8 +67,24 @@ const columns = [
     [
 
         {title: 'CategoryItem', component: <CategoryItem title="Sandwich"><SandwichIcon/></CategoryItem>},
+        {
+            title: 'ProductCard',
+            component:
+                <ProductCard
+                    data={{
+                        image: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
+                        discont: '-10',
+                        rating: '4.5',
+                        buttons: [
+                            {price: 20, size: 1},
+                            {price: 20, size: 2},
+                            {price: 30, size: 3},
+                        ],
+                    }}
+                />
+        },
         {title: 'Rating', component: <Rating>{`4.9`}</Rating>},
-        {title: 'Discount', component: <Discount>{`-10%`}</Discount>},
+        {title: 'Discount', component: <Discount>{`-10`}</Discount>},
         {
             title: 'ProductSizeBar', component:
                 (function () {
