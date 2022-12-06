@@ -1,6 +1,14 @@
 import React from 'react';
 
-import {Wrapper, Label, LeftSideContent, RightSideContent, ContentWrapper, TextContent, Content, LogoText} from "./SignIn.style";
+import {
+    Label,
+    LeftSideContent,
+    RightSideContent,
+    ContentWrapper,
+    TextContent,
+    Content,
+    LogoText
+} from "./SignIn.style";
 
 import {
     ContentContainer,
@@ -22,33 +30,31 @@ import {ReactComponent as FacebookIcon} from "../../icons/facebook.svg";
 const SignInPage = () => {
     return (
         <>
-            <Wrapper>
-                <Content>
-                    <LogoIcon/>
-                    <LogoText>{translations.company_name}</LogoText>
-                </Content>
-                <ContentContainer>
-                    <Input Icon={MailIcon} placeholder={`johndoe@mail.com`}/>
-                    <div style={{marginTop: '11px'}}>
-                        <Input Icon={LockIcon} placeholder={`*********************`}/>
-                    </div>
-                    <ContentWrapper>
-                        <LeftSideContent>
-                            <Label primary={false}>Or login with</Label>
-                            <SecondaryWithIconButton><FacebookIcon/>facebook</SecondaryWithIconButton>
-                        </LeftSideContent>
-                        <RightSideContent>
-                            <Label primary>Forget password ?</Label>
-                            <PrimaryWithIconButton><GoogleIcon/>Google</PrimaryWithIconButton>
-                        </RightSideContent>
-                    </ContentWrapper>
-                    <TextContent>
-                        <Label primary={false}>Already have an account?</Label>
-                        <Label primary={true}>Sing up !</Label>
-                    </TextContent>
-                </ContentContainer>
-                <PrimaryWideButton>Sing in</PrimaryWideButton>
-            </Wrapper>
+            <Content>
+                <LogoIcon/>
+                <LogoText>{translations.company_name}</LogoText>
+            </Content>
+            <ContentContainer>
+                <Input Icon={MailIcon} placeholder={`johndoe@mail.com`}/>
+                <div style={{marginTop: '11px'}}>
+                    <Input Icon={LockIcon} placeholder={`*********************`}/>
+                </div>
+                <ContentWrapper>
+                    <LeftSideContent>
+                        <Label primary={false}>Or login with</Label>
+                        <SecondaryWithIconButton><FacebookIcon/>facebook</SecondaryWithIconButton>
+                    </LeftSideContent>
+                    <RightSideContent>
+                        <Label primary>Forget password ?</Label>
+                        <PrimaryWithIconButton><GoogleIcon/>Google</PrimaryWithIconButton>
+                    </RightSideContent>
+                </ContentWrapper>
+                <TextContent>
+                    <Label primary={false}>Already have an account?</Label>
+                    <Label primary={true}>Sing up !</Label>
+                </TextContent>
+            </ContentContainer>
+            <PrimaryWideButton>Sing in</PrimaryWideButton>
         </>
     );
 };

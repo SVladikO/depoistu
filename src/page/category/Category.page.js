@@ -33,13 +33,11 @@ const categories = [
 
 const CategoryPage = () => {
     return (
-        <Wrapper>
-            <Content>
-                <Flex>
-                    {categories.map(c => <CategoryItem key={c.title} title={c.title}>{<c.icon/>}</CategoryItem>)}
-                </Flex>
-            </Content>
-        </Wrapper>
+        <Content>
+            <Flex>
+                {categories.map(c => <CategoryItem key={c.title} title={c.title}>{<c.icon/>}</CategoryItem>)}
+            </Flex>
+        </Content>
     );
 };
 

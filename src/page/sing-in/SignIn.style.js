@@ -1,10 +1,6 @@
 import styled from "styled-components";
 import {COLOR} from '../../utils/theme';
 
-
-export const Wrapper = styled.div`
-`;
-
 export const Content = styled.div`
   display: flex;
   justify-content: center;

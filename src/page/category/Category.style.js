@@ -17,13 +17,6 @@ export const Flex = styled.div`
     margin: 0;
   }
 `;
-export const Wrapper = styled.div`
-  background-color: ${COLOR.ACCENT2};
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-  justify-content: start;
-`;
 
 export const Content = styled.div`
   width: 325px;
