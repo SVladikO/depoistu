@@ -2,10 +2,6 @@ import styled from "styled-components";
 import {COLOR} from "../../utils/theme";
 import {ContentContainer} from "../../components";
 
-
-export const Wrapper = styled.div`
-`;
-
 export const Container = styled(ContentContainer)`
   margin: 30px 25px 25px 25px;
   width: auto;
