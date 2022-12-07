@@ -14,7 +14,7 @@ export const ContentWrapper = styled.div`
   display: flex;
   width: 100%;
 `;
-export const Picture = styled.img`
+export const Avatar = styled.img`
   display: block;
   width: 60px;
   height: 60px;
@@ -23,7 +23,7 @@ export const Picture = styled.img`
 export const TextContent = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 14.76px;
+  margin-left: 15px;
   align-items: center;
   justify-content: center;
 `;
