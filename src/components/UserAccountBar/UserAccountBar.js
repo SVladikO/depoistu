@@ -1,18 +1,19 @@
-import {ContentWrapper, Wrapper,Picture,TextContent,Name, Status, Anchor} from "./UserAccountBar.style";
 import {Link} from "react-router-dom";
+import {ContentWrapper, Wrapper,Avatar,TextContent,Name, Status, Anchor} from "./UserAccountBar.style";
+import {ReactComponent as RightAnchor} from "../../icons/right-anchor.svg";
 
-const UserAccountBar = ({icon: Icon, name, status, href}) => {
+const UserAccountBar = ({ fullName, status, href}) => {
     return (
         <Link to={href}>
             <Wrapper>
                 <ContentWrapper>
-                    <Picture src="https://via.placeholder.com/60" alt="user_photo"/>
+                    <Avatar src="https://via.placeholder.com/60" alt="user_photo"/>
                     <TextContent>
-                        <Name>{name}</Name>
+                        <Name>{fullName}</Name>
                         <Status>{status}</Status>
                     </TextContent>
                 </ContentWrapper>
-                <Anchor><Icon/></Anchor>
+                <Anchor><RightAnchor/></Anchor>
             </Wrapper>
         </Link>
     );

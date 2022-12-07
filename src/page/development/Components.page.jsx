@@ -161,7 +161,7 @@ const columns = [
             title: 'AccountMenuRow',
             component: <AccountMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
         },
-        {title: 'UserAccountBar', component: <UserAccountBar icon={RightAnchor} name="Jhon Smith" href="/catalog" status="Basic Member"/>},
+        {title: 'UserAccountBar', component: <UserAccountBar fullName="Jhon Smith" href="/catalog" status="Basic Member"/>},
     ]
 
 ]
