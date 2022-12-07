@@ -3,6 +3,7 @@ import {BORDER_RADIUS, COLOR, GRADIENT} from "../../utils/theme";
 import {hexToRgbA} from "../../utils/utils";
 
 export const button = styled.button`
+  height: 50px;
   padding: 12px;
   border: none;
   border-radius: ${BORDER_RADIUS.FOURTH};
@@ -32,7 +33,6 @@ export const primary = styled(button)`
 
 export const PrimaryWideButton = styled(primary)`
   width: 100%;
-  height: 50px;
   color: ${COLOR.ACCENT4};
 `;
 

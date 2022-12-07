@@ -13,7 +13,9 @@ const ChangePasswordPage = () => {
             <Input withSwitcher placeholder={`Old password`}/>
             <Input withSwitcher placeholder={`Password`}/>
             <Input withSwitcher placeholder={`Confirm`}/>
-            <PrimaryRoundedButton>Sing in</PrimaryRoundedButton>
+            <RowSplitter margin="20px 0 0">
+                <PrimaryRoundedButton>Sing in</PrimaryRoundedButton>
+            </RowSplitter>
         </ContentContainer>
     );
 };

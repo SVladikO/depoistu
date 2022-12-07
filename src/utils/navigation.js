@@ -3,6 +3,8 @@ import {Route, Routes} from "react-router-dom";
 
 import {DEV_ROUTER, ROUTER} from "./config";
 
+import {COLOR} from './theme'
+
 import SignInPage from "../page/sing-in/SignIn.page";
 import SingUpPage from "../page/sing-up/SingUp.page";
 import LoadingPage from "../page/Loading.page";
@@ -21,6 +23,7 @@ export const MobileDevice = styled.div`
   max-width: ${DEVICE_WIDTH.MAX};
   margin: 0 auto;
   height: 100vh;
+  background: ${COLOR.ACCENT2};
 
 `;
 

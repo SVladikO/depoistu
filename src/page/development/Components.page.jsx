@@ -182,8 +182,10 @@ const columns = [
 
 ]
 
+document.body.style.backgroundColor = '#d8d8d8'
+
 function ComponentsPage() {
-    const setLightBackground = useCallback(() => document.body.style.backgroundColor = '#ffffff', []);
+    const setLightBackground = useCallback(() => document.body.style.backgroundColor = '#d8d8d8', []);
     const setDarkBackground = useCallback(() => document.body.style.backgroundColor = '#001993', []);
 
     function renderRows(components) {
