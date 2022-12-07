@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {
-    Wrapper,
     Content,
     Flex
 } from "./Category.style";
@@ -9,7 +8,6 @@ import {
 import {
     CategoryItem,
 } from "../../components";
-
 
 import {ReactComponent as BakeryIcon} from "../../icons/category/bakery.svg";
 import {ReactComponent as BeverageIcon} from "../../icons/category/beverage.svg";
