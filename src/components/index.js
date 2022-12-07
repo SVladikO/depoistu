@@ -22,6 +22,7 @@ import ProductCard from "./ProductCard/ProductCard";
 import NavigationHeader from "./TopNavigation/NavigationHeader";
 import ProductSizeBar from "./ProductSizeBar/ProductSizeBar";
 import {CategoryTitle} from "./CategoryTitle/CategoryTitle.style";
+import UserAccountBar from "./UserAccountBar/UserAccountBar";
 
 export {
     AccountMenuRow,
@@ -45,5 +46,6 @@ export {
     SecondaryButton,
     ContentContainer,
     NavigationHeader,
+    UserAccountBar,
 }
 
