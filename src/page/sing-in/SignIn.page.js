@@ -2,6 +2,7 @@ import React from 'react';
 
 import {
     Label,
+    Label2,
     LeftSideContent,
     RightSideContent,
     ContentWrapper,
@@ -14,7 +15,7 @@ import {
     ContentContainer,
     Input,
     PrimaryWideButton,
-    PrimaryWithIconButton,
+    PrimaryWithIconButton, RowSplitter,
     SecondaryWithIconButton,
 } from "../../components";
 
@@ -36,9 +37,8 @@ const SignInPage = () => {
             </Content>
             <ContentContainer>
                 <Input Icon={MailIcon} placeholder={`johndoe@mail.com`}/>
-                <div style={{marginTop: '11px'}}>
-                    <Input Icon={LockIcon} placeholder={`*********************`}/>
-                </div>
+                <Input Icon={LockIcon} placeholder={`*********************`}/>
+
                 <ContentWrapper>
                     <LeftSideContent>
                         <Label primary={false}>Or login with</Label>
@@ -50,8 +50,8 @@ const SignInPage = () => {
                     </RightSideContent>
                 </ContentWrapper>
                 <TextContent>
-                    <Label primary={false}>Already have an account?</Label>
-                    <Label primary={true}>Sing up !</Label>
+                    <Label2 primary={false}>Already have an account?</Label2>
+                    <Label2 primary={true}>Sing up !</Label2>
                 </TextContent>
             </ContentContainer>
             <PrimaryWideButton>Sing in</PrimaryWideButton>

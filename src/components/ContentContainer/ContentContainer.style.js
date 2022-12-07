@@ -7,4 +7,11 @@ export const ContentContainer = styled.div`
   padding: 30px 25px;
   border-radius: ${BORDER_RADIUS.SECOND};
   margin-bottom: 20px;
+  
+  & > * {
+    margin-bottom: 15px;
+  }
+  & > *:last-child {
+    margin-bottom: 0;
+  }
 `

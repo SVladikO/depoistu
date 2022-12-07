@@ -8,17 +8,13 @@ const SingUpPage = () => {
         <>
             <ContentContainer>
                 <Title>Create an Account</Title>
-                <InputWrapper>
-                    <Input placeholder="Full Name"/>
-                    <Input placeholder="Phone Number"/>
-                    <Input placeholder="Email"/>
-                    <Input placeholder="Password"/>
-                    <div style={{marginBottom: '17px'}}>
-                        <Input placeholder="Confirm Password"/>
-                    </div>
-                    <CheckBoxWithLabel
-                        label="By creating an account you agree to our Terms of Service and Privacy Policy"/>
-                </InputWrapper>
+                <Input placeholder="Full Name"/>
+                <Input placeholder="Phone Number"/>
+                <Input placeholder="Email"/>
+                <Input placeholder="Password"/>
+                <Input placeholder="Confirm Password"/>
+                <CheckBoxWithLabel
+                    label="By creating an account you agree to our Terms of Service and Privacy Policy"/>
             </ContentContainer>
             <PrimaryWideButton>Sing up</PrimaryWideButton>
         </>

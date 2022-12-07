@@ -23,7 +23,7 @@ export const LogoText = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #FF3937;
+  color: ${COLOR.PRIMARY};
   font-weight: 900;
   font-size: 28px;
   line-height: 34px;
@@ -48,9 +48,13 @@ export const Label = styled.div`
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
-  @media (max-width: 360px) and (min-width: 320px)  {
-    font-size: 14px;
-  }
+`;
+
+export const Label2 = styled.div`
+  color: ${props => props.primary ? COLOR.ACCENT3 : COLOR.ACCENT1};
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
 `;
 
 export const RightSideContent = styled.div`
@@ -61,15 +65,9 @@ export const RightSideContent = styled.div`
   & > ${Label}{
     margin-right: 0;
   }
-  @media (max-width: 390px) and (min-width: 320px)  {
-    font-size: 14px;
-  }
 `;
 
 export const TextContent = styled.div`
   display: flex;
   justify-content: center;
-  & > div{
-    margin: 21px 0 0 3px;
-  }
 `;
