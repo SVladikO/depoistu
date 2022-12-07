@@ -2,7 +2,7 @@ import React from 'react';
 
 import {
     Wrapper,
-    Label,
+    LinkText,
     LeftSideContent,
     RightSideContent,
     ContentWrapper,

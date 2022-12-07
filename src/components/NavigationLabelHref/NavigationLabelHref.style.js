@@ -6,10 +6,10 @@ export const Wrapper = styled.div`
   justify-content: center;
   margin: 21px 0 25px 3px;
 `;
-export const Label = styled.div`
+export const LinkText = styled.span`
+  color: ${props => props.primary ? COLOR.ACCENT3 : COLOR.ACCENT1};
   margin-left: 3px;
   & > a {
-    color: ${props => props.primary ? COLOR.ACCENT3 : COLOR.ACCENT1};
     margin: 11px auto 15px 0;
     font-weight: 400;
     font-size: 16px;
