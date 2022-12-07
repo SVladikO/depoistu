@@ -21,6 +21,7 @@ import
     NavigationHeader,
     ProductSizeBar,
     CategoryTitle,
+    UserAccountBar
 } from "../../components";
 
 import CountAccumulator from '../../components/CountAccumulator/CountAccumulator';
@@ -32,6 +33,7 @@ import {ReactComponent as LockIcon} from '../../icons/lock.svg';
 import {ReactComponent as LogOutIcon} from "../../icons/logout.svg";
 import {ReactComponent as SandwichIcon} from '../../icons/sandwich.svg';
 import {ReactComponent as LanguageIcon} from "../../icons/language.svg";
+import {ReactComponent as RightAnchor} from "../../icons/right-anchor.svg";
 
 import {COLOR} from "../../utils/theme";
 
@@ -159,6 +161,7 @@ const columns = [
             title: 'AccountMenuRow',
             component: <AccountMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
         },
+        {title: 'UserAccountBar', component: <UserAccountBar icon={RightAnchor} name="Jhon Smith" href="/catalog" status="Basic Member"/>},
     ]
 
 ]
