@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {COLOR} from '../../utils/theme';
 import {ContentContainer} from "../../components";
-import {LinkText} from "../../components/NavigationLabelHref/NavigationLabelHref.style";
+import {Label} from "../../components/NavigationLabelHref/NavigationLabelHref.style";
 
 export const Wrapper = styled.div`
   background-color: ${COLOR.ACCENT2};
@@ -56,8 +56,7 @@ export const LeftSideContent = styled.div`
   width: calc(50% - 5px);
 `;
 
-export const NavLabel = styled(LinkText)`
-  color: ${props => props.primary ? COLOR.ACCENT3 : COLOR.ACCENT1};
+export const NavLabel = styled(Label)`
   margin: 11px auto 15px 0;
   font-weight: 400;
   font-size: 16px;
@@ -72,7 +71,7 @@ export const RightSideContent = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   width: calc(50% - 5px);
-  & > ${LinkText}{
+  & > ${Label}{
     margin-right: 0;
   }
   @media (max-width: 390px) and (min-width: 320px)  {

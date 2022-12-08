@@ -6,8 +6,9 @@ export const Wrapper = styled.div`
   justify-content: center;
   margin: 21px 0 25px 3px;
 `;
-export const LinkText = styled.span`
-  color: ${props => props.primary ? COLOR.ACCENT3 : COLOR.ACCENT1};
+
+export const Label = styled.span`
+  color: ${COLOR.ACCENT1};
   margin-left: 3px;
   & > a {
     margin: 11px auto 15px 0;
@@ -15,4 +16,8 @@ export const LinkText = styled.span`
     font-size: 16px;
     line-height: 19px;
   }
+`;
+
+export const Title = styled(Label)`
+  color: ${COLOR.ACCENT3};
 `;

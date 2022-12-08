@@ -1,10 +1,10 @@
-import {LinkText, Wrapper} from "./NavigationLabelHref.style";
+import {Label, Title, Wrapper} from "./NavigationLabelHref.style";
 
 const NavigationLabelHref = ({label, linkText, href}) => {
     return (
         <Wrapper>
-            <LinkText primary={false}>{label}</LinkText>
-            <a href={href}><LinkText primary>{linkText}</LinkText></a>
+            <Label>{label}</Label>
+            <a href={href}><Title>{linkText}</Title></a>
         </Wrapper>
     );
 };
