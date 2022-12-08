@@ -22,6 +22,7 @@ import
     ProductSizeBar,
     ProductCard,
     CategoryTitle,
+    BottomMenu
 } from "../../components";
 
 import CatalogPage from "./Catalog.page";
@@ -178,6 +179,7 @@ const columns = [
             title: 'AccountMenuRow',
             component: <AccountMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
         },
+        {title: 'BottomMenu', component: <BottomMenu purchases="35"/>}
     ]
 
 ]

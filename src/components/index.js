@@ -21,6 +21,7 @@ import ProductCard from "./ProductCard/ProductCard";
 import NavigationHeader from "./TopNavigation/NavigationHeader";
 import ProductSizeBar from "./ProductSizeBar/ProductSizeBar";
 import {CategoryTitle} from "./CategoryTitle/CategoryTitle.style";
+import BottomMenu from "./BottomMenu/BottomMenu";
 
 
 export {
@@ -44,5 +45,6 @@ export {
     ProductSizeBar,
     ProductCard,
     CategoryTitle,
+    BottomMenu
 }
 
