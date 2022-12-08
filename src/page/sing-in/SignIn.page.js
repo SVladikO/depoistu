@@ -15,7 +15,7 @@ import {
     ContentContainer,
     Input,
     PrimaryWideButton,
-    PrimaryWithIconButton, RowSplitter,
+    PrimaryWithIconButton,
     SecondaryWithIconButton,
 } from "../../components";
 
