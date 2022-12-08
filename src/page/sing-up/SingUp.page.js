@@ -1,5 +1,5 @@
 import Input from "../../components/Input/Input";
-import {Title, InputWrapper} from "./SingUp.style";
+import {Title} from "./SingUp.style";
 import {CheckBoxWithLabel, ContentContainer, PrimaryWideButton} from "../../components";
 
 
