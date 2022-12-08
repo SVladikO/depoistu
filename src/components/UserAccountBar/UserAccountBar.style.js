@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
   align-items: center;
   border-radius: ${BORDER_RADIUS.SECOND};
   padding: 15px 20px;
+  background-color: ${COLOR.ACCENT4};
 `
 export const ContentWrapper = styled.div`
   display: flex;
