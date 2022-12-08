@@ -4,6 +4,7 @@ import {MobileWrapper} from './Catalog.style'
 import MobileDevice from '../../components/MobileDevice';
 import LoadingPage from "../Loading.page";
 import SignInPage from "../sing-in/SignIn.page";
+import ChangePassword from "../change-password/ChangePassword.page";
 
 import {ROUTER} from "../../utils/config";
 import SingUpPage from "../sing-up/SingUp.page";
@@ -21,7 +22,7 @@ const pages = [
     {href: 'OTP verification', },
     {href: 'Pizza', },
     {href: ROUTER.CATEGORY, component: <CategoryPage />},
-    {href: 'Change password'},
+    {href: ROUTER.CHANGE_PASSWORD, component: <ChangePassword />},
     {href: 'Product details burger'},
     {href: 'Product details pizza'},
     {href: 'Product details pizza 2'},

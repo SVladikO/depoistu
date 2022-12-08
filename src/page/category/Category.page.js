@@ -1,16 +1,13 @@
 import React from 'react';
 
 import {
-    Wrapper,
     Content,
     Flex
 } from "./Category.style";
 
 import {
-    NavigationHeader,
     CategoryItem,
 } from "../../components";
-
 
 import {ReactComponent as BakeryIcon} from "../../icons/category/bakery.svg";
 import {ReactComponent as BeverageIcon} from "../../icons/category/beverage.svg";
@@ -34,14 +31,11 @@ const categories = [
 
 const CategoryPage = () => {
     return (
-        <Wrapper>
-            <NavigationHeader href={' '} title="Category"/>
-            <Content>
-                <Flex>
-                    {categories.map(c => <CategoryItem key={c.title} title={c.title}>{<c.icon/>}</CategoryItem>)}
-                </Flex>
-            </Content>
-        </Wrapper>
+        <Content>
+            <Flex>
+                {categories.map(c => <CategoryItem key={c.title} title={c.title}>{<c.icon/>}</CategoryItem>)}
+            </Flex>
+        </Content>
     );
 };
 
