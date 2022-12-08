@@ -55,9 +55,9 @@ const columns = [
         {title: 'ThirdButton', component: <ThirdButton>Payment</ThirdButton>},
     ],
     [
-        {title: 'Input', component: <Input placeholder={`johndoe@mail.com`}/>},
-        {title: 'Input', component: <Input Icon={MailIcon} placeholder={`johndoe@mail.com`}/>},
-        {title: 'Input', component: <Input withSwitcher placeholder={`New password`}/>},
+        {title: 'Input 1', component: <Input placeholder={`johndoe@mail.com`}/>},
+        {title: 'Input 2', component: <Input Icon={MailIcon} placeholder={`johndoe@mail.com`}/>},
+        {title: 'Input 3', component: <Input withSwitcher placeholder={`New password`}/>},
         {
             title: 'CheckBoxWithLabel',
             component: <CheckBoxWithLabel
@@ -182,8 +182,10 @@ const columns = [
 
 ]
 
+document.body.style.backgroundColor = '#d8d8d8'
+
 function ComponentsPage() {
-    const setLightBackground = useCallback(() => document.body.style.backgroundColor = '#ffffff', []);
+    const setLightBackground = useCallback(() => document.body.style.backgroundColor = '#d8d8d8', []);
     const setDarkBackground = useCallback(() => document.body.style.backgroundColor = '#001993', []);
 
     function renderRows(components) {

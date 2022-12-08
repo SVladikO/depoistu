@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import {COLOR} from '../../utils/theme';
-
 
 export const Flex = styled.div`
   display: flex;
@@ -11,17 +9,15 @@ export const Flex = styled.div`
   & > div {
     margin: 15px 0 0;
   }
-`;
-export const Wrapper = styled.div`
-  background-color: ${COLOR.ACCENT2};
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-  justify-content: start;
+  
+  & > div:first-child,
+  & > div:nth-child(2) {
+    margin: 0;
+  }
 `;
 
 export const Content = styled.div`
   width: 325px;
-  margin: 18px auto 0;
+  margin: 0 auto;
 `;
 
