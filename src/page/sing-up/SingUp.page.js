@@ -23,10 +23,10 @@ const SingUpPage = () => {
                         label="By creating an account you agree to our Terms of Service and Privacy Policy"/>
                 </InputWrapper>
             </Container>
-            <NavigationLabelHref
-                                linkText="Sing up!"
-                                href={`${ROUTER.SING_IN}`}
-                                label="Already have an account?"/>
+            <NavigationLabelHref hrefTitle="Sing up!"
+                                 href={`${ROUTER.SING_IN}`}
+                                 label="Already have an account?"
+                                 />
             <ButtonWrapper>
                 <PrimaryWideButton>Sing up</PrimaryWideButton>
             </ButtonWrapper>

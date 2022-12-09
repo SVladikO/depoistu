@@ -53,10 +53,10 @@ const SignInPage = () => {
                             <PrimaryWithIconButton><GoogleIcon/>Google</PrimaryWithIconButton>
                         </RightSideContent>
                     </ContentWrapper>
-                    <NavigationLabelHref
-                                        linkText="Sing in!"
-                                        href={`${ROUTER.SING_UP}`}
-                                        label="Already have an account?"/>
+                    <NavigationLabelHref hrefTitle="Sing in!"
+                                         href={`${ROUTER.SING_UP}`}
+                                         label="Already have an account?"
+                                         />
                 </Form>
                 <PrimaryWideButton><span>Sing in</span></PrimaryWideButton>
             </Wrapper>
