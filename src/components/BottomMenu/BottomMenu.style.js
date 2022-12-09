@@ -4,26 +4,27 @@ import {hexToRgbA} from "../../utils/utils";
 
 
 export const Wrapper = styled.div`
-  width: 100%;
   box-shadow: 0 0 22px ${hexToRgbA('#000', 0.08)};
   background-color: ${COLOR.ACCENT4};
   border-radius: ${BORDER_RADIUS.FIRST} ${BORDER_RADIUS.FIRST} 0 0;
   padding: 14px 25px 15px 25px;
-`;
-
-export const ContentWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 100%;
 `;
 
-export const Item = styled.div`
+export const MenuItem = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
   align-items: center;
   position: relative;
+  & > *:first-child{
+    width: 25px;
+    height: 22px;
+    display: block;
+    margin-bottom: 5px;
+  }
 `;
 
 export const PurchaseCounter = styled.div`
@@ -42,12 +43,6 @@ export const PurchaseCounter = styled.div`
     line-height: 14px;
     border-radius: ${BORDER_RADIUS.CIRCLE};
 `
-export const Picture = styled.svg`
-  width: 25px;
-  height: 22px;
-  display: block;
-  margin-bottom: 5px;
-`;
 
 
 export const Label = styled.div`

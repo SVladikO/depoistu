@@ -179,7 +179,7 @@ const columns = [
             title: 'AccountMenuRow',
             component: <AccountMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
         },
-        {title: 'BottomMenu', component: <BottomMenu purchases="35"/>}
+        {title: 'BottomMenu', component: <BottomMenu basket="35"/>}
     ]
 
 ]
