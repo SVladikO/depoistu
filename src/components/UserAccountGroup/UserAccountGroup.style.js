@@ -2,8 +2,9 @@ import styled from "styled-components";
 import {BORDER_RADIUS, COLOR,GRADIENT} from "../../utils/theme";
 
 
-export const Wrapper = styled.div`
+export const RowsWrapper = styled.div`
   background: ${COLOR.ACCENT4};
+  padding: 5px 0 10px;
 `
 export const GroupTitle = styled.div`
   display: flex;

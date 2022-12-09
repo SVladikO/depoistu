@@ -1,12 +1,11 @@
 import React from 'react';
-import {Wrapper, GroupTitle, Content} from "./UserOptionGroup.style";
-import {ReactComponent as BackArrow} from "../../icons/back_arrow.svg";
+import {Wrapper, GroupTitle, RowsWrapper} from "./UserOptionGroup.style";
 
 const UserOptionGroup = ({groupTitle, children}) => {
     return (
-        <Wrapper>
+        <Wrapper className="user-option-group-wrapper">
             <GroupTitle>{groupTitle}</GroupTitle>
-            <Content>{children}</Content>
+            <RowsWrapper className="user-option-group-rows-wrapper">{children}</RowsWrapper>
         </Wrapper>
     );
 };

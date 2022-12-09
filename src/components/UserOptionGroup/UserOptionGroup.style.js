@@ -1,10 +1,11 @@
 import styled from "styled-components";
-import {COLOR} from "../../utils/theme";
+import {BORDER_RADIUS, COLOR} from "../../utils/theme";
 import {hexToRgbA} from "../../utils/utils";
 
 
 export const Wrapper = styled.div`
   background: ${COLOR.ACCENT4};  
+  border-radius: 0 0 ${BORDER_RADIUS.SECOND} ${BORDER_RADIUS.SECOND};
 `;
 
 export const GroupTitle = styled.div`
@@ -17,7 +18,6 @@ export const GroupTitle = styled.div`
   background: ${hexToRgbA(COLOR.ACCENT3, 0.1)};;
 `
 
-export const Content = styled.div`
-  background: ${COLOR.ACCENT4};
-  margin-bottom: 30px;
+export const RowsWrapper = styled.div`
+  padding: 5px 0 10px;
 `

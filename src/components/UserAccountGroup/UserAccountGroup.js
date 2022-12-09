@@ -1,12 +1,11 @@
 import React from 'react';
-import {Wrapper, GroupTitle} from "./UserAccountGroup.style";
-import {ReactComponent as BackArrow} from "../../icons/back_arrow.svg";
+import {RowsWrapper, GroupTitle} from "./UserAccountGroup.style";
 
 const UserAccountGroup = ({groupTitle, children}) => {
     return (
         <>
             <GroupTitle>{groupTitle}</GroupTitle>
-            <Wrapper>{children}</Wrapper>
+            <RowsWrapper className="user-account-rows-wrapper">{children}</RowsWrapper>
         </>
     );
 };
