@@ -159,7 +159,7 @@ const columns = [
             title: 'AccountMenuRow',
             component: <AccountMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
         },
-        {title: 'NavigationLabelHref', component: <NavigationLabelHref label="Sing up!"/>}
+        {title: 'NavigationLabelHref', component: <NavigationLabelHref label="Already have an account?" href="/catalog" hrefTitle="Sing up!"/>}
     ]
 
 ]
