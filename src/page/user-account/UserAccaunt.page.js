@@ -21,8 +21,8 @@ const UserAccountPage = () => {
                 <AccountMenuRow icon={LogOutIcon} title="Only change handler" changeHandler={() => alert('clicked')}/>
             </UserAccountGroup>
             <UserOptionGroup  groupTitle="More Options">
-                <AccountMenuRow icon={LockIcon} title={`Change Password`} toggleHandler={() => alert('clicked toggle')} toggleStatus={true}/>
-                <AccountMenuRow icon={LockIcon} title={`Change Password`} toggleHandler={() => alert('clicked toggle')} toggleStatus={true}/>
+                <AccountMenuRow icon={LockIcon} title={`Change Password`} toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>
+                <AccountMenuRow icon={LockIcon} title={`Change Password`} toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>
             </UserOptionGroup>
         </>
     );
