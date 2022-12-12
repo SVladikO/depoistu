@@ -14,6 +14,7 @@ export const GroupTitle = styled.div`
   height: 45px;
   padding: 0 0 0 30px;
   font-size: 18px;
+  font-weight: 600;
   color: ${COLOR.PRIMARY};
   background: ${hexToRgbA(COLOR.ACCENT3, 0.1)};;
 `
