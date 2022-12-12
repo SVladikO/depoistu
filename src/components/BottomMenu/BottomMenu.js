@@ -1,4 +1,4 @@
-import {Wrapper, MenuItem, Label, PurchaseCounter} from './BottomMenu.style';
+import {Wrapper, MenuItem, Label, PurchaseCounter, HomeLabel} from './BottomMenu.style';
 import {ReactComponent as HomeIcon} from "../../icons/home.svg";
 import {ReactComponent as CartIcon} from "../../icons/cart.svg";
 import {ReactComponent as SearchIcon} from "../../icons/search.svg";
@@ -9,7 +9,7 @@ const BottomMenu = ({basket}) => {
         <Wrapper>
             <MenuItem>
                 <HomeIcon/>
-                <Label>Home</Label>
+                <HomeLabel>Home</HomeLabel>
             </MenuItem>
             <MenuItem>
                 <CartIcon/>
