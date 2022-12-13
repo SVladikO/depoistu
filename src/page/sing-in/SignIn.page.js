@@ -49,7 +49,7 @@ const SignInPage = () => {
                     </RightSideContent>
                 </ContentWrapper>
                 <NavigationLabelHref
-                    hrefTitle="Sing in!"
+                    hrefTitle="Sing up!"
                     href={`${ROUTER.SING_UP}`}
                     label="Already have an account?"
                 />

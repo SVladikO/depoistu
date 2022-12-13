@@ -1,13 +1,13 @@
 import Input from "../../components/Input/Input";
-import {Title} from "./SingUp.style";
-import {CheckBoxWithLabel, ContentContainer, PrimaryWideButton} from "../../components";
+import {Title,Container,Wrapper} from "./SingUp.style";
+import {CheckBoxWithLabel, PrimaryWideButton} from "../../components";
 import NavigationLabelHref from "../../components/NavigationLabelHref/NavigationLabelHref";
 import {ROUTER} from '../../utils/config';
 
 const SingUpPage = () => {
     return (
         <>
-            <ContentContainer>
+            <Container>
                 <Title>Create an Account</Title>
                 <Input placeholder="Full Name"/>
                 <Input placeholder="Phone Number"/>
@@ -16,12 +16,14 @@ const SingUpPage = () => {
                 <Input placeholder="Confirm Password"/>
                 <CheckBoxWithLabel
                     label="By creating an account you agree to our Terms of Service and Privacy Policy"/>
-            </ContentContainer>
-            <NavigationLabelHref
-                hrefTitle="Sing up!"
-                href={`${ROUTER.SING_IN}`}
-                label="Already have an account?"
-            />
+            </Container>
+            <Wrapper>
+                <NavigationLabelHref
+                    hrefTitle="Sing in!"
+                    href={`${ROUTER.SING_IN}`}
+                    label="Already have an account?"
+                />
+            </Wrapper>
             <PrimaryWideButton>Sing up</PrimaryWideButton>
         </>
     );

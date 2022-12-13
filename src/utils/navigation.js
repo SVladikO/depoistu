@@ -41,12 +41,21 @@ const routes = [
     {path: ROUTER.CHANGE_PASSWORD, element: ChangePasswordPage},
 ].map(r => <Route key={r.path} path={r.path} element={
     <MobileDevice>
-        <NavigationHeader href={' '} title="Sign in"/>
+        <NavigationHeader href={' '} title={rightStr(r.path)}/>
         <Centralicer>
             <r.element/>
         </Centralicer>
     </MobileDevice>
 }/>);
+
+/*
+* I really didn't know how to make a right string in Navigation header for current component
+* so I made this function
+* */
+
+function rightStr(str){
+    return `${str[0].toUpperCase()}${str.slice(1)}`.replaceAll('-',' ');
+}
 
 export const getRoutes = () => {
     return (

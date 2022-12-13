@@ -4,7 +4,7 @@ import {COLOR} from "../../utils/theme";
 export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
-  margin: 21px 0 25px 3px;
+  margin: 15px 0 30px 3px;
 `;
 
 export const Label = styled.span`

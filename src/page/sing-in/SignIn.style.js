@@ -11,7 +11,7 @@ export const Content = styled.div`
   border-radius: 50%;
   background: ${COLOR.ACCENT4};
   border: none;
-  margin: 0 auto 28px; 
+  margin: 0 auto 31px; 
   padding: 45px;
   & > svg {
     width: 140px;
@@ -38,8 +38,8 @@ export const ContentWrapper = styled.div`
 export const LeftSideContent = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   width: calc(50% - 5px);
+  justify-content: start;
 `;
 
 export const Label = styled.div`
@@ -55,6 +55,8 @@ export const NavLabel = styled.div`
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
+  text-align: start;
+  padding-bottom: 15px;
 `;
 
 export const RightSideContent = styled.div`
@@ -67,7 +69,3 @@ export const RightSideContent = styled.div`
   }
 `;
 
-export const TextContent = styled.div`
-  display: flex;
-  justify-content: center;
-`;
