@@ -50,7 +50,7 @@ export const Label = styled.div`
   line-height: 19px;
 `;
 
-export const Label2 = styled.div`
+export const NavLabel = styled.div`
   color: ${props => props.primary ? COLOR.ACCENT3 : COLOR.ACCENT1};
   font-weight: 400;
   font-size: 16px;

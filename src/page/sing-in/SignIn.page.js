@@ -1,13 +1,12 @@
 import React from 'react';
 
 import {
-    Wrapper,
     LeftSideContent,
     RightSideContent,
     ContentWrapper,
     Content,
     LogoText,
-    NavLabel, Form
+    NavLabel
 } from "./SignIn.style";
 
 import {
@@ -16,7 +15,7 @@ import {
     PrimaryWithIconButton,
     SecondaryWithIconButton,
     ContentContainer,
-    NavigationHeader
+    NavigationLabelHref
 } from "../../components";
 
 import translations from "../../utils/translations";
@@ -27,39 +26,35 @@ import {ReactComponent as MailIcon} from "../../icons/mail.svg";
 
 import {ReactComponent as GoogleIcon} from "../../icons/google.svg";
 import {ReactComponent as FacebookIcon} from "../../icons/facebook.svg";
-import NavigationLabelHref from "../../components/NavigationLabelHref/NavigationLabelHref";
 import {ROUTER} from '../../utils/config';
 
 const SignInPage = () => {
     return (
         <>
-            <NavigationHeader href={' '} title="Sign in"/>
-            <Wrapper>
-                <Content>
-                    <LogoIcon/>
-                    <LogoText>{translations.company_name}</LogoText>
-                </Content>
-                <ContentContainer>
-                    <Input Icon={MailIcon} placeholder={`johndoe@mail.com`}/>
-                    <Input Icon={LockIcon} placeholder={`*********************`}/>
-                    <ContentWrapper>
-                        <LeftSideContent>
-                            <NavLabel primary={false}>Or login with</NavLabel>
-                            <SecondaryWithIconButton><FacebookIcon/>facebook</SecondaryWithIconButton>
-                        </LeftSideContent>
-                        <RightSideContent>
-                            <NavLabel primary>Forget password ?</NavLabel>
-                            <PrimaryWithIconButton><GoogleIcon/>Google</PrimaryWithIconButton>
-                        </RightSideContent>
-                    </ContentWrapper>
-                    <NavigationLabelHref
-                        hrefTitle="Sing in!"
-                        href={`${ROUTER.SING_UP}`}
-                        label="Already have an account?"
-                    />
-                </ContentContainer>
-                <PrimaryWideButton><span>Sing in</span></PrimaryWideButton>
-            </Wrapper>
+            <Content>
+                <LogoIcon/>
+                <LogoText>{translations.company_name}</LogoText>
+            </Content>
+            <ContentContainer>
+                <Input Icon={MailIcon} placeholder={`johndoe@mail.com`}/>
+                <Input Icon={LockIcon} placeholder={`*********************`}/>
+                <ContentWrapper>
+                    <LeftSideContent>
+                        <NavLabel primary={false}>Or login with</NavLabel>
+                        <SecondaryWithIconButton><FacebookIcon/>facebook</SecondaryWithIconButton>
+                    </LeftSideContent>
+                    <RightSideContent>
+                        <NavLabel primary>Forget password ?</NavLabel>
+                        <PrimaryWithIconButton><GoogleIcon/>Google</PrimaryWithIconButton>
+                    </RightSideContent>
+                </ContentWrapper>
+                <NavigationLabelHref
+                    hrefTitle="Sing in!"
+                    href={`${ROUTER.SING_UP}`}
+                    label="Already have an account?"
+                />
+            </ContentContainer>
+            <PrimaryWideButton><span>Sing in</span></PrimaryWideButton>
         </>
     );
 };
