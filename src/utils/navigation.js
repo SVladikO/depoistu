@@ -22,7 +22,7 @@ export const MobileDevice = styled.div`
   min-width: ${DEVICE_WIDTH.MIN};
   max-width: ${DEVICE_WIDTH.MAX};
   margin: 0 auto;
-  height: 100vh;
+  min-height: 100vh;
   background: ${COLOR.ACCENT2};
 
 `;
