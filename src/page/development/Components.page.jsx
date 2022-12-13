@@ -38,6 +38,8 @@ import {ReactComponent as SandwichIcon} from '../../icons/sandwich.svg';
 import {ReactComponent as LanguageIcon} from "../../icons/language.svg";
 
 import {COLOR} from "../../utils/theme";
+import UserAccountGroup from "../../components/UserAccountGroup/UserAccountGroup";
+import UserOptionGroup from "../../components/UserOptionGroup/UserOptionGroup";
 
 const colors = Object.keys(COLOR).map(key =>
     ({title: key, component: <ColorCircle key={key} bg={COLOR[key]}/>, value: COLOR[key], width: '50px'})
@@ -99,7 +101,7 @@ const columns = [
                     ];
 
                     function handleClick(m) {
-                        alert('Clicked on size: ' + m.size + ' with price: ' + m.price)
+                        console.log('Clicked on size: ' + m.size + ' with price: ' + m.price)
                     }
 
                     return <ProductSizeBar buttons={buttons} selectedSize={selectedSize} handleClick={handleClick}
@@ -117,7 +119,7 @@ const columns = [
                     ];
 
                     function handleClick(m) {
-                        alert('Clicked on size: ' + m.size + ' with price: ' + m.price)
+                        console.log('Clicked on size: ' + m.size + ' with price: ' + m.price)
                     }
 
                     return <ProductSizeBar buttons={buttons} handleClick={handleClick} selectedSize={selectedSize}/>
@@ -142,21 +144,21 @@ const columns = [
                     const selectedTab = tabs[0];
 
                     function handleClick(c) {
-                        alert(`${tabs[c]}`)
+                        console.log(`${tabs[c]}`)
                     }
 
                     return <HistoryTabBar selectedTab={selectedTab} tabs={tabs} handleClick={handleClick}/>
                 })()
         },
         {
-            title: 'HistoryTabBar in NavigationHeader', component:
+            title: 'HistoryTabBar in UserOptionGroup', component:
                 <NavigationHeader href={' '} title="category">
                     {(function () {
                         const tabs = ['Completed', 'Upcoming', 'Cancelled'];
                         const selectedTab = tabs[0];
 
                         function handleClick(c) {
-                            alert(`${tabs[c]}`)
+                            console.log(`${tabs[c]}`)
                         }
 
                         return <HistoryTabBar selectedTab={selectedTab} tabs={tabs} handleClick={handleClick}/>
@@ -167,17 +169,29 @@ const columns = [
     [
         {
             title: 'AccountMenuRow',
-            component: <AccountMenuRow icon={LockIcon} title={`Change Password`}
-                                       toggleHandler={() => alert('clicked toggle')} toggleStatus={true}/>
+            component: <AccountMenuRow icon={LockIcon} title={`Change Password`} toggleHandler={() => {}} toggleStatus={true}/>
         },
         {
             title: 'AccountMenuRow',
-            component: <AccountMenuRow icon={LogOutIcon} title="Only change handler"
-                                       changeHandler={() => alert('clicked')}/>
+            component: <AccountMenuRow icon={LogOutIcon} title="Only change handler" changeHandler={() => console.log('clicked')}/>
         },
         {
             title: 'AccountMenuRow',
             component: <AccountMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
+        },
+        {
+            title: 'UserAccountGroup', component:
+                <UserAccountGroup groupTitle="Accounts">
+                    <AccountMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
+                    <AccountMenuRow icon={LogOutIcon} title="Only change handler" changeHandler={() => console.log('clicked')}/>
+                </UserAccountGroup>
+        },
+        {
+            title: 'UserOptionGroup', component:
+                <UserOptionGroup groupTitle="Accounts">
+                    <AccountMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
+                    <AccountMenuRow icon={LogOutIcon} title="Only change handler" changeHandler={() => console.log('clicked')}/>
+                </UserOptionGroup>
         },
         {title: 'UserAccountBar', component: <UserAccountBar fullName="Jhon Smith" href="/catalog" status="Basic Member"/>},
     ]

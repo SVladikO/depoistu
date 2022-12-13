@@ -17,7 +17,7 @@ const AccountMenuRow = ({
 
     const renderWithToggle = () => {
         return (
-            <Wrapper>
+            <Wrapper className="account-menu-row">
                 <LeftContent>
                     <Icon/>
                     <Title>{title}</Title>
@@ -31,7 +31,7 @@ const AccountMenuRow = ({
     const renderAsLink = () => {
         return (
             <Link to={href}>
-                <Wrapper>
+                <Wrapper className="account-menu-row">
                     <LeftContent>
                         <Icon/>
                         <Title>{title}</Title>
@@ -46,7 +46,7 @@ const AccountMenuRow = ({
     }
     const renderWithHandler = () => {
         return (
-            <Wrapper onClick={changeHandler}>
+            <Wrapper onClick={changeHandler} className="account-menu-row">
                 <LeftContent>
                     <Icon/>
                     <Title>{title}</Title>

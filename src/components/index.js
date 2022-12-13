@@ -23,6 +23,8 @@ import NavigationHeader from "./TopNavigation/NavigationHeader";
 import ProductSizeBar from "./ProductSizeBar/ProductSizeBar";
 import {CategoryTitle} from "./CategoryTitle/CategoryTitle.style";
 import UserAccountBar from "./UserAccountBar/UserAccountBar";
+import UserAccountGroup from "./UserAccountGroup/UserAccountGroup";
+import UserOptionGroup from "./UserOptionGroup/UserOptionGroup";
 
 export {
     AccountMenuRow,
@@ -47,5 +49,7 @@ export {
     ContentContainer,
     NavigationHeader,
     UserAccountBar,
+    UserAccountGroup,
+    UserOptionGroup,
 }
 

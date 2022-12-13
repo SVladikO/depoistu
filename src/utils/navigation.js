@@ -17,6 +17,7 @@ import {DEVICE_WIDTH} from "./theme";
 import CategoryPage from "../page/category/Category.page";
 import ChangePasswordPage from "../page/change-password/ChangePassword.page";
 import {NavigationHeader} from "../components";
+import UserAccauntPage from "../page/user-account/UserAccaunt.page";
 
 export const MobileDevice = styled.div`
   min-width: ${DEVICE_WIDTH.MIN};
@@ -34,16 +35,18 @@ export const Centralicer = styled.div`
   padding: 0 25px 25px 25px;
 `;
 
+// Creation router +
 const routes = [
-    {path: ROUTER.SING_IN, element: SignInPage},
-    {path: ROUTER.SING_UP, element: SingUpPage},
-    {path: ROUTER.CATEGORY, element: CategoryPage},
-    {path: ROUTER.CHANGE_PASSWORD, element: ChangePasswordPage},
+    {path: ROUTER.SING_IN, component: SignInPage},
+    {path: ROUTER.SING_UP, component: SingUpPage},
+    {path: ROUTER.CATEGORY, component: CategoryPage},
+    {path: ROUTER.CHANGE_PASSWORD, component: ChangePasswordPage},
+    {path: ROUTER.USER_ACCOUNT, component: UserAccauntPage},
 ].map(r => <Route key={r.path} path={r.path} element={
     <MobileDevice>
         <NavigationHeader href={' '} title="Sign in"/>
         <Centralicer>
-            <r.element/>
+            <r.component/>
         </Centralicer>
     </MobileDevice>
 }/>);
