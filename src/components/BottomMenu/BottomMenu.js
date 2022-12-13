@@ -1,31 +1,29 @@
-import {Wrapper, ContentWrapper, Item, Picture, Label, PurchaseCounter} from './BottomMenu.style';
-import {ReactComponent as Home} from "../../icons/home.svg";
-import {ReactComponent as Cart} from "../../icons/cart.svg";
-import {ReactComponent as Search} from "../../icons/search.svg";
-import {ReactComponent as User} from "../../icons/user.svg";
+import {Wrapper, MenuItem, Label, PurchaseCounter, HomeLabel} from './BottomMenu.style';
+import {ReactComponent as HomeIcon} from "../../icons/home.svg";
+import {ReactComponent as CartIcon} from "../../icons/cart.svg";
+import {ReactComponent as SearchIcon} from "../../icons/search.svg";
+import {ReactComponent as UserIcon} from "../../icons/user.svg";
 
-const BottomMenu = ({purchases}) => {
+const BottomMenu = ({basket}) => {
     return (
         <Wrapper>
-            <ContentWrapper>
-                <Item>
-                    <Picture><Home/></Picture>
-                    <Label>Home</Label>
-                </Item>
-                <Item>
-                    <Picture><Cart/></Picture>
-                    <Label>Cart</Label>
-                    <PurchaseCounter>{purchases}</PurchaseCounter>
-                </Item>
-                <Item>
-                    <Picture><Search primary="true"/></Picture>
-                    <Label>Search</Label>
-                </Item>
-                <Item>
-                    <Picture><User/></Picture>
-                    <Label>Account</Label>
-                </Item>
-            </ContentWrapper>
+            <MenuItem>
+                <HomeIcon/>
+                <HomeLabel>Home</HomeLabel>
+            </MenuItem>
+            <MenuItem>
+                <CartIcon/>
+                <Label>Cart</Label>
+                <PurchaseCounter>{basket}</PurchaseCounter>
+            </MenuItem>
+            <MenuItem>
+                <SearchIcon/>
+                <Label>Search</Label>
+            </MenuItem>
+            <MenuItem>
+                <UserIcon/>
+                <Label>Account</Label>
+            </MenuItem>
         </Wrapper>
     );
 };
