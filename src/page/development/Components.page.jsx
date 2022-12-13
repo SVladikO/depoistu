@@ -20,9 +20,13 @@ import
     ContentContainer,
     NavigationHeader,
     ProductSizeBar,
+    ProductCard,
     CategoryTitle,
+    UserAccountBar,
     NavigationLabelHref
 } from "../../components";
+
+import CatalogPage from "./Catalog.page";
 
 import CountAccumulator from '../../components/CountAccumulator/CountAccumulator';
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
@@ -52,9 +56,9 @@ const columns = [
         {title: 'ThirdButton', component: <ThirdButton>Payment</ThirdButton>},
     ],
     [
-        {title: 'Input', component: <Input placeholder={`johndoe@mail.com`}/>},
-        {title: 'Input', component: <Input Icon={MailIcon} placeholder={`johndoe@mail.com`}/>},
-        {title: 'Input', component: <Input withSwitcher placeholder={`New password`}/>},
+        {title: 'Input 1', component: <Input placeholder={`johndoe@mail.com`}/>},
+        {title: 'Input 2', component: <Input Icon={MailIcon} placeholder={`johndoe@mail.com`}/>},
+        {title: 'Input 3', component: <Input withSwitcher placeholder={`New password`}/>},
         {
             title: 'CheckBoxWithLabel',
             component: <CheckBoxWithLabel
@@ -66,8 +70,24 @@ const columns = [
     [
 
         {title: 'CategoryItem', component: <CategoryItem title="Sandwich"><SandwichIcon/></CategoryItem>},
+        {
+            title: 'ProductCard',
+            component:
+                <ProductCard
+                    data={{
+                        image: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
+                        discont: '-10',
+                        rating: '4.5',
+                        buttons: [
+                            {price: 20, size: 1},
+                            {price: 20, size: 2},
+                            {price: 30, size: 3},
+                        ],
+                    }}
+                />
+        },
         {title: 'Rating', component: <Rating>{`4.9`}</Rating>},
-        {title: 'Discount', component: <Discount>{`-10%`}</Discount>},
+        {title: 'Discount', component: <Discount>{`-10`}</Discount>},
         {
             title: 'ProductSizeBar', component:
                 (function () {
@@ -159,13 +179,16 @@ const columns = [
             title: 'AccountMenuRow',
             component: <AccountMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
         },
+        {title: 'UserAccountBar', component: <UserAccountBar fullName="Jhon Smith" href="/catalog" status="Basic Member"/>},
         {title: 'NavigationLabelHref', component: <NavigationLabelHref label="Already have an account?" href="/catalog" hrefTitle="Sing up!"/>}
     ]
 
 ]
 
+document.body.style.backgroundColor = '#d8d8d8'
+
 function ComponentsPage() {
-    const setLightBackground = useCallback(() => document.body.style.backgroundColor = '#ffffff', []);
+    const setLightBackground = useCallback(() => document.body.style.backgroundColor = '#d8d8d8', []);
     const setDarkBackground = useCallback(() => document.body.style.backgroundColor = '#001993', []);
 
     function renderRows(components) {
@@ -195,6 +218,7 @@ function ComponentsPage() {
                     <Column key={index}>{renderRows(components)}</Column>)
                 }
             </Wrapper>
+            <CatalogPage />
         </div>
     )
 }

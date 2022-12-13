@@ -15,6 +15,7 @@ import {
     PrimaryWideButton,
     PrimaryWithIconButton,
     SecondaryWithIconButton,
+    ContentContainer,
     NavigationHeader
 } from "../../components";
 
@@ -38,11 +39,9 @@ const SignInPage = () => {
                     <LogoIcon/>
                     <LogoText>{translations.company_name}</LogoText>
                 </Content>
-                <Form>
+                <ContentContainer>
                     <Input Icon={MailIcon} placeholder={`johndoe@mail.com`}/>
-                    <div style={{marginTop: '11px'}}>
-                        <Input Icon={LockIcon} placeholder={`*********************`}/>
-                    </div>
+                    <Input Icon={LockIcon} placeholder={`*********************`}/>
                     <ContentWrapper>
                         <LeftSideContent>
                             <NavLabel primary={false}>Or login with</NavLabel>
@@ -53,11 +52,12 @@ const SignInPage = () => {
                             <PrimaryWithIconButton><GoogleIcon/>Google</PrimaryWithIconButton>
                         </RightSideContent>
                     </ContentWrapper>
-                    <NavigationLabelHref hrefTitle="Sing in!"
-                                         href={`${ROUTER.SING_UP}`}
-                                         label="Already have an account?"
-                                         />
-                </Form>
+                    <NavigationLabelHref
+                        hrefTitle="Sing in!"
+                        href={`${ROUTER.SING_UP}`}
+                        label="Already have an account?"
+                    />
+                </ContentContainer>
                 <PrimaryWideButton><span>Sing in</span></PrimaryWideButton>
             </Wrapper>
         </>

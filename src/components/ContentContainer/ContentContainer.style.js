@@ -3,9 +3,15 @@ import {BORDER_RADIUS, COLOR} from "../../utils/theme";
 
 export const ContentContainer = styled.div`
   background: ${COLOR.ACCENT4};
-  width: 100%;
   text-align: center;
-  padding: 20px 25px 35px 25px;
+  padding: 30px 25px;
   border-radius: ${BORDER_RADIUS.SECOND};
-  margin: 0 auto 25px auto;
+  margin-bottom: 20px;
+  
+  & > * {
+    margin-bottom: 15px;
+  }
+  & > *:last-child {
+    margin-bottom: 0;
+  }
 `
