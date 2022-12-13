@@ -11,6 +11,7 @@ import Input from "./Input/Input";
 import Price from "./Price/Price";
 import Rating from "./Rating/Rating";
 import CategoryItem from "./CategoryItem/CategoryItem";
+import {RowSplitterStyle as RowSplitter} from "./RowSplitter/RowSplitter.style";
 import CheckBoxWithLabel from "./CheckBoxWithLabel/CheckBoxWithLabel";
 import ToggleCheckbox from "./ToggleCheckbox/ToggleCheckbox";
 import AccountMenuRow from "./AccountMenuRow/AccountMenuRow";
@@ -22,29 +23,31 @@ import NavigationHeader from "./TopNavigation/NavigationHeader";
 import ProductSizeBar from "./ProductSizeBar/ProductSizeBar";
 import {CategoryTitle} from "./CategoryTitle/CategoryTitle.style";
 import BottomMenu from "./BottomMenu/BottomMenu";
-
+import UserAccountBar from "./UserAccountBar/UserAccountBar";
 
 export {
-    Input,
-    Price,
-    Rating,
-    HistoryTabBar,
-    Discount,
-    ThirdButton,
-    CategoryItem,
     AccountMenuRow,
+    CategoryTitle,
+    CategoryItem,
+    Discount,
+    Input,
+    Rating,
+    RowSplitter,
+    HistoryTabBar,
+    ThirdButton,
     ToggleCheckbox,
-    SecondaryButton,
     CheckBoxWithLabel,
+    Price,
+    ProductCard,
+    ProductSizeBar,
     PrimaryWideButton,
     PrimaryRoundedButton,
     PrimaryWithIconButton,
     SecondaryWithIconButton,
+    SecondaryButton,
     ContentContainer,
     NavigationHeader,
-    ProductSizeBar,
-    ProductCard,
-    CategoryTitle,
-    BottomMenu
+    UserAccountBar,
+    BottomMenu,
 }
 

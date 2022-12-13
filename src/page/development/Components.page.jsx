@@ -22,6 +22,7 @@ import
     ProductSizeBar,
     ProductCard,
     CategoryTitle,
+    UserAccountBar,
     BottomMenu
 } from "../../components";
 
@@ -56,9 +57,9 @@ const columns = [
         {title: 'ThirdButton', component: <ThirdButton>Payment</ThirdButton>},
     ],
     [
-        {title: 'Input', component: <Input placeholder={`johndoe@mail.com`}/>},
-        {title: 'Input', component: <Input Icon={MailIcon} placeholder={`johndoe@mail.com`}/>},
-        {title: 'Input', component: <Input withSwitcher placeholder={`New password`}/>},
+        {title: 'Input 1', component: <Input placeholder={`johndoe@mail.com`}/>},
+        {title: 'Input 2', component: <Input Icon={MailIcon} placeholder={`johndoe@mail.com`}/>},
+        {title: 'Input 3', component: <Input withSwitcher placeholder={`New password`}/>},
         {
             title: 'CheckBoxWithLabel',
             component: <CheckBoxWithLabel
@@ -179,13 +180,16 @@ const columns = [
             title: 'AccountMenuRow',
             component: <AccountMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
         },
+        {title: 'UserAccountBar', component: <UserAccountBar fullName="Jhon Smith" href="/catalog" status="Basic Member"/>},
         {title: 'BottomMenu', component: <BottomMenu purchases="35"/>}
     ]
 
 ]
 
+document.body.style.backgroundColor = '#d8d8d8'
+
 function ComponentsPage() {
-    const setLightBackground = useCallback(() => document.body.style.backgroundColor = '#ffffff', []);
+    const setLightBackground = useCallback(() => document.body.style.backgroundColor = '#d8d8d8', []);
     const setDarkBackground = useCallback(() => document.body.style.backgroundColor = '#001993', []);
 
     function renderRows(components) {
