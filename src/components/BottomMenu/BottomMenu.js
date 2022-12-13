@@ -14,7 +14,7 @@ const BottomMenu = ({basket}) => {
             <MenuItem>
                 <CartIcon/>
                 <Label>Cart</Label>
-                <PurchaseCounter>{basket}</PurchaseCounter>
+                {basket ? <PurchaseCounter>{basket}</PurchaseCounter> : null}
             </MenuItem>
             <MenuItem>
                 <SearchIcon/>
