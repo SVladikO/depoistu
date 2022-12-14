@@ -26,6 +26,7 @@ import UserAccountBar from "./UserAccountBar/UserAccountBar";
 import NavigationLabelHref from './NavigationLabelHref/NavigationLabelHref';
 import UserAccountGroup from "./UserAccountGroup/UserAccountGroup";
 import UserOptionGroup from "./UserOptionGroup/UserOptionGroup";
+import BottomMenu from "./BottomMenu/BottomMenu";
 
 export {
     AccountMenuRow,
@@ -36,6 +37,7 @@ export {
     Rating,
     RowSplitter,
     HistoryTabBar,
+    BottomMenu,
     ThirdButton,
     ToggleCheckbox,
     CheckBoxWithLabel,

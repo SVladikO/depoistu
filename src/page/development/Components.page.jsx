@@ -23,7 +23,8 @@ import
     ProductCard,
     CategoryTitle,
     UserAccountBar,
-    NavigationLabelHref
+    NavigationLabelHref,
+    BottomMenu,
 } from "../../components";
 
 import CatalogPage from "./Catalog.page";
@@ -194,7 +195,9 @@ const columns = [
                 </UserOptionGroup>
         },
         {title: 'UserAccountBar', component: <UserAccountBar fullName="Jhon Smith" href="/catalog" status="Basic Member"/>},
-        {title: 'NavigationLabelHref', component: <NavigationLabelHref label="Already have an account?" href="/catalog" hrefTitle="Sing up!"/>}
+        {title: 'NavigationLabelHref', component: <NavigationLabelHref label="Already have an account?" href="/catalog" hrefTitle="Sing up!"/>},
+        {title: 'BottomMenu', component: <BottomMenu basket="35"/>},
+        {title: 'BottomMenu', component: <BottomMenu/>},
     ]
 
 ]
