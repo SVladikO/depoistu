@@ -22,13 +22,13 @@ import
     ProductSizeBar,
     ProductCard,
     CategoryTitle,
-    UserAccountBar
+    UserAccountBar,
+    NavigationLabelHref
 } from "../../components";
 
 import CatalogPage from "./Catalog.page";
 
 import CountAccumulator from '../../components/CountAccumulator/CountAccumulator';
-
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
 import {ReactComponent as MailIcon} from '../../icons/mail.svg';
@@ -194,6 +194,7 @@ const columns = [
                 </UserOptionGroup>
         },
         {title: 'UserAccountBar', component: <UserAccountBar fullName="Jhon Smith" href="/catalog" status="Basic Member"/>},
+        {title: 'NavigationLabelHref', component: <NavigationLabelHref label="Already have an account?" href="/catalog" hrefTitle="Sing up!"/>}
     ]
 
 ]

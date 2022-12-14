@@ -1,22 +1,21 @@
 import React from 'react';
 
 import {
-    Label,
-    Label2,
     LeftSideContent,
     RightSideContent,
     ContentWrapper,
-    TextContent,
     Content,
-    LogoText
+    LogoText,
+    NavLabel
 } from "./SignIn.style";
 
 import {
-    ContentContainer,
     Input,
     PrimaryWideButton,
     PrimaryWithIconButton,
     SecondaryWithIconButton,
+    ContentContainer,
+    NavigationLabelHref
 } from "../../components";
 
 import translations from "../../utils/translations";
@@ -27,6 +26,7 @@ import {ReactComponent as MailIcon} from "../../icons/mail.svg";
 
 import {ReactComponent as GoogleIcon} from "../../icons/google.svg";
 import {ReactComponent as FacebookIcon} from "../../icons/facebook.svg";
+import {ROUTER} from '../../utils/config';
 
 const SignInPage = () => {
     return (
@@ -38,23 +38,23 @@ const SignInPage = () => {
             <ContentContainer>
                 <Input Icon={MailIcon} placeholder={`johndoe@mail.com`}/>
                 <Input Icon={LockIcon} placeholder={`*********************`}/>
-
                 <ContentWrapper>
                     <LeftSideContent>
-                        <Label primary={false}>Or login with</Label>
+                        <NavLabel primary={false}>Or login with</NavLabel>
                         <SecondaryWithIconButton><FacebookIcon/>facebook</SecondaryWithIconButton>
                     </LeftSideContent>
                     <RightSideContent>
-                        <Label primary>Forget password ?</Label>
+                        <NavLabel primary>Forget password ?</NavLabel>
                         <PrimaryWithIconButton><GoogleIcon/>Google</PrimaryWithIconButton>
                     </RightSideContent>
                 </ContentWrapper>
-                <TextContent>
-                    <Label2 primary={false}>Already have an account?</Label2>
-                    <Label2 primary={true}>Sing up !</Label2>
-                </TextContent>
+                <NavigationLabelHref
+                    hrefTitle="Sing up!"
+                    href={`${ROUTER.SING_UP}`}
+                    label="You don’t have an account?"
+                />
             </ContentContainer>
-            <PrimaryWideButton>Sing in</PrimaryWideButton>
+            <PrimaryWideButton><span>Sing in</span></PrimaryWideButton>
         </>
     );
 };
