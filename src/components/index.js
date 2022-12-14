@@ -24,6 +24,8 @@ import ProductSizeBar from "./ProductSizeBar/ProductSizeBar";
 import {CategoryTitle} from "./CategoryTitle/CategoryTitle.style";
 import UserAccountBar from "./UserAccountBar/UserAccountBar";
 import NavigationLabelHref from './NavigationLabelHref/NavigationLabelHref';
+import UserAccountGroup from "./UserAccountGroup/UserAccountGroup";
+import UserOptionGroup from "./UserOptionGroup/UserOptionGroup";
 
 export {
     AccountMenuRow,
@@ -49,5 +51,7 @@ export {
     NavigationHeader,
     NavigationLabelHref,
     UserAccountBar,
+    UserAccountGroup,
+    UserOptionGroup,
 }
 
