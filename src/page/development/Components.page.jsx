@@ -57,8 +57,6 @@ const columns = [
             component: <SecondaryWithIconButton><FacebookIcon/>facebook</SecondaryWithIconButton>
         },
         {title: 'ThirdButton', component: <ThirdButton>Payment</ThirdButton>},
-    ],
-    [
         {title: 'Input 1', component: <Input placeholder={`johndoe@mail.com`}/>},
         {title: 'Input 2', component: <Input Icon={MailIcon} placeholder={`johndoe@mail.com`}/>},
         {title: 'Input 3', component: <Input withSwitcher placeholder={`New password`}/>},
@@ -67,28 +65,12 @@ const columns = [
             component: <CheckBoxWithLabel
                 label="By creating an account you agree to our Terms of Service and Privacy Policy"/>
         },
-        {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
-        {title: 'Price', component: <Price>50.00</Price>},
+
     ],
     [
+        {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
+        {title: 'Price', component: <Price>50.00</Price>},
 
-        {title: 'CategoryItem', component: <CategoryItem title="Sandwich"><SandwichIcon/></CategoryItem>},
-        {
-            title: 'ProductCard',
-            component:
-                <ProductCard
-                    data={{
-                        image: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
-                        discont: '-10',
-                        rating: '4.5',
-                        buttons: [
-                            {price: 20, size: 1},
-                            {price: 20, size: 2},
-                            {price: 30, size: 3},
-                        ],
-                    }}
-                />
-        },
         {title: 'Rating', component: <Rating>{`4.9`}</Rating>},
         {title: 'Discount', component: <Discount>{`-10`}</Discount>},
         {
@@ -130,14 +112,13 @@ const columns = [
         {title: 'CountAccumulator', component: <CountAccumulator count={16}/>},
         {title: 'CountAccumulator', component: <CountAccumulator count={16}/>},
         {title: 'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
+        {title: 'NavigationLabelHref', component: <NavigationLabelHref label="Already have an account?" href="/catalog" hrefTitle="Sing up!"/>},
+
     ],
     [
         {title: "NavigationHeader", component: <NavigationHeader title="category"/>},
         {title: "NavigationHeader", component: <NavigationHeader href={' '} title="category"/>},
         {title: 'ContentContainer', component: <ContentContainer>Sign up with</ContentContainer>},
-
-        {title: 'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
-        {title: 'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
         {
             title: 'HistoryTabBar', component:
                 (function () {
@@ -165,7 +146,9 @@ const columns = [
                         return <HistoryTabBar selectedTab={selectedTab} tabs={tabs} handleClick={handleClick}/>
                     })()}
                 </NavigationHeader>
-        }
+        },
+        {title: 'BottomMenu', component: <BottomMenu basket="35"/>},
+        {title: 'BottomMenu', component: <BottomMenu/>},
     ],
     [
         {
@@ -195,9 +178,26 @@ const columns = [
                 </UserOptionGroup>
         },
         {title: 'UserAccountBar', component: <UserAccountBar fullName="Jhon Smith" href="/catalog" status="Basic Member"/>},
-        {title: 'NavigationLabelHref', component: <NavigationLabelHref label="Already have an account?" href="/catalog" hrefTitle="Sing up!"/>},
-        {title: 'BottomMenu', component: <BottomMenu basket="35"/>},
-        {title: 'BottomMenu', component: <BottomMenu/>},
+
+    ],
+    [
+        {title: 'CategoryItem', component: <CategoryItem title="Sandwich"><SandwichIcon/></CategoryItem>},
+        {
+            title: 'ProductCard',
+            component:
+                <ProductCard
+                    data={{
+                        image: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
+                        discont: '-10',
+                        rating: '4.5',
+                        buttons: [
+                            {price: 20, size: 1},
+                            {price: 20, size: 2},
+                            {price: 30, size: 3},
+                        ],
+                    }}
+                />
+        },
     ]
 
 ]
