@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {COLOR, GRADIENT} from "../utils/theme";
+import {hexToRgbA} from "../utils/utils";
 
 const flex = styled.div`
   display: flex;
@@ -14,24 +15,23 @@ export const Wrapper = styled(flex)`
 
 export const Content = styled(flex)`
   flex-direction: column;
-  width: 228px;
-  height: 228px;
+  width: 240px;
+  height: 240px;
   border-radius: 50%;
   background: ${COLOR.ACCENT4};
-  border: solid 13px ${COLOR.ACCENT3};
+  border: solid 13px ${hexToRgbA(COLOR.ACCENT3, 0.86)};
   
   & > svg {
-    width: 140px;
-    height: 140px;
-    fill: ${COLOR.PRIMARY};
+    width: 122px;
+    height: 110px;
   }
 `;
 
 export const LogoText = styled(flex)`
   color: ${COLOR.PRIMARY};
-  font-size: 40px;
-  text-transform: uppercase;
-  font-weight: 700;;
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 36px;
 `;
 
 

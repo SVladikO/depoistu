@@ -20,11 +20,16 @@ import
     ContentContainer,
     NavigationHeader,
     ProductSizeBar,
+    ProductCard,
     CategoryTitle,
+    UserAccountBar,
+    NavigationLabelHref,
+    BottomMenu,
 } from "../../components";
 
-import CountAccumulator from '../../components/CountAccumulator/CountAccumulator';
+import CatalogPage from "./Catalog.page";
 
+import CountAccumulator from '../../components/CountAccumulator/CountAccumulator';
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
 import {ReactComponent as MailIcon} from '../../icons/mail.svg';
@@ -34,6 +39,8 @@ import {ReactComponent as SandwichIcon} from '../../icons/sandwich.svg';
 import {ReactComponent as LanguageIcon} from "../../icons/language.svg";
 
 import {COLOR} from "../../utils/theme";
+import UserAccountGroup from "../../components/UserAccountGroup/UserAccountGroup";
+import UserOptionGroup from "../../components/UserOptionGroup/UserOptionGroup";
 
 const colors = Object.keys(COLOR).map(key =>
     ({title: key, component: <ColorCircle key={key} bg={COLOR[key]}/>, value: COLOR[key], width: '50px'})
@@ -50,24 +57,22 @@ const columns = [
             component: <SecondaryWithIconButton><FacebookIcon/>facebook</SecondaryWithIconButton>
         },
         {title: 'ThirdButton', component: <ThirdButton>Payment</ThirdButton>},
-    ],
-    [
-        {title: 'Input', component: <Input placeholder={`johndoe@mail.com`}/>},
-        {title: 'Input', component: <Input Icon={MailIcon} placeholder={`johndoe@mail.com`}/>},
-        {title: 'Input', component: <Input withSwitcher placeholder={`New password`}/>},
+        {title: 'Input 1', component: <Input placeholder={`johndoe@mail.com`}/>},
+        {title: 'Input 2', component: <Input Icon={MailIcon} placeholder={`johndoe@mail.com`}/>},
+        {title: 'Input 3', component: <Input withSwitcher placeholder={`New password`}/>},
         {
             title: 'CheckBoxWithLabel',
             component: <CheckBoxWithLabel
                 label="By creating an account you agree to our Terms of Service and Privacy Policy"/>
         },
-        {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
-        {title: 'Price', component: <Price>50.00</Price>},
+
     ],
     [
+        {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
+        {title: 'Price', component: <Price>50.00</Price>},
 
-        {title: 'CategoryItem', component: <CategoryItem title="Sandwich"><SandwichIcon/></CategoryItem>},
         {title: 'Rating', component: <Rating>{`4.9`}</Rating>},
-        {title: 'Discount', component: <Discount>{`-10%`}</Discount>},
+        {title: 'Discount', component: <Discount>{`-10`}</Discount>},
         {
             title: 'ProductSizeBar', component:
                 (function () {
@@ -79,7 +84,7 @@ const columns = [
                     ];
 
                     function handleClick(m) {
-                        alert('Clicked on size: ' + m.size + ' with price: ' + m.price)
+                        console.log('Clicked on size: ' + m.size + ' with price: ' + m.price)
                     }
 
                     return <ProductSizeBar buttons={buttons} selectedSize={selectedSize} handleClick={handleClick}
@@ -97,7 +102,7 @@ const columns = [
                     ];
 
                     function handleClick(m) {
-                        alert('Clicked on size: ' + m.size + ' with price: ' + m.price)
+                        console.log('Clicked on size: ' + m.size + ' with price: ' + m.price)
                     }
 
                     return <ProductSizeBar buttons={buttons} handleClick={handleClick} selectedSize={selectedSize}/>
@@ -107,14 +112,13 @@ const columns = [
         {title: 'CountAccumulator', component: <CountAccumulator count={16}/>},
         {title: 'CountAccumulator', component: <CountAccumulator count={16}/>},
         {title: 'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
+        {title: 'NavigationLabelHref', component: <NavigationLabelHref label="Already have an account?" href="/catalog" hrefTitle="Sing up!"/>},
+
     ],
     [
         {title: "NavigationHeader", component: <NavigationHeader title="category"/>},
         {title: "NavigationHeader", component: <NavigationHeader href={' '} title="category"/>},
         {title: 'ContentContainer', component: <ContentContainer>Sign up with</ContentContainer>},
-
-        {title: 'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
-        {title: 'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
         {
             title: 'HistoryTabBar', component:
                 (function () {
@@ -122,49 +126,86 @@ const columns = [
                     const selectedTab = tabs[0];
 
                     function handleClick(c) {
-                        alert(`${tabs[c]}`)
+                        console.log(`${tabs[c]}`)
                     }
 
                     return <HistoryTabBar selectedTab={selectedTab} tabs={tabs} handleClick={handleClick}/>
                 })()
         },
         {
-            title: 'HistoryTabBar in NavigationHeader', component:
+            title: 'HistoryTabBar in UserOptionGroup', component:
                 <NavigationHeader href={' '} title="category">
                     {(function () {
                         const tabs = ['Completed', 'Upcoming', 'Cancelled'];
                         const selectedTab = tabs[0];
 
                         function handleClick(c) {
-                            alert(`${tabs[c]}`)
+                            console.log(`${tabs[c]}`)
                         }
 
                         return <HistoryTabBar selectedTab={selectedTab} tabs={tabs} handleClick={handleClick}/>
                     })()}
                 </NavigationHeader>
-        }
+        },
+        {title: 'BottomMenu', component: <BottomMenu basket="35"/>},
+        {title: 'BottomMenu', component: <BottomMenu/>},
     ],
     [
         {
             title: 'AccountMenuRow',
-            component: <AccountMenuRow icon={LockIcon} title={`Change Password`}
-                                       toggleHandler={() => alert('clicked toggle')} toggleStatus={true}/>
+            component: <AccountMenuRow icon={LockIcon} title={`Change Password`} toggleHandler={() => {}} toggleStatus={true}/>
         },
         {
             title: 'AccountMenuRow',
-            component: <AccountMenuRow icon={LogOutIcon} title="Only change handler"
-                                       changeHandler={() => alert('clicked')}/>
+            component: <AccountMenuRow icon={LogOutIcon} title="Only change handler" changeHandler={() => console.log('clicked')}/>
         },
         {
             title: 'AccountMenuRow',
             component: <AccountMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
         },
+        {
+            title: 'UserAccountGroup', component:
+                <UserAccountGroup groupTitle="Accounts">
+                    <AccountMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
+                    <AccountMenuRow icon={LogOutIcon} title="Only change handler" changeHandler={() => console.log('clicked')}/>
+                </UserAccountGroup>
+        },
+        {
+            title: 'UserOptionGroup', component:
+                <UserOptionGroup groupTitle="Accounts">
+                    <AccountMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
+                    <AccountMenuRow icon={LogOutIcon} title="Only change handler" changeHandler={() => console.log('clicked')}/>
+                </UserOptionGroup>
+        },
+        {title: 'UserAccountBar', component: <UserAccountBar fullName="Jhon Smith" href="/catalog" status="Basic Member"/>},
+
+    ],
+    [
+        {title: 'CategoryItem', component: <CategoryItem title="Sandwich"><SandwichIcon/></CategoryItem>},
+        {
+            title: 'ProductCard',
+            component:
+                <ProductCard
+                    data={{
+                        image: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
+                        discont: '-10',
+                        rating: '4.5',
+                        buttons: [
+                            {price: 20, size: 1},
+                            {price: 20, size: 2},
+                            {price: 30, size: 3},
+                        ],
+                    }}
+                />
+        },
     ]
 
 ]
 
+document.body.style.backgroundColor = '#d8d8d8'
+
 function ComponentsPage() {
-    const setLightBackground = useCallback(() => document.body.style.backgroundColor = '#ffffff', []);
+    const setLightBackground = useCallback(() => document.body.style.backgroundColor = '#d8d8d8', []);
     const setDarkBackground = useCallback(() => document.body.style.backgroundColor = '#001993', []);
 
     function renderRows(components) {
@@ -194,6 +235,7 @@ function ComponentsPage() {
                     <Column key={index}>{renderRows(components)}</Column>)
                 }
             </Wrapper>
+            <CatalogPage />
         </div>
     )
 }

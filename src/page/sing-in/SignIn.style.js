@@ -1,17 +1,6 @@
 import styled from "styled-components";
 import {COLOR} from '../../utils/theme';
 
-
-export const Wrapper = styled.div`
-  background-color: ${COLOR.ACCENT2};
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-  justify-content: start;
-  //z-index: -1;
-  padding: 0 25px 25px 25px;
-`;
-
 export const Content = styled.div`
   display: flex;
   justify-content: center;
@@ -22,7 +11,7 @@ export const Content = styled.div`
   border-radius: 50%;
   background: ${COLOR.ACCENT4};
   border: none;
-  margin: 28px auto 28px auto; 
+  margin: 0 auto 31px; 
   padding: 45px;
   & > svg {
     width: 140px;
@@ -34,7 +23,7 @@ export const LogoText = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #FF3937;
+  color: ${COLOR.PRIMARY};
   font-weight: 900;
   font-size: 28px;
   line-height: 34px;
@@ -49,8 +38,8 @@ export const ContentWrapper = styled.div`
 export const LeftSideContent = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   width: calc(50% - 5px);
+  justify-content: start;
 `;
 
 export const Label = styled.div`
@@ -59,9 +48,15 @@ export const Label = styled.div`
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
-  @media (max-width: 360px) and (min-width: 320px)  {
-    font-size: 14px;
-  }
+`;
+
+export const NavLabel = styled.div`
+  color: ${props => props.primary ? COLOR.ACCENT3 : COLOR.ACCENT1};
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: start;
+  padding-bottom: 15px;
 `;
 
 export const RightSideContent = styled.div`
@@ -72,15 +67,5 @@ export const RightSideContent = styled.div`
   & > ${Label}{
     margin-right: 0;
   }
-  @media (max-width: 390px) and (min-width: 320px)  {
-    font-size: 14px;
-  }
 `;
 
-export const TextContent = styled.div`
-  display: flex;
-  justify-content: center;
-  & > div{
-    margin: 21px 0 0 3px;
-  }
-`;

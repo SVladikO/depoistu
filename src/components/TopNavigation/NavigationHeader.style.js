@@ -4,9 +4,9 @@ import {BORDER_RADIUS, COLOR} from "../../utils/theme";
 
 export const Wrapper = styled.div`
   background: ${COLOR.ACCENT4};
-  height: 100%;
   width: 100%;
   border-radius: 0 0 ${BORDER_RADIUS.FOURTH} ${BORDER_RADIUS.FOURTH};
+  margin-bottom: 30px;
 `
 export const Title = styled.div`
   font-weight: 700;

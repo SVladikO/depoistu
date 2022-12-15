@@ -16,7 +16,7 @@ export const MEDIA = {
 }
 
 export const BORDER_RADIUS = {
-    FIRST: '20px',
+    FIRST: '25px',
     SECOND: '10px',
     THIRD: '8px',
     FOURTH: '5px',
