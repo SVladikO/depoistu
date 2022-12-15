@@ -10,7 +10,7 @@ const flex = styled.div`
 
 export const Wrapper = styled(flex)`
   background-image: linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO});
-  min-height: 100%;
+  height: 100vh;
 `;
 
 export const Content = styled(flex)`
