@@ -17,7 +17,6 @@ export const Button = styled.button`
   font-weight: 700;
   color: ${p => p.increment ? COLOR.ACCENT4 : COLOR.PRIMARY };
   line-height: 10px;
-  margin: 0 4px;
   display: block;
 `;
 
@@ -26,4 +25,5 @@ export const Counter = styled.div`
   font-weight: 700;
   font-size: 8px;
   line-height: 10px;
+  padding: 4px;
 `;

@@ -27,7 +27,7 @@ import NavigationLabelHref from './NavigationLabelHref/NavigationLabelHref';
 import UserAccountGroup from "./UserAccountGroup/UserAccountGroup";
 import UserOptionGroup from "./UserOptionGroup/UserOptionGroup";
 import BottomMenu from "./BottomMenu/BottomMenu";
-
+import OrderRow from "./OrderRow/OrderRow";
 export {
     AccountMenuRow,
     CategoryTitle,
@@ -55,5 +55,6 @@ export {
     UserAccountBar,
     UserAccountGroup,
     UserOptionGroup,
+    OrderRow
 }
 
