@@ -178,14 +178,7 @@ const columns = [
                 </UserOptionGroup>
         },
         {title: 'UserAccountBar', component: <UserAccountBar fullName="Jhon Smith" href="/catalog" status="Basic Member"/>},
-        {title: 'OrderRow', component:
-                                        (() => {
-                                            const item = {
-                                                name: 'Chees Bites Pizza',
-                                                description: ['spicy' , 'tomato', 'sauce', 'chili', 'mozzarella']
-                                            }
-                                            return <OrderRow item={item}/>
-                                        })()},
+
     ],
     [
         {title: 'CategoryItem', component: <CategoryItem title="Sandwich"><SandwichIcon/></CategoryItem>},
@@ -205,6 +198,14 @@ const columns = [
                     }}
                 />
         },
+        {title: 'OrderRow', component:
+                (() => {
+                    const item = {
+                        name: 'Chees Bites Pizza',
+                        description: ['spicy' , 'tomato', 'sauce', 'chili', 'mozzarella']
+                    }
+                    return <OrderRow item={item}/>
+                })()},
     ]
 
 ]
