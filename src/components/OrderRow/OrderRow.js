@@ -1,18 +1,18 @@
 import {Wrapper, Content, Row, Name, Description, Factor, PriceWrapper} from "./OrderRow.style";
 import CountAccumulator from "../CountAccumulator/CountAccumulator";
 import Price from "../Price/Price";
-import {ReactComponent as Avatar} from "../../icons/avatar.svg";
-import {ReactComponent as Delete} from "../../icons/delete.svg";
+import {ReactComponent as AvatarIcon} from "../../icons/avatar.svg";
+import {ReactComponent as DeleteIcon} from "../../icons/delete.svg";
 
 const OrderRow = (props) => {
     const {name, description} = props.item;
     return (
         <Wrapper>
-            <Avatar/>
+            <AvatarIcon/>
             <Content>
                 <Row>
                     <Name>{name}</Name>
-                    <Delete/>
+                    <DeleteIcon/>
                 </Row>
                 <Row>
                     <Description>
