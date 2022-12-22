@@ -24,6 +24,5 @@ export const Counter = styled.div`
   color: ${COLOR.ACCENT1};
   font-weight: 700;
   font-size: 8px;
-  line-height: 10px;
   padding: 4px;
 `;

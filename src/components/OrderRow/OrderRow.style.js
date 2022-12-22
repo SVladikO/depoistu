@@ -37,6 +37,7 @@ export const Factor = styled.span`
   font-size: 16px;
   line-height: 19px;
   color: ${COLOR.ACCENT1};
+  margin-right: 2px;
 `;
 export const PriceWrapper = styled.div`
   display: inline-flex;
