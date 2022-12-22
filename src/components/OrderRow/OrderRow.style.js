@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import {BORDER_RADIUS, COLOR} from '../../utils/theme';
 
 export const Wrapper = styled.div`
-  padding: 15px;
+  padding: 15px 15px 15px 12px;
   border-radius: ${BORDER_RADIUS.FOURTH};
   background-color: ${COLOR.ACCENT4};
   display: flex;
