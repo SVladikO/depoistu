@@ -29,7 +29,7 @@
 * company_id
 * name
 * ingredients
-* price_size    
+* price_size  (s_135g_115_uah|m_205g_145_uah|l_205g_145_uah)
 ----
 ### HISTORY
 * id

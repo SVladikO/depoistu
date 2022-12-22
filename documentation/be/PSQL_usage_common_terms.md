@@ -39,6 +39,7 @@ SALARY         REAL
 );`
 
 #### 3. `\d`                         - show table list
+#### 3. `\dt`                        - show table list
 
 #### 4. `\d company`                 - show table details
 
@@ -47,6 +48,11 @@ SALARY         REAL
 #### 6. `DROP TABLE table1, table2`  - delete few tables
 
 ## CREATE SCHEMA (analog of directory)
+
+#### Show list of schema
+`SELECT schema_name FROM information_schema.schemata`
+or
+`SELECT nspname FROM pg_catalog.pg_namespace;`
 
 #### 1. `CREATE SCHEMA myschema`               - create schema
 
