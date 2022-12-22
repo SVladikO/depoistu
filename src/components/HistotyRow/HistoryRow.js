@@ -1,8 +1,9 @@
 import {Content, Row, Status, Wrapper, Name, Description, Size, ColoredSize,PriceWrapper,Factor,Price} from './HistoryRow.style';
 import {ReactComponent as AvatarIcon} from "../../icons/avatar.svg";
 
-const HistoryRow = (props) => {
+const HistoryRow = props => {
     const {name, description, price, size, status} = props.item;
+
     return (
         <Wrapper>
             <AvatarIcon/>

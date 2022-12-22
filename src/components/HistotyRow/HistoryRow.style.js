@@ -53,6 +53,7 @@ export const Factor = styled.span`
   font-weight: 700;
   font-size: 12px;
   line-height: 14px;
+  margin-right: 2px;
   color: ${COLOR.ACCENT1};
 `;
 export const PriceWrapper = styled.div`
