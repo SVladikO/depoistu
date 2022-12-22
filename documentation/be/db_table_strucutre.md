@@ -36,7 +36,7 @@
 * user_id
 * company_id
 * price
-* order_details (foodName_count_size_price | ...)
+* order_details (foodName_count_size[135sm, 0.5l, 200g]_price | ...)
 * datetime (we can make preorder by this date too) (you make order for ASAP or on specific time)
 * isPaid
 * isPrepared  (for outside)
