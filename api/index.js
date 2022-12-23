@@ -1,6 +1,9 @@
 const express = require('express')
 const server = express()
-const client = require('./db/client')
+const dbConfig = require('./db/config')
+const {Pool} = require('pg');
+
+const pool = new Pool(dbConfig);
 
 server.get('/', function (req, res) {
     const query = {
@@ -9,7 +12,7 @@ server.get('/', function (req, res) {
         text: 'SELECT * FROM root.menu_item',
     }
 
-    client
+    pool
         .connect((err) => {
             if (err) {
                 console.error('connection error', err.stack)
@@ -17,18 +20,17 @@ server.get('/', function (req, res) {
                 console.log('connected')
             }
         })
-        client
+
+    pool
         .query(query.text)
         .then(responce => {
             console.log(1111111111)
             console.log(responce.rows)
-            client.end()
             res.send(responce.rows)
         })
         .catch(e => {
             console.error(e.stack)
             res.send(e.stack)
-            client.end()
         })
 })
 
