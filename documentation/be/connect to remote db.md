@@ -15,3 +15,6 @@ Get your ip you can by using `curl ifconfig.me`
 
 ###### PASSWORD:
 `oA3OlpU9RIhBXnY1sSi36diIv53qGxTq` 
+
+
+### DON'T FORGET THAT IP RESTRICTION FROM REMOTE DB FOR LOCAL MACHINE AND REMOTE SERVER.
