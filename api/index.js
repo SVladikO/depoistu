@@ -1,18 +1,6 @@
 const express = require('express')
-const tls = require('node:tls');
 const server = express()
-// const client = require('./db/connection')
-const { Client } = require('pg');
-
-const client = new Client({
-    user: 'pizza_mobile_db_yjul_user',
-    database: 'pizza_mobile_db_yjul',
-    host: 'dpg-ceia2u2rrk07uhbp15fg-a.frankfurt-postgres.render.com',
-    port: 5432,
-    password: 'oA3OlpU9RIhBXnY1sSi36diIv53qGxTq',
-    ssl: tls,
-})
-
+const client = require('./db/client')
 
 server.get('/', function (req, res) {
     const query = {
@@ -44,7 +32,7 @@ server.get('/', function (req, res) {
         })
 })
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
