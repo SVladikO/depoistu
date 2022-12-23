@@ -1,4 +1,5 @@
-const tls = require('node:tls');
+// const tls = require('node:tls');
+const { tls } = require('node-tls');
 const { Client } = require('pg');
 
 const client = new Client({
