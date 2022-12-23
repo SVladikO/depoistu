@@ -11,3 +11,4 @@ const QUERY = {
     }
 }
 
+module.exports = QUERY;
