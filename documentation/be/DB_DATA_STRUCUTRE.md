@@ -18,7 +18,8 @@
 * id
 * name
 * phone
-* address
+* city
+* street
 * email
 * join_date
 * schedule 
