@@ -24,7 +24,9 @@ import
     CategoryTitle,
     UserAccountBar,
     NavigationLabelHref,
-    BottomMenu, OrderRow,
+    BottomMenu,
+    OrderRow,
+    HistoryRow
 } from "../../components";
 
 import CatalogPage from "./Catalog.page";
@@ -206,6 +208,16 @@ const columns = [
                     }
                     return <OrderRow item={item}/>
                 })()},
+        {title: "HistoryRow", component: (function (){
+                                            const item = {
+                                                name: 'Chees Bites Pizza',
+                                                description: ['spicy' , 'tomato', 'sauce', 'chili', 'mozzarella'],
+                                                price: 7,
+                                                size: 'Medium',
+                                                status: 'Completed'
+                                            }
+                                            return <HistoryRow item={item}/>
+                                        })()}
     ]
 
 ]
