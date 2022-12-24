@@ -17,7 +17,7 @@ import {DEVICE_WIDTH} from "./theme";
 import CategoryPage from "../page/category/Category.page";
 import ChangePasswordPage from "../page/change-password/ChangePassword.page";
 import {NavigationHeader} from "../components";
-import UserAccauntPage from "../page/user-account/UserAccaunt.page";
+import SettingPage from "../page/setting/Setting.page";
 
 export const MobileDevice = styled.div`
   min-width: ${DEVICE_WIDTH.MIN};
@@ -41,7 +41,7 @@ const routes = [
     {path: ROUTER.SING_UP, component: SingUpPage},
     {path: ROUTER.CATEGORY, component: CategoryPage},
     {path: ROUTER.CHANGE_PASSWORD, component: ChangePasswordPage},
-    {path: ROUTER.USER_ACCOUNT, component: UserAccauntPage},
+    {path: ROUTER.SETTING, component: SettingPage},
 ].map(r => <Route key={r.path} path={r.path} element={
     <MobileDevice>
         <NavigationHeader href={' '} title={rightStr(r.path)}/>

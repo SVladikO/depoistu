@@ -7,7 +7,7 @@ export const DEV_ROUTER = {
 export const ROUTER = {
     LOADING: 'loading',
     SING_IN: 'sign-in',
-    USER_ACCOUNT: 'user-account',
+    SETTING: 'setting',
     SING_UP: 'sing-up',
     CATEGORY: 'category',
     CHANGE_PASSWORD: 'change-password',
