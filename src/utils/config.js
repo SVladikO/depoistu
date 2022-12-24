@@ -5,10 +5,28 @@ export const DEV_ROUTER = {
 };
 
 export const ROUTER = {
-    LOADING: 'loading',
-    SING_IN: 'sign-in',
-    USER_ACCOUNT: 'user-account',
-    SING_UP: 'sing-up',
-    CATEGORY: 'category',
-    CHANGE_PASSWORD: 'change-password',
+    LOADING: {
+        URL: 'loading',
+        TITLE: '',
+    },
+    SING_IN: {
+        URL: 'sign-in',
+        TITLE: 'Sing in',
+    },
+    USER_ACCOUNT: {
+        URL: 'user-account',
+        TITLE: 'Setting',
+    },
+    SING_UP: {
+        URL: 'sing-up',
+        TITLE: 'Sing up',
+    },
+    CATEGORY: {
+        URL: 'category',
+        TITLE: 'Category',
+    },
+    CHANGE_PASSWORD: {
+        URL: 'change-password',
+        TITLE: 'Change password',
+    },
 };

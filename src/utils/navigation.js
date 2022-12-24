@@ -37,28 +37,19 @@ export const Centralicer = styled.div`
 
 // Creation router +
 const routes = [
-    {path: ROUTER.SING_IN, component: SignInPage},
-    {path: ROUTER.SING_UP, component: SingUpPage},
-    {path: ROUTER.CATEGORY, component: CategoryPage},
-    {path: ROUTER.CHANGE_PASSWORD, component: ChangePasswordPage},
-    {path: ROUTER.USER_ACCOUNT, component: UserAccauntPage},
-].map(r => <Route key={r.path} path={r.path} element={
+    {...ROUTER.SING_IN, component: SignInPage},
+    {...ROUTER.SING_UP, component: SingUpPage},
+    {...ROUTER.CATEGORY, component: CategoryPage},
+    {...ROUTER.CHANGE_PASSWORD, component: ChangePasswordPage},
+    {...ROUTER.USER_ACCOUNT, component: UserAccauntPage},
+].map(r => <Route key={r.URL} path={r.URL} element={
     <MobileDevice>
-        <NavigationHeader href={' '} title={rightStr(r.path)}/>
+        <NavigationHeader href={' '} title={r.TITLE}/>
         <Centralicer>
             <r.component/>
         </Centralicer>
     </MobileDevice>
 }/>);
-
-/*
-* I really didn't know how to make a right string in Navigation header for current component
-* so I made this function
-* */
-
-function rightStr(str){
-    return `${str[0].toUpperCase()}${str.slice(1)}`.replaceAll('-',' ');
-}
 
 export const getRoutes = () => {
     return (
@@ -73,7 +64,7 @@ export const getRoutes = () => {
             </Routes>
 
             <Routes>
-                <Route path={ROUTER.LOADING} element={<LoadingPage/>}/>
+                <Route path={ROUTER.LOADING.URL} element={<LoadingPage/>}/>
             </Routes>
 
             <Routes>{routes}</Routes>

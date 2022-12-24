@@ -50,7 +50,7 @@ const SignInPage = () => {
                 </ContentWrapper>
                 <NavigationLabelHref
                     hrefTitle="Sing up!"
-                    href={`${ROUTER.SING_UP}`}
+                    href={`${ROUTER.SING_UP.URL}`}
                     label="You don’t have an account?"
                 />
             </ContentContainer>

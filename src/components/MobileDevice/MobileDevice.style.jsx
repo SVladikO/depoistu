@@ -17,5 +17,6 @@ export const Screen = styled.div`
   height: 812px;
   border: solid 1px red;
   border-radius: 3px;
+  overflow: hidden;
 `;
 

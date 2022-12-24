@@ -14,18 +14,18 @@ import UserAccountPage from "../user-account/UserAccaunt.page";
 import ChangePassword from "../change-password/ChangePassword.page";
 
 const pages = [
-    {href: ROUTER.LOADING, component: <LoadingPage/>},
+    {href: ROUTER.LOADING.URL, component: <LoadingPage/>},
     {href: 'Intro 1'},
     {href: 'Intro 2'},
     {href: 'Intro 3'},
-    {href: ROUTER.SING_IN, component: <SignInPage/>},
-    {href: ROUTER.SING_UP, component: <SingUpPage pageTitle="Create an Account"/>},
+    {href: ROUTER.SING_IN.URL, component: <SignInPage/>},
+    {href: ROUTER.SING_UP.URL, component: <SingUpPage pageTitle="Create an Account"/>},
     {href: 'Sing up phone | email',},
     {href: 'Phone verification',},
     {href: 'OTP verification', },
     {href: 'Pizza', },
-    {href: ROUTER.CATEGORY, component: <CategoryPage />},
-    {href: ROUTER.CHANGE_PASSWORD, component: <ChangePassword />},
+    {href: ROUTER.CATEGORY.URL, component: <CategoryPage />},
+    {href: ROUTER.CHANGE_PASSWORD.URL, component: <ChangePassword />},
     {href: 'Product details burger'},
     {href: 'Product details pizza'},
     {href: 'Product details pizza 2'},
@@ -42,7 +42,7 @@ const pages = [
     {href: 'Profile', component: 'Profile'},
     {href: 'Track your order'},
     {href: 'Support'},
-    {href: ROUTER.USER_ACCOUNT, component: <UserAccountPage />,},
+    {href: ROUTER.USER_ACCOUNT.URL, component: <UserAccountPage />,},
     {href: 'Settings'},
 ];
 
