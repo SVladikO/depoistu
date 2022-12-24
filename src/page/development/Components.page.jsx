@@ -25,6 +25,7 @@ import
     UserAccountBar,
     NavigationLabelHref,
     BottomMenu,
+    EmptyBasket,
 } from "../../components";
 
 import CatalogPage from "./Catalog.page";
@@ -198,6 +199,7 @@ const columns = [
                     }}
                 />
         },
+        {title: 'EmptyBasket', component: <EmptyBasket/>}
     ]
 
 ]
