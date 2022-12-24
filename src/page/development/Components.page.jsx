@@ -114,7 +114,10 @@ const columns = [
         {title: 'CountAccumulator', component: <CountAccumulator count={16}/>},
         {title: 'CountAccumulator', component: <CountAccumulator count={16}/>},
         {title: 'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
-        {title: 'NavigationLabelHref', component: <NavigationLabelHref label="Already have an account?" href="/catalog" hrefTitle="Sing up!"/>},
+        {
+            title: 'NavigationLabelHref',
+            component: <NavigationLabelHref label="Already have an account?" href="/catalog" hrefTitle="Sing up!"/>
+        },
 
     ],
     [
@@ -155,11 +158,13 @@ const columns = [
     [
         {
             title: 'AccountMenuRow',
-            component: <AccountMenuRow icon={LockIcon} title={`Change Password`} toggleHandler={() => {}} toggleStatus={true}/>
+            component: <AccountMenuRow icon={LockIcon} title={`Change Password`} toggleHandler={() => {
+            }} toggleStatus={true}/>
         },
         {
             title: 'AccountMenuRow',
-            component: <AccountMenuRow icon={LogOutIcon} title="Only change handler" changeHandler={() => console.log('clicked')}/>
+            component: <AccountMenuRow icon={LogOutIcon} title="Only change handler"
+                                       changeHandler={() => console.log('clicked')}/>
         },
         {
             title: 'AccountMenuRow',
@@ -169,17 +174,22 @@ const columns = [
             title: 'UserAccountGroup', component:
                 <UserAccountGroup groupTitle="Accounts">
                     <AccountMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
-                    <AccountMenuRow icon={LogOutIcon} title="Only change handler" changeHandler={() => console.log('clicked')}/>
+                    <AccountMenuRow icon={LogOutIcon} title="Only change handler"
+                                    changeHandler={() => console.log('clicked')}/>
                 </UserAccountGroup>
         },
         {
             title: 'UserOptionGroup', component:
                 <UserOptionGroup groupTitle="Accounts">
                     <AccountMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
-                    <AccountMenuRow icon={LogOutIcon} title="Only change handler" changeHandler={() => console.log('clicked')}/>
+                    <AccountMenuRow icon={LogOutIcon} title="Only change handler"
+                                    changeHandler={() => console.log('clicked')}/>
                 </UserOptionGroup>
         },
-        {title: 'UserAccountBar', component: <UserAccountBar fullName="Jhon Smith" href="/catalog" status="Basic Member"/>},
+        {
+            title: 'UserAccountBar',
+            component: <UserAccountBar fullName="Jhon Smith" href="/catalog" status="Basic Member"/>
+        },
 
     ],
     [
@@ -200,24 +210,28 @@ const columns = [
                     }}
                 />
         },
-        {title: 'OrderRow', component:
+        {
+            title: 'OrderRow', component:
                 (() => {
                     const item = {
                         name: 'Chees Bites Pizza',
-                        description: ['spicy' , 'tomato', 'sauce', 'chili', 'mozzarella']
+                        description: ['spicy', 'tomato', 'sauce', 'chili', 'mozzarella']
                     }
                     return <OrderRow item={item}/>
-                })()},
-        {title: "HistoryRow", component: (function (){
-                                            const item = {
-                                                name: 'Chees Bites Pizza',
-                                                description: ['spicy' , 'tomato', 'sauce', 'chili', 'mozzarella'],
-                                                price: 7,
-                                                size: 'Medium',
-                                                status: 'Completed'
-                                            }
-                                            return <HistoryRow item={item}/>
-                                        })()}
+                })()
+        },
+        {
+            title: "HistoryRow", component: (function () {
+                const item = {
+                    name: 'Chees Bites Pizza',
+                    description: ['spicy', 'tomato', 'sauce', 'chili', 'mozzarella'],
+                    price: 7,
+                    size: 'Medium',
+                    status: 'Completed'
+                }
+                return <HistoryRow item={item}/>
+            })()
+        }
     ]
 
 ]
@@ -255,7 +269,7 @@ function ComponentsPage() {
                     <Column key={index}>{renderRows(components)}</Column>)
                 }
             </Wrapper>
-            <CatalogPage />
+            <CatalogPage/>
         </div>
     )
 }

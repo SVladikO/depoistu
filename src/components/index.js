@@ -27,8 +27,7 @@ import NavigationLabelHref from './NavigationLabelHref/NavigationLabelHref';
 import UserAccountGroup from "./UserAccountGroup/UserAccountGroup";
 import UserOptionGroup from "./UserOptionGroup/UserOptionGroup";
 import BottomMenu from "./BottomMenu/BottomMenu";
-import HistoryRow from "./HistotyRow/HistoryRow";
-import OrderRow from "./OrderRow/OrderRow";
+import {OrderRow, HistoryRow} from "./OrderHistoryRow/OrderHistoryRow";
 
 export {
     AccountMenuRow,
