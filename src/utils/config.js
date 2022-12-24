@@ -10,5 +10,6 @@ export const ROUTER = {
     USER_ACCOUNT: 'user-account',
     SING_UP: 'sing-up',
     CATEGORY: 'category',
+    SUB_CATEGORY: 'sub_category',
     CHANGE_PASSWORD: 'change-password',
 };
