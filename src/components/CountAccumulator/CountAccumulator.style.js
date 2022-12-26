@@ -6,7 +6,9 @@ export const Wrapper = styled.div`
   min-width: 46px;
   height: 16px;
   display: flex;
-  align-items: center;
+  align-items: start;
+  padding: 0;
+  margin: 0;
 `;
 export const Button = styled.button`
   width: 16px;

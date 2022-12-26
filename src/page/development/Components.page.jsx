@@ -25,8 +25,7 @@ import
     UserAccountBar,
     NavigationLabelHref,
     BottomMenu,
-    OrderRow,
-    HistoryRow
+    OrderHistoryRow
 } from "../../components";
 
 import CatalogPage from "./Catalog.page";
@@ -71,7 +70,7 @@ const columns = [
     ],
     [
         {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
-        {title: 'Price', component: <Price>50.00</Price>},
+        {title: 'Price', component: <Price small={false} big>50.00</Price>},
 
         {title: 'Rating', component: <Rating>{`4.9`}</Rating>},
         {title: 'Discount', component: <Discount>{`-10`}</Discount>},
@@ -211,17 +210,18 @@ const columns = [
                 />
         },
         {
-            title: 'OrderRow', component:
+            title: 'OrderHistoryRow', component:
                 (() => {
                     const item = {
                         name: 'Chees Bites Pizza',
-                        description: ['spicy', 'tomato', 'sauce', 'chili', 'mozzarella']
+                        description: ['spicy', 'tomato', 'sauce', 'chili', 'mozzarella'],
+                        price: 7
                     }
-                    return <OrderRow item={item}/>
+                    return <OrderHistoryRow item={item}/>
                 })()
         },
         {
-            title: "HistoryRow", component: (function () {
+            title: 'OrderHistoryRow', component: (function () {
                 const item = {
                     name: 'Chees Bites Pizza',
                     description: ['spicy', 'tomato', 'sauce', 'chili', 'mozzarella'],
@@ -229,9 +229,12 @@ const columns = [
                     size: 'Medium',
                     status: 'Completed'
                 }
-                return <HistoryRow item={item}/>
+                return <OrderHistoryRow item={item}/>
             })()
         }
+
+
+
     ]
 
 ]
