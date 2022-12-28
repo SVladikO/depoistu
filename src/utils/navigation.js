@@ -18,7 +18,6 @@ import CategoryPage from "../page/category/Category.page";
 import ChangePasswordPage from "../page/change-password/ChangePassword.page";
 import {NavigationHeader} from "../components";
 import SettingPage from "../page/setting/Setting.page";
-import UserAccauntPage from "../page/user-account/UserAccaunt.page";
 import SubCategoryPage from "../page/sub-category/SubCategory.page";
 
 export const MobileDevice = styled.div`
@@ -39,29 +38,20 @@ export const Centralicer = styled.div`
 
 // Creation router +
 const routes = [
-    {path: ROUTER.SING_IN, component: SignInPage},
-    {path: ROUTER.SING_UP, component: SingUpPage},
-    {path: ROUTER.CATEGORY, component: CategoryPage},
-    {path: ROUTER.CHANGE_PASSWORD, component: ChangePasswordPage},
-    {path: ROUTER.SETTING, component: SettingPage},
-    {path: ROUTER.SUB_CATEGORY, component: SubCategoryPage},
-].map(r => <Route key={r.path} path={r.path} element={
+    {...ROUTER.SING_IN, component: SignInPage},
+    {...ROUTER.SING_UP, component: SingUpPage},
+    {...ROUTER.CATEGORY, component: CategoryPage},
+    {...ROUTER.CHANGE_PASSWORD, component: ChangePasswordPage},
+    {...ROUTER.SETTING, component: SettingPage},
+    {...ROUTER.SUB_CATEGORY, component: SubCategoryPage},
+].map(r => <Route key={r.URL} path={r.URL} element={
     <MobileDevice>
-        <NavigationHeader href={' '} title={rightStr(r.path)}/>
+        <NavigationHeader href={' '} title={r.TITLE}/>
         <Centralicer>
             <r.component/>
         </Centralicer>
     </MobileDevice>
 }/>);
-
-/*
-* I really didn't know how to make a right string in Navigation header for current component
-* so I made this function
-* */
-
-function rightStr(str){
-    return `${str[0].toUpperCase()}${str.slice(1)}`.replaceAll('-',' ');
-}
 
 export const getRoutes = () => {
     return (
@@ -76,7 +66,7 @@ export const getRoutes = () => {
             </Routes>
 
             <Routes>
-                <Route path={ROUTER.LOADING} element={<LoadingPage/>}/>
+                <Route path={ROUTER.LOADING.URL} element={<LoadingPage/>}/>
             </Routes>
 
             <Routes>{routes}</Routes>

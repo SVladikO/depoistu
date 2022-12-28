@@ -6,12 +6,12 @@ import {
 } from "./SubCategory.style";
 
 import {ProductCard} from "../../components";
-
+const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 const SubCategoryPage = () => {
     return (
         <Content>
             <Flex>
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map(c => <ProductCard
+                {arr.map((c, index) => <ProductCard key={index}
                     data={{
                         image: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
                         discont: '-10',
