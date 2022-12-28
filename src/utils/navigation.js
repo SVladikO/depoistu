@@ -18,7 +18,6 @@ import CategoryPage from "../page/category/Category.page";
 import ChangePasswordPage from "../page/change-password/ChangePassword.page";
 import {NavigationHeader} from "../components";
 import SettingPage from "../page/setting/Setting.page";
-import UserAccauntPage from "../page/user-account/UserAccaunt.page";
 import SubCategoryPage from "../page/sub-category/SubCategory.page";
 
 export const MobileDevice = styled.div`

@@ -14,7 +14,7 @@ export const ROUTER = {
         TITLE: 'Sing in',
     },
     SETTING: {
-        URL: 'user-account',
+        URL: 'setting',
         TITLE: 'Setting',
     },
     SING_UP: {
@@ -27,7 +27,7 @@ export const ROUTER = {
     },
     SUB_CATEGORY: {
         URL: 'sub_category',
-        TITLE: 'Category',
+        TITLE: 'Sub category',
     },
     CHANGE_PASSWORD: {
         URL: 'change-password',

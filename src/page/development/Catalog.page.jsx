@@ -25,9 +25,9 @@ const pages = [
     {href: 'Phone verification',},
     {href: 'OTP verification', },
     {href: 'Pizza', },
-    {href: ROUTER.CHANGE_PASSWORD, component: <ChangePassword />},
-    {href: ROUTER.CATEGORY, component: <CategoryPage />},
-    {href: ROUTER.SUB_CATEGORY, component: <SubCategoryPage />},
+    {href: ROUTER.CHANGE_PASSWORD.URL, component: <ChangePassword />},
+    {href: ROUTER.CATEGORY.URL, component: <CategoryPage />},
+    {href: ROUTER.SUB_CATEGORY.URL, component: <SubCategoryPage />},
     {href: 'Product details pizza'},
     {href: 'Product details pizza 2'},
     {href: 'Order review',},
@@ -43,15 +43,15 @@ const pages = [
     {href: 'Profile', component: 'Profile'},
     {href: 'Track your order'},
     {href: 'Support'},
-    {href: ROUTER.SETTING, component: <SettingPage />,},
-    {href: 'Settings'},
+    {href: ROUTER.SETTING.URL, component: <SettingPage />,},
+    {href: 'Settings2'},
 ];
 
 function CatalogPage() {
     return (
         <MobileWrapper>
             {pages.map((page, index) =>
-                <MobileDevice key={page.href} href={page.href} index={index+1}>{page.component}</MobileDevice>
+                <MobileDevice key={page.href+index} href={page.href} index={index+1}>{page.component}</MobileDevice>
             )}
         </MobileWrapper>
     )
