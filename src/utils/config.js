@@ -13,7 +13,7 @@ export const ROUTER = {
         URL: 'sign-in',
         TITLE: 'Sing in',
     },
-    USER_ACCOUNT: {
+    SETTING: {
         URL: 'user-account',
         TITLE: 'Setting',
     },
@@ -23,6 +23,10 @@ export const ROUTER = {
     },
     CATEGORY: {
         URL: 'category',
+        TITLE: 'Category',
+    },
+    SUB_CATEGORY: {
+        URL: 'sub_category',
         TITLE: 'Category',
     },
     CHANGE_PASSWORD: {

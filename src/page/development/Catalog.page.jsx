@@ -10,8 +10,9 @@ import LoadingPage from "../Loading.page";
 import SignInPage from "../sing-in/SignIn.page";
 import SingUpPage from "../sing-up/SingUp.page";
 import CategoryPage from "../category/Category.page";
-import UserAccountPage from "../user-account/UserAccaunt.page";
+import SettingPage from "../setting/Setting.page";
 import ChangePassword from "../change-password/ChangePassword.page";
+import SubCategoryPage from "../sub-category/SubCategory.page";
 
 const pages = [
     {href: ROUTER.LOADING.URL, component: <LoadingPage/>},
@@ -24,9 +25,9 @@ const pages = [
     {href: 'Phone verification',},
     {href: 'OTP verification', },
     {href: 'Pizza', },
-    {href: ROUTER.CATEGORY.URL, component: <CategoryPage />},
-    {href: ROUTER.CHANGE_PASSWORD.URL, component: <ChangePassword />},
-    {href: 'Product details burger'},
+    {href: ROUTER.CHANGE_PASSWORD, component: <ChangePassword />},
+    {href: ROUTER.CATEGORY, component: <CategoryPage />},
+    {href: ROUTER.SUB_CATEGORY, component: <SubCategoryPage />},
     {href: 'Product details pizza'},
     {href: 'Product details pizza 2'},
     {href: 'Order review',},
@@ -42,7 +43,7 @@ const pages = [
     {href: 'Profile', component: 'Profile'},
     {href: 'Track your order'},
     {href: 'Support'},
-    {href: ROUTER.USER_ACCOUNT.URL, component: <UserAccountPage />,},
+    {href: ROUTER.SETTING, component: <SettingPage />,},
     {href: 'Settings'},
 ];
 

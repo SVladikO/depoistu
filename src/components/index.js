@@ -14,7 +14,7 @@ import CategoryItem from "./CategoryItem/CategoryItem";
 import {RowSplitterStyle as RowSplitter} from "./RowSplitter/RowSplitter.style";
 import CheckBoxWithLabel from "./CheckBoxWithLabel/CheckBoxWithLabel";
 import ToggleCheckbox from "./ToggleCheckbox/ToggleCheckbox";
-import AccountMenuRow from "./AccountMenuRow/AccountMenuRow";
+import SettingMenuRow from "./SettingMenuRow/SettingMenuRow";
 import {ContentContainer} from "./ContentContainer/ContentContainer.style.js";
 import {Discount} from "./Discount/Discount.style";
 import HistoryTabBar from "./HistoryTabBar/HistoryTabBar";
@@ -27,9 +27,10 @@ import NavigationLabelHref from './NavigationLabelHref/NavigationLabelHref';
 import UserAccountGroup from "./UserAccountGroup/UserAccountGroup";
 import UserOptionGroup from "./UserOptionGroup/UserOptionGroup";
 import BottomMenu from "./BottomMenu/BottomMenu";
+import HistoryRow from "./HistotyRow/HistoryRow";
 
 export {
-    AccountMenuRow,
+    SettingMenuRow,
     CategoryTitle,
     CategoryItem,
     Discount,
@@ -55,5 +56,6 @@ export {
     UserAccountBar,
     UserAccountGroup,
     UserOptionGroup,
+    HistoryRow
 }
 

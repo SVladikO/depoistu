@@ -3,29 +3,25 @@ const server = express()
 const dbConfig = require('./db/config')
 const QUERY = require('./db/query')
 const {Pool} = require('pg');
+const dbRequest = require('./utils')
 
 const pool = new Pool(dbConfig);
 
-server.get('/', function (req, res) {
-    pool.connect((err) => {
-        if (err) {
-            console.error('connection error', err.stack)
-        } else {
-            console.log('connected')
-        }
-    })
-
-    pool.query(QUERY.MENU_ITEM.SELECT_ALL)
-        .then(r => {
-            console.log('DB request: ', QUERY.MENU_ITEM.SELECT_ALL)
-            console.log('DB response: ', r.rows)
-            res.send(r.rows)
-        })
-        .catch(e => {
-            console.error('DB error: ', e.stack)
-            res.send('DB error: ' + e.stack)
-        })
+server.get('/company/:companyId/menu', function (req, res) {
+    const {companyId} = req.params;
+    dbRequest(pool, QUERY.MENU_ITEM.SELECT_ALL_BY_COMPANY_ID(companyId), value => res.send(value));
 })
+
+server.get('/company/:companyId/menu/:categoryId', function (req, res) {
+    const {companyId, categoryId} = req.params;
+
+    dbRequest(
+        pool,
+        QUERY.MENU_ITEM.SELECT_ALL_BY_COMPANY_ID_AND_BY_CATEGORY_ID(companyId, categoryId),
+        value => res.send(value)
+    );
+})
+
 
 const PORT = process.env.PORT || 3000;
 
