@@ -9,7 +9,7 @@ import
     Discount,
     ThirdButton,
     CategoryItem,
-    AccountMenuRow,
+    SettingMenuRow,
     ToggleCheckbox,
     CheckBoxWithLabel,
     SecondaryButton,
@@ -153,29 +153,29 @@ const columns = [
     ],
     [
         {
-            title: 'AccountMenuRow',
-            component: <AccountMenuRow icon={LockIcon} title={`Change Password`} toggleHandler={() => {}} toggleStatus={true}/>
+            title: 'SettingMenuRow',
+            component: <SettingMenuRow icon={LockIcon} title={`Change Password`} toggleHandler={() => {}} toggleStatus={true}/>
         },
         {
-            title: 'AccountMenuRow',
-            component: <AccountMenuRow icon={LogOutIcon} title="Only change handler" changeHandler={() => console.log('clicked')}/>
+            title: 'SettingMenuRow',
+            component: <SettingMenuRow icon={LogOutIcon} title="Only change handler" changeHandler={() => console.log('clicked')}/>
         },
         {
-            title: 'AccountMenuRow',
-            component: <AccountMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
+            title: 'SettingMenuRow',
+            component: <SettingMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
         },
         {
             title: 'UserAccountGroup', component:
                 <UserAccountGroup groupTitle="Accounts">
-                    <AccountMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
-                    <AccountMenuRow icon={LogOutIcon} title="Only change handler" changeHandler={() => console.log('clicked')}/>
+                    <SettingMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
+                    <SettingMenuRow icon={LogOutIcon} title="Only change handler" changeHandler={() => console.log('clicked')}/>
                 </UserAccountGroup>
         },
         {
             title: 'UserOptionGroup', component:
                 <UserOptionGroup groupTitle="Accounts">
-                    <AccountMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
-                    <AccountMenuRow icon={LogOutIcon} title="Only change handler" changeHandler={() => console.log('clicked')}/>
+                    <SettingMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
+                    <SettingMenuRow icon={LogOutIcon} title="Only change handler" changeHandler={() => console.log('clicked')}/>
                 </UserOptionGroup>
         },
         {title: 'UserAccountBar', component: <UserAccountBar fullName="Jhon Smith" href="/catalog" status="Basic Member"/>},
