@@ -16,28 +16,36 @@ CREATE TABLE root.MENU_ITEM(
 INSERT INTO root.MENU_ITEM
 (id, category_id, company_id, name, ingredients, price_size) VALUES
 -- BAKERY (1/10)
-(DEFAULT, 1, 1, 'Cheese 1', '1, 2, 3, 4, 5', 's_131g_111_uah|m_205g_145_uah|l_205g_145_uah' ),
-(DEFAULT, 1, 1, 'Cheese 1', '1, 2, 3, 4, 5', 's_131g_111_uah|m_205g_145_uah|l_205g_145_uah' ),
-(DEFAULT, 1, 1, 'Cheese 1', '1, 2, 3, 4, 5', 's_131g_111_uah|m_205g_145_uah|l_205g_145_uah' ),
-(DEFAULT, 1, 1, 'Cheese 1', '1, 2, 3, 4, 5', 's_131g_111_uah|m_205g_145_uah|l_205g_145_uah' );
+(DEFAULT, 1, 1, 'Chocolate muffin', 'muffin, chocolate drops, whipped cream', 's_113|m_145|l_200' ),
+(DEFAULT, 1, 1, 'Vanilla muffin', 'muffin, white chocolate drops, whipped cream', 's_113|m_145|l_200' ),
+(DEFAULT, 1, 1, 'Strawberry muffin', 'muffin, strawberry jam, whipped cream', 's_113|m_145|l_200' ),
+(DEFAULT, 1, 1, 'Vanilla croissant', 'croissant, vanilla cream, mint leaf, powdered sugar', 's_113|m_145|l_200' ),
+(DEFAULT, 1, 1, 'Chocolate croissant', 'croissant, chocolate cream, powdered sugar', 's_113|m_145|l_200' ),
+(DEFAULT, 1, 1, 'Raspberry croissant', 'croissant, raspberry jam, powdered sugar', 's_113|m_145|l_200' );
 
 
 INSERT INTO root.MENU_ITEM
 (id, category_id, company_id, name, ingredients, price_size) VALUES
 
 -- BEVERAGE (2/15)
-(DEFAULT, 2, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_133g_113_uah|m_205g_145_uah|l_205g_145_uah' ),
-(DEFAULT, 2, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_133g_113_uah|m_205g_145_uah|l_205g_145_uah' ),
-(DEFAULT, 2, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_133g_113_uah|m_205g_145_uah|l_205g_145_uah' ),
-(DEFAULT, 2, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_133g_113_uah|m_205g_145_uah|l_205g_145_uah' ),
+(DEFAULT, 2, 1, 'BonAqua carbonated water', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
+(DEFAULT, 2, 1, 'BonAqua water', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
+(DEFAULT, 2, 1, 'Coca-Cola', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
+(DEFAULT, 2, 1, 'Fanta', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
+(DEFAULT, 2, 1, 'Sprite', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
+(DEFAULT, 2, 1, 'Leffe Brune', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
+(DEFAULT, 2, 1, 'Black tea', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
+(DEFAULT, 2, 1, 'Green tea', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
+(DEFAULT, 2, 1, 'Fruit tea', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
+(DEFAULT, 2, 1, 'Jasmin tea', '1, 2, 3, 4, 5', 's_113|m_145|l_200' );
 
 
 INSERT INTO root.MENU_ITEM
 (id, category_id, company_id, name, ingredients, price_size) VALUES
 -- BURGER (3/11)
-(DEFAULT, 3, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_133g_113_uah|m_205g_145_uah|l_205g_145_uah' ),
-(DEFAULT, 3, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_133g_113_uah|m_205g_145_uah|l_205g_145_uah' ),
-(DEFAULT, 3, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_133g_113_uah|m_205g_145_uah|l_205g_145_uah' );
+(DEFAULT, 3, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
+(DEFAULT, 3, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
+(DEFAULT, 3, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' );
 
 
 
@@ -47,9 +55,9 @@ INSERT INTO root.MENU_ITEM
 
 -- NOODLES (4/6)
 (DEFAULT, 4, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
-(DEFAULT, 4, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_133g_113_uah|m_205g_145_uah|l_205g_145_uah' ),
-(DEFAULT, 4, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_133g_113_uah|m_205g_145_uah|l_205g_145_uah' ),
-(DEFAULT, 4, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_133g_113_uah|m_205g_145_uah|l_205g_145_uah' );
+(DEFAULT, 4, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
+(DEFAULT, 4, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
+(DEFAULT, 4, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' );
 
 
 INSERT INTO root.MENU_ITEM
@@ -76,30 +84,30 @@ INSERT INTO root.MENU_ITEM
 INSERT INTO root.MENU_ITEM
 (id, category_id, company_id, name, ingredients, price_size) VALUES
 -- SANDWITCH (6/3)
-(DEFAULT, 6, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_133g_113_uah|m_205g_145_uah|l_205g_145_uah' ),
-(DEFAULT, 6, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_133g_113_uah|m_205g_145_uah|l_205g_145_uah' ),
-(DEFAULT, 6, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_133g_113_uah|m_205g_145_uah|l_205g_145_uah' ),
-(DEFAULT, 6, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_133g_113_uah|m_205g_145_uah|l_205g_145_uah' );
+(DEFAULT, 6, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
+(DEFAULT, 6, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
+(DEFAULT, 6, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
+(DEFAULT, 6, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' );
 
 
 
 INSERT INTO root.MENU_ITEM
 (id, category_id, company_id, name, ingredients, price_size) VALUES
 -- SEA FOOD (7/8)
-(DEFAULT, 7, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_133g_113_uah|m_205g_145_uah|l_205g_145_uah' ),
-(DEFAULT, 7, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_133g_113_uah|m_205g_145_uah|l_205g_145_uah' ),
-(DEFAULT, 7, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_133g_113_uah|m_205g_145_uah|l_205g_145_uah' ),
-(DEFAULT, 7, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_133g_113_uah|m_205g_145_uah|l_205g_145_uah' );
+(DEFAULT, 7, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
+(DEFAULT, 7, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
+(DEFAULT, 7, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
+(DEFAULT, 7, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' );
 
 
 
 INSERT INTO root.MENU_ITEM
 (id, category_id, company_id, name, ingredients, price_size) VALUES
 -- VAGETABLE (8/9)
-(DEFAULT, 8, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_133g_113_uah|m_205g_145_uah|l_205g_145_uah' ),
-(DEFAULT, 8, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_133g_113_uah|m_205g_145_uah|l_205g_145_uah' ),
-(DEFAULT, 8, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_133g_113_uah|m_205g_145_uah|l_205g_145_uah' ),
-(DEFAULT, 8, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_133g_113_uah|m_205g_145_uah|l_205g_145_uah' );
+(DEFAULT, 8, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
+(DEFAULT, 8, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
+(DEFAULT, 8, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
+(DEFAULT, 8, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' );
 
 
 SELECT * FROM root.menu_item;
