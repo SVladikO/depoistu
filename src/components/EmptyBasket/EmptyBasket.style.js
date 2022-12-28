@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
 
 export const Title = styled.div`
   font-size: 16px;
+  line-height: 19px;
   font-weight: 700;
   color: ${COLOR.ACCENT1};
   
@@ -16,6 +17,7 @@ export const Title = styled.div`
 
 export const Description = styled.div`
   font-size: 14px;
+  line-height: 17px;
   color: ${COLOR.ACCENT1};
 `;
 
