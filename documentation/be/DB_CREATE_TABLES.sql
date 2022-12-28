@@ -43,9 +43,11 @@ INSERT INTO root.MENU_ITEM
 INSERT INTO root.MENU_ITEM
 (id, category_id, company_id, name, ingredients, price_size) VALUES
 -- BURGER (3/11)
-(DEFAULT, 3, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
-(DEFAULT, 3, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
-(DEFAULT, 3, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' );
+(DEFAULT, 3, 1, 'CheeseBurger', 'burger bun, mayonnaise, spinach, red onion, cheddar cheese', 's_113|m_145|l_200' ),
+(DEFAULT, 3, 1, 'BeefBurger', 'burger bun, beef steak, argula, tomato, grilled champignon, cheddar cheese', 's_113|m_145|l_200' ),
+(DEFAULT, 3, 1, 'ChickenBurger', 'burger bun, chicken steak, jalapeno, cucumber, bacon, cheddar cheese', 's_113|m_145|l_200' ),
+(DEFAULT, 3, 1, 'FishBurger', 'burger bun, fish steak, mustard, pickled cucumber, lettuce, cheddar cheese', 's_113|m_145|l_200' ),
+(DEFAULT, 3, 1, 'ChorizoBurger', 'burger bun, chorizo, ketchup, paprika, fried egg, cheddar cheese', 's_113|m_145|l_200' );
 
 
 
@@ -54,10 +56,7 @@ INSERT INTO root.MENU_ITEM
 (id, category_id, company_id, name, ingredients, price_size) VALUES
 
 -- NOODLES (4/6)
-(DEFAULT, 4, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
-(DEFAULT, 4, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
-(DEFAULT, 4, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
-(DEFAULT, 4, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' );
+(DEFAULT, 4, 1, 'VegNoodles', 'noodles, pepper, carrots, ginger, celery, pepper, sesame oil, chili flakes, soy sauce, garlic, water', 's_113|m_145|l_200' );
 
 
 INSERT INTO root.MENU_ITEM
