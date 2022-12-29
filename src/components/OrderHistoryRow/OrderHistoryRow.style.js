@@ -23,7 +23,7 @@ export const Name = styled.div`
   font-weight: 700;
   font-size: 16px;
   line-height: 19px;
-  color: ${COLOR.PRIMARY};
+  color: ${p => p.status ? COLOR.ACCENT1 : COLOR.PRIMARY};
   margin-bottom: 2px;
 `;
 export const Description = styled.div`

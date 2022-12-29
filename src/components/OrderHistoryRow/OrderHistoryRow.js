@@ -14,7 +14,7 @@ const OrderHistoryRow = props => {
             <AvatarIcon/>
             <Content>
                 <Row>
-                    <Name>{name}</Name>
+                    <Name status={status}>{name}</Name>
                     {status ? <Status>{status}</Status> : <DeleteIcon/>}
                 </Row>
                 <Row>
