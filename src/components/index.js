@@ -28,7 +28,7 @@ import NavigationLabelHref from './NavigationLabelHref/NavigationLabelHref';
 import UserAccountGroup from "./UserAccountGroup/UserAccountGroup";
 import UserOptionGroup from "./UserOptionGroup/UserOptionGroup";
 import BottomMenu from "./BottomMenu/BottomMenu";
-import HistoryRow from "./HistotyRow/HistoryRow";
+import OrderHistoryRow from "./OrderHistoryRow/OrderHistoryRow";
 
 export {
     SettingMenuRow,
@@ -58,6 +58,6 @@ export {
     UserAccountBar,
     UserAccountGroup,
     UserOptionGroup,
-    HistoryRow
+    OrderHistoryRow
 }
 

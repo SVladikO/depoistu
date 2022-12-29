@@ -25,8 +25,8 @@ import
     UserAccountBar,
     NavigationLabelHref,
     BottomMenu,
+    OrderHistoryRow,
     EmptyBasket,
-    HistoryRow
 } from "../../components";
 
 import CatalogPage from "./Catalog.page";
@@ -71,7 +71,7 @@ const columns = [
     ],
     [
         {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
-        {title: 'Price', component: <Price>50.00</Price>},
+        {title: 'Price', component: <Price small={false} big>50.00</Price>},
 
         {title: 'Rating', component: <Rating>{`4.9`}</Rating>},
         {title: 'Discount', component: <Discount>{`-10`}</Discount>},
@@ -114,7 +114,10 @@ const columns = [
         {title: 'CountAccumulator', component: <CountAccumulator count={16}/>},
         {title: 'CountAccumulator', component: <CountAccumulator count={16}/>},
         {title: 'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
-        {title: 'NavigationLabelHref', component: <NavigationLabelHref label="Already have an account?" href="/catalog" hrefTitle="Sing up!"/>},
+        {
+            title: 'NavigationLabelHref',
+            component: <NavigationLabelHref label="Already have an account?" href="/catalog" hrefTitle="Sing up!"/>
+        },
 
     ],
     [
@@ -179,7 +182,10 @@ const columns = [
                     <SettingMenuRow icon={LogOutIcon} title="Only change handler" changeHandler={() => console.log('clicked')}/>
                 </UserOptionGroup>
         },
-        {title: 'UserAccountBar', component: <UserAccountBar fullName="Jhon Smith" href="/catalog" status="Basic Member"/>},
+        {
+            title: 'UserAccountBar',
+            component: <UserAccountBar fullName="Jhon Smith" href="/catalog" status="Basic Member"/>
+        },
 
     ],
     [
@@ -200,17 +206,30 @@ const columns = [
                     }}
                 />
         },
+        {
+            title: 'OrderHistoryRow', component:
+                (() => {
+                    const item = {
+                        name: 'Chees Bites Pizza',
+                        description: ['spicy', 'tomato', 'sauce', 'chili', 'mozzarella'],
+                        price: 7
+                    }
+                    return <OrderHistoryRow item={item}/>
+                })()
+        },
+        {
+            title: 'OrderHistoryRow', component: (function () {
+                const item = {
+                    name: 'Chees Bites Pizza',
+                    description: ['spicy', 'tomato', 'sauce', 'chili', 'mozzarella'],
+                    price: 7,
+                    size: 'Medium',
+                    status: 'Completed'
+                }
+                return <OrderHistoryRow item={item}/>
+            })()
+        },
         {title: 'EmptyBasket', component: <EmptyBasket/>}
-        {title: "OrderRow", component: (function (){
-                                            const item = {
-                                                name: 'Chees Bites Pizza',
-                                                description: ['spicy' , 'tomato', 'sauce', 'chili', 'mozzarella'],
-                                                price: 7,
-                                                size: 'Medium',
-                                                status: 'Completed'
-                                            }
-                                            return <HistoryRow item={item}/>
-                                        })()}
     ]
 ]
 
@@ -247,7 +266,7 @@ function ComponentsPage() {
                     <Column key={index}>{renderRows(components)}</Column>)
                 }
             </Wrapper>
-            <CatalogPage />
+            <CatalogPage/>
         </div>
     )
 }
