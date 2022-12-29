@@ -1,11 +1,12 @@
-## Database table structure
+ ## Database table structure
 
 ###### As we have fixed count of category we won't create db for them. We will have all category on FE side.
 
-### USER
+### GUEST
 * id
 * name
 * phone
+* password
 * email
 * isVerifiedPhone
 * isVerifiedEmail

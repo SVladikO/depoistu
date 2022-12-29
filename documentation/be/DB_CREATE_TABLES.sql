@@ -108,4 +108,20 @@ INSERT INTO root.MENU_ITEM
 (DEFAULT, 8, 1, 'grilled vegetables', 'paprika, potato, zucchini, asparagus', 's_113|m_145|l_200' );
 
 
-SELECT * FROM root.menu_item;
+CREATE TABLE root.GUEST(
+    ID SERIAL               NOT NULL,
+    NAME              TEXT  NOT NULL,
+    PHONE             INT   NOT NULL,
+    PASSWORD          TEXT     NOT NULL,
+    EMAIL             TEXT,
+    IS_VERIFIED_PHONE BOOLEAN,
+    IS_VERIFIED_EMAIL BOOLEAN,
+    JOIN_DATE         INT
+
+);
+
+
+INSERT INTO root.GUEST
+(id, name, phone, password, email, is_verified_phone, is_verified_email, join_date) VALUES
+
+(DEFAULT, 'Vlad', 970668830, 'vv11vv', 'vlad_S@gmail.com', false, false, 167233 );
