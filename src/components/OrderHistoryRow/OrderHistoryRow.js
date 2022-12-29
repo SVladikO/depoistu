@@ -1,13 +1,12 @@
-import {Wrapper, Content, Row, Name, Description, Factor, PriceWrapper} from "./OrderHistoryRow.style";
+import {Wrapper, Content, Row, Name, Description, Factor, PriceWrapper,ColoredSize, Size, Status} from "./OrderHistoryRow.style";
 import CountAccumulator from "../CountAccumulator/CountAccumulator";
 import Price from "../Price/Price";
 import {ReactComponent as AvatarIcon} from "../../icons/avatar.svg";
 import {ReactComponent as DeleteIcon} from "../../icons/delete.svg";
-import {ColoredSize, Size, Status} from "../HistotyRow/HistoryRow.style";
 
 
 const OrderHistoryRow = props => {
-    const {name, description, price, size, status} = props.item;
+    const {name, description, price, size, status} = props.item || {};
 
     return (
         <Wrapper>

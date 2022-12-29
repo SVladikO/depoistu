@@ -33,8 +33,8 @@ export const ROUTER = {
         URL: 'change-password',
         TITLE: 'Change password',
     },
-    HISTORY_REVIEW: {
-        URL: 'history-review',
+    ORDER: {
+        URL: 'order',
         TITLE: 'Order Review',
     },
 };
