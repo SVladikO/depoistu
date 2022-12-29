@@ -1,11 +1,11 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 
-import {Wrapper, Title, LeftContent, RightContent, RightAnchor, Label} from "./AccountMenuRow.style";
+import {Wrapper, Title, LeftContent, RightContent, RightAnchor, Label} from "./SettingMenuRow.style";
 
 import ToggleCheckbox from "../ToggleCheckbox/ToggleCheckbox";
 
-const AccountMenuRow = ({
+const SettingMenuRow = ({
                             icon: Icon,
                             title,
                             href,
@@ -69,4 +69,4 @@ const AccountMenuRow = ({
     }
 };
 
-export default AccountMenuRow;
+export default SettingMenuRow;
