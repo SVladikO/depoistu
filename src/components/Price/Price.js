@@ -1,10 +1,10 @@
 import React from 'react';
 import {Wrapper} from "./Price.style";
 
-const Price = (props) => {
+const Price = ({small = false, children}) => {
     return (
-       <Wrapper>
-           ${props.children}
+       <Wrapper small={small}>
+           ${children}
        </Wrapper>
     );
 };
