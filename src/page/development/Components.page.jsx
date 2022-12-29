@@ -25,6 +25,7 @@ import
     UserAccountBar,
     NavigationLabelHref,
     BottomMenu,
+    EmptyBasket,
     HistoryRow
 } from "../../components";
 
@@ -199,6 +200,7 @@ const columns = [
                     }}
                 />
         },
+        {title: 'EmptyBasket', component: <EmptyBasket/>}
         {title: "OrderRow", component: (function (){
                                             const item = {
                                                 name: 'Chees Bites Pizza',
@@ -210,7 +212,6 @@ const columns = [
                                             return <HistoryRow item={item}/>
                                         })()}
     ]
-
 ]
 
 document.body.style.backgroundColor = '#d8d8d8'

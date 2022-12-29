@@ -8,6 +8,7 @@ import {
 } from "./Button/Button.style";
 
 import Input from "./Input/Input";
+import EmptyBasket from "./EmptyBasket/EmptyBasket";
 import Price from "./Price/Price";
 import Rating from "./Rating/Rating";
 import CategoryItem from "./CategoryItem/CategoryItem";
@@ -36,6 +37,7 @@ export {
     Discount,
     Input,
     Rating,
+    EmptyBasket,
     RowSplitter,
     HistoryTabBar,
     BottomMenu,
