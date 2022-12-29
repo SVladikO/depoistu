@@ -83,30 +83,29 @@ INSERT INTO root.MENU_ITEM
 INSERT INTO root.MENU_ITEM
 (id, category_id, company_id, name, ingredients, price_size) VALUES
 -- SANDWITCH (6/3)
-(DEFAULT, 6, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
-(DEFAULT, 6, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
-(DEFAULT, 6, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
-(DEFAULT, 6, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' );
+(DEFAULT, 6, 1, 'Sandwich with cheese', 'plain bread, mayonnaise, lettuce, boiled egg, cheddar cheese', 's_113|m_145|l_200' ),
+(DEFAULT, 6, 1, 'Sandwich with chicken', 'plain bread, ketchup, lettuce, grilled chicken, cucumber', 's_113|m_145|l_200' ),
+(DEFAULT, 6, 1, 'Sandwich with salmon', 'plain bread, mayonnaise, lettuce, salmon, avocado', 's_113|m_145|l_200' );
 
 
 
 INSERT INTO root.MENU_ITEM
 (id, category_id, company_id, name, ingredients, price_size) VALUES
 -- SEA FOOD (7/8)
-(DEFAULT, 7, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
-(DEFAULT, 7, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
-(DEFAULT, 7, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
-(DEFAULT, 7, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' );
+(DEFAULT, 7, 1, 'Boiled shrimps', 'boiled shrimps, dill, salt, pepper', 's_113|m_145|l_200' ),
+(DEFAULT, 7, 1, 'Ouster', 'ouster, lemon, ise', 's_113|m_145|l_200' ),
+(DEFAULT, 7, 1, 'Sea salad', 'boiled shrimps, mussels, squid, octopus, garlic sauce, teriyaki sauce', 's_113|m_145|l_200' ),
+(DEFAULT, 7, 1, 'Grilled salmon', 'grilled salmon, lemon, olive oil, salt, pepper, rosemary', 's_113|m_145|l_200' );
 
 
 
 INSERT INTO root.MENU_ITEM
 (id, category_id, company_id, name, ingredients, price_size) VALUES
--- VAGETABLE (8/9)
-(DEFAULT, 8, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
-(DEFAULT, 8, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
-(DEFAULT, 8, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' ),
-(DEFAULT, 8, 1, 'Cheese 3', '1, 2, 3, 4, 5', 's_113|m_145|l_200' );
+-- VEGETABLE (8/9)
+(DEFAULT, 8, 1, 'Boiled corn', 'boiled corn, salt, butter,', 's_113|m_145|l_200' ),
+(DEFAULT, 8, 1, 'Mixed green salad', 'romaine lettuce, cucumber, cherry tomatoes, red onion, olive oil, salt, pepper', 's_113|m_145|l_200' ),
+(DEFAULT, 8, 1, 'Spring salad', 'arugula, tomatoes, cucumber, green onion, dill, olive oil, vinegar', 's_113|m_145|l_200' ),
+(DEFAULT, 8, 1, 'grilled vegetables', 'paprika, potato, zucchini, asparagus', 's_113|m_145|l_200' );
 
 
 SELECT * FROM root.menu_item;
