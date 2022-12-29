@@ -1,13 +1,13 @@
 ## BE API
 
 [//]: # (MENU_ITEM)
-### INSERT menu_items      | @POST /category/menu
-### SELECT menu_items      | @GET  /:companyId/menu                          |  @return `[{id, name, ingredients, price_size}]`
+### + SELECT menu_items WHERE   | @GET  /company/:companyId/menu               |  @return `[{id, name, ingredients, price_size}]`
+### + SELECT menu_items WHERE   | @GET  /company/:companyId/menu/:categoryId   |  @return `[{id, name, ingredients, price_size}]`
 
 [//]: # (USER)
-### INSERT USER            | @POST /registration {login, password, ... }     |  @return true 
-### SELECT USER WHERE      | @POST /login {login, password}                  |  @return {} user profile details 
-### SELECT USERS           | @GET /users                                     |  @return [{}]  
+### INSERT USER                 | @POST /registration {login, password, ... } |  @return true 
+### SELECT USER WHERE           | @POST /login {login, password}              |  @return {} user profile details 
+### SELECT USERS                | @GET  /users                                |  @return [{}]  
 
 [//]: # (HISTORY) 
 ### INSERT HISTORY         | @POST /history {user_id, company_id, order: ''} |  @return true
