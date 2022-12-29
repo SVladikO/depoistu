@@ -1,6 +1,7 @@
 import {Wrapper} from './OrderReview.style';
-import OrderRow from '../../../'
-const OrderReview = () => {
+
+
+const OrderReview = (props) => {
     return (
         <Wrapper>
 

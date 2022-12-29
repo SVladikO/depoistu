@@ -3,7 +3,6 @@ import {ReactComponent as AvatarIcon} from "../../icons/avatar.svg";
 
 const HistoryRow = props => {
     const {name, description, price, size, status} = props.item;
-
     return (
         <Wrapper>
             <AvatarIcon/>
