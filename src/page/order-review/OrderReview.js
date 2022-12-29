@@ -1,11 +1,11 @@
-import React from 'react';
-
-const OrderHistory = () => {
+import {Wrapper} from './OrderReview.style';
+import OrderRow from '../../../'
+const OrderReview = () => {
     return (
-        <div>
+        <Wrapper>
 
-        </div>
+        </Wrapper>
     );
 };
 
-export default OrderHistory;
+export default OrderReview;
