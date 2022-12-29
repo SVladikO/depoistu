@@ -3,14 +3,14 @@ import {Wrapper, Button, Counter} from "./CountAccumulator.style";
 const CountMealAccumulator = ({count,changeHandler = () => {}}) => {
     function increment() {
         changeHandler(count + 1);
-        alert (`increment`);
+        console.log(`increment`);
     }
     function decrement() {
         if(!count){
             return;
         }
         changeHandler(count - 1);
-        alert (`decrement`);
+        console.log(`decrement`);
     }
 
     return (

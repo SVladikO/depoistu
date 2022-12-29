@@ -8,6 +8,7 @@ import {
 } from "./Button/Button.style";
 
 import Input from "./Input/Input";
+import EmptyBasket from "./EmptyBasket/EmptyBasket";
 import Price from "./Price/Price";
 import Rating from "./Rating/Rating";
 import CategoryItem from "./CategoryItem/CategoryItem";
@@ -27,7 +28,7 @@ import NavigationLabelHref from './NavigationLabelHref/NavigationLabelHref';
 import UserAccountGroup from "./UserAccountGroup/UserAccountGroup";
 import UserOptionGroup from "./UserOptionGroup/UserOptionGroup";
 import BottomMenu from "./BottomMenu/BottomMenu";
-import HistoryRow from "./HistotyRow/HistoryRow";
+import OrderHistoryRow from "./OrderHistoryRow/OrderHistoryRow";
 
 export {
     SettingMenuRow,
@@ -36,6 +37,7 @@ export {
     Discount,
     Input,
     Rating,
+    EmptyBasket,
     RowSplitter,
     HistoryTabBar,
     BottomMenu,
@@ -56,6 +58,6 @@ export {
     UserAccountBar,
     UserAccountGroup,
     UserOptionGroup,
-    HistoryRow
+    OrderHistoryRow
 }
 

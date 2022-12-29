@@ -8,7 +8,7 @@ const ProductCard = ({data}) => {
     const selectedSize = 1;
 
     function handleClick(m) {
-        alert('Clicked on size: ' + m.size + ' with price: ' + m.price)
+        console.log('Clicked on size: ' + m.size + ' with price: ' + m.price)
     }
 
     return (
