@@ -1,19 +1,21 @@
 import styled from "styled-components";
 import {COLOR} from '../../utils/theme';
-
+import {PrimaryWideButton} from '../../components';
 export const Wrapper = styled.div`
-  padding: 13px 0 18px 0;
+  padding: 0 0 18px 0;
   display: flex;
   justify-content: center;
   flex-direction: column;
+
+`;
+export const Content = styled.div`
   & > div {
     margin-top: 10px;
   }
-  & > div:nth-child(6) {
-    margin-top: 26px;
+  & > div:first-child{
+    margin-top: 0;
   }
 `;
-
 export const AmountInfo = styled.div`
   font-weight: 700;
   padding-right: 7px;
@@ -24,5 +26,9 @@ export const AmountInfo = styled.div`
   display: flex;
   justify-content: space-between;
   text-align: center;
+  margin-top: 26px;
   margin-bottom: 19px;
+`;
+export const Button = styled(PrimaryWideButton)`
+  font-weight: 700;
 `;

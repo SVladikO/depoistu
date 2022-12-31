@@ -1,27 +1,35 @@
-import {Wrapper, AmountInfo, Total} from './Order.page.style';
-import {OrderHistoryRow, Price, PrimaryWideButton} from "../../components";
+import {Wrapper, AmountInfo, Content, Button} from './Order.page.style';
+import {OrderHistoryRow, Price, } from "../../components";
 
 const item = {
     name: 'Chees Bites Pizza',
     description: ['spicy', 'tomato', 'sauce', 'chili', 'mozzarella'],
-    price: 7,
-    size: 'Medium',
-    status: 'Completed'
+    price: 7
 }
 
 const OrderPage = ({total = 5}) => {
     return (
         <Wrapper>
-            <OrderHistoryRow item={item}/>
-            <OrderHistoryRow item={item}/>
-            <OrderHistoryRow item={item}/>
-            <OrderHistoryRow item={item}/>
-            <OrderHistoryRow item={item}/>
+            <Content>
+                <OrderHistoryRow item={item}/>
+                <OrderHistoryRow item={item}/>
+                <OrderHistoryRow item={item}/>
+                <OrderHistoryRow item={item}/>
+                <OrderHistoryRow item={item}/>
+                <OrderHistoryRow item={item}/>
+                <OrderHistoryRow item={item}/>
+                <OrderHistoryRow item={item}/>
+                <OrderHistoryRow item={item}/>
+                <OrderHistoryRow item={item}/>
+                <OrderHistoryRow item={item}/>
+                <OrderHistoryRow item={item}/>
+                <OrderHistoryRow item={item}/>
+            </Content>
             <AmountInfo>
                 Sub Total ( {total} item ):
                 <Price>200</Price>
             </AmountInfo>
-            <PrimaryWideButton>Place Order</PrimaryWideButton>
+            <Button>Place Order</Button>
         </Wrapper>
     );
 };
