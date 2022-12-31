@@ -6,9 +6,9 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-
 `;
 export const Content = styled.div`
+  margin-top: 43px;
   & > div {
     margin-top: 10px;
   }
@@ -26,7 +26,6 @@ export const AmountInfo = styled.div`
   display: flex;
   justify-content: space-between;
   text-align: center;
-  margin-top: 26px;
   margin-bottom: 19px;
 `;
 export const Button = styled(PrimaryWideButton)`
