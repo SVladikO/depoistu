@@ -127,3 +127,26 @@ INSERT INTO root.GUEST
 (DEFAULT, 'Vlad', 970668830, 'vv11vv', 'vlad_S@gmail.com', false, false, 167233 ),
 (DEFAULT, 'Irina', 635957376, 'ii22ii', 'irina_S@gmail.com', false, false, 167234),
 (DEFAULT, 'David', 972959897, 'dd33dd', 'david_Y@gmail.com', false, false, 167235);
+
+
+CREATE TABLE root.COMPANY(
+ID SERIAL         NOT NULL,
+NAME         TEXT NOT NULL,
+PHONE        INT  NOT NULL,
+CITY         TEXT NOT NULL,
+EMAIL        TEXT,
+JOIN_DATE    TEXT,
+SCHEDULE     TEXT
+);
+
+
+INSERT INTO root.COMPANY
+(id, name, phone, city, email, join_date, schedule) VALUES
+
+(DEFAULT, 'ArmAto', 661544404, 'Kozyatyn', 'armato@gmail.com', '22.05.2020', '8.00-21.00'),
+(DEFAULT, 'PizzaClub', 678894546, 'Kyiv', 'pizzaclub@gmail.com', '17.09.2018', '10.00-22.00'),
+(DEFAULT, 'Dominos', 662454545, 'Lviv', 'dominos@gmail.com', '05.07.2021', '9.00-23.00'),
+(DEFAULT, 'MamaMia', 981346768, 'Kharkiv', 'mamamia@gmail.com', '01.09.2018', '10.00-24.00');
+
+
+
