@@ -125,3 +125,9 @@ INSERT INTO root.GUEST
 (id, name, phone, password, email, is_verified_phone, is_verified_email, join_date) VALUES
 
 (DEFAULT, 'Vlad', 970668830, 'vv11vv', 'vlad_S@gmail.com', false, false, 167233 );
+
+INSERT INTO root.GUEST
+(id, name, phone, password, email, is_verified_phone, is_verified_email, join_date) VALUES
+
+(DEFAULT, 'Irina', 635957376, 'ii22ii', 'irina_S@gmail.com', false, false, 167234),
+(DEFAULT, 'David', 972959897, 'dd33dd', 'david_Y@gmail.com', false, false, 167235);
