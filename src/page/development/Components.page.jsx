@@ -9,7 +9,7 @@ import
     Discount,
     ThirdButton,
     CategoryItem,
-    AccountMenuRow,
+    SettingMenuRow,
     ToggleCheckbox,
     CheckBoxWithLabel,
     SecondaryButton,
@@ -25,6 +25,8 @@ import
     UserAccountBar,
     NavigationLabelHref,
     BottomMenu,
+    OrderHistoryRow,
+    EmptyBasket,
 } from "../../components";
 
 import CatalogPage from "./Catalog.page";
@@ -69,7 +71,7 @@ const columns = [
     ],
     [
         {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
-        {title: 'Price', component: <Price>50.00</Price>},
+        {title: 'Price', component: <Price small={false} big>50.00</Price>},
 
         {title: 'Rating', component: <Rating>{`4.9`}</Rating>},
         {title: 'Discount', component: <Discount>{`-10`}</Discount>},
@@ -112,7 +114,10 @@ const columns = [
         {title: 'CountAccumulator', component: <CountAccumulator count={16}/>},
         {title: 'CountAccumulator', component: <CountAccumulator count={16}/>},
         {title: 'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
-        {title: 'NavigationLabelHref', component: <NavigationLabelHref label="Already have an account?" href="/catalog" hrefTitle="Sing up!"/>},
+        {
+            title: 'NavigationLabelHref',
+            component: <NavigationLabelHref label="Already have an account?" href="/catalog" hrefTitle="Sing up!"/>
+        },
 
     ],
     [
@@ -152,32 +157,35 @@ const columns = [
     ],
     [
         {
-            title: 'AccountMenuRow',
-            component: <AccountMenuRow icon={LockIcon} title={`Change Password`} toggleHandler={() => {}} toggleStatus={true}/>
+            title: 'SettingMenuRow',
+            component: <SettingMenuRow icon={LockIcon} title={`Change Password`} toggleHandler={() => {}} toggleStatus={true}/>
         },
         {
-            title: 'AccountMenuRow',
-            component: <AccountMenuRow icon={LogOutIcon} title="Only change handler" changeHandler={() => console.log('clicked')}/>
+            title: 'SettingMenuRow',
+            component: <SettingMenuRow icon={LogOutIcon} title="Only change handler" changeHandler={() => console.log('clicked')}/>
         },
         {
-            title: 'AccountMenuRow',
-            component: <AccountMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
+            title: 'SettingMenuRow',
+            component: <SettingMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
         },
         {
             title: 'UserAccountGroup', component:
                 <UserAccountGroup groupTitle="Accounts">
-                    <AccountMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
-                    <AccountMenuRow icon={LogOutIcon} title="Only change handler" changeHandler={() => console.log('clicked')}/>
+                    <SettingMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
+                    <SettingMenuRow icon={LogOutIcon} title="Only change handler" changeHandler={() => console.log('clicked')}/>
                 </UserAccountGroup>
         },
         {
             title: 'UserOptionGroup', component:
                 <UserOptionGroup groupTitle="Accounts">
-                    <AccountMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
-                    <AccountMenuRow icon={LogOutIcon} title="Only change handler" changeHandler={() => console.log('clicked')}/>
+                    <SettingMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
+                    <SettingMenuRow icon={LogOutIcon} title="Only change handler" changeHandler={() => console.log('clicked')}/>
                 </UserOptionGroup>
         },
-        {title: 'UserAccountBar', component: <UserAccountBar fullName="Jhon Smith" href="/catalog" status="Basic Member"/>},
+        {
+            title: 'UserAccountBar',
+            component: <UserAccountBar fullName="Jhon Smith" href="/catalog" status="Basic Member"/>
+        },
 
     ],
     [
@@ -198,8 +206,31 @@ const columns = [
                     }}
                 />
         },
+        {
+            title: 'OrderHistoryRow', component:
+                (() => {
+                    const item = {
+                        name: 'Chees Bites Pizza',
+                        description: ['spicy', 'tomato', 'sauce', 'chili', 'mozzarella'],
+                        price: 7
+                    }
+                    return <OrderHistoryRow item={item}/>
+                })()
+        },
+        {
+            title: 'OrderHistoryRow', component: (function () {
+                const item = {
+                    name: 'Chees Bites Pizza',
+                    description: ['spicy', 'tomato', 'sauce', 'chili', 'mozzarella'],
+                    price: 7,
+                    size: 'Medium',
+                    status: 'Completed'
+                }
+                return <OrderHistoryRow item={item}/>
+            })()
+        },
+        {title: 'EmptyBasket', component: <EmptyBasket/>}
     ]
-
 ]
 
 document.body.style.backgroundColor = '#d8d8d8'
@@ -235,7 +266,7 @@ function ComponentsPage() {
                     <Column key={index}>{renderRows(components)}</Column>)
                 }
             </Wrapper>
-            <CatalogPage />
+            <CatalogPage/>
         </div>
     )
 }

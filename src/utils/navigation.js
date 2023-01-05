@@ -1,12 +1,10 @@
 import React from 'react';
 import {Route, Routes} from "react-router-dom";
 
-import {DEV_ROUTER, ROUTER} from "./config";
+import {DEV_ROUTER, ROUTER, ROUTERS} from "./config";
 
 import {COLOR} from './theme'
 
-import SignInPage from "../page/sing-in/SignIn.page";
-import SingUpPage from "../page/sing-up/SingUp.page";
 import LoadingPage from "../page/Loading.page";
 import CatalogPage from '../page/development/Catalog.page';
 import ComponentsPage from '../page/development/Components.page';
@@ -14,10 +12,7 @@ import ReduxIntroductionPage from "../page/development/Redux-introduction.page";
 
 import styled from 'styled-components'
 import {DEVICE_WIDTH} from "./theme";
-import CategoryPage from "../page/category/Category.page";
-import ChangePasswordPage from "../page/change-password/ChangePassword.page";
 import {NavigationHeader} from "../components";
-import UserAccauntPage from "../page/user-account/UserAccaunt.page";
 
 export const MobileDevice = styled.div`
   min-width: ${DEVICE_WIDTH.MIN};
@@ -35,30 +30,14 @@ export const Centralicer = styled.div`
   padding: 0 25px 25px 25px;
 `;
 
-// Creation router +
-const routes = [
-    {path: ROUTER.SING_IN, component: SignInPage},
-    {path: ROUTER.SING_UP, component: SingUpPage},
-    {path: ROUTER.CATEGORY, component: CategoryPage},
-    {path: ROUTER.CHANGE_PASSWORD, component: ChangePasswordPage},
-    {path: ROUTER.USER_ACCOUNT, component: UserAccauntPage},
-].map(r => <Route key={r.path} path={r.path} element={
+const routes =  ROUTERS.map(r => <Route key={r.URL} path={r.URL} element={
     <MobileDevice>
-        <NavigationHeader href={' '} title={rightStr(r.path)}/>
+        <NavigationHeader href={' '} title={r.TITLE}/>
         <Centralicer>
-            <r.component/>
+            <r.page/>
         </Centralicer>
     </MobileDevice>
 }/>);
-
-/*
-* I really didn't know how to make a right string in Navigation header for current component
-* so I made this function
-* */
-
-function rightStr(str){
-    return `${str[0].toUpperCase()}${str.slice(1)}`.replaceAll('-',' ');
-}
 
 export const getRoutes = () => {
     return (
@@ -73,7 +52,7 @@ export const getRoutes = () => {
             </Routes>
 
             <Routes>
-                <Route path={ROUTER.LOADING} element={<LoadingPage/>}/>
+                <Route path={ROUTER.LOADING.URL} element={<LoadingPage/>}/>
             </Routes>
 
             <Routes>{routes}</Routes>

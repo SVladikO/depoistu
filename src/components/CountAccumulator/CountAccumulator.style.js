@@ -6,7 +6,9 @@ export const Wrapper = styled.div`
   min-width: 46px;
   height: 16px;
   display: flex;
-  align-items: center;
+  align-items: start;
+  padding: 0;
+  margin: 0;
 `;
 export const Button = styled.button`
   width: 16px;
@@ -17,7 +19,6 @@ export const Button = styled.button`
   font-weight: 700;
   color: ${p => p.increment ? COLOR.ACCENT4 : COLOR.PRIMARY };
   line-height: 10px;
-  margin: 0 4px;
   display: block;
 `;
 
@@ -25,5 +26,5 @@ export const Counter = styled.div`
   color: ${COLOR.ACCENT1};
   font-weight: 700;
   font-size: 8px;
-  line-height: 10px;
+  padding: 4px;
 `;
