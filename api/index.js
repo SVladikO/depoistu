@@ -16,6 +16,18 @@ server.get('/company/:companyId/menu', function (req, res) {
     dbRequest(pool, QUERY.MENU_ITEM.SELECT_ALL_BY_COMPANY_ID(companyId), value => res.send(value));
 })
 
+server.get('/company/:companyId/category', function (req, res) {
+    const {companyId} = req.params;
+    dbRequest(
+        pool,
+        QUERY.MENU_ITEM.SELECT_CATEGORY_ID_BY_COMPANY_ID(companyId),
+        value => {
+
+            let result = [...new Set(value.map(v => v.category_id))]
+            res.send(result)
+        });
+})
+
 server.get('/company/:companyId/menu/:categoryId', function (req, res) {
     const {companyId, categoryId} = req.params;
 
