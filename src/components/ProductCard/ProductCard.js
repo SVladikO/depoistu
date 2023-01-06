@@ -3,8 +3,8 @@ import {Wrapper, Flex, FoodImage, Title} from "./ProductCard.style";
 import {Discount, Rating, Price, ProductSizeBar} from "../index";
 import {ReactComponent as BasketIcon} from "../../icons/basket.svg";
 
-const ProductCard = ({data}) => {
-    const {buttons, rating, discont, image} = data;
+const ProductCard = ({item = {}}) => {
+    const {title, buttons, rating, discont, image} = item;
     const selectedSize = 1;
 
     function handleClick(m) {
@@ -19,13 +19,13 @@ const ProductCard = ({data}) => {
                     <Discount>{discont}</Discount>
                     <Rating>{rating}</Rating>
                 </Flex>
-                <FoodImage src={image} />
-                <Title>Chees Bites Pizza</Title>
-                <Flex justifyContent={'center'}  margin={'10px 0 0'}>
-                    <ProductSizeBar buttons={buttons} handleClick={handleClick} selectedSize={selectedSize}/>
+                <FoodImage src={image}/>
+                <Title>{title}</Title>
+                <Flex justifyContent={'center'} margin={'10px 0 0'}>
+                    {/*<ProductSizeBar buttons={buttons} handleClick={handleClick} selectedSize={selectedSize}/>*/}
                 </Flex>
                 <Flex justifyContent={"space-between"} margin={'10px 0 0'}>
-                    <Price>{buttons[selectedSize].price}</Price>
+                    {/*<Price>{buttons[selectedSize].price}</Price>*/}
                     <BasketIcon/>
                 </Flex>
                 <Flex></Flex>
