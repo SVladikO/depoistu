@@ -1,5 +1,7 @@
-import React, {useState, useEffect} from 'react';
-
+// import React, {useState, useEffect} from 'react';
+import {Link} from "react-router-dom";
+import menu_items from './data.js';
+import {ROUTER} from '../../utils/config';
 import {
     Content,
     Flex
@@ -29,37 +31,54 @@ const default_categories = {
     8: {title: "Vagetable", icon: VagetableIcon},
 }
 
-const fetchData = async () => {
-    const url = 'https://pizza-mobile-api-develop.onrender.com/company/1/menu';
-
-    const responce = await fetch(url);
-    debugger;
-    if (responce.ok) {
-        return responce.json();
-    }
-
-    throw new Error('Data coud not be fetched!')
-}
+// const fetchData = async () => {
+//     const url = 'https://pizza-mobile-api-develop.onrender.com/company/1/menu';
+//
+//     const responce = await fetch(url);
+//     debugger;
+//     if (responce.ok) {
+//         return responce.json();
+//     }
+//
+//     throw new Error('Data coud not be fetched!')
+// }
 
 
 // [].map(menu_item => categories[menu_item.category_id].items.push(menu_item))
 
 const CategoryPage = () => {
-    const [categories, setCategories] = useState([])
+    // const [menu_items, setMenuItems] = useState([])
 
-    useEffect(() => {
-        fetchData()
-            .then(res => console.log(1111, res))
-            .catch(e => console.log(e))
+    // useEffect(() => {
+    //     fetchData()
+    //         .then(res => {
+    //             setMenuItems(res);
+    //         })
+    //         .catch(e => console.log(e))
+    //
+    // }, [])
 
-    }, [])
+    const obj = {}
+
+    menu_items.forEach(item => {
+        const category = default_categories[item.category_id]
+        category.items = category.items || [];
+        category.items.push(item)
+    })
+
+    console.log({menu_items})
 
     return (
         <Content>
             <Flex>
-                {categories
+                {Object.keys(default_categories)
+                    .map(key => default_categories[key])
                     .filter(category => category.items)
-                    .map(c => <CategoryItem key={c.title} title={c.title}>{<c.icon/>}</CategoryItem>)}
+                    .map(c =>
+                        <Link to={'/'+ ROUTER.SUB_CATEGORY.URL + '?id=2' }>
+                            <CategoryItem key={c.title} title={c.title}>{<c.icon/>}</CategoryItem>
+                        </Link>
+                            )}
             </Flex>
         </Content>
     );
