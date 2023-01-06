@@ -21,43 +21,38 @@ import {ReactComponent as SandwitchIcon} from "../../icons/category/sandwitch.sv
 import {ReactComponent as Sea_foodIcon} from "../../icons/category/sea_food.svg";
 import {ReactComponent as VagetableIcon} from "../../icons/category/vagetable.svg";
 
-const default_categories = {
-    1: {id: 1, title: "Bakery", icon: BakeryIcon},
-    2: {id: 2, title: "Beverage", icon: BeverageIcon},
-    3: {id: 3, title: "Burger", icon: BurgerIcon},
-    4: {id: 4, title: "Noodles", icon: NoodlesIcon},
-    5: {id: 5, title: "Pizza", icon: PizzaIcon},
-    6: {id: 6, title: "Sandwitch", icon: SandwitchIcon},
-    7: {id: 7, title: "Sea_food", icon: Sea_foodIcon},
-    8: {id: 8, title: "Vagetable", icon: VagetableIcon},
+const CATEGORY_MAPPER = {
+    1: {title: "Bakery", icon: BakeryIcon},
+    2: {title: "Beverage", icon: BeverageIcon},
+    3: {title: "Burger", icon: BurgerIcon},
+    4: {title: "Noodles", icon: NoodlesIcon},
+    5: {title: "Pizza", icon: PizzaIcon},
+    6: {title: "Sandwitch", icon: SandwitchIcon},
+    7: {title: "Sea_food", icon: Sea_foodIcon},
+    8: {title: "Vagetable", icon: VagetableIcon},
 }
 
 const CategoryPage = () => {
     const [menu_items, setMenuItems] = useState([])
 
     useEffect(() => {
-        fetchData(BE_API.GET_ALL_MENU_FOR_COMPANY(1))
+        fetchData(BE_API.GET_ALL_CATEGORIES_ID_FOR_COMPANY(1))
             .then(res => setMenuItems(res))
             .catch(e => console.log(e))
     }, [])
 
-    menu_items.forEach(item => {
-        const category = default_categories[item.category_id]
-        category.items = category.items || [];
-        category.items.push(item)
-    })
+    const getCategoryItem = category => <CategoryItem key={category.title} title={category.title}>{<category.icon/>}</CategoryItem>;
 
     return (
         <Content>
             <Flex>
-                {Object.keys(default_categories)
-                    .map(key => default_categories[key])
-                    .filter(category => category.items)
-                    .map(c =>
-                        <Link to={'/' + ROUTER.SUB_CATEGORY.URL +'/'+ c.id}>
-                            <CategoryItem key={c.title} title={c.title}>{<c.icon/>}</CategoryItem>
+                {
+                    menu_items.map(category_id => (
+                        <Link to={'/' + ROUTER.SUB_CATEGORY.URL + '/' + category_id}>
+                            {getCategoryItem(CATEGORY_MAPPER[category_id])}
                         </Link>
-                    )}
+                    ))
+                }
             </Flex>
         </Content>
     );

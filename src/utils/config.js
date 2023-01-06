@@ -15,7 +15,7 @@ export const DEV_ROUTER = {
 const DOMAIN = 'https://pizza-mobile-api-develop.onrender.com';
 
 export const BE_API = {
-    GET_ALL_MENU_FOR_COMPANY: companyId => `${DOMAIN}/company/${companyId}/menu`,
+    GET_ALL_CATEGORIES_ID_FOR_COMPANY: companyId => `${DOMAIN}/company/${companyId}/category`,
     GET_ALL_MENU_FOR_COMPANY_FOR_CATEGORY: (companyId, categoryId) => `${DOMAIN}/company/${companyId}/menu/${categoryId}`,
 };
 

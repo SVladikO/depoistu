@@ -22,10 +22,10 @@ const ProductCard = ({item = {}}) => {
                 <FoodImage src={image}/>
                 <Title>{title}</Title>
                 <Flex justifyContent={'center'} margin={'10px 0 0'}>
-                    {/*<ProductSizeBar buttons={buttons} handleClick={handleClick} selectedSize={selectedSize}/>*/}
+                    <ProductSizeBar buttons={buttons} handleClick={handleClick} selectedSize={selectedSize}/>
                 </Flex>
                 <Flex justifyContent={"space-between"} margin={'10px 0 0'}>
-                    {/*<Price>{buttons[selectedSize].price}</Price>*/}
+                    <Price>{buttons[selectedSize].price}</Price>
                     <BasketIcon/>
                 </Flex>
                 <Flex></Flex>
