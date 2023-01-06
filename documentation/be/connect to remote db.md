@@ -11,10 +11,10 @@
 ### 4 Put your ip address to render.com as trusted source
 Get your ip you can by using `curl ifconfig.me`
 ### 5 Connect to remove server:
-`psql -h dpg-ceia2u2rrk07uhbp15fg-a.frankfurt-postgres.render.com -U pizza_mobile_db_yjul_user pizza_mobile_db_yjul`
+psql -h dpg-ces09den6mphf4veq0ag-a.frankfurt-postgres.render.com -U pizza_mobile_db_state_user pizza_mobile_db_state
 
 ###### PASSWORD:
-`oA3OlpU9RIhBXnY1sSi36diIv53qGxTq` 
+SkdNvQAPZPW0lLky2w24W3wXIzaHCoxo 
 
 
 ### DON'T FORGET THAT IP RESTRICTION FROM REMOTE DB FOR LOCAL MACHINE AND REMOTE SERVER.
