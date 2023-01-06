@@ -1,9 +1,13 @@
 const express = require('express')
-const server = express()
+const cors = require('cors');
 const dbConfig = require('./db/config')
 const QUERY = require('./db/query')
 const {Pool} = require('pg');
 const dbRequest = require('./utils')
+
+const server = express()
+
+server.use(cors());
 
 const pool = new Pool(dbConfig);
 
