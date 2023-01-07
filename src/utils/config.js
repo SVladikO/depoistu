@@ -35,7 +35,7 @@ export const CATEGORY_MAPPER = {
     4: {title: "Noodles", icon: NoodlesIcon},
     5: {title: "Pizza", icon: PizzaIcon},
     6: {title: "Sandwitch", icon: SandwitchIcon},
-    7: {title: "Sea_food", icon: Sea_foodIcon},
+    7: {title: "Sea food", icon: Sea_foodIcon},
     8: {title: "Vagetable", icon: VagetableIcon},
 }
 
