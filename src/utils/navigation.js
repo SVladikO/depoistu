@@ -39,7 +39,7 @@ export const Centralicer = styled.div`
 console.log({ROUTERS})
 const routes =  ROUTERS.map(r => <Route key={r.URL} path={r.URL + (r.PARAMS || '')} element={
     <MobileDevice>
-        <NavigationHeader href={' '} title={r.TITLE}/>
+        <NavigationHeader href={' '} title={r.TITLE} getTitle={r.getTitle}/>
         <Centralicer>
             <r.page/>
         </Centralicer>

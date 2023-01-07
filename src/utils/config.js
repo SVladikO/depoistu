@@ -6,6 +6,15 @@ import CategoryPage from "../page/category/Category.page";
 import SubCategoryPage from "../page/sub-category/SubCategory.page";
 import ChangePasswordPage from "../page/change-password/ChangePassword.page";
 
+import {ReactComponent as BakeryIcon} from "../icons/category/bakery.svg";
+import {ReactComponent as BeverageIcon} from "../icons/category/beverage.svg";
+import {ReactComponent as BurgerIcon} from "../icons/category/burger.svg";
+import {ReactComponent as NoodlesIcon} from "../icons/category/noodles.svg";
+import {ReactComponent as PizzaIcon} from "../icons/category/pizza.svg";
+import {ReactComponent as SandwitchIcon} from "../icons/category/sandwitch.svg";
+import {ReactComponent as Sea_foodIcon} from "../icons/category/sea_food.svg";
+import {ReactComponent as VagetableIcon} from "../icons/category/vagetable.svg";
+
 export const DEV_ROUTER = {
     pageS: 'pages',
     PAGES: 'pages',
@@ -19,7 +28,22 @@ export const BE_API = {
     GET_ALL_MENU_FOR_COMPANY_FOR_CATEGORY: (companyId, categoryId) => `${DOMAIN}/company/${companyId}/menu/${categoryId}`,
 };
 
+export const CATEGORY_MAPPER = {
+    1: {title: "Bakery", icon: BakeryIcon},
+    2: {title: "Beverage", icon: BeverageIcon},
+    3: {title: "Burger", icon: BurgerIcon},
+    4: {title: "Noodles", icon: NoodlesIcon},
+    5: {title: "Pizza", icon: PizzaIcon},
+    6: {title: "Sandwitch", icon: SandwitchIcon},
+    7: {title: "Sea_food", icon: Sea_foodIcon},
+    8: {title: "Vagetable", icon: VagetableIcon},
+}
 
+const getSubCategoryTitle = (urlParams) => {
+    console.log(555555, urlParams)
+    const {categoryId} = urlParams;
+    return CATEGORY_MAPPER[categoryId].title;
+}
 
 export const ROUTER =  {
     LOADING: {URL: '/loading',TITLE: 'Loading',page: LoadingPage},
@@ -33,7 +57,7 @@ export const ROUTER =  {
 
     CHANGE_PASSWORD: {URL: '/change-password',TITLE: 'Change password',page: ChangePasswordPage},
     CATEGORY: {URL: '/category',TITLE: 'Category',page: CategoryPage, showBottomMenu: true},
-    SUB_CATEGORY: {URL: '/category', PARAMS: '/:categoryId', TITLE: 'Sub category', page: SubCategoryPage, showBottomMenu: true},
+    SUB_CATEGORY: {URL: '/category', PARAMS: '/:categoryId', getTitle: getSubCategoryTitle, page: SubCategoryPage, showBottomMenu: true},
 
     Sing_up_phone_email: {URL: '/Sing_up_phone_email',TITLE: 'Sing_up_phone_email ',page: () => {}},
     Phone_verification: {URL: '/Phone_verification',TITLE: 'Phone_verification ',page: () => {}},
@@ -57,5 +81,6 @@ export const ROUTER =  {
     SETTING: {URL: '/setting',  TITLE: 'Setting', page: SettingPage, showBottomMenu: true},
     USER_ACCOUNT: {URL: '/user_account',  TITLE: 'USER_ACCOUNT', page: () => {}, showBottomMenu: true},
 };
+
 
 export const ROUTERS = Object.keys(ROUTER).map(key => ROUTER[key]);
