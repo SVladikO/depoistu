@@ -1,6 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {Link} from "react-router-dom";
 
+import {useLocalStorageFetch} from '../../hook';
 import {BE_API, ROUTER} from '../../utils/config';
 import {fetchData} from '../../fetch'
 import {
@@ -33,22 +34,25 @@ const CATEGORY_MAPPER = {
 }
 
 const CategoryPage = () => {
-    const [menu_items, setMenuItems] = useState([])
+    const [categories] = useLocalStorageFetch(
+        'category',
+        [],
+        onSuccess =>
+            fetchData(
+                BE_API.GET_ALL_CATEGORIES_ID_FOR_COMPANY(1))
+                .then(res => onSuccess(res))
+                .catch(e => console.log(e))
+    )
 
-    useEffect(() => {
-        fetchData(BE_API.GET_ALL_CATEGORIES_ID_FOR_COMPANY(1))
-            .then(res => setMenuItems(res))
-            .catch(e => console.log(e))
-    }, [])
-
-    const getCategoryItem = category => <CategoryItem key={category.title} title={category.title}>{<category.icon/>}</CategoryItem>;
+    const getCategoryItem = category => <CategoryItem key={category.title} title={category.title}>{
+        <category.icon/>}</CategoryItem>;
 
     return (
         <Content>
             <Flex>
                 {
-                    menu_items.map(category_id => (
-                        <Link to={ROUTER.SUB_CATEGORY.URL + '/' + category_id}>
+                    categories.map(category_id => (
+                        <Link key={category_id} to={ROUTER.SUB_CATEGORY.URL + '/' + category_id}>
                             {getCategoryItem(CATEGORY_MAPPER[category_id])}
                         </Link>
                     ))

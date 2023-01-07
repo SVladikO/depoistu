@@ -11,8 +11,8 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
 
-  position: absolute;
-  bottom: 0px;
+  position: fixed;
+  bottom: 0;
   width: 100%;
 `;
 
