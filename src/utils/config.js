@@ -33,7 +33,7 @@ export const ROUTER =  {
 
     CHANGE_PASSWORD: {URL: '/change-password',TITLE: 'Change password',page: ChangePasswordPage},
     CATEGORY: {URL: '/category',TITLE: 'Category',page: CategoryPage, showBottomMenu: true},
-    SUB_CATEGORY: {URL: '/sub_category', PARAMS: '/:categoryId', TITLE: 'Sub category', page: SubCategoryPage, showBottomMenu: true},
+    SUB_CATEGORY: {URL: '/category', PARAMS: '/:categoryId', TITLE: 'Sub category', page: SubCategoryPage, showBottomMenu: true},
 
     Sing_up_phone_email: {URL: '/Sing_up_phone_email',TITLE: 'Sing_up_phone_email ',page: () => {}},
     Phone_verification: {URL: '/Phone_verification',TITLE: 'Phone_verification ',page: () => {}},
