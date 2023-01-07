@@ -12,6 +12,13 @@ export const DEV_ROUTER = {
     REDUX: 'redux',
 };
 
+const DOMAIN = 'https://pizza-mobile-api-develop.onrender.com';
+
+export const BE_API = {
+    GET_ALL_CATEGORIES_ID_FOR_COMPANY: companyId => `${DOMAIN}/company/${companyId}/category`,
+    GET_ALL_MENU_FOR_COMPANY_FOR_CATEGORY: (companyId, categoryId) => `${DOMAIN}/company/${companyId}/menu/${categoryId}`,
+};
+
 export const ROUTER = {
     LOADING: {URL: 'loading',TITLE: 'Loading',page: LoadingPage},
 
@@ -24,7 +31,7 @@ export const ROUTER = {
 
     CHANGE_PASSWORD: {URL: 'change-password',TITLE: 'Change password',page: ChangePasswordPage},
     CATEGORY: {URL: 'category',TITLE: 'Category',page: CategoryPage},
-    SUB_CATEGORY: {URL: 'sub_category',TITLE: 'Sub category',page: SubCategoryPage},
+    SUB_CATEGORY: {URL: 'sub_category', PARAMS: '/:categoryId', TITLE: 'Sub category',page: SubCategoryPage},
 
     Sing_up_phone_email: {URL: 'Sing_up_phone_email',TITLE: 'Sing_up_phone_email ',page: () => {}},
     Phone_verification: {URL: 'Phone_verification',TITLE: 'Phone_verification ',page: () => {}},

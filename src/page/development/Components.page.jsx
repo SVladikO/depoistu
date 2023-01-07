@@ -194,7 +194,7 @@ const columns = [
             title: 'ProductCard',
             component:
                 <ProductCard
-                    data={{
+                    item={{
                         image: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
                         discont: '-10',
                         rating: '4.5',

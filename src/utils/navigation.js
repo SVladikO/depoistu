@@ -30,7 +30,7 @@ export const Centralicer = styled.div`
   padding: 0 25px 25px 25px;
 `;
 
-const routes =  ROUTERS.map(r => <Route key={r.URL} path={r.URL} element={
+const routes =  ROUTERS.map(r => <Route key={r.URL} path={r.URL + (r.PARAMS || '')} element={
     <MobileDevice>
         <NavigationHeader href={' '} title={r.TITLE}/>
         <Centralicer>
