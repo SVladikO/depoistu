@@ -10,6 +10,10 @@ export const Wrapper = styled.div`
   padding: 14px 25px 15px 25px;
   display: flex;
   justify-content: space-between;
+
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
 `;
 
 export const MenuItem = styled.div`

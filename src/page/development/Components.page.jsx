@@ -27,6 +27,7 @@ import
     BottomMenu,
     OrderHistoryRow,
     EmptyBasket,
+    RowSplitter,
 } from "../../components";
 
 import CatalogPage from "./Catalog.page";
@@ -152,8 +153,8 @@ const columns = [
                     })()}
                 </NavigationHeader>
         },
-        {title: 'BottomMenu', component: <BottomMenu basket="35"/>},
-        {title: 'BottomMenu', component: <BottomMenu/>},
+        {title: 'BottomMenu', component: <RowSplitter height='80px'><BottomMenu basket="35"/></RowSplitter>},
+        {title: 'BottomMenu', component: <RowSplitter height='80px'><BottomMenu/></RowSplitter>},
     ],
     [
         {
