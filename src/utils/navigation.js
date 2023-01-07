@@ -21,13 +21,19 @@ export const MobileDevice = styled.div`
   min-height: 100vh;
   background: ${COLOR.ACCENT2};
   position: relative;
+  
+  & > div:first-child {
+    position: fixed;
+    top: 0;
+    
+  }
 `;
 
 export const Centralicer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: start;
-  padding: 0 25px 25px 25px;
+  padding: 90px 25px 110px 25px;
 `;
 
 console.log({ROUTERS})
