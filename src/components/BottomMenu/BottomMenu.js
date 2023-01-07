@@ -21,15 +21,15 @@ const BottomMenu = ({basket}) => {
                     <Label>Home</Label>
                 </MenuItem>
             </NavLink>
-            <NavLink to={ROUTER.LOADING.URL}>
-                <MenuItem selected={isSelected(ROUTER.LOADING.URL)}>
+            <NavLink to={''}>
+                <MenuItem selected={isSelected()}>
                     <CartIcon/>
                     <Label>Cart</Label>
                     {basket ? <PurchaseCounter>{basket}</PurchaseCounter> : null}
                 </MenuItem>
             </NavLink>
-            <NavLink to={ROUTER.LOADING.URL}>
-                <MenuItem selected={isSelected(ROUTER.LOADING.URL)}>
+            <NavLink to={''}>
+                <MenuItem selected={isSelected('')}>
                     <SearchIcon/>
                     <Label>Search</Label>
                 </MenuItem>
