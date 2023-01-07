@@ -37,6 +37,16 @@ CREATE TABLE root.COMPANY
     SCHEDULE  TEXT
 );
 
+CREATE TABLE root.HISTORY
+(
+    ID            SERIAL NOT NULL,
+    GUEST_ID      INT    NOT NULL,
+    COMPANY_ID    INT    NOT NULL,
+    ORDER_DETAILS TEXT,
+    DATE_TIME     TEXT,
+    IS_PAID       BOOLEAN,
+    IS_PREPARED   BOOLEAN
+);
 
 INSERT INTO root.MENU_ITEM (id, category_id, company_id, name, ingredients, price_size) VALUES
 -- BAKERY (1/10)
@@ -124,6 +134,14 @@ INSERT INTO root.COMPANY (id, name, phone, city, email, join_date, schedule) VAL
   (DEFAULT, 'Dominos', 662454545, 'Lviv', 'dominos@gmail.com', '05.07.2021', '9.00-23.00'),
   (DEFAULT, 'MamaMia', 981346768, 'Kharkiv', 'mamamia@gmail.com', '01.09.2018', '10.00-24.00');
 
+INSERT INTO root.HISTORY
+(id, guest_id, company_id, order_details, date_time, is_paid, is_prepared) VALUES
+    (DEFAULT, 1, 1, '5 S 1 113', '03.12.2022', true, true),
+    (DEFAULT, 1, 1, '6 m 1 145| 8 m 1 145| 26 1 s 40| 28 s 1 40', '31.12.2022', true, true),
+    (DEFAULT, 2, 1, '33 s 2 113| 14 m 1 145| 20 s 1 15| 27 s 1 40', '02.01.2023', true, true),
+    (DEFAULT, 2, 2, '15 s 1 113| 9 s 1 113| 22 s 3 25', '03.01.2023', true, false),
+    (DEFAULT, 3, 4, '50 m 1 145| 51 m 1 145| 53 s 1 113', '04.01.2023', true, true),
+    (DEFAULT, 3, 3, '7 l 1 200| 31 s 3 115| 22 s 1 25| 23 s 2 25', '06.01.2023', false, false);
 
 
 
