@@ -12,7 +12,7 @@ import ReduxIntroductionPage from "../page/development/Redux-introduction.page";
 
 import styled from 'styled-components'
 import {DEVICE_WIDTH} from "./theme";
-import {NavigationHeader} from "../components";
+import {BottomMenu, NavigationHeader} from "../components";
 
 export const MobileDevice = styled.div`
   min-width: ${DEVICE_WIDTH.MIN};
@@ -20,7 +20,7 @@ export const MobileDevice = styled.div`
   margin: 0 auto;
   min-height: 100vh;
   background: ${COLOR.ACCENT2};
-
+  position: relative;
 `;
 
 export const Centralicer = styled.div`
@@ -30,12 +30,14 @@ export const Centralicer = styled.div`
   padding: 0 25px 25px 25px;
 `;
 
+console.log({ROUTERS})
 const routes =  ROUTERS.map(r => <Route key={r.URL} path={r.URL + (r.PARAMS || '')} element={
     <MobileDevice>
         <NavigationHeader href={' '} title={r.TITLE}/>
         <Centralicer>
             <r.page/>
         </Centralicer>
+        {r.showBottomMenu && <BottomMenu/>}
     </MobileDevice>
 }/>);
 
