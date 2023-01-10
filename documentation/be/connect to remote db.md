@@ -21,3 +21,13 @@ SkdNvQAPZPW0lLky2w24W3wXIzaHCoxo
 
 #### ?
 https://pizza-mobile-api.onrender.com/
+
+
+For SELECT ONLY Heroku
+psql postgres://bpflvidbquvpdp:a7664b3b120bba81df36a108a98765925157f901cec8f0228f52533004ac96b3@ec2-63-32-248-14.eu-west-1.compute.amazonaws.com:5432/d6j0lksqcelm8h
+
+For insert only
+$ heroku pg:psql --app=pizza-mobile-api
+
+
+heroku pg:backups:restore https://github.com/SVladikO/pizza-mobile-app/blob/master/documentation/be/DB_CREATE_TABLES.sql postgres://bpflvidbquvpdp:a7664b3b120bba81df36a108a98765925157f901cec8f0228f52533004ac96b3@ec2-63-32-248-14.eu-west-1.compute.amazonaws.com:5432/d6j0lksqcelm8h --app pizza-mobile-api  
