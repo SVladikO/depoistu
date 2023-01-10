@@ -6,9 +6,11 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
+  position: relative;
+  z-index: 1;
 `;
 export const Content = styled.div`
-  margin-top: 43px;
+  margin-bottom: 26px;
   & > div {
     margin-top: 10px;
   }
@@ -16,6 +18,16 @@ export const Content = styled.div`
     margin-top: 0;
   }
 `;
+export const FixedContent = styled.div`
+  z-index: 2;
+  display: block;
+  position: sticky;
+  bottom: 0;
+  width: inherit;
+  background-color: ${COLOR.ACCENT2};
+  padding: 26px 0 43px 0;
+`;
+
 export const AmountInfo = styled.div`
   font-weight: 700;
   padding-right: 7px;

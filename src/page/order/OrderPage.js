@@ -1,5 +1,5 @@
-import {Wrapper, AmountInfo, Content, Button} from './Order.page.style';
-import {OrderHistoryRow, Price, } from "../../components";
+import {Wrapper, AmountInfo, Content, Button, FixedContent} from './Order.page.style';
+import {OrderHistoryRow, Price} from "../../components";
 
 const item = {
     name: 'Chees Bites Pizza',
@@ -10,11 +10,6 @@ const item = {
 const OrderPage = ({total = 5}) => {
     return (
         <Wrapper>
-            <AmountInfo>
-                Sub Total ( {total} item ):
-                <Price>200</Price>
-            </AmountInfo>
-            <Button>Place Order</Button>
             <Content>
                 <OrderHistoryRow item={item}/>
                 <OrderHistoryRow item={item}/>
@@ -30,6 +25,14 @@ const OrderPage = ({total = 5}) => {
                 <OrderHistoryRow item={item}/>
                 <OrderHistoryRow item={item}/>
             </Content>
+            <FixedContent>
+                <AmountInfo>
+                    Sub Total ( {total} item ):
+                    <Price>200</Price>
+                </AmountInfo>
+                <Button>Place Order</Button>
+            </FixedContent>
+
         </Wrapper>
     );
 };
