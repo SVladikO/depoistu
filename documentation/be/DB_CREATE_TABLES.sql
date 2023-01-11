@@ -55,9 +55,7 @@ INSERT INTO root.MENU_ITEM (id, category_id, company_id, name, ingredients, pric
 (DEFAULT, 1, 1, 'Strawberry muffin', 'muffin, strawberry jam, whipped cream', 's_113|m_145|l_200'),
 (DEFAULT, 1, 1, 'Vanilla croissant', 'croissant, vanilla cream, mint leaf, powdered sugar', 's_113|m_145|l_200'),
 (DEFAULT, 1, 1, 'Chocolate croissant', 'croissant, chocolate cream, powdered sugar', 's_113|m_145|l_200'),
-(DEFAULT, 1, 1, 'Raspberry croissant', 'croissant, raspberry jam, powdered sugar', 's_113|m_145|l_200');
-
-INSERT INTO root.MENU_ITEM (id, category_id, company_id, name, ingredients, price_size) VALUES
+(DEFAULT, 1, 1, 'Raspberry croissant', 'croissant, raspberry jam, powdered sugar', 's_113|m_145|l_200'),
 -- BEVERAGE (2/15)
 (DEFAULT, 2, 1, 'BonAqua carbonated water', '1, 2, 3, 4, 5', 's_113|m_145|l_200'),
 (DEFAULT, 2, 1, 'BonAqua water', '1, 2, 3, 4, 5', 's_113|m_145|l_200'),
@@ -68,22 +66,16 @@ INSERT INTO root.MENU_ITEM (id, category_id, company_id, name, ingredients, pric
 (DEFAULT, 2, 1, 'Black tea', '1, 2, 3, 4, 5', 's_113|m_145|l_200'),
 (DEFAULT, 2, 1, 'Green tea', '1, 2, 3, 4, 5', 's_113|m_145|l_200'),
 (DEFAULT, 2, 1, 'Fruit tea', '1, 2, 3, 4, 5', 's_113|m_145|l_200'),
-(DEFAULT, 2, 1, 'Jasmin tea', '1, 2, 3, 4, 5', 's_113|m_145|l_200');
-
-INSERT INTO root.MENU_ITEM (id, category_id, company_id, name, ingredients, price_size) VALUES
+(DEFAULT, 2, 1, 'Jasmin tea', '1, 2, 3, 4, 5', 's_113|m_145|l_200'),
 -- BURGER (3/11)
 (DEFAULT, 3, 1, 'CheeseBurger', 'burger bun, mayonnaise, spinach, red onion, cheddar cheese', 's_113|m_145|l_200'),
 (DEFAULT, 3, 1, 'BeefBurger', 'burger bun, beef steak, argula, tomato, grilled champignon, cheddar cheese', 's_113|m_145|l_200'),
 (DEFAULT, 3, 1, 'ChickenBurger', 'burger bun, chicken steak, jalapeno, cucumber, bacon, cheddar cheese', 's_113|m_145|l_200'),
 (DEFAULT, 3, 1, 'FishBurger', 'burger bun, fish steak, mustard, pickled cucumber, lettuce, cheddar cheese', 's_113|m_145|l_200'),
-(DEFAULT, 3, 1, 'ChorizoBurger', 'burger bun, chorizo, ketchup, paprika, fried egg, cheddar cheese', 's_113|m_145|l_200');
-
-INSERT INTO root.MENU_ITEM (id, category_id, company_id, name, ingredients, price_size) VALUES
+(DEFAULT, 3, 1, 'ChorizoBurger', 'burger bun, chorizo, ketchup, paprika, fried egg, cheddar cheese', 's_113|m_145|l_200'),
 -- NOODLES (4/6)
 (DEFAULT, 4, 1, 'VegNoodles',
- 'noodles, pepper, carrots, ginger, celery, pepper, sesame oil, chili flakes, soy sauce, garlic, water', 's_113|m_145|l_200');
-
-INSERT INTO root.MENU_ITEM (id, category_id, company_id, name, ingredients, price_size) VALUES
+ 'noodles, pepper, carrots, ginger, celery, pepper, sesame oil, chili flakes, soy sauce, garlic, water', 's_113|m_145|l_200'),
 -- PIZZA (5/15)
 (DEFAULT, 5, 1, '4 cheese', 'Dor bleu, Parmesan, Cheddar, Mozzarella, Alfredo cream sauce (base)', 's_113|m_145|l_200'),
 (DEFAULT, 5, 1, 'Burger', 'Meat Ball, Cheddar, Bacon, Mozzarella, Pickled cucumber, Tomato, Burger sauce, Tomato sauce (base), Red onion', 's_113|m_145|l_200'),
@@ -99,24 +91,16 @@ INSERT INTO root.MENU_ITEM (id, category_id, company_id, name, ingredients, pric
 (DEFAULT, 5, 1, 'BBQ chicken', 'BBQ sauce, BBQ sauce (base), bacon, Halal grilled chicken, mozzarella, red onion', 's_113|m_145|l_200'),
 (DEFAULT, 5, 1, 'Marinara', 'squid, tiger shrimp, olives, mussels, mozzarella, creamy Alfredo sauce (base)', 's_113|m_145|l_200'),
 (DEFAULT, 5, 1, 'Sicilian', 'grilled chicken, mozzarella, tomato sauce (base), champignons', 's_113|m_145|l_200'),
-(DEFAULT, 5, 1, 'Philadelphia', 'sesame, mozzarella, tomato, creamy Alfredo sauce (base), cream cheese, salmon', 's_113|m_145|l_200');
-
-INSERT INTO root.MENU_ITEM (id, category_id, company_id, name, ingredients, price_size) VALUES
+(DEFAULT, 5, 1, 'Philadelphia', 'sesame, mozzarella, tomato, creamy Alfredo sauce (base), cream cheese, salmon', 's_113|m_145|l_200'),
 -- SANDWITCH (6/3)
 (DEFAULT, 6, 1, 'Sandwich with cheese', 'plain bread, mayonnaise, lettuce, boiled egg, cheddar cheese', 's_113|m_145|l_200'),
 (DEFAULT, 6, 1, 'Sandwich with chicken', 'plain bread, ketchup, lettuce, grilled chicken, cucumber', 's_113|m_145|l_200'),
-(DEFAULT, 6, 1, 'Sandwich with salmon', 'plain bread, mayonnaise, lettuce, salmon, avocado', 's_113|m_145|l_200');
-
-INSERT INTO root.MENU_ITEM
-    (id, category_id, company_id, name, ingredients, price_size)
-VALUES
+(DEFAULT, 6, 1, 'Sandwich with salmon', 'plain bread, mayonnaise, lettuce, salmon, avocado', 's_113|m_145|l_200'),
 -- SEA FOOD (7/8)
 (DEFAULT, 7, 1, 'Boiled shrimps', 'boiled shrimps, dill, salt, pepper', 's_113|m_145|l_200'),
 (DEFAULT, 7, 1, 'Ouster', 'ouster, lemon, ise', 's_113|m_145|l_200'),
 (DEFAULT, 7, 1, 'Sea salad', 'boiled shrimps, mussels, squid, octopus, garlic sauce, teriyaki sauce', 's_113|m_145|l_200'),
-(DEFAULT, 7, 1, 'Grilled salmon', 'grilled salmon, lemon, olive oil, salt, pepper, rosemary', 's_113|m_145|l_200');
-
-INSERT INTO root.MENU_ITEM (id, category_id, company_id, name, ingredients, price_size) VALUES
+(DEFAULT, 7, 1, 'Grilled salmon', 'grilled salmon, lemon, olive oil, salt, pepper, rosemary', 's_113|m_145|l_200'),
 -- VEGETABLE (8/9)
 (DEFAULT, 8, 1, 'Boiled corn', 'boiled corn, salt, butter,', 's_113|m_145|l_200'),
 (DEFAULT, 8, 1, 'Mixed green salad', 'romaine lettuce, cucumber, cherry tomatoes, red onion, olive oil, salt, pepper', 's_113|m_145|l_200'),
