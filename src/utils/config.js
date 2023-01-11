@@ -16,7 +16,7 @@ import {ReactComponent as Sea_foodIcon} from "../icons/category/sea_food.svg";
 import {ReactComponent as VagetableIcon} from "../icons/category/vagetable.svg";
 
 export const DEV_ROUTER = {
-    pageS: 'pages',
+    COMPONENTS: 'components',
     PAGES: 'pages',
     REDUX: 'redux',
 };
@@ -56,7 +56,7 @@ export const ROUTER =  {
     SING_UP: {URL: '/sing-up',  TITLE: 'Sing up', page: SingUpPage},
 
     CHANGE_PASSWORD: {URL: '/change-password',TITLE: 'Change password',page: ChangePasswordPage},
-    CATEGORY: {URL: '/category',TITLE: 'Category',page: CategoryPage, showBottomMenu: true},
+    CATEGORY: {URL: '/',TITLE: 'Category',page: CategoryPage, showBottomMenu: true},
     SUB_CATEGORY: {URL: '/category', PARAMS: '/:categoryId', getTitle: getSubCategoryTitle, page: SubCategoryPage, showBottomMenu: true},
 
     Sing_up_phone_email: {URL: '/Sing_up_phone_email',TITLE: 'Sing_up_phone_email ',page: () => {}},

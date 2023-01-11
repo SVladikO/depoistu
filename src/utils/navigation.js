@@ -67,7 +67,6 @@ export const getRoutes = () => {
         <>
             <Routes>
                 {/* Development pages start */}
-                <Route path={'/'} element={<ComponentsPage/>}/>
                 <Route path={DEV_ROUTER.COMPONENTS} element={<ComponentsPage/>}/>
                 <Route path={DEV_ROUTER.REDUX} element={<ReduxIntroductionPage/>}/>
                 <Route path={DEV_ROUTER.PAGES} element={<CatalogPage/>}/>
