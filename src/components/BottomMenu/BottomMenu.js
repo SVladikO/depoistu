@@ -2,7 +2,7 @@ import {NavLink} from 'react-router-dom';
 
 import {Wrapper, MenuItem, Label, PurchaseCounter} from './BottomMenu.style';
 
-import {ReactComponent as HomeIcon} from "../../icons/home.svg";
+import {ReactComponent as HomeIcon} from "../../icons/menu.svg";
 import {ReactComponent as CartIcon} from "../../icons/cart.svg";
 import {ReactComponent as SearchIcon} from "../../icons/search.svg";
 import {ReactComponent as UserIcon} from "../../icons/user.svg";
@@ -18,7 +18,7 @@ const BottomMenu = ({basket}) => {
             <NavLink to={ROUTER.CATEGORY.URL}>
                 <MenuItem selected={isSelected(ROUTER.CATEGORY.URL)}>
                     <HomeIcon/>
-                    <Label>Home</Label>
+                    <Label>Menu</Label>
                 </MenuItem>
             </NavLink>
             <NavLink to={''}>
