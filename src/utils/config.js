@@ -21,7 +21,7 @@ export const DEV_ROUTER = {
     REDUX: 'redux',
 };
 
-const DOMAIN = 'https://pizza-mobile-api-develop.onrender.com';
+const DOMAIN = 'https://pizza-mobile-api.herokuapp.com';
 
 export const BE_API = {
     GET_ALL_CATEGORIES_ID_FOR_COMPANY: companyId => `${DOMAIN}/company/${companyId}/category`,
