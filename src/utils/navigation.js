@@ -21,14 +21,22 @@ export const MobileDevice = styled.div`
   min-height: 100vh;
   background: ${COLOR.ACCENT2};
   position: relative;
-  
-  & > div:first-child {
-    position: fixed;
-    top: 0;
-    
-  }
 `;
 
+export const PositionWrapper = styled.div`
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+`;
+
+export const TopWrapper = styled(PositionWrapper)`
+  top: 0; 
+`;
+
+export const BottomWrapper = styled(PositionWrapper)`
+  bottom: 0;
+`;
 export const Centralicer = styled.div`
   display: flex;
   flex-direction: column;
@@ -37,13 +45,20 @@ export const Centralicer = styled.div`
 `;
 
 console.log({ROUTERS})
-const routes =  ROUTERS.map(r => <Route key={r.URL} path={r.URL + (r.PARAMS || '')} element={
+
+const routes = ROUTERS.map(r => <Route key={r.URL} path={r.URL + (r.PARAMS || '')} element={
     <MobileDevice>
-        <NavigationHeader href={' '} title={r.TITLE} getTitle={r.getTitle}/>
+        <TopWrapper>
+            <NavigationHeader href={' '} title={r.TITLE} getTitle={r.getTitle}/>
+        </TopWrapper>
         <Centralicer>
             <r.page/>
         </Centralicer>
-        {r.showBottomMenu && <BottomMenu/>}
+        {r.showBottomMenu &&
+            <BottomWrapper>
+                <BottomMenu/>
+            </BottomWrapper>
+        }
     </MobileDevice>
 }/>);
 
