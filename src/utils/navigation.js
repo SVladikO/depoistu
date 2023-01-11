@@ -24,10 +24,12 @@ export const MobileDevice = styled.div`
 `;
 
 export const PositionWrapper = styled.div`
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
   width: 100%;
+  display: flex;
+  justify-content: center;
 `;
 
 export const TopWrapper = styled(PositionWrapper)`
