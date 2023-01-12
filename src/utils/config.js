@@ -25,7 +25,7 @@ const DOMAIN = 'https://pizza-mobile-api.herokuapp.com';
 
 export const BE_API = {
     GET_ALL_CATEGORIES_ID_FOR_COMPANY: companyId => `${DOMAIN}/company/${companyId}/category`,
-    GET_ALL_MENU_FOR_COMPANY_FOR_CATEGORY: (companyId, categoryId) => `${DOMAIN}/company/${companyId}/menu/${categoryId}`,
+    GET_ALL_MENU_FOR_COMPANY_FOR_CATEGORY: (companyId, categoryId) => `${DOMAIN}/company/${companyId}/menu_item/${categoryId}`,
 };
 
 export const CATEGORY_MAPPER = {
