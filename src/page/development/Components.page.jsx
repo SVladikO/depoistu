@@ -27,6 +27,7 @@ import
     BottomMenu,
     OrderHistoryRow,
     EmptyBasket,
+    RowSplitter,
 } from "../../components";
 
 import CatalogPage from "./Catalog.page";
@@ -152,8 +153,8 @@ const columns = [
                     })()}
                 </NavigationHeader>
         },
-        {title: 'BottomMenu', component: <BottomMenu basket="35"/>},
-        {title: 'BottomMenu', component: <BottomMenu/>},
+        {title: 'BottomMenu', component: <RowSplitter height='80px'><BottomMenu basket="35"/></RowSplitter>},
+        {title: 'BottomMenu', component: <RowSplitter height='80px'><BottomMenu/></RowSplitter>},
     ],
     [
         {
@@ -194,7 +195,7 @@ const columns = [
             title: 'ProductCard',
             component:
                 <ProductCard
-                    data={{
+                    item={{
                         image: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
                         discont: '-10',
                         rating: '4.5',

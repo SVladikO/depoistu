@@ -9,8 +9,7 @@
 1. db list `\l`
 2. tables `\d`  in public schema, or default 
 3. tables `\dt` in public schema, or default
-4. table details `\d company` in public schema, or default    
-5. table details `\d company` in public schema, or default   
+4. table details `\d root.guest` in public schema, or default    
 6. table in schema `select * from myschema.company;`
 7. tables per schema `\dt public.*`
 8. schemas `SELECT schema_name FROM information_schema.schemata;`

@@ -1,10 +1,12 @@
 import styled from "styled-components";
-import {BORDER_RADIUS, COLOR} from "../../utils/theme";
+import {BORDER_RADIUS, COLOR, DEVICE_WIDTH} from "../../utils/theme";
 
 
 export const Wrapper = styled.div`
   background: ${COLOR.ACCENT4};
+  min-width: ${DEVICE_WIDTH.MIN};
   width: 100%;
+  max-width: ${DEVICE_WIDTH.MAX};
   border-radius: 0 0 ${BORDER_RADIUS.FOURTH} ${BORDER_RADIUS.FOURTH};
   margin-bottom: 30px;
 `

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {COLOR,BORDER_RADIUS} from "../../utils/theme";
+import {COLOR,BORDER_RADIUS, DEVICE_WIDTH} from "../../utils/theme";
 import {hexToRgbA} from "../../utils/utils";
 
 
@@ -10,6 +10,9 @@ export const Wrapper = styled.div`
   padding: 14px 25px 15px 25px;
   display: flex;
   justify-content: space-between;
+  min-width: ${DEVICE_WIDTH.MIN};
+  width: 100%;
+  max-width: ${DEVICE_WIDTH.MAX};
 `;
 
 export const MenuItem = styled.div`
