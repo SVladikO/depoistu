@@ -7,7 +7,6 @@ export const Wrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   position: relative;
-  z-index: 1;
 `;
 export const Content = styled.div`
   margin-bottom: 26px;
@@ -19,7 +18,6 @@ export const Content = styled.div`
   }
 `;
 export const FixedContent = styled.div`
-  z-index: 2;
   display: block;
   position: sticky;
   bottom: 0;
