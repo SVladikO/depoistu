@@ -19,7 +19,7 @@ export const Wrapper = styled.div`
 `;
 
 export const MenuItem = styled.div`
-  height: 94px;
+  height: 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
