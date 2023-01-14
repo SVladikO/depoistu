@@ -14,6 +14,7 @@ import {ReactComponent as PizzaIcon} from "../icons/category/pizza.svg";
 import {ReactComponent as SandwitchIcon} from "../icons/category/sandwitch.svg";
 import {ReactComponent as Sea_foodIcon} from "../icons/category/sea_food.svg";
 import {ReactComponent as VagetableIcon} from "../icons/category/vagetable.svg";
+import OrderPage from "../page/order/Order.page";
 
 export const DEV_ROUTER = {
     COMPONENTS: 'components',
@@ -65,7 +66,7 @@ export const ROUTER =  {
 
     Product_details_pizza: {URL: '/Product_details_pizza',  TITLE: 'Product details pizza', page: () => {}},
     Product_details_pizza_2: {URL: '/Product_details_pizza_2',  TITLE: 'Product details pizza 2', page: () => {}},
-    Order_review: {URL: '/Order_review',  TITLE: 'Order review', page: () => {}},
+    ORDER_REVIEW: {URL: '/order',  TITLE: 'Order review', page: OrderPage, showBottomMenu: true},
     Checkout: {URL: '/Checkout',  TITLE: 'Checkout', page: () => {}},
     Payment_enter_data: {URL: '/Payment_enter_data',  TITLE: 'Payment enter data', page: () => {}},
     Payment_enter_result: {URL: '/Payment_enter_result',  TITLE: 'Payment enter result', page: () => {}},

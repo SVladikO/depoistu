@@ -21,8 +21,8 @@ const BottomMenu = ({basket}) => {
                     <Label>Menu</Label>
                 </MenuItem>
             </NavLink>
-            <NavLink to={''}>
-                <MenuItem selected={isSelected()}>
+            <NavLink to={ROUTER.ORDER_REVIEW.URL}>
+                <MenuItem selected={isSelected(ROUTER.ORDER_REVIEW.URL)}>
                     <CartIcon/>
                     <Label>Cart</Label>
                     {basket ? <PurchaseCounter>{basket}</PurchaseCounter> : null}
