@@ -33,11 +33,11 @@ export const PositionWrapper = styled.div`
 `;
 
 export const TopWrapper = styled(PositionWrapper)`
-  top: 0; 
+  top: 0;
 `;
 
 export const BottomWrapper = styled(PositionWrapper)`
-  bottom: 0;
+  bottom: -1px;
 `;
 export const Centralicer = styled.div`
   display: flex;

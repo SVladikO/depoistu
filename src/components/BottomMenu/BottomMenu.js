@@ -14,7 +14,7 @@ const BottomMenu = ({basket}) => {
     const isSelected = url => window.location.pathname === url;
 
     return (
-        <Wrapper>
+        <Wrapper className='ta-BottomMenu'>
             <NavLink to={ROUTER.CATEGORY.URL}>
                 <MenuItem selected={isSelected(ROUTER.CATEGORY.URL)}>
                     <HomeIcon/>
