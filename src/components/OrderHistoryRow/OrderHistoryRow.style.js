@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
   border-radius: ${BORDER_RADIUS.FOURTH};
   background-color: ${COLOR.ACCENT4};
   display: flex;
+  min-width: 325px;
 `;
 export const Content = styled.div`
   padding-left: 15px;
@@ -39,6 +40,34 @@ export const Factor = styled.span`
   color: ${COLOR.ACCENT1};
   margin-right: 2px;
 `;
+
+export const ColoredSize = styled.span`
+  color: ${COLOR.PRIMARY};
+  margin-left: 11px;
+`;
+
 export const PriceWrapper = styled.div`
   display: inline-flex;
+  align-self: end;
+  margin-top: 2px;
+`;
+export const Price = styled.div`
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  color: ${COLOR.PRIMARY};
+`;
+export const Size = styled.div`
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  color: ${COLOR.ACCENT1};
+  display: inline-flex;
+  align-self: start;
+`;
+export const Status = styled.div`
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  color: ${COLOR.PRIMARY};
 `;
