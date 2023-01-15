@@ -29,6 +29,7 @@ import UserAccountGroup from "./UserAccountGroup/UserAccountGroup";
 import UserOptionGroup from "./UserOptionGroup/UserOptionGroup";
 import BottomMenu from "./BottomMenu/BottomMenu";
 import OrderHistoryRow from "./OrderHistoryRow/OrderHistoryRow";
+import OrderIconWithCounter from "./OrderIconWithCounter/OrderIconWithCounter.jsx";
 
 export {
     SettingMenuRow,
@@ -58,6 +59,7 @@ export {
     UserAccountBar,
     UserAccountGroup,
     UserOptionGroup,
-    OrderHistoryRow
+    OrderHistoryRow,
+    OrderIconWithCounter,
 }
 

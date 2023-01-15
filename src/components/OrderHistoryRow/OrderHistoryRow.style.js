@@ -20,7 +20,7 @@ export const Row =  styled.div`
     margin-top: 9px;
   }
 `;
-export const Name = styled.div`
+export const Title = styled.div`
   font-weight: 700;
   font-size: 16px;
   line-height: 19px;

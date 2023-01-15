@@ -28,12 +28,22 @@ export const MainContent = styled.div`
   justify-content: center;
   position: relative;
   
-  & > a > svg {
+  & > a {
     position: absolute;
     display: block;
-    fill: ${COLOR.ACCENT1};
-    left: 15px;
     top: 50%;
     transform: translateY(-50%);
+  }
+  
+  & > a:first-child > svg {
+    fill: ${COLOR.ACCENT1};
+  }
+  
+  & > a:first-child {
+    left: 15px;
+  }
+  
+  & > a:last-child {
+    right: 15px;
   }
 `;

@@ -1,29 +1,14 @@
 import {Wrapper, AmountInfo, Content, Button, FixedContent} from './Order.page.style';
-import {OrderHistoryRow, Price} from "../../components";
-
-const item = {
-    name: 'Chees Bites Pizza',
-    description: ['spicy', 'tomato', 'sauce', 'chili', 'mozzarella'],
-    price: 7
-}
+import {EmptyBasket, OrderHistoryRow, Price} from "../../components";
+import {useSelector} from "react-redux";
 
 const OrderPage = ({total = 5}) => {
-    return (
-        <Wrapper>
+    const orders = useSelector(state => state.order.value);
+
+    const getOrderItems = () => (
+        <>
             <Content>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
+                {orders.map(item => < OrderHistoryRow key={item.id} item={item}/>)}
             </Content>
             <FixedContent>
                 <AmountInfo>
@@ -32,7 +17,16 @@ const OrderPage = ({total = 5}) => {
                 </AmountInfo>
                 <Button>Place Order</Button>
             </FixedContent>
+        </>
+    );
 
+    return (
+        <Wrapper>
+            {
+                orders.length
+                    ? getOrderItems()
+                    : <EmptyBasket/>
+            }
         </Wrapper>
     );
 };
