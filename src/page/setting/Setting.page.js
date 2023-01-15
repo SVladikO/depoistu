@@ -23,7 +23,7 @@ import {
 const SettingPage = () => {
     return (
         <>
-            <UserAccountBar fullName='Jhon Smith' href='/catalog' status='Basic Member'/>
+            <UserAccountBar fullName='Jhon Smith' status='Basic Member'/>
             <RowSplitter height='20px' />
             <UserAccountGroup  groupTitle='Accounts'>
                 <SettingMenuRow icon={LockIcon} title='Change Password' href='/catalog' />
