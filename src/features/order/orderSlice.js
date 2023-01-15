@@ -9,6 +9,15 @@ export const orderSlice = createSlice({
     initialState,
     reducers: {
         addOrderItem: (state, action) => {
+
+
+            // [{
+            //     id: ,
+            //     size: ,
+            //     price:
+            //     menu_item: {}
+            // }]
+
             console.log('addOrderItem: ', action.payload)
             state.value.push(action.payload)
         },
