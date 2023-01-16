@@ -1,29 +1,15 @@
-import {Wrapper, AmountInfo, Content, Button, FixedContent, BgWrapper} from './Order.page.style';
-import {OrderHistoryRow, Price, PrimaryWideButton} from "../../components";
+import {useSelector} from "react-redux";
 
-const item = {
-    name: 'Chees Bites Pizza',
-    description: ['spicy', 'tomato', 'sauce', 'chili', 'mozzarella'],
-    price: 7
-}
+import {Wrapper, AmountInfo, Content, FixedContent} from './Order.page.style';
+import {EmptyBasket, OrderHistoryRow, Price, PrimaryWideButton} from "../../components";
 
 const OrderPage = ({total = 5}) => {
-    return (
-        <Wrapper>
+    const orders = useSelector(state => state.order.value);
+
+    const getOrderItems = () => (
+        <>
             <Content>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
+                {orders.map(item => < OrderHistoryRow key={item.id} item={item}/>)}
             </Content>
             <FixedContent>
                 <AmountInfo>
@@ -32,7 +18,16 @@ const OrderPage = ({total = 5}) => {
                 </AmountInfo>
                 <PrimaryWideButton>Place Order</PrimaryWideButton>
             </FixedContent>
+        </>
+    );
 
+    return (
+        <Wrapper>
+            {
+                orders.length
+                    ? getOrderItems()
+                    : <EmptyBasket/>
+            }
         </Wrapper>
     );
 };

@@ -153,7 +153,6 @@ const columns = [
                     })()}
                 </NavigationHeader>
         },
-        {title: 'BottomMenu', component: <RowSplitter height='80px'><BottomMenu basket="35"/></RowSplitter>},
         {title: 'BottomMenu', component: <RowSplitter height='80px'><BottomMenu/></RowSplitter>},
     ],
     [

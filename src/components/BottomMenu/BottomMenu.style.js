@@ -36,24 +36,6 @@ export const MenuItem = styled.div`
   }
 `;
 
-export const PurchaseCounter = styled.div`
-  top: -3px;
-  left: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 18px;
-  height: 18px;
-  position: absolute;
-  background-color: ${COLOR.PRIMARY};
-  color: ${COLOR.ACCENT4};
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 14px;
-  border-radius: ${BORDER_RADIUS.CIRCLE};
-`
-
-
 export const Label = styled.div`
   font-weight: 400;
   font-size: 16px;
