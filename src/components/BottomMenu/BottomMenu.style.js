@@ -12,10 +12,14 @@ export const Wrapper = styled.div`
   min-width: ${DEVICE_WIDTH.MIN};
   width: 100%;
   max-width: ${DEVICE_WIDTH.MAX};
-  
+
   & > a {
     width: 25%;
   }
+  
+  -webkit-box-shadow: 0px -1px 4px 0px rgba(0,0,0,0.11);
+  -moz-box-shadow: 0px -1px 4px 0px rgba(0,0,0,0.11);
+  box-shadow: 0px -1px 4px 0px rgba(0,0,0,0.11);
 `;
 
 export const MenuItem = styled.div`
@@ -35,24 +39,6 @@ export const MenuItem = styled.div`
     fill: ${p => p.selected ? COLOR.PRIMARY : COLOR.ACCENT1};
   }
 `;
-
-export const PurchaseCounter = styled.div`
-  top: -3px;
-  left: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 18px;
-  height: 18px;
-  position: absolute;
-  background-color: ${COLOR.PRIMARY};
-  color: ${COLOR.ACCENT4};
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 14px;
-  border-radius: ${BORDER_RADIUS.CIRCLE};
-`
-
 
 export const Label = styled.div`
   font-weight: 400;

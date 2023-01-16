@@ -1,20 +1,20 @@
 import {NavLink} from 'react-router-dom';
 
-import {Wrapper, MenuItem, Label, PurchaseCounter} from './BottomMenu.style';
+import {Wrapper, MenuItem, Label} from './BottomMenu.style';
 
 import {ReactComponent as HomeIcon} from "../../icons/menu.svg";
-import {ReactComponent as CartIcon} from "../../icons/cart.svg";
 import {ReactComponent as SearchIcon} from "../../icons/search.svg";
 import {ReactComponent as UserIcon} from "../../icons/user.svg";
 
+import {OrderIconWithCounter} from '../index'
+
 import {ROUTER} from "../../utils/config";
 
-const BottomMenu = ({basket}) => {
-
+const BottomMenu = () => {
     const isSelected = url => window.location.pathname === url;
 
     return (
-        <Wrapper>
+        <Wrapper className='ta-BottomMenu'>
             <NavLink to={ROUTER.CATEGORY.URL}>
                 <MenuItem selected={isSelected(ROUTER.CATEGORY.URL)}>
                     <HomeIcon/>
@@ -23,9 +23,8 @@ const BottomMenu = ({basket}) => {
             </NavLink>
             <NavLink to={ROUTER.ORDER_REVIEW.URL}>
                 <MenuItem selected={isSelected(ROUTER.ORDER_REVIEW.URL)}>
-                    <CartIcon/>
+                    <OrderIconWithCounter selected={isSelected(ROUTER.ORDER_REVIEW.URL)}/>
                     <Label>Cart</Label>
-                    {basket ? <PurchaseCounter>{basket}</PurchaseCounter> : null}
                 </MenuItem>
             </NavLink>
             <NavLink to={''}>

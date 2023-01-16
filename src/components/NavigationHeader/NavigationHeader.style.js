@@ -27,13 +27,27 @@ export const MainContent = styled.div`
   display: flex;
   justify-content: center;
   position: relative;
+
+  -webkit-box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.11);
+  -moz-box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.11);
+  box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.11);
   
-  & > a > svg {
+  & > a {
     position: absolute;
     display: block;
-    fill: ${COLOR.ACCENT1};
-    left: 15px;
     top: 50%;
     transform: translateY(-50%);
+  }
+  
+  & > a:first-child > svg {
+    fill: ${COLOR.ACCENT1};
+  }
+  
+  & > a:first-child {
+    left: 15px;
+  }
+  
+  & > a:last-child {
+    right: 15px;
   }
 `;

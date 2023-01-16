@@ -20,7 +20,7 @@ import {ContentContainer} from "./ContentContainer/ContentContainer.style.js";
 import {Discount} from "./Discount/Discount.style";
 import HistoryTabBar from "./HistoryTabBar/HistoryTabBar";
 import ProductCard from "./ProductCard/ProductCard";
-import NavigationHeader from "./TopNavigation/NavigationHeader";
+import NavigationHeader from "./NavigationHeader/NavigationHeader";
 import ProductSizeBar from "./ProductSizeBar/ProductSizeBar";
 import {CategoryTitle} from "./CategoryTitle/CategoryTitle.style";
 import UserAccountBar from "./UserAccountBar/UserAccountBar";
@@ -29,6 +29,7 @@ import UserAccountGroup from "./UserAccountGroup/UserAccountGroup";
 import UserOptionGroup from "./UserOptionGroup/UserOptionGroup";
 import BottomMenu from "./BottomMenu/BottomMenu";
 import OrderHistoryRow from "./OrderHistoryRow/OrderHistoryRow";
+import OrderIconWithCounter from "./OrderIconWithCounter/OrderIconWithCounter.jsx";
 
 export {
     SettingMenuRow,
@@ -58,6 +59,7 @@ export {
     UserAccountBar,
     UserAccountGroup,
     UserOptionGroup,
-    OrderHistoryRow
+    OrderHistoryRow,
+    OrderIconWithCounter,
 }
 

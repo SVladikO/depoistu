@@ -1,18 +1,26 @@
 import React from 'react';
+import {Link, useParams} from "react-router-dom";
+
 import {Wrapper, Title, NestedContent, MainContent} from "./NavigationHeader.style";
+
+import {ROUTER} from "../../utils/config";
+import {OrderIconWithCounter} from "../index";
+
 import {ReactComponent as BackArrow} from "../../icons/back_arrow.svg";
-import {useParams} from "react-router-dom";
 
 const NavigationHeader = (props) => {
     const params = useParams();
-    const {title, getTitle, href} = props;
+    const {title, getTitle, backUrl} = props;
     let _title = title || getTitle(params)
 
     return (
-            <Wrapper>
+            <Wrapper className='pm-NavigationHeader'>
                 <MainContent>
-                    {href && <a href={href}><BackArrow /></a>}
+                    {backUrl && <Link to={backUrl}><BackArrow /></Link>}
                     <Title>{_title}</Title>
+                    <Link to={ROUTER.ORDER_REVIEW.URL}>
+                        <OrderIconWithCounter/>
+                    </Link>
                 </MainContent>
                 <NestedContent>
                     {props.children}

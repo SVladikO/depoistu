@@ -20,15 +20,14 @@ const SubCategoryPage = () => {
             fetchData(BE_API.GET_ALL_MENU_FOR_COMPANY_FOR_CATEGORY(1, categoryId))
                 .then(res => onSuccess(res))
                 .catch(e => console.log(e))
-    )
+    );
 
     return (
         <Content>
             <Flex>
-                {menu_items.map((c, index) =>
+                {menu_items.map((menuItem, index) =>
                     <ProductCard key={index}
                                  item={{
-                                     title: c.name,
                                      image: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
                                      discont: '-10',
                                      rating: '4.5',
@@ -37,6 +36,7 @@ const SubCategoryPage = () => {
                                          {price: 20, size: 2},
                                          {price: 30, size: 3},
                                      ],
+                                     ...menuItem
                                  }}
                     />)}
             </Flex>
