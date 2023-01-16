@@ -22,8 +22,9 @@ export const FixedContent = styled.div`
   position: sticky;
   bottom: 0;
   width: inherit;
+  padding: 10px 0 90px 0;
   background-color: ${COLOR.ACCENT2};
-  padding: 26px 0 43px 0;
+
 `;
 
 export const AmountInfo = styled.div`
