@@ -19,6 +19,7 @@ import ChangePasswordPage from "../page/change-password/ChangePassword.page";
 import {NavigationHeader} from "../components";
 import SettingPage from "../page/setting/Setting.page";
 import SubCategoryPage from "../page/sub-category/SubCategory.page";
+import OrderCompleted from "../page/orderCompleted/orderCompleted";
 
 export const MobileDevice = styled.div`
   min-width: ${DEVICE_WIDTH.MIN};
@@ -44,6 +45,7 @@ const routes = [
     {...ROUTER.CHANGE_PASSWORD, component: ChangePasswordPage},
     {...ROUTER.SETTING, component: SettingPage},
     {...ROUTER.SUB_CATEGORY, component: SubCategoryPage},
+    {...ROUTER.ORDER_COMPLETED, component: OrderCompleted},
 ].map(r => <Route key={r.URL} path={r.URL} element={
     <MobileDevice>
         <NavigationHeader href={' '} title={r.TITLE}/>

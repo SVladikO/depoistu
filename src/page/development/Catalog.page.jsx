@@ -13,6 +13,7 @@ import CategoryPage from "../category/Category.page";
 import SettingPage from "../setting/Setting.page";
 import ChangePassword from "../change-password/ChangePassword.page";
 import SubCategoryPage from "../sub-category/SubCategory.page";
+import OrderCompleted from "../orderCompleted/orderCompleted";
 
 const pages = [
     {href: ROUTER.LOADING.URL, component: <LoadingPage/>},
@@ -36,7 +37,7 @@ const pages = [
     {href: 'Payment enter result',},
     {href: 'Order history',},
     {href: 'Pizza with category',},
-    {href: 'Order history completed',},
+    {href: ROUTER.ORDER_COMPLETED.URL, component: <OrderCompleted/>},
     {href: 'Order history upcoming'},
     {href: 'Order history cancelled',},
     {href: 'Favorite',},
