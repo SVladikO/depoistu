@@ -30,14 +30,14 @@ export const BE_API = {
 };
 
 export const CATEGORY_MAPPER = {
-    1: {title: "Bakery", icon: BakeryIcon},
-    2: {title: "Beverage", icon: BeverageIcon},
-    3: {title: "Burger", icon: BurgerIcon},
-    4: {title: "Noodles", icon: NoodlesIcon},
-    5: {title: "Pizza", icon: PizzaIcon},
-    6: {title: "Sandwitch", icon: SandwitchIcon},
-    7: {title: "Sea food", icon: Sea_foodIcon},
-    8: {title: "Vagetable", icon: VagetableIcon},
+    1: {title: "Bakery", icon: BakeryIcon, measurement: 'g'},
+    2: {title: "Beverage", icon: BeverageIcon, measurement: 'ml'},
+    3: {title: "Burger", icon: BurgerIcon, measurement: 'g'},
+    4: {title: "Noodles", icon: NoodlesIcon, measurement: 'g'},
+    5: {title: "Pizza", icon: PizzaIcon, measurement: 'sm'},
+    6: {title: "Sandwitch", icon: SandwitchIcon, measurement: 'g'},
+    7: {title: "Sea food", icon: Sea_foodIcon, measurement: 'g'},
+    8: {title: "Vagetable", icon: VagetableIcon, measurement: 'g'},
 }
 
 const getSubCategoryTitle = (urlParams) => {
