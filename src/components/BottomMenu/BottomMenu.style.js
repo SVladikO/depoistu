@@ -7,19 +7,23 @@ export const Wrapper = styled.div`
   box-shadow: 0 0 22px ${hexToRgbA('#000', 0.08)};
   background-color: ${COLOR.ACCENT4};
   border-radius: ${BORDER_RADIUS.SECOND} ${BORDER_RADIUS.SECOND} 0 0;
-  padding: 14px 25px 15px 25px;
   display: flex;
   justify-content: space-between;
   min-width: ${DEVICE_WIDTH.MIN};
   width: 100%;
   max-width: ${DEVICE_WIDTH.MAX};
 
+  & > a {
+    width: 25%;
+  }
+  
   -webkit-box-shadow: 0px -1px 4px 0px rgba(0,0,0,0.11);
   -moz-box-shadow: 0px -1px 4px 0px rgba(0,0,0,0.11);
   box-shadow: 0px -1px 4px 0px rgba(0,0,0,0.11);
 `;
 
 export const MenuItem = styled.div`
+  height: 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
