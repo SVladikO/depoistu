@@ -5,6 +5,7 @@ const item = {
     name: 'Chees Bites Pizza',
     description: ['spicy', 'tomato', 'sauce', 'chili', 'mozzarella'],
     price: 7,
+    size: 'Medium',
     status: 'Completed'
 };
 
