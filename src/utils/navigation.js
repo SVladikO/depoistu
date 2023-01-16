@@ -52,7 +52,7 @@ console.log({ROUTERS})
 const routes = ROUTERS.map(r => <Route key={r.URL} path={r.URL + (r.PARAMS || '')} element={
     <MobileDevice>
         <TopWrapper>
-            <NavigationHeader href={' '} title={r.TITLE} getTitle={r.getTitle}/>
+            <NavigationHeader backUrl={r.BACK_URL} title={r.TITLE} getTitle={r.getTitle}/>
         </TopWrapper>
         <Centralicer>
             <r.page/>

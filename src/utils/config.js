@@ -46,42 +46,43 @@ const getSubCategoryTitle = (urlParams) => {
     return CATEGORY_MAPPER[categoryId].title;
 }
 
-export const ROUTER =  {
-    LOADING: {URL: '/loading',TITLE: 'Loading',page: LoadingPage},
+export const ROUTER =  {};
+    //We use this approach of initialization because we don't want errors.
+    // I need use category url as back_url for sub_category and
+    // if I change category url later it won't bring any bags
+    ROUTER.LOADING= {URL: '/loading',TITLE: 'Loading',page: LoadingPage};
 
-    INTRO_1: { URL: '/INTRO_1', TITLE: 'INTRO_1', page: () => {}},
-    INTRO_2: { URL: '/INTRO_2', TITLE: 'INTRO_2', page: () => {}},
-    INTRO_3: { URL: '/INTRO_3', TITLE: 'INTRO_3', page: () => {}},
+    ROUTER.INTRO_1= { URL: '/INTRO_1', TITLE: 'INTRO_1', page: () => {}};
+    ROUTER.INTRO_2= { URL: '/INTRO_2', TITLE: 'INTRO_2', page: () => {}};
+    ROUTER.INTRO_3= { URL: '/INTRO_3', TITLE: 'INTRO_3', page: () => {}};
 
-    SING_IN: { URL: '/sign-in', TITLE: 'Sing in', page: SignInPage, },
-    SING_UP: {URL: '/sing-up',  TITLE: 'Sing up', page: SingUpPage},
+    ROUTER.SING_IN= { URL: '/sign-in', TITLE: 'Sing in', page: SignInPage, };
+    ROUTER.SING_UP= {URL: '/sing-up',  TITLE: 'Sing up', page: SingUpPage};
 
-    CHANGE_PASSWORD: {URL: '/change-password',TITLE: 'Change password',page: ChangePasswordPage},
-    CATEGORY: {URL: '/',TITLE: 'Category',page: CategoryPage, showBottomMenu: true},
-    SUB_CATEGORY: {URL: '/category', PARAMS: '/:categoryId', getTitle: getSubCategoryTitle, page: SubCategoryPage, showBottomMenu: true},
+    ROUTER.CHANGE_PASSWORD= {URL: '/change-password',TITLE: 'Change password',page: ChangePasswordPage};
+    ROUTER.CATEGORY= {URL: '/',TITLE: 'Category',page: CategoryPage, showBottomMenu: true};
+    ROUTER.SUB_CATEGORY= {URL: '/category', PARAMS: '/:categoryId', getTitle: getSubCategoryTitle, page: SubCategoryPage, showBottomMenu: true, BACK_URL: ROUTER.CATEGORY.URL};
 
-    Sing_up_phone_email: {URL: '/Sing_up_phone_email',TITLE: 'Sing_up_phone_email ',page: () => {}},
-    Phone_verification: {URL: '/Phone_verification',TITLE: 'Phone_verification ',page: () => {}},
-    OTP_verification: {URL: '/OTP_verification',TITLE: 'OTP_verification ',page: () => {}},
+    ROUTER.Sing_up_phone_email= {URL: '/Sing_up_phone_email',TITLE: 'Sing_up_phone_email ',page: () => {}};
+    ROUTER.Phone_verification= {URL: '/Phone_verification',TITLE: 'Phone_verification ',page: () => {}};
+    ROUTER.OTP_verification= {URL: '/OTP_verification',TITLE: 'OTP_verification ',page: () => {}};
 
-    Product_details_pizza: {URL: '/Product_details_pizza',  TITLE: 'Product details pizza', page: () => {}},
-    Product_details_pizza_2: {URL: '/Product_details_pizza_2',  TITLE: 'Product details pizza 2', page: () => {}},
-    ORDER_REVIEW: {URL: '/order',  TITLE: 'Order review', page: OrderPage, showBottomMenu: true},
-    Checkout: {URL: '/Checkout',  TITLE: 'Checkout', page: () => {}},
-    Payment_enter_data: {URL: '/Payment_enter_data',  TITLE: 'Payment enter data', page: () => {}},
-    Payment_enter_result: {URL: '/Payment_enter_result',  TITLE: 'Payment enter result', page: () => {}},
-    Order_history: {URL: '/Order_history',  TITLE: 'Order history', page: () => {}},
-    Pizza_with_category: {URL: '/Pizza_with_category',  TITLE: 'Pizza with category', page: () => {}},
-    Order_history_completed: {URL: '/Order_history_completed',  TITLE: 'Order history completed', page: () => {}},
-    Order_history_upcoming: {URL: '/Order_history_upcoming',  TITLE: 'Order history upcoming', page: () => {}},
-    Order_history_cancelled: {URL: '/Order_history_cancelled',  TITLE: 'Order history cancelled', page: () => {}},
-    Favorite: {URL: '/Favorite',  TITLE: 'Favorite', page: () => {}},
-    Profile: {URL: '/Profile',  TITLE: 'Profile', page: () => {}},
-    Track_your_order: {URL: '/Track your order',  TITLE: 'Track your order', page: () => {}},
-    Support: {URL: '/Support',  TITLE: 'Support', page: () => {}},
-    SETTING: {URL: '/setting',  TITLE: 'Setting', page: SettingPage, showBottomMenu: true},
-    USER_ACCOUNT: {URL: '/user_account',  TITLE: 'USER_ACCOUNT', page: () => {}, showBottomMenu: true},
-};
-
+    ROUTER.Product_details_pizza= {URL: '/Product_details_pizza',  TITLE: 'Product details pizza', page: () => {}};
+    ROUTER.Product_details_pizza_2= {URL: '/Product_details_pizza_2',  TITLE: 'Product details pizza 2', page: () => {}};
+    ROUTER.ORDER_REVIEW= {URL: '/order',  TITLE: 'Order review', page: OrderPage, showBottomMenu: true};
+    ROUTER.Checkout= {URL: '/Checkout',  TITLE: 'Checkout', page: () => {}};
+    ROUTER.Payment_enter_data= {URL: '/Payment_enter_data',  TITLE: 'Payment enter data', page: () => {}};
+    ROUTER.Payment_enter_result= {URL: '/Payment_enter_result',  TITLE: 'Payment enter result', page: () => {}};
+    ROUTER.Order_history= {URL: '/Order_history',  TITLE: 'Order history', page: () => {}};
+    ROUTER.Pizza_with_category= {URL: '/Pizza_with_category',  TITLE: 'Pizza with category', page: () => {}};
+    ROUTER.Order_history_completed= {URL: '/Order_history_completed',  TITLE: 'Order history completed', page: () => {}};
+    ROUTER.Order_history_upcoming= {URL: '/Order_history_upcoming',  TITLE: 'Order history upcoming', page: () => {}};
+    ROUTER.Order_history_cancelled= {URL: '/Order_history_cancelled',  TITLE: 'Order history cancelled', page: () => {}};
+    ROUTER.Favorite= {URL: '/Favorite',  TITLE: 'Favorite', page: () => {}};
+    ROUTER.Profile= {URL: '/Profile',  TITLE: 'Profile', page: () => {}};
+    ROUTER.Track_your_order= {URL: '/Track your order',  TITLE: 'Track your order', page: () => {}};
+    ROUTER.Support= {URL: '/Support',  TITLE: 'Support', page: () => {}};
+    ROUTER.SETTING= {URL: '/setting',  TITLE: 'Setting', page: SettingPage, showBottomMenu: true};
+    ROUTER.USER_ACCOUNT= {URL: '/user_account',  TITLE: 'USER_ACCOUNT', page: () => {}, showBottomMenu: true, BACK_URL: ROUTER.SETTING.URL};
 
 export const ROUTERS = Object.keys(ROUTER).map(key => ROUTER[key]);
