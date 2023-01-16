@@ -1,6 +1,6 @@
 import {useSelector} from "react-redux";
 
-import {Wrapper, AmountInfo, Content, Button, FixedContent, BgWrapper} from './Order.page.style';
+import {Wrapper, AmountInfo, Content, FixedContent} from './Order.page.style';
 import {EmptyBasket, OrderHistoryRow, Price, PrimaryWideButton} from "../../components";
 
 const OrderPage = ({total = 5}) => {
