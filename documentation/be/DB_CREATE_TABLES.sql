@@ -10,8 +10,8 @@ CREATE TABLE root.MENU_ITEM
     CATEGORY_ID INT    NOT NULL,
     COMPANY_ID  INT    NOT NULL,
     NAME        TEXT   NOT NULL,
+    IMAGE_URL   TEXT   NOT NULL,
 --     LIKED       INT    NOT NULL,   -- show liked in sub_category
---     IMAGE_URL   TEXT   NOT NULL,
 --     TIME_PREPARATION INT    NOT NULL,
 --     IS_HIDDEN  BOOLEAN,            -- instead of deleting owner can hide
     INGREDIENTS TEXT,
@@ -27,8 +27,8 @@ CREATE TABLE root.GUEST
     EMAIL             TEXT,
     IS_VERIFIED_PHONE BOOLEAN,
     IS_VERIFIED_EMAIL BOOLEAN,
-    JOIN_DATE         INT
---     LIKED_MENU_ITEM   TEXT         --
+    JOIN_DATE         INT,
+    LIKED_MENU_ITEMS   TEXT
 );
 
 CREATE TABLE root.COMPANY
@@ -53,7 +53,7 @@ CREATE TABLE root.HISTORY
     IS_PREPARED   BOOLEAN
 );
 
-INSERT INTO root.MENU_ITEM (id, category_id, company_id, name, ingredients, price_size) VALUES
+INSERT INTO root.MENU_ITEM (id, category_id, company_id, name, ingredients, image_url, price_size) VALUES
 -- BAKERY (1/10)
 (DEFAULT, 1, 1, 'Chocolate muffin', 'muffin, chocolate drops, whipped cream', 's_113|m_145|l_200'),
 (DEFAULT, 1, 1, 'Vanilla muffin', 'muffin, white chocolate drops, whipped cream', 's_113|m_145|l_200'),
@@ -82,8 +82,8 @@ INSERT INTO root.MENU_ITEM (id, category_id, company_id, name, ingredients, pric
 (DEFAULT, 4, 1, 'VegNoodles',
  'noodles, pepper, carrots, ginger, celery, pepper, sesame oil, chili flakes, soy sauce, garlic, water', 's_113|m_145|l_200'),
 -- PIZZA (5/15)
-(DEFAULT, 5, 1, '4 cheese', 'Dor bleu, Parmesan, Cheddar, Mozzarella, Alfredo cream sauce (base)', 's_113|m_145|l_200'),
-(DEFAULT, 5, 1, 'Burger', 'Meat Ball, Cheddar, Bacon, Mozzarella, Pickled cucumber, Tomato, Burger sauce, Tomato sauce (base), Red onion', 's_113|m_145|l_200'),
+(DEFAULT, 5, 1, '4 cheese', 'Dor bleu, Parmesan, Cheddar, Mozzarella, Alfredo cream sauce (base)', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/4_cheese.jpg', 's_113|m_145|l_200'),
+(DEFAULT, 5, 1, 'Burger', 'Meat Ball, Cheddar, Bacon, Mozzarella, Pickled cucumber, Tomato, Burger sauce, Tomato sauce (base), Red onion', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Burger.png', 's_113|m_145|l_200'),
 (DEFAULT, 5, 1, 'Cola BBQ', 'Bavarian sausages, bacon, mozzarella, jalapeno pepper, tomato sauce (base), red onion, champignons', 's_113|m_145|l_200'),
 (DEFAULT, 5, 1, 'Bavarian', 'Bavarian sausages, Mozzarella, Pepperoni salami, Tomato sauce (base), Halal beef', 's_113|m_145|l_200'),
 (DEFAULT, 5, 1, 'Bayraktar', 'mozzarella, salam Pepperoni, tomato sauce (base), champignons', 's_113|m_145|l_200'),
