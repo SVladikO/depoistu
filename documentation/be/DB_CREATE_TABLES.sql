@@ -10,6 +10,10 @@ CREATE TABLE root.MENU_ITEM
     CATEGORY_ID INT    NOT NULL,
     COMPANY_ID  INT    NOT NULL,
     NAME        TEXT   NOT NULL,
+--     LIKED       INT    NOT NULL,   -- show liked in sub_category
+--     IMAGE_URL   TEXT   NOT NULL,
+--     TIME_PREPARATION INT    NOT NULL,
+--     IS_HIDDEN  BOOLEAN,            -- instead of deleting owner can hide
     INGREDIENTS TEXT,
     PRICE_SIZE  TEXT
 );
@@ -24,6 +28,7 @@ CREATE TABLE root.GUEST
     IS_VERIFIED_PHONE BOOLEAN,
     IS_VERIFIED_EMAIL BOOLEAN,
     JOIN_DATE         INT
+--     LIKED_MENU_ITEM   TEXT         --
 );
 
 CREATE TABLE root.COMPANY

@@ -38,6 +38,14 @@ export const CATEGORY_MAPPER = {
     6: {title: "Sandwitch", icon: SandwitchIcon, measurement: 'g'},
     7: {title: "Sea food", icon: Sea_foodIcon, measurement: 'g'},
     8: {title: "Vagetable", icon: VagetableIcon, measurement: 'g'},
+    // vine
+    // drinks
+    // hot drinks
+    // vine card
+    // child menu
+    // breackfast
+    // lunch
+    // dinner
 }
 
 const getSubCategoryTitle = (urlParams) => {
