@@ -30,6 +30,7 @@ export const PositionWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  z-index: 2;
 `;
 
 export const TopWrapper = styled(PositionWrapper)`
