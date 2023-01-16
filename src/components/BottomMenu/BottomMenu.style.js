@@ -13,6 +13,10 @@ export const Wrapper = styled.div`
   min-width: ${DEVICE_WIDTH.MIN};
   width: 100%;
   max-width: ${DEVICE_WIDTH.MAX};
+
+  -webkit-box-shadow: 0px -1px 4px 0px rgba(0,0,0,0.11);
+  -moz-box-shadow: 0px -1px 4px 0px rgba(0,0,0,0.11);
+  box-shadow: 0px -1px 4px 0px rgba(0,0,0,0.11);
 `;
 
 export const MenuItem = styled.div`

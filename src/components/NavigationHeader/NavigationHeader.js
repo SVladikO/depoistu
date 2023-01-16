@@ -10,7 +10,7 @@ const NavigationHeader = (props) => {
     let _title = title || getTitle(params)
 
     return (
-            <Wrapper>
+            <Wrapper className='pm-NavigationHeader'>
                 <MainContent>
                     {backUrl && <Link to={backUrl}><BackArrow /></Link>}
                     <Title>{_title}</Title>
