@@ -123,7 +123,7 @@ const columns = [
     ],
     [
         {title: "NavigationHeader", component: <NavigationHeader title="category"/>},
-        {title: "NavigationHeader", component: <NavigationHeader href={' '} title="category"/>},
+        {title: "NavigationHeader", component: <NavigationHeader backUrl={' '} title="category"/>},
         {title: 'ContentContainer', component: <ContentContainer>Sign up with</ContentContainer>},
         {
             title: 'HistoryTabBar', component:
@@ -140,7 +140,7 @@ const columns = [
         },
         {
             title: 'HistoryTabBar in UserOptionGroup', component:
-                <NavigationHeader href={' '} title="category">
+                <NavigationHeader title="category">
                     {(function () {
                         const tabs = ['Completed', 'Upcoming', 'Cancelled'];
                         const selectedTab = tabs[0];
@@ -184,7 +184,7 @@ const columns = [
         },
         {
             title: 'UserAccountBar',
-            component: <UserAccountBar fullName="Jhon Smith" href="/catalog" status="Basic Member"/>
+            component: <UserAccountBar fullName="Jhon Smith" status="Basic Member"/>
         },
 
     ],

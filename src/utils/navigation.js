@@ -30,14 +30,15 @@ export const PositionWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  z-index: 2;
 `;
 
 export const TopWrapper = styled(PositionWrapper)`
-  top: 0; 
+  top: 0;
 `;
 
 export const BottomWrapper = styled(PositionWrapper)`
-  bottom: 0;
+  bottom: -1px;
 `;
 export const Centralicer = styled.div`
   display: flex;
@@ -51,7 +52,7 @@ console.log({ROUTERS})
 const routes = ROUTERS.map(r => <Route key={r.URL} path={r.URL + (r.PARAMS || '')} element={
     <MobileDevice>
         <TopWrapper>
-            <NavigationHeader href={' '} title={r.TITLE} getTitle={r.getTitle}/>
+            <NavigationHeader backUrl={r.BACK_URL} title={r.TITLE} getTitle={r.getTitle}/>
         </TopWrapper>
         <Centralicer>
             <r.page/>

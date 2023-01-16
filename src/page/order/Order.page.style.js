@@ -7,7 +7,6 @@ export const Wrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   position: relative;
-  z-index: 1;
 `;
 export const Content = styled.div`
   margin-bottom: 26px;
@@ -19,13 +18,13 @@ export const Content = styled.div`
   }
 `;
 export const FixedContent = styled.div`
-  z-index: 2;
   display: block;
   position: sticky;
   bottom: 0;
   width: inherit;
+  padding: 10px 0 90px 0;
   background-color: ${COLOR.ACCENT2};
-  padding: 26px 0 43px 0;
+
 `;
 
 export const AmountInfo = styled.div`

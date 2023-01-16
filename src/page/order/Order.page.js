@@ -1,6 +1,7 @@
-import {Wrapper, AmountInfo, Content, Button, FixedContent} from './Order.page.style';
-import {EmptyBasket, OrderHistoryRow, Price} from "../../components";
 import {useSelector} from "react-redux";
+
+import {Wrapper, AmountInfo, Content, Button, FixedContent, BgWrapper} from './Order.page.style';
+import {EmptyBasket, OrderHistoryRow, Price, PrimaryWideButton} from "../../components";
 
 const OrderPage = ({total = 5}) => {
     const orders = useSelector(state => state.order.value);
@@ -15,7 +16,7 @@ const OrderPage = ({total = 5}) => {
                     Sub Total ( {total} item ):
                     <Price>200</Price>
                 </AmountInfo>
-                <Button>Place Order</Button>
+                <PrimaryWideButton>Place Order</PrimaryWideButton>
             </FixedContent>
         </>
     );
