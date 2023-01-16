@@ -65,6 +65,10 @@ export const Size = styled.div`
   display: inline-flex;
   align-self: start;
 `;
+export const Image = styled.img`
+  width: 60px;  
+  height: 60px;
+`;
 export const Status = styled.div`
   font-weight: 700;
   font-size: 12px;
