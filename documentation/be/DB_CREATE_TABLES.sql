@@ -59,12 +59,12 @@ INSERT INTO root.MENU_ITEM (id, category_id, company_id, name, ingredients, imag
 (DEFAULT, 1, 1, 'Vanilla muffin', 'muffin, white chocolate drops, whipped cream', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Vanilla_muffin.png', '200_45'),
 
 -- BEVERAGE (2/15)
-(DEFAULT, 2, 1, 'BonAqua carbonated water', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/bon_aqua_gaz.png', '0.33_15|0.5_25'),
-(DEFAULT, 2, 1, 'Coca-Cola', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/cola.png', '0.33_20|0.5_30'),
-(DEFAULT, 2, 1, 'Sprite', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/sprite.png', '0.33_20'),
-(DEFAULT, 2, 1, 'Leffe Brune', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/leffe_brun.jpg', '0.5_35'),
-(DEFAULT, 2, 1, 'Black tea', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Black_tea.png', '0.25_25'),
-(DEFAULT, 2, 1, 'Red vine', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Red_vine.png', '50_60'),
+(DEFAULT, 2, 1, 'BonAqua carbonated water', '', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/bon_aqua_gaz.png', '0.33_15|0.5_25'),
+(DEFAULT, 2, 1, 'Coca-Cola', '', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/cola.png', '0.33_20|0.5_30'),
+(DEFAULT, 2, 1, 'Sprite', '','https://raw.githubusercontent.com/SVladikO/testApp/master/images/sprite.png', '0.33_20'),
+(DEFAULT, 2, 1, 'Leffe Brune', '', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/leffe_brun.jpg', '0.5_35'),
+(DEFAULT, 2, 1, 'Black tea', '', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Black_tea.png', '0.25_25'),
+(DEFAULT, 2, 1, 'Red vine', '', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Red_vine.png', '50_60'),
 -- BURGER (3/11)
 (DEFAULT, 3, 1, 'CheeseBurger', 'burger bun, mayonnaise, spinach, red onion, cheddar cheese', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Cheese_burger.png', '325_120'),
 -- NOODLES (4/6)
