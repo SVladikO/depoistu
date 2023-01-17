@@ -38,7 +38,7 @@ const pages = [
     {href: 'Payment enter result',},
     {href: 'Order history',},
     {href: 'Pizza with category',},
-    {href: ROUTER.ORDER_COMPLETED.URL, component: <OrderCompleted/>},
+    {href: ROUTER.Order_history_completed.URL, component: <OrderCompleted/>},
     {href: 'Order history upcoming'},
     {href: 'Order history cancelled',},
     {href: 'Favorite',},

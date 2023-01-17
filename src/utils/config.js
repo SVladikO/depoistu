@@ -15,6 +15,7 @@ import {ReactComponent as SandwitchIcon} from "../icons/category/sandwitch.svg";
 import {ReactComponent as Sea_foodIcon} from "../icons/category/sea_food.svg";
 import {ReactComponent as VagetableIcon} from "../icons/category/vagetable.svg";
 import OrderPage from "../page/order/Order.page";
+import OrderCompleted from "../page/orderCompleted/orderCompleted";
 
 export const DEV_ROUTER = {
     COMPONENTS: 'components',
@@ -64,7 +65,7 @@ export const ROUTER =  {};
     ROUTER.INTRO_2= { URL: '/INTRO_2', TITLE: 'INTRO_2', page: () => {}};
     ROUTER.INTRO_3= { URL: '/INTRO_3', TITLE: 'INTRO_3', page: () => {}};
 
-    ROUTER.SING_IN= { URL: '/sign-in', TITLE: 'Sing in', page: SignInPage, };
+    ROUTER.SING_IN= { URL: '/sign-in', TITLE: 'Sing in', page: SignInPage,};
     ROUTER.SING_UP= {URL: '/sing-up',  TITLE: 'Sing up', page: SingUpPage};
 
     ROUTER.CHANGE_PASSWORD= {URL: '/change-password',TITLE: 'Change password',page: ChangePasswordPage};
@@ -83,7 +84,7 @@ export const ROUTER =  {};
     ROUTER.Payment_enter_result= {URL: '/Payment_enter_result',  TITLE: 'Payment enter result', page: () => {}};
     ROUTER.Order_history= {URL: '/Order_history',  TITLE: 'Order history', page: () => {}};
     ROUTER.Pizza_with_category= {URL: '/Pizza_with_category',  TITLE: 'Pizza with category', page: () => {}};
-    ROUTER.Order_history_completed= {URL: '/Order_history_completed',  TITLE: 'Order history completed', page: () => {}};
+    ROUTER.Order_history_completed= {URL: '/Order_history_completed',  TITLE: 'Order history completed', page: OrderCompleted}
     ROUTER.Order_history_upcoming= {URL: '/Order_history_upcoming',  TITLE: 'Order history upcoming', page: () => {}};
     ROUTER.Order_history_cancelled= {URL: '/Order_history_cancelled',  TITLE: 'Order history cancelled', page: () => {}};
     ROUTER.Favorite= {URL: '/Favorite',  TITLE: 'Favorite', page: () => {}};
