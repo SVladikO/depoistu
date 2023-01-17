@@ -26,7 +26,6 @@ export const ThirdButton = styled(button)`
   padding: 12px 24px;
 `;
 
-
 export const primary = styled(button)`
   background-image: linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO});
 `;

@@ -1,17 +1,18 @@
-## Database table structure
+ ## Database table structure
 
 ###### As we have fixed count of category we won't create db for them. We will have all category on FE side.
 
-### USER
+### GUEST
 * id
 * name
 * phone
+* password
 * email
 * isVerifiedPhone
 * isVerifiedEmail
 * isReliable (with value two. If user don't take order once we decrement till 0. 0 mean we won't let this person order any more through our app)
 * join_date  
-* favorite  
+* favorite  [maybe separate table]
 * language [when we add translation on the website]
 ----
 ### COMPANY
@@ -42,4 +43,4 @@
 * isPaid
 * isPrepared  (for outside)
 * isProcessed 
-----
+---- 

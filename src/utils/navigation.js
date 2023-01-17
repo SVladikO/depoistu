@@ -1,12 +1,10 @@
 import React from 'react';
 import {Route, Routes} from "react-router-dom";
 
-import {DEV_ROUTER, ROUTER} from "./config";
+import {DEV_ROUTER, ROUTER, ROUTERS} from "./config";
 
 import {COLOR} from './theme'
 
-import SignInPage from "../page/sing-in/SignIn.page";
-import SingUpPage from "../page/sing-up/SingUp.page";
 import LoadingPage from "../page/Loading.page";
 import CatalogPage from '../page/development/Catalog.page';
 import ComponentsPage from '../page/development/Components.page';
@@ -14,9 +12,9 @@ import ReduxIntroductionPage from "../page/development/Redux-introduction.page";
 
 import styled from 'styled-components'
 import {DEVICE_WIDTH} from "./theme";
+import {BottomMenu, NavigationHeader} from "../components";
 import CategoryPage from "../page/category/Category.page";
 import ChangePasswordPage from "../page/change-password/ChangePassword.page";
-import {NavigationHeader} from "../components";
 import SettingPage from "../page/setting/Setting.page";
 import SubCategoryPage from "../page/sub-category/SubCategory.page";
 import OrderCompleted from "../page/orderCompleted/orderCompleted";
@@ -27,31 +25,48 @@ export const MobileDevice = styled.div`
   margin: 0 auto;
   min-height: 100vh;
   background: ${COLOR.ACCENT2};
-
+  position: relative;
 `;
 
+export const PositionWrapper = styled.div`
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 2;
+`;
+
+export const TopWrapper = styled(PositionWrapper)`
+  top: 0;
+`;
+
+export const BottomWrapper = styled(PositionWrapper)`
+  bottom: -1px;
+`;
 export const Centralicer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: start;
-  padding: 0 25px 25px 25px;
+  padding: 90px 25px 110px 25px;
 `;
 
-// Creation router +
-const routes = [
-    {...ROUTER.SING_IN, component: SignInPage},
-    {...ROUTER.SING_UP, component: SingUpPage},
-    {...ROUTER.CATEGORY, component: CategoryPage},
-    {...ROUTER.CHANGE_PASSWORD, component: ChangePasswordPage},
-    {...ROUTER.SETTING, component: SettingPage},
-    {...ROUTER.SUB_CATEGORY, component: SubCategoryPage},
-    {...ROUTER.ORDER_COMPLETED, component: OrderCompleted},
-].map(r => <Route key={r.URL} path={r.URL} element={
+console.log({ROUTERS})
+
+const routes = ROUTERS.map(r => <Route key={r.URL} path={r.URL + (r.PARAMS || '')} element={
     <MobileDevice>
-        <NavigationHeader href={' '} title={r.TITLE}/>
+        <TopWrapper>
+            <NavigationHeader backUrl={r.BACK_URL} title={r.TITLE} getTitle={r.getTitle}/>
+        </TopWrapper>
         <Centralicer>
-            <r.component/>
+            <r.page/>
         </Centralicer>
+        {r.showBottomMenu &&
+            <BottomWrapper>
+                <BottomMenu/>
+            </BottomWrapper>
+        }
     </MobileDevice>
 }/>);
 
@@ -60,7 +75,6 @@ export const getRoutes = () => {
         <>
             <Routes>
                 {/* Development pages start */}
-                <Route path={'/'} element={<ComponentsPage/>}/>
                 <Route path={DEV_ROUTER.COMPONENTS} element={<ComponentsPage/>}/>
                 <Route path={DEV_ROUTER.REDUX} element={<ReduxIntroductionPage/>}/>
                 <Route path={DEV_ROUTER.PAGES} element={<CatalogPage/>}/>

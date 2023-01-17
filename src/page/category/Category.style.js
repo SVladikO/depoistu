@@ -6,12 +6,12 @@ export const Flex = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
 
-  & > div {
+  & > a {
     margin: 15px 0 0;
   }
   
-  & > div:first-child,
-  & > div:nth-child(2) {
+  & > a:first-child,
+  & > a:nth-child(2) {
     margin: 0;
   }
 `;
