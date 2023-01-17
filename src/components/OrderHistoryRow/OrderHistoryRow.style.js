@@ -68,6 +68,7 @@ export const Size = styled.div`
 export const Image = styled.img`
   width: 60px;  
   height: 60px;
+  border: solid 1px ${COLOR.ACCENT4};
 `;
 export const Status = styled.div`
   font-weight: 700;
