@@ -28,7 +28,7 @@ const SubCategoryPage = () => {
                 {menu_items.map((menuItem, index) =>
                     <ProductCard key={index}
                                  item={{
-                                     image: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
+                                     image: menuItem.image_url,
                                      discont: '-10',
                                      rating: '4.5',
                                      buttons: [

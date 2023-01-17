@@ -13,6 +13,7 @@ export const FoodImage = styled.img`
   height: 85px;
   background: ${COLOR.ACCENT1};
   border-radius: ${BORDER_RADIUS.CIRCLE};
+  border: solid 1px ${COLOR.ACCENT4};
   margin: 10px auto;
 `;
 export const Title = styled.div`
