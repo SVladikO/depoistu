@@ -13,11 +13,6 @@ import ReduxIntroductionPage from "../page/development/Redux-introduction.page";
 import styled from 'styled-components'
 import {DEVICE_WIDTH} from "./theme";
 import {BottomMenu, NavigationHeader} from "../components";
-import CategoryPage from "../page/category/Category.page";
-import ChangePasswordPage from "../page/change-password/ChangePassword.page";
-import SettingPage from "../page/setting/Setting.page";
-import SubCategoryPage from "../page/sub-category/SubCategory.page";
-import OrderCompleted from "../page/orderCompleted/orderCompleted";
 
 export const MobileDevice = styled.div`
   min-width: ${DEVICE_WIDTH.MIN};
