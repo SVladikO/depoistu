@@ -11,7 +11,7 @@ export const Flex = styled.div`
 export const FoodImage = styled.img`
   width: 85px;
   height: 85px;
-  background: ${COLOR.ACCENT1};
+  background: ${COLOR.ACCENT2};
   border-radius: ${BORDER_RADIUS.CIRCLE};
   border: solid 1px ${COLOR.ACCENT4};
   margin: 10px auto;
