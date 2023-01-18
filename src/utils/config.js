@@ -30,14 +30,17 @@ export const BE_API = {
 };
 
 export const CATEGORY_MAPPER = {
-    1: {title: "Bakery", icon: BakeryIcon, measurement: 'g'},
-    2: {title: "Beverage", icon: BeverageIcon, measurement: 'ml'},
-    3: {title: "Burger", icon: BurgerIcon, measurement: 'g'},
-    4: {title: "Noodles", icon: NoodlesIcon, measurement: 'g'},
-    5: {title: "Pizza", icon: PizzaIcon, measurement: 'sm'},
-    6: {title: "Sandwitch", icon: SandwitchIcon, measurement: 'g'},
-    7: {title: "Sea food", icon: Sea_foodIcon, measurement: 'g'},
-    8: {title: "Vagetable", icon: VagetableIcon, measurement: 'g'},
+    1:  {title: "Bakery", icon: BakeryIcon, measurement: 'g'},
+    2:  {title: "Beverage", icon: BeverageIcon, measurement: 'L'},
+    3:  {title: "Burger", icon: BurgerIcon, measurement: 'g'},
+    4:  {title: "Noodles", icon: NoodlesIcon, measurement: 'g'},
+    5:  {title: "Pizza", icon: PizzaIcon, measurement: 'g'},
+    6:  {title: "Sandwitch", icon: SandwitchIcon, measurement: 'g'},
+    7:  {title: "Sea food", icon: Sea_foodIcon, measurement: 'g'},
+    8:  {title: "Vagetable", icon: VagetableIcon, measurement: 'g'},
+    9:  {title: "Alcohol", icon: BeverageIcon, measurement: 'ml'},
+    10: {title: "Wine card", icon: BeverageIcon, measurement: 'ml'},
+    11: {title: "Hot drinks", icon: BeverageIcon, measurement: 'ml'},
     // vine
     // drinks
     // hot drinks
