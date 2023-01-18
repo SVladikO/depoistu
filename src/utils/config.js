@@ -38,7 +38,7 @@ export const CATEGORY_MAPPER = {
     6:  {title: "Sandwitch", icon: SandwitchIcon, measurement: 'g'},
     7:  {title: "Sea food", icon: Sea_foodIcon, measurement: 'g'},
     8:  {title: "Vagetable", icon: VagetableIcon, measurement: 'g'},
-    9:  {title: "Alkohol", icon: BeverageIcon, measurement: 'ml'},
+    9:  {title: "Alcohol", icon: BeverageIcon, measurement: 'ml'},
     10: {title: "Wine card", icon: BeverageIcon, measurement: 'ml'},
     11: {title: "Hot drinks", icon: BeverageIcon, measurement: 'ml'},
     // vine

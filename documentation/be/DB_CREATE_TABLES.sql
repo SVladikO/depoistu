@@ -64,9 +64,7 @@ INSERT INTO root.MENU_ITEM (id, category_id, company_id, name, description, cook
 (DEFAULT, 2, 1, 'BonAqua carbonated water', '', '45', '1.5', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/bon_aqua_gaz.png'),
 (DEFAULT, 2, 1, 'Coca-Cola', '', '25', '0.33', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/cola.png'),
 (DEFAULT, 2, 1, 'Sprite', '', '30', '0.5','https://raw.githubusercontent.com/SVladikO/testApp/master/images/sprite.png'),
-(DEFAULT, 2, 1, 'Leffe Brune', '', '45', '500', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/leffe_brun.jpg'),
-(DEFAULT, 2, 1, 'Black tea', '10m', '32', '250', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Black_tea.png'),
-(DEFAULT, 2, 1, 'Red vine', '', '65', '50', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Red_vine.png'),
+
 -- BURGER (3/11)
 (DEFAULT, 3, 1, 'CheeseBurger', 'burger bun, mayonnaise, spinach, red onion, cheddar cheese', '15', '115', '350','https://raw.githubusercontent.com/SVladikO/testApp/master/images/Cheese_burger.png'),
 -- NOODLES (4/6)
@@ -93,7 +91,16 @@ INSERT INTO root.MENU_ITEM (id, category_id, company_id, name, description, cook
 -- SEA FOOD (7/8)
 (DEFAULT, 7, 1, 'Boiled shrimps', 'boiled shrimps, dill, salt, pepper', '20', '80', '250', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Boiled_shrimps.png'),
 -- VEGETABLE (8/9)
-(DEFAULT, 8, 1, 'Boiled corn', 'boiled corn, salt, butter,', '10', '60', '300', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Boiled_corn.png');
+(DEFAULT, 8, 1, 'Boiled corn', 'boiled corn, salt, butter,', '10', '60', '300', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Boiled_corn.png'),
+
+--Alcohol (9/1)
+(DEFAULT, 9, 1, 'Leffe Brune', '', '45', '500', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/leffe_brun.jpg'),
+
+--Wine card (10/1)
+(DEFAULT, 10, 1, 'Red wine', '', '65', '50', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Red_vine.png'),
+
+--Hot Drinks (11/1)
+(DEFAULT, 11, 1, 'Black tea', '10m', '32', '250', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Black_tea.png');
 
 
 INSERT INTO root.GUEST (id, name, phone, password, email, is_verified_phone, is_verified_email, join_date) VALUES
