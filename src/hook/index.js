@@ -1,16 +1,13 @@
 import {useState, useEffect} from "react";
 
-export const useLocalStorageFetch = (storageKey, fallbackState, _fetch) => {
-    const initValue = JSON.parse(localStorage.getItem(storageKey))
-    console.log(storageKey, initValue)
-    const [value, setValue] = useState(initValue ?? fallbackState);
+export const useLocalStorageFetch = (storageKey, initialState, fetch) => {
+    const localStorageState = JSON.parse(localStorage.getItem(storageKey))
+    const [value, setValue] = useState(localStorageState ?? initialState);
 
     useEffect(() => {
-        !initValue &&
-        _fetch(value => {
-            console.log('_fetch: ', storageKey, value);
-            setValue(value)
-            localStorage.setItem(storageKey, JSON.stringify(value))
+        !localStorageState && fetch(res => {
+            setValue(res)
+            localStorage.setItem(storageKey, JSON.stringify(res))
         })
     }, [value, storageKey]);
 
