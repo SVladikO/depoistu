@@ -32,16 +32,21 @@ export const Title = styled.div`
 export const Description = styled.div`
   font-size: 14px;
   font-weight: 100;
-  `;
+`;
 
 export const AdditionalDetails = styled.div`
   display: flex;
-  & > * {
-    font-size: 14px;
-  }
-  
+  align-items: center;
+  font-size: 14px;
+  color: ${COLOR.ACCENT1};
+
   & > svg {
-    height: 20px;
-    width: 20px;
+    fill: ${COLOR.ACCENT1};
+    height: 14px;
+    width: 14px;
+  } 
+  
+  & > svg:nth-child(2) {
+    margin: 0 0 0 10px;
   }
 `;

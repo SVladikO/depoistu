@@ -25,8 +25,7 @@ const MenuItem = ({item = {}}) => {
                     <Description>{description}</Description>
                     <Absolute bottom={'10px'}>
                         <AdditionalDetails>
-                            <TimeIcon/> {cookingTime}
-                            <MeasureIcon/> {size}
+                            <TimeIcon/> {cookingTime} m <MeasureIcon/> {size} g
                         </AdditionalDetails>
                     </Absolute>
                     <Absolute bottom={'10px'} right={'10px'}>
