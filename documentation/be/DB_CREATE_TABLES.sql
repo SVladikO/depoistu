@@ -6,16 +6,18 @@ CREATE SCHEMA root;
 
 CREATE TABLE root.MENU_ITEM
 (
-    ID          SERIAL NOT NULL,
-    CATEGORY_ID INT    NOT NULL,
-    COMPANY_ID  INT    NOT NULL,
-    NAME        TEXT   NOT NULL,
-    IMAGE_URL   TEXT   NOT NULL,
+    ID           SERIAL NOT NULL,
+    CATEGORY_ID  INT    NOT NULL,
+    COMPANY_ID   INT    NOT NULL,
+    NAME         TEXT   NOT NULL,
+    DESCRIPTION  TEXT,
+    COOKING_TIME TEXT   NOT NULL,
+    PRICE        INT    NOT NULL,
+    SIZE         TEXT   NOT NULL,
+    IMAGE_URL    TEXT   NOT NULL
 --     LIKED       INT    NOT NULL,   -- show liked in sub_category
 --     TIME_PREPARATION INT    NOT NULL,
 --     IS_HIDDEN  BOOLEAN,            -- instead of deleting owner can hide
-    INGREDIENTS TEXT,
-    PRICE_SIZE  TEXT
 );
 
 CREATE TABLE root.GUEST
@@ -53,45 +55,45 @@ CREATE TABLE root.HISTORY
     IS_PREPARED   BOOLEAN
 );
 
-INSERT INTO root.MENU_ITEM (id, category_id, company_id, name, ingredients, image_url, price_size) VALUES
+INSERT INTO root.MENU_ITEM (id, category_id, company_id, name, description, cooking_time, price, size, image_url) VALUES
 -- BAKERY (1/10)
-(DEFAULT, 1, 1, 'Chocolate muffin', 'muffin, chocolate drops, whipped cream', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Chocolate_muffin.png', '200_45'),
-(DEFAULT, 1, 1, 'Vanilla muffin', 'muffin, white chocolate drops, whipped cream', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Vanilla_muffin.png', '200_45'),
+(DEFAULT, 1, 1, 'Chocolate muffin', 'muffin, chocolate drops, whipped cream', '5', '30', '150', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Chocolate_muffin.png'),
+(DEFAULT, 1, 1, 'Vanilla muffin', 'muffin, white chocolate drops, whipped cream', '5', '30', '150', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Vanilla_muffin.png'),
 
 -- BEVERAGE (2/15)
-(DEFAULT, 2, 1, 'BonAqua carbonated water', '', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/bon_aqua_gaz.png', '0.33_15|0.5_25'),
-(DEFAULT, 2, 1, 'Coca-Cola', '', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/cola.png', '0.33_20|0.5_30'),
-(DEFAULT, 2, 1, 'Sprite', '','https://raw.githubusercontent.com/SVladikO/testApp/master/images/sprite.png', '0.33_20'),
-(DEFAULT, 2, 1, 'Leffe Brune', '', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/leffe_brun.jpg', '0.5_35'),
-(DEFAULT, 2, 1, 'Black tea', '', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Black_tea.png', '0.25_25'),
-(DEFAULT, 2, 1, 'Red vine', '', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Red_vine.png', '50_60'),
+(DEFAULT, 2, 1, 'BonAqua carbonated water', '', '45', '1.5', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/bon_aqua_gaz.png'),
+(DEFAULT, 2, 1, 'Coca-Cola', '', '25', '0.33', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/cola.png'),
+(DEFAULT, 2, 1, 'Sprite', '', '30', '0.5','https://raw.githubusercontent.com/SVladikO/testApp/master/images/sprite.png'),
+(DEFAULT, 2, 1, 'Leffe Brune', '', '45', '500', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/leffe_brun.jpg'),
+(DEFAULT, 2, 1, 'Black tea', '10m', '32', '250', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Black_tea.png'),
+(DEFAULT, 2, 1, 'Red vine', '', '65', '50', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Red_vine.png'),
 -- BURGER (3/11)
-(DEFAULT, 3, 1, 'CheeseBurger', 'burger bun, mayonnaise, spinach, red onion, cheddar cheese', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Cheese_burger.png', '325_120'),
+(DEFAULT, 3, 1, 'CheeseBurger', 'burger bun, mayonnaise, spinach, red onion, cheddar cheese', '15', '115', '350','https://raw.githubusercontent.com/SVladikO/testApp/master/images/Cheese_burger.png'),
 -- NOODLES (4/6)
 (DEFAULT, 4, 1, 'VegNoodles',
- 'noodles, pepper, carrots, ginger, celery, pepper, sesame oil, chili flakes, soy sauce, garlic, water', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Veg_noodles.png', '275_115'),
+ 'noodles, pepper, carrots, ginger, celery, pepper, sesame oil, chili flakes, soy sauce, garlic, water', '20', '120', '350', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Veg_noodles.png'),
 -- PIZZA (5/15)
-(DEFAULT, 5, 1, '4 cheese', 'Dor bleu, Parmesan, Cheddar, Mozzarella, Alfredo cream sauce (base)', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/4_cheese.jpg', '25_140|30_165|45_215'),
-(DEFAULT, 5, 1, 'Burger', 'Meat Ball, Cheddar, Bacon, Mozzarella, Pickled cucumber, Tomato, Burger sauce, Tomato sauce (base), Red onion', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Burger.png', '25_125|30_145|45_200'),
-(DEFAULT, 5, 1, 'Cola BBQ', 'Bavarian sausages, bacon, mozzarella, jalapeno pepper, tomato sauce (base), red onion, champignons', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Cola_BBQ.png', '25_115|30_130|45_185'),
-(DEFAULT, 5, 1, 'Bavarian', 'Bavarian sausages, Mozzarella, Pepperoni salami, Tomato sauce (base), Halal beef', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Bavarian.jpg', '25_125|30_145|45_200'),
-(DEFAULT, 5, 1, 'Bayraktar', 'mozzarella, salam Pepperoni, tomato sauce (base), champignons', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Bayraktar.png', '25_130|30_155|45_210'),
-(DEFAULT, 5, 1, 'Javelin', 'Bavarian sausages, corn, mozzarella, tomato sauce (base), red onion, champignons', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Javelin.png', '25_130|30_155|45_210'),
-(DEFAULT, 5, 1, 'Firmova', 'balik, bacon, ham, grilled chicken, mozzarella, bell pepper, pepperoni salami, tomato sauce (base)', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Firmova.png', '25_125|30_145|45_200'),
-(DEFAULT, 5, 1, 'Hawaiian', 'pineapple, smoked chicken, mozzarella, tomato sauce (base)', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Hawaiian.png', '25_115|30_130|45_185'),
-(DEFAULT, 5, 1, 'Mushroom', 'mozzarella, smoked paprika, parsley, tomato sauce (base), champignons', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Mushroom.png', '25_113|30_145|45_190'),
-(DEFAULT, 5, 1, 'Italian', 'Dor bleu, sun-dried tomatoes, capers, Halal grilled chicken, mozzarella, Alfredo cream sauce (base), champignons', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Italian.jpg', '25_120|30_145|45_200-5'),
-(DEFAULT, 5, 1, 'Kebab Grill', 'Satsebeli sauce, eggplant, lamb kebab, cilantro, mozzarella, bell pepper, tomato, tomato sauce (base), red onion', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Kebab_Grill.png', '25_130|30_155|45_210'),
-(DEFAULT, 5, 1, 'BBQ chicken', 'BBQ sauce, BBQ sauce (base), bacon, Halal grilled chicken, mozzarella, red onion', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/BBQ_chicken.jpg', '25_125|30_145|45_200'),
-(DEFAULT, 5, 1, 'Marinara', 'squid, tiger shrimp, olives, mussels, mozzarella, creamy Alfredo sauce (base)', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Marinara.jpg', '25_140|30_160|45_215'),
-(DEFAULT, 5, 1, 'Sicilian', 'grilled chicken, mozzarella, tomato sauce (base), champignons', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Sicilian.jpg', '25_120|30_140|45_190'),
-(DEFAULT, 5, 1, 'Philadelphia', 'sesame, mozzarella, tomato, creamy Alfredo sauce (base), cream cheese, salmon', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Philadelphia.jpg', '25_130|30_165|45_215'),
+(DEFAULT, 5, 1, '4 cheese', 'Dor bleu, Parmesan, Cheddar, Mozzarella, Alfredo cream sauce (base)', '15', '115', '550','https://raw.githubusercontent.com/SVladikO/testApp/master/images/4_cheese.jpg'),
+(DEFAULT, 5, 1, 'Burger', 'Meat Ball, Cheddar, Bacon, Mozzarella, Pickled cucumber, Tomato, Burger sauce, Tomato sauce (base), Red onion', '15', '210', '1000', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Burger.png'),
+(DEFAULT, 5, 1, 'Cola BBQ', 'Bavarian sausages, bacon, mozzarella, jalapeno pepper, tomato sauce (base), red onion, champignons', '20', '195', '750', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Cola_BBQ.png'),
+(DEFAULT, 5, 1, 'Bavarian', 'Bavarian sausages, Mozzarella, Pepperoni salami, Tomato sauce (base), Halal beef', '15', '150', '500', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Bavarian.jpg'),
+(DEFAULT, 5, 1, 'Bayraktar', 'mozzarella, salam Pepperoni, tomato sauce (base), champignons', '25', '250', '1000', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Bayraktar.png'),
+(DEFAULT, 5, 1, 'Javelin', 'Bavarian sausages, corn, mozzarella, tomato sauce (base), red onion, champignons', '30', '180', '750', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Javelin.png'),
+(DEFAULT, 5, 1, 'Firmova', 'balik, bacon, ham, grilled chicken, mozzarella, bell pepper, pepperoni salami, tomato sauce (base)', '10', '95', '500', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Firmova.png'),
+(DEFAULT, 5, 1, 'Hawaiian', 'pineapple, smoked chicken, mozzarella, tomato sauce (base)', '15', '170', '1000', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Hawaiian.png'),
+(DEFAULT, 5, 1, 'Mushroom', 'mozzarella, smoked paprika, parsley, tomato sauce (base), champignons', '12', '115', '500', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Mushroom.png'),
+(DEFAULT, 5, 1, 'Italian', 'Dor bleu, sun-dried tomatoes, capers, Halal grilled chicken, mozzarella, Alfredo cream sauce (base), champignons', '20', '160', '750', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Italian.jpg'),
+(DEFAULT, 5, 1, 'Kebab Grill', 'Satsebeli sauce, eggplant, lamb kebab, cilantro, mozzarella, bell pepper, tomato, tomato sauce (base), red onion', '10', '100', '500', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Kebab_Grill.png'),
+(DEFAULT, 5, 1, 'BBQ chicken', 'BBQ sauce, BBQ sauce (base), bacon, Halal grilled chicken, mozzarella, red onion', '25', '210', '1150', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/BBQ_chicken.jpg'),
+(DEFAULT, 5, 1, 'Marinara', 'squid, tiger shrimp, olives, mussels, mozzarella, creamy Alfredo sauce (base)', '20', '155', '650', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Marinara.jpg'),
+(DEFAULT, 5, 1, 'Sicilian', 'grilled chicken, mozzarella, tomato sauce (base), champignons', '30', '250', '1200', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Sicilian.jpg'),
+(DEFAULT, 5, 1, 'Philadelphia', 'sesame, mozzarella, tomato, creamy Alfredo sauce (base), cream cheese, salmon', '15', '115', '650', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Philadelphia.jpg'),
 -- SANDWITCH (6/3)
-(DEFAULT, 6, 1, 'Sandwich with cheese', 'plain bread, mayonnaise, lettuce, boiled egg, cheddar cheese', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Cheese_sandwich.png', '300_115'),
+(DEFAULT, 6, 1, 'Sandwich with cheese', 'plain bread, mayonnaise, lettuce, boiled egg, cheddar cheese', '25', '115', '350', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Cheese_sandwich.png'),
 -- SEA FOOD (7/8)
-(DEFAULT, 7, 1, 'Boiled shrimps', 'boiled shrimps, dill, salt, pepper', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Boiled_shrimps.png', '250_130'),
+(DEFAULT, 7, 1, 'Boiled shrimps', 'boiled shrimps, dill, salt, pepper', '20', '80', '250', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Boiled_shrimps.png'),
 -- VEGETABLE (8/9)
-(DEFAULT, 8, 1, 'Boiled corn', 'boiled corn, salt, butter,', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Boiled_corn.png', '200_95');
+(DEFAULT, 8, 1, 'Boiled corn', 'boiled corn, salt, butter,', '10', '60', '300', 'https://raw.githubusercontent.com/SVladikO/testApp/master/images/Boiled_corn.png');
 
 
 INSERT INTO root.GUEST (id, name, phone, password, email, is_verified_phone, is_verified_email, join_date) VALUES
