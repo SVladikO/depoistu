@@ -19,7 +19,6 @@ import OrderPage from "../page/order/Order.page";
 export const DEV_ROUTER = {
     COMPONENTS: 'components',
     PAGES: 'pages',
-    REDUX: 'redux',
 };
 
 const DOMAIN = 'https://pizza-mobile-api.herokuapp.com';

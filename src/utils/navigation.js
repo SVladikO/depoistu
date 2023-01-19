@@ -46,8 +46,6 @@ export const Centralicer = styled.div`
   padding: 90px 25px 110px 25px;
 `;
 
-console.log({ROUTERS})
-
 const routes = ROUTERS.map(r => <Route key={r.URL} path={r.URL + (r.PARAMS || '')} element={
     <MobileDevice>
         <TopWrapper>
