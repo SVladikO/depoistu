@@ -13,6 +13,7 @@ import ReduxIntroductionPage from "../page/development/Redux-introduction.page";
 import styled from 'styled-components'
 import {DEVICE_WIDTH} from "./theme";
 import {BottomMenu, NavigationHeader} from "../components";
+import {HistoryTabBar} from "../components";
 
 export const MobileDevice = styled.div`
   min-width: ${DEVICE_WIDTH.MIN};
@@ -47,12 +48,22 @@ export const Centralicer = styled.div`
   padding: 90px 25px 110px 25px;
 `;
 
-console.log({ROUTERS})
+console.log({ROUTERS});
+
+const tabs = ['Completed', 'Upcoming', 'Cancelled'];
+const selectedTab = tabs[0];
+
+function handleClick(c) {
+    console.log(`${tabs[c]}`)
+}
+
 
 const routes = ROUTERS.map(r => <Route key={r.URL} path={r.URL + (r.PARAMS || '')} element={
     <MobileDevice>
         <TopWrapper>
-            <NavigationHeader backUrl={r.BACK_URL} title={r.TITLE} getTitle={r.getTitle}/>
+            <NavigationHeader backUrl={r.BACK_URL} title={r.TITLE} getTitle={r.getTitle}>
+                {r.TITLE === 'Order history completed' ? <HistoryTabBar selectedTab={tabs[0]} handleClick={handleClick} tabs={tabs}/> : null}
+            </NavigationHeader>
         </TopWrapper>
         <Centralicer>
             <r.page/>

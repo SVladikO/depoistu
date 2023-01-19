@@ -84,7 +84,7 @@ export const ROUTER =  {};
     ROUTER.Payment_enter_result= {URL: '/Payment_enter_result',  TITLE: 'Payment enter result', page: () => {}};
     ROUTER.Order_history= {URL: '/Order_history',  TITLE: 'Order history', page: () => {}};
     ROUTER.Pizza_with_category= {URL: '/Pizza_with_category',  TITLE: 'Pizza with category', page: () => {}};
-    ROUTER.Order_history_completed= {URL: '/Order_history_completed',  TITLE: 'Order history completed', page: OrderCompleted}
+    ROUTER.Order_history_completed= {URL: '/Order_history_completed',  TITLE: 'Order history completed', page: OrderCompleted, BACK_URL: ROUTER.Order_history.URL}
     ROUTER.Order_history_upcoming= {URL: '/Order_history_upcoming',  TITLE: 'Order history upcoming', page: () => {}};
     ROUTER.Order_history_cancelled= {URL: '/Order_history_cancelled',  TITLE: 'Order history cancelled', page: () => {}};
     ROUTER.Favorite= {URL: '/Favorite',  TITLE: 'Favorite', page: () => {}};

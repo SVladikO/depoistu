@@ -11,7 +11,7 @@ export const Wrapper =  styled.div`
   background: inherit;
 `;
 export const Tab = styled.div`
-  width: 33%;
+  //width: 33%;
   font-weight: 500;
   font-size: 16px;
   line-height: 19px;

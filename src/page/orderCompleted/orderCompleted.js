@@ -1,6 +1,7 @@
 import {Content, Wrapper,Date} from './orderCompleted.style';
 import {OrderHistoryRow} from "../../components";
 
+
 const item = {
     name: 'Chees Bites Pizza',
     description: ['spicy', 'tomato', 'sauce', 'chili', 'mozzarella'],
