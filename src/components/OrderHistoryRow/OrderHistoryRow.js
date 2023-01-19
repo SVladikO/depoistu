@@ -11,7 +11,7 @@ import {ReactComponent as DeleteIcon} from "../../icons/delete.svg";
 
 const OrderHistoryRow = props => {
     const dispatch = useDispatch();
-    const {id, name, ingredients, price, image_url, size, status} = props.item || {};
+    const {id, name, description, price, image_url, size, status} = props.item || {};
 
     return (
         <Wrapper>
@@ -22,14 +22,14 @@ const OrderHistoryRow = props => {
                     {status ? <Status>{status}</Status> : <DeleteIcon onClick={() => dispatch(deleteOrderItem(id))}/>}
                 </Row>
                 <Row>
-                    <Description>{ingredients}</Description>
+                    <Description>{description}</Description>
                 </Row>
                 <Row>
                     {
                         size ? <Size>Size:<ColoredSize>{size}</ColoredSize></Size> : <CountAccumulator count={3}/>
                     }
                     <PriceWrapper>
-                        <Factor>3x</Factor><Price small>{10}.00</Price>
+                        <Factor>3x</Factor><Price small>{price}</Price>
                     </PriceWrapper>
                 </Row>
             </Content>

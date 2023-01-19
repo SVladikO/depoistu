@@ -5,11 +5,11 @@ import {Wrapper, FoodImage, Title, Description, AdditionalDetails} from "./MenuI
 import {Price, Flex, Absolute, Like} from "../index";
 import {ReactComponent as BasketIcon} from "../../icons/basket.svg";
 import {ReactComponent as TimeIcon} from "../../icons/time.svg";
-import {ReactComponent as MeasureIcon} from "../../icons/measure.svg";
+import {ReactComponent as MeasureIcon} from "../../icons/sss.svg";
 import {addOrderItem} from "../../features/order/orderSlice";
 
 const MenuItem = ({item = {}}) => {
-    const {id, name, description, image_url, price, cookingTime, size, isLiked} = item;
+    const {name, description, image_url, price, cooking_time, size, isLiked} = item;
     const dispatch = useDispatch();
 
     return (
@@ -21,11 +21,11 @@ const MenuItem = ({item = {}}) => {
                         <Title>{name}</Title>
                         <Like liked={isLiked}/>
                     </Flex>
-                    <Price small>{price}</Price>
+                    <Price>{price}</Price>
                     <Description>{description}</Description>
                     <Absolute bottom={'10px'}>
                         <AdditionalDetails>
-                            <TimeIcon/> {cookingTime} m <MeasureIcon/> {size} g
+                            <TimeIcon/> {cooking_time} m <MeasureIcon/> {size} g
                         </AdditionalDetails>
                     </Absolute>
                     <Absolute bottom={'10px'} right={'10px'}>
