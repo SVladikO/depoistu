@@ -18,11 +18,7 @@ const CategoryPage = () => {
     const [categories] = useLocalStorageFetch(
         'category',
         [],
-        onSuccess =>
-            fetchData(
-                BE_API.GET_ALL_CATEGORIES_ID_FOR_COMPANY(1))
-                .then(res => onSuccess(res))
-                .catch(e => console.log(e))
+        BE_API.GET_ALL_CATEGORIES_ID_FOR_COMPANY(1)
     )
 
     const getCategoryItem = category => <CategoryItem key={category.title} title={category.title}>{
