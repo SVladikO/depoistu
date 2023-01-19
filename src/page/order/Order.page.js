@@ -1,10 +1,23 @@
 import {useSelector} from "react-redux";
+import {Link} from "react-router-dom";
 
 import {Wrapper, AmountInfo, Content, FixedContent} from './Order.page.style';
 import {EmptyBasket, OrderHistoryRow, Price, PrimaryWideButton} from "../../components";
 
+import {ROUTER} from '../../utils/config'
+
 const OrderPage = ({total = 5}) => {
     const orders = useSelector(state => state.order.value);
+
+    const user = {};
+
+    const orderButton =
+        user
+            ? <PrimaryWideButton >Place Order</PrimaryWideButton>
+            : <Link to={ROUTER.SING_IN.URL}>
+                <PrimaryWideButton>Place Order</PrimaryWideButton>
+            </Link>
+
 
     const getOrderItems = () => (
         <>
@@ -16,7 +29,7 @@ const OrderPage = ({total = 5}) => {
                     Sub Total ( {orders.length} item ):
                     <Price>{getOrdersTotal(orders)}</Price>
                 </AmountInfo>
-                <PrimaryWideButton>Place Order</PrimaryWideButton>
+                {orderButton}
             </FixedContent>
         </>
     );
