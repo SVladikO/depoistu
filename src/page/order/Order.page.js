@@ -22,20 +22,14 @@ const OrderPage = ({total = 5}) => {
     );
 
     return (
-        <Wrapper>
-            {
-                orders.length
-                    ? getOrderItems()
-                    : <EmptyBasket/>
-            }
-        </Wrapper>
+        <Wrapper>{orders.length ? getOrderItems() : <EmptyBasket/>}</Wrapper>
     );
 };
 
 function getOrdersTotal(orders) {
     let amount = 0;
 
-    orders.forEach(order => amount+=order.price * order.amount)
+    orders.forEach(order => amount += order.price * order.amount)
 
     return amount
 }
