@@ -6,7 +6,7 @@ import {
     Flex
 } from "./SubCategory.style";
 
-import {ProductCard} from "../../components";
+import {MenuItem} from "../../components";
 import {fetchData} from "../../fetch";
 import {BE_API} from "../../utils/config";
 import {useLocalStorageFetch} from "../../hook";
@@ -23,24 +23,9 @@ const SubCategoryPage = () => {
     );
 
     return (
-        <Content>
             <Flex>
-                {menu_items.map((menuItem, index) =>
-                    <ProductCard key={index}
-                                 item={{
-                                     image: menuItem.image_url,
-                                     discont: '-10',
-                                     rating: '4.5',
-                                     buttons: [
-                                         {price: 20, size: 1},
-                                         {price: 20, size: 2},
-                                         {price: 30, size: 3},
-                                     ],
-                                     ...menuItem
-                                 }}
-                    />)}
+                {menu_items.map((menuItem, index) => <MenuItem key={index} item={menuItem} />)}
             </Flex>
-        </Content>
     );
 };
 

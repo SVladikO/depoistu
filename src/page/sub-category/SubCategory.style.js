@@ -10,14 +10,11 @@ export const Flex = styled.div`
     margin: 15px 0 0;
   }
   
-  & > div:first-child,
-  & > div:nth-child(2) {
+  & > div:first-child {
     margin: 0;
   }
 `;
 
 export const Content = styled.div`
-  width: 325px;
-  margin: 0 auto;
 `;
 
