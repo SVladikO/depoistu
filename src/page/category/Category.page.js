@@ -3,7 +3,6 @@ import {Link} from "react-router-dom";
 
 import {useLocalStorageFetch} from '../../hook';
 import {BE_API, ROUTER, CATEGORY_MAPPER} from '../../utils/config';
-import {fetchData} from '../../fetch'
 import {
     Content,
     Flex
