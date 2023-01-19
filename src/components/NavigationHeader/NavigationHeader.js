@@ -19,7 +19,7 @@ const NavigationHeader = (props) => {
                     {backUrl && <Link to={backUrl}><BackArrow /></Link>}
                     <Title>{_title}</Title>
                     <Link to={ROUTER.ORDER_REVIEW.URL}>
-                        <OrderIconWithCounter/>
+                        <OrderIconWithCounter hideOnZeroOrderAmount/>
                     </Link>
                 </MainContent>
                 <NestedContent>
