@@ -1,9 +1,6 @@
 import React from 'react';
 
 import {
-    LeftSideContent,
-    RightSideContent,
-    ContentWrapper,
     Content,
     LogoText,
     NavLabel
@@ -15,7 +12,8 @@ import {
     PrimaryWithIconButton,
     SecondaryWithIconButton,
     ContentContainer,
-    NavigationLabelHref
+    NavigationLabelHref,
+    Flex
 } from "../../components";
 
 import translations from "../../utils/translations";
@@ -27,6 +25,7 @@ import {ReactComponent as MailIcon} from "../../icons/mail.svg";
 import {ReactComponent as GoogleIcon} from "../../icons/google.svg";
 import {ReactComponent as FacebookIcon} from "../../icons/facebook.svg";
 import {ROUTER} from '../../utils/config';
+import {Link} from "react-router-dom";
 
 const SignInPage = () => {
     return (
@@ -36,21 +35,21 @@ const SignInPage = () => {
                 <LogoText>{translations.company_name}</LogoText>
             </Content>
             <ContentContainer>
-                <Input Icon={MailIcon} placeholder={`johndoe@mail.com`}/>
-                <Input Icon={LockIcon} placeholder={`*********************`}/>
-                <ContentWrapper>
-                    <LeftSideContent>
+                <Input Icon={MailIcon} placeholder={`Enter email`} />
+                <Input Icon={LockIcon} placeholder={`Enter password`} type="password"/>
+                <Flex flexDirection='column'>
+                    <Flex justifyContent="space-between">
                         <NavLabel primary={false}>Or login with</NavLabel>
+                        <Link to={ROUTER.CHANGE_PASSWORD.URL} primary>Forget password ?</Link>
+                    </Flex>
+                    <Flex justifyContent="space-between">
                         <SecondaryWithIconButton><FacebookIcon/>facebook</SecondaryWithIconButton>
-                    </LeftSideContent>
-                    <RightSideContent>
-                        <NavLabel primary>Forget password ?</NavLabel>
                         <PrimaryWithIconButton><GoogleIcon/>Google</PrimaryWithIconButton>
-                    </RightSideContent>
-                </ContentWrapper>
+                    </Flex>
+                </Flex>
                 <NavigationLabelHref
                     hrefTitle="Sing up!"
-                    href={`${ROUTER.SING_UP.URL}`}
+                    to={ROUTER.SING_UP.URL}
                     label="You don’t have an account?"
                 />
             </ContentContainer>

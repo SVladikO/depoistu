@@ -1,8 +1,9 @@
 ## BE API
 
 [//]: # (MENU_ITEM)
-### + SELECT menu_items WHERE   | @GET  /company/:companyId/menu               |  @return `[{id, name, ingredients, price_size}]`
-### + SELECT menu_items WHERE   | @GET  /company/:companyId/menu/:categoryId   |  @return `[{id, name, ingredients, price_size}]`
+### + SELECT menu_items WHERE   | @GET  /company/:companyId/menu                    |  @return `[{id, name, ingredients, price_size}]`
+### + SELECT category WHERE     | @GET  /company/:companyId/category                |  @return `[category_id]`
+### + SELECT menu_items WHERE   | @GET  /company/:companyId/menu_item/:categoryId   |  @return `[{id, name, ingredients, price_size}]`
 
 [//]: # (GUEST)
 ### INSERT USER                 | @POST /registration {login, password, ... } |  @return true 

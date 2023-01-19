@@ -7,11 +7,10 @@ import {ReactComponent as HideEyeIcon} from "../../icons/hide-eye.svg";
 function Input({
                    Icon,
                    value,
+                   type,
                    placeholder,
-                   changeHandler = () => {
-                   },
+                   changeHandler = () => {},
                    withSwitcher = false,
-
                }) {
 
     const [showData, setShowData] = useState(false);
@@ -25,7 +24,7 @@ function Input({
         <Wrapper>
             {Icon && <Icon/>}
             <InputText
-                type={!withSwitcher ? 'text' : showData ? 'text' : 'password'}
+                type={type}
                 value={value}
                 withIcon={!!Icon}
                 onChange={changeHandler}

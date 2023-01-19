@@ -25,8 +25,10 @@ import
     UserAccountBar,
     NavigationLabelHref,
     BottomMenu,
+    MenuItem,
     OrderHistoryRow,
     EmptyBasket,
+    RowSplitter,
 } from "../../components";
 
 import CatalogPage from "./Catalog.page";
@@ -116,13 +118,13 @@ const columns = [
         {title: 'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
         {
             title: 'NavigationLabelHref',
-            component: <NavigationLabelHref label="Already have an account?" href="/catalog" hrefTitle="Sing up!"/>
+            component: <NavigationLabelHref label="Already have an account?" to="/catalog" hrefTitle="Sing up!"/>
         },
 
     ],
     [
         {title: "NavigationHeader", component: <NavigationHeader title="category"/>},
-        {title: "NavigationHeader", component: <NavigationHeader href={' '} title="category"/>},
+        {title: "NavigationHeader", component: <NavigationHeader backUrl={' '} title="category"/>},
         {title: 'ContentContainer', component: <ContentContainer>Sign up with</ContentContainer>},
         {
             title: 'HistoryTabBar', component:
@@ -139,7 +141,7 @@ const columns = [
         },
         {
             title: 'HistoryTabBar in UserOptionGroup', component:
-                <NavigationHeader href={' '} title="category">
+                <NavigationHeader title="category">
                     {(function () {
                         const tabs = ['Completed', 'Upcoming', 'Cancelled'];
                         const selectedTab = tabs[0];
@@ -152,8 +154,7 @@ const columns = [
                     })()}
                 </NavigationHeader>
         },
-        {title: 'BottomMenu', component: <BottomMenu basket="35"/>},
-        {title: 'BottomMenu', component: <BottomMenu/>},
+        {title: 'BottomMenu', component: <RowSplitter height='80px'><BottomMenu/></RowSplitter>},
     ],
     [
         {
@@ -184,7 +185,7 @@ const columns = [
         },
         {
             title: 'UserAccountBar',
-            component: <UserAccountBar fullName="Jhon Smith" href="/catalog" status="Basic Member"/>
+            component: <UserAccountBar fullName="Jhon Smith" status="Basic Member"/>
         },
 
     ],
@@ -194,15 +195,31 @@ const columns = [
             title: 'ProductCard',
             component:
                 <ProductCard
-                    data={{
+                    item={{
                         image: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
                         discont: '-10',
+                        name: '4 Cheese',
                         rating: '4.5',
+                        price: 170,
                         buttons: [
                             {price: 20, size: 1},
                             {price: 20, size: 2},
                             {price: 30, size: 3},
                         ],
+                    }}
+                />
+        },     {
+            title: 'MenuItem',
+            component:
+                <MenuItem
+                    item={{
+                        id: 10,
+                        name: '4 Cheese',
+                        description: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella',
+                        image_url: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
+                        cookingTime: 15,
+                        price: 170,
+                        size: 150,
                     }}
                 />
         },

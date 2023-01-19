@@ -8,11 +8,10 @@ import {COLOR} from './theme'
 import LoadingPage from "../page/Loading.page";
 import CatalogPage from '../page/development/Catalog.page';
 import ComponentsPage from '../page/development/Components.page';
-import ReduxIntroductionPage from "../page/development/Redux-introduction.page";
 
 import styled from 'styled-components'
 import {DEVICE_WIDTH} from "./theme";
-import {NavigationHeader} from "../components";
+import {BottomMenu, NavigationHeader} from "../components";
 
 export const MobileDevice = styled.div`
   min-width: ${DEVICE_WIDTH.MIN};
@@ -20,22 +19,46 @@ export const MobileDevice = styled.div`
   margin: 0 auto;
   min-height: 100vh;
   background: ${COLOR.ACCENT2};
-
+  position: relative;
 `;
 
+export const PositionWrapper = styled.div`
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 2;
+`;
+
+export const TopWrapper = styled(PositionWrapper)`
+  top: 0;
+`;
+
+export const BottomWrapper = styled(PositionWrapper)`
+  bottom: -1px;
+`;
 export const Centralicer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: start;
-  padding: 0 25px 25px 25px;
+  padding: 90px 25px 110px 25px;
 `;
 
-const routes =  ROUTERS.map(r => <Route key={r.URL} path={r.URL} element={
+const routes = ROUTERS.map(r => <Route key={r.URL} path={r.URL + (r.PARAMS || '')} element={
     <MobileDevice>
-        <NavigationHeader href={' '} title={r.TITLE}/>
+        <TopWrapper>
+            <NavigationHeader backUrl={r.BACK_URL} title={r.TITLE} getTitle={r.getTitle}/>
+        </TopWrapper>
         <Centralicer>
             <r.page/>
         </Centralicer>
+        {r.showBottomMenu &&
+            <BottomWrapper>
+                <BottomMenu/>
+            </BottomWrapper>
+        }
     </MobileDevice>
 }/>);
 
@@ -44,9 +67,7 @@ export const getRoutes = () => {
         <>
             <Routes>
                 {/* Development pages start */}
-                <Route path={'/'} element={<ComponentsPage/>}/>
                 <Route path={DEV_ROUTER.COMPONENTS} element={<ComponentsPage/>}/>
-                <Route path={DEV_ROUTER.REDUX} element={<ReduxIntroductionPage/>}/>
                 <Route path={DEV_ROUTER.PAGES} element={<CatalogPage/>}/>
                 {/* Development pages end */}
             </Routes>
@@ -56,8 +77,6 @@ export const getRoutes = () => {
             </Routes>
 
             <Routes>{routes}</Routes>
-
-
         </>
     );
 };
