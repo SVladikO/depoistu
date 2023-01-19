@@ -8,7 +8,6 @@ import {COLOR} from './theme'
 import LoadingPage from "../page/Loading.page";
 import CatalogPage from '../page/development/Catalog.page';
 import ComponentsPage from '../page/development/Components.page';
-import ReduxIntroductionPage from "../page/development/Redux-introduction.page";
 
 import styled from 'styled-components'
 import {DEVICE_WIDTH} from "./theme";
@@ -71,7 +70,6 @@ export const getRoutes = () => {
             <Routes>
                 {/* Development pages start */}
                 <Route path={DEV_ROUTER.COMPONENTS} element={<ComponentsPage/>}/>
-                <Route path={DEV_ROUTER.REDUX} element={<ReduxIntroductionPage/>}/>
                 <Route path={DEV_ROUTER.PAGES} element={<CatalogPage/>}/>
                 {/* Development pages end */}
             </Routes>

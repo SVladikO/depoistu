@@ -3,8 +3,9 @@ import {BORDER_RADIUS, COLOR} from "../../utils/theme";
 
 export const Wrapper = styled.div`
   position: relative;
-  padding: 10px;
-  height: 116px;
+  padding: 13px 10px 10px;
+  min-height: 116px;
+  width: 100%;
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -22,26 +23,37 @@ export const FoodImage = styled.img`
   border-radius: ${BORDER_RADIUS.CIRCLE};
   border: solid 1px ${COLOR.ACCENT4};
 `;
+
 export const Title = styled.div`
   font-weight: 700;
   font-size: 16px;
   line-height: 19px;
   color: ${COLOR.ACCENT1};
+  margin: 0 0 4px;
 `;
 
 export const Description = styled.div`
+  width: 250px;
   font-size: 14px;
   font-weight: 100;
-  `;
+  margin: 4px 0 28px 0;
+`;
 
 export const AdditionalDetails = styled.div`
   display: flex;
-  & > * {
-    font-size: 14px;
-  }
-  
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: ${COLOR.ACCENT1};
+
   & > svg {
-    height: 20px;
-    width: 20px;
+    fill: ${COLOR.ACCENT1};
+    height: 14px;
+    width: 14px;
+    margin: 0 2px 0 0;
+  } 
+  
+  & > svg:nth-child(2) {
+    margin: 0 2px 0 12px;
   }
 `;
