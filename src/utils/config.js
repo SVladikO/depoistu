@@ -52,7 +52,6 @@ export const CATEGORY_MAPPER = {
 }
 
 const getSubCategoryTitle = (urlParams) => {
-    console.log(555555, urlParams)
     const {categoryId} = urlParams;
     return CATEGORY_MAPPER[categoryId].title;
 }

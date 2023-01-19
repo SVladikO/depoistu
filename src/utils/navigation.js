@@ -79,8 +79,6 @@ export const getRoutes = () => {
             </Routes>
 
             <Routes>{routes}</Routes>
-
-
         </>
     );
 };

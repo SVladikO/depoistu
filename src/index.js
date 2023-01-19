@@ -4,12 +4,13 @@ import {Provider} from 'react-redux';
 import {store} from './store';
 import {BrowserRouter} from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
-import {showDevelopmentPageUrls} from "./utils/development-log";
+import {showDevelopmentPageUrls} from "./utils/log";
 import {getRoutes} from "./utils/navigation";
 import {Wrapper} from "./index.style";
 
 const container = document.getElementById('root');
 const root = createRoot(container);
+
 
 showDevelopmentPageUrls()
 

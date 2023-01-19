@@ -1,10 +1,7 @@
 import React from 'react';
 import {useParams} from "react-router-dom";
 
-import {
-    Content,
-    Flex
-} from "./SubCategory.style";
+import {Flex} from "./SubCategory.style";
 
 import {MenuItem} from "../../components";
 import {fetchData} from "../../fetch";
