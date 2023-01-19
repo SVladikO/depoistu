@@ -1,21 +1,32 @@
-
 import {useDispatch} from "react-redux";
 
-import {deleteOrderItem} from "../../features/order/orderSlice";
+import {deleteOrderItem, addOrderItem, decrementOrderItem} from "../../features/order/orderSlice";
 
-import {Wrapper, Content, Row, Title, Description, Factor, PriceWrapper,ColoredSize, Size, Image, Status} from "./OrderHistoryRow.style";
+import {
+    Wrapper,
+    Content,
+    Row,
+    Title,
+    Description,
+    Factor,
+    PriceWrapper,
+    ColoredSize,
+    Size,
+    Image,
+    Status
+} from "./OrderHistoryRow.style";
 import CountAccumulator from "../CountAccumulator/CountAccumulator";
 import Price from "../Price/Price";
 import {ReactComponent as AvatarIcon} from "../../icons/avatar.svg";
 import {ReactComponent as DeleteIcon} from "../../icons/delete.svg";
 
-const OrderHistoryRow = props => {
+const OrderHistoryRow = ({item, isHistory}) => {
     const dispatch = useDispatch();
-    const {id, name, description, price, image_url, size, status} = props.item || {};
+    const {id, name, description, price, image_url, size, status, amount} = item || {};
 
     return (
         <Wrapper>
-            {image_url ? <Image src={image_url} /> : <AvatarIcon/>}
+            {image_url ? <Image src={image_url}/> : <AvatarIcon/>}
             <Content>
                 <Row>
                     <Title status={status}>{name}</Title>
@@ -26,10 +37,16 @@ const OrderHistoryRow = props => {
                 </Row>
                 <Row>
                     {
-                        size ? <Size>Size:<ColoredSize>{size}</ColoredSize></Size> : <CountAccumulator count={3}/>
+                        isHistory
+                            ? <Size>Size:<ColoredSize>{size}</ColoredSize></Size>
+                            : <CountAccumulator
+                                count={amount}
+                                incrementHandler={() => dispatch(addOrderItem(item))}
+                                decrementHandler={() => dispatch(decrementOrderItem(item))}
+                            />
                     }
                     <PriceWrapper>
-                        <Factor>3x</Factor><Price small>{price}</Price>
+                        <Factor>{amount}x</Factor><Price small>{price}</Price>
                     </PriceWrapper>
                 </Row>
             </Content>
