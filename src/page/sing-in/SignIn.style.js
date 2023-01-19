@@ -35,12 +35,6 @@ export const ContentWrapper = styled.div`
   width: 100%;
 `;
 
-export const LeftSideContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: calc(50% - 5px);
-  justify-content: start;
-`;
 
 export const Label = styled.div`
   color: ${props => props.primary ? COLOR.ACCENT3 : COLOR.ACCENT1};
@@ -59,13 +53,17 @@ export const NavLabel = styled.div`
   padding-bottom: 15px;
 `;
 
-export const RightSideContent = styled.div`
+export const SideContent = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   width: calc(50% - 5px);
-  & > ${Label}{
-    margin-right: 0;
-  }
+`;
+
+export const LeftSideContent = styled(SideContent)`
+  justify-content: start;
+`;
+
+export const RightSideContent = styled(SideContent)`
+  justify-content: flex-end;
 `;
 

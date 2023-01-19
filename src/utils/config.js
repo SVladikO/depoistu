@@ -66,7 +66,6 @@ export const ROUTER =  {
 
     SING_IN: { URL: '/sign-in', TITLE: 'Sing in', page: SignInPage, showBottomMenu: true },
     SING_UP: { URL: '/sing-up',  TITLE: 'Sing up', page: SingUpPage, showBottomMenu: true},
-    CHANGE_PASSWORD: {URL: '/change-password',TITLE: 'Change password',page: ChangePasswordPage},
     CATEGORY: {URL: '/',TITLE: 'Category',page: CategoryPage, showBottomMenu: true},
 
     Sing_up_phone_email: {URL: '/Sing_up_phone_email',TITLE: 'Sing_up_phone_email ',page: () => {}},
@@ -95,5 +94,6 @@ export const ROUTER =  {
 // if I change category url later it won't bring any bags
 ROUTER.USER_ACCOUNT = {URL: '/user_account',  TITLE: 'USER_ACCOUNT', page: () => {}, showBottomMenu: true, BACK_URL: ROUTER.SETTING.URL};
 ROUTER.SUB_CATEGORY = {URL: '/category', PARAMS: '/:categoryId', getTitle: getSubCategoryTitle, page: SubCategoryPage, showBottomMenu: true, BACK_URL: ROUTER.CATEGORY.URL};
+ROUTER.CHANGE_PASSWORD = {URL: '/change-password',TITLE: 'Change password',page: ChangePasswordPage, showBottomMenu: true, BACK_URL: ROUTER.SING_IN.URL};
 
 export const ROUTERS = Object.keys(ROUTER).map(key => ROUTER[key]);

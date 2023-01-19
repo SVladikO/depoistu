@@ -6,24 +6,21 @@ import {EmptyBasket, OrderHistoryRow, Price, PrimaryWideButton} from "../../comp
 
 import {ROUTER} from '../../utils/config'
 
-const OrderPage = ({total = 5}) => {
+const OrderPage = () => {
     const orders = useSelector(state => state.order.value);
 
-    const user = {};
+    let user;// = {};
 
     const orderButton =
         user
-            ? <PrimaryWideButton >Place Order</PrimaryWideButton>
+            ? <PrimaryWideButton>Place Order</PrimaryWideButton>
             : <Link to={ROUTER.SING_IN.URL}>
-                <PrimaryWideButton>Place Order</PrimaryWideButton>
+                <PrimaryWideButton>Login to place Order</PrimaryWideButton>
             </Link>
-
 
     const getOrderItems = () => (
         <>
-            <Content>
-                {orders.map(item => <OrderHistoryRow key={item.id} item={item}/>)}
-            </Content>
+            <Content>{orders.map(item => <OrderHistoryRow key={item.id} item={item}/>)}</Content>
             <FixedContent>
                 <AmountInfo>
                     Sub Total ( {orders.length} item ):
