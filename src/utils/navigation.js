@@ -13,7 +13,7 @@ import ReduxIntroductionPage from "../page/development/Redux-introduction.page";
 import styled from 'styled-components'
 import {DEVICE_WIDTH} from "./theme";
 import {BottomMenu, NavigationHeader} from "../components";
-import {HistoryTabBar} from "../components";
+
 
 export const MobileDevice = styled.div`
   min-width: ${DEVICE_WIDTH.MIN};
