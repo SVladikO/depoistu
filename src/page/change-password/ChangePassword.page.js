@@ -6,8 +6,11 @@ import {
     RowSplitter,
     PrimaryRoundedButton
 } from "../../components";
+import {useDocumentTitle} from "../../utils/utils";
+import translations from "../../utils/translations";
 
 const ChangePasswordPage = () => {
+    useDocumentTitle(translations.company_name);
     return (
         <ContentContainer>
             <Input withSwitcher placeholder={`Old password`}/>

@@ -27,8 +27,10 @@ import {ReactComponent as MailIcon} from "../../icons/mail.svg";
 import {ReactComponent as GoogleIcon} from "../../icons/google.svg";
 import {ReactComponent as FacebookIcon} from "../../icons/facebook.svg";
 import {ROUTER} from '../../utils/config';
+import {useDocumentTitle} from "../../utils/utils";
 
 const SignInPage = () => {
+    useDocumentTitle(translations.company_name);
     return (
         <>
             <Content>

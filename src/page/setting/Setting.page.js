@@ -19,8 +19,11 @@ import {
     UserAccountGroup,
     UserOptionGroup,
 } from '../../components'
+import {useDocumentTitle} from "../../utils/utils";
+import translations from "../../utils/translations";
 
 const SettingPage = () => {
+    useDocumentTitle(translations.company_name);
     return (
         <>
             <UserAccountBar fullName='Jhon Smith' status='Basic Member'/>

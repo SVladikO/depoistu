@@ -1,3 +1,5 @@
+import { useRef, useEffect } from 'react';
+
 export function hexToRgbA(hex, a=1){
     var c;
     if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
@@ -11,3 +13,16 @@ export function hexToRgbA(hex, a=1){
     throw new Error('Bad Hex');
 }
 
+export const useDocumentTitle = (title, prevailOnUnmount = false) => {
+    const defaultTitle = useRef(document.title);
+
+    useEffect(() => {
+        document.title = title;
+    }, [title]);
+
+    useEffect(() => () => {
+        if (!prevailOnUnmount) {
+            document.title = defaultTitle.current;
+        }
+    }, [])
+}

@@ -2,10 +2,12 @@ import {useSelector} from "react-redux";
 
 import {Wrapper, AmountInfo, Content, FixedContent} from './Order.page.style';
 import {EmptyBasket, OrderHistoryRow, Price, PrimaryWideButton} from "../../components";
+import {useDocumentTitle} from "../../utils/utils";
+import translations from "../../utils/translations";
 
 const OrderPage = ({total = 5}) => {
     const orders = useSelector(state => state.order.value);
-
+    useDocumentTitle(translations.company_name);
     const getOrderItems = () => (
         <>
             <Content>
