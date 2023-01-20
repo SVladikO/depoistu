@@ -3,11 +3,9 @@ import {Title,Container,Wrapper} from "./SingUp.style";
 import {CheckBoxWithLabel, PrimaryWideButton} from "../../components";
 import NavigationLabelHref from "../../components/NavigationLabelHref/NavigationLabelHref";
 import {ROUTER} from '../../utils/config';
-import {useDocumentTitle} from "../../utils/utils";
-import translations from "../../utils/translations";
+
 
 const SingUpPage = () => {
-    useDocumentTitle(translations.company_name);
     return (
         <>
             <Container>

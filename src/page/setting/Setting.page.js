@@ -12,18 +12,10 @@ import {ReactComponent as CurrencyIcon} from '../../icons/currency.svg';
 import {ReactComponent as LanguageIcon} from '../../icons/language.svg';
 import {ReactComponent as LinkedAccountIcon} from '../../icons/linked_account.svg';
 
-import {
-    SettingMenuRow,
-    RowSplitter,
-    UserAccountBar,
-    UserAccountGroup,
-    UserOptionGroup,
-} from '../../components'
-import {useDocumentTitle} from "../../utils/utils";
-import translations from "../../utils/translations";
+import {RowSplitter, SettingMenuRow, UserAccountBar, UserAccountGroup, UserOptionGroup,} from '../../components'
 
 const SettingPage = () => {
-    useDocumentTitle(translations.company_name);
+
     return (
         <>
             <UserAccountBar fullName='Jhon Smith' status='Basic Member'/>

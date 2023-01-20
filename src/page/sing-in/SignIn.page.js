@@ -1,21 +1,14 @@
 import React from 'react';
 
-import {
-    LeftSideContent,
-    RightSideContent,
-    ContentWrapper,
-    Content,
-    LogoText,
-    NavLabel
-} from "./SignIn.style";
+import {Content, ContentWrapper, LeftSideContent, LogoText, NavLabel, RightSideContent} from "./SignIn.style";
 
 import {
+    ContentContainer,
     Input,
+    NavigationLabelHref,
     PrimaryWideButton,
     PrimaryWithIconButton,
-    SecondaryWithIconButton,
-    ContentContainer,
-    NavigationLabelHref
+    SecondaryWithIconButton
 } from "../../components";
 
 import translations from "../../utils/translations";
@@ -27,10 +20,10 @@ import {ReactComponent as MailIcon} from "../../icons/mail.svg";
 import {ReactComponent as GoogleIcon} from "../../icons/google.svg";
 import {ReactComponent as FacebookIcon} from "../../icons/facebook.svg";
 import {ROUTER} from '../../utils/config';
-import {useDocumentTitle} from "../../utils/utils";
+
 
 const SignInPage = () => {
-    useDocumentTitle(translations.company_name);
+
     return (
         <>
             <Content>

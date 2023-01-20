@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import translations from "./translations";
 
 export function hexToRgbA(hex, a=1){
     var c;
@@ -13,16 +13,4 @@ export function hexToRgbA(hex, a=1){
     throw new Error('Bad Hex');
 }
 
-export const useDocumentTitle = (title, prevailOnUnmount = false) => {
-    const defaultTitle = useRef(document.title);
-
-    useEffect(() => {
-        document.title = title;
-    }, [title]);
-
-    useEffect(() => () => {
-        if (!prevailOnUnmount) {
-            document.title = defaultTitle.current;
-        }
-    }, [])
-}
+export const setBrowserTabTitle = () => document.title = translations.company_name;

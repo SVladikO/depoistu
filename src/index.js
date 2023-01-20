@@ -5,6 +5,7 @@ import {store} from './store';
 import {BrowserRouter} from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
 import {showDevelopmentPageUrls} from "./utils/log";
+import {setBrowserTabTitle} from "./utils/utils";
 import {getRoutes} from "./utils/navigation";
 import {Wrapper} from "./index.style";
 const container = document.getElementById('root');
@@ -12,7 +13,7 @@ const root = createRoot(container);
 
 
 showDevelopmentPageUrls();
-
+setBrowserTabTitle();
 
 root.render(
     <React.StrictMode>
