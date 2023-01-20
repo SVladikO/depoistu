@@ -50,19 +50,13 @@ export const Centralicer = styled.div`
 
 console.log({ROUTERS});
 
-const tabs = ['Completed', 'Upcoming', 'Cancelled'];
-const selectedTab = tabs[0];
-
-function handleClick(c) {
-    console.log(`${tabs[c]}`)
-}
 
 
 const routes = ROUTERS.map(r => <Route key={r.URL} path={r.URL + (r.PARAMS || '')} element={
     <MobileDevice>
         <TopWrapper>
             <NavigationHeader backUrl={r.BACK_URL} title={r.TITLE} getTitle={r.getTitle}>
-                {r.TITLE === 'Order history completed' ? <HistoryTabBar selectedTab={tabs[0]} handleClick={handleClick} tabs={tabs}/> : null}
+                {r.subHeader && <r.subHeader/>}
             </NavigationHeader>
         </TopWrapper>
         <Centralicer>

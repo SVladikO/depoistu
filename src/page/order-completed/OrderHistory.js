@@ -1,4 +1,4 @@
-import {Content, Wrapper,Date} from './orderCompleted.style';
+import {Content, Wrapper,Date} from './OrderHistory.style';
 import {OrderHistoryRow} from "../../components";
 
 
@@ -10,7 +10,7 @@ const item = {
     status: 'Completed'
 };
 
-const OrderCompleted = () => {
+const OrderHistory = () => {
     return (
         <Wrapper>
             <Content>
@@ -33,4 +33,4 @@ const OrderCompleted = () => {
     );
 };
 
-export default OrderCompleted;
+export default OrderHistory;
