@@ -10,8 +10,8 @@ import {
 
 import {
     CategoryItem,
+    Load
 } from "../../components";
-
 
 const CategoryPage = () => {
     const [categories] = useLocalStorageFetch(
@@ -25,6 +25,7 @@ const CategoryPage = () => {
 
     return (
         <Content>
+            <Load/>
             <Flex>
                 {
                     categories.map(category_id => (

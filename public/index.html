@@ -97,7 +97,19 @@
         font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
         monospace;
       }
-
+      .animated_svg{
+        width: 300px;
+        height: 300px;
+        animation: rotateSVG 1s ease-in infinite;
+      }
+      @keyframes rotateSVG {
+        0% {
+          transform: rotate(0);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
     </style>
   </head>
   <body>
