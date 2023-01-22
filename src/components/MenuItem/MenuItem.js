@@ -1,7 +1,7 @@
 import React from 'react';
 import {useDispatch} from "react-redux";
 
-import {Wrapper, FoodImage, Title, Description, AdditionalDetails} from "./MenuItem.style";
+import {Wrapper, FoodImage, Title, Description, AdditionalDetails, InvisibleDivider} from "./MenuItem.style";
 import {Price, Flex, Absolute, Like} from "../index";
 import {ReactComponent as BasketIcon} from "../../icons/basket.svg";
 import {ReactComponent as TimeIcon} from "../../icons/time.svg";
@@ -23,6 +23,7 @@ const MenuItem = ({item = {}}) => {
                     </Flex>
                     <Price>{price}</Price>
                     <Description>{description}</Description>
+                    <InvisibleDivider/>
                     <Absolute bottom={'10px'}>
                         <AdditionalDetails>
                             <TimeIcon/> {cooking_time} m <MeasureIcon/> {size} g
