@@ -9,7 +9,6 @@ export const useLocalStorageFetch = (storageKey, initialState, url) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-
         if (localStorageState) {
             return;
         }
@@ -26,7 +25,7 @@ export const useLocalStorageFetch = (storageKey, initialState, url) => {
                 dispatch(stopLoading());
                 console.log('Fetch error: ', e)
             })
-    }, [value, storageKey]);
+    }, [value, storageKey, dispatch, localStorageState, url]);
 
     return [value, setValue];
 };

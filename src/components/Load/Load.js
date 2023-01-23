@@ -1,7 +1,6 @@
 import {Wrapper} from "./Load.style";
 import {ReactComponent as LoadingIcon} from "../../icons/loading.svg";
 import {useSelector} from "react-redux";
-import {Flex} from "../Flex/Flex.style";
 
 const Load = () => {
     const isLoading = useSelector(state => state.request.value.isLoading);
