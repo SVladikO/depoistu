@@ -11,3 +11,16 @@ export function hexToRgbA(hex, a=1){
     throw new Error('Bad Hex');
 }
 
+export const securityCheck = () => {
+    const isTrustedUser = localStorage.getItem('trastedUser');
+
+    if(isTrustedUser) return;
+
+    const secretKey = "****";
+    let test = prompt("Entry secret key");
+
+    if (test !== secretKey) {
+        return securityCheck();
+    }
+    localStorage.setItem('trastedUser', true);
+}
