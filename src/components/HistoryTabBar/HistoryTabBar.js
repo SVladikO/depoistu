@@ -6,7 +6,7 @@ const HistoryTabBar = () => {
     const [selectedTabTitle, setSelectedTabTitle] = useState(tabTitles[0]);
 
     return (
-        <Wrapper>
+        <Wrapper className="pm-HistoryTabBar">
             {tabTitles.map(title => <Tab
                 key={title}
                 onClick={() => setSelectedTabTitle(title)}
