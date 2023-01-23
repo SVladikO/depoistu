@@ -118,7 +118,7 @@ const columns = [
         {title: 'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
         {
             title: 'NavigationLabelHref',
-            component: <NavigationLabelHref label="Already have an account?" href="/catalog" hrefTitle="Sing up!"/>
+            component: <NavigationLabelHref label="Already have an account?" to="/catalog" hrefTitle="Sing up!"/>
         },
 
     ],

@@ -12,11 +12,12 @@ const ChangePasswordPage = () => {
 
     return (
         <ContentContainer>
-            <Input withSwitcher placeholder={`Old password`}/>
-            <Input withSwitcher placeholder={`Password`}/>
-            <Input withSwitcher placeholder={`Confirm`}/>
+            <Input withSwitcher placeholder={`Old Password`}/>
+            <RowSplitter height='10px'/>
+            <Input withSwitcher placeholder={`New Password`}/>
+            <Input withSwitcher placeholder={`Confirm Password`}/>
             <RowSplitter margin="20px 0 0">
-                <PrimaryRoundedButton>Sing in</PrimaryRoundedButton>
+                <PrimaryRoundedButton>Save Now !</PrimaryRoundedButton>
             </RowSplitter>
         </ContentContainer>
     );

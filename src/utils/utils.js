@@ -1,5 +1,3 @@
-import translations from "./translations";
-
 export function hexToRgbA(hex, a=1){
     var c;
     if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
@@ -13,4 +11,16 @@ export function hexToRgbA(hex, a=1){
     throw new Error('Bad Hex');
 }
 
-export const setBrowserTabTitle = () => document.title = translations.company_name;
+export const securityCheck = () => {
+    const isTrustedUser = localStorage.getItem('trastedUser');
+
+    if(isTrustedUser) return;
+
+    const secretKey = "****";
+    let test = prompt("Entry secret key");
+
+    if (test !== secretKey) {
+        return securityCheck();
+    }
+    localStorage.setItem('trastedUser', true);
+}

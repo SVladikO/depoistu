@@ -5,15 +5,16 @@ import {store} from './store';
 import {BrowserRouter} from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
 import {showDevelopmentPageUrls} from "./utils/log";
-import {setBrowserTabTitle} from "./utils/utils";
 import {getRoutes} from "./utils/navigation";
 import {Wrapper} from "./index.style";
+import {securityCheck} from "./utils/utils";
+
 const container = document.getElementById('root');
 const root = createRoot(container);
 
 
-showDevelopmentPageUrls();
-setBrowserTabTitle();
+securityCheck();
+showDevelopmentPageUrls()
 
 root.render(
     <React.StrictMode>
