@@ -12,6 +12,7 @@ import EmptyBasket from "./EmptyBasket/EmptyBasket";
 import Price from "./Price/Price";
 import Rating from "./Rating/Rating";
 import CategoryItem from "./CategoryItem/CategoryItem";
+import Load from "./Load/Load";
 import {RowSplitterStyle as RowSplitter} from "./RowSplitter/RowSplitter.style";
 import CheckBoxWithLabel from "./CheckBoxWithLabel/CheckBoxWithLabel";
 import ToggleCheckbox from "./ToggleCheckbox/ToggleCheckbox";
@@ -52,6 +53,7 @@ export {
     ToggleCheckbox,
     CheckBoxWithLabel,
     Price,
+    Load,
     Flex,
     Absolute,
     ProductCard,

@@ -3,7 +3,7 @@ import {useParams} from "react-router-dom";
 
 import {Flex} from "./SubCategory.style";
 
-import {MenuItem} from "../../components";
+import {Load, MenuItem} from "../../components";
 import {BE_API} from "../../utils/config";
 import {useLocalStorageFetch} from "../../hook";
 
@@ -16,9 +16,13 @@ const SubCategoryPage = () => {
     );
 
     return (
+        <>
+            <Load/>
             <Flex>
                 {menu_items.map((menuItem, index) => <MenuItem key={index} item={menuItem} />)}
             </Flex>
+        </>
+
     );
 };
 
