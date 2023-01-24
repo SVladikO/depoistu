@@ -6,6 +6,7 @@ import {ReactComponent as LogoIcon} from "../icons/logo.svg";
 
 import {Content, Wrapper, LogoText} from './Loading.style';
 
+
 function LoadingPage() {
     return (
         <Wrapper>

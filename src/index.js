@@ -7,12 +7,13 @@ import reportWebVitals from './reportWebVitals';
 import {showDevelopmentPageUrls} from "./utils/log";
 import {getRoutes} from "./utils/navigation";
 import {Wrapper} from "./index.style";
-import {securityCheck} from "./utils/utils";
+import {securityCheck, setBrowserTabTitle} from "./utils/utils";
 
 const container = document.getElementById('root');
 const root = createRoot(container);
 
 
+setBrowserTabTitle()
 securityCheck();
 showDevelopmentPageUrls()
 

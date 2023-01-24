@@ -15,15 +15,10 @@ import {ReactComponent as CurrencyIcon} from '../../icons/currency.svg';
 import {ReactComponent as LanguageIcon} from '../../icons/language.svg';
 import {ReactComponent as LinkedAccountIcon} from '../../icons/linked_account.svg';
 
-import {
-    SettingMenuRow,
-    RowSplitter,
-    UserAccountBar,
-    UserAccountGroup,
-    UserOptionGroup,
-} from '../../components'
+import {RowSplitter, SettingMenuRow, UserAccountBar, UserAccountGroup, UserOptionGroup,} from '../../components'
 
 const SettingPage = () => {
+
     return (
         <>
             <UserAccountBar fullName='Jhon Smith' status='Basic Member'/>

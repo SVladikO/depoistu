@@ -4,6 +4,7 @@ import {CheckBoxWithLabel, PrimaryWideButton} from "../../components";
 import NavigationLabelHref from "../../components/NavigationLabelHref/NavigationLabelHref";
 import {ROUTER} from '../../utils/config';
 
+
 const SingUpPage = () => {
     return (
         <>
