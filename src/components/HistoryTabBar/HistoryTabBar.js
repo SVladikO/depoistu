@@ -1,12 +1,16 @@
 import {Tab, Wrapper} from "./HistoryTabBar.style";
+import {useState} from "react";
 
-const HistoryTabBar = ({tabs, handleClick, selectedTab}) => {
+const HistoryTabBar = () => {
+    const tabTitles = ['Completed', 'Upcoming', 'Cancelled'];
+    const [selectedTabTitle, setSelectedTabTitle] = useState(tabTitles[0]);
+
     return (
-        <Wrapper>
-            {tabs.map((tab, index) => <Tab
-                key={index}
-                onClick={() => handleClick(index)}
-                active={selectedTab === tabs[index]}>{tab}</Tab>)}
+        <Wrapper className="pm-HistoryTabBar">
+            {tabTitles.map(title => <Tab
+                key={title}
+                onClick={() => setSelectedTabTitle(title)}
+                active={selectedTabTitle === title}>{title}</Tab>)}
         </Wrapper>
     );
 };

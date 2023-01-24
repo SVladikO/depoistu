@@ -13,6 +13,7 @@ import styled from 'styled-components'
 import {DEVICE_WIDTH} from "./theme";
 import {BottomMenu, NavigationHeader} from "../components";
 
+
 export const MobileDevice = styled.div`
   min-width: ${DEVICE_WIDTH.MIN};
   max-width: ${DEVICE_WIDTH.MAX};
@@ -49,7 +50,9 @@ export const Centralicer = styled.div`
 const routes = ROUTERS.map(r => <Route key={r.URL} path={r.URL + (r.PARAMS || '')} element={
     <MobileDevice>
         <TopWrapper>
-            <NavigationHeader backUrl={r.BACK_URL} title={r.TITLE} getTitle={r.getTitle}/>
+            <NavigationHeader backUrl={r.BACK_URL} title={r.TITLE} getTitle={r.getTitle}>
+                {r.subHeader && <r.subHeader/>}
+            </NavigationHeader>
         </TopWrapper>
         <Centralicer>
             <r.page/>

@@ -15,6 +15,8 @@ import {ReactComponent as SandwitchIcon} from "../icons/category/sandwitch.svg";
 import {ReactComponent as Sea_foodIcon} from "../icons/category/sea_food.svg";
 import {ReactComponent as VagetableIcon} from "../icons/category/vagetable.svg";
 import OrderPage from "../page/order/Order.page";
+import OrderHistoryPage from "../page/order-completed/OrderHistory.page";
+import {HistoryTabBar} from "../components";
 
 export const DEV_ROUTER = {
     COMPONENTS: 'components',
@@ -29,25 +31,17 @@ export const BE_API = {
 };
 
 export const CATEGORY_MAPPER = {
-    1:  {title: "Bakery", icon: BakeryIcon, measurement: 'g'},
-    2:  {title: "Beverage", icon: BeverageIcon, measurement: 'L'},
-    3:  {title: "Burger", icon: BurgerIcon, measurement: 'g'},
-    4:  {title: "Noodles", icon: NoodlesIcon, measurement: 'g'},
-    5:  {title: "Pizza", icon: PizzaIcon, measurement: 'g'},
-    6:  {title: "Sandwitch", icon: SandwitchIcon, measurement: 'g'},
-    7:  {title: "Sea food", icon: Sea_foodIcon, measurement: 'g'},
-    8:  {title: "Vagetable", icon: VagetableIcon, measurement: 'g'},
-    9:  {title: "Alcohol", icon: BeverageIcon, measurement: 'ml'},
+    1: {title: "Bakery", icon: BakeryIcon, measurement: 'g'},
+    2: {title: "Beverage", icon: BeverageIcon, measurement: 'L'},
+    3: {title: "Burger", icon: BurgerIcon, measurement: 'g'},
+    4: {title: "Noodles", icon: NoodlesIcon, measurement: 'g'},
+    5: {title: "Pizza", icon: PizzaIcon, measurement: 'g'},
+    6: {title: "Sandwitch", icon: SandwitchIcon, measurement: 'g'},
+    7: {title: "Sea food", icon: Sea_foodIcon, measurement: 'g'},
+    8: {title: "Vagetable", icon: VagetableIcon, measurement: 'g'},
+    9: {title: "Alcohol", icon: BeverageIcon, measurement: 'ml'},
     10: {title: "Wine card", icon: BeverageIcon, measurement: 'ml'},
     11: {title: "Hot drinks", icon: BeverageIcon, measurement: 'ml'},
-    // vine
-    // drinks
-    // hot drinks
-    // vine card
-    // child menu
-    // breackfast
-    // lunch
-    // dinner
 }
 
 const getSubCategoryTitle = (urlParams) => {
@@ -77,11 +71,8 @@ export const ROUTER =  {
     Checkout: {URL: '/Checkout',  TITLE: 'Checkout', page: () => {}},
     Payment_enter_data: {URL: '/Payment_enter_data',  TITLE: 'Payment enter data', page: () => {}},
     Payment_enter_result: {URL: '/Payment_enter_result',  TITLE: 'Payment enter result', page: () => {}},
-    Order_history: {URL: '/Order_history',  TITLE: 'Order history', page: () => {}},
+    ORDER_HISTORY: {URL: '/history',  TITLE: 'Order History', page: OrderHistoryPage, subHeader: HistoryTabBar, showBottomMenu: true},
     Pizza_with_category: {URL: '/Pizza_with_category',  TITLE: 'Pizza with category', page: () => {}},
-    Order_history_completed: {URL: '/Order_history_completed',  TITLE: 'Order history completed', page: () => {}},
-    Order_history_upcoming: {URL: '/Order_history_upcoming',  TITLE: 'Order history upcoming', page: () => {}},
-    Order_history_cancelled: {URL: '/Order_history_cancelled',  TITLE: 'Order history cancelled', page: () => {}},
     Favorite: {URL: '/Favorite',  TITLE: 'Favorite', page: () => {}},
     Profile: {URL: '/Profile',  TITLE: 'Profile', page: () => {}},
     Track_your_order: {URL: '/Track your order',  TITLE: 'Track your order', page: () => {}},
