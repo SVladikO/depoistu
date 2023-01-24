@@ -22,7 +22,7 @@ const OrderHistoryRow = props => {
                     {status ? <Status>{status}</Status> : <DeleteIcon onClick={() => dispatch(deleteOrderItem(id))}/>}
                 </Row>
                 <Row>
-                    <Description>{ingredients}</Description>
+                    <Description>{ingredients.join(', ')}</Description>
                 </Row>
                 <Row>
                     {
