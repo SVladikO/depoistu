@@ -74,7 +74,7 @@ ROUTER.ORDER_REVIEW = {URL: '/order', TITLE: 'Order review', page: OrderPage, sh
 ROUTER.Checkout = {URL: '/Checkout', TITLE: 'Checkout', page: () => {}};
 ROUTER.Payment_enter_data = {URL: '/Payment_enter_data', TITLE: 'Payment enter data', page: () => {}};
 ROUTER.Payment_enter_result = {URL: '/Payment_enter_result', TITLE: 'Payment enter result', page: () => {}};
-ROUTER.Order_history = {URL: '/History', TITLE: 'Order history', page: () => {}, subHeader: HistoryTabBar};
+ROUTER.Order_history = {URL: '/history', TITLE: 'Order history', page: () => {}, subHeader: HistoryTabBar};
 ROUTER.Pizza_with_category = {URL: '/Pizza_with_category', TITLE: 'Pizza with category', page: () => {}};
 ROUTER.Order_history_completed = {URL: '/Order_history_completed', TITLE: 'Order history completed', page: OrderHistoryPage, subHeader: HistoryTabBar, BACK_URL: ROUTER.Order_history.URL};
 ROUTER.Order_history_upcoming = {URL: '/Order_history_upcoming', TITLE: 'Order history upcoming', page: () => {}};
