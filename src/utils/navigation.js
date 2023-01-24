@@ -8,7 +8,6 @@ import {COLOR} from './theme'
 import LoadingPage from "../page/Loading.page";
 import CatalogPage from '../page/development/Catalog.page';
 import ComponentsPage from '../page/development/Components.page';
-import ReduxIntroductionPage from "../page/development/Redux-introduction.page";
 
 import styled from 'styled-components'
 import {DEVICE_WIDTH} from "./theme";
@@ -48,10 +47,6 @@ export const Centralicer = styled.div`
   padding: 90px 25px 110px 25px;
 `;
 
-console.log({ROUTERS});
-
-
-
 const routes = ROUTERS.map(r => <Route key={r.URL} path={r.URL + (r.PARAMS || '')} element={
     <MobileDevice>
         <TopWrapper>
@@ -76,7 +71,6 @@ export const getRoutes = () => {
             <Routes>
                 {/* Development pages start */}
                 <Route path={DEV_ROUTER.COMPONENTS} element={<ComponentsPage/>}/>
-                <Route path={DEV_ROUTER.REDUX} element={<ReduxIntroductionPage/>}/>
                 <Route path={DEV_ROUTER.PAGES} element={<CatalogPage/>}/>
                 {/* Development pages end */}
             </Routes>
@@ -86,8 +80,6 @@ export const getRoutes = () => {
             </Routes>
 
             <Routes>{routes}</Routes>
-
-
         </>
     );
 };

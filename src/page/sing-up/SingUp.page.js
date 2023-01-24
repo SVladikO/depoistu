@@ -20,7 +20,7 @@ const SingUpPage = () => {
             <Wrapper>
                 <NavigationLabelHref
                     hrefTitle="Sing in!"
-                    href={`${ROUTER.SING_IN.URL}`}
+                    to={`${ROUTER.SING_IN.URL}`}
                     label="Already have an account?"
                 />
             </Wrapper>

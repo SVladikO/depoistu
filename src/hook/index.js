@@ -1,18 +1,31 @@
 import {useState, useEffect} from "react";
+import {fetchData} from "../fetch";
+import {useDispatch} from "react-redux";
+import {startLoading, stopLoading} from "../features/request/requestSlice";
 
-export const useLocalStorageFetch = (storageKey, fallbackState, _fetch) => {
-    const initValue = JSON.parse(localStorage.getItem(storageKey))
-    console.log(storageKey, initValue)
-    const [value, setValue] = useState(initValue ?? fallbackState);
+export const useLocalStorageFetch = (storageKey, initialState, url) => {
+    const localStorageState = JSON.parse(localStorage.getItem(storageKey))
+    const [value, setValue] = useState(localStorageState ?? initialState);
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        !initValue &&
-        _fetch(value => {
-            console.log('_fetch: ', storageKey, value);
-            setValue(value)
-            localStorage.setItem(storageKey, JSON.stringify(value))
-        })
-    }, [value, storageKey]);
+        if (localStorageState) {
+            return;
+        }
+
+        dispatch(startLoading());
+
+        fetchData(url)
+            .then(res => {
+                dispatch(stopLoading());
+                setValue(res)
+                localStorage.setItem(storageKey, JSON.stringify(res))
+            })
+            .catch(e => {
+                dispatch(stopLoading());
+                console.log('Fetch error: ', e)
+            })
+    }, [value, storageKey, dispatch, localStorageState, url]);
 
     return [value, setValue];
 };

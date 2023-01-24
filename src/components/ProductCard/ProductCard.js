@@ -16,7 +16,7 @@ const ProductCard = ({item = {}}) => {
     }
 
     return (
-        <Wrapper>
+        <Wrapper className='pm-ProductCard'>
             <Flex></Flex>
             <Flex flexDirection='column'>
                 <Flex justifyContent="space-between">

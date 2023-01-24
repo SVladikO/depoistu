@@ -25,6 +25,7 @@ import
     UserAccountBar,
     NavigationLabelHref,
     BottomMenu,
+    MenuItem,
     OrderHistoryRow,
     EmptyBasket,
     RowSplitter,
@@ -117,7 +118,7 @@ const columns = [
         {title: 'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
         {
             title: 'NavigationLabelHref',
-            component: <NavigationLabelHref label="Already have an account?" href="/catalog" hrefTitle="Sing up!"/>
+            component: <NavigationLabelHref label="Already have an account?" to="/catalog" hrefTitle="Sing up!"/>
         },
 
     ],
@@ -176,12 +177,28 @@ const columns = [
                     item={{
                         image: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
                         discont: '-10',
+                        name: '4 Cheese',
                         rating: '4.5',
+                        price: 170,
                         buttons: [
                             {price: 20, size: 1},
                             {price: 20, size: 2},
                             {price: 30, size: 3},
                         ],
+                    }}
+                />
+        },     {
+            title: 'MenuItem',
+            component:
+                <MenuItem
+                    item={{
+                        id: 10,
+                        name: '4 Cheese',
+                        description: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella',
+                        image_url: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
+                        cookingTime: 15,
+                        price: 170,
+                        size: 150,
                     }}
                 />
         },
