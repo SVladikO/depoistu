@@ -126,32 +126,11 @@ const columns = [
         {title: "NavigationHeader", component: <NavigationHeader title="category"/>},
         {title: "NavigationHeader", component: <NavigationHeader backUrl={' '} title="category"/>},
         {title: 'ContentContainer', component: <ContentContainer>Sign up with</ContentContainer>},
-        {
-            title: 'HistoryTabBar', component:
-                (function () {
-                    const tabs = ['Completed', 'Upcoming', 'Cancelled'];
-                    const selectedTab = tabs[0];
-
-                    function handleClick(c) {
-                        console.log(`${tabs[c]}`)
-                    }
-
-                    return <HistoryTabBar selectedTab={selectedTab} tabs={tabs} handleClick={handleClick}/>
-                })()
-        },
+        {title: 'HistoryTabBar', component: <HistoryTabBar/>},
         {
             title: 'HistoryTabBar in UserOptionGroup', component:
                 <NavigationHeader title="category">
-                    {(function () {
-                        const tabs = ['Completed', 'Upcoming', 'Cancelled'];
-                        const selectedTab = tabs[0];
-
-                        function handleClick(c) {
-                            console.log(`${tabs[c]}`)
-                        }
-
-                        return <HistoryTabBar selectedTab={selectedTab} tabs={tabs} handleClick={handleClick}/>
-                    })()}
+                    <HistoryTabBar/>
                 </NavigationHeader>
         },
         {title: 'BottomMenu', component: <RowSplitter height='80px'><BottomMenu/></RowSplitter>},
@@ -228,7 +207,7 @@ const columns = [
                 (() => {
                     const item = {
                         name: 'Chees Bites Pizza',
-                        description: ['spicy', 'tomato', 'sauce', 'chili', 'mozzarella'],
+                        ingredients: ['spicy', 'tomato', 'sauce', 'chili', 'mozzarella'],
                         price: 7
                     }
                     return <OrderHistoryRow item={item}/>
@@ -238,7 +217,7 @@ const columns = [
             title: 'OrderHistoryRow', component: (function () {
                 const item = {
                     name: 'Chees Bites Pizza',
-                    description: ['spicy', 'tomato', 'sauce', 'chili', 'mozzarella'],
+                    ingredients: ['spicy', 'tomato', 'sauce', 'chili', 'mozzarella'],
                     price: 7,
                     size: 'Medium',
                     status: 'Completed'

@@ -1,5 +1,8 @@
 import React from 'react';
 
+import {ROUTER} from '../../utils/config';
+
+import {ReactComponent as OrderHistoryIcon} from '../../icons/order_history.svg';
 import {ReactComponent as LockIcon} from '../../icons/lock.svg';
 import {ReactComponent as NotificationIcon} from '../../icons/notification.svg';
 import {ReactComponent as SettingIcon} from '../../icons/setting.svg';
@@ -21,6 +24,7 @@ const SettingPage = () => {
             <UserAccountBar fullName='Jhon Smith' status='Basic Member'/>
             <RowSplitter height='20px' />
             <UserAccountGroup  groupTitle='Accounts'>
+                <SettingMenuRow icon={OrderHistoryIcon} title={ROUTER.ORDER_HISTORY.TITLE} href={ROUTER.ORDER_HISTORY.URL} />
                 <SettingMenuRow icon={LockIcon} title='Change Password' href='/catalog' />
                 <SettingMenuRow icon={NotificationIcon} title='Notification' href='/catalog' />
                 <SettingMenuRow icon={SettingIcon} title='Setting' href='/catalog' />
