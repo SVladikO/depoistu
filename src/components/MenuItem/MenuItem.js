@@ -14,7 +14,7 @@ const MenuItem = ({item = {}}) => {
 
     return (
         <Wrapper className='pm-MenuItem'>
-            <Flex justifyContent="space-between">
+            <Flex justifyContent="stretch">
                 <FoodImage src={image_url}/>
                 <Flex flexDirection='column' width='80%'>
                     <Flex justifyContent="space-between">
