@@ -15,9 +15,24 @@ import {ReactComponent as CurrencyIcon} from '../../icons/currency.svg';
 import {ReactComponent as LanguageIcon} from '../../icons/language.svg';
 import {ReactComponent as LinkedAccountIcon} from '../../icons/linked_account.svg';
 
-import {RowSplitter, SettingMenuRow, UserAccountBar, UserAccountGroup, UserOptionGroup,} from '../../components'
+import {
+    PrimaryWideButton,
+    RowSplitter,
+    SettingMenuRow,
+    UserAccountBar,
+    UserAccountGroup,
+    UserOptionGroup,
+} from '../../components'
+import {Link} from "react-router-dom";
+import {LocalStorage} from "../../utils/utils";
 
 const SettingPage = () => {
+
+    const isGuestLogged = LocalStorage.getGuest();
+
+    if (!isGuestLogged) {
+        return <Link to={ROUTER.SING_IN.URL}><PrimaryWideButton>Login</PrimaryWideButton></Link>
+    }
 
     return (
         <>
@@ -29,7 +44,7 @@ const SettingPage = () => {
                 <SettingMenuRow icon={NotificationIcon} title='Notification' href='/catalog' />
                 <SettingMenuRow icon={SettingIcon} title='Setting' href='/catalog' />
                 <SettingMenuRow icon={PaymentIcon} title='Payment' href='/catalog' />
-                <SettingMenuRow icon={LogOutIcon} title='Sign Out' href='/catalog' />
+                <SettingMenuRow icon={LogOutIcon} title='Sign Out' toggleHandler={() => LocalStorage.removeGuest()} />
             </UserAccountGroup>
             <UserOptionGroup  groupTitle='More Options'>
                 <SettingMenuRow icon={NewsletterIcon} title='Newsletter' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>

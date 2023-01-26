@@ -28,3 +28,8 @@ export const securityCheck = () => {
 }
 
 export const setBrowserTabTitle = () => document.title = translations.company_name;
+
+export const LocalStorage = {
+    getGuest: () => localStorage.getItem('guest'),
+    removeGuest: () => localStorage.removeItem('guest'),
+}

@@ -24,8 +24,10 @@ export const DEV_ROUTER = {
 };
 
 const DOMAIN = 'https://pizza-mobile-api.herokuapp.com';
+// const DOMAIN = 'http://localhost:5000';
 
 export const BE_API = {
+    SING_IN: () => `${DOMAIN}/sign-in`,
     GET_ALL_CATEGORIES_ID_FOR_COMPANY: companyId => `${DOMAIN}/company/${companyId}/category`,
     GET_ALL_MENU_FOR_COMPANY_FOR_CATEGORY: (companyId, categoryId) => `${DOMAIN}/company/${companyId}/menu_item/${categoryId}`,
 };

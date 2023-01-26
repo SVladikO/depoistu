@@ -5,14 +5,15 @@ import {Wrapper, AmountInfo, Content, FixedContent} from './Order.page.style';
 import {EmptyBasket, OrderHistoryRow, Price, PrimaryWideButton} from "../../components";
 
 import {ROUTER} from '../../utils/config'
+import {LocalStorage} from "../../utils/utils";
 
 const OrderPage = () => {
     const orders = useSelector(state => state.order.value);
 
-    let user;// = {};
+    const isGuestLogged = LocalStorage.getGuest();
 
     const orderButton =
-        user
+        isGuestLogged
             ? <PrimaryWideButton>Place Order</PrimaryWideButton>
             : <Link to={ROUTER.SING_IN.URL}>
                 <PrimaryWideButton>Login to place Order</PrimaryWideButton>
