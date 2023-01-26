@@ -44,7 +44,7 @@ const SettingPage = () => {
                 <SettingMenuRow icon={NotificationIcon} title='Notification' href='/catalog' />
                 <SettingMenuRow icon={SettingIcon} title='Setting' href='/catalog' />
                 <SettingMenuRow icon={PaymentIcon} title='Payment' href='/catalog' />
-                <SettingMenuRow icon={LogOutIcon} title='Sign Out' toggleHandler={() => LocalStorage.removeGuest()} />
+                <SettingMenuRow icon={LogOutIcon} title='Sign Out' changeHandler={() => LocalStorage.removeGuest()} />
             </AccountSettings>
             <OptionSettings groupTitle='More Options'>
                 <SettingMenuRow icon={NewsletterIcon} title='Newsletter' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>
