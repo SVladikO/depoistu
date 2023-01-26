@@ -1,20 +1,44 @@
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 
 import {Wrapper, AmountInfo, Content, FixedContent} from './Order.page.style';
 import {EmptyBasket, OrderHistoryRow, Price, PrimaryWideButton} from "../../components";
 
-import {ROUTER} from '../../utils/config'
+import {deleteAllOrders} from '../../features/order/orderSlice'
+
+import {BE_API, ROUTER} from '../../utils/config'
 import {LocalStorage} from "../../utils/utils";
+import {fetchData} from "../../fetch/fetch";
 
 const OrderPage = () => {
     const orders = useSelector(state => state.order.value);
-
+    const dispatch = useDispatch();
     const isGuestLogged = LocalStorage.getGuest();
+
+    const placeOrder = () => {
+        const {id: guest_id} = LocalStorage.getGuest();
+        const order_details = orders.map(({id, amount, price}) => ({id, amount, price}))
+
+        const body = {
+            order: {
+                guest_id,
+                company_id: orders[0].company_id,
+                order_details,
+            }
+        };
+
+        console.log('Order data: ', body);
+
+        fetchData(BE_API.PLACE_ORDER(), body)
+            .then(res => {
+                alert('Order was placed');
+                dispatch(deleteAllOrders())
+            })
+    }
 
     const orderButton =
         isGuestLogged
-            ? <PrimaryWideButton>Place Order</PrimaryWideButton>
+            ? <PrimaryWideButton onClick={placeOrder}>Place Order</PrimaryWideButton>
             : <Link to={ROUTER.SING_IN.URL}>
                 <PrimaryWideButton>Login to place Order</PrimaryWideButton>
             </Link>
