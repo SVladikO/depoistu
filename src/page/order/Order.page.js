@@ -36,6 +36,8 @@ const OrderPage = () => {
             })
     }
 
+    const isGuestLogged = LocalStorage.getGuest();
+
     const orderButton =
         isGuestLogged
             ? <PrimaryWideButton onClick={placeOrder}>Place Order</PrimaryWideButton>
