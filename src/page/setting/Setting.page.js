@@ -15,23 +15,38 @@ import {ReactComponent as CurrencyIcon} from '../../icons/currency.svg';
 import {ReactComponent as LanguageIcon} from '../../icons/language.svg';
 import {ReactComponent as LinkedAccountIcon} from '../../icons/linked_account.svg';
 
-import {RowSplitter, SettingMenuRow, UserAccountBar, UserAccountGroup, UserOptionGroup,} from '../../components'
+import {
+    PrimaryWideButton,
+    RowSplitter,
+    SettingMenuRow,
+    UserAccountBar,
+    AccountSettings,
+    OptionSettings,
+} from '../../components'
+import {Link} from "react-router-dom";
+import {LocalStorage} from "../../utils/utils";
 
 const SettingPage = () => {
+
+    const isGuestLogged = LocalStorage.getGuest();
+
+    if (!isGuestLogged) {
+        return <Link to={ROUTER.SING_IN.URL}><PrimaryWideButton>Login</PrimaryWideButton></Link>
+    }
 
     return (
         <>
             <UserAccountBar fullName='Jhon Smith' status='Basic Member'/>
             <RowSplitter height='20px' />
-            <UserAccountGroup  groupTitle='Accounts'>
+            <AccountSettings groupTitle='Accounts'>
                 <SettingMenuRow icon={OrderHistoryIcon} title={ROUTER.ORDER_HISTORY.TITLE} href={ROUTER.ORDER_HISTORY.URL} />
                 <SettingMenuRow icon={LockIcon} title='Change Password' href='/catalog' />
                 <SettingMenuRow icon={NotificationIcon} title='Notification' href='/catalog' />
                 <SettingMenuRow icon={SettingIcon} title='Setting' href='/catalog' />
                 <SettingMenuRow icon={PaymentIcon} title='Payment' href='/catalog' />
-                <SettingMenuRow icon={LogOutIcon} title='Sign Out' href='/catalog' />
-            </UserAccountGroup>
-            <UserOptionGroup  groupTitle='More Options'>
+                <SettingMenuRow icon={LogOutIcon} title='Sign Out' changeHandler={() => LocalStorage.removeGuest()} />
+            </AccountSettings>
+            <OptionSettings groupTitle='More Options'>
                 <SettingMenuRow icon={NewsletterIcon} title='Newsletter' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>
                 <SettingMenuRow icon={TextMessageIcon} title='Text Message' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>
                 <SettingMenuRow icon={PhoneCallIcon} title='Phone Call' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>
@@ -39,7 +54,7 @@ const SettingPage = () => {
                 <SettingMenuRow icon={LanguageIcon} title='Language' href='/catalog' label='English' />
                 <SettingMenuRow icon={LinkedAccountIcon} title='Linked Account' href='/catalog' label='Facebook, go ...' />
 
-            </UserOptionGroup>
+            </OptionSettings>
         </>
     );
 };

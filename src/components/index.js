@@ -28,8 +28,8 @@ import {Absolute} from "./Absolute/Absolute.style";
 import {Flex} from "./Flex/Flex.style";
 import UserAccountBar from "./UserAccountBar/UserAccountBar";
 import NavigationLabelHref from './NavigationLabelHref/NavigationLabelHref';
-import UserAccountGroup from "./UserAccountGroup/UserAccountGroup";
-import UserOptionGroup from "./UserOptionGroup/UserOptionGroup";
+import AccountSettings from "./AccountSettings/AccountSettings";
+import OptionSettings from "./OptionSettings/OptionSettings";
 import BottomMenu from "./BottomMenu/BottomMenu";
 import Like from "./Like/Like";
 import MenuItem from "./MenuItem/MenuItem";
@@ -67,8 +67,8 @@ export {
     NavigationHeader,
     NavigationLabelHref,
     UserAccountBar,
-    UserAccountGroup,
-    UserOptionGroup,
+    AccountSettings,
+    OptionSettings,
     OrderHistoryRow,
     OrderIconWithCounter,
 }

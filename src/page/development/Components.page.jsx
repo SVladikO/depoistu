@@ -43,8 +43,8 @@ import {ReactComponent as SandwichIcon} from '../../icons/sandwich.svg';
 import {ReactComponent as LanguageIcon} from "../../icons/language.svg";
 
 import {COLOR} from "../../utils/theme";
-import UserAccountGroup from "../../components/UserAccountGroup/UserAccountGroup";
-import UserOptionGroup from "../../components/UserOptionGroup/UserOptionGroup";
+import AccountSettings from "../../components/AccountSettings/AccountSettings";
+import OptionSettings from "../../components/OptionSettings/OptionSettings";
 
 const colors = Object.keys(COLOR).map(key =>
     ({title: key, component: <ColorCircle key={key} bg={COLOR[key]}/>, value: COLOR[key], width: '50px'})
@@ -128,7 +128,7 @@ const columns = [
         {title: 'ContentContainer', component: <ContentContainer>Sign up with</ContentContainer>},
         {title: 'HistoryTabBar', component: <HistoryTabBar/>},
         {
-            title: 'HistoryTabBar in UserOptionGroup', component:
+            title: 'HistoryTabBar in OptionSettings', component:
                 <NavigationHeader title="category">
                     <HistoryTabBar/>
                 </NavigationHeader>
@@ -149,18 +149,18 @@ const columns = [
             component: <SettingMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
         },
         {
-            title: 'UserAccountGroup', component:
-                <UserAccountGroup groupTitle="Accounts">
+            title: 'AccountSettings', component:
+                <AccountSettings groupTitle="Accounts">
                     <SettingMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
                     <SettingMenuRow icon={LogOutIcon} title="Only change handler" changeHandler={() => console.log('clicked')}/>
-                </UserAccountGroup>
+                </AccountSettings>
         },
         {
-            title: 'UserOptionGroup', component:
-                <UserOptionGroup groupTitle="Accounts">
+            title: 'OptionSettings', component:
+                <OptionSettings groupTitle="Accounts">
                     <SettingMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
                     <SettingMenuRow icon={LogOutIcon} title="Only change handler" changeHandler={() => console.log('clicked')}/>
-                </UserOptionGroup>
+                </OptionSettings>
         },
         {
             title: 'UserAccountBar',

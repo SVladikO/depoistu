@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import {
     Content,
@@ -24,10 +24,35 @@ import {ReactComponent as MailIcon} from "../../icons/mail.svg";
 
 import {ReactComponent as GoogleIcon} from "../../icons/google.svg";
 import {ReactComponent as FacebookIcon} from "../../icons/facebook.svg";
-import {ROUTER} from '../../utils/config';
+import {BE_API, ROUTER} from '../../utils/config';
 import {Link} from "react-router-dom";
+import {fetchData} from "../../fetch";
+import {LocalStorage} from "../../utils/utils";
 
 const SignInPage = () => {
+
+    const [email, setEmail] = useState('vlad_S@gmail.com')
+    const [password, setPassword] = useState('vv11vv')
+
+    const handleSingIn = () => {
+
+        fetchData(BE_API.SING_IN(), {email, password})
+            .then(res => {
+                if (res.length > 0) {
+                    localStorage.setItem('guest', JSON.stringify(res[0]))
+                    return;
+                }
+
+                alert('User was not found')
+            });
+    }
+
+    const isGuestLogged = LocalStorage.getGuest();
+
+    if (isGuestLogged) {
+        return <div>You already logged!</div>
+    }
+
     return (
         <>
             <Content>
@@ -35,8 +60,8 @@ const SignInPage = () => {
                 <LogoText>{translations.company_name}</LogoText>
             </Content>
             <ContentContainer>
-                <Input Icon={MailIcon} placeholder={`Enter email`} />
-                <Input Icon={LockIcon} placeholder={`Enter password`} type="password"/>
+                <Input Icon={MailIcon} placeholder={`Enter email`} value={email}/>
+                <Input Icon={LockIcon} placeholder={`Enter password`} type="password" value={password}/>
                 <Flex flexDirection='column'>
                     <Flex justifyContent="space-between">
                         <NavLabel primary={false}>Or login with</NavLabel>
@@ -53,7 +78,7 @@ const SignInPage = () => {
                     label="You don’t have an account?"
                 />
             </ContentContainer>
-            <PrimaryWideButton><span>Sing in</span></PrimaryWideButton>
+            <PrimaryWideButton onClick={handleSingIn}><span>Sing in</span></PrimaryWideButton>
         </>
     );
 };
