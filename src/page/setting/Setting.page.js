@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import {ROUTER} from '../../utils/config';
 
@@ -23,15 +23,16 @@ import {
     AccountSettings,
     OptionSettings,
 } from '../../components'
+
 import {Link} from "react-router-dom";
-import {LocalStorage} from "../../utils/utils";
+import {LocalStorage,getParam} from "../../utils/utils";
 
 const SettingPage = () => {
 
     const isGuestLogged = LocalStorage.getGuest();
 
     if (!isGuestLogged) {
-        return <Link to={ROUTER.SING_IN.URL}><PrimaryWideButton>Login</PrimaryWideButton></Link>
+        return <Link to={`${ROUTER.SING_IN.URL}?backUrl=${ROUTER.SETTING.URL}`}><PrimaryWideButton>Login</PrimaryWideButton></Link>
     }
 
     return (

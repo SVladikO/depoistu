@@ -33,3 +33,7 @@ export const LocalStorage = {
     getGuest: () => JSON.parse(localStorage.getItem('guest')),
     removeGuest: () => localStorage.removeItem('guest'),
 }
+export const getParam = (key) => {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(key);
+}

@@ -25,24 +25,23 @@ import {ReactComponent as MailIcon} from "../../icons/mail.svg";
 import {ReactComponent as GoogleIcon} from "../../icons/google.svg";
 import {ReactComponent as FacebookIcon} from "../../icons/facebook.svg";
 import {BE_API, ROUTER} from '../../utils/config';
-import {Link} from "react-router-dom";
+import {Link, useNavigate } from "react-router-dom";
 import {fetchData} from "../../fetch/fetch";
-import {LocalStorage} from "../../utils/utils";
+import {getParam, LocalStorage} from "../../utils/utils";
 
 const SignInPage = () => {
-
     const [email, setEmail] = useState('vlad_S@gmail.com')
     const [password, setPassword] = useState('vv11vv')
-
+    const navigate = useNavigate();
+    const backUrl = getParam(`backUrl`);
     const handleSingIn = () => {
 
         fetchData(BE_API.SING_IN(), {email, password})
             .then(res => {
                 if (res.length > 0) {
                     localStorage.setItem('guest', JSON.stringify(res[0]))
-                    return;
+                    navigate(backUrl);
                 }
-
                 alert('User was not found')
             });
     }
@@ -74,7 +73,7 @@ const SignInPage = () => {
                 </Flex>
                 <NavigationLabelHref
                     hrefTitle="Sing up!"
-                    to={ROUTER.SING_UP.URL}
+                    to={`${ROUTER.SING_UP.URL}?b=${backUrl}`}
                     label="You don’t have an account?"
                 />
             </ContentContainer>
