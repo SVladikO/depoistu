@@ -1,3 +1,5 @@
+import Error from "../components/Error/Error";
+
 export const fetchData = async (url) => {
     console.log('Request url: ', url);
 
@@ -7,5 +9,5 @@ export const fetchData = async (url) => {
         return responce.json();
     }
 
-    throw new Error('Error')
+    return <Error/>
 }
