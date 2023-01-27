@@ -13,7 +13,6 @@ import {fetchData} from "../../fetch/fetch";
 const OrderPage = () => {
     const orders = useSelector(state => state.order.value);
     const dispatch = useDispatch();
-    const isGuestLogged = LocalStorage.getGuest();
 
     const placeOrder = () => {
         const {id: guest_id} = LocalStorage.getGuest();
