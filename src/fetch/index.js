@@ -1,4 +1,4 @@
-import Error from "../components/Error/Error";
+import Error from "../components/ErrorMessage/ErrorMessage";
 
 export const fetchData = async (url) => {
     console.log('Request url: ', url);
