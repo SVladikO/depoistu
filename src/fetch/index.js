@@ -9,5 +9,5 @@ export const fetchData = async (url) => {
         return responce.json();
     }
 
-    return <Error/>
+    throw new Error('Error');
 }
