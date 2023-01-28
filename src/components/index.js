@@ -8,7 +8,7 @@ import {
 } from "./Button/Button.style";
 
 import Input from "./Input/Input";
-import EmptyBasket from "./EmptyBasket/EmptyBasket";
+import NotificationTDB from "./NotificationTDB/NotificationTDB";
 import Price from "./Price/Price";
 import Rating from "./Rating/Rating";
 import CategoryItem from "./CategoryItem/CategoryItem";
@@ -44,7 +44,7 @@ export {
     Input,
     Like,
     Rating,
-    EmptyBasket,
+    NotificationTDB,
     RowSplitter,
     HistoryTabBar,
     BottomMenu,

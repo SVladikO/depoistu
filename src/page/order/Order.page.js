@@ -2,7 +2,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 
 import {Wrapper, AmountInfo, Content, FixedContent} from './Order.page.style';
-import {EmptyBasket, OrderHistoryRow, Price, PrimaryWideButton} from "../../components";
+import {NotificationTDB, OrderHistoryRow, Price, PrimaryWideButton} from "../../components";
+
+import {ReactComponent as EmptyBasketIcon} from "../../icons/empty_basket.svg";
 
 import {deleteAllOrders} from '../../features/order/orderSlice'
 
@@ -58,7 +60,17 @@ const OrderPage = () => {
     );
 
     return (
-        <Wrapper>{orders.length ? getOrderItems() : <EmptyBasket/>}</Wrapper>
+        <Wrapper>{
+            orders.length
+                ? getOrderItems()
+                : <NotificationTDB
+                    Icon={EmptyBasketIcon}
+                    title="Your Cart is empty"
+                    description="Looks like you haven't made your order yet."
+                    buttonText="Shop Now"
+                    link={ROUTER.CATEGORY.URL}
+                  />
+        }</Wrapper>
     );
 };
 
