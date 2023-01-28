@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import {ROUTER} from '../../utils/config';
 
@@ -27,11 +27,15 @@ import {Link} from "react-router-dom";
 import {LocalStorage} from "../../utils/utils";
 
 const SettingPage = () => {
+    const [user, setUser] = useState(LocalStorage.getGuest());
 
-    const isGuestLogged = LocalStorage.getGuest();
-
-    if (!isGuestLogged) {
+    if (!user) {
         return <Link to={ROUTER.SING_IN.URL}><PrimaryWideButton>Login</PrimaryWideButton></Link>
+    }
+
+    const logOut = () => {
+        LocalStorage.removeGuest();
+        setUser(undefined);
     }
 
     return (
@@ -44,7 +48,7 @@ const SettingPage = () => {
                 <SettingMenuRow icon={NotificationIcon} title='Notification' href='/catalog' />
                 <SettingMenuRow icon={SettingIcon} title='Setting' href='/catalog' />
                 <SettingMenuRow icon={PaymentIcon} title='Payment' href='/catalog' />
-                <SettingMenuRow icon={LogOutIcon} title='Sign Out' changeHandler={() => LocalStorage.removeGuest()} />
+                <SettingMenuRow icon={LogOutIcon} title='Sign Out' changeHandler={logOut} />
             </AccountSettings>
             <OptionSettings groupTitle='More Options'>
                 <SettingMenuRow icon={NewsletterIcon} title='Newsletter' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>
