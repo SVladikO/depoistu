@@ -1,7 +1,7 @@
 import {useSelector} from "react-redux";
 
 const ErrorMessage = () => {
-    const message = useSelector(state => state.error.value.message);
+    const message = useSelector(state => state.error.value);
 
     return (
         <>

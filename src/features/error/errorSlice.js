@@ -1,9 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
-    value: {
-        message: ""
-    }
+    value: ""
 }
 
 export const errorSlice = createSlice({
@@ -11,10 +9,10 @@ export const errorSlice = createSlice({
     initialState,
     reducers: {
         addErrorMessage: (state, action) => {
-            state.value.message = action.payload;
+            state.value = action.payload;
         },
         deleteErrorMessage: (state) => {
-            state.value.message = "";
+            state.value = "";
         }
     }
 });
