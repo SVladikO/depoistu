@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react";
-import {fetchData} from "../fetch/fetch";
+import {fetchData} from "./fetch";
 import {useDispatch} from "react-redux";
 import {startLoading, stopLoading} from "../features/request/requestSlice";
 

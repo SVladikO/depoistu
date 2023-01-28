@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 
-import {useLocalStorageFetch} from '../../hook';
+import {useLocalStorageFetch} from '../../utils/hook';
 import {BE_API, ROUTER, CATEGORY_MAPPER} from '../../utils/config';
 import {
     Content,

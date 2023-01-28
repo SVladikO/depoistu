@@ -5,4 +5,4 @@ export const Wrapper = styled.div`
   margin: 0 auto;
 `;
 
-document.body.style.backgroundColor = '#000';
+document.body.style.backgroundColor = '#d8d8d8';

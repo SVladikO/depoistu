@@ -10,7 +10,7 @@ import {deleteAllOrders} from '../../features/order/orderSlice'
 
 import {BE_API, ROUTER} from '../../utils/config'
 import {LocalStorage} from "../../utils/utils";
-import {fetchData} from "../../fetch/fetch";
+import {fetchData} from "../../utils/fetch";
 
 const OrderPage = () => {
     const orders = useSelector(state => state.order.value);
