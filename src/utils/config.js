@@ -5,7 +5,7 @@ import SingUpPage from "../page/sing-up/SingUp.page";
 import SettingPage from "../page/setting/Setting.page";
 import CategoryPage from "../page/category/Category.page";
 import SubCategoryPage from "../page/sub-category/SubCategory.page";
-import OrderHistoryPage from "../page/order-completed/OrderHistory.page";
+import OrderHistoryPage from "../page/order-history/OrderHistory.page";
 import ChangePasswordPage from "../page/change-password/ChangePassword.page";
 
 import {ReactComponent as BakeryIcon} from "../icons/category/bakery.svg";

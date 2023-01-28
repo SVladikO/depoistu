@@ -52,7 +52,7 @@ const SettingPage = () => {
             <AccountSettings groupTitle='Accounts'>
                 <SettingMenuRow icon={OrderHistoryIcon} title={ROUTER.ORDER_HISTORY.TITLE}
                                 href={ROUTER.ORDER_HISTORY.URL}/>
-                <SettingMenuRow icon={LockIcon} title='Change Password' href='/catalog'/>
+                <SettingMenuRow icon={LockIcon} title='Change Password' href={ROUTER.CHANGE_PASSWORD.URL}/>
                 <SettingMenuRow icon={NotificationIcon} title='Notification' href='/catalog'/>
                 <SettingMenuRow icon={SettingIcon} title='Setting' href='/catalog'/>
                 <SettingMenuRow icon={PaymentIcon} title='Payment' href='/catalog'/>
