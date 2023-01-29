@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 
 import {ROUTER} from '../../utils/config';
 
@@ -25,7 +25,7 @@ import {
 } from '../../components'
 
 import {Link} from "react-router-dom";
-import {LocalStorage,getParam} from "../../utils/utils";
+import {LocalStorage, getParam} from "../../utils/utils";
 
 const SettingPage = () => {
 

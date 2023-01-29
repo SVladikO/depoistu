@@ -33,7 +33,7 @@ const SignInPage = () => {
     const [email, setEmail] = useState('vlad_S@gmail.com')
     const [password, setPassword] = useState('vv11vv')
     const navigate = useNavigate();
-    const backUrl = getParam(`backUrl`);
+    const backUrl = getParam(backUrl) || ROUTER.CATEGORY.URL;
     const handleSingIn = () => {
 
         fetchData(BE_API.SING_IN(), {email, password})
@@ -73,7 +73,7 @@ const SignInPage = () => {
                 </Flex>
                 <NavigationLabelHref
                     hrefTitle="Sing up!"
-                    to={`${ROUTER.SING_UP.URL}?b=${backUrl}`}
+                    to={`${ROUTER.SING_UP.URL}?backUrl=${backUrl}`}
                     label="You don’t have an account?"
                 />
             </ContentContainer>
