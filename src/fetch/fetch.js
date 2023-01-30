@@ -1,5 +1,3 @@
-import Error from "../components/ErrorMessage/ErrorMessage";
-
 export const fetchData = async (url, body) => {
     console.log('Request url: ', url, body);
 
@@ -25,5 +23,5 @@ export const fetchData = async (url, body) => {
         return response.json();
     }
 
-    throw new Error('Error');
+    throw new Error('Error')
 }

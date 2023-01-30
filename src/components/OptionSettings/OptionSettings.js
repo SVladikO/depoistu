@@ -1,7 +1,7 @@
 import React from 'react';
-import {Wrapper, GroupTitle, RowsWrapper} from "./UserOptionGroup.style";
+import {Wrapper, GroupTitle, RowsWrapper} from "./OptionSettings.style";
 
-const UserOptionGroup = ({groupTitle, children}) => {
+const OptionSettings = ({groupTitle, children}) => {
     return (
         <Wrapper className="user-option-group-wrapper">
             <GroupTitle>{groupTitle}</GroupTitle>
@@ -10,5 +10,5 @@ const UserOptionGroup = ({groupTitle, children}) => {
     );
 };
 
-export default UserOptionGroup;
+export default OptionSettings;
 
