@@ -35,6 +35,7 @@ import Like from "./Like/Like";
 import MenuItem from "./MenuItem/MenuItem";
 import OrderHistoryRow from "./OrderHistoryRow/OrderHistoryRow";
 import OrderIconWithCounter from "./OrderIconWithCounter/OrderIconWithCounter.jsx";
+import ErrorMessage from "./ErrorMessage/ErrorMessage";
 
 export {
     SettingMenuRow,
@@ -56,6 +57,7 @@ export {
     Load,
     Flex,
     Absolute,
+    ErrorMessage,
     ProductCard,
     ProductSizeBar,
     PrimaryWideButton,

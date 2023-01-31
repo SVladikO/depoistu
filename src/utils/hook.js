@@ -2,6 +2,7 @@ import {useState, useEffect} from "react";
 import {fetchData} from "./fetch";
 import {useDispatch} from "react-redux";
 import {startLoading, stopLoading} from "../features/request/requestSlice";
+import {addErrorMessage,deleteErrorMessage} from "../features/error/errorSlice";
 
 export const useLocalStorageFetch = (storageKey, initialState, url) => {
     const localStorageState = JSON.parse(localStorage.getItem(storageKey))
@@ -14,6 +15,7 @@ export const useLocalStorageFetch = (storageKey, initialState, url) => {
         }
 
         dispatch(startLoading());
+        dispatch(deleteErrorMessage());
 
         fetchData(url)
             .then(res => {
@@ -23,7 +25,7 @@ export const useLocalStorageFetch = (storageKey, initialState, url) => {
             })
             .catch(e => {
                 dispatch(stopLoading());
-                console.log('Fetch error: ', e)
+                dispatch(addErrorMessage(e.message));
             })
     }, [value, storageKey, dispatch, localStorageState, url]);
 
