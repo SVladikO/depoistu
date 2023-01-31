@@ -27,13 +27,14 @@ import
     BottomMenu,
     MenuItem,
     OrderHistoryRow,
-    EmptyBasket,
+    NotificationTDB,
     RowSplitter,
 } from "../../components";
 
 import CatalogPage from "./Catalog.page";
-
 import CountAccumulator from '../../components/CountAccumulator/CountAccumulator';
+
+import {ReactComponent as EmptyBasketIcon} from "../../icons/empty_basket.svg";
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
 import {ReactComponent as MailIcon} from '../../icons/mail.svg';
@@ -45,6 +46,7 @@ import {ReactComponent as LanguageIcon} from "../../icons/language.svg";
 import {COLOR} from "../../utils/theme";
 import AccountSettings from "../../components/AccountSettings/AccountSettings";
 import OptionSettings from "../../components/OptionSettings/OptionSettings";
+import {ROUTER} from "../../utils/config";
 
 const colors = Object.keys(COLOR).map(key =>
     ({title: key, component: <ColorCircle key={key} bg={COLOR[key]}/>, value: COLOR[key], width: '50px'})
@@ -225,7 +227,15 @@ const columns = [
                 return <OrderHistoryRow item={item}/>
             })()
         },
-        {title: 'EmptyBasket', component: <EmptyBasket/>}
+        {title: 'EmptyBasket', component:
+                <NotificationTDB
+                    Icon={EmptyBasketIcon}
+                    title="Your Cart is empty"
+                    description="Looks like you haven't made your order yet."
+                    buttonText="Shop Now"
+                    link={ROUTER.CATEGORY.URL}
+                />
+        }
     ]
 ]
 

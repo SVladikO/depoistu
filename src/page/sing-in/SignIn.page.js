@@ -26,7 +26,7 @@ import {ReactComponent as GoogleIcon} from "../../icons/google.svg";
 import {ReactComponent as FacebookIcon} from "../../icons/facebook.svg";
 import {BE_API, ROUTER} from '../../utils/config';
 import {Link} from "react-router-dom";
-import {fetchData} from "../../fetch/fetch";
+import {fetchData} from "../../utils/fetch";
 import {LocalStorage} from "../../utils/utils";
 
 const SignInPage = () => {
