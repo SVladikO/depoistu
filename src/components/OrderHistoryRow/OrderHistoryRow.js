@@ -13,7 +13,7 @@ import {
     ColoredSize,
     Size,
     Image,
-    Status
+    Status, RowLeftSide
 } from "./OrderHistoryRow.style";
 import CountAccumulator from "../CountAccumulator/CountAccumulator";
 import Price from "../Price/Price";
@@ -22,7 +22,7 @@ import {ReactComponent as DeleteIcon} from "../../icons/delete.svg";
 
 const OrderHistoryRow = ({item, isHistory}) => {
     const dispatch = useDispatch();
-    const {id, name, description, price, image_url, size, status, amount} = item || {};
+    const {id, name, ingredients, price, image_url, size, status, amount} = item || {};
 
     return (
         <Wrapper>
@@ -33,21 +33,22 @@ const OrderHistoryRow = ({item, isHistory}) => {
                     {status ? <Status>{status}</Status> : <DeleteIcon onClick={() => dispatch(deleteOrderItem(id))}/>}
                 </Row>
                 <Row>
-                    <Description>{description}</Description>
+                    <Description>{ingredients.join(', ')}</Description>
                 </Row>
+                <RowLeftSide>
+                    <PriceWrapper>
+                        <Factor>{amount}x</Factor><Price smallLineHeight={false}>{price}</Price>
+                    </PriceWrapper>
+                </RowLeftSide>
                 <Row>
                     {
-                        isHistory
-                            ? <Size>Size:<ColoredSize>{size}</ColoredSize></Size>
-                            : <CountAccumulator
-                                count={amount}
-                                incrementHandler={() => dispatch(addOrderItem(item))}
-                                decrementHandler={() => dispatch(decrementOrderItem(item))}
-                            />
+                        isHistory || <CountAccumulator
+                                        forHistory
+                                        count={amount}
+                                        incrementHandler={() => dispatch(addOrderItem(item))}
+                                        decrementHandler={() => dispatch(decrementOrderItem(item))}
+                                    />
                     }
-                    <PriceWrapper>
-                        <Factor>{amount}x</Factor><Price small>{price}</Price>
-                    </PriceWrapper>
                 </Row>
             </Content>
         </Wrapper>

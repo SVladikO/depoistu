@@ -114,7 +114,7 @@ const columns = [
 
         },
         {title: 'CountAccumulator', component: <CountAccumulator count={16}/>},
-        {title: 'CountAccumulator', component: <CountAccumulator count={16}/>},
+        {title: 'CountAccumulator', component: <CountAccumulator forHistory count={16}/>},
         {title: 'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
         {
             title: 'NavigationLabelHref',
@@ -217,12 +217,12 @@ const columns = [
             title: 'OrderHistoryRow', component: (function () {
                 const item = {
                     name: 'Chees Bites Pizza',
-                    ingredients: ['spicy', 'tomato', 'sauce', 'chili', 'mozzarella'],
+                    ingredients: ['spicy', 'tomato', 'sauce', 'chili', 'mozzarella', ],
                     price: 7,
                     size: 'Medium',
                     status: 'Completed'
                 }
-                return <OrderHistoryRow item={item}/>
+                return <OrderHistoryRow isHistory item={item}/>
             })()
         },
         {title: 'EmptyBasket', component: <EmptyBasket/>}

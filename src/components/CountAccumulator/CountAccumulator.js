@@ -1,6 +1,15 @@
-import {Wrapper, Button, Counter} from "./CountAccumulator.style";
+import {Wrapper, Button, Counter, WideWrapper, WideButton, Space} from "./CountAccumulator.style";
 
-const CountMealAccumulator = ({count, incrementHandler = () => {}, decrementHandler = () => {}}) => {
+const CountMealAccumulator = ({count, forHistory, incrementHandler = () => {}, decrementHandler = () => {}}) => {
+    if(forHistory){
+        return (
+            <WideWrapper>
+                <WideButton onClick={decrementHandler}>-</WideButton>
+                <Space/>
+                <WideButton onClick={incrementHandler}>+</WideButton>
+            </WideWrapper>
+        )
+    }
     return (
         <Wrapper>
             <Button onClick={decrementHandler}>-</Button>

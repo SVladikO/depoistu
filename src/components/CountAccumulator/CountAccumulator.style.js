@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {COLOR} from "../../utils/theme";
+import {BORDER_RADIUS, COLOR} from "../../utils/theme";
 import {hexToRgbA} from "../../utils/utils";
 
 export const Wrapper = styled.div`
@@ -10,6 +10,11 @@ export const Wrapper = styled.div`
   padding: 0;
   margin: 0;
 `;
+export const WideWrapper = styled(Wrapper)`
+  width: 100%;
+  height: 35px;
+`;
+
 export const Button = styled.button`
   width: 16px;
   height: 16px;
@@ -21,10 +26,23 @@ export const Button = styled.button`
   line-height: 10px;
   display: block;
 `;
+export const WideButton = styled(Button)`
+  width: 50%;
+  height: 35px;
+  border-radius: ${BORDER_RADIUS.FOURTH};
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: ${COLOR.PRIMARY};
+`;
 
 export const Counter = styled.div`
   color: ${COLOR.ACCENT1};
   font-weight: 700;
   font-size: 8px;
   padding: 4px;
+`;
+export const Space = styled.div`
+  width: 10px;
+  opacity: 0;
 `;
