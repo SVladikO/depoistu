@@ -1,6 +1,6 @@
 import {useSelector} from "react-redux";
 
-import {Wrapper, Text} from "./Notification.style";
+import {Text} from "./Notification.style";
 
 import {ReactComponent as LoadingIcon} from "../../icons/spinner.svg";
 import {ReactComponent as SuccessIcon} from "../../icons/success.svg";
@@ -8,21 +8,11 @@ import {ReactComponent as ErrorIcon} from "../../icons/alert.svg";
 import {ContentContainer} from "../ContentContainer/ContentContainer.style";
 
 
-// const NotificationConstructor = (props) => {
-//     const {Icon, text} = props;
-//     return (
-//         <ContentContainer>
-//             <Icon/>
-//             <Text>{text}</Text>
-//         </ContentContainer>
-//     )
-// }
-
-const Success = ({text}) => {
+const Success = () => {
     return(
         <ContentContainer>
             <SuccessIcon/>
-            <Text>{text}</Text>
+            <Text>Order placed.</Text>
         </ContentContainer>
     )
 }
@@ -43,6 +33,9 @@ const Loading = () => {
 
 const Error = () => {
     const message = useSelector(state => state.error.value);
+    if(!message){
+        return;
+    }
     return (
         <ContentContainer>
             <ErrorIcon/>

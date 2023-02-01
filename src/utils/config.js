@@ -24,7 +24,7 @@ export const DEV_ROUTER = {
     PAGES: 'pages',
 };
 
-const DOMAIN = 'https://pizza-mobile-api.herokuapp.com/ggui';
+const DOMAIN = 'https://pizza-mobile-api.herokuapp.com';
 // const DOMAIN = 'http://localhost:5000';
 
 export const BE_API = {
