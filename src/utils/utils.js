@@ -1,5 +1,26 @@
 import translations from "./translations";
 
+export const setBrowserTabTitle = () => document.title = translations.company_name;
+
+export const LocalStorage = {
+    getGuest: () => JSON.parse(localStorage.getItem('guest')),
+    removeGuest: () => localStorage.removeItem('guest'),
+}
+
+export const checkAccess = () => {
+    const isTrustedUser = localStorage.getItem('trastedUser');
+
+    if(isTrustedUser) return;
+
+    const secretKey = "****";
+    let test = prompt("Entry secret key");
+
+    if (test !== secretKey) {
+        return checkAccess();
+    }
+    localStorage.setItem('trastedUser', true);
+}
+
 export function hexToRgbA(hex, a=1){
     var c;
     if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){

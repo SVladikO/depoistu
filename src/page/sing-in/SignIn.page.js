@@ -22,12 +22,13 @@ import {ReactComponent as LogoIcon} from "../../icons/logo.svg";
 import {ReactComponent as LockIcon} from "../../icons/lock.svg";
 import {ReactComponent as MailIcon} from "../../icons/mail.svg";
 
+import {Link, useNavigate} from "react-router-dom";
+
 import {ReactComponent as GoogleIcon} from "../../icons/google.svg";
 import {ReactComponent as FacebookIcon} from "../../icons/facebook.svg";
-import {BE_API, ROUTER} from '../../utils/config';
-import {Link, useNavigate } from "react-router-dom";
 import {fetchData} from "../../fetch/fetch";
 import {getParam, LocalStorage} from "../../utils/utils";
+import {BE_API, ROUTER} from '../../utils/config';
 
 const SignInPage = () => {
     const [email, setEmail] = useState('vlad_S@gmail.com')

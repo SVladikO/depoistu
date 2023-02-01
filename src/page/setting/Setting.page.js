@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import {ROUTER} from '../../utils/config';
 
@@ -21,39 +21,55 @@ import {
     SettingMenuRow,
     UserAccountBar,
     AccountSettings,
-    OptionSettings,
+    OptionSettings, NotificationTDB,
 } from '../../components'
 
 import {Link} from "react-router-dom";
 import {LocalStorage, getParam} from "../../utils/utils";
 
 const SettingPage = () => {
+    const [user, setUser] = useState(LocalStorage.getGuest());
 
-    const isGuestLogged = LocalStorage.getGuest();
+    if (!user) {
+        return (
+            <NotificationTDB
+                title="Restricted access!"
+                description="This page is available only after verification."
+                buttonText="Go to Sign in page"
+                link={ROUTER.SING_IN.URL}
+            />
+        )
+    }
 
-    if (!isGuestLogged) {
-        return <Link to={`${ROUTER.SING_IN.URL}?backUrl=${ROUTER.SETTING.URL}`}><PrimaryWideButton>Login</PrimaryWideButton></Link>
+    const logOut = () => {
+        LocalStorage.removeGuest();
+        setUser(undefined);
     }
 
     return (
         <>
             <UserAccountBar fullName='Jhon Smith' status='Basic Member'/>
-            <RowSplitter height='20px' />
+            <RowSplitter height='20px'/>
             <AccountSettings groupTitle='Accounts'>
-                <SettingMenuRow icon={OrderHistoryIcon} title={ROUTER.ORDER_HISTORY.TITLE} href={ROUTER.ORDER_HISTORY.URL} />
-                <SettingMenuRow icon={LockIcon} title='Change Password' href='/catalog' />
-                <SettingMenuRow icon={NotificationIcon} title='Notification' href='/catalog' />
-                <SettingMenuRow icon={SettingIcon} title='Setting' href='/catalog' />
-                <SettingMenuRow icon={PaymentIcon} title='Payment' href='/catalog' />
-                <SettingMenuRow icon={LogOutIcon} title='Sign Out' changeHandler={() => LocalStorage.removeGuest()} />
+                <SettingMenuRow icon={OrderHistoryIcon} title={ROUTER.ORDER_HISTORY.TITLE}
+                                href={ROUTER.ORDER_HISTORY.URL}/>
+                <SettingMenuRow icon={LockIcon} title='Change Password' href={ROUTER.CHANGE_PASSWORD.URL}/>
+                <SettingMenuRow icon={NotificationIcon} title='Notification' href='/catalog'/>
+                <SettingMenuRow icon={SettingIcon} title='Setting' href='/catalog'/>
+                <SettingMenuRow icon={PaymentIcon} title='Payment' href='/catalog'/>
+                <SettingMenuRow icon={LogOutIcon} title='Sign Out' changeHandler={logOut}/>
             </AccountSettings>
             <OptionSettings groupTitle='More Options'>
-                <SettingMenuRow icon={NewsletterIcon} title='Newsletter' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>
-                <SettingMenuRow icon={TextMessageIcon} title='Text Message' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>
-                <SettingMenuRow icon={PhoneCallIcon} title='Phone Call' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>
-                <SettingMenuRow icon={CurrencyIcon} title='Currency' href='/catalog' label='$USD' />
-                <SettingMenuRow icon={LanguageIcon} title='Language' href='/catalog' label='English' />
-                <SettingMenuRow icon={LinkedAccountIcon} title='Linked Account' href='/catalog' label='Facebook, go ...' />
+                <SettingMenuRow icon={NewsletterIcon} title='Newsletter'
+                                toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>
+                <SettingMenuRow icon={TextMessageIcon} title='Text Message'
+                                toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>
+                <SettingMenuRow icon={PhoneCallIcon} title='Phone Call'
+                                toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>
+                <SettingMenuRow icon={CurrencyIcon} title='Currency' href='/catalog' label='$USD'/>
+                <SettingMenuRow icon={LanguageIcon} title='Language' href='/catalog' label='English'/>
+                <SettingMenuRow icon={LinkedAccountIcon} title='Linked Account' href='/catalog'
+                                label='Facebook, go ...'/>
 
             </OptionSettings>
         </>
