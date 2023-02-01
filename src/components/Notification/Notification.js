@@ -7,14 +7,14 @@ import {ReactComponent as SuccessIcon} from "../../icons/success.svg";
 import {ReactComponent as ErrorIcon} from "../../icons/alert.svg";
 import {ContentContainer} from "../ContentContainer/ContentContainer.style";
 
-//
+
 // const NotificationConstructor = (props) => {
 //     const {Icon, text} = props;
 //     return (
-//         <Wrapper>
+//         <ContentContainer>
 //             <Icon/>
 //             <Text>{text}</Text>
-//         </Wrapper>
+//         </ContentContainer>
 //     )
 // }
 
