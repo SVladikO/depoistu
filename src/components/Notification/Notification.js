@@ -5,11 +5,12 @@ import {Text} from "./Notification.style";
 import {ReactComponent as LoadingIcon} from "../../icons/spinner.svg";
 import {ReactComponent as SuccessIcon} from "../../icons/success.svg";
 import {ReactComponent as ErrorIcon} from "../../icons/alert.svg";
+
 import {ContentContainer} from "../ContentContainer/ContentContainer.style";
 
 
 const Success = () => {
-    return(
+    return (
         <ContentContainer>
             <SuccessIcon/>
             <Text>Order placed.</Text>
@@ -19,9 +20,11 @@ const Success = () => {
 
 const Loading = () => {
     const isLoading = useSelector(state => state.request.value.isLoading);
+
     if (!isLoading) {
         return;
     }
+
     return (
         <ContentContainer>
             <LoadingIcon className="animated_svg"/>
@@ -33,9 +36,11 @@ const Loading = () => {
 
 const Error = () => {
     const message = useSelector(state => state.error.value);
-    if(!message){
+
+    if (!message) {
         return;
     }
+
     return (
         <ContentContainer>
             <ErrorIcon/>
