@@ -26,7 +26,7 @@ import {Link, useNavigate} from "react-router-dom";
 
 import {ReactComponent as GoogleIcon} from "../../icons/google.svg";
 import {ReactComponent as FacebookIcon} from "../../icons/facebook.svg";
-import {fetchData} from "../../fetch/fetch";
+import {fetchData} from "../../utils/fetch";
 import {getParam, LocalStorage} from "../../utils/utils";
 import {BE_API, ROUTER} from '../../utils/config';
 
@@ -39,14 +39,14 @@ const SignInPage = () => {
 
         fetchData(BE_API.SING_IN(), {email, password})
             .then(res => {
+
                 if (res.length > 0) {
                     localStorage.setItem('guest', JSON.stringify(res[0]))
-                    navigate(-1);
-                }
-                if(!localStorage.getItem('guest')){
-                    alert('User was not found');
+                    navigate(backUrl);
+                    return;
                 }
 
+                alert('User was not found');
             });
     }
 

@@ -1,12 +1,5 @@
 import translations from "./translations";
 
-export const setBrowserTabTitle = () => document.title = translations.company_name;
-
-export const LocalStorage = {
-    getGuest: () => JSON.parse(localStorage.getItem('guest')),
-    removeGuest: () => localStorage.removeItem('guest'),
-}
-
 export const checkAccess = () => {
     const isTrustedUser = localStorage.getItem('trastedUser');
 
