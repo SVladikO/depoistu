@@ -12,7 +12,7 @@ import NotificationTDB from "./NotificationTDB/NotificationTDB";
 import Price from "./Price/Price";
 import Rating from "./Rating/Rating";
 import CategoryItem from "./CategoryItem/CategoryItem";
-import Load from "./Load/Load";
+import Notification from "./Notification/Notification";
 import {RowSplitterStyle as RowSplitter} from "./RowSplitter/RowSplitter.style";
 import CheckBoxWithLabel from "./CheckBoxWithLabel/CheckBoxWithLabel";
 import ToggleCheckbox from "./ToggleCheckbox/ToggleCheckbox";
@@ -35,7 +35,7 @@ import Like from "./Like/Like";
 import MenuItem from "./MenuItem/MenuItem";
 import OrderHistoryRow from "./OrderHistoryRow/OrderHistoryRow";
 import OrderIconWithCounter from "./OrderIconWithCounter/OrderIconWithCounter.jsx";
-import ErrorMessage from "./ErrorMessage/ErrorMessage";
+
 
 export {
     SettingMenuRow,
@@ -54,10 +54,9 @@ export {
     ToggleCheckbox,
     CheckBoxWithLabel,
     Price,
-    Load,
     Flex,
+    Notification,
     Absolute,
-    ErrorMessage,
     ProductCard,
     ProductSizeBar,
     PrimaryWideButton,
