@@ -4,7 +4,7 @@ import {OrderHistoryRow} from "../../components";
 
 const item = {
     name: 'Chees Bites Pizza',
-    ingredients: ['spicy', 'tomato', 'sauce', 'chili', 'mozzarella'],
+    description: 'spicy, tomato, sauce, chili, mozzarella',
     price: 7,
     size: 'Medium',
     status: 'Completed'
@@ -15,19 +15,19 @@ const OrderHistoryPage = () => {
         <Wrapper>
             <Content>
                 <Date>20 April, 2020</Date>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
-                <OrderHistoryRow item={item}/>
+                <OrderHistoryRow item={item} isHistory={true}/>
+                <OrderHistoryRow item={item} isHistory={true}/>
+                <OrderHistoryRow item={item} isHistory={true}/>
+                <OrderHistoryRow item={item} isHistory={true}/>
+                <OrderHistoryRow item={item} isHistory={true}/>
+                <OrderHistoryRow item={item} isHistory={true}/>
+                <OrderHistoryRow item={item} isHistory={true}/>
+                <OrderHistoryRow item={item} isHistory={true}/>
+                <OrderHistoryRow item={item} isHistory={true}/>
+                <OrderHistoryRow item={item} isHistory={true}/>
+                <OrderHistoryRow item={item} isHistory={true}/>
+                <OrderHistoryRow item={item} isHistory={true}/>
+                <OrderHistoryRow item={item} isHistory={true}/>
             </Content>
         </Wrapper>
     );

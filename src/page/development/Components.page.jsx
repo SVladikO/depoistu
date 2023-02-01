@@ -33,7 +33,6 @@ import
 
 import CatalogPage from "./Catalog.page";
 
-import CountAccumulator from '../../components/CountAccumulator/CountAccumulator';
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
 import {ReactComponent as MailIcon} from '../../icons/mail.svg';
@@ -113,8 +112,6 @@ const columns = [
                 })()
 
         },
-        {title: 'CountAccumulator', component: <CountAccumulator count={16}/>},
-        {title: 'CountAccumulator', component: <CountAccumulator forHistory count={16}/>},
         {title: 'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
         {
             title: 'NavigationLabelHref',
@@ -207,7 +204,7 @@ const columns = [
                 (() => {
                     const item = {
                         name: 'Chees Bites Pizza',
-                        ingredients: ['spicy', 'tomato', 'sauce', 'chili', 'mozzarella'],
+                        description: 'spicy, tomato, sauce, chili, mozzarella',
                         price: 7
                     }
                     return <OrderHistoryRow item={item}/>
@@ -217,7 +214,7 @@ const columns = [
             title: 'OrderHistoryRow', component: (function () {
                 const item = {
                     name: 'Chees Bites Pizza',
-                    ingredients: ['spicy', 'tomato', 'sauce', 'chili', 'mozzarella', ],
+                    description: 'spicy, tomato, sauce, chili, mozzarella',
                     price: 7,
                     size: 'Medium',
                     status: 'Completed'

@@ -49,7 +49,7 @@ const OrderPage = () => {
             <Content>{orders.map(item => <OrderHistoryRow key={item.id} item={item}/>)}</Content>
             <FixedContent>
                 <AmountInfo>
-                    Sub Total ( {orders.length} item ):
+                    <div>Sub Total ( {orders.length} item ):</div>
                     <Price>{getOrdersTotal(orders)}</Price>
                 </AmountInfo>
                 {orderButton}
