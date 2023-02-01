@@ -28,7 +28,6 @@ const CategoryPage = () => {
         <Content>
             <Notification.Loading/>
             <Notification.Error/>
-            <Notification.Success/>
             <Flex>
                 {
                     categories.map(category_id => (
