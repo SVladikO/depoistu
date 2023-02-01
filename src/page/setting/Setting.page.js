@@ -16,14 +16,13 @@ import {ReactComponent as LanguageIcon} from '../../icons/language.svg';
 import {ReactComponent as LinkedAccountIcon} from '../../icons/linked_account.svg';
 
 import {
-    PrimaryWideButton,
     RowSplitter,
     SettingMenuRow,
     UserAccountBar,
     AccountSettings,
     OptionSettings, NotificationTDB,
 } from '../../components'
-import {Link} from "react-router-dom";
+
 import {LocalStorage} from "../../utils/utils";
 
 const SettingPage = () => {
@@ -35,7 +34,7 @@ const SettingPage = () => {
                 title="Restricted access!"
                 description="This page is available only after verification."
                 buttonText="Go to Sign in page"
-                link={ROUTER.SING_IN.URL}
+                link={`${ROUTER.SING_IN.URL}?backUrl=${ROUTER.SETTING.URL}`}
             />
         )
     }
