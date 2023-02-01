@@ -40,9 +40,12 @@ const SignInPage = () => {
             .then(res => {
                 if (res.length > 0) {
                     localStorage.setItem('guest', JSON.stringify(res[0]))
-                    navigate(backUrl);
+                    navigate(-1);
                 }
-                alert('User was not found')
+                if(!localStorage.getItem('guest')){
+                    alert('User was not found');
+                }
+
             });
     }
 
