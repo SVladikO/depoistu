@@ -14,9 +14,9 @@ const MenuItem = ({item = {}}) => {
     const dispatch = useDispatch();
 
     return (
-        <Wrapper className='pm-MenuItem' onClick={() => dispatch(showModalWindow())}>
+        <Wrapper className='pm-MenuItem'>
             <Flex justifyContent="stretch">
-                <FoodImage src={image_url}/>
+                <FoodImage src={image_url} onClick={() => dispatch(showModalWindow())}/>
                 <Flex flexDirection='column' width='80%'>
                     <Flex justifyContent="space-between">
                         <Title>{name}</Title>

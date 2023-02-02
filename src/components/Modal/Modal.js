@@ -4,7 +4,7 @@ import {useSelector, useDispatch} from "react-redux";
 import {closeModalWindow, showModalWindow} from "../../features/modal/modalSlice";
 
 
-const Modal = () => {
+const Modal = ({imageUrl, handleClose}) => {
     const modalWindow = useSelector(state => state.modal.modalWindow);
     const dispatch = useDispatch();
 
@@ -14,7 +14,7 @@ const Modal = () => {
 
     return (
         <Wrapper>
-            <ImagePlace/>
+            <ImagePlace>{imageUrl}</ImagePlace>
             <CloseIcon onClick={() => dispatch(closeModalWindow())}/>
         </Wrapper>
     );
