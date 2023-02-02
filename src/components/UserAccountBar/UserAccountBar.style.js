@@ -7,38 +7,39 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   width: 100%;
   align-items: center;
-  border-radius: ${BORDER_RADIUS.SECOND};
   padding: 15px 20px;
-  background-color: ${COLOR.ACCENT4};
 `
 export const ContentWrapper = styled.div`
   display: flex;
   width: 100%;
+  flex-direction: column;
+  justify-content: center;
 `;
 export const Avatar = styled.img`
   display: block;
-  width: 60px;
-  height: 60px;
+  width: 127px;
+  height: 127px;
   border-radius: ${BORDER_RADIUS.CIRCLE};
+  margin: 0 auto;
 `;
 export const TextContent = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 15px;
+  margin: 12px 0 0 0;
   align-items: center;
   justify-content: center;
 `;
 export const Name = styled.div`
   font-weight: 700;
-  font-size: 18px;
-  line-height: 22px;
-  color: ${COLOR.ACCENT1};
-  margin-bottom: 3px;
+  font-size: 20px;
+  line-height: 24px;
+  color: ${COLOR.PRIMARY};
+  margin: 0 0 11px 0;
 `;
-export const Status = styled.div`
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 16px;
+export const Phone = styled.div`
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
   color: #8A8A8F;
 `;
 export const Anchor = styled.div`
