@@ -7,13 +7,14 @@ import {ReactComponent as BasketIcon} from "../../icons/basket.svg";
 import {ReactComponent as TimeIcon} from "../../icons/time.svg";
 import {ReactComponent as MeasureIcon} from "../../icons/sss.svg";
 import {addOrderItem} from "../../features/order/orderSlice";
+import {showModalWindow} from "../../features/modal/modalSlice";
 
 const MenuItem = ({item = {}}) => {
     const {name, description, image_url, price, cooking_time, size, isLiked} = item;
     const dispatch = useDispatch();
 
     return (
-        <Wrapper className='pm-MenuItem'>
+        <Wrapper className='pm-MenuItem' onClick={() => dispatch(showModalWindow())}>
             <Flex justifyContent="stretch">
                 <FoodImage src={image_url}/>
                 <Flex flexDirection='column' width='80%'>

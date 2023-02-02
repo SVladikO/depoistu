@@ -1,12 +1,11 @@
 import React from 'react';
 import {useParams} from "react-router-dom";
-
 import {Flex} from "./SubCategory.style";
 
-import {Load, MenuItem} from "../../components";
+import {ErrorMessage, Load, MenuItem} from "../../components";
 import {BE_API} from "../../utils/config";
 import {useLocalStorageFetch} from "../../utils/hook";
-import {ErrorMessage} from "../../components";
+import {Modal} from "../../components";
 
 const SubCategoryPage = () => {
     const {categoryId} = useParams();
@@ -18,10 +17,11 @@ const SubCategoryPage = () => {
 
     return (
         <>
+            <Modal/>
             <Load/>
             <ErrorMessage/>
             <Flex>
-                {menu_items.map((menuItem, index) => <MenuItem key={index} item={menuItem} />)}
+                {menu_items.map((menuItem, index) => <MenuItem key={index} item={menuItem}/>)}
             </Flex>
         </>
 

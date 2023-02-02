@@ -36,6 +36,7 @@ import MenuItem from "./MenuItem/MenuItem";
 import OrderHistoryRow from "./OrderHistoryRow/OrderHistoryRow";
 import OrderIconWithCounter from "./OrderIconWithCounter/OrderIconWithCounter.jsx";
 import ErrorMessage from "./ErrorMessage/ErrorMessage";
+import Modal from "./Modal/Modal";
 
 export {
     SettingMenuRow,
@@ -58,6 +59,7 @@ export {
     Flex,
     Absolute,
     ErrorMessage,
+    Modal,
     ProductCard,
     ProductSizeBar,
     PrimaryWideButton,
