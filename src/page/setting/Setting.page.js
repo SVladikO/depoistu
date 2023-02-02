@@ -15,10 +15,10 @@ import {ReactComponent as CurrencyIcon} from '../../icons/currency.svg';
 import {ReactComponent as LanguageIcon} from '../../icons/language.svg';
 import {ReactComponent as LinkedAccountIcon} from '../../icons/linked_account.svg';
 import {ReactComponent as LikeIconIcon} from '../../icons/favorite.svg';
-import {ReactComponent as MapPointIcon} from '../../icons/map_point.svg';
+import {ReactComponent as DeliveryAddressIconIcon} from '../../icons/map_point.svg';
 import {ReactComponent as StoreIcon} from '../../icons/house.svg';
-import {ReactComponent as ListIcon} from '../../icons/list.svg';
-import {ReactComponent as ChatIcon} from '../../icons/chat.svg';
+import {ReactComponent as ConditionsIcon} from '../../icons/list.svg';
+import {ReactComponent as HelpIcon} from '../../icons/chat.svg';
 
 
 import {
@@ -60,11 +60,11 @@ const SettingPage = () => {
                                 href={ROUTER.ORDER_HISTORY.URL}/>
                 <SettingMenuRow icon={LockIcon} title='Change Password' href={ROUTER.CHANGE_PASSWORD.URL}/>
                 <SettingMenuRow icon={PaymentIcon} title='Payment' href='/catalog'/>
-                <SettingMenuRow icon={MapPointIcon} title='Delivery Address' href='/catalog'/>
+                <SettingMenuRow icon={DeliveryAddressIconIcon} title='Delivery Address' href='/catalog'/>
                 <SettingMenuRow icon={StoreIcon} title='Store Location' href='/catalog'/>
                 <SettingMenuRow icon={NotificationIcon} title='Notification' href='/catalog'/>
-                <SettingMenuRow icon={ListIcon} title='Terms & Conditions' href='/catalog'/>
-                <SettingMenuRow icon={ChatIcon} title='Help' href='/catalog'/>
+                <SettingMenuRow icon={ConditionsIcon} title='Terms & Conditions' href='/catalog'/>
+                <SettingMenuRow icon={HelpIcon} title='Help' href='/catalog'/>
                 <SettingMenuRow icon={SettingIcon} title='Setting' href='/catalog'/>
                 <SettingMenuRow icon={LogOutIcon} title='Sign Out' changeHandler={logOut}/>
             </AccountSettings>
