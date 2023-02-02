@@ -14,7 +14,7 @@ const Modal = ({imageUrl, handleClose}) => {
 
     return (
         <Wrapper>
-            <ImagePlace>{imageUrl}</ImagePlace>
+            {imageUrl}
             <CloseIcon onClick={() => dispatch(closeModalWindow())}/>
         </Wrapper>
     );

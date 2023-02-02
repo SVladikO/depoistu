@@ -10,15 +10,9 @@ export const Wrapper = styled.div`
   border-radius: ${BORDER_RADIUS.SECOND};
   overflow: hidden;
   z-index: 100;
-  svg {
+  img {
     position: absolute;
     bottom: 5px;
     right: 5px;
   }
-`;
-export const ImagePlace = styled.div`
-  background-color: ${COLOR.ACCENT2};
-  border-radius: ${BORDER_RADIUS.CIRCLE};
-  min-width: 336px;
-  min-height: 336px;
 `;
