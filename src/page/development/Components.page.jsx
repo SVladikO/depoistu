@@ -204,7 +204,7 @@ const columns = [
                 (() => {
                     const item = {
                         name: 'Chees Bites Pizza',
-                        ingredients: ['spicy', 'tomato', 'sauce', 'chili', 'mozzarella'],
+                        description: 'spicy, tomato, sauce, chili, mozzarella',
                         price: 7
                     }
                     return <OrderHistoryRow item={item}/>
@@ -214,7 +214,7 @@ const columns = [
             title: 'OrderHistoryRow', component: (function () {
                 const item = {
                     name: 'Chees Bites Pizza',
-                    ingredients: ['spicy', 'tomato', 'sauce', 'chili', 'mozzarella', ],
+                    description: 'spicy, tomato, sauce, chili, mozzarella',
                     price: 7,
                     size: 'Medium',
                     status: 'Completed'
