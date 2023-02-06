@@ -1,13 +1,14 @@
 import {useDispatch} from "react-redux";
 
-import {showPopup} from "../../features/imagePopup/imagePopupSlice";
-
 import {Wrapper, FoodImage, Title, Description, AdditionalDetails, InvisibleDivider} from "./MenuItem.style";
+
 import {Price, Flex, Absolute, Like} from "../index";
-import {ReactComponent as BasketIcon} from "../../icons/basket.svg";
 import {ReactComponent as TimeIcon} from "../../icons/time.svg";
 import {ReactComponent as MeasureIcon} from "../../icons/sss.svg";
+import {ReactComponent as BasketIcon} from "../../icons/basket.svg";
+
 import {addOrderItem} from "../../features/order/orderSlice";
+import {showPopup} from "../../features/imagePopup/imagePopupSlice";
 
 const MenuItem = ({item = {}}) => {
     const {name, description, image_url, price, cooking_time, size, isLiked} = item;
