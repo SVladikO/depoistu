@@ -19,6 +19,7 @@ import {ReactComponent as DeliveryAddressIcon} from '../../icons/map_point.svg';
 import {ReactComponent as StoreIcon} from '../../icons/house.svg';
 import {ReactComponent as ConditionsIcon} from '../../icons/list.svg';
 import {ReactComponent as HelpIcon} from '../../icons/chat.svg';
+import {ReactComponent as BusinessIcon} from '../../icons/busines.svg';
 
 
 import {
@@ -62,16 +63,15 @@ const SettingPage = () => {
                 <SettingMenuRow icon={PaymentIcon} title='Payment' href='/catalog'/>
                 <SettingMenuRow icon={DeliveryAddressIcon} title='Delivery Address' href='/catalog'/>
                 <SettingMenuRow icon={StoreIcon} title='Store Location' href='/catalog'/>
-                <SettingMenuRow icon={NotificationIcon} title='Notification' href='/catalog'/>
                 <SettingMenuRow icon={ConditionsIcon} title='Terms & Conditions' href='/catalog'/>
                 <SettingMenuRow icon={HelpIcon} title='Help' href='/catalog'/>
-                <SettingMenuRow icon={SettingIcon} title='Setting' href='/catalog'/>
+                <SettingMenuRow icon={BusinessIcon} title='For Business' href='/catalog'/>
                 <SettingMenuRow icon={LogOutIcon} title='Sign Out' changeHandler={logOut}/>
             </AccountSettings>
             <OptionSettings groupTitle='More Options'>
                 <SettingMenuRow icon={NewsletterIcon} title='Newsletter'
                                 toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>
-                <SettingMenuRow icon={TextMessageIcon} title='Text Message'
+                <SettingMenuRow icon={NotificationIcon} title='Notification'
                                 toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>
                 <SettingMenuRow icon={PhoneCallIcon} title='Phone Call'
                                 toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>
@@ -79,7 +79,6 @@ const SettingPage = () => {
                 <SettingMenuRow icon={LanguageIcon} title='Language' href='/catalog' label='English'/>
                 <SettingMenuRow icon={LinkedAccountIcon} title='Linked Account' href='/catalog'
                                 label='Facebook, go ...'/>
-
             </OptionSettings>
         </>
     );

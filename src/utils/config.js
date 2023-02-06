@@ -58,7 +58,7 @@ export const ROUTER =  {
     CATEGORY: {URL: '/',TITLE: 'Category',page: CategoryPage, showBottomMenu: true},
     ORDER_REVIEW: {URL: '/order',  TITLE: 'Order review', page: OrderPage, showBottomMenu: true},
     ORDER_HISTORY: {URL: '/history',  TITLE: 'Order History', page: OrderHistoryPage, subHeader: HistoryTabBar, showBottomMenu: true},
-    Favorite: {URL: '/Favorite',  TITLE: 'Favorite', page: () => {}},
+    Favorite: {URL: '/Favorite',  TITLE: 'Favorite Cart', page: () => {}},
     Profile: {URL: '/Profile',  TITLE: 'Profile', page: () => {}},
     SETTING: {URL: '/setting',  TITLE: 'Setting', page: SettingPage, showBottomMenu: true},
 }
