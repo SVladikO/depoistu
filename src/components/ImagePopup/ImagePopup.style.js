@@ -10,9 +10,13 @@ export const Wrapper = styled.div`
   border-radius: ${BORDER_RADIUS.SECOND};
   overflow: hidden;
   z-index: 100;
-  img {
+  svg {
     position: absolute;
     bottom: 5px;
     right: 5px;
   }
+`;
+export const Image = styled.img`
+  max-width: 336px;
+  border-radius: ${BORDER_RADIUS.CIRCLE};
 `;

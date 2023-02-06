@@ -1,3 +1,4 @@
+import {useEffect} from "react";
 import translations from "./translations";
 
 export const checkAccess = () => {
@@ -51,3 +52,4 @@ export const getParam = (key) => {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(key);
 }
+

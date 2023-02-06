@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useRef} from 'react';
 import {useDispatch} from "react-redux";
 
 import {Wrapper, FoodImage, Title, Description, AdditionalDetails, InvisibleDivider} from "./MenuItem.style";
@@ -7,16 +7,16 @@ import {ReactComponent as BasketIcon} from "../../icons/basket.svg";
 import {ReactComponent as TimeIcon} from "../../icons/time.svg";
 import {ReactComponent as MeasureIcon} from "../../icons/sss.svg";
 import {addOrderItem} from "../../features/order/orderSlice";
-import {showModalWindow} from "../../features/modal/modalSlice";
 
-const MenuItem = ({item = {}}) => {
+
+const MenuItem = ({item = {}, onClick, popUpRef}) => {
     const {name, description, image_url, price, cooking_time, size, isLiked} = item;
     const dispatch = useDispatch();
-
+    const ref = useRef();
     return (
-        <Wrapper className='pm-MenuItem'>
+        <Wrapper className='pm-MenuItem' ref={popUpRef}>
             <Flex justifyContent="stretch">
-                <FoodImage src={image_url} onClick={() => dispatch(showModalWindow())}/>
+                <FoodImage src={image_url} onClick={onClick}/>
                 <Flex flexDirection='column' width='80%'>
                     <Flex justifyContent="space-between">
                         <Title>{name}</Title>
