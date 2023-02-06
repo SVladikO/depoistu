@@ -9,14 +9,13 @@ export const Wrapper = styled.div`
   flex-direction: column;
   min-width: 325px;
   background-color: ${COLOR.ACCENT4};
-  padding: 30px;
+  padding: 15px;
   & > span {
     margin: 10px 0 0 0;
   }
 `;
 
 export const Text = styled.div`
-  margin: 15px 0 0 0;
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
