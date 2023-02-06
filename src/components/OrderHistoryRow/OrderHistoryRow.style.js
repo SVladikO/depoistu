@@ -1,15 +1,16 @@
 import styled from 'styled-components';
 import {BORDER_RADIUS, COLOR} from '../../utils/theme';
-import {hexToRgbA} from '../../utils/utils'
+import {hexToRgbA} from '../../utils/utils';
+
 export const Wrapper = styled.div`
-  padding: 10px 10px 10px 8px;
+  padding: 10px 10px 10px 10px;
   border-radius: ${BORDER_RADIUS.FOURTH};
   background-color: ${COLOR.ACCENT4};
   display: flex;
   min-width: 325px;
   svg:first-child{
-    width: 90px;
-    height: 90px;
+    min-width: 90px;
+    min-height: 90px;
   }
 `;
 export const Content = styled.div`
@@ -50,7 +51,7 @@ export const Factor = styled.span`
 export const PriceWrapper = styled.div`
   display: inline-flex;
   align-self: end;
-  margin-top: 2px;
+  margin-top: 15px;
 `;
 export const Price = styled.div`
   font-weight: 700;

@@ -51,7 +51,7 @@ const OrderHistoryRow = ({item, isHistory}) => {
                 </Row>
                 <RowLeftSide>
                     <PriceWrapper>
-                        <Factor>{amount}x</Factor><Price smallLineHeight={false}>{price}</Price>
+                        <Factor>{amount || 1}x</Factor><Price smallLineHeight={false}>{price}</Price>
                     </PriceWrapper>
                 </RowLeftSide>
                 <Row>{getChangeMealCountButtons()}</Row>
