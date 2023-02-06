@@ -1,16 +1,33 @@
-import {Image, Wrapper} from './ImagePopup.style';
+import {useDispatch, useSelector} from "react-redux";
+
+import {InvisibleWrapper, Wrapper, Image} from './ImagePopup.style';
 import {ReactComponent as CloseIcon} from "../../icons/close.svg";
+import {hidePopup} from "../../features/imagePopup/imagePopupSlice";
 
+const ImagePopup = () => {
+    const isVisiblePopup = useSelector(state => state.imagePopup.value.isVisible);
+    const imageUrl = useSelector(state => state.imagePopup.value.imageUrl);
+    const dispatch = useDispatch();
 
-const ImagePopup = ({selectedMenuItem, handleClose}) => {
+    if (!isVisiblePopup) {
+        return null;
+    }
+
     return (
-        <div style={{height: '100vh'}} onClick={handleClose}>
-            <Wrapper onClick={(e) => e.stopPropagation()}>
-                <Image src={selectedMenuItem.image_url}/>
-                <CloseIcon onClick={handleClose}/>
-            </Wrapper>
-        </div>
+        <ImagePopupContent
+            imageUrl={imageUrl}
+            handleClose={() => dispatch(hidePopup())}
+        />
     );
 };
+
+const ImagePopupContent = ({handleClose, imageUrl}) => (
+    <InvisibleWrapper onClick={handleClose}>
+        <Wrapper onClick={(e) => e.stopPropagation()}>
+            <Image src={imageUrl}/>
+            <CloseIcon onClick={handleClose}/>
+        </Wrapper>
+    </InvisibleWrapper>
+);
 
 export default ImagePopup;

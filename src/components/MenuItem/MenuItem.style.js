@@ -3,7 +3,7 @@ import {BORDER_RADIUS, COLOR} from "../../utils/theme";
 
 export const Wrapper = styled.div`
   position: relative;
-  padding: 13px 10px 10px;
+  padding: 10px;
   min-height: 116px;
   width: 100%;
   font-style: normal;

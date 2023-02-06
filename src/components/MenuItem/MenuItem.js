@@ -1,5 +1,6 @@
-import React,{useRef} from 'react';
 import {useDispatch} from "react-redux";
+
+import {showPopup} from "../../features/imagePopup/imagePopupSlice";
 
 import {Wrapper, FoodImage, Title, Description, AdditionalDetails, InvisibleDivider} from "./MenuItem.style";
 import {Price, Flex, Absolute, Like} from "../index";
@@ -8,15 +9,14 @@ import {ReactComponent as TimeIcon} from "../../icons/time.svg";
 import {ReactComponent as MeasureIcon} from "../../icons/sss.svg";
 import {addOrderItem} from "../../features/order/orderSlice";
 
-
-const MenuItem = ({item = {}, onClick, popUpRef}) => {
+const MenuItem = ({item = {}}) => {
     const {name, description, image_url, price, cooking_time, size, isLiked} = item;
     const dispatch = useDispatch();
-    const ref = useRef();
+
     return (
-        <Wrapper className='pm-MenuItem' ref={popUpRef}>
+        <Wrapper className='pm-MenuItem'>
             <Flex justifyContent="stretch">
-                <FoodImage src={image_url} onClick={onClick}/>
+                <FoodImage src={image_url} onClick={() => dispatch(showPopup(image_url))}/>
                 <Flex flexDirection='column' width='80%'>
                     <Flex justifyContent="space-between">
                         <Title>{name}</Title>
