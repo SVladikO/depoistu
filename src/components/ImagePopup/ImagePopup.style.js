@@ -16,8 +16,6 @@ export const InvisibleWrapper = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  height: 94vw;
-  width: 94vw;
   margin: 10px;
   background-color: ${COLOR.ACCENT4};
   padding: 10px;

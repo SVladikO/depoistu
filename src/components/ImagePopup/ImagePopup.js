@@ -14,20 +14,21 @@ const ImagePopup = () => {
     }
 
     return (
-        <ImagePopupContent
-            imageUrl={imageUrl}
-            handleClose={() => dispatch(hidePopup())}
-        />
+        <InvisibleWrapper onClick={() => dispatch(hidePopup())}>
+            <ImagePopupContent
+                imageUrl={imageUrl}
+                handleClose={() => dispatch(hidePopup())}
+            />
+        </InvisibleWrapper>
+
     );
 };
 
-const ImagePopupContent = ({handleClose, imageUrl}) => (
-    <InvisibleWrapper onClick={handleClose}>
-        <Wrapper onClick={(e) => e.stopPropagation()}>
-            <Image src={imageUrl}/>
-            <CloseIcon onClick={handleClose}/>
-        </Wrapper>
-    </InvisibleWrapper>
+export const ImagePopupContent = ({handleClose, imageUrl}) => (
+    <Wrapper onClick={(e) => e.stopPropagation()}>
+        <Image src={imageUrl}/>
+        <CloseIcon onClick={handleClose}/>
+    </Wrapper>
 );
 
 export default ImagePopup;
