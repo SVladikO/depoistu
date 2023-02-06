@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {BORDER_RADIUS, COLOR} from "../../utils/theme";
+import {BORDER_RADIUS, COLOR, DEVICE_WIDTH} from "../../utils/theme";
 
 export const InvisibleWrapper = styled.div`
   background: rgba(0, 0, 0, 0.8);
@@ -16,6 +16,8 @@ export const InvisibleWrapper = styled.div`
 `;
 
 export const Wrapper = styled.div`
+  min-width: ${DEVICE_WIDTH.MIN_WITH_PADDING};
+  min-height: ${DEVICE_WIDTH.MIN_WITH_PADDING};
   margin: 10px;
   background-color: ${COLOR.ACCENT4};
   padding: 10px;

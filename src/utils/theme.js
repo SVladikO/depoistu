@@ -26,5 +26,6 @@ export const BORDER_RADIUS = {
 
 export const DEVICE_WIDTH = {
     MIN: '370px',
+    MIN_WITH_PADDING: '350px',
     MAX: '414px',
 }
