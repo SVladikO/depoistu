@@ -18,6 +18,7 @@ export const InvisibleWrapper = styled.div`
 export const Wrapper = styled.div`
   min-width: ${DEVICE_WIDTH.MIN_WITH_PADDING};
   min-height: ${DEVICE_WIDTH.MIN_WITH_PADDING};
+  max-height: 100%;
   margin: 10px;
   background-color: ${COLOR.ACCENT4};
   padding: 10px;
@@ -34,6 +35,6 @@ export const Wrapper = styled.div`
   }
 `;
 export const Image = styled.img`
-  max-width: 100%;
+  max-width: 75%;
   border-radius: ${BORDER_RADIUS.CIRCLE};
 `;
