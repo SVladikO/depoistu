@@ -36,8 +36,10 @@ const Loading = () => {
 
 const Error = () => {
     const message = useSelector(state => state.error.value);
+    const urlPage = useSelector(state => state.error.whereErrorHappenedUrl);
 
-    if (!message) {
+
+    if (!message || urlPage !== window.location.href) {
         return;
     }
 
