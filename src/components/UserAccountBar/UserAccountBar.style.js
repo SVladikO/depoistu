@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   width: 100%;
   align-items: center;
-  padding: 15px 20px;
+  padding: 0 20px;
 `
 export const ContentWrapper = styled.div`
   display: flex;
@@ -40,7 +40,7 @@ export const Phone = styled.div`
   font-weight: 500;
   font-size: 16px;
   line-height: 19px;
-  color: #8A8A8F;
+  color: ${COLOR.ACCENT1};
 `;
 export const Anchor = styled.div`
     & > svg {
