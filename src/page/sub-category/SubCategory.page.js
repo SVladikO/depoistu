@@ -3,9 +3,9 @@ import {useParams} from "react-router-dom";
 
 import {Flex} from "./SubCategory.style";
 
-import {Load, MenuItem} from "../../components";
+import {MenuItem, Notification} from "../../components";
 import {BE_API} from "../../utils/config";
-import {useLocalStorageFetch} from "../../hook";
+import {useLocalStorageFetch} from "../../utils/hook";
 
 const SubCategoryPage = () => {
     const {categoryId} = useParams();
@@ -17,7 +17,8 @@ const SubCategoryPage = () => {
 
     return (
         <>
-            <Load/>
+            <Notification.Loading/>
+            <Notification.Error/>
             <Flex>
                 {menu_items.map((menuItem, index) => <MenuItem key={index} item={menuItem} />)}
             </Flex>

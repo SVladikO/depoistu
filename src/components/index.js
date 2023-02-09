@@ -8,11 +8,11 @@ import {
 } from "./Button/Button.style";
 
 import Input from "./Input/Input";
-import EmptyBasket from "./EmptyBasket/EmptyBasket";
+import NotificationTDB from "./NotificationTDB/NotificationTDB";
 import Price from "./Price/Price";
 import Rating from "./Rating/Rating";
 import CategoryItem from "./CategoryItem/CategoryItem";
-import Load from "./Load/Load";
+import Notification from "./Notification/Notification";
 import {RowSplitterStyle as RowSplitter} from "./RowSplitter/RowSplitter.style";
 import CheckBoxWithLabel from "./CheckBoxWithLabel/CheckBoxWithLabel";
 import ToggleCheckbox from "./ToggleCheckbox/ToggleCheckbox";
@@ -36,6 +36,7 @@ import MenuItem from "./MenuItem/MenuItem";
 import OrderHistoryRow from "./OrderHistoryRow/OrderHistoryRow";
 import OrderIconWithCounter from "./OrderIconWithCounter/OrderIconWithCounter.jsx";
 
+
 export {
     SettingMenuRow,
     CategoryTitle,
@@ -44,7 +45,7 @@ export {
     Input,
     Like,
     Rating,
-    EmptyBasket,
+    NotificationTDB,
     RowSplitter,
     HistoryTabBar,
     BottomMenu,
@@ -53,8 +54,8 @@ export {
     ToggleCheckbox,
     CheckBoxWithLabel,
     Price,
-    Load,
     Flex,
+    Notification,
     Absolute,
     ProductCard,
     ProductSizeBar,

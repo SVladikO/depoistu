@@ -25,7 +25,7 @@ export const RightContent = styled.div`
 `;
 
 export const Title = styled.div`
-  font-weight: 500;
+  font-weight: 600;
   font-size: 16px;
   line-height: 19px;
   color: ${COLOR.ACCENT1};

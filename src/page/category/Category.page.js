@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 
-import {useLocalStorageFetch} from '../../hook';
+import {useLocalStorageFetch} from '../../utils/hook';
 import {BE_API, ROUTER, CATEGORY_MAPPER} from '../../utils/config';
 import {
     Content,
@@ -10,8 +10,9 @@ import {
 
 import {
     CategoryItem,
-    Load
+    Notification
 } from "../../components";
+
 
 const CategoryPage = () => {
     const [categories] = useLocalStorageFetch(
@@ -25,7 +26,8 @@ const CategoryPage = () => {
 
     return (
         <Content>
-            <Load/>
+            <Notification.Loading/>
+            <Notification.Error/>
             <Flex>
                 {
                     categories.map(category_id => (
