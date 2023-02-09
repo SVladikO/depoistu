@@ -33,7 +33,6 @@ import
 } from "../../components";
 
 import CatalogPage from "./Catalog.page";
-import CountAccumulator from '../../components/CountAccumulator/CountAccumulator';
 
 import {ReactComponent as EmptyBasketIcon} from "../../icons/empty_basket.svg";
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
