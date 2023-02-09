@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
 `;
 export const Content = styled.div`
   & > div {
-    margin-top: 10px;
+    margin-top: 15px;
   }
   & > div:first-child{
     margin-top: 0;

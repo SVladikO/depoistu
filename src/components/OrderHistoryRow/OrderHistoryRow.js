@@ -10,19 +10,33 @@ import {
     Description,
     Factor,
     PriceWrapper,
-    ColoredSize,
-    Size,
+    ButtonWrapper,
+    WideButton,
+    Space,
     Image,
-    Status
+    Status, RowLeftSide
 } from "./OrderHistoryRow.style";
-import CountAccumulator from "../CountAccumulator/CountAccumulator";
 import Price from "../Price/Price";
 import {ReactComponent as AvatarIcon} from "../../icons/avatar.svg";
 import {ReactComponent as DeleteIcon} from "../../icons/delete.svg";
 
 const OrderHistoryRow = ({item, isHistory}) => {
     const dispatch = useDispatch();
-    const {id, name, description, price, image_url, size, status, amount} = item || {};
+    const {id, name, description, price, image_url, status, amount} = item || {};
+
+    const getChangeMealCountButtons = () => {
+        if (isHistory) {
+            return null;
+        }
+
+        return (
+            <ButtonWrapper>
+                <WideButton onClick={() => dispatch(decrementOrderItem(item))}>-</WideButton>
+                <Space/>
+                <WideButton onClick={() => dispatch(addOrderItem(item))}>+</WideButton>
+            </ButtonWrapper>
+        )
+    }
 
     return (
         <Wrapper>
@@ -35,20 +49,12 @@ const OrderHistoryRow = ({item, isHistory}) => {
                 <Row>
                     <Description>{description}</Description>
                 </Row>
-                <Row>
-                    {
-                        isHistory
-                            ? <Size>Size:<ColoredSize>{size}</ColoredSize></Size>
-                            : <CountAccumulator
-                                count={amount}
-                                incrementHandler={() => dispatch(addOrderItem(item))}
-                                decrementHandler={() => dispatch(decrementOrderItem(item))}
-                            />
-                    }
+                <RowLeftSide>
                     <PriceWrapper>
-                        <Factor>{amount}x</Factor><Price small>{price}</Price>
+                        <Factor>{amount || 1}x</Factor><Price smallLineHeight={false}>{price}</Price>
                     </PriceWrapper>
-                </Row>
+                </RowLeftSide>
+                <Row>{getChangeMealCountButtons()}</Row>
             </Content>
         </Wrapper>
     );
