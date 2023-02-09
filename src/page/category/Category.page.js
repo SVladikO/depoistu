@@ -10,9 +10,9 @@ import {
 
 import {
     CategoryItem,
-    Load
+    Notification
 } from "../../components";
-import {ErrorMessage} from "../../components";
+
 
 const CategoryPage = () => {
     const [categories] = useLocalStorageFetch(
@@ -26,8 +26,8 @@ const CategoryPage = () => {
 
     return (
         <Content>
-            <Load/>
-            <ErrorMessage/>
+            <Notification.Loading/>
+            <Notification.Error/>
             <Flex>
                 {
                     categories.map(category_id => (

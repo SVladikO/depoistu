@@ -16,6 +16,6 @@ export const fetchData = async (url, body) => {
     if (response.ok) {
         return response.json();
     }
-
-    throw new Error('Error')
+    const message = response.status + " " + response.statusText;
+    throw new Error(message)
 }

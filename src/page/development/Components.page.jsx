@@ -18,6 +18,7 @@ import
     PrimaryWithIconButton,
     SecondaryWithIconButton,
     ContentContainer,
+    Notification,
     NavigationHeader,
     ProductSizeBar,
     ProductCard,
@@ -168,6 +169,9 @@ const columns = [
             title: 'UserAccountBar',
             component: <UserAccountBar fullName="Jhon Smith" status="Basic Member"/>
         },
+        {title: 'Success', component: <Notification.Success />},
+        {title: 'Loading', component: <Notification.Loading showSpinner={true}/>},
+        {title: 'Error', component: <Notification.Error />},
 
     ],
     [
