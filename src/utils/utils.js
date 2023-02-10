@@ -1,4 +1,3 @@
-import {useEffect} from "react";
 import translations from "./translations";
 
 export const checkAccess = () => {
