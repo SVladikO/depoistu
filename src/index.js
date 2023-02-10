@@ -11,6 +11,7 @@ import reportWebVitals from './reportWebVitals';
 import {getRoutes} from "./utils/navigation";
 import {showDevelopmentPageUrls} from "./utils/log";
 import {checkAccess, setBrowserTabTitle} from "./utils/utils";
+import {ImagePopup} from "./components";
 
 const container = document.getElementById('root');
 const root = createRoot(container);
@@ -26,6 +27,7 @@ root.render(
             <Provider store={store}>
                 <Wrapper>
                     {getRoutes()}
+                    <ImagePopup />
                 </Wrapper>
             </Provider>
         </BrowserRouter>

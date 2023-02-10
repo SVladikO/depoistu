@@ -1,6 +1,4 @@
-import React from 'react';
 import {useParams} from "react-router-dom";
-
 import {Flex} from "./SubCategory.style";
 
 import {MenuItem, Notification} from "../../components";
@@ -20,7 +18,7 @@ const SubCategoryPage = () => {
             <Notification.Loading/>
             <Notification.Error/>
             <Flex>
-                {menu_items.map((menuItem, index) => <MenuItem key={index} item={menuItem} />)}
+                {menu_items.map((menuItem, index) => <MenuItem key={index} item={menuItem}/>)}
             </Flex>
         </>
 
