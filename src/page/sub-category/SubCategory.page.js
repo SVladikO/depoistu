@@ -1,7 +1,7 @@
 import {useParams} from "react-router-dom";
 import {Flex} from "./SubCategory.style";
 
-import {ErrorMessage, Load, MenuItem, Notification} from "../../components";
+import {MenuItem, Notification} from "../../components";
 import {BE_API} from "../../utils/config";
 import {useLocalStorageFetch} from "../../utils/hook";
 

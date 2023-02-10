@@ -35,7 +35,6 @@ import Like from "./Like/Like";
 import MenuItem from "./MenuItem/MenuItem";
 import OrderHistoryRow from "./OrderHistoryRow/OrderHistoryRow";
 import OrderIconWithCounter from "./OrderIconWithCounter/OrderIconWithCounter.jsx";
-import ErrorMessage from "./ErrorMessage/ErrorMessage";
 import ImagePopup from "./ImagePopup/ImagePopup";
 
 export {
@@ -58,7 +57,6 @@ export {
     Flex,
     Notification,
     Absolute,
-    ErrorMessage,
     ImagePopup,
     ProductCard,
     ProductSizeBar,
