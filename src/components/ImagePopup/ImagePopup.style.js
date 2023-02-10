@@ -17,7 +17,7 @@ export const InvisibleWrapper = styled.div`
 
 export const Wrapper = styled.div`
   min-width: ${DEVICE_WIDTH.MIN_WITH_PADDING};
-  min-height: ${DEVICE_WIDTH.MIN_WITH_PADDING};
+  min-height: auto;
   max-height: 100%;
   margin: 10px;
   background-color: ${COLOR.ACCENT4};
