@@ -18,6 +18,7 @@ import
     PrimaryWithIconButton,
     SecondaryWithIconButton,
     ContentContainer,
+    Notification,
     NavigationHeader,
     ProductSizeBar,
     ProductCard,
@@ -32,7 +33,6 @@ import
 } from "../../components";
 
 import CatalogPage from "./Catalog.page";
-import CountAccumulator from '../../components/CountAccumulator/CountAccumulator';
 
 import {ReactComponent as EmptyBasketIcon} from "../../icons/empty_basket.svg";
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
@@ -116,8 +116,6 @@ const columns = [
                 })()
 
         },
-        {title: 'CountAccumulator', component: <CountAccumulator count={16}/>},
-        {title: 'CountAccumulator', component: <CountAccumulator count={16}/>},
         {title: 'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
         {
             title: 'NavigationLabelHref',
@@ -169,6 +167,9 @@ const columns = [
             title: 'UserAccountBar',
             component: <UserAccountBar fullName="Jhon Smith" status="Basic Member"/>
         },
+        {title: 'Success', component: <Notification.Success />},
+        {title: 'Loading', component: <Notification.Loading showSpinner={true}/>},
+        {title: 'Error', component: <Notification.Error />},
 
     ],
     [
@@ -210,7 +211,7 @@ const columns = [
                 (() => {
                     const item = {
                         name: 'Chees Bites Pizza',
-                        ingredients: ['spicy', 'tomato', 'sauce', 'chili', 'mozzarella'],
+                        description: 'spicy, tomato, sauce, chili, mozzarella',
                         price: 7
                     }
                     return <OrderHistoryRow item={item}/>
@@ -220,12 +221,12 @@ const columns = [
             title: 'OrderHistoryRow', component: (function () {
                 const item = {
                     name: 'Chees Bites Pizza',
-                    ingredients: ['spicy', 'tomato', 'sauce', 'chili', 'mozzarella'],
+                    description: 'spicy, tomato, sauce, chili, mozzarella',
                     price: 7,
                     size: 'Medium',
                     status: 'Completed'
                 }
-                return <OrderHistoryRow item={item}/>
+                return <OrderHistoryRow isHistory item={item}/>
             })()
         },
         {title: 'EmptyBasket', component:

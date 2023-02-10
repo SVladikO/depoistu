@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
 export const Content = styled.div`
   margin-bottom: 26px;
   & > div {
-    margin-top: 10px;
+    margin-top: 15px;
   }
   & > div:first-child{
     margin-top: 0;
@@ -29,10 +29,8 @@ export const FixedContent = styled.div`
 
 export const AmountInfo = styled.div`
   font-weight: 700;
-  padding-right: 7px;
-  padding-left: 30%;
-  font-size: 16px;
-  line-height: 19px;
+  font-size: 20px;
+  line-height: 24px;
   color: ${COLOR.ACCENT1};
   display: flex;
   justify-content: space-between;

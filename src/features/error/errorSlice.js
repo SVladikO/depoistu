@@ -1,7 +1,8 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
-    value: ""
+    value: "",
+    whereErrorHappenedUrl: ""
 }
 
 export const errorSlice = createSlice({
@@ -10,9 +11,11 @@ export const errorSlice = createSlice({
     reducers: {
         addErrorMessage: (state, action) => {
             state.value = action.payload;
+            state.whereErrorHappenedUrl = window.location.href;
         },
         deleteErrorMessage: (state) => {
             state.value = "";
+            state.whereErrorHappenedUrl = ""
         }
     }
 });
