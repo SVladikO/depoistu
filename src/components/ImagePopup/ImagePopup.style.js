@@ -3,7 +3,7 @@ import {BORDER_RADIUS, COLOR} from "../../utils/theme";
 
 export const InvisibleWrapper = styled.div`
   background: rgba(0, 0, 0, 0.8);
-  position: absolute;
+  position: fixed;
   min-height: 100vh;
   width: 100%;
   left: 0;
@@ -12,7 +12,7 @@ export const InvisibleWrapper = styled.div`
   bottom: 0;
   display: flex;
   justify-content: center;
-  padding: 80px 0 0 0;
+  align-items: center;
   z-index: 10;
 `;
 
