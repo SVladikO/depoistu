@@ -1,4 +1,3 @@
-import LoadingPage from "../page/Loading.page";
 import OrderPage from "../page/order/Order.page";
 import SignInPage from "../page/sing-in/SignIn.page";
 import SingUpPage from "../page/sing-up/SingUp.page";
@@ -52,7 +51,6 @@ const getSubCategoryTitle = ({categoryId}) => CATEGORY_MAPPER[categoryId].title;
 
 export const ROUTER =  {
 
-    LOADING: {URL: '/loading',TITLE: 'Loading',page: LoadingPage},
     SING_IN: { URL: '/sign-in', TITLE: 'Sing in', page: SignInPage, showBottomMenu: true },
     SING_UP: { URL: '/sing-up',  TITLE: 'Sing up', page: SingUpPage, showBottomMenu: true},
     CATEGORY: {URL: '/',TITLE: 'Category',page: CategoryPage, showBottomMenu: true},
