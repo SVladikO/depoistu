@@ -1,17 +1,17 @@
 import React from 'react';
 import {Route, Routes} from "react-router-dom";
 
-import {DEV_ROUTER, ROUTER, ROUTERS} from "./config";
+import {DEV_ROUTER, ROUTERS} from "./config";
 
 import {COLOR} from './theme'
 
-import LoadingPage from "../page/Loading.page";
 import CatalogPage from '../page/development/Catalog.page';
 import ComponentsPage from '../page/development/Components.page';
 
 import styled from 'styled-components'
 import {DEVICE_WIDTH} from "./theme";
 import {BottomMenu, NavigationHeader} from "../components";
+
 
 export const MobileDevice = styled.div`
   min-width: ${DEVICE_WIDTH.MIN};
@@ -43,40 +43,39 @@ export const Centralicer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: start;
-  padding: 90px 25px 110px 25px;
+  padding: 90px 10px 110px;
 `;
 
-const routes = ROUTERS.map(r => <Route key={r.URL} path={r.URL + (r.PARAMS || '')} element={
-    <MobileDevice>
-        <TopWrapper>
-            <NavigationHeader backUrl={r.BACK_URL} title={r.TITLE} getTitle={r.getTitle}/>
-        </TopWrapper>
-        <Centralicer>
-            <r.page/>
-        </Centralicer>
-        {r.showBottomMenu &&
-            <BottomWrapper>
-                <BottomMenu/>
-            </BottomWrapper>
-        }
-    </MobileDevice>
-}/>);
+const routes = ROUTERS.map(r =>
+    <Route
+        key={r.URL}
+        path={r.URL + (r.PARAMS || '')}
+        element={
+            <MobileDevice>
+                <TopWrapper>
+                    <NavigationHeader backUrl={r.BACK_URL} title={r.TITLE} getTitle={r.getTitle}>
+                        {r.subHeader && <r.subHeader/>}
+                    </NavigationHeader>
+                </TopWrapper>
+                <Centralicer>
+                    <r.page/>
+                </Centralicer>
+                {r.showBottomMenu &&
+                    <BottomWrapper>
+                        <BottomMenu/>
+                    </BottomWrapper>
+                }
+            </MobileDevice>
+        }/>);
 
 export const getRoutes = () => {
     return (
         <>
             <Routes>
-                {/* Development pages start */}
                 <Route path={DEV_ROUTER.COMPONENTS} element={<ComponentsPage/>}/>
                 <Route path={DEV_ROUTER.PAGES} element={<CatalogPage/>}/>
-                {/* Development pages end */}
+                {routes}
             </Routes>
-
-            <Routes>
-                <Route path={ROUTER.LOADING.URL} element={<LoadingPage/>}/>
-            </Routes>
-
-            <Routes>{routes}</Routes>
         </>
     );
 };

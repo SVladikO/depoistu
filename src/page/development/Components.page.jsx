@@ -18,6 +18,7 @@ import
     PrimaryWithIconButton,
     SecondaryWithIconButton,
     ContentContainer,
+    Notification,
     NavigationHeader,
     ProductSizeBar,
     ProductCard,
@@ -27,13 +28,13 @@ import
     BottomMenu,
     MenuItem,
     OrderHistoryRow,
-    EmptyBasket,
+    NotificationTDB,
     RowSplitter,
 } from "../../components";
 
 import CatalogPage from "./Catalog.page";
 
-import CountAccumulator from '../../components/CountAccumulator/CountAccumulator';
+import {ReactComponent as EmptyBasketIcon} from "../../icons/empty_basket.svg";
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
 import {ReactComponent as MailIcon} from '../../icons/mail.svg';
@@ -43,8 +44,10 @@ import {ReactComponent as SandwichIcon} from '../../icons/sandwich.svg';
 import {ReactComponent as LanguageIcon} from "../../icons/language.svg";
 
 import {COLOR} from "../../utils/theme";
-import UserAccountGroup from "../../components/UserAccountGroup/UserAccountGroup";
-import UserOptionGroup from "../../components/UserOptionGroup/UserOptionGroup";
+import AccountSettings from "../../components/AccountSettings/AccountSettings";
+import OptionSettings from "../../components/OptionSettings/OptionSettings";
+import {ROUTER} from "../../utils/config";
+import {ImagePopupContent} from "../../components/ImagePopup/ImagePopup";
 
 const colors = Object.keys(COLOR).map(key =>
     ({title: key, component: <ColorCircle key={key} bg={COLOR[key]}/>, value: COLOR[key], width: '50px'})
@@ -113,8 +116,6 @@ const columns = [
                 })()
 
         },
-        {title: 'CountAccumulator', component: <CountAccumulator count={16}/>},
-        {title: 'CountAccumulator', component: <CountAccumulator count={16}/>},
         {title: 'CategoryTitle', component: <CategoryTitle>{`All Category`}</CategoryTitle>},
         {
             title: 'NavigationLabelHref',
@@ -126,32 +127,11 @@ const columns = [
         {title: "NavigationHeader", component: <NavigationHeader title="category"/>},
         {title: "NavigationHeader", component: <NavigationHeader backUrl={' '} title="category"/>},
         {title: 'ContentContainer', component: <ContentContainer>Sign up with</ContentContainer>},
+        {title: 'HistoryTabBar', component: <HistoryTabBar/>},
         {
-            title: 'HistoryTabBar', component:
-                (function () {
-                    const tabs = ['Completed', 'Upcoming', 'Cancelled'];
-                    const selectedTab = tabs[0];
-
-                    function handleClick(c) {
-                        console.log(`${tabs[c]}`)
-                    }
-
-                    return <HistoryTabBar selectedTab={selectedTab} tabs={tabs} handleClick={handleClick}/>
-                })()
-        },
-        {
-            title: 'HistoryTabBar in UserOptionGroup', component:
+            title: 'HistoryTabBar in OptionSettings', component:
                 <NavigationHeader title="category">
-                    {(function () {
-                        const tabs = ['Completed', 'Upcoming', 'Cancelled'];
-                        const selectedTab = tabs[0];
-
-                        function handleClick(c) {
-                            console.log(`${tabs[c]}`)
-                        }
-
-                        return <HistoryTabBar selectedTab={selectedTab} tabs={tabs} handleClick={handleClick}/>
-                    })()}
+                    <HistoryTabBar/>
                 </NavigationHeader>
         },
         {title: 'BottomMenu', component: <RowSplitter height='80px'><BottomMenu/></RowSplitter>},
@@ -170,23 +150,26 @@ const columns = [
             component: <SettingMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
         },
         {
-            title: 'UserAccountGroup', component:
-                <UserAccountGroup groupTitle="Accounts">
+            title: 'AccountSettings', component:
+                <AccountSettings groupTitle="Accounts">
                     <SettingMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
                     <SettingMenuRow icon={LogOutIcon} title="Only change handler" changeHandler={() => console.log('clicked')}/>
-                </UserAccountGroup>
+                </AccountSettings>
         },
         {
-            title: 'UserOptionGroup', component:
-                <UserOptionGroup groupTitle="Accounts">
+            title: 'OptionSettings', component:
+                <OptionSettings groupTitle="Accounts">
                     <SettingMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
                     <SettingMenuRow icon={LogOutIcon} title="Only change handler" changeHandler={() => console.log('clicked')}/>
-                </UserOptionGroup>
+                </OptionSettings>
         },
         {
             title: 'UserAccountBar',
             component: <UserAccountBar fullName="Jhon Smith" status="Basic Member"/>
         },
+        {title: 'Success', component: <Notification.Success />},
+        {title: 'Loading', component: <Notification.Loading showSpinner={true}/>},
+        {title: 'Error', component: <Notification.Error />},
 
     ],
     [
@@ -228,7 +211,7 @@ const columns = [
                 (() => {
                     const item = {
                         name: 'Chees Bites Pizza',
-                        description: ['spicy', 'tomato', 'sauce', 'chili', 'mozzarella'],
+                        description: 'spicy, tomato, sauce, chili, mozzarella',
                         price: 7
                     }
                     return <OrderHistoryRow item={item}/>
@@ -238,15 +221,24 @@ const columns = [
             title: 'OrderHistoryRow', component: (function () {
                 const item = {
                     name: 'Chees Bites Pizza',
-                    description: ['spicy', 'tomato', 'sauce', 'chili', 'mozzarella'],
+                    description: 'spicy, tomato, sauce, chili, mozzarella',
                     price: 7,
                     size: 'Medium',
                     status: 'Completed'
                 }
-                return <OrderHistoryRow item={item}/>
+                return <OrderHistoryRow isHistory item={item}/>
             })()
         },
-        {title: 'EmptyBasket', component: <EmptyBasket/>}
+        {title: 'EmptyBasket', component:
+                <NotificationTDB
+                    Icon={EmptyBasketIcon}
+                    title="Your Cart is empty"
+                    description="Looks like you haven't made your order yet."
+                    buttonText="Shop Now"
+                    link={ROUTER.CATEGORY.URL}
+                />
+        },
+        {title: 'ImagePopup', component: <ImagePopupContent imageUrl="https://raw.githubusercontent.com/SVladikO/testApp/master/images/4_cheese.jpg" />}
     ]
 ]
 

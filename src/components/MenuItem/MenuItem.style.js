@@ -3,7 +3,7 @@ import {BORDER_RADIUS, COLOR} from "../../utils/theme";
 
 export const Wrapper = styled.div`
   position: relative;
-  padding: 13px 10px 10px;
+  padding: 10px;
   min-height: 116px;
   width: 100%;
   font-style: normal;
@@ -12,42 +12,53 @@ export const Wrapper = styled.div`
   line-height: 19px;
   background: ${COLOR.ACCENT4};
   border-radius: ${BORDER_RADIUS.SECOND};
+  svg{
+    width: 25px;
+    height: 25px;
+    fill: ${COLOR.PRIMARY};
+  }
 `
 
 export const FoodImage = styled.img`
-  min-width: 60px;
-  min-height: 60px;
-  max-width: 60px;
-  max-height: 60px;
+  min-width: 90px;
+  min-height: 90px;
+  max-width: 90px;
+  max-height: 90px;
   background: ${COLOR.ACCENT2};
   border-radius: ${BORDER_RADIUS.CIRCLE};
   border: solid 1px ${COLOR.ACCENT4};
+  margin: 0 10px 0 0;
 `;
 
 export const Title = styled.div`
   font-weight: 700;
-  font-size: 16px;
-  line-height: 19px;
+  font-size: 18px;
+  line-height: 24px;
   color: ${COLOR.ACCENT1};
   margin: 0 0 4px;
 `;
 
 export const Description = styled.div`
-  width: 250px;
-  font-size: 14px;
-  font-weight: 100;
+  //width: 250px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
   margin: 4px 0 28px 0;
 `;
-
+export const InvisibleDivider = styled.div`
+  opacity: 0;
+  height: 10px;
+`;
 export const AdditionalDetails = styled.div`
   display: flex;
   align-items: center;
-  font-size: 14px;
   font-weight: 500;
-  color: ${COLOR.ACCENT1};
+  font-size: 16px;
+  line-height: 19px;
+  color: ${COLOR.ACCENT5};
 
   & > svg {
-    fill: ${COLOR.ACCENT1};
+    fill: #b5b5b5;
     height: 14px;
     width: 14px;
     margin: 0 2px 0 0;

@@ -1,7 +1,7 @@
 import React from 'react';
-import {RowsWrapper, GroupTitle} from "./UserAccountGroup.style";
+import {RowsWrapper, GroupTitle} from "./AccountSettings.style";
 
-const UserAccountGroup = ({groupTitle, children}) => {
+const AccountSettings = ({groupTitle, children}) => {
     return (
         <>
             <GroupTitle>{groupTitle}</GroupTitle>
@@ -10,5 +10,5 @@ const UserAccountGroup = ({groupTitle, children}) => {
     );
 };
 
-export default UserAccountGroup;
+export default AccountSettings;
 

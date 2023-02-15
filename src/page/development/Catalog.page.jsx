@@ -4,6 +4,7 @@ import {MobileWrapper} from './Catalog.style'
 import MobileDevice from '../../components/MobileDevice';
 import {ROUTERS} from "../../utils/config";
 
+
 function CatalogPage() {
     return (
         <MobileWrapper>

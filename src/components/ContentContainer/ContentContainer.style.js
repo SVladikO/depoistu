@@ -5,7 +5,7 @@ export const ContentContainer = styled.div`
   width: 100%;
   background: ${COLOR.ACCENT4};
   text-align: center;
-  padding: 30px 25px;
+  padding: 10px;
   border-radius: ${BORDER_RADIUS.SECOND};
   margin-bottom: 20px;
   

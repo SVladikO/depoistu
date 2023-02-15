@@ -1,17 +1,24 @@
 import React from 'react';
-import {createRoot} from 'react-dom/client';
 import {Provider} from 'react-redux';
-import {store} from './store';
 import {BrowserRouter} from "react-router-dom";
-import reportWebVitals from './reportWebVitals';
-import {showDevelopmentPageUrls} from "./utils/log";
-import {getRoutes} from "./utils/navigation";
+import {createRoot} from 'react-dom/client';
+
 import {Wrapper} from "./index.style";
+
+import {store} from './store';
+import reportWebVitals from './reportWebVitals';
+
+import {getRoutes} from "./utils/navigation";
+import {showDevelopmentPageUrls} from "./utils/log";
+import {checkAccess, setBrowserTabTitle} from "./utils/utils";
+import {ImagePopup} from "./components";
 
 const container = document.getElementById('root');
 const root = createRoot(container);
 
 
+setBrowserTabTitle()
+checkAccess();
 showDevelopmentPageUrls()
 
 root.render(
@@ -20,6 +27,7 @@ root.render(
             <Provider store={store}>
                 <Wrapper>
                     {getRoutes()}
+                    <ImagePopup />
                 </Wrapper>
             </Provider>
         </BrowserRouter>

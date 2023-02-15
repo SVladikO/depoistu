@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import {
     Content,
@@ -22,12 +22,40 @@ import {ReactComponent as LogoIcon} from "../../icons/logo.svg";
 import {ReactComponent as LockIcon} from "../../icons/lock.svg";
 import {ReactComponent as MailIcon} from "../../icons/mail.svg";
 
+import {Link, useNavigate} from "react-router-dom";
+
 import {ReactComponent as GoogleIcon} from "../../icons/google.svg";
 import {ReactComponent as FacebookIcon} from "../../icons/facebook.svg";
-import {ROUTER} from '../../utils/config';
-import {Link} from "react-router-dom";
+import {fetchData} from "../../utils/fetch";
+import {getParam, LocalStorage} from "../../utils/utils";
+import {BE_API, ROUTER} from '../../utils/config';
 
 const SignInPage = () => {
+    const [email, setEmail] = useState('vlad_S@gmail.com')
+    const [password, setPassword] = useState('vv11vv')
+    const navigate = useNavigate();
+    const backUrl = getParam(`backUrl`) || ROUTER.CATEGORY.URL;
+    const handleSingIn = () => {
+
+        fetchData(BE_API.SING_IN(), {email, password})
+            .then(res => {
+
+                if (res.length > 0) {
+                    localStorage.setItem('guest', JSON.stringify(res[0]))
+                    navigate(backUrl);
+                    return;
+                }
+
+                alert('User was not found');
+            });
+    }
+
+    const isGuestLogged = LocalStorage.getGuest();
+
+    if (isGuestLogged) {
+        return <div>You already logged!</div>
+    }
+
     return (
         <>
             <Content>
@@ -35,8 +63,8 @@ const SignInPage = () => {
                 <LogoText>{translations.company_name}</LogoText>
             </Content>
             <ContentContainer>
-                <Input Icon={MailIcon} placeholder={`Enter email`} />
-                <Input Icon={LockIcon} placeholder={`Enter password`} type="password"/>
+                <Input Icon={MailIcon} placeholder={`Enter email`} value={email}/>
+                <Input Icon={LockIcon} placeholder={`Enter password`} type="password" value={password}/>
                 <Flex flexDirection='column'>
                     <Flex justifyContent="space-between">
                         <NavLabel primary={false}>Or login with</NavLabel>
@@ -49,11 +77,11 @@ const SignInPage = () => {
                 </Flex>
                 <NavigationLabelHref
                     hrefTitle="Sing up!"
-                    to={ROUTER.SING_UP.URL}
+                    to={`${ROUTER.SING_UP.URL}?backUrl=${backUrl}`}
                     label="You don’t have an account?"
                 />
             </ContentContainer>
-            <PrimaryWideButton><span>Sing in</span></PrimaryWideButton>
+            <PrimaryWideButton onClick={handleSingIn}><span>Sing in</span></PrimaryWideButton>
         </>
     );
 };

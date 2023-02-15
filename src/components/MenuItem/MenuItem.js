@@ -1,12 +1,14 @@
-import React from 'react';
 import {useDispatch} from "react-redux";
 
-import {Wrapper, FoodImage, Title, Description, AdditionalDetails} from "./MenuItem.style";
+import {Wrapper, FoodImage, Title, Description, AdditionalDetails, InvisibleDivider} from "./MenuItem.style";
+
 import {Price, Flex, Absolute, Like} from "../index";
-import {ReactComponent as BasketIcon} from "../../icons/basket.svg";
 import {ReactComponent as TimeIcon} from "../../icons/time.svg";
 import {ReactComponent as MeasureIcon} from "../../icons/sss.svg";
+import {ReactComponent as BasketIcon} from "../../icons/basket.svg";
+
 import {addOrderItem} from "../../features/order/orderSlice";
+import {showPopup} from "../../features/imagePopup/imagePopupSlice";
 
 const MenuItem = ({item = {}}) => {
     const {name, description, image_url, price, cooking_time, size, isLiked} = item;
@@ -14,8 +16,8 @@ const MenuItem = ({item = {}}) => {
 
     return (
         <Wrapper className='pm-MenuItem'>
-            <Flex justifyContent="space-between">
-                <FoodImage src={image_url}/>
+            <Flex justifyContent="stretch">
+                <FoodImage src={image_url} onClick={() => dispatch(showPopup(image_url))}/>
                 <Flex flexDirection='column' width='80%'>
                     <Flex justifyContent="space-between">
                         <Title>{name}</Title>
@@ -23,6 +25,7 @@ const MenuItem = ({item = {}}) => {
                     </Flex>
                     <Price>{price}</Price>
                     <Description>{description}</Description>
+                    <InvisibleDivider/>
                     <Absolute bottom={'10px'}>
                         <AdditionalDetails>
                             <TimeIcon/> {cooking_time} m <MeasureIcon/> {size} g

@@ -23,6 +23,9 @@ export const orderSlice = createSlice({
             console.log('addOrderItem: ', orderCandidate)
             state.value.push(orderCandidate)
         },
+        deleteAllOrders: (state) => {
+            state.value = []
+        },
         deleteOrderItem: (state, action) => {
             console.log('deleteOrderItem: ', action.payload, state.value.filter(item => item.id !== action.payload))
             state.value = state.value.filter(item => item.id !== action.payload)
@@ -40,5 +43,5 @@ export const orderSlice = createSlice({
     }
 });
 
-export const {addOrderItem, deleteOrderItem, decrementOrderItem} = orderSlice.actions;
+export const {addOrderItem, deleteOrderItem, decrementOrderItem, deleteAllOrders} = orderSlice.actions;
 export default orderSlice.reducer;

@@ -8,10 +8,11 @@ import {
 } from "./Button/Button.style";
 
 import Input from "./Input/Input";
-import EmptyBasket from "./EmptyBasket/EmptyBasket";
+import NotificationTDB from "./NotificationTDB/NotificationTDB";
 import Price from "./Price/Price";
 import Rating from "./Rating/Rating";
 import CategoryItem from "./CategoryItem/CategoryItem";
+import Notification from "./Notification/Notification";
 import {RowSplitterStyle as RowSplitter} from "./RowSplitter/RowSplitter.style";
 import CheckBoxWithLabel from "./CheckBoxWithLabel/CheckBoxWithLabel";
 import ToggleCheckbox from "./ToggleCheckbox/ToggleCheckbox";
@@ -27,13 +28,14 @@ import {Absolute} from "./Absolute/Absolute.style";
 import {Flex} from "./Flex/Flex.style";
 import UserAccountBar from "./UserAccountBar/UserAccountBar";
 import NavigationLabelHref from './NavigationLabelHref/NavigationLabelHref';
-import UserAccountGroup from "./UserAccountGroup/UserAccountGroup";
-import UserOptionGroup from "./UserOptionGroup/UserOptionGroup";
+import AccountSettings from "./AccountSettings/AccountSettings";
+import OptionSettings from "./OptionSettings/OptionSettings";
 import BottomMenu from "./BottomMenu/BottomMenu";
 import Like from "./Like/Like";
 import MenuItem from "./MenuItem/MenuItem";
 import OrderHistoryRow from "./OrderHistoryRow/OrderHistoryRow";
 import OrderIconWithCounter from "./OrderIconWithCounter/OrderIconWithCounter.jsx";
+import ImagePopup from "./ImagePopup/ImagePopup";
 
 export {
     SettingMenuRow,
@@ -43,7 +45,7 @@ export {
     Input,
     Like,
     Rating,
-    EmptyBasket,
+    NotificationTDB,
     RowSplitter,
     HistoryTabBar,
     BottomMenu,
@@ -53,7 +55,9 @@ export {
     CheckBoxWithLabel,
     Price,
     Flex,
+    Notification,
     Absolute,
+    ImagePopup,
     ProductCard,
     ProductSizeBar,
     PrimaryWideButton,
@@ -65,8 +69,8 @@ export {
     NavigationHeader,
     NavigationLabelHref,
     UserAccountBar,
-    UserAccountGroup,
-    UserOptionGroup,
+    AccountSettings,
+    OptionSettings,
     OrderHistoryRow,
     OrderIconWithCounter,
 }

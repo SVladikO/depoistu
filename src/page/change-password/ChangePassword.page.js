@@ -7,7 +7,9 @@ import {
     PrimaryRoundedButton
 } from "../../components";
 
+
 const ChangePasswordPage = () => {
+
     return (
         <ContentContainer>
             <Input withSwitcher placeholder={`Old Password`}/>
