@@ -46,8 +46,8 @@ import {ReactComponent as LanguageIcon} from "../../icons/language.svg";
 import {COLOR} from "../../utils/theme";
 import AccountSettings from "../../components/AccountSettings/AccountSettings";
 import OptionSettings from "../../components/OptionSettings/OptionSettings";
-import {ROUTER} from "../../utils/config";
 import {ImagePopupContent} from "../../components/ImagePopup/ImagePopup";
+// import {ROUTER} from "../../utils/config";
 
 const colors = Object.keys(COLOR).map(key =>
     ({title: key, component: <ColorCircle key={key} bg={COLOR[key]}/>, value: COLOR[key], width: '50px'})
@@ -235,7 +235,7 @@ const columns = [
                     title="Your Cart is empty"
                     description="Looks like you haven't made your order yet."
                     buttonText="Shop Now"
-                    link={ROUTER.CATEGORY.URL}
+                    link="#"
                 />
         },
         {title: 'ImagePopup', component: <ImagePopupContent imageUrl="https://raw.githubusercontent.com/SVladikO/testApp/master/images/4_cheese.jpg" />}
