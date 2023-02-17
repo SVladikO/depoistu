@@ -28,7 +28,7 @@ const BottomMenu = () => {
             {/*    </MenuItem>*/}
             {/*</NavLink>*/}
             <NavLink to={ROUTER.SEARCH.URL}>
-                <MenuItem selected={isSelected('')}>
+                <MenuItem selected={isSelected(ROUTER.SEARCH.URL)}>
                     <SearchIcon/>
                     <Label>Search</Label>
                 </MenuItem>
