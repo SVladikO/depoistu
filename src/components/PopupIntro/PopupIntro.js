@@ -12,26 +12,32 @@ const PopupIntro = () => {
     const isVisiblePopup = useSelector(state => state.introPopup.value.isVisible);
     const dispatch = useDispatch();
 
+    const close = () => dispatch(hideIntroPopup());
+
     if (!isVisiblePopup) {
         return null;
     }
 
     return (
-        <InvisibleWrapper onClick={() => dispatch(hideIntroPopup())}>
+        <InvisibleWrapper onClick={close}>
             <Wrapper>
-                <ContentContainer>
-                    <Text>
-                        Меню всіх кафе та ресторанів України має
-                        бути в одному місці. Знайдіть тут
-                        свій заклад.
-                    </Text>
-                    <RowSplitter height={"15px"}/>
-                    <PrimaryWideButton onClick={() => dispatch(hideIntroPopup())}>Далі</PrimaryWideButton>
-                </ContentContainer>
+                <PopupIntroContent onClose={close}/>
             </Wrapper>
         </InvisibleWrapper>
 
     );
 };
+
+export const PopupIntroContent = ({close = () => {}}) => (
+    <ContentContainer>
+        <Text>
+            Меню всіх кафе та ресторанів України має
+            бути в одному місці. Знайдіть тут
+            свій заклад.
+        </Text>
+        <RowSplitter height={"15px"}/>
+        <PrimaryWideButton onClick={close}>Далі</PrimaryWideButton>
+    </ContentContainer>
+)
 
 export default PopupIntro;
