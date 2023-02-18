@@ -36,9 +36,11 @@ import MenuItem from "./MenuItem/MenuItem";
 import OrderHistoryRow from "./OrderHistoryRow/OrderHistoryRow";
 import OrderIconWithCounter from "./OrderIconWithCounter/OrderIconWithCounter.jsx";
 import ImagePopup from "./ImagePopup/ImagePopup";
+import Institution from "./Institution/Institution";
 
 export {
     SettingMenuRow,
+    Institution,
     CategoryTitle,
     CategoryItem,
     Discount,

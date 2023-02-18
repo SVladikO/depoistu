@@ -29,7 +29,7 @@ import
     MenuItem,
     OrderHistoryRow,
     NotificationTDB,
-    RowSplitter,
+    RowSplitter, Institution,
 } from "../../components";
 
 import CatalogPage from "./Catalog.page";
@@ -121,7 +121,8 @@ const columns = [
             title: 'NavigationLabelHref',
             component: <NavigationLabelHref label="Already have an account?" to="/catalog" hrefTitle="Sing up!"/>
         },
-
+        { title: 'Institution', component: <Institution company={{images: ['https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg', 'https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg', 'https://afisha.bigmir.net/i/23/51/30/9/2351309/gallery/15b8175dc297f8a58d9de22e77b7b256-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg'],
+                name: 'Domono', address: 'Kyiv, Davidusk 15.',}}/>},
     ],
     [
         {title: "NavigationHeader", component: <NavigationHeader title="category"/>},
