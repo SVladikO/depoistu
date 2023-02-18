@@ -47,7 +47,7 @@ import {COLOR} from "../../utils/theme";
 import AccountSettings from "../../components/AccountSettings/AccountSettings";
 import OptionSettings from "../../components/OptionSettings/OptionSettings";
 import {ROUTER} from "../../utils/config";
-import {ImagePopupContent} from "../../components/ImagePopup/ImagePopup";
+import {ImagePopupContent} from "../../components/PopupImage/PopupImage";
 
 const colors = Object.keys(COLOR).map(key =>
     ({title: key, component: <ColorCircle key={key} bg={COLOR[key]}/>, value: COLOR[key], width: '50px'})
