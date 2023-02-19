@@ -1,13 +1,13 @@
 import React from 'react';
-import {Wrapper,ImageSection, Dots, Name, Address, Content} from "./Institution.style";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
-
+import {Wrapper,ImageSection, Name, Address, Content} from "./Institution.style";
 
 const Institution = (props) => {
     const {images, name, address} = props.company;
+
     return (
         <Wrapper>
             <ImageSection>
@@ -17,7 +17,7 @@ const Institution = (props) => {
                     navigation
                     pagination={{ clickable: true }}
                 >
-                    {images.map((el,i) => <SwiperSlide key={i}><img src={el} alt="#"/></SwiperSlide>)}
+                    {images.map((src,i) => <SwiperSlide key={i}><img src={src} alt="#"/></SwiperSlide>)}
                 </Swiper>
             </ImageSection>
             <Content>
