@@ -92,7 +92,7 @@ INSERT INTO root.CUSTOMER (id, name, phone, password, email, is_verified_phone, 
   (DEFAULT, 'Irina', 635957376, 'ii22ii', 'irina_S@gmail.com', false, false, 167234),
   (DEFAULT, 'David', 972959897, 'dd33dd', 'david_Y@gmail.com', false, false, 167235);
 
-INSERT INTO root.COMPANY (id, name, phone, email, city, street, join_date, schedule, photos) VALUES
+INSERT INTO root.COMPANY (id, name, phones, email, city, street, join_date, schedule, photos) VALUES
   (DEFAULT, 'ArmAto',      ARRAY [ '(066)-578-4567', '(067)-578-4567'], 'armato@gmail.com',      'kozyatyn', 'Вінницька, 15',     '22.05.2020', '08.00-21.00', ARRAY [ 'https://cdn.pixabay.com/photo/2020/03/30/10/18/electric-scooter-4983759__340.jpg', 'https://cdn.pixabay.com/photo/2020/10/07/12/33/cafe-5635015__340.jpg']),
   (DEFAULT, 'PizzaClub',   ARRAY [ '(098)-222-2222', '(066)-222-2222'], 'pizzaclub@gmail.com',   'kyiv',     'Перемоги, 4',       '17.09.2018', '10.00-22.00', ARRAY [ 'https://cdn.pixabay.com/photo/2018/07/14/15/27/cafe-3537801__340.jpg', 'https://cdn.pixabay.com/photo/2019/12/15/18/08/cats-cafe-4697753__340.jpg']),
   (DEFAULT, 'HlibCoffee',  ARRAY [ '(044)-134-4404', '(097)-134-4404'], 'hlibcoffee@gmail.com',  'kyiv',     'Владиславська, 12', '01.09.2018', '10.00-22.00', ARRAY [ 'https://cdn.pixabay.com/photo/2016/08/14/19/54/street-1593850__340.jpg', 'https://cdn.pixabay.com/photo/2014/07/15/13/36/coffee-shop-393954__340.jpg']),
