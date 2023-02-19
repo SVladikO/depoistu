@@ -12,6 +12,7 @@ import
     SettingMenuRow,
     ToggleCheckbox,
     CheckBoxWithLabel,
+    CategoryMenuRow,
     SecondaryButton,
     PrimaryWideButton,
     PrimaryRoundedButton,
@@ -121,6 +122,9 @@ const columns = [
             title: 'NavigationLabelHref',
             component: <NavigationLabelHref label="Already have an account?" to="/catalog" hrefTitle="Sing up!"/>
         },
+        {
+            title: 'CategoryMenuRow', component: <CategoryMenuRow/>
+        }
 
     ],
     [

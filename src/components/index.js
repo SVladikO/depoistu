@@ -36,7 +36,7 @@ import MenuItem from "./MenuItem/MenuItem";
 import OrderHistoryRow from "./OrderHistoryRow/OrderHistoryRow";
 import OrderIconWithCounter from "./OrderIconWithCounter/OrderIconWithCounter.jsx";
 import ImagePopup from "./ImagePopup/ImagePopup";
-
+import CategoryMenuRow from "./CategoryMenuRow/CategoryMenuRow";
 export {
     SettingMenuRow,
     CategoryTitle,
@@ -45,6 +45,7 @@ export {
     Input,
     Like,
     Rating,
+    CategoryMenuRow,
     NotificationTDB,
     RowSplitter,
     HistoryTabBar,

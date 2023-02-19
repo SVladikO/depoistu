@@ -2,9 +2,9 @@ import styled from "styled-components";
 import {COLOR, GRADIENT, BORDER_RADIUS} from "../../utils/theme";
 
 export const Wrapper = styled.div`
-  padding: 23px 0;
-  width: 155px;
-  height: 155px;
+  padding: 10px 0;
+  width: 97px;
+  height: 100px;
   border-radius: ${BORDER_RADIUS.SECOND};
   background: ${COLOR.ACCENT4};
 
@@ -20,12 +20,12 @@ export const Wrapper = styled.div`
   }
 `;
 export const Title = styled.div`
-  color: ${COLOR.ACCENT1};
-  font-size: 20px;
+  color: ${COLOR.PRIMARY};
+  font-size: 12px;
   font-weight: 700;
-  margin: 10px 0 0;
+  margin: 6px 0 0;
   text-align: center;
-  line-height: 24px;
+  line-height: 14px;
 `;
 
 export const IconWrapper = styled.div`
@@ -37,8 +37,8 @@ export const IconWrapper = styled.div`
   justify-content: center;
   align-items: center;
   
-  width: 75px;
-  height: 75px;
+  width: 55px;
+  height: 55px;
   border-radius: ${BORDER_RADIUS.CIRCLE};
   
 `;
