@@ -101,7 +101,7 @@ INSERT INTO root.COMPANY (id, name, phone, email, city, street, join_date, sched
   (DEFAULT, 'CoffeeMolka', ARRAY [ '(067)-123-4567', '(099)-123-4567'], 'cofeemolka@gmail.com',  'irpin',    'Соборна, 108А',     '01.10.2021', '10.00-24.00', ARRAY [ 'https://cdn.pixabay.com/photo/2016/11/29/12/54/cafe-1869656__340.jpg', 'https://cdn.pixabay.com/photo/2016/11/30/14/08/cafe-1872888__340.jpg']),
   (DEFAULT, 'Divine',      ARRAY [ '(066)-444-1212', '(098)-333-2211'], 'divine@gmail.com',      'odesa',    'Набережна, 75',     '03.05.2018', '10.00-24.00', ARRAY [ 'https://cdn.pixabay.com/photo/2020/04/02/23/01/rain-4996916__340.jpg', 'https://cdn.pixabay.com/photo/2019/09/12/18/29/street-cafe-4472312__340.jpg']),
   (DEFAULT, 'CherryHouse', ARRAY [ '(097)-252-6787', '(099)-345-8970'], 'cherryhouse@gmail.com', 'odesa',    'Південна, 17/3',    '21.10.2022', '10.00-24.00', ARRAY [ 'https://cdn.pixabay.com/photo/2017/09/03/16/29/terrace-2710990__340.jpg', 'https://cdn.pixabay.com/photo/2017/06/05/09/10/food-2373414__340.jpg']),
-  (DEFAULT, 'MamaMia',     ARRAY [ '(067)-098-0121', '(093)-188-0323'], 'mamamia@gmail.com',     'kharkiv',  'Східна, 8',         '05.01.2023', '10.00-24.00', ARRAY [ 'https://cdn.pixabay.com/photo/2017/02/20/08/50/cafe-2081857__340.jpg', 'https://cdn.pixabay.com/photo/2017/01/22/19/12/pizza-2000602__340.jpg']);
+  (DEFAULT, 'MamaMia',     ARRAY [ '(067)-098-0122', '(093)-188-0323'], 'mamamia@gmail.com',     'kharkiv',  'Східна, 8',         '05.01.2023', '10.00-24.00', ARRAY [ 'https://cdn.pixabay.com/photo/2017/02/20/08/50/cafe-2081857__340.jpg', 'https://cdn.pixabay.com/photo/2017/01/22/19/12/pizza-2000602__340.jpg']);
 
 INSERT INTO root.HISTORY
 (id, customer_id, company_id, order_details, date_time, is_paid, is_prepared) VALUES
