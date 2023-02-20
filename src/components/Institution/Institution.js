@@ -6,7 +6,7 @@ import "swiper/css/pagination";
 import {Wrapper,ImageSection, Name, Address, Content} from "./Institution.style";
 
 const Institution = (props) => {
-    const {images, name, address} = props.company;
+    const {images, name, city, street} = props.company;
 
     return (
         <Wrapper>
@@ -22,7 +22,7 @@ const Institution = (props) => {
             </ImageSection>
             <Content>
                 <Name>{name}</Name>
-                <Address>{address}</Address>
+                <Address>{city}, {street}</Address>
             </Content>
         </Wrapper>
     );
