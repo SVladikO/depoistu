@@ -15,6 +15,6 @@ export const Wrapper = styled.div`
 `;
 
 export const Text = styled.div`
-  line-height: 28px;
+  line-height: 26px;
   font-size: 22px;
 `;
