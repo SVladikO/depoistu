@@ -31,7 +31,7 @@ const CategoryPage = () => {
             <Flex>
                 {
                     categories.map(category_id => (
-                        <Link key={category_id} to={ROUTER.SUB_CATEGORY.URL + '/' + category_id}>
+                        <Link key={category_id} to={ROUTER.MENU.URL + '/' + category_id}>
                             {getCategoryItem(CATEGORY_MAPPER[category_id])}
                         </Link>
                     ))

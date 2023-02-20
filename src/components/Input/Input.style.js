@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   & > svg:first-child {
     position: absolute;
     display: block;
-    left: 15px;
+    left: 10px;
     top: 50%;
     transform: translateY(-50%);
     fill: ${COLOR.ACCENT1};
@@ -24,7 +24,6 @@ export const SwitchIconWrapper = styled.div`
 
 export const CenterWrapper = styled.div`
   height: 30px;
-  width: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,12 +49,10 @@ export const InputText = styled.input`
   border: none;
   font-size: 16px;
   padding: ${p => {
-    if (p.withIcon) return '14px 20px 17px 50px'
-    if (p.withSwitcher) return '14px 46px 17px 20px'
-    return '14px 20px 17px 20px'
+    if (p.withIcon) return '14px 20px 17px 35px'
+    return '14px 10px 17px 10px'
   }};
 
-  border-radius: ${p => p.withSwitcher ? '40px' : 0};
 
   ::placeholder {
     color: ${COLOR.ACCENT1};
