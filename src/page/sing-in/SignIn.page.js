@@ -1,31 +1,31 @@
 import React, {useState} from 'react';
 
-import {
-    Content,
-    LogoText,
-    NavLabel
-} from "./SignIn.style";
+// import {
+//     Content,
+//     LogoText,
+//     NavLabel
+// } from "./SignIn.style";
 
 import {
     Input,
     PrimaryWideButton,
-    PrimaryWithIconButton,
-    SecondaryWithIconButton,
+    // PrimaryWithIconButton,
+    // SecondaryWithIconButton,
+    // Flex,
     ContentContainer,
     NavigationLabelHref,
-    Flex
 } from "../../components";
 
-import translations from "../../utils/translations";
-
-import {ReactComponent as LogoIcon} from "../../icons/logo.svg";
+// import translations from "../../utils/translations";
+// import {ReactComponent as LogoIcon} from "../../icons/logo.svg";
+// import {ReactComponent as GoogleIcon} from "../../icons/google.svg";
+// import {ReactComponent as FacebookIcon} from "../../icons/facebook.svg";
 import {ReactComponent as LockIcon} from "../../icons/lock.svg";
 import {ReactComponent as MailIcon} from "../../icons/mail.svg";
 
 import {Link, useNavigate} from "react-router-dom";
 
-import {ReactComponent as GoogleIcon} from "../../icons/google.svg";
-import {ReactComponent as FacebookIcon} from "../../icons/facebook.svg";
+
 import {fetchData} from "../../utils/fetch";
 import {getParam, LocalStorage} from "../../utils/utils";
 import {BE_API, ROUTER} from '../../utils/config';
@@ -58,23 +58,24 @@ const SignInPage = () => {
 
     return (
         <>
-            <Content>
-                <LogoIcon/>
-                <LogoText>{translations.company_name}</LogoText>
-            </Content>
+            {/*<Content>*/}
+            {/*    <LogoIcon/>*/}
+            {/*    <LogoText>{translations.company_name}</LogoText>*/}
+            {/*</Content>*/}
             <ContentContainer>
                 <Input Icon={MailIcon} placeholder={`Enter email`} value={email}/>
                 <Input Icon={LockIcon} placeholder={`Enter password`} type="password" value={password}/>
-                <Flex flexDirection='column'>
-                    <Flex justifyContent="space-between">
-                        <NavLabel primary={false}>Or login with</NavLabel>
-                        <Link to={ROUTER.CHANGE_PASSWORD.URL} primary>Forget password ?</Link>
-                    </Flex>
-                    <Flex justifyContent="space-between">
-                        <SecondaryWithIconButton><FacebookIcon/>facebook</SecondaryWithIconButton>
-                        <PrimaryWithIconButton><GoogleIcon/>Google</PrimaryWithIconButton>
-                    </Flex>
-                </Flex>
+                <Link to={ROUTER.CHANGE_PASSWORD.URL} primary>Forget password ?</Link>
+                {/*<Flex flexDirection='column'>*/}
+                {/*    <Flex justifyContent="space-between">*/}
+                {/*        <NavLabel primary={false}>Or login with</NavLabel>*/}
+                {/*        <Link to={ROUTER.CHANGE_PASSWORD.URL} primary>Forget password ?</Link>*/}
+                {/*    </Flex>*/}
+                {/*    <Flex justifyContent="space-between">*/}
+                {/*        <SecondaryWithIconButton><FacebookIcon/>facebook</SecondaryWithIconButton>*/}
+                {/*        <PrimaryWithIconButton><GoogleIcon/>Google</PrimaryWithIconButton>*/}
+                {/*    </Flex>*/}
+                {/*</Flex>*/}
                 <NavigationLabelHref
                     hrefTitle="Sing up!"
                     to={`${ROUTER.SING_UP.URL}?backUrl=${backUrl}`}
