@@ -6,6 +6,7 @@ import CategoryPage from "../page/category/Category.page";
 import SubCategoryPage from "../page/sub-category/SubCategory.page";
 import OrderHistoryPage from "../page/order-history/OrderHistory.page";
 import ChangePasswordPage from "../page/change-password/ChangePassword.page";
+import SearchPage from "../page/search/Search.page";
 
 import {ReactComponent as BakeryIcon} from "../icons/category/bakery.svg";
 import {ReactComponent as BeverageIcon} from "../icons/category/beverage.svg";
@@ -59,6 +60,7 @@ export const ROUTER =  {
     Favorite: {URL: '/Favorite',  TITLE: 'Favorite Cart', page: () => {}},
     Profile: {URL: '/Profile',  TITLE: 'Profile', page: () => {}},
     SETTING: {URL: '/setting',  TITLE: 'Setting', page: SettingPage, showBottomMenu: true},
+    SEARCH: {URL: '/search',  TITLE: 'Search', page: SearchPage, showBottomMenu: true},
 }
 
 ROUTER.USER_ACCOUNT = {URL: '/user_account',  TITLE: 'USER_ACCOUNT', page: () => {}, showBottomMenu: true, BACK_URL: ROUTER.SETTING.URL};

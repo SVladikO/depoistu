@@ -27,8 +27,8 @@ const BottomMenu = () => {
                     <Label>Cart</Label>
                 </MenuItem>
             </NavLink>
-            <NavLink to={''}>
-                <MenuItem selected={isSelected('')}>
+            <NavLink to={ROUTER.SEARCH.URL}>
+                <MenuItem selected={isSelected(ROUTER.SEARCH.URL)}>
                     <SearchIcon/>
                     <Label>Search</Label>
                 </MenuItem>
