@@ -22,11 +22,7 @@ const CategoryMenuRow = () => {
         BE_API.GET_ALL_CATEGORIES_ID_FOR_COMPANY(1)
     )
 
-    const getCategoryItem = category => <SwiperSlide>
-                                            <CategoryItem key={category.title} title={category.title}>
-                                                {<category.icon/>}
-                                            </CategoryItem>
-                                        </SwiperSlide>;
+    const getCategoryItem = category => ( <SwiperSlide> <CategoryItem key={category.title} title={category.title}> </CategoryItem> </SwiperSlide> );
 
     return (
         <Content>
@@ -34,11 +30,11 @@ const CategoryMenuRow = () => {
                 <Swiper
                     slidesPerView={3}
                     spaceBetween={10}
-                    className="mySwiper"
+                    className="category-slider"
                 >
                 {
                     categories.map(category_id => (
-                        <Link key={category_id.toString()} to={ROUTER.SUB_CATEGORY.URL + '/' + category_id}>
+                        <Link key={category_id.toString()} to="">
                             {getCategoryItem(CATEGORY_MAPPER[category_id])}
                         </Link>
                     ))
