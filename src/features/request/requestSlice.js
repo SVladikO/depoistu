@@ -1,4 +1,4 @@
-import {createSlice} from "@reduxjs/toolkit";
+import createSliceCustom from "../utils";
 
 const initialState = {
     value: {
@@ -6,14 +6,14 @@ const initialState = {
     }
 }
 
-export const requestSlice = createSlice({
+export const requestSlice = createSliceCustom({
     name: 'request',
     initialState,
     reducers: {
-        startLoading: (state, action) => {
+        startLoading: state => {
             state.value.isLoading = true;
         },
-        stopLoading: (state, action) => {
+        stopLoading: state => {
             state.value.isLoading = false;
         },
     }
