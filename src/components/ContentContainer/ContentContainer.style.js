@@ -10,6 +10,9 @@ export const ContentContainer = styled.div.attrs({
   padding: 10px;
   border-radius: ${BORDER_RADIUS.SECOND};
   
+  & > a {
+    color: ${COLOR.ACCENT3};
+  }
   & > * {
     margin-bottom: 15px;
   }

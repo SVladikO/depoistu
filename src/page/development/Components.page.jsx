@@ -236,7 +236,7 @@ const columns = [
                     title="Your Cart is empty"
                     description="Looks like you haven't made your order yet."
                     buttonText="Shop Now"
-                    link={ROUTER.CATEGORY.URL}
+                    link="#"
                 />
         },
         {title: 'PopupImage', component: <ImagePopupContent imageUrl="https://raw.githubusercontent.com/SVladikO/testApp/master/images/4_cheese.jpg" />},
