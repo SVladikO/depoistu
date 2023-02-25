@@ -11,7 +11,7 @@ import reportWebVitals from './reportWebVitals';
 import {getRoutes} from "./utils/navigation";
 import {showDevelopmentPageUrls} from "./utils/log";
 import {checkAccess, setBrowserTabTitle} from "./utils/utils";
-import {ImagePopup} from "./components";
+import {PopupImage, PopupIntro} from "./components";
 
 const container = document.getElementById('root');
 const root = createRoot(container);
@@ -21,13 +21,18 @@ setBrowserTabTitle()
 checkAccess();
 showDevelopmentPageUrls()
 
+store.subscribe(()=>{
+    localStorage.setItem('reduxState', JSON.stringify(store.getState()))
+})
+
 root.render(
     <React.StrictMode>
         <BrowserRouter>
             <Provider store={store}>
                 <Wrapper>
                     {getRoutes()}
-                    <ImagePopup />
+                    <PopupImage />
+                    <PopupIntro />
                 </Wrapper>
             </Provider>
         </BrowserRouter>

@@ -1,11 +1,11 @@
-import {createSlice} from "@reduxjs/toolkit";
+import createSliceCustom from '../utils'
 
 const initialState = {
     value: "",
     whereErrorHappenedUrl: ""
 }
 
-export const errorSlice = createSlice({
+export const errorSlice = createSliceCustom({
     name: 'error',
     initialState,
     reducers: {
