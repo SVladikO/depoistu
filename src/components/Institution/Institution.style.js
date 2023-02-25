@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
     opacity: 1;
   }
   .swiper-pagination-bullet-active{
-    background-color: ${COLOR.PRIMARY};
+    background-color: ${COLOR.ACCENT3};
   }
 `;
 
