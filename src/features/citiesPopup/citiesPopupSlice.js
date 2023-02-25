@@ -2,31 +2,29 @@ import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
     value: {
-        imageUrl: '',
+        cities: '',
         isVisible: false
     }
 }
 
-export const imagePopupSlice = createSlice({
+export const citiesPopupSlice = createSlice({
     name: 'imagePopup',
     initialState,
     reducers: {
-        showPopup: (state, action)=>{
-            console.log('showPopup', action.payload)
+        showPopup: (state, action) => {
             state.value =  {
-                imageUrl: action.payload,
+                cities: action.payload,
                 isVisible: true
             }
         },
         hidePopup: (state) => {
-            console.log('hidePopup')
             state.value = {
-                imageUrl: '',
+                cities: '',
                 isVisible: false
             }
         }
     }
 });
 
-export const {showPopup, hidePopup} = imagePopupSlice.actions;
-export default imagePopupSlice.reducer;
+export const {showPopup, hidePopup} = citiesPopupSlice.actions;
+export default citiesPopupSlice.reducer;
