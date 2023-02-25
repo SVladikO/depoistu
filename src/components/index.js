@@ -35,6 +35,7 @@ import Like from "./Like/Like";
 import MenuItem from "./MenuItem/MenuItem";
 import OrderHistoryRow from "./OrderHistoryRow/OrderHistoryRow";
 import OrderIconWithCounter from "./OrderIconWithCounter/OrderIconWithCounter.jsx";
+import PopupCity from "./PopupCity/PopupCity";
 import PopupIntro from "./PopupIntro/PopupIntro";
 import PopupImage from "./PopupImage/PopupImage";
 
@@ -60,6 +61,7 @@ export {
     Absolute,
     PopupImage,
     PopupIntro,
+    PopupCity,
     ProductCard,
     ProductSizeBar,
     PrimaryWideButton,

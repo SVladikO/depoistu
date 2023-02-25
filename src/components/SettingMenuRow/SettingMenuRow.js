@@ -51,6 +51,9 @@ const SettingMenuRow = ({
                     {Icon && <Icon/>}
                     <Title>{title}</Title>
                 </LeftContent>
+                <RightContent>
+                    <RightAnchor/>
+                </RightContent>
             </Wrapper>
         )
     }
