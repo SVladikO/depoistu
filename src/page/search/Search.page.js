@@ -13,7 +13,6 @@ const SearchPage = () => {
         <>
             <InputWrapper>
                 <Input Icon={LocationIcon} withCleaner
-
                        onClick={() => dispatch(showCityPopup())}
                        value={selectedCity ? `${selectedCity}, ${selectedRegion} обл` : ""}/>
             </InputWrapper>

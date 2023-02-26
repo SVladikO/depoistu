@@ -31,7 +31,7 @@ export const CityPopupContent = () => {
 
     return (
         <Wrapper>
-            <ContentContainer onClick={(e) => e.stopPropagation()} style={{'max-height': '90vh', 'overflow': 'scroll'}}>
+            <ContentContainer onClick={(e) => e.stopPropagation()} style={{maxHeight: '90vh', 'overflow': 'scroll'}}>
                 {!isRegion && <button onClick={() => dispatch(showRegions(getRegions(cities)))}>Back</button>}
                 {city.map((c, i) =>
                     <SettingMenuRow
