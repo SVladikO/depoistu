@@ -22,7 +22,7 @@ const CategoryMenuRow = () => {
         BE_API.GET_ALL_CATEGORIES_ID_FOR_COMPANY(1)
     )
 
-    const getCategoryItem = category => ( <SwiperSlide> <CategoryItem key={category.title} title={category.title}> </CategoryItem> </SwiperSlide> );
+    const getCategoryItem = category => ( <SwiperSlide> <CategoryItem category={``} key={category.title} title={category.title}> </CategoryItem> </SwiperSlide> );
 
     return (
         <Content>
