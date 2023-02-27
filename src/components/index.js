@@ -35,8 +35,10 @@ import Like from "./Like/Like";
 import MenuItem from "./MenuItem/MenuItem";
 import OrderHistoryRow from "./OrderHistoryRow/OrderHistoryRow";
 import OrderIconWithCounter from "./OrderIconWithCounter/OrderIconWithCounter.jsx";
-import ImagePopup from "./ImagePopup/ImagePopup";
+import PopupIntro from "./PopupIntro/PopupIntro";
+import PopupImage from "./PopupImage/PopupImage";
 import CategoryMenuRow from "./CategoryMenuRow/CategoryMenuRow";
+
 export {
     SettingMenuRow,
     CategoryTitle,
@@ -58,7 +60,8 @@ export {
     Flex,
     Notification,
     Absolute,
-    ImagePopup,
+    PopupImage,
+    PopupIntro,
     ProductCard,
     ProductSizeBar,
     PrimaryWideButton,

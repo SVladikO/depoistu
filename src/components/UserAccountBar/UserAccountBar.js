@@ -1,12 +1,12 @@
 import {Link} from "react-router-dom";
 import {Avatar, ContentWrapper, Name, Phone, TextContent, Wrapper} from "./UserAccountBar.style";
 import avatar from '../../icons/avatar.svg';
-import {ROUTER} from "../../utils/config";
+// import {ROUTER} from "../../utils/config";
 
 
 const UserAccountBar = ({ fullName, phone}) => {
     return (
-        <Link to={ROUTER.USER_ACCOUNT.URL}>
+        <Link to={""}>
             <Wrapper>
                 <ContentWrapper>
                     <Avatar src={avatar} alt="user_photo"/>
