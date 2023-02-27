@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   background-color: ${COLOR.ACCENT4};
   border-radius: ${BORDER_RADIUS.SECOND} ${BORDER_RADIUS.SECOND} 0 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   min-width: ${DEVICE_WIDTH.MIN};
   width: 100%;
   max-width: ${DEVICE_WIDTH.MAX};

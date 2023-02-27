@@ -17,12 +17,12 @@ const OrderPage = () => {
     const dispatch = useDispatch();
 
     const placeOrder = () => {
-        const {id: guest_id} = LocalStorage.getGuest();
+        const {id: customer_id} = LocalStorage.getGuest();
         const order_details = orders.map(({id, amount, price}) => ({id, amount, price}))
 
         const body = {
             order: {
-                guest_id,
+                customer_id,
                 company_id: orders[0].company_id,
                 order_details,
             }
