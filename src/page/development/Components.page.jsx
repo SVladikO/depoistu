@@ -123,10 +123,7 @@ const columns = [
             title: 'NavigationLabelHref',
             component: <NavigationLabelHref label="Already have an account?" to="/catalog" hrefTitle="Sing up!"/>
         },
-        {
-            title: 'CategoryMenuRow', component: <CategoryMenuRow/>
-        }
-
+        {title: 'CategoryMenuRow', component: <CategoryMenuRow categories={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]} />}
     ],
     [
         {title: "NavigationHeader", component: <NavigationHeader title="category"/>},

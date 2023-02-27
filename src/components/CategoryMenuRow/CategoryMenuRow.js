@@ -1,13 +1,12 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import { Swiper, SwiperSlide } from "swiper/react";
+import {Swiper, SwiperSlide} from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 
-import {useLocalStorageFetch} from '../../utils/hook';
-import {BE_API, ROUTER, CATEGORY_MAPPER} from '../../utils/config';
+import {CATEGORY_MAPPER} from '../../utils/config';
 import {
     Content,
     Flex
@@ -15,14 +14,23 @@ import {
 
 import {CategoryItem} from "../../components";
 
-const CategoryMenuRow = () => {
-    const [categories] = useLocalStorageFetch(
-        'category',
-        [],
-        BE_API.GET_ALL_CATEGORIES_ID_FOR_COMPANY(1)
-    )
+const CategoryMenuRow = (props) => {
+    // We don't need it for now.
+    // const [categories] = useLocalStorageFetch(
+    //     'category',
+    //     [],
+    //     BE_API.GET_ALL_CATEGORIES_ID_FOR_COMPANY(1)
+    // )
 
-    const getCategoryItem = category => ( <SwiperSlide> <CategoryItem category={``} key={category.title} title={category.title}> </CategoryItem> </SwiperSlide> );
+    const categories = props.categories.map(number => CATEGORY_MAPPER[number]);
+
+    const getCategoryItems = () => categories.map(category => (
+        <SwiperSlide key={category.title}>
+            <Link to="">
+                <CategoryItem category={category}/>
+            </Link>
+        </SwiperSlide>
+    ));
 
     return (
         <Content>
@@ -32,13 +40,7 @@ const CategoryMenuRow = () => {
                     spaceBetween={10}
                     className="category-slider"
                 >
-                {
-                    categories.map(category_id => (
-                        <Link key={category_id.toString()} to="">
-                            {getCategoryItem(CATEGORY_MAPPER[category_id])}
-                        </Link>
-                    ))
-                }
+                    {getCategoryItems()}
                 </Swiper>
             </Flex>
         </Content>
