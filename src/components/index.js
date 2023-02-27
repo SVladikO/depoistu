@@ -37,9 +37,11 @@ import OrderHistoryRow from "./OrderHistoryRow/OrderHistoryRow";
 import OrderIconWithCounter from "./OrderIconWithCounter/OrderIconWithCounter.jsx";
 import PopupIntro from "./PopupIntro/PopupIntro";
 import PopupImage from "./PopupImage/PopupImage";
+import Institution from "./Institution/Institution";
 
 export {
     SettingMenuRow,
+    Institution,
     CategoryTitle,
     CategoryItem,
     Discount,
