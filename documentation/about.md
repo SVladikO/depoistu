@@ -28,5 +28,3 @@ We don't use index.js or .jsx in folders because
 1. Yes we have duplication of folder and file names
 2. But we save place in tab names. Let's imagine if it called index.js
 
-![img_1.png](img_1.png)
-
