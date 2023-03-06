@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 
-import {BackButtonWrapper, Wrapper, ContentWrapper} from "./PopupCity.style"
+import {BackButtonWrapper, Wrapper, CitiesWrapper} from "./PopupCity.style"
 import {getRegions} from "../../utils/utils";
 import {cities} from "../../features/cityPopup/cities";
 import {InvisibleWrapper} from '../PopupInvisiableWrapper/PopupInvisiableWrapper.style'
@@ -37,32 +37,34 @@ export const CityPopupContent = () => {
 
     return (
         <Wrapper>
-            <ContentContainer onClick={(e) => e.stopPropagation()}  style={style}>
-                    {
-                        !isRegion
-                        && <BackButtonWrapper onClick={() => dispatch(showRegions(getRegions(cities)))}>
-                             <BackIcon />
-                             Back
-                           </BackButtonWrapper>
-                    }
-                    {city.map((c, i) =>
-                        <SettingMenuRow
-                            key={i.toString()}
-                            changeHandler={() => {
+            <ContentContainer onClick={(e) => e.stopPropagation()} style={style}>
+                {
+                    !isRegion
+                    && <BackButtonWrapper onClick={() => dispatch(showRegions(getRegions(cities)))}>
+                        <BackIcon/>
+                        Back
+                    </BackButtonWrapper>
+                }
+                <CitiesWrapper>
+                {city.map((c, i) =>
+                    <SettingMenuRow
+                        key={i.toString()}
+                        changeHandler={
+                            () => {
                                 if (isRegion) {
                                     dispatch(setSelectedRegion(c))
                                     return;
                                 }
                                 dispatch(setSelectedCity(c));
-
                                 // setIsVisibleCity(false);
                             }
-                            }
-                            title={isRegion ? c + ' область' : c}
-                            label=""
-                            style={{margin: 0}}
-                        />
-                    )}
+                        }
+                        title={isRegion ? c + ' область' : c}
+                        label=""
+                        style={{margin: 0, padding: '0 0 20px'}}
+                    />
+                )}
+                </CitiesWrapper>
             </ContentContainer>
         </Wrapper>
     )
