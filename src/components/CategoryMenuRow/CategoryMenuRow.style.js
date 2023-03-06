@@ -6,6 +6,12 @@ export const Flex = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
 
+  .swiper-slide {
+    flex-shrink: 100 !important;
+    width: 97px;
+    height: 100px;
+  }
+  
   & > a {
     margin: 15px 0 0;
   }

@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   padding: 10px 0;
   width: 97px;
   height: 100px;
-  border-radius: ${BORDER_RADIUS.SECOND};
+  border-radius: ${BORDER_RADIUS.FOURTH};
   background: ${COLOR.ACCENT4};
 
   &:active {
@@ -20,7 +20,7 @@ export const Wrapper = styled.div`
   }
 `;
 export const Title = styled.div`
-  color: ${COLOR.PRIMARY};
+  color: ${COLOR.ACCENT3};
   font-size: 12px;
   font-weight: 700;
   margin: 6px 0 0;
@@ -40,5 +40,8 @@ export const IconWrapper = styled.div`
   width: 55px;
   height: 55px;
   border-radius: ${BORDER_RADIUS.CIRCLE};
-  
+  svg {
+    width: 42px;
+    height: 42px;
+  }
 `;
