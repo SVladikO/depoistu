@@ -1,12 +1,13 @@
 import {useDispatch, useSelector} from "react-redux";
 
+import {BackButtonWrapper, Wrapper, ContentWrapper} from "./PopupCity.style"
 import {getRegions} from "../../utils/utils";
 import {cities} from "../../features/cityPopup/cities";
 import {InvisibleWrapper} from '../PopupInvisiableWrapper/PopupInvisiableWrapper.style'
 import {hideCityPopup, setSelectedRegion, showRegions, setSelectedCity} from "../../features/cityPopup/cityPopupSlice";
-import {Wrapper} from "./PopupCity.style"
 import {ContentContainer, SettingMenuRow} from '../index'
-import React from "react";
+
+import {ReactComponent as BackIcon} from "../../icons/back.svg";
 
 const PopupCity = () => {
     const isVisiblePopup = useSelector(state => state.cityPopup.isVisible);
@@ -29,27 +30,39 @@ export const CityPopupContent = () => {
     const city = useSelector(state => state.cityPopup.city);
     const isRegion = useSelector(state => state.cityPopup.isRegion);
 
+    const style = {
+        'overflow-y': 'scroll',
+        height: '500px'
+    }
+
     return (
         <Wrapper>
-            <ContentContainer onClick={(e) => e.stopPropagation()} style={{maxHeight: '90vh', 'overflow': 'scroll'}}>
-                {!isRegion && <button onClick={() => dispatch(showRegions(getRegions(cities)))}>Back</button>}
-                {city.map((c, i) =>
-                    <SettingMenuRow
-                        key={i.toString()}
-                        changeHandler={() => {
-                            if (isRegion) {
-                                dispatch(setSelectedRegion(c))
-                                return;
-                            }
+            <ContentContainer onClick={(e) => e.stopPropagation()}  style={style}>
+                    {
+                        !isRegion
+                        && <BackButtonWrapper onClick={() => dispatch(showRegions(getRegions(cities)))}>
+                             <BackIcon />
+                             Back
+                           </BackButtonWrapper>
+                    }
+                    {city.map((c, i) =>
+                        <SettingMenuRow
+                            key={i.toString()}
+                            changeHandler={() => {
+                                if (isRegion) {
+                                    dispatch(setSelectedRegion(c))
+                                    return;
+                                }
                                 dispatch(setSelectedCity(c));
 
-                            // setIsVisibleCity(false);
-                        }
-                        }
-                        title={isRegion ? c + ' область' : c}
-                        label=""
-                    />
-                )}
+                                // setIsVisibleCity(false);
+                            }
+                            }
+                            title={isRegion ? c + ' область' : c}
+                            label=""
+                            style={{margin: 0}}
+                        />
+                    )}
             </ContentContainer>
         </Wrapper>
     )
