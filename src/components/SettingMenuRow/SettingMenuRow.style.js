@@ -5,10 +5,14 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 0 20px;
+  padding: 5px 0 15px;
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const LeftContent = styled.div`
@@ -27,9 +31,8 @@ export const RightContent = styled.div`
 `;
 
 export const Title = styled.div`
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 16px;
+  font-size: 20px;
+  line-height: 20px;
   color: ${COLOR.ACCENT1};
 `;
 

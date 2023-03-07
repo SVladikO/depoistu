@@ -10,6 +10,7 @@ function Input({
                    value,
                    type,
                    placeholder,
+                   inputmode,
                    changeHandler = () => {},
                    withSwitcher = false,
                    withCleaner = false,
@@ -34,6 +35,7 @@ function Input({
                 onChange={changeHandler}
                 withSwitcher={withSwitcher}
                 placeholder={placeholder}
+                inputmode={inputmode || 'text'}
                 {...props}
             />
             {withSwitcher &&
