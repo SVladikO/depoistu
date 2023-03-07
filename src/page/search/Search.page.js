@@ -18,8 +18,6 @@ const SearchPage = () => {
                     value={selectedCity ? `${selectedCity}, ${selectedRegion} обл` : ""}
                 />
             </InputWrapper>
-
-
         </>
     );
 };
