@@ -31,7 +31,6 @@ export const CityPopupContent = () => {
     const isRegion = useSelector(state => state.cityPopup.isRegion);
 
     const style = {
-        // 'overflow-y': 'scroll',
         height: '500px',
     }
 
