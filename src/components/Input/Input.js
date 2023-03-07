@@ -35,7 +35,8 @@ function Input({
                 onChange={changeHandler}
                 withSwitcher={withSwitcher}
                 placeholder={placeholder}
-                inputmode={inputmode || 'text'}
+                inputMode={inputmode || 'text'}
+
                 {...props}
             />
             {withSwitcher &&

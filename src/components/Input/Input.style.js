@@ -53,7 +53,12 @@ export const InputText = styled.input`
     return '14px 10px 17px 10px'
   }};
 
-
+  
+  &:active,
+  &:focus {
+    outline: none;
+    border: none;
+  }
   ::placeholder {
     color: ${COLOR.ACCENT1};
   }
