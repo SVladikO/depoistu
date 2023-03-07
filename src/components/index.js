@@ -32,6 +32,7 @@ import Like from "./Like/Like";
 import MenuItem from "./MenuItem/MenuItem";
 import OrderHistoryRow from "./OrderHistoryRow/OrderHistoryRow";
 import OrderIconWithCounter from "./OrderIconWithCounter/OrderIconWithCounter.jsx";
+import PopupCity from "./PopupCity/PopupCity";
 import PopupIntro from "./PopupIntro/PopupIntro";
 import PopupImage from "./PopupImage/PopupImage";
 import Institution from "./Institution/Institution";
@@ -58,6 +59,7 @@ export {
     Absolute,
     PopupImage,
     PopupIntro,
+    PopupCity,
     PrimaryWideButton,
     PrimaryRoundedButton,
     PrimaryWithIconButton,

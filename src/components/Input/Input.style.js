@@ -10,8 +10,9 @@ export const Wrapper = styled.div`
     left: 10px;
     top: 50%;
     transform: translateY(-50%);
-    fill: ${COLOR.PRIMARY};
+    fill: ${COLOR.ACCENT1};
   }
+ 
 `;
 
 export const SwitchIconWrapper = styled.div`
@@ -28,6 +29,17 @@ export const CenterWrapper = styled.div`
   align-items: center;
 `;
 
+export const CloseIconWrapper = styled.div`
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 18px;
+  height: 18px;
+  display: block;
+  & > svg:first-child {
+    color: ${COLOR.ACCENT5};
+  }
+`;
 
 export const InputText = styled.input`
   background: ${COLOR.ACCENT2};

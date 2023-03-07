@@ -52,3 +52,5 @@ export const getParam = (key) => {
     return urlParams.get(key);
 }
 
+export const getRegions = cities => Object.keys(cities);
+
