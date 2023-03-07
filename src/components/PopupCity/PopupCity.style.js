@@ -26,16 +26,22 @@ export const BackButtonInnerWrapper = styled.div`
   position: fixed;
   display: flex;
   align-items: start;
-  font-size: 16px;
+  font-size: 20px;
   color: ${COLOR.ACCENT5};
   padding: 0 0 10px;
   background: #fff;
+  
+  &:hover {
+    cursor: pointer;
+  }
 
   & > svg {
     position: relative;
     top: 3px;
     left: -2px;
-    height: 12px;
+    height: 16px;
+    width: 16px;
+    margin: 0 4px 0 0;
     fill: ${COLOR.ACCENT5};
   }
 `;
@@ -48,7 +54,7 @@ export const BackButtonWrapper = styled.div`
 export const CitiesWrapper = styled.div`
   overflow-y: scroll;
   padding: 0 10px 0 0;
-  width: 103%;
+  width: 104%;
   
   & > div:last-child {
     padding: 0;

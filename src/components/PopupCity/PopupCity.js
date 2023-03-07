@@ -31,7 +31,7 @@ export const CityPopupContent = () => {
     const isRegion = useSelector(state => state.cityPopup.isRegion);
 
     const style = {
-        height: '500px',
+        height: '400px',
     }
 
     return (
@@ -43,7 +43,7 @@ export const CityPopupContent = () => {
                     <BackButtonWrapper>
                         <BackButtonInnerWrapper onClick={() => dispatch(showRegions(getRegions(cities)))}>
                             <BackIcon/>
-                            Back
+                            Назад
                         </BackButtonInnerWrapper>
                     </BackButtonWrapper>
                 }
