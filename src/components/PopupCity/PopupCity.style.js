@@ -9,7 +9,8 @@ export const Wrapper = styled.div`
   min-width: 355px;
   max-width: 355px;
   min-height: 355px;
-  max-height: 60vh;
+  max-height: 600px;
+  overflow: hidden;
   background-color: ${COLOR.ACCENT4};
   border-radius: ${BORDER_RADIUS.SECOND};
   z-index: 100;
@@ -21,14 +22,15 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const BackButtonWrapper = styled.div`
-  position: relative;
+export const BackButtonInnerWrapper = styled.div`
+  position: fixed;
   display: flex;
   align-items: start;
   font-size: 16px;
   color: ${COLOR.ACCENT5};
-  margin: 0;
-  
+  padding: 0 0 10px;
+  background: #fff;
+
   & > svg {
     position: relative;
     top: 3px;
@@ -38,6 +40,17 @@ export const BackButtonWrapper = styled.div`
   }
 `;
 
+export const BackButtonWrapper = styled.div`
+  height: 35px;
+  margin: 0;
+`;
+
 export const CitiesWrapper = styled.div`
+  overflow-y: scroll;
+  padding: 0 10px 0 0;
+  width: 103%;
   
+  & > div:last-child {
+    padding: 0;
+  }
 `;
