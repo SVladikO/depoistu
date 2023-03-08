@@ -41,7 +41,7 @@ export const IconWrapper = styled.div`
   height: 55px;
   border-radius: ${BORDER_RADIUS.CIRCLE};
   svg {
-    width: 42px;
-    height: 42px;
+    width: 36px;
+    height: 35px;
   }
 `;
