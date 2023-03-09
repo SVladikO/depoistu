@@ -4,6 +4,7 @@ import requestReducer from "./features/request/requestSlice";
 import errorReducer from "./features/error/errorSlice";
 import imagePopupReducer from "./features/imagePopup/imagePopupSlice";
 import introPopupReducer from "./features/introPopup/introPopupSlice";
+import cityPopupReducer from "./features/cityPopup/cityPopupSlice";
 
 export const store = configureStore({
     reducer: {
@@ -11,7 +12,8 @@ export const store = configureStore({
         request: requestReducer,
         error: errorReducer,
         imagePopup: imagePopupReducer,
-        introPopup: introPopupReducer
+        introPopup: introPopupReducer,
+        cityPopup: cityPopupReducer
     }
 })
 

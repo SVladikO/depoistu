@@ -20,10 +20,7 @@ import SettingMenuRow from "./SettingMenuRow/SettingMenuRow";
 import {ContentContainer} from "./ContentContainer/ContentContainer.style.js";
 import {Discount} from "./Discount/Discount.style";
 import HistoryTabBar from "./HistoryTabBar/HistoryTabBar";
-import ProductCard from "./ProductCard/ProductCard";
 import NavigationHeader from "./NavigationHeader/NavigationHeader";
-import ProductSizeBar from "./ProductSizeBar/ProductSizeBar";
-import {CategoryTitle} from "./CategoryTitle/CategoryTitle.style";
 import {Absolute} from "./Absolute/Absolute.style";
 import {Flex} from "./Flex/Flex.style";
 import UserAccountBar from "./UserAccountBar/UserAccountBar";
@@ -35,13 +32,15 @@ import Like from "./Like/Like";
 import MenuItem from "./MenuItem/MenuItem";
 import OrderHistoryRow from "./OrderHistoryRow/OrderHistoryRow";
 import OrderIconWithCounter from "./OrderIconWithCounter/OrderIconWithCounter.jsx";
+import PopupCity from "./PopupCity/PopupCity";
 import PopupIntro from "./PopupIntro/PopupIntro";
 import PopupImage from "./PopupImage/PopupImage";
+import Institution from "./Institution/Institution";
 import CategoryMenuRow from "./CategoryMenuRow/CategoryMenuRow";
 
 export {
     SettingMenuRow,
-    CategoryTitle,
+    Institution,
     CategoryItem,
     Discount,
     Input,
@@ -62,8 +61,7 @@ export {
     Absolute,
     PopupImage,
     PopupIntro,
-    ProductCard,
-    ProductSizeBar,
+    PopupCity,
     PrimaryWideButton,
     PrimaryRoundedButton,
     PrimaryWithIconButton,

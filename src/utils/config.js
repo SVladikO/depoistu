@@ -8,6 +8,7 @@ import SubCategoryPage from "../page/sub-category/SubCategory.page";
 // import OrderHistoryPage from "../page/order-history/OrderHistory.page";
 // import {HistoryTabBar} from "../components";
 import ChangePasswordPage from "../page/change-password/ChangePassword.page";
+import SearchPage from "../page/search/Search.page";
 
 import {ReactComponent as BakeryIcon} from "../icons/category/bakery.svg";
 import {ReactComponent as BeverageIcon} from "../icons/category/beverage.svg";
@@ -24,14 +25,14 @@ export const DEV_ROUTER = {
     PAGES: 'pages',
 };
 
-const DOMAIN = 'https://pizza-mobile-api.herokuapp.com';
-// const DOMAIN = 'http://localhost:5000';
+export const BE_DOMAIN = 'https://pizza-mobile-api.herokuapp.com';
+// const BE_DOMAIN = 'http://localhost:5000';
 
 export const BE_API = {
-    SING_IN: () => `${DOMAIN}/sign-in`,
-    PLACE_ORDER: () => `${DOMAIN}/place-order`,
-    GET_ALL_CATEGORIES_ID_FOR_COMPANY: companyId => `${DOMAIN}/company/${companyId}/category`,
-    GET_ALL_MENU_FOR_COMPANY_FOR_CATEGORY: (companyId, categoryId) => `${DOMAIN}/company/${companyId}/menu_item/${categoryId}`,
+    SING_IN: () => `${BE_DOMAIN}/sign-in`,
+    PLACE_ORDER: () => `${BE_DOMAIN}/place-order`,
+    GET_ALL_CATEGORIES_ID_FOR_COMPANY: companyId => `${BE_DOMAIN}/company/${companyId}/category`,
+    GET_ALL_MENU_FOR_COMPANY_FOR_CATEGORY: (companyId, categoryId) => `${BE_DOMAIN}/company/${companyId}/menu_item/${categoryId}`,
 };
 
 export const CATEGORY_MAPPER = {
@@ -50,7 +51,6 @@ export const CATEGORY_MAPPER = {
 
 export const ROUTER =  {
 
-    SEARCH: { URL: '/', TITLE: 'Search', page: () => {}, showBottomMenu: true },
     SING_IN: { URL: '/sign-in', TITLE: 'Sing in', page: SignInPage, showBottomMenu: true },
     SING_UP: { URL: '/sing-up',  TITLE: 'Sing up', page: SingUpPage, showBottomMenu: true},
     // CATEGORY: {URL: '/',TITLE: 'Category',page: CategoryPage, showBottomMenu: true},
@@ -59,6 +59,7 @@ export const ROUTER =  {
     // Favorite: {URL: '/Favorite',  TITLE: 'Favorite Cart', page: () => {}},
     // Profile: {URL: '/Profile',  TITLE: 'Profile', page: () => {}},
     SETTING: {URL: '/setting',  TITLE: 'Setting', page: SettingPage, showBottomMenu: true},
+    SEARCH: {URL: '/',  TITLE: 'Search', page: SearchPage, showBottomMenu: true},
 }
 
 // ROUTER.USER_ACCOUNT = {URL: '/user_account',  TITLE: 'USER_ACCOUNT', page: () => {}, showBottomMenu: true, BACK_URL: ROUTER.SETTING.URL};

@@ -11,13 +11,13 @@ export const imagePopupSlice = createSliceCustom({
     name: 'imagePopup',
     initialState,
     reducers: {
-        showPopup: (state, action) => {
+        showImagePopup: (state, action) => {
             state.value = {
                 imageUrl: action.payload,
                 isVisible: true
             }
         },
-        hidePopup: (state) => {
+        hideImagePopup: (state) => {
             state.value = {
                 imageUrl: '',
                 isVisible: false
@@ -26,5 +26,5 @@ export const imagePopupSlice = createSliceCustom({
     }
 });
 
-export const {showPopup, hidePopup} = imagePopupSlice.actions;
+export const {showImagePopup, hideImagePopup} = imagePopupSlice.actions;
 export default imagePopupSlice.reducer;

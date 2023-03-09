@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {InvisibleWrapper} from '../PopupInvisiableWrapper/PopupInvisiableWrapper.style'
 import {Wrapper, Image} from './PopupImage.style';
 import {ReactComponent as CloseIcon} from "../../icons/close.svg";
-import {hidePopup} from "../../features/imagePopup/imagePopupSlice";
+import {hideImagePopup} from "../../features/imagePopup/imagePopupSlice";
 
 const PopupImage = () => {
     const isVisiblePopup = useSelector(state => state.imagePopup.value.isVisible);
@@ -15,10 +15,10 @@ const PopupImage = () => {
     }
 
     return (
-        <InvisibleWrapper onClick={() => dispatch(hidePopup())}>
+        <InvisibleWrapper onClick={() => dispatch(hideImagePopup())}>
             <ImagePopupContent
                 imageUrl={imageUrl}
-                handleClose={() => dispatch(hidePopup())}
+                handleClose={() => dispatch(hideImagePopup())}
             />
         </InvisibleWrapper>
 

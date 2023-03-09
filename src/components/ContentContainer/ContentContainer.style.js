@@ -4,6 +4,7 @@ import {BORDER_RADIUS, COLOR} from "../../utils/theme";
 export const ContentContainer = styled.div.attrs({
     className: 'ContentContainer',
 })`
+  position: relative;
   width: 100%;
   background: ${COLOR.ACCENT4};
   text-align: center;
