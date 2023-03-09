@@ -36,6 +36,7 @@ import PopupCity from "./PopupCity/PopupCity";
 import PopupIntro from "./PopupIntro/PopupIntro";
 import PopupImage from "./PopupImage/PopupImage";
 import Institution from "./Institution/Institution";
+import CategoryMenuRow from "./CategoryMenuRow/CategoryMenuRow";
 
 export {
     SettingMenuRow,
@@ -45,6 +46,7 @@ export {
     Input,
     Like,
     Rating,
+    CategoryMenuRow,
     NotificationTDB,
     RowSplitter,
     HistoryTabBar,
