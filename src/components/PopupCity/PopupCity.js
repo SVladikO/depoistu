@@ -17,10 +17,13 @@ const PopupCity = () => {
         return null;
     }
 
+    const closePopup = () => dispatch(hideCityPopup());
+
     return (
         <InvisibleWrapper
-            onClick={() => dispatch(hideCityPopup())}
-            onMouseDown={() => dispatch(hideCityPopup())}
+            onClick={closePopup}
+            onMouseDown={closePopup}
+            onTouchStart={closePopup}
         >
             <CityPopupContent/>
         </InvisibleWrapper>
@@ -37,12 +40,15 @@ export const CityPopupContent = () => {
         height: '400px',
     }
 
+    const prevent = e => {
+        e.preventDefault();
+        e.stopPropagation()
+    }
+
     return (
         <Wrapper
-            onMouseDown={e => {
-                e.preventDefault();
-                e.stopPropagation()
-            }}
+            onTouchStart={prevent}
+            onMouseDown={prevent}
         >
             <ContentContainer onClick={(e) => e.stopPropagation()} style={style}>
                 {
