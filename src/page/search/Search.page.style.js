@@ -1,12 +1,7 @@
 import styled from "styled-components";
 import {BORDER_RADIUS, COLOR} from "../../utils/theme";
 
-export const InputWrapper = styled.div`
-  background-color: ${COLOR.ACCENT4};
-  padding: 10px;
-  border-radius: ${BORDER_RADIUS.SECOND};
-  margin: 0 0 15px 0;
-`;
+
 
 export const CitiesWrapper = styled.div`
   border-radius: ${BORDER_RADIUS.SECOND};

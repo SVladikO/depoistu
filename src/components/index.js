@@ -7,7 +7,7 @@ import {
     ThirdButton,
 } from "./Button/Button.style";
 
-import Input from "./Input/Input";
+import {PInput, Input} from "./Input/Input";
 import NotificationTDB from "./NotificationTDB/NotificationTDB";
 import Price from "./Price/Price";
 import Rating from "./Rating/Rating";
@@ -43,6 +43,7 @@ export {
     CategoryItem,
     Discount,
     Input,
+    PInput,
     Like,
     Rating,
     NotificationTDB,

@@ -1,24 +1,28 @@
-import {InputWrapper} from "./Search.page.style";
-import {Input} from "../../components";
 import {ReactComponent as LocationIcon} from "../../icons/map_point.svg";
 import {showCityPopup} from "../../features/cityPopup/cityPopupSlice";
 import {useDispatch, useSelector} from "react-redux";
+import {ContentContainer, PInput} from '../../components'
 
 const SearchPage = () => {
     const dispatch = useDispatch();
     const selectedCity = useSelector(state => state.cityPopup.selectedCity);
     const selectedRegion = useSelector(state => state.cityPopup.selectedRegion);
 
+    const openCityPopup = () => dispatch(showCityPopup());
+
     return (
         <>
-            <InputWrapper>
-                <Input
-                    Icon={LocationIcon}
-                    onClick={() => dispatch(showCityPopup())}
-                    value={selectedCity ? `${selectedCity}, ${selectedRegion} обл` : ""}
-                    inputmode={'none'}
-                />
-            </InputWrapper>
+            <ContentContainer>
+            <PInput
+                handleClick={openCityPopup}
+                handleMouseDown={openCityPopup}
+                handleTouchStart={openCityPopup}
+                withIcon
+                Icon={LocationIcon}
+            >
+                {selectedCity ? `${selectedCity}, ${selectedRegion} обл` : ""}
+            </PInput>
+            </ContentContainer>
         </>
     );
 };

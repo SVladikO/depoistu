@@ -9,6 +9,11 @@ import {ContentContainer, SettingMenuRow} from '../index'
 
 import {ReactComponent as BackIcon} from "../../icons/back.svg";
 
+const prevent = e => {
+    e.preventDefault();
+    e.stopPropagation()
+}
+
 const PopupCity = () => {
     const isVisiblePopup = useSelector(state => state.cityPopup.isVisible);
     const dispatch = useDispatch();
@@ -17,7 +22,10 @@ const PopupCity = () => {
         return null;
     }
 
-    const closePopup = () => dispatch(hideCityPopup());
+    const closePopup = e => {
+        prevent(e);
+        dispatch(hideCityPopup());
+    }
 
     return (
         <InvisibleWrapper
@@ -38,11 +46,6 @@ export const CityPopupContent = () => {
 
     const style = {
         height: '400px',
-    }
-
-    const prevent = e => {
-        e.preventDefault();
-        e.stopPropagation()
     }
 
     return (

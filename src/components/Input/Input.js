@@ -1,17 +1,26 @@
 import React, {useState} from "react";
-import {Wrapper, InputText, SwitchIconWrapper, CenterWrapper, CloseIconWrapper} from "./Input.style";
+import {
+    Wrapper,
+    InputText,
+    SwitchIconWrapper,
+    CenterWrapper,
+    CloseIconWrapper,
+    PInputWrapper,
+    PStyle,
+} from "./Input.style";
 
 import {ReactComponent as ShowEyeIcon} from "../../icons/show-eye.svg";
 import {ReactComponent as HideEyeIcon} from "../../icons/hide-eye.svg";
 import {ReactComponent as CloseIcon} from "../../icons/close.svg";
 
-function Input({
+export function Input({
                    Icon,
                    value,
                    type,
                    placeholder,
                    inputmode,
-                   changeHandler = () => {},
+                   changeHandler = () => {
+                   },
                    withSwitcher = false,
                    withCleaner = false,
                    ...props
@@ -26,7 +35,7 @@ function Input({
     const hideValue = () => setShowData(false);
 
     return (
-        <Wrapper >
+        <Wrapper>
             {Icon && <Icon/>}
             <InputText
                 type={type}
@@ -48,11 +57,30 @@ function Input({
             }
             {withCleaner &&
                 <CloseIconWrapper {...props}>
-                    <CloseIcon />
+                    <CloseIcon/>
                 </CloseIconWrapper>
             }
         </Wrapper>
     )
 }
 
-export default Input;
+// It only looks like input but it's p tag
+export const PInput = ({
+                           Icon,
+                           children,
+                           handleClick = () => {},
+                           handleMouseDown = () => {},
+                           handleTouchStart = () => {},
+}) => {
+    return (<PInputWrapper
+            onClick={handleClick}
+            onMouseDown={handleMouseDown}
+            onTouchStart={handleTouchStart}
+        >
+            {Icon && <Icon/>}
+            <PStyle withIcon={!!Icon}>
+                {children}
+            </PStyle>
+        </PInputWrapper>
+    )
+};
