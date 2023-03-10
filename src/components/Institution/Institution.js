@@ -18,7 +18,7 @@ const Institution = (props) => {
                     navigation
                     pagination={{ clickable: true }}
                 >
-                    {PHOTOS.split(', ').map((src,i) => <SwiperSlide key={i}><img src={src} alt="#"/></SwiperSlide>)}
+                    {PHOTOS.split(',').map((src,i) => <SwiperSlide key={i}><img src={src} alt="#"/></SwiperSlide>)}
                 </Swiper>
             </ImageSection>
             <Content>
