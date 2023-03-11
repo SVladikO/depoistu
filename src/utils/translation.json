@@ -1,0 +1,70 @@
+{
+  "SING_IN_EMAIL_PLACEHOLDER":{
+    "ua": "",
+    "en": ""
+  },
+  "BOTTOM_MENU_SEARCH":{
+    "ua": "Пошук",
+    "en": "Search"
+  },
+  "BOTTOM_MENU_ACCOUNT":{
+    "ua": "Кабинет",
+    "en": "Account"
+  },
+  "SEARCH_MAIN_TITLE": {
+    "ua": "Пошук",
+    "en": "Search"
+  },
+  "SETTING_PAGE_MAIN_TITLE": {
+    "en": "Settings",
+    "ua": "Налаштування"
+  },
+  "SETTING_PAGE_BUSINESS_ROW": {
+    "ua": "",
+    "en": ""
+  },
+  "CATEGORIES_BAKERY": {
+      "en": "Bakery",
+      "ua": "Випiчка"
+  },
+  "CATEGORIES_BEVERAGE": {
+    "ua": "Безалкогольнi напої",
+    "en": "Beverage"
+  },
+  "CATEGORIES_BURGERS": {
+    "ua": "Бургери",
+    "en": "Burgers"
+  },
+  "CATEGORIES_NOODLES": {
+    "ua": "Локшина",
+    "en": "Noodles"
+  },
+  "CATEGORIES_PIZZA": {
+    "en": "Pizza",
+    "ua": "Пiцца"
+  },
+  "CATEGORIES_SANDWITCH": {
+    "ua": "Сендвичi",
+    "en": "Sandwitch"
+  },
+  "CATEGORIES_SEAFOOD": {
+    "ua": "Морепродукти",
+    "en": "Seafood"
+  },
+  "CATEGORIES_VEGETABLE": {
+    "ua": "Овочевi страви",
+    "en": "Vegetable"
+  },
+  "CATEGORIES_ALCOHOL": {
+    "ua": "Алкогольнi напої",
+    "en": "Alcohol drinks"
+  },
+  "CATEGORIES_WINE_CARD": {
+    "ua": "Винна карта",
+    "en": "Wine card"
+  },
+  "CATEGORIES_HOT_DRINKS": {
+    "ua": "Гарячi напої",
+    "en": "Hot drinks"
+  }
+}

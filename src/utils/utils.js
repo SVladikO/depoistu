@@ -1,4 +1,5 @@
 import translations from "./translations";
+import translation from "./translation.json";
 
 export const checkAccess = () => {
     const isTrustedUser = localStorage.getItem('trastedUser');
@@ -53,4 +54,5 @@ export const getParam = (key) => {
 }
 
 export const getRegions = cities => Object.keys(cities);
+export const resolveTranslation = key => translation[key]["ua"];
 

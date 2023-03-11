@@ -18,6 +18,7 @@ import {ReactComponent as PizzaIcon} from "../icons/category/pizza.svg";
 import {ReactComponent as SandwitchIcon} from "../icons/category/sandwitch.svg";
 import {ReactComponent as Sea_foodIcon} from "../icons/category/sea_food.svg";
 import {ReactComponent as VagetableIcon} from "../icons/category/vagetable.svg";
+import {resolveTranslation} from "./utils";
 
 
 export const DEV_ROUTER = {
@@ -36,17 +37,17 @@ export const BE_API = {
 };
 
 export const CATEGORY_MAPPER = {
-    1: {title: "Bakery", icon: BakeryIcon, measurement: 'g'},
-    2: {title: "Beverage", icon: BeverageIcon, measurement: 'L'},
-    3: {title: "Burger", icon: BurgerIcon, measurement: 'g'},
-    4: {title: "Noodles", icon: NoodlesIcon, measurement: 'g'},
-    5: {title: "Pizza", icon: PizzaIcon, measurement: 'g'},
-    6: {title: "Sandwitch", icon: SandwitchIcon, measurement: 'g'},
-    7: {title: "Sea food", icon: Sea_foodIcon, measurement: 'g'},
-    8: {title: "Vagetable", icon: VagetableIcon, measurement: 'g'},
-    9: {title: "Alcohol", icon: BeverageIcon, measurement: 'ml'},
-    10: {title: "Wine card", icon: BeverageIcon, measurement: 'ml'},
-    11: {title: "Hot drinks", icon: BeverageIcon, measurement: 'ml'},
+    1: {title: resolveTranslation(["CATEGORIES_BAKERY"]), icon: BakeryIcon, measurement: 'g'},
+    2: {title: resolveTranslation(["CATEGORIES_BEVERAGE"]), icon: BeverageIcon, measurement: 'L'},
+    3: {title: resolveTranslation(["CATEGORIES_BURGERS"]), icon: BurgerIcon, measurement: 'g'},
+    4: {title: resolveTranslation(["CATEGORIES_NOODLES"]), icon: NoodlesIcon, measurement: 'g'},
+    5: {title: resolveTranslation(["CATEGORIES_PIZZA"]), icon: PizzaIcon, measurement: 'g'},
+    6: {title: resolveTranslation(["CATEGORIES_SANDWITCH"]), icon: SandwitchIcon, measurement: 'g'},
+    7: {title: resolveTranslation(["CATEGORIES_SEAFOOD"]), icon: Sea_foodIcon, measurement: 'g'},
+    8: {title: resolveTranslation(["CATEGORIES_VEGETABLE"]), icon: VagetableIcon, measurement: 'g'},
+    9: {title: resolveTranslation(["CATEGORIES_ALCOHOL"]), icon: BeverageIcon, measurement: 'ml'},
+    10: {title: resolveTranslation(["CATEGORIES_WINE_CARD"]), icon: BeverageIcon, measurement: 'ml'},
+    11: {title: resolveTranslation(["CATEGORIES_HOT_DRINKS"]), icon: BeverageIcon, measurement: 'ml'},
 }
 
 export const ROUTER =  {
@@ -58,8 +59,8 @@ export const ROUTER =  {
     // ORDER_HISTORY: {URL: '/history',  TITLE: 'Order History', page: OrderHistoryPage, subHeader: HistoryTabBar, showBottomMenu: true},
     // Favorite: {URL: '/Favorite',  TITLE: 'Favorite Cart', page: () => {}},
     // Profile: {URL: '/Profile',  TITLE: 'Profile', page: () => {}},
-    SETTING: {URL: '/setting',  TITLE: 'Setting', page: SettingPage, showBottomMenu: true},
-    SEARCH: {URL: '/',  TITLE: 'Search', page: SearchPage, showBottomMenu: true},
+    SETTING: {URL: '/setting',  TITLE: resolveTranslation(["SETTING_PAGE_MAIN_TITLE"]), page: SettingPage, showBottomMenu: true},
+    SEARCH: {URL: '/',  TITLE: resolveTranslation(["SEARCH_MAIN_TITLE"]), page: SearchPage, showBottomMenu: true},
 }
 
 // ROUTER.USER_ACCOUNT = {URL: '/user_account',  TITLE: 'USER_ACCOUNT', page: () => {}, showBottomMenu: true, BACK_URL: ROUTER.SETTING.URL};
