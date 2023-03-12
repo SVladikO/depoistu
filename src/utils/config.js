@@ -19,6 +19,7 @@ import {ReactComponent as SandwitchIcon} from "../icons/category/sandwitch.svg";
 import {ReactComponent as Sea_foodIcon} from "../icons/category/sea_food.svg";
 import {ReactComponent as VagetableIcon} from "../icons/category/vagetable.svg";
 import {resolveTranslation} from "./utils";
+import translations from "./translations";
 
 
 export const DEV_ROUTER = {
@@ -52,8 +53,8 @@ export const CATEGORY_MAPPER = {
 
 export const ROUTER =  {
 
-    SING_IN: { URL: '/sign-in', TITLE: 'Sing in', page: SignInPage, showBottomMenu: true },
-    SING_UP: { URL: '/sing-up',  TITLE: 'Sing up', page: SingUpPage, showBottomMenu: true},
+    SING_IN: { URL: '/sign-in', TITLE: resolveTranslation(["SING_IN_MAIN_TITLE"]), page: SignInPage, showBottomMenu: true },
+    SING_UP: { URL: '/sing-up',  TITLE: resolveTranslation(["SING_UP_MAIN_TITLE"]), page: SingUpPage, showBottomMenu: true},
     // CATEGORY: {URL: '/',TITLE: 'Category',page: CategoryPage, showBottomMenu: true},
     // ORDER_REVIEW: {URL: '/order',  TITLE: 'Order review', page: OrderPage, showBottomMenu: true},
     // ORDER_HISTORY: {URL: '/history',  TITLE: 'Order History', page: OrderHistoryPage, subHeader: HistoryTabBar, showBottomMenu: true},
@@ -65,6 +66,6 @@ export const ROUTER =  {
 
 // ROUTER.USER_ACCOUNT = {URL: '/user_account',  TITLE: 'USER_ACCOUNT', page: () => {}, showBottomMenu: true, BACK_URL: ROUTER.SETTING.URL};
 ROUTER.MENU = {URL: '/menu', PARAMS: '/:categoryId', getTitle: 'Menu', page: SubCategoryPage, showBottomMenu: true, };
-ROUTER.CHANGE_PASSWORD = {URL: '/change-password',TITLE: 'Change password',page: ChangePasswordPage, showBottomMenu: true, BACK_URL: ROUTER.SING_IN.URL};
+ROUTER.CHANGE_PASSWORD = {URL: '/change-password',TITLE: resolveTranslation(["CHANGE_PASSWORD_MAIN_TITLE"]),page: ChangePasswordPage, showBottomMenu: true, BACK_URL: ROUTER.SING_IN.URL};
 
 export const ROUTERS = Object.keys(ROUTER).map(key => ROUTER[key]);

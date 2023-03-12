@@ -3,6 +3,61 @@
     "ua": "",
     "en": ""
   },
+  "SING_IN_MAIN_TITLE": {
+    "en": "Sign in",
+    "ua": "Вхiд"
+  },
+  "SING_IN_REMAINING_PASS": {
+    "ua": "Забули пароль?",
+    "en": "Forgot password?"
+  },
+
+
+  "SING_UP_LINK": {
+    "ua": "Зареєструватись",
+    "en": "Sing up"
+  },
+  "SING_UP_MAIN_TITLE": {
+    "en": "Sing up",
+    "ua": "Реєстрацiя"
+  },
+  "SING_UP_CREATE_ACCOUNT": {
+    "en": "Create an account",
+    "ua": "Створити аккаунт"
+  },
+  "SING_UP_INPUT_NAME": {
+    "en": "Full Name",
+    "ua": "Прiзвище та Iм'я"
+  },
+  "SING_UP_INPUT_PHONE": {
+    "ua": "Номер телефону",
+    "en": "Phone number"
+  },
+  "SING_UP_INPUT_EMAIL": {
+    "en": "Emial",
+    "ua": "Електронна Пошта"
+  },
+  "SING_UP_INPUT_PASS": {
+    "ua": "Пароль",
+    "en": "Password"
+  },
+  "SING_UP_INPUT_CONFIRM_PASS": {
+    "en": "Confirm Password",
+    "ua": "Пiдтвердiть Пароль"
+  },
+
+
+  "CHECKBOX_CONFIRM_TERMS": {
+    "en": "By creating an account you agree to our Terms of Service and Privacy Policy",
+    "ua": "Створенням свого аккаунту ви плогоджуєтесь з нашими правилами користування та полiтикою конфiденцiйностi"
+  },
+
+  "ACCOUNT_CONFIRMATION": {
+    "en": "You don’t have an account?",
+    "ua": "Ви зареєстрованi?"
+  },
+
+
   "BOTTOM_MENU_SEARCH":{
     "ua": "Пошук",
     "en": "Search"
@@ -11,18 +66,68 @@
     "ua": "Кабинет",
     "en": "Account"
   },
+
+
   "SEARCH_MAIN_TITLE": {
     "ua": "Пошук",
     "en": "Search"
   },
+
+
   "SETTING_PAGE_MAIN_TITLE": {
     "en": "Settings",
     "ua": "Налаштування"
   },
-  "SETTING_PAGE_BUSINESS_ROW": {
-    "ua": "",
-    "en": ""
+  "SETTINGS_USER_PHONE": {
+    "en": "phone",
+    "ua": "телефон"
   },
+  "SETTINGS_SUBTITLE_ACCOUNT": {
+    "en": "Accounts",
+    "ua": "Остобистий кабiнет"
+  },
+  "SETTINGS_SUBTITLE_MORE_OPTIONS": {
+    "en": "More Options",
+    "ua": "Розширенi налаштування"
+  },
+  "SETTINGS_MENU_ROW_CHANGE_PASS": {
+    "en": "Change Password",
+    "ua": "Змiнити пароль"
+  },
+  "SETTINGS_MENU_ROW_FOR_BUSINESS": {
+    "ua": "Для бiзнесу",
+    "en": "For Business"
+  },
+  "SETTINGS_MENU_ROW_LOCATION": {
+    "ua": "Мicце знаходження",
+    "en": "Store Location"
+  },
+  "SETTINGS_MENU_ROW_TERMS": {
+    "ua": "Умови та Положення",
+    "en": "Terms and Conditions"
+  },
+  "SETTINGS_MENU_ROW_HELP": {
+    "ua": "Допоомга",
+    "en": "Help"
+  },
+  "SETTINGS_MENU_ROW_EXIT": {
+    "en": "Sing out",
+    "ua": "Вихiд"
+  },
+  "SETTINGS_MENU_ROW_CURRENCY": {
+    "ua": "Валюта",
+    "en": "Currency"
+  },
+  "SETTINGS_MENU_ROW_LANGUAGE": {
+    "en": "Language",
+    "ua": "Мова"
+  },
+  "SETTINGS_MENU_ROW_LINKED_ACCOUNT": {
+    "en": "Linked Account",
+    "ua": "Пов'язанi Аккаути"
+  },
+
+
   "CATEGORIES_BAKERY": {
       "en": "Bakery",
       "ua": "Випiчка"
@@ -66,5 +171,27 @@
   "CATEGORIES_HOT_DRINKS": {
     "ua": "Гарячi напої",
     "en": "Hot drinks"
+  },
+
+  "CHANGE_PASSWORD_MAIN_TITLE": {
+    "ua": "Змiнити Пароль",
+    "en": "Change Password"
+  },
+  "CHANGE_PASS_OLD": {
+    "en": "Old Password",
+    "ua": "New Password"
+  },
+  "CHANGE_PASS_NEW": {
+    "en": "New Password",
+    "ua": "Новий пароль"
+  },
+  "CHANGE_PASS_CONFIRM": {
+    "en": "Confirm Password",
+    "ua": "Пiдтвердiть Пароль"
+  },
+  "CHANGE_PASS_SAVE": {
+    "ua": "Зберегти!",
+    "en": "Save now!"
   }
+
 }

@@ -1,6 +1,7 @@
 import {Link} from "react-router-dom";
 import {Avatar, ContentWrapper, Name, Phone, TextContent, Wrapper} from "./UserAccountBar.style";
 import avatar from '../../icons/avatar.svg';
+import {resolveTranslation} from "../../utils/utils";
 // import {ROUTER} from "../../utils/config";
 
 
@@ -12,7 +13,7 @@ const UserAccountBar = ({ fullName, phone}) => {
                     <Avatar src={avatar} alt="user_photo"/>
                     <TextContent>
                         <Name>{fullName}</Name>
-                        <Phone>Phone: {phone}</Phone>
+                        <Phone>{resolveTranslation(["SETTINGS_USER_PHONE"])}: {phone}</Phone>
                     </TextContent>
                 </ContentWrapper>
             </Wrapper>

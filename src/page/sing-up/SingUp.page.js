@@ -3,29 +3,30 @@ import {Title,Container,Wrapper} from "./SingUp.style";
 import {CheckBoxWithLabel, PrimaryWideButton} from "../../components";
 import NavigationLabelHref from "../../components/NavigationLabelHref/NavigationLabelHref";
 import {ROUTER} from '../../utils/config';
+import {resolveTranslation} from "../../utils/utils";
 
 
 const SingUpPage = () => {
     return (
         <>
             <Container>
-                <Title>Create an Account</Title>
-                <Input placeholder="Full Name"/>
-                <Input placeholder="Phone Number"/>
-                <Input placeholder="Email"/>
-                <Input placeholder="Password"/>
-                <Input placeholder="Confirm Password"/>
+                <Title>{resolveTranslation(["SING_UP_CREATE_ACCOUNT"])}</Title>
+                <Input placeholder={resolveTranslation(["SING_UP_INPUT_NAME"])}/>
+                <Input placeholder={resolveTranslation(["SING_UP_INPUT_PHONE"])}/>
+                <Input placeholder={resolveTranslation(["SING_UP_INPUT_EMAIL"])}/>
+                <Input placeholder={resolveTranslation(["SING_UP_INPUT_PASS"])}/>
+                <Input placeholder={resolveTranslation(["SING_UP_INPUT_CONFIRM_PASS"])}/>
                 <CheckBoxWithLabel
-                    label="By creating an account you agree to our Terms of Service and Privacy Policy"/>
+                    label={resolveTranslation(["CHECKBOX_CONFIRM_TERMS"])}/>
             </Container>
             <Wrapper>
                 <NavigationLabelHref
-                    hrefTitle="Sing in!"
+                    hrefTitle={resolveTranslation(["SING_IN_MAIN_TITLE"])}
                     to={`${ROUTER.SING_IN.URL}`}
-                    label="Already have an account?"
+                    label={resolveTranslation(["ACCOUNT_CONFIRMATION"])}
                 />
             </Wrapper>
-            <PrimaryWideButton>Sing up</PrimaryWideButton>
+            <PrimaryWideButton>{resolveTranslation(["SING_UP_MAIN_TITLE"])}</PrimaryWideButton>
         </>
     );
 };

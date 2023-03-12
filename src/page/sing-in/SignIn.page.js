@@ -29,6 +29,8 @@ import {Link, useNavigate} from "react-router-dom";
 import {fetchData} from "../../utils/fetch";
 import {getParam, LocalStorage} from "../../utils/utils";
 import {BE_API, ROUTER} from '../../utils/config';
+import {resolveTranslation} from "../../utils/utils";
+
 
 const SignInPage = () => {
     const [email, setEmail] = useState('vlad_S@gmail.com')
@@ -65,7 +67,7 @@ const SignInPage = () => {
             <ContentContainer>
                 <Input Icon={MailIcon} placeholder={`Enter email`} value={email}/>
                 <Input Icon={LockIcon} placeholder={`Enter password`} type="password" value={password}/>
-                <Link to={ROUTER.CHANGE_PASSWORD.URL} primary>Forget password ?</Link>
+                <Link to={ROUTER.CHANGE_PASSWORD.URL} primary>{resolveTranslation(["SING_IN_REMAINING_PASS"])}</Link>
                 {/*<Flex flexDirection='column'>*/}
                 {/*    <Flex justifyContent="space-between">*/}
                 {/*        <NavLabel primary={false}>Or login with</NavLabel>*/}
@@ -77,12 +79,12 @@ const SignInPage = () => {
                 {/*    </Flex>*/}
                 {/*</Flex>*/}
                 <NavigationLabelHref
-                    hrefTitle="Sing up!"
+                    hrefTitle={resolveTranslation(["SING_UP_LINK"])}
                     to={`${ROUTER.SING_UP.URL}?backUrl=${backUrl}`}
-                    label="You don’t have an account?"
+                    label={resolveTranslation(["ACCOUNT_CONFIRMATION"])}
                 />
             </ContentContainer>
-            <PrimaryWideButton onClick={handleSingIn}><span>Sing in</span></PrimaryWideButton>
+            <PrimaryWideButton onClick={handleSingIn}><span>{resolveTranslation(["SING_IN_MAIN_TITLE"])}</span></PrimaryWideButton>
         </>
     );
 };
