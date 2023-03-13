@@ -49,8 +49,8 @@ export const CityPopupContent = () => {
 
     return (
         <Wrapper
-            onTouchStart={prevent}
-            onMouseDown={prevent}
+            onMouseUp={prevent}
+            onTouchEnd={prevent}
         >
             <ContentContainer style={style}>
                 {
