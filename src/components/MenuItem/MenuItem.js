@@ -8,7 +8,7 @@ import {ReactComponent as MeasureIcon} from "../../icons/sss.svg";
 import {ReactComponent as BasketIcon} from "../../icons/basket.svg";
 
 import {addOrderItem} from "../../features/order/orderSlice";
-import {showPopup} from "../../features/imagePopup/imagePopupSlice";
+import {showImagePopup} from "../../features/imagePopup/imagePopupSlice";
 
 const MenuItem = ({item = {}}) => {
     const {name, description, image_url, price, cooking_time, size, isLiked} = item;
@@ -17,7 +17,7 @@ const MenuItem = ({item = {}}) => {
     return (
         <Wrapper className='pm-MenuItem'>
             <Flex justifyContent="stretch">
-                <FoodImage src={image_url} onClick={() => dispatch(showPopup(image_url))}/>
+                <FoodImage src={image_url} onClick={() => dispatch(showImagePopup(image_url))}/>
                 <Flex flexDirection='column' width='80%'>
                     <Flex justifyContent="space-between">
                         <Title>{name}</Title>

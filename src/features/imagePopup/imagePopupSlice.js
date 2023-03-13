@@ -1,4 +1,4 @@
-import {createSlice} from "@reduxjs/toolkit";
+import createSliceCustom from "../utils";
 
 const initialState = {
     value: {
@@ -7,19 +7,17 @@ const initialState = {
     }
 }
 
-export const imagePopupSlice = createSlice({
+export const imagePopupSlice = createSliceCustom({
     name: 'imagePopup',
     initialState,
     reducers: {
-        showPopup: (state, action) => {
-            console.log('showPopup', action.payload)
+        showImagePopup: (state, action) => {
             state.value = {
                 imageUrl: action.payload,
                 isVisible: true
             }
         },
-        hidePopup: (state) => {
-            console.log('hidePopup')
+        hideImagePopup: (state) => {
             state.value = {
                 imageUrl: '',
                 isVisible: false
@@ -28,5 +26,5 @@ export const imagePopupSlice = createSlice({
     }
 });
 
-export const {showPopup, hidePopup} = imagePopupSlice.actions;
+export const {showImagePopup, hideImagePopup} = imagePopupSlice.actions;
 export default imagePopupSlice.reducer;

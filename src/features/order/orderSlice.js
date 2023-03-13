@@ -1,10 +1,10 @@
-import {createSlice} from "@reduxjs/toolkit";
+import createSliceCustom from "../utils";
 
 const initialState = {
     value: []
 }
 
-export const orderSlice = createSlice({
+export const orderSlice = createSliceCustom({
     name: 'order',
     initialState,
     reducers: {

@@ -8,7 +8,6 @@ export const button = styled.button`
   border: none;
   border-radius: ${BORDER_RADIUS.FOURTH};
   color: ${COLOR.ACCENT4};
-  font-family: Lato;
   font-size: 16px;
   line-height: 19px;
 `;

@@ -1,10 +1,11 @@
 import {useDispatch, useSelector} from "react-redux";
 
-import {InvisibleWrapper, Wrapper, Image} from './ImagePopup.style';
+import {InvisibleWrapper} from '../PopupInvisiableWrapper/PopupInvisiableWrapper.style'
+import {Wrapper, Image} from './PopupImage.style';
 import {ReactComponent as CloseIcon} from "../../icons/close.svg";
-import {hidePopup} from "../../features/imagePopup/imagePopupSlice";
+import {hideImagePopup} from "../../features/imagePopup/imagePopupSlice";
 
-const ImagePopup = () => {
+const PopupImage = () => {
     const isVisiblePopup = useSelector(state => state.imagePopup.value.isVisible);
     const imageUrl = useSelector(state => state.imagePopup.value.imageUrl);
     const dispatch = useDispatch();
@@ -14,10 +15,10 @@ const ImagePopup = () => {
     }
 
     return (
-        <InvisibleWrapper onClick={() => dispatch(hidePopup())}>
+        <InvisibleWrapper onClick={() => dispatch(hideImagePopup())}>
             <ImagePopupContent
                 imageUrl={imageUrl}
-                handleClose={() => dispatch(hidePopup())}
+                handleClose={() => dispatch(hideImagePopup())}
             />
         </InvisibleWrapper>
 
@@ -31,4 +32,4 @@ export const ImagePopupContent = ({handleClose, imageUrl}) => (
     </Wrapper>
 );
 
-export default ImagePopup;
+export default PopupImage;
