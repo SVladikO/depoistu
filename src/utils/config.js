@@ -1,11 +1,14 @@
-import OrderPage from "../page/order/Order.page";
 import SignInPage from "../page/sing-in/SignIn.page";
 import SingUpPage from "../page/sing-up/SingUp.page";
 import SettingPage from "../page/setting/Setting.page";
-import CategoryPage from "../page/category/Category.page";
 import SubCategoryPage from "../page/sub-category/SubCategory.page";
-import OrderHistoryPage from "../page/order-history/OrderHistory.page";
+// TODO: Hidden second version
+// import OrderPage from "../page/order/Order.page";
+// import CategoryPage from "../page/category/Category.page";
+// import OrderHistoryPage from "../page/order-history/OrderHistory.page";
+// import {HistoryTabBar} from "../components";
 import ChangePasswordPage from "../page/change-password/ChangePassword.page";
+import SearchPage from "../page/search/Search.page";
 
 import {ReactComponent as BakeryIcon} from "../icons/category/bakery.svg";
 import {ReactComponent as BeverageIcon} from "../icons/category/beverage.svg";
@@ -16,21 +19,20 @@ import {ReactComponent as SandwitchIcon} from "../icons/category/sandwitch.svg";
 import {ReactComponent as Sea_foodIcon} from "../icons/category/sea_food.svg";
 import {ReactComponent as VagetableIcon} from "../icons/category/vagetable.svg";
 
-import {HistoryTabBar} from "../components";
 
 export const DEV_ROUTER = {
     COMPONENTS: 'components',
     PAGES: 'pages',
 };
 
-const DOMAIN = 'https://pizza-mobile-api.herokuapp.com';
-// const DOMAIN = 'http://localhost:5000';
+export const BE_DOMAIN = 'https://pizza-mobile-api.herokuapp.com';
+// const BE_DOMAIN = 'http://localhost:5000';
 
 export const BE_API = {
-    SING_IN: () => `${DOMAIN}/sign-in`,
-    PLACE_ORDER: () => `${DOMAIN}/place-order`,
-    GET_ALL_CATEGORIES_ID_FOR_COMPANY: companyId => `${DOMAIN}/company/${companyId}/category`,
-    GET_ALL_MENU_FOR_COMPANY_FOR_CATEGORY: (companyId, categoryId) => `${DOMAIN}/company/${companyId}/menu_item/${categoryId}`,
+    SING_IN: () => `${BE_DOMAIN}/sign-in`,
+    PLACE_ORDER: () => `${BE_DOMAIN}/place-order`,
+    GET_ALL_CATEGORIES_ID_FOR_COMPANY: companyId => `${BE_DOMAIN}/company/${companyId}/category`,
+    GET_ALL_MENU_FOR_COMPANY_FOR_CATEGORY: (companyId, categoryId) => `${BE_DOMAIN}/company/${companyId}/menu_item/${categoryId}`,
 };
 
 export const CATEGORY_MAPPER = {
@@ -47,22 +49,21 @@ export const CATEGORY_MAPPER = {
     11: {title: "Hot drinks", icon: BeverageIcon, measurement: 'ml'},
 }
 
-const getSubCategoryTitle = ({categoryId}) => CATEGORY_MAPPER[categoryId].title;
-
 export const ROUTER =  {
 
     SING_IN: { URL: '/sign-in', TITLE: 'Sing in', page: SignInPage, showBottomMenu: true },
     SING_UP: { URL: '/sing-up',  TITLE: 'Sing up', page: SingUpPage, showBottomMenu: true},
-    CATEGORY: {URL: '/',TITLE: 'Category',page: CategoryPage, showBottomMenu: true},
-    ORDER_REVIEW: {URL: '/order',  TITLE: 'Order review', page: OrderPage, showBottomMenu: true},
-    ORDER_HISTORY: {URL: '/history',  TITLE: 'Order History', page: OrderHistoryPage, subHeader: HistoryTabBar, showBottomMenu: true},
-    Favorite: {URL: '/Favorite',  TITLE: 'Favorite Cart', page: () => {}},
-    Profile: {URL: '/Profile',  TITLE: 'Profile', page: () => {}},
+    // CATEGORY: {URL: '/',TITLE: 'Category',page: CategoryPage, showBottomMenu: true},
+    // ORDER_REVIEW: {URL: '/order',  TITLE: 'Order review', page: OrderPage, showBottomMenu: true},
+    // ORDER_HISTORY: {URL: '/history',  TITLE: 'Order History', page: OrderHistoryPage, subHeader: HistoryTabBar, showBottomMenu: true},
+    // Favorite: {URL: '/Favorite',  TITLE: 'Favorite Cart', page: () => {}},
+    // Profile: {URL: '/Profile',  TITLE: 'Profile', page: () => {}},
     SETTING: {URL: '/setting',  TITLE: 'Setting', page: SettingPage, showBottomMenu: true},
+    SEARCH: {URL: '/',  TITLE: 'Search', page: SearchPage, showBottomMenu: true},
 }
 
-ROUTER.USER_ACCOUNT = {URL: '/user_account',  TITLE: 'USER_ACCOUNT', page: () => {}, showBottomMenu: true, BACK_URL: ROUTER.SETTING.URL};
-ROUTER.SUB_CATEGORY = {URL: '/category', PARAMS: '/:categoryId', getTitle: getSubCategoryTitle, page: SubCategoryPage, showBottomMenu: true, BACK_URL: ROUTER.CATEGORY.URL};
+// ROUTER.USER_ACCOUNT = {URL: '/user_account',  TITLE: 'USER_ACCOUNT', page: () => {}, showBottomMenu: true, BACK_URL: ROUTER.SETTING.URL};
+ROUTER.MENU = {URL: '/menu', PARAMS: '/:categoryId', getTitle: 'Menu', page: SubCategoryPage, showBottomMenu: true, };
 ROUTER.CHANGE_PASSWORD = {URL: '/change-password',TITLE: 'Change password',page: ChangePasswordPage, showBottomMenu: true, BACK_URL: ROUTER.SING_IN.URL};
 
 export const ROUTERS = Object.keys(ROUTER).map(key => ROUTER[key]);

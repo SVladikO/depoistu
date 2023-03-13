@@ -18,6 +18,13 @@ const Success = () => {
     )
 }
 
+export const LoadingContent = () => (
+    <ContentContainer>
+        <LoadingIcon className="animated_svg"/>
+        <Text>Loading...</Text>
+    </ContentContainer>
+);
+
 const Loading = () => {
     const isLoading = useSelector(state => state.request.value.isLoading);
 
@@ -25,14 +32,8 @@ const Loading = () => {
         return;
     }
 
-    return (
-        <ContentContainer>
-            <LoadingIcon className="animated_svg"/>
-            <Text>Loading...</Text>
-        </ContentContainer>
-    )
+    return <LoadingContent />
 };
-
 
 const Error = () => {
     const message = useSelector(state => state.error.value);

@@ -5,11 +5,12 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
+  padding: 0 0 20px;
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
 `;
+
 export const LeftContent = styled.div`
   display: flex;
   & > svg {
@@ -19,6 +20,7 @@ export const LeftContent = styled.div`
     fill: ${COLOR.ACCENT1};
   }
 `;
+
 export const RightContent = styled.div`
   display: flex;
   align-items: center;
@@ -27,9 +29,10 @@ export const RightContent = styled.div`
 export const Title = styled.div`
   font-weight: 600;
   font-size: 16px;
-  line-height: 19px;
+  line-height: 16px;
   color: ${COLOR.ACCENT1};
-`
+`;
+
 export const RightAnchor = styled.div`
   background-image: url("data:image/svg+xml,%3Csvg width='8' 
                           height='14' viewBox='0 0 8 14' fill='none' 
@@ -44,6 +47,7 @@ export const RightAnchor = styled.div`
   border: none;
   fill: #1C2340;
 `;
+
 export const Label = styled.div`
   color: #B4C2CD;
   font-weight: 500;

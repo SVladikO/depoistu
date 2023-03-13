@@ -1,8 +1,9 @@
 import React, {useState} from "react";
-import {Wrapper, InputText, SwitchIconWrapper, CenterWrapper} from "./Input.style";
+import {Wrapper, InputText, SwitchIconWrapper, CenterWrapper, CloseIconWrapper} from "./Input.style";
 
 import {ReactComponent as ShowEyeIcon} from "../../icons/show-eye.svg";
 import {ReactComponent as HideEyeIcon} from "../../icons/hide-eye.svg";
+import {ReactComponent as CloseIcon} from "../../icons/close.svg";
 
 function Input({
                    Icon,
@@ -11,6 +12,8 @@ function Input({
                    placeholder,
                    changeHandler = () => {},
                    withSwitcher = false,
+                   withCleaner = false,
+                   ...props
                }) {
 
     const [showData, setShowData] = useState(false);
@@ -18,10 +21,11 @@ function Input({
     const showValue = () => {
         setShowData(true);
     }
+
     const hideValue = () => setShowData(false);
 
     return (
-        <Wrapper>
+        <Wrapper >
             {Icon && <Icon/>}
             <InputText
                 type={type}
@@ -30,6 +34,7 @@ function Input({
                 onChange={changeHandler}
                 withSwitcher={withSwitcher}
                 placeholder={placeholder}
+                {...props}
             />
             {withSwitcher &&
                 <SwitchIconWrapper onClick={showData ? hideValue : showValue}>
@@ -37,6 +42,11 @@ function Input({
                         {showData ? <HideEyeIcon/> : <ShowEyeIcon/>}
                     </CenterWrapper>
                 </SwitchIconWrapper>
+            }
+            {withCleaner &&
+                <CloseIconWrapper {...props}>
+                    <CloseIcon />
+                </CloseIconWrapper>
             }
         </Wrapper>
     )

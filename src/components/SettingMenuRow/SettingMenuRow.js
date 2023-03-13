@@ -48,10 +48,12 @@ const SettingMenuRow = ({
         return (
             <Wrapper onClick={changeHandler} className="account-menu-row">
                 <LeftContent>
-                    <Icon/>
+                    {Icon && <Icon/>}
                     <Title>{title}</Title>
                 </LeftContent>
-
+                <RightContent>
+                    <RightAnchor/>
+                </RightContent>
             </Wrapper>
         )
     }
