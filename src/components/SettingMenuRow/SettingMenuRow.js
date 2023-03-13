@@ -47,8 +47,8 @@ const SettingMenuRow = ({
     const renderWithHandler = () => {
         return (
             <Wrapper
-                onMouseDown={changeHandler}
-                onMouseStart={changeHandler}
+                onTouchEnd={changeHandler}
+                onTouchEnd={changeHandler}
                 className="account-menu-row"
             >
                 <LeftContent>
