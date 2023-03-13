@@ -69,18 +69,10 @@ export const PInput = ({
                            Icon,
                            children,
                            handleClick = () => {},
-                           handleMouseDown = () => {},
-                           handleTouchStart = () => {},
 }) => {
-    return (<PInputWrapper
-            onClick={handleClick}
-            onMouseDown={handleMouseDown}
-            onTouchStart={handleTouchStart}
-        >
+    return (<PInputWrapper onClick={handleClick}>
             {Icon && <Icon/>}
-            <PStyle withIcon={!!Icon}>
-                {children}
-            </PStyle>
+            <PStyle withIcon={!!Icon}>{children}</PStyle>
         </PInputWrapper>
     )
 };

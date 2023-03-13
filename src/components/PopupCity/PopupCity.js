@@ -29,8 +29,8 @@ const PopupCity = () => {
 
     return (
         <InvisibleWrapper
-            onMouseDown={closePopup}
-            onTouchStart={closePopup}
+            onMouseUp={closePopup}
+            onTouchEnd={closePopup}
         >
             <CityPopupContent/>
         </InvisibleWrapper>
