@@ -29,7 +29,6 @@ const PopupCity = () => {
 
     return (
         <InvisibleWrapper
-            onClick={closePopup}
             onMouseDown={closePopup}
             onTouchStart={closePopup}
         >
@@ -53,7 +52,7 @@ export const CityPopupContent = () => {
             onTouchStart={prevent}
             onMouseDown={prevent}
         >
-            <ContentContainer onClick={(e) => e.stopPropagation()} style={style}>
+            <ContentContainer style={style}>
                 {
                     !isRegion
                     &&
