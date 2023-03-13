@@ -46,7 +46,11 @@ const SettingMenuRow = ({
     }
     const renderWithHandler = () => {
         return (
-            <Wrapper onClick={changeHandler} className="account-menu-row">
+            <Wrapper
+                onMouseDown={changeHandler}
+                onMouseStart={changeHandler}
+                className="account-menu-row"
+            >
                 <LeftContent>
                     {Icon && <Icon/>}
                     <Title>{title}</Title>
