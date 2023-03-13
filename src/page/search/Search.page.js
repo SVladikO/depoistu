@@ -19,8 +19,6 @@ const SearchPage = () => {
             <ContentContainer>
             <PInput
                 handleClick={openCityPopup}
-                handleMouseDown={openCityPopup}
-                handleTouchStart={openCityPopup}
                 withIcon
                 Icon={LocationIcon}
             >
