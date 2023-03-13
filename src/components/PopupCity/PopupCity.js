@@ -57,7 +57,10 @@ export const CityPopupContent = () => {
                     !isRegion
                     &&
                     <BackButtonWrapper>
-                        <BackButtonInnerWrapper onClick={() => dispatch(showRegions(getRegions(cities)))}>
+                        <BackButtonInnerWrapper
+                            onMouseUp={() => dispatch(showRegions(getRegions(cities)))}
+                            onTouchEnd={() => dispatch(showRegions(getRegions(cities)))}
+                        >
                             <BackIcon/>
                             Назад
                         </BackButtonInnerWrapper>
