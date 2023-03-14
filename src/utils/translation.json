@@ -1,8 +1,4 @@
 {
-  "SING_IN_EMAIL_PLACEHOLDER":{
-    "ua": "",
-    "en": ""
-  },
   "SING_IN_MAIN_TITLE": {
     "en": "Sign in",
     "ua": "Вхiд"
@@ -11,12 +7,12 @@
     "ua": "Забули пароль?",
     "en": "Forgot password?"
   },
-
-
-  "SING_UP_LINK": {
+  "SIGN_IN_PAGE.SING_UP_LINK": {
     "ua": "Зареєструватись",
     "en": "Sing up"
   },
+
+
   "SING_UP_MAIN_TITLE": {
     "en": "Sing up",
     "ua": "Реєстрацiя"
@@ -25,23 +21,23 @@
     "en": "Create an account",
     "ua": "Створити аккаунт"
   },
-  "SING_UP_INPUT_NAME": {
+  "SING_UP_PAGE.PLACEHOLDER.USER_NAME": {
     "en": "Full Name",
     "ua": "Прiзвище та Iм'я"
   },
-  "SING_UP_INPUT_PHONE": {
+  "SING_UP_PAGE.PLACEHOLDER.PHONE": {
     "ua": "Номер телефону",
     "en": "Phone number"
   },
-  "SING_UP_INPUT_EMAIL": {
+  "SING_UP_PAGE.PLACEHOLDER.EMAIL": {
     "en": "Emial",
     "ua": "Електронна Пошта"
   },
-  "SING_UP_INPUT_PASS": {
+  "SING_UP_PAGE.PLACEHOLDER.PASS": {
     "ua": "Пароль",
     "en": "Password"
   },
-  "SING_UP_INPUT_CONFIRM_PASS": {
+  "SING_UP_PAGE.PLACEHOLDER.CONFIRM_PASS": {
     "en": "Confirm Password",
     "ua": "Пiдтвердiть Пароль"
   },
@@ -52,7 +48,7 @@
     "ua": "Створенням свого аккаунту ви плогоджуєтесь з нашими правилами користування та полiтикою конфiденцiйностi"
   },
 
-  "ACCOUNT_CONFIRMATION": {
+  "SIGN_IN_PAGE.ACCOUNT_CONFIRMATION": {
     "en": "You don’t have an account?",
     "ua": "Ви зареєстрованi?"
   },
@@ -128,47 +124,47 @@
   },
 
 
-  "CATEGORIES_BAKERY": {
+  "CATEGORIES.BAKERY": {
       "en": "Bakery",
       "ua": "Випiчка"
   },
-  "CATEGORIES_BEVERAGE": {
+  "CATEGORIES.BEVERAGE": {
     "ua": "Безалкогольнi напої",
     "en": "Beverage"
   },
-  "CATEGORIES_BURGERS": {
+  "CATEGORIES.BURGERS": {
     "ua": "Бургери",
     "en": "Burgers"
   },
-  "CATEGORIES_NOODLES": {
+  "CATEGORIES.NOODLES": {
     "ua": "Локшина",
     "en": "Noodles"
   },
-  "CATEGORIES_PIZZA": {
+  "CATEGORIES.PIZZA": {
     "en": "Pizza",
     "ua": "Пiцца"
   },
-  "CATEGORIES_SANDWITCH": {
+  "CATEGORIES.SANDWITCH": {
     "ua": "Сендвичi",
     "en": "Sandwitch"
   },
-  "CATEGORIES_SEAFOOD": {
+  "CATEGORIES.SEAFOOD": {
     "ua": "Морепродукти",
     "en": "Seafood"
   },
-  "CATEGORIES_VEGETABLE": {
+  "CATEGORIES.VEGETABLE": {
     "ua": "Овочевi страви",
     "en": "Vegetable"
   },
-  "CATEGORIES_ALCOHOL": {
+  "CATEGORIES.ALCOHOL": {
     "ua": "Алкогольнi напої",
     "en": "Alcohol drinks"
   },
-  "CATEGORIES_WINE_CARD": {
+  "CATEGORIES.WINE_CARD": {
     "ua": "Винна карта",
     "en": "Wine card"
   },
-  "CATEGORIES_HOT_DRINKS": {
+  "CATEGORIES.HOT_DRINKS": {
     "ua": "Гарячi напої",
     "en": "Hot drinks"
   },
@@ -179,7 +175,7 @@
   },
   "CHANGE_PASS_OLD": {
     "en": "Old Password",
-    "ua": "New Password"
+    "ua": "Новий Пароль"
   },
   "CHANGE_PASS_NEW": {
     "en": "New Password",

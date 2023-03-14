@@ -79,9 +79,9 @@ const SignInPage = () => {
                 {/*    </Flex>*/}
                 {/*</Flex>*/}
                 <NavigationLabelHref
-                    hrefTitle={resolveTranslation(["SING_UP_LINK"])}
+                    hrefTitle={resolveTranslation(["SIGN_IN_PAGE.SING_UP_LINK"])}
                     to={`${ROUTER.SING_UP.URL}?backUrl=${backUrl}`}
-                    label={resolveTranslation(["ACCOUNT_CONFIRMATION"])}
+                    label={resolveTranslation(["SIGN_IN_PAGE.ACCOUNT_CONFIRMATION"])}
                 />
             </ContentContainer>
             <PrimaryWideButton onClick={handleSingIn}><span>{resolveTranslation(["SING_IN_MAIN_TITLE"])}</span></PrimaryWideButton>

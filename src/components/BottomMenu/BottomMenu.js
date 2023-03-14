@@ -37,7 +37,7 @@ const BottomMenu = () => {
             <NavLink to={ROUTER.SETTING.URL}>
                 <MenuItem selected={isSelected(ROUTER.SETTING.URL)}>
                     <UserIcon/>
-                    <Label>{resolveTranslation(["BOTTOM_MENU_ACCOUNT"])}</Label>
+                    <Label>{resolveTranslation("BOTTOM_MENU_SEARCH")}</Label>
                 </MenuItem>
             </NavLink>
         </Wrapper>
