@@ -2,9 +2,11 @@ import styled from 'styled-components';
 import {BORDER_RADIUS, COLOR} from "../../utils/theme";
 
 export const Wrapper = styled.div`
+  padding: 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   position: relative;
   min-width: 355px;
   max-width: 355px;
@@ -22,8 +24,14 @@ export const Wrapper = styled.div`
   }
 `;
 
+export const BackButtonWrapper = styled.div`
+  width: 100%;
+  padding: 10px 10px 0px;
+  margin: 0;
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 11%);
+`;
+
 export const BackButtonInnerWrapper = styled.div`
-  position: fixed;
   display: flex;
   align-items: start;
   font-size: 20px;
@@ -42,17 +50,24 @@ export const BackButtonInnerWrapper = styled.div`
   }
 `;
 
-export const BackButtonWrapper = styled.div`
-  height: 35px;
-  margin: 0;
-`;
-
 export const CitiesWrapper = styled.div`
   overflow-y: scroll;
-  padding: 0 10px 0 0;
+  padding: 0 10px 10px;
   width: 103%;
   
   & > div:last-child {
     padding: 0;
   }
+`;
+
+export const TopHider = styled.div`
+  height: 10px;
+  width: 100%;
+  background: ${COLOR.ACCENT4};
+`;
+
+export const BottomHider = styled.div`
+  height: 10px;
+  width: 100%;
+  background: ${COLOR.ACCENT4};
 `;

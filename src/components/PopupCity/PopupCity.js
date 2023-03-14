@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 
-import {BackButtonWrapper, BackButtonInnerWrapper, Wrapper, CitiesWrapper} from "./PopupCity.style"
+import {BackButtonWrapper, BackButtonInnerWrapper, Wrapper, CitiesWrapper, TopHider, BottomHider} from "./PopupCity.style"
 import {getRegions} from "../../utils/utils";
 import {cities} from "../../features/cityPopup/cities";
 import {InvisibleWrapper} from '../PopupInvisiableWrapper/PopupInvisiableWrapper.style'
@@ -38,46 +38,45 @@ export const CityPopupContent = () => {
     }
 
     return (
-        <Wrapper>
-            <ContentContainer
-                onClick={e => {
-                    e.stopPropagation();
-                    e.preventDefault();
-                }}
-                style={style}
-            >
-                {
-                    !isRegion
-                    &&
-                    <BackButtonWrapper onClick={() => dispatch(showRegions(getRegions(cities)))}>
-                        <BackButtonInnerWrapper>
-                            <BackIcon/>
-                            Back
-                        </BackButtonInnerWrapper>
-                    </BackButtonWrapper>
-                }
-                <CitiesWrapper style={{height: isRegion ? '100%' : '92%'}} className="cities">
-                    {city.map((c, i) =>
-                        <SettingMenuRow
-                            key={i.toString()}
-                            changeHandler={
-                                () => {
-                                    if (isRegion) {
-                                        dispatch(setSelectedRegion(c))
-                                        document.getElementsByClassName('cities')[0].scrollTo(0, 0);
-                                        return;
-                                    }
-                                    dispatch(setSelectedCity(c));
-                                    // setIsVisibleCity(false);
+        <Wrapper
+            onClick={e => {
+                e.stopPropagation();
+                e.preventDefault();
+            }}
+            style={style}
+        >
+            {isRegion && <TopHider />}
+            {
+                !isRegion &&
+                <BackButtonWrapper onClick={() => dispatch(showRegions(getRegions(cities)))}>
+                    <BackButtonInnerWrapper>
+                        <BackIcon/>
+                        Back
+                    </BackButtonInnerWrapper>
+                </BackButtonWrapper>
+            }
+            <CitiesWrapper style={{height: isRegion ? '100%' : '92%'}} className="cities">
+                {city.map((c, i) =>
+                    <SettingMenuRow
+                        key={i.toString()}
+                        changeHandler={
+                            () => {
+                                if (isRegion) {
+                                    dispatch(setSelectedRegion(c))
+                                    document.getElementsByClassName('cities')[0].scrollTo(0, 0);
+                                    return;
                                 }
+                                dispatch(setSelectedCity(c));
+                                // setIsVisibleCity(false);
                             }
-                            title={isRegion ? c + ' область' : c}
-                            label=""
-                            style={{margin: 0, padding: '0 0 20px'}}
-                        />
-                    )}
-                </CitiesWrapper>
-            </ContentContainer>
+                        }
+                        title={isRegion ? c + ' область' : c}
+                        label=""
+                        style={{margin: 0, padding: '0 0 20px'}}
+                    />
+                )}
+            </CitiesWrapper>
+            <BottomHider />
         </Wrapper>
     )
 };
