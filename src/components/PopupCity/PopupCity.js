@@ -18,7 +18,7 @@ const PopupCity = () => {
     }
 
     return (
-        <InvisibleWrapper onMouseDown={() => dispatch(hideCityPopup())}>
+        <InvisibleWrapper onClick={() => dispatch(hideCityPopup())}>
             <CityPopupContent/>
         </InvisibleWrapper>
     );
@@ -36,12 +36,18 @@ export const CityPopupContent = () => {
 
     return (
         <Wrapper>
-            <ContentContainer onClick={(e) => e.stopPropagation()} style={style}>
+            <ContentContainer
+                onClick={e => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                }}
+                style={style}
+            >
                 {
                     !isRegion
                     &&
-                    <BackButtonWrapper>
-                        <BackButtonInnerWrapper onClick={() => dispatch(showRegions(getRegions(cities)))}>
+                    <BackButtonWrapper onClick={() => dispatch(showRegions(getRegions(cities)))}>
+                        <BackButtonInnerWrapper>
                             <BackIcon/>
                             Back
                         </BackButtonInnerWrapper>

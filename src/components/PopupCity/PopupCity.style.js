@@ -26,7 +26,8 @@ export const BackButtonInnerWrapper = styled.div`
   position: fixed;
   display: flex;
   align-items: start;
-  font-size: 16px;
+  font-size: 20px;
+  line-height: 20px;
   color: ${COLOR.ACCENT5};
   padding: 0 0 10px;
   background: #fff;
@@ -35,7 +36,8 @@ export const BackButtonInnerWrapper = styled.div`
     position: relative;
     top: 3px;
     left: -2px;
-    height: 12px;
+    height: 17px;
+    margin: 0 6px 0 0;
     fill: ${COLOR.ACCENT5};
   }
 `;
