@@ -13,7 +13,7 @@ const UserAccountBar = ({ fullName, phone}) => {
                     <Avatar src={avatar} alt="user_photo"/>
                     <TextContent>
                         <Name>{fullName}</Name>
-                        <Phone>{resolveTranslation(["SETTINGS_USER_PHONE"])}: {phone}</Phone>
+                        <Phone>{resolveTranslation(["PAGE.SETTINGS_USER_PHONE"])}: {phone}</Phone>
                     </TextContent>
                 </ContentWrapper>
             </Wrapper>

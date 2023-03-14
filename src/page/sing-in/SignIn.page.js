@@ -67,7 +67,7 @@ const SignInPage = () => {
             <ContentContainer>
                 <Input Icon={MailIcon} placeholder={`Enter email`} value={email}/>
                 <Input Icon={LockIcon} placeholder={`Enter password`} type="password" value={password}/>
-                <Link to={ROUTER.CHANGE_PASSWORD.URL} primary>{resolveTranslation(["SING_IN_PAGE.FORGOT_PASSWORD"])}</Link>
+                <Link to={ROUTER.CHANGE_PASSWORD.URL} primary>{resolveTranslation(["PAGE.SING_IN.FORGOT_PASSWORD"])}</Link>
                 {/*<Flex flexDirection='column'>*/}
                 {/*    <Flex justifyContent="space-between">*/}
                 {/*        <NavLabel primary={false}>Or login with</NavLabel>*/}
@@ -79,12 +79,12 @@ const SignInPage = () => {
                 {/*    </Flex>*/}
                 {/*</Flex>*/}
                 <NavigationLabelHref
-                    hrefTitle={resolveTranslation(["SIGN_IN_PAGE.SING_UP_LINK"])}
+                    hrefTitle={resolveTranslation(["PAGE.SIGN_IN.SING_UP_LINK"])}
                     to={`${ROUTER.SING_UP.URL}?backUrl=${backUrl}`}
-                    label={resolveTranslation(["SIGN_IN_PAGE.ACCOUNT_CONFIRMATION"])}
+                    label={resolveTranslation(["PAGE.SIGN_IN.ACCOUNT_CONFIRMATION"])}
                 />
             </ContentContainer>
-            <PrimaryWideButton onClick={handleSingIn}><span>{resolveTranslation(["SING_IN_MAIN_TITLE"])}</span></PrimaryWideButton>
+            <PrimaryWideButton onClick={handleSingIn}><span>{resolveTranslation(["PAGE.SING_IN.TOP_TITLE"])}</span></PrimaryWideButton>
         </>
     );
 };

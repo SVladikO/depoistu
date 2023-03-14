@@ -10,23 +10,23 @@ const SingUpPage = () => {
     return (
         <>
             <Container>
-                <Title>{resolveTranslation(["SING_UP_CREATE_ACCOUNT"])}</Title>
-                <Input placeholder={resolveTranslation(["SING_UP_PAGE.PLACEHOLDER.USER_NAME"])}/>
-                <Input placeholder={resolveTranslation(["SING_UP_PAGE.PLACEHOLDER.PHONE"])}/>
-                <Input placeholder={resolveTranslation(["SING_UP_PAGE.PLACEHOLDER.EMAIL"])}/>
-                <Input placeholder={resolveTranslation(["SING_UP_PAGE.PLACEHOLDER.PASS"])}/>
-                <Input placeholder={resolveTranslation(["SING_UP_PAGE.PLACEHOLDER.CONFIRM_PASS"])}/>
+                <Title>{resolveTranslation(["PAGE.SING_UP_CREATE_ACCOUNT"])}</Title>
+                <Input placeholder={resolveTranslation(["PAGE.SING_UP.PLACEHOLDER.USER_NAME"])}/>
+                <Input placeholder={resolveTranslation(["PAGE.SING_UP.PLACEHOLDER.PHONE"])}/>
+                <Input placeholder={resolveTranslation(["PAGE.SING_UP.PLACEHOLDER.EMAIL"])}/>
+                <Input placeholder={resolveTranslation(["PAGE.SING_UP.PLACEHOLDER.PASS"])}/>
+                <Input placeholder={resolveTranslation(["PAGE.SING_UP.PLACEHOLDER.CONFIRM_PASS"])}/>
                 <CheckBoxWithLabel
                     label={resolveTranslation(["CHECKBOX_CONFIRM_TERMS"])}/>
             </Container>
             <Wrapper>
                 <NavigationLabelHref
-                    hrefTitle={resolveTranslation(["SING_IN_MAIN_TITLE"])}
+                    hrefTitle={resolveTranslation(["PAGE.SING_IN.TOP_TITLE"])}
                     to={`${ROUTER.SING_IN.URL}`}
-                    label={resolveTranslation(["SIGN_IN_PAGE.ACCOUNT_CONFIRMATION"])}
+                    label={resolveTranslation(["PAGE.SIGN_IN.ACCOUNT_CONFIRMATION"])}
                 />
             </Wrapper>
-            <PrimaryWideButton>{resolveTranslation(["SING_UP_MAIN_TITLE"])}</PrimaryWideButton>
+            <PrimaryWideButton>{resolveTranslation(["PAGE.SING_UP.TOP_TITLE"])}</PrimaryWideButton>
         </>
     );
 };
