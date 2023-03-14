@@ -16,8 +16,6 @@ const SearchPage = () => {
         dispatch(showCityPopup());
     }
 
-    const clickOn = on => () => alert('click on: ' + on)
-
     return (
         <>
             <ContentContainer>
@@ -28,14 +26,6 @@ const SearchPage = () => {
             >
                 {selectedCity ? `${selectedCity}, ${selectedRegion} обл` : ""}
             </PInput>
-
-            <button
-                onMouseDown={clickOn('onMouseDown')}
-                onClick={clickOn('onClick')}
-                onMouseUp={clickOn('onMouseUp')}
-                onTouchStart={clickOn('onTouchStart')}
-                onTouchEnd={clickOn('onTouchEnd')}
-            >click</button>
             </ContentContainer>
         </>
     );

@@ -47,12 +47,45 @@ export const CityPopupContent = () => {
         height: '400px',
     }
 
+    const clickOn = on => () => alert('click on: ' + on)
+
     return (
         <Wrapper
             onMouseUp={prevent}
             onTouchEnd={prevent}
         >
             <ContentContainer style={style}>
+                <button
+                    onMouseDown={clickOn('onMouseDown')}
+                    onClick={clickOn('onClick')}
+                    onMouseUp={clickOn('onMouseUp')}
+                    onTouchStart={clickOn('onTouchStart')}
+                    onTouchEnd={clickOn('onTouchEnd')}
+                >1111</button>
+                <br/>
+                <button
+                    onClick={clickOn('onClick')}
+                    onTouchStart={clickOn('onTouchStart')}
+                    onTouchEnd={clickOn('onTouchEnd')}
+                >2222</button>
+                <br/>
+                <button
+                    onMouseDown={clickOn('onMouseDown')}
+                    onClick={clickOn('onClick')}
+                    onMouseUp={clickOn('onMouseUp')}
+                >3333</button>
+                <br/>
+                <button
+                    onClick={clickOn('onClick')}
+                >4444</button>
+                <br/>
+                <button
+                    onMouseDown={clickOn('onMouseDown')}
+                    onClick={clickOn('onClick')}
+                    onMouseUp={clickOn('onMouseUp')}
+                    onTouchStart={clickOn('onTouchStart')}
+                    onTouchEnd={clickOn('onTouchEnd')}
+                >5555</button>
                 {
                     !isRegion
                     &&
