@@ -1,6 +1,5 @@
-import Input from "../../components/Input/Input";
 import {Title,Container,Wrapper} from "./SingUp.style";
-import {CheckBoxWithLabel, PrimaryWideButton} from "../../components";
+import {CheckBoxWithLabel, PrimaryWideButton, Input} from "../../components";
 import NavigationLabelHref from "../../components/NavigationLabelHref/NavigationLabelHref";
 import {ROUTER} from '../../utils/config';
 

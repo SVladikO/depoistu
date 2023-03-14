@@ -41,18 +41,39 @@ export const CloseIconWrapper = styled.div`
   }
 `;
 
-export const InputText = styled.input`
+export const PInputWrapper = styled.div`
+  position: relative;
+  & > svg {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 1;
+  }
+`;
+
+const st = p => `
   background: ${COLOR.ACCENT2};
   color: ${COLOR.ACCENT1};
   width: 100%;
   height: 50px;
   border: none;
   font-size: 16px;
-  padding: ${p => {
-    if (p.withIcon) return '14px 20px 17px 35px'
-    return '14px 10px 17px 10px'
-  }};
+  display: flex;
+  align-items: center;
+  padding: ${p.withIcon ? '14px 20px 17px 35px' : '14px 10px 17px 10px'};
+`;
 
+export const PStyle = styled.p`
+  ${p => st(p)}
+`
+
+export const InputText = styled.input`
+  ${p => st(p)}
+  &:active,
+  &:focus {
+    outline: none;
+    border: none;
+  }
 
   ::placeholder {
     color: ${COLOR.ACCENT1};
