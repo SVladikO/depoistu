@@ -1,9 +1,9 @@
 {
-  "SING_IN_MAIN_TITLE": {
+  "SING_IN_PAGE.MAIN_TITLE": {
     "en": "Sign in",
     "ua": "Вхiд"
   },
-  "SING_IN_REMAINING_PASS": {
+  "SING_IN_PAGE.FORGOT_PASSWORD": {
     "ua": "Забули пароль?",
     "en": "Forgot password?"
   },
@@ -13,7 +13,7 @@
   },
 
 
-  "SING_UP_MAIN_TITLE": {
+  "SING_UP_PAGE.PAGE_TITLE": {
     "en": "Sing up",
     "ua": "Реєстрацiя"
   },
@@ -54,17 +54,17 @@
   },
 
 
-  "BOTTOM_MENU_SEARCH":{
+  "BOTTOM_MENU.SEARCH_TAB":{
     "ua": "Пошук",
     "en": "Search"
   },
-  "BOTTOM_MENU_ACCOUNT":{
+  "BOTTOM_MENU_ACCOUNT_TAB":{
     "ua": "Кабинет",
     "en": "Account"
   },
 
 
-  "SEARCH_MAIN_TITLE": {
+  "SEARCH_PAGE.PAGE_TITLE": {
     "ua": "Пошук",
     "en": "Search"
   },

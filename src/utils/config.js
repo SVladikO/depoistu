@@ -53,15 +53,15 @@ export const CATEGORY_MAPPER = {
 
 export const ROUTER =  {
 
-    SING_IN: { URL: '/sign-in', TITLE: resolveTranslation(["SING_IN_MAIN_TITLE"]), page: SignInPage, showBottomMenu: true },
-    SING_UP: { URL: '/sing-up',  TITLE: resolveTranslation(["SING_UP_MAIN_TITLE"]), page: SingUpPage, showBottomMenu: true},
+    SING_IN: { URL: '/sign-in', TITLE: resolveTranslation(["SING_IN_PAGE.MAIN_TITLE"]), page: SignInPage, showBottomMenu: true },
+    SING_UP: { URL: '/sing-up',  TITLE: resolveTranslation(["SING_UP_PAGE.PAGE_TITLE"]), page: SingUpPage, showBottomMenu: true},
     // CATEGORY: {URL: '/',TITLE: 'Category',page: CategoryPage, showBottomMenu: true},
     // ORDER_REVIEW: {URL: '/order',  TITLE: 'Order review', page: OrderPage, showBottomMenu: true},
     // ORDER_HISTORY: {URL: '/history',  TITLE: 'Order History', page: OrderHistoryPage, subHeader: HistoryTabBar, showBottomMenu: true},
     // Favorite: {URL: '/Favorite',  TITLE: 'Favorite Cart', page: () => {}},
     // Profile: {URL: '/Profile',  TITLE: 'Profile', page: () => {}},
     SETTING: {URL: '/setting',  TITLE: resolveTranslation(["SETTING_PAGE_MAIN_TITLE"]), page: SettingPage, showBottomMenu: true},
-    SEARCH: {URL: '/',  TITLE: resolveTranslation(["SEARCH_MAIN_TITLE"]), page: SearchPage, showBottomMenu: true},
+    SEARCH: {URL: '/',  TITLE: resolveTranslation(["SEARCH_PAGE.PAGE_TITLE"]), page: SearchPage, showBottomMenu: true},
 }
 
 // ROUTER.USER_ACCOUNT = {URL: '/user_account',  TITLE: 'USER_ACCOUNT', page: () => {}, showBottomMenu: true, BACK_URL: ROUTER.SETTING.URL};

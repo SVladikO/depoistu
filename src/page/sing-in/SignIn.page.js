@@ -67,7 +67,7 @@ const SignInPage = () => {
             <ContentContainer>
                 <Input Icon={MailIcon} placeholder={`Enter email`} value={email}/>
                 <Input Icon={LockIcon} placeholder={`Enter password`} type="password" value={password}/>
-                <Link to={ROUTER.CHANGE_PASSWORD.URL} primary>{resolveTranslation(["SING_IN_REMAINING_PASS"])}</Link>
+                <Link to={ROUTER.CHANGE_PASSWORD.URL} primary>{resolveTranslation(["SING_IN_PAGE.FORGOT_PASSWORD"])}</Link>
                 {/*<Flex flexDirection='column'>*/}
                 {/*    <Flex justifyContent="space-between">*/}
                 {/*        <NavLabel primary={false}>Or login with</NavLabel>*/}

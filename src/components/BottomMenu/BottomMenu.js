@@ -31,13 +31,13 @@ const BottomMenu = () => {
             <NavLink to={ROUTER.SEARCH.URL}>
                 <MenuItem selected={isSelected(ROUTER.SEARCH.URL)}>
                     <SearchIcon/>
-                    <Label>{resolveTranslation(["BOTTOM_MENU_SEARCH"])}</Label>
+                    <Label>{resolveTranslation(["BOTTOM_MENU.SEARCH_TAB"])}</Label>
                 </MenuItem>
             </NavLink>
             <NavLink to={ROUTER.SETTING.URL}>
                 <MenuItem selected={isSelected(ROUTER.SETTING.URL)}>
                     <UserIcon/>
-                    <Label>{resolveTranslation("BOTTOM_MENU_SEARCH")}</Label>
+                    <Label>{resolveTranslation("BOTTOM_MENU_ACCOUNT_TAB")}</Label>
                 </MenuItem>
             </NavLink>
         </Wrapper>
