@@ -53,7 +53,7 @@ export const BackButtonInnerWrapper = styled.div`
 export const CitiesWrapper = styled.div`
   overflow-y: scroll;
   padding: 0 10px 10px;
-  width: 103%;
+  width: 101%;
   
   & > div:last-child {
     padding: 0;
