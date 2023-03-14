@@ -32,6 +32,7 @@ export const ImageSection = styled.div`
 
 export const Content = styled.div`
   margin: 10px auto 10px 10px;
+  text-align: left;
 `;
 
 export const Name = styled.div`
