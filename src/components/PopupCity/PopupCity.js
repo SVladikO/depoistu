@@ -18,7 +18,7 @@ const PopupCity = () => {
     }
 
     return (
-        <InvisibleWrapper onClick={() => dispatch(hideCityPopup())}>
+        <InvisibleWrapper onMouseDown={() => dispatch(hideCityPopup())}>
             <CityPopupContent/>
         </InvisibleWrapper>
     );
@@ -72,12 +72,5 @@ export const CityPopupContent = () => {
         </Wrapper>
     )
 };
-
-// <CitiesWrapper>
-//     {showBackArrow && <ArrowWrapper>
-//         <ArrowIcon onClick={backToRegions}/><span>Back</span>
-//     </ArrowWrapper>}
-//
-// </CitiesWrapper>
 
 export default PopupCity;
