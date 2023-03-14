@@ -48,7 +48,7 @@ const SettingMenuRow = ({
         return (
             <Wrapper
                 onMouseDown={changeHandler}
-                onTouchStart={changeHandler}
+                onTouchEnd={changeHandler}
                 className="account-menu-row"
             >
                 <LeftContent>
