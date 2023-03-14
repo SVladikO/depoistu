@@ -8,7 +8,10 @@ const SearchPage = () => {
     const selectedCity = useSelector(state => state.cityPopup.selectedCity);
     const selectedRegion = useSelector(state => state.cityPopup.selectedRegion);
 
-    const openCityPopup = () => dispatch(showCityPopup());
+    const openCityPopup = () => {
+        dispatch(showCityPopup());
+        document.body.style.position = 'fixed';
+    }
 
     return (
         <ContentContainer>

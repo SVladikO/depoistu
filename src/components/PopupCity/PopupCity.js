@@ -18,7 +18,10 @@ const PopupCity = () => {
     }
 
     return (
-        <InvisibleWrapper onClick={() => dispatch(hideCityPopup())}>
+        <InvisibleWrapper onClick={() => {
+            dispatch(hideCityPopup())
+            document.body.style.position = 'relative';
+        }}>
             <CityPopupContent/>
         </InvisibleWrapper>
     );
