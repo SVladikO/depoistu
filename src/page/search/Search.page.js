@@ -8,21 +8,31 @@ import {Institution} from "../../components";
 
 const SearchPage = () => {
     const dispatch = useDispatch();
-    const city = useSelector(state => state.cityPopup.city);
     const selectedCity = useSelector(state => state.cityPopup.selectedCity);
     const selectedRegion = useSelector(state => state.cityPopup.selectedRegion);
     const [companies, setCompanies] = useState([]);
     const url = `https://pizza-mobile-api.herokuapp.com/companies/${selectedCity}`;
-    const warning = <Warning>There is no installations in current city</Warning>;
+    const [warning, setWarning] = useState('');
+    const warningMessage = 'There is no installations in current city';
 
+    const showWarning = () => {
+        setWarning(warningMessage)
+    }
 
     useEffect(() => {
-        if(selectedCity === ''){
+        if (selectedCity === '') {
             return;
         }
         fetch(decodeURIComponent(url),)
             .then(response => response.json())
-            .then(data => setCompanies(data));
+            .then(data => {
+                if (data.length === 0) {
+                    showWarning();
+                }
+                setCompanies(data)
+            }).catch(e => {
+            showWarning();
+        })
     }, [selectedCity]);
 
 
@@ -35,7 +45,8 @@ const SearchPage = () => {
                     value={selectedCity ? `${selectedCity}, ${selectedRegion} обл` : ""}
                 />
             </InputWrapper>
-            {companies.length === 0 ? warning : selectedCity && companies.map(company => <Institution  key={company.ID} company={company}/>)}
+            {companies.length === 0 ? <Warning>{warning}</Warning> : selectedCity && companies.map(company =>
+                <Institution key={company.ID} company={company}/>)}
         </>
     );
 };
