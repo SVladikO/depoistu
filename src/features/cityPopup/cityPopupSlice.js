@@ -3,7 +3,7 @@ import {cities} from "./cities";
 import {getRegions} from "../../utils/utils";
 
 const initialState = {
-    city: getRegions(cities),
+    cities: getRegions(cities),
     selectedCity: '',
     selectedRegion: '',
     isRegion: true,
@@ -22,16 +22,15 @@ export const cityPopupSlice = createSlice({
         hideCityPopup: state => {state.isVisible = false},
         setSelectedRegion: (state, action) => {
             state.selectedRegion = action.payload;
-            state.city = cities[action.payload];
-            state.isRegion = false;
         },
-        showRegions: (state, action) => {
-            state.city = action.payload;
-            state.isRegion = true;
+        setIsRegion: (state, action) => {
+            state.isRegion = action.payload;
+        },
+        setCities:(state,action) => {
+            state.cities = action.payload;
         },
         setSelectedCity: (state, action) => {
             state.selectedCity = action.payload;
-            state.isVisible = false;
         },
     }
 });
@@ -41,6 +40,7 @@ export const {
     hideCityPopup,
     setSelectedRegion,
     setSelectedCity,
-    showRegions
+    setIsRegion,
+    setCities
 } = cityPopupSlice.actions;
 export default cityPopupSlice.reducer;

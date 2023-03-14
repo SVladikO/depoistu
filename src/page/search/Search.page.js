@@ -8,6 +8,7 @@ import {Institution} from "../../components";
 
 const SearchPage = () => {
     const dispatch = useDispatch();
+    const city = useSelector(state => state.cityPopup.city);
     const selectedCity = useSelector(state => state.cityPopup.selectedCity);
     const selectedRegion = useSelector(state => state.cityPopup.selectedRegion);
     const [companies, setCompanies] = useState([]);
@@ -16,6 +17,9 @@ const SearchPage = () => {
 
 
     useEffect(() => {
+        if(selectedCity === ''){
+            return;
+        }
         fetch(decodeURIComponent(url),)
             .then(response => response.json())
             .then(data => setCompanies(data));
