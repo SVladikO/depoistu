@@ -1,7 +1,9 @@
 import {ReactComponent as LocationIcon} from "../../icons/map_point.svg";
-import {showCityPopup} from "../../features/cityPopup/cityPopupSlice";
+import {showCityPopup, showRegions} from "../../features/cityPopup/cityPopupSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {ContentContainer, PInput} from '../../components'
+import {getRegions} from "../../utils/utils";
+import {cities} from "../../features/cityPopup/cities";
 
 const SearchPage = () => {
     const dispatch = useDispatch();
@@ -14,6 +16,8 @@ const SearchPage = () => {
         dispatch(showCityPopup());
     }
 
+    const clickOn = on => () => alert('click on: ' + on)
+
     return (
         <>
             <ContentContainer>
@@ -24,6 +28,14 @@ const SearchPage = () => {
             >
                 {selectedCity ? `${selectedCity}, ${selectedRegion} обл` : ""}
             </PInput>
+
+            <button
+                onMouseDown={clickOn('onMouseDown')}
+                onClick={clickOn('onClick')}
+                onMouseUp={clickOn('onMouseUp')}
+                onTouchStart={clickOn('onTouchStart')}
+                onTouchEnd={clickOn('onTouchEnd')}
+            >click</button>
             </ContentContainer>
         </>
     );
