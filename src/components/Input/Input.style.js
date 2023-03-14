@@ -46,7 +46,7 @@ export const PInputWrapper = styled.div`
   & > svg {
     position: absolute;
     top: 12px;
-    left: 12px;
+    left: 10px;
     z-index: 1;
   }
 `;
