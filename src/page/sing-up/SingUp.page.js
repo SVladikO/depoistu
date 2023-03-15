@@ -10,14 +10,14 @@ const SingUpPage = () => {
     return (
         <>
             <Container>
-                <Title>{resolveTranslation(["PAGE.SING_UP_CREATE_ACCOUNT"])}</Title>
+                <Title>{resolveTranslation(["PAGE.SING_UP.CREATE_ACCOUNT"])}</Title>
                 <Input placeholder={resolveTranslation(["PAGE.SING_UP.PLACEHOLDER.USER_NAME"])}/>
                 <Input placeholder={resolveTranslation(["PAGE.SING_UP.PLACEHOLDER.PHONE"])}/>
                 <Input placeholder={resolveTranslation(["PAGE.SING_UP.PLACEHOLDER.EMAIL"])}/>
                 <Input placeholder={resolveTranslation(["PAGE.SING_UP.PLACEHOLDER.PASS"])}/>
                 <Input placeholder={resolveTranslation(["PAGE.SING_UP.PLACEHOLDER.CONFIRM_PASS"])}/>
                 <CheckBoxWithLabel
-                    label={resolveTranslation(["CHECKBOX_CONFIRM_TERMS"])}/>
+                    label={resolveTranslation(["PAGE.SING_UP.CHECKBOX_CONFIRM_TERMS"])}/>
             </Container>
             <Wrapper>
                 <NavigationLabelHref

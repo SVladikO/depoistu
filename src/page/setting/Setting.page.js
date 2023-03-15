@@ -53,26 +53,26 @@ const SettingPage = () => {
         <>
             <UserAccountBar fullName='Jhon Smith' phone="+14844731243"/>
             <RowSplitter height='20px'/>
-            <AccountSettings groupTitle={resolveTranslation(["PAGE.SETTINGS_SUBTITLE_ACCOUNT"])}>
+            <AccountSettings groupTitle={resolveTranslation(["PAGE.SETTINGS.GROUP_TITLE.ACCOUNTS"])}>
                 {/*TODO: Hidden second version*/}
                 {/*<SettingMenuRow icon={LikeIcon} title={ROUTER.Favorite.TITLE} href={ROUTER.Favorite.URL}/>*/}
                 {/*<SettingMenuRow icon={OrderHistoryIcon} title={ROUTER.ORDER_HISTORY.TITLE} href={ROUTER.ORDER_HISTORY.URL}/>*/}
-                <SettingMenuRow icon={LockIcon} title={resolveTranslation(["PAGE.SETTINGS_MENU_ROW_CHANGE_PASS"])} href={ROUTER.CHANGE_PASSWORD.URL}/>
+                <SettingMenuRow icon={LockIcon} title={resolveTranslation(["PAGE.SETTINGS.MENU_ROW.CHANGE_PASS"])} href={ROUTER.CHANGE_PASSWORD.URL}/>
                 {/*<SettingMenuRow icon={PaymentIcon} title='Payment' href='/catalog'/>*/}
                 {/*<SettingMenuRow icon={DeliveryAddressIcon} title='Delivery Address' href='/catalog'/>*/}
-                <SettingMenuRow icon={BusinessIcon} title={resolveTranslation(["PAGE.SETTINGS_MENU_ROW_FOR_BUSINESS"])}  href='/catalog'/>
-                <SettingMenuRow icon={StoreIcon} title={resolveTranslation(["PAGE.SETTINGS_MENU_ROW_LOCATION"])} href='/catalog'/>
-                <SettingMenuRow icon={ConditionsIcon} title={resolveTranslation(["PAGE.SETTINGS_MENU_ROW_TERMS"])} href='/catalog'/>
-                <SettingMenuRow icon={HelpIcon} title={resolveTranslation(["PAGE.SETTINGS_MENU_ROW_HELP"])} href='/catalog'/>
-                <SettingMenuRow icon={LogOutIcon} title={resolveTranslation(["PAGE.SETTINGS_MENU_ROW_EXIT"])} changeHandler={logOut}/>
+                <SettingMenuRow icon={BusinessIcon} title={resolveTranslation(["PAGE.SETTINGS.MENU_ROW.FOR_BUSINESS"])}  href='/catalog'/>
+                <SettingMenuRow icon={StoreIcon} title={resolveTranslation(["PAGE.SETTINGS.MENU_ROW.LOCATION"])} href='/catalog'/>
+                <SettingMenuRow icon={ConditionsIcon} title={resolveTranslation(["PAGE.SETTINGS.MENU_ROW.TERMS"])} href='/catalog'/>
+                <SettingMenuRow icon={HelpIcon} title={resolveTranslation(["PAGE.SETTINGS.MENU_ROW.HELP"])} href='/catalog'/>
+                <SettingMenuRow icon={LogOutIcon} title={resolveTranslation(["PAGE.SETTINGS.MENU_ROW.EXIT"])} changeHandler={logOut}/>
             </AccountSettings>
-            <OptionSettings groupTitle={resolveTranslation(["PAGE.SETTINGS_SUBTITLE_MORE_OPTIONS"])}>
+            <OptionSettings groupTitle={resolveTranslation(["PAGE.SETTINGS.GROUP_TITLE.OPTIONS"])}>
                 {/*<SettingMenuRow icon={NewsletterIcon} title='Newsletter' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
                 {/*<SettingMenuRow icon={NotificationIcon} title='Notification' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
                 {/*<SettingMenuRow icon={PhoneCallIcon} title='Phone Call' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
-                <SettingMenuRow icon={CurrencyIcon} title={resolveTranslation(["PAGE.SETTINGS_MENU_ROW_CURRENCY"])} href='/catalog' label='$USD'/>
-                <SettingMenuRow icon={LanguageIcon} title={resolveTranslation(["PAGE.SETTINGS_MENU_ROW_LANGUAGE"])} href='/catalog' label='English'/>
-                <SettingMenuRow icon={LinkedAccountIcon} title={resolveTranslation(["PAGE.SETTINGS_MENU_ROW_LINKED_ACCOUNT"])} href='/catalog' label='Facebook, go ...'/>
+                <SettingMenuRow icon={CurrencyIcon} title={resolveTranslation(["PAGE.SETTINGS.MENU_ROW.CURRENCY"])} href='/catalog' label='$USD'/>
+                <SettingMenuRow icon={LanguageIcon} title={resolveTranslation(["PAGE.SETTINGS.MENU_ROW.LANGUAGE"])} href='/catalog' label='English'/>
+                <SettingMenuRow icon={LinkedAccountIcon} title={resolveTranslation(["PAGE.SETTINGS.MENU_ROW.LINKED_ACCOUNTS"])} href='/catalog' label='Facebook, go ...'/>
             </OptionSettings>
         </>
     );

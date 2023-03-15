@@ -38,17 +38,17 @@ export const BE_API = {
 };
 
 export const CATEGORY_MAPPER = {
-    1: {title: resolveTranslation(["PAGE.CATEGORIES.BAKERY"]), icon: BakeryIcon, measurement: 'g'},
-    2: {title: resolveTranslation(["PAGE.CATEGORIES.BEVERAGE"]), icon: BeverageIcon, measurement: 'L'},
-    3: {title: resolveTranslation(["PAGE.CATEGORIES.BURGERS"]), icon: BurgerIcon, measurement: 'g'},
-    4: {title: resolveTranslation(["PAGE.CATEGORIES.NOODLES"]), icon: NoodlesIcon, measurement: 'g'},
-    5: {title: resolveTranslation(["PAGE.CATEGORIES.PIZZA"]), icon: PizzaIcon, measurement: 'g'},
-    6: {title: resolveTranslation(["PAGE.CATEGORIES.SANDWITCH"]), icon: SandwitchIcon, measurement: 'g'},
-    7: {title: resolveTranslation(["PAGE.CATEGORIES.SEAFOOD"]), icon: Sea_foodIcon, measurement: 'g'},
-    8: {title: resolveTranslation(["PAGE.CATEGORIES.VEGETABLE"]), icon: VagetableIcon, measurement: 'g'},
-    9: {title: resolveTranslation(["PAGE.CATEGORIES.ALCOHOL"]), icon: BeverageIcon, measurement: 'ml'},
-    10: {title: resolveTranslation(["PAGE.CATEGORIES.WINE_CARD"]), icon: BeverageIcon, measurement: 'ml'},
-    11: {title: resolveTranslation(["PAGE.CATEGORIES.HOT_DRINKS"]), icon: BeverageIcon, measurement: 'ml'},
+    1: {title: resolveTranslation(["CATEGORIES.BAKERY"]), icon: BakeryIcon, measurement: 'g'},
+    2: {title: resolveTranslation(["CATEGORIES.BEVERAGE"]), icon: BeverageIcon, measurement: 'L'},
+    3: {title: resolveTranslation(["CATEGORIES.BURGERS"]), icon: BurgerIcon, measurement: 'g'},
+    4: {title: resolveTranslation(["CATEGORIES.NOODLES"]), icon: NoodlesIcon, measurement: 'g'},
+    5: {title: resolveTranslation(["CATEGORIES.PIZZA"]), icon: PizzaIcon, measurement: 'g'},
+    6: {title: resolveTranslation(["CATEGORIES.SANDWITCH"]), icon: SandwitchIcon, measurement: 'g'},
+    7: {title: resolveTranslation(["CATEGORIES.SEAFOOD"]), icon: Sea_foodIcon, measurement: 'g'},
+    8: {title: resolveTranslation(["CATEGORIES.VEGETABLE"]), icon: VagetableIcon, measurement: 'g'},
+    9: {title: resolveTranslation(["CATEGORIES.ALCOHOL"]), icon: BeverageIcon, measurement: 'ml'},
+    10: {title: resolveTranslation(["CATEGORIES.WINE_CARD"]), icon: BeverageIcon, measurement: 'ml'},
+    11: {title: resolveTranslation(["CATEGORIES.HOT_DRINKS"]), icon: BeverageIcon, measurement: 'ml'},
 }
 
 export const ROUTER =  {
@@ -60,7 +60,7 @@ export const ROUTER =  {
     // ORDER_HISTORY: {URL: '/history',  TITLE: 'Order History', page: OrderHistoryPage, subHeader: HistoryTabBar, showBottomMenu: true},
     // Favorite: {URL: '/Favorite',  TITLE: 'Favorite Cart', page: () => {}},
     // Profile: {URL: '/Profile',  TITLE: 'Profile', page: () => {}},
-    SETTING: {URL: '/setting',  TITLE: resolveTranslation(["PAGE.SETTING.TOP_TITLE"]), page: SettingPage, showBottomMenu: true},
+    SETTING: {URL: '/setting',  TITLE: resolveTranslation(["PAGE.SETTINGS.TOP_TITLE"]), page: SettingPage, showBottomMenu: true},
     SEARCH: {URL: '/',  TITLE: resolveTranslation(["PAGE.SEARCH.TOP_TITLE"]), page: SearchPage, showBottomMenu: true},
 }
 
