@@ -18,6 +18,7 @@ import {ReactComponent as PizzaIcon} from "../icons/category/pizza.svg";
 import {ReactComponent as SandwitchIcon} from "../icons/category/sandwitch.svg";
 import {ReactComponent as Sea_foodIcon} from "../icons/category/sea_food.svg";
 import {ReactComponent as VagetableIcon} from "../icons/category/vagetable.svg";
+import EditPage from "../page/edit/Edit.page";
 
 
 export const DEV_ROUTER = {
@@ -60,6 +61,7 @@ export const ROUTER =  {
     // Profile: {URL: '/Profile',  TITLE: 'Profile', page: () => {}},
     SETTING: {URL: '/setting',  TITLE: 'Setting', page: SettingPage, showBottomMenu: true},
     SEARCH: {URL: '/',  TITLE: 'Search', page: SearchPage, showBottomMenu: true},
+    EDIT: {URL: '/edit/1',  TITLE: 'Edit', page: EditPage, showBottomMenu: false},
 }
 
 // ROUTER.USER_ACCOUNT = {URL: '/user_account',  TITLE: 'USER_ACCOUNT', page: () => {}, showBottomMenu: true, BACK_URL: ROUTER.SETTING.URL};
