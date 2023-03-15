@@ -13,12 +13,12 @@ const ChangePasswordPage = () => {
 
     return (
         <ContentContainer>
-            <Input withSwitcher placeholder={resolveTranslation(["PAGE.CHANGE_PASSWORD_OLD"])}/>
+            <Input withSwitcher placeholder={resolveTranslation(["PAGE.CHANGE_PASSWORD.PLACEHOLDER.OLD_PASSWORD"])}/>
             <RowSplitter height='10px'/>
-            <Input withSwitcher placeholder={resolveTranslation(["PAGE.CHANGE_PASSWORD_NEW"])}/>
-            <Input withSwitcher placeholder={resolveTranslation(["PAGE.CHANGE_PASSWORD_CONFIRM"])}/>
+            <Input withSwitcher placeholder={resolveTranslation(["PAGE.CHANGE_PASSWORD.PLACEHOLDER.NEW_PASSWORD"])}/>
+            <Input withSwitcher placeholder={resolveTranslation(["PAGE.CHANGE_PASSWORD.PLACEHOLDER.CONFIRM_PASSWORD"])}/>
             <RowSplitter margin="20px 0 0">
-                <PrimaryRoundedButton>{resolveTranslation(["PAGE.CHANGE_PASSWORD_SAVE"])}</PrimaryRoundedButton>
+                <PrimaryRoundedButton>{resolveTranslation(["PAGE.CHANGE_PASSWORD.BUTTON.SAVE_PASSWORD"])}</PrimaryRoundedButton>
             </RowSplitter>
         </ContentContainer>
     );

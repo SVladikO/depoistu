@@ -64,8 +64,8 @@
     "ua": "Налаштування"
   },
   "PAGE.SETTINGS.USER_PHONE_LABEL": {
-    "en": "phone",
-    "ua": "телефон"
+    "en": "Phone",
+    "ua": "Телефон"
   },
   "PAGE.SETTINGS.GROUP_TITLE.ACCOUNTS": {
     "en": "Accounts",
@@ -159,19 +159,19 @@
     "ua": "Змiнити Пароль",
     "en": "Change Password"
   },
-  "PAGE.CHANGE_PASSWORD_OLD": {
+  "PAGE.CHANGE_PASSWORD.PLACEHOLDER.OLD_PASSWORD": {
     "en": "Old Password",
     "ua": "Новий Пароль"
   },
-  "PAGE.CHANGE_PASSWORD_NEW": {
+  "PAGE.CHANGE_PASSWORD.PLACEHOLDER.NEW_PASSWORD": {
     "en": "New Password",
     "ua": "Новий пароль"
   },
-  "PAGE.CHANGE_PASSWORD_CONFIRM": {
+  "PAGE.CHANGE_PASSWORD.PLACEHOLDER.CONFIRM_PASSWORD": {
     "en": "Confirm Password",
     "ua": "Пiдтвердiть Пароль"
   },
-  "PAGE.CHANGE_PASSWORD_SAVE": {
+  "PAGE.CHANGE_PASSWORD.BUTTON.SAVE_PASSWORD": {
     "ua": "Зберегти!",
     "en": "Save now!"
   }
