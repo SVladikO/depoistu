@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from "react";
-import {InputWrapper, Warning} from "./Search.page.style";
-import {Input} from "../../components";
-import {ReactComponent as LocationIcon} from "../../icons/map_point.svg";
-import {showCityPopup} from "../../features/cityPopup/cityPopupSlice";
 import {useDispatch, useSelector} from "react-redux";
-import {Institution} from "../../components";
+
+import {Warning} from "./Search.page.style";
+
+import {ReactComponent as LocationIcon} from "../../icons/map_point.svg";
+import {PInput, ContentContainer, Institution} from "../../components";
+import {showCityPopup} from "../../features/cityPopup/cityPopupSlice";
 
 const SearchPage = () => {
     const dispatch = useDispatch();
@@ -36,15 +37,22 @@ const SearchPage = () => {
     }, [selectedCity]);
 
 
+    const openCityPopup = () => {
+        dispatch(showCityPopup());
+        document.body.style.position = 'fixed';
+    }
+
     return (
         <>
-            <InputWrapper>
-                <Input
+            <ContentContainer>
+                <PInput
+                    handleClick={openCityPopup}
+                    withIcon
                     Icon={LocationIcon}
-                    onClick={() => dispatch(showCityPopup())}
-                    value={selectedCity ? `${selectedCity}, ${selectedRegion} обл` : ""}
-                />
-            </InputWrapper>
+                >
+                    {selectedCity ? `${selectedCity}, ${selectedRegion} обл` : ""}
+                </PInput>
+            </ContentContainer>
             {companies.length === 0 ? <Warning>{warning}</Warning> : selectedCity && companies.map(company =>
                 <Institution key={company.ID} company={company}/>)}
         </>

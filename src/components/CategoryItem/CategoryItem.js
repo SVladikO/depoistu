@@ -1,10 +1,10 @@
 import {Wrapper, IconWrapper, Title} from './CategoryItem.style'
 
-function CategoryItem({title, children}) {
+function CategoryItem({category = {}}) {
     return (
         <Wrapper>
-            <IconWrapper>{children}</IconWrapper>
-            <Title>{title}</Title>
+            {category.icon && <IconWrapper>{<category.icon/>}</IconWrapper>}
+            <Title>{category.title}</Title>
         </Wrapper>
     )
 }

@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 
-import {BackButtonWrapper, BackButtonInnerWrapper, Wrapper, CitiesWrapper} from "./PopupCity.style"
+import {BackButtonWrapper, BackButtonInnerWrapper, Wrapper, CitiesWrapper, TopHider, BottomHider} from "./PopupCity.style"
 import {getRegions} from "../../utils/utils";
 import {cities as citiesJSON} from "../../features/cityPopup/cities";
 import {InvisibleWrapper} from '../PopupInvisiableWrapper/PopupInvisiableWrapper.style'
@@ -23,7 +23,10 @@ const PopupCity = () => {
     }
 
     return (
-        <InvisibleWrapper onClick={() => dispatch(hideCityPopup())}>
+        <InvisibleWrapper onClick={() => {
+            dispatch(hideCityPopup())
+            document.body.style.position = 'relative';
+        }}>
             <CityPopupContent/>
         </InvisibleWrapper>
     );
@@ -40,8 +43,14 @@ export const CityPopupContent = () => {
     }
 
     return (
-        <Wrapper>
-            <ContentContainer onClick={(e) => e.stopPropagation()} style={style}>
+        <Wrapper
+            onClick={e => {
+                e.stopPropagation();
+                e.preventDefault();
+            }}
+            style={style}
+        >
+            <ContentContainer onClick={e => e.stopPropagation()} style={style}>
                 {
                     !isRegion
                     &&
@@ -85,12 +94,5 @@ export const CityPopupContent = () => {
         </Wrapper>
     )
 };
-
-// <CitiesWrapper>
-//     {showBackArrow && <ArrowWrapper>
-//         <ArrowIcon onClick={backToRegions}/><span>Back</span>
-//     </ArrowWrapper>}
-//
-// </CitiesWrapper>
 
 export default PopupCity;

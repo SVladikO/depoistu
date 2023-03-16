@@ -7,7 +7,7 @@ import {
     ThirdButton,
 } from "./Button/Button.style";
 
-import Input from "./Input/Input";
+import {Input, PInput} from "./Input/Input";
 import NotificationTDB from "./NotificationTDB/NotificationTDB";
 import Price from "./Price/Price";
 import Rating from "./Rating/Rating";
@@ -36,6 +36,7 @@ import PopupCity from "./PopupCity/PopupCity";
 import PopupIntro from "./PopupIntro/PopupIntro";
 import PopupImage from "./PopupImage/PopupImage";
 import Institution from "./Institution/Institution";
+import CategoryMenuRow from "./CategoryMenuRow/CategoryMenuRow";
 
 export {
     SettingMenuRow,
@@ -43,8 +44,10 @@ export {
     CategoryItem,
     Discount,
     Input,
+    PInput,
     Like,
     Rating,
+    CategoryMenuRow,
     NotificationTDB,
     RowSplitter,
     HistoryTabBar,
