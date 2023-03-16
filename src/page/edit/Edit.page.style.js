@@ -9,8 +9,13 @@ export const Wrapper = styled.div`
 
 export const Pictures = styled.div`
   height: 100px;
+  width: 100%;
   display: flex;
   margin: 0 0 10px 0;
+  .swiper-slide-active{
+    flex-shrink: 0!important;
+    min-width: 178px;
+  }
   .swiper-slide{
     img{
       max-width: 178px;
@@ -19,6 +24,7 @@ export const Pictures = styled.div`
       min-height: 100px;
       min-width: 178px;
       position: relative;
+      object-fit: cover;
     }
   }
 `;
@@ -41,7 +47,7 @@ export const BasketButton = styled.div`
   align-items: center;
   position: absolute;
   bottom: 0;
-  right: 0;
+  left: 148px;
 `;
 export const MenuItemEditor = styled.div`
   padding: 10px;
