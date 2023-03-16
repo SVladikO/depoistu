@@ -70,8 +70,6 @@ const columns = [
         {title: 'Input 3', component: <Input withSwitcher placeholder={`New password`}/>},
         {title: 'PInput', component: <PInput withIcon Icon={LocationIcon}> Vinnica</PInput>},
         {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
-
-
     ],
     [
         {
