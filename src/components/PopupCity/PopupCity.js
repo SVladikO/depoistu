@@ -2,12 +2,19 @@ import {useDispatch, useSelector} from "react-redux";
 
 import {BackButtonWrapper, BackButtonInnerWrapper, Wrapper, CitiesWrapper, TopHider, BottomHider} from "./PopupCity.style"
 import {getRegions} from "../../utils/utils";
-import {cities} from "../../features/cityPopup/cities";
+import {cities as citiesJSON} from "../../features/cityPopup/cities";
 import {InvisibleWrapper} from '../PopupInvisiableWrapper/PopupInvisiableWrapper.style'
-import {hideCityPopup, setSelectedRegion, showRegions, setSelectedCity} from "../../features/cityPopup/cityPopupSlice";
+import {
+    hideCityPopup,
+    setSelectedRegion,
+    setCities,
+    setSelectedCity,
+    setIsRegion
+} from "../../features/cityPopup/cityPopupSlice";
 import {ContentContainer, SettingMenuRow} from '../index'
-
 import {ReactComponent as BackIcon} from "../../icons/back.svg";
+
+const enableScrollOnBody = () => document.body.style.position = 'relative';
 
 const PopupCity = () => {
     const isVisiblePopup = useSelector(state => state.cityPopup.isVisible);
@@ -19,8 +26,8 @@ const PopupCity = () => {
 
     return (
         <InvisibleWrapper onClick={() => {
-            dispatch(hideCityPopup())
-            document.body.style.position = 'relative';
+            dispatch(hideCityPopup());
+            enableScrollOnBody();
         }}>
             <CityPopupContent/>
         </InvisibleWrapper>
@@ -30,7 +37,7 @@ const PopupCity = () => {
 export const CityPopupContent = () => {
     const dispatch = useDispatch();
 
-    let city = useSelector(state => state.cityPopup.city)
+    let cities = useSelector(state => state.cityPopup.cities)
     const isRegion = useSelector(state => state.cityPopup.isRegion);
 
     const style = {
@@ -45,38 +52,49 @@ export const CityPopupContent = () => {
             }}
             style={style}
         >
-            {isRegion && <TopHider />}
-            {
-                !isRegion &&
-                <BackButtonWrapper onClick={() => dispatch(showRegions(getRegions(cities)))}>
-                    <BackButtonInnerWrapper>
-                        <BackIcon/>
-                        Back
-                    </BackButtonInnerWrapper>
-                </BackButtonWrapper>
-            }
-            <CitiesWrapper style={{height: isRegion ? '100%' : '92%'}} className="cities">
-                {city.map((c, i) =>
-                    <SettingMenuRow
-                        key={i.toString()}
-                        changeHandler={
-                            () => {
-                                if (isRegion) {
-                                    dispatch(setSelectedRegion(c))
-                                    document.getElementsByClassName('cities')[0].scrollTo(0, 0);
-                                    return;
+            <ContentContainer onClick={e => e.stopPropagation()} style={style}>
+                {
+                    !isRegion
+                    &&
+                    <BackButtonWrapper>
+                        <BackButtonInnerWrapper onClick={() => {
+                            dispatch(setCities(getRegions(citiesJSON)))
+                            dispatch(setIsRegion(true))
+                            dispatch(setSelectedRegion(""))
+                            dispatch(setSelectedCity(""))
+                        }}>
+                            <BackIcon/>
+                            Back
+                        </BackButtonInnerWrapper>
+                    </BackButtonWrapper>
+                }
+                <CitiesWrapper style={{height: isRegion ? '100%' : '92%'}} className="cities">
+                    {cities.map((c, i) =>
+                        <SettingMenuRow
+                            key={i.toString()}
+                            changeHandler={
+                                () => {
+                                    if (isRegion) {
+                                        dispatch(setSelectedRegion(c))
+                                        dispatch(setCities(citiesJSON[c]))
+                                        dispatch(setIsRegion(false))
+                                        document.getElementsByClassName('cities')[0].scrollTo(0, 0);
+                                        return;
+                                    }
+                                    dispatch(setSelectedCity(c));
+                                    dispatch(hideCityPopup());
+
+                                    enableScrollOnBody();
+                                    // setIsVisibleCity(false);
                                 }
-                                dispatch(setSelectedCity(c));
-                                // setIsVisibleCity(false);
                             }
-                        }
-                        title={isRegion ? c + ' область' : c}
-                        label=""
-                        style={{margin: 0, padding: '0 0 20px'}}
-                    />
-                )}
-            </CitiesWrapper>
-            <BottomHider />
+                            title={isRegion ? c + ' область' : c}
+                            label=""
+                            style={{margin: 0, padding: '0 0 20px'}}
+                        />
+                    )}
+                </CitiesWrapper>
+            </ContentContainer>
         </Wrapper>
     )
 };
