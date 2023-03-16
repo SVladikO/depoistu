@@ -20,5 +20,5 @@ export const GroupTitle = styled.div`
 `
 
 export const RowsWrapper = styled.div`
-  padding: 5px 0 10px;
+  padding: 5px 10px 10px;
 `

@@ -3,6 +3,7 @@ import {Wrapper, Column, Component, Row, ColorCircle, Header, Space} from './Com
 import
 {
     Input,
+    PInput,
     Price,
     HistoryTabBar,
     Rating,
@@ -47,6 +48,7 @@ import OptionSettings from "../../components/OptionSettings/OptionSettings";
 import {ImagePopupContent} from "../../components/PopupImage/PopupImage";
 import {PopupIntroContent} from "../../components/PopupIntro/PopupIntro";
 import {LoadingContent} from "../../components/Notification/Notification";
+import {ReactComponent as LocationIcon} from "../../icons/map_point.svg";
 
 const colors = Object.keys(COLOR).map(key =>
     ({title: key, component: <ColorCircle key={key} bg={COLOR[key]}/>, value: COLOR[key], width: '50px'})
@@ -66,6 +68,7 @@ const columns = [
         {title: 'Input 1', component: <Input placeholder={`johndoe@mail.com`}/>},
         {title: 'Input 2', component: <Input Icon={MailIcon} placeholder={`johndoe@mail.com`}/>},
         {title: 'Input 3', component: <Input withSwitcher placeholder={`New password`}/>},
+        {title: 'PInput', component: <PInput withIcon Icon={LocationIcon}> Vinnica</PInput>},
         {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
 
 
