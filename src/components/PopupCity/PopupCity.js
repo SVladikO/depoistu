@@ -13,6 +13,7 @@ import {
 } from "../../features/cityPopup/cityPopupSlice";
 import {ContentContainer, SettingMenuRow} from '../index'
 import {ReactComponent as BackIcon} from "../../icons/back.svg";
+import {resolveTranslation} from "../../utils/utils";
 
 const enableScrollOnBody = () => document.body.style.position = 'relative';
 
@@ -64,7 +65,7 @@ export const CityPopupContent = () => {
                             dispatch(setSelectedCity(""))
                         }}>
                             <BackIcon/>
-                            Back
+                            {resolveTranslation("PAGE.SEARCH.ARROW_LABEL")}
                         </BackButtonInnerWrapper>
                     </BackButtonWrapper>
                 }
