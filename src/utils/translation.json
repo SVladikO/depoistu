@@ -3,6 +3,10 @@
     "en": "Sign in",
     "ua": "Вхiд"
   },
+  "PAGE.SING_IN.USER_NOTIFICATION": {
+    "en": "You already logged!",
+    "ua": "Вхiд виконаний"
+  },
   "PAGE.SING_IN.FORGOT_PASSWORD": {
     "ua": "Забули пароль?",
     "en": "Forgot password?"
@@ -45,7 +49,7 @@
   },
   "PAGE.SING_UP.CHECKBOX_CONFIRM_TERMS": {
     "en": "By creating an account you agree to our Terms of Service and Privacy Policy",
-    "ua": "Створенням свого аккаунту ви плогоджуєтесь з нашими правилами користування та полiтикою конфiденцiйностi"
+    "ua": "Створенням свого аккаунту ви погоджуєтесь з нашими правилами користування та полiтикою конфiденцiйностi"
   },
   "BOTTOM_MENU.SEARCH_TAB":{
     "ua": "Пошук",
@@ -58,6 +62,10 @@
   "PAGE.SEARCH.TOP_TITLE": {
     "ua": "Пошук",
     "en": "Search"
+  },
+  "PAGE.SEARCH.ARROW_LABEL": {
+    "ua": "Назад",
+    "en": "Back"
   },
   "PAGE.SETTINGS.TOP_TITLE": {
     "en": "Settings",
@@ -92,7 +100,7 @@
     "en": "Terms and Conditions"
   },
   "PAGE.SETTINGS.MENU_ROW.HELP": {
-    "ua": "Допоомга",
+    "ua": "Допомога",
     "en": "Help"
   },
   "PAGE.SETTINGS.MENU_ROW.EXIT": {
@@ -110,6 +118,18 @@
   "PAGE.SETTINGS.MENU_ROW.LINKED_ACCOUNTS": {
     "en": "Linked Account",
     "ua": "Пов'язанi Аккаути"
+  },
+  "PAGE.SETTINGS.NOTIFICATION.TITLE": {
+    "en": "Restricted access!",
+    "ua": "Обмежений доступ"
+  },
+  "PAGE.SETTINGS.NOTIFICATION.DESCRIPTION": {
+    "ua": "Ця сторiнка доступна тiльки пicля пiдтвердження",
+    "en": "This page is available only after verification."
+  },
+  "PAGE.SETTINGS.NOTIFICATION.BUTTON_TEXT": {
+    "ua": "Перейдiть на сторiнку реєстрацiї",
+    "en": "Go to Sign in page"
   },
   "CATEGORIES.BAKERY": {
       "en": "Bakery",
@@ -161,7 +181,7 @@
   },
   "PAGE.CHANGE_PASSWORD.PLACEHOLDER.OLD_PASSWORD": {
     "en": "Old Password",
-    "ua": "Новий Пароль"
+    "ua": "Старий Пароль"
   },
   "PAGE.CHANGE_PASSWORD.PLACEHOLDER.NEW_PASSWORD": {
     "en": "New Password",
@@ -174,5 +194,9 @@
   "PAGE.CHANGE_PASSWORD.BUTTON.SAVE_PASSWORD": {
     "ua": "Зберегти!",
     "en": "Save now!"
+  },
+  "NOTIFICATION.LOADING": {
+    "ua": "Завантаження...",
+    "en": "Loading..."
   }
 }

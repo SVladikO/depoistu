@@ -55,7 +55,7 @@ const SignInPage = () => {
     const isGuestLogged = LocalStorage.getGuest();
 
     if (isGuestLogged) {
-        return <div>You already logged!</div>
+        return <div>{resolveTranslation("PAGE.SING_IN.USER_NOTIFICATION")}</div>
     }
 
     return (

@@ -36,9 +36,9 @@ const SettingPage = () => {
     if (!user) {
         return (
             <NotificationTDB
-                title="Restricted access!"
-                description="This page is available only after verification."
-                buttonText="Go to Sign in page"
+                title={resolveTranslation("PAGE.SETTINGS.NOTIFICATION.TITLE")}
+                description={resolveTranslation("PAGE.SETTINGS.NOTIFICATION.DESCRIPTION")}
+                buttonText={resolveTranslation("PAGE.SETTINGS.NOTIFICATION.BUTTON_TEXT")}
                 link={`${ROUTER.SING_IN.URL}?backUrl=${ROUTER.SETTING.URL}`}
             />
         )

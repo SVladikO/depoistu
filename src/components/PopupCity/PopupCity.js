@@ -8,6 +8,7 @@ import {hideCityPopup, setSelectedRegion, showRegions, setSelectedCity} from "..
 import {ContentContainer, SettingMenuRow} from '../index'
 
 import {ReactComponent as BackIcon} from "../../icons/back.svg";
+import {resolveTranslation} from "../../utils/utils";
 
 const PopupCity = () => {
     const isVisiblePopup = useSelector(state => state.cityPopup.isVisible);
@@ -43,7 +44,7 @@ export const CityPopupContent = () => {
                     <BackButtonWrapper>
                         <BackButtonInnerWrapper onClick={() => dispatch(showRegions(getRegions(cities)))}>
                             <BackIcon/>
-                            Back
+                            {resolveTranslation("PAGE.SEARCH.ARROW_LABEL")}
                         </BackButtonInnerWrapper>
                     </BackButtonWrapper>
                 }
