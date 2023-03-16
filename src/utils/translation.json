@@ -28,12 +28,12 @@
     "ua": "Створити аккаунт"
   },
   "PAGE.SING_UP.PLACEHOLDER.USER_NAME": {
-    "en": "Full Name",
-    "ua": "Прiзвище та Iм'я"
+    "en": "Name",
+    "ua": "Ім'я"
   },
   "PAGE.SING_UP.PLACEHOLDER.PHONE": {
-    "ua": "Номер телефону",
-    "en": "Phone number"
+    "ua": "Номер Телефону",
+    "en": "Phone Number"
   },
   "PAGE.SING_UP.PLACEHOLDER.EMAIL": {
     "en": "Emial",
@@ -176,7 +176,7 @@
     "en": "Hot drinks"
   },
   "PAGE.CHANGE_PASSWORD.TOP_TITLE": {
-    "ua": "Змiнити Пароль",
+    "ua": "Змiнити пароль",
     "en": "Change Password"
   },
   "PAGE.CHANGE_PASSWORD.PLACEHOLDER.OLD_PASSWORD": {
@@ -185,7 +185,7 @@
   },
   "PAGE.CHANGE_PASSWORD.PLACEHOLDER.NEW_PASSWORD": {
     "en": "New Password",
-    "ua": "Новий пароль"
+    "ua": "Новий Пароль"
   },
   "PAGE.CHANGE_PASSWORD.PLACEHOLDER.CONFIRM_PASSWORD": {
     "en": "Confirm Password",
