@@ -38,34 +38,34 @@ export const BE_API = {
 };
 
 export const CATEGORY_MAPPER = {
-    1: {title: resolveTranslation(["CATEGORIES.BAKERY"]), icon: BakeryIcon, measurement: 'g'},
-    2: {title: resolveTranslation(["CATEGORIES.BEVERAGE"]), icon: BeverageIcon, measurement: 'L'},
-    3: {title: resolveTranslation(["CATEGORIES.BURGERS"]), icon: BurgerIcon, measurement: 'g'},
-    4: {title: resolveTranslation(["CATEGORIES.NOODLES"]), icon: NoodlesIcon, measurement: 'g'},
-    5: {title: resolveTranslation(["CATEGORIES.PIZZA"]), icon: PizzaIcon, measurement: 'g'},
-    6: {title: resolveTranslation(["CATEGORIES.SANDWITCH"]), icon: SandwitchIcon, measurement: 'g'},
-    7: {title: resolveTranslation(["CATEGORIES.SEAFOOD"]), icon: Sea_foodIcon, measurement: 'g'},
-    8: {title: resolveTranslation(["CATEGORIES.VEGETABLE"]), icon: VagetableIcon, measurement: 'g'},
-    9: {title: resolveTranslation(["CATEGORIES.ALCOHOL"]), icon: BeverageIcon, measurement: 'ml'},
-    10: {title: resolveTranslation(["CATEGORIES.WINE_CARD"]), icon: BeverageIcon, measurement: 'ml'},
-    11: {title: resolveTranslation(["CATEGORIES.HOT_DRINKS"]), icon: BeverageIcon, measurement: 'ml'},
+    1: {title: resolveTranslation("CATEGORIES.BAKERY"), icon: BakeryIcon, measurement: 'g'},
+    2: {title: resolveTranslation("CATEGORIES.BEVERAGE"), icon: BeverageIcon, measurement: 'L'},
+    3: {title: resolveTranslation("CATEGORIES.BURGERS"), icon: BurgerIcon, measurement: 'g'},
+    4: {title: resolveTranslation("CATEGORIES.NOODLES"), icon: NoodlesIcon, measurement: 'g'},
+    5: {title: resolveTranslation("CATEGORIES.PIZZA"), icon: PizzaIcon, measurement: 'g'},
+    6: {title: resolveTranslation("CATEGORIES.SANDWITCH"), icon: SandwitchIcon, measurement: 'g'},
+    7: {title: resolveTranslation("CATEGORIES.SEAFOOD"), icon: Sea_foodIcon, measurement: 'g'},
+    8: {title: resolveTranslation("CATEGORIES.VEGETABLE"), icon: VagetableIcon, measurement: 'g'},
+    9: {title: resolveTranslation("CATEGORIES.ALCOHOL"), icon: BeverageIcon, measurement: 'ml'},
+    10: {title: resolveTranslation("CATEGORIES.WINE_CARD"), icon: BeverageIcon, measurement: 'ml'},
+    11: {title: resolveTranslation("CATEGORIES.HOT_DRINKS"), icon: BeverageIcon, measurement: 'ml'},
 }
 
 export const ROUTER =  {
 
-    SING_IN: { URL: '/sign-in', TITLE: resolveTranslation(["PAGE.SING_IN.TOP_TITLE"]), page: SignInPage, showBottomMenu: true },
-    SING_UP: { URL: '/sing-up',  TITLE: resolveTranslation(["PAGE.SING_UP.TOP_TITLE"]), page: SingUpPage, showBottomMenu: true},
+    SING_IN: { URL: '/sign-in', TITLE: resolveTranslation("PAGE.SING_IN.TOP_TITLE"), page: SignInPage, showBottomMenu: true },
+    SING_UP: { URL: '/sing-up',  TITLE: resolveTranslation("PAGE.SING_UP.TOP_TITLE"), page: SingUpPage, showBottomMenu: true},
     // CATEGORY: {URL: '/',TITLE: 'Category',page: CategoryPage, showBottomMenu: true},
     // ORDER_REVIEW: {URL: '/order',  TITLE: 'Order review', page: OrderPage, showBottomMenu: true},
     // ORDER_HISTORY: {URL: '/history',  TITLE: 'Order History', page: OrderHistoryPage, subHeader: HistoryTabBar, showBottomMenu: true},
     // Favorite: {URL: '/Favorite',  TITLE: 'Favorite Cart', page: () => {}},
     // Profile: {URL: '/Profile',  TITLE: 'Profile', page: () => {}},
-    SETTING: {URL: '/setting',  TITLE: resolveTranslation(["PAGE.SETTINGS.TOP_TITLE"]), page: SettingPage, showBottomMenu: true},
-    SEARCH: {URL: '/',  TITLE: resolveTranslation(["PAGE.SEARCH.TOP_TITLE"]), page: SearchPage, showBottomMenu: true},
+    SETTING: {URL: '/setting',  TITLE: resolveTranslation("PAGE.SETTINGS.TOP_TITLE"), page: SettingPage, showBottomMenu: true},
+    SEARCH: {URL: '/',  TITLE: resolveTranslation("PAGE.SEARCH.TOP_TITLE"), page: SearchPage, showBottomMenu: true},
 }
 
 // ROUTER.USER_ACCOUNT = {URL: '/user_account',  TITLE: 'USER_ACCOUNT', page: () => {}, showBottomMenu: true, BACK_URL: ROUTER.SETTING.URL};
 ROUTER.MENU = {URL: '/menu', PARAMS: '/:categoryId', getTitle: 'Menu', page: SubCategoryPage, showBottomMenu: true, };
-ROUTER.CHANGE_PASSWORD = {URL: '/change-password',TITLE: resolveTranslation(["PAGE.CHANGE_PASSWORD.TOP_TITLE"]),page: ChangePasswordPage, showBottomMenu: true, BACK_URL: ROUTER.SING_IN.URL};
+ROUTER.CHANGE_PASSWORD = {URL: '/change-password',TITLE: resolveTranslation("PAGE.CHANGE_PASSWORD.TOP_TITLE"),page: ChangePasswordPage, showBottomMenu: true, BACK_URL: ROUTER.SING_IN.URL};
 
 export const ROUTERS = Object.keys(ROUTER).map(key => ROUTER[key]);
