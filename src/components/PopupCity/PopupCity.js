@@ -14,6 +14,8 @@ import {
 import {ContentContainer, SettingMenuRow} from '../index'
 import {ReactComponent as BackIcon} from "../../icons/back.svg";
 
+const enableScrollOnBody = () => document.body.style.position = 'relative';
+
 const PopupCity = () => {
     const isVisiblePopup = useSelector(state => state.cityPopup.isVisible);
     const dispatch = useDispatch();
@@ -24,8 +26,8 @@ const PopupCity = () => {
 
     return (
         <InvisibleWrapper onClick={() => {
-            dispatch(hideCityPopup())
-            document.body.style.position = 'relative';
+            dispatch(hideCityPopup());
+            enableScrollOnBody();
         }}>
             <CityPopupContent/>
         </InvisibleWrapper>
@@ -81,6 +83,8 @@ export const CityPopupContent = () => {
                                     }
                                     dispatch(setSelectedCity(c));
                                     dispatch(hideCityPopup());
+
+                                    enableScrollOnBody();
                                     // setIsVisibleCity(false);
                                 }
                             }
