@@ -6,18 +6,19 @@ import {
     RowSplitter,
     PrimaryRoundedButton
 } from "../../components";
+import {resolveTranslation} from "../../utils/utils";
 
 
 const ChangePasswordPage = () => {
 
     return (
         <ContentContainer>
-            <Input withSwitcher placeholder={`Old Password`}/>
+            <Input withSwitcher placeholder={resolveTranslation("PAGE.CHANGE_PASSWORD.PLACEHOLDER.OLD_PASSWORD")}/>
             <RowSplitter height='10px'/>
-            <Input withSwitcher placeholder={`New Password`}/>
-            <Input withSwitcher placeholder={`Confirm Password`}/>
+            <Input withSwitcher placeholder={resolveTranslation("PAGE.CHANGE_PASSWORD.PLACEHOLDER.NEW_PASSWORD")}/>
+            <Input withSwitcher placeholder={resolveTranslation("PAGE.CHANGE_PASSWORD.PLACEHOLDER.CONFIRM_PASSWORD")}/>
             <RowSplitter margin="20px 0 0">
-                <PrimaryRoundedButton>Save Now !</PrimaryRoundedButton>
+                <PrimaryRoundedButton>{resolveTranslation("PAGE.CHANGE_PASSWORD.BUTTON.SAVE_PASSWORD")}</PrimaryRoundedButton>
             </RowSplitter>
         </ContentContainer>
     );

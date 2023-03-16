@@ -30,3 +30,9 @@ export const ArrowWrapper = styled.div`
     color: ${COLOR.ACCENT5};
   }
 `;
+
+export const Warning = styled.h4`
+  font-size: 18px;
+  color: ${COLOR.ACCENT1};
+  text-align: center;
+`;

@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   overflow: hidden;
   perspective: 1px;
   background-color: ${COLOR.ACCENT4};
+  margin: 0 0 10px 0;
   .swiper-pagination-bullet{
     width: 10px;
     height: 10px;

@@ -1,31 +1,31 @@
-import Input from "../../components/Input/Input";
 import {Title,Container,Wrapper} from "./SingUp.style";
-import {CheckBoxWithLabel, PrimaryWideButton} from "../../components";
+import {CheckBoxWithLabel, PrimaryWideButton, Input} from "../../components";
 import NavigationLabelHref from "../../components/NavigationLabelHref/NavigationLabelHref";
 import {ROUTER} from '../../utils/config';
+import {resolveTranslation} from "../../utils/utils";
 
 
 const SingUpPage = () => {
     return (
         <>
             <Container>
-                <Title>Create an Account</Title>
-                <Input placeholder="Full Name"/>
-                <Input placeholder="Phone Number"/>
-                <Input placeholder="Email"/>
-                <Input placeholder="Password"/>
-                <Input placeholder="Confirm Password"/>
+                <Title>{resolveTranslation("PAGE.SING_UP.CREATE_ACCOUNT")}</Title>
+                <Input placeholder={resolveTranslation("PAGE.SING_UP.PLACEHOLDER.USER_NAME")}/>
+                <Input placeholder={resolveTranslation("PAGE.SING_UP.PLACEHOLDER.PHONE")}/>
+                <Input placeholder={resolveTranslation("PAGE.SING_UP.PLACEHOLDER.EMAIL")}/>
+                <Input placeholder={resolveTranslation("PAGE.SING_UP.PLACEHOLDER.PASS")}/>
+                <Input placeholder={resolveTranslation("PAGE.SING_UP.PLACEHOLDER.CONFIRM_PASS")}/>
                 <CheckBoxWithLabel
-                    label="By creating an account you agree to our Terms of Service and Privacy Policy"/>
+                    label={resolveTranslation("PAGE.SING_UP.CHECKBOX_CONFIRM_TERMS")}/>
             </Container>
             <Wrapper>
                 <NavigationLabelHref
-                    hrefTitle="Sing in!"
+                    hrefTitle={resolveTranslation("PAGE.SING_IN.TOP_TITLE")}
                     to={`${ROUTER.SING_IN.URL}`}
-                    label="Already have an account?"
+                    label={resolveTranslation("PAGE.SIGN_IN.ACCOUNT_CONFIRMATION")}
                 />
             </Wrapper>
-            <PrimaryWideButton>Sing up</PrimaryWideButton>
+            <PrimaryWideButton>{resolveTranslation("PAGE.SING_UP.TOP_TITLE")}</PrimaryWideButton>
         </>
     );
 };
