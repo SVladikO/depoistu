@@ -1,13 +1,14 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper";
+
 import "swiper/css";
 import "swiper/css/pagination";
 import {Wrapper,ImageSection, Name, Address, Content} from "./Institution.style";
 
 const Institution = (props) => {
 
-    const {PHOTOS, NAME, CITY, STREET} = props.company;
+    const {PHOTOS, NAME, CITY, STREET} = props.company || {};
 
     return (
         <Wrapper>
