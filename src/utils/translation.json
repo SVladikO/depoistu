@@ -79,6 +79,10 @@
     "en": "Accounts",
     "ua": "Остобистий кабiнет"
   },
+  "PAGE.SETTINGS.GROUP_TITLE.FOR_BUSINESS": {
+    "en": "For business",
+    "ua": "Для бізнесу"
+  },
   "PAGE.SETTINGS.GROUP_TITLE.OPTIONS": {
     "en": "More Options",
     "ua": "Розширенi налаштування"
@@ -87,9 +91,13 @@
     "en": "Change Password",
     "ua": "Змiнити пароль"
   },
-  "PAGE.SETTINGS.MENU_ROW.FOR_BUSINESS": {
-    "ua": "Для бiзнесу",
-    "en": "For Business"
+  "PAGE.SETTINGS.MENU_ROW.COMPANY": {
+    "ua": "Мої заклади",
+    "en": "My сompanies"
+  },
+  "PAGE.SETTINGS.MENU_ROW.MENU": {
+    "ua": "Налаштувати меню",
+    "en": "Set up menu"
   },
   "PAGE.SETTINGS.MENU_ROW.LOCATION": {
     "ua": "Мicце знаходження",

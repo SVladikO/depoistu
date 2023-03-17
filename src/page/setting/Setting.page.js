@@ -60,20 +60,24 @@ const SettingPage = () => {
                 <SettingMenuRow icon={LockIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.CHANGE_PASS")} href={ROUTER.CHANGE_PASSWORD.URL}/>
                 {/*<SettingMenuRow icon={PaymentIcon} title='Payment' href='/catalog'/>*/}
                 {/*<SettingMenuRow icon={DeliveryAddressIcon} title='Delivery Address' href='/catalog'/>*/}
-                <SettingMenuRow icon={BusinessIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.FOR_BUSINESS")}  href='/catalog'/>
-                <SettingMenuRow icon={StoreIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.LOCATION")} href='/catalog'/>
-                <SettingMenuRow icon={ConditionsIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.TERMS")} href='/catalog'/>
+                {/*<SettingMenuRow icon={StoreIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.LOCATION")} href='/catalog'/>*/}
+                {/*<SettingMenuRow icon={ConditionsIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.TERMS")} href='/catalog'/>*/}
                 <SettingMenuRow icon={HelpIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.HELP")} href='/catalog'/>
                 <SettingMenuRow icon={LogOutIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.EXIT")} changeHandler={logOut}/>
             </AccountSettings>
-            <OptionSettings groupTitle={resolveTranslation("PAGE.SETTINGS.GROUP_TITLE.OPTIONS")}>
-                {/*<SettingMenuRow icon={NewsletterIcon} title='Newsletter' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
-                {/*<SettingMenuRow icon={NotificationIcon} title='Notification' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
-                {/*<SettingMenuRow icon={PhoneCallIcon} title='Phone Call' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
-                <SettingMenuRow icon={CurrencyIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.CURRENCY")} href='/catalog' label='$USD'/>
-                <SettingMenuRow icon={LanguageIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.LANGUAGE")} href='/catalog' label='English'/>
-                <SettingMenuRow icon={LinkedAccountIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.LINKED_ACCOUNTS")} href='/catalog' label='Facebook, go ...'/>
+            <OptionSettings groupTitle={resolveTranslation("PAGE.SETTINGS.GROUP_TITLE.FOR_BUSINESS")}>
+                <SettingMenuRow icon={BusinessIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.COMPANY")}  href='/catalog'/>
+                <SettingMenuRow icon={ConditionsIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.MENU")}  href='/catalog'/>
+
             </OptionSettings>
+            {/*<OptionSettings groupTitle={resolveTranslation("PAGE.SETTINGS.GROUP_TITLE.OPTIONS")}>*/}
+            {/*    /!*<SettingMenuRow icon={NewsletterIcon} title='Newsletter' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*!/*/}
+            {/*    /!*<SettingMenuRow icon={NotificationIcon} title='Notification' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*!/*/}
+            {/*    /!*<SettingMenuRow icon={PhoneCallIcon} title='Phone Call' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*!/*/}
+            {/*    /!*<SettingMenuRow icon={CurrencyIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.CURRENCY")} href='/catalog' label='$USD'/>*!/*/}
+            {/*    <SettingMenuRow icon={LanguageIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.LANGUAGE")} href='/catalog' label='English'/>*/}
+            {/*    /!*<SettingMenuRow icon={LinkedAccountIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.LINKED_ACCOUNTS")} href='/catalog' label='Facebook, go ...'/>*!/*/}
+            {/*</OptionSettings>*/}
         </>
     );
 };
