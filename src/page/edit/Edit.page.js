@@ -23,7 +23,7 @@ import {ReactComponent as RemoveIcon} from "../../icons/remove_icon.svg";
 
 const categories = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 const EditPage = () => {
-    const [inputField, setInputField] = useState('Київ');
+    const [city, setCity] = useState('Київ');
     const [street, setStreet] = useState('Хрещатик 15');
     const [menuItems, setMenuItems] = useState([
         {
@@ -55,36 +55,22 @@ const EditPage = () => {
         }]);
 
     const [pictures, setPictures] = useState([
-        {
-            src: "https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg",
-            id: 1
-        },
-        {
-            src: "https://images.pexels.com/photos/1484516/pexels-photo-1484516.jpeg?auto=compress&cs=tinysrgb&w=1600",
-            id: 2
-        },
-        {
-            src: "https://images.pexels.com/photos/984888/pexels-photo-984888.jpeg?auto=compress&cs=tinysrgb&w=1600",
-            id: 3
-        },
-        {
-            src: "https://images.pexels.com/photos/2788792/pexels-photo-2788792.jpeg?auto=compress&cs=tinysrgb&w=1600",
-            id: 4
-        },
-        {
-            src: "https://images.pexels.com/photos/1850595/pexels-photo-1850595.jpeg?auto=compress&cs=tinysrgb&w=1600",
-            id: 5
-        },
+        "https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg",
+        "https://images.pexels.com/photos/1484516/pexels-photo-1484516.jpeg?auto=compress&cs=tinysrgb&w=1600",
+        "https://images.pexels.com/photos/984888/pexels-photo-984888.jpeg?auto=compress&cs=tinysrgb&w=1600",
+        "https://images.pexels.com/photos/2788792/pexels-photo-2788792.jpeg?auto=compress&cs=tinysrgb&w=1600",
+        "https://images.pexels.com/photos/1850595/pexels-photo-1850595.jpeg?auto=compress&cs=tinysrgb&w=1600",
     ]);
 
-    const deleteCompanyImage = (id) => {
-        setPictures((pictures) => pictures.filter((el) => el.id !== id));
+    const deleteCompanyImage = (index) => {
+        const newPictures = pictures.filter((_,i) => i !== index);
+        setPictures(newPictures);
     };
     const cleanCityInput = () => {
-        setInputField('');
+        setCity('');
     };
     const onCityInput = (e) => {
-        setInputField(e.target.value);
+        setCity(e.target.value);
     }
     const onStreetInput = (e) => {
         setStreet(e.target.value);
@@ -103,10 +89,10 @@ const EditPage = () => {
                         spaceBetween={10}
                     >
                         {
-                            pictures.map(el => (
-                                <SwiperSlide key={el.id}>
-                                    <img src={el.src}/>
-                                    <InstitutionBasketButton onClick={() => deleteCompanyImage(el.id)}>
+                            pictures.map((el,index)=> (
+                                <SwiperSlide key={Math.random()}>
+                                    <img src={el}/>
+                                    <InstitutionBasketButton onClick={() => deleteCompanyImage(index)}>
                                         <DeleteBasketIcon/>
                                     </InstitutionBasketButton>
                                 </SwiperSlide>
@@ -117,7 +103,7 @@ const EditPage = () => {
                 <PrimaryWideButton>+Photo</PrimaryWideButton>
                 <Divider/>
                 <InputWrapper>
-                    <Input withCleaner value={inputField} placeholder="Місто" onChange={onCityInput}
+                    <Input withCleaner value={city} placeholder="Місто" onChange={onCityInput}
                            changeHandler={cleanCityInput}/>
                     <Divider/>
                     <Input withCleaner value={street} placeholder="Вулиця" onChange={onStreetInput}
