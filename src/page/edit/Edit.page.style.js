@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
     padding: 18px 10px 10px 10px;
 `;
 
-export const Pictures = styled.div`
+export const InstitutionPictures = styled.div`
   height: 100px;
   width: 100%;
   display: flex;
@@ -38,7 +38,7 @@ export const Divider = styled.div`
   color: ${COLOR.ACCENT5};
 `;
 
-export const BasketButton = styled.div`
+export const InstitutionBasketButton = styled.div`
   width: 31px;
   height: 34px;
   background: ${COLOR.ACCENT4};
@@ -56,7 +56,7 @@ export const MenuItemEditor = styled.div`
     margin: 0 0 15px 0;
   }
 `;
-export const IconSide = styled.div`
+export const MenuItemPhoto = styled.div`
   display: flex;
   justify-content: space-between;
   height: 100px;

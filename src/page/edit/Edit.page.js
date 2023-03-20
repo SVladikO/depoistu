@@ -5,11 +5,11 @@ import "swiper/css/pagination";
 import {CategoryMenuRow, Input, PrimaryWideButton} from "../../components";
 import {
     Wrapper,
-    Pictures,
-    BasketButton,
+    InstitutionPictures,
+    InstitutionBasketButton,
     Divider,
     MenuItemEditor,
-    IconSide,
+    MenuItemPhoto,
     ImagePlace,
     ButtonSection,
     EditButton,
@@ -21,12 +21,39 @@ import {ReactComponent as DeleteBasketIcon} from "../../icons/delete_basket.svg"
 import {ReactComponent as RemoveIcon} from "../../icons/remove_icon.svg";
 
 
-
 const categories = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-
 const EditPage = () => {
     const [inputField, setInputField] = useState('Київ');
     const [street, setStreet] = useState('Хрещатик 15');
+    const [menuItems, setMenuItems] = useState([
+        {
+            id: 1,
+            name: '4 Cheese',
+            description: 'tomato, sauce, chili, mozzarella',
+            image_url: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
+            cookingTime: 15,
+            price: 170,
+            size: 150,
+        },
+        {
+            id: 2,
+            name: 'Quatro Formagio',
+            description: 'spicy , tomato, sauce',
+            image_url: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
+            cookingTime: 15,
+            price: 160,
+            size: 120,
+        },
+        {
+            id: 3,
+            name: 'Margarita',
+            description: 'sauce, chili, mozzarella',
+            image_url: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
+            cookingTime: 15,
+            price: 110,
+            size: 190,
+        }]);
+
     const [pictures, setPictures] = useState([
         {
             src: "https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg",
@@ -66,60 +93,68 @@ const EditPage = () => {
         setStreet('');
     }
 
-    // const getItemsPerCategory = categoryId => {
-    //     const items = menuItems.filter(item => item.categoryId === categoryId);
-    //     items.map(menuItem => {
-    //     ... //put here selected above code
-    //     }
-    // }
-
+    const renderCompanyDetails = () => {
+        return (
+            <>
+                <InstitutionPictures>
+                    <Swiper
+                        className="mySwiper"
+                        slidesPerView={2}
+                        spaceBetween={10}
+                    >
+                        {
+                            pictures.map(el => (
+                                <SwiperSlide key={el.id}>
+                                    <img src={el.src}/>
+                                    <InstitutionBasketButton onClick={() => deleteCompanyImage(el.id)}>
+                                        <DeleteBasketIcon/>
+                                    </InstitutionBasketButton>
+                                </SwiperSlide>
+                            ))
+                        }
+                    </Swiper>
+                </InstitutionPictures>
+                <PrimaryWideButton>+Photo</PrimaryWideButton>
+                <Divider/>
+                <InputWrapper>
+                    <Input withCleaner value={inputField} placeholder="Місто" onChange={onCityInput}
+                           changeHandler={cleanCityInput}/>
+                    <Divider/>
+                    <Input withCleaner value={street} placeholder="Вулиця" onChange={onStreetInput}
+                           changeHandler={clearStreetInput}/>
+                </InputWrapper>
+                <Divider>Menu</Divider>
+                <CategoryMenuRow categories={categories}/>
+                <Divider/>
+            </>
+        )
+    }
+    const renderMenuItems = () => menuItems.map(item => (
+            <Divider key={Math.random()}>
+                <MenuItemEditor>
+                    <MenuItemPhoto>
+                        <ImagePlace/>
+                        <ButtonSection>
+                            <EditButton>Delete</EditButton>
+                            <EditButton>Change</EditButton>
+                        </ButtonSection>
+                    </MenuItemPhoto>
+                    <Input withCleaner placeholder={item.name}/>
+                    <Input withCleaner placeholder={item.price}/>
+                    <Input withCleaner placeholder={item.description}/>
+                    <Input withCleaner placeholder={item.cookingTime}/>
+                    <Input withCleaner placeholder={item.size}/>
+                    <WideButton>Delete<RemoveIcon/></WideButton>
+                </MenuItemEditor>
+            </Divider>
+        )
+    )
     return (
         <Wrapper>
-            <Pictures>
-                <Swiper
-                    className="mySwiper"
-                    slidesPerView={2}
-                    spaceBetween={10}
-                >
-                    {
-                        pictures.map(el => (
-                            <SwiperSlide key={el.id}>
-                                <img src={el.src}/>
-                                <BasketButton onClick={() => deleteCompanyImage(el.id)}>
-                                    <DeleteBasketIcon/>
-                                </BasketButton>
-                            </SwiperSlide>
-                        ))
-                    }
-                </Swiper>
-            </Pictures>
-            <PrimaryWideButton>+Photo</PrimaryWideButton>
-            <Divider/>
-            <InputWrapper>
-                <Input withCleaner value={inputField} placeholder="Місто" onChange={onCityInput} changeHandler={cleanCityInput}/>
-                <Divider/>
-                <Input withCleaner value={street} placeholder="Вулиця" onChange={onStreetInput} changeHandler={clearStreetInput}/>
-            </InputWrapper>
-            <Divider>Menu</Divider>
-            <CategoryMenuRow categories={categories}/>
-            <Divider/>
-            <MenuItemEditor>
-                <IconSide>
-                    <ImagePlace/>
-                    <ButtonSection>
-                        <EditButton>Delete</EditButton>
-                        <EditButton>Change</EditButton>
-                    </ButtonSection>
-                </IconSide>
-                <Input withCleaner placeholder="Cheese Bites Pizza" />
-                <Input withCleaner placeholder="$50" />
-                <Input withCleaner placeholder="spicy , tomato, sauce" />
-                <Input withCleaner placeholder="40m" />
-                <Input withCleaner placeholder="150g" />
-                <WideButton>Delete<RemoveIcon/></WideButton>
-            </MenuItemEditor>
+            {renderCompanyDetails()}
+            {renderMenuItems()}
             <BottomSection>
-                <PrimaryWideButton>+Add</PrimaryWideButton>
+                <PrimaryWideButton>+Add menu item</PrimaryWideButton>
                 <PrimaryWideButton>Save</PrimaryWideButton>
             </BottomSection>
         </Wrapper>
