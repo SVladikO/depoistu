@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 
 import {Warning} from "./Search.page.style";
-
+import {Link} from "react-router-dom";
 import {ReactComponent as LocationIcon} from "../../icons/map_point.svg";
 import {PInput, ContentContainer, Institution} from "../../components";
 import {showCityPopup} from "../../features/cityPopup/cityPopupSlice";
@@ -54,7 +54,8 @@ const SearchPage = () => {
                 </PInput>
             </ContentContainer>
             {companies.length === 0 ? <Warning>{warning}</Warning> : selectedCity && companies.map(company =>
-                <Institution key={company.ID} company={company}/>)}
+                    <Link to={`${company.ID}`}><Institution key={company.ID} company={company}/></Link>)
+            }
         </>
     );
 };

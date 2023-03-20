@@ -61,9 +61,9 @@ export const ROUTER =  {
     // Profile: {URL: '/Profile',  TITLE: 'Profile', page: () => {}},
     SETTING: {URL: '/setting',  TITLE: resolveTranslation("PAGE.SETTINGS.TOP_TITLE"), page: SettingPage, showBottomMenu: true},
     SEARCH: {URL: '/',  TITLE: resolveTranslation("PAGE.SEARCH.TOP_TITLE"), page: SearchPage, showBottomMenu: true},
-    SEARCH1: {URL: '/result',  TITLE: 'Result', page: ResultPage, showBottomMenu: true},
-}
 
+}
+// ROUTER.RESULT = {URL: '/company', PARAMS: '/:companyId', TITLE: 'Result', page: ResultPage, showBottomMenu: true};
 // ROUTER.USER_ACCOUNT = {URL: '/user_account',  TITLE: 'USER_ACCOUNT', page: () => {}, showBottomMenu: true, BACK_URL: ROUTER.SETTING.URL};
 ROUTER.MENU = {URL: '/menu', PARAMS: '/:categoryId', getTitle: 'Menu', page: SubCategoryPage, showBottomMenu: true, };
 ROUTER.CHANGE_PASSWORD = {URL: '/change-password',TITLE: resolveTranslation("PAGE.CHANGE_PASSWORD.TOP_TITLE"),page: ChangePasswordPage, showBottomMenu: true, BACK_URL: ROUTER.SING_IN.URL};
