@@ -5,13 +5,17 @@ export const Flex = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  
+  .swiper{
+    display: flex;
+    width: 100%;
+  }
   .swiper-slide {
     flex-shrink: 100 !important;
     width: 97px;
     height: 100px;
   }
   .swiper-slide-active{
+    text-align: left;
     flex-shrink: 0 !important;
     min-width: 97px;
     max-width: 97px;

@@ -13,7 +13,7 @@ const SearchPage = () => {
     const selectedCity = useSelector(state => state.cityPopup.selectedCity);
     const selectedRegion = useSelector(state => state.cityPopup.selectedRegion);
     const [companies, setCompanies] = useState([]);
-    const url = `https://pizza-mobile-api.herokuapp.com/companies/${selectedCity}`;
+    const url = `https://pizza-mobile-api.herokuapp.com/companies/by/city/${selectedCity}`;
     const [warning, setWarning] = useState('');
     const warningMessage = 'There is no installations in current city';
 
