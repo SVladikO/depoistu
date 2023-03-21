@@ -1,11 +1,19 @@
 import React, {useState} from "react";
-import {Wrapper, InputText, SwitchIconWrapper, CenterWrapper, CloseIconWrapper} from "./Input.style";
+import {
+    Wrapper,
+    InputText,
+    SwitchIconWrapper,
+    CenterWrapper,
+    CloseIconWrapper,
+    PInputWrapper,
+    PStyle,
+} from "./Input.style";
 
 import {ReactComponent as ShowEyeIcon} from "../../icons/show-eye.svg";
 import {ReactComponent as HideEyeIcon} from "../../icons/hide-eye.svg";
 import {ReactComponent as CloseIcon} from "../../icons/close.svg";
 
-function Input({
+export function Input({
                    Icon,
                    value,
                    type,
@@ -52,4 +60,15 @@ function Input({
     )
 }
 
-export default Input;
+export const PInput = ({
+                           Icon,
+                           children,
+                           handleClick = () => {},
+                       }) => {
+    return (<PInputWrapper onClick={handleClick}>
+            {Icon && <Icon/>}
+            <PStyle withIcon={!!Icon}>{children}</PStyle>
+        </PInputWrapper>
+    )
+};
+

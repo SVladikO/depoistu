@@ -7,6 +7,7 @@ import {ReactComponent as SuccessIcon} from "../../icons/success.svg";
 import {ReactComponent as ErrorIcon} from "../../icons/alert.svg";
 
 import {ContentContainer} from "../ContentContainer/ContentContainer.style";
+import {resolveTranslation} from "../../utils/utils";
 
 
 const Success = () => {
@@ -21,7 +22,7 @@ const Success = () => {
 export const LoadingContent = () => (
     <ContentContainer>
         <LoadingIcon className="animated_svg"/>
-        <Text>Loading...</Text>
+        <Text>{resolveTranslation("NOTIFICATION.LOADING")}</Text>
     </ContentContainer>
 );
 
