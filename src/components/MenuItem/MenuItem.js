@@ -11,24 +11,24 @@ import {addOrderItem} from "../../features/order/orderSlice";
 import {showImagePopup} from "../../features/imagePopup/imagePopupSlice";
 
 const MenuItem = ({item = {}}) => {
-    const {name, description, image_url, price, cooking_time, size, isLiked} = item;
+    const {NAME, DESCRIPTION, IMAGE_URL, PRICE, COOKING_TIME, SIZE, isLiked} = item;
     const dispatch = useDispatch();
 
     return (
         <Wrapper className='pm-MenuItem'>
             <Flex justifyContent="stretch">
-                <FoodImage src={image_url} onClick={() => dispatch(showImagePopup(image_url))}/>
+                <FoodImage src={IMAGE_URL} onClick={() => dispatch(showImagePopup(IMAGE_URL))}/>
                 <Flex flexDirection='column' width='80%'>
                     <Flex justifyContent="space-between">
-                        <Title>{name}</Title>
+                        <Title>{NAME}</Title>
                         <Like liked={isLiked}/>
                     </Flex>
-                    <Price>{price}</Price>
-                    <Description>{description}</Description>
+                    <Price>{PRICE}</Price>
+                    <Description>{DESCRIPTION}</Description>
                     <InvisibleDivider/>
                     <Absolute bottom={'10px'}>
                         <AdditionalDetails>
-                            <TimeIcon/> {cooking_time} m <MeasureIcon/> {size} g
+                            <TimeIcon/> {COOKING_TIME} m <MeasureIcon/> {SIZE} g
                         </AdditionalDetails>
                     </Absolute>
                     <Absolute bottom={'10px'} right={'10px'}>

@@ -28,7 +28,7 @@ export const DEV_ROUTER = {
 
 export const BE_DOMAIN = 'https://pizza-mobile-api.herokuapp.com';
 // const BE_DOMAIN = 'http://localhost:5000';
-
+console.log(BE_DOMAIN);
 export const BE_API = {
     SING_IN: () => `${BE_DOMAIN}/sign-in`,
     PLACE_ORDER: () => `${BE_DOMAIN}/place-order`,
@@ -63,7 +63,7 @@ export const ROUTER =  {
     SEARCH: {URL: '/',  TITLE: resolveTranslation("PAGE.SEARCH.TOP_TITLE"), page: SearchPage, showBottomMenu: true},
 
 }
-// ROUTER.RESULT = {URL: '/company', PARAMS: '/:companyId', TITLE: 'Result', page: ResultPage, showBottomMenu: true};
+ROUTER.RESULT = {URL: '/result', PARAMS: '/:companyId', TITLE: 'Result', page: ResultPage, showBottomMenu: true};
 // ROUTER.USER_ACCOUNT = {URL: '/user_account',  TITLE: 'USER_ACCOUNT', page: () => {}, showBottomMenu: true, BACK_URL: ROUTER.SETTING.URL};
 ROUTER.MENU = {URL: '/menu', PARAMS: '/:categoryId', getTitle: 'Menu', page: SubCategoryPage, showBottomMenu: true, };
 ROUTER.CHANGE_PASSWORD = {URL: '/change-password',TITLE: resolveTranslation("PAGE.CHANGE_PASSWORD.TOP_TITLE"),page: ChangePasswordPage, showBottomMenu: true, BACK_URL: ROUTER.SING_IN.URL};

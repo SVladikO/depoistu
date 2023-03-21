@@ -23,7 +23,6 @@ const CategoryMenuRow = (props) => {
     // )
 
     const categories = props.categories.map(number => CATEGORY_MAPPER[number]);
-
     const getCategoryItems = () => categories.map(category => (
         <SwiperSlide key={category.title} >
             <Link to="">

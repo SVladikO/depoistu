@@ -6,6 +6,7 @@ import {Link} from "react-router-dom";
 import {ReactComponent as LocationIcon} from "../../icons/map_point.svg";
 import {PInput, ContentContainer, Institution} from "../../components";
 import {showCityPopup} from "../../features/cityPopup/cityPopupSlice";
+import {logDOM} from "@testing-library/react";
 
 const SearchPage = () => {
     const dispatch = useDispatch();
@@ -54,7 +55,7 @@ const SearchPage = () => {
                 </PInput>
             </ContentContainer>
             {companies.length === 0 ? <Warning>{warning}</Warning> : selectedCity && companies.map(company =>
-                    <Link to={`${company.ID}`}><Institution key={company.ID} company={company}/></Link>)
+                    <Link to={`result/${company.ID}`} key={company.ID}><Institution company={company}/></Link>)
             }
         </>
     );
