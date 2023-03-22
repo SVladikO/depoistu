@@ -3,21 +3,21 @@
   "version": "0.6.0",
   "private": true,
   "dependencies": {
-    "@reduxjs/toolkit": "^1.9.3",
+    "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^14.0.0",
+    "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
-    "minimatch": "^7.4.2",
+    "minimatch": "^5.1.0",
     "nth-check": "^2.1.1",
     "react": "^18.2.0",
     "react_code_tag": "^1.0.2",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
-    "react-router-dom": "^6.9.0",
+    "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
-    "styled-components": "^5.3.9",
-    "swiper": "^9.1.1",
-    "web-vitals": "^3.3.0"
+    "styled-components": "^5.3.6",
+    "swiper": "^9.0.5",
+    "web-vitals": "^2.1.4"
   },
   "devDependencies": {
     "karma": "^6.4.1",
@@ -27,10 +27,10 @@
     "karma-opera-launcher": "^1.0.0",
     "karma-requirejs": "^1.1.0",
     "karma-safari-launcher": "^1.0.0",
-    "minimatch": "^7.4.2",
-    "mocha": "^10.2.0",
+    "minimatch": "^5.1.0",
+    "mocha": "^9.1.4",
     "nth-check": "^2.1.1",
-    "sinon": "^15.0.2"
+    "sinon": "^9.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
