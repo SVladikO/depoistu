@@ -28,7 +28,7 @@ export const DEV_ROUTER = {
 
 export const BE_DOMAIN = 'https://pizza-mobile-api.herokuapp.com';
 // const BE_DOMAIN = 'http://localhost:5000';
-console.log(BE_DOMAIN);
+
 export const BE_API = {
     SING_IN: () => `${BE_DOMAIN}/sign-in`,
     PLACE_ORDER: () => `${BE_DOMAIN}/place-order`,
