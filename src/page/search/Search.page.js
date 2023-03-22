@@ -56,7 +56,8 @@ const SearchPage = () => {
             </ContentContainer>
             {selectedCity && selectedRegion && companies.length === 0
                 ? <Warning>{warning}</Warning>
-                : selectedCity && companies.map(company => <Institution key={company.ID} company={company}/>)}
+                : selectedCity && companies.map(company => <Institution key={company.ID} company={company}/>)
+            }
         </>
     );
 };
