@@ -25,7 +25,7 @@ const categories = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 const EditPage = () => {
     const [city, setCity] = useState('Київ');
     const [street, setStreet] = useState('Хрещатик 15');
-    const [menuItems, setMenuItems] = useState([
+    const [menuItems] = useState([
         {
             id: 1,
             name: '4 Cheese',
@@ -91,7 +91,7 @@ const EditPage = () => {
                         {
                             pictures.map((el,index)=> (
                                 <SwiperSlide key={Math.random()}>
-                                    <img src={el}/>
+                                    <img src={el} alt=''/>
                                     <InstitutionBasketButton onClick={() => deleteCompanyImage(index)}>
                                         <DeleteBasketIcon/>
                                     </InstitutionBasketButton>
