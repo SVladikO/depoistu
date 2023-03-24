@@ -12,9 +12,10 @@ const SearchPage = () => {
     const selectedCity = useSelector(state => state.cityPopup.selectedCity);
     const selectedRegion = useSelector(state => state.cityPopup.selectedRegion);
     const [companies, setCompanies] = useState([]);
-    const url = `https://pizza-mobile-api.herokuapp.com/companies/${selectedCity}`;
+    const url = `https://pizza-mobile-api.herokuapp.com/companies/by/city/${selectedCity}`;
     const [warning, setWarning] = useState('');
     const warningMessage = 'There is no installations in current city';
+    const [inputField, setInputField] = useState('');
 
     const showWarning = () => {
         setWarning(warningMessage)
@@ -36,7 +37,6 @@ const SearchPage = () => {
         })
     }, [selectedCity]);
 
-
     const openCityPopup = () => {
         dispatch(showCityPopup());
         document.body.style.position = 'fixed';
@@ -49,12 +49,15 @@ const SearchPage = () => {
                     handleClick={openCityPopup}
                     withIcon
                     Icon={LocationIcon}
+                    value={inputField}
                 >
                     {selectedCity ? `${selectedCity}, ${selectedRegion} обл` : ""}
                 </PInput>
             </ContentContainer>
-            {companies.length === 0 ? <Warning>{warning}</Warning> : selectedCity && companies.map(company =>
-                <Institution key={company.ID} company={company}/>)}
+            {selectedCity && selectedRegion && companies.length === 0
+                ? <Warning>{warning}</Warning>
+                : selectedCity && companies.map(company => <Institution key={company.ID} company={company}/>)
+            }
         </>
     );
 };
