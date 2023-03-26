@@ -11,7 +11,8 @@ export const Flex = styled.div`
   }
   .swiper-slide {
     flex-shrink: 100 !important;
-    width: 97px;
+    max-width: 97px;
+    min-width: 97px;
     height: 100px;
   }
   .swiper-slide-active{
