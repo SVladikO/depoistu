@@ -67,7 +67,7 @@ const SettingPage = () => {
             </AccountSettings>
             <OptionSettings groupTitle={resolveTranslation("PAGE.SETTINGS.GROUP_TITLE.FOR_BUSINESS")}>
                 <SettingMenuRow icon={BusinessIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.COMPANY")}  href='/catalog'/>
-                <SettingMenuRow icon={ConditionsIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.MENU")}  href={ROUTER.EDIT_MENU_COMPANY_LIST}/>
+                <SettingMenuRow icon={ConditionsIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.MENU")}  href={ROUTER.EDIT_MENU_COMPANY_LIST.URL}/>
 
             </OptionSettings>
             {/*<OptionSettings groupTitle={resolveTranslation("PAGE.SETTINGS.GROUP_TITLE.OPTIONS")}>*/}

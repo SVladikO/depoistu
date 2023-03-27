@@ -4,6 +4,8 @@ import SignInPage from "../page/sing-in/SignIn.page";
 import SingUpPage from "../page/sing-up/SingUp.page";
 import SettingPage from "../page/setting/Setting.page";
 import SubCategoryPage from "../page/sub-category/SubCategory.page";
+import EditMenuCompany from "../page/edit-menu-company/EditMenuCompany.page";
+import EditMenuCompanyList from "../page/edit-menu-company-list/EditMenuCompanyList.page";
 // TODO: Hidden second version
 // import OrderPage from "../page/order/Order.page";
 // import CategoryPage from "../page/category/Category.page";
@@ -27,8 +29,8 @@ export const DEV_ROUTER = {
     PAGES: 'pages',
 };
 
-export const BE_DOMAIN = 'https://pizza-mobile-api.herokuapp.com';
-// const BE_DOMAIN = 'http://localhost:5000';
+// export const BE_DOMAIN = 'https://pizza-mobile-api.herokuapp.com';
+export const BE_DOMAIN = 'http://localhost:5000';
 
 export const BE_API = {
     SING_IN: () => `${BE_DOMAIN}/sign-in`,
@@ -64,10 +66,12 @@ export const ROUTER =  {
     SEARCH: {URL: '/',  TITLE: resolveTranslation("PAGE.SEARCH.TOP_TITLE"), page: SearchPage, showBottomMenu: true},
     SEARCH1: {URL: '/result',  TITLE: 'Result', page: ResultPage, showBottomMenu: true},
     EDIT: {URL: '/edit/1',  TITLE: 'Edit', page: EditPage, showBottomMenu: false},
+    EDIT_MENU_COMPANY_LIST: {URL: '/menu/edit',  TITLE: 'Edit', page: EditMenuCompanyList, showBottomMenu: false},
 }
 
-// ROUTER.USER_ACCOUNT = {URL: '/user_account',  TITLE: 'USER_ACCOUNT', page: () => {}, showBottomMenu: true, BACK_URL: ROUTER.SETTING.URL};
+ROUTER.EDIT_MENU_COMPANY = {URL: '/menu/edit', PARAMS: '/:companyId', TITLE: 'Edit', page: EditMenuCompany, showBottomMenu: false};
 ROUTER.MENU = {URL: '/menu', PARAMS: '/:categoryId', getTitle: 'Menu', page: SubCategoryPage, showBottomMenu: true, };
 ROUTER.CHANGE_PASSWORD = {URL: '/change-password',TITLE: resolveTranslation("PAGE.CHANGE_PASSWORD.TOP_TITLE"),page: ChangePasswordPage, showBottomMenu: true, BACK_URL: ROUTER.SING_IN.URL};
+// ROUTER.USER_ACCOUNT = {URL: '/user_account',  TITLE: 'USER_ACCOUNT', page: () => {}, showBottomMenu: true, BACK_URL: ROUTER.SETTING.URL};
 
 export const ROUTERS = Object.keys(ROUTER).map(key => ROUTER[key]);
