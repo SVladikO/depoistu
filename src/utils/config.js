@@ -21,6 +21,7 @@ import {ReactComponent as SandwitchIcon} from "../icons/category/sandwitch.svg";
 import {ReactComponent as Sea_foodIcon} from "../icons/category/sea_food.svg";
 import {ReactComponent as VagetableIcon} from "../icons/category/vagetable.svg";
 import {resolveTranslation} from "./utils";
+import EditCompanyPage from "../page/edit-company/EditCompany.page";
 
 export const DEV_ROUTER = {
     COMPONENTS: 'components',
@@ -64,6 +65,7 @@ export const ROUTER =  {
     SEARCH: {URL: '/',  TITLE: resolveTranslation("PAGE.SEARCH.TOP_TITLE"), page: SearchPage, showBottomMenu: true},
     SEARCH1: {URL: '/result',  TITLE: 'Result', page: ResultPage, showBottomMenu: true},
     EDIT: {URL: '/edit/1',  TITLE: 'Edit', page: EditPage, showBottomMenu: false},
+    EDIT_COMPANY: {URL:'/edit-company/1', page: EditCompanyPage, TITLE: 'Your companies', showBottomMenu: false}
 }
 
 // ROUTER.USER_ACCOUNT = {URL: '/user_account',  TITLE: 'USER_ACCOUNT', page: () => {}, showBottomMenu: true, BACK_URL: ROUTER.SETTING.URL};

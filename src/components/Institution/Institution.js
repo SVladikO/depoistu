@@ -9,7 +9,6 @@ import {Wrapper,ImageSection, Name, Address, Content} from "./Institution.style"
 const Institution = (props) => {
 
     const {PHOTOS, NAME, CITY, STREET} = props.company || {};
-
     return (
         <Wrapper>
             <ImageSection>
@@ -19,7 +18,7 @@ const Institution = (props) => {
                     navigation
                     pagination={{ clickable: true }}
                 >
-                    {PHOTOS.split(',').map((src,i) => <SwiperSlide key={i}><img src={src} alt="#"/></SwiperSlide>)}
+                    {PHOTOS && PHOTOS.split(',').map((src,i) => <SwiperSlide key={i}><img src={src} alt="#"/></SwiperSlide>)}
                 </Swiper>
             </ImageSection>
             <Content>
