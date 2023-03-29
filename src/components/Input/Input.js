@@ -53,7 +53,7 @@ export function Input({
             }
             {withCleaner &&
                 <CloseIconWrapper {...props}>
-                    <CloseIcon />
+                    <CloseIcon onClick={changeHandler}/>
                 </CloseIconWrapper>
             }
         </Wrapper>
