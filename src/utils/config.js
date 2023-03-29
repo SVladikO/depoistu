@@ -65,8 +65,6 @@ export const ROUTER =  {
     SEARCH1: {URL: '/result',  TITLE: 'Result', page: ResultPage, showBottomMenu: true},
     EDIT: {URL: '/edit/1',  TITLE: 'Edit', page: EditPage, showBottomMenu: false},
 }
-
-}
 ROUTER.RESULT = {URL: '/result', PARAMS: '/:companyId', TITLE: 'Result', page: ResultPage, showBottomMenu: true};
 // ROUTER.USER_ACCOUNT = {URL: '/user_account',  TITLE: 'USER_ACCOUNT', page: () => {}, showBottomMenu: true, BACK_URL: ROUTER.SETTING.URL};
 ROUTER.MENU = {URL: '/menu', PARAMS: '/:categoryId', getTitle: 'Menu', page: SubCategoryPage, showBottomMenu: true, };
