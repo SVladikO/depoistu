@@ -88,7 +88,7 @@ export const ROUTER =  {
     CHANGE_PASSWORD :       {URL: URL.CHANGE_PASSWORD,                                  TITLE: resolveTranslation("PAGE.CHANGE_PASSWORD.TOP_TITLE"),page: ChangePasswordPage, showBottomMenu: true, BACK_URL: URL.SING_IN},
 
     EDIT_COMPANY_LIST:      {URL: URL.EDIT_COMPANY_LIST,                                TITLE: 'Edit companies', page: EditCompanyListPage, showBottomMenu:true, BACK_URL: URL.SETTING},
-    EDIT_COMPANY:           {URL: URL.EDIT_COMPANY,             PARAMS: '/:companyId',  TITLE: 'Edit companies', page: EditCompanyPage, showBottomMenu:true, BACK_URL: URL.EDIT_COMPANY_LIST},
+    EDIT_COMPANY:           {URL: URL.EDIT_COMPANY,             PARAMS: '/:companyId',  TITLE: 'Edit company', page: EditCompanyPage, showBottomMenu:true, BACK_URL: URL.EDIT_COMPANY_LIST},
     EDIT_MENU :             {URL: URL.EDIT_MENU,                PARAMS: '/:companyId',  TITLE: 'Edit menu',   page: EditMenuPage, showBottomMenu: true,  BACK_URL: URL.EDIT_COMPANY_LIST},
 };
 
