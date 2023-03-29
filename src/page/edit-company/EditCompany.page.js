@@ -1,26 +1,103 @@
-import {Wrapper,EditBar,CompanyEditSection,EditButton} from "./EditCompany.page.style";
-import {Institution} from "../../components";
-import {PrimaryWideButton} from "../../components";
-import {ReactComponent as ShowEyeIcon} from "../../icons/show-eye.svg";
-import {ReactComponent as DeleteIcon} from "../../icons/white_busket.svg";
-import {ReactComponent as EditIcon} from "../../icons/edit.svg";
+import React, {useEffect, useState} from "react";
+import {Swiper, SwiperSlide} from "swiper/react";
+import {useParams} from "react-router-dom";
 
-const EditCompanyPage = ({company}) => {
-    company= {PHOTOS: "https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg, https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg, https://afisha.bigmir.net/i/23/51/30/9/2351309/gallery/15b8175dc297f8a58d9de22e77b7b256-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg", NAME: 'Domono', CITY: 'Kyiv', STREET: 'Davidusk 15.',}
+import "swiper/css";
+import "swiper/css/pagination";
+import {ContentContainer, Input, PrimaryWideButton} from "../../components";
+import {
+    Wrapper,
+    InstitutionPictures,
+    InstitutionBasketButton,
+    Divider,
+} from "./EditCompany.style";
+import {ReactComponent as DeleteBasketIcon} from "../../icons/delete_basket.svg";
+import {BE_API} from "../../utils/config";
+import {fetchData} from "../../utils/fetch";
+
+const EditCompany = () => {
+    const {companyId} = useParams();
+    const [company, setCompany] = useState({});
+    const [name, setName] = useState(company.NAME || '');
+    const [city, setCity] = useState(company.CITY || '');
+    const [street, setStreet] = useState(company.STREET || '');
+    const [pictures, setPictures] = useState(company?.PHOTOS?.split(',') || []);
+    const url = BE_API.GET_COMPANY_BY_ID(companyId);
+
+    useEffect(() => {
+        fetchData(url)
+            .then(res => {
+                const resCompany = res[0];
+                setCompany(resCompany);
+                setName(resCompany.NAME || '');
+                setCity(resCompany.CITY || '');
+                setStreet(resCompany.STREET || '');
+                setPictures(resCompany?.PHOTOS?.split(',') || []);
+            })
+    }, [url])
+
+    const deleteCompanyImage = index => setPictures(pictures.filter((_, i) => i !== index));
+    const cleanCityInput = () => setCity('');
+    const onCityInput = e => setCity(e.target.value);
+    const onStreetInput = e => setStreet(e.target.value);
+    const clearStreetInput = () => setStreet('');
+
+    const renderCompanyDetails = () => {
+        return (
+            <>
+                <InstitutionPictures>
+                    <Swiper
+                        className="mySwiper"
+                        slidesPerView={2}
+                        spaceBetween={10}
+                    >
+                        {
+                            pictures.map((el, index) => (
+                                <SwiperSlide key={Math.random()}>
+                                    <img src={el} alt=''/>
+                                    <InstitutionBasketButton onClick={() => deleteCompanyImage(index)}>
+                                        <DeleteBasketIcon/>
+                                    </InstitutionBasketButton>
+                                </SwiperSlide>
+                            ))
+                        }
+                    </Swiper>
+                </InstitutionPictures>
+                <PrimaryWideButton>+Photo</PrimaryWideButton>
+                <Divider/>
+                <ContentContainer>
+                    <Input
+                        withCleaner
+                        value={name}
+                        placeholder="Name"
+                        changeHandler={cleanCityInput}
+                        onChange={onCityInput}
+                    />
+                    <Input
+                        withCleaner
+                        value={city}
+                        placeholder="City"
+                        onChange={onCityInput}
+                        changeHandler={cleanCityInput}
+                    />
+                    <Input
+                        withCleaner
+                        value={street}
+                        placeholder="Street"
+                        onChange={onStreetInput}
+                        changeHandler={clearStreetInput}
+                    />
+                </ContentContainer>
+            </>
+        )
+    }
+
     return (
         <Wrapper>
-            {company ? <CompanyEditSection>
-                <Institution company={company}/>
-                <EditBar>
-                    <EditButton><DeleteIcon/></EditButton>
-                    <EditButton><ShowEyeIcon/></EditButton>
-                    <EditButton><EditIcon/></EditButton>
-                    <EditButton><EditIcon/><span>Menu</span></EditButton>
-                </EditBar>
-            </CompanyEditSection> : null}
-            <PrimaryWideButton>+ Add new company</PrimaryWideButton>
+            {renderCompanyDetails()}
+            <PrimaryWideButton>Save changes</PrimaryWideButton>
         </Wrapper>
     );
 };
 
-export default EditCompanyPage;
+export default EditCompany;

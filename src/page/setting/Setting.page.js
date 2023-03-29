@@ -15,7 +15,7 @@ import {ReactComponent as LogOutIcon} from '../../icons/logout.svg';
 // import {ReactComponent as LanguageIcon} from '../../icons/language.svg';
 // import {ReactComponent as LinkedAccountIcon} from '../../icons/linked_account.svg';
 // import {ReactComponent as StoreIcon} from '../../icons/house.svg';
-import {ReactComponent as ConditionsIcon} from '../../icons/list.svg';
+// import {ReactComponent as ConditionsIcon} from '../../icons/list.svg';
 import {ReactComponent as HelpIcon} from '../../icons/chat.svg';
 import {ReactComponent as BusinessIcon} from '../../icons/busines.svg';
 
@@ -66,9 +66,7 @@ const SettingPage = () => {
                 <SettingMenuRow icon={LogOutIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.EXIT")} changeHandler={logOut}/>
             </AccountSettings>
             <OptionSettings groupTitle={resolveTranslation("PAGE.SETTINGS.GROUP_TITLE.FOR_BUSINESS")}>
-                <SettingMenuRow icon={BusinessIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.COMPANY")}  href={ROUTER.EDIT_COMPANY.URL}/>
-                <SettingMenuRow icon={ConditionsIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.MENU")}  href={ROUTER.EDIT_MENU_COMPANY_LIST.URL}/>
-
+                <SettingMenuRow icon={BusinessIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.COMPANY")}  href={ROUTER.EDIT_COMPANY_LIST.URL}/>
             </OptionSettings>
             {/*<OptionSettings groupTitle={resolveTranslation("PAGE.SETTINGS.GROUP_TITLE.OPTIONS")}>*/}
             {/*    /!*<SettingMenuRow icon={NewsletterIcon} title='Newsletter' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*!/*/}
