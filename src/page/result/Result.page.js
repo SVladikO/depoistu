@@ -26,7 +26,7 @@ const ResultPage = () => {
         <Wrapper>
             <Institution company={company}/>
             <Divider>Menu</Divider>
-            <CategoryMenuRow categories={categories}/>
+            <CategoryMenuRow menuItems={[{CATEGORY_ID: 1}, {CATEGORY_ID: 2}, {CATEGORY_ID: 3}]}/>
             <MenuItem item={item}/>
             <MenuItem item={item}/>
             <MenuItem item={item}/>

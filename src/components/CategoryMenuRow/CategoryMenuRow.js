@@ -15,7 +15,6 @@ import {
 import {CategoryItem} from "../../components";
 
 const CategoryMenuRow = ({menuItems = []}) => {
-
     const categoryIds = [...new Set(menuItems.map(mi => mi.CATEGORY_ID))];
     const categories = categoryIds
         .map(number => CATEGORY_MAPPER[number])

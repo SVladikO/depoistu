@@ -102,7 +102,7 @@ const EditPage = () => {
                            changeHandler={clearStreetInput}/>
                 </InputWrapper>
                 <Divider>Menu</Divider>
-                <CategoryMenuRow categories={categories}/>
+                <CategoryMenuRow menuItems={[{CATEGORY_ID: 1}, {CATEGORY_ID: 2}, {CATEGORY_ID: 3}]}/>
                 <Divider/>
             </>
         )
