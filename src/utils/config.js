@@ -62,6 +62,7 @@ const URL = {
     SEARCH: '/',
     SEARCH1: '/result',
     EDIT: '/edit/1',
+    RESULT: '/result',
     EDIT_MENU_COMPANY_LIST: '/menu/edit',
     EDIT_MENU_COMPANY: '/menu/edit',
     MENU: '/menu',
@@ -78,6 +79,7 @@ export const ROUTER =  {
     MENU :                  {URL: URL.MENU,                     PARAMS: '/:categoryId', getTitle: 'Menu', page: SubCategoryPage, showBottomMenu: true, },
     EDIT:                   {URL: URL.EDIT,                     TITLE: 'Edit', page: EditPage},
     SEARCH:                 {URL: URL.SEARCH,                   TITLE: resolveTranslation("PAGE.SEARCH.TOP_TITLE"), page: SearchPage, showBottomMenu: true},
+    RESULT: {URL: URL.RESULT, PARAMS: '/:companyId', TITLE: 'Result', page: ResultPage, showBottomMenu: true},
     SEARCH1:                {URL: URL.SEARCH1,                  TITLE: 'Result', page: ResultPage, showBottomMenu: true},
     SETTING:                {URL: URL.SETTING,                  TITLE: resolveTranslation("PAGE.SETTINGS.TOP_TITLE"), page: SettingPage, showBottomMenu: true},
     SING_UP:                {URL: URL.SING_UP,                  TITLE: resolveTranslation("PAGE.SING_UP.TOP_TITLE"), page: SingUpPage, showBottomMenu: true},
@@ -86,5 +88,9 @@ export const ROUTER =  {
     EDIT_MENU_COMPANY :     {URL: URL.EDIT_MENU_COMPANY,        TITLE: 'Edit menu', PARAMS: '/:companyId',  page: EditMenuCompany, showBottomMenu: true,  BACK_URL: URL.EDIT_MENU_COMPANY_LIST},
     EDIT_MENU_COMPANY_LIST: {URL: URL.EDIT_MENU_COMPANY_LIST,   TITLE: 'Edit menu', page: EditMenuCompanyList, showBottomMenu: true, BACK_URL: URL.SETTING},
 }
+
+// ROUTER.USER_ACCOUNT = {URL: '/user_account',  TITLE: 'USER_ACCOUNT', page: () => {}, showBottomMenu: true, BACK_URL: ROUTER.SETTING.URL};
+ROUTER.MENU = {URL: '/menu', PARAMS: '/:categoryId', getTitle: 'Menu', page: SubCategoryPage, showBottomMenu: true, };
+ROUTER.CHANGE_PASSWORD = {URL: '/change-password',TITLE: resolveTranslation("PAGE.CHANGE_PASSWORD.TOP_TITLE"),page: ChangePasswordPage, showBottomMenu: true, BACK_URL: ROUTER.SING_IN.URL};
 
 export const ROUTERS = Object.keys(ROUTER).map(key => ROUTER[key]);
