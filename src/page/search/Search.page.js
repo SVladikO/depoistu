@@ -15,7 +15,7 @@ const SearchPage = () => {
     const url = `https://pizza-mobile-api.herokuapp.com/companies/by/city/${selectedCity}`;
     const [warning, setWarning] = useState('');
     const warningMessage = 'There is no installations in current city';
-    const [inputField, setInputField] = useState('');
+    const [inputField] = useState('');
 
     const showWarning = () => {
         setWarning(warningMessage)
@@ -35,7 +35,7 @@ const SearchPage = () => {
             }).catch(e => {
             showWarning();
         })
-    }, [selectedCity]);
+    }, [selectedCity, url]);
 
     const openCityPopup = () => {
         dispatch(showCityPopup());

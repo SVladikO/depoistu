@@ -8,24 +8,16 @@ import {
     InstitutionPictures,
     InstitutionBasketButton,
     Divider,
-    MenuItemEditor,
-    MenuItemPhoto,
-    ImagePlace,
-    ButtonSection,
-    EditButton,
-    WideButton,
     BottomSection
 } from "./Edit.page.style";
 import {InputWrapper} from "../search/Search.page.style";
 import {ReactComponent as DeleteBasketIcon} from "../../icons/delete_basket.svg";
-import {ReactComponent as RemoveIcon} from "../../icons/remove_icon.svg";
-
 
 const categories = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 const EditPage = () => {
     const [city, setCity] = useState('Київ');
     const [street, setStreet] = useState('Хрещатик 15');
-    const [menuItems, setMenuItems] = useState([
+    const [menuItems] = useState([
         {
             id: 1,
             name: '4 Cheese',
@@ -91,7 +83,7 @@ const EditPage = () => {
                         {
                             pictures.map((el,index)=> (
                                 <SwiperSlide key={Math.random()}>
-                                    <img src={el}/>
+                                    <img src={el} alt=''/>
                                     <InstitutionBasketButton onClick={() => deleteCompanyImage(index)}>
                                         <DeleteBasketIcon/>
                                     </InstitutionBasketButton>
@@ -110,35 +102,14 @@ const EditPage = () => {
                            changeHandler={clearStreetInput}/>
                 </InputWrapper>
                 <Divider>Menu</Divider>
-                <CategoryMenuRow categories={categories}/>
+                <CategoryMenuRow menuItems={[{CATEGORY_ID: 1}, {CATEGORY_ID: 2}, {CATEGORY_ID: 3}]}/>
                 <Divider/>
             </>
         )
     }
-    const renderMenuItems = () => menuItems.map(item => (
-            <Divider key={Math.random()}>
-                <MenuItemEditor>
-                    <MenuItemPhoto>
-                        <ImagePlace/>
-                        <ButtonSection>
-                            <EditButton>Delete</EditButton>
-                            <EditButton>Change</EditButton>
-                        </ButtonSection>
-                    </MenuItemPhoto>
-                    <Input withCleaner placeholder={item.name}/>
-                    <Input withCleaner placeholder={item.price}/>
-                    <Input withCleaner placeholder={item.description}/>
-                    <Input withCleaner placeholder={item.cookingTime}/>
-                    <Input withCleaner placeholder={item.size}/>
-                    <WideButton>Delete<RemoveIcon/></WideButton>
-                </MenuItemEditor>
-            </Divider>
-        )
-    )
     return (
         <Wrapper>
             {renderCompanyDetails()}
-            {renderMenuItems()}
             <BottomSection>
                 <PrimaryWideButton>+Add menu item</PrimaryWideButton>
                 <PrimaryWideButton>Save</PrimaryWideButton>

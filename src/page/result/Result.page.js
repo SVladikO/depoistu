@@ -31,7 +31,7 @@ const ResultPage = () => {
         <Wrapper>
             <Institution company={company}/>
             <Divider>Menu</Divider>
-            <CategoryMenuRow categories={categories}/>
+            <CategoryMenuRow menuItems={menuItems}/>
             {menuItems.map((el) => <MenuItem key={el.ID} item={el}/>)}
         </Wrapper>
     );
