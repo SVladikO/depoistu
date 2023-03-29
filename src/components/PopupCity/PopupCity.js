@@ -42,7 +42,10 @@ export const CityPopupContent = () => {
     const isRegion = useSelector(state => state.cityPopup.isRegion);
 
     const style = {
-        height: '500px',
+        minHeight: 'calc(100vh - 300px)',
+        overflow: 'auto',
+        overflowX: 'hidden',
+        padding: '10px 0'
     }
 
     return (

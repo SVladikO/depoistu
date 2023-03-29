@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-
+import {Link} from "react-router-dom";
+import {showCityPopup} from "../../features/cityPopup/cityPopupSlice";
 import {Warning} from "./Search.page.style";
-
 import {ReactComponent as LocationIcon} from "../../icons/map_point.svg";
 import {PInput, ContentContainer, Institution} from "../../components";
-import {showCityPopup} from "../../features/cityPopup/cityPopupSlice";
+
 
 const SearchPage = () => {
     const dispatch = useDispatch();
@@ -15,7 +15,7 @@ const SearchPage = () => {
     const url = `https://pizza-mobile-api.herokuapp.com/companies/by/city/${selectedCity}`;
     const [warning, setWarning] = useState('');
     const warningMessage = 'There is no installations in current city';
-    const [inputField, setInputField] = useState('');
+    const [inputField] = useState('');
 
     const showWarning = () => {
         setWarning(warningMessage)
@@ -35,7 +35,7 @@ const SearchPage = () => {
             }).catch(e => {
             showWarning();
         })
-    }, [selectedCity]);
+    }, [selectedCity, url]);
 
     const openCityPopup = () => {
         dispatch(showCityPopup());
@@ -54,6 +54,9 @@ const SearchPage = () => {
                     {selectedCity ? `${selectedCity}, ${selectedRegion} обл` : ""}
                 </PInput>
             </ContentContainer>
+            {companies.length === 0 ? <Warning>{warning}</Warning> : selectedCity && companies.map(company =>
+                <Link to={`result/${company.ID}`} key={company.ID}><Institution company={company}/></Link>)
+            }
             {selectedCity && selectedRegion && companies.length === 0
                 ? <Warning>{warning}</Warning>
                 : selectedCity && companies.map(company => <Institution key={company.ID} company={company}/>)

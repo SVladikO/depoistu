@@ -26,7 +26,7 @@ export const Wrapper = styled.div`
 
 export const BackButtonWrapper = styled.div`
   width: 100%;
-  padding: 10px 10px 0px;
+  padding: 10px 10px 0;
   margin: 0;
   box-shadow: 0 2px 4px 0 rgb(0 0 0 / 11%);
 `;
