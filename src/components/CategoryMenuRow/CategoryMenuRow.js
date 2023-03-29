@@ -14,23 +14,18 @@ import {
 
 import {CategoryItem} from "../../components";
 
-const CategoryMenuRow = (props) => {
-    // We don't need it for now.
-    // const [categories] = useLocalStorageFetch(
-    //     'category',
-    //     [],
-    //     BE_API.GET_ALL_CATEGORIES_ID_FOR_COMPANY(1)
-    // )
+const CategoryMenuRow = ({menuItems = []}) => {
 
-    const categories = props.categories.map(number => CATEGORY_MAPPER[number]);
-
-    const getCategoryItems = () => categories.map(category => (
-        <SwiperSlide key={category.title} >
-            <Link to="">
-                <CategoryItem category={category}/>
-            </Link>
-        </SwiperSlide>
-    ));
+    const categoryIds = [...new Set(menuItems.map(mi => mi.CATEGORY_ID))];
+    const categories = categoryIds
+        .map(number => CATEGORY_MAPPER[number])
+        .map(category => (
+            <SwiperSlide key={category.id}>
+                <Link to="">
+                    <CategoryItem category={category}/>
+                </Link>
+            </SwiperSlide>
+        ));
 
     return (
         <Content>
@@ -40,7 +35,7 @@ const CategoryMenuRow = (props) => {
                     spaceBetween={10}
                     className="category-slider"
                 >
-                    {getCategoryItems()}
+                    {categories}
                 </Swiper>
             </Flex>
         </Content>
