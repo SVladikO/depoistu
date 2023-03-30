@@ -2,7 +2,11 @@ import styled from "styled-components";
 import {COLOR, BORDER_RADIUS} from "../../utils/theme";
 
 export const Wrapper = styled.div`
-    padding: 18px 10px 10px 10px;
+  padding: 18px 10px 10px 10px;
+
+  & > * {
+    margin: 0 0 10px 0;
+  }
 `;
 
 export const InstitutionPictures = styled.div`

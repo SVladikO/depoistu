@@ -9,7 +9,6 @@ import {Wrapper,ImageSection, Name, Address, Content} from "./Institution.style"
 const Institution = (props) => {
 
     const {PHOTOS, NAME, CITY, STREET} = props.company || {};
-
     return (
         <Wrapper>
             <ImageSection>

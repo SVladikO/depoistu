@@ -54,12 +54,10 @@ const SearchPage = () => {
                     {selectedCity ? `${selectedCity}, ${selectedRegion} обл` : ""}
                 </PInput>
             </ContentContainer>
-            {companies.length === 0 ? <Warning>{warning}</Warning> : selectedCity && companies.map(company =>
-                <Link to={`result/${company.ID}`} key={company.ID}><Institution company={company}/></Link>)
-            }
             {selectedCity && selectedRegion && companies.length === 0
                 ? <Warning>{warning}</Warning>
-                : selectedCity && companies.map(company => <Institution key={company.ID} company={company}/>)
+                : companies.map(company =>
+                <Link to={`result/${company.ID}`} key={company.ID}><Institution key={company.ID} company={company}/></Link>)
             }
         </>
     );
