@@ -25,7 +25,8 @@ const EditCompany = () => {
     const url = BE_API.GET_COMPANY_BY_ID(companyId);
 
     useEffect(() => {
-        fetchData(url)
+        //TODO: SHOW WARNING WRONG PARAM
+        companyId && fetchData(url)
             .then(res => {
                 const resCompany = res[0];
                 setCompany(resCompany);

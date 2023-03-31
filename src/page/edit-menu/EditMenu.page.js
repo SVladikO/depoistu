@@ -12,7 +12,8 @@ const EditMenuCompany = () => {
     const url = BE_API.GET_MENU_ITEMS_BY_COMPANY_ID(companyId);
 
     useEffect(() => {
-        fetchData(url)
+        //TODO: SHOW WARNING WRONG PARAM
+        companyId && fetchData(url)
             .then(res => {
                 setMenuItems(res);
             })
