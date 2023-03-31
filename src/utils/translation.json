@@ -1,0 +1,210 @@
+{
+  "PAGE.SING_IN.TOP_TITLE": {
+    "en": "Sign in",
+    "ua": "Вхiд"
+  },
+  "PAGE.SING_IN.USER_NOTIFICATION": {
+    "en": "You already logged!",
+    "ua": "Вхiд виконаний"
+  },
+  "PAGE.SING_IN.FORGOT_PASSWORD": {
+    "ua": "Забули пароль?",
+    "en": "Forgot password?"
+  },
+  "PAGE.SIGN_IN.SING_UP_LINK": {
+    "ua": "Зареєструватись",
+    "en": "Sing up"
+  },
+  "PAGE.SIGN_IN.ACCOUNT_CONFIRMATION": {
+    "en": "You don’t have an account?",
+    "ua": "Ви зареєстрованi?"
+  },
+  "PAGE.SING_UP.TOP_TITLE": {
+    "en": "Sing up",
+    "ua": "Реєстрацiя"
+  },
+  "PAGE.SING_UP.CREATE_ACCOUNT": {
+    "en": "Create an account",
+    "ua": "Створити аккаунт"
+  },
+  "PAGE.SING_UP.PLACEHOLDER.USER_NAME": {
+    "en": "Name",
+    "ua": "Ім'я"
+  },
+  "PAGE.SING_UP.PLACEHOLDER.PHONE": {
+    "ua": "Номер Телефону",
+    "en": "Phone Number"
+  },
+  "PAGE.SING_UP.PLACEHOLDER.EMAIL": {
+    "en": "Emial",
+    "ua": "Електронна Пошта"
+  },
+  "PAGE.SING_UP.PLACEHOLDER.PASS": {
+    "ua": "Пароль",
+    "en": "Password"
+  },
+  "PAGE.SING_UP.PLACEHOLDER.CONFIRM_PASS": {
+    "en": "Confirm Password",
+    "ua": "Пiдтвердiть Пароль"
+  },
+  "PAGE.SING_UP.CHECKBOX_CONFIRM_TERMS": {
+    "en": "By creating an account you agree to our Terms of Service and Privacy Policy",
+    "ua": "Створенням свого аккаунту ви погоджуєтесь з нашими правилами користування та полiтикою конфiденцiйностi"
+  },
+  "BOTTOM_MENU.SEARCH_TAB":{
+    "ua": "Пошук",
+    "en": "Search"
+  },
+  "BOTTOM_MENU_ACCOUNT_TAB":{
+    "ua": "Кабинет",
+    "en": "Account"
+  },
+  "PAGE.SEARCH.TOP_TITLE": {
+    "ua": "Пошук",
+    "en": "Search"
+  },
+  "PAGE.SEARCH.ARROW_LABEL": {
+    "ua": "Назад",
+    "en": "Back"
+  },
+  "PAGE.SETTINGS.TOP_TITLE": {
+    "en": "Settings",
+    "ua": "Налаштування"
+  },
+  "PAGE.SETTINGS.USER_PHONE_LABEL": {
+    "en": "Phone",
+    "ua": "Телефон"
+  },
+  "PAGE.SETTINGS.GROUP_TITLE.ACCOUNTS": {
+    "en": "Accounts",
+    "ua": "Остобистий кабiнет"
+  },
+  "PAGE.SETTINGS.GROUP_TITLE.FOR_BUSINESS": {
+    "en": "For business",
+    "ua": "Для бізнесу"
+  },
+  "PAGE.SETTINGS.GROUP_TITLE.OPTIONS": {
+    "en": "More Options",
+    "ua": "Розширенi налаштування"
+  },
+  "PAGE.SETTINGS.MENU_ROW.CHANGE_PASS": {
+    "en": "Change Password",
+    "ua": "Змiнити пароль"
+  },
+  "PAGE.SETTINGS.MENU_ROW.COMPANY": {
+    "ua": "Мої заклади",
+    "en": "My сompanies"
+  },
+  "PAGE.SETTINGS.MENU_ROW.MENU": {
+    "ua": "Налаштувати меню",
+    "en": "Set up menu"
+  },
+  "PAGE.SETTINGS.MENU_ROW.LOCATION": {
+    "ua": "Мicце знаходження",
+    "en": "Store Location"
+  },
+  "PAGE.SETTINGS.MENU_ROW.TERMS": {
+    "ua": "Умови та Положення",
+    "en": "Terms and Conditions"
+  },
+  "PAGE.SETTINGS.MENU_ROW.HELP": {
+    "ua": "Допомога",
+    "en": "Help"
+  },
+  "PAGE.SETTINGS.MENU_ROW.EXIT": {
+    "en": "Sing out",
+    "ua": "Вихiд"
+  },
+  "PAGE.SETTINGS.MENU_ROW.CURRENCY": {
+    "ua": "Валюта",
+    "en": "Currency"
+  },
+  "PAGE.SETTINGS.MENU_ROW.LANGUAGE": {
+    "en": "Language",
+    "ua": "Мова"
+  },
+  "PAGE.SETTINGS.MENU_ROW.LINKED_ACCOUNTS": {
+    "en": "Linked Account",
+    "ua": "Пов'язанi Аккаути"
+  },
+  "PAGE.SETTINGS.NOTIFICATION.TITLE": {
+    "en": "Restricted access!",
+    "ua": "Обмежений доступ"
+  },
+  "PAGE.SETTINGS.NOTIFICATION.DESCRIPTION": {
+    "ua": "Ця сторiнка доступна тiльки пicля пiдтвердження",
+    "en": "This page is available only after verification."
+  },
+  "PAGE.SETTINGS.NOTIFICATION.BUTTON_TEXT": {
+    "ua": "Перейдiть на сторiнку реєстрацiї",
+    "en": "Go to Sign in page"
+  },
+  "CATEGORIES.BAKERY": {
+      "en": "Bakery",
+      "ua": "Випiчка"
+  },
+  "CATEGORIES.BEVERAGE": {
+    "ua": "Безалкогольнi напої",
+    "en": "Beverage"
+  },
+  "CATEGORIES.BURGERS": {
+    "ua": "Бургери",
+    "en": "Burgers"
+  },
+  "CATEGORIES.NOODLES": {
+    "ua": "Локшина",
+    "en": "Noodles"
+  },
+  "CATEGORIES.PIZZA": {
+    "en": "Pizza",
+    "ua": "Пiцца"
+  },
+  "CATEGORIES.SANDWITCH": {
+    "ua": "Сендвичi",
+    "en": "Sandwitch"
+  },
+  "CATEGORIES.SEAFOOD": {
+    "ua": "Морепродукти",
+    "en": "Seafood"
+  },
+  "CATEGORIES.VEGETABLE": {
+    "ua": "Овочевi страви",
+    "en": "Vegetable"
+  },
+  "CATEGORIES.ALCOHOL": {
+    "ua": "Алкогольнi напої",
+    "en": "Alcohol drinks"
+  },
+  "CATEGORIES.WINE_CARD": {
+    "ua": "Винна карта",
+    "en": "Wine card"
+  },
+  "CATEGORIES.HOT_DRINKS": {
+    "ua": "Гарячi напої",
+    "en": "Hot drinks"
+  },
+  "PAGE.CHANGE_PASSWORD.TOP_TITLE": {
+    "ua": "Змiнити пароль",
+    "en": "Change Password"
+  },
+  "PAGE.CHANGE_PASSWORD.PLACEHOLDER.OLD_PASSWORD": {
+    "en": "Old Password",
+    "ua": "Старий Пароль"
+  },
+  "PAGE.CHANGE_PASSWORD.PLACEHOLDER.NEW_PASSWORD": {
+    "en": "New Password",
+    "ua": "Новий Пароль"
+  },
+  "PAGE.CHANGE_PASSWORD.PLACEHOLDER.CONFIRM_PASSWORD": {
+    "en": "Confirm Password",
+    "ua": "Пiдтвердiть Пароль"
+  },
+  "PAGE.CHANGE_PASSWORD.BUTTON.SAVE_PASSWORD": {
+    "ua": "Зберегти!",
+    "en": "Save now!"
+  },
+  "NOTIFICATION.LOADING": {
+    "ua": "Завантаження...",
+    "en": "Loading..."
+  }
+}

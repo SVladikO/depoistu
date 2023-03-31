@@ -5,7 +5,7 @@ import {hexToRgbA} from "../../utils/utils";
 
 export const Wrapper = styled.div`
   background: ${COLOR.ACCENT4};  
-  border-radius: 0 0 ${BORDER_RADIUS.SECOND} ${BORDER_RADIUS.SECOND};
+   ${p => p.noBorder ? "" : `border-radius: 0 0 ${BORDER_RADIUS.SECOND} ${BORDER_RADIUS.SECOND};`};
 `;
 
 export const GroupTitle = styled.div`
@@ -20,5 +20,5 @@ export const GroupTitle = styled.div`
 `
 
 export const RowsWrapper = styled.div`
-  padding: 5px 0 10px;
+  padding: 5px 10px 10px;
 `

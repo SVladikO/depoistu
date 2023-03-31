@@ -1,13 +1,14 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper";
+
 import "swiper/css";
 import "swiper/css/pagination";
 import {Wrapper,ImageSection, Name, Address, Content} from "./Institution.style";
 
 const Institution = (props) => {
-    const {images, name, city, street} = props.company;
 
+    const {PHOTOS, NAME, CITY, STREET} = props.company || {};
     return (
         <Wrapper>
             <ImageSection>
@@ -17,12 +18,12 @@ const Institution = (props) => {
                     navigation
                     pagination={{ clickable: true }}
                 >
-                    {images.map((src,i) => <SwiperSlide key={i}><img src={src} alt="#"/></SwiperSlide>)}
+                    {PHOTOS && PHOTOS.split(', ').map((src,i) => <SwiperSlide key={i}><img src={src} alt="#"/></SwiperSlide>)}
                 </Swiper>
             </ImageSection>
             <Content>
-                <Name>{name}</Name>
-                <Address>{city}, {street}</Address>
+                <Name>{NAME}</Name>
+                <Address>{CITY}, {STREET}</Address>
             </Content>
         </Wrapper>
     );
