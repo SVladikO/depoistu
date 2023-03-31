@@ -67,6 +67,12 @@ export const PStyle = styled.p`
   ${p => st(p)}
 `
 
+export const TextareaStyle = styled.textarea`
+  ${p => st(p)};
+  resize: vertical;
+  height: 100px;
+  min-height: 50px;
+`;
 export const InputText = styled.input`
   ${p => st(p)}
   &:active,

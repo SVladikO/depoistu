@@ -28,7 +28,7 @@ import
     MenuItem,
     OrderHistoryRow,
     NotificationTDB,
-    RowSplitter, Institution,
+    RowSplitter, Institution, Textarea,
 } from "../../components";
 
 import CatalogPage from "./Catalog.page";
@@ -68,6 +68,7 @@ const columns = [
         {title: 'Input 1', component: <Input placeholder={`johndoe@mail.com`}/>},
         {title: 'Input 2', component: <Input Icon={MailIcon} placeholder={`johndoe@mail.com`}/>},
         {title: 'Input 3', component: <Input withSwitcher placeholder={`New password`}/>},
+        {title: 'Textarea', component: <Textarea withCleaner />},
         {title: 'PInput', component: <PInput withIcon Icon={LocationIcon}> Vinnica</PInput>},
         {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
     ],
