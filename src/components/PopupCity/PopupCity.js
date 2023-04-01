@@ -43,9 +43,9 @@ export const CityPopupContent = () => {
 
     const style = {
         minHeight: 'calc(100vh - 300px)',
-        overflow: 'auto',
+        overflowY: 'auto',
         overflowX: 'hidden',
-        padding: '10px 0'
+        padding: '0'
     }
 
     return (
