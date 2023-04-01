@@ -1,10 +1,9 @@
 import {useEffect, useState} from "react";
-import {BE_API, BE_DOMAIN} from "../../utils/config";
+import {BE_API} from "../../utils/config";
 import {fetchData} from "../../utils/fetch";
 
 import {RequestRow} from './Admin.style';
 import {ReactComponent as LoadingIcon} from "../../icons/spinner.svg";
-import {isArray} from "karma/lib/helper";
 
 function CheckRequest({
                           url,
@@ -20,27 +19,28 @@ function CheckRequest({
     const [isLoading, setIsLoading] = useState(true);
     const [response, setResponse] = useState('')
     const [errorResponse, setErrorResponse] = useState('');
+    const [validation, setValidation] = useState({});
 
     useEffect(() => {
+        console.log(url);
         fetchData(url)
             .then(res => {
                 setIsLoading(false);
-                debugger;
-                validateSuccessResponse(res);
+                setValidation(validateSuccessResponse(res));
                 setResponse(res);
             })
             .catch(res => {
                 setIsLoading(false);
-                validateErrorResponse(res);
+                setValidation(validateErrorResponse(res));
                 setErrorResponse(res);
             });
-    }, [])
+    }, [url])
 
     return (
         <RequestRow>
             {isLoading && <LoadingIcon className="animated_svg"/>}
             {isType ? 'CHECK SUCCESS: ' : 'CHECK ERROR  : '}
-            {isType ? validateSuccessResponse(response) : validateErrorResponse(errorResponse)}
+            {!isLoading && isType && validation.type && <span>green</span>}
             <span>{title}</span>
         </RequestRow>
     )
@@ -53,7 +53,6 @@ const isObject = yourVariable =>
 
 function checkArrayOfObjects(objectFieldsToCheck = []) {
     return (data) => {
-        debugger
         if (!Array.isArray(data)) {
             return {type: false, message: "it isn't an array"};
         }
@@ -88,9 +87,26 @@ const MENU_ITEM_FIELDS_TO_CHECK = ['ID', 'CATEGORY_ID', 'COMPANY_ID', 'COOKING_T
 
 function AdminPage() {
     const requests = [
-        <CheckRequest key={1} isType title={'GET companies by customer id'} validateSuccessResponse={checkArrayOfObjects(COMPANY_FIELDS_TO_CHECK)} url={BE_API.GET_COMPANIES_BY_CUSTOMER_ID(1)}/>,
-        <CheckRequest key={2} isType title={'GET company by company id'}    validateSuccessResponse={checkArrayOfObjects(COMPANY_FIELDS_TO_CHECK)}  url={BE_API.GET_COMPANY_BY_COMPANY_ID(1)}/>,
-        <CheckRequest key={3} isType title={'GET menu by company id'}       validateSuccessResponse={checkArrayOfObjects(MENU_ITEM_FIELDS_TO_CHECK)} url={BE_API.GET_MENU_ITEMS_BY_COMPANY_ID(1)}/>,
+        <CheckRequest
+            key={1}
+            isType title={'GET companies by customer id'}
+            validateSuccessResponse={checkArrayOfObjects(COMPANY_FIELDS_TO_CHECK)}
+            url={BE_API.GET_COMPANIES_BY_CUSTOMER_ID(1)}
+        />,
+        <CheckRequest
+            key={2}
+            isType
+            title={'GET company by company id'}
+            validateSuccessResponse={checkArrayOfObjects(COMPANY_FIELDS_TO_CHECK)}
+            url={BE_API.GET_COMPANY_BY_COMPANY_ID(1)}
+        />,
+        <CheckRequest
+            key={3}
+            isType
+            title={'GET menu by company id'}
+            validateSuccessResponse={checkArrayOfObjects(MENU_ITEM_FIELDS_TO_CHECK)}
+            url={BE_API.GET_MENU_ITEMS_BY_COMPANY_ID(1)}
+        />,
     ];
 
     /**
