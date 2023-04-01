@@ -23,7 +23,7 @@ import {ReactComponent as BusinessIcon} from '../../icons/busines.svg';
 import {
     RowSplitter,
     SettingMenuRow,
-    UserAccountBar,
+    CustomerAccountBar,
     AccountSettings,
     OptionSettings, NotificationTDB,
 } from '../../components'
@@ -31,9 +31,9 @@ import {
 import {LocalStorage, resolveTranslation} from "../../utils/utils";
 
 const SettingPage = () => {
-    const [user, setUser] = useState(LocalStorage.getGuest());
+    const [customer, setCustomer] = useState(LocalStorage.getCustomer());
 
-    if (!user) {
+    if (!customer) {
         return (
             <NotificationTDB
                 title={resolveTranslation("PAGE.SETTINGS.NOTIFICATION.TITLE")}
@@ -46,12 +46,12 @@ const SettingPage = () => {
 
     const logOut = () => {
         LocalStorage.removeGuest();
-        setUser(undefined);
+        setCustomer(undefined);
     }
 
     return (
         <>
-            <UserAccountBar fullName='Jhon Smith' phone="+14844731243"/>
+            <CustomerAccountBar fullName='Jhon Smith' phone="+14844731243"/>
             <RowSplitter height='20px'/>
             <AccountSettings groupTitle={resolveTranslation("PAGE.SETTINGS.GROUP_TITLE.ACCOUNTS")}>
                 {/*TODO: Hidden second version*/}

@@ -10,7 +10,7 @@ import {BE_API, ROUTER} from "../../utils/config";
 import {Link} from "react-router-dom";
 
 const EditCompanyListPage = () => {
-    const [customer] = useState(LocalStorage.getGuest());
+    const [customer] = useState(LocalStorage.getCustomer());
     const [customerCompanies] = useLocalStorageFetch(
         'customerCompanies',
         [],

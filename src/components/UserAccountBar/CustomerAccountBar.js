@@ -1,11 +1,11 @@
 import {Link} from "react-router-dom";
-import {Avatar, ContentWrapper, Name, Phone, TextContent, Wrapper} from "./UserAccountBar.style";
+import {Avatar, ContentWrapper, Name, Phone, TextContent, Wrapper} from "./CustomerAccountBar.style";
 import avatar from '../../icons/avatar.svg';
 import {resolveTranslation} from "../../utils/utils";
 // import {ROUTER} from "../../utils/config";
 
 
-const UserAccountBar = ({ fullName, phone}) => {
+const CustomerAccountBar = ({ fullName, phone}) => {
     return (
         <Link to={""}>
             <Wrapper>
@@ -21,4 +21,4 @@ const UserAccountBar = ({ fullName, phone}) => {
     );
 };
 
-export default UserAccountBar;
+export default CustomerAccountBar;

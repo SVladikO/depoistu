@@ -24,7 +24,7 @@ import HistoryTabBar from "./HistoryTabBar/HistoryTabBar";
 import NavigationHeader from "./NavigationHeader/NavigationHeader";
 import {Absolute} from "./Absolute/Absolute.style";
 import {Flex} from "./Flex/Flex.style";
-import UserAccountBar from "./UserAccountBar/UserAccountBar";
+import CustomerAccountBar from "./UserAccountBar/CustomerAccountBar";
 import NavigationLabelHref from './NavigationLabelHref/NavigationLabelHref';
 import AccountSettings from "./AccountSettings/AccountSettings";
 import OptionSettings from "./OptionSettings/OptionSettings";
@@ -73,7 +73,7 @@ export {
     ContentContainer,
     NavigationHeader,
     NavigationLabelHref,
-    UserAccountBar,
+    CustomerAccountBar,
     AccountSettings,
     OptionSettings,
     OrderHistoryRow,

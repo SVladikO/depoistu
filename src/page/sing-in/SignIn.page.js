@@ -43,7 +43,7 @@ const SignInPage = () => {
             .then(res => {
 
                 if (res.length > 0) {
-                    localStorage.setItem('guest', JSON.stringify(res[0]))
+                    localStorage.setItem('customer', JSON.stringify(res[0]))
                     navigate(backUrl);
                     return;
                 }
@@ -52,7 +52,7 @@ const SignInPage = () => {
             });
     }
 
-    const isGuestLogged = LocalStorage.getGuest();
+    const isGuestLogged = LocalStorage.getCustomer();
 
     if (isGuestLogged) {
         return <div>{resolveTranslation("PAGE.SING_IN.USER_NOTIFICATION")}</div>

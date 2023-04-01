@@ -22,7 +22,7 @@ import
     ContentContainer,
     Notification,
     NavigationHeader,
-    UserAccountBar,
+    CustomerAccountBar,
     NavigationLabelHref,
     BottomMenu,
     MenuItem,
@@ -165,7 +165,7 @@ const columns = [
 
         {
             title: 'UserAccountBar',
-            component: <UserAccountBar fullName="Jhon Smith" status="Basic Member"/>
+            component: <CustomerAccountBar fullName="Jhon Smith" status="Basic Member"/>
         },
 
     ],
