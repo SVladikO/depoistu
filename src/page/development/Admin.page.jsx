@@ -1,8 +1,7 @@
 import {useEffect, useState} from "react";
-import {BE_API} from "../../utils/config";
-import {fetchData} from "../../utils/fetch";
+import {BE_API, BE_DOMAIN} from "../../utils/config";
 
-import {RequestRow} from './Admin.style';
+import {LedError, Status, LedSuccess, RequestRow} from './Admin.style';
 import {ReactComponent as LoadingIcon} from "../../icons/spinner.svg";
 
 function CheckRequest({
@@ -17,16 +16,22 @@ function CheckRequest({
     //isType - true mean check success response, false mean check error response
 
     const [isLoading, setIsLoading] = useState(true);
+    const [status, setStatus] = useState('')
     const [response, setResponse] = useState('')
     const [errorResponse, setErrorResponse] = useState('');
     const [validation, setValidation] = useState({});
 
     useEffect(() => {
         console.log(url);
-        fetchData(url)
+        fetch(url)
+            .then(res => {
+                setStatus(res.status);
+                return res.json();
+            })
             .then(res => {
                 setIsLoading(false);
                 setValidation(validateSuccessResponse(res));
+                console.log('S res: ', res);
                 setResponse(res);
             })
             .catch(res => {
@@ -37,12 +42,22 @@ function CheckRequest({
     }, [url])
 
     return (
-        <RequestRow>
-            {isLoading && <LoadingIcon className="animated_svg"/>}
-            {isType ? 'CHECK SUCCESS: ' : 'CHECK ERROR  : '}
-            {!isLoading && isType && validation.type && <span>green</span>}
-            <span>{title}</span>
-        </RequestRow>
+        <div>
+            <RequestRow>
+                {isLoading
+                    ? <LoadingIcon className="animated_svg"/>
+                    : isType && validation && validation.type
+                        ? <LedSuccess/>
+                        : <LedError/>
+                }
+                <Status>{status}</Status>
+                <span>{title}</span>
+                <a href={url} target="_blank" rel="noreferrer">_link</a>
+            </RequestRow>
+            <div>
+
+            </div>
+        </div>
     )
 }
 
@@ -72,7 +87,7 @@ function checkArrayOfObjects(objectFieldsToCheck = []) {
 
             for (let i = 0; i < objectFieldsToCheck.length; i++) {
                 if (!firstObjectKeys.includes(objectFieldsToCheck[i])) {
-                    return { type: false, message: `First object in array doesn't contain: ${objectFieldsToCheck[i]}`};
+                    return {type: false, message: `First object in array doesn't contain: ${objectFieldsToCheck[i]}`};
                 }
             }
 
@@ -86,7 +101,7 @@ const COMPANY_FIELDS_TO_CHECK = ['ID', 'CUSTOMER_ID', 'NAME', 'PHONES', 'CITY', 
 const MENU_ITEM_FIELDS_TO_CHECK = ['ID', 'CATEGORY_ID', 'COMPANY_ID', 'COOKING_TIME', 'DESCRIPTION', 'IMAGE_URL', 'NAME', 'PRICE', 'SIZE'];
 
 function AdminPage() {
-    const requests = [
+    const checkSuccessRequest = [
         <CheckRequest
             key={1}
             isType title={'GET companies by customer id'}
@@ -113,17 +128,20 @@ function AdminPage() {
      * We multiply on 2 because we should handle minimum two call one with normal data and one with broken
      * to better know how do we handle error responses too.
      */
-    const getCoverage = () => `${Object.keys(BE_API).length * 2}/${requests.length}`;
+    const getCoverage = () => `${Object.keys(BE_API).length * 2}/${checkSuccessRequest.length}`;
 
     return (
         <div>
+            <div>{BE_DOMAIN}</div>
             <div>API call coverage {getCoverage()}</div>
-            {requests}
+            <div>Check success requests:</div>
+            {checkSuccessRequest}
+
             <div>Users login/password companiesAmount</div>
             <div>Check BE request (SEEMS BE PROVIDE EXAMPLE URL) and response example</div>
             <div>Check BE request from FE</div>
         </div>
     )
-};
+}
 
 export default AdminPage;
