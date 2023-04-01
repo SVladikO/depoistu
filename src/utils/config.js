@@ -35,14 +35,15 @@ export const BE_DOMAIN = 'https://pizza-mobile-api.herokuapp.com';
 
 export const BE_API = {
     //TODO candidate to delete
-    GET_ALL_CATEGORIES_ID_FOR_COMPANY: companyId => `${BE_DOMAIN}/company/${companyId}/category`,
+    // GET_ALL_CATEGORIES_ID_FOR_COMPANY: companyId => `${BE_DOMAIN}/company/${companyId}/category`,
     //TODO candidate to delete
-    GET_ALL_MENU_FOR_COMPANY_FOR_CATEGORY: (companyId, categoryId) => `${BE_DOMAIN}/company/${companyId}/menu_item/${categoryId}`,
+    // GET_ALL_MENU_FOR_COMPANY_FOR_CATEGORY: (companyId, categoryId) => `${BE_DOMAIN}/company/${companyId}/menu_item/${categoryId}`,
 
     SING_IN: () => `${BE_DOMAIN}/sign-in`,
-    PLACE_ORDER: () => `${BE_DOMAIN}/place-order`,
+    // PLACE_ORDER: () => `${BE_DOMAIN}/place-order`,
 
     GET_COMPANIES_BY_CUSTOMER_ID: customer_id => `${BE_DOMAIN}/companies/by/customer/${customer_id}`,
+    GET_COMPANIES_BY_CITY: city => `${BE_DOMAIN}/companies/by/city/${city}`,
     GET_COMPANY_BY_COMPANY_ID: companyId => `${BE_DOMAIN}/companies/by/id/${companyId}`,
     GET_MENU_ITEMS_BY_COMPANY_ID: company_id => `${BE_DOMAIN}/menu/${company_id}`
 };
@@ -61,7 +62,7 @@ export const CATEGORY_MAPPER = {
     11: { id: 11, title: resolveTranslation("CATEGORIES.HOT_DRINKS"), icon: BeverageIcon, measurement: 'ml'},
 }
 
-const URL = {
+export const URL = {
     SEARCH: '/',
     // ADMIN: '/admin',
     MENU: '/menu',

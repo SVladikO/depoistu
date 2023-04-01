@@ -1,24 +1,35 @@
 import styled from "styled-components";
 
-export const RequestRow = styled.div`
+export const Wrapper = styled.div`
+  background: white;
+  height: 150vh;
+`;
+export const Header = styled.div`
+  background: #81ca11;
+  color: white;
+
   display: flex;
+  justify-content: center;
   align-items: center;
   padding: 5px 0;
-  
-    & > a {
-      margin: 6px;
-    }
-  
-    & > svg {
-      margin: 0 10px;
-      height: 16px;
-      width: 16px;
-    }
 `;
-
-export const Status = styled.span`
-  margin: 0 4px;
-  `;
+export const SubHeader = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+export const Table = styled.table`
+  margin: auto;
+`;
+export const A = styled.a`
+  margin: 10px;
+`
+export const SpinnerWrapper = styled.span`
+  & > svg {
+    margin: 0 10px;
+    height: 16px;
+    width: 16px;
+  }
+`;
 export const LedError = styled.span`
   margin: 0 10px;
   display: inline-block;

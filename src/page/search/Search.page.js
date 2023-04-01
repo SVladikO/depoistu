@@ -5,6 +5,8 @@ import {showCityPopup} from "../../features/cityPopup/cityPopupSlice";
 import {Warning} from "./Search.page.style";
 import {ReactComponent as LocationIcon} from "../../icons/map_point.svg";
 import {PInput, ContentContainer, Institution} from "../../components";
+import {BE_API} from "../../utils/config";
+import {fetchData} from "../../utils/fetch";
 
 
 const SearchPage = () => {
@@ -12,7 +14,7 @@ const SearchPage = () => {
     const selectedCity = useSelector(state => state.cityPopup.selectedCity);
     const selectedRegion = useSelector(state => state.cityPopup.selectedRegion);
     const [companies, setCompanies] = useState([]);
-    const url = `https://pizza-mobile-api.herokuapp.com/companies/by/city/${selectedCity}`;
+    const url = BE_API.GET_COMPANIES_BY_CITY(selectedCity);
     const [warning, setWarning] = useState('');
     const warningMessage = 'There is no installations in current city';
     const [inputField] = useState('');
@@ -25,14 +27,13 @@ const SearchPage = () => {
         if (selectedCity === '') {
             return;
         }
-        fetch(decodeURIComponent(url),)
-            .then(response => response.json())
+        fetchData(url)
             .then(data => {
                 if (data.length === 0) {
                     showWarning();
                 }
                 setCompanies(data)
-            }).catch(e => {
+            }).catch(() => {
             showWarning();
         })
     }, [selectedCity, url]);
