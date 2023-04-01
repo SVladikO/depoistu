@@ -1,7 +1,7 @@
 import {useParams} from 'react-router-dom';
 import {useEffect, useState} from "react";
 import {BE_DOMAIN} from "../../utils/config";
-import {CategoryMenuRow, Institution, MenuItem} from "../../components";
+import {CategoryMenuRow, Company, MenuItem} from "../../components";
 import {Divider, Wrapper} from "./Result.page.style";
 
 
@@ -29,7 +29,7 @@ const ResultPage = () => {
 
     return (
         <Wrapper>
-            <Institution company={company}/>
+            <Company company={company}/>
             <Divider>Menu</Divider>
             <CategoryMenuRow menuItems={menuItems}/>
             {menuItems.map((el) => <MenuItem key={el.ID} item={el}/>)}
