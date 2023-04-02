@@ -15,6 +15,8 @@ import {ReactComponent as DeleteBasketIcon} from "../../icons/delete_basket.svg"
 import {BE_API} from "../../utils/config";
 import {fetchData} from "../../utils/fetch";
 import {LoadingContent} from "../../components/Notification/Notification";
+import {useDispatch} from "react-redux";
+import {startLoading, stopLoading} from "../../features/request/requestSlice";
 
 
 const EditCompany = () => {
@@ -25,8 +27,10 @@ const EditCompany = () => {
     const [street, setStreet] = useState(company.STREET || '');
     const [pictures, setPictures] = useState(company?.PHOTOS?.split(',') || []);
     const url = BE_API.GET_COMPANY_BY_ID(companyId);
+    const dispatch = useDispatch();
 
     useEffect(() => {
+        dispatch(startLoading());
         fetchData(url)
             .then(res => {
                 const resCompany = res[0];
@@ -35,6 +39,7 @@ const EditCompany = () => {
                 setCity(resCompany.CITY || '');
                 setStreet(resCompany.STREET || '');
                 setPictures(resCompany?.PHOTOS?.split(',') || []);
+                dispatch(stopLoading());
         })
     }, [url])
 
@@ -47,6 +52,7 @@ const EditCompany = () => {
     const renderCompanyDetails = () => {
         return (
             <>
+                <Notification.Loading/>
                 <InstitutionPictures>
                     <Swiper
                         className="mySwiper"
