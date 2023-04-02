@@ -13,7 +13,7 @@ export const CompanyEditSection = styled.div``;
 
 export const EditButton = styled.button`
   border-radius: ${BORDER_RADIUS.FOURTH};
-  min-width: 80px;
+  min-width: 170px;
   height: 50px;
   background: linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO});
   display: flex;
@@ -25,7 +25,7 @@ export const EditButton = styled.button`
   color: ${COLOR.ACCENT4};
   & span {
     display: block;
-    margin: 0 0 0 4px;
+    margin: 0 0 0 10px;
   }
   svg {
     color: ${COLOR.ACCENT4};

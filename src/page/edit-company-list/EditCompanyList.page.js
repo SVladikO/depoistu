@@ -26,12 +26,11 @@ const EditCompanyListPage = () => {
                     <div key={company.ID}>
                         <Institution company={company}/>
                         <EditBar>
-                            <EditButton><DeleteIcon/></EditButton>
                             <Link to={ROUTER.EDIT_COMPANY.URL + '/' + company.ID}>
-                                <PrimaryWideButton><EditIcon/><span>Company</span></PrimaryWideButton>
+                                <EditButton><EditIcon/><span>Company</span></EditButton>
                             </Link>
                             <Link to={ROUTER.EDIT_MENU.URL + '/' + company.ID}>
-                                <PrimaryWideButton><EditIcon/><span>Menu</span></PrimaryWideButton>
+                                <EditButton><EditIcon/><span>Menu</span></EditButton>
                             </Link>
                         </EditBar>
 
