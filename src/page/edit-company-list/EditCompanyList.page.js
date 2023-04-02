@@ -17,8 +17,6 @@ const EditCompanyListPage = () => {
         BE_API.GET_COMPANIES_BY_CUSTOMER_ID(customer.ID)
     );
 
-    console.log(customerCompanies);
-
     return (
         <Wrapper>
             {customerCompanies.map(

@@ -5,6 +5,7 @@ import {Wrapper} from "./EditMenu.style";
 import {fetchData} from "../../utils/fetch";
 import {EditMenuItem, CategoryMenuRow} from "../../components";
 import {BE_API} from "../../utils/config";
+import {LoadingContent} from "../../components/Notification/Notification";
 
 const EditMenuCompany = () => {
     const [menuItems, setMenuItems] = useState([]);
@@ -17,12 +18,15 @@ const EditMenuCompany = () => {
                 setMenuItems(res);
             })
     }, [url])
-
+    console.log(menuItems);
     return (
-        <Wrapper>
-            <CategoryMenuRow menuItems={menuItems}/>
-            {menuItems.map(item => <EditMenuItem menu={item} key={item.ID}/>)}
-        </Wrapper>
+        <>
+            {!menuItems ? <LoadingContent/> :
+                <Wrapper>
+                    <CategoryMenuRow menuItems={menuItems}/>
+                    {menuItems.map(item => <EditMenuItem menu={item} key={item.ID}/>)}
+                </Wrapper>}
+        </>
     )
 }
 

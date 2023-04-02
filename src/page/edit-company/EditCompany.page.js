@@ -4,7 +4,7 @@ import {useParams} from "react-router-dom";
 
 import "swiper/css";
 import "swiper/css/pagination";
-import {ContentContainer, Input, PrimaryWideButton} from "../../components";
+import {ContentContainer, Input, PrimaryWideButton, Notification} from "../../components";
 import {
     Wrapper,
     InstitutionPictures,
@@ -14,6 +14,8 @@ import {
 import {ReactComponent as DeleteBasketIcon} from "../../icons/delete_basket.svg";
 import {BE_API} from "../../utils/config";
 import {fetchData} from "../../utils/fetch";
+import {LoadingContent} from "../../components/Notification/Notification";
+
 
 const EditCompany = () => {
     const {companyId} = useParams();
@@ -33,7 +35,7 @@ const EditCompany = () => {
                 setCity(resCompany.CITY || '');
                 setStreet(resCompany.STREET || '');
                 setPictures(resCompany?.PHOTOS?.split(',') || []);
-            })
+        })
     }, [url])
 
     const deleteCompanyImage = index => setPictures(pictures.filter((_, i) => i !== index));
@@ -94,7 +96,7 @@ const EditCompany = () => {
 
     return (
         <Wrapper>
-            {renderCompanyDetails()}
+            {!company ? <LoadingContent/> : renderCompanyDetails()}
             <PrimaryWideButton>Save changes</PrimaryWideButton>
         </Wrapper>
     );
