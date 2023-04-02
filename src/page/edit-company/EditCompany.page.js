@@ -102,7 +102,7 @@ const EditCompany = () => {
 
     return (
         <Wrapper>
-            {!company ? <LoadingContent/> : renderCompanyDetails()}
+            {renderCompanyDetails()}
             <PrimaryWideButton>Save changes</PrimaryWideButton>
         </Wrapper>
     );
