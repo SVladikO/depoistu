@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import {COLOR,BORDER_RADIUS, GRADIENT} from "../../utils/theme";
+import {PrimaryWideButton} from "../../components";
 
-export const Wrapper = styled.div`
-  
-`;
+export const Wrapper = styled.div``;
+
 export const EditBar = styled.div`
   display: flex;
   justify-content: space-between;
@@ -11,7 +11,7 @@ export const EditBar = styled.div`
 `;
 export const CompanyEditSection = styled.div``;
 
-export const EditButton = styled.button`
+export const EditButton = styled(PrimaryWideButton)`
   border-radius: ${BORDER_RADIUS.FOURTH};
   min-width: 170px;
   height: 50px;
