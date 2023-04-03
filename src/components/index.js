@@ -38,7 +38,7 @@ import PopupIntro from "./PopupIntro/PopupIntro";
 import PopupImage from "./PopupImage/PopupImage";
 import Institution from "./Institution/Institution";
 import CategoryMenuRow from "./CategoryMenuRow/CategoryMenuRow";
-
+import EditMenuRow from "./EditMenuRow/EditMenuRow";
 export {
     SettingMenuRow,
     Institution,
@@ -78,5 +78,6 @@ export {
     OptionSettings,
     OrderHistoryRow,
     OrderIconWithCounter,
+    EditMenuRow
 }
 

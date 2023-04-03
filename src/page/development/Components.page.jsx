@@ -29,6 +29,7 @@ import
     OrderHistoryRow,
     NotificationTDB,
     RowSplitter, Institution,
+    EditMenuRow
 } from "../../components";
 
 import CatalogPage from "./Catalog.page";
@@ -167,7 +168,10 @@ const columns = [
             title: 'UserAccountBar',
             component: <UserAccountBar fullName="Jhon Smith" status="Basic Member"/>
         },
-
+        {
+            title: 'EditMenuRow',
+            component: <EditMenuRow title="Cheese Bites" menuId={5}/>
+        }
     ],
     [
         {
@@ -236,7 +240,7 @@ function ComponentsPage() {
                     <Column key={index}>{renderRows(components)}</Column>)
                 }
             </Wrapper>
-            <CatalogPage/>
+            {/*<CatalogPage/>*/}
         </div>
     )
 }
