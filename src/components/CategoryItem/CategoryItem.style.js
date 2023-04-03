@@ -6,21 +6,10 @@ export const Wrapper = styled.div`
   width: 97px;
   height: 100px;
   border-radius: ${BORDER_RADIUS.FOURTH};
-  background: ${COLOR.ACCENT4};
-
-  &:active {
-    background-image: linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO});
-    
-    div:first-child {
-      background: ${COLOR.ACCENT4};
-    } 
-    div:last-child {
-      color: ${COLOR.ACCENT4};
-    }
-  }
+  background: ${props => props.active ? `linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO})}` : `${COLOR.ACCENT4}`};
 `;
 export const Title = styled.div`
-  color: ${COLOR.ACCENT3};
+  color: ${props => props.active ? `${COLOR.ACCENT4}` : `${COLOR.ACCENT3}`};
   font-size: 12px;
   font-weight: 700;
   margin: 6px 0 0;

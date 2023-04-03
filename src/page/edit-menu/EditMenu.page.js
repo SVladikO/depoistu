@@ -17,7 +17,7 @@ const EditMenuCompany = () => {
                 setMenuItems(res);
             })
     }, [url])
-
+    console.log(menuItems);
     return (
         <Wrapper>
             <CategoryMenuRow menuItems={menuItems}/>
