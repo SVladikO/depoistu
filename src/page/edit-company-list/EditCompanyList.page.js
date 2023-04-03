@@ -1,7 +1,5 @@
-import {Wrapper,EditBar,EditButton} from "./EditCompanyList.style";
-import {Institution} from "../../components";
-import {PrimaryWideButton} from "../../components";
-import {ReactComponent as DeleteIcon} from "../../icons/white_busket.svg";
+import {EditBar, Wrapper} from "./EditCompanyList.style";
+import {Institution, PrimaryWideButton, PrimaryWithIconButton} from "../../components";
 import {ReactComponent as EditIcon} from "../../icons/edit.svg";
 import React, {useState} from "react";
 import {LocalStorage} from "../../utils/utils";
@@ -27,10 +25,10 @@ const EditCompanyListPage = () => {
                         <Institution company={company}/>
                         <EditBar>
                             <Link to={ROUTER.EDIT_COMPANY.URL + '/' + company.ID}>
-                                <EditButton><EditIcon/><span>Company</span></EditButton>
+                                <PrimaryWithIconButton><EditIcon/><span>Company</span></PrimaryWithIconButton>
                             </Link>
                             <Link to={ROUTER.EDIT_MENU.URL + '/' + company.ID}>
-                                <EditButton><EditIcon/><span>Menu</span></EditButton>
+                                <PrimaryWithIconButton><EditIcon/><span>Menu</span></PrimaryWithIconButton>
                             </Link>
                         </EditBar>
 

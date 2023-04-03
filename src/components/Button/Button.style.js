@@ -58,6 +58,7 @@ export const PrimaryWithIconButton = styled(withIcon)`
   background-image: linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO});
   justify-content: stretch;
   padding: 12px 24px;
+  
 `;
 
 export const SecondaryWithIconButton = styled(withIcon)`
