@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 import {Swiper, SwiperSlide} from "swiper/react";
 
@@ -16,12 +16,14 @@ import {CategoryItem} from "../../components";
 
 const CategoryMenuRow = ({menuItems = []}) => {
     const categoryIds = [...new Set(menuItems.map(mi => mi.CATEGORY_ID))];
+    const [selectedIndex, setSelectedIndex] = useState(0);
+
     const categories = categoryIds
         .map(number => CATEGORY_MAPPER[number])
-        .map(category => (
+        .map((category,i) => (
             <SwiperSlide key={category.id}>
                 <Link to="">
-                    <CategoryItem category={category}/>
+                    <CategoryItem count={Object.values(category.title).length} clickHandler={() => setSelectedIndex(i)} selected={selectedIndex === i} category={category}/>
                 </Link>
             </SwiperSlide>
         ));

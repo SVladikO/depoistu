@@ -1,17 +1,11 @@
 import React,{useState} from "react";
 import {Wrapper, IconWrapper, Title} from './CategoryItem.style'
 
-function CategoryItem({category = {}, clickHandler}) {
-    const [isActive, setActive] = useState(false);
-
-    const toggleClass = () => {
-        setActive(!isActive);
-    };
-
+function CategoryItem({category = {}, clickHandler, selected, count}) {
     return (
-        <Wrapper onClick={toggleClass} active={isActive}>
+        <Wrapper onClick={clickHandler} active={selected}>
             {category.icon && <IconWrapper>{<category.icon/>}</IconWrapper>}
-            <Title active={isActive}>{category.title}</Title>
+            <Title active={selected}>{category.title}({count})</Title>
         </Wrapper>
     )
 }
