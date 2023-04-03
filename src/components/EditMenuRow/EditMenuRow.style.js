@@ -23,15 +23,3 @@ export const EditSection = styled.div`
   }
 `;
 
-export const SecondaryButtonEdit = styled(SecondaryButton)`
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
-  color: ${COLOR.ACCENT3};
-  max-width: 59px;
-  min-width: 52px;
-  padding: 12px 10px;
-  svg {
-    color: ${COLOR.ACCENT3};
-  }
-`;

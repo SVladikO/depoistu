@@ -1,13 +1,14 @@
-import {Wrapper, Title, EditSection, SecondaryButtonEdit} from "./EditMenuRow.style";
+import {Wrapper, Title, EditSection} from "./EditMenuRow.style";
 import {ReactComponent as EditIcon} from "../../icons/edit.svg";
+import {SecondaryButton} from "../Button/Button.style";
 
 const EditMenuRow = ({menuId, title}) => {
     return (
         <Wrapper>
             <Title>{title}</Title>
             <EditSection>
-                <SecondaryButtonEdit>Show</SecondaryButtonEdit>
-                <SecondaryButtonEdit><EditIcon/></SecondaryButtonEdit>
+                <SecondaryButton>Show</SecondaryButton>
+                <SecondaryButton><EditIcon/></SecondaryButton>
             </EditSection>
         </Wrapper>
     );
