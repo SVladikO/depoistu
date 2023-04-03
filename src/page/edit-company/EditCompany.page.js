@@ -4,17 +4,11 @@ import {useParams} from "react-router-dom";
 
 import "swiper/css";
 import "swiper/css/pagination";
-import {ContentContainer, Input, PrimaryWideButton, Notification} from "../../components";
-import {
-    Wrapper,
-    InstitutionPictures,
-    InstitutionBasketButton,
-    Divider,
-} from "./EditCompany.style";
+import {ContentContainer, Input, Notification, PrimaryWideButton} from "../../components";
+import {Divider, InstitutionBasketButton, InstitutionPictures, Wrapper,} from "./EditCompany.style";
 import {ReactComponent as DeleteBasketIcon} from "../../icons/delete_basket.svg";
 import {BE_API} from "../../utils/config";
 import {fetchData} from "../../utils/fetch";
-import {LoadingContent} from "../../components/Notification/Notification";
 import {useDispatch} from "react-redux";
 import {startLoading, stopLoading} from "../../features/request/requestSlice";
 

@@ -3,9 +3,8 @@ import {useParams} from "react-router-dom";
 
 import {Wrapper} from "./EditMenu.style";
 import {fetchData} from "../../utils/fetch";
-import {EditMenuItem, CategoryMenuRow, Notification} from "../../components";
+import {CategoryMenuRow, EditMenuItem, Notification} from "../../components";
 import {BE_API} from "../../utils/config";
-import {LoadingContent} from "../../components/Notification/Notification";
 import {useDispatch} from "react-redux";
 import {startLoading, stopLoading} from "../../features/request/requestSlice";
 
