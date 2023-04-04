@@ -4,7 +4,7 @@ import {useParams} from "react-router-dom";
 
 import "swiper/css";
 import "swiper/css/pagination";
-import {ContentContainer, Input, Notification, PrimaryWideButton} from "../../components";
+import {ContentContainer, Input, PrimaryWideButton} from "../../components";
 import {Divider, InstitutionBasketButton, InstitutionPictures, Wrapper,} from "./EditCompany.style";
 import {ReactComponent as DeleteBasketIcon} from "../../icons/delete_basket.svg";
 import {BE_API} from "../../utils/config";
@@ -46,7 +46,6 @@ const EditCompany = () => {
     const renderCompanyDetails = () => {
         return (
             <>
-                <Notification.Loading/>
                 <InstitutionPictures>
                     <Swiper
                         className="mySwiper"
