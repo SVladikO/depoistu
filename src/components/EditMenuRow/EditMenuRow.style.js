@@ -16,10 +16,8 @@ export const Title = styled.div`
   color: ${COLOR.ACCENT1};
 `;
 export const EditSection = styled.div`
-  > * {
-    &:first-child {
+  & button:first-child {
       margin: 0 8px 0 0;
-    }
   }
 `;
 
