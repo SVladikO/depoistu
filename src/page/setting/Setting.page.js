@@ -21,9 +21,7 @@ import {ReactComponent as BusinessIcon} from '../../icons/busines.svg';
 
 
 import {
-    RowSplitter,
     SettingMenuRow,
-    UserAccountBar,
     AccountSettings,
     OptionSettings, NotificationTDB,
 } from '../../components'
@@ -51,8 +49,8 @@ const SettingPage = () => {
 
     return (
         <>
-            <UserAccountBar fullName='Jhon Smith' phone="+14844731243"/>
-            <RowSplitter height='20px'/>
+            {/*<UserAccountBar fullName='Jhon Smith' phone="+14844731243"/>*/}
+            {/*<RowSplitter height='20px'/>*/}
             <AccountSettings groupTitle={resolveTranslation("PAGE.SETTINGS.GROUP_TITLE.ACCOUNTS")}>
                 {/*TODO: Hidden second version*/}
                 {/*<SettingMenuRow icon={LikeIcon} title={ROUTER.Favorite.TITLE} href={ROUTER.Favorite.URL}/>*/}
