@@ -16,8 +16,8 @@ const EditMenuCompany = () => {
 
     useEffect(() => {
         dispatch(startLoading());
-
-        fetchData(url)
+        //TODO: SHOW WARNING WRONG PARAM
+        companyId && fetchData(url)
             .then(res => {
                 setMenuItems(res);
                 dispatch(stopLoading());

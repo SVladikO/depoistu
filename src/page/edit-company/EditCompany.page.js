@@ -25,7 +25,8 @@ const EditCompany = () => {
 
     useEffect(() => {
         dispatch(startLoading());
-        fetchData(url)
+        //TODO: SHOW WARNING WRONG PARAM
+        companyId && fetchData(url)
             .then(res => {
                 const resCompany = res[0];
                 setCompany(resCompany);
