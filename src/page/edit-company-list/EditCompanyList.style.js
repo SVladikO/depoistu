@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div``;
-
 export const EditBar = styled.div`
   display: flex;
   flex-direction: row;

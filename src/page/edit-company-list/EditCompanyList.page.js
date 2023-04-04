@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
 
-import {EditBar, Wrapper} from "./EditCompanyList.style";
+import {EditBar} from "./EditCompanyList.style";
 
 import {Institution, PrimaryWideButton, PrimaryWithIconButton} from "../../components";
 import {ReactComponent as EditIcon} from "../../icons/edit.svg";
@@ -18,7 +18,7 @@ const EditCompanyListPage = () => {
     );
 
     return (
-        <Wrapper>
+        <>
             {customerCompanies.map(
                 company =>
                     <div key={company.ID}>
@@ -35,7 +35,7 @@ const EditCompanyListPage = () => {
                     </div>)
             }
             <PrimaryWideButton>+ Add new company</PrimaryWideButton>
-        < /Wrapper>
+        < />
     )
 };
 
