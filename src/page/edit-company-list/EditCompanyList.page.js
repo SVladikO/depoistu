@@ -1,5 +1,5 @@
 import {Wrapper, EditBar, EditButton} from "./EditCompanyList.style";
-import {Institution, Notification} from "../../components";
+import {Company, Notification} from "../../components";
 import {PrimaryWideButton} from "../../components";
 import {ReactComponent as DeleteIcon} from "../../icons/white_busket.svg";
 import {ReactComponent as EditIcon} from "../../icons/edit.svg";
@@ -28,7 +28,7 @@ const EditCompanyListPage = () => {
             {customerCompanies.map(
                 company =>
                     <div key={company.ID}>
-                        <Institution company={company}/>
+                        <Company company={company}/>
                         <EditBar>
                             <EditButton><DeleteIcon/></EditButton>
                             <Link to={ROUTER.EDIT_COMPANY.URL + '/' + company.ID}>
