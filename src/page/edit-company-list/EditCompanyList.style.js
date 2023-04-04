@@ -4,18 +4,18 @@ export const Wrapper = styled.div``;
 
 export const EditBar = styled.div`
   display: flex;
-  margin: 10px auto 10px auto;
+  flex-direction: row;
+  align-items: stretch;
   justify-content: space-between;
-  button {
-    &:first-child {
-      min-width: 170px;
-      height: 50px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+  gap: 10px;
+  margin: 10px auto 10px auto;
+  
+  & > * {
+    display: flex;
+    flex: 1;
   }
- 
+  & button {
+    flex: 1;
+  }
 `;
-export const CompanyEditSection = styled.div``;
 
