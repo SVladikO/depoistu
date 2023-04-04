@@ -5,15 +5,13 @@ import {useParams} from "react-router-dom";
 import "swiper/css";
 import "swiper/css/pagination";
 import {ContentContainer, Input, PrimaryWideButton} from "../../components";
-import {
-    Wrapper,
-    InstitutionPictures,
-    InstitutionBasketButton,
-    Divider,
-} from "./EditCompany.style";
+import {Divider, InstitutionBasketButton, InstitutionPictures, Wrapper,} from "./EditCompany.style";
 import {ReactComponent as DeleteBasketIcon} from "../../icons/delete_basket.svg";
 import {BE_API} from "../../utils/config";
 import {fetchData} from "../../utils/fetch";
+import {useDispatch} from "react-redux";
+import {startLoading, stopLoading} from "../../features/request/requestSlice";
+
 
 const EditCompany = () => {
     const {companyId} = useParams();
@@ -23,9 +21,12 @@ const EditCompany = () => {
     const [street, setStreet] = useState(company.STREET || '');
     const [pictures, setPictures] = useState(company?.PHOTOS?.split(',') || []);
     const url = BE_API.GET_COMPANY_BY_ID(companyId);
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        fetchData(url)
+        dispatch(startLoading());
+        //TODO: SHOW WARNING WRONG PARAM
+        companyId && fetchData(url)
             .then(res => {
                 const resCompany = res[0];
                 setCompany(resCompany);
@@ -33,7 +34,8 @@ const EditCompany = () => {
                 setCity(resCompany.CITY || '');
                 setStreet(resCompany.STREET || '');
                 setPictures(resCompany?.PHOTOS?.split(',') || []);
-            })
+                dispatch(stopLoading());
+        })
     }, [url])
 
     const deleteCompanyImage = index => setPictures(pictures.filter((_, i) => i !== index));
