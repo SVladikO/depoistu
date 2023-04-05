@@ -4,9 +4,9 @@ import { Pagination, Navigation } from "swiper";
 
 import "swiper/css";
 import "swiper/css/pagination";
-import {Wrapper,ImageSection, Name, Address, Content} from "./Institution.style";
+import {Wrapper,ImageSection, Name, Address, Content} from "./Company.style";
 
-const Institution = (props) => {
+const Company = (props) => {
 
     const {PHOTOS, NAME, CITY, STREET} = props.company || {};
     return (
@@ -29,5 +29,5 @@ const Institution = (props) => {
     );
 };
 
-export default Institution;
+export default Company;
 

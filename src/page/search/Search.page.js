@@ -4,10 +4,9 @@ import {Link} from "react-router-dom";
 import {showCityPopup} from "../../features/cityPopup/cityPopupSlice";
 import {Warning} from "./Search.page.style";
 import {ReactComponent as LocationIcon} from "../../icons/map_point.svg";
-import {PInput, ContentContainer, Institution} from "../../components";
+import {PInput, ContentContainer, Company} from "../../components";
 import {BE_API} from "../../utils/config";
 import {fetchData} from "../../utils/fetch";
-
 
 const SearchPage = () => {
     const dispatch = useDispatch();
@@ -58,7 +57,7 @@ const SearchPage = () => {
             {selectedCity && selectedRegion && companies.length === 0
                 ? <Warning>{warning}</Warning>
                 : companies.map(company =>
-                <Link to={`result/${company.ID}`} key={company.ID}><Institution key={company.ID} company={company}/></Link>)
+                <Link to={`result/${company.ID}`} key={company.ID}><Company key={company.ID} company={company}/></Link>)
             }
         </>
     );

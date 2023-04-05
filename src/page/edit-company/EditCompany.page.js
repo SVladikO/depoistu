@@ -1,16 +1,12 @@
-import React, {useEffect, useState} from "react";
-import {Swiper, SwiperSlide} from "swiper/react";
-import {useParams} from "react-router-dom";
-
 import "swiper/css";
 import "swiper/css/pagination";
+import {useParams} from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {Swiper, SwiperSlide} from "swiper/react";
+
+import {Divider, InstitutionBasketButton, InstitutionPictures, Wrapper,} from "./EditCompany.style";
+
 import {ContentContainer, Input, PrimaryWideButton} from "../../components";
-import {
-    Wrapper,
-    InstitutionPictures,
-    InstitutionBasketButton,
-    Divider,
-} from "./EditCompany.style";
 import {ReactComponent as DeleteBasketIcon} from "../../icons/delete_basket.svg";
 import {BE_API} from "../../utils/config";
 import {fetchData} from "../../utils/fetch";
@@ -25,7 +21,8 @@ const EditCompany = () => {
     const url = BE_API.GET_COMPANY_BY_COMPANY_ID(companyId);
 
     useEffect(() => {
-        fetchData(url)
+        //TODO: SHOW WARNING WRONG PARAM
+        companyId && fetchData(url)
             .then(res => {
                 const resCompany = res[0];
                 setCompany(resCompany);
@@ -33,7 +30,7 @@ const EditCompany = () => {
                 setCity(resCompany.CITY || '');
                 setStreet(resCompany.STREET || '');
                 setPictures(resCompany?.PHOTOS?.split(',') || []);
-            })
+        })
     }, [url])
 
     const deleteCompanyImage = index => setPictures(pictures.filter((_, i) => i !== index));
