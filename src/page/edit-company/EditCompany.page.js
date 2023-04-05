@@ -18,7 +18,7 @@ const EditCompany = () => {
     const [city, setCity] = useState(company.CITY || '');
     const [street, setStreet] = useState(company.STREET || '');
     const [pictures, setPictures] = useState(company?.PHOTOS?.split(',') || []);
-    const url = BE_API.GET_COMPANY_BY_ID(companyId);
+    const url = BE_API.GET_COMPANY_BY_COMPANY_ID(companyId);
 
     useEffect(() => {
         //TODO: SHOW WARNING WRONG PARAM
