@@ -1,13 +1,12 @@
-import {Wrapper, EditBar, EditButton} from "./EditCompanyList.style";
-import {Company, Notification} from "../../components";
-import {PrimaryWideButton} from "../../components";
-import {ReactComponent as DeleteIcon} from "../../icons/white_busket.svg";
-import {ReactComponent as EditIcon} from "../../icons/edit.svg";
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
-import {LocalStorage} from "../../utils/utils";
+
+import {EditBar} from "./EditCompanyList.style";
+import {Company, Notification, PrimaryWideButton, PrimaryWithIconButton} from "../../components";
+import {ReactComponent as EditIcon} from "../../icons/edit.svg";
 import {useLocalStorageFetch} from "../../utils/hook";
+import {LocalStorage} from "../../utils/utils";
 import {BE_API, ROUTER} from "../../utils/config";
 
 const EditCompanyListPage = () => {
@@ -24,25 +23,24 @@ const EditCompanyListPage = () => {
     }
 
     return (
-        <Wrapper>
+        <>
             {customerCompanies.map(
                 company =>
                     <div key={company.ID}>
                         <Company company={company}/>
                         <EditBar>
-                            <EditButton><DeleteIcon/></EditButton>
                             <Link to={ROUTER.EDIT_COMPANY.URL + '/' + company.ID}>
-                                <PrimaryWideButton><EditIcon/><span>Company</span></PrimaryWideButton>
+                                <PrimaryWithIconButton><EditIcon/>Company</PrimaryWithIconButton>
                             </Link>
                             <Link to={ROUTER.EDIT_MENU.URL + '/' + company.ID}>
-                                <PrimaryWideButton><EditIcon/><span>Menu</span></PrimaryWideButton>
+                                <PrimaryWithIconButton><EditIcon/>Menu</PrimaryWithIconButton>
                             </Link>
                         </EditBar>
 
                     </div>)
             }
             <PrimaryWideButton>+ Add new company</PrimaryWideButton>
-        < /Wrapper>
+        < />
     )
 };
 
