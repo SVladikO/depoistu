@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 
-import {BackButtonWrapper, BackButtonInnerWrapper, Wrapper, CitiesWrapper, TopHider, BottomHider} from "./PopupCity.style"
+import {BackButtonWrapper, BackButtonInnerWrapper, Wrapper, CitiesWrapper} from "./PopupCity.style"
 import {getRegions} from "../../utils/utils";
 import {cities as citiesJSON} from "../../features/cityPopup/cities";
 import {InvisibleWrapper} from '../PopupInvisiableWrapper/PopupInvisiableWrapper.style'
@@ -43,9 +43,9 @@ export const CityPopupContent = () => {
 
     const style = {
         minHeight: 'calc(100vh - 300px)',
-        overflow: 'auto',
+        overflowY: 'auto',
         overflowX: 'hidden',
-        padding: '10px 0'
+        padding: '0'
     }
 
     return (
@@ -56,22 +56,23 @@ export const CityPopupContent = () => {
             }}
             style={style}
         >
+            {
+                !isRegion
+                &&
+                <BackButtonWrapper>
+                    <BackButtonInnerWrapper onClick={() => {
+                        dispatch(setCities(getRegions(citiesJSON)))
+                        dispatch(setIsRegion(true))
+                        dispatch(setSelectedRegion(""))
+                        dispatch(setSelectedCity(""))
+                    }}>
+                        <BackIcon/>
+                        {resolveTranslation("PAGE.SEARCH.ARROW_LABEL")}
+                    </BackButtonInnerWrapper>
+                </BackButtonWrapper>
+            }
             <ContentContainer onClick={e => e.stopPropagation()} style={style}>
-                {
-                    !isRegion
-                    &&
-                    <BackButtonWrapper>
-                        <BackButtonInnerWrapper onClick={() => {
-                            dispatch(setCities(getRegions(citiesJSON)))
-                            dispatch(setIsRegion(true))
-                            dispatch(setSelectedRegion(""))
-                            dispatch(setSelectedCity(""))
-                        }}>
-                            <BackIcon/>
-                            {resolveTranslation("PAGE.SEARCH.ARROW_LABEL")}
-                        </BackButtonInnerWrapper>
-                    </BackButtonWrapper>
-                }
+
                 <CitiesWrapper style={{height: isRegion ? '100%' : '92%'}} className="cities">
                     {cities.map((c, i) =>
                         <SettingMenuRow

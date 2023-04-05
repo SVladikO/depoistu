@@ -10,8 +10,6 @@ const initialState = {
     isVisible: false
 }
 
-
-
 export const cityPopupSlice = createSlice({
     name: 'cityPopup',
     initialState,

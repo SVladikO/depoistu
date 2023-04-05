@@ -36,12 +36,12 @@ import OrderIconWithCounter from "./OrderIconWithCounter/OrderIconWithCounter.js
 import PopupCity from "./PopupCity/PopupCity";
 import PopupIntro from "./PopupIntro/PopupIntro";
 import PopupImage from "./PopupImage/PopupImage";
-import Institution from "./Institution/Institution";
+import Company from "./Company/Company";
 import CategoryMenuRow from "./CategoryMenuRow/CategoryMenuRow";
 
 export {
     SettingMenuRow,
-    Institution,
+    Company,
     CategoryItem,
     Discount,
     Input,

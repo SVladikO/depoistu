@@ -41,6 +41,7 @@ export const PrimaryRoundedButton = styled(primary)`
 
 export const withIcon = styled(button)`
   display: flex;
+  justify-content: center;
   align-items: center;
   padding: 12px 24px;
   height: 45px;
@@ -56,8 +57,8 @@ export const withIcon = styled(button)`
 
 export const PrimaryWithIconButton = styled(withIcon)`
   background-image: linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO});
-  justify-content: stretch;
   padding: 12px 24px;
+  
 `;
 
 export const SecondaryWithIconButton = styled(withIcon)`

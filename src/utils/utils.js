@@ -44,7 +44,17 @@ export const securityCheck = () => {
 
 export const setBrowserTabTitle = () => document.title = translations.company_name;
 
+export const LOCAL_STORAGE_KEY = {
+    COMPANY_CANDIDATE_TO_EDIT: 'COMPANY_CANDIDATE_TO_EDIT',
+}
+
+const setToLocalStorage = (storageKey, value) => localStorage.setItem(storageKey, JSON.stringify(value));
+const getFromLocalStorage = storageKey => JSON.parse(localStorage.getItem(storageKey));
+
 export const LocalStorage = {
+    setCompanyCandidateToEdit:   value => setToLocalStorage(LOCAL_STORAGE_KEY.COMPANY_CANDIDATE_TO_EDIT, value),
+    getCompanyCandidateToEdit:   () => getFromLocalStorage(LOCAL_STORAGE_KEY.COMPANY_CANDIDATE_TO_EDIT),
+
     getCustomer: () => JSON.parse(localStorage.getItem('customer')),
     removeGuest: () => localStorage.removeItem('customer'),
 }
