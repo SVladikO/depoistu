@@ -1,35 +1,19 @@
 import styled from "styled-components";
-import {COLOR,BORDER_RADIUS, GRADIENT} from "../../utils/theme";
 
-export const Wrapper = styled.div`
-  
-`;
 export const EditBar = styled.div`
   display: flex;
+  flex-direction: row;
+  align-items: stretch;
   justify-content: space-between;
+  gap: 27px;
   margin: 10px auto 10px auto;
+  
+  & > * {
+    display: flex;
+    flex: 1;
+  }
+  & button {
+    flex: 1;
+  }
 `;
-export const CompanyEditSection = styled.div``;
 
-export const EditButton = styled.button`
-  border-radius: ${BORDER_RADIUS.FOURTH};
-  min-width: 80px;
-  height: 50px;
-  background: linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO});
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 19px;
-  color: ${COLOR.ACCENT4};
-  & span {
-    display: block;
-    margin: 0 0 0 4px;
-  }
-  svg {
-    color: ${COLOR.ACCENT4};
-    width: 18px;
-    height: 20px;
-  }
-`;

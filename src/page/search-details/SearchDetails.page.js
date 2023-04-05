@@ -4,8 +4,7 @@ import {useParams} from 'react-router-dom';
 import {Divider, Wrapper} from "./SearchDetails.style";
 
 import {BE_DOMAIN} from "../../utils/config";
-import {CategoryMenuRow, Institution, MenuItem} from "../../components";
-
+import {CategoryMenuRow, Company, MenuItem} from "../../components";
 
 const SearchDetailsPage = () => {
     let { companyId } = useParams();
@@ -29,7 +28,7 @@ const SearchDetailsPage = () => {
 
     return (
         <Wrapper>
-            <Institution company={company}/>
+            <Company company={company}/>
             <Divider>Menu</Divider>
             <CategoryMenuRow menuItems={menuItems}/>
             {menuItems.map((el) => <MenuItem key={el.ID} item={el}/>)}
