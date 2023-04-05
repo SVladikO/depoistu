@@ -5,7 +5,7 @@ export const EditBar = styled.div`
   flex-direction: row;
   align-items: stretch;
   justify-content: space-between;
-  gap: 10px;
+  gap: 27px;
   margin: 10px auto 10px auto;
   
   & > * {
