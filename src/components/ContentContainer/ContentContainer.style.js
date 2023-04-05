@@ -21,7 +21,4 @@ export const ContentContainer = styled.div.attrs({
   & > *:last-child {
     margin-bottom: 0;
   }
-  @media (orientation: landscape) {
-    max-height: 325px;
-  }
 `
