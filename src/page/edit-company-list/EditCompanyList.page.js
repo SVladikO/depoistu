@@ -1,17 +1,17 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
-
 import {EditBar} from "./EditCompanyList.style";
+
 import {Company, Notification, PrimaryWideButton, PrimaryWithIconButton} from "../../components";
 import {ReactComponent as EditIcon} from "../../icons/edit.svg";
-import {useLocalStorageFetch} from "../../utils/hook";
 import {LocalStorage} from "../../utils/utils";
 import {BE_API, ROUTER} from "../../utils/config";
+import {useLocalStorageFetch} from "../../utils/hook";
 
 const EditCompanyListPage = () => {
     const isLoading = useSelector(state => state.request.value.isLoading);
-    const [customer] = useState(LocalStorage.getGuest());
+    const [customer] = useState(LocalStorage.getCustomer());
     const [customerCompanies] = useLocalStorageFetch(
         'customerCompanies',
         [],
