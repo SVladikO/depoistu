@@ -1,5 +1,6 @@
+import React, {useState} from "react";
 import {Link} from "react-router-dom";
-
+import {useSelector} from "react-redux";
 import {EditBar} from "./EditCompanyList.style";
 
 import {Company, Notification, PrimaryWideButton, PrimaryWithIconButton} from "../../components";
