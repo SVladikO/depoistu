@@ -33,7 +33,7 @@ export function Input({
     const hideValue = () => setShowData(false);
 
     return (
-        <Wrapper >
+        <Wrapper className='pma-input'>
             {Icon && <Icon/>}
             <InputText
                 type={type}
