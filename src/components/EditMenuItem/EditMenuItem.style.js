@@ -4,7 +4,7 @@ import {hexToRgbA} from "../../utils/utils";
 import {PrimaryWideButton} from "../../components";
 
 export const Wrapper = styled.div`
-    padding: 18px 10px 10px 10px;
+   
 `;
 
 export const InstitutionPictures = styled.div`
