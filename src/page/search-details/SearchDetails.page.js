@@ -1,13 +1,13 @@
-import {useParams} from 'react-router-dom';
 import {useEffect, useState} from "react";
+import {useParams} from 'react-router-dom';
+
+import {Divider, Wrapper} from "./SearchDetails.style";
+
 import {BE_DOMAIN} from "../../utils/config";
-import {CategoryMenuRow, Institution, MenuItem} from "../../components";
-import {Divider, Wrapper} from "./Result.page.style";
+import {CategoryMenuRow, Company, MenuItem} from "../../components";
 
-
-const ResultPage = () => {
+const SearchDetailsPage = () => {
     let { companyId } = useParams();
-    const [categories, setCategories] = useState([]);
     const [company, setCompany] = useState(null);
     const [menuItems, setMenuItems] = useState([]);
 
@@ -22,14 +22,13 @@ const ResultPage = () => {
             .then(res => res.json())
             .then(data => data.sort((a,b) => a.CATEGORY_ID - b.CATEGORY_ID))
             .then(result => {
-                setCategories([...new Set(result.map(el => el.CATEGORY_ID))]);
                 setMenuItems(result)
             });
     },[]);
 
     return (
         <Wrapper>
-            <Institution company={company}/>
+            <Company company={company}/>
             <Divider>Menu</Divider>
             <CategoryMenuRow menuItems={menuItems}/>
             {menuItems.map((el) => <MenuItem key={el.ID} item={el}/>)}
@@ -37,4 +36,4 @@ const ResultPage = () => {
     );
 };
 
-export default ResultPage;
+export default SearchDetailsPage;

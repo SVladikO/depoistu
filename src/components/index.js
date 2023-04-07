@@ -7,7 +7,7 @@ import {
     ThirdButton,
 } from "./Button/Button.style";
 
-import {Input, PInput} from "./Input/Input";
+import {Input, PInput, Textarea} from "./Input/Input";
 import NotificationTDB from "./NotificationTDB/NotificationTDB";
 import Price from "./Price/Price";
 import EditMenuItem from "./EditMenuItem/EditMenuItem";
@@ -24,7 +24,7 @@ import HistoryTabBar from "./HistoryTabBar/HistoryTabBar";
 import NavigationHeader from "./NavigationHeader/NavigationHeader";
 import {Absolute} from "./Absolute/Absolute.style";
 import {Flex} from "./Flex/Flex.style";
-import UserAccountBar from "./UserAccountBar/UserAccountBar";
+import CustomerAccountBar from "./UserAccountBar/CustomerAccountBar";
 import NavigationLabelHref from './NavigationLabelHref/NavigationLabelHref';
 import AccountSettings from "./AccountSettings/AccountSettings";
 import OptionSettings from "./OptionSettings/OptionSettings";
@@ -36,15 +36,16 @@ import OrderIconWithCounter from "./OrderIconWithCounter/OrderIconWithCounter.js
 import PopupCity from "./PopupCity/PopupCity";
 import PopupIntro from "./PopupIntro/PopupIntro";
 import PopupImage from "./PopupImage/PopupImage";
-import Institution from "./Institution/Institution";
+import Company from "./Company/Company";
 import CategoryMenuRow from "./CategoryMenuRow/CategoryMenuRow";
 import EditMenuRow from "./EditMenuRow/EditMenuRow";
 export {
     SettingMenuRow,
-    Institution,
+    Company,
     CategoryItem,
     Discount,
     Input,
+    Textarea,
     PInput,
     Like,
     Rating,
@@ -73,7 +74,7 @@ export {
     ContentContainer,
     NavigationHeader,
     NavigationLabelHref,
-    UserAccountBar,
+    CustomerAccountBar,
     AccountSettings,
     OptionSettings,
     OrderHistoryRow,

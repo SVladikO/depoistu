@@ -2,9 +2,9 @@ import translations from "./translations";
 import translation from "./translation.json";
 
 export const checkAccess = () => {
-    const isTrustedUser = localStorage.getItem('trastedUser');
+    const isTrustedCustomer = localStorage.getItem('trastedCustomer');
 
-    if(isTrustedUser) return;
+    if(isTrustedCustomer) return;
 
     const secretKey = "****";
     let test = prompt("Entry secret key");
@@ -12,7 +12,7 @@ export const checkAccess = () => {
     if (test !== secretKey) {
         return checkAccess();
     }
-    localStorage.setItem('trastedUser', true);
+    localStorage.setItem('trastedCustomer', true);
 }
 
 export function hexToRgbA(hex, a=1){
@@ -29,9 +29,9 @@ export function hexToRgbA(hex, a=1){
 }
 
 export const securityCheck = () => {
-    const isTrustedUser = localStorage.getItem('trastedUser');
+    const isTrustedCustomer = localStorage.getItem('trastedCustomer');
 
-    if(isTrustedUser) return;
+    if(isTrustedCustomer) return;
 
     const secretKey = "****";
     let test = prompt("Entry secret key");
@@ -39,14 +39,24 @@ export const securityCheck = () => {
     if (test !== secretKey) {
         return securityCheck();
     }
-    localStorage.setItem('trastedUser', true);
+    localStorage.setItem('trastedCustomer', true);
 }
 
 export const setBrowserTabTitle = () => document.title = translations.company_name;
 
+export const LOCAL_STORAGE_KEY = {
+    COMPANY_CANDIDATE_TO_EDIT: 'COMPANY_CANDIDATE_TO_EDIT',
+}
+
+const setToLocalStorage = (storageKey, value) => localStorage.setItem(storageKey, JSON.stringify(value));
+const getFromLocalStorage = storageKey => JSON.parse(localStorage.getItem(storageKey));
+
 export const LocalStorage = {
-    getGuest: () => JSON.parse(localStorage.getItem('guest')),
-    removeGuest: () => localStorage.removeItem('guest'),
+    setCompanyCandidateToEdit:   value => setToLocalStorage(LOCAL_STORAGE_KEY.COMPANY_CANDIDATE_TO_EDIT, value),
+    getCompanyCandidateToEdit:   () => getFromLocalStorage(LOCAL_STORAGE_KEY.COMPANY_CANDIDATE_TO_EDIT),
+
+    getCustomer: () => JSON.parse(localStorage.getItem('customer')),
+    removeGuest: () => localStorage.removeItem('customer'),
 }
 export const getParam = (key) => {
     const urlParams = new URLSearchParams(window.location.search);

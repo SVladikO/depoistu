@@ -1,18 +1,20 @@
+import {Link} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {Link} from "react-router-dom";
-import {showCityPopup} from "../../features/cityPopup/cityPopupSlice";
-import {Warning} from "./Search.page.style";
-import {ReactComponent as LocationIcon} from "../../icons/map_point.svg";
-import {PInput, ContentContainer, Institution} from "../../components";
 
+import {Warning} from "./Search.page.style";
+import {showCityPopup} from "../../features/cityPopup/cityPopupSlice";
+import {ReactComponent as LocationIcon} from "../../icons/map_point.svg";
+import {PInput, ContentContainer, Company} from "../../components";
+import {BE_API, URL} from "../../utils/config";
+import {fetchData} from "../../utils/fetch";
 
 const SearchPage = () => {
     const dispatch = useDispatch();
     const selectedCity = useSelector(state => state.cityPopup.selectedCity);
     const selectedRegion = useSelector(state => state.cityPopup.selectedRegion);
     const [companies, setCompanies] = useState([]);
-    const url = `https://pizza-mobile-api.herokuapp.com/companies/by/city/${selectedCity}`;
+    const url = BE_API.GET_COMPANIES_BY_CITY(selectedCity);
     const [warning, setWarning] = useState('');
     const warningMessage = 'There is no installations in current city';
     const [inputField] = useState('');
@@ -25,14 +27,13 @@ const SearchPage = () => {
         if (selectedCity === '') {
             return;
         }
-        fetch(decodeURIComponent(url),)
-            .then(response => response.json())
+        fetchData(url)
             .then(data => {
                 if (data.length === 0) {
                     showWarning();
                 }
                 setCompanies(data)
-            }).catch(e => {
+            }).catch(() => {
             showWarning();
         })
     }, [selectedCity, url]);
@@ -57,7 +58,7 @@ const SearchPage = () => {
             {selectedCity && selectedRegion && companies.length === 0
                 ? <Warning>{warning}</Warning>
                 : companies.map(company =>
-                <Link to={`result/${company.ID}`} key={company.ID}><Institution key={company.ID} company={company}/></Link>)
+                <Link to={`${URL.SEARCH_DETAILS}${company.ID}`} key={company.ID}><Company key={company.ID} company={company}/></Link>)
             }
         </>
     );

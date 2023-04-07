@@ -17,7 +17,7 @@ const OrderPage = () => {
     const dispatch = useDispatch();
 
     const placeOrder = () => {
-        const {id: customer_id} = LocalStorage.getGuest();
+        const {id: customer_id} = LocalStorage.getCustomer();
         const order_details = orders.map(({id, amount, price}) => ({id, amount, price}))
 
         const body = {
@@ -37,10 +37,10 @@ const OrderPage = () => {
             })
     }
 
-    const isGuestLogged = LocalStorage.getGuest();
+    const isCustomerLogged = LocalStorage.getCustomer();
 
     const orderButton =
-        isGuestLogged
+        isCustomerLogged
             ? <PrimaryWideButton onClick={placeOrder}>Place Order</PrimaryWideButton>
             : <Link to={`${ROUTER.SING_IN.URL}?backUrl=${ROUTER.ORDER_REVIEW.URL}`}>
                 <PrimaryWideButton>Login to place Order</PrimaryWideButton>

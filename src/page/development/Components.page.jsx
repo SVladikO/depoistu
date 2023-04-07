@@ -22,14 +22,16 @@ import
     ContentContainer,
     Notification,
     NavigationHeader,
-    UserAccountBar,
+    CustomerAccountBar,
     NavigationLabelHref,
     BottomMenu,
     MenuItem,
     OrderHistoryRow,
     NotificationTDB,
-    RowSplitter, Institution,
-    EditMenuRow
+    RowSplitter,
+    EditMenuRow,
+    Textarea,
+    Company,
 } from "../../components";
 
 import CatalogPage from "./Catalog.page";
@@ -69,13 +71,15 @@ const columns = [
         {title: 'Input 1', component: <Input placeholder={`johndoe@mail.com`}/>},
         {title: 'Input 2', component: <Input Icon={MailIcon} placeholder={`johndoe@mail.com`}/>},
         {title: 'Input 3', component: <Input withSwitcher placeholder={`New password`}/>},
+        {title: 'Input 4', component: <Input placeholder={`New password`} withCleaner/>},
+        {title: 'Textarea', component: <Textarea withCleaner />},
         {title: 'PInput', component: <PInput withIcon Icon={LocationIcon}> Vinnica</PInput>},
         {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
     ],
     [
         {
           title: 'Institution',
-          component: <Institution company={{PHOTOS: 'https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg, https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg, https://afisha.bigmir.net/i/23/51/30/9/2351309/gallery/15b8175dc297f8a58d9de22e77b7b256-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg',NAME: 'Domono', CITY: 'Kyiv', STREET: 'Davidusk 15.',}}/>
+          component: <Company company={{PHOTOS: 'https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg, https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg, https://afisha.bigmir.net/i/23/51/30/9/2351309/gallery/15b8175dc297f8a58d9de22e77b7b256-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg',NAME: 'Domono', CITY: 'Kyiv', STREET: 'Davidusk 15.',}}/>
         },
         {title: 'CategoryMenuRow', component: <CategoryMenuRow menuItems={[{CATEGORY_ID: 1}, {CATEGORY_ID: 2}, {CATEGORY_ID: 3}]} />},
         {
@@ -166,7 +170,7 @@ const columns = [
 
         {
             title: 'UserAccountBar',
-            component: <UserAccountBar fullName="Jhon Smith" status="Basic Member"/>
+            component: <CustomerAccountBar fullName="Jhon Smith" status="Basic Member"/>
         },
         {
             title: 'EditMenuRow',
