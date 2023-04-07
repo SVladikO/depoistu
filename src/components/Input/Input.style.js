@@ -72,7 +72,7 @@ export const TextareaStyle = styled.textarea`
   resize: vertical;
   height: 100px;
   min-height: 50px;
-  padding: 14px 44px 17px 10px;
+  padding: 14px 30px 17px 10px;
 `;
 export const InputText = styled.input`
   ${p => st(p)}
