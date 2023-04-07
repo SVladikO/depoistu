@@ -72,7 +72,7 @@ const EditCompany = () => {
                 <PrimaryWideButton>+Photo</PrimaryWideButton>
                 <Divider/>
                 <ContentContainer>
-                    <Label inputName="Company name"/>
+                    <Label>Company Name</Label>
                     <Input
                         withCleaner
                         value={name}
@@ -80,7 +80,7 @@ const EditCompany = () => {
                         changeHandler={cleanCityInput}
                         onChange={onCityInput}
                     />
-                    <Label inputName="City"/>
+                    <Label>City</Label>
                     <Input
                         withCleaner
                         value={city}
@@ -88,7 +88,7 @@ const EditCompany = () => {
                         onChange={onCityInput}
                         changeHandler={cleanCityInput}
                     />
-                    <Label inputName="Street"/>
+                    <Label>Street</Label>
                     <Input
                         withCleaner
                         value={street}

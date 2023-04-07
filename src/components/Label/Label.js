@@ -1,10 +1,9 @@
-import {Wrapper} from "./Label.style";
 
-const Label = ({inputName}) => {
+const Label = (props) => {
     return (
-        <Wrapper>
-            {inputName}
-        </Wrapper>
+        <>
+            {props.children}
+        </>
     );
 };
 

@@ -39,15 +39,15 @@ function EditMenuItem(props) {
                     <EditButton>Add</EditButton>
                 </ButtonSection>
             </MenuItemPhoto>
-            <Label inputName="Name"/>
+            <Label>Name</Label>
             <Input withCleaner value={name} placeholder='Name'/>
-            <Label inputName="Price"/>
+            <Label>Price</Label>
             <Input withCleaner value={price} placeholder='Price'/>
-            <Label inputName="Description"/>
+            <Label>Description</Label>
             <Input withCleaner value={description} placeholder='Description'/>
-            <Label inputName="Cooking time"/>
+            <Label>Cooking Time</Label>
             <Input withCleaner value={cookingTime} placeholder='Cooking time'/>
-            <Label inputName="Meal size"/>
+            <Label>Meal Size</Label>
             <Input withCleaner value={size} placeholder='Meal size'/>
             <WideButton>Delete<RemoveIcon/></WideButton>
         </MenuItemEditor>

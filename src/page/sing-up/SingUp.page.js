@@ -10,15 +10,15 @@ const SingUpPage = () => {
         <>
             <Container>
                 <Title>{resolveTranslation("PAGE.SING_UP.CREATE_ACCOUNT")}</Title>
-                <Label inputName="Name"/>
+                <Label>Name</Label>
                 <Input placeholder={resolveTranslation("PAGE.SING_UP.PLACEHOLDER.USER_NAME")}/>
-                <Label inputName="Phone"/>
+                <Label>Phone</Label>
                 <Input placeholder={resolveTranslation("PAGE.SING_UP.PLACEHOLDER.PHONE")}/>
-                <Label inputName="Email"/>
+                <Label>Email</Label>
                 <Input placeholder={resolveTranslation("PAGE.SING_UP.PLACEHOLDER.EMAIL")}/>
-                <Label inputName="Password"/>
+                <Label>Password</Label>
                 <Input placeholder={resolveTranslation("PAGE.SING_UP.PLACEHOLDER.PASS")}/>
-                <Label inputName="Confirm Password"/>
+                <Label>Confirm Password</Label>
                 <Input placeholder={resolveTranslation("PAGE.SING_UP.PLACEHOLDER.CONFIRM_PASS")}/>
                 <CheckBoxWithLabel
                     label={resolveTranslation("PAGE.SING_UP.CHECKBOX_CONFIRM_TERMS")}/>

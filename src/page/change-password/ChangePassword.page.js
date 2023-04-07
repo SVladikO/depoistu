@@ -14,12 +14,12 @@ const ChangePasswordPage = () => {
 
     return (
         <ContentContainer>
-            <Label inputName="Change Password"/>
+            <Label>Change Password</Label>
             <Input withSwitcher placeholder={resolveTranslation("PAGE.CHANGE_PASSWORD.PLACEHOLDER.OLD_PASSWORD")}/>
             <RowSplitter height='10px'/>
-            <Label inputName="New Password"/>
+            <Label>New Password</Label>
             <Input withSwitcher placeholder={resolveTranslation("PAGE.CHANGE_PASSWORD.PLACEHOLDER.NEW_PASSWORD")}/>
-            <Label inputName="Confirm Password"/>
+            <Label>Confirm Password</Label>
             <Input withSwitcher placeholder={resolveTranslation("PAGE.CHANGE_PASSWORD.PLACEHOLDER.CONFIRM_PASSWORD")}/>
             <RowSplitter margin="20px 0 0">
                 <PrimaryRoundedButton>{resolveTranslation("PAGE.CHANGE_PASSWORD.BUTTON.SAVE_PASSWORD")}</PrimaryRoundedButton>

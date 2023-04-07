@@ -65,9 +65,9 @@ const SignInPage = () => {
             {/*    <LogoText>{translations.company_name}</LogoText>*/}
             {/*</Content>*/}
             <ContentContainer>
-                <Label inputName="Email"/>
+                <Label>Email</Label>
                 <Input Icon={MailIcon} placeholder={`Enter email`} value={email}/>
-                <Label inputName="Password"/>
+                <Label>Password</Label>
                 <Input Icon={LockIcon} placeholder={`Enter password`} type="password" value={password}/>
                 <Link to={ROUTER.CHANGE_PASSWORD.URL} primary>{resolveTranslation("PAGE.SING_IN.FORGOT_PASSWORD")}</Link>
                 {/*<Flex flexDirection='column'>*/}

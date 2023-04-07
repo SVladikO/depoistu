@@ -71,7 +71,7 @@ const columns = [
             component: <SecondaryWithIconButton><FacebookIcon/>facebook</SecondaryWithIconButton>
         },
         {title: 'ThirdButton', component: <ThirdButton>Payment</ThirdButton>},
-        {title: 'Label', component: <Label inputName="Change Password"/>},
+        {title: 'Label', component: <Label>Change Password</Label>},
         {title: 'Input 1', component: <Input placeholder={`johndoe@mail.com`}/>},
         {title: 'Input 2', component: <Input Icon={MailIcon} placeholder={`johndoe@mail.com`}/>},
         {title: 'Input 3', component: <Input withSwitcher placeholder={`New password`}/>},
