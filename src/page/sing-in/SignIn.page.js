@@ -13,7 +13,7 @@ import {
     // SecondaryWithIconButton,
     // Flex,
     ContentContainer,
-    NavigationLabelHref,
+    NavigationLabelHref, Label,
 } from "../../components";
 
 // import translations from "../../utils/translations";
@@ -65,7 +65,9 @@ const SignInPage = () => {
             {/*    <LogoText>{translations.company_name}</LogoText>*/}
             {/*</Content>*/}
             <ContentContainer>
+                <Label inputName="Email"/>
                 <Input Icon={MailIcon} placeholder={`Enter email`} value={email}/>
+                <Label inputName="Password"/>
                 <Input Icon={LockIcon} placeholder={`Enter password`} type="password" value={password}/>
                 <Link to={ROUTER.CHANGE_PASSWORD.URL} primary>{resolveTranslation("PAGE.SING_IN.FORGOT_PASSWORD")}</Link>
                 {/*<Flex flexDirection='column'>*/}

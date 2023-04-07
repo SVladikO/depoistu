@@ -6,7 +6,7 @@ import {Swiper, SwiperSlide} from "swiper/react";
 
 import {Divider, InstitutionBasketButton, InstitutionPictures, Wrapper,} from "./EditCompany.style";
 
-import {ContentContainer, FromToTime, Input, PrimaryWideButton} from "../../components";
+import {ContentContainer, FromToTime, Input, Label, PrimaryWideButton} from "../../components";
 import {ReactComponent as DeleteBasketIcon} from "../../icons/delete_basket.svg";
 import {BE_API} from "../../utils/config";
 import {fetchData} from "../../utils/fetch";
@@ -72,6 +72,7 @@ const EditCompany = () => {
                 <PrimaryWideButton>+Photo</PrimaryWideButton>
                 <Divider/>
                 <ContentContainer>
+                    <Label inputName="Company name"/>
                     <Input
                         withCleaner
                         value={name}
@@ -79,6 +80,7 @@ const EditCompany = () => {
                         changeHandler={cleanCityInput}
                         onChange={onCityInput}
                     />
+                    <Label inputName="City"/>
                     <Input
                         withCleaner
                         value={city}
@@ -86,6 +88,7 @@ const EditCompany = () => {
                         onChange={onCityInput}
                         changeHandler={cleanCityInput}
                     />
+                    <Label inputName="Street"/>
                     <Input
                         withCleaner
                         value={street}

@@ -41,6 +41,7 @@ import PopupImage from "./PopupImage/PopupImage";
 import Company from "./Company/Company";
 import CategoryMenuRow from "./CategoryMenuRow/CategoryMenuRow";
 import EditMenuRow from "./EditMenuRow/EditMenuRow";
+import Label from "./Label/Label";
 export {
     SettingMenuRow,
     Company,
@@ -83,6 +84,7 @@ export {
     OptionSettings,
     OrderHistoryRow,
     OrderIconWithCounter,
-    EditMenuRow
+    EditMenuRow,
+    Label
 }
 
