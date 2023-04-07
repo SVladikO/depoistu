@@ -14,7 +14,7 @@ import {
 
 import {CategoryItem} from "../../components";
 
-const CategoryMenuRow = ({menuItems = [], showMenuItemAmount = {}}) => {
+const CategoryMenuRow = ({menuItems = [], showMenuItemAmount }) => {
     const categoryIds = [...new Set(menuItems.map(mi => mi.CATEGORY_ID))];
     const [selectedIndex, setSelectedIndex] = useState(0);
     const CATEGORY_ITEM_AMOUNT = {};
@@ -25,7 +25,7 @@ const CategoryMenuRow = ({menuItems = [], showMenuItemAmount = {}}) => {
 
     const categories = categoryIds
         .map(number => CATEGORY_MAPPER[number])
-        .map((category,i) => (
+        .map((category, i) => (
             <SwiperSlide key={category.id}>
                 <Link to="">
                     <CategoryItem
