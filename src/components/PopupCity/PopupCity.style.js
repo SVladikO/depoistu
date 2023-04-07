@@ -3,6 +3,7 @@ import {BORDER_RADIUS, COLOR} from "../../utils/theme";
 
 export const Wrapper = styled.div`
   padding: 0;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,8 +12,7 @@ export const Wrapper = styled.div`
   min-width: 355px;
   max-width: 355px;
   min-height: 355px;
-  max-height: 600px;
-  overflow: hidden;
+  max-height: 355px;
   background-color: ${COLOR.ACCENT4};
   border-radius: ${BORDER_RADIUS.SECOND};
   z-index: 100;
@@ -57,9 +57,9 @@ export const BackButtonInnerWrapper = styled.div`
 `;
 
 export const CitiesWrapper = styled.div`
-  overflow-y: hidden;
   padding: 0 10px 10px;
-  width: 101%;
+  width: 100%;
+  overflow: auto;
   
   & > div:last-child {
     padding: 0;
