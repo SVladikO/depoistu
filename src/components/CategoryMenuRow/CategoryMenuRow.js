@@ -28,7 +28,11 @@ const CategoryMenuRow = ({menuItems = [], showMenuItemAmount = {}}) => {
         .map((category,i) => (
             <SwiperSlide key={category.id}>
                 <Link to="">
-                    <CategoryItem itemsAmountPerCategory = {showMenuItemAmount ? CATEGORY_ITEM_AMOUNT[category.id] : 0} clickHandler={() => setSelectedIndex(i)} selected={selectedIndex === i} category={category}/>
+                    <CategoryItem
+                        itemsAmountPerCategory = {showMenuItemAmount ? CATEGORY_ITEM_AMOUNT[category.id] : 0}
+                        clickHandler={() => setSelectedIndex(i)}
+                        isSelected={selectedIndex === i}
+                        category={category}/>
                 </Link>
             </SwiperSlide>
         ));
