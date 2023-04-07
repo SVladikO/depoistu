@@ -7,7 +7,7 @@ import {
     ThirdButton,
 } from "./Button/Button.style";
 
-import {Input, PInput} from "./Input/Input";
+import {Input, PInput, Textarea} from "./Input/Input";
 import NotificationTDB from "./NotificationTDB/NotificationTDB";
 import Price from "./Price/Price";
 import EditMenuItem from "./EditMenuItem/EditMenuItem";
@@ -45,6 +45,7 @@ export {
     CategoryItem,
     Discount,
     Input,
+    Textarea,
     PInput,
     Like,
     Rating,
