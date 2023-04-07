@@ -7,7 +7,7 @@ import {
     ThirdButton,
 } from "./Button/Button.style";
 
-import {Input, PInput} from "./Input/Input";
+import {Input, PInput, Textarea} from "./Input/Input";
 import NotificationTDB from "./NotificationTDB/NotificationTDB";
 import Price from "./Price/Price";
 import EditMenuItem from "./EditMenuItem/EditMenuItem";
@@ -40,13 +40,14 @@ import PopupIntro from "./PopupIntro/PopupIntro";
 import PopupImage from "./PopupImage/PopupImage";
 import Company from "./Company/Company";
 import CategoryMenuRow from "./CategoryMenuRow/CategoryMenuRow";
-
+import EditMenuRow from "./EditMenuRow/EditMenuRow";
 export {
     SettingMenuRow,
     Company,
     CategoryItem,
     Discount,
     Input,
+    Textarea,
     PInput,
     Like,
     Checkbox,
@@ -82,5 +83,6 @@ export {
     OptionSettings,
     OrderHistoryRow,
     OrderIconWithCounter,
+    EditMenuRow
 }
 

@@ -7,22 +7,39 @@ import {
     CloseIconWrapper,
     PInputWrapper,
     PStyle,
+    TextareaStyle,
 } from "./Input.style";
 
 import {ReactComponent as ShowEyeIcon} from "../../icons/show-eye.svg";
 import {ReactComponent as HideEyeIcon} from "../../icons/hide-eye.svg";
 import {ReactComponent as CloseIcon} from "../../icons/close.svg";
 
+export function Textarea({withCleaner, changeHandler}) {
+    return (
+        <Wrapper>
+            <TextareaStyle>
+
+            </TextareaStyle>
+            {withCleaner &&
+                <CloseIconWrapper>
+                    <CloseIcon onClick={changeHandler}/>
+                </CloseIconWrapper>
+            }
+        </Wrapper>
+    );
+}
+
 export function Input({
-                   Icon,
-                   value,
-                   type,
-                   placeholder,
-                   changeHandler = () => {},
-                   withSwitcher = false,
-                   withCleaner = false,
-                   ...props
-               }) {
+                          Icon,
+                          value,
+                          type,
+                          placeholder,
+                          changeHandler = () => {
+                          },
+                          withSwitcher = false,
+                          withCleaner = false,
+                          ...props
+                      }) {
 
     const [showData, setShowData] = useState(false);
 
@@ -63,7 +80,8 @@ export function Input({
 export const PInput = ({
                            Icon,
                            children,
-                           handleClick = () => {},
+                           handleClick = () => {
+                           },
                        }) => {
     return (<PInputWrapper onClick={handleClick}>
             {Icon && <Icon/>}

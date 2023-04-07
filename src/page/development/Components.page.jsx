@@ -29,7 +29,10 @@ import
     MenuItem,
     OrderHistoryRow,
     NotificationTDB,
-    RowSplitter, Company,
+    RowSplitter,
+    EditMenuRow,
+    Textarea,
+    Company,
 } from "../../components";
 
 import CatalogPage from "./Catalog.page";
@@ -70,6 +73,8 @@ const columns = [
         {title: 'Input 1', component: <Input placeholder={`johndoe@mail.com`}/>},
         {title: 'Input 2', component: <Input Icon={MailIcon} placeholder={`johndoe@mail.com`}/>},
         {title: 'Input 3', component: <Input withSwitcher placeholder={`New password`}/>},
+        {title: 'Input 4', component: <Input placeholder={`New password`} withCleaner/>},
+        {title: 'Textarea', component: <Textarea withCleaner />},
         {title: 'PInput', component: <PInput withIcon Icon={LocationIcon}> Vinnica</PInput>},
         {title: 'FromToTime', component: <FromToTime weekDay={'Mon'} id={'ht12'}/>},
         {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
@@ -171,7 +176,10 @@ const columns = [
             title: 'UserAccountBar',
             component: <CustomerAccountBar fullName="Jhon Smith" status="Basic Member"/>
         },
-
+        {
+            title: 'EditMenuRow',
+            component: <EditMenuRow title="Cheese Bites" menuId={5}/>
+        }
     ],
     [
         {

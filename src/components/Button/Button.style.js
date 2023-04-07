@@ -4,7 +4,8 @@ import {hexToRgbA} from "../../utils/utils";
 
 export const button = styled.button`
   height: 50px;
-  padding: 12px;
+  padding: 12px 10px;
+  min-width: 52px;
   border: none;
   border-radius: ${BORDER_RADIUS.FOURTH};
   color: ${COLOR.ACCENT4};
@@ -13,10 +14,8 @@ export const button = styled.button`
 `;
 
 export const SecondaryButton = styled(button)`
-  color: ${COLOR.PRIMARY};
   background: ${hexToRgbA(COLOR.ACCENT3, 0.1)};
-  font-weight: 700;
-  padding: 12px 24px;
+  color: ${COLOR.ACCENT3};
 `;
 
 export const ThirdButton = styled(button)`
