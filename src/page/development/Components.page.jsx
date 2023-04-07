@@ -29,6 +29,7 @@ import
     OrderHistoryRow,
     NotificationTDB,
     RowSplitter,
+    EditMenuRow,
     Textarea,
     Company,
 } from "../../components";
@@ -171,7 +172,10 @@ const columns = [
             title: 'UserAccountBar',
             component: <CustomerAccountBar fullName="Jhon Smith" status="Basic Member"/>
         },
-
+        {
+            title: 'EditMenuRow',
+            component: <EditMenuRow title="Cheese Bites" menuId={5}/>
+        }
     ],
     [
         {
