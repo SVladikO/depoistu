@@ -6,7 +6,7 @@ import {Swiper, SwiperSlide} from "swiper/react";
 
 import {Divider, InstitutionBasketButton, InstitutionPictures, Wrapper,} from "./EditCompany.style";
 
-import {ContentContainer, Input, PrimaryWideButton} from "../../components";
+import {ContentContainer, FromToTime, Input, PrimaryWideButton} from "../../components";
 import {ReactComponent as DeleteBasketIcon} from "../../icons/delete_basket.svg";
 import {BE_API} from "../../utils/config";
 import {fetchData} from "../../utils/fetch";
@@ -38,6 +38,15 @@ const EditCompany = () => {
     const onCityInput = e => setCity(e.target.value);
     const onStreetInput = e => setStreet(e.target.value);
     const clearStreetInput = () => setStreet('');
+    const weekDays = [
+        {id: 'FromTo1', name: 'Sun', isChecked: false, from: '00:00', to: '00:00'},
+        {id: 'FromTo2', name: 'Mon', isChecked: false, from: '00:00', to: '00:00'},
+        {id: 'FromTo3', name: 'Tue', isChecked: false, from: '00:00', to: '00:00'},
+        {id: 'FromTo4', name: 'Wed', isChecked: false, from: '00:00', to: '00:00'},
+        {id: 'FromTo5', name: 'Thu', isChecked: false, from: '00:00', to: '00:00'},
+        {id: 'FromTo6', name: 'Fri', isChecked: false, from: '00:00', to: '00:00'},
+        {id: 'FromTo7', name: 'Sat', isChecked: false, from: '00:00', to: '00:00'},
+    ]
 
     const renderCompanyDetails = () => {
         return (
@@ -84,6 +93,9 @@ const EditCompany = () => {
                         onChange={onStreetInput}
                         changeHandler={clearStreetInput}
                     />
+
+                    {weekDays.map(day => <FromToTime key={day.id} id={day.id} weekDay={day.name} from={day.from} to={day.to} />)}
+
                 </ContentContainer>
             </>
         )

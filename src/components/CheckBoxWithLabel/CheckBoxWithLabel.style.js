@@ -14,33 +14,6 @@ export const Wrapper = styled.div`
     text-align: center;
     display: flex;
     //padding-right: 12px;
-    &:hover{
-      &::before{
-        background-color: ${COLOR.ACCENT2};
-      }
-    }
-  }
-  label::before{
-    content: "";
-    border: 1px solid #D8DEFE;
-    width: 14px;
-    height: 14px;
-    flex-shrink: 0;
-    display: block;
-    margin-right: 12px;
-  }
-  input{
-    cursor: pointer;
-    opacity: 0;
-    position: absolute;
-  }
-  input:checked{
-    &+label::before{
-      content: "\\002714";
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      line-height: 12px;
-    }
+    
   }
 `;

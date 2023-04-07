@@ -22,6 +22,7 @@ import
     ContentContainer,
     Notification,
     NavigationHeader,
+    FromToTime,
     CustomerAccountBar,
     NavigationLabelHref,
     BottomMenu,
@@ -52,6 +53,7 @@ import {ImagePopupContent} from "../../components/PopupImage/PopupImage";
 import {PopupIntroContent} from "../../components/PopupIntro/PopupIntro";
 import {LoadingContent} from "../../components/Notification/Notification";
 import {ReactComponent as LocationIcon} from "../../icons/map_point.svg";
+import Checkbox from "../../components/Checkbox/Checkbox";
 
 const colors = Object.keys(COLOR).map(key =>
     ({title: key, component: <ColorCircle key={key} bg={COLOR[key]}/>, value: COLOR[key], width: '50px'})
@@ -74,7 +76,9 @@ const columns = [
         {title: 'Input 4', component: <Input placeholder={`New password`} withCleaner/>},
         {title: 'Textarea', component: <Textarea withCleaner />},
         {title: 'PInput', component: <PInput withIcon Icon={LocationIcon}> Vinnica</PInput>},
+        {title: 'FromToTime', component: <FromToTime weekDay={'Mon'} id={'ht12'}/>},
         {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
+        {title: 'Checkbox', component: <Checkbox/>},
     ],
     [
         {
