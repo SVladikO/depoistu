@@ -239,7 +239,7 @@ function ComponentsPage() {
                     <Column key={index}>{renderRows(components)}</Column>)
                 }
             </Wrapper>
-            <CatalogPage/>
+            {/*<CatalogPage/>*/}
         </div>
     )
 }
