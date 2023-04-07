@@ -3,7 +3,7 @@ import {useParams} from "react-router-dom";
 import {Wrapper} from "./EditMenu.style";
 import {fetchData} from "../../utils/fetch";
 import {EditMenuItem, CategoryMenuRow} from "../../components";
-import {BE_API,CATEGORY_MAPPER} from "../../utils/config";
+import {BE_API} from "../../utils/config";
 
 const EditMenuCompany = () => {
     const [menuItems, setMenuItems] = useState([]);

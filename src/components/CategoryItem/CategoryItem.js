@@ -1,11 +1,11 @@
 import React,{useState} from "react";
 import {Wrapper, IconWrapper, Title} from './CategoryItem.style'
 
-function CategoryItem({category = {}, clickHandler, selected, count}) {
+function CategoryItem({category = {}, clickHandler, selected, itemsAmountPerCategory}) {
     return (
-        <Wrapper onClick={clickHandler} active={selected}>
+        <Wrapper onClick={clickHandler} selected={selected}>
             {category.icon && <IconWrapper>{<category.icon/>}</IconWrapper>}
-            <Title active={selected}>{category.title}({count})</Title>
+            <Title selected={selected}>{category.title}({itemsAmountPerCategory ? `${itemsAmountPerCategory}` : ''})</Title>
         </Wrapper>
     )
 }
