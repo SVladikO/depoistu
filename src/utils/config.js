@@ -72,7 +72,7 @@ export const URL = {
     SETTING: '/setting',
     CHANGE_PASSWORD: '/change-password',
 
-    EDIT_COMPANY_LIST: '/edit-company',
+    CUSTOMER_COMPANIES: '/customer-companies',
     EDIT_COMPANY: '/edit-company',
     EDIT_MENU: '/edit-menu',
     EDIT_MENU_ITEM: '/edit-menu-item',
@@ -93,9 +93,9 @@ export const ROUTER =  {
     SING_IN:                {URL: URL.SING_IN,                                          TITLE: resolveTranslation("PAGE.SING_IN.TOP_TITLE"),        page: SignInPage,         showBottomMenu: true },
     CHANGE_PASSWORD :       {URL: URL.CHANGE_PASSWORD,                                  TITLE: resolveTranslation("PAGE.CHANGE_PASSWORD.TOP_TITLE"),page: ChangePasswordPage, showBottomMenu: true,    BACK_URL: URL.SING_IN},
 
-    EDIT_COMPANY_LIST:      {URL: URL.EDIT_COMPANY_LIST,                                TITLE: 'Edit companies',                                         page: EditCompanyListPage, showBottomMenu:true,    BACK_URL: URL.SETTING},
-    EDIT_COMPANY:           {URL: URL.EDIT_COMPANY,             PARAMS: '/:companyId',  TITLE: 'Edit company',                                           page: EditCompanyPage,     showBottomMenu:true,    BACK_URL: URL.EDIT_COMPANY_LIST},
-    EDIT_MENU :             {URL: URL.EDIT_MENU,                PARAMS: '/:companyId',  TITLE: 'Edit menu',                                              page: EditMenuPage,        showBottomMenu: true,   BACK_URL: URL.EDIT_COMPANY_LIST},
+    EDIT_COMPANY_LIST:      {URL: URL.CUSTOMER_COMPANIES,                                TITLE: 'Your companies',                                        page: EditCompanyListPage, showBottomMenu:true,    BACK_URL: URL.SETTING},
+    EDIT_COMPANY:           {URL: URL.EDIT_COMPANY,             PARAMS: '/:companyId',  TITLE: 'Edit company',                                           page: EditCompanyPage,     showBottomMenu:true,    BACK_URL: URL.CUSTOMER_COMPANIES},
+    EDIT_MENU :             {URL: URL.EDIT_MENU,                PARAMS: '/:companyId',  TITLE: 'Edit menu',                                              page: EditMenuPage,        showBottomMenu: true,   BACK_URL: URL.CUSTOMER_COMPANIES},
     EDIT_MENU_ITEM :        {URL: URL.EDIT_MENU_ITEM,                                   TITLE: 'Edit menu item',                                         page: EditMenuItemPage,    showBottomMenu: true,   BACK_URL: URL.EDIT_MENU},
 };
 
