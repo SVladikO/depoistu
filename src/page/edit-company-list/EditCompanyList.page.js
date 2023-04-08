@@ -5,15 +5,15 @@ import {EditBar} from "./EditCompanyList.style";
 
 import {Company, Notification, PrimaryWideButton, PrimaryWithIconButton} from "../../components";
 import {ReactComponent as EditIcon} from "../../icons/edit.svg";
-import {LocalStorage} from "../../utils/utils";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/utils";
 import {BE_API, ROUTER} from "../../utils/config";
 import {useLocalStorageFetch} from "../../utils/hook";
 
 const EditCompanyListPage = () => {
     const isLoading = useSelector(state => state.request.value.isLoading);
-    const [customer] = useState(LocalStorage.getCustomer());
+    const [customer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
     const [customerCompanies] = useLocalStorageFetch(
-        'customerCompanies',
+        LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES,
         [],
         BE_API.GET_COMPANIES_BY_CUSTOMER_ID(customer.ID)
     );

@@ -17,7 +17,7 @@ const OrderPage = () => {
     const dispatch = useDispatch();
 
     const placeOrder = () => {
-        const {id: customer_id} = LocalStorage.getCustomer();
+        const {id: customer_id} = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER);
         const order_details = orders.map(({id, amount, price}) => ({id, amount, price}))
 
         const body = {
@@ -37,7 +37,7 @@ const OrderPage = () => {
             })
     }
 
-    const isCustomerLogged = LocalStorage.getCustomer();
+    const isCustomerLogged = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER);
 
     const orderButton =
         isCustomerLogged

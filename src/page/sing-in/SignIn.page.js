@@ -29,7 +29,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {fetchData} from "../../utils/fetch";
 import {getParam, LocalStorage} from "../../utils/utils";
 import {BE_API, ROUTER} from '../../utils/config';
-import {resolveTranslation} from "../../utils/utils";
+import {resolveTranslation, LOCAL_STORAGE_KEY} from "../../utils/utils";
 
 
 const SignInPage = () => {
@@ -41,9 +41,8 @@ const SignInPage = () => {
 
         fetchData(BE_API.SING_IN(), {email, password})
             .then(res => {
-
                 if (res.length > 0) {
-                    localStorage.setItem('customer', JSON.stringify(res[0]))
+                    LocalStorage.set(LOCAL_STORAGE_KEY.CUSTOMER, res[0])
                     navigate(backUrl);
                     return;
                 }
@@ -52,7 +51,7 @@ const SignInPage = () => {
             });
     }
 
-    const isGuestLogged = LocalStorage.getCustomer();
+    const isGuestLogged = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER);
 
     if (isGuestLogged) {
         return <div>{resolveTranslation("PAGE.SING_IN.USER_NOTIFICATION")}</div>
@@ -67,7 +66,8 @@ const SignInPage = () => {
             <ContentContainer>
                 <Input Icon={MailIcon} placeholder={`Enter email`} value={email}/>
                 <Input Icon={LockIcon} placeholder={`Enter password`} type="password" value={password}/>
-                <Link to={ROUTER.CHANGE_PASSWORD.URL} primary>{resolveTranslation("PAGE.SING_IN.FORGOT_PASSWORD")}</Link>
+                <Link to={ROUTER.CHANGE_PASSWORD.URL}
+                      primary>{resolveTranslation("PAGE.SING_IN.FORGOT_PASSWORD")}</Link>
                 {/*<Flex flexDirection='column'>*/}
                 {/*    <Flex justifyContent="space-between">*/}
                 {/*        <NavLabel primary={false}>Or login with</NavLabel>*/}
@@ -84,7 +84,8 @@ const SignInPage = () => {
                     label={resolveTranslation("PAGE.SIGN_IN.ACCOUNT_CONFIRMATION")}
                 />
             </ContentContainer>
-            <PrimaryWideButton onClick={handleSingIn}><span>{resolveTranslation("PAGE.SING_IN.TOP_TITLE")}</span></PrimaryWideButton>
+            <PrimaryWideButton
+                onClick={handleSingIn}><span>{resolveTranslation("PAGE.SING_IN.TOP_TITLE")}</span></PrimaryWideButton>
         </>
     );
 };

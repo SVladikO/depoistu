@@ -1,43 +1,30 @@
 import "swiper/css";
 import "swiper/css/pagination";
 import {useParams} from "react-router-dom";
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {Swiper, SwiperSlide} from "swiper/react";
 
 import {Divider, InstitutionBasketButton, InstitutionPictures, Wrapper,} from "./EditCompany.style";
 
 import {ContentContainer, FromToTime, Input, PrimaryWideButton} from "../../components";
 import {ReactComponent as DeleteBasketIcon} from "../../icons/delete_basket.svg";
-import {BE_API} from "../../utils/config";
-import {fetchData} from "../../utils/fetch";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/utils";
 
 const EditCompany = () => {
-    const {companyId} = useParams();
-    const [company, setCompany] = useState({});
+    const companyId = +useParams().companyId;
+    const CUSTOMER_COMPANIES = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
+    const company = CUSTOMER_COMPANIES.find((c => c.ID === companyId));
     const [name, setName] = useState(company.NAME || '');
     const [city, setCity] = useState(company.CITY || '');
     const [street, setStreet] = useState(company.STREET || '');
     const [pictures, setPictures] = useState(company?.PHOTOS?.split(',') || []);
-    const url = BE_API.GET_COMPANY_BY_COMPANY_ID(companyId);
-
-    useEffect(() => {
-        //TODO: SHOW WARNING WRONG PARAM
-        companyId && fetchData(url)
-            .then(res => {
-                const resCompany = res[0];
-                setCompany(resCompany);
-                setName(resCompany.NAME || '');
-                setCity(resCompany.CITY || '');
-                setStreet(resCompany.STREET || '');
-                setPictures(resCompany?.PHOTOS?.split(',') || []);
-        })
-    }, [url])
 
     const deleteCompanyImage = index => setPictures(pictures.filter((_, i) => i !== index));
     const cleanCityInput = () => setCity('');
     const onCityInput = e => setCity(e.target.value);
     const onStreetInput = e => setStreet(e.target.value);
     const clearStreetInput = () => setStreet('');
+
     const weekDays = [
         {id: 'FromTo1', name: 'Sun', isChecked: false, from: '00:00', to: '00:00'},
         {id: 'FromTo2', name: 'Mon', isChecked: false, from: '00:00', to: '00:00'},

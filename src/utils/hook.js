@@ -3,9 +3,10 @@ import {fetchData} from "./fetch";
 import {useDispatch} from "react-redux";
 import {startLoading, stopLoading} from "../features/request/requestSlice";
 import {addErrorMessage,deleteErrorMessage} from "../features/error/errorSlice";
+import {LocalStorage} from "./utils";
 
 export const useLocalStorageFetch = (storageKey, initialState, url) => {
-    const localStorageState = JSON.parse(localStorage.getItem(storageKey))
+    const localStorageState = LocalStorage.get(storageKey);
     const [value, setValue] = useState(localStorageState ?? initialState);
     const dispatch = useDispatch();
 

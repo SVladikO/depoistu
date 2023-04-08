@@ -14,14 +14,14 @@ import {
 
 import {CategoryItem} from "../../components";
 
-const CategoryMenuRow = ({menuItems = []}) => {
+const CategoryMenuRow = ({menuItems = [] , changeCategory = () => {}}) => {
     const categoryIds = [...new Set(menuItems.map(mi => mi.CATEGORY_ID))];
     const categories = categoryIds
         .map(number => CATEGORY_MAPPER[number])
         .map(category => (
             <SwiperSlide key={category.id}>
                 <Link to="">
-                    <CategoryItem category={category}/>
+                    <CategoryItem category={category} clickHandler={() => changeCategory(category.id)}/>
                 </Link>
             </SwiperSlide>
         ));
