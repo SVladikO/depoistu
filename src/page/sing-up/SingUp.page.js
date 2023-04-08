@@ -1,5 +1,5 @@
 import {Title,Container,Wrapper} from "./SingUp.style";
-import {CheckBoxWithLabel, PrimaryWideButton, Input} from "../../components";
+import {CheckBoxWithLabel, PrimaryButton, Input} from "../../components";
 import NavigationLabelHref from "../../components/NavigationLabelHref/NavigationLabelHref";
 import {ROUTER} from '../../utils/config';
 import {resolveTranslation} from "../../utils/utils";
@@ -25,7 +25,7 @@ const SingUpPage = () => {
                     label={resolveTranslation("PAGE.SIGN_IN.ACCOUNT_CONFIRMATION")}
                 />
             </Wrapper>
-            <PrimaryWideButton>{resolveTranslation("PAGE.SING_UP.TOP_TITLE")}</PrimaryWideButton>
+            <PrimaryButton>{resolveTranslation("PAGE.SING_UP.TOP_TITLE")}</PrimaryButton>
         </>
     );
 };

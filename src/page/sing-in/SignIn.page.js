@@ -8,7 +8,7 @@ import React, {useState} from 'react';
 
 import {
     Input,
-    PrimaryWideButton,
+    PrimaryButton,
     // PrimaryWithIconButton,
     // SecondaryWithIconButton,
     // Flex,
@@ -84,8 +84,8 @@ const SignInPage = () => {
                     label={resolveTranslation("PAGE.SIGN_IN.ACCOUNT_CONFIRMATION")}
                 />
             </ContentContainer>
-            <PrimaryWideButton
-                onClick={handleSingIn}><span>{resolveTranslation("PAGE.SING_IN.TOP_TITLE")}</span></PrimaryWideButton>
+            <PrimaryButton
+                onClick={handleSingIn}><span>{resolveTranslation("PAGE.SING_IN.TOP_TITLE")}</span></PrimaryButton>
         </>
     );
 };
