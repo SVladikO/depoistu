@@ -2,7 +2,7 @@ import translations from "./translations";
 import translation from "./translation.json";
 
 export const checkAccess = () => {
-    const isTrustedCustomer = LocalStorage.get(LOCAL_STORAGE_KEY.TRUSTED_CUSTOMER);
+    const isTrustedCustomer = LocalStorage.get(LOCAL_STORAGE_KEY.IS_TRUSTED_CUSTOMER);
 
     if(isTrustedCustomer) return;
 
@@ -12,7 +12,7 @@ export const checkAccess = () => {
     if (test !== secretKey) {
         return checkAccess();
     }
-    LocalStorage.set(LOCAL_STORAGE_KEY.TRUSTED_CUSTOMER, true);
+    LocalStorage.set(LOCAL_STORAGE_KEY.IS_TRUSTED_CUSTOMER, true);
 }
 
 export function hexToRgbA(hex, a=1){
@@ -29,7 +29,7 @@ export function hexToRgbA(hex, a=1){
 }
 
 export const securityCheck = () => {
-    const isTrustedCustomer = LocalStorage.get(LOCAL_STORAGE_KEY.TRUSTED_CUSTOMER);
+    const isTrustedCustomer = LocalStorage.get(LOCAL_STORAGE_KEY.IS_TRUSTED_CUSTOMER);
 
     if(isTrustedCustomer) return;
 
@@ -39,14 +39,14 @@ export const securityCheck = () => {
     if (test !== secretKey) {
         return securityCheck();
     }
-    LocalStorage.set(LOCAL_STORAGE_KEY.TRUSTED_CUSTOMER, true);
+    LocalStorage.set(LOCAL_STORAGE_KEY.IS_TRUSTED_CUSTOMER, true);
 }
 
 export const setBrowserTabTitle = () => document.title = translations.company_name;
 
 export const LOCAL_STORAGE_KEY = {
     CUSTOMER: 'CUSTOMER',
-    TRUSTED_CUSTOMER: 'TRUSTED_CUSTOMER',
+    IS_TRUSTED_CUSTOMER: 'IS_TRUSTED_CUSTOMER',
     CUSTOMER_COMPANIES: 'CUSTOMER_COMPANIES',
     COMPANY_CANDIDATE_TO_EDIT: 'COMPANY_CANDIDATE_TO_EDIT',
 }
