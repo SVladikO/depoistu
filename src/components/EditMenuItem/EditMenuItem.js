@@ -3,13 +3,14 @@ import {
     ButtonSection,
     EditButton,
     ImagePlace,
-    MenuItemEditor,
     MenuItemPhoto,
     WideButton
 } from "./EditMenuItem.style";
 
 import {ReactComponent as RemoveIcon} from "../../icons/remove_icon.svg";
 import {Input} from "../Input/Input";
+import {ContentContainer} from "../ContentContainer/ContentContainer.style";
+import {SecondaryButton} from "../Button/Button.style";
 
 function EditMenuItem(props) {
     const {
@@ -29,22 +30,25 @@ function EditMenuItem(props) {
     const [size, setSize] = useState(SIZE);
 
     return (
-        <MenuItemEditor>
-            <MenuItemPhoto>
-                {imageURL
-                    ? <img src={imageURL} alt='Food'/>
-                    : <ImagePlace/>}
-                <ButtonSection>
-                    <EditButton>Add</EditButton>
-                </ButtonSection>
-            </MenuItemPhoto>
-            <Input withCleaner value={name} placeholder='Name'/>
-            <Input withCleaner value={price} placeholder='Price'/>
-            <Input withCleaner value={description} placeholder='Description'/>
-            <Input withCleaner value={cookingTime} placeholder='Cooking time'/>
-            <Input withCleaner value={size} placeholder='Meal size'/>
-            <WideButton>Delete<RemoveIcon/></WideButton>
-        </MenuItemEditor>
+        <>
+            <SecondaryButton><RemoveIcon/> Delete</SecondaryButton>
+            <ContentContainer>
+                <MenuItemPhoto>
+                    {imageURL
+                        ? <img src={imageURL} alt='Food'/>
+                        : <ImagePlace/>}
+                    <ButtonSection>
+                        <EditButton>Add</EditButton>
+                    </ButtonSection>
+                </MenuItemPhoto>
+                <Input withCleaner value={name} placeholder='Name'/>
+                <Input withCleaner value={price} placeholder='Price'/>
+                <Input withCleaner value={description} placeholder='Description'/>
+                <Input withCleaner value={cookingTime} placeholder='Cooking time'/>
+                <Input withCleaner value={size} placeholder='Meal size'/>
+            </ContentContainer>
+            <WideButton>Save</WideButton>
+        </>
     );
 }
 

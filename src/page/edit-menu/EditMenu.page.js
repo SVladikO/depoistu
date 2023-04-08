@@ -8,7 +8,7 @@ import {BE_API} from "../../utils/config";
 import {useDispatch} from "react-redux";
 import {startLoading, stopLoading} from "../../features/request/requestSlice";
 
-const EditMenuCompany = () => {
+const EditMenu= () => {
     const [menuItems, setMenuItems] = useState([]);
     const {companyId} = useParams();
     const url = BE_API.GET_MENU_ITEMS_BY_COMPANY_ID(companyId);
@@ -35,4 +35,4 @@ const EditMenuCompany = () => {
     )
 }
 
-export default EditMenuCompany;
+export default EditMenu;
