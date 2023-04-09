@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 
 import {Wrapper} from "./EditMenu.style";
@@ -12,10 +12,11 @@ import {
     RowSplitter
 } from "../../components";
 import {BE_API} from "../../utils/config";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {startLoading, stopLoading} from "../../features/request/requestSlice";
 
 const EditMenu = () => {
+    const isLoading = useSelector(state => state.request.value.isLoading);
     const [menuItems, setMenuItems] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState(menuItems[0]?.CATEGORY_ID)
     const selectedMenuItems = selectedCategory && menuItems.filter(mi => mi.CATEGORY_ID === selectedCategory) || []
@@ -35,9 +36,12 @@ const EditMenu = () => {
             })
     }, [url])
 
+    if (isLoading) {
+        return <Notification.Loading/>;
+    }
+
     return (
         <>
-            <Notification.Loading/>
             <Wrapper>
                 <CategoryMenuRow menuItems={menuItems} changeCategory={id => setSelectedCategory(id)}/>
                 <RowSplitter height={'15px'} />

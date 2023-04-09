@@ -1,7 +1,6 @@
 import SignInPage from "../page/sing-in/SignIn.page";
 import SingUpPage from "../page/sing-up/SingUp.page";
 import SettingPage from "../page/setting/Setting.page";
-import SubCategoryPage from "../page/sub-category/SubCategory.page";
 import EditMenuPage from "../page/edit-menu/EditMenu.page";
 import EditMenuItemPage from "../page/edit-menu-item/EditMenuItem.page";
 import EditCompanyPage from "../page/edit-company/EditCompany.page";
@@ -79,13 +78,11 @@ export const URL = {
 };
 
 export const ROUTER =  {
-    // CATEGORY: '/',TITLE: 'Category',page: CategoryPage, showBottomMenu: true},
     // ORDER_REVIEW: {URL: '/order',  TITLE: 'Order review', page: OrderPage, showBottomMenu: true},
     // ORDER_HISTORY: {URL: '/history',  TITLE: 'Order History', page: OrderHistoryPage, subHeader: HistoryTabBar, showBottomMenu: true},
     // Favorite: {URL: '/Favorite',  TITLE: 'Favorite Cart', page: () => {}},
     // Profile: {URL: '/Profile',  TITLE: 'Profile', page: () => {}},
     // USER_ACCOUNT = {URL: '/user_account',  TITLE: 'USER_ACCOUNT', page: () => {}, showBottomMenu: true, BACK_URL: ROUTER.SETTING.URL};
-    MENU :                  {URL: URL.MENU,                     PARAMS: '/:categoryId', getTitle: 'Menu',                                                page: SubCategoryPage,    showBottomMenu: true},
     SEARCH:                 {URL: URL.SEARCH,                                           TITLE: resolveTranslation("PAGE.SEARCH.TOP_TITLE"),         page: SearchPage,         showBottomMenu: true},
     SEARCH_DETAILS:         {URL: URL.SEARCH_DETAILS,           PARAMS: '/:companyId',  TITLE: 'Company details',                                        page: SearchDetailsPage, showBottomMenu: true,    BACK_URL: URL.SEARCH},
     SETTING:                {URL: URL.SETTING,                                          TITLE: resolveTranslation("PAGE.SETTINGS.TOP_TITLE"),       page: SettingPage,        showBottomMenu: true},
