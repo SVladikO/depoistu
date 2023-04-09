@@ -53,7 +53,7 @@ const SearchPage = () => {
                 </PInput>
             </ContentContainer>
             {selectedCity && selectedRegion && companies.length === 0
-                ? <Notification.Error message={requestError  + ' There is no companies in current city'} />
+                ? <Notification.Error message={'There is no companies in current city'} />
                 : companies &&
                   companies.map(company =>
                         <Link to={`${URL.SEARCH_DETAILS}${company.ID}`} key={company.ID}>
