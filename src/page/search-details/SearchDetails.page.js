@@ -5,7 +5,7 @@ import {Divider, Wrapper} from "./SearchDetails.style";
 
 import {CategoryMenuRow, Company, MenuItem} from "../../components";
 import {useLocalStorageFetch} from "../../utils/hook";
-import {BE_API, BE_DOMAIN} from "../../utils/config";
+import {BE_API} from "../../utils/config";
 import {LOCAL_STORAGE_KEY} from "../../utils/utils";
 
 const SearchDetailsPage = () => {
