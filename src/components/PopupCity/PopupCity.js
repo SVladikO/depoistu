@@ -17,7 +17,7 @@ import {resolveTranslation} from "../../utils/utils";
 
 const enableScrollOnBody = () => document.body.style.position = 'relative';
 
-const PopupCity = () => {
+const PopupCity = ({changeChoice}) => {
     const isVisiblePopup = useSelector(state => state.cityPopup.isVisible);
     const dispatch = useDispatch();
 
@@ -30,12 +30,12 @@ const PopupCity = () => {
             dispatch(hideCityPopup());
             enableScrollOnBody();
         }}>
-            <CityPopupContent/>
+            <CityPopupContent changeChoice={changeChoice}/>
         </InvisibleWrapper>
     );
 };
 
-export const CityPopupContent = () => {
+export const CityPopupContent = ({changeChoice = () => {}}) => {
     const dispatch = useDispatch();
 
     let cities = useSelector(state => state.cityPopup.cities)
@@ -57,6 +57,7 @@ export const CityPopupContent = () => {
                         dispatch(setIsRegion(true))
                         dispatch(setSelectedRegion(""))
                         dispatch(setSelectedCity(""))
+                        changeChoice()
                     }}>
                         <BackIcon/>
                         {resolveTranslation("PAGE.SEARCH.ARROW_LABEL")}
@@ -70,6 +71,7 @@ export const CityPopupContent = () => {
                         key={i.toString()}
                         changeHandler={
                             () => {
+                                changeChoice()
                                 if (isRegion) {
                                     dispatch(setSelectedRegion(c))
                                     dispatch(setCities(citiesJSON[c]))

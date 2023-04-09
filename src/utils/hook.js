@@ -4,13 +4,13 @@ import {useDispatch} from "react-redux";
 import {startLoading, stopLoading} from "../features/request/requestSlice";
 import {LocalStorage} from "./utils";
 
-export const useLocalStorageFetch = (storageKey, initialState, url, setError = () => {}) => {
+export const useLocalStorageFetch = (storageKey, initialState, url, setError = () => {}, customCondition = () => {}) => {
     const localStorageState = LocalStorage.get(storageKey);
     const [value, setValue] = useState(localStorageState ?? initialState);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (localStorageState) {
+        if (localStorageState || customCondition()) {
             return;
         }
 
