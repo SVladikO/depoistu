@@ -7,13 +7,11 @@ import React, {useState} from 'react';
 // } from "./SignIn.style";
 
 import {
-    Input,
-    PrimaryWideButton,
-    // PrimaryWithIconButton,
+    Input, PrimaryWideButton, // PrimaryWithIconButton,
     // SecondaryWithIconButton,
     // Flex,
-    ContentContainer,
-    NavigationLabelHref,
+    ContentContainer, NavigationLabelHref,
+    Notification,
 } from "../../components";
 
 // import translations from "../../utils/translations";
@@ -28,66 +26,72 @@ import {Link, useNavigate} from "react-router-dom";
 
 import {fetchData} from "../../utils/fetch";
 import {getParam, LocalStorage} from "../../utils/utils";
-import {BE_API, ROUTER} from '../../utils/config';
+import {BE_API, ROUTER, URL} from '../../utils/config';
 import {resolveTranslation, LOCAL_STORAGE_KEY} from "../../utils/utils";
-
+import {useDispatch, useSelector} from "react-redux";
+import {startLoading, stopLoading} from "../../features/request/requestSlice";
 
 const SignInPage = () => {
-    const [email, setEmail] = useState('vlad_S@gmail.com')
-    const [password, setPassword] = useState('vv11vv')
+    const dispatch = useDispatch();
     const navigate = useNavigate();
-    const backUrl = getParam(`backUrl`);
+    const backUrl = getParam(`backUrl`) || URL.SETTING;
+    const isLoading = useSelector(state => state.request.value.isLoading);
+
+    const [password, setPassword] = useState('vv11vv')
+    const [email, setEmail] = useState('vlad_S@gmail.com')
+    const [requestError, setRequestError] = useState('');
     const handleSingIn = () => {
+        dispatch(startLoading());
 
         fetchData(BE_API.SING_IN(), {email, password})
             .then(res => {
-                if (res.length > 0) {
-                    LocalStorage.set(LOCAL_STORAGE_KEY.CUSTOMER, res[0])
-                    navigate(backUrl);
-                    return;
-                }
+                LocalStorage.set(LOCAL_STORAGE_KEY.CUSTOMER, res)
+                setTimeout(() => {
+                    dispatch(stopLoading())
+                    navigate(backUrl)
+                }, 2000)
 
-                alert('User was not found');
+            })
+            .catch(e => {
+                setRequestError(e.toString())
+                setTimeout(() => dispatch(stopLoading()), 2000)
             });
     }
 
-    const isGuestLogged = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER);
-
-    if (isGuestLogged) {
-        return <div>{resolveTranslation("PAGE.SING_IN.USER_NOTIFICATION")}</div>
+    if (isLoading) {
+        return <Notification.Loading />
     }
 
-    return (
-        <>
-            {/*<Content>*/}
-            {/*    <LogoIcon/>*/}
-            {/*    <LogoText>{translations.company_name}</LogoText>*/}
-            {/*</Content>*/}
-            <ContentContainer>
-                <Input Icon={MailIcon} placeholder={`Enter email`} value={email}/>
-                <Input Icon={LockIcon} placeholder={`Enter password`} type="password" value={password}/>
-                <Link to={ROUTER.CHANGE_PASSWORD.URL}
-                      primary>{resolveTranslation("PAGE.SING_IN.FORGOT_PASSWORD")}</Link>
-                {/*<Flex flexDirection='column'>*/}
-                {/*    <Flex justifyContent="space-between">*/}
-                {/*        <NavLabel primary={false}>Or login with</NavLabel>*/}
-                {/*        <Link to={ROUTER.CHANGE_PASSWORD.URL} primary>Forget password ?</Link>*/}
-                {/*    </Flex>*/}
-                {/*    <Flex justifyContent="space-between">*/}
-                {/*        <SecondaryWithIconButton><FacebookIcon/>facebook</SecondaryWithIconButton>*/}
-                {/*        <PrimaryWithIconButton><GoogleIcon/>Google</PrimaryWithIconButton>*/}
-                {/*    </Flex>*/}
-                {/*</Flex>*/}
-                <NavigationLabelHref
-                    hrefTitle={resolveTranslation("PAGE.SIGN_IN.SING_UP_LINK")}
-                    to={`${ROUTER.SING_UP.URL}?backUrl=${backUrl}`}
-                    label={resolveTranslation("PAGE.SIGN_IN.ACCOUNT_CONFIRMATION")}
-                />
-            </ContentContainer>
-            <PrimaryWideButton
-                onClick={handleSingIn}><span>{resolveTranslation("PAGE.SING_IN.TOP_TITLE")}</span></PrimaryWideButton>
-        </>
-    );
+    return (<>
+        {/*<Content>*/}
+        {/*    <LogoIcon/>*/}
+        {/*    <LogoText>{translations.company_name}</LogoText>*/}
+        {/*</Content>*/}
+        {requestError && <Notification.Error message={requestError} />}
+        <ContentContainer>
+            <Input Icon={MailIcon} value={email} onChange={e => setEmail(e.target.value)} placeholder={`Enter email`} />
+            <Input Icon={LockIcon} value={password} onChange={e => setPassword(e.target.value)} type="password" placeholder={`Enter password`} />
+            <Link to={ROUTER.CHANGE_PASSWORD.URL}>{resolveTranslation("PAGE.SING_IN.FORGOT_PASSWORD")}</Link>
+            {/*<Flex flexDirection='column'>*/}
+            {/*    <Flex justifyContent="space-between">*/}
+            {/*        <NavLabel primary={false}>Or login with</NavLabel>*/}
+            {/*        <Link to={ROUTER.CHANGE_PASSWORD.URL} primary>Forget password ?</Link>*/}
+            {/*    </Flex>*/}
+            {/*    <Flex justifyContent="space-between">*/}
+            {/*        <SecondaryWithIconButton><FacebookIcon/>facebook</SecondaryWithIconButton>*/}
+            {/*        <PrimaryWithIconButton><GoogleIcon/>Google</PrimaryWithIconButton>*/}
+            {/*    </Flex>*/}
+            {/*</Flex>*/}
+            <NavigationLabelHref
+                hrefTitle={resolveTranslation("PAGE.SIGN_IN.SING_UP_LINK")}
+                to={`${ROUTER.SING_UP.URL}?backUrl=${backUrl}`}
+                label={resolveTranslation("PAGE.SIGN_IN.ACCOUNT_CONFIRMATION")}
+            />
+        </ContentContainer>
+        <PrimaryWideButton onClick={handleSingIn}>
+            {resolveTranslation("PAGE.SING_IN.TOP_TITLE")}
+        </PrimaryWideButton>
+    </>);
 };
 
 export default SignInPage;
