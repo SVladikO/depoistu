@@ -10,12 +10,13 @@ import {useLocalStorageFetch} from "../../utils/hook";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/utils";
 
 const SearchPage = () => {
+    const [inputField] = useState('');
+    const [requestError, setRequestError] = useState('');
+
     const dispatch = useDispatch();
     const isLoading = useSelector(state => state.request.value.isLoading);
-    const [inputField] = useState('');
     const selectedCity = useSelector(state => state.cityPopup.selectedCity);
     const selectedRegion = useSelector(state => state.cityPopup.selectedRegion);
-    const [requestError, setRequestError] = useState('');
 
     let [companies, setCompanies] = useLocalStorageFetch(
         LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT,
@@ -34,6 +35,7 @@ const SearchPage = () => {
         return <Notification.Loading/>;
     }
 
+    // If we use useLocalStorageFetch than we need below code to handle error.
     if (requestError) {
         return <Notification.Error message={requestError}/>;
     }
@@ -51,7 +53,7 @@ const SearchPage = () => {
                 </PInput>
             </ContentContainer>
             {selectedCity && selectedRegion && companies.length === 0
-                ? <Notification.Error message={'There is no companies in current city'} />
+                ? <Notification.Error message={requestError  + ' There is no companies in current city'} />
                 : companies &&
                   companies.map(company =>
                         <Link to={`${URL.SEARCH_DETAILS}${company.ID}`} key={company.ID}>

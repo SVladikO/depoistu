@@ -23,6 +23,7 @@ export const useLocalStorageFetch = (storageKey, initialState, url, setError = (
                 localStorage.setItem(storageKey, JSON.stringify(res))
             })
             .catch(e => {
+                console.log(333333, e)
                 dispatch(stopLoading());
                 setError(e.message);
             })
