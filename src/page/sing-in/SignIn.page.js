@@ -49,12 +49,12 @@ const SignInPage = () => {
                 setTimeout(() => {
                     dispatch(stopLoading())
                     navigate(backUrl)
-                }, 2000)
+                }, 1000)
 
             })
             .catch(e => {
                 setRequestError(e.toString())
-                setTimeout(() => dispatch(stopLoading()), 2000)
+                setTimeout(() => dispatch(stopLoading()), 1000)
             });
     }
 
