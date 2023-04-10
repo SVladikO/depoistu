@@ -3,32 +3,28 @@ import {useParams} from 'react-router-dom';
 
 import {Divider, Wrapper} from "./SearchDetails.style";
 
-import {BE_DOMAIN} from "../../utils/config";
 import {CategoryMenuRow, Company, MenuItem} from "../../components";
+import {useLocalStorageFetch} from "../../utils/hook";
+import {BE_API} from "../../utils/config";
+import {LOCAL_STORAGE_KEY} from "../../utils/utils";
 
 const SearchDetailsPage = () => {
-    let { companyId } = useParams();
-    const [company, setCompany] = useState(null);
+    let companyId = +useParams().companyId;
+    const [companies] = useLocalStorageFetch(LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT, []);
     const [menuItems, setMenuItems] = useState([]);
 
-    useEffect(()=>{
-        fetch(`${BE_DOMAIN}/companies/by/id/${companyId}`)
-            .then(res => res.json())
-            .then(data => setCompany(data[0]));
-    },[]);
-
     useEffect(() => {
-        fetch(`${BE_DOMAIN}/menu/${companyId}`)
+        fetch(BE_API.GET_MENU_ITEMS_BY_COMPANY_ID(companyId))
             .then(res => res.json())
-            .then(data => data.sort((a,b) => a.CATEGORY_ID - b.CATEGORY_ID))
+            .then(data => data.sort((a, b) => a.CATEGORY_ID - b.CATEGORY_ID))
             .then(result => {
                 setMenuItems(result)
             });
-    },[]);
+    }, []);
 
     return (
         <Wrapper>
-            <Company company={company}/>
+            {companies && <Company company={companies.find(c => c.ID === companyId)}/>}
             <Divider>Menu</Divider>
             <CategoryMenuRow menuItems={menuItems}/>
             {menuItems.map((el) => <MenuItem key={el.ID} item={el}/>)}

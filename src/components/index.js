@@ -1,10 +1,6 @@
 import {
-    PrimaryRoundedButton,
-    PrimaryWideButton,
-    PrimaryWithIconButton,
+    PrimaryButton,
     SecondaryButton,
-    SecondaryWithIconButton,
-    ThirdButton,
 } from "./Button/Button.style";
 
 import {Input, PInput, Textarea} from "./Input/Input";
@@ -61,7 +57,6 @@ export {
     FromToTime,
     HistoryTabBar,
     BottomMenu,
-    ThirdButton,
     MenuItem,
     ToggleCheckbox,
     CheckBoxWithLabel,
@@ -72,10 +67,7 @@ export {
     PopupImage,
     PopupIntro,
     PopupCity,
-    PrimaryWideButton,
-    PrimaryRoundedButton,
-    PrimaryWithIconButton,
-    SecondaryWithIconButton,
+    PrimaryButton,
     SecondaryButton,
     ContentContainer,
     NavigationHeader,

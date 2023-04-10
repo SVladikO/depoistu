@@ -5,7 +5,7 @@ import {
     ContentContainer,
     Input,
     RowSplitter,
-    PrimaryRoundedButton
+    PrimaryButton
 } from "../../components";
 import {resolveTranslation} from "../../utils/utils";
 import {Label} from "../../components";
@@ -22,7 +22,7 @@ const ChangePasswordPage = () => {
             <Label>Confirm Password</Label>
             <Input withSwitcher placeholder={resolveTranslation("PAGE.CHANGE_PASSWORD.PLACEHOLDER.CONFIRM_PASSWORD")}/>
             <RowSplitter margin="20px 0 0">
-                <PrimaryRoundedButton>{resolveTranslation("PAGE.CHANGE_PASSWORD.BUTTON.SAVE_PASSWORD")}</PrimaryRoundedButton>
+                <PrimaryButton isWide>{resolveTranslation("PAGE.CHANGE_PASSWORD.BUTTON.SAVE_PASSWORD")}</PrimaryButton>
             </RowSplitter>
         </ContentContainer>
     );

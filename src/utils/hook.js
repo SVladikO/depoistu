@@ -2,30 +2,29 @@ import {useState, useEffect} from "react";
 import {fetchData} from "./fetch";
 import {useDispatch} from "react-redux";
 import {startLoading, stopLoading} from "../features/request/requestSlice";
-import {addErrorMessage,deleteErrorMessage} from "../features/error/errorSlice";
+import {LocalStorage} from "./utils";
 
-export const useLocalStorageFetch = (storageKey, initialState, url) => {
-    const localStorageState = JSON.parse(localStorage.getItem(storageKey))
+export const useLocalStorageFetch = (storageKey, initialState, url, setError = () => {}, customCondition = () => {}) => {
+    const localStorageState = LocalStorage.get(storageKey);
     const [value, setValue] = useState(localStorageState ?? initialState);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (localStorageState) {
+        if (localStorageState || customCondition()) {
             return;
         }
 
         dispatch(startLoading());
-        dispatch(deleteErrorMessage());
 
         fetchData(url)
             .then(res => {
-                dispatch(stopLoading());
                 setValue(res)
                 localStorage.setItem(storageKey, JSON.stringify(res))
+                setTimeout(() => dispatch(stopLoading()), 1000)
             })
             .catch(e => {
                 dispatch(stopLoading());
-                dispatch(addErrorMessage(e.message));
+                setError(e.message);
             })
     }, [value, storageKey, dispatch, localStorageState, url]);
 
