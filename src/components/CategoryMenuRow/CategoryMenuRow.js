@@ -11,28 +11,23 @@ import {Content, Flex} from "./CategoryMenuRow.style";
 import {CategoryItem} from "../../components";
 import {CATEGORY_MAPPER} from '../../utils/config';
 
-const CategoryMenuRow = ({menuItems = [], showMenuItemAmount }) => {
-    const categoryIds = [...new Set(menuItems.map(mi => mi.CATEGORY_ID))];
-    const [selectedIndex, setSelectedIndex] = useState(0);
-    const CATEGORY_ITEM_AMOUNT = {};
-
-    categoryIds.forEach(categoryId => {
-        CATEGORY_ITEM_AMOUNT[categoryId] = menuItems.filter(mi => mi.CATEGORY_ID === categoryId).length;
-    });
-
-    const categories = categoryIds
-        .map(number => CATEGORY_MAPPER[number])
-        .map((category, i) => (
-            <SwiperSlide key={category.id}>
-                <Link to="">
-                    <CategoryItem
-                        itemsAmountPerCategory = {showMenuItemAmount ? CATEGORY_ITEM_AMOUNT[category.id] : 0}
-                        clickHandler={() => setSelectedIndex(i)}
-                        isSelected={selectedIndex === i}
-                        category={category}/>
-                </Link>
-            </SwiperSlide>
-        ));
+const CategoryMenuRow = ({
+                             menuItems = [],
+                             showMenuItemAmount,
+                             selectedCategoryId,
+                             changeCategory = () => {},
+                         }) => {
+    const menuCategoryIds = [...new Set(menuItems.map(mi => mi.CATEGORY_ID))];
+    const categories = menuCategoryIds.map((category_id) => (
+        <SwiperSlide key={category_id}>
+            <CategoryItem
+                category={CATEGORY_MAPPER[category_id]}
+                clickHandler={() => changeCategory(category_id)}
+                isSelected={selectedCategoryId === category_id}
+                itemsAmountPerCategory={showMenuItemAmount ? menuItems.filter(mi => mi.CATEGORY_ID === category_id).length : 0}
+            />
+        </SwiperSlide>
+    ));
 
     return (
         <Content>

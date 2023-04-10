@@ -1,4 +1,4 @@
-import React, {useCallback} from "react";
+import React, {useCallback, useState} from "react";
 import {Wrapper, Column, Component, Row, ColorCircle, Header, Space} from './Components.style';
 import
 {
@@ -55,6 +55,20 @@ const colors = Object.keys(COLOR).map(key =>
     ({title: key, component: <ColorCircle key={key} bg={COLOR[key]}/>, value: COLOR[key], width: '50px'})
 )
 
+function ExampleCategoryWithSelected() {
+    const menuItems = [{CATEGORY_ID: 1}, {CATEGORY_ID: 2}, {CATEGORY_ID: 3}];
+    const [selectedCategoryId, setSelectedCategoryId] = useState(menuItems[0].CATEGORY_ID)
+
+    return (
+        <CategoryMenuRow
+            showMenuItemAmount
+            menuItems={menuItems}
+            selectedCategoryId={selectedCategoryId}
+            changeCategory={id => setSelectedCategoryId(id)}
+        />
+    )
+}
+
 const columns = [
     [
         {title: 'PrimaryButton', component: <PrimaryButton><GoogleIcon/>Google</PrimaryButton>},
@@ -85,7 +99,10 @@ const columns = [
             }}/>
         },
         {title: 'CategoryMenuRow', component: <CategoryMenuRow menuItems={[{CATEGORY_ID: 1}, {CATEGORY_ID: 2}, {CATEGORY_ID: 3}]} />},
-        {title: 'CategoryMenuRow', component: <CategoryMenuRow showMenuItemAmount menuItems={[{CATEGORY_ID: 1}, {CATEGORY_ID: 2}, {CATEGORY_ID: 3}]} />},
+        {
+            title: 'CategoryMenuRow', component: <ExampleCategoryWithSelected />
+
+        },
         {
             title: 'MenuItem',
             component:
