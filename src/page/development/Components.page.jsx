@@ -8,17 +8,13 @@ import
     HistoryTabBar,
     Rating,
     Discount,
-    ThirdButton,
     CategoryItem,
     SettingMenuRow,
     ToggleCheckbox,
     CheckBoxWithLabel,
     CategoryMenuRow,
     SecondaryButton,
-    PrimaryWideButton,
-    PrimaryRoundedButton,
-    PrimaryWithIconButton,
-    SecondaryWithIconButton,
+    PrimaryButton,
     ContentContainer,
     Notification,
     NavigationHeader,
@@ -60,15 +56,12 @@ const colors = Object.keys(COLOR).map(key =>
 
 const columns = [
     [
-        {title: 'PrimaryWithIconButton', component: <PrimaryWithIconButton><GoogleIcon/>Google</PrimaryWithIconButton>},
-        {title: 'PrimaryWideButton', component: <PrimaryWideButton>Sing in</PrimaryWideButton>},
-        {title: 'PrimaryRoundedButton', component: <PrimaryRoundedButton>SIGN IN</PrimaryRoundedButton>},
+        {title: 'PrimaryButton', component: <PrimaryButton><GoogleIcon/>Google</PrimaryButton>},
+        {title: 'PrimaryButton', component: <PrimaryButton>Sing in</PrimaryButton>},
+        {title: 'PrimaryButton', component: <PrimaryButton>SING IN</PrimaryButton>},
+        {title: 'SecondaryButton', component: <SecondaryButton><FacebookIcon/>facebook</SecondaryButton>},
         {title: 'SecondaryButton', component: <SecondaryButton>Cancel</SecondaryButton>},
-        {
-            title: 'SecondaryWithIconButton',
-            component: <SecondaryWithIconButton><FacebookIcon/>facebook</SecondaryWithIconButton>
-        },
-        {title: 'ThirdButton', component: <ThirdButton>Payment</ThirdButton>},
+        {title: 'SecondaryButton', component: <SecondaryButton>CANCEL</SecondaryButton>},
         {title: 'Input 1', component: <Input placeholder={`johndoe@mail.com`}/>},
         {title: 'Input 2', component: <Input Icon={MailIcon} placeholder={`johndoe@mail.com`}/>},
         {title: 'Input 3', component: <Input withSwitcher placeholder={`New password`}/>},
@@ -247,11 +240,11 @@ function ComponentsPage() {
         <div>
             <Header>
                 <Space/>
-                <ThirdButton onClick={setWhiteBackground}>White</ThirdButton>
+                <PrimaryButton onClick={setWhiteBackground}>White</PrimaryButton>
                 <Space/>
-                <ThirdButton onClick={setGreyBackground}>Grey</ThirdButton>
+                <PrimaryButton onClick={setGreyBackground}>Grey</PrimaryButton>
                 <Space/>
-                <ThirdButton onClick={setBlueBackground}>Blue</ThirdButton>
+                <PrimaryButton onClick={setBlueBackground}>Blue</PrimaryButton>
                 <Space/>
                 <Space/>
                 <Space/>

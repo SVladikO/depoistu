@@ -7,7 +7,9 @@ import React, {useState} from 'react';
 // } from "./SignIn.style";
 
 import {
-    Input, PrimaryWideButton, // PrimaryWithIconButton,
+    Input,
+    PrimaryButton,
+    // PrimaryWithIconButton,
     // SecondaryWithIconButton,
     // Flex,
     ContentContainer, NavigationLabelHref,
@@ -88,9 +90,9 @@ const SignInPage = () => {
                 label={resolveTranslation("PAGE.SIGN_IN.ACCOUNT_CONFIRMATION")}
             />
         </ContentContainer>
-        <PrimaryWideButton onClick={handleSingIn}>
+        <PrimaryButton onClick={handleSingIn}>
             {resolveTranslation("PAGE.SING_IN.TOP_TITLE")}
-        </PrimaryWideButton>
+        </PrimaryButton>
     </>);
 };
 

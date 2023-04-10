@@ -12,7 +12,7 @@ const EditMenuRow = ({title}) => {
             <EditSection>
                 <SecondaryButton>Show</SecondaryButton>
                 <Link to={URL.EDIT_MENU_ITEM}>
-                    <SecondaryButton><EditIcon/></SecondaryButton>
+                    <SecondaryButton isOnlyIcon><EditIcon/></SecondaryButton>
                 </Link>
             </EditSection>
         </Wrapper>

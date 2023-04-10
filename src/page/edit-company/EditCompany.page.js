@@ -6,9 +6,10 @@ import {Swiper, SwiperSlide} from "swiper/react";
 
 import {Divider, InstitutionBasketButton, InstitutionPictures, Wrapper,} from "./EditCompany.style";
 
-import {ContentContainer, FromToTime, Input, PrimaryWideButton} from "../../components";
+import {ContentContainer, FromToTime, Input, PrimaryButton, SecondaryButton} from "../../components";
 import {ReactComponent as DeleteBasketIcon} from "../../icons/delete_basket.svg";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/utils";
+import {ReactComponent as RemoveIcon} from "../../icons/remove_icon.svg";
 
 const EditCompany = () => {
     const companyId = +useParams().companyId;
@@ -38,6 +39,7 @@ const EditCompany = () => {
     const renderCompanyDetails = () => {
         return (
             <>
+                <SecondaryButton isWide><RemoveIcon/> Delete company</SecondaryButton>
                 <InstitutionPictures>
                     <Swiper
                         className="mySwiper"
@@ -56,7 +58,7 @@ const EditCompany = () => {
                         }
                     </Swiper>
                 </InstitutionPictures>
-                <PrimaryWideButton>+Photo</PrimaryWideButton>
+                <SecondaryButton isWide>+Photo</SecondaryButton>
                 <Divider/>
                 <ContentContainer>
                     <Input
@@ -91,7 +93,7 @@ const EditCompany = () => {
     return (
         <Wrapper>
             {renderCompanyDetails()}
-            <PrimaryWideButton>Save changes</PrimaryWideButton>
+            <PrimaryButton isWide>Save changes</PrimaryButton>
         </Wrapper>
     );
 };

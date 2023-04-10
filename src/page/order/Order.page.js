@@ -2,7 +2,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 
 import {Wrapper, AmountInfo, Content, FixedContent} from './Order.page.style';
-import {NotificationTDB, OrderHistoryRow, Price, PrimaryWideButton} from "../../components";
+import {NotificationTDB, OrderHistoryRow, Price, PrimaryButton} from "../../components";
 
 import {ReactComponent as EmptyBasketIcon} from "../../icons/empty_basket.svg";
 
@@ -41,9 +41,9 @@ const OrderPage = () => {
 
     const orderButton =
         isCustomerLogged
-            ? <PrimaryWideButton onClick={placeOrder}>Place Order</PrimaryWideButton>
+            ? <PrimaryButton onClick={placeOrder}>Place Order</PrimaryButton>
             : <Link to={`${ROUTER.SING_IN.URL}?backUrl=${ROUTER.ORDER_REVIEW.URL}`}>
-                <PrimaryWideButton>Login to place Order</PrimaryWideButton>
+                <PrimaryButton>Login to place Order</PrimaryButton>
             </Link>
 
     const getOrderItems = () => (
