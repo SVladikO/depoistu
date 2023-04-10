@@ -1,9 +1,8 @@
-import ResultPage from "../page/result/Result.page";
 import SignInPage from "../page/sing-in/SignIn.page";
 import SingUpPage from "../page/sing-up/SingUp.page";
 import SettingPage from "../page/setting/Setting.page";
-import SubCategoryPage from "../page/sub-category/SubCategory.page";
 import EditMenuPage from "../page/edit-menu/EditMenu.page";
+import EditMenuItemPage from "../page/edit-menu-item/EditMenuItem.page";
 import EditCompanyPage from "../page/edit-company/EditCompany.page";
 // TODO: Hidden second version
 // import OrderPage from "../page/order/Order.page";
@@ -12,6 +11,7 @@ import EditCompanyPage from "../page/edit-company/EditCompany.page";
 // import {HistoryTabBar} from "../components";
 import ChangePasswordPage from "../page/change-password/ChangePassword.page";
 import SearchPage from "../page/search/Search.page";
+import SearchDetailsPage from "../page/search-details/SearchDetails.page";
 
 import {ReactComponent as BakeryIcon} from "../icons/category/bakery.svg";
 import {ReactComponent as BeverageIcon} from "../icons/category/beverage.svg";
@@ -27,18 +27,24 @@ import EditCompanyListPage from "../page/edit-company-list/EditCompanyList.page"
 export const DEV_ROUTER = {
     COMPONENTS: 'components',
     PAGES: 'pages',
+    ADMIN: 'admin',
 };
 
 export const BE_DOMAIN = 'https://pizza-mobile-api.herokuapp.com';
 // export const BE_DOMAIN = 'http://localhost:5000';
 
 export const BE_API = {
+    //TODO candidate to delete
+    // GET_ALL_CATEGORIES_ID_FOR_COMPANY: companyId => `${BE_DOMAIN}/company/${companyId}/category`,
+    //TODO candidate to delete
+    // GET_ALL_MENU_FOR_COMPANY_FOR_CATEGORY: (companyId, categoryId) => `${BE_DOMAIN}/company/${companyId}/menu_item/${categoryId}`,
+
     SING_IN: () => `${BE_DOMAIN}/sign-in`,
-    PLACE_ORDER: () => `${BE_DOMAIN}/place-order`,
-    GET_ALL_CATEGORIES_ID_FOR_COMPANY: companyId => `${BE_DOMAIN}/company/${companyId}/category`,
-    GET_ALL_MENU_FOR_COMPANY_FOR_CATEGORY: (companyId, categoryId) => `${BE_DOMAIN}/company/${companyId}/menu_item/${categoryId}`,
+    // PLACE_ORDER: () => `${BE_DOMAIN}/place-order`,
+
     GET_COMPANIES_BY_CUSTOMER_ID: customer_id => `${BE_DOMAIN}/companies/by/customer/${customer_id}`,
-    GET_COMPANY_BY_ID: companyId => `${BE_DOMAIN}/companies/by/id/${companyId}`,
+    GET_COMPANIES_BY_CITY: city => `${BE_DOMAIN}/companies/by/city/${city}`,
+    GET_COMPANY_BY_COMPANY_ID: companyId => `${BE_DOMAIN}/companies/by/id/${companyId}`,
     GET_MENU_ITEMS_BY_COMPANY_ID: company_id => `${BE_DOMAIN}/menu/${company_id}`
 };
 
@@ -56,40 +62,38 @@ export const CATEGORY_MAPPER = {
     11: { id: 11, title: resolveTranslation("CATEGORIES.HOT_DRINKS"), icon: BeverageIcon, measurement: 'ml'},
 }
 
-const URL = {
+export const URL = {
     SEARCH: '/',
+    SEARCH_DETAILS: '/',
     MENU: '/menu',
-    SEARCH1: '/result',
-    RESULT: '/result',
     SING_IN: '/sign-in',
     SING_UP: '/sing-up',
     SETTING: '/setting',
     CHANGE_PASSWORD: '/change-password',
 
-    EDIT_COMPANY_LIST: '/edit-company',
+    CUSTOMER_COMPANIES: '/customer-companies',
     EDIT_COMPANY: '/edit-company',
     EDIT_MENU: '/edit-menu',
+    EDIT_MENU_ITEM: '/edit-menu-item',
 };
 
 export const ROUTER =  {
-    // CATEGORY: '/',TITLE: 'Category',page: CategoryPage, showBottomMenu: true},
     // ORDER_REVIEW: {URL: '/order',  TITLE: 'Order review', page: OrderPage, showBottomMenu: true},
     // ORDER_HISTORY: {URL: '/history',  TITLE: 'Order History', page: OrderHistoryPage, subHeader: HistoryTabBar, showBottomMenu: true},
     // Favorite: {URL: '/Favorite',  TITLE: 'Favorite Cart', page: () => {}},
     // Profile: {URL: '/Profile',  TITLE: 'Profile', page: () => {}},
     // USER_ACCOUNT = {URL: '/user_account',  TITLE: 'USER_ACCOUNT', page: () => {}, showBottomMenu: true, BACK_URL: ROUTER.SETTING.URL};
-    MENU :                  {URL: URL.MENU,                     PARAMS: '/:categoryId', getTitle: 'Menu', page: SubCategoryPage, showBottomMenu: true, },
-    SEARCH:                 {URL: URL.SEARCH,                                           TITLE: resolveTranslation("PAGE.SEARCH.TOP_TITLE"), page: SearchPage, showBottomMenu: true},
-    SEARCH1:                {URL: URL.SEARCH1,                                          TITLE: 'Result', page: ResultPage, showBottomMenu: true},
-    SETTING:                {URL: URL.SETTING,                                          TITLE: resolveTranslation("PAGE.SETTINGS.TOP_TITLE"), page: SettingPage, showBottomMenu: true},
-    SING_UP:                {URL: URL.SING_UP,                                          TITLE: resolveTranslation("PAGE.SING_UP.TOP_TITLE"), page: SingUpPage, showBottomMenu: true},
-    SING_IN:                {URL: URL.SING_IN,                                          TITLE: resolveTranslation("PAGE.SING_IN.TOP_TITLE"), page: SignInPage, showBottomMenu: true },
-    RESULT:                 {URL: URL.RESULT,                   PARAMS: '/:companyId',  TITLE: 'Result',  page: ResultPage, showBottomMenu: true},
-    CHANGE_PASSWORD :       {URL: URL.CHANGE_PASSWORD,                                  TITLE: resolveTranslation("PAGE.CHANGE_PASSWORD.TOP_TITLE"),page: ChangePasswordPage, showBottomMenu: true, BACK_URL: URL.SING_IN},
+    SEARCH:                 {URL: URL.SEARCH,                                           TITLE: resolveTranslation("PAGE.SEARCH.TOP_TITLE"),         page: SearchPage,         showBottomMenu: true},
+    SEARCH_DETAILS:         {URL: URL.SEARCH_DETAILS,           PARAMS: '/:companyId',  TITLE: 'Company details',                                        page: SearchDetailsPage, showBottomMenu: true,    BACK_URL: URL.SEARCH},
+    SETTING:                {URL: URL.SETTING,                                          TITLE: resolveTranslation("PAGE.SETTINGS.TOP_TITLE"),       page: SettingPage,        showBottomMenu: true},
+    SING_UP:                {URL: URL.SING_UP,                                          TITLE: resolveTranslation("PAGE.SING_UP.TOP_TITLE"),        page: SingUpPage,         showBottomMenu: true},
+    SING_IN:                {URL: URL.SING_IN,                                          TITLE: resolveTranslation("PAGE.SING_IN.TOP_TITLE"),        page: SignInPage,         showBottomMenu: true },
+    CHANGE_PASSWORD :       {URL: URL.CHANGE_PASSWORD,                                  TITLE: resolveTranslation("PAGE.CHANGE_PASSWORD.TOP_TITLE"),page: ChangePasswordPage, showBottomMenu: true,    BACK_URL: URL.SING_IN},
 
-    EDIT_COMPANY_LIST:      {URL: URL.EDIT_COMPANY_LIST,                                TITLE: 'Edit companies', page: EditCompanyListPage, showBottomMenu:true, BACK_URL: URL.SETTING},
-    EDIT_COMPANY:           {URL: URL.EDIT_COMPANY,             PARAMS: '/:companyId',  TITLE: 'Edit company', page: EditCompanyPage, showBottomMenu:true, BACK_URL: URL.EDIT_COMPANY_LIST},
-    EDIT_MENU :             {URL: URL.EDIT_MENU,                PARAMS: '/:companyId',  TITLE: 'Edit menu',   page: EditMenuPage, showBottomMenu: true,  BACK_URL: URL.EDIT_COMPANY_LIST},
+    EDIT_COMPANY_LIST:      {URL: URL.CUSTOMER_COMPANIES,                                TITLE: 'Your companies',                                        page: EditCompanyListPage, showBottomMenu:true,    BACK_URL: URL.SETTING},
+    EDIT_COMPANY:           {URL: URL.EDIT_COMPANY,             PARAMS: '/:companyId',  TITLE: 'Edit company',                                           page: EditCompanyPage,     showBottomMenu:true,    BACK_URL: URL.CUSTOMER_COMPANIES},
+    EDIT_MENU :             {URL: URL.EDIT_MENU,                PARAMS: '/:companyId',  TITLE: 'Edit menu',                                              page: EditMenuPage,        showBottomMenu: true,   BACK_URL: URL.CUSTOMER_COMPANIES},
+    EDIT_MENU_ITEM :        {URL: URL.EDIT_MENU_ITEM,                                   TITLE: 'Edit menu item',                                         page: EditMenuItemPage,    showBottomMenu: true,   BACK_URL: URL.EDIT_MENU},
 };
 
 export const ROUTERS = Object.keys(ROUTER).map(key => ROUTER[key]);

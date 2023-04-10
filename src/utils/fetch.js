@@ -10,8 +10,8 @@ export const fetchData = async (url, body) => {
     console.log('Request url: ', url, body);
 
     const response = body
-        ? await fetch(url, getOptions(body))
-        : await fetch(url);
+        ? await fetch(decodeURIComponent(url), getOptions(body))
+        : await fetch(decodeURIComponent(url));
 
     if (response.ok) {
         return response.json();

@@ -1,44 +1,54 @@
-import {Wrapper,EditBar,EditButton} from "./EditCompanyList.style";
-import {Institution} from "../../components";
-import {PrimaryWideButton} from "../../components";
-import {ReactComponent as DeleteIcon} from "../../icons/white_busket.svg";
-import {ReactComponent as EditIcon} from "../../icons/edit.svg";
 import React, {useState} from "react";
-import {LocalStorage} from "../../utils/utils";
-import {useLocalStorageFetch} from "../../utils/hook";
-import {BE_API, ROUTER} from "../../utils/config";
 import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {EditBar} from "./EditCompanyList.style";
+
+import {Company, Notification, PrimaryButton} from "../../components";
+import {ReactComponent as EditIcon} from "../../icons/edit.svg";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/utils";
+import {BE_API, ROUTER} from "../../utils/config";
+import {useLocalStorageFetch} from "../../utils/hook";
 
 const EditCompanyListPage = () => {
-    const [customer] = useState(LocalStorage.getGuest());
+    const isLoading = useSelector(state => state.request.value.isLoading);
+
+    const [requestError, setRequestError] = useState('');
+    const [customer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
+
     const [customerCompanies] = useLocalStorageFetch(
-        'customerCompanies',
+        LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES,
         [],
-        BE_API.GET_COMPANIES_BY_CUSTOMER_ID(customer.ID)
+        BE_API.GET_COMPANIES_BY_CUSTOMER_ID(customer?.ID),
+        setRequestError
     );
 
-    console.log(customerCompanies);
+    if (isLoading) {
+        return <Notification.Loading/>;
+    }
+
+    if (requestError) {
+        return <Notification.Error message={requestError}/>;
+    }
 
     return (
-        <Wrapper>
+        <>
             {customerCompanies.map(
                 company =>
                     <div key={company.ID}>
-                        <Institution company={company}/>
+                        <Company company={company}/>
                         <EditBar>
-                            <EditButton><DeleteIcon/></EditButton>
                             <Link to={ROUTER.EDIT_COMPANY.URL + '/' + company.ID}>
-                                <PrimaryWideButton><EditIcon/><span>Company</span></PrimaryWideButton>
+                                <PrimaryButton><EditIcon/>Company</PrimaryButton>
                             </Link>
                             <Link to={ROUTER.EDIT_MENU.URL + '/' + company.ID}>
-                                <PrimaryWideButton><EditIcon/><span>Menu</span></PrimaryWideButton>
+                                <PrimaryButton><EditIcon/>Menu</PrimaryButton>
                             </Link>
                         </EditBar>
 
                     </div>)
             }
-            <PrimaryWideButton>+ Add new company</PrimaryWideButton>
-        < /Wrapper>
+            <PrimaryButton>+ Add new company</PrimaryButton>
+        < />
     )
 };
 

@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import {COLOR, BORDER_RADIUS} from "../../utils/theme";
 import {hexToRgbA} from "../../utils/utils";
-import {PrimaryWideButton} from "../../components";
+import {PrimaryButton} from "../../components";
 
 export const Wrapper = styled.div`
-    padding: 18px 10px 10px 10px;
+   
 `;
 
 export const InstitutionPictures = styled.div`
@@ -87,7 +87,7 @@ export const EditButton = styled.button`
   border-radius: ${BORDER_RADIUS.FOURTH};
 `;
 
-export const WideButton = styled(PrimaryWideButton)`
+export const WideButton = styled(PrimaryButton)`
   display: flex;
   justify-content: center;
   align-items: center;

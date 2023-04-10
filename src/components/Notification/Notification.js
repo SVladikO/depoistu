@@ -1,5 +1,3 @@
-import {useSelector} from "react-redux";
-
 import {Text} from "./Notification.style";
 
 import {ReactComponent as LoadingIcon} from "../../icons/spinner.svg";
@@ -19,32 +17,18 @@ const Success = () => {
     )
 }
 
-export const LoadingContent = () => (
-    <ContentContainer>
-        <LoadingIcon className="animated_svg"/>
-        <Text>{resolveTranslation("NOTIFICATION.LOADING")}</Text>
-    </ContentContainer>
-);
+
 
 const Loading = () => {
-    const isLoading = useSelector(state => state.request.value.isLoading);
-
-    if (!isLoading) {
-        return;
-    }
-
-    return <LoadingContent />
+    return (
+        <ContentContainer>
+            <LoadingIcon className="animated_svg"/>
+            <Text>{resolveTranslation("NOTIFICATION.LOADING")}</Text>
+        </ContentContainer>
+    )
 };
 
-const Error = () => {
-    const message = useSelector(state => state.error.value);
-    const urlPage = useSelector(state => state.error.whereErrorHappenedUrl);
-
-
-    if (!message || urlPage !== window.location.href) {
-        return;
-    }
-
+const Error = ({message}) => {
     return (
         <ContentContainer>
             <ErrorIcon/>

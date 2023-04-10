@@ -2,9 +2,9 @@ import translations from "./translations";
 import translation from "./translation.json";
 
 export const checkAccess = () => {
-    const isTrustedUser = localStorage.getItem('trastedUser');
+    const isTrustedCustomer = LocalStorage.get(LOCAL_STORAGE_KEY.IS_TRUSTED_CUSTOMER);
 
-    if(isTrustedUser) return;
+    if(isTrustedCustomer) return;
 
     const secretKey = "****";
     let test = prompt("Entry secret key");
@@ -12,7 +12,7 @@ export const checkAccess = () => {
     if (test !== secretKey) {
         return checkAccess();
     }
-    localStorage.setItem('trastedUser', true);
+    LocalStorage.set(LOCAL_STORAGE_KEY.IS_TRUSTED_CUSTOMER, true);
 }
 
 export function hexToRgbA(hex, a=1){
@@ -29,9 +29,9 @@ export function hexToRgbA(hex, a=1){
 }
 
 export const securityCheck = () => {
-    const isTrustedUser = localStorage.getItem('trastedUser');
+    const isTrustedCustomer = LocalStorage.get(LOCAL_STORAGE_KEY.IS_TRUSTED_CUSTOMER);
 
-    if(isTrustedUser) return;
+    if(isTrustedCustomer) return;
 
     const secretKey = "****";
     let test = prompt("Entry secret key");
@@ -39,14 +39,23 @@ export const securityCheck = () => {
     if (test !== secretKey) {
         return securityCheck();
     }
-    localStorage.setItem('trastedUser', true);
+    LocalStorage.set(LOCAL_STORAGE_KEY.IS_TRUSTED_CUSTOMER, true);
 }
 
 export const setBrowserTabTitle = () => document.title = translations.company_name;
 
+export const LOCAL_STORAGE_KEY = {
+    COMPANY_SEARCH_RESULT: 'COMPANY_SEARCH_RESULT',
+    CUSTOMER: 'CUSTOMER',
+    IS_TRUSTED_CUSTOMER: 'IS_TRUSTED_CUSTOMER',
+    CUSTOMER_COMPANIES: 'CUSTOMER_COMPANIES',
+    COMPANY_CANDIDATE_TO_EDIT: 'COMPANY_CANDIDATE_TO_EDIT',
+}
+
 export const LocalStorage = {
-    getGuest: () => JSON.parse(localStorage.getItem('guest')),
-    removeGuest: () => localStorage.removeItem('guest'),
+    set: (storageKey, value) => localStorage.setItem(storageKey, JSON.stringify(value)),
+    get: storageKey => JSON.parse(localStorage.getItem(storageKey)),
+    remove: storageKey => localStorage.removeItem(storageKey),
 }
 export const getParam = (key) => {
     const urlParams = new URLSearchParams(window.location.search);
