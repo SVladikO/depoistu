@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import {COLOR} from '../../utils/theme';
-import {PrimaryWideButton} from '../../components';
+import {PrimaryButton} from '../../components';
 export const Wrapper = styled.div`
   padding: 0 0 18px 0;
   display: flex;
@@ -37,6 +37,6 @@ export const AmountInfo = styled.div`
   text-align: center;
   margin-bottom: 19px;
 `;
-export const Button = styled(PrimaryWideButton)`
+export const Button = styled(PrimaryButton)`
   font-weight: 700;
 `;

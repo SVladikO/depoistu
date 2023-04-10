@@ -8,7 +8,7 @@ import {
     ContentContainer,
     EditMenuRow,
     Notification,
-    PrimaryWideButton,
+    PrimaryButton,
     RowSplitter
 } from "../../components";
 import {BE_API} from "../../utils/config";
@@ -44,7 +44,7 @@ const EditMenu = () => {
                 <ContentContainer>
                     {selectedMenuItems.map(item => <EditMenuRow title={item.NAME} key={item.ID}/>)}
                 </ContentContainer>
-                <PrimaryWideButton>Add menu item</PrimaryWideButton>
+                <PrimaryButton isWide>Add menu item</PrimaryButton>
             </Wrapper>
         </>
     )

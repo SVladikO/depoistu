@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {EditBar} from "./EditCompanyList.style";
 
-import {Company, Notification, PrimaryWideButton, PrimaryWithIconButton} from "../../components";
+import {Company, Notification, PrimaryButton} from "../../components";
 import {ReactComponent as EditIcon} from "../../icons/edit.svg";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/utils";
 import {BE_API, ROUTER} from "../../utils/config";
@@ -30,16 +30,16 @@ const EditCompanyListPage = () => {
                         <Company company={company}/>
                         <EditBar>
                             <Link to={ROUTER.EDIT_COMPANY.URL + '/' + company.ID}>
-                                <PrimaryWithIconButton><EditIcon/>Company</PrimaryWithIconButton>
+                                <PrimaryButton><EditIcon/>Company</PrimaryButton>
                             </Link>
                             <Link to={ROUTER.EDIT_MENU.URL + '/' + company.ID}>
-                                <PrimaryWithIconButton><EditIcon/>Menu</PrimaryWithIconButton>
+                                <PrimaryButton><EditIcon/>Menu</PrimaryButton>
                             </Link>
                         </EditBar>
 
                     </div>)
             }
-            <PrimaryWideButton>+ Add new company</PrimaryWideButton>
+            <PrimaryButton>+ Add new company</PrimaryButton>
         < />
     )
 };
