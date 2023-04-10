@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-
 import {Wrapper} from "./EditMenu.style";
 import {fetchData} from "../../utils/fetch";
 import {
@@ -18,13 +17,13 @@ import {startLoading, stopLoading} from "../../features/request/requestSlice";
 const EditMenu = () => {
     const [menuItems, setMenuItems] = useState([]);
     const [requestError, setRequestError] = useState('');
-    const [selectedCategory, setSelectedCategory] = useState(menuItems[0]?.CATEGORY_ID)
+    const [selectedCategoryId, setSelectedCategoryId] = useState(menuItems[0]?.CATEGORY_ID)
 
     const isLoading = useSelector(state => state.request.value.isLoading);
 
     const dispatch = useDispatch();
     const {companyId} = useParams();
-    const selectedMenuItems = selectedCategory && menuItems.filter(mi => mi.CATEGORY_ID === selectedCategory) || []
+    const selectedMenuItems = selectedCategoryId && menuItems.filter(mi => mi.CATEGORY_ID === selectedCategoryId) || []
 
     const url = BE_API.GET_MENU_ITEMS_BY_COMPANY_ID(companyId);
 
@@ -34,7 +33,7 @@ const EditMenu = () => {
         companyId && fetchData(url)
             .then(res => {
                 setMenuItems(res);
-                setSelectedCategory(res[0]?.CATEGORY_ID)
+                setSelectedCategoryId(res[0]?.CATEGORY_ID)
                 setTimeout(() => dispatch(stopLoading()), 1000);
             }).catch(e => {
                 setTimeout(() => dispatch(stopLoading()), 1000);
@@ -54,8 +53,15 @@ const EditMenu = () => {
     return (
         <>
             <Wrapper>
-                <CategoryMenuRow menuItems={menuItems} changeCategory={id => setSelectedCategory(id)}/>
-                <RowSplitter height={'15px'} />
+                {menuItems &&
+                    <CategoryMenuRow
+                        showMenuItemAmount
+                        menuItems={menuItems}
+                        selectedCategoryId={selectedCategoryId}
+                        changeCategory={id => setSelectedCategoryId(id)}
+                    />
+                }
+                <RowSplitter height={'15px'}/>
                 <ContentContainer>
                     {selectedMenuItems.map(item => <EditMenuRow title={item.NAME} key={item.ID}/>)}
                 </ContentContainer>
