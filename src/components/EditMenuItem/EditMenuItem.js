@@ -9,6 +9,7 @@ import {
 
 import {ReactComponent as RemoveIcon} from "../../icons/remove_icon.svg";
 import {Input} from "../Input/Input";
+import {Label} from "../../components";
 import {ContentContainer} from "../ContentContainer/ContentContainer.style";
 import {SecondaryButton} from "../Button/Button.style";
 
@@ -41,10 +42,15 @@ function EditMenuItem(props) {
                         <EditButton>Add</EditButton>
                     </ButtonSection>
                 </MenuItemPhoto>
+                <Label>Name</Label>
                 <Input withCleaner value={name} placeholder='Name'/>
+                <Label>Price</Label>
                 <Input withCleaner value={price} placeholder='Price'/>
+                <Label>Description</Label>
                 <Input withCleaner value={description} placeholder='Description'/>
+                <Label>Cooking Time</Label>
                 <Input withCleaner value={cookingTime} placeholder='Cooking time'/>
+                <Label>Meal Size</Label>
                 <Input withCleaner value={size} placeholder='Meal size'/>
             </ContentContainer>
             <WideButton>Save</WideButton>

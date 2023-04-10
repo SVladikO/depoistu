@@ -12,7 +12,9 @@ import {
     // PrimaryWithIconButton,
     // SecondaryWithIconButton,
     // Flex,
-    ContentContainer, NavigationLabelHref,
+    ContentContainer,
+    Label,
+    NavigationLabelHref,
     Notification,
 } from "../../components";
 
@@ -71,7 +73,9 @@ const SignInPage = () => {
         {/*</Content>*/}
         {requestError && <Notification.Error message={requestError} />}
         <ContentContainer>
+            <Label>Email</Label>
             <Input Icon={MailIcon} value={email} onChange={e => setEmail(e.target.value)} placeholder={`Enter email`} />
+            <Label>Password</Label>
             <Input Icon={LockIcon} value={password} onChange={e => setPassword(e.target.value)} type="password" placeholder={`Enter password`} />
             <Link to={ROUTER.CHANGE_PASSWORD.URL}>{resolveTranslation("PAGE.SING_IN.FORGOT_PASSWORD")}</Link>
             {/*<Flex flexDirection='column'>*/}

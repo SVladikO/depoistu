@@ -6,7 +6,7 @@ import {Swiper, SwiperSlide} from "swiper/react";
 
 import {Divider, InstitutionBasketButton, InstitutionPictures, Wrapper,} from "./EditCompany.style";
 
-import {ContentContainer, FromToTime, Input, PrimaryButton, SecondaryButton} from "../../components";
+import {ContentContainer, FromToTime, Input, Label, PrimaryButton, SecondaryButton} from "../../components";
 import {ReactComponent as DeleteBasketIcon} from "../../icons/delete_basket.svg";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/utils";
 import {ReactComponent as RemoveIcon} from "../../icons/remove_icon.svg";
@@ -61,6 +61,7 @@ const EditCompany = () => {
                 <SecondaryButton isWide>+Photo</SecondaryButton>
                 <Divider/>
                 <ContentContainer>
+                    <Label>Company Name</Label>
                     <Input
                         withCleaner
                         value={name}
@@ -68,6 +69,7 @@ const EditCompany = () => {
                         changeHandler={cleanCityInput}
                         onChange={onCityInput}
                     />
+                    <Label>City</Label>
                     <Input
                         withCleaner
                         value={city}
@@ -75,6 +77,7 @@ const EditCompany = () => {
                         onChange={onCityInput}
                         changeHandler={cleanCityInput}
                     />
+                    <Label>Street</Label>
                     <Input
                         withCleaner
                         value={street}
@@ -82,7 +85,7 @@ const EditCompany = () => {
                         onChange={onStreetInput}
                         changeHandler={clearStreetInput}
                     />
-
+                    <Label>Work Schedule</Label>
                     {weekDays.map(day => <FromToTime key={day.id} id={day.id} weekDay={day.name} from={day.from} to={day.to} />)}
 
                 </ContentContainer>

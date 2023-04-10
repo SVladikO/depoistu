@@ -29,6 +29,7 @@ import
     EditMenuRow,
     Textarea,
     Company,
+    Label
 } from "../../components";
 
 import CatalogPage from "./Catalog.page";
@@ -62,6 +63,7 @@ const columns = [
         {title: 'SecondaryButton', component: <SecondaryButton><FacebookIcon/>facebook</SecondaryButton>},
         {title: 'SecondaryButton', component: <SecondaryButton>Cancel</SecondaryButton>},
         {title: 'SecondaryButton', component: <SecondaryButton>CANCEL</SecondaryButton>},
+        {title: 'Label', component: <Label>Change Password</Label>},
         {title: 'Input 1', component: <Input placeholder={`johndoe@mail.com`}/>},
         {title: 'Input 2', component: <Input Icon={MailIcon} placeholder={`johndoe@mail.com`}/>},
         {title: 'Input 3', component: <Input withSwitcher placeholder={`New password`}/>},
