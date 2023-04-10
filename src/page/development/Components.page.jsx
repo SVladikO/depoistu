@@ -84,10 +84,8 @@ const columns = [
                 STREET: 'Davidusk 15.',
             }}/>
         },
-        {
-            title: 'CategoryMenuRow',
-            component: <CategoryMenuRow menuItems={[{CATEGORY_ID: 1}, {CATEGORY_ID: 2}, {CATEGORY_ID: 3}]}/>
-        },
+        {title: 'CategoryMenuRow', component: <CategoryMenuRow menuItems={[{CATEGORY_ID: 1}, {CATEGORY_ID: 2}, {CATEGORY_ID: 3}]} />},
+        {title: 'CategoryMenuRow', component: <CategoryMenuRow showMenuItemAmount menuItems={[{CATEGORY_ID: 1}, {CATEGORY_ID: 2}, {CATEGORY_ID: 3}]} />},
         {
             title: 'MenuItem',
             component:

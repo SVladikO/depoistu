@@ -14,21 +14,26 @@ import {
 
 import {CategoryItem} from "../../components";
 
-const CategoryMenuRow = ({
-                             menuItems = [],
-                             changeCategory = () => {}
-                         }) => {
+const CategoryMenuRow = ({menuItems = [], showMenuItemAmount }) => {
     const categoryIds = [...new Set(menuItems.map(mi => mi.CATEGORY_ID))];
     const [selectedIndex, setSelectedIndex] = useState(0);
+    const CATEGORY_ITEM_AMOUNT = {};
+
+    categoryIds.forEach(categoryId => {
+        CATEGORY_ITEM_AMOUNT[categoryId] = menuItems.filter(mi => mi.CATEGORY_ID === categoryId).length;
+    });
 
     const categories = categoryIds
         .map(number => CATEGORY_MAPPER[number])
-        .map((category, index) => (
+        .map((category, i) => (
             <SwiperSlide key={category.id}>
-                <CategoryItem
-                    count={menuItems.filter(mi => mi.CATEGORY_ID === category.id).length}
-                    clickHandler={() => setSelectedIndex(index)} selected={selectedIndex === index}
-                    category={category}/>
+                <Link to="">
+                    <CategoryItem
+                        itemsAmountPerCategory = {showMenuItemAmount ? CATEGORY_ITEM_AMOUNT[category.id] : 0}
+                        clickHandler={() => setSelectedIndex(i)}
+                        isSelected={selectedIndex === i}
+                        category={category}/>
+                </Link>
             </SwiperSlide>
         ));
 

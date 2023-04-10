@@ -5,13 +5,12 @@ import {fetchData} from "../../utils/fetch";
 import {
     CategoryMenuRow,
     ContentContainer,
-    EditMenuItem,
     EditMenuRow,
     Notification,
     PrimaryButton,
     RowSplitter
 } from "../../components";
-import {BE_API,CATEGORY_MAPPER} from "../../utils/config";
+import {BE_API} from "../../utils/config";
 import {useDispatch, useSelector} from "react-redux";
 import {startLoading, stopLoading} from "../../features/request/requestSlice";
 
@@ -54,7 +53,11 @@ const EditMenu = () => {
     return (
         <>
             <Wrapper>
-                <CategoryMenuRow menuItems={menuItems} changeCategory={id => setSelectedCategory(id)}/>
+                <CategoryMenuRow
+                    showMenuItemAmount
+                    menuItems={menuItems}
+                    changeCategory={id => setSelectedCategory(id)}
+                />
                 <RowSplitter height={'15px'} />
                 <ContentContainer>
                     {selectedMenuItems.map(item => <EditMenuRow title={item.NAME} key={item.ID}/>)}
