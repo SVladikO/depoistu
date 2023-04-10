@@ -45,6 +45,7 @@ export const securityCheck = () => {
 export const setBrowserTabTitle = () => document.title = translations.company_name;
 
 export const LOCAL_STORAGE_KEY = {
+    COMPANY_SEARCH_RESULT: 'COMPANY_SEARCH_RESULT',
     CUSTOMER: 'CUSTOMER',
     IS_TRUSTED_CUSTOMER: 'IS_TRUSTED_CUSTOMER',
     CUSTOMER_COMPANIES: 'CUSTOMER_COMPANIES',

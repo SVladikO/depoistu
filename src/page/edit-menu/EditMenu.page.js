@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 
 import {Wrapper} from "./EditMenu.style";
@@ -12,17 +12,21 @@ import {
     RowSplitter
 } from "../../components";
 import {BE_API} from "../../utils/config";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {startLoading, stopLoading} from "../../features/request/requestSlice";
 
 const EditMenu = () => {
     const [menuItems, setMenuItems] = useState([]);
+    const [requestError, setRequestError] = useState('');
     const [selectedCategory, setSelectedCategory] = useState(menuItems[0]?.CATEGORY_ID)
+
+    const isLoading = useSelector(state => state.request.value.isLoading);
+
+    const dispatch = useDispatch();
+    const {companyId} = useParams();
     const selectedMenuItems = selectedCategory && menuItems.filter(mi => mi.CATEGORY_ID === selectedCategory) || []
 
-    const {companyId} = useParams();
     const url = BE_API.GET_MENU_ITEMS_BY_COMPANY_ID(companyId);
-    const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(startLoading());
@@ -31,13 +35,24 @@ const EditMenu = () => {
             .then(res => {
                 setMenuItems(res);
                 setSelectedCategory(res[0]?.CATEGORY_ID)
-                dispatch(stopLoading());
+                setTimeout(() => dispatch(stopLoading()), 1000);
+            }).catch(e => {
+                setTimeout(() => dispatch(stopLoading()), 1000);
+                setRequestError(e.message)
             })
+
     }, [url])
+
+    if (isLoading) {
+        return <Notification.Loading/>;
+    }
+
+    if (requestError) {
+        return <Notification.Error message={requestError}/>;
+    }
 
     return (
         <>
-            <Notification.Loading/>
             <Wrapper>
                 <CategoryMenuRow menuItems={menuItems} changeCategory={id => setSelectedCategory(id)}/>
                 <RowSplitter height={'15px'} />
