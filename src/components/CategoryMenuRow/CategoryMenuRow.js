@@ -6,13 +6,10 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import {CATEGORY_MAPPER} from '../../utils/config';
-import {
-    Content,
-    Flex
-} from "./CategoryMenuRow.style";
+import {Content, Flex} from "./CategoryMenuRow.style";
 
 import {CategoryItem} from "../../components";
+import {CATEGORY_MAPPER} from '../../utils/config';
 
 const CategoryMenuRow = ({menuItems = [], showMenuItemAmount }) => {
     const categoryIds = [...new Set(menuItems.map(mi => mi.CATEGORY_ID))];
