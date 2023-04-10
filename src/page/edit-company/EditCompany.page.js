@@ -96,7 +96,7 @@ const EditCompany = () => {
                         onChange={onStreetInput}
                         changeHandler={clearStreetInput}
                     />
-
+                    <Label>Work Schedule</Label>
                     {weekDays.map(day => <FromToTime key={day.id} id={day.id} weekDay={day.name} from={day.from} to={day.to} />)}
 
                 </ContentContainer>
