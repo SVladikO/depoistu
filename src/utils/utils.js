@@ -66,16 +66,5 @@ export const getParam = (key) => {
 export const getRegions = cities => Object.keys(cities);
 export const resolveTranslation = key => translation[key]["ua"];
 
-export function schedule(str){
 
-    let weekDayNames = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"];
-    let scheduleArray =  str?.replace(/\s/g, '').split(',');
-    let result = {};
-    scheduleArray.forEach((dayName, i) => {
-        if(scheduleArray[i]){
-            result[scheduleArray[i]] = (result[scheduleArray[i]] ? result[scheduleArray[i]] + ', ' : '') + weekDayNames[i];
-        }
-    })
-    return result;
-}
 

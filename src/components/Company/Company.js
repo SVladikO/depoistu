@@ -1,35 +1,18 @@
 import React from 'react';
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation } from "swiper";
-import {schedule} from "../../utils/utils";
+import {Pagination, Navigation} from "swiper";
+import {Swiper, SwiperSlide} from "swiper/react";
+
 import "swiper/css";
 import "swiper/css/pagination";
-import {Wrapper,ImageSection, Name, Address, Content, CompanyInfo, Schedule} from "./Company.style";
+
+import {Wrapper, ImageSection, Name, Address, Content, CompanyInfo, Schedule} from "./Company.style";
 
 const Company = (props) => {
 
     if (!props.company) {
-        return ;
+        return;
     }
     const {PHOTOS, NAME, CITY, STREET, SCHEDULE} = props.company;
-
-    function renderSchedule() {
-        if (!SCHEDULE || !SCHEDULE.length) {
-            return
-        }
-        const obj = schedule(SCHEDULE);
-        if(!Object.keys(obj).length) {
-            return ;
-        }
-        return Object.keys(obj)?.map((key, i) => {
-            return (
-                <div key={i}>
-                    <div>{obj[key]}</div>
-                    <div>{key}</div>
-                </div>
-            )
-        })
-    }
 
     return (
         <Wrapper>
@@ -38,9 +21,10 @@ const Company = (props) => {
                     modules={[Navigation, Pagination]}
                     slidesPerView={1}
                     navigation
-                    pagination={{ clickable: true }}
+                    pagination={{clickable: true}}
                 >
-                    {PHOTOS && PHOTOS.split(', ').map((src,i) => <SwiperSlide key={i}><img src={src} alt="#"/></SwiperSlide>)}
+                    {PHOTOS && PHOTOS.split(', ').map((src, i) => <SwiperSlide key={i}><img src={src}
+                                                                                            alt="#"/></SwiperSlide>)}
                 </Swiper>
             </ImageSection>
             <Content>
@@ -49,12 +33,48 @@ const Company = (props) => {
                     <Address>{CITY}, {STREET}</Address>
                 </CompanyInfo>
                 <Schedule>
-                    {renderSchedule()}
+                    {renderSchedule(SCHEDULE)}
                 </Schedule>
             </Content>
         </Wrapper>
     );
 };
+
+function renderSchedule(SCHEDULE) {
+    if (!SCHEDULE || !SCHEDULE.length) {
+        return;
+    }
+
+    const scheduleAsObject = getScheduleAsObject(SCHEDULE);
+
+    if (!Object.keys(scheduleAsObject).length) {
+        return;
+    }
+
+    return Object.keys(scheduleAsObject)?.map((key, i) => {
+        return (
+            <div key={i}>
+                <div>{scheduleAsObject[key]}</div>
+                <div>{key}</div>
+            </div>
+        )
+    })
+}
+
+function getScheduleAsObject(schedule) {
+    const weekDayNames = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"];
+
+    return schedule
+        .split(',')
+        .map(el => el.trim())
+        .reduce((accum, fromTo, currentIndex) => {
+            if (fromTo) {
+                accum[fromTo] = (accum[fromTo] ? accum[fromTo] + ', ' : '') + weekDayNames[currentIndex];
+            }
+            return accum;
+        }, {});
+}
+
 
 export default Company;
 
