@@ -53,8 +53,7 @@ const routes = ROUTERS.map(r =>
         element={
             <MobileDevice>
                 <TopWrapper>
-                    <NavigationHeader backUrl={r.BACK_URL} title={r.TITLE} getTitle={r.getTitle}>
-                    {/*<NavigationHeader backUrl={isFunction(r.BACK_URL) ? r.BACK_URL() : r.BACK_URL} title={r.TITLE} getTitle={r.getTitle}>*/}
+                    <NavigationHeader backUrl={typeof r.BACK_URL === "function" ? r.BACK_URL() : r.BACK_URL} title={r.TITLE} getTitle={r.getTitle}>
                         {r.subHeader && <r.subHeader/>}
                     </NavigationHeader>
                 </TopWrapper>
