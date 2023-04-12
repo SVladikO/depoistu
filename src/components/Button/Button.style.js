@@ -3,70 +3,40 @@ import {BORDER_RADIUS, COLOR, GRADIENT} from "../../utils/theme";
 import {hexToRgbA} from "../../utils/utils";
 
 export const button = styled.button`
+  color: ${COLOR.ACCENT4};
+  width: ${p => p.isWide ? '100%' : 'auto'};
   height: 50px;
-  padding: 12px 10px;
-  min-width: 52px;
+  padding: 12px 24px;
   border: none;
   border-radius: ${BORDER_RADIUS.FOURTH};
-  color: ${COLOR.ACCENT4};
   font-size: 16px;
   line-height: 19px;
-`;
-
-export const SecondaryButton = styled(button)`
-  background: ${hexToRgbA(COLOR.ACCENT3, 0.1)};
-  color: ${COLOR.ACCENT3};
-`;
-
-export const ThirdButton = styled(button)`
-  background: ${COLOR.PRIMARY};
-  font-weight: 700;
-  padding: 12px 24px;
-`;
-
-export const primary = styled(button)`
-  background-image: linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO});
-`;
-
-export const PrimaryWideButton = styled(primary)`
-  width: 100%;
-  color: ${COLOR.ACCENT4};
-`;
-
-export const PrimaryRoundedButton = styled(primary)`
-  border-radius: ${BORDER_RADIUS.FIRST};
-  width: 100%;
-`;
-
-export const withIcon = styled(button)`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 12px 24px;
-  height: 45px;
-  min-width: 132px;
 
   & > svg {
-    fill: ${COLOR.ACCENT4};
-    width: 12.8px;
-    height: 13.05px;
-    margin: 2px 12px 0 0;
+    width: 12px;
+    height: 12px;
+    margin: ${p => p.isOnlyIcon ? 0 : '0 10px 0 0'};
+    display: block;
   }
 `;
 
-export const PrimaryWithIconButton = styled(withIcon)`
+export const PrimaryButton = styled(button)`
   background-image: linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO});
-  padding: 12px 24px;
-  
+
+  & > svg {
+    fill: ${COLOR.ACCENT4};
+  }
 `;
 
-export const SecondaryWithIconButton = styled(withIcon)`
+export const SecondaryButton = styled(button)`
   color: ${COLOR.ACCENT3};
   background: ${hexToRgbA(COLOR.ACCENT3, 0.1)};
 
   & > svg {
     fill: ${COLOR.ACCENT3};
-    display: block;
   }
 `;
 

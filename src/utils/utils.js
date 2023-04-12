@@ -2,7 +2,7 @@ import translations from "./translations";
 import translation from "./translation.json";
 
 export const checkAccess = () => {
-    const isTrustedCustomer = localStorage.getItem('trastedCustomer');
+    const isTrustedCustomer = LocalStorage.get(LOCAL_STORAGE_KEY.IS_TRUSTED_CUSTOMER);
 
     if(isTrustedCustomer) return;
 
@@ -12,7 +12,7 @@ export const checkAccess = () => {
     if (test !== secretKey) {
         return checkAccess();
     }
-    localStorage.setItem('trastedCustomer', true);
+    LocalStorage.set(LOCAL_STORAGE_KEY.IS_TRUSTED_CUSTOMER, true);
 }
 
 export function hexToRgbA(hex, a=1){
@@ -29,7 +29,7 @@ export function hexToRgbA(hex, a=1){
 }
 
 export const securityCheck = () => {
-    const isTrustedCustomer = localStorage.getItem('trastedCustomer');
+    const isTrustedCustomer = LocalStorage.get(LOCAL_STORAGE_KEY.IS_TRUSTED_CUSTOMER);
 
     if(isTrustedCustomer) return;
 
@@ -39,25 +39,37 @@ export const securityCheck = () => {
     if (test !== secretKey) {
         return securityCheck();
     }
-    localStorage.setItem('trastedCustomer', true);
+    LocalStorage.set(LOCAL_STORAGE_KEY.IS_TRUSTED_CUSTOMER, true);
 }
 
 export const setBrowserTabTitle = () => document.title = translations.company_name;
 
 export const LOCAL_STORAGE_KEY = {
+    CUSTOMER: 'CUSTOMER',
+    CUSTOMER_COMPANIES: 'CUSTOMER_COMPANIES',
+    IS_TRUSTED_CUSTOMER: 'IS_TRUSTED_CUSTOMER',
+    COMPANY_SEARCH_RESULT: 'COMPANY_SEARCH_RESULT',
     COMPANY_CANDIDATE_TO_EDIT: 'COMPANY_CANDIDATE_TO_EDIT',
+    MENU_ITEM_CANDIDATE_TO_EDIT: 'MENU_ITEM_CANDIDATE_TO_EDIT',
 }
-
-const setToLocalStorage = (storageKey, value) => localStorage.setItem(storageKey, JSON.stringify(value));
-const getFromLocalStorage = storageKey => JSON.parse(localStorage.getItem(storageKey));
 
 export const LocalStorage = {
-    setCompanyCandidateToEdit:   value => setToLocalStorage(LOCAL_STORAGE_KEY.COMPANY_CANDIDATE_TO_EDIT, value),
-    getCompanyCandidateToEdit:   () => getFromLocalStorage(LOCAL_STORAGE_KEY.COMPANY_CANDIDATE_TO_EDIT),
-
-    getCustomer: () => JSON.parse(localStorage.getItem('customer')),
-    removeGuest: () => localStorage.removeItem('customer'),
+    set: (storageKey, value) => localStorage.setItem(storageKey, JSON.stringify(value)),
+    get: storageKey => JSON.parse(localStorage.getItem(storageKey)),
+    remove: storageKey => localStorage.removeItem(storageKey),
 }
+
+/**
+ *
+ * @param to Pathname
+ * @param callback Created for stopLoading. Run with delay to avoid jumping.
+ */
+export const redirect = (to, callback = () => {}) => {
+    const {host, protocol} = window.location;
+    window.location.replace(`${protocol}//${host}${to}`);
+    setTimeout(callback, 1000)
+}
+
 export const getParam = (key) => {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(key);

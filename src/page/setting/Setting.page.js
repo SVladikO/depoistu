@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 
-import {ROUTER} from '../../utils/config';
 
 import {ReactComponent as LockIcon} from '../../icons/lock.svg';
 // import {ReactComponent as OrderHistoryIcon} from '../../icons/order_history.svg';
@@ -27,10 +26,11 @@ import {
     OptionSettings, NotificationTDB,
 } from '../../components'
 
-import {LocalStorage, resolveTranslation} from "../../utils/utils";
+import {ROUTER} from '../../utils/config';
+import {LOCAL_STORAGE_KEY, LocalStorage, resolveTranslation} from "../../utils/utils";
 
 const SettingPage = () => {
-    const [customer, setCustomer] = useState(LocalStorage.getCustomer());
+    const [customer, setCustomer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
 
     if (!customer) {
         return (
@@ -44,7 +44,7 @@ const SettingPage = () => {
     }
 
     const logOut = () => {
-        LocalStorage.removeGuest();
+        LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER);
         setCustomer(undefined);
     }
 

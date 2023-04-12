@@ -6,7 +6,7 @@ import {ContentContainer} from "../ContentContainer/ContentContainer.style";
 import {RowSplitter} from "../index";
 
 import {hideIntroPopup} from "../../features/introPopup/introPopupSlice";
-import {PrimaryWideButton} from "../Button/Button.style";
+import {PrimaryButton} from "../Button/Button.style";
 
 const PopupIntro = () => {
     const isVisiblePopup = useSelector(state => state.introPopup.value.isVisible);
@@ -36,7 +36,7 @@ export const PopupIntroContent = ({close = () => {}}) => (
             свій заклад.
         </Text>
         <RowSplitter height={"15px"}/>
-        <PrimaryWideButton onClick={close}>Далі</PrimaryWideButton>
+        <PrimaryButton isWide onClick={close}>Далі</PrimaryButton>
     </ContentContainer>
 )
 

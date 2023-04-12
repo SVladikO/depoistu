@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link, useParams} from "react-router-dom";
+import {useParams, Link} from "react-router-dom";
 
 import {Wrapper, Title, NestedContent, MainContent} from "./NavigationHeader.style";
 
@@ -16,7 +16,7 @@ const NavigationHeader = (props) => {
     return (
             <Wrapper className='pm-NavigationHeader'>
                 <MainContent>
-                    {backUrl && <Link to={backUrl}><BackArrow /></Link>}
+                    {backUrl && <Link to={typeof backUrl === "function" ? backUrl() : backUrl} className='pma-back-link'><BackArrow /></Link>}
                     <Title>{_title}</Title>
                     {/*TODO: Hidden second version*/}
                     {/*<Link to={ROUTER.ORDER_REVIEW.URL}>*/}
