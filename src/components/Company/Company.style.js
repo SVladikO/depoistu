@@ -40,7 +40,7 @@ export const CompanyInfo = styled.div`
   justify-self: start;
 `;
 
-export const Schedule = styled.div`
+export const ScheduleWrapper = styled.div`
   text-align: right;
   justify-self: flex-end;
   color: ${COLOR.ACCENT1};
@@ -58,6 +58,11 @@ export const Name = styled.div`
   color: ${COLOR.ACCENT1};
 `;
 
+export const ScheduleContainer = styled.div`
+ & > * {
+   min-width: 50px;
+ }  
+`;
 export const Address = styled.div`
   font-weight: 400;
   font-size: 16px;
