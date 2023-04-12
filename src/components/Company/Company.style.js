@@ -2,6 +2,7 @@ import styled from "styled-components";
 import {COLOR,BORDER_RADIUS} from "../../utils/theme";
 
 export const Wrapper = styled.div`
+
   border-radius: ${BORDER_RADIUS.SECOND};
   height: auto;
   overflow: hidden;
@@ -31,6 +32,10 @@ export const ImageSection = styled.div`
   }
 `;
 export const Content = styled.div`
+  & > * {
+    width: 50%;
+    border: solid 1px red;
+  }
   display: flex;
   justify-content: space-between;
 `;
