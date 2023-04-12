@@ -48,6 +48,7 @@ export const Schedule = styled.div`
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
+  flex-wrap: nowrap;
 `;
 
 export const Name = styled.div`
