@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {useNavigate, useParams} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 
 import {Wrapper} from "./EditMenu.style";
 
@@ -75,9 +75,12 @@ const EditMenu = () => {
                 }
                 <RowSplitter height={'15px'}/>
                 <ContentContainer>
-                    {menuItemsPerCategory.map(item => <EditMenuRow title={item.NAME} key={item.ID} onEditClick={moveToEditMenuItem(item)} />)}
+                    {menuItemsPerCategory.map(item => <EditMenuRow title={item.NAME} key={item.ID}
+                                                                   onEditClick={moveToEditMenuItem(item)}/>)}
                 </ContentContainer>
-                <PrimaryButton isWide>Add menu item</PrimaryButton>
+                <Link to={URL.ADD_MENU_ITEM}>
+                    <PrimaryButton isWide>Add menu item</PrimaryButton>
+                </Link>
             </Wrapper>
         </>
     )

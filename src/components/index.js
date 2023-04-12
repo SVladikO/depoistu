@@ -6,7 +6,6 @@ import {
 import {Input, PInput, Textarea} from "./Input/Input";
 import NotificationTDB from "./NotificationTDB/NotificationTDB";
 import Price from "./Price/Price";
-import EditMenuItem from "./EditMenuItem/EditMenuItem";
 import Rating from "./Rating/Rating";
 import CategoryItem from "./CategoryItem/CategoryItem";
 import Notification from "./Notification/Notification";
@@ -50,7 +49,6 @@ export {
     Like,
     Checkbox,
     Rating,
-    EditMenuItem,
     CategoryMenuRow,
     NotificationTDB,
     RowSplitter,

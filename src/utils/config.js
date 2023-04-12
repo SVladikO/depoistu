@@ -23,6 +23,7 @@ import {ReactComponent as Sea_foodIcon} from "../icons/category/sea_food.svg";
 import {ReactComponent as VagetableIcon} from "../icons/category/vagetable.svg";
 import {LOCAL_STORAGE_KEY, LocalStorage, resolveTranslation} from "./utils";
 import CustomerCompaniesPage from "../page/customer-companies/CustomerCompanies.page";
+import AddMenuItemPage from "../page/add-menu-item/AddMenuItem.page";
 
 export const DEV_ROUTER = {
     COMPONENTS: 'components',
@@ -75,6 +76,7 @@ export const URL = {
     EDIT_COMPANY: '/edit-company',
     EDIT_MENU: '/edit-menu',
     EDIT_MENU_ITEM: '/edit-menu-item',
+    ADD_MENU_ITEM: '/add-menu-item',
 };
 
 export const ROUTER = {
@@ -150,6 +152,17 @@ export const ROUTER = {
         URL: URL.EDIT_MENU_ITEM,
         TITLE: 'Edit menu item',
         page: EditMenuItemPage,
+        showBottomMenu: true,
+        BACK_URL: () => {
+            const COMPANY_ID = LocalStorage.get(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT)?.COMPANY_ID;
+            return `${URL.EDIT_MENU}/${COMPANY_ID}`;
+        }
+    },
+
+    ADD_MENU_ITEM: {
+        URL: URL.ADD_MENU_ITEM,
+        TITLE: 'Add menu item',
+        page: AddMenuItemPage,
         showBottomMenu: true,
         BACK_URL: () => {
             const COMPANY_ID = LocalStorage.get(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT)?.COMPANY_ID;
