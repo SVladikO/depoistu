@@ -34,7 +34,6 @@ export const ImageSection = styled.div`
 export const Content = styled.div`
   & > * {
     width: 50%;
-    border: solid 1px red;
   }
   display: flex;
   justify-content: space-between;
