@@ -14,16 +14,11 @@ import {ReactComponent as ShowEyeIcon} from "../../icons/show-eye.svg";
 import {ReactComponent as HideEyeIcon} from "../../icons/hide-eye.svg";
 import {ReactComponent as CloseIcon} from "../../icons/close.svg";
 
-export function Textarea({withCleaner, changeHandler}) {
+export function Textarea({withCleaner, value, changeHandler=() => {}, onClear = () => {}}) {
     return (
         <Wrapper>
-            <TextareaStyle>
-
-            </TextareaStyle>
-            {withCleaner &&
-                <CloseIconWrapper>
-                    <CloseIcon onClick={changeHandler}/>
-                </CloseIconWrapper>
+            <TextareaStyle value={value} onChange={changeHandler}/>
+            {withCleaner &&<CloseIconWrapper><CloseIcon onClick={onClear}/></CloseIconWrapper>
             }
         </Wrapper>
     );
@@ -38,6 +33,7 @@ export function Input({
                           },
                           withSwitcher = false,
                           withCleaner = false,
+                          onClear = () => {},
                           ...props
                       }) {
 
@@ -70,7 +66,7 @@ export function Input({
             }
             {withCleaner &&
                 <CloseIconWrapper {...props}>
-                    <CloseIcon onClick={changeHandler}/>
+                    <CloseIcon onClick={onClear}/>
                 </CloseIconWrapper>
             }
         </Wrapper>

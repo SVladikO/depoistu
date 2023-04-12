@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {useNavigate, useParams} from "react-router-dom";
+
 import {Wrapper} from "./EditMenu.style";
-import {fetchData} from "../../utils/fetch";
+
 import {
     CategoryMenuRow,
     ContentContainer,
@@ -10,20 +12,22 @@ import {
     PrimaryButton,
     RowSplitter
 } from "../../components";
-import {BE_API} from "../../utils/config";
-import {useDispatch, useSelector} from "react-redux";
+
 import {startLoading, stopLoading} from "../../features/request/requestSlice";
 
+import {fetchData} from "../../utils/fetch";
+import {BE_API, URL} from "../../utils/config";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/utils";
+
 const EditMenu = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const {companyId} = useParams();
+    const isLoading = useSelector(state => state.request.value.isLoading);
+
     const [menuItems, setMenuItems] = useState([]);
     const [requestError, setRequestError] = useState('');
     const [selectedCategoryId, setSelectedCategoryId] = useState(menuItems[0]?.CATEGORY_ID)
-
-    const isLoading = useSelector(state => state.request.value.isLoading);
-
-    const dispatch = useDispatch();
-    const {companyId} = useParams();
-    const selectedMenuItems = selectedCategoryId && menuItems.filter(mi => mi.CATEGORY_ID === selectedCategoryId) || []
 
     const url = BE_API.GET_MENU_ITEMS_BY_COMPANY_ID(companyId);
 
@@ -50,6 +54,14 @@ const EditMenu = () => {
         return <Notification.Error message={requestError}/>;
     }
 
+
+    const menuItemsPerCategory = selectedCategoryId && menuItems.filter(mi => mi.CATEGORY_ID === selectedCategoryId) || [];
+
+    const moveToEditMenuItem = menuItem => () => {
+        LocalStorage.set(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT, menuItem);
+        return navigate(URL.EDIT_MENU_ITEM)
+    }
+
     return (
         <>
             <Wrapper>
@@ -63,7 +75,7 @@ const EditMenu = () => {
                 }
                 <RowSplitter height={'15px'}/>
                 <ContentContainer>
-                    {selectedMenuItems.map(item => <EditMenuRow title={item.NAME} key={item.ID}/>)}
+                    {menuItemsPerCategory.map(item => <EditMenuRow title={item.NAME} key={item.ID} onEditClick={moveToEditMenuItem(item)} />)}
                 </ContentContainer>
                 <PrimaryButton isWide>Add menu item</PrimaryButton>
             </Wrapper>
