@@ -49,9 +49,10 @@ export function Input({
         <Wrapper className='pma-input'>
             {Icon && <Icon/>}
             <InputText
+                withRightIcon={withSwitcher || withCleaner}
                 type={type}
                 value={value}
-                withIcon={!!Icon}
+                withLeftIcon={!!Icon}
                 onChange={changeHandler}
                 withSwitcher={withSwitcher}
                 placeholder={placeholder}
@@ -81,7 +82,7 @@ export const PInput = ({
                        }) => {
     return (<PInputWrapper onClick={handleClick}>
             {Icon && <Icon/>}
-            <PStyle withIcon={!!Icon}>{children}</PStyle>
+            <PStyle withLeftIcon={!!Icon}>{children}</PStyle>
         </PInputWrapper>
     )
 };
