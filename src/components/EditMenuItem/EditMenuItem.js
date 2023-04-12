@@ -2,12 +2,11 @@ import React, {useState} from "react";
 import {
     ImagePlace,
     MenuItemPhoto,
-    WideButton
 } from "./EditMenuItem.style";
 
 import {ReactComponent as RemoveIcon} from "../../icons/remove_icon.svg";
 import {Input, Textarea} from "../Input/Input";
-import {Label} from "../../components";
+import {Label, PrimaryButton, RowSplitter} from "../../components";
 import {ContentContainer} from "../ContentContainer/ContentContainer.style";
 import {SecondaryButton} from "../Button/Button.style";
 
@@ -22,30 +21,40 @@ function EditMenuItem({
     const [imageURL, setImageURL] = useState(IMAGE_URL);
     const [size, setSize] = useState(SIZE);
 
-    console.log(2222, {name, price, description, cookingTime, imageURL, size})
-
     return (
         <>
             <SecondaryButton><RemoveIcon/> Delete</SecondaryButton>
+            <RowSplitter height={'15px'} />
             <ContentContainer>
                 <MenuItemPhoto>
                     {imageURL
                         ? <img src={imageURL} alt='Food'/>   // setImageURL
                         : <ImagePlace/>}
-                    <SecondaryButton>{imageURL ? 'Change' : 'Add'}</SecondaryButton>
+                    <SecondaryButton>{imageURL ? 'Change image' : 'Add image'}</SecondaryButton>
                 </MenuItemPhoto>
                 <Label>Name</Label>
                 <Input withCleaner value={name} onChange={e => setName(e.target.value)} onClear={() => setName('')}/>
                 <Label>Price</Label>
                 <Input withCleaner value={price} onChange={e => setPrice(e.target.value)} onClear={() => setPrice('')}/>
                 <Label>Description</Label>
-                <Textarea withCleaner value={description} changeHandler={e => setDescription(e.target.value)} onClear={() => setDescription('')}/>
+                <Textarea withCleaner value={description} changeHandler={e => setDescription(e.target.value)}
+                          onClear={() => setDescription('')}/>
                 <Label>Cooking Time</Label>
-                <Input withCleaner value={cookingTime} onChange={e => setCookingTime(e.target.value)} onClear={() => setCookingTime('')}/>
+                <Input withCleaner value={cookingTime} onChange={e => setCookingTime(e.target.value)}
+                       onClear={() => setCookingTime('')}/>
                 <Label>Meal Size</Label>
                 <Input withCleaner value={size} onChange={e => setSize(e.target.value)} onClear={() => setSize('')}/>
             </ContentContainer>
-            <WideButton>Save</WideButton>
+            {
+                (   IMAGE_URL !== imageURL ||
+                    NAME !== name ||
+                    PRICE !== price ||
+                    DESCRIPTION !== description ||
+                    COOKING_TIME !== cookingTime ||
+                    SIZE !== size
+                )
+                && <PrimaryButton>Save</PrimaryButton>
+            }
         </>
     );
 }

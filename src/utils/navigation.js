@@ -13,7 +13,6 @@ import {DEVICE_WIDTH} from "./theme";
 import {BottomMenu, NavigationHeader} from "../components";
 import AdminPage from "../page/development/Admin.page";
 
-
 export const MobileDevice = styled.div`
   min-width: ${DEVICE_WIDTH.MIN};
   max-width: ${DEVICE_WIDTH.MAX};
@@ -55,6 +54,7 @@ const routes = ROUTERS.map(r =>
             <MobileDevice>
                 <TopWrapper>
                     <NavigationHeader backUrl={r.BACK_URL} title={r.TITLE} getTitle={r.getTitle}>
+                    {/*<NavigationHeader backUrl={isFunction(r.BACK_URL) ? r.BACK_URL() : r.BACK_URL} title={r.TITLE} getTitle={r.getTitle}>*/}
                         {r.subHeader && <r.subHeader/>}
                     </NavigationHeader>
                 </TopWrapper>

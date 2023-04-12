@@ -59,6 +59,17 @@ export const LocalStorage = {
     remove: storageKey => localStorage.removeItem(storageKey),
 }
 
+/**
+ *
+ * @param to Pathname
+ * @param callback Created for stopLoading. Run with delay to avoid jumping.
+ */
+export const redirect = (to, callback = () => {}) => {
+    const {host, protocol} = window.location;
+    window.location.replace(`${protocol}//${host}${to}`);
+    setTimeout(callback, 1000)
+}
+
 export const getParam = (key) => {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(key);

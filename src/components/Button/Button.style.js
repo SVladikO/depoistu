@@ -36,7 +36,7 @@ export const SecondaryButton = styled(button)`
   background: ${hexToRgbA(COLOR.ACCENT3, 0.1)};
 
   & > svg {
-    fill: ${COLOR.PRIMARY};
+    fill: ${COLOR.ACCENT3};
   }
 `;
 

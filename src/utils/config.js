@@ -21,8 +21,8 @@ import {ReactComponent as PizzaIcon} from "../icons/category/pizza.svg";
 import {ReactComponent as SandwitchIcon} from "../icons/category/sandwitch.svg";
 import {ReactComponent as Sea_foodIcon} from "../icons/category/sea_food.svg";
 import {ReactComponent as VagetableIcon} from "../icons/category/vagetable.svg";
-import {resolveTranslation} from "./utils";
-import EditCompanyListPage from "../page/edit-company-list/EditCompanyList.page";
+import {LOCAL_STORAGE_KEY, LocalStorage, resolveTranslation} from "./utils";
+import CustomerCompaniesPage from "../page/customer-companies/CustomerCompanies.page";
 
 export const DEV_ROUTER = {
     COMPONENTS: 'components',
@@ -60,7 +60,7 @@ export const CATEGORY_MAPPER = {
     9: { id: 9, title: resolveTranslation("CATEGORIES.ALCOHOL"), icon: BeverageIcon, measurement: 'ml'},
     10: { id: 10, title: resolveTranslation("CATEGORIES.WINE_CARD"), icon: BeverageIcon, measurement: 'ml'},
     11: { id: 11, title: resolveTranslation("CATEGORIES.HOT_DRINKS"), icon: BeverageIcon, measurement: 'ml'},
-}
+};
 
 export const URL = {
     SEARCH: '/',
@@ -90,10 +90,11 @@ export const ROUTER =  {
     SING_IN:                {URL: URL.SING_IN,                                          TITLE: resolveTranslation("PAGE.SING_IN.TOP_TITLE"),        page: SignInPage,         showBottomMenu: true },
     CHANGE_PASSWORD :       {URL: URL.CHANGE_PASSWORD,                                  TITLE: resolveTranslation("PAGE.CHANGE_PASSWORD.TOP_TITLE"),page: ChangePasswordPage, showBottomMenu: true,    BACK_URL: URL.SING_IN},
 
-    EDIT_COMPANY_LIST:      {URL: URL.CUSTOMER_COMPANIES,                                TITLE: 'Your companies',                                        page: EditCompanyListPage, showBottomMenu:true,    BACK_URL: URL.SETTING},
+    EDIT_COMPANY_LIST:      {URL: URL.CUSTOMER_COMPANIES,                                TITLE: 'Your companies',                                        page: CustomerCompaniesPage, showBottomMenu:true,    BACK_URL: URL.SETTING},
     EDIT_COMPANY:           {URL: URL.EDIT_COMPANY,             PARAMS: '/:companyId',  TITLE: 'Edit company',                                           page: EditCompanyPage,     showBottomMenu:true,    BACK_URL: URL.CUSTOMER_COMPANIES},
     EDIT_MENU :             {URL: URL.EDIT_MENU,                PARAMS: '/:companyId',  TITLE: 'Edit menu',                                              page: EditMenuPage,        showBottomMenu: true,   BACK_URL: URL.CUSTOMER_COMPANIES},
     EDIT_MENU_ITEM :        {URL: URL.EDIT_MENU_ITEM,                                   TITLE: 'Edit menu item',                                         page: EditMenuItemPage,    showBottomMenu: true,   BACK_URL: URL.EDIT_MENU},
+    // EDIT_MENU_ITEM :        {URL: URL.EDIT_MENU_ITEM,                                   TITLE: 'Edit menu item',                                         page: EditMenuItemPage,    showBottomMenu: true,   BACK_URL: () => { alert('opa'); return `${URL.EDIT_MENU}/${LocalStorage.get(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT)?.COMPANY_ID}`;}},
 };
 
 export const ROUTERS = Object.keys(ROUTER).map(key => ROUTER[key]);

@@ -16,7 +16,7 @@ const NavigationHeader = (props) => {
     return (
             <Wrapper className='pm-NavigationHeader'>
                 <MainContent>
-                    {backUrl && <Link to={backUrl}><BackArrow /></Link>}
+                    {backUrl && <Link to={backUrl} className='pma-back-link'><BackArrow /></Link>}
                     <Title>{_title}</Title>
                     {/*TODO: Hidden second version*/}
                     {/*<Link to={ROUTER.ORDER_REVIEW.URL}>*/}

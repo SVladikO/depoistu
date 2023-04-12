@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import {Link} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
 
 // import {
 //     Content,
@@ -25,19 +27,16 @@ import {
 import {ReactComponent as LockIcon} from "../../icons/lock.svg";
 import {ReactComponent as MailIcon} from "../../icons/mail.svg";
 
-import {Link, useNavigate} from "react-router-dom";
 
+
+import {startLoading, stopLoading} from "../../features/request/requestSlice";
 
 import {fetchData} from "../../utils/fetch";
-import {getParam, LocalStorage} from "../../utils/utils";
 import {BE_API, ROUTER, URL} from '../../utils/config';
-import {resolveTranslation, LOCAL_STORAGE_KEY} from "../../utils/utils";
-import {useDispatch, useSelector} from "react-redux";
-import {startLoading, stopLoading} from "../../features/request/requestSlice";
+import {getParam, LocalStorage, redirect, resolveTranslation, LOCAL_STORAGE_KEY} from "../../utils/utils";
 
 const SignInPage = () => {
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const backUrl = getParam(`backUrl`) || URL.SETTING;
     const isLoading = useSelector(state => state.request.value.isLoading);
 
@@ -51,8 +50,8 @@ const SignInPage = () => {
             .then(res => {
                 LocalStorage.set(LOCAL_STORAGE_KEY.CUSTOMER, res)
                 setTimeout(() => {
-                    dispatch(stopLoading())
-                    navigate(backUrl)
+                    redirect(backUrl, () => dispatch(stopLoading()))
+
                 }, 1000)
 
             })

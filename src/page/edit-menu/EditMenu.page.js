@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {useNavigate, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 
 import {Wrapper} from "./EditMenu.style";
 
@@ -14,12 +14,12 @@ import {
 } from "../../components";
 
 import {startLoading, stopLoading} from "../../features/request/requestSlice";
-import {BE_API, URL} from "../../utils/config";
+
 import {fetchData} from "../../utils/fetch";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/utils";
+import {BE_API, URL} from "../../utils/config";
+import {LOCAL_STORAGE_KEY, LocalStorage, redirect} from "../../utils/utils";
 
 const EditMenu = () => {
-    const navigate = useNavigate();
     const dispatch = useDispatch();
     const {companyId} = useParams();
     const isLoading = useSelector(state => state.request.value.isLoading);
@@ -58,7 +58,7 @@ const EditMenu = () => {
 
     const moveToEditMenuItem = menuItem => () => {
         LocalStorage.set(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT, menuItem);
-        navigate(URL.EDIT_MENU_ITEM)
+        return redirect(URL.EDIT_MENU_ITEM)
     }
 
     return (
