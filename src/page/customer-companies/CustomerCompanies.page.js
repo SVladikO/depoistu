@@ -1,15 +1,16 @@
 import React, {useState} from "react";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {EditBar} from "./CustomerCompanies.style";
 
 import {Company, Notification, PrimaryButton} from "../../components";
 import {ReactComponent as EditIcon} from "../../icons/edit.svg";
-import {LOCAL_STORAGE_KEY, LocalStorage, redirect} from "../../utils/utils";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/utils";
 import {BE_API, ROUTER, URL} from "../../utils/config";
 import {useLocalStorageFetch} from "../../utils/hook";
 
 const CustomerCompaniesPage = () => {
+    const navigate = useNavigate();
     const isLoading = useSelector(state => state.request.value.isLoading);
 
     const [requestError, setRequestError] = useState('');
@@ -25,7 +26,7 @@ const CustomerCompaniesPage = () => {
     );
 
     if (!customer) {
-        return redirect(URL.SETTING)
+        return navigate(URL.SETTING)
     }
 
     if (isLoading) {

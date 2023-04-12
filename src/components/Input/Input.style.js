@@ -60,7 +60,7 @@ const st = p => `
   font-size: 16px;
   display: flex;
   align-items: center;
-  padding: ${p.withIcon ? '14px 20px 17px 35px' : '14px 10px 17px 10px'};
+  padding: ${p.withIcon ? '14px 40px 17px 35px' : '14px 40px 17px 10px'};
 `;
 
 export const PStyle = styled.p`

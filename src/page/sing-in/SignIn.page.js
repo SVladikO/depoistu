@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 
 // import {
@@ -37,6 +37,7 @@ import {getParam, LocalStorage, redirect, resolveTranslation, LOCAL_STORAGE_KEY}
 
 const SignInPage = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const backUrl = getParam(`backUrl`) || URL.SETTING;
     const isLoading = useSelector(state => state.request.value.isLoading);
 
@@ -50,9 +51,10 @@ const SignInPage = () => {
             .then(res => {
                 LocalStorage.set(LOCAL_STORAGE_KEY.CUSTOMER, res)
                 setTimeout(() => {
-                    redirect(backUrl, () => dispatch(stopLoading()))
-
+                    dispatch(stopLoading())
                 }, 1000)
+
+                navigate(backUrl);
 
             })
             .catch(e => {
