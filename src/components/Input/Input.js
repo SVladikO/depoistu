@@ -14,15 +14,23 @@ import {ReactComponent as ShowEyeIcon} from "../../icons/show-eye.svg";
 import {ReactComponent as HideEyeIcon} from "../../icons/hide-eye.svg";
 import {ReactComponent as CloseIcon} from "../../icons/close.svg";
 
-export function Textarea({withCleaner, value, changeHandler=() => {}, onClear = () => {}}) {
+export const Textarea = memo(function ({
+                                 withCleaner,
+                                 value,
+                                 changeHandler=() => {},
+                                 clearHandler = () => {}
+    }) {
     return (
         <Wrapper>
-            <TextareaStyle value={value} onChange={changeHandler}/>
-            {withCleaner &&<CloseIconWrapper><CloseIcon onClick={onClear}/></CloseIconWrapper>
+            <TextareaStyle
+                value={value}
+                onChange={ e => changeHandler(e.toString.value)}
+            />
+            {withCleaner && <CloseIconWrapper><CloseIcon onClick={clearHandler}/></CloseIconWrapper>
             }
         </Wrapper>
     );
-}
+});
 
 export const Input = memo(function ({
 // export function Input({
@@ -43,8 +51,6 @@ export const Input = memo(function ({
         setShowData(!showData)
         switchHandler();
     }
-
-    console.log(33333, value)
 
     return (
         <Wrapper className='pma-input'>
