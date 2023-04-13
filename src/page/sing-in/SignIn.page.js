@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 
@@ -43,6 +43,7 @@ const SignInPage = () => {
 
     const [password, setPassword] = useState('vv11vv')
     const [email, setEmail] = useState('vlad_S@gmail.com')
+    const [passwordType, setPasswordType] = useState('password')
     const [requestError, setRequestError] = useState('');
     const handleSingIn = () => {
         dispatch(startLoading());
@@ -63,6 +64,12 @@ const SignInPage = () => {
             });
     }
 
+    const emailChangeHandler = useCallback(e => setEmail(e.target.value), [])
+    const emailClearHandler = useCallback(() => setEmail(''), [])
+
+    const passwordChangeHandler = useCallback(e => setPassword(e.target.value), [])
+    const passwordSwitchHandler = useCallback(() => setPasswordType(passwordType === 'password' ? 'text' : 'password'), [passwordType])
+
     if (isLoading) {
         return <Notification.Loading />
     }
@@ -75,9 +82,22 @@ const SignInPage = () => {
         {requestError && <Notification.Error message={requestError} />}
         <ContentContainer>
             <Label>Email</Label>
-            <Input Icon={MailIcon} value={email} onChange={e => setEmail(e.target.value)} placeholder={`Enter email`} />
+            <Input
+                Icon={MailIcon}
+                value={email}
+                withCleaner
+                clearHandler={emailClearHandler}
+                changeHandler={emailChangeHandler}
+            />
             <Label>Password</Label>
-            <Input Icon={LockIcon} value={password} onChange={e => setPassword(e.target.value)} type="password" placeholder={`Enter password`} />
+            <Input
+                Icon={LockIcon}
+                value={password}
+                changeHandler={passwordChangeHandler}
+                switchHandler={passwordSwitchHandler}
+                type={passwordType}
+                withSwitcher
+            />
             <Link to={ROUTER.CHANGE_PASSWORD.URL}>{resolveTranslation("PAGE.SING_IN.FORGOT_PASSWORD")}</Link>
             {/*<Flex flexDirection='column'>*/}
             {/*    <Flex justifyContent="space-between">*/}

@@ -59,19 +59,19 @@ const AddCompany = () => {
                     <Input
                         withCleaner
                         value={name}
-                        onChange={e => setName(e.target.value)}
+                        changeHandler={e => setName(e.target.value)}
                     />
                     <Label>City</Label>
                     <Input
                         withCleaner
                         value={city}
-                        onChange={e => setCity(e.target.value)}
+                        changeHandler={e => setCity(e.target.value)}
                     />
                     <Label>Street</Label>
                     <Input
                         withCleaner
                         value={street}
-                        onChange={e => setStreet(e.target.value)}
+                        changeHandler={e => setStreet(e.target.value)}
                     />
                     <Label>Work Schedule</Label>
                     {weekDays.map(day => <FromToTime key={day.id} id={day.id} weekDay={day.name} from={day.from} to={day.to} />)}

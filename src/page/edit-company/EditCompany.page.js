@@ -69,7 +69,6 @@ const EditCompany = () => {
                     <Input
                         withCleaner
                         value={name}
-                        placeholder="Name"
                         changeHandler={cleanCityInput}
                         onChange={onCityInput}
                     />
@@ -77,7 +76,6 @@ const EditCompany = () => {
                     <Input
                         withCleaner
                         value={city}
-                        placeholder="City"
                         onChange={onCityInput}
                         changeHandler={cleanCityInput}
                     />
@@ -85,7 +83,6 @@ const EditCompany = () => {
                     <Input
                         withCleaner
                         value={street}
-                        placeholder="Street"
                         onChange={onStreetInput}
                         changeHandler={clearStreetInput}
                     />

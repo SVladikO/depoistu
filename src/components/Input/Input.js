@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, memo} from "react";
 import {
     Wrapper,
     InputText,
@@ -24,42 +24,42 @@ export function Textarea({withCleaner, value, changeHandler=() => {}, onClear = 
     );
 }
 
-export function Input({
+export const Input = memo(function ({
+// export function Input({
                           Icon,
                           value,
                           type,
-                          placeholder,
-                          changeHandler = () => {
-                          },
                           withSwitcher = false,
                           withCleaner = false,
-                          onClear = () => {},
+                          clearHandler = () => {},
+                          changeHandler = () => {},
+                          switchHandler = () => {},
                           ...props
                       }) {
 
     const [showData, setShowData] = useState(false);
 
-    const showValue = () => {
-        setShowData(true);
+    const handleSwitch = () => {
+        setShowData(!showData)
+        switchHandler();
     }
 
-    const hideValue = () => setShowData(false);
+    console.log(33333, value)
 
     return (
         <Wrapper className='pma-input'>
             {Icon && <Icon/>}
             <InputText
                 value={value}
-                type={type}
                 onChange={e => changeHandler(e)}
+                type={type}
                 withRightIcon={withSwitcher || withCleaner}
                 withLeftIcon={!!Icon}
                 withSwitcher={withSwitcher}
-                placeholder={placeholder}
                 {...props}
             />
             {withSwitcher &&
-                <SwitchIconWrapper onClick={showData ? hideValue : showValue}>
+                <SwitchIconWrapper onClick={handleSwitch}>
                     <CenterWrapper>
                         {showData ? <HideEyeIcon/> : <ShowEyeIcon/>}
                     </CenterWrapper>
@@ -67,18 +67,17 @@ export function Input({
             }
             {withCleaner &&
                 <CloseIconWrapper {...props}>
-                    <CloseIcon onClick={onClear}/>
+                    <CloseIcon onClick={clearHandler}/>
                 </CloseIconWrapper>
             }
         </Wrapper>
     )
-}
+});
 
 export const PInput = ({
                            Icon,
                            children,
-                           handleClick = () => {
-                           },
+                           handleClick = () => {},
                        }) => {
     return (<PInputWrapper onClick={handleClick}>
             {Icon && <Icon/>}

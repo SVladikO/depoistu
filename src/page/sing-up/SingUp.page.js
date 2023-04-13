@@ -10,18 +10,17 @@ const SingUpPage = () => {
         <>
             <Container>
                 <Title>{resolveTranslation("PAGE.SING_UP.CREATE_ACCOUNT")}</Title>
-                <Label>Name</Label>
-                <Input placeholder={resolveTranslation("PAGE.SING_UP.PLACEHOLDER.USER_NAME")}/>
-                <Label>Phone</Label>
-                <Input placeholder={resolveTranslation("PAGE.SING_UP.PLACEHOLDER.PHONE")}/>
-                <Label>Email</Label>
-                <Input placeholder={resolveTranslation("PAGE.SING_UP.PLACEHOLDER.EMAIL")}/>
-                <Label>Password</Label>
-                <Input placeholder={resolveTranslation("PAGE.SING_UP.PLACEHOLDER.PASS")}/>
-                <Label>Confirm Password</Label>
-                <Input placeholder={resolveTranslation("PAGE.SING_UP.PLACEHOLDER.CONFIRM_PASS")}/>
-                <CheckBoxWithLabel
-                    label={resolveTranslation("PAGE.SING_UP.CHECKBOX_CONFIRM_TERMS")}/>
+                <Label>{resolveTranslation("PAGE.SING_UP.LABEL.USER_NAME")}</Label>
+                <Input />
+                <Label>{resolveTranslation("PAGE.SING_UP.LABEL.PHONE")}</Label>
+                <Input />
+                <Label>{resolveTranslation("PAGE.SING_UP.LABEL.EMAIL")}</Label>
+                <Input />
+                <Label>{resolveTranslation("PAGE.SING_UP.LABEL.PASS")}</Label>
+                <Input />
+                <Label>{resolveTranslation("PAGE.SING_UP.LABEL.CONFIRM_PASS")}</Label>
+                <Input />
+                <CheckBoxWithLabel label={resolveTranslation("PAGE.SING_UP.CHECKBOX_CONFIRM_TERMS")}/>
             </Container>
             <Wrapper>
                 <NavigationLabelHref
