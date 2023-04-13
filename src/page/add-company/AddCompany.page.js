@@ -19,12 +19,11 @@ const AddCompany = () => {
     const nameChangeHandler = useCallback(setName, [name]);
     const nameClearHandler = useCallback(() => setName(''), [name]);
 
-    const cityChangeHandler = useCallback(setCity, [name]);
-    const cityClearHandler = useCallback(() => setCity(''), [name]);
+    const cityChangeHandler = useCallback(setCity, [city]);
+    const cityClearHandler = useCallback(() => setCity(''), [city]);
 
-    const streetChangeHandler = useCallback(setStreet, [name]);
-    const streetClearHandler = useCallback(() => setStreet(''), [name]);
-
+    const streetChangeHandler = useCallback(setStreet, [street]);
+    const streetClearHandler = useCallback(() => setStreet(''), [street]);
 
     const deleteCompanyImage = index => setPictures(pictures.filter((_, i) => i !== index));
     const weekDays = [

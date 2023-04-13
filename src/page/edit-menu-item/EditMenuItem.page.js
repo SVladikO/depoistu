@@ -31,17 +31,17 @@ const EditMenuItemPage = () => {
     const nameChangeHandler = useCallback(setName, [name]);
     const nameClearHandler = useCallback(() => setName(''), [name]);
 
-    const priceChangeHandler = useCallback(setPrice, [name]);
-    const priceClearHandler = useCallback(() => setPrice(''), [name]);
+    const priceChangeHandler = useCallback(setPrice, [price]);
+    const priceClearHandler = useCallback(() => setPrice(''), [price]);
 
-    const descriptionChangeHandler = useCallback(setDescription, [name]);
-    const descriptionClearHandler = useCallback(() => setDescription(''), [name]);
+    const descriptionChangeHandler = useCallback(setDescription, [description]);
+    const descriptionClearHandler = useCallback(() => setDescription(''), [description]);
 
-    const cookingTimeChangeHandler = useCallback(setCookingTime, [name]);
-    const cookingTimeClearHandler = useCallback(() => setCookingTime(''), [name]);
+    const cookingTimeChangeHandler = useCallback(setCookingTime, [cookingTime]);
+    const cookingTimeClearHandler = useCallback(() => setCookingTime(''), [cookingTime]);
 
-    const sizeChangeHandler = useCallback(setSize, [name]);
-    const sizeClearHandler = useCallback(() => setSize(''), [name]);
+    const sizeChangeHandler = useCallback(setSize, [size]);
+    const sizeClearHandler = useCallback(() => setSize(''), [size]);
 
     if (!menuItem && URL.EDIT_MENU) {
         return navigate(URL.SETTING)

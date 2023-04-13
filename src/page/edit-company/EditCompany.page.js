@@ -28,11 +28,11 @@ const EditCompany = () => {
     const nameChangeHandler = useCallback(setName, [name]);
     const nameClearHandler = useCallback(() => setName(''), [name]);
 
-    const cityChangeHandler = useCallback(setCity, [name]);
-    const cityClearHandler = useCallback(() => setCity(''), [name]);
+    const cityChangeHandler = useCallback(setCity, [city]);
+    const cityClearHandler = useCallback(() => setCity(''), [city]);
 
-    const streetChangeHandler = useCallback(setStreet, [name]);
-    const streetClearHandler = useCallback(() => setStreet(''), [name]);
+    const streetChangeHandler = useCallback(setStreet, [street]);
+    const streetClearHandler = useCallback(() => setStreet(''), [street]);
 
     const weekDays = [
         {id: 'FromTo1', name: 'Sun', isChecked: false, from: '00:00', to: '00:00'},
