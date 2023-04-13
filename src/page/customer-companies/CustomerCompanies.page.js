@@ -17,7 +17,6 @@ const CustomerCompaniesPage = () => {
     const [customer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
 
 
-
     const [customerCompanies] = useLocalStorageFetch(
         LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES,
         [],
@@ -54,7 +53,9 @@ const CustomerCompaniesPage = () => {
 
                     </div>)
             }
-            <PrimaryButton>+ Add new company</PrimaryButton>
+            <Link to={URL.ADD_COMPANY}>
+                <PrimaryButton isWide>+ Add new company</PrimaryButton>
+            </Link>
         < />
     )
 };
