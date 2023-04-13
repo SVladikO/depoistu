@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {useNavigate, useParams} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 
 import {Wrapper} from "./EditMenu.style";
 
@@ -30,6 +30,10 @@ const EditMenu = () => {
     const [selectedCategoryId, setSelectedCategoryId] = useState(menuItems[0]?.CATEGORY_ID)
 
     const url = BE_API.GET_MENU_ITEMS_BY_COMPANY_ID(companyId);
+
+    useEffect(() => {
+        LocalStorage.set(LOCAL_STORAGE_KEY.COMPANY_ID_FOR_EDIT_MENU, companyId);
+    })
 
     useEffect(() => {
         dispatch(startLoading());
@@ -75,9 +79,12 @@ const EditMenu = () => {
                 }
                 <RowSplitter height={'15px'}/>
                 <ContentContainer>
-                    {menuItemsPerCategory.map(item => <EditMenuRow title={item.NAME} key={item.ID} onEditClick={moveToEditMenuItem(item)} />)}
+                    {menuItemsPerCategory.map(item => <EditMenuRow title={item.NAME} key={item.ID}
+                                                                   onEditClick={moveToEditMenuItem(item)}/>)}
                 </ContentContainer>
-                <PrimaryButton isWide>Add menu item</PrimaryButton>
+                <Link to={URL.ADD_MENU_ITEM}>
+                    <PrimaryButton isWide>Add menu item</PrimaryButton>
+                </Link>
             </Wrapper>
         </>
     )
