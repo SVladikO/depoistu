@@ -33,7 +33,6 @@ export const Textarea = memo(function ({
 });
 
 export const Input = memo(function ({
-// export function Input({
                           Icon,
                           value,
                           type,
