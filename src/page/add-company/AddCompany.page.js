@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {Swiper, SwiperSlide} from "swiper/react";
 
 import "swiper/css";
@@ -10,7 +10,7 @@ import {ContentContainer, FromToTime, Input, Label, PrimaryButton, SecondaryButt
 import {ReactComponent as DeleteBasketIcon} from "../../icons/delete_basket.svg";
 import {ReactComponent as RemoveIcon} from "../../icons/remove_icon.svg";
 
-const EditCompany = () => {
+const AddCompany = () => {
     const [name, setName] = useState('');
     const [city, setCity] = useState('');
     const [street, setStreet] = useState('');
@@ -24,7 +24,11 @@ const EditCompany = () => {
         {id: 'FromTo5', name: 'Thu', isChecked: false, from: '00:00', to: '00:00'},
         {id: 'FromTo6', name: 'Fri', isChecked: false, from: '00:00', to: '00:00'},
         {id: 'FromTo7', name: 'Sat', isChecked: false, from: '00:00', to: '00:00'},
-    ]
+    ];
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     const renderCompanyDetails = () => {
         return (
@@ -85,4 +89,4 @@ const EditCompany = () => {
     );
 };
 
-export default EditCompany;
+export default AddCompany;
