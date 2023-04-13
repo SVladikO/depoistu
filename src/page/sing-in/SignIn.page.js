@@ -33,7 +33,7 @@ import {startLoading, stopLoading} from "../../features/request/requestSlice";
 
 import {fetchData} from "../../utils/fetch";
 import {BE_API, ROUTER, URL} from '../../utils/config';
-import {getParam, LocalStorage, redirect, resolveTranslation, LOCAL_STORAGE_KEY} from "../../utils/utils";
+import {getParam, LocalStorage, resolveTranslation, LOCAL_STORAGE_KEY} from "../../utils/utils";
 
 const SignInPage = () => {
     const dispatch = useDispatch();

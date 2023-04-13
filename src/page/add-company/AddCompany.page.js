@@ -1,31 +1,21 @@
-import "swiper/css";
-import "swiper/css/pagination";
-import {useParams} from "react-router-dom";
-import React, {useEffect, useState} from "react";
+import React, {useState, useEffect} from "react";
 import {Swiper, SwiperSlide} from "swiper/react";
 
-import {Divider, InstitutionBasketButton, InstitutionPictures, Wrapper,} from "./EditCompany.style";
+import "swiper/css";
+import "swiper/css/pagination";
+
+import {Divider, InstitutionBasketButton, InstitutionPictures, Wrapper,} from "./AddCompany.style";
 
 import {ContentContainer, FromToTime, Input, Label, PrimaryButton, SecondaryButton} from "../../components";
 import {ReactComponent as DeleteBasketIcon} from "../../icons/delete_basket.svg";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/utils";
 import {ReactComponent as RemoveIcon} from "../../icons/remove_icon.svg";
 
-const EditCompany = () => {
-    const companyId = +useParams().companyId;
-    const CUSTOMER_COMPANIES = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
-    const company = CUSTOMER_COMPANIES.find((c => c.ID === companyId));
-    const [name, setName] = useState(company.NAME || '');
-    const [city, setCity] = useState(company.CITY || '');
-    const [street, setStreet] = useState(company.STREET || '');
-    const [pictures, setPictures] = useState(company?.PHOTOS?.split(',') || []);
-
+const AddCompany = () => {
+    const [name, setName] = useState('');
+    const [city, setCity] = useState('');
+    const [street, setStreet] = useState('');
+    const [pictures, setPictures] = useState([]);
     const deleteCompanyImage = index => setPictures(pictures.filter((_, i) => i !== index));
-    const cleanCityInput = () => setCity('');
-    const onCityInput = e => setCity(e.target.value);
-    const onStreetInput = e => setStreet(e.target.value);
-    const clearStreetInput = () => setStreet('');
-
     const weekDays = [
         {id: 'FromTo1', name: 'Sun', isChecked: false, from: '00:00', to: '00:00'},
         {id: 'FromTo2', name: 'Mon', isChecked: false, from: '00:00', to: '00:00'},
@@ -69,25 +59,19 @@ const EditCompany = () => {
                     <Input
                         withCleaner
                         value={name}
-                        placeholder="Name"
-                        changeHandler={cleanCityInput}
-                        onChange={onCityInput}
+                        onChange={e => setName(e.target.value)}
                     />
                     <Label>City</Label>
                     <Input
                         withCleaner
                         value={city}
-                        placeholder="City"
-                        onChange={onCityInput}
-                        changeHandler={cleanCityInput}
+                        onChange={e => setCity(e.target.value)}
                     />
                     <Label>Street</Label>
                     <Input
                         withCleaner
                         value={street}
-                        placeholder="Street"
-                        onChange={onStreetInput}
-                        changeHandler={clearStreetInput}
+                        onChange={e => setStreet(e.target.value)}
                     />
                     <Label>Work Schedule</Label>
                     {weekDays.map(day => <FromToTime key={day.id} id={day.id} weekDay={day.name} from={day.from} to={day.to} />)}
@@ -105,4 +89,4 @@ const EditCompany = () => {
     );
 };
 
-export default EditCompany;
+export default AddCompany;

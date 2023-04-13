@@ -18,10 +18,8 @@ import {ReactComponent as LogOutIcon} from '../../icons/logout.svg';
 import {ReactComponent as HelpIcon} from '../../icons/chat.svg';
 import {ReactComponent as BusinessIcon} from '../../icons/busines.svg';
 
-
 import {
     SettingMenuRow,
-    CustomerAccountBar,
     AccountSettings,
     OptionSettings, NotificationTDB,
 } from '../../components'
@@ -65,7 +63,7 @@ const SettingPage = () => {
                 <SettingMenuRow icon={LogOutIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.EXIT")} changeHandler={logOut}/>
             </AccountSettings>
             <OptionSettings groupTitle={resolveTranslation("PAGE.SETTINGS.GROUP_TITLE.FOR_BUSINESS")}>
-                <SettingMenuRow icon={BusinessIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.COMPANY")}  href={ROUTER.EDIT_COMPANY_LIST.URL}/>
+                <SettingMenuRow icon={BusinessIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.COMPANY")}  href={ROUTER.CUSTOMER_COMPANIES.URL}/>
             </OptionSettings>
             {/*<OptionSettings groupTitle={resolveTranslation("PAGE.SETTINGS.GROUP_TITLE.OPTIONS")}>*/}
             {/*    /!*<SettingMenuRow icon={NewsletterIcon} title='Newsletter' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*!/*/}

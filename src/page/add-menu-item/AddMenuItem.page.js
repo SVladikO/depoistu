@@ -1,30 +1,29 @@
 import React, {useState} from "react";
+
+import {MenuItemPhoto, ImagePlace} from './AddMenuItem.style';
+
 import {
-    ImagePlace,
-    MenuItemPhoto,
-} from "./EditMenuItem.style";
+    ContentContainer,
+    Input,
+    Label, PrimaryButton,
+    RowSplitter,
+    SecondaryButton,
+    Textarea
+} from '../../components/index'
 
 import {ReactComponent as RemoveIcon} from "../../icons/remove_icon.svg";
-import {Input, Textarea} from "../Input/Input";
-import {Label, PrimaryButton, RowSplitter} from "../../components";
-import {ContentContainer} from "../ContentContainer/ContentContainer.style";
-import {SecondaryButton} from "../Button/Button.style";
 
-function EditMenuItem({
-                          menuItem: {NAME, PRICE, DESCRIPTION, COOKING_TIME, IMAGE_URL, SIZE}
-                      }) {
-
-    const [name, setName] = useState(NAME);
-    const [price, setPrice] = useState(PRICE);
-    const [description, setDescription] = useState(DESCRIPTION);
-    const [cookingTime, setCookingTime] = useState(COOKING_TIME);
-    const [imageURL, setImageURL] = useState(IMAGE_URL);
-    const [size, setSize] = useState(SIZE);
+const AddMenuItemPage = () => {
+    const [name, setName] = useState('');
+    const [price, setPrice] = useState('');
+    const [description, setDescription] = useState('');
+    const [cookingTime, setCookingTime] = useState('');
+    const [imageURL, setImageURL] = useState('');
+    const [size, setSize] = useState('');
 
     return (
         <>
-            <SecondaryButton><RemoveIcon/> Delete</SecondaryButton>
-            <RowSplitter height={'15px'} />
+            <RowSplitter height={'15px'}/>
             <ContentContainer>
                 <MenuItemPhoto>
                     {imageURL
@@ -45,18 +44,9 @@ function EditMenuItem({
                 <Label>Meal Size</Label>
                 <Input withCleaner value={size} onChange={e => setSize(e.target.value)} onClear={() => setSize('')}/>
             </ContentContainer>
-            {
-                (   IMAGE_URL !== imageURL ||
-                    NAME !== name ||
-                    PRICE !== price ||
-                    DESCRIPTION !== description ||
-                    COOKING_TIME !== cookingTime ||
-                    SIZE !== size
-                )
-                && <PrimaryButton>Save</PrimaryButton>
-            }
+            <PrimaryButton>Add</PrimaryButton>
         </>
     );
 }
 
-export default EditMenuItem;
+export default AddMenuItemPage;
