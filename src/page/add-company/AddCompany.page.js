@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useCallback} from "react";
 import {Swiper, SwiperSlide} from "swiper/react";
 
 import "swiper/css";
@@ -15,6 +15,17 @@ const AddCompany = () => {
     const [city, setCity] = useState('');
     const [street, setStreet] = useState('');
     const [pictures, setPictures] = useState([]);
+
+    const nameChangeHandler = useCallback(setName, [name]);
+    const nameClearHandler = useCallback(() => setName(''), [name]);
+
+    const cityChangeHandler = useCallback(setCity, [name]);
+    const cityClearHandler = useCallback(() => setCity(''), [name]);
+
+    const streetChangeHandler = useCallback(setStreet, [name]);
+    const streetClearHandler = useCallback(() => setStreet(''), [name]);
+
+
     const deleteCompanyImage = index => setPictures(pictures.filter((_, i) => i !== index));
     const weekDays = [
         {id: 'FromTo1', name: 'Sun', isChecked: false, from: '00:00', to: '00:00'},
@@ -33,7 +44,6 @@ const AddCompany = () => {
     const renderCompanyDetails = () => {
         return (
             <>
-                <SecondaryButton isWide><RemoveIcon/> Delete company</SecondaryButton>
                 <InstitutionPictures>
                     <Swiper
                         className="mySwiper"
@@ -57,21 +67,24 @@ const AddCompany = () => {
                 <ContentContainer>
                     <Label>Company Name</Label>
                     <Input
-                        withCleaner
                         value={name}
-                        changeHandler={value => setName(value)}
+                        withCleaner
+                        changeHandler={nameChangeHandler}
+                        clearHandler={nameClearHandler}
                     />
                     <Label>City</Label>
                     <Input
-                        withCleaner
                         value={city}
-                        changeHandler={value =>setCity(value)}
+                        withCleaner
+                        changeHandler={cityChangeHandler}
+                        clearHandler={cityClearHandler}
                     />
                     <Label>Street</Label>
                     <Input
-                        withCleaner
                         value={street}
-                        changeHandler={value =>setStreet(value)}
+                        withCleaner
+                        changeHandler={streetChangeHandler}
+                        clearHandler={streetClearHandler}
                     />
                     <Label>Work Schedule</Label>
                     {weekDays.map(day => <FromToTime key={day.id} id={day.id} weekDay={day.name} from={day.from} to={day.to} />)}
