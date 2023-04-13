@@ -23,6 +23,7 @@ import {ReactComponent as Sea_foodIcon} from "../icons/category/sea_food.svg";
 import {ReactComponent as VagetableIcon} from "../icons/category/vagetable.svg";
 import {LOCAL_STORAGE_KEY, LocalStorage, resolveTranslation} from "./utils";
 import CustomerCompaniesPage from "../page/customer-companies/CustomerCompanies.page";
+import AddCompanyPage from "../page/add-company/AddCompany.page";
 import AddMenuItemPage from "../page/add-menu-item/AddMenuItem.page";
 
 export const DEV_ROUTER = {
@@ -73,6 +74,7 @@ export const URL = {
     CHANGE_PASSWORD: '/change-password',
 
     CUSTOMER_COMPANIES: '/customer-companies',
+    ADD_COMPANY: '/add-company',
     EDIT_COMPANY: '/edit-company',
     EDIT_MENU: '/edit-menu',
     EDIT_MENU_ITEM: '/edit-menu-item',
@@ -125,7 +127,7 @@ export const ROUTER = {
         BACK_URL: URL.SING_IN
     },
 
-    EDIT_COMPANY_LIST: {
+    CUSTOMER_COMPANIES: {
         URL: URL.CUSTOMER_COMPANIES,
         TITLE: 'Your companies',
         page: CustomerCompaniesPage,
@@ -137,6 +139,13 @@ export const ROUTER = {
         PARAMS: '/:companyId',
         TITLE: 'Edit company',
         page: EditCompanyPage,
+        showBottomMenu: true,
+        BACK_URL: URL.CUSTOMER_COMPANIES
+    },
+    ADD_COMPANY: {
+        URL: URL.ADD_COMPANY,
+        TITLE: 'Add company',
+        page: AddCompanyPage,
         showBottomMenu: true,
         BACK_URL: URL.CUSTOMER_COMPANIES
     },
