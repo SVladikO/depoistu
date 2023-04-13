@@ -18,10 +18,8 @@ import {ReactComponent as LogOutIcon} from '../../icons/logout.svg';
 import {ReactComponent as HelpIcon} from '../../icons/chat.svg';
 import {ReactComponent as BusinessIcon} from '../../icons/busines.svg';
 
-
 import {
     SettingMenuRow,
-    CustomerAccountBar,
     AccountSettings,
     OptionSettings, NotificationTDB,
 } from '../../components'

@@ -49,11 +49,11 @@ export function Input({
         <Wrapper className='pma-input'>
             {Icon && <Icon/>}
             <InputText
-                withRightIcon={withSwitcher || withCleaner}
-                type={type}
                 value={value}
+                type={type}
+                onChange={e => changeHandler(e)}
+                withRightIcon={withSwitcher || withCleaner}
                 withLeftIcon={!!Icon}
-                onChange={changeHandler}
                 withSwitcher={withSwitcher}
                 placeholder={placeholder}
                 {...props}
