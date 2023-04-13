@@ -64,10 +64,10 @@ const SignInPage = () => {
             });
     }
 
-    const emailChangeHandler = useCallback(e => setEmail(e.target.value), [])
+    const emailChangeHandler = useCallback(setEmail, [])
     const emailClearHandler = useCallback(() => setEmail(''), [])
 
-    const passwordChangeHandler = useCallback(e => setPassword(e.target.value), [])
+    const passwordChangeHandler = useCallback(setPassword, [])
     const passwordSwitchHandler = useCallback(() => setPasswordType(passwordType === 'password' ? 'text' : 'password'), [passwordType])
 
     if (isLoading) {

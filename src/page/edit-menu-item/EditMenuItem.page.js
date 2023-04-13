@@ -45,17 +45,17 @@ const EditMenuItemPage = () => {
                     <SecondaryButton>{imageURL ? 'Change image' : 'Add image'}</SecondaryButton>
                 </MenuItemPhoto>
                 <Label>Name</Label>
-                <Input withCleaner value={name} changeHandler={e => setName(e.target.value)} clearHandler={() => setName('')}/>
+                <Input withCleaner value={name} changeHandler={value =>setName(value)} clearHandler={() => setName('')}/>
                 <Label>Price</Label>
-                <Input withCleaner value={price} changeHandler={e => setPrice(e.target.value)} clearHandler={() => setPrice('')}/>
+                <Input withCleaner value={price} changeHandler={value =>setPrice(value)} clearHandler={() => setPrice('')}/>
                 <Label>Description</Label>
-                <Textarea withCleaner value={description} changeHandler={e => setDescription(e.target.value)}
+                <Textarea withCleaner value={description} changeHandler={value =>setDescription(value)}
                           clearHandler={() => setDescription('')}/>
                 <Label>Cooking Time</Label>
-                <Input withCleaner value={cookingTime} changeHandler={e => setCookingTime(e.target.value)}
+                <Input withCleaner value={cookingTime} changeHandler={value =>setCookingTime(value)}
                        clearHandler={() => setCookingTime('')}/>
                 <Label>Meal Size</Label>
-                <Input withCleaner value={size} changeHandler={e => setSize(e.target.value)} clearHandler={() => setSize('')}/>
+                <Input withCleaner value={size} changeHandler={value =>setSize(value)} clearHandler={() => setSize('')}/>
             </ContentContainer>
             {
                 (

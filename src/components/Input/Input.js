@@ -51,7 +51,7 @@ export const Input = memo(function ({
             {Icon && <Icon/>}
             <InputText
                 value={value}
-                onChange={e => changeHandler(e)}
+                onChange={e => changeHandler(e.target.value)}
                 type={type}
                 withRightIcon={withSwitcher || withCleaner}
                 withLeftIcon={!!Icon}
