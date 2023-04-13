@@ -32,6 +32,10 @@ const EditMenu = () => {
     const url = BE_API.GET_MENU_ITEMS_BY_COMPANY_ID(companyId);
 
     useEffect(() => {
+        LocalStorage.set(LOCAL_STORAGE_KEY.COMPANY_ID_FOR_EDIT_MENU, companyId);
+    })
+
+    useEffect(() => {
         dispatch(startLoading());
         //TODO: SHOW WARNING WRONG PARAM
         companyId && fetchData(url)

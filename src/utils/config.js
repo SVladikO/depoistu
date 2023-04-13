@@ -154,7 +154,7 @@ export const ROUTER = {
         page: EditMenuItemPage,
         showBottomMenu: true,
         BACK_URL: () => {
-            const COMPANY_ID = LocalStorage.get(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT)?.COMPANY_ID;
+            const COMPANY_ID = LocalStorage.get(LOCAL_STORAGE_KEY.COMPANY_ID_FOR_EDIT_MENU);
             return `${URL.EDIT_MENU}/${COMPANY_ID}`;
         }
     },
@@ -165,7 +165,7 @@ export const ROUTER = {
         page: AddMenuItemPage,
         showBottomMenu: true,
         BACK_URL: () => {
-            const COMPANY_ID = LocalStorage.get(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT)?.COMPANY_ID;
+            const COMPANY_ID = LocalStorage.get(LOCAL_STORAGE_KEY.COMPANY_ID_FOR_EDIT_MENU);
             return `${URL.EDIT_MENU}/${COMPANY_ID}`;
         }
     },
