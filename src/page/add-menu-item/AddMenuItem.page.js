@@ -23,7 +23,6 @@ const AddMenuItemPage = () => {
 
     return (
         <>
-            <SecondaryButton><RemoveIcon/> Delete</SecondaryButton>
             <RowSplitter height={'15px'}/>
             <ContentContainer>
                 <MenuItemPhoto>
@@ -45,7 +44,7 @@ const AddMenuItemPage = () => {
                 <Label>Meal Size</Label>
                 <Input withCleaner value={size} onChange={e => setSize(e.target.value)} onClear={() => setSize('')}/>
             </ContentContainer>
-            <PrimaryButton>Save</PrimaryButton>
+            <PrimaryButton>Add</PrimaryButton>
         </>
     );
 }
