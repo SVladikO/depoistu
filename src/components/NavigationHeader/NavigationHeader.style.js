@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import {BORDER_RADIUS, COLOR, DEVICE_WIDTH} from "../../utils/theme";
 
-
 export const Wrapper = styled.div`
   background: ${COLOR.ACCENT4};
   min-width: ${DEVICE_WIDTH.MIN};
@@ -33,18 +32,17 @@ export const MainContent = styled.div`
   position: relative;
   
   & > a {
+    height: 64px;
+    width: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
-    display: block;
-    top: 50%;
-    transform: translateY(-50%);
+    left: 0;
   }
   
   & > a:first-child > svg {
     fill: ${COLOR.ACCENT1};
-  }
-  
-  & > a:first-child {
-    left: 15px;
   }
   
   & > a:last-child {
