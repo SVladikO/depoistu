@@ -1,7 +1,7 @@
 import "swiper/css";
 import "swiper/css/pagination";
 import {useParams} from "react-router-dom";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Swiper, SwiperSlide} from "swiper/react";
 
 import {Divider, InstitutionBasketButton, InstitutionPictures, Wrapper,} from "./EditCompany.style";
@@ -34,7 +34,11 @@ const EditCompany = () => {
         {id: 'FromTo5', name: 'Thu', isChecked: false, from: '00:00', to: '00:00'},
         {id: 'FromTo6', name: 'Fri', isChecked: false, from: '00:00', to: '00:00'},
         {id: 'FromTo7', name: 'Sat', isChecked: false, from: '00:00', to: '00:00'},
-    ]
+    ];
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     const renderCompanyDetails = () => {
         return (
