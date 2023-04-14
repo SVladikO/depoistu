@@ -27,23 +27,23 @@
     "en": "Create an account",
     "ua": "Створити аккаунт"
   },
-  "PAGE.SING_UP.PLACEHOLDER.USER_NAME": {
+  "PAGE.SING_UP.LABEL.USER_NAME": {
     "en": "Name",
     "ua": "Ім'я"
   },
-  "PAGE.SING_UP.PLACEHOLDER.PHONE": {
+  "PAGE.SING_UP.LABEL.PHONE": {
     "ua": "Номер Телефону",
     "en": "Phone Number"
   },
-  "PAGE.SING_UP.PLACEHOLDER.EMAIL": {
+  "PAGE.SING_UP.LABEL.EMAIL": {
     "en": "Emial",
     "ua": "Електронна Пошта"
   },
-  "PAGE.SING_UP.PLACEHOLDER.PASS": {
+  "PAGE.SING_UP.LABEL.PASS": {
     "ua": "Пароль",
     "en": "Password"
   },
-  "PAGE.SING_UP.PLACEHOLDER.CONFIRM_PASS": {
+  "PAGE.SING_UP.LABEL.CONFIRM_PASS": {
     "en": "Confirm Password",
     "ua": "Пiдтвердiть Пароль"
   },
@@ -187,15 +187,15 @@
     "ua": "Змiнити пароль",
     "en": "Change Password"
   },
-  "PAGE.CHANGE_PASSWORD.PLACEHOLDER.OLD_PASSWORD": {
+  "PAGE.CHANGE_PASSWORD.LABEL.OLD_PASSWORD": {
     "en": "Old Password",
     "ua": "Старий Пароль"
   },
-  "PAGE.CHANGE_PASSWORD.PLACEHOLDER.NEW_PASSWORD": {
+  "PAGE.CHANGE_PASSWORD.LABEL.NEW_PASSWORD": {
     "en": "New Password",
     "ua": "Новий Пароль"
   },
-  "PAGE.CHANGE_PASSWORD.PLACEHOLDER.CONFIRM_PASSWORD": {
+  "PAGE.CHANGE_PASSWORD.LABEL.CONFIRM_PASSWORD": {
     "en": "Confirm Password",
     "ua": "Пiдтвердiть Пароль"
   },

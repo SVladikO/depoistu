@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useCallback, useState} from "react";
 
 import {MenuItemPhoto, ImagePlace} from './AddMenuItem.style';
 
@@ -11,15 +11,28 @@ import {
     Textarea
 } from '../../components/index'
 
-import {ReactComponent as RemoveIcon} from "../../icons/remove_icon.svg";
-
 const AddMenuItemPage = () => {
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
     const [description, setDescription] = useState('');
     const [cookingTime, setCookingTime] = useState('');
-    const [imageURL, setImageURL] = useState('');
-    const [size, setSize] = useState('');
+    const [size, setSize] = useState();
+    const [imageURL, setImageURL] = useState();
+
+    const nameChangeHandler = useCallback(setName, [name]);
+    const nameClearHandler = useCallback(() => setName(''), [name]);
+
+    const priceChangeHandler = useCallback(setPrice, [price]);
+    const priceClearHandler = useCallback(() => setPrice(''), [price]);
+
+    const descriptionChangeHandler = useCallback(setDescription, [description]);
+    const descriptionClearHandler = useCallback(() => setDescription(''), [description]);
+
+    const cookingTimeChangeHandler = useCallback(setCookingTime, [cookingTime]);
+    const cookingTimeClearHandler = useCallback(() => setCookingTime(''), [cookingTime]);
+
+    const sizeChangeHandler = useCallback(setSize, [size]);
+    const sizeClearHandler = useCallback(() => setSize(''), [size]);
 
     return (
         <>
@@ -32,17 +45,42 @@ const AddMenuItemPage = () => {
                     <SecondaryButton>{imageURL ? 'Change image' : 'Add image'}</SecondaryButton>
                 </MenuItemPhoto>
                 <Label>Name</Label>
-                <Input withCleaner value={name} onChange={e => setName(e.target.value)} onClear={() => setName('')}/>
+                <Input
+                    value={name}
+                    changeHandler={nameChangeHandler}
+                    clearHandler={nameClearHandler}
+                    withCleaner
+                />
                 <Label>Price</Label>
-                <Input withCleaner value={price} onChange={e => setPrice(e.target.value)} onClear={() => setPrice('')}/>
+                <Input
+                    value={price}
+                    changeHandler={priceChangeHandler}
+                    clearHandler={priceClearHandler}
+                    withCleaner
+                />
                 <Label>Description</Label>
-                <Textarea withCleaner value={description} changeHandler={e => setDescription(e.target.value)}
-                          onClear={() => setDescription('')}/>
-                <Label>Cooking Time</Label>
-                <Input withCleaner value={cookingTime} onChange={e => setCookingTime(e.target.value)}
-                       onClear={() => setCookingTime('')}/>
+                <Textarea
+                    value={description}
+                    changeHandler={descriptionChangeHandler}
+                    clearHandler={descriptionClearHandler}
+                    withCleaner
+                />
+                <Label>Cooking time (in minutes)</Label>
+                <Input
+                    value={cookingTime}
+                    type={'number'}
+                    changeHandler={cookingTimeChangeHandler}
+                    clearHandler={cookingTimeClearHandler}
+                    withCleaner
+                />
                 <Label>Meal Size</Label>
-                <Input withCleaner value={size} onChange={e => setSize(e.target.value)} onClear={() => setSize('')}/>
+                <Input
+                    value={size}
+                    type={'number'}
+                    changeHandler={sizeChangeHandler}
+                    clearHandler={sizeClearHandler}
+                    withCleaner
+                />
             </ContentContainer>
             <PrimaryButton>Add</PrimaryButton>
         </>

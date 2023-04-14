@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 
@@ -28,7 +28,6 @@ import {ReactComponent as LockIcon} from "../../icons/lock.svg";
 import {ReactComponent as MailIcon} from "../../icons/mail.svg";
 
 
-
 import {startLoading, stopLoading} from "../../features/request/requestSlice";
 
 import {fetchData} from "../../utils/fetch";
@@ -43,6 +42,7 @@ const SignInPage = () => {
 
     const [password, setPassword] = useState('vv11vv')
     const [email, setEmail] = useState('vlad_S@gmail.com')
+    const [passwordType, setPasswordType] = useState('password')
     const [requestError, setRequestError] = useState('');
     const handleSingIn = () => {
         dispatch(startLoading());
@@ -63,8 +63,14 @@ const SignInPage = () => {
             });
     }
 
+    const emailChangeHandler = useCallback(setEmail, [email])
+    const emailClearHandler = useCallback(() => setEmail(''), [email])
+
+    const passwordChangeHandler = useCallback(setPassword, [password])
+    const passwordSwitchHandler = useCallback(() => setPasswordType(passwordType === 'password' ? 'text' : 'password'), [passwordType])
+
     if (isLoading) {
-        return <Notification.Loading />
+        return <Notification.Loading/>
     }
 
     return (<>
@@ -72,13 +78,29 @@ const SignInPage = () => {
         {/*    <LogoIcon/>*/}
         {/*    <LogoText>{translations.company_name}</LogoText>*/}
         {/*</Content>*/}
-        {requestError && <Notification.Error message={requestError} />}
+        {requestError && <Notification.Error message={requestError}/>}
         <ContentContainer>
             <Label>Email</Label>
-            <Input Icon={MailIcon} value={email} onChange={e => setEmail(e.target.value)} placeholder={`Enter email`} />
+            <Input
+                Icon={MailIcon}
+                value={email}
+                withCleaner
+                clearHandler={emailClearHandler}
+                changeHandler={emailChangeHandler}
+            />
             <Label>Password</Label>
-            <Input Icon={LockIcon} value={password} onChange={e => setPassword(e.target.value)} type="password" placeholder={`Enter password`} />
-            <Link to={ROUTER.CHANGE_PASSWORD.URL}>{resolveTranslation("PAGE.SING_IN.FORGOT_PASSWORD")}</Link>
+            <Input
+                Icon={LockIcon}
+                value={password}
+                changeHandler={passwordChangeHandler}
+                switchHandler={passwordSwitchHandler}
+                type={passwordType}
+                withSwitcher
+            />
+            <Link
+            >
+                {resolveTranslation("PAGE.SING_IN.FORGOT_PASSWORD")}
+            </Link>
             {/*<Flex flexDirection='column'>*/}
             {/*    <Flex justifyContent="space-between">*/}
             {/*        <NavLabel primary={false}>Or login with</NavLabel>*/}
