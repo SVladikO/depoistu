@@ -21,7 +21,8 @@ const EditCompany = () => {
     const [city, setCity] = useState(company.CITY || '');
     const [street, setStreet] = useState(company.STREET || '');
     const [pictures, setPictures] = useState(company?.PHOTOS?.split(',') || []);
-    const [schedule, setSchedule] = useState(company?.SCHEDULE?.split(',') || []);
+    //const [schedule, setSchedule] = useState(company?.SCHEDULE?.split(',').map(el => el.trim()) || []);
+    const schedule = '10.00-22.00, 10.00-22.00, 10.00-22.00, 10.00-22.00, 10.00-22.00, 10.00-22.00, 10.00-22.00'
     const [isChecked, setIsChecked] = useState(false);
 
 
@@ -36,24 +37,23 @@ const EditCompany = () => {
     const streetChangeHandler = useCallback(setStreet, [street]);
     const streetClearHandler = useCallback(() => setStreet(''), [street]);
 
+    const [week, setWeek] = useState(initSchedule(schedule));
 
 
-    function makeSchedule(schedule){
-        let days = ['ПН','ВТ','СР','ЧТ','ПТ','СБ','ВС'];
-        return schedule.map((el,i) => ({
-            id: `FromTo${i + 1}`,
-            name:days[i],
-            from: schedule[i].split('-')[0],
-            to: schedule[i].split('-')[1],
-            isChecked: !(!schedule[i].split('-')[0] || schedule[i].split('-')[1] === undefined || '')
-        }))
+    function initSchedule(schedule) {
+       return ['ПН','ВТ','СР','ЧТ','ПТ','СБ','ВС']
+            .map((name, index) => {
+                const [from,to] = schedule[index]?.split('-');
+                console.log(222, from,to)
+                return   {isChecked: !schedule[index], from , to , name }
+            })
     }
 
-    const checkHandler = () => {
+    const checkboxChangeHandler = () => {
         setIsChecked(!isChecked)
     }
 
-    const weekDays = makeSchedule(schedule);
+    const weekDays = initSchedule(schedule);
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -89,16 +89,13 @@ const EditCompany = () => {
                         clearHandler={streetClearHandler}
                     />
                     <Label>Work Schedule</Label>
-                    {weekDays.map((day,i) =>
+                    {week.map(day =>
                         <FromToTime
                             key={day.id}
-                            isChecked={day.isChecked}
-                            id={day.id}
-                            weekDay={day.name}
-                            from={day.from}
-                            to={day.to}
-                            handlerChange={checkHandler}
-                        />)}
+                            day={day}
+                            checkboxChangeHandler={checkboxChangeHandler}
+                        />
+                    )}
 
                 </ContentContainer>
             </>

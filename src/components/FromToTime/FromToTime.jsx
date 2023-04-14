@@ -2,13 +2,13 @@ import {Wrapper, GroupWrapper, Label} from "./FromToTime.style";
 
 import {Checkbox, Input} from "../index";
 
-function FromToTime({id,isChecked, handlerChange, weekDay, from="", to="", changeHandlerFrom = () => {} , changeHandlerTo = () => {} }) {
-
+function FromToTime({day, checkboxChangeHandler }) {
+    const {id, isChecked, name, from="", to=""} = day;
     return (
         <Wrapper>
             <GroupWrapper>
-                <Checkbox id={id} isChecked={isChecked} handlerChange={handlerChange}/>
-                <Label htmlFor={id}>{weekDay}</Label>
+                <Checkbox id={id} isChecked={isChecked} changeHandler={checkboxChangeHandler}/>
+                <Label htmlFor={id}>{name}</Label>
             </GroupWrapper>
             <GroupWrapper>
                 <span>From</span>
