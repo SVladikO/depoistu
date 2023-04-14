@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const InstitutionPictures = styled.div`
+export const Pictures = styled.div`
   height: 100px;
   width: 100%;
   display: flex;
@@ -38,7 +38,7 @@ export const Divider = styled.div`
   color: ${COLOR.ACCENT5};
 `;
 
-export const InstitutionBasketButton = styled.div`
+export const BasketButton = styled.div`
   width: 31px;
   height: 34px;
   background: ${COLOR.ACCENT4};
