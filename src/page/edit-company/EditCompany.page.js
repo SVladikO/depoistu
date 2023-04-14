@@ -4,11 +4,6 @@ import {useParams} from "react-router-dom";
 
 import "swiper/css";
 import "swiper/css/pagination";
-import {useParams} from "react-router-dom";
-import React, {useEffect, useState} from "react";
-import {Swiper, SwiperSlide} from "swiper/react";
-import {Divider, InstitutionBasketButton, InstitutionPictures, Wrapper,} from "./EditCompany.style";
-
 import {Divider, BasketButton, Pictures, Wrapper,} from "./EditCompany.style";
 
 import {ContentContainer, FromToTime, Input, Label, PrimaryButton, SecondaryButton} from "../../components";
