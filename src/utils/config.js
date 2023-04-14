@@ -124,7 +124,7 @@ export const ROUTER = {
         TITLE: resolveTranslation("PAGE.CHANGE_PASSWORD.TOP_TITLE"),
         page: ChangePasswordPage,
         showBottomMenu: true,
-        BACK_URL: URL.SING_IN
+        BACK_URL: URL.SETTING,
     },
 
     CUSTOMER_COMPANIES: {

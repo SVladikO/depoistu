@@ -28,7 +28,6 @@ import {ReactComponent as LockIcon} from "../../icons/lock.svg";
 import {ReactComponent as MailIcon} from "../../icons/mail.svg";
 
 
-
 import {startLoading, stopLoading} from "../../features/request/requestSlice";
 
 import {fetchData} from "../../utils/fetch";
@@ -71,7 +70,7 @@ const SignInPage = () => {
     const passwordSwitchHandler = useCallback(() => setPasswordType(passwordType === 'password' ? 'text' : 'password'), [passwordType])
 
     if (isLoading) {
-        return <Notification.Loading />
+        return <Notification.Loading/>
     }
 
     return (<>
@@ -79,7 +78,7 @@ const SignInPage = () => {
         {/*    <LogoIcon/>*/}
         {/*    <LogoText>{translations.company_name}</LogoText>*/}
         {/*</Content>*/}
-        {requestError && <Notification.Error message={requestError} />}
+        {requestError && <Notification.Error message={requestError}/>}
         <ContentContainer>
             <Label>Email</Label>
             <Input
@@ -98,7 +97,10 @@ const SignInPage = () => {
                 type={passwordType}
                 withSwitcher
             />
-            <Link to={ROUTER.CHANGE_PASSWORD.URL}>{resolveTranslation("PAGE.SING_IN.FORGOT_PASSWORD")}</Link>
+            <Link
+            >
+                {resolveTranslation("PAGE.SING_IN.FORGOT_PASSWORD")}
+            </Link>
             {/*<Flex flexDirection='column'>*/}
             {/*    <Flex justifyContent="space-between">*/}
             {/*        <NavLabel primary={false}>Or login with</NavLabel>*/}
