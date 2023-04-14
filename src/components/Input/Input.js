@@ -50,7 +50,6 @@ export const Input = memo(function ({
         setShowData(!showData)
         switchHandler();
     }
-
     return (
         <Wrapper className='pma-input'>
             {Icon && <Icon/>}

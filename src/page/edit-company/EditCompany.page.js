@@ -41,17 +41,27 @@ const EditCompany = () => {
 
 
     function initSchedule(schedule) {
-       return ['ПН','ВТ','СР','ЧТ','ПТ','СБ','ВС']
+        const times = schedule.split(',').map(el => el.trim());
+
+        return ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС']
             .map((name, index) => {
-                const [from,to] = schedule[index]?.split('-');
-                console.log(222, from,to)
-                return   {isChecked: !schedule[index], from , to , name }
+                const [from, to] = times[index]?.split('-');
+
+                return {isChecked: !!times[index], from, to, name}
             })
     }
 
-    const checkboxChangeHandler = () => {
-        setIsChecked(!isChecked)
-    }
+    const checkboxChangeHandler = useCallback(
+        day => () => {
+            setWeek(week.map((weekDay, i) => {
+                if (weekDay.name === day.name) {
+                    return {...weekDay, isChecked: !weekDay.isChecked}
+                }
+
+                return weekDay;
+            })
+            )
+    }, [week])
 
     const weekDays = initSchedule(schedule);
 
@@ -91,9 +101,9 @@ const EditCompany = () => {
                     <Label>Work Schedule</Label>
                     {week.map(day =>
                         <FromToTime
-                            key={day.id}
+                            key={day.name}
                             day={day}
-                            checkboxChangeHandler={checkboxChangeHandler}
+                            checkboxChangeHandler={checkboxChangeHandler(day)}
                         />
                     )}
 
