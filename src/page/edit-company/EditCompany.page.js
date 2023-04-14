@@ -3,7 +3,6 @@ import "swiper/css/pagination";
 import {useParams} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import {Swiper, SwiperSlide} from "swiper/react";
-
 import {Divider, InstitutionBasketButton, InstitutionPictures, Wrapper,} from "./EditCompany.style";
 
 import {ContentContainer, FromToTime, Input, Label, PrimaryButton, SecondaryButton} from "../../components";
@@ -19,6 +18,9 @@ const EditCompany = () => {
     const [city, setCity] = useState(company.CITY || '');
     const [street, setStreet] = useState(company.STREET || '');
     const [pictures, setPictures] = useState(company?.PHOTOS?.split(',') || []);
+    const [schedule, setSchedule] = useState(company?.SCHEDULE?.split(',') || []);
+    const [isChecked, setIsChecked] = useState(false);
+
 
     const deleteCompanyImage = index => setPictures(pictures.filter((_, i) => i !== index));
     const cleanCityInput = () => setCity('');
@@ -26,15 +28,24 @@ const EditCompany = () => {
     const onStreetInput = e => setStreet(e.target.value);
     const clearStreetInput = () => setStreet('');
 
-    const weekDays = [
-        {id: 'FromTo1', name: 'Sun', isChecked: false, from: '00:00', to: '00:00'},
-        {id: 'FromTo2', name: 'Mon', isChecked: false, from: '00:00', to: '00:00'},
-        {id: 'FromTo3', name: 'Tue', isChecked: false, from: '00:00', to: '00:00'},
-        {id: 'FromTo4', name: 'Wed', isChecked: false, from: '00:00', to: '00:00'},
-        {id: 'FromTo5', name: 'Thu', isChecked: false, from: '00:00', to: '00:00'},
-        {id: 'FromTo6', name: 'Fri', isChecked: false, from: '00:00', to: '00:00'},
-        {id: 'FromTo7', name: 'Sat', isChecked: false, from: '00:00', to: '00:00'},
-    ];
+
+
+    function makeSchedule(schedule){
+        let days = ['ПН','ВТ','СР','ЧТ','ПТ','СБ','ВС'];
+        return schedule.map((el,i) => ({
+            id: `FromTo${i + 1}`,
+            name:days[i],
+            from: schedule[i].split('-')[0],
+            to: schedule[i].split('-')[1],
+            isChecked: !(!schedule[i].split('-')[0] || schedule[i].split('-')[1] === undefined || '')
+        }))
+    }
+
+    const checkHandler = () => {
+        setIsChecked(!isChecked)
+    }
+
+    const weekDays = makeSchedule(schedule);
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -90,7 +101,16 @@ const EditCompany = () => {
                         changeHandler={clearStreetInput}
                     />
                     <Label>Work Schedule</Label>
-                    {weekDays.map(day => <FromToTime key={day.id} id={day.id} weekDay={day.name} from={day.from} to={day.to} />)}
+                    {weekDays.map((day,i) =>
+                        <FromToTime
+                            key={day.id}
+                            isChecked={day.isChecked}
+                            id={day.id}
+                            weekDay={day.name}
+                            from={day.from}
+                            to={day.to}
+                            handlerChange={checkHandler}
+                        />)}
 
                 </ContentContainer>
             </>
