@@ -1,25 +1,33 @@
-import {memo} from 'react';
+import {memo, useCallback, useState} from 'react';
 
 import {Wrapper, GroupWrapper, Label} from "./FromToTime.style";
 
 import {Checkbox, Input} from "../index";
 
-function FromToTime({day, checkboxChangeHandler }) {
-    const {id, isChecked, name, from="", to=""} = day;
-    console.log(444)
+function FromToTime({day}) {
+    const {isChecked, name, from="", to=""} = day;
+
+    const [fromTime, setFromTime] = useState(from);
+    const [toTime, setToTime] = useState(to);
+    const [checked, setChecked] = useState(isChecked);
+
+    const checkboxChangeHandler = useCallback(() => setChecked(!checked), [checked])
+    const changeHandlerFromTime = useCallback(value => setFromTime(value), [fromTime])
+    const changeHandlerToTime = useCallback(value => setToTime(value), [toTime])
+    console.log(222)
     return (
         <Wrapper>
             <GroupWrapper>
-                <Checkbox id={id} isChecked={isChecked} changeHandler={checkboxChangeHandler}/>
-                <Label htmlFor={id}>{name}</Label>
+                <Checkbox isChecked={checked} changeHandler={checkboxChangeHandler}/>
+                <Label onClick={checkboxChangeHandler}>{name}</Label>
             </GroupWrapper>
             <GroupWrapper>
                 <span>From</span>
-                <Input value={from}/>
+                <Input value={fromTime} changeHandler={changeHandlerFromTime}/>
             </GroupWrapper>
             <GroupWrapper>
                 <span>To</span>
-                <Input value={to}/>
+                <Input value={toTime} changeHandler={changeHandlerToTime}/>
             </GroupWrapper>
         </Wrapper>
     );

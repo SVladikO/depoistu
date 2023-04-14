@@ -21,10 +21,6 @@ const EditCompany = () => {
     const [city, setCity] = useState(company.CITY || '');
     const [street, setStreet] = useState(company.STREET || '');
     const [pictures, setPictures] = useState(company?.PHOTOS?.split(',') || []);
-    //const [schedule, setSchedule] = useState(company?.SCHEDULE?.split(',').map(el => el.trim()) || []);
-    const schedule = '10.00-22.00, 10.00-22.00, 10.00-22.00, 10.00-22.00, 10.00-22.00, 10.00-22.00, 10.00-22.00'
-    const [isChecked, setIsChecked] = useState(false);
-
 
     const deleteCompanyImage = index => setPictures(pictures.filter((_, i) => i !== index));
 
@@ -37,33 +33,18 @@ const EditCompany = () => {
     const streetChangeHandler = useCallback(setStreet, [street]);
     const streetClearHandler = useCallback(() => setStreet(''), [street]);
 
-    const [week, setWeek] = useState(initSchedule(schedule));
+    const [week, setWeek] = useState(initSchedule(company?.SCHEDULE));
 
-
-    function initSchedule(schedule) {
-        const times = schedule.split(',').map(el => el.trim());
-
-        return ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС']
-            .map((name, index) => {
-                const [from, to] = times[index]?.split('-');
-
-                return {isChecked: !!times[index], from, to, name}
-            })
-    }
-
-    const checkboxChangeHandler = useCallback(
-        day => () => {
-            setWeek(week.map((weekDay, i) => {
-                if (weekDay.name === day.name) {
-                    return {...weekDay, isChecked: !weekDay.isChecked}
-                }
-
-                return weekDay;
-            })
-            )
-    }, [week])
-
-    const weekDays = initSchedule(schedule);
+    // const checkboxChangeHandler = useCallback(
+    //     day => () => {
+    //         setWeek(week.map((weekDay, i) => {
+    //             if (weekDay.name === day.name) {
+    //                 return {...weekDay, isChecked: !weekDay.isChecked}
+    //             }
+    //             return weekDay;
+    //         })
+    //         )
+    // }, [week])
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -99,14 +80,7 @@ const EditCompany = () => {
                         clearHandler={streetClearHandler}
                     />
                     <Label>Work Schedule</Label>
-                    {week.map(day =>
-                        <FromToTime
-                            key={day.name}
-                            day={day}
-                            checkboxChangeHandler={checkboxChangeHandler(day)}
-                        />
-                    )}
-
+                    {week.map(day => <FromToTime key={day.name} day={day} />)}
                 </ContentContainer>
             </>
         )
@@ -119,6 +93,17 @@ const EditCompany = () => {
         </Wrapper>
     );
 };
+
+function initSchedule(schedule) {
+    const times = schedule.split(',').map(el => el.trim());
+
+    return ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС']
+        .map((name, index) => {
+            const [from, to] = times[index]?.split('-');
+
+            return {isChecked: !!times[index], from, to, name}
+        })
+}
 
 function renderPictures(pictures, deleteCompanyImage) {
     return (
