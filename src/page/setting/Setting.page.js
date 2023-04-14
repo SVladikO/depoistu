@@ -24,7 +24,7 @@ import {
     OptionSettings, NotificationTDB,
 } from '../../components'
 
-import {ROUTER} from '../../utils/config';
+import {ROUTER, URL} from '../../utils/config';
 import {LOCAL_STORAGE_KEY, LocalStorage, resolveTranslation} from "../../utils/utils";
 
 const SettingPage = () => {
@@ -54,7 +54,7 @@ const SettingPage = () => {
                 {/*TODO: Hidden second version*/}
                 {/*<SettingMenuRow icon={LikeIcon} title={ROUTER.Favorite.TITLE} href={ROUTER.Favorite.URL}/>*/}
                 {/*<SettingMenuRow icon={OrderHistoryIcon} title={ROUTER.ORDER_HISTORY.TITLE} href={ROUTER.ORDER_HISTORY.URL}/>*/}
-                <SettingMenuRow icon={LockIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.CHANGE_PASS")} href={ROUTER.CHANGE_PASSWORD.URL}/>
+                <SettingMenuRow icon={LockIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.CHANGE_PASS")} href={`${URL.CHANGE_PASSWORD}/?backUrl=${URL.SETTING}`}/>
                 {/*<SettingMenuRow icon={PaymentIcon} title='Payment' href='/catalog'/>*/}
                 {/*<SettingMenuRow icon={DeliveryAddressIcon} title='Delivery Address' href='/catalog'/>*/}
                 {/*<SettingMenuRow icon={StoreIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.LOCATION")} href='/catalog'/>*/}
