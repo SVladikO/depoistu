@@ -4,16 +4,25 @@ import {Wrapper, GroupWrapper, Label} from "./FromToTime.style";
 
 import {Checkbox, Input} from "../index";
 
-function FromToTime({day}) {
-    const {isChecked, name, from="", to=""} = day;
+function FromToTime({day, updateHow}) {
+    const {isChecked, name, from = "", to = ""} = day;
 
     const [fromTime, setFromTime] = useState(from);
     const [toTime, setToTime] = useState(to);
     const [checked, setChecked] = useState(isChecked);
 
-    const checkboxChangeHandler = useCallback(() => setChecked(!checked), [checked])
-    const changeHandlerFromTime = useCallback(value => setFromTime(value), [fromTime])
-    const changeHandlerToTime = useCallback(value => setToTime(value), [toTime])
+    const checkboxChangeHandler = useCallback(() => {
+        setChecked(!checked);
+        updateHow(name, 'isChecked', !checked);
+    }, [checked])
+    const changeHandlerFromTime = useCallback(value => {
+        setFromTime(value);
+        updateHow(name, 'from', value);
+    }, [fromTime])
+    const changeHandlerToTime = useCallback(value => {
+        setToTime(value)
+        updateHow(name, 'to', value);
+    }, [toTime])
     console.log(222)
     return (
         <Wrapper>

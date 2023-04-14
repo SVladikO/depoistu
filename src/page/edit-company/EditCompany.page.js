@@ -12,6 +12,13 @@ import {ReactComponent as DeleteBasketIcon} from "../../icons/delete_basket.svg"
 
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/utils";
 
+let how = [];
+
+const updateHow =  (dayName, fieldName, value) => {
+    how.find(weekDay => weekDay.name === dayName)[fieldName] = value;
+    console.log(how);
+}
+
 const EditCompany = () => {
     const companyId = +useParams().companyId;
     const CUSTOMER_COMPANIES = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
@@ -35,16 +42,9 @@ const EditCompany = () => {
 
     const [week, setWeek] = useState(initSchedule(company?.SCHEDULE));
 
-    // const checkboxChangeHandler = useCallback(
-    //     day => () => {
-    //         setWeek(week.map((weekDay, i) => {
-    //             if (weekDay.name === day.name) {
-    //                 return {...weekDay, isChecked: !weekDay.isChecked}
-    //             }
-    //             return weekDay;
-    //         })
-    //         )
-    // }, [week])
+    if (!how.length) {
+        how = week;
+    }
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -80,7 +80,7 @@ const EditCompany = () => {
                         clearHandler={streetClearHandler}
                     />
                     <Label>Work Schedule</Label>
-                    {week.map(day => <FromToTime key={day.name} day={day} />)}
+                    {week.map(day => <FromToTime key={day.name} day={day} updateHow={updateHow} />)}
                 </ContentContainer>
             </>
         )
