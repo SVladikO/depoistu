@@ -21,7 +21,7 @@ import {ReactComponent as PizzaIcon} from "../icons/category/pizza.svg";
 import {ReactComponent as SandwitchIcon} from "../icons/category/sandwitch.svg";
 import {ReactComponent as Sea_foodIcon} from "../icons/category/sea_food.svg";
 import {ReactComponent as VagetableIcon} from "../icons/category/vagetable.svg";
-import {getParam, LOCAL_STORAGE_KEY, LocalStorage, resolveTranslation} from "./utils";
+import {LOCAL_STORAGE_KEY, LocalStorage, resolveTranslation} from "./utils";
 import CustomerCompaniesPage from "../page/customer-companies/CustomerCompanies.page";
 import AddCompanyPage from "../page/add-company/AddCompany.page";
 import AddMenuItemPage from "../page/add-menu-item/AddMenuItem.page";
@@ -124,10 +124,7 @@ export const ROUTER = {
         TITLE: resolveTranslation("PAGE.CHANGE_PASSWORD.TOP_TITLE"),
         page: ChangePasswordPage,
         showBottomMenu: true,
-        BACK_URL: () => {
-            const backUrl = getParam(`backUrl`)
-            return backUrl;
-        }
+        BACK_URL: URL.SETTING,
     },
 
     CUSTOMER_COMPANIES: {

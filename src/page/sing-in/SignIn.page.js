@@ -98,7 +98,6 @@ const SignInPage = () => {
                 withSwitcher
             />
             <Link
-                to={`${ROUTER.CHANGE_PASSWORD.URL}/?backUrl=${URL.SING_IN}`}
             >
                 {resolveTranslation("PAGE.SING_IN.FORGOT_PASSWORD")}
             </Link>

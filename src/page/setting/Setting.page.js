@@ -54,7 +54,7 @@ const SettingPage = () => {
                 {/*TODO: Hidden second version*/}
                 {/*<SettingMenuRow icon={LikeIcon} title={ROUTER.Favorite.TITLE} href={ROUTER.Favorite.URL}/>*/}
                 {/*<SettingMenuRow icon={OrderHistoryIcon} title={ROUTER.ORDER_HISTORY.TITLE} href={ROUTER.ORDER_HISTORY.URL}/>*/}
-                <SettingMenuRow icon={LockIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.CHANGE_PASS")} href={`${URL.CHANGE_PASSWORD}/?backUrl=${URL.SETTING}`}/>
+                <SettingMenuRow icon={LockIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.CHANGE_PASS")} href={URL.CHANGE_PASSWORD}/>
                 {/*<SettingMenuRow icon={PaymentIcon} title='Payment' href='/catalog'/>*/}
                 {/*<SettingMenuRow icon={DeliveryAddressIcon} title='Delivery Address' href='/catalog'/>*/}
                 {/*<SettingMenuRow icon={StoreIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.LOCATION")} href='/catalog'/>*/}
