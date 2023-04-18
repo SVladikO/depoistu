@@ -11,7 +11,7 @@ import reportWebVitals from './reportWebVitals';
 import {getRoutes} from "./utils/navigation";
 import {showDevelopmentPageUrls} from "./utils/log";
 import {checkAccess, setBrowserTabTitle} from "./utils/utils";
-import {PopupImage, PopupIntro, PopupCity} from "./components";
+import {PopupImage, PopupIntro} from "./components";
 
 const container = document.getElementById('root');
 const root = createRoot(container);
@@ -33,7 +33,6 @@ root.render(
                     {getRoutes()}
                     <PopupImage />
                     <PopupIntro />
-                    <PopupCity />
                 </Wrapper>
             </Provider>
         </BrowserRouter>

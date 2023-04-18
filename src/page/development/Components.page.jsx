@@ -1,4 +1,4 @@
-import React, {useCallback} from "react";
+import React, {useCallback, useState} from "react";
 import {Wrapper, Column, Component, Row, ColorCircle, Header, Space} from './Components.style';
 import
 {
@@ -8,27 +8,28 @@ import
     HistoryTabBar,
     Rating,
     Discount,
-    ThirdButton,
     CategoryItem,
     SettingMenuRow,
     ToggleCheckbox,
     CheckBoxWithLabel,
     CategoryMenuRow,
     SecondaryButton,
-    PrimaryWideButton,
-    PrimaryRoundedButton,
-    PrimaryWithIconButton,
-    SecondaryWithIconButton,
+    PrimaryButton,
     ContentContainer,
     Notification,
     NavigationHeader,
-    UserAccountBar,
+    FromToTime,
+    CustomerAccountBar,
     NavigationLabelHref,
     BottomMenu,
     MenuItem,
     OrderHistoryRow,
     NotificationTDB,
-    RowSplitter, Institution,
+    RowSplitter,
+    EditMenuRow,
+    Textarea,
+    Company,
+    Label
 } from "../../components";
 
 import CatalogPage from "./Catalog.page";
@@ -47,36 +48,62 @@ import AccountSettings from "../../components/AccountSettings/AccountSettings";
 import OptionSettings from "../../components/OptionSettings/OptionSettings";
 import {ImagePopupContent} from "../../components/PopupImage/PopupImage";
 import {PopupIntroContent} from "../../components/PopupIntro/PopupIntro";
-import {LoadingContent} from "../../components/Notification/Notification";
 import {ReactComponent as LocationIcon} from "../../icons/map_point.svg";
+import Checkbox from "../../components/Checkbox/Checkbox";
 
 const colors = Object.keys(COLOR).map(key =>
     ({title: key, component: <ColorCircle key={key} bg={COLOR[key]}/>, value: COLOR[key], width: '50px'})
 )
 
+function ExampleCategoryWithSelected() {
+    const menuItems = [{CATEGORY_ID: 1}, {CATEGORY_ID: 2}, {CATEGORY_ID: 3}];
+    const [selectedCategoryId, setSelectedCategoryId] = useState(menuItems[0].CATEGORY_ID)
+
+    return (
+        <CategoryMenuRow
+            showMenuItemAmount
+            menuItems={menuItems}
+            selectedCategoryId={selectedCategoryId}
+            changeCategory={id => setSelectedCategoryId(id)}
+        />
+    )
+}
+
 const columns = [
     [
-        {title: 'PrimaryWithIconButton', component: <PrimaryWithIconButton><GoogleIcon/>Google</PrimaryWithIconButton>},
-        {title: 'PrimaryWideButton', component: <PrimaryWideButton>Sing in</PrimaryWideButton>},
-        {title: 'PrimaryRoundedButton', component: <PrimaryRoundedButton>SIGN IN</PrimaryRoundedButton>},
+        {title: 'PrimaryButton', component: <PrimaryButton><GoogleIcon/>Google</PrimaryButton>},
+        {title: 'PrimaryButton', component: <PrimaryButton>Sing in</PrimaryButton>},
+        {title: 'PrimaryButton', component: <PrimaryButton>SING IN</PrimaryButton>},
+        {title: 'SecondaryButton', component: <SecondaryButton><FacebookIcon/>facebook</SecondaryButton>},
         {title: 'SecondaryButton', component: <SecondaryButton>Cancel</SecondaryButton>},
-        {
-            title: 'SecondaryWithIconButton',
-            component: <SecondaryWithIconButton><FacebookIcon/>facebook</SecondaryWithIconButton>
-        },
-        {title: 'ThirdButton', component: <ThirdButton>Payment</ThirdButton>},
-        {title: 'Input 1', component: <Input placeholder={`johndoe@mail.com`}/>},
-        {title: 'Input 2', component: <Input Icon={MailIcon} placeholder={`johndoe@mail.com`}/>},
-        {title: 'Input 3', component: <Input withSwitcher placeholder={`New password`}/>},
+        {title: 'SecondaryButton', component: <SecondaryButton>CANCEL</SecondaryButton>},
+        {title: 'Label', component: <Label>Change Password</Label>},
+        {title: 'Input 1', component: <Input />},
+        {title: 'Input 2', component: <Input Icon={MailIcon} />},
+        {title: 'Input 3', component: <Input withSwitcher />},
+        {title: 'Input 4', component: <Input withCleaner/>},
+        {title: 'Textarea', component: <Textarea withCleaner/>},
         {title: 'PInput', component: <PInput withIcon Icon={LocationIcon}> Vinnica</PInput>},
+        {title: 'FromToTime', component: <FromToTime weekDay={'Mon'} id={'ht12'}/>},
         {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
+        {title: 'Checkbox', component: <Checkbox/>},
     ],
     [
         {
-          title: 'Institution',
-          component: <Institution company={{PHOTOS: 'https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg, https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg, https://afisha.bigmir.net/i/23/51/30/9/2351309/gallery/15b8175dc297f8a58d9de22e77b7b256-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg',NAME: 'Domono', CITY: 'Kyiv', STREET: 'Davidusk 15.',}}/>
+            title: 'Institution',
+            component: <Company company={{
+                PHOTOS: 'https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg, https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg, https://afisha.bigmir.net/i/23/51/30/9/2351309/gallery/15b8175dc297f8a58d9de22e77b7b256-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg',
+                NAME: 'Domono',
+                CITY: 'Kyiv',
+                SCHEDULE: '08.00-21.00, 08.00-21.00, 08.00-21.00, 08.00-21.00, 08.00-21.00, 10.00-22.00, 10.00-22.00',
+                STREET: 'Davidusk 15.',
+            }}/>
         },
         {title: 'CategoryMenuRow', component: <CategoryMenuRow menuItems={[{CATEGORY_ID: 1}, {CATEGORY_ID: 2}, {CATEGORY_ID: 3}]} />},
+        {
+            title: 'CategoryMenuRow', component: <ExampleCategoryWithSelected />
+
+        },
         {
             title: 'MenuItem',
             component:
@@ -120,9 +147,14 @@ const columns = [
 
     ],
     [
-        {title: 'PopupImage', component: <ImagePopupContent imageUrl="https://raw.githubusercontent.com/SVladikO/testApp/master/images/4_cheese.jpg" />},
-        {title: 'PopupIntro', component: <PopupIntroContent />},
-        {title: 'EmptyBasket', component:
+        {
+            title: 'PopupImage',
+            component: <ImagePopupContent
+                imageUrl="https://raw.githubusercontent.com/SVladikO/testApp/master/images/4_cheese.jpg"/>
+        },
+        {title: 'PopupIntro', component: <PopupIntroContent/>},
+        {
+            title: 'EmptyBasket', component:
                 <NotificationTDB
                     Icon={EmptyBasketIcon}
                     title="Your Cart is empty"
@@ -140,23 +172,27 @@ const columns = [
             title: 'AccountSettings', component:
                 <AccountSettings groupTitle="Accounts">
                     <SettingMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
-                    <SettingMenuRow icon={LogOutIcon} title="Only change handler" changeHandler={() => console.log('clicked')}/>
+                    <SettingMenuRow icon={LogOutIcon} title="Only change handler"
+                                    changeHandler={() => console.log('clicked')}/>
                 </AccountSettings>
         },
         {
             title: 'OptionSettings', component:
                 <OptionSettings groupTitle="Accounts">
                     <SettingMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
-                    <SettingMenuRow icon={LogOutIcon} title="Only change handler" changeHandler={() => console.log('clicked')}/>
+                    <SettingMenuRow icon={LogOutIcon} title="Only change handler"
+                                    changeHandler={() => console.log('clicked')}/>
                 </OptionSettings>
         },
         {
             title: 'SettingMenuRow',
-            component: <SettingMenuRow icon={LockIcon} title={`Change Password`} toggleHandler={() => {}} toggleStatus={true}/>
+            component: <SettingMenuRow icon={LockIcon} title={`Change Password`} toggleHandler={() => {
+            }} toggleStatus={true}/>
         },
         {
             title: 'SettingMenuRow',
-            component: <SettingMenuRow icon={LogOutIcon} title="Only change handler" changeHandler={() => console.log('clicked')}/>
+            component: <SettingMenuRow icon={LogOutIcon} title="Only change handler"
+                                       changeHandler={() => console.log('clicked')}/>
         },
         {
             title: 'SettingMenuRow',
@@ -165,14 +201,17 @@ const columns = [
 
         {
             title: 'UserAccountBar',
-            component: <UserAccountBar fullName="Jhon Smith" status="Basic Member"/>
+            component: <CustomerAccountBar fullName="Jhon Smith" status="Basic Member"/>
         },
-
+        {
+            title: 'EditMenuRow',
+            component: <EditMenuRow title="Cheese Bites" menuId={5}/>
+        }
     ],
     [
         {
             title: 'HistoryTabBar in OptionSettings', component:
-                <NavigationHeader title="category" backUrl={' '} >
+                <NavigationHeader title="category" backUrl={' '}>
                     <HistoryTabBar/>
                 </NavigationHeader>
         },
@@ -192,12 +231,10 @@ const columns = [
         },
     ],
     [
-        {title: 'Loading', component: <LoadingContent />},
-        {title: 'Error', component: <Notification.Error />},
-        {title: 'Success', component: <Notification.Success />},
+        {title: 'Notification.Loading', component: <Notification.Loading/>},
+        {title: 'Notification.Error', component: <Notification.Error message={'Broken content.'}/>},
+        {title: 'Notification.Success', component: <Notification.Success/>},
     ]
-
-
 ]
 
 document.body.style.backgroundColor = '#d8d8d8'
@@ -221,11 +258,11 @@ function ComponentsPage() {
         <div>
             <Header>
                 <Space/>
-                <ThirdButton onClick={setWhiteBackground}>White</ThirdButton>
+                <PrimaryButton onClick={setWhiteBackground}>White</PrimaryButton>
                 <Space/>
-                <ThirdButton onClick={setGreyBackground}>Grey</ThirdButton>
+                <PrimaryButton onClick={setGreyBackground}>Grey</PrimaryButton>
                 <Space/>
-                <ThirdButton onClick={setBlueBackground}>Blue</ThirdButton>
+                <PrimaryButton onClick={setBlueBackground}>Blue</PrimaryButton>
                 <Space/>
                 <Space/>
                 <Space/>
@@ -236,7 +273,7 @@ function ComponentsPage() {
                     <Column key={index}>{renderRows(components)}</Column>)
                 }
             </Wrapper>
-            <CatalogPage/>
+            {/*<CatalogPage/>*/}
         </div>
     )
 }

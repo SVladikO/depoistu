@@ -21,7 +21,7 @@ const MenuItem = ({item = {}}) => {
                 <Flex flexDirection='column' width='80%'>
                     <Flex justifyContent="space-between">
                         <Title>{NAME}</Title>
-                        <Like liked={isLiked}/>
+                        {/*<Like liked={isLiked}/>*/}
                     </Flex>
                     <Price>{PRICE}</Price>
                     <Description>{DESCRIPTION}</Description>
@@ -31,9 +31,9 @@ const MenuItem = ({item = {}}) => {
                             <TimeIcon/> {COOKING_TIME} m <MeasureIcon/> {SIZE} g
                         </AdditionalDetails>
                     </Absolute>
-                    <Absolute bottom={'10px'} right={'10px'}>
-                        <BasketIcon onClick={() => dispatch(addOrderItem(item))}/>
-                    </Absolute>
+                    {/*<Absolute bottom={'10px'} right={'10px'}>*/}
+                    {/*    <BasketIcon onClick={() => dispatch(addOrderItem(item))}/>*/}
+                    {/*</Absolute>*/}
                 </Flex>
             </Flex>
         </Wrapper>

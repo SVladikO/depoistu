@@ -10,7 +10,7 @@ export const ContentContainer = styled.div.attrs({
   text-align: center;
   padding: 10px;
   border-radius: ${BORDER_RADIUS.SECOND};
-  margin: 0 0 10px;
+  margin: 0 0 15px;
   
   & > a {
     color: ${COLOR.ACCENT3};
@@ -20,8 +20,5 @@ export const ContentContainer = styled.div.attrs({
   }
   & > *:last-child {
     margin-bottom: 0;
-  }
-  @media (orientation: landscape) {
-    max-height: 325px;
   }
 `

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 import {Swiper, SwiperSlide} from "swiper/react";
 
@@ -6,25 +6,28 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import {CATEGORY_MAPPER} from '../../utils/config';
-import {
-    Content,
-    Flex
-} from "./CategoryMenuRow.style";
+import {Content, Flex} from "./CategoryMenuRow.style";
 
 import {CategoryItem} from "../../components";
+import {CATEGORY_MAPPER} from '../../utils/config';
 
-const CategoryMenuRow = ({menuItems = []}) => {
-    const categoryIds = [...new Set(menuItems.map(mi => mi.CATEGORY_ID))];
-    const categories = categoryIds
-        .map(number => CATEGORY_MAPPER[number])
-        .map(category => (
-            <SwiperSlide key={category.id}>
-                <Link to="">
-                    <CategoryItem category={category}/>
-                </Link>
-            </SwiperSlide>
-        ));
+const CategoryMenuRow = ({
+                             menuItems = [],
+                             showMenuItemAmount,
+                             selectedCategoryId,
+                             changeCategory = () => {},
+                         }) => {
+    const menuCategoryIds = [...new Set(menuItems.map(mi => mi.CATEGORY_ID))];
+    const categories = menuCategoryIds.map((category_id) => (
+        <SwiperSlide key={category_id}>
+            <CategoryItem
+                category={CATEGORY_MAPPER[category_id]}
+                clickHandler={() => changeCategory(category_id)}
+                isSelected={selectedCategoryId === category_id}
+                itemsAmountPerCategory={showMenuItemAmount ? menuItems.filter(mi => mi.CATEGORY_ID === category_id).length : 0}
+            />
+        </SwiperSlide>
+    ));
 
     return (
         <Content>

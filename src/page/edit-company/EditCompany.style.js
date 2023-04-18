@@ -2,14 +2,12 @@ import styled from "styled-components";
 import {COLOR, BORDER_RADIUS} from "../../utils/theme";
 
 export const Wrapper = styled.div`
-  padding: 18px 10px 10px 10px;
-
   & > * {
     margin: 0 0 10px 0;
   }
 `;
 
-export const InstitutionPictures = styled.div`
+export const Pictures = styled.div`
   height: 100px;
   width: 100%;
   display: flex;
@@ -40,7 +38,7 @@ export const Divider = styled.div`
   color: ${COLOR.ACCENT5};
 `;
 
-export const InstitutionBasketButton = styled.div`
+export const BasketButton = styled.div`
   width: 31px;
   height: 34px;
   background: ${COLOR.ACCENT4};

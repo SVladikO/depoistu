@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 
-import {ROUTER} from '../../utils/config';
 
 import {ReactComponent as LockIcon} from '../../icons/lock.svg';
 // import {ReactComponent as OrderHistoryIcon} from '../../icons/order_history.svg';
@@ -19,21 +18,19 @@ import {ReactComponent as LogOutIcon} from '../../icons/logout.svg';
 import {ReactComponent as HelpIcon} from '../../icons/chat.svg';
 import {ReactComponent as BusinessIcon} from '../../icons/busines.svg';
 
-
 import {
-    RowSplitter,
     SettingMenuRow,
-    UserAccountBar,
     AccountSettings,
     OptionSettings, NotificationTDB,
 } from '../../components'
 
-import {LocalStorage, resolveTranslation} from "../../utils/utils";
+import {ROUTER, URL} from '../../utils/config';
+import {LOCAL_STORAGE_KEY, LocalStorage, resolveTranslation} from "../../utils/utils";
 
 const SettingPage = () => {
-    const [user, setUser] = useState(LocalStorage.getGuest());
+    const [customer, setCustomer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
 
-    if (!user) {
+    if (!customer) {
         return (
             <NotificationTDB
                 title={resolveTranslation("PAGE.SETTINGS.NOTIFICATION.TITLE")}
@@ -45,19 +42,19 @@ const SettingPage = () => {
     }
 
     const logOut = () => {
-        LocalStorage.removeGuest();
-        setUser(undefined);
+        LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER);
+        setCustomer(undefined);
     }
 
     return (
         <>
-            <UserAccountBar fullName='Jhon Smith' phone="+14844731243"/>
-            <RowSplitter height='20px'/>
+            {/*<CustomerAccountBar fullName='Jhon Smith' phone="+14844731243"/>*/}
+            {/*<RowSplitter height='20px'/>*/}
             <AccountSettings groupTitle={resolveTranslation("PAGE.SETTINGS.GROUP_TITLE.ACCOUNTS")}>
                 {/*TODO: Hidden second version*/}
                 {/*<SettingMenuRow icon={LikeIcon} title={ROUTER.Favorite.TITLE} href={ROUTER.Favorite.URL}/>*/}
                 {/*<SettingMenuRow icon={OrderHistoryIcon} title={ROUTER.ORDER_HISTORY.TITLE} href={ROUTER.ORDER_HISTORY.URL}/>*/}
-                <SettingMenuRow icon={LockIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.CHANGE_PASS")} href={ROUTER.CHANGE_PASSWORD.URL}/>
+                <SettingMenuRow icon={LockIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.CHANGE_PASS")} href={URL.CHANGE_PASSWORD}/>
                 {/*<SettingMenuRow icon={PaymentIcon} title='Payment' href='/catalog'/>*/}
                 {/*<SettingMenuRow icon={DeliveryAddressIcon} title='Delivery Address' href='/catalog'/>*/}
                 {/*<SettingMenuRow icon={StoreIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.LOCATION")} href='/catalog'/>*/}
@@ -66,7 +63,7 @@ const SettingPage = () => {
                 <SettingMenuRow icon={LogOutIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.EXIT")} changeHandler={logOut}/>
             </AccountSettings>
             <OptionSettings groupTitle={resolveTranslation("PAGE.SETTINGS.GROUP_TITLE.FOR_BUSINESS")}>
-                <SettingMenuRow icon={BusinessIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.COMPANY")}  href={ROUTER.EDIT_COMPANY_LIST.URL}/>
+                <SettingMenuRow icon={BusinessIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.COMPANY")}  href={ROUTER.CUSTOMER_COMPANIES.URL}/>
             </OptionSettings>
             {/*<OptionSettings groupTitle={resolveTranslation("PAGE.SETTINGS.GROUP_TITLE.OPTIONS")}>*/}
             {/*    /!*<SettingMenuRow icon={NewsletterIcon} title='Newsletter' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*!/*/}

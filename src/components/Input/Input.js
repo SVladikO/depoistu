@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, memo} from "react";
 import {
     Wrapper,
     InputText,
@@ -7,45 +7,64 @@ import {
     CloseIconWrapper,
     PInputWrapper,
     PStyle,
+    TextareaStyle,
 } from "./Input.style";
 
 import {ReactComponent as ShowEyeIcon} from "../../icons/show-eye.svg";
 import {ReactComponent as HideEyeIcon} from "../../icons/hide-eye.svg";
 import {ReactComponent as CloseIcon} from "../../icons/close.svg";
 
-export function Input({
-                   Icon,
-                   value,
-                   type,
-                   placeholder,
-                   changeHandler = () => {},
-                   withSwitcher = false,
-                   withCleaner = false,
-                   ...props
-               }) {
+export const Textarea = memo(function ({
+                                 withCleaner,
+                                 value,
+                                 changeHandler=() => {},
+                                 clearHandler = () => {}
+    }) {
+    return (
+        <Wrapper>
+            <TextareaStyle
+                value={value}
+                onChange={ e => changeHandler(e.toString.value)}
+            />
+            {withCleaner && <CloseIconWrapper><CloseIcon onClick={clearHandler}/></CloseIconWrapper>
+            }
+        </Wrapper>
+    );
+});
+
+export const Input = memo(function ({
+                          Icon,
+                          value,
+                          type,
+                          withSwitcher = false,
+                          withCleaner = false,
+                          clearHandler = () => {},
+                          changeHandler = () => {},
+                          switchHandler = () => {},
+                          ...props
+                      }) {
 
     const [showData, setShowData] = useState(false);
 
-    const showValue = () => {
-        setShowData(true);
+    const handleSwitch = () => {
+        setShowData(!showData)
+        switchHandler();
     }
 
-    const hideValue = () => setShowData(false);
-
     return (
-        <Wrapper >
+        <Wrapper className='pma-input'>
             {Icon && <Icon/>}
             <InputText
-                type={type}
                 value={value}
-                withIcon={!!Icon}
-                onChange={changeHandler}
+                onChange={e => changeHandler(e.target.value)}
+                type={type}
+                withRightIcon={withSwitcher || withCleaner}
+                withLeftIcon={!!Icon}
                 withSwitcher={withSwitcher}
-                placeholder={placeholder}
                 {...props}
             />
             {withSwitcher &&
-                <SwitchIconWrapper onClick={showData ? hideValue : showValue}>
+                <SwitchIconWrapper onClick={handleSwitch}>
                     <CenterWrapper>
                         {showData ? <HideEyeIcon/> : <ShowEyeIcon/>}
                     </CenterWrapper>
@@ -53,12 +72,12 @@ export function Input({
             }
             {withCleaner &&
                 <CloseIconWrapper {...props}>
-                    <CloseIcon onClick={changeHandler}/>
+                    <CloseIcon onClick={clearHandler}/>
                 </CloseIconWrapper>
             }
         </Wrapper>
     )
-}
+});
 
 export const PInput = ({
                            Icon,
@@ -67,7 +86,7 @@ export const PInput = ({
                        }) => {
     return (<PInputWrapper onClick={handleClick}>
             {Icon && <Icon/>}
-            <PStyle withIcon={!!Icon}>{children}</PStyle>
+            <PStyle withLeftIcon={!!Icon}>{children}</PStyle>
         </PInputWrapper>
     )
 };

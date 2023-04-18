@@ -60,13 +60,20 @@ const st = p => `
   font-size: 16px;
   display: flex;
   align-items: center;
-  padding: ${p.withIcon ? '14px 20px 17px 35px' : '14px 10px 17px 10px'};
+  padding: 14px  ${p.withRightIcon ? '40px' : '10px'} 17px ${p.withLeftIcon ? '35px' : '10px'};
 `;
 
 export const PStyle = styled.p`
   ${p => st(p)}
 `
 
+export const TextareaStyle = styled.textarea`
+  ${p => st(p)};
+  resize: vertical;
+  height: 100px;
+  min-height: 50px;
+  padding: 14px 40px 17px 10px;
+`;
 export const InputText = styled.input`
   ${p => st(p)}
   &:active,

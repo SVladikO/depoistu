@@ -2,9 +2,9 @@ import translations from "./translations";
 import translation from "./translation.json";
 
 export const checkAccess = () => {
-    const isTrustedUser = localStorage.getItem('trastedUser');
+    const isTrustedCustomer = LocalStorage.get(LOCAL_STORAGE_KEY.IS_TRUSTED_CUSTOMER);
 
-    if(isTrustedUser) return;
+    if(isTrustedCustomer) return;
 
     const secretKey = "****";
     let test = prompt("Entry secret key");
@@ -12,7 +12,7 @@ export const checkAccess = () => {
     if (test !== secretKey) {
         return checkAccess();
     }
-    localStorage.setItem('trastedUser', true);
+    LocalStorage.set(LOCAL_STORAGE_KEY.IS_TRUSTED_CUSTOMER, true);
 }
 
 export function hexToRgbA(hex, a=1){
@@ -29,9 +29,9 @@ export function hexToRgbA(hex, a=1){
 }
 
 export const securityCheck = () => {
-    const isTrustedUser = localStorage.getItem('trastedUser');
+    const isTrustedCustomer = LocalStorage.get(LOCAL_STORAGE_KEY.IS_TRUSTED_CUSTOMER);
 
-    if(isTrustedUser) return;
+    if(isTrustedCustomer) return;
 
     const secretKey = "****";
     let test = prompt("Entry secret key");
@@ -39,15 +39,27 @@ export const securityCheck = () => {
     if (test !== secretKey) {
         return securityCheck();
     }
-    localStorage.setItem('trastedUser', true);
+    LocalStorage.set(LOCAL_STORAGE_KEY.IS_TRUSTED_CUSTOMER, true);
 }
 
 export const setBrowserTabTitle = () => document.title = translations.company_name;
 
-export const LocalStorage = {
-    getGuest: () => JSON.parse(localStorage.getItem('guest')),
-    removeGuest: () => localStorage.removeItem('guest'),
+export const LOCAL_STORAGE_KEY = {
+    CUSTOMER: 'CUSTOMER',
+    CUSTOMER_COMPANIES: 'CUSTOMER_COMPANIES',
+    IS_TRUSTED_CUSTOMER: 'IS_TRUSTED_CUSTOMER',
+    COMPANY_SEARCH_RESULT: 'COMPANY_SEARCH_RESULT',
+    COMPANY_CANDIDATE_TO_EDIT: 'COMPANY_CANDIDATE_TO_EDIT',
+    MENU_ITEM_CANDIDATE_TO_EDIT: 'MENU_ITEM_CANDIDATE_TO_EDIT',
+    COMPANY_ID_FOR_EDIT_MENU: 'COMPANY_ID_FOR_EDIT_MENU',
 }
+
+export const LocalStorage = {
+    set: (storageKey, value) => localStorage.setItem(storageKey, JSON.stringify(value)),
+    get: storageKey => JSON.parse(localStorage.getItem(storageKey)),
+    remove: storageKey => localStorage.removeItem(storageKey),
+}
+
 export const getParam = (key) => {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(key);
@@ -55,5 +67,6 @@ export const getParam = (key) => {
 
 export const getRegions = cities => Object.keys(cities);
 export const resolveTranslation = key => translation[key]["ua"];
+
 
 

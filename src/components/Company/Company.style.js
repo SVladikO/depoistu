@@ -2,8 +2,9 @@ import styled from "styled-components";
 import {COLOR,BORDER_RADIUS} from "../../utils/theme";
 
 export const Wrapper = styled.div`
+
   border-radius: ${BORDER_RADIUS.SECOND};
-  height: 262px;
+  height: auto;
   overflow: hidden;
   perspective: 1px;
   background-color: ${COLOR.ACCENT4};
@@ -30,10 +31,28 @@ export const ImageSection = styled.div`
     height: 100%;
   }
 `;
-
 export const Content = styled.div`
+  & > * {
+    width: 50%;
+  }
+  display: flex;
+  justify-content: space-between;
+`;
+export const CompanyInfo = styled.div`
   margin: 10px auto 10px 10px;
   text-align: left;
+  justify-self: start;
+`;
+
+export const ScheduleWrapper = styled.div`
+  text-align: right;
+  justify-self: flex-end;
+  color: ${COLOR.ACCENT1};
+  margin: 10px 10px 10px 10px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  flex-wrap: nowrap;
 `;
 
 export const Name = styled.div`
@@ -43,6 +62,11 @@ export const Name = styled.div`
   color: ${COLOR.ACCENT1};
 `;
 
+export const ScheduleContainer = styled.div`
+ & > * {
+   min-width: 50px;
+ }  
+`;
 export const Address = styled.div`
   font-weight: 400;
   font-size: 16px;

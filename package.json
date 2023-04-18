@@ -1,6 +1,6 @@
 {
   "name": "pizza-mobile-app",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
@@ -13,7 +13,7 @@
     "react_code_tag": "^1.0.2",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
-    "react-router-dom": "^6.4.2",
+    "react-router-dom": "6.10.0",
     "react-scripts": "5.0.1",
     "styled-components": "^5.3.6",
     "swiper": "^9.0.5",

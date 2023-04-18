@@ -11,7 +11,7 @@ import ComponentsPage from '../page/development/Components.page';
 import styled from 'styled-components'
 import {DEVICE_WIDTH} from "./theme";
 import {BottomMenu, NavigationHeader} from "../components";
-
+import AdminPage from "../page/development/Admin.page";
 
 export const MobileDevice = styled.div`
   min-width: ${DEVICE_WIDTH.MIN};
@@ -74,6 +74,7 @@ export const getRoutes = () => {
             <Routes>
                 <Route path={DEV_ROUTER.COMPONENTS} element={<ComponentsPage/>}/>
                 <Route path={DEV_ROUTER.PAGES} element={<CatalogPage/>}/>
+                <Route path={DEV_ROUTER.ADMIN} element={<AdminPage/>}/>
                 {routes}
             </Routes>
         </>

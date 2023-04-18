@@ -1,16 +1,11 @@
 import {
-    PrimaryRoundedButton,
-    PrimaryWideButton,
-    PrimaryWithIconButton,
+    PrimaryButton,
     SecondaryButton,
-    SecondaryWithIconButton,
-    ThirdButton,
 } from "./Button/Button.style";
 
-import {Input, PInput} from "./Input/Input";
+import {Input, PInput, Textarea} from "./Input/Input";
 import NotificationTDB from "./NotificationTDB/NotificationTDB";
 import Price from "./Price/Price";
-import EditMenuItem from "./EditMenuItem/EditMenuItem";
 import Rating from "./Rating/Rating";
 import CategoryItem from "./CategoryItem/CategoryItem";
 import Notification from "./Notification/Notification";
@@ -24,11 +19,13 @@ import HistoryTabBar from "./HistoryTabBar/HistoryTabBar";
 import NavigationHeader from "./NavigationHeader/NavigationHeader";
 import {Absolute} from "./Absolute/Absolute.style";
 import {Flex} from "./Flex/Flex.style";
-import UserAccountBar from "./UserAccountBar/UserAccountBar";
+import CustomerAccountBar from "./UserAccountBar/CustomerAccountBar";
 import NavigationLabelHref from './NavigationLabelHref/NavigationLabelHref';
 import AccountSettings from "./AccountSettings/AccountSettings";
 import OptionSettings from "./OptionSettings/OptionSettings";
 import BottomMenu from "./BottomMenu/BottomMenu";
+import FromToTime from "./FromToTime/FromToTime";
+import Checkbox from "./Checkbox/Checkbox";
 import Like from "./Like/Like";
 import MenuItem from "./MenuItem/MenuItem";
 import OrderHistoryRow from "./OrderHistoryRow/OrderHistoryRow";
@@ -36,25 +33,28 @@ import OrderIconWithCounter from "./OrderIconWithCounter/OrderIconWithCounter.js
 import PopupCity from "./PopupCity/PopupCity";
 import PopupIntro from "./PopupIntro/PopupIntro";
 import PopupImage from "./PopupImage/PopupImage";
-import Institution from "./Institution/Institution";
+import Company from "./Company/Company";
 import CategoryMenuRow from "./CategoryMenuRow/CategoryMenuRow";
+import EditMenuRow from "./EditMenuRow/EditMenuRow";
+import {Label} from "./Label/Label.style";
 
 export {
     SettingMenuRow,
-    Institution,
+    Company,
     CategoryItem,
     Discount,
     Input,
+    Textarea,
     PInput,
     Like,
+    Checkbox,
     Rating,
-    EditMenuItem,
     CategoryMenuRow,
     NotificationTDB,
     RowSplitter,
+    FromToTime,
     HistoryTabBar,
     BottomMenu,
-    ThirdButton,
     MenuItem,
     ToggleCheckbox,
     CheckBoxWithLabel,
@@ -65,18 +65,17 @@ export {
     PopupImage,
     PopupIntro,
     PopupCity,
-    PrimaryWideButton,
-    PrimaryRoundedButton,
-    PrimaryWithIconButton,
-    SecondaryWithIconButton,
+    PrimaryButton,
     SecondaryButton,
     ContentContainer,
     NavigationHeader,
     NavigationLabelHref,
-    UserAccountBar,
+    CustomerAccountBar,
     AccountSettings,
     OptionSettings,
     OrderHistoryRow,
     OrderIconWithCounter,
+    EditMenuRow,
+    Label
 }
 
