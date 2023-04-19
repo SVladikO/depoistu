@@ -1,7 +1,7 @@
 ### SingUp, SingIn page, USER
 #### name -  minLength 3, maxLength 20, Required
 #### phone - only number length 12, Required (example which will pass validation 380970668830)
-#### email - contain @, miLength 6, maxLength 20, Required (we need to make request to BE and check was this email used before ?) 
+#### email - contain @, maxLength 30, Required (we need to make request to BE and check was this email used before ?) 
 #### password - minLength 6, maxLength 20, Required
 
 ### Edit, create page, MENU ITEM
