@@ -16,7 +16,6 @@ let weekScheduleKipper = [];
 
 const updateWeekScheduleKipper =  (dayName, fieldName, value) => {
     weekScheduleKipper.find(weekDay => weekDay.name === dayName)[fieldName] = value;
-    console.log(weekScheduleKipper);
 }
 
 const EditCompany = () => {
