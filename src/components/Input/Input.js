@@ -15,16 +15,18 @@ import {ReactComponent as HideEyeIcon} from "../../icons/hide-eye.svg";
 import {ReactComponent as CloseIcon} from "../../icons/close.svg";
 
 export const Textarea = memo(function ({
-                                 withCleaner,
-                                 value,
-                                 changeHandler=() => {},
-                                 clearHandler = () => {}
-    }) {
+                                           withCleaner,
+                                           value,
+                                           changeHandler = () => {
+                                           },
+                                           clearHandler = () => {
+                                           }
+                                       }) {
     return (
         <Wrapper>
             <TextareaStyle
                 value={value}
-                onChange={ e => changeHandler(e.toString.value)}
+                onChange={e => changeHandler(e.toString.value)}
             />
             {withCleaner && <CloseIconWrapper><CloseIcon onClick={clearHandler}/></CloseIconWrapper>
             }
@@ -33,16 +35,20 @@ export const Textarea = memo(function ({
 });
 
 export const Input = memo(function ({
-                          Icon,
-                          value,
-                          type,
-                          withSwitcher = false,
-                          withCleaner = false,
-                          clearHandler = () => {},
-                          changeHandler = () => {},
-                          switchHandler = () => {},
-                          ...props
-                      }) {
+                                        Icon,
+                                        type,
+                                        value,
+                                        name,
+                                        withSwitcher = false,
+                                        withCleaner = false,
+                                        clearHandler = () => {
+                                        },
+                                        changeHandler = () => {
+                                        },
+                                        switchHandler = () => {
+                                        },
+                                        ...props
+                                    }) {
 
     const [showData, setShowData] = useState(false);
 
@@ -51,12 +57,15 @@ export const Input = memo(function ({
         switchHandler();
     }
 
+    console.log(value)
+
     return (
         <Wrapper className='pma-input'>
             {Icon && <Icon/>}
             <InputText
+                name={name}
                 value={value}
-                onChange={e => changeHandler(e.target.value)}
+                onChange={changeHandler}
                 type={type}
                 withRightIcon={withSwitcher || withCleaner}
                 withLeftIcon={!!Icon}
@@ -82,7 +91,8 @@ export const Input = memo(function ({
 export const PInput = ({
                            Icon,
                            children,
-                           handleClick = () => {},
+                           handleClick = () => {
+                           },
                        }) => {
     return (<PInputWrapper onClick={handleClick}>
             {Icon && <Icon/>}
