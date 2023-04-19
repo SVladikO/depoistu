@@ -9,7 +9,7 @@
 | name     | 2   | 30  | true       |
 | phone    | 12  | 12  | true       |  
 | email    |     | 30  | true       |  
-| password | 6   | 30  | true       |  
+| password | 6   | 12  | true       |  
 
 #### phone - example which will pass validation 380970668830
 #### email - For email validator `yup` has method isValidEmail (after all we need to make request to BE and check was this email used before ?)
