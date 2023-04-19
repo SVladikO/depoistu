@@ -12,11 +12,11 @@ import {ReactComponent as DeleteBasketIcon} from "../../icons/delete_basket.svg"
 
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/utils";
 
-let how = [];
+let weekScheduleKipper = [];
 
-const updateHow =  (dayName, fieldName, value) => {
-    how.find(weekDay => weekDay.name === dayName)[fieldName] = value;
-    console.log(how);
+const updateWeekScheduleKipper =  (dayName, fieldName, value) => {
+    weekScheduleKipper.find(weekDay => weekDay.name === dayName)[fieldName] = value;
+    console.log(weekScheduleKipper);
 }
 
 const EditCompany = () => {
@@ -40,10 +40,10 @@ const EditCompany = () => {
     const streetChangeHandler = useCallback(setStreet, [street]);
     const streetClearHandler = useCallback(() => setStreet(''), [street]);
 
-    const [week] = useState(initSchedule(company?.SCHEDULE));
+    const [weekSchedule] = useState(initSchedule(company?.SCHEDULE));
 
-    if (!how.length) {
-        how = week;
+    if (!weekScheduleKipper.length) {
+        weekScheduleKipper = weekSchedule;
     }
 
     useEffect(() => {
@@ -80,7 +80,7 @@ const EditCompany = () => {
                         clearHandler={streetClearHandler}
                     />
                     <Label>Work Schedule</Label>
-                    {week.map(day => <FromToTime key={day.name} day={day} updateHow={updateHow} />)}
+                    {weekSchedule.map(day => <FromToTime key={day.name} day={day} updateWeekScheduleKipper={updateWeekScheduleKipper} />)}
                 </ContentContainer>
             </>
         )
