@@ -40,7 +40,7 @@ const EditCompany = () => {
     const streetChangeHandler = useCallback(setStreet, [street]);
     const streetClearHandler = useCallback(() => setStreet(''), [street]);
 
-    const [week, setWeek] = useState(initSchedule(company?.SCHEDULE));
+    const [week] = useState(initSchedule(company?.SCHEDULE));
 
     if (!how.length) {
         how = week;
