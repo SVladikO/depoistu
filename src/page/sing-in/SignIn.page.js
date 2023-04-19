@@ -26,9 +26,12 @@ import {getParam, LocalStorage, resolveTranslation, LOCAL_STORAGE_KEY} from "../
 const SignInSchema = Yup.object().shape({
     password: Yup.string()
         .min(6, 'Too Short! Min length 6')
-        .max(20, 'Too Long! Max length 20')
+        .max(30, 'Too Long! Max length 30')
         .required('Required'),
-    email: Yup.string().email('Invalid email').required('Required'),
+    email: Yup.string()
+        .email('Invalid email')
+        .max(30, 'Too Long! Max length 30')
+        .required('Required'),
 });
 
 const SignInPage = () => {
