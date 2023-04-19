@@ -4,7 +4,7 @@ import {Wrapper, GroupWrapper, Label} from "./FromToTime.style";
 
 import {Checkbox, Input} from "../index";
 
-function FromToTime({day, updateHow}) {
+function FromToTime({day, updateWeekScheduleKipper}) {
     const {isChecked, name, from = "", to = ""} = day;
 
     const [fromTime, setFromTime] = useState(from);
@@ -13,15 +13,15 @@ function FromToTime({day, updateHow}) {
 
     const checkboxChangeHandler = useCallback(() => {
         setChecked(!checked);
-        updateHow(name, 'isChecked', !checked);
+        updateWeekScheduleKipper(name, 'isChecked', !checked);
     }, [checked])
     const changeHandlerFromTime = useCallback(value => {
         setFromTime(value);
-        updateHow(name, 'from', value);
+        updateWeekScheduleKipper(name, 'from', value);
     }, [fromTime])
     const changeHandlerToTime = useCallback(value => {
         setToTime(value)
-        updateHow(name, 'to', value);
+        updateWeekScheduleKipper(name, 'to', value);
     }, [toTime])
     console.log(222)
     return (
