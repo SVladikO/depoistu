@@ -1,10 +1,10 @@
-import React, {useState, memo} from "react";
+import React, {useState, memo, useCallback} from "react";
 import {
     Wrapper,
     InputText,
     SwitchIconWrapper,
     CenterWrapper,
-    CloseIconWrapper,
+    ClearWrapper,
     PInputWrapper,
     PStyle,
     TextareaStyle,
@@ -12,37 +12,41 @@ import {
 
 import {ReactComponent as ShowEyeIcon} from "../../icons/show-eye.svg";
 import {ReactComponent as HideEyeIcon} from "../../icons/hide-eye.svg";
-import {ReactComponent as CloseIcon} from "../../icons/close.svg";
+import {ReactComponent as ClearIcon} from "../../icons/close.svg";
 
 export const Textarea = memo(function ({
-                                 withCleaner,
-                                 value,
-                                 changeHandler=() => {},
-                                 clearHandler = () => {}
-    }) {
+                                           withCleaner,
+                                           value,
+                                           changeHandler = () => {
+                                           },
+                                           clearHandler = () => {
+                                           }
+                                       }) {
     return (
         <Wrapper>
             <TextareaStyle
                 value={value}
-                onChange={ e => changeHandler(e.toString.value)}
+                onChange={e => changeHandler(e.toString.value)}
             />
-            {withCleaner && <CloseIconWrapper><CloseIcon onClick={clearHandler}/></CloseIconWrapper>
+            {withCleaner && <ClearWrapper><ClearIcon onClick={clearHandler}/></ClearWrapper>
             }
         </Wrapper>
     );
 });
 
 export const Input = memo(function ({
-                          Icon,
-                          value,
-                          type,
-                          withSwitcher = false,
-                          withCleaner = false,
-                          clearHandler = () => {},
-                          changeHandler = () => {},
-                          switchHandler = () => {},
-                          ...props
-                      }) {
+                                        Icon,
+                                        type = 'text',
+                                        value,
+                                        name,
+                                        withSwitcher = false,
+                                        withCleaner = false,
+                                        changeHandler = () => {
+                                        },
+                                        switchHandler = () => {
+                                        },
+                                        ...props
+                                    }) {
 
     const [showData, setShowData] = useState(false);
 
@@ -51,12 +55,15 @@ export const Input = memo(function ({
         switchHandler();
     }
 
+    const clearHandler = useCallback(() => {}, []);
+
     return (
         <Wrapper className='pma-input'>
             {Icon && <Icon/>}
             <InputText
+                name={name}
                 value={value}
-                onChange={e => changeHandler(e.target.value)}
+                onChange={changeHandler}
                 type={type}
                 withRightIcon={withSwitcher || withCleaner}
                 withLeftIcon={!!Icon}
@@ -71,9 +78,9 @@ export const Input = memo(function ({
                 </SwitchIconWrapper>
             }
             {withCleaner &&
-                <CloseIconWrapper {...props}>
-                    <CloseIcon onClick={clearHandler}/>
-                </CloseIconWrapper>
+                <ClearWrapper {...props}>
+                    <ClearIcon onClick={clearHandler}/>
+                </ClearWrapper>
             }
         </Wrapper>
     )
@@ -82,7 +89,8 @@ export const Input = memo(function ({
 export const PInput = ({
                            Icon,
                            children,
-                           handleClick = () => {},
+                           handleClick = () => {
+                           },
                        }) => {
     return (<PInputWrapper onClick={handleClick}>
             {Icon && <Icon/>}

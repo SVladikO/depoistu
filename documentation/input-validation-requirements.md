@@ -9,22 +9,22 @@
 | name     | 2   | 30  | true       |
 | phone    | 12  | 12  | true       |  
 | email    |     | 30  | true       |  
-| password | 6   | 30  | true       |  
+| password | 6   | 12  | true       |  
 
 #### phone - example which will pass validation 380970668830
 #### email - For email validator `yup` has method isValidEmail (after all we need to make request to BE and check was this email used before ?)
 
-### Edit, Create pages. (MENU_ITEM table in DB)
+### Edit, Create MenuItem pages. (MENU_ITEM table in DB)
 |             | min | max | isRequired |
 |-------------|-----|-----|------------|  
 | name        | 2   | 30  | true       |
 | price       | 1   | 30  | true       |
 | description |     | 100 | false      |
-| cookingTime |     | 30  | false      |
-| mealSize    |     | 30  | false      |
+| cookingTime |     | 3   | false      |
+| mealSize    |     | 4   | false      |
 
 
-### Edit, create pages. (COMPANY table in DB)
+### Edit, Create company pages. (COMPANY table in DB)
 |           | min | max | isRequired |
 |-----------|-----|-----|------------|  
 | name      | 2   | 30  | true       |
