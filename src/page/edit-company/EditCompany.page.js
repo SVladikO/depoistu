@@ -95,7 +95,7 @@ const EditCompany = () => {
 };
 
 function initSchedule(schedule) {
-    const times = schedule.split(',').map(el => el.trim());
+    const times = schedule.split(',')?.map(el => el.trim());
 
     return ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС']
         .map((name, index) => {
