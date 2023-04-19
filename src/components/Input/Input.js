@@ -1,10 +1,10 @@
-import React, {useState, memo} from "react";
+import React, {useState, memo, useCallback} from "react";
 import {
     Wrapper,
     InputText,
     SwitchIconWrapper,
     CenterWrapper,
-    CloseIconWrapper,
+    ClearWrapper,
     PInputWrapper,
     PStyle,
     TextareaStyle,
@@ -12,7 +12,7 @@ import {
 
 import {ReactComponent as ShowEyeIcon} from "../../icons/show-eye.svg";
 import {ReactComponent as HideEyeIcon} from "../../icons/hide-eye.svg";
-import {ReactComponent as CloseIcon} from "../../icons/close.svg";
+import {ReactComponent as ClearIcon} from "../../icons/close.svg";
 
 export const Textarea = memo(function ({
                                            withCleaner,
@@ -28,7 +28,7 @@ export const Textarea = memo(function ({
                 value={value}
                 onChange={e => changeHandler(e.toString.value)}
             />
-            {withCleaner && <CloseIconWrapper><CloseIcon onClick={clearHandler}/></CloseIconWrapper>
+            {withCleaner && <ClearWrapper><ClearIcon onClick={clearHandler}/></ClearWrapper>
             }
         </Wrapper>
     );
@@ -36,13 +36,11 @@ export const Textarea = memo(function ({
 
 export const Input = memo(function ({
                                         Icon,
-                                        type,
+                                        type = 'text',
                                         value,
                                         name,
                                         withSwitcher = false,
                                         withCleaner = false,
-                                        clearHandler = () => {
-                                        },
                                         changeHandler = () => {
                                         },
                                         switchHandler = () => {
@@ -57,7 +55,7 @@ export const Input = memo(function ({
         switchHandler();
     }
 
-    console.log(value)
+    const clearHandler = useCallback(() => {}, []);
 
     return (
         <Wrapper className='pma-input'>
@@ -80,9 +78,9 @@ export const Input = memo(function ({
                 </SwitchIconWrapper>
             }
             {withCleaner &&
-                <CloseIconWrapper {...props}>
-                    <CloseIcon onClick={clearHandler}/>
-                </CloseIconWrapper>
+                <ClearWrapper {...props}>
+                    <ClearIcon onClick={clearHandler}/>
+                </ClearWrapper>
             }
         </Wrapper>
     )

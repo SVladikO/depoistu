@@ -88,6 +88,7 @@ const SignInPage = () => {
                         <Input
                             Icon={MailIcon}
                             name='email'
+                            type='email'
                             value={values.email}
                             withCleaner
                             changeHandler={handleChange}
