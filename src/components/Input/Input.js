@@ -55,7 +55,15 @@ export const Input = memo(function ({
         switchHandler();
     }
 
-    const clearHandler = useCallback(() => {}, []);
+    const clearHandler = useCallback(e => {
+        const closeButton = e.currentTarget.parentElement;
+        const rowParent = closeButton.parentElement;
+        const input = rowParent.childNodes[0].tagName === 'INPUT'
+            ? rowParent.childNodes[0]
+            : rowParent.childNodes[1];
+
+        input.value = '';
+    }, []);
 
     return (
         <Wrapper className='pma-input'>
