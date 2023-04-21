@@ -56,8 +56,7 @@ export const Input = memo(function ({
     }
 
     const clearHandler = useCallback(e => {
-        const closeButton = e.currentTarget.parentElement;
-        const rowParent = closeButton.parentElement;
+        const rowParent = e.currentTarget.parentElement;
         const input = rowParent.childNodes[0].tagName === 'INPUT'
             ? rowParent.childNodes[0]
             : rowParent.childNodes[1];
@@ -86,8 +85,8 @@ export const Input = memo(function ({
                 </SwitchIconWrapper>
             }
             {withCleaner &&
-                <ClearWrapper {...props}>
-                    <ClearIcon onClick={clearHandler}/>
+                <ClearWrapper {...props} onClick={clearHandler}>
+                    <ClearIcon />
                 </ClearWrapper>
             }
         </Wrapper>
