@@ -20,7 +20,7 @@ const ChangePassWordSchema = Yup.object().shape({
         .max(30, 'Too Long! Max length 30')
         .required('Required'),
     confirmedPassword: Yup.string()
-        .test('passwords-match', 'Passwords must match', function(value){
+        .test('passwords-match', 'Passwords must match', function (value) {
             return this.parent.newPassword === value
         })
 });
@@ -38,7 +38,7 @@ const ChangePasswordPage = () => {
     const [newPassword, setNewPassword] = useState('');
     const [confirmedPassword, setConfirmedPassword] = useState('');
 
-    const currenPasswordChangeHandler = useCallback((e) => setCurrentPassword(e.target.value), [currentPassword]);
+    const currenPasswordChangeHandler = useCallback(setCurrentPassword, [currentPassword]);
     const newPasswordChangeHandler = useCallback(setNewPassword, [newPassword]);
     const confirmedPasswordChangeHandler = useCallback(setConfirmedPassword, [confirmedPassword]);
 
@@ -54,7 +54,7 @@ const ChangePasswordPage = () => {
                 console.log(values);
             }}
         >
-            {({values, handleSubmit,handleChange, errors, touched}) => (
+            {( {values, handleSubmit, handleChange, errors, touched}) => (
                 <form onSubmit={handleSubmit}>
                     <ContentContainer>
                         <Label>{resolveTranslation("PAGE.CHANGE_PASSWORD.LABEL.OLD_PASSWORD")}</Label>
@@ -62,7 +62,6 @@ const ChangePasswordPage = () => {
                             withSwitcher
                             name="currentPassword"
                             type={currentPasswordType}
-                            //value={currentPassword}
                             value={values.currentPassword}
                             changeHandler={handleChange}
                             switchHandler={currenPasswordSwitchHandler}
@@ -74,27 +73,27 @@ const ChangePasswordPage = () => {
                             withSwitcher
                             name="newPassword"
                             type={newPasswordType}
-                            //value={newPassword}
                             value={values.newPassword}
                             changeHandler={handleChange}
                             switchHandler={newPasswordSwitchHandler}
                         />
-                        {errors.newPassword && touched.newPassword ? <div>{errors.newPassword}</div> : null}
+                        {errors.newPassword && touched.newPassword && <div>{errors.newPassword}</div>}
                         <Label>{resolveTranslation("PAGE.CHANGE_PASSWORD.LABEL.CONFIRM_PASSWORD")}</Label>
                         <Input
                             withSwitcher
                             name="confirmedPassword"
                             type={confirmedPasswordType}
-                            //value={confirmedPassword}
                             value={values.confirmedPassword}
                             changeHandler={handleChange}
                             switchHandler={confirmedPasswordSwitchHandler}
                         />
-                        {errors.confirmedPassword && touched.confirmedPassword ? <div>{errors.confirmedPassword}</div> : null}
+                        {errors.confirmedPassword && touched.confirmedPassword && <div>{errors.confirmedPassword}</div>}
                         <RowSplitter margin="20px 0 0"/>
-                        <PrimaryButton type="submit" isWide>{resolveTranslation("PAGE.CHANGE_PASSWORD.BUTTON.SAVE_PASSWORD")}</PrimaryButton>
+                        <PrimaryButton type="submit"
+                                       isWide>{resolveTranslation("PAGE.CHANGE_PASSWORD.BUTTON.SAVE_PASSWORD")}</PrimaryButton>
                     </ContentContainer>
-                </form>)}
+                </form>
+            )}
         </Formik>
 
     );
