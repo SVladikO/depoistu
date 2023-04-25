@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import {COLOR} from "../../utils/theme";
+import {hexToRgbA} from "../../utils/utils";
 
 export const Wrapper = styled.div`
   position: relative;
@@ -10,7 +11,7 @@ export const Wrapper = styled.div`
     left: 10px;
     top: 50%;
     transform: translateY(-50%);
-    fill: ${COLOR.ACCENT1};
+    color: ${COLOR.PRIMARY};
   }
  
 `;
@@ -50,7 +51,14 @@ export const PInputWrapper = styled.div`
     z-index: 1;
   }
 `;
-
+export const WarningMessage = styled.div`
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: ${COLOR.ACCENT6};
+  background: ${hexToRgbA(COLOR.ACCENT6, 0.2)};
+  padding: 2px 0 4px 13px;
+`;
 const st = p => `
   background: ${COLOR.ACCENT2};
   color: ${COLOR.ACCENT1};

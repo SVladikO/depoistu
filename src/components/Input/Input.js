@@ -8,6 +8,7 @@ import {
     PInputWrapper,
     PStyle,
     TextareaStyle,
+    WarningMessage
 } from "./Input.style";
 
 import {ReactComponent as ShowEyeIcon} from "../../icons/show-eye.svg";
@@ -39,6 +40,7 @@ export const Input = memo(function ({
                                         type = 'text',
                                         value,
                                         name,
+                                        warningMessage,
                                         withSwitcher = false,
                                         withCleaner = false,
                                         changeHandler = () => {
@@ -58,31 +60,35 @@ export const Input = memo(function ({
     const clearHandler = useCallback(() => {}, []);
 
     return (
-        <Wrapper className='pma-input'>
-            {Icon && <Icon/>}
-            <InputText
-                name={name}
-                value={value}
-                onChange={changeHandler}
-                type={type}
-                withRightIcon={withSwitcher || withCleaner}
-                withLeftIcon={!!Icon}
-                withSwitcher={withSwitcher}
-                {...props}
-            />
-            {withSwitcher &&
-                <SwitchIconWrapper onClick={handleSwitch}>
-                    <CenterWrapper>
-                        {showData ? <HideEyeIcon/> : <ShowEyeIcon/>}
-                    </CenterWrapper>
-                </SwitchIconWrapper>
-            }
-            {withCleaner &&
-                <ClearWrapper {...props}>
-                    <ClearIcon onClick={clearHandler}/>
-                </ClearWrapper>
-            }
-        </Wrapper>
+        <>
+            <Wrapper  className='pma-input'>
+                {Icon && <Icon/>}
+                <InputText
+                    name={name}
+                    value={value}
+                    onChange={changeHandler}
+                    type={type}
+                    withRightIcon={withSwitcher || withCleaner}
+                    withLeftIcon={!!Icon}
+                    withSwitcher={withSwitcher}
+                    {...props}
+                />
+
+                {withSwitcher &&
+                    <SwitchIconWrapper onClick={handleSwitch}>
+                        <CenterWrapper>
+                            {showData ? <HideEyeIcon/> : <ShowEyeIcon/>}
+                        </CenterWrapper>
+                    </SwitchIconWrapper>
+                }
+                {withCleaner &&
+                    <ClearWrapper {...props}>
+                        <ClearIcon onClick={clearHandler}/>
+                    </ClearWrapper>
+                }
+            </Wrapper>
+            {warningMessage && <WarningMessage>Email is misspelled!</WarningMessage>}
+        </>
     )
 });
 
