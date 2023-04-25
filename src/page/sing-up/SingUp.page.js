@@ -106,7 +106,7 @@ const SingUpPage = () => {
                             <Label>{resolveTranslation("PAGE.SING_UP.LABEL.EMAIL")}</Label>
                             <Input
                                 withCleaner
-                                type={'email'}
+                                type="email"
                                 name="email"
                                 value={values.email}
                                 changeHandler={handleChange}
