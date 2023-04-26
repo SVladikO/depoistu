@@ -29,7 +29,7 @@ export const CenterWrapper = styled.div`
   align-items: center;
 `;
 
-export const CloseIconWrapper = styled.div`
+export const ClearWrapper = styled.div`
   position: absolute;
   top: 16px;
   right: 16px;

@@ -16,7 +16,7 @@ export const ContentContainer = styled.div.attrs({
     color: ${COLOR.ACCENT3};
   }
   & > * {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
   & > *:last-child {
     margin-bottom: 0;
