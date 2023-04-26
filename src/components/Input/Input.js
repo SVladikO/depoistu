@@ -17,6 +17,7 @@ import {ReactComponent as ClearIcon} from "../../icons/close.svg";
 export const Textarea = memo(function ({
                                            withCleaner,
                                            value,
+                                           name,
                                            changeHandler = () => {
                                            },
                                            clearHandler = () => {
@@ -26,7 +27,8 @@ export const Textarea = memo(function ({
         <Wrapper>
             <TextareaStyle
                 value={value}
-                onChange={e => changeHandler(e.toString.value)}
+                name={name}
+                onChange={changeHandler}
             />
             {withCleaner && <ClearWrapper><ClearIcon onClick={clearHandler}/></ClearWrapper>
             }
@@ -55,7 +57,8 @@ export const Input = memo(function ({
         switchHandler();
     }
 
-    const clearHandler = useCallback(() => {}, []);
+    const clearHandler = useCallback(() => {
+    }, []);
 
     return (
         <Wrapper className='pma-input'>
