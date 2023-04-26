@@ -55,7 +55,14 @@ export const Input = memo(function ({
         switchHandler();
     }
 
-    const clearHandler = useCallback(() => {}, []);
+    const clearHandler = useCallback(e => {
+        const rowParent = e.currentTarget.parentElement;
+        const input = rowParent.childNodes[0].tagName === 'INPUT'
+            ? rowParent.childNodes[0]
+            : rowParent.childNodes[1];
+
+        input.value = '';
+    }, []);
 
     return (
         <Wrapper className='pma-input'>
@@ -78,8 +85,8 @@ export const Input = memo(function ({
                 </SwitchIconWrapper>
             }
             {withCleaner &&
-                <ClearWrapper {...props}>
-                    <ClearIcon onClick={clearHandler}/>
+                <ClearWrapper {...props} onClick={clearHandler}>
+                    <ClearIcon />
                 </ClearWrapper>
             }
         </Wrapper>
