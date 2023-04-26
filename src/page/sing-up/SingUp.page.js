@@ -6,13 +6,15 @@ import {resolveTranslation} from "../../utils/utils";
 import {useCallback, useState} from "react";
 import {Formik} from "formik";
 import * as Yup from 'yup';
+import {bool} from "yup";
+
 
 
 
 const SignUpSchema = Yup.object().shape({
     name: Yup.string()
         .min(2, "Too Short!")
-        .max(50, "Too Long!")
+        .max(30, "Too Long!")
         .required("Name is required"),
     password: Yup.string()
         .min(6, 'Too Short! Min length 6')
@@ -23,11 +25,11 @@ const SignUpSchema = Yup.object().shape({
         .max(30, 'Too Long! Max length 30')
         .required('Required'),
     phoneNumber: Yup.string()
-        .required("Phone number is required")
         .matches(
-            /^\+[0-9]{3}\s\((\d+)\)-\d{3}-\d{2}-\d{2}/g,
+            /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
             "Invalid phone number"
-        ),
+        )
+        .required("Phone number is required"),
     newPassword: Yup.string()
         .max(30, 'Too Long! Max length 30')
         .required('Required'),
@@ -74,7 +76,7 @@ const SingUpPage = () => {
                     newPassword: '',
                     confirmedPassword: '',
                     phoneNumber: '',
-                    termsAndConditions: false
+                    termsAndConditions: true
                 }}
                 validationSchema={SignUpSchema}
                 onSubmit={values => {
@@ -91,16 +93,14 @@ const SingUpPage = () => {
                                 name="name"
                                 value={values.name}
                                 changeHandler={handleChange}
-                                clearHandler={nameClearHandler}
                             />
                             {errors.name && touched.name && <div>{errors.name}</div>}
                             <Label>{resolveTranslation("PAGE.SING_UP.LABEL.PHONE")}</Label>
                             <Input
                                 withCleaner
-                                name="phone"
-                                value={values.phone}
+                                name="phoneNumber"
+                                value={values.phoneNumber}
                                 changeHandler={handleChange}
-                                clearHandler={phoneClearHandler}
                             />
                             {errors.phoneNumber && touched.phoneNumber && <div>{errors.phoneNumber}</div>}
                             <Label>{resolveTranslation("PAGE.SING_UP.LABEL.EMAIL")}</Label>
@@ -110,7 +110,6 @@ const SingUpPage = () => {
                                 name="email"
                                 value={values.email}
                                 changeHandler={handleChange}
-                                clearHandler={emailClearHandler}
                             />
                             {errors.email && touched.email && <div>{errors.email}</div>}
                             <Label>{resolveTranslation("PAGE.SING_UP.LABEL.PASS")}</Label>
@@ -133,7 +132,7 @@ const SingUpPage = () => {
                                 switchHandler={confirmedPasswordSwitchHandler}
                             />
                             {errors.confirmedPassword && touched.confirmedPassword && <div>{errors.confirmedPassword}</div>}
-                            <CheckBoxWithLabel name="termsAndConditions" label={resolveTranslation("PAGE.SING_UP.CHECKBOX_CONFIRM_TERMS")}/>
+                            <CheckBoxWithLabel type="checkbox" name="termsAndConditions" label={resolveTranslation("PAGE.SING_UP.CHECKBOX_CONFIRM_TERMS")}/>
                             {errors.termsAndConditions && touched.termsAndConditions && <div>{errors.termsAndConditions}</div>}
                         </Container>
                         <Wrapper>
