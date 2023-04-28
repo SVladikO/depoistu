@@ -26,7 +26,7 @@ const SignUpSchema = Yup.object().shape({
         .required("Required!"),
     newPassword: Yup.string()
         .min(6, 'Min length 6!')
-        .max(12, 'Min length 12!')
+        .max(12, 'Max length 12!')
         .required('Required!'),
     confirmedPassword: Yup.string()
         .min(6, 'Min length 6!')
