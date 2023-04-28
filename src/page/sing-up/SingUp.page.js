@@ -30,7 +30,7 @@ const SignUpSchema = Yup.object().shape({
         .required('Required!'),
     confirmedPassword: Yup.string()
         .min(6, 'Min length 6!')
-        .max(12, 'Min length 12!')
+        .max(12, 'Max length 12!')
         .test('passwords-match', 'Passwords must match', function (value) {
             return this.parent.newPassword === value
         }),
