@@ -15,53 +15,34 @@ import {MenuItemPhoto, ImagePlace} from './EditMenuItem.style';
 
 import {URL} from "../../utils/config";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/utils";
-import React, {useCallback, useState} from "react";
+import React, {useState} from "react";
 import {ReactComponent as RemoveIcon} from "../../icons/remove_icon.svg";
 
 const EditMenuItemSchema = Yup.object().shape({
     name: Yup.string()
-        .required("enter the name!")
-        .min(2, "Too Short!")
-        .max(30, "Too Long!"),
-    price: Yup.number()
-        .required('enter the price')
-        .min(1, 'one is minimum')
-        .max(30, 'too much!'),
+        .required("Required!")
+        .min(2, "Min length 2!")
+        .max(30, "Max length 30!"),
+    price: Yup.string()
+        .required('Required!')
+        .min(1, 'Min length 1!')
+        .max(5, 'Max length 5!'),
     description: Yup.string()
-        .max(100, 'too much symbols'),
-    cookingTime: Yup.number()
-        .max(3, 'very long!'),
-    size: Yup.number()
-        .max(4, 'very huge!')
+        .max(100, 'Max length 100!'),
+    cookingTime: Yup.string()
+        .min(1, 'Min length 1!')
+        .max(2, 'Max length 2!'),
+    size: Yup.string()
+        .min(2, 'Min length 2!')
+        .max(4, 'Max length 4!')
 });
-
 
 const EditMenuItemPage = () => {
     const navigate = useNavigate();
     const menuItem = LocalStorage.get(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT);
     const {NAME, PRICE, DESCRIPTION, COOKING_TIME, IMAGE_URL, SIZE} = menuItem;
 
-    const [name, setName] = useState(NAME);
-    const [price, setPrice] = useState(PRICE);
-    const [description, setDescription] = useState(DESCRIPTION);
-    const [cookingTime, setCookingTime] = useState(COOKING_TIME);
-    const [size, setSize] = useState(SIZE);
     const [imageURL, setImageURL] = useState(IMAGE_URL);
-
-    const nameChangeHandler = useCallback(setName, [name]);
-    const nameClearHandler = useCallback(() => setName(''), [name]);
-
-    const priceChangeHandler = useCallback(setPrice, [price]);
-    const priceClearHandler = useCallback(() => setPrice(''), [price]);
-
-    const descriptionChangeHandler = useCallback(setDescription, [description]);
-    const descriptionClearHandler = useCallback(() => setDescription(''), [description]);
-
-    const cookingTimeChangeHandler = useCallback(setCookingTime, [cookingTime]);
-    const cookingTimeClearHandler = useCallback(() => setCookingTime(''), [cookingTime]);
-
-    const sizeChangeHandler = useCallback(setSize, [size]);
-    const sizeClearHandler = useCallback(() => setSize(''), [size]);
 
     if (!menuItem && URL.EDIT_MENU) {
         return navigate(URL.SETTING)
@@ -71,11 +52,11 @@ const EditMenuItemPage = () => {
         <>
             <Formik
                 initialValues={{
-                    name: '',
-                    price: 0,
-                    description: '',
-                    cookingTime: 0,
-                    size: 0
+                    name: NAME,
+                    price: PRICE,
+                    description: DESCRIPTION,
+                    cookingTime: COOKING_TIME,
+                    size: SIZE
                 }}
                 validationSchema={EditMenuItemSchema}
                 onSubmit={values => {
@@ -97,7 +78,6 @@ const EditMenuItemPage = () => {
                             <Input
                                 value={values.name}
                                 name="name"
-                                type="text"
                                 changeHandler={handleChange}
                                 withCleaner
                             />
@@ -118,7 +98,6 @@ const EditMenuItemPage = () => {
                                 name="description"
                                 changeHandler={handleChange}
                                 withCleaner
-                                as="textarea"
                             />
                             {errors.description && touched.description && <div>{errors.description}</div>}
                             <Label>Cooking time (in minutes)</Label>
@@ -142,16 +121,7 @@ const EditMenuItemPage = () => {
                             />
                             {errors.size && touched.size && <div>{errors.size}</div>}
                         </ContentContainer>
-                        {
-                            (
-                                IMAGE_URL !== imageURL ||
-                                NAME !== name ||
-                                PRICE !== price ||
-                                DESCRIPTION !== description ||
-                                COOKING_TIME !== cookingTime ||
-                                SIZE !== size
-                            ) && <PrimaryButton type="submit" isWide>Save</PrimaryButton>
-                        }
+                        <PrimaryButton type="submit" isWide>Save</PrimaryButton>
                     </form>
                 )}
             </Formik>

@@ -20,9 +20,13 @@ export const Textarea = memo(function ({
                                            name,
                                            changeHandler = () => {
                                            },
-                                           clearHandler = () => {
-                                           }
                                        }) {
+
+    const clearHandler = useCallback(e => {
+        const rowParent = e.currentTarget.parentElement;
+        rowParent.firstChild.value = '';
+    }, []);
+
     return (
         <Wrapper>
             <TextareaStyle
@@ -30,7 +34,7 @@ export const Textarea = memo(function ({
                 name={name}
                 onChange={changeHandler}
             />
-            {withCleaner && <ClearWrapper><ClearIcon onClick={clearHandler}/></ClearWrapper>
+            {withCleaner && <ClearWrapper onClick={clearHandler}><ClearIcon/></ClearWrapper>
             }
         </Wrapper>
     );
