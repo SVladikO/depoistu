@@ -17,18 +17,24 @@ import {ReactComponent as ClearIcon} from "../../icons/close.svg";
 export const Textarea = memo(function ({
                                            withCleaner,
                                            value,
+                                           name,
                                            changeHandler = () => {
                                            },
-                                           clearHandler = () => {
-                                           }
                                        }) {
+
+    const clearHandler = useCallback(e => {
+        const rowParent = e.currentTarget.parentElement;
+        rowParent.firstChild.value = '';
+    }, []);
+
     return (
         <Wrapper>
             <TextareaStyle
                 value={value}
-                onChange={e => changeHandler(e.toString.value)}
+                name={name}
+                onChange={changeHandler}
             />
-            {withCleaner && <ClearWrapper><ClearIcon onClick={clearHandler}/></ClearWrapper>
+            {withCleaner && <ClearWrapper onClick={clearHandler}><ClearIcon/></ClearWrapper>
             }
         </Wrapper>
     );
