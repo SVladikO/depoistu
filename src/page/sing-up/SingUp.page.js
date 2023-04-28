@@ -1,12 +1,11 @@
+import * as Yup from 'yup';
+import {Formik} from "formik";
+
 import {Title,Container,Wrapper} from "./SingUp.style";
 import {CheckBoxWithLabel, PrimaryButton, Label, Input} from "../../components";
 import NavigationLabelHref from "../../components/NavigationLabelHref/NavigationLabelHref";
 import {ROUTER} from '../../utils/config';
 import {resolveTranslation} from "../../utils/utils";
-import {useCallback, useState} from "react";
-import {Formik} from "formik";
-import * as Yup from 'yup';
-import {bool} from "yup";
 
 
 
@@ -24,11 +23,9 @@ const SignUpSchema = Yup.object().shape({
         .email('Invalid email')
         .max(30, 'Too Long! Max length 30')
         .required('Required'),
-    phoneNumber: Yup.string()
-        .matches(
-            /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
-            "Invalid phone number"
-        )
+    phone: Yup.string()
+        .min(12, 'Example: 380971234567')
+        .max(12, 'Example: 380971234567')
         .required("Phone number is required"),
     newPassword: Yup.string()
         .max(30, 'Too Long! Max length 30')
@@ -42,30 +39,6 @@ const SignUpSchema = Yup.object().shape({
 });
 
 const SingUpPage = () => {
-    const [name, setName] = useState('');
-    const nameChangeHandler = useCallback(setName, [name]);
-    const nameClearHandler = useCallback(() => setName(''), [name]);
-
-    const [phone, setPhone] = useState('');
-    const phoneChangeHandler = useCallback(setPhone, [phone]);
-    const phoneClearHandler = useCallback(() => setPhone(''), [phone]);
-
-    const [email, setEmail] = useState('');
-    const emailChangeHandler = useCallback(setEmail, [email]);
-    const emailClearHandler = useCallback(() => setEmail(''), [email]);
-
-    const [newPassword, setNewPassword] = useState('');
-    const newPasswordChangeHandler = useCallback(setNewPassword, [newPassword]);
-
-    const [newPasswordType, setNewPasswordType] = useState('password');
-    const newPasswordSwitchHandler = useCallback(() => setNewPasswordType(newPasswordType === 'password' ? 'text' : 'password'), [newPasswordType]);
-
-    const [confirmedPassword, setConfirmedPassword] = useState('');
-    const confirmedPasswordChangeHandler = useCallback(setConfirmedPassword, [confirmedPassword]);
-
-    const [confirmedPasswordType, setConfirmedPasswordType] = useState('password');
-    const confirmedPasswordSwitchHandler = useCallback(() => setConfirmedPasswordType(confirmedPasswordType === 'password' ? 'text' : 'password'), [confirmedPasswordType]);
-
     return (
         <>
             <Formik
@@ -75,7 +48,7 @@ const SingUpPage = () => {
                     password: '',
                     newPassword: '',
                     confirmedPassword: '',
-                    phoneNumber: '',
+                    phone: '',
                     termsAndConditions: true
                 }}
                 validationSchema={SignUpSchema}
@@ -98,11 +71,11 @@ const SingUpPage = () => {
                             <Label>{resolveTranslation("PAGE.SING_UP.LABEL.PHONE")}</Label>
                             <Input
                                 withCleaner
-                                name="phoneNumber"
-                                value={values.phoneNumber}
+                                name="phone"
+                                value={values.phone}
                                 changeHandler={handleChange}
                             />
-                            {errors.phoneNumber && touched.phoneNumber && <div>{errors.phoneNumber}</div>}
+                            {errors.phone && touched.phone && <div>{errors.phone}</div>}
                             <Label>{resolveTranslation("PAGE.SING_UP.LABEL.EMAIL")}</Label>
                             <Input
                                 withCleaner
