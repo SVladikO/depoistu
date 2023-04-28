@@ -56,7 +56,7 @@ export const WarningMessage = styled.div`
   font-size: 16px;
   line-height: 19px;
   color: ${COLOR.ACCENT6};
-  background: ${hexToRgbA(COLOR.ACCENT6, 0.2)};
+  background: ${COLOR.ACCENT7};
   padding: 2px 0 4px 13px;
 `;
 const st = p => `

@@ -5,7 +5,8 @@ export const COLOR = {
     ACCENT3: '#96CC00',
     ACCENT4: '#FFFFFF',
     ACCENT5: '#B5B5B5',
-    ACCENT6: '#FF0000',
+    ACCENT6: '#FF3937',
+    ACCENT7: '#F6EBEF',
 }
 
 export const GRADIENT = {
