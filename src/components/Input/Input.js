@@ -87,7 +87,7 @@ export const Input = memo(function ({
                     </ClearWrapper>
                 }
             </Wrapper>
-            {warningMessage && <WarningMessage>Email is misspelled!</WarningMessage>}
+            {warningMessage && <WarningMessage>{warningMessage}</WarningMessage>}
         </>
     )
 });
