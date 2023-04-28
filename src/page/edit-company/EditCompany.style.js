@@ -3,7 +3,7 @@ import {COLOR, BORDER_RADIUS} from "../../utils/theme";
 
 export const Wrapper = styled.div`
   & > * {
-    margin: 0 0 10px 0;
+    margin: 0 0 15px 0;
   }
 `;
 

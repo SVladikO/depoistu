@@ -18,77 +18,87 @@ import {ReactComponent as ClearIcon} from "../../icons/close.svg";
 export const Textarea = memo(function ({
                                            withCleaner,
                                            value,
+                                           name,
                                            changeHandler = () => {
                                            },
-                                           clearHandler = () => {
-                                           }
                                        }) {
+
+    const clearHandler = useCallback(e => {
+        const rowParent = e.currentTarget.parentElement;
+        rowParent.firstChild.value = '';
+    }, []);
+
     return (
         <Wrapper>
             <TextareaStyle
                 value={value}
-                onChange={e => changeHandler(e.toString.value)}
+                name={name}
+                onChange={changeHandler}
             />
-            {withCleaner && <ClearWrapper><ClearIcon onClick={clearHandler}/></ClearWrapper>
+            {withCleaner && <ClearWrapper onClick={clearHandler}><ClearIcon/></ClearWrapper>
             }
         </Wrapper>
     );
 });
 
+const INPUT_TYPE = {
+    PASSWORD: 'password',
+    TEXT: 'text'
+}
+
 export const Input = memo(function ({
                                         Icon,
-                                        type = 'text',
+                                        type = INPUT_TYPE.TEXT,
                                         value,
                                         name,
                                         warningMessage,
                                         withSwitcher = false,
                                         withCleaner = false,
-                                        changeHandler = () => {
-                                        },
-                                        switchHandler = () => {
-                                        },
+                                        changeHandler = () => {},
                                         ...props
                                     }) {
+    const [inputType, setInputType] = useState(withSwitcher ? INPUT_TYPE.PASSWORD : type);
+    const handleSwitch = () => setInputType(inputType === INPUT_TYPE.PASSWORD ? INPUT_TYPE.TEXT : INPUT_TYPE.PASSWORD);
 
-    const [showData, setShowData] = useState(false);
+    const clearHandler = useCallback(e => {
+        const rowParent = e.currentTarget.parentElement;
+        const input = rowParent.childNodes[0].tagName === 'INPUT'
+            ? rowParent.childNodes[0]
+            : rowParent.childNodes[1];
 
-    const handleSwitch = () => {
-        setShowData(!showData)
-        switchHandler();
-    }
-
-    const clearHandler = useCallback(() => {}, []);
+        input.value = '';
+    }, []);
 
     return (
         <>
-            <Wrapper  className='pma-input'>
+            <Wrapper className='pma-input'>
                 {Icon && <Icon/>}
                 <InputText
                     name={name}
                     value={value}
                     onChange={changeHandler}
-                    type={type}
+                    type={inputType}
                     withRightIcon={withSwitcher || withCleaner}
                     withLeftIcon={!!Icon}
                     withSwitcher={withSwitcher}
                     {...props}
                 />
-
                 {withSwitcher &&
                     <SwitchIconWrapper onClick={handleSwitch}>
                         <CenterWrapper>
-                            {showData ? <HideEyeIcon/> : <ShowEyeIcon/>}
+                            {inputType === INPUT_TYPE.PASSWORD ? <ShowEyeIcon/> : <HideEyeIcon/>}
                         </CenterWrapper>
                     </SwitchIconWrapper>
                 }
                 {withCleaner &&
-                    <ClearWrapper {...props}>
-                        <ClearIcon onClick={clearHandler}/>
+                    <ClearWrapper {...props} onClick={clearHandler}>
+                        <ClearIcon />
                     </ClearWrapper>
                 }
             </Wrapper>
             {warningMessage && <WarningMessage>{warningMessage}</WarningMessage>}
         </>
+
     )
 });
 

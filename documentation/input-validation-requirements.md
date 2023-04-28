@@ -18,10 +18,10 @@
 |             | min | max | isRequired |
 |-------------|-----|-----|------------|  
 | name        | 2   | 30  | true       |
-| price       | 1   | 30  | true       |
+| price       | 1   | 5   | true       |
 | description |     | 100 | false      |
-| cookingTime |     | 3   | false      |
-| mealSize    |     | 4   | false      |
+| cookingTime | 1   | 2   | false      |
+| mealSize    | 2   | 4   | false      |
 
 
 ### Edit, Create company pages. (COMPANY table in DB)

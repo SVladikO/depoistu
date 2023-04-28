@@ -73,7 +73,7 @@ function renderSchedule(SCHEDULE) {
     })
 }
 
-function getScheduleAsObject(schedule) {
+export function getScheduleAsObject(schedule) {
     const weekDayNames = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"];
 
     return schedule

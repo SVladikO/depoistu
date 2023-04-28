@@ -4,7 +4,6 @@ import {useParams} from "react-router-dom";
 
 import "swiper/css";
 import "swiper/css/pagination";
-
 import {Divider, BasketButton, Pictures, Wrapper,} from "./EditCompany.style";
 
 import {ContentContainer, FromToTime, Input, Label, PrimaryButton, SecondaryButton} from "../../components";
@@ -12,6 +11,12 @@ import {ReactComponent as RemoveIcon} from "../../icons/remove_icon.svg";
 import {ReactComponent as DeleteBasketIcon} from "../../icons/delete_basket.svg";
 
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/utils";
+
+let weekScheduleKipper = [];
+
+const updateWeekScheduleKipper =  (dayName, fieldName, value) => {
+    weekScheduleKipper.find(weekDay => weekDay.name === dayName)[fieldName] = value;
+}
 
 const EditCompany = () => {
     const companyId = +useParams().companyId;
@@ -34,15 +39,11 @@ const EditCompany = () => {
     const streetChangeHandler = useCallback(setStreet, [street]);
     const streetClearHandler = useCallback(() => setStreet(''), [street]);
 
-    const weekDays = [
-        {id: 'FromTo1', name: 'Sun', isChecked: false, from: '00:00', to: '00:00'},
-        {id: 'FromTo2', name: 'Mon', isChecked: false, from: '00:00', to: '00:00'},
-        {id: 'FromTo3', name: 'Tue', isChecked: false, from: '00:00', to: '00:00'},
-        {id: 'FromTo4', name: 'Wed', isChecked: false, from: '00:00', to: '00:00'},
-        {id: 'FromTo5', name: 'Thu', isChecked: false, from: '00:00', to: '00:00'},
-        {id: 'FromTo6', name: 'Fri', isChecked: false, from: '00:00', to: '00:00'},
-        {id: 'FromTo7', name: 'Sat', isChecked: false, from: '00:00', to: '00:00'},
-    ];
+    const [weekSchedule] = useState(initSchedule(company?.SCHEDULE));
+
+    if (!weekScheduleKipper.length) {
+        weekScheduleKipper = weekSchedule;
+    }
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -78,17 +79,7 @@ const EditCompany = () => {
                         clearHandler={streetClearHandler}
                     />
                     <Label>Work Schedule</Label>
-                    {weekDays.map(
-                        day =>
-                            <FromToTime
-                                key={day.id}
-                                id={day.id}
-                                weekDay={day.name}
-                                from={day.from}
-                                to={day.to}
-                            />
-                    )}
-
+                    {weekSchedule.map(day => <FromToTime key={day.name} day={day} updateWeekScheduleKipper={updateWeekScheduleKipper} />)}
                 </ContentContainer>
             </>
         )
@@ -101,6 +92,17 @@ const EditCompany = () => {
         </Wrapper>
     );
 };
+
+function initSchedule(schedule) {
+    const times = schedule.split(',')?.map(el => el.trim());
+
+    return ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС']
+        .map((name, index) => {
+            const [from, to] = times[index]?.split('-');
+
+            return {isChecked: !!times[index], from, to, name}
+        })
+}
 
 function renderPictures(pictures, deleteCompanyImage) {
     return (
