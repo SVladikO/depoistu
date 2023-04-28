@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useState} from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {Formik} from "formik";
@@ -39,8 +39,6 @@ const SignInPage = () => {
     const navigate = useNavigate();
     const backUrl = getParam(`backUrl`) || URL.SETTING;
     const isLoading = useSelector(state => state.request.value.isLoading);
-
-    const [passwordType, setPasswordType] = useState('password')
     const [requestError, setRequestError] = useState('');
 
     const handleSingIn = ({email, password}) => {
@@ -62,7 +60,6 @@ const SignInPage = () => {
             });
     }
 
-    const passwordSwitchHandler = useCallback(() => setPasswordType(passwordType === 'password' ? 'text' : 'password'), [passwordType])
 
     if (isLoading) {
         return <Notification.Loading/>
@@ -81,7 +78,7 @@ const SignInPage = () => {
                 handleSingIn(values)
             }}
         >
-            {({values, handleSubmit, handleChange, errors, touched}) => (
+            {({values, setFieldValue, handleSubmit, handleChange, errors}) => (
                 <form onSubmit={handleSubmit}>
                     <ContentContainer>
                         <Label>Email</Label>
@@ -92,19 +89,18 @@ const SignInPage = () => {
                             value={values.email}
                             withCleaner
                             changeHandler={handleChange}
+                            clearHandler={() => setFieldValue('email', '')}
+                            errorMessage={errors.email}
                         />
-                        {errors.email && touched.email ? <div>{errors.email}</div> : null}
                         <Label>Password</Label>
                         <Input
                             Icon={LockIcon}
                             name='password'
-                            type={passwordType}
                             value={values.password}
                             changeHandler={handleChange}
-                            switchHandler={passwordSwitchHandler}
                             withSwitcher
+                            errorMessage={errors.password}
                         />
-                        {errors.password && touched.password ? <div>{errors.password}</div> : null}
                         <Link>{resolveTranslation("PAGE.SING_IN.FORGOT_PASSWORD")}</Link>
                         <NavigationLabelHref
                             hrefTitle={resolveTranslation("PAGE.SIGN_IN.SING_UP_LINK")}

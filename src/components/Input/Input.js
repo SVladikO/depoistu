@@ -1,4 +1,4 @@
-import React, {useState, memo, useCallback} from "react";
+import React, {useState, memo} from "react";
 import {
     Wrapper,
     InputText,
@@ -16,28 +16,26 @@ import {ReactComponent as HideEyeIcon} from "../../icons/hide-eye.svg";
 import {ReactComponent as ClearIcon} from "../../icons/close.svg";
 
 export const Textarea = memo(function ({
+                                           errorMessage,
                                            withCleaner,
                                            value,
                                            name,
-                                           changeHandler = () => {
-                                           },
+                                           changeHandler = () => {},
+                                           clearHandler = () => {},
                                        }) {
 
-    const clearHandler = useCallback(e => {
-        const rowParent = e.currentTarget.parentElement;
-        rowParent.firstChild.value = '';
-    }, []);
-
     return (
-        <Wrapper>
-            <TextareaStyle
-                value={value}
-                name={name}
-                onChange={changeHandler}
-            />
-            {withCleaner && <ClearWrapper onClick={clearHandler}><ClearIcon/></ClearWrapper>
-            }
-        </Wrapper>
+        <div>
+            <Wrapper>
+                <TextareaStyle
+                    value={value}
+                    name={name}
+                    onChange={changeHandler}
+                />
+                {withCleaner && <ClearWrapper onClick={clearHandler}><ClearIcon/></ClearWrapper>}
+            </Wrapper>
+            {errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
+        </div>
     );
 });
 
@@ -51,11 +49,13 @@ export const Input = memo(function ({
                                         type = INPUT_TYPE.TEXT,
                                         value,
                                         name,
-                                        warningMessage,
+                                        errorMessage,
                                         withSwitcher = false,
                                         withCleaner = false,
-                                        changeHandler = () => {},
-                                        clearHandler= () => {},
+                                        changeHandler = () => {
+                                        },
+                                        clearHandler = () => {
+                                        },
                                         ...props
                                     }) {
     const [inputType, setInputType] = useState(withSwitcher ? INPUT_TYPE.PASSWORD : type);
@@ -84,11 +84,11 @@ export const Input = memo(function ({
                 }
                 {withCleaner &&
                     <ClearWrapper {...props} onClick={clearHandler}>
-                        <ClearIcon />
+                        <ClearIcon/>
                     </ClearWrapper>
                 }
             </Wrapper>
-            {warningMessage && <WarningMessage>{warningMessage}</WarningMessage>}
+            {errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
         </div>
     )
 });

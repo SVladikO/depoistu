@@ -7,9 +7,6 @@ import NavigationLabelHref from "../../components/NavigationLabelHref/Navigation
 import {ROUTER} from '../../utils/config';
 import {resolveTranslation} from "../../utils/utils";
 
-
-
-
 const SignUpSchema = Yup.object().shape({
     name: Yup.string()
         .min(2, "Too Short!")
@@ -67,7 +64,7 @@ const SingUpPage = () => {
                                 value={values.name}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('name', '')}
-                                warningMessage={errors.name}
+                                errorMessage={errors.name}
                             />
                             <Label>{resolveTranslation("PAGE.SING_UP.LABEL.PHONE")}</Label>
                             <Input
@@ -76,7 +73,7 @@ const SingUpPage = () => {
                                 value={values.phone}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('phone', '')}
-                                warningMessage={errors.phone}
+                                errorMessage={errors.phone}
                             />
                             <Label>{resolveTranslation("PAGE.SING_UP.LABEL.EMAIL")}</Label>
                             <Input
@@ -86,7 +83,7 @@ const SingUpPage = () => {
                                 value={values.email}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('email', '')}
-                                warningMessage={errors.email}
+                                errorMessage={errors.email}
                             />
                             <Label>{resolveTranslation("PAGE.SING_UP.LABEL.PASS")}</Label>
                             <Input
@@ -95,7 +92,7 @@ const SingUpPage = () => {
                                 value={values.newPassword}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('newPassword', '')}
-                                warningMessage={errors.newPassword}
+                                errorMessage={errors.newPassword}
                             />
                             <Label>{resolveTranslation("PAGE.SING_UP.LABEL.CONFIRM_PASS")}</Label>
                             <Input
@@ -104,7 +101,7 @@ const SingUpPage = () => {
                                 name="confirmedPassword"
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('confirmedPassword', '')}
-                                warningMessage={errors.confirmedPassword}
+                                errorMessage={errors.confirmedPassword}
                             />
 
                             <CheckBoxWithLabel type="checkbox" name="termsAndConditions" label={resolveTranslation("PAGE.SING_UP.CHECKBOX_CONFIRM_TERMS")}/>
