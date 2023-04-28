@@ -18,11 +18,11 @@ const ChangePassWordSchema = Yup.object().shape({
         .required('Required'),
     newPassword: Yup.string()
         .min(6, 'Too Short! Min length 6')
-        .max(12, 'Too Long! Max length 30')
+        .max(12, 'Too Long! Max length 12')
         .required('Required'),
     confirmedPassword: Yup.string()
         .min(6, 'Too Short! Min length 6')
-        .max(12, 'Too Long! Max length 30')
+        .max(12, 'Too Long! Max length 12')
         .test('passwords-match', 'Passwords must match', function (value) {
             return this.parent.newPassword === value
         })
