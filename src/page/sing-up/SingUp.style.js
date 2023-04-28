@@ -10,8 +10,7 @@ export const Title = styled.div`
   margin: 0 0 15px;
 `;
 export const Container = styled(ContentContainer)`
-  margin-bottom: 12px;
+  margin-bottom: 73px;
 `;
 export const Wrapper = styled.div`
-  margin-bottom: -10px;
 `;
