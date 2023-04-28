@@ -67,7 +67,7 @@ const SingUpPage = () => {
                                 value={values.name}
                                 changeHandler={handleChange}
                             />
-                            {errors.name && touched.name && <div>{errors.name}</div>}
+                            {errors.name && <div>{errors.name}</div>}
                             <Label>{resolveTranslation("PAGE.SING_UP.LABEL.PHONE")}</Label>
                             <Input
                                 withCleaner
@@ -75,7 +75,7 @@ const SingUpPage = () => {
                                 value={values.phone}
                                 changeHandler={handleChange}
                             />
-                            {errors.phone && touched.phone && <div>{errors.phone}</div>}
+                            {errors.phone && <div>{errors.phone}</div>}
                             <Label>{resolveTranslation("PAGE.SING_UP.LABEL.EMAIL")}</Label>
                             <Input
                                 withCleaner
@@ -84,29 +84,26 @@ const SingUpPage = () => {
                                 value={values.email}
                                 changeHandler={handleChange}
                             />
-                            {errors.email && touched.email && <div>{errors.email}</div>}
+                            {errors.email && <div>{errors.email}</div>}
                             <Label>{resolveTranslation("PAGE.SING_UP.LABEL.PASS")}</Label>
                             <Input
                                 withSwitcher
                                 name="newPassword"
-                                type={newPasswordType}
                                 value={values.newPassword}
                                 changeHandler={handleChange}
-                                switchHandler={newPasswordSwitchHandler}
                             />
-                            {errors.newPassword && touched.newPassword && <div>{errors.newPassword}</div>}
+                            {errors.newPasswordc && <div>{errors.newPassword}</div>}
                             <Label>{resolveTranslation("PAGE.SING_UP.LABEL.CONFIRM_PASS")}</Label>
                             <Input
                                 withSwitcher
-                                type={confirmedPasswordType}
                                 value={values.confirmedPassword}
                                 name="confirmedPassword"
                                 changeHandler={handleChange}
-                                switchHandler={confirmedPasswordSwitchHandler}
                             />
-                            {errors.confirmedPassword && touched.confirmedPassword && <div>{errors.confirmedPassword}</div>}
+                            {errors.confirmedPassword && <div>{errors.confirmedPassword}</div>}
+
                             <CheckBoxWithLabel type="checkbox" name="termsAndConditions" label={resolveTranslation("PAGE.SING_UP.CHECKBOX_CONFIRM_TERMS")}/>
-                            {errors.termsAndConditions && touched.termsAndConditions && <div>{errors.termsAndConditions}</div>}
+                            {errors.termsAndConditions && <div>{errors.termsAndConditions}</div>}
                         </Container>
                         <Wrapper>
                             <NavigationLabelHref
