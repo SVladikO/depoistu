@@ -8,6 +8,7 @@ import {
     PInputWrapper,
     PStyle,
     TextareaStyle,
+    WarningMessage
 } from "./Input.style";
 
 import {ReactComponent as ShowEyeIcon} from "../../icons/show-eye.svg";
@@ -50,6 +51,7 @@ export const Input = memo(function ({
                                         type = INPUT_TYPE.TEXT,
                                         value,
                                         name,
+                                        warningMessage,
                                         withSwitcher = false,
                                         withCleaner = false,
                                         changeHandler = () => {},
@@ -68,31 +70,35 @@ export const Input = memo(function ({
     }, []);
 
     return (
-        <Wrapper className='pma-input'>
-            {Icon && <Icon/>}
-            <InputText
-                name={name}
-                value={value}
-                onChange={changeHandler}
-                type={inputType}
-                withRightIcon={withSwitcher || withCleaner}
-                withLeftIcon={!!Icon}
-                withSwitcher={withSwitcher}
-                {...props}
-            />
-            {withSwitcher &&
-                <SwitchIconWrapper onClick={handleSwitch}>
-                    <CenterWrapper>
-                        {inputType === INPUT_TYPE.PASSWORD ? <ShowEyeIcon/> : <HideEyeIcon/>}
-                    </CenterWrapper>
-                </SwitchIconWrapper>
-            }
-            {withCleaner &&
-                <ClearWrapper {...props} onClick={clearHandler}>
-                    <ClearIcon />
-                </ClearWrapper>
-            }
-        </Wrapper>
+        <>
+            <Wrapper className='pma-input'>
+                {Icon && <Icon/>}
+                <InputText
+                    name={name}
+                    value={value}
+                    onChange={changeHandler}
+                    type={inputType}
+                    withRightIcon={withSwitcher || withCleaner}
+                    withLeftIcon={!!Icon}
+                    withSwitcher={withSwitcher}
+                    {...props}
+                />
+                {withSwitcher &&
+                    <SwitchIconWrapper onClick={handleSwitch}>
+                        <CenterWrapper>
+                            {inputType === INPUT_TYPE.PASSWORD ? <ShowEyeIcon/> : <HideEyeIcon/>}
+                        </CenterWrapper>
+                    </SwitchIconWrapper>
+                }
+                {withCleaner &&
+                    <ClearWrapper {...props} onClick={clearHandler}>
+                        <ClearIcon />
+                    </ClearWrapper>
+                }
+            </Wrapper>
+            {warningMessage && <WarningMessage>{warningMessage}</WarningMessage>}
+        </>
+
     )
 });
 
