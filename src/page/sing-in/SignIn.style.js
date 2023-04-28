@@ -26,10 +26,3 @@ export const Label = styled.div`
   font-size: 16px;
   line-height: 19px;
 `;
-
-export const SideContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: calc(50% - 5px);
-`;
-

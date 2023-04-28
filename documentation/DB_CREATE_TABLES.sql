@@ -160,7 +160,7 @@ INSERT INTO CUSTOMER (id, name, phone, password, email, is_verified_phone, is_ve
   (DEFAULT, 'David', 972959897, 'dd33dd', 'david_Y@gmail.com', false, false, 167235);
 
 INSERT INTO COMPANY (id, customer_id, name, phones, city, street, join_date, schedule, photos) VALUES
-  (DEFAULT, 1, 'АрмАто',      '0665784567, 0675784567',  'Вінниця',  'Вінницька, 15',     '22.05.2020', '', ''),
+  (DEFAULT, 1, 'АрмАто',      '0665784567, 0675784567',  'Вінниця',  'Вінницька, 15',     '22.05.2020', '08.00-21.00, 08.00-21.00, 08.00-21.00, 08.00-21.00, 08.00-21.00,,', ''),
   (DEFAULT, 1, 'ПіццаМанія',  '0665784568, 0675784567',  'Вінниця',  'Теліги, 17',        '22.05.2020', '08.00-21.00, 08.00-21.00, 08.00-21.00, 08.00-21.00, 08.00-21.00,,', 'https://cdn.pixabay.com/photo/2020/03/30/10/18/electric-scooter-4983759__340.jpg'),
   (DEFAULT, 1, 'Мрія',        '0665784565, 0675784567',  'Вінниця',  'Шевченка, 15',      '22.05.2020', '10.00-22.00,,,,,,', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy-96nRwcUjyGtV1ho1qssXZbEdOLMxX8ngg&usqp=CAU, https://cdn.pixabay.com/photo/2020/10/07/12/33/cafe-5635015__340.jpg'),
   (DEFAULT, 1, 'Піт-стоп',    '0665784567, 0675784567',  'Вінниця',  'Іванівська, 15',    '22.05.2020', '08.00-21.00, 08.00-21.00, 08.00-21.00, 08.00-21.00, 08.00-21.00, , ', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ0YFNCJRRXSkY4kmsxaxn3EzD2TbFSbJLkA&usqp=CAU, https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYgmLZJ28enQab1yD4pI4_qbb38gM_x4icng&usqp=CAU,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlwvgTSdfHyxZJXplDULbcpKNtXaz0eBwNAw&usqp=CAU'),
