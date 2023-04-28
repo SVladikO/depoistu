@@ -8,6 +8,7 @@ import {
     PInputWrapper,
     PStyle,
     TextareaStyle,
+    WarningMessage
 } from "./Input.style";
 
 import {ReactComponent as ShowEyeIcon} from "../../icons/show-eye.svg";
@@ -17,18 +18,24 @@ import {ReactComponent as ClearIcon} from "../../icons/close.svg";
 export const Textarea = memo(function ({
                                            withCleaner,
                                            value,
+                                           name,
                                            changeHandler = () => {
                                            },
-                                           clearHandler = () => {
-                                           }
                                        }) {
+
+    const clearHandler = useCallback(e => {
+        const rowParent = e.currentTarget.parentElement;
+        rowParent.firstChild.value = '';
+    }, []);
+
     return (
         <Wrapper>
             <TextareaStyle
                 value={value}
-                onChange={e => changeHandler(e.toString.value)}
+                name={name}
+                onChange={changeHandler}
             />
-            {withCleaner && <ClearWrapper><ClearIcon onClick={clearHandler}/></ClearWrapper>
+            {withCleaner && <ClearWrapper onClick={clearHandler}><ClearIcon/></ClearWrapper>
             }
         </Wrapper>
     );
@@ -44,6 +51,7 @@ export const Input = memo(function ({
                                         type = INPUT_TYPE.TEXT,
                                         value,
                                         name,
+                                        warningMessage,
                                         withSwitcher = false,
                                         withCleaner = false,
                                         changeHandler = () => {},
@@ -62,31 +70,35 @@ export const Input = memo(function ({
     }, []);
 
     return (
-        <Wrapper className='pma-input'>
-            {Icon && <Icon/>}
-            <InputText
-                name={name}
-                value={value}
-                onChange={changeHandler}
-                type={inputType}
-                withRightIcon={withSwitcher || withCleaner}
-                withLeftIcon={!!Icon}
-                withSwitcher={withSwitcher}
-                {...props}
-            />
-            {withSwitcher &&
-                <SwitchIconWrapper onClick={handleSwitch}>
-                    <CenterWrapper>
-                        {inputType === INPUT_TYPE.PASSWORD ? <ShowEyeIcon/> : <HideEyeIcon/>}
-                    </CenterWrapper>
-                </SwitchIconWrapper>
-            }
-            {withCleaner &&
-                <ClearWrapper {...props} onClick={clearHandler}>
-                    <ClearIcon />
-                </ClearWrapper>
-            }
-        </Wrapper>
+        <>
+            <Wrapper className='pma-input'>
+                {Icon && <Icon/>}
+                <InputText
+                    name={name}
+                    value={value}
+                    onChange={changeHandler}
+                    type={inputType}
+                    withRightIcon={withSwitcher || withCleaner}
+                    withLeftIcon={!!Icon}
+                    withSwitcher={withSwitcher}
+                    {...props}
+                />
+                {withSwitcher &&
+                    <SwitchIconWrapper onClick={handleSwitch}>
+                        <CenterWrapper>
+                            {inputType === INPUT_TYPE.PASSWORD ? <ShowEyeIcon/> : <HideEyeIcon/>}
+                        </CenterWrapper>
+                    </SwitchIconWrapper>
+                }
+                {withCleaner &&
+                    <ClearWrapper {...props} onClick={clearHandler}>
+                        <ClearIcon />
+                    </ClearWrapper>
+                }
+            </Wrapper>
+            {warningMessage && <WarningMessage>{warningMessage}</WarningMessage>}
+        </>
+
     )
 });
 
