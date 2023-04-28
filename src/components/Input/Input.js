@@ -55,22 +55,14 @@ export const Input = memo(function ({
                                         withSwitcher = false,
                                         withCleaner = false,
                                         changeHandler = () => {},
+                                        clearHandler= () => {},
                                         ...props
                                     }) {
     const [inputType, setInputType] = useState(withSwitcher ? INPUT_TYPE.PASSWORD : type);
     const handleSwitch = () => setInputType(inputType === INPUT_TYPE.PASSWORD ? INPUT_TYPE.TEXT : INPUT_TYPE.PASSWORD);
 
-    const clearHandler = useCallback(e => {
-        const rowParent = e.currentTarget.parentElement;
-        const input = rowParent.childNodes[0].tagName === 'INPUT'
-            ? rowParent.childNodes[0]
-            : rowParent.childNodes[1];
-
-        input.value = '';
-    }, []);
-
     return (
-        <>
+        <div>
             <Wrapper className='pma-input'>
                 {Icon && <Icon/>}
                 <InputText
@@ -97,8 +89,7 @@ export const Input = memo(function ({
                 }
             </Wrapper>
             {warningMessage && <WarningMessage>{warningMessage}</WarningMessage>}
-        </>
-
+        </div>
     )
 });
 

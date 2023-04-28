@@ -14,7 +14,7 @@ const SignUpSchema = Yup.object().shape({
     name: Yup.string()
         .min(2, "Too Short!")
         .max(30, "Too Long!")
-        .required("Name is required"),
+        .required("Required!"),
     password: Yup.string()
         .min(6, 'Too Short! Min length 6')
         .max(12, 'Too Long! Max length 12')
@@ -22,14 +22,14 @@ const SignUpSchema = Yup.object().shape({
     email: Yup.string()
         .email('Invalid email')
         .max(30, 'Too Long! Max length 30')
-        .required('Required'),
+        .required('Required!'),
     phone: Yup.string()
         .min(12, 'Example: 380971234567')
         .max(12, 'Example: 380971234567')
-        .required("Phone number is required"),
+        .required("Required!"),
     newPassword: Yup.string()
         .max(30, 'Too Long! Max length 30')
-        .required('Required'),
+        .required('Required!'),
     confirmedPassword: Yup.string()
         .test('passwords-match', 'Passwords must match', function (value) {
             return this.parent.newPassword === value
@@ -56,7 +56,7 @@ const SingUpPage = () => {
                     console.log(values);
                 }}
             >
-                {({values, handleSubmit, handleChange, errors, touched}) => (
+                {({values, setFieldValue, handleSubmit, handleChange, errors}) => (
                     <form onSubmit={handleSubmit}>
                         <Container>
                             <Title>{resolveTranslation("PAGE.SING_UP.CREATE_ACCOUNT")}</Title>
@@ -66,16 +66,18 @@ const SingUpPage = () => {
                                 name="name"
                                 value={values.name}
                                 changeHandler={handleChange}
+                                clearHandler={() => setFieldValue('name', '')}
+                                warningMessage={errors.name}
                             />
-                            {errors.name && <div>{errors.name}</div>}
                             <Label>{resolveTranslation("PAGE.SING_UP.LABEL.PHONE")}</Label>
                             <Input
                                 withCleaner
                                 name="phone"
                                 value={values.phone}
                                 changeHandler={handleChange}
+                                clearHandler={() => setFieldValue('phone', '')}
+                                warningMessage={errors.phone}
                             />
-                            {errors.phone && <div>{errors.phone}</div>}
                             <Label>{resolveTranslation("PAGE.SING_UP.LABEL.EMAIL")}</Label>
                             <Input
                                 withCleaner
@@ -83,24 +85,27 @@ const SingUpPage = () => {
                                 name="email"
                                 value={values.email}
                                 changeHandler={handleChange}
+                                clearHandler={() => setFieldValue('email', '')}
+                                warningMessage={errors.email}
                             />
-                            {errors.email && <div>{errors.email}</div>}
                             <Label>{resolveTranslation("PAGE.SING_UP.LABEL.PASS")}</Label>
                             <Input
                                 withSwitcher
                                 name="newPassword"
                                 value={values.newPassword}
                                 changeHandler={handleChange}
+                                clearHandler={() => setFieldValue('newPassword', '')}
+                                warningMessage={errors.newPassword}
                             />
-                            {errors.newPasswordc && <div>{errors.newPassword}</div>}
                             <Label>{resolveTranslation("PAGE.SING_UP.LABEL.CONFIRM_PASS")}</Label>
                             <Input
                                 withSwitcher
                                 value={values.confirmedPassword}
                                 name="confirmedPassword"
                                 changeHandler={handleChange}
+                                clearHandler={() => setFieldValue('confirmedPassword', '')}
+                                warningMessage={errors.confirmedPassword}
                             />
-                            {errors.confirmedPassword && <div>{errors.confirmedPassword}</div>}
 
                             <CheckBoxWithLabel type="checkbox" name="termsAndConditions" label={resolveTranslation("PAGE.SING_UP.CHECKBOX_CONFIRM_TERMS")}/>
                             {errors.termsAndConditions && <div>{errors.termsAndConditions}</div>}
