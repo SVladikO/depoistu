@@ -4,7 +4,7 @@ import {Wrapper, GroupWrapper, Label} from "./FromToTime.style";
 
 import {Checkbox, Input} from "../index";
 
-function FromToTime({day, updateWeekScheduleKipper}) {
+function FromToTime({day = {}, updateWeekScheduleKipper}) {
     const {isChecked, name, from = "", to = ""} = day;
 
     const [fromTime, setFromTime] = useState(from);

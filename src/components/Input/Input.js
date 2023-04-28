@@ -34,26 +34,23 @@ export const Textarea = memo(function ({
     );
 });
 
+const INPUT_TYPE = {
+    PASSWORD: 'password',
+    TEXT: 'text'
+}
+
 export const Input = memo(function ({
                                         Icon,
-                                        type = 'text',
+                                        type = INPUT_TYPE.TEXT,
                                         value,
                                         name,
                                         withSwitcher = false,
                                         withCleaner = false,
-                                        changeHandler = () => {
-                                        },
-                                        switchHandler = () => {
-                                        },
+                                        changeHandler = () => {},
                                         ...props
                                     }) {
-
-    const [showData, setShowData] = useState(false);
-
-    const handleSwitch = () => {
-        setShowData(!showData)
-        switchHandler();
-    }
+    const [inputType, setInputType] = useState(withSwitcher ? INPUT_TYPE.PASSWORD : type);
+    const handleSwitch = () => setInputType(inputType === INPUT_TYPE.PASSWORD ? INPUT_TYPE.TEXT : INPUT_TYPE.PASSWORD);
 
     const clearHandler = useCallback(e => {
         const rowParent = e.currentTarget.parentElement;
@@ -71,7 +68,7 @@ export const Input = memo(function ({
                 name={name}
                 value={value}
                 onChange={changeHandler}
-                type={type}
+                type={inputType}
                 withRightIcon={withSwitcher || withCleaner}
                 withLeftIcon={!!Icon}
                 withSwitcher={withSwitcher}
@@ -80,7 +77,7 @@ export const Input = memo(function ({
             {withSwitcher &&
                 <SwitchIconWrapper onClick={handleSwitch}>
                     <CenterWrapper>
-                        {showData ? <HideEyeIcon/> : <ShowEyeIcon/>}
+                        {inputType === INPUT_TYPE.PASSWORD ? <ShowEyeIcon/> : <HideEyeIcon/>}
                     </CenterWrapper>
                 </SwitchIconWrapper>
             }
