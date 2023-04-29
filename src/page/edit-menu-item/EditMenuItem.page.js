@@ -3,7 +3,6 @@ import {Formik} from "formik";
 import * as Yup from 'yup';
 import {
     ContentContainer,
-
     Input,
     Label, PrimaryButton,
     RowSplitter,
@@ -63,7 +62,7 @@ const EditMenuItemPage = () => {
                     console.log(values);
                 }}
             >
-                {({values, handleSubmit, handleChange, errors, touched}) => (
+                {({values, setFieldValue, handleSubmit, handleChange, errors}) => (
                     <form onSubmit={handleSubmit}>
                         <SecondaryButton><RemoveIcon/> Delete</SecondaryButton>
                         <RowSplitter height={'15px'}/>
@@ -79,47 +78,49 @@ const EditMenuItemPage = () => {
                                 value={values.name}
                                 name="name"
                                 changeHandler={handleChange}
+                                clearHandler={() => setFieldValue('name', '')}
+                                errorMessage={errors.name}
                                 withCleaner
                             />
-                            {errors.name && touched.name && <div>{errors.name}</div>}
                             <Label>Price</Label>
                             <Input
                                 value={values.price}
                                 name="price"
                                 type="number"
                                 changeHandler={handleChange}
+                                clearHandler={() => setFieldValue('price', '')}
+                                errorMessage={errors.price}
                                 withCleaner
-                                min="0"
                             />
-                            {errors.price && touched.price && <div>{errors.price}</div>}
                             <Label>Description</Label>
                             <Textarea
                                 value={values.description}
                                 name="description"
                                 changeHandler={handleChange}
+                                clearHandler={() => setFieldValue('description', '')}
+                                errorMessage={errors.description}
                                 withCleaner
                             />
-                            {errors.description && touched.description && <div>{errors.description}</div>}
                             <Label>Cooking time (in minutes)</Label>
                             <Input
                                 value={values.cookingTime}
                                 type="number"
                                 name="cookingTime"
                                 changeHandler={handleChange}
+                                clearHandler={() => setFieldValue('cookingTime', '')}
+                                errorMessage={errors.cookingTime}
                                 withCleaner
-                                min="0"
                             />
-                            {errors.cookingTime && touched.cookingTime && <div>{errors.cookingTime}</div>}
                             <Label>Meal Size</Label>
                             <Input
                                 value={values.size}
                                 name="size"
                                 type="number"
                                 changeHandler={handleChange}
+                                clearHandler={() => setFieldValue('size', '')}
+                                errorMessage={errors.size}
                                 withCleaner
-                                min="0"
                             />
-                            {errors.size && touched.size && <div>{errors.size}</div>}
                         </ContentContainer>
                         <PrimaryButton type="submit" isWide>Save</PrimaryButton>
                     </form>

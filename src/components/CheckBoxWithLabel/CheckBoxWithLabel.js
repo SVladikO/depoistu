@@ -5,7 +5,7 @@ import {Checkbox} from "../index";
 const CheckBoxWithLabel = ({label,id}) => {
     const [isChecked, setIsChecked] = useState(false);
     return (
-        <Wrapper checked={isChecked} onChange={() => setIsChecked((prev) => !prev)}>
+        <Wrapper type="checkbox" checked={isChecked} onChange={() => setIsChecked((prev) => !prev)}>
             <Checkbox id={id}/>
             <label htmlFor={id}>{label}</label>
         </Wrapper>
