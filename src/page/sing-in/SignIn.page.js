@@ -1,8 +1,8 @@
+import * as Yup from 'yup';
+import {Formik} from "formik";
 import React, {useState} from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {Formik} from "formik";
-import * as Yup from 'yup';
 
 import {
     Input,
@@ -21,17 +21,12 @@ import {startLoading, stopLoading} from "../../features/request/requestSlice";
 
 import {fetchData} from "../../utils/fetch";
 import {BE_API, ROUTER, URL} from '../../utils/config';
+import {user_validation} from '../../utils/validation';
 import {getParam, LocalStorage, resolveTranslation, LOCAL_STORAGE_KEY} from "../../utils/utils";
 
 const SignInSchema = Yup.object().shape({
-    password: Yup.string()
-        .min(6, 'Too Short! Min length 6')
-        .max(12, 'Too Long! Max length 12')
-        .required('Required'),
-    email: Yup.string()
-        .email('Invalid email')
-        .max(30, 'Too Long! Max length 30')
-        .required('Required'),
+    password: user_validation.password,
+    email: user_validation.email,
 });
 
 const SignInPage = () => {
@@ -101,7 +96,7 @@ const SignInPage = () => {
                             withSwitcher
                             errorMessage={errors.password}
                         />
-                        <Link>{resolveTranslation("PAGE.SING_IN.FORGOT_PASSWORD")}</Link>
+                        <Link to={'/'}>{resolveTranslation("PAGE.SING_IN.FORGOT_PASSWORD")}</Link>
                         <NavigationLabelHref
                             hrefTitle={resolveTranslation("PAGE.SIGN_IN.SING_UP_LINK")}
                             to={`${ROUTER.SING_UP.URL}?backUrl=${backUrl}`}

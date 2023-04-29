@@ -1,51 +1,24 @@
-import React, {useCallback, useState} from 'react';
 import {Formik} from "formik";
 import * as Yup from 'yup';
+
 import {
-    ContentContainer,
+    Label,
     Input,
     RowSplitter,
-    PrimaryButton
+    PrimaryButton,
+    ContentContainer,
 } from "../../components";
-import {resolveTranslation} from "../../utils/utils";
-import {Label} from "../../components";
 
+import {resolveTranslation} from "../../utils/utils";
+import {user_validation} from "../../utils/validation";
 
 const ChangePassWordSchema = Yup.object().shape({
-    currentPassword: Yup.string()
-        .min(6, 'Too Short! Min length 6')
-        .max(12, 'Too Long! Max length 12')
-        .required('Required'),
-    newPassword: Yup.string()
-        .min(6, 'Too Short! Min length 6')
-        .max(12, 'Too Long! Max length 12')
-        .required('Required'),
-    confirmedPassword: Yup.string()
-        .min(6, 'Too Short! Min length 6')
-        .max(12, 'Too Long! Max length 12')
-        .test('passwords-match', 'Passwords must match', function (value) {
-            return this.parent.newPassword === value
-        })
-        .required('Required')
+    currentPassword: user_validation.password,
+    newPassword: user_validation.password,
+    confirmedPassword: user_validation.confirmedPassword
 });
 
 const ChangePasswordPage = () => {
-    const [currentPasswordType, setCurrentPasswordType] = useState('password');
-    const [newPasswordType, setNewPasswordType] = useState('password');
-    const [confirmedPasswordType, setConfirmedPasswordType] = useState('password');
-
-    const currenPasswordSwitchHandler = useCallback(() => setCurrentPasswordType(currentPasswordType === 'password' ? 'text' : 'password'), [currentPasswordType]);
-    const newPasswordSwitchHandler = useCallback(() => setNewPasswordType(newPasswordType === 'password' ? 'text' : 'password'), [newPasswordType]);
-    const confirmedPasswordSwitchHandler = useCallback(() => setConfirmedPasswordType(confirmedPasswordType === 'password' ? 'text' : 'password'), [confirmedPasswordType]);
-
-    const [currentPassword, setCurrentPassword] = useState('');
-    const [newPassword, setNewPassword] = useState('');
-    const [confirmedPassword, setConfirmedPassword] = useState('');
-
-    const currenPasswordChangeHandler = useCallback(setCurrentPassword, [currentPassword]);
-    const newPasswordChangeHandler = useCallback(setNewPassword, [newPassword]);
-    const confirmedPasswordChangeHandler = useCallback(setConfirmedPassword, [confirmedPassword]);
-
     return (
         <Formik
             initialValues={{
@@ -58,40 +31,34 @@ const ChangePasswordPage = () => {
                 console.log(values);
             }}
         >
-            {( {values, handleSubmit, handleChange, errors, touched}) => (
+            {( {values, handleSubmit, handleChange, errors}) => (
                 <form onSubmit={handleSubmit}>
                     <ContentContainer>
                         <Label>{resolveTranslation("PAGE.CHANGE_PASSWORD.LABEL.OLD_PASSWORD")}</Label>
                         <Input
                             withSwitcher
                             name="currentPassword"
-                            type={currentPasswordType}
                             value={values.currentPassword}
                             changeHandler={handleChange}
-                            switchHandler={currenPasswordSwitchHandler}
+                            errorMessage={errors.currentPassword}
                         />
-                        {errors.currentPassword && touched.currentPassword ? <div>{errors.currentPassword}</div> : null}
                         <RowSplitter height='10px'/>
                         <Label>{resolveTranslation("PAGE.CHANGE_PASSWORD.LABEL.NEW_PASSWORD")}</Label>
                         <Input
                             withSwitcher
                             name="newPassword"
-                            type={newPasswordType}
                             value={values.newPassword}
                             changeHandler={handleChange}
-                            switchHandler={newPasswordSwitchHandler}
+                            errorMessage={errors.newPassword}
                         />
-                        {errors.newPassword && touched.newPassword && <div>{errors.newPassword}</div>}
                         <Label>{resolveTranslation("PAGE.CHANGE_PASSWORD.LABEL.CONFIRM_PASSWORD")}</Label>
                         <Input
                             withSwitcher
                             name="confirmedPassword"
-                            type={confirmedPasswordType}
                             value={values.confirmedPassword}
                             changeHandler={handleChange}
-                            switchHandler={confirmedPasswordSwitchHandler}
+                            errorMessage={errors.confirmedPassword}
                         />
-                        {errors.confirmedPassword && touched.confirmedPassword && <div>{errors.confirmedPassword}</div>}
                         <RowSplitter margin="20px 0 0"/>
                         <PrimaryButton type="submit"
                                        isWide>{resolveTranslation("PAGE.CHANGE_PASSWORD.BUTTON.SAVE_PASSWORD")}</PrimaryButton>
