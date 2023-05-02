@@ -16,25 +16,9 @@ import {URL} from "../../utils/config";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/utils";
 import React, {useState} from "react";
 import {ReactComponent as RemoveIcon} from "../../icons/remove_icon.svg";
+import {menu_item_validation} from "../../utils/validation";
 
-const EditMenuItemSchema = Yup.object().shape({
-    name: Yup.string()
-        .required("Required!")
-        .min(2, "Min length 2!")
-        .max(30, "Max length 30!"),
-    price: Yup.string()
-        .required('Required!')
-        .min(1, 'Min length 1!')
-        .max(5, 'Max length 5!'),
-    description: Yup.string()
-        .max(100, 'Max length 100!'),
-    cookingTime: Yup.string()
-        .min(1, 'Min length 1!')
-        .max(2, 'Max length 2!'),
-    size: Yup.string()
-        .min(2, 'Min length 2!')
-        .max(4, 'Max length 4!')
-});
+const EditMenuItemSchema = Yup.object().shape(menu_item_validation)
 
 const EditMenuItemPage = () => {
     const navigate = useNavigate();

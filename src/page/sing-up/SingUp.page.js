@@ -1,41 +1,20 @@
 import * as Yup from 'yup';
 import {Formik} from "formik";
 
-import {Title,Container,Wrapper} from "./SingUp.style";
-import {CheckBoxWithLabel, PrimaryButton, Label, Input} from "../../components";
+import {Title, Wrapper} from "./SingUp.style";
+import {PrimaryButton, Label, Input, ContentContainer} from "../../components";
 import NavigationLabelHref from "../../components/NavigationLabelHref/NavigationLabelHref";
 import {ROUTER} from '../../utils/config';
 import {resolveTranslation} from "../../utils/utils";
+import {user_validation} from "../../utils/validation";
 
 const SignUpSchema = Yup.object().shape({
-    name: Yup.string()
-        .min(2, "Too Short!")
-        .max(30, "Too Long!")
-        .required("Required!"),
-    password: Yup.string()
-        .min(6, 'Too Short! Min length 6')
-        .max(12, 'Too Long! Max length 12')
-        .required('Required'),
-    email: Yup.string()
-        .email('Invalid email')
-        .max(30, 'Too Long! Max length 30')
-        .required('Required!'),
-    phone: Yup.string()
-        .min(12, 'Example: 380971234567')
-        .max(12, 'Example: 380971234567')
-        .required("Required!"),
-    newPassword: Yup.string()
-        .min(6, 'Min length 6!')
-        .max(12, 'Max length 12!')
-        .required('Required!'),
-    confirmedPassword: Yup.string()
-        .min(6, 'Min length 6!')
-        .max(12, 'Max length 12!')
-        .test('passwords-match', 'Passwords must match', function (value) {
-            return this.parent.newPassword === value
-        }),
-    termsAndConditions: Yup.bool()
-        .oneOf([true], 'You need to accept the terms and conditions'),
+    name: user_validation.name,
+    password: user_validation.password,
+    email: user_validation.email,
+    phone: user_validation.phone,
+    newPassword: user_validation.password,
+    confirmedPassword: user_validation.confirmedPassword,
 });
 
 const SingUpPage = () => {
@@ -49,7 +28,7 @@ const SingUpPage = () => {
                     newPassword: '',
                     confirmedPassword: '',
                     phone: '',
-                    termsAndConditions: true
+                    // termsAndConditions: true
                 }}
                 validationSchema={SignUpSchema}
                 onSubmit={values => {
@@ -58,7 +37,7 @@ const SingUpPage = () => {
             >
                 {({values, setFieldValue, handleSubmit, handleChange, errors}) => (
                     <form onSubmit={handleSubmit}>
-                        <Container>
+                        <ContentContainer>
                             <Title>{resolveTranslation("PAGE.SING_UP.CREATE_ACCOUNT")}</Title>
                             <Label>{resolveTranslation("PAGE.SING_UP.LABEL.USER_NAME")}</Label>
                             <Input
@@ -106,10 +85,7 @@ const SingUpPage = () => {
                                 clearHandler={() => setFieldValue('confirmedPassword', '')}
                                 errorMessage={errors.confirmedPassword}
                             />
-
-                            <CheckBoxWithLabel type="checkbox" name="termsAndConditions" label={resolveTranslation("PAGE.SING_UP.CHECKBOX_CONFIRM_TERMS")}/>
-                            {errors.termsAndConditions && <div>{errors.termsAndConditions}</div>}
-                        </Container>
+                        </ContentContainer>
                         <Wrapper>
                             <NavigationLabelHref
                                 hrefTitle={resolveTranslation("PAGE.SING_IN.TOP_TITLE")}
