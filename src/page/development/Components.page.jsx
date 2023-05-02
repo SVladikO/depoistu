@@ -107,7 +107,7 @@ const columns = [
         {
             title: 'MenuItem',
             component:
-                <MenuItem
+                <MenuItem withEditIcon
                     item={{
                         ID: 10,
                         NAME: '4 Cheese',

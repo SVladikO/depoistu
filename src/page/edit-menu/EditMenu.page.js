@@ -7,7 +7,7 @@ import {Wrapper} from "./EditMenu.style";
 import {
     CategoryMenuRow,
     ContentContainer,
-    EditMenuRow,
+    EditMenuRow, MenuItem,
     Notification,
     PrimaryButton,
     RowSplitter
@@ -78,10 +78,14 @@ const EditMenu = () => {
                     />
                 }
                 <RowSplitter height={'15px'}/>
-                <ContentContainer>
-                    {menuItemsPerCategory.map(item => <EditMenuRow title={item.NAME} key={item.ID}
-                                                                   onEditClick={moveToEditMenuItem(item)}/>)}
-                </ContentContainer>
+                <>
+                    {menuItemsPerCategory.map(elem => <MenuItem
+                        withEditIcon
+                        item={elem}
+                        key={elem.ID}
+                        onEditClick={moveToEditMenuItem(elem)}
+                    />)}
+                </>
                 <Link to={URL.ADD_MENU_ITEM}>
                     <PrimaryButton isWide>Add menu item</PrimaryButton>
                 </Link>
