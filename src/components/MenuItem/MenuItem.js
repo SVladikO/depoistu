@@ -2,7 +2,7 @@ import {useDispatch} from "react-redux";
 
 import {Wrapper, FoodImage, Title, Description, AdditionalDetails, InvisibleDivider, EditPicture} from "./MenuItem.style";
 
-import {Price, Flex, Absolute, Like, SecondaryButton} from "../index";
+import {Price, Flex, Absolute, Like} from "../index";
 import {ReactComponent as TimeIcon} from "../../icons/time.svg";
 import {ReactComponent as MeasureIcon} from "../../icons/sss.svg";
 import {ReactComponent as BasketIcon} from "../../icons/basket.svg";
@@ -24,9 +24,9 @@ const MenuItem = ({item = {}, withEditIcon = false, onEditClick}) => {
                     <Flex justifyContent="space-between">
                         <Title>{NAME}</Title>
                         {/*<Like liked={isLiked}/>*/}
-                        <Link to={URL.EDIT_MENU_ITEM}>
-                            <EditPicture onClick={onEditClick}>{withEditIcon && <EditIcon/>}</EditPicture>
-                        </Link>
+                        {withEditIcon && <Link to={URL.EDIT_MENU_ITEM}>
+                            <EditPicture onClick={onEditClick}><EditIcon/></EditPicture>
+                        </Link>}
                     </Flex>
                     <Price>{PRICE}</Price>
                     <Description>{DESCRIPTION}</Description>

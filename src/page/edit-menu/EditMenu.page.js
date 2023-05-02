@@ -6,8 +6,7 @@ import {Wrapper} from "./EditMenu.style";
 
 import {
     CategoryMenuRow,
-    ContentContainer,
-    EditMenuRow, MenuItem,
+    MenuItem,
     Notification,
     PrimaryButton,
     RowSplitter
