@@ -93,15 +93,10 @@ export const Input = memo(function ({
     )
 });
 
-export const PInput = ({
-                           Icon,
-                           children,
-                           handleClick = () => {
-                           },
-                       }) => {
+export const PInput = ({Icon, value, handleClick}) => {
     return (<PInputWrapper onClick={handleClick}>
             {Icon && <Icon/>}
-            <PStyle withLeftIcon={!!Icon}>{children}</PStyle>
+            <PStyle withLeftIcon={!!Icon}>{value}</PStyle>
         </PInputWrapper>
     )
 };

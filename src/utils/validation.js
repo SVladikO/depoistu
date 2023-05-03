@@ -98,4 +98,14 @@ export const COMPANY = {
     SCHEDULE: {},
 };
 
-export const company_validation = {}
+export const company_validation = {
+    name: Yup.string()
+        .required()
+        .min(COMPANY.NAME.MIN, `Min length ${COMPANY.NAME.MIN}`)
+        .max(COMPANY.NAME.MAX, `Max length ${COMPANY.NAME.MAX}`),
+    city: Yup.string().required(),
+    street: Yup.string()
+        .required()
+        .min(COMPANY.STREET.MIN, `Min length ${COMPANY.STREET.MIN}`)
+        .max(COMPANY.STREET.MAX, `Max length ${COMPANY.STREET.MAX}`),
+}
