@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {Formik} from "formik";
 import * as Yup from 'yup';
+
 import {MenuItemPhoto, ImagePlace} from './AddMenuItem.style';
 
 import {
@@ -12,7 +13,8 @@ import {
     Textarea
 } from '../../components/index'
 import {menu_item_validation} from "../../utils/validation";
-const AddMenuItemSchema = Yup.object().shape(menu_item_validation);
+
+const MenuItemSchema = Yup.object().shape(menu_item_validation);
 
 
 const AddMenuItemPage = () => {
@@ -29,7 +31,7 @@ const AddMenuItemPage = () => {
                     cookingTime: 0,
                     size: 0
                 }}
-                validationSchema={AddMenuItemSchema}
+                validationSchema={MenuItemSchema}
                 onSubmit={values => {
                     console.log(values);
                 }}
