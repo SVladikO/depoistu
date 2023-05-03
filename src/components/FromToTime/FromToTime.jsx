@@ -1,42 +1,21 @@
-import {memo, useCallback, useState} from 'react';
+import {memo} from 'react';
 
 import {Wrapper, GroupWrapper, Label} from "./FromToTime.style";
 
 import {Checkbox, Input} from "../index";
 
-function FromToTime({day = {}, updateWeekScheduleKipper}) {
-    const {isChecked, name, from = "", to = ""} = day;
+function FromToTime({checkboxName, isChecked, dayName, nameFrom, nameTo, valueFrom, valueTo, handleChange}) {
 
-    const [fromTime, setFromTime] = useState(from);
-    const [toTime, setToTime] = useState(to);
-    const [checked, setChecked] = useState(isChecked);
-
-    const checkboxChangeHandler = useCallback(() => {
-        setChecked(!checked);
-        updateWeekScheduleKipper(name, 'isChecked', !checked);
-    }, [checked])
-    const changeHandlerFromTime = useCallback(value => {
-        setFromTime(value);
-        updateWeekScheduleKipper(name, 'from', value);
-    }, [fromTime])
-    const changeHandlerToTime = useCallback(value => {
-        setToTime(value)
-        updateWeekScheduleKipper(name, 'to', value);
-    }, [toTime])
-    console.log(222)
     return (
         <Wrapper>
             <GroupWrapper>
-                <Checkbox isChecked={checked} changeHandler={checkboxChangeHandler}/>
-                <Label onClick={checkboxChangeHandler}>{name}</Label>
+                <Checkbox name={checkboxName} isChecked={isChecked} changeHandler={handleChange}/>
+                <Label>{dayName}</Label>
             </GroupWrapper>
             <GroupWrapper>
-                <span>From</span>
-                <Input value={fromTime} changeHandler={changeHandlerFromTime}/>
-            </GroupWrapper>
-            <GroupWrapper>
-                <span>To</span>
-                <Input value={toTime} changeHandler={changeHandlerToTime}/>
+                <Input type="time" name={nameFrom} value={valueFrom} changeHandler={handleChange}/>
+                <span>-</span>
+                <Input type="time" name={nameTo} value={valueTo} changeHandler={handleChange}/>
             </GroupWrapper>
         </Wrapper>
     );
