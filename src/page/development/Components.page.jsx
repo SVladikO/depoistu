@@ -107,7 +107,7 @@ const columns = [
         {
             title: 'MenuItem',
             component:
-                <MenuItem
+                <MenuItem withEditIcon
                     item={{
                         ID: 10,
                         NAME: '4 Cheese',
@@ -202,10 +202,6 @@ const columns = [
         {
             title: 'UserAccountBar',
             component: <CustomerAccountBar fullName="Jhon Smith" status="Basic Member"/>
-        },
-        {
-            title: 'EditMenuRow',
-            component: <EditMenuRow title="Cheese Bites" menuId={5}/>
         }
     ],
     [

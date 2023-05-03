@@ -1,16 +1,18 @@
 import {useDispatch} from "react-redux";
 
-import {Wrapper, FoodImage, Title, Description, AdditionalDetails, InvisibleDivider} from "./MenuItem.style";
+import {Wrapper, FoodImage, Title, Description, AdditionalDetails, InvisibleDivider, EditPicture} from "./MenuItem.style";
 
 import {Price, Flex, Absolute, Like} from "../index";
 import {ReactComponent as TimeIcon} from "../../icons/time.svg";
 import {ReactComponent as MeasureIcon} from "../../icons/sss.svg";
 import {ReactComponent as BasketIcon} from "../../icons/basket.svg";
-
+import {ReactComponent as EditIcon} from "../../icons/edit.svg";
 import {addOrderItem} from "../../features/order/orderSlice";
 import {showImagePopup} from "../../features/imagePopup/imagePopupSlice";
+import {URL} from "../../utils/config";
+import {Link} from "react-router-dom";
 
-const MenuItem = ({item = {}}) => {
+const MenuItem = ({item = {}, withEditIcon = false, onEditClick}) => {
     const {NAME, DESCRIPTION, IMAGE_URL, PRICE, COOKING_TIME, SIZE, isLiked} = item;
     const dispatch = useDispatch();
 
@@ -22,6 +24,9 @@ const MenuItem = ({item = {}}) => {
                     <Flex justifyContent="space-between">
                         <Title>{NAME}</Title>
                         {/*<Like liked={isLiked}/>*/}
+                        {withEditIcon && <Link to={URL.EDIT_MENU_ITEM}>
+                            <EditPicture onClick={onEditClick}><EditIcon/></EditPicture>
+                        </Link>}
                     </Flex>
                     <Price>{PRICE}</Price>
                     <Description>{DESCRIPTION}</Description>
