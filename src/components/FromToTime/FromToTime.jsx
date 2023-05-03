@@ -4,12 +4,12 @@ import {Wrapper, GroupWrapper, Label} from "./FromToTime.style";
 
 import {Checkbox, Input} from "../index";
 
-function FromToTime({dayName, nameFrom, nameTo, valueFrom, valueTo, handleChange}) {
+function FromToTime({checkboxName, isChecked, dayName, nameFrom, nameTo, valueFrom, valueTo, handleChange}) {
 
     return (
         <Wrapper>
             <GroupWrapper>
-                <Checkbox isChecked={true} />
+                <Checkbox name={checkboxName} isChecked={isChecked} changeHandler={handleChange}/>
                 <Label>{dayName}</Label>
             </GroupWrapper>
             <GroupWrapper>

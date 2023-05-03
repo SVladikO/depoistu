@@ -58,18 +58,25 @@ const EditCompany = () => {
                 initialValues={{
                     name: company.NAME,
                     street: company.STREET,
+                    monIsChecked: !!schedule.mon.from || !!schedule.mon.to,
                     monFrom: schedule.mon.from,
                     monTo: schedule.mon.to,
+                    tueIsChecked: !!schedule.tue.from || !!schedule.tue.to,
                     tueFrom: schedule.tue.from,
                     tueTo: schedule.tue.to,
+                    wedIsChecked: !!schedule.wed.from || !!schedule.wed.to,
                     wedFrom: schedule.wed.from,
                     wedTo: schedule.wed.to,
+                    thuIsChecked: !!schedule.thu.from || !!schedule.thu.to,
                     thuFrom: schedule.thu.from,
                     thuTo: schedule.thu.to,
+                    friIsChecked: !!schedule.fri.from || !!schedule.fri.to,
                     friFrom: schedule.fri.from,
                     friTo: schedule.fri.to,
+                    satIsChecked: !!schedule.sat.from || !!schedule.sat.to,
                     satFrom: schedule.sat.from,
                     satTo: schedule.sat.to,
+                    sunIsChecked: !!schedule.sun.from || !!schedule.sun.to,
                     sunFrom: schedule.sun.from,
                     sunTo: schedule.sun.to,
                 }}
@@ -108,13 +115,13 @@ const EditCompany = () => {
                                 errorMessage={errors.street}
                             />
                             <Label>Work Schedule</Label>
-                            <FromToTime dayName={'ПН'} nameFrom={"monFrom"} valueFrom={values.monFrom} nameTo={"monTo"} valueTo={values.monTo} handleChange={handleChange}/>
-                            <FromToTime dayName={'ВТ'} nameFrom={"tueFrom"} valueFrom={values.tueFrom} nameTo={"tueTo"} valueTo={values.tueTo} handleChange={handleChange}/>
-                            <FromToTime dayName={'СР'} nameFrom={"wedFrom"} valueFrom={values.wedFrom} nameTo={"wedTo"} valueTo={values.wedTo} handleChange={handleChange}/>
-                            <FromToTime dayName={'ЧТ'} nameFrom={"thuFrom"} valueFrom={values.thuFrom} nameTo={"thuTo"} valueTo={values.thuTo} handleChange={handleChange}/>
-                            <FromToTime dayName={'ПТ'} nameFrom={"friFrom"} valueFrom={values.friFrom} nameTo={"friTo"} valueTo={values.friTo} handleChange={handleChange}/>
-                            <FromToTime dayName={'СБ'} nameFrom={"satFrom"} valueFrom={values.satFrom} nameTo={"satTo"} valueTo={values.satTo} handleChange={handleChange}/>
-                            <FromToTime dayName={'ВС'} nameFrom={"sunFrom"} valueFrom={values.sunFrom} nameTo={"sunTo"} valueTo={values.sunTo} handleChange={handleChange}/>
+                            <FromToTime checkboxName={'monIsChecked'} isChecked={values.monIsChecked} dayName={'ПН'} nameFrom={"monFrom"} valueFrom={values.monFrom} nameTo={"monTo"} valueTo={values.monTo} handleChange={handleChange}/>
+                            <FromToTime checkboxName={'tueIsChecked'} isChecked={values.tueIsChecked} dayName={'ВТ'} nameFrom={"tueFrom"} valueFrom={values.tueFrom} nameTo={"tueTo"} valueTo={values.tueTo} handleChange={handleChange}/>
+                            <FromToTime checkboxName={'wedIsChecked'} isChecked={values.wedIsChecked} dayName={'СР'} nameFrom={"wedFrom"} valueFrom={values.wedFrom} nameTo={"wedTo"} valueTo={values.wedTo} handleChange={handleChange}/>
+                            <FromToTime checkboxName={'thuIsChecked'} isChecked={values.thuIsChecked} dayName={'ЧТ'} nameFrom={"thuFrom"} valueFrom={values.thuFrom} nameTo={"thuTo"} valueTo={values.thuTo} handleChange={handleChange}/>
+                            <FromToTime checkboxName={'friIsChecked'} isChecked={values.friIsChecked} dayName={'ПТ'} nameFrom={"friFrom"} valueFrom={values.friFrom} nameTo={"friTo"} valueTo={values.friTo} handleChange={handleChange}/>
+                            <FromToTime checkboxName={'satIsChecked'} isChecked={values.satIsChecked} dayName={'СБ'} nameFrom={"satFrom"} valueFrom={values.satFrom} nameTo={"satTo"} valueTo={values.satTo} handleChange={handleChange}/>
+                            <FromToTime checkboxName={'sunIsChecked'} isChecked={values.sunIsChecked} dayName={'ВС'} nameFrom={"sunFrom"} valueFrom={values.sunFrom} nameTo={"sunTo"} valueTo={values.sunTo} handleChange={handleChange}/>
                         </ContentContainer>
                         <PrimaryButton type={'submit'} isWide>Save changes</PrimaryButton>
                     </form>

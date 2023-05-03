@@ -1,7 +1,8 @@
 import {CheckboxStyle} from './Checkbox.style'
 
-const Checkbox = ({id, type = 'checkbox', isChecked, changeHandler}) =>
+const Checkbox = ({id, name, type = 'checkbox', isChecked, changeHandler}) =>
     <CheckboxStyle
+        name={name}
         defaultCheked
         type={type}
         checked={isChecked}
