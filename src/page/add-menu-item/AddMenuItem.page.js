@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from "react";
+import React, {useState} from "react";
 import {Formik} from "formik";
 import * as Yup from 'yup';
 import {MenuItemPhoto, ImagePlace} from './AddMenuItem.style';
@@ -16,27 +16,8 @@ const AddMenuItemSchema = Yup.object().shape(menu_item_validation);
 
 
 const AddMenuItemPage = () => {
-    const [name, setName] = useState('');
-    const [price, setPrice] = useState('');
-    const [description, setDescription] = useState('');
-    const [cookingTime, setCookingTime] = useState('');
-    const [size, setSize] = useState();
+
     const [imageURL, setImageURL] = useState();
-
-    const nameChangeHandler = useCallback(setName, [name]);
-    const nameClearHandler = useCallback(() => setName(''), [name]);
-
-    const priceChangeHandler = useCallback(setPrice, [price]);
-    const priceClearHandler = useCallback(() => setPrice(''), [price]);
-
-    const descriptionChangeHandler = useCallback(setDescription, [description]);
-    const descriptionClearHandler = useCallback(() => setDescription(''), [description]);
-
-    const cookingTimeChangeHandler = useCallback(setCookingTime, [cookingTime]);
-    const cookingTimeClearHandler = useCallback(() => setCookingTime(''), [cookingTime]);
-
-    const sizeChangeHandler = useCallback(setSize, [size]);
-    const sizeClearHandler = useCallback(() => setSize(''), [size]);
 
     return (
         <>
