@@ -70,5 +70,18 @@ export const getParam = (key) => {
 export const getRegions = cities => Object.keys(cities);
 export const resolveTranslation = key => translation[key]["ua"];
 
-
+export function initSchedule(schedule) {
+    const times = schedule.split(',')?.map(el => el.trim());
+    let result = {};
+    ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
+        .map((key, index) => {
+            const [from, to] = times[index]?.split('-') ?? "";
+            result[key] = {
+                isChecked: !!times[index],
+                from: from?.replace('.', ':'),
+                to: to?.replace('.', ':')
+            };
+        })
+    return result;
+}
 

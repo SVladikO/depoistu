@@ -25,12 +25,12 @@ import {ReactComponent as DeleteBasketIcon} from "../../icons/delete_basket.svg"
 
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/utils";
 import {company_validation} from "../../utils/validation";
+import {initSchedule} from "../../utils/utils";
 
 const EditCompany = () => {
     const companyId = +useParams().companyId;
     const CUSTOMER_COMPANIES = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
     const company = CUSTOMER_COMPANIES.find((c => c.ID === companyId));
-
     const [pictures, setPictures] = useState(company?.PHOTOS?.split(',') || []);
 
     const [city, setCity] = useState(company.CITY);
@@ -132,23 +132,6 @@ const EditCompany = () => {
         </>
     )
 };
-
-function initSchedule(schedule) {
-    const times = schedule.split(',')?.map(el => el.trim());
-    let result = {};
-
-    ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
-        .map((key, index) => {
-            const [from, to] = times[index]?.split('-');
-            result[key] = {
-                isChecked: !!times[index],
-                from: from?.replace('.', ':'),
-                to: to?.replace('.', ':')
-            };
-        })
-
-    return result;
-}
 
 function renderPictures(pictures, deleteCompanyImage) {
     return (
