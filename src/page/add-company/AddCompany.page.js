@@ -1,14 +1,12 @@
-import React, {useState, useEffect,useMemo} from "react";
-import {useParams} from "react-router-dom";
-import {Swiper, SwiperSlide} from "swiper/react";
-
 import {Formik} from "formik";
 import * as Yup from "yup";
+import {Swiper, SwiperSlide} from "swiper/react";
+import React, {useState, useEffect,useMemo} from "react";
 
 import "swiper/css";
 import "swiper/css/pagination";
 
-import {Divider, InstitutionBasketButton, InstitutionPictures, Wrapper,} from "./AddCompany.style";
+import {Divider} from "./AddCompany.style";
 
 import {
     ContentContainer,
@@ -21,27 +19,18 @@ import {
     SecondaryButton
 } from "../../components";
 import {ReactComponent as DeleteBasketIcon} from "../../icons/delete_basket.svg";
-import {ReactComponent as RemoveIcon} from "../../icons/remove_icon.svg";
 import {ReactComponent as LocationIcon} from "../../icons/map_point.svg";
 
-
 import {BasketButton, Pictures} from "../edit-company/EditCompany.style";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/utils";
 import {company_validation} from "../../utils/validation";
-import {initSchedule} from "../../utils/utils";
-
 
 const AddCompany = () => {
-    const companyId = +useParams().companyId || 1;
-    const CUSTOMER_COMPANIES = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
-    const company = CUSTOMER_COMPANIES.find((c => c.ID === companyId));
     const [pictures, setPictures] = useState([]);
 
     const [city, setCity] = useState('');
     const [showCityPopup, setShowCityPopup] = useState(false);
 
     const deleteCompanyImage = index => setPictures(pictures.filter((_, i) => i !== index));
-    const schedule = initSchedule(company?.SCHEDULE);
 
     const openCityPopup = () => setShowCityPopup(true);
     const closeCityPopup = () => setShowCityPopup(false);
@@ -57,7 +46,6 @@ const AddCompany = () => {
     const companyPictures = useMemo(() => renderPictures(pictures, deleteCompanyImage), [pictures])
     return (
         <>
-            <SecondaryButton isWide><RemoveIcon/> Delete company</SecondaryButton>
             <Formik
                 initialValues={{
                     name: '',
@@ -136,8 +124,6 @@ const AddCompany = () => {
         </>
     )
 };
-
-
 
 function renderPictures(pictures, deleteCompanyImage) {
     return (

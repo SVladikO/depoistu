@@ -20,3 +20,11 @@ export const GroupWrapper = styled.div`
     max-width: 62px;
   }
 `
+
+export const Weekend = styled.div`
+  height: 50px;
+  width: 260px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`;
