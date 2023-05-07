@@ -50,6 +50,15 @@ export const InvisibleDivider = styled.div`
   opacity: 0;
   height: 10px;
 `;
+
+export const EditPicture = styled.div`
+  svg{
+    width: 14px;
+    height: 14px;
+    color: ${COLOR.ACCENT3};
+  }
+`;
+
 export const AdditionalDetails = styled.div`
   display: flex;
   align-items: center;

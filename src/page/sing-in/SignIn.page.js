@@ -1,29 +1,18 @@
-import React, {useCallback, useState} from 'react';
+import * as Yup from 'yup';
+import {Formik} from "formik";
+import React, {useState} from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-
-// import {
-//     Content,
-//     LogoText,
-//     NavLabel
-// } from "./SignIn.style";
 
 import {
     Input,
     PrimaryButton,
-    // PrimaryWithIconButton,
-    // SecondaryWithIconButton,
-    // Flex,
     ContentContainer,
     Label,
     NavigationLabelHref,
     Notification,
 } from "../../components";
 
-// import translations from "../../utils/translations";
-// import {ReactComponent as LogoIcon} from "../../icons/logo.svg";
-// import {ReactComponent as GoogleIcon} from "../../icons/google.svg";
-// import {ReactComponent as FacebookIcon} from "../../icons/facebook.svg";
 import {ReactComponent as LockIcon} from "../../icons/lock.svg";
 import {ReactComponent as MailIcon} from "../../icons/mail.svg";
 
@@ -32,19 +21,22 @@ import {startLoading, stopLoading} from "../../features/request/requestSlice";
 
 import {fetchData} from "../../utils/fetch";
 import {BE_API, ROUTER, URL} from '../../utils/config';
+import {user_validation} from '../../utils/validation';
 import {getParam, LocalStorage, resolveTranslation, LOCAL_STORAGE_KEY} from "../../utils/utils";
+
+const SignInSchema = Yup.object().shape({
+    password: user_validation.password,
+    email: user_validation.email,
+});
 
 const SignInPage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const backUrl = getParam(`backUrl`) || URL.SETTING;
     const isLoading = useSelector(state => state.request.value.isLoading);
-
-    const [password, setPassword] = useState('vv11vv')
-    const [email, setEmail] = useState('vlad_S@gmail.com')
-    const [passwordType, setPasswordType] = useState('password')
     const [requestError, setRequestError] = useState('');
-    const handleSingIn = () => {
+
+    const handleSingIn = ({email, password}) => {
         dispatch(startLoading());
 
         fetchData(BE_API.SING_IN(), {email, password})
@@ -63,63 +55,61 @@ const SignInPage = () => {
             });
     }
 
-    const emailChangeHandler = useCallback(setEmail, [email])
-    const emailClearHandler = useCallback(() => setEmail(''), [email])
-
-    const passwordChangeHandler = useCallback(setPassword, [password])
-    const passwordSwitchHandler = useCallback(() => setPasswordType(passwordType === 'password' ? 'text' : 'password'), [passwordType])
 
     if (isLoading) {
         return <Notification.Loading/>
     }
 
     return (<>
-        {/*<Content>*/}
-        {/*    <LogoIcon/>*/}
-        {/*    <LogoText>{translations.company_name}</LogoText>*/}
-        {/*</Content>*/}
         {requestError && <Notification.Error message={requestError}/>}
-        <ContentContainer>
-            <Label>Email</Label>
-            <Input
-                Icon={MailIcon}
-                value={email}
-                withCleaner
-                clearHandler={emailClearHandler}
-                changeHandler={emailChangeHandler}
-            />
-            <Label>Password</Label>
-            <Input
-                Icon={LockIcon}
-                value={password}
-                changeHandler={passwordChangeHandler}
-                switchHandler={passwordSwitchHandler}
-                type={passwordType}
-                withSwitcher
-            />
-            <Link
-            >
-                {resolveTranslation("PAGE.SING_IN.FORGOT_PASSWORD")}
-            </Link>
-            {/*<Flex flexDirection='column'>*/}
-            {/*    <Flex justifyContent="space-between">*/}
-            {/*        <NavLabel primary={false}>Or login with</NavLabel>*/}
-            {/*        <Link to={ROUTER.CHANGE_PASSWORD.URL} primary>Forget password ?</Link>*/}
-            {/*    </Flex>*/}
-            {/*    <Flex justifyContent="space-between">*/}
-            {/*        <SecondaryWithIconButton><FacebookIcon/>facebook</SecondaryWithIconButton>*/}
-            {/*        <PrimaryWithIconButton><GoogleIcon/>Google</PrimaryWithIconButton>*/}
-            {/*    </Flex>*/}
-            {/*</Flex>*/}
-            <NavigationLabelHref
-                hrefTitle={resolveTranslation("PAGE.SIGN_IN.SING_UP_LINK")}
-                to={`${ROUTER.SING_UP.URL}?backUrl=${backUrl}`}
-                label={resolveTranslation("PAGE.SIGN_IN.ACCOUNT_CONFIRMATION")}
-            />
-        </ContentContainer>
-        <PrimaryButton onClick={handleSingIn}>
-            {resolveTranslation("PAGE.SING_IN.TOP_TITLE")}
-        </PrimaryButton>
+        <Formik
+            initialValues={{
+                email: 'vlad_S@gmail.com',
+                password: 'vv11vv'
+            }}
+            validationSchema={SignInSchema}
+            onSubmit={values => {
+                console.log(values);
+                handleSingIn(values)
+            }}
+        >
+            {({values, setFieldValue, handleSubmit, handleChange, errors}) => (
+                <form onSubmit={handleSubmit}>
+                    <ContentContainer>
+                        <Label>Email</Label>
+                        <Input
+                            Icon={MailIcon}
+                            name='email'
+                            type='email'
+                            value={values.email}
+                            withCleaner
+                            changeHandler={handleChange}
+                            clearHandler={() => setFieldValue('email', '')}
+                            errorMessage={errors.email}
+                        />
+                        <Label>Password</Label>
+                        <Input
+                            Icon={LockIcon}
+                            name='password'
+                            value={values.password}
+                            changeHandler={handleChange}
+                            withSwitcher
+                            errorMessage={errors.password}
+                        />
+                        <Link to={'/'}>{resolveTranslation("PAGE.SING_IN.FORGOT_PASSWORD")}</Link>
+                        <NavigationLabelHref
+                            hrefTitle={resolveTranslation("PAGE.SIGN_IN.SING_UP_LINK")}
+                            to={`${ROUTER.SING_UP.URL}?backUrl=${backUrl}`}
+                            label={resolveTranslation("PAGE.SIGN_IN.ACCOUNT_CONFIRMATION")}
+                        />
+                    </ContentContainer>
+                    <PrimaryButton type="submit" isWide>
+                        {resolveTranslation("PAGE.SING_IN.TOP_TITLE")}
+                    </PrimaryButton>
+                </form>
+            )
+            }
+        </Formik>
     </>);
 };
 

@@ -1,104 +1,155 @@
-import React, {useState, useEffect, useCallback} from "react";
+import {Formik} from "formik";
+import * as Yup from "yup";
 import {Swiper, SwiperSlide} from "swiper/react";
+import React, {useState, useEffect,useMemo} from "react";
 
 import "swiper/css";
 import "swiper/css/pagination";
 
-import {Divider, InstitutionBasketButton, InstitutionPictures, Wrapper,} from "./AddCompany.style";
+import {Divider} from "./AddCompany.style";
 
-import {ContentContainer, FromToTime, Input, Label, PrimaryButton, SecondaryButton} from "../../components";
+import {
+    ContentContainer,
+    FromToTime,
+    Input,
+    Label,
+    PInput,
+    PopupCity,
+    PrimaryButton,
+    SecondaryButton
+} from "../../components";
 import {ReactComponent as DeleteBasketIcon} from "../../icons/delete_basket.svg";
-import {ReactComponent as RemoveIcon} from "../../icons/remove_icon.svg";
+import {ReactComponent as LocationIcon} from "../../icons/map_point.svg";
+
+import {BasketButton, Pictures} from "../edit-company/EditCompany.style";
+import {company_validation} from "../../utils/validation";
 
 const AddCompany = () => {
-    const [name, setName] = useState('');
-    const [city, setCity] = useState('');
-    const [street, setStreet] = useState('');
     const [pictures, setPictures] = useState([]);
 
-    const nameChangeHandler = useCallback(setName, [name]);
-    const nameClearHandler = useCallback(() => setName(''), [name]);
-
-    const cityChangeHandler = useCallback(setCity, [city]);
-    const cityClearHandler = useCallback(() => setCity(''), [city]);
-
-    const streetChangeHandler = useCallback(setStreet, [street]);
-    const streetClearHandler = useCallback(() => setStreet(''), [street]);
+    const [city, setCity] = useState('');
+    const [showCityPopup, setShowCityPopup] = useState(false);
 
     const deleteCompanyImage = index => setPictures(pictures.filter((_, i) => i !== index));
-    const weekDays = [
-        {id: 'FromTo1', name: 'Sun', isChecked: false, from: '00:00', to: '00:00'},
-        {id: 'FromTo2', name: 'Mon', isChecked: false, from: '00:00', to: '00:00'},
-        {id: 'FromTo3', name: 'Tue', isChecked: false, from: '00:00', to: '00:00'},
-        {id: 'FromTo4', name: 'Wed', isChecked: false, from: '00:00', to: '00:00'},
-        {id: 'FromTo5', name: 'Thu', isChecked: false, from: '00:00', to: '00:00'},
-        {id: 'FromTo6', name: 'Fri', isChecked: false, from: '00:00', to: '00:00'},
-        {id: 'FromTo7', name: 'Sat', isChecked: false, from: '00:00', to: '00:00'},
-    ];
+
+    const openCityPopup = () => setShowCityPopup(true);
+    const closeCityPopup = () => setShowCityPopup(false);
+    const selectCity = ([city]) => {
+        setCity(city);
+        closeCityPopup();
+    }
 
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
 
-    const renderCompanyDetails = () => {
-        return (
-            <>
-                <InstitutionPictures>
-                    <Swiper
-                        className="mySwiper"
-                        slidesPerView={2}
-                        spaceBetween={10}
-                    >
-                        {
-                            pictures.map((el, index) => (
-                                <SwiperSlide key={Math.random()}>
-                                    <img src={el} alt=''/>
-                                    <InstitutionBasketButton onClick={() => deleteCompanyImage(index)}>
-                                        <DeleteBasketIcon/>
-                                    </InstitutionBasketButton>
-                                </SwiperSlide>
-                            ))
-                        }
-                    </Swiper>
-                </InstitutionPictures>
-                <SecondaryButton isWide>+Photo</SecondaryButton>
-                <Divider/>
-                <ContentContainer>
-                    <Label>Company Name</Label>
-                    <Input
-                        value={name}
-                        withCleaner
-                        changeHandler={nameChangeHandler}
-                        clearHandler={nameClearHandler}
-                    />
-                    <Label>City</Label>
-                    <Input
-                        value={city}
-                        withCleaner
-                        changeHandler={cityChangeHandler}
-                        clearHandler={cityClearHandler}
-                    />
-                    <Label>Street</Label>
-                    <Input
-                        value={street}
-                        withCleaner
-                        changeHandler={streetChangeHandler}
-                        clearHandler={streetClearHandler}
-                    />
-                    <Label>Work Schedule</Label>
-                    {weekDays.map(day => <FromToTime key={day.id} id={day.id} weekDay={day.name} from={day.from} to={day.to} />)}
-
-                </ContentContainer>
-            </>
-        )
-    }
-
+    const companyPictures = useMemo(() => renderPictures(pictures, deleteCompanyImage), [pictures])
     return (
-        <Wrapper>
-            {renderCompanyDetails()}
-            <PrimaryButton isWide>Save changes</PrimaryButton>
-        </Wrapper>
-    );
+        <>
+            <Formik
+                initialValues={{
+                    name: '',
+                    street: '',
+                    monIsChecked: false,
+                    monFrom: '',
+                    monTo: '',
+                    tueIsChecked: false,
+                    tueFrom: '',
+                    tueTo: '',
+                    wedIsChecked: false,
+                    wedFrom: '',
+                    wedTo: '',
+                    thuIsChecked: false,
+                    thuFrom: '',
+                    thuTo: '',
+                    friIsChecked: false,
+                    friFrom: '',
+                    friTo: '',
+                    satIsChecked: false,
+                    satFrom: '',
+                    satTo: '',
+                    sunIsChecked: false,
+                    sunFrom: '',
+                    sunTo: '',
+                }}
+                validationSchema={Yup.object().shape(company_validation)}
+                onSubmit={values => {
+                    console.log(values);
+                }}
+            >
+                {({values, setFieldValue, handleSubmit, handleChange, errors}) => (
+                    <form onSubmit={handleSubmit}>
+                        {companyPictures}
+                        <ContentContainer>
+                            <Label>Company Name</Label>
+                            <Input
+                                name='name'
+                                value={values.name}
+                                withCleaner
+                                changeHandler={handleChange}
+                                clearHandler={() => setFieldValue('name', '')}
+                                errorMessage={errors.name}
+                            />
+                            <Label>City</Label>
+                            <PInput
+                                withIcon
+                                Icon={LocationIcon}
+                                handleClick={openCityPopup}
+                                value={city}
+                            />
+                            <Label>Street</Label>
+                            <Input
+                                name='street'
+                                value={values.street}
+                                withCleaner
+                                changeHandler={handleChange}
+                                clearHandler={() => setFieldValue('street', '')}
+                                errorMessage={errors.street}
+                            />
+                            <Label>Work Schedule</Label>
+                            <FromToTime checkboxName={'monIsChecked'} isChecked={values.monIsChecked} dayName={'ПН'} nameFrom={"monFrom"} valueFrom={values.monFrom} nameTo={"monTo"} valueTo={values.monTo} handleChange={handleChange}/>
+                            <FromToTime checkboxName={'tueIsChecked'} isChecked={values.tueIsChecked} dayName={'ВТ'} nameFrom={"tueFrom"} valueFrom={values.tueFrom} nameTo={"tueTo"} valueTo={values.tueTo} handleChange={handleChange}/>
+                            <FromToTime checkboxName={'wedIsChecked'} isChecked={values.wedIsChecked} dayName={'СР'} nameFrom={"wedFrom"} valueFrom={values.wedFrom} nameTo={"wedTo"} valueTo={values.wedTo} handleChange={handleChange}/>
+                            <FromToTime checkboxName={'thuIsChecked'} isChecked={values.thuIsChecked} dayName={'ЧТ'} nameFrom={"thuFrom"} valueFrom={values.thuFrom} nameTo={"thuTo"} valueTo={values.thuTo} handleChange={handleChange}/>
+                            <FromToTime checkboxName={'friIsChecked'} isChecked={values.friIsChecked} dayName={'ПТ'} nameFrom={"friFrom"} valueFrom={values.friFrom} nameTo={"friTo"} valueTo={values.friTo} handleChange={handleChange}/>
+                            <FromToTime checkboxName={'satIsChecked'} isChecked={values.satIsChecked} dayName={'СБ'} nameFrom={"satFrom"} valueFrom={values.satFrom} nameTo={"satTo"} valueTo={values.satTo} handleChange={handleChange}/>
+                            <FromToTime checkboxName={'sunIsChecked'} isChecked={values.sunIsChecked} dayName={'ВС'} nameFrom={"sunFrom"} valueFrom={values.sunFrom} nameTo={"sunTo"} valueTo={values.sunTo} handleChange={handleChange}/>
+                        </ContentContainer>
+                        <PrimaryButton type={'submit'} isWide>Save changes</PrimaryButton>
+                    </form>
+                )}
+            </Formik>
+            {showCityPopup && <PopupCity selectCity={selectCity} closePopup={closeCityPopup}/>
+            }
+        </>
+    )
 };
+
+function renderPictures(pictures, deleteCompanyImage) {
+    return (
+        <>
+            <Pictures>
+                <Swiper
+                    className="mySwiper"
+                    slidesPerView={2}
+                    spaceBetween={10}
+                >
+                    {
+                        pictures?.map((el, index) => (
+                            <SwiperSlide key={Math.random()}>
+                                <img src={el} alt=''/>
+                                <BasketButton onClick={() => deleteCompanyImage(index)}>
+                                    <DeleteBasketIcon/>
+                                </BasketButton>
+                            </SwiperSlide>
+                        ))
+                    }
+                </Swiper>
+            </Pictures>
+            <SecondaryButton isWide>+Photo</SecondaryButton>
+            <Divider/>
+        </>
+    )
+}
 
 export default AddCompany;

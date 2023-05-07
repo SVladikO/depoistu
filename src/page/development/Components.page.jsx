@@ -79,12 +79,12 @@ const columns = [
         {title: 'SecondaryButton', component: <SecondaryButton>CANCEL</SecondaryButton>},
         {title: 'Label', component: <Label>Change Password</Label>},
         {title: 'Input 1', component: <Input />},
-        {title: 'Input 2', component: <Input Icon={MailIcon} />},
+        {title: 'Input 2', component: <Input Icon={MailIcon} errorMessage={'Email is misspelled!'} value="jodode@mail.com"/>},
         {title: 'Input 3', component: <Input withSwitcher />},
         {title: 'Input 4', component: <Input withCleaner/>},
         {title: 'Textarea', component: <Textarea withCleaner/>},
         {title: 'PInput', component: <PInput withIcon Icon={LocationIcon}> Vinnica</PInput>},
-        {title: 'FromToTime', component: <FromToTime weekDay={'Mon'} id={'ht12'}/>},
+        {title: 'FromToTime', component: <FromToTime day={{name: 'Mon', isChecked: true, from: '12:00', to: '13:00'}} id={'ht12'}/>},
         {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
         {title: 'Checkbox', component: <Checkbox/>},
     ],
@@ -107,7 +107,7 @@ const columns = [
         {
             title: 'MenuItem',
             component:
-                <MenuItem
+                <MenuItem withEditIcon
                     item={{
                         ID: 10,
                         NAME: '4 Cheese',
@@ -202,10 +202,6 @@ const columns = [
         {
             title: 'UserAccountBar',
             component: <CustomerAccountBar fullName="Jhon Smith" status="Basic Member"/>
-        },
-        {
-            title: 'EditMenuRow',
-            component: <EditMenuRow title="Cheese Bites" menuId={5}/>
         }
     ],
     [

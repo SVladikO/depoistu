@@ -49,6 +49,8 @@ export const LOCAL_STORAGE_KEY = {
     CUSTOMER_COMPANIES: 'CUSTOMER_COMPANIES',
     IS_TRUSTED_CUSTOMER: 'IS_TRUSTED_CUSTOMER',
     COMPANY_SEARCH_RESULT: 'COMPANY_SEARCH_RESULT',
+    COMPANY_SEARCH_SELECTED_CITY: 'COMPANY_SEARCH_SELECTED_CITY',
+    COMPANY_SEARCH_SELECTED_REGION: 'COMPANY_SEARCH_SELECTED_REGION',
     COMPANY_CANDIDATE_TO_EDIT: 'COMPANY_CANDIDATE_TO_EDIT',
     MENU_ITEM_CANDIDATE_TO_EDIT: 'MENU_ITEM_CANDIDATE_TO_EDIT',
     COMPANY_ID_FOR_EDIT_MENU: 'COMPANY_ID_FOR_EDIT_MENU',
@@ -68,5 +70,18 @@ export const getParam = (key) => {
 export const getRegions = cities => Object.keys(cities);
 export const resolveTranslation = key => translation[key]["ua"];
 
-
+export function initSchedule(schedule) {
+    const times = schedule.split(',')?.map(el => el.trim());
+    let result = {};
+    ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
+        .map((key, index) => {
+            const [from, to] = times[index]?.split('-') ?? "";
+            result[key] = {
+                isChecked: !!times[index],
+                from: from?.replace('.', ':'),
+                to: to?.replace('.', ':')
+            };
+        })
+    return result;
+}
 

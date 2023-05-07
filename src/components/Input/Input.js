@@ -4,89 +4,99 @@ import {
     InputText,
     SwitchIconWrapper,
     CenterWrapper,
-    CloseIconWrapper,
+    ClearWrapper,
     PInputWrapper,
     PStyle,
     TextareaStyle,
+    WarningMessage
 } from "./Input.style";
 
 import {ReactComponent as ShowEyeIcon} from "../../icons/show-eye.svg";
 import {ReactComponent as HideEyeIcon} from "../../icons/hide-eye.svg";
-import {ReactComponent as CloseIcon} from "../../icons/close.svg";
+import {ReactComponent as ClearIcon} from "../../icons/close.svg";
 
 export const Textarea = memo(function ({
-                                 withCleaner,
-                                 value,
-                                 changeHandler=() => {},
-                                 clearHandler = () => {}
-    }) {
+                                           errorMessage,
+                                           withCleaner,
+                                           value,
+                                           name,
+                                           changeHandler = () => {},
+                                           clearHandler = () => {},
+                                       }) {
+
     return (
-        <Wrapper>
-            <TextareaStyle
-                value={value}
-                onChange={ e => changeHandler(e.toString.value)}
-            />
-            {withCleaner && <CloseIconWrapper><CloseIcon onClick={clearHandler}/></CloseIconWrapper>
-            }
-        </Wrapper>
+        <div>
+            <Wrapper>
+                <TextareaStyle
+                    value={value}
+                    name={name}
+                    onChange={changeHandler}
+                />
+                {withCleaner && <ClearWrapper onClick={clearHandler}><ClearIcon/></ClearWrapper>}
+            </Wrapper>
+            {errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
+        </div>
     );
 });
 
+const INPUT_TYPE = {
+    PASSWORD: 'password',
+    TEXT: 'text'
+}
+
 export const Input = memo(function ({
-                          Icon,
-                          value,
-                          type,
-                          withSwitcher = false,
-                          withCleaner = false,
-                          clearHandler = () => {},
-                          changeHandler = () => {},
-                          switchHandler = () => {},
-                          ...props
-                      }) {
-
-    const [showData, setShowData] = useState(false);
-
-    const handleSwitch = () => {
-        setShowData(!showData)
-        switchHandler();
-    }
+                                        Icon,
+                                        type = INPUT_TYPE.TEXT,
+                                        value,
+                                        name,
+                                        errorMessage,
+                                        withSwitcher = false,
+                                        withCleaner = false,
+                                        changeHandler = () => {
+                                        },
+                                        clearHandler = () => {
+                                        },
+                                        ...props
+                                    }) {
+    const [inputType, setInputType] = useState(withSwitcher ? INPUT_TYPE.PASSWORD : type);
+    const handleSwitch = () => setInputType(inputType === INPUT_TYPE.PASSWORD ? INPUT_TYPE.TEXT : INPUT_TYPE.PASSWORD);
 
     return (
-        <Wrapper className='pma-input'>
-            {Icon && <Icon/>}
-            <InputText
-                value={value}
-                onChange={e => changeHandler(e.target.value)}
-                type={type}
-                withRightIcon={withSwitcher || withCleaner}
-                withLeftIcon={!!Icon}
-                withSwitcher={withSwitcher}
-                {...props}
-            />
-            {withSwitcher &&
-                <SwitchIconWrapper onClick={handleSwitch}>
-                    <CenterWrapper>
-                        {showData ? <HideEyeIcon/> : <ShowEyeIcon/>}
-                    </CenterWrapper>
-                </SwitchIconWrapper>
-            }
-            {withCleaner &&
-                <CloseIconWrapper {...props}>
-                    <CloseIcon onClick={clearHandler}/>
-                </CloseIconWrapper>
-            }
-        </Wrapper>
+        <div>
+            <Wrapper className='pma-input'>
+                {Icon && <Icon/>}
+                <InputText
+                    name={name}
+                    value={value}
+                    onChange={changeHandler}
+                    type={inputType}
+                    withRightIcon={withSwitcher || withCleaner}
+                    withLeftIcon={!!Icon}
+                    withSwitcher={withSwitcher}
+                    {...props}
+                />
+                {withSwitcher &&
+                    <SwitchIconWrapper onClick={handleSwitch}>
+                        <CenterWrapper>
+                            {inputType === INPUT_TYPE.PASSWORD ? <ShowEyeIcon/> : <HideEyeIcon/>}
+                        </CenterWrapper>
+                    </SwitchIconWrapper>
+                }
+                {withCleaner &&
+                    <ClearWrapper {...props} onClick={clearHandler}>
+                        <ClearIcon/>
+                    </ClearWrapper>
+                }
+            </Wrapper>
+            {errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
+        </div>
     )
 });
 
-export const PInput = ({
-                           Icon,
-                           children,
-                           handleClick = () => {},
-                       }) => {
+export const PInput = ({Icon, value, handleClick}) => {
     return (<PInputWrapper onClick={handleClick}>
             {Icon && <Icon/>}
-            <PStyle withLeftIcon={!!Icon}>{children}</PStyle>
+            <PStyle withLeftIcon={!!Icon}>{value}</PStyle>
         </PInputWrapper>
     )
 };

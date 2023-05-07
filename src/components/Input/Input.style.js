@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
     left: 10px;
     top: 50%;
     transform: translateY(-50%);
-    fill: ${COLOR.ACCENT1};
+    color: ${COLOR.PRIMARY};
   }
  
 `;
@@ -29,7 +29,7 @@ export const CenterWrapper = styled.div`
   align-items: center;
 `;
 
-export const CloseIconWrapper = styled.div`
+export const ClearWrapper = styled.div`
   position: absolute;
   top: 16px;
   right: 16px;
@@ -50,7 +50,16 @@ export const PInputWrapper = styled.div`
     z-index: 1;
   }
 `;
-
+export const WarningMessage = styled.div`
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: ${COLOR.ACCENT6};
+  background: ${COLOR.ACCENT7};
+  padding: 2px 0 4px 13px;
+  display: flex;
+  justify-content: left;
+`;
 const st = p => `
   background: ${COLOR.ACCENT2};
   color: ${COLOR.ACCENT1};

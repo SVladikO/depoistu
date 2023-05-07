@@ -4,6 +4,18 @@ import {useDispatch} from "react-redux";
 import {startLoading, stopLoading} from "../features/request/requestSlice";
 import {LocalStorage} from "./utils";
 
+export const useLocalStorage = (storageKey, initialState) => {
+    const localStorageState = LocalStorage.get(storageKey);
+    const [value, setValue] = useState(localStorageState ?? initialState);
+
+    const set = value => {
+        LocalStorage.set(storageKey, value);
+        setValue(value);
+    }
+
+    return [value, set];
+};
+
 export const useLocalStorageFetch = (storageKey, initialState, url, setError = () => {}, customCondition = () => {}) => {
     const localStorageState = LocalStorage.get(storageKey);
     const [value, setValue] = useState(localStorageState ?? initialState);

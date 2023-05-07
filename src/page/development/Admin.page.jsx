@@ -130,7 +130,7 @@ function AdminPage() {
         type={'GET'}
         title={'companies by company id'}
         validateSuccessResponse={checkArrayOfObjects(COMPANY_FIELDS_TO_CHECK)}
-        urlForSuccess={BE_API.GET_COMPANY_BY_COMPANY_ID(1)}
+        urlForSuccess={BE_API.GET_COMPANY_BY_COMPANY_ID(2)}
         urlForError={BE_API.GET_COMPANY_BY_COMPANY_ID()}
     />, <CheckRequest
         key={3}

@@ -1,25 +1,31 @@
-import {Wrapper, GroupWrapper, Label} from "./FromToTime.style";
+import {memo} from 'react';
+
+import {Wrapper, GroupWrapper, Label, Weekend} from "./FromToTime.style";
 
 import {Checkbox, Input} from "../index";
 
-function FromToTime({id, weekDay, from="00:00", to="00:00"}) {
-    console.log(id)
+function FromToTime({checkboxName, isChecked, dayName, nameFrom, nameTo, valueFrom, valueTo, handleChange}) {
+
+    const renderInputs = () => (
+        <GroupWrapper>
+            <Input type="time" name={nameFrom} value={valueFrom} changeHandler={handleChange}/>
+            <span>-</span>
+            <Input type="time" name={nameTo} value={valueTo} changeHandler={handleChange}/>
+        </GroupWrapper>
+    );
+
     return (
         <Wrapper>
             <GroupWrapper>
-                <Checkbox id={id}/>
-                <Label htmlFor={id}>{weekDay}</Label>
+                <Checkbox name={checkboxName} isChecked={isChecked} changeHandler={handleChange}/>
+                <Label>{dayName}</Label>
             </GroupWrapper>
-            <GroupWrapper>
-                <span>From</span>
-                <Input value={from}/>
-            </GroupWrapper>
-            <GroupWrapper>
-                <span>To</span>
-                <Input value={to}/>
-            </GroupWrapper>
+            {isChecked
+                ? renderInputs()
+                : <Weekend>Weekend</Weekend>
+            }
         </Wrapper>
     );
 }
 
-export default FromToTime;
+export default memo(FromToTime);
