@@ -28,7 +28,6 @@ const PopupIntro = () => {
             </div>
 
         </InvisibleWrapper>
-
     );
 };
 
@@ -36,7 +35,6 @@ export const PopupIntroContent = ({close = () => {}}) => (
     <div>
         <CloseButton closePopupHandler={close}/>
         <ContentContainer>
-
             <Text>
                 Меню всіх кафе та ресторанів України має
                 бути в одному місці. Знайдіть тут
