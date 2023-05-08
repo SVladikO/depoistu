@@ -50,6 +50,9 @@ export const Input = memo(function ({
                                         value,
                                         name,
                                         errorMessage,
+                                        focusHandler,
+                                        blurHandler,
+                                        isTouched,
                                         withSwitcher = false,
                                         withCleaner = false,
                                         changeHandler = () => {
@@ -60,6 +63,7 @@ export const Input = memo(function ({
                                     }) {
     const [inputType, setInputType] = useState(withSwitcher ? INPUT_TYPE.PASSWORD : type);
     const handleSwitch = () => setInputType(inputType === INPUT_TYPE.PASSWORD ? INPUT_TYPE.TEXT : INPUT_TYPE.PASSWORD);
+    const [hasFocus, setFocus] = useState(false);
 
     return (
         <div>
@@ -70,6 +74,8 @@ export const Input = memo(function ({
                     value={value}
                     onChange={changeHandler}
                     type={inputType}
+                    onFocus={() => setFocus(true)}
+                    onBlur={() => setFocus(false)}
                     withRightIcon={withSwitcher || withCleaner}
                     withLeftIcon={!!Icon}
                     withSwitcher={withSwitcher}
@@ -88,7 +94,7 @@ export const Input = memo(function ({
                     </ClearWrapper>
                 }
             </Wrapper>
-            {errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
+            {hasFocus ? isTouched : errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
         </div>
     )
 });
