@@ -13,6 +13,7 @@ import {RowSplitterStyle as RowSplitter} from "./RowSplitter/RowSplitter.style";
 import CheckBoxWithLabel from "./CheckBoxWithLabel/CheckBoxWithLabel";
 import ToggleCheckbox from "./ToggleCheckbox/ToggleCheckbox";
 import SettingMenuRow from "./SettingMenuRow/SettingMenuRow";
+import CloseButton from "./CloseButton/CloseButton";
 import {ContentContainer} from "./ContentContainer/ContentContainer.style.js";
 import {Discount} from "./Discount/Discount.style";
 import HistoryTabBar from "./HistoryTabBar/HistoryTabBar";
@@ -65,6 +66,7 @@ export {
     PopupImage,
     PopupIntro,
     PopupCity,
+    CloseButton,
     PrimaryButton,
     SecondaryButton,
     ContentContainer,

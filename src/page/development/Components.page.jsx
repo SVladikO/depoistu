@@ -29,7 +29,8 @@ import
     EditMenuRow,
     Textarea,
     Company,
-    Label
+    Label,
+    CloseButton
 } from "../../components";
 
 import CatalogPage from "./Catalog.page";
@@ -147,6 +148,9 @@ const columns = [
 
     ],
     [
+        {
+            title: 'CloseButton', component: <CloseButton/>
+        },
         {
             title: 'PopupImage',
             component: <ImagePopupContent
