@@ -8,11 +8,12 @@ import {ContentContainer} from "../ContentContainer/ContentContainer.style";
 import {resolveTranslation} from "../../utils/utils";
 
 
-const Success = () => {
+const Success = ({message, children}) => {
     return (
         <ContentContainer>
             <SuccessIcon/>
-            <Text>Order placed.</Text>
+            <Text>{message}</Text>
+            {children}
         </ContentContainer>
     )
 }

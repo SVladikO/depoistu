@@ -9,14 +9,22 @@ const getOptions = body => ({
 export const fetchData = async (url, body) => {
     console.log('Request url: ', url, body);
 
-    const response = body
-        ? await fetch(decodeURIComponent(url), getOptions(body))
-        : await fetch(decodeURIComponent(url));
+    const response = await (body
+            ? fetch(decodeURIComponent(url), getOptions(body))
+            : fetch(decodeURIComponent(url))
+    );
+
+    const json = await response.json();
+
+    const {status, statusText, headers} = response;
 
     if (response.ok) {
-        return response.json();
+        return new Promise((resolve) => {
+            resolve({status, statusText, headers, body: json});
+        })
     }
 
-    const message = response.status + " " + response.statusText;
-    throw new Error(message)
+    return new Promise((resolve, reject) => {
+        reject({status, statusText, headers, body: json});
+    })
 }
