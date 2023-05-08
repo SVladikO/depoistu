@@ -41,7 +41,7 @@ const SignInPage = () => {
 
         fetchData(BE_API.SING_IN(), {email, password})
             .then(res => {
-                LocalStorage.set(LOCAL_STORAGE_KEY.CUSTOMER, res)
+                LocalStorage.set(LOCAL_STORAGE_KEY.CUSTOMER, res.body)
                 setTimeout(() => {
                     dispatch(stopLoading())
                 }, 1000)

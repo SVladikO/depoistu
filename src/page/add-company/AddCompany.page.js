@@ -79,6 +79,7 @@ const AddCompany = () => {
             .then(res => {
                 dispatch(stopLoading())
                 setIsCompanySaved(true);
+                LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES)
             })
             .catch(res => {
                 setRequestError(res.status + " Error: " + res.body.errorMessage);
