@@ -41,7 +41,7 @@ CREATE TABLE COMPANY
     CITY        TEXT     NOT NULL,
     STREET      TEXT     NOT NULL,
     JOIN_DATE   TEXT,
-    SCHEDULE    TEXT,    NOT NULL,
+    SCHEDULE    TEXT    NOT NULL,
     PHOTOS      TEXT
 );
 
