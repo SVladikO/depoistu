@@ -1,9 +1,12 @@
 import {Wrapper} from "./CloseButton.style";
 import {ReactComponent as CloseIcon} from "../../icons/close.svg";
 
-const CloseButton = ({closePopupHandler}) => {
+const CloseButton = ({clickHandler}) => {
+    clickHandler = () => {
+        alert('clicked');
+    }
     return (
-        <Wrapper onClick={closePopupHandler}>
+        <Wrapper onClick={clickHandler}>
             <CloseIcon/>
         </Wrapper>
     );

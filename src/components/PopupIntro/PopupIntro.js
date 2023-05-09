@@ -12,18 +12,18 @@ const PopupIntro = () => {
     const isVisiblePopup = useSelector(state => state.introPopup.value.isVisible);
     const dispatch = useDispatch();
 
-    const close = () => dispatch(hideIntroPopup());
+    const closePopup = () => dispatch(hideIntroPopup());
 
     if (!isVisiblePopup) {
         return null;
     }
 
     return (
-        <InvisibleWrapper onClick={close}>
+        <InvisibleWrapper onClick={closePopup}>
             <div>
-                <CloseButton closePopupHandler={close}/>
+                <CloseButton clickHandler ={closePopup}/>
                 <Wrapper>
-                    <PopupIntroContent onClose={close}/>
+                    <PopupIntroContent onClose={closePopup}/>
                 </Wrapper>
             </div>
 
@@ -31,9 +31,9 @@ const PopupIntro = () => {
     );
 };
 
-export const PopupIntroContent = ({close = () => {}}) => (
+export const PopupIntroContent = ({closePopup = () => {}}) => (
     <div>
-        <CloseButton closePopupHandler={close}/>
+        <CloseButton clickHandler ={closePopup}/>
         <ContentContainer>
             <Text>
                 Меню всіх кафе та ресторанів України має
@@ -41,7 +41,7 @@ export const PopupIntroContent = ({close = () => {}}) => (
                 свій заклад.
             </Text>
             <RowSplitter height={"15px"}/>
-            <PrimaryButton isWide onClick={close}>Далі</PrimaryButton>
+            <PrimaryButton isWide onClick={closePopup}>Далі</PrimaryButton>
         </ContentContainer>
     </div>
 

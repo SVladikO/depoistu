@@ -28,7 +28,7 @@ const PopupImage = () => {
 export const ImagePopupContent = ({handleClose, imageUrl}) => (
     <div>
         <CloseButton closePopupHandler={handleClose}/>
-        <Wrapper onClick={(e) => e.stopPropagation()}>
+        <Wrapper onClick={e => e.stopPropagation()}>
             <Image src={imageUrl}/>
         </Wrapper>
     </div>
