@@ -20,7 +20,7 @@ export const Textarea = memo(function ({
                                            withCleaner,
                                            value,
                                            name,
-                                           changeHandler,
+                                           changeHandler = () => {},
                                            clearHandler = () => {},
                                        }) {
 
@@ -32,7 +32,7 @@ export const Textarea = memo(function ({
                     name={name}
                     onChange={changeHandler}
                 />
-                {value && withCleaner && <ClearWrapper onClick={clearHandler}><ClearIcon/></ClearWrapper>}
+                {withCleaner && <ClearWrapper onClick={clearHandler}><ClearIcon/></ClearWrapper>}
             </Wrapper>
             {errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
         </div>
@@ -83,8 +83,7 @@ export const Input = memo(function ({
                 {!!value && withCleaner &&
                     <ClearWrapper {...props} onClick={clearHandler}>
                         <ClearIcon/>
-                    </ClearWrapper>
-                }
+                    </ClearWrapper>}
             </Wrapper>
             {errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
         </div>
