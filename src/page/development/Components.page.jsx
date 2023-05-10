@@ -26,7 +26,6 @@ import
     OrderHistoryRow,
     NotificationTDB,
     RowSplitter,
-    EditMenuRow,
     Textarea,
     Company,
     Label
@@ -84,7 +83,8 @@ const columns = [
         {title: 'Input 4', component: <Input withCleaner/>},
         {title: 'Textarea', component: <Textarea withCleaner/>},
         {title: 'PInput', component: <PInput withIcon Icon={LocationIcon}> Vinnica</PInput>},
-        {title: 'FromToTime', component: <FromToTime day={{name: 'Mon', isChecked: true, from: '12:00', to: '13:00'}} id={'ht12'}/>},
+        {title: 'FromToTime', component: <FromToTime prefix='mon' dayName='Mon' values={{monIsChecked: true}}/>},
+        {title: 'FromToTime', component: <FromToTime prefix='mon' dayName='Mon' values={{}}/>},
         {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
         {title: 'Checkbox', component: <Checkbox/>},
     ],
