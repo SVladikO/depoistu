@@ -28,8 +28,8 @@ const AddMenuItemPage = () => {
                     name: '',
                     price: '',
                     description: '',
-                    cookingTime: 0,
-                    size: 0
+                    cookingTime: '',
+                    size: ''
                 }}
                 validationSchema={MenuItemSchema}
                 onSubmit={values => {

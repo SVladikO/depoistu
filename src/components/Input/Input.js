@@ -32,7 +32,7 @@ export const Textarea = memo(function ({
                     name={name}
                     onChange={changeHandler}
                 />
-                {withCleaner && <ClearWrapper onClick={clearHandler}><ClearIcon/></ClearWrapper>}
+                {value && withCleaner && <ClearWrapper onClick={clearHandler}><ClearIcon/></ClearWrapper>}
             </Wrapper>
             {errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
         </div>
@@ -52,10 +52,8 @@ export const Input = memo(function ({
                                         errorMessage,
                                         withSwitcher = false,
                                         withCleaner = false,
-                                        changeHandler = () => {
-                                        },
-                                        clearHandler = () => {
-                                        },
+                                        changeHandler,
+                                        clearHandler,
                                         ...props
                                     }) {
     const [inputType, setInputType] = useState(withSwitcher ? INPUT_TYPE.PASSWORD : type);
@@ -82,11 +80,10 @@ export const Input = memo(function ({
                         </CenterWrapper>
                     </SwitchIconWrapper>
                 }
-                {withCleaner &&
+                {!!value && withCleaner &&
                     <ClearWrapper {...props} onClick={clearHandler}>
                         <ClearIcon/>
-                    </ClearWrapper>
-                }
+                    </ClearWrapper>}
             </Wrapper>
             {errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
         </div>
