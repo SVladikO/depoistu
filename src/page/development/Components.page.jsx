@@ -150,11 +150,11 @@ const columns = [
     [
         {title: 'CloseButton', component: <CloseButton clickHandler={() => alert('clicked')}/>},
         {
-            title: 'ImageContent',
+            title: 'ImagePopupContent',
             component: <ImageContent imageUrl="https://raw.githubusercontent.com/SVladikO/testApp/master/images/4_cheese.jpg"/>
         },
-        {title: 'IntroContent', component: <IntroContent>Some text Some text Some text Some text Some text</IntroContent>},
-        {title: 'CityContent', component: <CityContent />},
+        {title: 'IntroPopupContent', component: <IntroContent>Some text Some text Some text Some text Some text</IntroContent>},
+        {title: 'CityPopupContent', component: <CityContent />},
         {
             title: 'EmptyBasket', component:
                 <NotificationTDB
