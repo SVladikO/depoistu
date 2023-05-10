@@ -81,7 +81,7 @@ const columns = [
         {title: 'Input 1', component: <Input />},
         {title: 'Input 2', component: <Input Icon={MailIcon} errorMessage={'Email is misspelled!'} value="jodode@mail.com"/>},
         {title: 'Input 3', component: <Input withSwitcher />},
-        {title: 'Input 4', component: <Input withCleaner/>},
+        {title: 'Input 4', component: <Input withCleaner />},
         {title: 'Textarea', component: <Textarea withCleaner/>},
         {title: 'PInput', component: <PInput withIcon Icon={LocationIcon}> Vinnica</PInput>},
         {title: 'FromToTime', component: <FromToTime day={{name: 'Mon', isChecked: true, from: '12:00', to: '13:00'}} id={'ht12'}/>},

@@ -61,23 +61,13 @@ export const Input = memo(function ({
     const [inputType, setInputType] = useState(withSwitcher ? INPUT_TYPE.PASSWORD : type);
     const handleSwitch = () => setInputType(inputType === INPUT_TYPE.PASSWORD ? INPUT_TYPE.TEXT : INPUT_TYPE.PASSWORD);
 
-    const [inputText, setInputText] = useState("");
-
-    changeHandler = (e) => {
-        setInputText(e.target.value);
-    };
-
-    clearHandler = () => {
-        setInputText('');
-    }
-
     return (
         <div>
             <Wrapper className='pma-input'>
                 {Icon && <Icon/>}
                 <InputText
                     name={name}
-                    value={inputText}
+                    value={value}
                     onChange={changeHandler}
                     type={inputType}
                     withRightIcon={withSwitcher || withCleaner}
@@ -92,7 +82,7 @@ export const Input = memo(function ({
                         </CenterWrapper>
                     </SwitchIconWrapper>
                 }
-                {inputText && withCleaner &&
+                {value && withCleaner &&
                     <ClearWrapper {...props} onClick={clearHandler}>
                         <ClearIcon/>
                     </ClearWrapper>
