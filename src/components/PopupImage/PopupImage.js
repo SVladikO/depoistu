@@ -18,16 +18,16 @@ const PopupImage = () => {
         <InvisibleWrapper onClick={() => dispatch(hideImagePopup())}>
             <ImagePopupContent
                 imageUrl={imageUrl}
-                handleClose={() => dispatch(hideImagePopup())}
+                closePopup={() => dispatch(hideImagePopup())}
             />
         </InvisibleWrapper>
 
     );
 };
 
-export const ImagePopupContent = ({handleClose, imageUrl}) => (
+export const ImagePopupContent = ({closePopup, imageUrl}) => (
     <div>
-        <CloseButton closePopupHandler={handleClose}/>
+        <CloseButton clickHandler={closePopup}/>
         <Wrapper onClick={e => e.stopPropagation()}>
             <Image src={imageUrl}/>
         </Wrapper>
