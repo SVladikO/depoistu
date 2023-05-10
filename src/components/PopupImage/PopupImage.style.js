@@ -16,11 +16,6 @@ export const Wrapper = styled.div`
   border-radius: ${BORDER_RADIUS.SECOND};
   overflow: hidden;
   z-index: 100;
-  svg {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-  }
 `;
 export const Image = styled.img`
   min-width: 335px;

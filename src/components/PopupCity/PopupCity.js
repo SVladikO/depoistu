@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import {BackButtonWrapper, BackButtonInnerWrapper, Wrapper, CitiesWrapper} from "./PopupCity.style"
 import {InvisibleWrapper} from '../PopupInvisiableWrapper/PopupInvisiableWrapper.style'
 
-import {SettingMenuRow} from '../index'
+import {CloseButton, SettingMenuRow} from '../index'
 
 import {ReactComponent as BackIcon} from "../../icons/back.svg";
 import uaCities from "./cities";
@@ -24,7 +24,10 @@ const PopupCity = ({closePopup, selectCity}) => {
             closePopup();
             enableScrollOnBody()
         }}>
-            <CityPopupContent selectCity={selectCity} closePopup={closePopup}/>
+            <div>
+                <CloseButton clickHandler ={closePopup}/>
+                <CityPopupContent selectCity={selectCity} closePopup={closePopup}/>
+            </div>
         </InvisibleWrapper>
     );
 };

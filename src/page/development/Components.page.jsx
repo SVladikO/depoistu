@@ -26,10 +26,10 @@ import
     OrderHistoryRow,
     NotificationTDB,
     RowSplitter,
-    EditMenuRow,
     Textarea,
     Company,
-    Label
+    Label,
+    CloseButton
 } from "../../components";
 
 import CatalogPage from "./Catalog.page";
@@ -147,12 +147,12 @@ const columns = [
 
     ],
     [
+        {title: 'CloseButton', component: <CloseButton clickHandler={() => alert('clicked')}/>},
         {
-            title: 'PopupImage',
-            component: <ImagePopupContent
-                imageUrl="https://raw.githubusercontent.com/SVladikO/testApp/master/images/4_cheese.jpg"/>
+            title: 'ImagePopupContent',
+            component: <ImagePopupContent closePopup={() => alert('clicked')} imageUrl="https://raw.githubusercontent.com/SVladikO/testApp/master/images/4_cheese.jpg"/>
         },
-        {title: 'PopupIntro', component: <PopupIntroContent/>},
+        {title: 'PopupIntroContent', component: <PopupIntroContent closePopup={() => alert('clicked')}/>},
         {
             title: 'EmptyBasket', component:
                 <NotificationTDB
