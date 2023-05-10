@@ -4,7 +4,7 @@ import {ReactComponent as CloseIcon} from "../../icons/close.svg";
 const CloseButton = ({clickHandler}) => {
 
     return (
-        <Wrapper onClick={clickHandler}>
+        <Wrapper onClick={clickHandler} className="pma-close-button-wrapper">
             <CloseIcon />
         </Wrapper>
     );

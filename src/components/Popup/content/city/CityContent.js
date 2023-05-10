@@ -12,7 +12,7 @@ const enableScrollOnBody = () => document.body.style.position = 'relative';
 
 const REGIONS = Object.keys(uaCities);
 
-export const CityContent = ({selectCity, closePopup}) => {
+export const CityContent = ({selectCity, onClose}) => {
     const [cities, setCities] = useState(REGIONS);
     const [selectedRegion, setSelectedRegion] = useState('');
 
@@ -48,8 +48,7 @@ export const CityContent = ({selectCity, closePopup}) => {
 
         selectCity([city, selectedRegion])
         enableScrollOnBody();
-        closePopup()
-
+        onClose()
     }
 
     return (

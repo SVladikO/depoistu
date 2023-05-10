@@ -1,15 +1,15 @@
-import {Wrapper} from './IntroContent.style';
+import {Wrapper, Text} from './InfoContent.style';
 import {ContentContainer} from "../../../ContentContainer/ContentContainer.style";
 
-export const IntroContent = ({children}) => (
+export const InfoContent = ({children}) => (
     <div>
         <ContentContainer>
             <Wrapper>
-                {children}
+                <Text>{children}</Text>
             </Wrapper>
         </ContentContainer>
     </div>
 
 )
 
-export default IntroContent;
+export default InfoContent;

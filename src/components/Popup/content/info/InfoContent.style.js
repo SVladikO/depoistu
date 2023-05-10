@@ -12,3 +12,9 @@ export const Wrapper = styled.div`
   overflow: hidden;
   z-index: 100;
 `;
+
+export const Text = styled.div`
+  line-height: 26px;
+  font-size: 22px;
+  text-align: left;
+`;

@@ -12,6 +12,6 @@ export const Wrapper = styled.div`
   margin: 0 0 10px auto;
   
   & > svg {
-    fill: ${COLOR.ACCENT1};
+    fill: ${COLOR.ACCENT1} !important;
   }
 `;

@@ -24,10 +24,3 @@ export const Image = styled.img`
   max-height: 335px;
   border-radius: ${BORDER_RADIUS.CIRCLE};
 `;
-export const CitiesContentBox = styled(Wrapper)`
-  flex-direction: column;
-  min-width: 355px;
-  min-height: 480px;
-  max-width: 355px;
-  max-height: 500px;
-`;
