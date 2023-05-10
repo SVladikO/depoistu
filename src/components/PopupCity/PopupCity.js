@@ -25,7 +25,7 @@ const PopupCity = ({closePopup, selectCity}) => {
             enableScrollOnBody()
         }}>
             <div>
-                <CloseButton clickHandler ={closePopup()}/>
+                <CloseButton clickHandler ={closePopup}/>
                 <CityPopupContent selectCity={selectCity} closePopup={closePopup}/>
             </div>
         </InvisibleWrapper>
