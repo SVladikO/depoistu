@@ -1,38 +1,18 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 
-import {BackButtonWrapper, BackButtonInnerWrapper, Wrapper, CitiesWrapper} from "./PopupCity.style"
-import {InvisibleWrapper} from '../PopupInvisiableWrapper/PopupInvisiableWrapper.style'
+import {BackButtonWrapper, BackButtonInnerWrapper, Wrapper, CitiesWrapper} from "./CityContent.style"
 
-import {CloseButton, SettingMenuRow} from '../index'
+import {SettingMenuRow} from '../../../index'
 
-import {ReactComponent as BackIcon} from "../../icons/back.svg";
+import {ReactComponent as BackIcon} from "../../../../icons/back.svg";
 import uaCities from "./cities";
-import {resolveTranslation} from "../../utils/utils";
+import {resolveTranslation} from "../../../../utils/utils";
 
 const enableScrollOnBody = () => document.body.style.position = 'relative';
 
 const REGIONS = Object.keys(uaCities);
 
-const PopupCity = ({closePopup, selectCity}) => {
-
-    useEffect(() => {
-        document.body.style.position = 'fixed'
-    })
-
-    return (
-        <InvisibleWrapper onClick={() => {
-            closePopup();
-            enableScrollOnBody()
-        }}>
-            <div>
-                <CloseButton clickHandler ={closePopup}/>
-                <CityPopupContent selectCity={selectCity} closePopup={closePopup}/>
-            </div>
-        </InvisibleWrapper>
-    );
-};
-
-export const CityPopupContent = ({selectCity, closePopup}) => {
+export const CityContent = ({selectCity, closePopup}) => {
     const [cities, setCities] = useState(REGIONS);
     const [selectedRegion, setSelectedRegion] = useState('');
 
@@ -94,4 +74,4 @@ export const CityPopupContent = ({selectCity, closePopup}) => {
     )
 };
 
-export default PopupCity;
+export default CityContent;

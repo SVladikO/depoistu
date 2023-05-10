@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {BORDER_RADIUS} from "../../utils/theme";
+import {BORDER_RADIUS} from "../../../../utils/theme";
 
 export const Wrapper = styled.div`
   min-width: 355px;
@@ -11,9 +11,4 @@ export const Wrapper = styled.div`
   border-radius: ${BORDER_RADIUS.SECOND};
   overflow: hidden;
   z-index: 100;
-`;
-
-export const Text = styled.div`
-  line-height: 26px;
-  font-size: 22px;
 `;

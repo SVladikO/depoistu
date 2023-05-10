@@ -5,7 +5,7 @@ const CloseButton = ({clickHandler}) => {
 
     return (
         <Wrapper onClick={clickHandler}>
-            <CloseIcon/>
+            <CloseIcon />
         </Wrapper>
     );
 };
