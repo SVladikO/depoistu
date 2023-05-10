@@ -32,7 +32,7 @@ export const Textarea = memo(function ({
                     name={name}
                     onChange={changeHandler}
                 />
-                {withCleaner && <ClearWrapper onClick={clearHandler}><ClearIcon/></ClearWrapper>}
+                {value && withCleaner && <ClearWrapper onClick={clearHandler}><ClearIcon/></ClearWrapper>}
             </Wrapper>
             {errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
         </div>
