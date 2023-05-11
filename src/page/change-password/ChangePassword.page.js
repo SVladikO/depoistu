@@ -11,10 +11,12 @@ import {
 
 import {resolveTranslation} from "../../utils/utils";
 import validation from "../../utils/validation";
+import {useState} from "react";
 
 const ChangePassWordSchema = Yup.object().shape(validation.user.changePassword);
 
 const ChangePasswordPage = () => {
+    const [wasSubmitted, setWasSubmitted] = useState(false);
     return (
         <Formik
             initialValues={{
@@ -25,14 +27,17 @@ const ChangePasswordPage = () => {
             validationSchema={ChangePassWordSchema}
             onSubmit={values => {
                 console.log(values);
+                setWasSubmitted(true);
             }}
         >
-            {( {values, handleSubmit, handleChange, errors}) => (
+            {( {values, handleBlur, touched, handleSubmit, handleChange, errors}) => (
                 <form onSubmit={handleSubmit}>
                     <ContentContainer>
                         <Label>{resolveTranslation("PAGE.CHANGE_PASSWORD.LABEL.OLD_PASSWORD")}</Label>
                         <Input
                             withSwitcher
+                            onBlur={handleBlur}
+                            isTouched={wasSubmitted || touched.currentPassword}
                             name="currentPassword"
                             value={values.currentPassword}
                             changeHandler={handleChange}
@@ -43,6 +48,8 @@ const ChangePasswordPage = () => {
                         <Input
                             withSwitcher
                             name="newPassword"
+                            onBlur={handleBlur}
+                            isTouched={wasSubmitted || touched.newPassword}
                             value={values.newPassword}
                             changeHandler={handleChange}
                             errorMessage={errors.newPassword}
@@ -51,6 +58,8 @@ const ChangePasswordPage = () => {
                         <Input
                             withSwitcher
                             name="confirmedPassword"
+                            nBlur={handleBlur}
+                            isTouched={wasSubmitted || touched.confirmedPassword}
                             value={values.confirmedPassword}
                             changeHandler={handleChange}
                             errorMessage={errors.confirmedPassword}

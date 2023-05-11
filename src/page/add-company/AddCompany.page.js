@@ -88,7 +88,7 @@ const AddCompany = () => {
                                 name='name'
                                 value={values.name}
                                 withCleaner
-                                isTouched={touched.name}
+                                isTouched={touched.name || wasSubmitted}
                                 onBlur={handleBlur}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('name', '')}
@@ -100,7 +100,7 @@ const AddCompany = () => {
                                 Icon={LocationIcon}
                                 handleClick={openCityPopup}
                                 value={city}
-                                isTouched={touched.city}
+                                isTouched={touched.city || wasSubmitted}
                                 onBlur={handleBlur}
 
                             />
@@ -111,7 +111,7 @@ const AddCompany = () => {
                                 withCleaner
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('street', '')}
-                                isTouched={touched.street}
+                                isTouched={touched.street || wasSubmitted}
                                 onBlur={handleBlur}
                                 errorMessage={errors.street}
                             />

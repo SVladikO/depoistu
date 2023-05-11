@@ -80,7 +80,7 @@ const columns = [
         {title: 'Label', component: <Label>Change Password</Label>},
         {title: 'Input 1', component: <Input />},
         {title: 'Input 2', component: <Input Icon={MailIcon} errorMessage={'Email is misspelled!'} value="jodode@mail.com"/>},
-        {title: 'Input 3', component: <Input withSwitcher errorMessage={'Email is misspelled!'}/>},
+        {title: 'Input 3', component: <Input withSwitcher isTouched errorMessage={'Email is misspelled!'}/>},
         {title: 'Input 4', component: <Input withCleaner/>},
         {title: 'Textarea', component: <Textarea withCleaner/>},
         {title: 'PInput', component: <PInput withIcon Icon={LocationIcon}> Vinnica</PInput>},
