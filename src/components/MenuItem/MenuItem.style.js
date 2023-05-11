@@ -13,6 +13,7 @@ export const Wrapper = styled.div`
   background: ${COLOR.ACCENT4};
   border-radius: ${BORDER_RADIUS.SECOND};
   margin: 15px 0 15px 0;
+  
   svg{
     width: 25px;
     height: 25px;

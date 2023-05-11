@@ -77,6 +77,7 @@ export const getRoutes = () => {
                 <Route path={DEV_ROUTER.ADMIN} element={<AdminPage/>}/>
                 {routes}
             </Routes>
+
         </>
     );
 };

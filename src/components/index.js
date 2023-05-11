@@ -31,9 +31,7 @@ import Like from "./Like/Like";
 import MenuItem from "./MenuItem/MenuItem";
 import OrderHistoryRow from "./OrderHistoryRow/OrderHistoryRow";
 import OrderIconWithCounter from "./OrderIconWithCounter/OrderIconWithCounter.jsx";
-import PopupCity from "./PopupCity/PopupCity";
-import PopupIntro from "./PopupIntro/PopupIntro";
-import PopupImage from "./PopupImage/PopupImage";
+import Popup from "./Popup/Popup";
 import Company from "./Company/Company";
 import CategoryMenuRow from "./CategoryMenuRow/CategoryMenuRow";
 import EditMenuRow from "./EditMenuRow/EditMenuRow";
@@ -63,9 +61,7 @@ export {
     Flex,
     Notification,
     Absolute,
-    PopupImage,
-    PopupIntro,
-    PopupCity,
+    Popup,
     CloseButton,
     PrimaryButton,
     SecondaryButton,

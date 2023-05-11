@@ -46,8 +46,9 @@ import {ReactComponent as LanguageIcon} from "../../icons/language.svg";
 import {COLOR} from "../../utils/theme";
 import AccountSettings from "../../components/AccountSettings/AccountSettings";
 import OptionSettings from "../../components/OptionSettings/OptionSettings";
-import {ImagePopupContent} from "../../components/PopupImage/PopupImage";
-import {PopupIntroContent} from "../../components/PopupIntro/PopupIntro";
+import ImageContent from "../../components/Popup/content/image/ImageContent";
+import IntroContent from "../../components/Popup/content/info/InfoContent";
+import CityContent from  "../../components/Popup/content/city/CityContent"
 import {ReactComponent as LocationIcon} from "../../icons/map_point.svg";
 import Checkbox from "../../components/Checkbox/Checkbox";
 
@@ -151,9 +152,10 @@ const columns = [
         {title: 'CloseButton', component: <CloseButton clickHandler={() => alert('clicked')}/>},
         {
             title: 'ImagePopupContent',
-            component: <ImagePopupContent closePopup={() => alert('clicked')} imageUrl="https://raw.githubusercontent.com/SVladikO/testApp/master/images/4_cheese.jpg"/>
+            component: <ImageContent imageUrl="https://raw.githubusercontent.com/SVladikO/testApp/master/images/4_cheese.jpg"/>
         },
-        {title: 'PopupIntroContent', component: <PopupIntroContent closePopup={() => alert('clicked')}/>},
+        {title: 'IntroPopupContent', component: <IntroContent>Some text Some text Some text Some text Some text</IntroContent>},
+        {title: 'CityPopupContent', component: <CityContent />},
         {
             title: 'EmptyBasket', component:
                 <NotificationTDB
