@@ -22,13 +22,14 @@ import {ReactComponent as DeleteBasketIcon} from "../../icons/delete_basket.svg"
 import {ReactComponent as LocationIcon} from "../../icons/map_point.svg";
 
 import {BasketButton, Pictures} from "../edit-company/EditCompany.style";
-import {company_validation} from "../../utils/validation";
+import validation from "../../utils/validation";
 
 const AddCompany = () => {
     const [pictures, setPictures] = useState([]);
 
     const [city, setCity] = useState('');
     const [showCityPopup, setShowCityPopup] = useState(false);
+    const [wasSubmitted, setWasSubmitted] = useState(false);
 
     const deleteCompanyImage = index => setPictures(pictures.filter((_, i) => i !== index));
 
@@ -72,12 +73,13 @@ const AddCompany = () => {
                     sunFrom: '',
                     sunTo: '',
                 }}
-                validationSchema={Yup.object().shape(company_validation)}
+                validationSchema={Yup.object().shape(validation.company)}
                 onSubmit={values => {
                     console.log(values);
+                    setWasSubmitted(true);
                 }}
             >
-                {({values, setFieldValue, handleSubmit, handleChange, errors}) => (
+                {({values,touched, handleBlur,setFieldValue, handleSubmit, handleChange, errors}) => (
                     <form onSubmit={handleSubmit}>
                         {companyPictures}
                         <ContentContainer>
@@ -86,6 +88,8 @@ const AddCompany = () => {
                                 name='name'
                                 value={values.name}
                                 withCleaner
+                                isTouched={touched.name}
+                                onBlur={handleBlur}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('name', '')}
                                 errorMessage={errors.name}
@@ -96,6 +100,9 @@ const AddCompany = () => {
                                 Icon={LocationIcon}
                                 handleClick={openCityPopup}
                                 value={city}
+                                isTouched={touched.city}
+                                onBlur={handleBlur}
+
                             />
                             <Label>Street</Label>
                             <Input
@@ -104,6 +111,8 @@ const AddCompany = () => {
                                 withCleaner
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('street', '')}
+                                isTouched={touched.street}
+                                onBlur={handleBlur}
                                 errorMessage={errors.street}
                             />
                             <Label>Work Schedule</Label>

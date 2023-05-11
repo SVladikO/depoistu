@@ -10,13 +10,9 @@ import {
 } from "../../components";
 
 import {resolveTranslation} from "../../utils/utils";
-import {user_validation} from "../../utils/validation";
+import validation from "../../utils/validation";
 
-const ChangePassWordSchema = Yup.object().shape({
-    currentPassword: user_validation.password,
-    newPassword: user_validation.password,
-    confirmedPassword: user_validation.confirmedPassword
-});
+const ChangePassWordSchema = Yup.object().shape(validation.user.changePassword);
 
 const ChangePasswordPage = () => {
     return (

@@ -24,7 +24,7 @@ import {ReactComponent as LocationIcon} from "../../icons/map_point.svg";
 import {ReactComponent as DeleteBasketIcon} from "../../icons/delete_basket.svg";
 
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/utils";
-import {company_validation} from "../../utils/validation";
+import validation from "../../utils/validation";
 import {initSchedule} from "../../utils/utils";
 
 const EditCompany = () => {
@@ -32,6 +32,7 @@ const EditCompany = () => {
     const CUSTOMER_COMPANIES = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
     const company = CUSTOMER_COMPANIES.find((c => c.ID === companyId));
     const [pictures, setPictures] = useState(company?.PHOTOS?.split(',') || []);
+    const [wasSubmitted, setWasSubmitted] = useState(false);
 
     const [city, setCity] = useState(company.CITY);
     const [showCityPopup, setShowCityPopup] = useState(false);
@@ -80,12 +81,13 @@ const EditCompany = () => {
                     sunFrom: schedule.sun.from,
                     sunTo: schedule.sun.to,
                 }}
-                validationSchema={Yup.object().shape(company_validation)}
+                validationSchema={Yup.object().shape(validation.company)}
                 onSubmit={values => {
                     console.log(values);
+                    setWasSubmitted(true);
                 }}
             >
-                {({values, setFieldValue, handleSubmit, handleChange, errors}) => (
+                {({values, touched, handleBlur, setFieldValue, handleSubmit, handleChange, errors}) => (
                     <form onSubmit={handleSubmit}>
                         {companyPictures}
                         <ContentContainer>
@@ -94,6 +96,8 @@ const EditCompany = () => {
                                 name='name'
                                 value={values.name}
                                 withCleaner
+                                onBlur={handleBlur}
+                                isTouched={wasSubmitted || touched.name}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('name', '')}
                                 errorMessage={errors.name}
@@ -109,6 +113,8 @@ const EditCompany = () => {
                             <Input
                                 name='street'
                                 value={values.street}
+                                onBlur={handleBlur}
+                                isTouched={wasSubmitted || touched.street}
                                 withCleaner
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('street', '')}

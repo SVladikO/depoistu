@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-export const USER = {
+ const USER = {
     NAME: {
         MIN: 2,
         MAX: 30
@@ -18,7 +18,7 @@ export const USER = {
     }
 };
 
-export const user_validation = {
+const user_validation = {
     name: Yup.string()
         .min(USER.NAME.MIN, `Too Short! Min length ${USER.NAME.MIN}`)
         .max(USER.NAME.MAX, `Too Long! Max length ${USER.NAME.MAX}`)
@@ -43,8 +43,26 @@ export const user_validation = {
             return this.parent.newPassword === value
         })
 }
+const singInValidation = {
+    email: user_validation.email,
+    password: user_validation.password
+}
+const singUpValidation = {
+    name: user_validation.name,
+    email: user_validation.email,
+    newPassword: user_validation.password,
+    confirmedPassword: user_validation.confirmedPassword,
+    phone: user_validation.phone,
+}
+const changePasswordValidation = {
+    oldPassword: user_validation.password,
+    newPassword: user_validation.password,
+    confirmedPassword: user_validation.confirmedPassword
+}
 
-export const MENU_ITEM = {
+
+
+ const MENU_ITEM = {
     NAME: {
         MIN: 2,
         MAX: 30
@@ -65,7 +83,7 @@ export const MENU_ITEM = {
     },
 };
 
-export const menu_item_validation = {
+ const menu_item_validation = {
     name: Yup.string()
         .required(`Required!`)
         .min(MENU_ITEM.NAME.MIN, `Min length ${MENU_ITEM.NAME.MIN}`)
@@ -83,7 +101,7 @@ export const menu_item_validation = {
         .max(MENU_ITEM.MEAL_SIZE.MAX, `Max length ${MENU_ITEM.MEAL_SIZE.MAX}`)
 }
 
-export const COMPANY = {
+ const COMPANY = {
     NAME: {
         MIN: 2,
         MAX: 30
@@ -98,7 +116,7 @@ export const COMPANY = {
     SCHEDULE: {},
 };
 
-export const company_validation = {
+ const company_validation = {
     name: Yup.string()
         .required()
         .min(COMPANY.NAME.MIN, `Min length ${COMPANY.NAME.MIN}`)
@@ -109,3 +127,15 @@ export const company_validation = {
         .min(COMPANY.STREET.MIN, `Min length ${COMPANY.STREET.MIN}`)
         .max(COMPANY.STREET.MAX, `Max length ${COMPANY.STREET.MAX}`),
 }
+
+const validation = {
+    user: {
+        singIn: singInValidation,
+        singUp: singUpValidation,
+        changePassword: changePasswordValidation
+    },
+    menuItem: menu_item_validation,
+    company: company_validation
+}
+export default validation;
+

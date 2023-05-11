@@ -93,16 +93,20 @@ export const Input = memo(function ({
                     </ClearWrapper>
                 }
             </Wrapper>
-            {hasFocus ? isTouched : <WarningMessage>{errorMessage}</WarningMessage>}
+            {isTouched && errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
         </div>
     )
 });
 
-export const PInput = ({Icon, value, handleClick}) => {
-    return (<PInputWrapper onClick={handleClick}>
-            {Icon && <Icon/>}
-            <PStyle withLeftIcon={!!Icon}>{value}</PStyle>
-        </PInputWrapper>
+export const PInput = ({Icon, isTouched, errorMessage, value, handleClick}) => {
+    return (
+        <div>
+            <PInputWrapper onClick={handleClick}>
+                {Icon && <Icon/>}
+                <PStyle withLeftIcon={!!Icon}>{value}</PStyle>
+            </PInputWrapper>
+            {isTouched && errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
+        </div>
     )
 };
 

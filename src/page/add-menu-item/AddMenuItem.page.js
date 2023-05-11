@@ -12,9 +12,9 @@ import {
     SecondaryButton,
     Textarea
 } from '../../components/index'
-import {menu_item_validation} from "../../utils/validation";
+import validation from "../../utils/validation";
 
-const MenuItemSchema = Yup.object().shape(menu_item_validation);
+const MenuItemSchema = Yup.object().shape(validation.menuItem);
 
 
 const AddMenuItemPage = () => {
