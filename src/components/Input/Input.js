@@ -73,8 +73,6 @@ export const Input = memo(function ({
                     value={value}
                     onChange={changeHandler}
                     type={inputType}
-                    onFocus={() => setFocus(true)}
-                    onBlur={() => setFocus(false)}
                     withRightIcon={withSwitcher || withCleaner}
                     withLeftIcon={!!Icon}
                     withSwitcher={withSwitcher}
