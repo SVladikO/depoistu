@@ -28,12 +28,12 @@ import {BasketButton, Pictures} from "../edit-company/EditCompany.style";
 
 import {BE_API, URL} from "../../utils/config";
 import {fetchData} from "../../utils/fetch";
-import {company_validation} from "../../utils/validation";
+import validation from "../../utils/validation";
 import {LOCAL_STORAGE_KEY, LocalStorage, getScheduleAsString, isScheduleValid} from "../../utils/utils";
 
 import {initialValues} from './utils';
 
-const CompanySchema = Yup.object().shape(company_validation);
+const CompanySchema = Yup.object().shape(validation.company);
 
 const AddCompany = () => {
     const CUSTOMER = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER)
@@ -42,6 +42,7 @@ const AddCompany = () => {
     const [isCompanySaved, setIsCompanySaved] = useState(false);
     const [requestError, setRequestError] = useState("");
     const [showCityPopup, setShowCityPopup] = useState(false);
+    const [wasSubmitted, setWasSubmitted] = useState(false);
 
     const deleteCompanyImage = index => setPictures(pictures.filter((_, i) => i !== index));
 
@@ -101,7 +102,7 @@ const AddCompany = () => {
                 validationSchema={CompanySchema}
                 onSubmit={onSubmit}
             >
-                {({values, setFieldValue, handleSubmit, handleChange, errors}) => (
+                {({values, touched, setFieldValue, handleSubmit, handleBlur, handleChange, errors}) => (
                     <form onSubmit={e => {
                         e.preventDefault();
                         handleSubmit();
@@ -112,10 +113,12 @@ const AddCompany = () => {
                             <Input
                                 name='name'
                                 value={values.name}
-                                withCleaner
+                                errorMessage={errors.name}
+                                isTouched={touched.name || wasSubmitted}
+                                onBlur={handleBlur}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('name', '')}
-                                errorMessage={errors.name}
+                                withCleaner
                             />
                             <Label>City</Label>
                             <PInput
@@ -124,6 +127,8 @@ const AddCompany = () => {
                                 handleClick={openCityPopup}
                                 value={values.city}
                                 errorMessage={errors.city}
+                                isTouched={touched.city || wasSubmitted}
+                                onBlur={handleBlur}
                             />
                             <Label>Street</Label>
                             <Input
@@ -132,20 +137,23 @@ const AddCompany = () => {
                                 withCleaner
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('street', '')}
+                                isTouched={touched.street || wasSubmitted}
+                                onBlur={handleBlur}
                                 errorMessage={errors.street}
                             />
                             <Label>Phone</Label>
                             <Input
-                                withCleaner
                                 name="phone"
                                 value={values.phone}
+                                errorMessage={errors.phone}
+                                isTouched={touched.phone || wasSubmitted}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('phone', '')}
-                                errorMessage={errors.phone}
+                                withCleaner
                             />
                             <Label>Work Schedule</Label>
                             <WeekSchedule values={values} handleChange={handleChange}/>
-                            {isScheduleValid(values) || <WarningMessage>'Schedule is a required field'</WarningMessage>}
+                            {isScheduleValid(values) || <WarningMessage>Schedule is a required field</WarningMessage>}
                         </ContentContainer>
                         <PrimaryButton type='submit' isWide>Save changes</PrimaryButton>
                         {showCityPopup && <Popup.City selectCity={selectCity(city => setFieldValue('city', city))}
@@ -168,7 +176,7 @@ function renderPictures(pictures, deleteCompanyImage) {
                 >
                     {
                         pictures?.map((el, index) => (
-                            <SwiperSlide key={Math.random()}>
+                            <SwiperSlide key={Math.random()}>s
                                 <img src={el} alt=''/>
                                 <BasketButton onClick={() => deleteCompanyImage(index)}>
                                     <DeleteBasketIcon/>

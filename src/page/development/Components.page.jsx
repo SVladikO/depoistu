@@ -79,7 +79,7 @@ const columns = [
         {title: 'SecondaryButton', component: <SecondaryButton>Cancel</SecondaryButton>},
         {title: 'SecondaryButton', component: <SecondaryButton>CANCEL</SecondaryButton>},
         {title: 'Label', component: <Label>Change Password</Label>},
-        {title: 'Input 1', component: <Input Icon={MailIcon} errorMessage={'Email is misspelled!'} value="jodode@mail.com"/>},
+        {title: 'Input 1', component: <Input Icon={MailIcon} isTouched errorMessage={'Email is misspelled!'} value="jodode@mail.com"/>},
         {title: 'Input 2', component: <Input />},
         {title: 'Input 3 {withSwitcher}', component: <Input withSwitcher />},
         {title: 'Input 4 {withCleaner value}', component: <Input withCleaner value={111}/>},

@@ -16,15 +16,15 @@ import {URL} from "../../utils/config";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/utils";
 import React, {useState} from "react";
 import {ReactComponent as RemoveIcon} from "../../icons/remove_icon.svg";
-import {menu_item_validation} from "../../utils/validation";
+import validation from "../../utils/validation";
 
-const EditMenuItemSchema = Yup.object().shape(menu_item_validation)
+const EditMenuItemSchema = Yup.object().shape(validation.menuItem);
 
 const EditMenuItemPage = () => {
     const navigate = useNavigate();
     const menuItem = LocalStorage.get(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT);
     const {NAME, PRICE, DESCRIPTION, COOKING_TIME, IMAGE_URL, SIZE} = menuItem;
-
+    const [wasSubmitted, setWasSubmitted] = useState(false);
     const [imageURL, setImageURL] = useState(IMAGE_URL);
 
     if (!menuItem && URL.EDIT_MENU) {
@@ -44,9 +44,10 @@ const EditMenuItemPage = () => {
                 validationSchema={EditMenuItemSchema}
                 onSubmit={values => {
                     console.log(values);
+                    setWasSubmitted(true);
                 }}
             >
-                {({values, setFieldValue, handleSubmit, handleChange, errors}) => (
+                {({values, handleBlur, touched,setFieldValue, handleSubmit, handleChange, errors}) => (
                     <form onSubmit={handleSubmit}>
                         <SecondaryButton><RemoveIcon/> Delete</SecondaryButton>
                         <RowSplitter height={'15px'}/>
@@ -61,6 +62,8 @@ const EditMenuItemPage = () => {
                             <Input
                                 value={values.name}
                                 name="name"
+                                onBlur={handleBlur}
+                                isTouched={touched.name || wasSubmitted}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('name', '')}
                                 errorMessage={errors.name}
@@ -71,6 +74,8 @@ const EditMenuItemPage = () => {
                                 value={values.price}
                                 name="price"
                                 type="number"
+                                onBlur={handleBlur}
+                                isTouched={touched.price || wasSubmitted}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('price', '')}
                                 errorMessage={errors.price}
@@ -80,6 +85,8 @@ const EditMenuItemPage = () => {
                             <Textarea
                                 value={values.description}
                                 name="description"
+                                onBlur={handleBlur}
+                                isTouched={touched.description || wasSubmitted}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('description', '')}
                                 errorMessage={errors.description}
@@ -90,6 +97,8 @@ const EditMenuItemPage = () => {
                                 value={values.cookingTime}
                                 type="number"
                                 name="cookingTime"
+                                onBlur={handleBlur}
+                                isTouched={touched.cookingTime || wasSubmitted}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('cookingTime', '')}
                                 errorMessage={errors.cookingTime}
@@ -100,6 +109,8 @@ const EditMenuItemPage = () => {
                                 value={values.size}
                                 name="size"
                                 type="number"
+                                onBlur={handleBlur}
+                                isTouched={touched.size || wasSubmitted}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('size', '')}
                                 errorMessage={errors.size}

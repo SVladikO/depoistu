@@ -18,6 +18,7 @@ import {ReactComponent as ClearIcon} from "../../icons/close.svg";
 export const Textarea = memo(function ({
                                            errorMessage,
                                            withCleaner,
+                                           isTouched,
                                            value,
                                            name,
                                            changeHandler = () => {},
@@ -34,7 +35,7 @@ export const Textarea = memo(function ({
                 />
                 {value && withCleaner && <ClearWrapper onClick={clearHandler}><ClearIcon/></ClearWrapper>}
             </Wrapper>
-            {errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
+            {isTouched && errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
         </div>
     );
 });
@@ -50,6 +51,9 @@ export const Input = memo(function ({
                                         value,
                                         name,
                                         errorMessage,
+                                        focusHandler,
+                                        blurHandler,
+                                        isTouched,
                                         withSwitcher = false,
                                         withCleaner = false,
                                         changeHandler,
@@ -85,19 +89,19 @@ export const Input = memo(function ({
                         <ClearIcon/>
                     </ClearWrapper>}
             </Wrapper>
-            {errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
+            {isTouched && errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
         </div>
     )
 });
 
-export const PInput = ({Icon, value, handleClick, errorMessage}) => {
+export const PInput = ({Icon, value, handleClick, isTouched, errorMessage}) => {
     return (
         <div>
             <PInputWrapper onClick={handleClick}>
                 {Icon && <Icon/>}
                 <PStyle withLeftIcon={!!Icon}>{value}</PStyle>
             </PInputWrapper>
-            {errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
+            {isTouched && errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
         </div>
     )
 };

@@ -12,13 +12,13 @@ import {
     SecondaryButton,
     Textarea
 } from '../../components/index'
-import {menu_item_validation} from "../../utils/validation";
+import validation from "../../utils/validation";
 
-const MenuItemSchema = Yup.object().shape(menu_item_validation);
+const MenuItemSchema = Yup.object().shape(validation.menuItem);
 
 
 const AddMenuItemPage = () => {
-
+    const [wasSubmitted, setWasSubmitted] = useState(false);
     const [imageURL, setImageURL] = useState();
 
     return (
@@ -34,9 +34,10 @@ const AddMenuItemPage = () => {
                 validationSchema={MenuItemSchema}
                 onSubmit={values => {
                     console.log(values);
+                    setWasSubmitted(true)
                 }}
             >
-                {({values, setFieldValue, handleSubmit, handleChange, errors}) => (
+                {({values, touched, setFieldValue, handleSubmit, handleBlur, handleChange, errors}) => (
                     <form onSubmit={handleSubmit}>
                         <RowSplitter height={'15px'}/>
                         <ContentContainer>
@@ -48,50 +49,61 @@ const AddMenuItemPage = () => {
                             </MenuItemPhoto>
                             <Label>Name</Label>
                             <Input
-                                value={values.name}
                                 name="name"
+                                value={values.name}
+                                errorMessage={errors.name}
+                                isTouched={touched.name || wasSubmitted}
+                                onBlur={handleBlur}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('name', '')}
                                 withCleaner
-                                errorMessage={errors.name}
                             />
                             <Label>Price</Label>
                             <Input
-                                value={values.price}
+                                type="number"
                                 name="price"
+                                value={values.price}
+                                errorMessage={errors.price}
+                                isTouched={touched.price || wasSubmitted}
+                                onBlur={handleBlur}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('price', '')}
                                 withCleaner
-                                errorMessage={errors.price}
                             />
                             <Label>Description</Label>
                             <Textarea
+                                name="description"
                                 value={values.description}
+                                errorMessage={errors.description}
+                                isTouched={touched.description || wasSubmitted}
+                                onBlur={handleBlur}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('description', '')}
                                 withCleaner
-                                name="description"
-                                errorMessage={errors.description}
                             />
                             <Label>Cooking time (in minutes)</Label>
                             <Input
-                                value={values.cookingTime}
                                 type="number"
+                                name="cookingTime"
+                                value={values.cookingTime}
+                                errorMessage={errors.cookingTime}
+                                isTouched={touched.cookingTime || wasSubmitted}
+                                onBlur={handleBlur}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('cookingTime', '')}
                                 withCleaner
-                                name="cookingTime"
-                                errorMessage={errors.cookingTime}
                             />
                             <Label>Meal Size</Label>
                             <Input
-                                value={values.size}
                                 type="number"
+                                name="size"
+                                value={values.size}
+                                errorMessage={errors.size}
+                                isTouched={touched.size || wasSubmitted}
+                                onBlur={handleBlur}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('size','')}
                                 withCleaner
-                                name="size"
-                                errorMessage={errors.size}
                             />
                         </ContentContainer>
                         <PrimaryButton isWide type="submit">Add</PrimaryButton>

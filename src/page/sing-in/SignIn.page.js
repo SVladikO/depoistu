@@ -21,13 +21,10 @@ import {startLoading, stopLoading} from "../../features/request/requestSlice";
 
 import {fetchData} from "../../utils/fetch";
 import {BE_API, ROUTER, URL} from '../../utils/config';
-import {user_validation} from '../../utils/validation';
+import validation  from '../../utils/validation';
 import {getParam, LocalStorage, resolveTranslation, LOCAL_STORAGE_KEY} from "../../utils/utils";
 
-const SignInSchema = Yup.object().shape({
-    password: user_validation.password,
-    email: user_validation.email,
-});
+const SignInSchema = Yup.object().shape(validation.user.singIn);
 
 const SignInPage = () => {
     const dispatch = useDispatch();
@@ -35,7 +32,7 @@ const SignInPage = () => {
     const backUrl = getParam(`backUrl`) || URL.SETTING;
     const isLoading = useSelector(state => state.request.value.isLoading);
     const [requestError, setRequestError] = useState('');
-
+    const [wasSubmitted, setWasSubmitted] = useState(false);
     const handleSingIn = ({email, password}) => {
         dispatch(startLoading());
 
@@ -71,9 +68,10 @@ const SignInPage = () => {
             onSubmit={values => {
                 console.log(values);
                 handleSingIn(values)
+                setWasSubmitted(true);
             }}
         >
-            {({values, setFieldValue, handleSubmit, handleChange, errors}) => (
+            {({values,touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                 <form onSubmit={handleSubmit}>
                     <ContentContainer>
                         <Label>Email</Label>
@@ -83,6 +81,7 @@ const SignInPage = () => {
                             type='email'
                             value={values.email}
                             withCleaner
+                            isTouched={wasSubmitted || touched.email}
                             changeHandler={handleChange}
                             clearHandler={() => setFieldValue('email', '')}
                             errorMessage={errors.email}
@@ -91,6 +90,7 @@ const SignInPage = () => {
                         <Input
                             Icon={LockIcon}
                             name='password'
+                            isTouched={wasSubmitted || touched.password}
                             value={values.password}
                             changeHandler={handleChange}
                             withSwitcher

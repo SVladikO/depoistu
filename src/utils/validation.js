@@ -1,6 +1,17 @@
 import * as Yup from 'yup';
 
-export const USER = {
+const PHONE = {
+    MIN: 13,
+    MAX: 13
+};
+
+const PHONE_VALIDATION = from =>
+    Yup.string()
+        .min(from.PHONE.MIN, `Example: +380971234567`)
+        .max(from.PHONE.MAX, `Example: +380971234567`)
+        .required(`Required!`)
+
+const USER = {
     NAME: {
         MIN: 2,
         MAX: 30
@@ -9,16 +20,13 @@ export const USER = {
         MIN: 6,
         MAX: 12
     },
-    PHONE: {
-        MIN: 13,
-        MAX: 13
-    },
+    PHONE,
     EMAIL: {
         MAX: 30
     }
 };
 
-export const user_validation = {
+const user_validation = {
     name: Yup.string()
         .min(USER.NAME.MIN, `Too Short! Min length ${USER.NAME.MIN}`)
         .max(USER.NAME.MAX, `Too Long! Max length ${USER.NAME.MAX}`)
@@ -31,10 +39,7 @@ export const user_validation = {
         .email(`Invalid email`)
         .max(USER.EMAIL.MAX, `Too Long! Max length ${USER.EMAIL.MAX}`)
         .required(`Required`),
-    phone: Yup.string()
-        .min(USER.PHONE.MIN, `Example: +380971234567`)
-        .max(USER.PHONE.MAX, `Example: +380971234567`)
-        .required(`Required!`),
+    phone: PHONE_VALIDATION(USER),
     confirmedPassword: Yup.string()
         .required(`Required!`)
         .min(USER.PASSWORD.MIN, `Too Short! Min length ${USER.PASSWORD.MIN}`)
@@ -43,8 +48,25 @@ export const user_validation = {
             return this.parent.newPassword === value
         })
 }
+const singInValidation = {
+    email: user_validation.email,
+    password: user_validation.password
+}
+const singUpValidation = {
+    name: user_validation.name,
+    email: user_validation.email,
+    newPassword: user_validation.password,
+    confirmedPassword: user_validation.confirmedPassword,
+    phone: user_validation.phone,
+}
+const changePasswordValidation = {
+    oldPassword: user_validation.password,
+    newPassword: user_validation.password,
+    confirmedPassword: user_validation.confirmedPassword
+}
 
-export const MENU_ITEM = {
+
+const MENU_ITEM = {
     NAME: {
         MIN: 2,
         MAX: 30
@@ -65,7 +87,7 @@ export const MENU_ITEM = {
     },
 };
 
-export const menu_item_validation = {
+const menu_item_validation = {
     name: Yup.string()
         .required(`Required!`)
         .min(MENU_ITEM.NAME.MIN, `Min length ${MENU_ITEM.NAME.MIN}`)
@@ -76,14 +98,16 @@ export const menu_item_validation = {
     description: Yup.string()
         .max(MENU_ITEM.DESCRIPTION.MAX, `Max length ${MENU_ITEM.DESCRIPTION.MAX}`),
     cookingTime: Yup.string()
+        .required(`Required!`)
         .min(MENU_ITEM.COOKING_TIME.MIN, `Min length ${MENU_ITEM.COOKING_TIME.MIN}`)
         .max(MENU_ITEM.COOKING_TIME.MAX, `Max length ${MENU_ITEM.COOKING_TIME.MAX}`),
     size: Yup.string()
+        .required(`Required!`)
         .min(MENU_ITEM.MEAL_SIZE.MIN, `Min length ${MENU_ITEM.MEAL_SIZE.MIN}`)
         .max(MENU_ITEM.MEAL_SIZE.MAX, `Max length ${MENU_ITEM.MEAL_SIZE.MAX}`)
 }
 
-export const COMPANY = {
+const COMPANY = {
     NAME: {
         MIN: 2,
         MAX: 30
@@ -95,25 +119,31 @@ export const COMPANY = {
         MIN: 2,
         MAX: 30
     },
-    PHONE: {
-        MIN: 10,
-        MAX: 10
-    },
+    PHONE,
     SCHEDULE: {},
 };
 
-export const company_validation = {
+const company_validation = {
     name: Yup.string()
-        .required()
+        .required(`Required`)
         .min(COMPANY.NAME.MIN, `Min length ${COMPANY.NAME.MIN}`)
         .max(COMPANY.NAME.MAX, `Max length ${COMPANY.NAME.MAX}`),
-    city: Yup.string().required(),
+    city: Yup.string().required(`Required`),
     street: Yup.string()
-        .required()
+        .required(`Required`)
         .min(COMPANY.STREET.MIN, `Min length ${COMPANY.STREET.MIN}`)
         .max(COMPANY.STREET.MAX, `Max length ${COMPANY.STREET.MAX}`),
-    phone: Yup.string()
-        .min(COMPANY.PHONE.MIN, `Example: 0971234567`)
-        .max(COMPANY.PHONE.MAX, `Example: 0971234567`)
-        .required(),
+    phone: PHONE_VALIDATION(COMPANY),
 }
+
+const validation = {
+    user: {
+        singIn: singInValidation,
+        singUp: singUpValidation,
+        changePassword: changePasswordValidation
+    },
+    menuItem: menu_item_validation,
+    company: company_validation
+}
+export default validation;
+
