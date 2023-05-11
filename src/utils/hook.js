@@ -30,8 +30,8 @@ export const useLocalStorageFetch = (storageKey, initialState, url, setError = (
 
         fetchData(url)
             .then(res => {
-                setValue(res)
-                localStorage.setItem(storageKey, JSON.stringify(res))
+                setValue(res.body)
+                localStorage.setItem(storageKey, JSON.stringify(res.body))
                 setTimeout(() => dispatch(stopLoading()), 1000)
             })
             .catch(e => {

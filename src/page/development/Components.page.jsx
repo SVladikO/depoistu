@@ -26,10 +26,10 @@ import
     OrderHistoryRow,
     NotificationTDB,
     RowSplitter,
-    EditMenuRow,
     Textarea,
     Company,
-    Label
+    Label,
+    CloseButton
 } from "../../components";
 
 import CatalogPage from "./Catalog.page";
@@ -46,8 +46,9 @@ import {ReactComponent as LanguageIcon} from "../../icons/language.svg";
 import {COLOR} from "../../utils/theme";
 import AccountSettings from "../../components/AccountSettings/AccountSettings";
 import OptionSettings from "../../components/OptionSettings/OptionSettings";
-import {ImagePopupContent} from "../../components/PopupImage/PopupImage";
-import {PopupIntroContent} from "../../components/PopupIntro/PopupIntro";
+import ImageContent from "../../components/Popup/content/image/ImageContent";
+import IntroContent from "../../components/Popup/content/info/InfoContent";
+import CityContent from  "../../components/Popup/content/city/CityContent"
 import {ReactComponent as LocationIcon} from "../../icons/map_point.svg";
 import Checkbox from "../../components/Checkbox/Checkbox";
 
@@ -78,13 +79,15 @@ const columns = [
         {title: 'SecondaryButton', component: <SecondaryButton>Cancel</SecondaryButton>},
         {title: 'SecondaryButton', component: <SecondaryButton>CANCEL</SecondaryButton>},
         {title: 'Label', component: <Label>Change Password</Label>},
-        {title: 'Input 1', component: <Input />},
-        {title: 'Input 2', component: <Input Icon={MailIcon} errorMessage={'Email is misspelled!'} value="jodode@mail.com"/>},
-        {title: 'Input 3', component: <Input withSwitcher isTouched errorMessage={'Email is misspelled!'}/>},
-        {title: 'Input 4', component: <Input withCleaner/>},
-        {title: 'Textarea', component: <Textarea withCleaner/>},
-        {title: 'PInput', component: <PInput withIcon Icon={LocationIcon}> Vinnica</PInput>},
-        {title: 'FromToTime', component: <FromToTime day={{name: 'Mon', isChecked: true, from: '12:00', to: '13:00'}} id={'ht12'}/>},
+        {title: 'Input 1', component: <Input Icon={MailIcon} isTouched errorMessage={'Email is misspelled!'} value="jodode@mail.com"/>},
+        {title: 'Input 2', component: <Input />},
+        {title: 'Input 3 {withSwitcher}', component: <Input withSwitcher />},
+        {title: 'Input 4 {withCleaner value}', component: <Input withCleaner value={111}/>},
+        {title: 'Textarea {withCleaner}', component: <Textarea withCleaner/>},
+        {title: 'Textarea {withCleaner value}', component: <Textarea withCleaner value={222}/>},
+        {title: 'PInput', component: <PInput withIcon Icon={LocationIcon} value={'Vinnica'} />},
+        {title: 'FromToTime', component: <FromToTime prefix='mon' dayName='Mon' values={{monIsChecked: true}}/>},
+        {title: 'FromToTime', component: <FromToTime prefix='mon' dayName='Mon' values={{}}/>},
         {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
         {title: 'Checkbox', component: <Checkbox/>},
     ],
@@ -147,12 +150,13 @@ const columns = [
 
     ],
     [
+        {title: 'CloseButton', component: <CloseButton clickHandler={() => alert('clicked')}/>},
         {
-            title: 'PopupImage',
-            component: <ImagePopupContent
-                imageUrl="https://raw.githubusercontent.com/SVladikO/testApp/master/images/4_cheese.jpg"/>
+            title: 'ImagePopupContent',
+            component: <ImageContent imageUrl="https://raw.githubusercontent.com/SVladikO/testApp/master/images/4_cheese.jpg"/>
         },
-        {title: 'PopupIntro', component: <PopupIntroContent/>},
+        {title: 'IntroPopupContent', component: <IntroContent>Some text Some text Some text Some text Some text</IntroContent>},
+        {title: 'CityPopupContent', component: <CityContent />},
         {
             title: 'EmptyBasket', component:
                 <NotificationTDB

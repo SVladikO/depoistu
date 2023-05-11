@@ -32,8 +32,8 @@ export const DEV_ROUTER = {
     ADMIN: 'admin',
 };
 
-export const BE_DOMAIN = 'https://pizza-mobile-api.herokuapp.com';
-// export const BE_DOMAIN = 'http://localhost:5000';
+// export const BE_DOMAIN = 'https://pizza-mobile-api.herokuapp.com';
+export const BE_DOMAIN = 'http://localhost:5000';
 
 export const BE_API = {
     //TODO candidate to delete
@@ -47,6 +47,8 @@ export const BE_API = {
     GET_COMPANIES_BY_CUSTOMER_ID: customer_id => `${BE_DOMAIN}/companies/by/customer/${customer_id}`,
     GET_COMPANIES_BY_CITY: city => `${BE_DOMAIN}/companies/by/city/${city}`,
     GET_COMPANY_BY_COMPANY_ID: companyId => `${BE_DOMAIN}/companies/by/id/${companyId}`,
+    POST_COMPANY_CREATE: () => `${BE_DOMAIN}/companies`,
+
     GET_MENU_ITEMS_BY_COMPANY_ID: company_id => `${BE_DOMAIN}/menu/${company_id}`
 };
 

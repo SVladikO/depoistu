@@ -10,13 +10,13 @@ import {Divider, BasketButton, Pictures} from "./EditCompany.style";
 
 import {
     ContentContainer,
-    FromToTime,
     Input,
     Label,
     PInput,
-    PopupCity,
+    Popup,
     PrimaryButton,
-    SecondaryButton
+    SecondaryButton,
+    WeekSchedule
 } from "../../components";
 
 import {ReactComponent as RemoveIcon} from "../../icons/remove_icon.svg";
@@ -121,19 +121,13 @@ const EditCompany = () => {
                                 errorMessage={errors.street}
                             />
                             <Label>Work Schedule</Label>
-                            <FromToTime checkboxName={'monIsChecked'} isChecked={values.monIsChecked} dayName={'ПН'} nameFrom={"monFrom"} valueFrom={values.monFrom} nameTo={"monTo"} valueTo={values.monTo} handleChange={handleChange}/>
-                            <FromToTime checkboxName={'tueIsChecked'} isChecked={values.tueIsChecked} dayName={'ВТ'} nameFrom={"tueFrom"} valueFrom={values.tueFrom} nameTo={"tueTo"} valueTo={values.tueTo} handleChange={handleChange}/>
-                            <FromToTime checkboxName={'wedIsChecked'} isChecked={values.wedIsChecked} dayName={'СР'} nameFrom={"wedFrom"} valueFrom={values.wedFrom} nameTo={"wedTo"} valueTo={values.wedTo} handleChange={handleChange}/>
-                            <FromToTime checkboxName={'thuIsChecked'} isChecked={values.thuIsChecked} dayName={'ЧТ'} nameFrom={"thuFrom"} valueFrom={values.thuFrom} nameTo={"thuTo"} valueTo={values.thuTo} handleChange={handleChange}/>
-                            <FromToTime checkboxName={'friIsChecked'} isChecked={values.friIsChecked} dayName={'ПТ'} nameFrom={"friFrom"} valueFrom={values.friFrom} nameTo={"friTo"} valueTo={values.friTo} handleChange={handleChange}/>
-                            <FromToTime checkboxName={'satIsChecked'} isChecked={values.satIsChecked} dayName={'СБ'} nameFrom={"satFrom"} valueFrom={values.satFrom} nameTo={"satTo"} valueTo={values.satTo} handleChange={handleChange}/>
-                            <FromToTime checkboxName={'sunIsChecked'} isChecked={values.sunIsChecked} dayName={'ВС'} nameFrom={"sunFrom"} valueFrom={values.sunFrom} nameTo={"sunTo"} valueTo={values.sunTo} handleChange={handleChange}/>
+                            <WeekSchedule values={values} handleChange={handleChange} />
                         </ContentContainer>
                         <PrimaryButton type={'submit'} isWide>Save changes</PrimaryButton>
                     </form>
                 )}
             </Formik>
-            {showCityPopup && <PopupCity selectCity={selectCity} closePopup={closeCityPopup}/>
+            {showCityPopup && <Popup.City selectCity={selectCity} onClose={closeCityPopup}/>
             }
         </>
     )

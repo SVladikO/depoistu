@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import {useSelector} from "react-redux";
 
 import {ReactComponent as LocationIcon} from "../../icons/map_point.svg";
-import {PInput, ContentContainer, Company, Notification, PopupCity} from "../../components";
+import {PInput, ContentContainer, Company, Notification, Popup} from "../../components";
 import {BE_API, URL} from "../../utils/config";
 import {useLocalStorage, useLocalStorageFetch} from "../../utils/hook";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/utils";
@@ -59,7 +59,7 @@ const SearchPage = () => {
                     </Link>
                 )
             }
-            {showCityPopup && <PopupCity selectCity={selectCity} closePopup={closeCityPopup}/>}
+            {showCityPopup && <Popup.City selectCity={selectCity} onClose={closeCityPopup}/>}
         </>
     );
 };

@@ -39,6 +39,7 @@ export const securityCheck = () => {
     if (test !== secretKey) {
         return securityCheck();
     }
+
     LocalStorage.set(LOCAL_STORAGE_KEY.IS_TRUSTED_CUSTOMER, true);
 }
 
@@ -46,14 +47,15 @@ export const setBrowserTabTitle = () => document.title = translations.company_na
 
 export const LOCAL_STORAGE_KEY = {
     CUSTOMER: 'CUSTOMER',
+    HIDE_INTRO: 'HIDE_INTRO',
     CUSTOMER_COMPANIES: 'CUSTOMER_COMPANIES',
     IS_TRUSTED_CUSTOMER: 'IS_TRUSTED_CUSTOMER',
     COMPANY_SEARCH_RESULT: 'COMPANY_SEARCH_RESULT',
-    COMPANY_SEARCH_SELECTED_CITY: 'COMPANY_SEARCH_SELECTED_CITY',
-    COMPANY_SEARCH_SELECTED_REGION: 'COMPANY_SEARCH_SELECTED_REGION',
+    COMPANY_ID_FOR_EDIT_MENU: 'COMPANY_ID_FOR_EDIT_MENU',
     COMPANY_CANDIDATE_TO_EDIT: 'COMPANY_CANDIDATE_TO_EDIT',
     MENU_ITEM_CANDIDATE_TO_EDIT: 'MENU_ITEM_CANDIDATE_TO_EDIT',
-    COMPANY_ID_FOR_EDIT_MENU: 'COMPANY_ID_FOR_EDIT_MENU',
+    COMPANY_SEARCH_SELECTED_CITY: 'COMPANY_SEARCH_SELECTED_CITY',
+    COMPANY_SEARCH_SELECTED_REGION: 'COMPANY_SEARCH_SELECTED_REGION',
 }
 
 export const LocalStorage = {
@@ -74,7 +76,7 @@ export function initSchedule(schedule) {
     const times = schedule.split(',')?.map(el => el.trim());
     let result = {};
     ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
-        .map((key, index) => {
+        .forEach((key, index) => {
             const [from, to] = times[index]?.split('-') ?? "";
             result[key] = {
                 isChecked: !!times[index],
@@ -85,3 +87,25 @@ export function initSchedule(schedule) {
     return result;
 }
 
+export const getScheduleAsString = values => {
+    let result = ''
+
+    result += values.monIsChecked ? `${values.monFrom}-${values.monTo},` : ',';
+    result += values.tueIsChecked ? `${values.tueFrom}-${values.tueTo},` : ',';
+    result += values.wedIsChecked ? `${values.wedFrom}-${values.wedTo},` : ',';
+    result += values.thuIsChecked ? `${values.thuFrom}-${values.thuTo},` : ',';
+    result += values.friIsChecked ? `${values.friFrom}-${values.friTo},` : ',';
+    result += values.satIsChecked ? `${values.satFrom}-${values.satTo},` : ',';
+    result += values.sunIsChecked ? `${values.sunFrom}-${values.sunTo}` : '';
+
+    return result;
+}
+
+export const isScheduleValid = values =>
+    values.monIsChecked ||
+    values.tueIsChecked ||
+    values.wedIsChecked ||
+    values.thuIsChecked ||
+    values.friIsChecked ||
+    values.satIsChecked ||
+    values.sunIsChecked;
