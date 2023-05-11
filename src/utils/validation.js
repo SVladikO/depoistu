@@ -1,6 +1,11 @@
 import * as Yup from 'yup';
 
- const USER = {
+const PHONE = {
+    MIN: 13,
+    MAX: 13
+};
+
+const USER = {
     NAME: {
         MIN: 2,
         MAX: 30
@@ -9,10 +14,7 @@ import * as Yup from 'yup';
         MIN: 6,
         MAX: 12
     },
-    PHONE: {
-        MIN: 13,
-        MAX: 13
-    },
+    PHONE,
     EMAIL: {
         MAX: 30
     }
@@ -61,8 +63,7 @@ const changePasswordValidation = {
 }
 
 
-
- const MENU_ITEM = {
+const MENU_ITEM = {
     NAME: {
         MIN: 2,
         MAX: 30
@@ -83,7 +84,7 @@ const changePasswordValidation = {
     },
 };
 
- const menu_item_validation = {
+const menu_item_validation = {
     name: Yup.string()
         .required(`Required!`)
         .min(MENU_ITEM.NAME.MIN, `Min length ${MENU_ITEM.NAME.MIN}`)
@@ -103,7 +104,7 @@ const changePasswordValidation = {
         .max(MENU_ITEM.MEAL_SIZE.MAX, `Max length ${MENU_ITEM.MEAL_SIZE.MAX}`)
 }
 
- const COMPANY = {
+const COMPANY = {
     NAME: {
         MIN: 2,
         MAX: 30
@@ -115,27 +116,24 @@ const changePasswordValidation = {
         MIN: 2,
         MAX: 30
     },
-    PHONE: {
-        MIN: 10,
-        MAX: 10
-    },
+    PHONE,
     SCHEDULE: {},
 };
 
- const company_validation = {
+const company_validation = {
     name: Yup.string()
-        .required()
+        .required(`Required`)
         .min(COMPANY.NAME.MIN, `Min length ${COMPANY.NAME.MIN}`)
         .max(COMPANY.NAME.MAX, `Max length ${COMPANY.NAME.MAX}`),
-    city: Yup.string().required(),
+    city: Yup.string().required(`Required`),
     street: Yup.string()
-        .required()
+        .required(`Required`)
         .min(COMPANY.STREET.MIN, `Min length ${COMPANY.STREET.MIN}`)
         .max(COMPANY.STREET.MAX, `Max length ${COMPANY.STREET.MAX}`),
     phone: Yup.string()
-        .min(COMPANY.PHONE.MIN, `Example: 0971234567`)
-        .max(COMPANY.PHONE.MAX, `Example: 0971234567`)
-        .required(),
+        .required(`Required`)
+        .min(COMPANY.PHONE.MIN, `Too Short! Min length ${COMPANY.PHONE.MIN}`)
+        .max(COMPANY.PHONE.MAX, `Too Long! Max length ${COMPANY.PHONE.MAX}`)
 }
 
 const validation = {

@@ -33,7 +33,7 @@ import {LOCAL_STORAGE_KEY, LocalStorage, getScheduleAsString, isScheduleValid} f
 
 import {initialValues} from './utils';
 
-const CompanySchema = Yup.object().shape(company_validation);
+const CompanySchema = Yup.object().shape(validation.company);
 
 const AddCompany = () => {
     const CUSTOMER = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER)
@@ -102,7 +102,7 @@ const AddCompany = () => {
                 validationSchema={CompanySchema}
                 onSubmit={onSubmit}
             >
-                {({values, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
+                {({values, touched, setFieldValue, handleSubmit, handleBlur, handleChange, errors}) => (
                     <form onSubmit={e => {
                         e.preventDefault();
                         handleSubmit();
@@ -143,12 +143,13 @@ const AddCompany = () => {
                             />
                             <Label>Phone</Label>
                             <Input
-                                withCleaner
                                 name="phone"
                                 value={values.phone}
+                                errorMessage={errors.phone}
+                                isTouched={touched.phone || wasSubmitted}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('phone', '')}
-                                errorMessage={errors.phone}
+                                withCleaner
                             />
                             <Label>Work Schedule</Label>
                             <WeekSchedule values={values} handleChange={handleChange}/>
@@ -175,7 +176,7 @@ function renderPictures(pictures, deleteCompanyImage) {
                 >
                     {
                         pictures?.map((el, index) => (
-                            <SwiperSlide key={Math.random()}>
+                            <SwiperSlide key={Math.random()}>s
                                 <img src={el} alt=''/>
                                 <BasketButton onClick={() => deleteCompanyImage(index)}>
                                     <DeleteBasketIcon/>
