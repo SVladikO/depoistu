@@ -148,7 +148,7 @@ const AddCompany = () => {
                             {isScheduleValid(values) || <WarningMessage>'Schedule is a required field'</WarningMessage>}
                         </ContentContainer>
                         <PrimaryButton type='submit' isWide>Save changes</PrimaryButton>
-                        {showCityPopup && <PopupCity selectCity={selectCity(city => setFieldValue('city', city))}
+                        {showCityPopup && <Popup.City selectCity={selectCity(city => setFieldValue('city', city))}
                                                      closePopup={closeCityPopup}/>}
                     </form>
                 )}
