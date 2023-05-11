@@ -18,6 +18,7 @@ import {ReactComponent as ClearIcon} from "../../icons/close.svg";
 export const Textarea = memo(function ({
                                            errorMessage,
                                            withCleaner,
+                                           isTouched,
                                            value,
                                            name,
                                            changeHandler = () => {},
@@ -34,7 +35,7 @@ export const Textarea = memo(function ({
                 />
                 {withCleaner && <ClearWrapper onClick={clearHandler}><ClearIcon/></ClearWrapper>}
             </Wrapper>
-            {errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
+            {isTouched && errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
         </div>
     );
 });

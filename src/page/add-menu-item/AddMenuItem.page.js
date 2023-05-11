@@ -18,7 +18,7 @@ const MenuItemSchema = Yup.object().shape(validation.menuItem);
 
 
 const AddMenuItemPage = () => {
-
+    const [wasSubmitted, setWasSubmitted] = useState(false);
     const [imageURL, setImageURL] = useState();
 
     return (
@@ -28,15 +28,16 @@ const AddMenuItemPage = () => {
                     name: '',
                     price: '',
                     description: '',
-                    cookingTime: 0,
-                    size: 0
+                    cookingTime: '',
+                    size: ''
                 }}
                 validationSchema={MenuItemSchema}
                 onSubmit={values => {
                     console.log(values);
+                    setWasSubmitted(true)
                 }}
             >
-                {({values, setFieldValue, handleSubmit, handleChange, errors}) => (
+                {({values, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                     <form onSubmit={handleSubmit}>
                         <RowSplitter height={'15px'}/>
                         <ContentContainer>
@@ -48,50 +49,55 @@ const AddMenuItemPage = () => {
                             </MenuItemPhoto>
                             <Label>Name</Label>
                             <Input
-                                value={values.name}
                                 name="name"
+                                value={values.name}
+                                errorMessage={errors.name}
+                                isTouched={touched.name || wasSubmitted}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('name', '')}
                                 withCleaner
-                                errorMessage={errors.name}
                             />
                             <Label>Price</Label>
                             <Input
-                                value={values.price}
                                 name="price"
+                                value={values.price}
+                                errorMessage={errors.price}
+                                isTouched={touched.price || wasSubmitted}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('price', '')}
                                 withCleaner
-                                errorMessage={errors.price}
                             />
                             <Label>Description</Label>
                             <Textarea
+                                name="description"
                                 value={values.description}
+                                errorMessage={errors.description}
+                                isTouched={touched.description || wasSubmitted}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('description', '')}
                                 withCleaner
-                                name="description"
-                                errorMessage={errors.description}
                             />
                             <Label>Cooking time (in minutes)</Label>
                             <Input
-                                value={values.cookingTime}
                                 type="number"
+                                name="cookingTime"
+                                value={values.cookingTime}
+                                errorMessage={errors.cookingTime}
+                                isTouched={touched.cookingTime || wasSubmitted}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('cookingTime', '')}
                                 withCleaner
-                                name="cookingTime"
-                                errorMessage={errors.cookingTime}
                             />
                             <Label>Meal Size</Label>
                             <Input
-                                value={values.size}
                                 type="number"
+                                name="size"
+                                value={values.size}
                                 changeHandler={handleChange}
+                                errorMessage={errors.size}
+                                isTouched={touched.size || wasSubmitted}
                                 clearHandler={() => setFieldValue('size','')}
                                 withCleaner
-                                name="size"
-                                errorMessage={errors.size}
                             />
                         </ContentContainer>
                         <PrimaryButton isWide type="submit">Add</PrimaryButton>
