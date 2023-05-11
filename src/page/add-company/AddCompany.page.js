@@ -153,7 +153,7 @@ const AddCompany = () => {
                             />
                             <Label>Work Schedule</Label>
                             <WeekSchedule values={values} handleChange={handleChange}/>
-                            {isScheduleValid(values) || <WarningMessage>'Schedule is a required field'</WarningMessage>}
+                            {isScheduleValid(values) || <WarningMessage>Schedule is a required field</WarningMessage>}
                         </ContentContainer>
                         <PrimaryButton type='submit' isWide>Save changes</PrimaryButton>
                         {showCityPopup && <Popup.City selectCity={selectCity(city => setFieldValue('city', city))}

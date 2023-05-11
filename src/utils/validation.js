@@ -5,6 +5,12 @@ const PHONE = {
     MAX: 13
 };
 
+const PHONE_VALIDATION = from =>
+    Yup.string()
+        .min(from.PHONE.MIN, `Example: +380971234567`)
+        .max(from.PHONE.MAX, `Example: +380971234567`)
+        .required(`Required!`)
+
 const USER = {
     NAME: {
         MIN: 2,
@@ -33,10 +39,7 @@ const user_validation = {
         .email(`Invalid email`)
         .max(USER.EMAIL.MAX, `Too Long! Max length ${USER.EMAIL.MAX}`)
         .required(`Required`),
-    phone: Yup.string()
-        .min(USER.PHONE.MIN, `Example: +380971234567`)
-        .max(USER.PHONE.MAX, `Example: +380971234567`)
-        .required(`Required!`),
+    phone: PHONE_VALIDATION(USER),
     confirmedPassword: Yup.string()
         .required(`Required!`)
         .min(USER.PASSWORD.MIN, `Too Short! Min length ${USER.PASSWORD.MIN}`)
@@ -130,10 +133,7 @@ const company_validation = {
         .required(`Required`)
         .min(COMPANY.STREET.MIN, `Min length ${COMPANY.STREET.MIN}`)
         .max(COMPANY.STREET.MAX, `Max length ${COMPANY.STREET.MAX}`),
-    phone: Yup.string()
-        .required(`Required`)
-        .min(COMPANY.PHONE.MIN, `Too Short! Min length ${COMPANY.PHONE.MIN}`)
-        .max(COMPANY.PHONE.MAX, `Too Long! Max length ${COMPANY.PHONE.MAX}`)
+    phone: PHONE_VALIDATION(COMPANY),
 }
 
 const validation = {
