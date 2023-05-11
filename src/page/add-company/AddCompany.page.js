@@ -113,12 +113,12 @@ const AddCompany = () => {
                             <Input
                                 name='name'
                                 value={values.name}
-                                withCleaner
+                                errorMessage={errors.name}
                                 isTouched={touched.name || wasSubmitted}
                                 onBlur={handleBlur}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('name', '')}
-                                errorMessage={errors.name}
+                                withCleaner
                             />
                             <Label>City</Label>
                             <PInput

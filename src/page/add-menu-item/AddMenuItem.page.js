@@ -37,7 +37,7 @@ const AddMenuItemPage = () => {
                     setWasSubmitted(true)
                 }}
             >
-                {({values, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
+                {({values, touched, setFieldValue, handleSubmit, handleBlur, handleChange, errors}) => (
                     <form onSubmit={handleSubmit}>
                         <RowSplitter height={'15px'}/>
                         <ContentContainer>
@@ -53,16 +53,19 @@ const AddMenuItemPage = () => {
                                 value={values.name}
                                 errorMessage={errors.name}
                                 isTouched={touched.name || wasSubmitted}
+                                onBlur={handleBlur}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('name', '')}
                                 withCleaner
                             />
                             <Label>Price</Label>
                             <Input
+                                type="number"
                                 name="price"
                                 value={values.price}
                                 errorMessage={errors.price}
                                 isTouched={touched.price || wasSubmitted}
+                                onBlur={handleBlur}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('price', '')}
                                 withCleaner
@@ -73,6 +76,7 @@ const AddMenuItemPage = () => {
                                 value={values.description}
                                 errorMessage={errors.description}
                                 isTouched={touched.description || wasSubmitted}
+                                onBlur={handleBlur}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('description', '')}
                                 withCleaner
@@ -84,6 +88,7 @@ const AddMenuItemPage = () => {
                                 value={values.cookingTime}
                                 errorMessage={errors.cookingTime}
                                 isTouched={touched.cookingTime || wasSubmitted}
+                                onBlur={handleBlur}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('cookingTime', '')}
                                 withCleaner
@@ -93,9 +98,10 @@ const AddMenuItemPage = () => {
                                 type="number"
                                 name="size"
                                 value={values.size}
-                                changeHandler={handleChange}
                                 errorMessage={errors.size}
                                 isTouched={touched.size || wasSubmitted}
+                                onBlur={handleBlur}
+                                changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('size','')}
                                 withCleaner
                             />
