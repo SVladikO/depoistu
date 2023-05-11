@@ -63,7 +63,7 @@ export const Input = memo(function ({
                                     }) {
     const [inputType, setInputType] = useState(withSwitcher ? INPUT_TYPE.PASSWORD : type);
     const handleSwitch = () => setInputType(inputType === INPUT_TYPE.PASSWORD ? INPUT_TYPE.TEXT : INPUT_TYPE.PASSWORD);
-    const [hasFocus, setFocus] = useState(false);
+
     return (
         <div>
             <Wrapper className='pma-input'>
