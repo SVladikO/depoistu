@@ -13,6 +13,7 @@ import {RowSplitterStyle as RowSplitter} from "./RowSplitter/RowSplitter.style";
 import CheckBoxWithLabel from "./CheckBoxWithLabel/CheckBoxWithLabel";
 import ToggleCheckbox from "./ToggleCheckbox/ToggleCheckbox";
 import SettingMenuRow from "./SettingMenuRow/SettingMenuRow";
+import CloseButton from "./CloseButton/CloseButton";
 import {ContentContainer} from "./ContentContainer/ContentContainer.style.js";
 import {Discount} from "./Discount/Discount.style";
 import HistoryTabBar from "./HistoryTabBar/HistoryTabBar";
@@ -30,10 +31,8 @@ import Like from "./Like/Like";
 import MenuItem from "./MenuItem/MenuItem";
 import OrderHistoryRow from "./OrderHistoryRow/OrderHistoryRow";
 import OrderIconWithCounter from "./OrderIconWithCounter/OrderIconWithCounter.jsx";
-import PopupCity from "./PopupCity/PopupCity";
+import Popup from "./Popup/Popup";
 import WeekSchedule from "./WeekSchedule/WeekSchedule";
-import PopupIntro from "./PopupIntro/PopupIntro";
-import PopupImage from "./PopupImage/PopupImage";
 import Company from "./Company/Company";
 import CategoryMenuRow from "./CategoryMenuRow/CategoryMenuRow";
 import EditMenuRow from "./EditMenuRow/EditMenuRow";
@@ -64,9 +63,8 @@ export {
     Flex,
     Notification,
     Absolute,
-    PopupImage,
-    PopupIntro,
-    PopupCity,
+    Popup,
+    CloseButton,
     PrimaryButton,
     SecondaryButton,
     ContentContainer,

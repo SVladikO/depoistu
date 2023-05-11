@@ -13,7 +13,7 @@ import {
     Input,
     Label,
     PInput,
-    PopupCity,
+    Popup,
     Notification,
     PrimaryButton,
     SecondaryButton,
@@ -153,6 +153,8 @@ const AddCompany = () => {
                     </form>
                 )}
             </Formik>
+            {showCityPopup && <Popup.City selectCity={selectCity} onClose={closeCityPopup}/>
+            }
         </>
     )
 };
