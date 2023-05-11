@@ -153,8 +153,6 @@ const AddCompany = () => {
                     </form>
                 )}
             </Formik>
-            {showCityPopup && <Popup.City selectCity={selectCity} onClose={closeCityPopup}/>
-            }
         </>
     )
 };

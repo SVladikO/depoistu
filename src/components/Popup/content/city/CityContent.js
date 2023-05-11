@@ -46,6 +46,7 @@ export const CityContent = ({selectCity, onClose}) => {
             return
         }
 
+        debugger
         selectCity([city, selectedRegion])
         enableScrollOnBody();
         onClose()
