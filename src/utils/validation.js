@@ -95,6 +95,10 @@ export const COMPANY = {
         MIN: 2,
         MAX: 30
     },
+    PHONE: {
+        MIN: 10,
+        MAX: 10
+    },
     SCHEDULE: {},
 };
 
@@ -108,4 +112,8 @@ export const company_validation = {
         .required()
         .min(COMPANY.STREET.MIN, `Min length ${COMPANY.STREET.MIN}`)
         .max(COMPANY.STREET.MAX, `Max length ${COMPANY.STREET.MAX}`),
+    phone: Yup.string()
+        .min(COMPANY.PHONE.MIN, `Example: 0971234567`)
+        .max(COMPANY.PHONE.MAX, `Example: 0971234567`)
+        .required(),
 }

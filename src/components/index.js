@@ -32,6 +32,7 @@ import MenuItem from "./MenuItem/MenuItem";
 import OrderHistoryRow from "./OrderHistoryRow/OrderHistoryRow";
 import OrderIconWithCounter from "./OrderIconWithCounter/OrderIconWithCounter.jsx";
 import Popup from "./Popup/Popup";
+import WeekSchedule from "./WeekSchedule/WeekSchedule";
 import Company from "./Company/Company";
 import CategoryMenuRow from "./CategoryMenuRow/CategoryMenuRow";
 import EditMenuRow from "./EditMenuRow/EditMenuRow";
@@ -48,6 +49,7 @@ export {
     Like,
     Checkbox,
     Rating,
+    WeekSchedule,
     CategoryMenuRow,
     NotificationTDB,
     RowSplitter,

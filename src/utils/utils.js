@@ -76,7 +76,7 @@ export function initSchedule(schedule) {
     const times = schedule.split(',')?.map(el => el.trim());
     let result = {};
     ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
-        .map((key, index) => {
+        .forEach((key, index) => {
             const [from, to] = times[index]?.split('-') ?? "";
             result[key] = {
                 isChecked: !!times[index],
@@ -87,3 +87,25 @@ export function initSchedule(schedule) {
     return result;
 }
 
+export const getScheduleAsString = values => {
+    let result = ''
+
+    result += values.monIsChecked ? `${values.monFrom}-${values.monTo},` : ',';
+    result += values.tueIsChecked ? `${values.tueFrom}-${values.tueTo},` : ',';
+    result += values.wedIsChecked ? `${values.wedFrom}-${values.wedTo},` : ',';
+    result += values.thuIsChecked ? `${values.thuFrom}-${values.thuTo},` : ',';
+    result += values.friIsChecked ? `${values.friFrom}-${values.friTo},` : ',';
+    result += values.satIsChecked ? `${values.satFrom}-${values.satTo},` : ',';
+    result += values.sunIsChecked ? `${values.sunFrom}-${values.sunTo}` : '';
+
+    return result;
+}
+
+export const isScheduleValid = values =>
+    values.monIsChecked ||
+    values.tueIsChecked ||
+    values.wedIsChecked ||
+    values.thuIsChecked ||
+    values.friIsChecked ||
+    values.satIsChecked ||
+    values.sunIsChecked;
