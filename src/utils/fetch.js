@@ -1,5 +1,5 @@
 const getOptions = body => ({
-    method: 'POST',
+    method: body.method || 'POST',
     headers: {
         'Content-Type': 'application/json'
     },
@@ -13,7 +13,6 @@ export const fetchData = async (url, body) => {
             ? fetch(decodeURIComponent(url), getOptions(body))
             : fetch(decodeURIComponent(url))
     );
-
     const json = await response.json();
 
     const {status, statusText, headers} = response;

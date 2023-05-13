@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 import {Formik} from "formik";
-import {useParams} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import {Swiper, SwiperSlide} from "swiper/react";
 import React, {useEffect, useMemo, useState} from "react";
 
@@ -11,7 +11,7 @@ import {Divider, BasketButton, Pictures} from "./EditCompany.style";
 import {
     ContentContainer,
     Input,
-    Label,
+    Label, Notification,
     PInput,
     Popup,
     PrimaryButton,
@@ -26,35 +26,72 @@ import {ReactComponent as DeleteBasketIcon} from "../../icons/delete_basket.svg"
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/utils";
 import validation from "../../utils/validation";
 import {initSchedule} from "../../utils/utils";
+import {fetchData} from "../../utils/fetch";
+import {BE_API, URL} from "../../utils/config";
 
 const EditCompany = () => {
+    const navigate = useNavigate();
     const companyId = +useParams().companyId;
     const CUSTOMER_COMPANIES = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
     const company = CUSTOMER_COMPANIES.find((c => c.ID === companyId));
-    const [pictures, setPictures] = useState(company?.PHOTOS?.split(',') || []);
-    const [wasSubmitted, setWasSubmitted] = useState(false);
 
     const [city, setCity] = useState(company.CITY);
-    const [showCityPopup, setShowCityPopup] = useState(false);
-
-    const deleteCompanyImage = index => setPictures(pictures.filter((_, i) => i !== index));
     const schedule = initSchedule(company?.SCHEDULE);
+    const [pictures, setPictures] = useState(company?.PHOTOS?.split(',') || []);
 
-    const openCityPopup = () => setShowCityPopup(true);
-    const closeCityPopup = () => setShowCityPopup(false);
-    const selectCity = ([city]) => {
-        setCity(city);
-        closeCityPopup();
-    }
+    const [isLoading, setIsLoading] = useState(false);
+    const [requestError, setRequestError] = useState("");
+    const [wasSubmitted, setWasSubmitted] = useState(false);
+    const [showCityPopup, setShowCityPopup] = useState(false);
+    const [isCompanyDeleted, setIsCompanyDeleted] = useState(false);
 
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
 
+    const openCityPopup = () => setShowCityPopup(true);
+
+    const closeCityPopup = () => setShowCityPopup(false);
+
+    const deleteCompanyImage = index => setPictures(pictures.filter((_, i) => i !== index));
+
+    const selectCity = ([city]) => {
+        setCity(city);
+        closeCityPopup();
+    }
+
+    const deleteCompany = () => {
+        setIsLoading(true)
+
+        fetchData(BE_API.DELETE_COMPANY_CREATE(companyId), {method: 'delete'})
+            .then(res => {
+                LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
+                setIsCompanyDeleted(true);
+            })
+            .catch(res => setRequestError(res.status + " Error: " + res.body.errorMessage))
+            .finally(() => setIsLoading(false))
+    }
+
     const companyPictures = useMemo(() => renderPictures(pictures, deleteCompanyImage), [pictures])
+
+    const redirectToCustomerCompanies = () => navigate(URL.CUSTOMER_COMPANIES);
+
+    if (isLoading) {
+        return <Notification.Loading/>;
+    }
+
+    if (isCompanyDeleted) {
+        return (
+            <Notification.Success message={`Company '${company.NAME}' from '${company.CITY}' was deleted.`}>
+                <div onClick={redirectToCustomerCompanies}>Open my companies page.</div>
+            </Notification.Success>
+        );
+    }
+
     return (
         <>
-            <SecondaryButton isWide><RemoveIcon/> Delete company</SecondaryButton>
+            {requestError && <Notification.Error message={requestError}/>}
+            <SecondaryButton isWide onClick={deleteCompany}><RemoveIcon/> Delete company</SecondaryButton>
             <Formik
                 initialValues={{
                     name: company.NAME,
@@ -121,7 +158,7 @@ const EditCompany = () => {
                                 errorMessage={errors.street}
                             />
                             <Label>Work Schedule</Label>
-                            <WeekSchedule values={values} handleChange={handleChange} />
+                            <WeekSchedule values={values} handleChange={handleChange}/>
                         </ContentContainer>
                         <PrimaryButton type={'submit'} isWide>Save changes</PrimaryButton>
                     </form>

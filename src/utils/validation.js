@@ -1,14 +1,14 @@
 import * as Yup from 'yup';
 
 const PHONE = {
-    MIN: 13,
-    MAX: 13
+    MIN: 10,
+    MAX: 10
 };
 
 const PHONE_VALIDATION = from =>
     Yup.string()
-        .min(from.PHONE.MIN, `Example: +380971234567`)
-        .max(from.PHONE.MAX, `Example: +380971234567`)
+        .min(from.PHONE.MIN, `Example: 0971234567`)
+        .max(from.PHONE.MAX, `Example: 0971234567`)
         .required(`Required!`)
 
 const USER = {
