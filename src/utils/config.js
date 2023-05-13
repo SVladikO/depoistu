@@ -32,7 +32,8 @@ export const DEV_ROUTER = {
     ADMIN: 'admin',
 };
 
-export const BE_DOMAIN = 'https://pizza-mobile-api.herokuapp.com';
+export const BE_DOMAIN = 'https://pizza-mobile-api-production.herokuapp.com';
+// export const BE_DOMAIN = 'https://pizza-mobile-api-develop.herokuapp.com';
 // export const BE_DOMAIN = 'http://localhost:5000';
 
 export const BE_API = {
