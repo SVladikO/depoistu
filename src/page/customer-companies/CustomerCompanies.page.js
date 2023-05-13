@@ -42,15 +42,14 @@ const CustomerCompaniesPage = () => {
                 company =>
                     <div key={company.ID}>
                         <Company company={company}/>
-                        <EditBar>
-                            <Link to={ROUTER.EDIT_COMPANY.URL + '/' + company.ID}>
-                                <PrimaryButton><EditIcon/>Company</PrimaryButton>
-                            </Link>
-                            <Link to={ROUTER.EDIT_MENU.URL + '/' + company.ID}>
-                                <PrimaryButton><EditIcon/>Menu</PrimaryButton>
-                            </Link>
-                        </EditBar>
-
+                        {/*<EditBar>*/}
+                        {/*    <Link to={ROUTER.EDIT_COMPANY.URL + '/' + company.ID}>*/}
+                        {/*        <PrimaryButton><EditIcon/>Company</PrimaryButton>*/}
+                        {/*    </Link>*/}
+                        {/*    <Link to={ROUTER.EDIT_MENU.URL + '/' + company.ID}>*/}
+                        {/*        <PrimaryButton><EditIcon/>Menu</PrimaryButton>*/}
+                        {/*    </Link>*/}
+                        {/*</EditBar>*/}
                     </div>)
             }
             <Link to={URL.ADD_COMPANY}>

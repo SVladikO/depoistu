@@ -13,8 +13,17 @@ import {
     Content,
     CompanyInfo,
     ScheduleContainer,
-    ScheduleWrapper
+    ScheduleWrapper,
+    Schedule,
+    Open,
+    Closes,
+    EditBar
 } from "./Company.style";
+import {Link} from "react-router-dom";
+import {ROUTER} from "../../utils/config";
+import {PrimaryButton} from "../Button/Button.style";
+import {ReactComponent as EditIcon} from "../../icons/edit.svg";
+
 
 const Company = (props) => {
 
@@ -45,9 +54,17 @@ const Company = (props) => {
                 <CompanyInfo>
                     <Name>{NAME}</Name>
                     <Address>{CITY}, {STREET}</Address>
+                    <ScheduleWrapper>{renderSchedule(SCHEDULE)[0]}</ScheduleWrapper>
                 </CompanyInfo>
-                <ScheduleWrapper>{renderSchedule(SCHEDULE)}</ScheduleWrapper>
             </Content>
+            <EditBar>
+                <Link to={ROUTER.EDIT_COMPANY.URL}>
+                    <PrimaryButton><EditIcon/>Company</PrimaryButton>
+                </Link>
+                <Link to={ROUTER.EDIT_MENU.URL}>
+                    <PrimaryButton><EditIcon/>Menu</PrimaryButton>
+                </Link>
+            </EditBar>
         </Wrapper>
     );
 };
@@ -64,10 +81,14 @@ function renderSchedule(SCHEDULE) {
     }
 
     return Object.keys(scheduleAsObject)?.map((key, i) => {
+        const open = `${key.slice(0,5)}`;
+        const closes = `${key.slice(6)}`
         return (
             <ScheduleContainer key={i}>
-                <div>{scheduleAsObject[key]}</div>
-                <div>{key}</div>
+                <Schedule>
+                    <Open>Open</Open>
+                    <Closes>Closes <span>{closes}</span></Closes>
+                </Schedule>
             </ScheduleContainer>
         )
     })
