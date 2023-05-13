@@ -29,11 +29,20 @@ import {initSchedule} from "../../utils/utils";
 import {fetchData} from "../../utils/fetch";
 import {BE_API, URL} from "../../utils/config";
 
+//We need this variable after call LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES) on delete company success
+//when we open customer companies page it will make request to BE and user will have updated list of companies.
+const companyFakeData = {
+    CITY: '',
+    SCHEDULE: ',,,,,,',
+    PHOTOS: '',
+}
+
 const EditCompany = () => {
     const navigate = useNavigate();
     const companyId = +useParams().companyId;
-    const CUSTOMER_COMPANIES = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
-    const company = CUSTOMER_COMPANIES.find((c => c.ID === companyId));
+    const customerCompaniesFromLocalStorage = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES) || [{ID: companyId, ...companyFakeData}];
+    const companies = customerCompaniesFromLocalStorage.length ? customerCompaniesFromLocalStorage : [{ID: companyId, ...companyFakeData}];
+    const company = companies.find((c => c.ID === companyId));
 
     const [city, setCity] = useState(company.CITY);
     const schedule = initSchedule(company?.SCHEDULE);
@@ -83,8 +92,16 @@ const EditCompany = () => {
     if (isCompanyDeleted) {
         return (
             <Notification.Success message={`Company '${company.NAME}' from '${company.CITY}' was deleted.`}>
-                <div onClick={redirectToCustomerCompanies}>Open my companies page.</div>
+                <Link to={URL.CUSTOMER_COMPANIES}>Open my companies page.</Link>
             </Notification.Success>
+        );
+    }
+
+    if (!customerCompaniesFromLocalStorage.length) {
+        return (
+            <Notification.Error message={'You can open company by this id'}>
+                <Link to={URL.CUSTOMER_COMPANIES}>Open my companies page.</Link>
+            </Notification.Error>
         );
     }
 
