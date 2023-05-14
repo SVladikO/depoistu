@@ -1,4 +1,5 @@
 export const initialValues = {
+    photos: [],
     name: '',
     city: '',
     street: '',
