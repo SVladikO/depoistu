@@ -42,7 +42,7 @@ const EditCompany = () => {
     const companyId = +useParams().companyId;
     const customerCompaniesFromLocalStorage = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES) || [{ID: companyId, ...companyFakeData}];
     const companies = customerCompaniesFromLocalStorage.length ? customerCompaniesFromLocalStorage : [{ID: companyId, ...companyFakeData}];
-    const company = companies.find((c => c.ID === companyId));
+    const company = companies.find((c => c.ID === companyId)) || companyFakeData;
 
     const [city, setCity] = useState(company.CITY);
     const schedule = initSchedule(company?.SCHEDULE);
@@ -97,9 +97,9 @@ const EditCompany = () => {
         );
     }
 
-    if (!customerCompaniesFromLocalStorage.length) {
+    if (!customerCompaniesFromLocalStorage.length || !companies.find((c => c.ID === companyId))) {
         return (
-            <Notification.Error message={'You can open company by this id'}>
+            <Notification.Error message={'No company by this id'}>
                 <Link to={URL.CUSTOMER_COMPANIES}>Open my companies page.</Link>
             </Notification.Error>
         );
