@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
   perspective: 1px;
   background-color: ${COLOR.ACCENT4};
   margin: 0 0 10px 0;
+  padding: 0 10px;
   .swiper-pagination-bullet{
     width: 10px;
     height: 10px;
@@ -39,67 +40,19 @@ export const Content = styled.div`
   justify-content: space-between;
 `;
 export const CompanyInfo = styled.div`
-  margin: 10px auto 10px 10px;
   text-align: left;
   justify-self: start;
 `;
 
 export const ScheduleWrapper = styled.div`
+  text-align: right;
+  justify-self: flex-end;
   color: ${COLOR.ACCENT1};
+  margin: 10px 10px 10px 10px;
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
   flex-wrap: nowrap;
-  color: ${COLOR.ACCENT5};
-`;
-export const EditBar = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  justify-content: space-between;
-  gap: 27px;
-  margin: 0 auto 10px auto;
-  padding: 0 10px;
-  & > * {
-    display: flex;
-    flex: 1;
-  }
-  & button {
-    flex: 1;
-  }
-`;
-
-export const Schedule = styled.div`
-  display: flex;
-  height: 19px;
-`;
-
-export const Open = styled.span`
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
-  color: ${COLOR.ACCENT3};
-  display: inline-block;
-  margin: 0 15px 0 0;
-`;
-
-export const Closes = styled.span`
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
-  color: ${COLOR.ACCENT5};
-  position: relative;
-  display: inline-block;
-  & > span {
-    padding: 0 10px 0 0;
-  }
-  &:before {
-    content: ".";
-    position: absolute;
-    display: block;
-    top: -16%;
-    left: -8.5px;
-  }
 `;
 
 export const Name = styled.div`
@@ -110,13 +63,13 @@ export const Name = styled.div`
 `;
 
 export const ScheduleContainer = styled.div`
- & > * {
-   min-width: 50px;
- }  
+  & > * {
+    min-width: 50px;
+  }
 `;
 export const Address = styled.div`
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
-  color: ${COLOR.ACCENT5};
+  color: ${COLOR.ACCENT1};
 `;
