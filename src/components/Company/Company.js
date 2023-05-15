@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {getScheduleAsObject} from "../../utils/utils";
 import {Pagination, Navigation} from "swiper";
 import {Swiper, SwiperSlide} from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/pagination";
+import {ReactComponent as RightAnchor} from "../../icons/right-anchor.svg";
 
 import {
     Wrapper,
@@ -13,8 +15,55 @@ import {
     Content,
     CompanyInfo,
     ScheduleContainer,
-    ScheduleWrapper
+    ScheduleWrapper,
+    Schedule,
+    Open,
+    Closes,
+    DetailsAnchor,
+    Phone,
+    DetailedLink,
+    ScheduleContent, Location
 } from "./Company.style";
+
+const ScheduleDetails = ({schedule}) => {
+    const [isCompact, setIsCompact] = useState(false);
+
+    if (!schedule || !schedule.length) {
+        return;
+    }
+
+    const scheduleAsObject = getScheduleAsObject(schedule);
+
+    if (!Object.keys(scheduleAsObject).length) {
+        return;
+    }
+
+    if(!isCompact){
+        return <div onClick={() => setIsCompact(true)}>
+                    <DetailedLink>show schedule</DetailedLink>
+               </div>
+    }
+
+    return Object.entries(scheduleAsObject)?.map((key, i) => {
+        const closes = `${key[1].slice(6)}`
+        const time = `${key[1].split('-').join(' ')}`;
+        const from = time.split(' ')[0];
+        const to = time.split(' ')[1];
+
+        return (
+            <ScheduleWrapper onClick={() => setIsCompact(false)}>
+                <ScheduleContainer key={i}>
+                    <div>
+                        <div>{key[0]}</div>
+                        <div>{from}</div>
+                        <div>{to}</div>
+                    </div>
+                </ScheduleContainer>
+            </ScheduleWrapper>
+        )
+    })
+}
+
 
 const Company = (props) => {
 
@@ -44,48 +93,23 @@ const Company = (props) => {
             <Content>
                 <CompanyInfo>
                     <Name>{NAME}</Name>
-                    <Address>{CITY}, {STREET}</Address>
+                    <Location>
+                        <Address>{CITY}, {STREET}</Address>
+                        <DetailsAnchor><RightAnchor/></DetailsAnchor>
+                    </Location>
+                    <Schedule>
+                        <Open>Open</Open>
+                        <Closes>Closes<span>22</span></Closes>
+                    </Schedule>
+                    <Phone>80978432032</Phone>
+                    <ScheduleContent>
+                        <ScheduleDetails schedule={SCHEDULE}/>
+                    </ScheduleContent>
                 </CompanyInfo>
-                <ScheduleWrapper>{renderSchedule(SCHEDULE)}</ScheduleWrapper>
             </Content>
         </Wrapper>
     );
 };
-
-function renderSchedule(SCHEDULE) {
-    if (!SCHEDULE || !SCHEDULE.length) {
-        return;
-    }
-
-    const scheduleAsObject = getScheduleAsObject(SCHEDULE);
-
-    if (!Object.keys(scheduleAsObject).length) {
-        return;
-    }
-
-    return Object.keys(scheduleAsObject)?.map((key, i) => {
-        return (
-            <ScheduleContainer key={i}>
-                <div>{scheduleAsObject[key]}</div>
-                <div>{key}</div>
-            </ScheduleContainer>
-        )
-    })
-}
-
-export function getScheduleAsObject(schedule) {
-    const weekDayNames = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"];
-
-    return schedule
-        .split(',')
-        .map(el => el.trim())
-        .reduce((accum, fromTo, currentIndex) => {
-            if (fromTo) {
-                accum[fromTo] = (accum[fromTo] ? accum[fromTo] + ', ' : '') + weekDayNames[currentIndex];
-            }
-            return accum;
-        }, {});
-}
 
 
 export default Company;

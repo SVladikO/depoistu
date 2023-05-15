@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {COLOR,BORDER_RADIUS} from "../../utils/theme";
+import {COLOR, BORDER_RADIUS} from "../../utils/theme";
 
 export const Wrapper = styled.div`
 
@@ -9,13 +9,15 @@ export const Wrapper = styled.div`
   perspective: 1px;
   background-color: ${COLOR.ACCENT4};
   margin: 0 0 10px 0;
-  .swiper-pagination-bullet{
+  
+  .swiper-pagination-bullet {
     width: 10px;
     height: 10px;
     background-color: ${COLOR.ACCENT4};
     opacity: 1;
   }
-  .swiper-pagination-bullet-active{
+
+  .swiper-pagination-bullet-active {
     background-color: ${COLOR.ACCENT3};
   }
 `;
@@ -26,33 +28,102 @@ export const ImageSection = styled.div`
   max-height: 200px;
   justify-content: center;
   position: relative;
+
   img {
     width: 100%;
     height: 100%;
   }
 `;
 export const Content = styled.div`
-  & > * {
-    width: 50%;
-  }
-  display: flex;
-  justify-content: space-between;
 `;
 export const CompanyInfo = styled.div`
-  margin: 10px auto 10px 10px;
-  text-align: left;
-  justify-self: start;
+  margin: 10px 0 10px 10px;
 `;
 
 export const ScheduleWrapper = styled.div`
-  text-align: right;
-  justify-self: flex-end;
   color: ${COLOR.ACCENT1};
-  margin: 10px 10px 10px 10px;
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
   flex-wrap: nowrap;
+  color: ${COLOR.ACCENT5};
+  display: flex;
+`;
+
+export const DetailsAnchor = styled.div`
+  text-align: right;
+  align-self: center;
+  padding: 0 10px;
+`;
+
+export const Phone = styled.div`
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: ${COLOR.ACCENT5};
+`;
+
+export const DetailedLink = styled.div`
+  text-decoration: underline;
+  color: ${COLOR.ACCENT5};
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+`;
+
+export const EditBar = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 27px;
+  margin: 0 auto 10px auto;
+  padding: 0 10px;
+
+  & > * {
+    display: flex;
+    flex: 1;
+  }
+
+  & button {
+    flex: 1;
+  }
+`;
+
+export const Schedule = styled.div`
+  display: flex;
+  height: 19px;
+`;
+
+export const Open = styled.span`
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: ${COLOR.ACCENT3};
+  display: inline-block;
+  margin: 0 15px 0 0;
+`;
+
+export const Closes = styled.span`
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: ${COLOR.ACCENT5};
+  position: relative;
+  display: inline-block;
+
+  & > span {
+    display: inline-block;
+    margin: 0 0 0 10px;
+  }
+
+  &:before {
+    content: ".";
+    position: absolute;
+    display: block;
+    top: -16%;
+    left: -8.5px;
+  }
 `;
 
 export const Name = styled.div`
@@ -63,13 +134,27 @@ export const Name = styled.div`
 `;
 
 export const ScheduleContainer = styled.div`
- & > * {
-   min-width: 50px;
- }  
 `;
+
+
+export const ScheduleContent = styled.div`
+  display: flex;
+  & > div {
+    margin: 0 5px 0 0;
+  }
+`;
+export const Location = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+`;
+
 export const Address = styled.div`
+  display: flex;
+  flex-grow: 1;
+  width: 100%;
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
-  color: ${COLOR.ACCENT1};
+  color: ${COLOR.ACCENT5};
 `;

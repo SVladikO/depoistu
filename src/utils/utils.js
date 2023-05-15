@@ -87,6 +87,21 @@ export function initSchedule(schedule) {
     return result;
 }
 
+export function getScheduleAsObject(schedule) {
+    const weekDayNames = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"];
+    let obj = {};
+
+    schedule = schedule
+        .split(',')
+        .map(el => el.trim())
+
+    weekDayNames.forEach((el,i) =>{
+        obj[el] = schedule[i];
+    })
+    return obj;
+}
+
+
 export const getScheduleAsString = values => {
     let result = ''
 
