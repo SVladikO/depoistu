@@ -39,7 +39,7 @@ const EditMenu = () => {
         //TODO: SHOW WARNING WRONG PARAM
         companyId && fetchData(url)
             .then(res => {
-                setMenuItems(res);
+                setMenuItems(res.body);
                 setSelectedCategoryId(res[0]?.CATEGORY_ID)
                 setTimeout(() => dispatch(stopLoading()), 1000);
             }).catch(e => {
