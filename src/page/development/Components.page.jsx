@@ -51,6 +51,8 @@ import IntroContent from "../../components/Popup/content/info/InfoContent";
 import CityContent from  "../../components/Popup/content/city/CityContent"
 import {ReactComponent as LocationIcon} from "../../icons/map_point.svg";
 import Checkbox from "../../components/Checkbox/Checkbox";
+import {EditBar} from "../customer-companies/CustomerCompanies.style";
+import {ReactComponent as EditIcon} from "../../icons/edit.svg";
 
 const colors = Object.keys(COLOR).map(key =>
     ({title: key, component: <ColorCircle key={key} bg={COLOR[key]}/>, value: COLOR[key], width: '50px'})
@@ -93,7 +95,7 @@ const columns = [
     ],
     [
         {
-            title: 'Institution',
+            title: 'Company',
             component: <Company company={{
                 PHOTOS: 'https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg, https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg, https://afisha.bigmir.net/i/23/51/30/9/2351309/gallery/15b8175dc297f8a58d9de22e77b7b256-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg',
                 NAME: 'Domono',
@@ -101,6 +103,23 @@ const columns = [
                 SCHEDULE: '08.00-21.00, 08.00-21.00, 08.00-21.00, 08.00-21.00, 08.00-21.00, 10.00-22.00, 10.00-22.00',
                 STREET: 'Davidusk 15.',
             }}/>
+        },
+        {
+            title: 'Company',
+            component: <Company company={
+                {
+                    PHOTOS: 'https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg, https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg, https://afisha.bigmir.net/i/23/51/30/9/2351309/gallery/15b8175dc297f8a58d9de22e77b7b256-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg',
+                    NAME: 'Domono',
+                    CITY: 'Kyiv',
+                    SCHEDULE: '08.00-21.00, 08.00-21.00, 08.00-21.00, 08.00-21.00, 08.00-21.00, 10.00-22.00, 10.00-22.00',
+                    STREET: 'Davidusk 15.',
+                }
+            }>
+                <EditBar>
+                    <PrimaryButton><EditIcon/>Company</PrimaryButton>
+                    <PrimaryButton><EditIcon/>Menu</PrimaryButton>
+                </EditBar>
+            </Company>
         },
         {title: 'CategoryMenuRow', component: <CategoryMenuRow menuItems={[{CATEGORY_ID: 1}, {CATEGORY_ID: 2}, {CATEGORY_ID: 3}]} />},
         {
