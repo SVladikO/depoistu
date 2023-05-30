@@ -73,7 +73,7 @@ const EditCompany = () => {
     }
 
     const updateCompaniesInLocalStorage = updatedCompany => {
-        const companies = customerCompaniesFromLocalStorage.map(company => {
+        const updatedCompanies = customerCompaniesFromLocalStorage.map(company => {
             if (company.ID === updatedCompany.ID) {
                 return updatedCompany;
             }
@@ -81,7 +81,7 @@ const EditCompany = () => {
             return company;
         })
 
-        LocalStorage.set(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES, companies)
+        LocalStorage.set(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES, updatedCompanies)
     }
 
     const onSubmit = values => {
