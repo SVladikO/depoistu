@@ -5,7 +5,7 @@ import {Notification, SecondaryButton} from "../../components";
 
 import {ReactComponent as RemoveIcon} from "../../icons/remove_icon.svg";
 
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/utils";
+import {getScheduleAsString, LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/utils";
 import {initSchedule} from "../../utils/utils";
 import {fetchData} from "../../utils/fetch";
 import {BE_API, URL} from "../../utils/config";
@@ -32,6 +32,7 @@ const EditCompany = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [requestError, setRequestError] = useState("");
     const [isCompanyDeleted, setIsCompanyDeleted] = useState(false);
+    const [isCompanyUpdated, setIsCompanyUpdated] = useState(false);
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -43,7 +44,7 @@ const EditCompany = () => {
 
     if (isCompanyDeleted) {
         return (
-            <Notification.Success message={`Company '${company.NAME}' from '${company.CITY}' was deleted.`}>
+            <Notification.Success message={`Company was deleted.`}>
                 <Link to={URL.CUSTOMER_COMPANIES}>Open my companies page.</Link>
             </Notification.Success>
         );
@@ -61,7 +62,7 @@ const EditCompany = () => {
         setIsLoading(true)
 
         fetchData(BE_API.DELETE_COMPANY_CREATE(companyId), {method: 'delete'})
-            .then(res => {
+            .then(() => {
                 LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
                 setIsCompanyDeleted(true);
             })
@@ -71,11 +72,43 @@ const EditCompany = () => {
             .finally(() => setIsLoading(false))
     }
 
-    const onSubmit = values => console.log(values);
+    const updateCompaniesInLocalStorage = updatedCompany => {
+        const updatedCompanies = customerCompaniesFromLocalStorage.map(company => {
+            if (company.ID === updatedCompany.ID) {
+                return updatedCompany;
+            }
+
+            return company;
+        })
+
+        LocalStorage.set(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES, updatedCompanies)
+    }
+
+    const onSubmit = values => {
+        const {name, city, street, phone} = values;
+        const schedule = getScheduleAsString(values)
+        const reqObj = {id: companyId, name, city, street, phone, schedule, method: 'put'};
+        setIsLoading(true);
+
+        fetchData(BE_API.PUT_COMPANY_UPDATE(), reqObj)
+            .then(res => {
+                const updatedCompany = res.body[0];
+                updateCompaniesInLocalStorage(updatedCompany)
+
+                setIsCompanyUpdated(true);
+            })
+            .catch(res => setRequestError(res.status + " Error: " + res.body.errorMessage))
+            .finally(() => setIsLoading(false))
+    }
+
+    if (isLoading) {
+        return <Notification.Loading/>;
+    }
 
     return (
         <>
             {requestError && <Notification.Error message={requestError}/>}
+            {isCompanyUpdated && <Notification.Success message={"Company was updated."} />}
             <SecondaryButton isWide onClick={deleteCompany}><RemoveIcon/> Delete company</SecondaryButton>
             <CompanyView
                 initialValues={getInitialValues(company, schedule)}
