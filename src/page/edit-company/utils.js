@@ -1,3 +1,6 @@
+const defaultFrom = '09:00';
+const defaultTo = '21:00';
+
 const getInitialValues = (company, schedule) => (
     {
         photos: company?.PHOTOS?.split(',') || [],
@@ -9,23 +12,23 @@ const getInitialValues = (company, schedule) => (
         monFrom: schedule.mon.from,
         monTo: schedule.mon.to,
         tueIsChecked: !!schedule.tue.from || !!schedule.tue.to,
-        tueFrom: schedule.tue.from || '09:00',
-        tueTo: schedule.tue.to || '21:00',
+        tueFrom: schedule.tue.from || defaultFrom,
+        tueTo: schedule.tue.to || defaultTo,
         wedIsChecked: !!schedule.wed.from || !!schedule.wed.to,
-        wedFrom: schedule.wed.from || '09:00',
-        wedTo: schedule.wed.to || '21:00',
+        wedFrom: schedule.wed.from || defaultFrom,
+        wedTo: schedule.wed.to || defaultTo,
         thuIsChecked: !!schedule.thu.from || !!schedule.thu.to,
-        thuFrom: schedule.thu.from || '09:00',
-        thuTo: schedule.thu.to || '21:00',
+        thuFrom: schedule.thu.from || defaultFrom,
+        thuTo: schedule.thu.to || defaultTo,
         friIsChecked: !!schedule.fri.from || !!schedule.fri.to,
-        friFrom: schedule.fri.from || '09:00',
-        friTo: schedule.fri.to || '21:00',
+        friFrom: schedule.fri.from || defaultFrom,
+        friTo: schedule.fri.to || defaultTo,
         satIsChecked: !!schedule.sat.from || !!schedule.sat.to,
-        satFrom: schedule.sat.from || '09:00',
-        satTo: schedule.sat.to || '21:00',
+        satFrom: schedule.sat.from || defaultFrom,
+        satTo: schedule.sat.to || defaultTo,
         sunIsChecked: !!schedule.sun.from || !!schedule.sun.to,
-        sunFrom: schedule.sun.from || '09:00',
-        sunTo: schedule.sun.to || '21:00',
+        sunFrom: schedule.sun.from || defaultFrom,
+        sunTo: schedule.sun.to || defaultTo,
     }
 );
 
