@@ -51,7 +51,8 @@ export const BE_API = {
     POST_COMPANY_CREATE: () => `${BE_DOMAIN}/companies`,
     DELETE_COMPANY_CREATE: companyId => `${BE_DOMAIN}/companies/${companyId}`,
 
-    GET_MENU_ITEMS_BY_COMPANY_ID: company_id => `${BE_DOMAIN}/menu/${company_id}`
+    GET_MENU_ITEMS_BY_COMPANY_ID: company_id => `${BE_DOMAIN}/menu/${company_id}`,
+    POST_MENU_ITEM: () => `${BE_DOMAIN}/menu`
 };
 
 export const CATEGORY_MAPPER = {
