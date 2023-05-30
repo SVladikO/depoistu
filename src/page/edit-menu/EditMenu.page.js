@@ -70,6 +70,7 @@ const EditMenu = () => {
             <Wrapper>
                 {menuItems &&
                     <CategoryMenuRow
+                        showAllCategories
                         showMenuItemAmount
                         menuItems={menuItems}
                         selectedCategoryId={selectedCategoryId}
