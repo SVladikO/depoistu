@@ -47,7 +47,7 @@ const EditMenu = () => {
                 setRequestError(e.message)
             })
 
-    }, [url])
+    }, [url, companyId])
 
     if (isLoading) {
         return <Notification.Loading/>;
@@ -58,7 +58,7 @@ const EditMenu = () => {
     }
 
 
-    const menuItemsPerCategory = selectedCategoryId && menuItems.filter(mi => mi.CATEGORY_ID === selectedCategoryId) || [];
+    const menuItemsPerCategory = (selectedCategoryId && menuItems.filter(mi => mi.CATEGORY_ID === selectedCategoryId)) || [];
 
     const moveToEditMenuItem = menuItem => () => {
         LocalStorage.set(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT, menuItem);

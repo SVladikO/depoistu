@@ -48,6 +48,7 @@ const Company = (props) => {
                 </CompanyInfo>
                 <ScheduleWrapper>{renderSchedule(SCHEDULE)}</ScheduleWrapper>
             </Content>
+            {props.children}
         </Wrapper>
     );
 };
@@ -89,4 +90,3 @@ export function getScheduleAsObject(schedule) {
 
 
 export default Company;
-

@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
   perspective: 1px;
   background-color: ${COLOR.ACCENT4};
   margin: 0 0 10px 0;
+  padding: 0 10px;
   .swiper-pagination-bullet{
     width: 10px;
     height: 10px;
@@ -39,7 +40,6 @@ export const Content = styled.div`
   justify-content: space-between;
 `;
 export const CompanyInfo = styled.div`
-  margin: 10px auto 10px 10px;
   text-align: left;
   justify-self: start;
 `;
@@ -63,9 +63,9 @@ export const Name = styled.div`
 `;
 
 export const ScheduleContainer = styled.div`
- & > * {
-   min-width: 50px;
- }  
+  & > * {
+    min-width: 50px;
+  }
 `;
 export const Address = styled.div`
   font-weight: 400;
