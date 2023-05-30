@@ -17,8 +17,6 @@ const EditMenuItemPage = () => {
         return navigate(URL.SETTING)
     }
 
-    console.log(2222, IMAGE_URL)
-
     const initialValue = {
         name: NAME,
         price: PRICE,

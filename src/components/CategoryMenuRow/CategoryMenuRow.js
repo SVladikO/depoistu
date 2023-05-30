@@ -28,7 +28,6 @@ const CategoryMenuRow = ({
         ),
 
     ];
-    console.log(2222, menuCategoryIds)
 
     const categories = menuCategoryIds.map((category_id) => (
         <SwiperSlide key={category_id}>
