@@ -1,115 +1,63 @@
 import React, {useState} from "react";
-import {Formik} from "formik";
-import * as Yup from 'yup';
 
-import {MenuItemPhoto, ImagePlace} from './AddMenuItem.style';
-
-import {
-    ContentContainer,
-    Input,
-    Label, PrimaryButton,
-    RowSplitter,
-    SecondaryButton,
-    Textarea
-} from '../../components/index'
-import validation from "../../utils/validation";
-
-const MenuItemSchema = Yup.object().shape(validation.menuItem);
-
+import {Notification} from "../../components";
+import MenuItemView from "../../page-view/menu-item/menu-item-view";
+import {fetchData} from "../../utils/fetch";
+import {BE_API} from "../../utils/config";
+import {getParam} from "../../utils/utils";
 
 const AddMenuItemPage = () => {
-    const [wasSubmitted, setWasSubmitted] = useState(false);
-    const [imageURL, setImageURL] = useState();
+    const categoryId = getParam(`categoryId`)
+    const companyId = getParam(`companyId`)
+
+    const [isLoading, setIsLoading] = useState(false);
+    const [isMenuItemCreated, setIsMenuItemCreated] = useState(false);
+    const [requestError, setRequestError] = useState("");
+
+    const initialValue = {
+        name: '',
+        price: '',
+        description: '',
+        cookingTime: '',
+        size: '',
+        imageUrl: ''
+    }
+
+    const onSubmit = values => {
+        console.log(values);
+
+        setIsLoading(true);
+        setIsMenuItemCreated(false)
+
+        const requestObj = {
+            ...values,
+            category_id: categoryId,
+            company_id: companyId,
+        }
+
+        fetchData(BE_API.POST_MENU_ITEM(), requestObj)
+            .then(() => {
+                setIsMenuItemCreated(true);
+            })
+            .catch(res => setRequestError(res.status + " Error: " + res.body.errorMessage))
+            .finally(() => setIsLoading(false))
+    }
+
+    if (isLoading) {
+        return <Notification.Loading/>;
+    }
+
+    if (requestError) {
+        return <Notification.Error message={requestError}/>;
+    }
 
     return (
         <>
-            <Formik
-                initialValues={{
-                    name: '',
-                    price: '',
-                    description: '',
-                    cookingTime: '',
-                    size: ''
-                }}
-                validationSchema={MenuItemSchema}
-                onSubmit={values => {
-                    console.log(values);
-                    setWasSubmitted(true)
-                }}
-            >
-                {({values, touched, setFieldValue, handleSubmit, handleBlur, handleChange, errors}) => (
-                    <form onSubmit={handleSubmit}>
-                        <RowSplitter height={'15px'}/>
-                        <ContentContainer>
-                            <MenuItemPhoto>
-                                {imageURL
-                                    ? <img src={imageURL} alt='Food'/>   // setImageURL
-                                    : <ImagePlace/>}
-                                <SecondaryButton type="button">{imageURL ? 'Change image' : 'Add image'}</SecondaryButton>
-                            </MenuItemPhoto>
-                            <Label>Name</Label>
-                            <Input
-                                name="name"
-                                value={values.name}
-                                errorMessage={errors.name}
-                                isTouched={touched.name || wasSubmitted}
-                                onBlur={handleBlur}
-                                changeHandler={handleChange}
-                                clearHandler={() => setFieldValue('name', '')}
-                                withCleaner
-                            />
-                            <Label>Price</Label>
-                            <Input
-                                type="number"
-                                name="price"
-                                value={values.price}
-                                errorMessage={errors.price}
-                                isTouched={touched.price || wasSubmitted}
-                                onBlur={handleBlur}
-                                changeHandler={handleChange}
-                                clearHandler={() => setFieldValue('price', '')}
-                                withCleaner
-                            />
-                            <Label>Description</Label>
-                            <Textarea
-                                name="description"
-                                value={values.description}
-                                errorMessage={errors.description}
-                                isTouched={touched.description || wasSubmitted}
-                                onBlur={handleBlur}
-                                changeHandler={handleChange}
-                                clearHandler={() => setFieldValue('description', '')}
-                                withCleaner
-                            />
-                            <Label>Cooking time (in minutes)</Label>
-                            <Input
-                                type="number"
-                                name="cookingTime"
-                                value={values.cookingTime}
-                                errorMessage={errors.cookingTime}
-                                isTouched={touched.cookingTime || wasSubmitted}
-                                onBlur={handleBlur}
-                                changeHandler={handleChange}
-                                clearHandler={() => setFieldValue('cookingTime', '')}
-                                withCleaner
-                            />
-                            <Label>Meal Size</Label>
-                            <Input
-                                type="number"
-                                name="size"
-                                value={values.size}
-                                errorMessage={errors.size}
-                                isTouched={touched.size || wasSubmitted}
-                                onBlur={handleBlur}
-                                changeHandler={handleChange}
-                                clearHandler={() => setFieldValue('size','')}
-                                withCleaner
-                            />
-                        </ContentContainer>
-                        <PrimaryButton isWide type="submit">Add</PrimaryButton>
-                    </form>
-                    )}
-            </Formik>
+            {isMenuItemCreated && <Notification.Success message={"Menu item was created."}/>}
+            <MenuItemView
+                initialValue={initialValue}
+                onSubmit={onSubmit}
+            />
         </>
     );
 }

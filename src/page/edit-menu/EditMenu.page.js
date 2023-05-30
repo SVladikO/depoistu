@@ -26,7 +26,7 @@ const EditMenu = () => {
 
     const [menuItems, setMenuItems] = useState([]);
     const [requestError, setRequestError] = useState('');
-    const [selectedCategoryId, setSelectedCategoryId] = useState(menuItems[0]?.CATEGORY_ID)
+    const [selectedCategoryId, setSelectedCategoryId] = useState();
 
     const url = BE_API.GET_MENU_ITEMS_BY_COMPANY_ID(companyId);
 
@@ -40,7 +40,7 @@ const EditMenu = () => {
         companyId && fetchData(url)
             .then(res => {
                 setMenuItems(res.body);
-                setSelectedCategoryId(res[0]?.CATEGORY_ID)
+                setSelectedCategoryId(res.body[0]?.CATEGORY_ID)
                 setTimeout(() => dispatch(stopLoading()), 1000);
             }).catch(e => {
                 setTimeout(() => dispatch(stopLoading()), 1000);
@@ -70,6 +70,7 @@ const EditMenu = () => {
             <Wrapper>
                 {menuItems &&
                     <CategoryMenuRow
+                        showAllCategories
                         showMenuItemAmount
                         menuItems={menuItems}
                         selectedCategoryId={selectedCategoryId}
@@ -85,7 +86,7 @@ const EditMenu = () => {
                         onEditClick={moveToEditMenuItem(elem)}
                     />)}
                 </>
-                <Link to={URL.ADD_MENU_ITEM}>
+                <Link to={`${URL.ADD_MENU_ITEM}?categoryId=${selectedCategoryId}&companyId=${companyId}`}>
                     <PrimaryButton isWide>Add menu item</PrimaryButton>
                 </Link>
             </Wrapper>

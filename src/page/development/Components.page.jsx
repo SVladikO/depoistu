@@ -64,6 +64,7 @@ function ExampleCategoryWithSelected() {
 
     return (
         <CategoryMenuRow
+            showAllCategories
             showMenuItemAmount
             menuItems={menuItems}
             selectedCategoryId={selectedCategoryId}
