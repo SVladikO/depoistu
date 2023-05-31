@@ -4,7 +4,7 @@ import {useNavigate} from "react-router-dom";
 import {Notification, RowSplitter, SecondaryButton} from "../../components";
 import MenuItemView from "../../page-view/menu-item/menu-item-view";
 import {ReactComponent as RemoveIcon} from "../../icons/remove_icon.svg";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/utils";
+import {getScheduleAsString, LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/utils";
 import {BE_API, URL} from "../../utils/config";
 import {fetchData} from "../../utils/fetch";
 
@@ -12,11 +12,11 @@ import {fetchData} from "../../utils/fetch";
 const EditMenuItemPage = () => {
     const navigate = useNavigate();
     const menuItemCandidateToEdit = LocalStorage.get(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT);
-    const {NAME, PRICE, DESCRIPTION, COOKING_TIME, IMAGE_URL, SIZE} = menuItemCandidateToEdit;
+    const {ID, NAME, PRICE, DESCRIPTION, COOKING_TIME, IMAGE_URL, SIZE} = menuItemCandidateToEdit;
     const [isLoading, setIsLoading] = useState(false);
     const [requestError, setRequestError] = useState("");
     const [isMenuItemDeleted, setIsMenuItemDeleted] = useState(false);
-
+    const [isMenuItemUpdated, setIsMenuItemUpdated] = useState(false);
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
@@ -35,7 +35,18 @@ const EditMenuItemPage = () => {
     }
 
     const onSubmit = values => {
-        console.log(values);
+        setIsLoading(true);
+        const {name, price, description, cookingTime, size, imageURL } = values;
+        const reqObj = {method: 'put', id: ID, name, price, description, cookingTime, size, imageURL};
+
+        fetchData(BE_API.PUT_MENU_ITEM(), reqObj)
+            .then(res => {
+                const updatedMenuItem = res.body[0]
+                LocalStorage.set(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT, updatedMenuItem);
+                setIsMenuItemUpdated(true);
+            })
+            .catch(res => setRequestError(res.status + " Error: " + res.body.errorMessage))
+            .finally(() => setIsLoading(false))
     }
 
     const deleteCompany = () => {
@@ -61,6 +72,7 @@ const EditMenuItemPage = () => {
 
     return (
         <>
+            {isMenuItemUpdated && <Notification.Success message={"Menu item was updated."} />}
             {requestError && <Notification.Error message={requestError}/>}
             <SecondaryButton onClick={deleteCompany}><RemoveIcon/> Delete</SecondaryButton>
             <RowSplitter height={'15px'}/>
