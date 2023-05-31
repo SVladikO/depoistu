@@ -70,7 +70,7 @@ const Company = (props) => {
     if (!props.company) {
         return;
     }
-    const {PHOTOS, NAME, CITY, STREET, SCHEDULE, isCompact} = props.company;
+    const {PHOTOS, NAME, CITY, STREET, SCHEDULE} = props.company;
 
     return (
         <Wrapper>
@@ -101,9 +101,12 @@ const Company = (props) => {
                         <Open>Open</Open>
                         <Closes>Closes<span>22</span></Closes>
                     </Schedule>
-                    <ScheduleContent>
-                        {!isCompact && <ScheduleDetails schedule={SCHEDULE}/>}
-                    </ScheduleContent>
+                    {props.withMoreInfo && (
+                        <ScheduleContent>
+                            <ScheduleDetails schedule={SCHEDULE}/>}
+                        </ScheduleContent>
+                    )
+                    }
                 </CompanyInfo>
             </Content>
             {props.children}
