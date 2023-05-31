@@ -1,5 +1,5 @@
 const getOptions = body => ({
-    method: 'POST',
+    method: body.method || 'POST',
     headers: {
         'Content-Type': 'application/json'
     },
@@ -8,11 +8,18 @@ const getOptions = body => ({
 
 export const fetchData = async (url, body) => {
     console.log('Request url: ', url, body);
+    let response;
 
-    const response = await (body
-            ? fetch(decodeURIComponent(url), getOptions(body))
-            : fetch(decodeURIComponent(url))
-    );
+    try {
+        response = await (body
+                ? fetch(decodeURIComponent(url), getOptions(body))
+                : fetch(decodeURIComponent(url))
+        );
+    } catch (error) {
+        return new Promise((resolve, reject) => {
+            reject({status: 500, body: {errorMessage: 'Unable to make request.'}});
+        })
+    }
 
     const json = await response.json();
 
@@ -23,6 +30,7 @@ export const fetchData = async (url, body) => {
             resolve({status, statusText, headers, body: json});
         })
     }
+
 
     return new Promise((resolve, reject) => {
         reject({status, statusText, headers, body: json});

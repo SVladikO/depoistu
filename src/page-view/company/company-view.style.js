@@ -1,13 +1,16 @@
 import styled from "styled-components";
-import {COLOR, BORDER_RADIUS} from "../../utils/theme";
+import {BORDER_RADIUS, COLOR} from "../../utils/theme";
 
-export const Wrapper = styled.div`
-  & > * {
-    margin: 0 0 15px 0;
-  }
+export const Divider = styled.div`
+  margin: 5px auto 10px auto;
+  text-align: center;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: ${COLOR.ACCENT5};
 `;
 
-export const InstitutionPictures = styled.div`
+export const Pictures = styled.div`
   height: 100px;
   width: 100%;
   display: flex;
@@ -29,8 +32,7 @@ export const InstitutionPictures = styled.div`
   }
 `;
 
-
-export const InstitutionBasketButton = styled.div`
+export const BasketButton = styled.div`
   width: 31px;
   height: 34px;
   background: ${COLOR.ACCENT4};
@@ -40,12 +42,4 @@ export const InstitutionBasketButton = styled.div`
   position: absolute;
   bottom: 0;
   left: 148px;
-`;
-
-export const BottomSection = styled.div`
-  margin: 84px 0 0 0;
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
 `;

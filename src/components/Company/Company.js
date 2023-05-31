@@ -107,10 +107,10 @@ const Company = (props) => {
                     </ScheduleContent>
                 </CompanyInfo>
             </Content>
+            {props.children}
         </Wrapper>
     );
 };
 
 
 export default Company;
-

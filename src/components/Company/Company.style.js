@@ -11,6 +11,8 @@ export const Wrapper = styled.div`
   margin: 0 0 10px 0;
   
   .swiper-pagination-bullet {
+  padding: 0 10px;
+  .swiper-pagination-bullet{
     width: 10px;
     height: 10px;
     background-color: ${COLOR.ACCENT4};
@@ -134,6 +136,9 @@ export const Name = styled.div`
 `;
 
 export const ScheduleContainer = styled.div`
+  & > * {
+    min-width: 50px;
+  }
 `;
 
 

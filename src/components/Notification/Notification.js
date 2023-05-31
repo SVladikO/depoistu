@@ -29,11 +29,12 @@ const Loading = () => {
     )
 };
 
-const Error = ({message}) => {
+const Error = ({message, children}) => {
     return (
         <ContentContainer>
             <ErrorIcon/>
             <Text>{message}</Text>
+            {children}
         </ContentContainer>
     );
 };
