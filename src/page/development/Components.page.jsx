@@ -103,6 +103,7 @@ const columns = [
                 CITY: 'Kyiv',
                 SCHEDULE: '08.00-21.00, 08.00-21.00, 08.00-21.00, 08.00-21.00, 08.00-21.00, 10.00-22.00, 10.00-22.00',
                 STREET: 'Davidusk 15.',
+                isCompact: false
             }}/>
         },
         {

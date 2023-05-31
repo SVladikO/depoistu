@@ -26,7 +26,7 @@ import {
 } from "./Company.style";
 
 const ScheduleDetails = ({schedule}) => {
-    const [isCompact, setIsCompact] = useState(false);
+    const [isWeekScheduleVisible, setIsWeekScheduleVisible] = useState(false);
 
     if (!schedule || !schedule.length) {
         return;
@@ -38,21 +38,21 @@ const ScheduleDetails = ({schedule}) => {
         return;
     }
 
-    if(!isCompact){
-        return <div onClick={() => setIsCompact(true)}>
+    if(isWeekScheduleVisible){
+        return <div onClick={() => setIsWeekScheduleVisible(true)}>
+                    <Phone>80978432032</Phone>
                     <DetailedLink>show schedule</DetailedLink>
                </div>
     }
 
     return Object.entries(scheduleAsObject)?.map((key, i) => {
-        const closes = `${key[1].slice(6)}`
         const time = `${key[1].split('-').join(' ')}`;
         const from = time.split(' ')[0];
         const to = time.split(' ')[1];
 
         return (
-            <ScheduleWrapper onClick={() => setIsCompact(false)}>
-                <ScheduleContainer key={i}>
+            <ScheduleWrapper key={i.toString()}>
+                <ScheduleContainer>
                     <div>
                         <div>{key[0]}</div>
                         <div>{from}</div>
@@ -70,7 +70,7 @@ const Company = (props) => {
     if (!props.company) {
         return;
     }
-    const {PHOTOS, NAME, CITY, STREET, SCHEDULE} = props.company;
+    const {PHOTOS, NAME, CITY, STREET, SCHEDULE, isCompact} = props.company;
 
     return (
         <Wrapper>
@@ -101,9 +101,8 @@ const Company = (props) => {
                         <Open>Open</Open>
                         <Closes>Closes<span>22</span></Closes>
                     </Schedule>
-                    <Phone>80978432032</Phone>
                     <ScheduleContent>
-                        <ScheduleDetails schedule={SCHEDULE}/>
+                        {!isCompact && <ScheduleDetails schedule={SCHEDULE}/>}
                     </ScheduleContent>
                 </CompanyInfo>
             </Content>
