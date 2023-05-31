@@ -33,8 +33,8 @@ export const DEV_ROUTER = {
 };
 
 // export const BE_DOMAIN = 'https://pizza-mobile-api-production.herokuapp.com';
-// export const BE_DOMAIN = 'https://pizza-mobile-api-develop.herokuapp.com';
-export const BE_DOMAIN = 'http://localhost:4000';
+export const BE_DOMAIN = 'https://pizza-mobile-api-develop.herokuapp.com';
+// export const BE_DOMAIN = 'http://localhost:4000';
 
 export const BE_API = {
     //TODO candidate to delete
