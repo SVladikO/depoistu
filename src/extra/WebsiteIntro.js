@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import {Popup} from '../components/index'
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../utils/utils";
-import styled from "styled-components";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "../utils/localStorage";
 
 
 const WebsiteIntro = () => {

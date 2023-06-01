@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import {COLOR,BORDER_RADIUS, DEVICE_WIDTH} from "../../utils/theme";
-import {hexToRgbA} from "../../utils/utils";
+import {COLOR,BORDER_RADIUS, DEVICE_WIDTH, hexToRgbA} from "../../utils/theme";
 
 
 export const Wrapper = styled.div`
@@ -17,9 +16,9 @@ export const Wrapper = styled.div`
     width: 25%;
   }
   
+  box-shadow: 0px -1px 4px 0px rgba(0,0,0,0.11);
   -webkit-box-shadow: 0px -1px 4px 0px rgba(0,0,0,0.11);
   -moz-box-shadow: 0px -1px 4px 0px rgba(0,0,0,0.11);
-  box-shadow: 0px -1px 4px 0px rgba(0,0,0,0.11);
 `;
 
 export const MenuItem = styled.div`

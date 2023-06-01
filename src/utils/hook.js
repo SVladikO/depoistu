@@ -2,7 +2,7 @@ import {useState, useEffect} from "react";
 import {fetchData} from "./fetch";
 import {useDispatch} from "react-redux";
 import {startLoading, stopLoading} from "../features/request/requestSlice";
-import {LocalStorage} from "./utils";
+import {LocalStorage} from "./localStorage";
 
 export const useLocalStorage = (storageKey, initialState) => {
     const localStorageState = LocalStorage.get(storageKey);
