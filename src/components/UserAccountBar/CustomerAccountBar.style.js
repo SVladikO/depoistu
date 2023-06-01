@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import {COLOR, BORDER_RADIUS} from "../../utils/theme";
-import {hexToRgbA} from "../../utils/utils";
+import {COLOR, BORDER_RADIUS, hexToRgbA} from "../../utils/theme";
 
 export const Wrapper = styled.div`
   display: flex;

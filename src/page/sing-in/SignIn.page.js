@@ -19,10 +19,11 @@ import {ReactComponent as MailIcon} from "../../icons/mail.svg";
 
 import {startLoading, stopLoading} from "../../features/request/requestSlice";
 
-import {fetchData} from "../../utils/fetch";
-import {BE_API, ROUTER, URL} from '../../utils/config';
 import validation  from '../../utils/validation';
-import {getParam, LocalStorage, resolveTranslation, LOCAL_STORAGE_KEY} from "../../utils/utils";
+import {ROUTER, URL} from '../../utils/config';
+import {fetchData, BE_API} from "../../utils/fetch";
+import {getParam, resolveTranslation} from "../../utils/utils";
+import {LocalStorage, LOCAL_STORAGE_KEY} from "../../utils/localStorage"
 
 const SignInSchema = Yup.object().shape(validation.user.singIn);
 
@@ -36,7 +37,7 @@ const SignInPage = () => {
     const handleSingIn = ({email, password}) => {
         dispatch(startLoading());
 
-        fetchData(BE_API.SING_IN(), {email, password})
+        fetchData(BE_API.CUSTOMER.SING_IN(), {email, password})
             .then(res => {
                 LocalStorage.set(LOCAL_STORAGE_KEY.CUSTOMER, res.body)
                 setTimeout(() => {

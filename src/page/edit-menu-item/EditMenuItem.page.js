@@ -8,6 +8,9 @@ import {getScheduleAsString, LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/
 import {BE_API, URL} from "../../utils/config";
 import {fetchData} from "../../utils/fetch";
 
+import {URL} from "../../utils/config";
+import {fetchData, BE_API} from "../../utils/fetch";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 
 const EditMenuItemPage = () => {
     const navigate = useNavigate();
@@ -52,7 +55,7 @@ const EditMenuItemPage = () => {
     const deleteCompany = () => {
         setIsLoading(true)
 
-        fetchData(BE_API.DELETE_MENU_ITEM(), {method: 'delete', id: menuItemCandidateToEdit.ID})
+        fetchData(BE_API.MENU_ITEM.DELETE(), {method: 'delete', id: menuItemCandidateToEdit.ID})
             .then(() => {
                 setIsMenuItemDeleted(true);
             })

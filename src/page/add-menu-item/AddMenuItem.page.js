@@ -2,8 +2,7 @@ import React, {useState} from "react";
 
 import {Notification} from "../../components";
 import MenuItemView from "../../page-view/menu-item/menu-item-view";
-import {fetchData} from "../../utils/fetch";
-import {BE_API} from "../../utils/config";
+import {fetchData, BE_API} from "../../utils/fetch";
 import {getParam} from "../../utils/utils";
 
 const AddMenuItemPage = () => {
@@ -35,7 +34,7 @@ const AddMenuItemPage = () => {
             company_id: companyId,
         }
 
-        fetchData(BE_API.POST_MENU_ITEM(), requestObj)
+        fetchData(BE_API.MENU_ITEM.POST_CREATE(), requestObj)
             .then(() => {
                 setIsMenuItemCreated(true);
             })
