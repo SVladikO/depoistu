@@ -38,8 +38,6 @@ export const DEV_ROUTER = {
 export const BE_DOMAIN = 'https://pizza-mobile-api-develop.herokuapp.com';
 // export const BE_DOMAIN = 'http://localhost:4000';
 
-
-
 export const CATEGORY_MAPPER = {
     1: {id: 1, title: resolveTranslation("CATEGORIES.BAKERY"), icon: BakeryIcon, measurement: 'g'},
     2: {id: 2, title: resolveTranslation("CATEGORIES.BEVERAGE"), icon: BeverageIcon, measurement: 'L'},
