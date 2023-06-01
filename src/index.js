@@ -1,17 +1,19 @@
 import React from 'react';
 import {Provider} from 'react-redux';
-import {BrowserRouter} from "react-router-dom";
 import {createRoot} from 'react-dom/client';
+import {BrowserRouter} from "react-router-dom";
 
 import {Wrapper} from "./index.style";
 
 import {store} from './store';
 import reportWebVitals from './reportWebVitals';
 
-import {getRoutes} from "./utils/navigation";
-import {showDevelopmentPageUrls} from "./utils/log";
-import {checkAccess, setBrowserTabTitle} from "./utils/utils";
 import WebsiteIntro from "./extra/WebsiteIntro";
+
+import {checkAccess} from "./utils/security";
+import {getRoutes} from "./utils/navigation";
+import {setBrowserTabTitle} from "./utils/utils";
+import {showDevelopmentPageUrls} from "./utils/log";
 
 const container = document.getElementById('root');
 const root = createRoot(container);

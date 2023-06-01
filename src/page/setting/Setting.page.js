@@ -25,7 +25,8 @@ import {
 } from '../../components'
 
 import {ROUTER, URL} from '../../utils/config';
-import {LOCAL_STORAGE_KEY, LocalStorage, resolveTranslation} from "../../utils/utils";
+import {resolveTranslation} from "../../utils/utils";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 
 const SettingPage = () => {
     const [customer, setCustomer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
