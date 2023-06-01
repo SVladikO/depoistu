@@ -42,7 +42,7 @@ const EditMenuItemPage = () => {
         const {name, price, description, cookingTime, size, imageURL } = values;
         const reqObj = {method: 'put', id: ID, name, price, description, cookingTime, size, imageURL};
 
-        fetchData(BE_API.PUT_MENU_ITEM(), reqObj)
+        fetchData(BE_API.MENU_ITEM.PUT_UPDATE(), reqObj)
             .then(res => {
                 const updatedMenuItem = res.body[0]
                 LocalStorage.set(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT, updatedMenuItem);
