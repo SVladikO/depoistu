@@ -8,9 +8,11 @@ import {Notification} from "../../components";
 import CompanyView from "../../page-view/company/company-view";
 
 import {initialValues} from './utils';
+import {URL} from "../../utils/config";
+import {BE_API} from '../../utils/fetch'
 import {fetchData} from "../../utils/fetch";
-import {BE_API, URL} from "../../utils/config";
-import {LOCAL_STORAGE_KEY, LocalStorage, getScheduleAsString} from "../../utils/utils";
+import {getScheduleAsString} from "../../utils/company";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 
 const AddCompany = () => {
     const CUSTOMER = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER)
@@ -32,8 +34,8 @@ const AddCompany = () => {
 
         setIsLoading(true);
 
-        fetchData(BE_API.POST_COMPANY_CREATE(), reqObj)
-            .then(res => {
+        fetchData(BE_API.COMPANY.POST_CREATE(), reqObj)
+            .then(() => {
                 setIsCompanySaved(true);
                 LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES)
             })

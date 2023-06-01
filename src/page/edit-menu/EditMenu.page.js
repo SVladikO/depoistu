@@ -13,10 +13,10 @@ import {
 } from "../../components";
 
 import {startLoading, stopLoading} from "../../features/request/requestSlice";
-
+import {URL} from "../../utils/config";
+import {BE_API} from '../../utils/fetch'
 import {fetchData} from "../../utils/fetch";
-import {BE_API, URL} from "../../utils/config";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/utils";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 
 const EditMenu = () => {
     const dispatch = useDispatch();
@@ -28,7 +28,7 @@ const EditMenu = () => {
     const [requestError, setRequestError] = useState('');
     const [selectedCategoryId, setSelectedCategoryId] = useState();
 
-    const url = BE_API.GET_MENU_ITEMS_BY_COMPANY_ID(companyId);
+    const url = BE_API.MENU_ITEM.GET_BY_COMPANY_ID(companyId);
 
     useEffect(() => {
         LocalStorage.set(LOCAL_STORAGE_KEY.COMPANY_ID_FOR_EDIT_MENU, companyId);

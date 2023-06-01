@@ -23,7 +23,7 @@ import {WarningMessage} from "../../components/Input/Input.style";
 import {ReactComponent as DeleteBasketIcon} from "../../icons/delete_basket.svg";
 
 import validation from "../../utils/validation";
-import {isScheduleValid} from "../../utils/utils";
+import {isScheduleValid} from "../../utils/company";
 
 const renderCompanyPhotos = (photos, setPictures) => {
     const deleteImage = index => setPictures(photos.filter((_, i) => i !== index));
