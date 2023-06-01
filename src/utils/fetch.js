@@ -58,6 +58,7 @@ export const BE_API = {
     MENU_ITEM: {
         GET_BY_COMPANY_ID: company_id => `${BE_DOMAIN}/menu/${company_id}`,
         POST_CREATE: () => `${BE_DOMAIN}/menu`,
+        PUT_UPDATE: () => `${BE_DOMAIN}/menu`,
         DELETE: () => `${BE_DOMAIN}/menu`,
     },
     // PLACE_ORDER: () => `${BE_DOMAIN}/place-order`,
