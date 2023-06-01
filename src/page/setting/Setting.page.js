@@ -45,7 +45,7 @@ const SettingPage = () => {
     const logOut = () => {
         LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER);
         setCustomer(undefined);
-        window.localStorage.removeItem(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
+        LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
     }
 
     return (
