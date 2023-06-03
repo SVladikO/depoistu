@@ -1,6 +1,5 @@
 import styled from 'styled-components'
-import {BORDER_RADIUS, COLOR, GRADIENT} from "../../utils/theme";
-import {hexToRgbA} from "../../utils/utils";
+import {BORDER_RADIUS, COLOR, GRADIENT, hexToRgbA} from "../../utils/theme";
 
 export const button = styled.button`
   color: ${COLOR.ACCENT4};

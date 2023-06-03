@@ -5,12 +5,15 @@ import {Notification, SecondaryButton} from "../../components";
 
 import {ReactComponent as RemoveIcon} from "../../icons/remove_icon.svg";
 
-import {getScheduleAsString, LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/utils";
-import {initSchedule} from "../../utils/utils";
-import {fetchData} from "../../utils/fetch";
-import {BE_API, URL} from "../../utils/config";
 import CompanyView from "../../page-view/company/company-view";
+
 import getInitialValues from "./utils";
+import {URL} from "../../utils/config";
+import {BE_API} from '../../utils/fetch'
+import {fetchData} from "../../utils/fetch";
+import {initSchedule} from "../../utils/company";
+import {getScheduleAsString} from "../../utils/company";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 
 //We need this variable after call LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES) on delete company success
 //when we open customer companies page it will make request to BE and user will have updated list of companies.
@@ -61,7 +64,7 @@ const EditCompany = () => {
     const deleteCompany = () => {
         setIsLoading(true)
 
-        fetchData(BE_API.DELETE_COMPANY_CREATE(companyId), {method: 'delete'})
+        fetchData(BE_API.COMPANY.DELETE(companyId), {method: 'delete'})
             .then(() => {
                 LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
                 setIsCompanyDeleted(true);
@@ -90,7 +93,7 @@ const EditCompany = () => {
         const reqObj = {id: companyId, name, city, street, phone, schedule, method: 'put'};
         setIsLoading(true);
 
-        fetchData(BE_API.PUT_COMPANY_UPDATE(), reqObj)
+        fetchData(BE_API.COMPANY.PUT_UPDATE(), reqObj)
             .then(res => {
                 const updatedCompany = res.body[0];
                 updateCompaniesInLocalStorage(updatedCompany)

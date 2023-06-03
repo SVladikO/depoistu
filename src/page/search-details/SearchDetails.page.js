@@ -4,9 +4,10 @@ import {useParams} from 'react-router-dom';
 import {Divider, Wrapper} from "./SearchDetails.style";
 
 import {CategoryMenuRow, Company, MenuItem} from "../../components";
+
+import {BE_API} from "../../utils/fetch";
 import {useLocalStorageFetch} from "../../utils/hook";
-import {BE_API} from "../../utils/config";
-import {LOCAL_STORAGE_KEY} from "../../utils/utils";
+import {LOCAL_STORAGE_KEY} from "../../utils/localStorage";
 
 const SearchDetailsPage = () => {
     let companyId = +useParams().companyId;
@@ -14,7 +15,7 @@ const SearchDetailsPage = () => {
     const [menuItems, setMenuItems] = useState([]);
 
     useEffect(() => {
-        fetch(BE_API.GET_MENU_ITEMS_BY_COMPANY_ID(companyId))
+        fetch(BE_API.MENU_ITEM.GET_BY_COMPANY_ID(companyId))
             .then(res => res.json())
             .then(data => data.sort((a, b) => a.CATEGORY_ID - b.CATEGORY_ID))
             .then(result => {

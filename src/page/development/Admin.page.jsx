@@ -1,11 +1,13 @@
 import {useEffect, useState} from "react";
-import {BE_API, BE_DOMAIN} from "../../utils/config";
 
 import {Wrapper, Header, SubHeader, Table, LedError, LedSuccess, A, SpinnerWrapper} from './Admin.style';
 
 import {ReactComponent as LoadingIcon} from "../../icons/spinner.svg";
 import {RowSplitter} from "../../components";
 import {fetchData} from "../../utils/fetch";
+
+import {BE_API} from '../../utils/fetch'
+import {BE_DOMAIN} from "../../utils/config";
 
 const COMPANY_FIELDS_TO_CHECK = ['ID', 'CUSTOMER_ID', 'NAME', 'PHONE', 'CITY', 'STREET', 'PHOTOS', 'SCHEDULE'];
 const MENU_ITEM_FIELDS_TO_CHECK = ['ID', 'CATEGORY_ID', 'COMPANY_ID', 'COOKING_TIME', 'DESCRIPTION', 'IMAGE_URL', 'NAME', 'PRICE', 'SIZE'];
@@ -125,32 +127,32 @@ const checkSuccessRequest = [
         type='GET'
         title='companies by customer id'
         validateSuccessResponse={checkArrayOfObjects(COMPANY_FIELDS_TO_CHECK)}
-        urlForSuccess={BE_API.GET_COMPANIES_BY_CUSTOMER_ID(1)}
-        urlForError={BE_API.GET_COMPANIES_BY_CUSTOMER_ID()}
+        urlForSuccess={BE_API.COMPANY.GET_BY_CUSTOMER_ID(1)}
+        urlForError={BE_API.COMPANY.GET_BY_CUSTOMER_ID()}
     />,
     <CheckRequest
         key={2}
         type='GET'
         title='companies by company id'
         validateSuccessResponse={checkArrayOfObjects(COMPANY_FIELDS_TO_CHECK)}
-        urlForSuccess={BE_API.GET_COMPANY_BY_COMPANY_ID(2)}
-        urlForError={BE_API.GET_COMPANY_BY_COMPANY_ID()}
+        urlForSuccess={BE_API.COMPANY.GET_BY_COMPANY_ID(2)}
+        urlForError={BE_API.COMPANY.GET_BY_COMPANY_ID()}
     />,
     <CheckRequest
         key={3}
         type='GET'
         title='companies by city'
         validateSuccessResponse={checkArrayOfObjects(COMPANY_FIELDS_TO_CHECK)}
-        urlForSuccess={BE_API.GET_COMPANIES_BY_CITY('Вінниця')}
-        urlForError={BE_API.GET_COMPANIES_BY_CITY(1)}
+        urlForSuccess={BE_API.COMPANY.GET_BY_CITY('Вінниця')}
+        urlForError={BE_API.COMPANY.GET_BY_CITY(1)}
     />,
     <CheckRequest
         key={4}
         type='GET'
         title='menu by company id'
         validateSuccessResponse={checkArrayOfObjects(MENU_ITEM_FIELDS_TO_CHECK)}
-        urlForSuccess={BE_API.GET_MENU_ITEMS_BY_COMPANY_ID(1)}
-        urlForError={BE_API.GET_MENU_ITEMS_BY_COMPANY_ID()}
+        urlForSuccess={BE_API.MENU_ITEM.GET_BY_COMPANY_ID(1)}
+        urlForError={BE_API.MENU_ITEM.GET_BY_COMPANY_ID()}
     />
 ];
 
