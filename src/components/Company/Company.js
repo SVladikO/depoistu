@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {getScheduleAsObject} from "../../utils/utils";
 import {Pagination, Navigation} from "swiper";
 import {Swiper, SwiperSlide} from "swiper/react";
 
@@ -24,6 +23,8 @@ import {
     DetailedLink,
     ScheduleContent, Location
 } from "./Company.style";
+
+import {getScheduleAsObject} from "../../utils/company";
 
 const ScheduleDetails = ({schedule}) => {
     const [isWeekScheduleVisible, setIsWeekScheduleVisible] = useState(false);
