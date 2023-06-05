@@ -1,9 +1,8 @@
-import styled from 'styled-components'
+import styled,{css} from 'styled-components'
 import {COLOR} from "../../utils/theme";
 
 export const Wrapper = styled.div`
   position: relative;
-  
   & > svg:first-child {
     position: absolute;
     display: block;

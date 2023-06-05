@@ -1,0 +1,31 @@
+const defaultFrom = '09:00';
+const defaultTo = '21:00';
+
+export const initialValues = {
+    photos: [],
+    name: '',
+    city: '',
+    street: '',
+    phone: '',
+    monIsChecked: false,
+    monFrom: defaultFrom,
+    monTo: defaultTo,
+    tueIsChecked: false,
+    tueFrom: defaultFrom,
+    tueTo: defaultTo,
+    wedIsChecked: false,
+    wedFrom: defaultFrom,
+    wedTo: defaultTo,
+    thuIsChecked: false,
+    thuFrom: defaultFrom,
+    thuTo: defaultTo,
+    friIsChecked: false,
+    friFrom: defaultFrom,
+    friTo: defaultTo,
+    satIsChecked: false,
+    satFrom: defaultFrom,
+    satTo: defaultTo,
+    sunIsChecked: false,
+    sunFrom: defaultFrom,
+    sunTo: defaultTo,
+}

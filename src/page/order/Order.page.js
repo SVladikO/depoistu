@@ -6,11 +6,11 @@ import {NotificationTDB, OrderHistoryRow, Price, PrimaryButton} from "../../comp
 
 import {ReactComponent as EmptyBasketIcon} from "../../icons/empty_basket.svg";
 
-import {deleteAllOrders} from '../../features/order/orderSlice'
+// import {deleteAllOrders} from '../../features/order/orderSlice'
 
-import {BE_API, ROUTER} from '../../utils/config'
-import {LocalStorage} from "../../utils/utils";
-import {fetchData} from "../../utils/fetch";
+import {ROUTER} from '../../utils/config'
+// import {fetchData, BE_API} from "../../utils/fetch";
+import {LocalStorage} from "../../utils/localStorage";
 
 const OrderPage = () => {
     const orders = useSelector(state => state.order.value);
@@ -30,11 +30,11 @@ const OrderPage = () => {
 
         console.log('Order data: ', body);
 
-        fetchData(BE_API.PLACE_ORDER(), body)
-            .then(res => {
-                alert('Order was placed');
-                dispatch(deleteAllOrders())
-            })
+        // fetchData(BE_API.PLACE_ORDER(), body)
+        //     .then(res => {
+        //         alert('Order was placed');
+        //         dispatch(deleteAllOrders())
+        //     })
     }
 
     const isCustomerLogged = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER);

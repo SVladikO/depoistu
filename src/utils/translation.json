@@ -63,6 +63,10 @@
     "ua": "Пошук",
     "en": "Search"
   },
+  "PAGE.ABOUT_US.TOP_TITLE": {
+    "ua": "Про нашу компанію",
+    "en": "About our company"
+  },
   "PAGE.SEARCH.ARROW_LABEL": {
     "ua": "Назад",
     "en": "Back"
@@ -98,6 +102,10 @@
   "PAGE.SETTINGS.MENU_ROW.MENU": {
     "ua": "Налаштувати меню",
     "en": "Set up menu"
+  },
+  "PAGE.SETTINGS.MENU_ROW.ABOUT_US": {
+    "ua": "Про нас",
+    "en": "About us"
   },
   "PAGE.SETTINGS.MENU_ROW.LOCATION": {
     "ua": "Мicце знаходження",

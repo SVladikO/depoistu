@@ -26,10 +26,10 @@ import
     OrderHistoryRow,
     NotificationTDB,
     RowSplitter,
-    EditMenuRow,
     Textarea,
     Company,
-    Label
+    Label,
+    CloseButton
 } from "../../components";
 
 import CatalogPage from "./Catalog.page";
@@ -46,10 +46,13 @@ import {ReactComponent as LanguageIcon} from "../../icons/language.svg";
 import {COLOR} from "../../utils/theme";
 import AccountSettings from "../../components/AccountSettings/AccountSettings";
 import OptionSettings from "../../components/OptionSettings/OptionSettings";
-import {ImagePopupContent} from "../../components/PopupImage/PopupImage";
-import {PopupIntroContent} from "../../components/PopupIntro/PopupIntro";
+import ImageContent from "../../components/Popup/content/image/ImageContent";
+import IntroContent from "../../components/Popup/content/info/InfoContent";
+import CityContent from  "../../components/Popup/content/city/CityContent"
 import {ReactComponent as LocationIcon} from "../../icons/map_point.svg";
 import Checkbox from "../../components/Checkbox/Checkbox";
+import {EditBar} from "../customer-companies/CustomerCompanies.style";
+import {ReactComponent as EditIcon} from "../../icons/edit.svg";
 
 const colors = Object.keys(COLOR).map(key =>
     ({title: key, component: <ColorCircle key={key} bg={COLOR[key]}/>, value: COLOR[key], width: '50px'})
@@ -61,6 +64,7 @@ function ExampleCategoryWithSelected() {
 
     return (
         <CategoryMenuRow
+            showAllCategories
             showMenuItemAmount
             menuItems={menuItems}
             selectedCategoryId={selectedCategoryId}
@@ -78,26 +82,60 @@ const columns = [
         {title: 'SecondaryButton', component: <SecondaryButton>Cancel</SecondaryButton>},
         {title: 'SecondaryButton', component: <SecondaryButton>CANCEL</SecondaryButton>},
         {title: 'Label', component: <Label>Change Password</Label>},
-        {title: 'Input 1', component: <Input />},
-        {title: 'Input 2', component: <Input Icon={MailIcon} errorMessage={'Email is misspelled!'} value="jodode@mail.com"/>},
-        {title: 'Input 3', component: <Input withSwitcher />},
-        {title: 'Input 4', component: <Input withCleaner/>},
-        {title: 'Textarea', component: <Textarea withCleaner/>},
-        {title: 'PInput', component: <PInput withIcon Icon={LocationIcon}> Vinnica</PInput>},
-        {title: 'FromToTime', component: <FromToTime day={{name: 'Mon', isChecked: true, from: '12:00', to: '13:00'}} id={'ht12'}/>},
+        {title: 'Input 1', component: <Input Icon={MailIcon} isTouched errorMessage={'Email is misspelled!'} value="jodode@mail.com"/>},
+        {title: 'Input 2', component: <Input />},
+        {title: 'Input 3 {withSwitcher}', component: <Input withSwitcher />},
+        {title: 'Input 4 {withCleaner value}', component: <Input withCleaner value={111}/>},
+        {title: 'Textarea {withCleaner}', component: <Textarea withCleaner/>},
+        {title: 'Textarea {withCleaner value}', component: <Textarea withCleaner value={222}/>},
+        {title: 'PInput', component: <PInput withIcon Icon={LocationIcon} value={'Vinnica'} />},
+        {title: 'FromToTime', component: <FromToTime prefix='mon' dayName='Mon' values={{monIsChecked: true}}/>},
+        {title: 'FromToTime', component: <FromToTime prefix='mon' dayName='Mon' values={{}}/>},
         {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
         {title: 'Checkbox', component: <Checkbox/>},
     ],
     [
         {
-            title: 'Institution',
-            component: <Company company={{
-                PHOTOS: 'https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg, https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg, https://afisha.bigmir.net/i/23/51/30/9/2351309/gallery/15b8175dc297f8a58d9de22e77b7b256-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg',
-                NAME: 'Domono',
-                CITY: 'Kyiv',
-                SCHEDULE: '08.00-21.00, 08.00-21.00, 08.00-21.00, 08.00-21.00, 08.00-21.00, 10.00-22.00, 10.00-22.00',
-                STREET: 'Davidusk 15.',
-            }}/>
+            title: 'Company',
+            component: <Company
+                company={{
+                    PHOTOS: 'https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg, https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg, https://afisha.bigmir.net/i/23/51/30/9/2351309/gallery/15b8175dc297f8a58d9de22e77b7b256-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg',
+                    NAME: 'Domono',
+                    CITY: 'Kyiv',
+                    SCHEDULE: '08.00-21.00, 08.00-21.00, 08.00-21.00, 08.00-21.00, 08.00-21.00, 10.00-22.00, 10.00-22.00',
+                    STREET: 'Davidusk 15.',
+                }}
+            />
+        },
+        {
+            title: 'Company',
+            component: <Company
+                withMoreInfo
+                company={{
+                    PHOTOS: 'https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg, https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg, https://afisha.bigmir.net/i/23/51/30/9/2351309/gallery/15b8175dc297f8a58d9de22e77b7b256-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg',
+                    NAME: 'Domono',
+                    CITY: 'Kyiv',
+                    SCHEDULE: '08.00-21.00, 08.00-21.00, 08.00-21.00, 08.00-21.00, 08.00-21.00, 10.00-22.00, 10.00-22.00',
+                    STREET: 'Davidusk 15.',
+                }}
+            />
+        },
+        {
+            title: 'Company',
+            component: <Company
+                company={{
+                        PHOTOS: 'https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg, https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg, https://afisha.bigmir.net/i/23/51/30/9/2351309/gallery/15b8175dc297f8a58d9de22e77b7b256-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg',
+                        NAME: 'Domono',
+                        CITY: 'Kyiv',
+                        SCHEDULE: '08.00-21.00, 08.00-21.00, 08.00-21.00, 08.00-21.00, 08.00-21.00, 10.00-22.00, 10.00-22.00',
+                        STREET: 'Davidusk 15.',
+                    }}
+            >
+                <EditBar>
+                    <PrimaryButton><EditIcon/>Company</PrimaryButton>
+                    <PrimaryButton><EditIcon/>Menu</PrimaryButton>
+                </EditBar>
+            </Company>
         },
         {title: 'CategoryMenuRow', component: <CategoryMenuRow menuItems={[{CATEGORY_ID: 1}, {CATEGORY_ID: 2}, {CATEGORY_ID: 3}]} />},
         {
@@ -147,12 +185,13 @@ const columns = [
 
     ],
     [
+        {title: 'CloseButton', component: <CloseButton clickHandler={() => alert('clicked')}/>},
         {
-            title: 'PopupImage',
-            component: <ImagePopupContent
-                imageUrl="https://raw.githubusercontent.com/SVladikO/testApp/master/images/4_cheese.jpg"/>
+            title: 'ImagePopupContent',
+            component: <ImageContent imageUrl="https://raw.githubusercontent.com/SVladikO/testApp/master/images/4_cheese.jpg"/>
         },
-        {title: 'PopupIntro', component: <PopupIntroContent/>},
+        {title: 'IntroPopupContent', component: <IntroContent>Some text Some text Some text Some text Some text</IntroContent>},
+        {title: 'CityPopupContent', component: <CityContent />},
         {
             title: 'EmptyBasket', component:
                 <NotificationTDB

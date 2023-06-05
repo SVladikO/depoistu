@@ -19,15 +19,13 @@ import {ReactComponent as MailIcon} from "../../icons/mail.svg";
 
 import {startLoading, stopLoading} from "../../features/request/requestSlice";
 
-import {fetchData} from "../../utils/fetch";
-import {BE_API, ROUTER, URL} from '../../utils/config';
-import {user_validation} from '../../utils/validation';
-import {getParam, LocalStorage, resolveTranslation, LOCAL_STORAGE_KEY} from "../../utils/utils";
+import validation  from '../../utils/validation';
+import {ROUTER, URL} from '../../utils/config';
+import {fetchData, BE_API} from "../../utils/fetch";
+import {getParam, resolveTranslation} from "../../utils/utils";
+import {LocalStorage, LOCAL_STORAGE_KEY} from "../../utils/localStorage"
 
-const SignInSchema = Yup.object().shape({
-    password: user_validation.password,
-    email: user_validation.email,
-});
+const SignInSchema = Yup.object().shape(validation.user.singIn);
 
 const SignInPage = () => {
     const dispatch = useDispatch();
@@ -35,13 +33,13 @@ const SignInPage = () => {
     const backUrl = getParam(`backUrl`) || URL.SETTING;
     const isLoading = useSelector(state => state.request.value.isLoading);
     const [requestError, setRequestError] = useState('');
-
+    const [wasSubmitted, setWasSubmitted] = useState(false);
     const handleSingIn = ({email, password}) => {
         dispatch(startLoading());
 
-        fetchData(BE_API.SING_IN(), {email, password})
+        fetchData(BE_API.CUSTOMER.SING_IN(), {email, password})
             .then(res => {
-                LocalStorage.set(LOCAL_STORAGE_KEY.CUSTOMER, res)
+                LocalStorage.set(LOCAL_STORAGE_KEY.CUSTOMER, res.body)
                 setTimeout(() => {
                     dispatch(stopLoading())
                 }, 1000)
@@ -71,9 +69,10 @@ const SignInPage = () => {
             onSubmit={values => {
                 console.log(values);
                 handleSingIn(values)
+                setWasSubmitted(true);
             }}
         >
-            {({values, setFieldValue, handleSubmit, handleChange, errors}) => (
+            {({values,touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                 <form onSubmit={handleSubmit}>
                     <ContentContainer>
                         <Label>Email</Label>
@@ -83,6 +82,7 @@ const SignInPage = () => {
                             type='email'
                             value={values.email}
                             withCleaner
+                            isTouched={wasSubmitted || touched.email}
                             changeHandler={handleChange}
                             clearHandler={() => setFieldValue('email', '')}
                             errorMessage={errors.email}
@@ -91,6 +91,7 @@ const SignInPage = () => {
                         <Input
                             Icon={LockIcon}
                             name='password'
+                            isTouched={wasSubmitted || touched.password}
                             value={values.password}
                             changeHandler={handleChange}
                             withSwitcher

@@ -29,14 +29,6 @@ export const InstitutionPictures = styled.div`
   }
 `;
 
-export const Divider = styled.div`
-  margin: 5px auto 10px auto;
-  text-align: center;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 24px;
-  color: ${COLOR.ACCENT5};
-`;
 
 export const InstitutionBasketButton = styled.div`
   width: 31px;

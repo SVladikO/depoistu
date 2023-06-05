@@ -1,103 +1,62 @@
 import React, {useState} from "react";
-import {Formik} from "formik";
-import * as Yup from 'yup';
 
-import {MenuItemPhoto, ImagePlace} from './AddMenuItem.style';
-
-import {
-    ContentContainer,
-    Input,
-    Label, PrimaryButton,
-    RowSplitter,
-    SecondaryButton,
-    Textarea
-} from '../../components/index'
-import {menu_item_validation} from "../../utils/validation";
-
-const MenuItemSchema = Yup.object().shape(menu_item_validation);
-
+import {Notification} from "../../components";
+import MenuItemView from "../../page-view/menu-item/menu-item-view";
+import {fetchData, BE_API} from "../../utils/fetch";
+import {getParam} from "../../utils/utils";
 
 const AddMenuItemPage = () => {
+    const categoryId = getParam(`categoryId`)
+    const companyId = getParam(`companyId`)
 
-    const [imageURL, setImageURL] = useState();
+    const [isLoading, setIsLoading] = useState(false);
+    const [isMenuItemCreated, setIsMenuItemCreated] = useState(false);
+    const [requestError, setRequestError] = useState("");
+
+    const initialValue = {
+        name: '',
+        price: '',
+        description: '',
+        cookingTime: '',
+        size: '',
+        imageUrl: ''
+    }
+
+    const onSubmit = values => {
+        console.log(values);
+
+        setIsLoading(true);
+        setIsMenuItemCreated(false)
+
+        const requestObj = {
+            ...values,
+            category_id: categoryId,
+            company_id: companyId,
+        }
+
+        fetchData(BE_API.MENU_ITEM.POST_CREATE(), requestObj)
+            .then(() => {
+                setIsMenuItemCreated(true);
+            })
+            .catch(res => setRequestError(res.status + " Error: " + res.body.errorMessage))
+            .finally(() => setIsLoading(false))
+    }
+
+    if (isLoading) {
+        return <Notification.Loading/>;
+    }
+
+    if (requestError) {
+        return <Notification.Error message={requestError}/>;
+    }
 
     return (
         <>
-            <Formik
-                initialValues={{
-                    name: '',
-                    price: '',
-                    description: '',
-                    cookingTime: 0,
-                    size: 0
-                }}
-                validationSchema={MenuItemSchema}
-                onSubmit={values => {
-                    console.log(values);
-                }}
-            >
-                {({values, setFieldValue, handleSubmit, handleChange, errors}) => (
-                    <form onSubmit={handleSubmit}>
-                        <RowSplitter height={'15px'}/>
-                        <ContentContainer>
-                            <MenuItemPhoto>
-                                {imageURL
-                                    ? <img src={imageURL} alt='Food'/>   // setImageURL
-                                    : <ImagePlace/>}
-                                <SecondaryButton type="button">{imageURL ? 'Change image' : 'Add image'}</SecondaryButton>
-                            </MenuItemPhoto>
-                            <Label>Name</Label>
-                            <Input
-                                value={values.name}
-                                name="name"
-                                changeHandler={handleChange}
-                                clearHandler={() => setFieldValue('name', '')}
-                                withCleaner
-                                errorMessage={errors.name}
-                            />
-                            <Label>Price</Label>
-                            <Input
-                                value={values.price}
-                                name="price"
-                                changeHandler={handleChange}
-                                clearHandler={() => setFieldValue('price', '')}
-                                withCleaner
-                                errorMessage={errors.price}
-                            />
-                            <Label>Description</Label>
-                            <Textarea
-                                value={values.description}
-                                changeHandler={handleChange}
-                                clearHandler={() => setFieldValue('description', '')}
-                                withCleaner
-                                name="description"
-                                errorMessage={errors.description}
-                            />
-                            <Label>Cooking time (in minutes)</Label>
-                            <Input
-                                value={values.cookingTime}
-                                type="number"
-                                changeHandler={handleChange}
-                                clearHandler={() => setFieldValue('cookingTime', '')}
-                                withCleaner
-                                name="cookingTime"
-                                errorMessage={errors.cookingTime}
-                            />
-                            <Label>Meal Size</Label>
-                            <Input
-                                value={values.size}
-                                type="number"
-                                changeHandler={handleChange}
-                                clearHandler={() => setFieldValue('size','')}
-                                withCleaner
-                                name="size"
-                                errorMessage={errors.size}
-                            />
-                        </ContentContainer>
-                        <PrimaryButton isWide type="submit">Add</PrimaryButton>
-                    </form>
-                    )}
-            </Formik>
+            {isMenuItemCreated && <Notification.Success message={"Menu item was created."}/>}
+            <MenuItemView
+                initialValue={initialValue}
+                onSubmit={onSubmit}
+            />
         </>
     );
 }

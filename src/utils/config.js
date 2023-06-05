@@ -12,7 +12,7 @@ import EditCompanyPage from "../page/edit-company/EditCompany.page";
 import ChangePasswordPage from "../page/change-password/ChangePassword.page";
 import SearchPage from "../page/search/Search.page";
 import SearchDetailsPage from "../page/search-details/SearchDetails.page";
-
+import AboutUsPage from "../page/about-us/AboutUs.page";
 import {ReactComponent as BakeryIcon} from "../icons/category/bakery.svg";
 import {ReactComponent as BeverageIcon} from "../icons/category/beverage.svg";
 import {ReactComponent as BurgerIcon} from "../icons/category/burger.svg";
@@ -21,10 +21,12 @@ import {ReactComponent as PizzaIcon} from "../icons/category/pizza.svg";
 import {ReactComponent as SandwitchIcon} from "../icons/category/sandwitch.svg";
 import {ReactComponent as Sea_foodIcon} from "../icons/category/sea_food.svg";
 import {ReactComponent as VagetableIcon} from "../icons/category/vagetable.svg";
-import {LOCAL_STORAGE_KEY, LocalStorage, resolveTranslation} from "./utils";
 import CustomerCompaniesPage from "../page/customer-companies/CustomerCompanies.page";
 import AddCompanyPage from "../page/add-company/AddCompany.page";
 import AddMenuItemPage from "../page/add-menu-item/AddMenuItem.page";
+
+import {resolveTranslation} from "./utils";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
 
 export const DEV_ROUTER = {
     COMPONENTS: 'components',
@@ -32,24 +34,9 @@ export const DEV_ROUTER = {
     ADMIN: 'admin',
 };
 
-export const BE_DOMAIN = 'https://pizza-mobile-api-master.herokuapp.com';
-// export const BE_DOMAIN = 'https://pizza-mobile-api-develop.herokuapp.com';
-// export const BE_DOMAIN = 'http://localhost:5000';
-
-export const BE_API = {
-    //TODO candidate to delete
-    // GET_ALL_CATEGORIES_ID_FOR_COMPANY: companyId => `${BE_DOMAIN}/company/${companyId}/category`,
-    //TODO candidate to delete
-    // GET_ALL_MENU_FOR_COMPANY_FOR_CATEGORY: (companyId, categoryId) => `${BE_DOMAIN}/company/${companyId}/menu_item/${categoryId}`,
-
-    SING_IN: () => `${BE_DOMAIN}/sign-in`,
-    // PLACE_ORDER: () => `${BE_DOMAIN}/place-order`,
-
-    GET_COMPANIES_BY_CUSTOMER_ID: customer_id => `${BE_DOMAIN}/companies/by/customer/${customer_id}`,
-    GET_COMPANIES_BY_CITY: city => `${BE_DOMAIN}/companies/by/city/${city}`,
-    GET_COMPANY_BY_COMPANY_ID: companyId => `${BE_DOMAIN}/companies/by/id/${companyId}`,
-    GET_MENU_ITEMS_BY_COMPANY_ID: company_id => `${BE_DOMAIN}/menu/${company_id}`
-};
+// export const BE_DOMAIN = 'https://pizza-mobile-api-production.herokuapp.com';
+export const BE_DOMAIN = 'https://pizza-mobile-api-develop.herokuapp.com';
+// export const BE_DOMAIN = 'http://localhost:4000';
 
 export const CATEGORY_MAPPER = {
     1: {id: 1, title: resolveTranslation("CATEGORIES.BAKERY"), icon: BakeryIcon, measurement: 'g'},
@@ -73,6 +60,7 @@ export const URL = {
     SING_UP: '/sing-up',
     SETTING: '/setting',
     CHANGE_PASSWORD: '/change-password',
+    ABOUT_US: '/about-us',
 
     CUSTOMER_COMPANIES: '/customer-companies',
     ADD_COMPANY: '/add-company',
@@ -127,7 +115,13 @@ export const ROUTER = {
         showBottomMenu: true,
         BACK_URL: URL.SETTING,
     },
-
+    ABOUT_US: {
+        URL: URL.ABOUT_US,
+        TITLE: resolveTranslation("PAGE.ABOUT_US.TOP_TITLE"),
+        page: AboutUsPage,
+        showBottomMenu: true,
+        BACK_URL: URL.SETTING,
+    },
     CUSTOMER_COMPANIES: {
         URL: URL.CUSTOMER_COMPANIES,
         TITLE: 'Your companies',
