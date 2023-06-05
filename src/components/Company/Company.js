@@ -18,7 +18,6 @@ import {
     Schedule,
     Open,
     Closes,
-    DetailsAnchor,
     Phone,
     DetailedLink,
     ScheduleContent, Location
@@ -39,30 +38,38 @@ const ScheduleDetails = ({schedule}) => {
         return;
     }
 
-    if(isWeekScheduleVisible){
-        return <div onClick={() => setIsWeekScheduleVisible(true)}>
-                    <Phone>80978432032</Phone>
-                    <DetailedLink>show schedule</DetailedLink>
-               </div>
+    if (isWeekScheduleVisible) {
+        return (
+            <ScheduleContent>
+                {
+                    Object.entries(scheduleAsObject)?.map((key, i) => {
+                        const time = `${key[1].split('-').join(' ')}`;
+                        const from = time.split(' ')[0];
+                        const to = time.split(' ')[1];
+
+                        return (
+                            <ScheduleWrapper key={i.toString()}>
+                                <ScheduleContainer>
+                                    <div>
+                                        <div>{key[0]}</div>
+                                        <div>{from}</div>
+                                        <div>{to}</div>
+                                    </div>
+                                </ScheduleContainer>
+                            </ScheduleWrapper>
+                        )
+                    })
+                }
+            </ScheduleContent>
+        )
+
     }
 
-    return Object.entries(scheduleAsObject)?.map((key, i) => {
-        const time = `${key[1].split('-').join(' ')}`;
-        const from = time.split(' ')[0];
-        const to = time.split(' ')[1];
-
-        return (
-            <ScheduleWrapper key={i.toString()}>
-                <ScheduleContainer>
-                    <div>
-                        <div>{key[0]}</div>
-                        <div>{from}</div>
-                        <div>{to}</div>
-                    </div>
-                </ScheduleContainer>
-            </ScheduleWrapper>
-        )
-    })
+    return (
+        <DetailedLink onClick={() => setIsWeekScheduleVisible(true)}>
+            Show schedule
+        </DetailedLink>
+    )
 }
 
 
@@ -71,7 +78,25 @@ const Company = (props) => {
     if (!props.company) {
         return;
     }
+
     const {PHOTOS, NAME, CITY, STREET, SCHEDULE} = props.company;
+
+    const renderLocation = () => {
+        if (props.withMoreInfo) {
+            return (
+                <Location>
+                    <Address>{CITY}, {STREET}</Address>
+                    <RightAnchor/>
+                </Location>
+            );
+        }
+
+        return (
+            <Location>
+                <Address>{CITY}, {STREET}</Address>
+            </Location>
+        )
+    }
 
     return (
         <Wrapper>
@@ -94,23 +119,16 @@ const Company = (props) => {
             <Content>
                 <CompanyInfo>
                     <Name>{NAME}</Name>
-                    <Location>
-                        <Address>{CITY}, {STREET}</Address>
-                        <DetailsAnchor><RightAnchor/></DetailsAnchor>
-                    </Location>
+                    {renderLocation()}
                     <Schedule>
                         <Open>Open</Open>
-                        <Closes>Closes<span>22</span></Closes>
+                        <Closes>Closes<span>22:00</span></Closes>
                     </Schedule>
-                    {props.withMoreInfo && (
-                        <ScheduleContent>
-                            <ScheduleDetails schedule={SCHEDULE}/>}
-                        </ScheduleContent>
-                    )
-                    }
+                    {props.withMoreInfo && <Phone>80978432032</Phone>}
+                    {props.withMoreInfo && <ScheduleDetails schedule={SCHEDULE}/>}
                 </CompanyInfo>
+                {props.children}
             </Content>
-            {props.children}
         </Wrapper>
     );
 };

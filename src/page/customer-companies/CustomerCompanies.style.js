@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export const EditBar = styled.div`
+  padding: 10px 0 0 0;
   display: flex;
   flex-direction: row;
   align-items: stretch;
   justify-content: space-between;
   gap: 27px;
-  margin: 10px auto 10px auto;
   
   & > * {
     display: flex;

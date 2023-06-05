@@ -25,7 +25,7 @@ const SearchDetailsPage = () => {
 
     return (
         <Wrapper>
-            {companies && <Company company={companies.find(c => c.ID === companyId)}/>}
+            {companies && <Company company={companies.find(c => c.ID === companyId)} withMoreInfo/>}
             <Divider>Menu</Divider>
             <CategoryMenuRow menuItems={menuItems}/>
             {menuItems.map((el) => <MenuItem key={el.ID} item={el}/>)}

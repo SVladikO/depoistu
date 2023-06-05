@@ -2,7 +2,6 @@ import styled from "styled-components";
 import {COLOR, BORDER_RADIUS} from "../../utils/theme";
 
 export const Wrapper = styled.div`
-
   border-radius: ${BORDER_RADIUS.SECOND};
   height: auto;
   overflow: hidden;
@@ -10,8 +9,6 @@ export const Wrapper = styled.div`
   background-color: ${COLOR.ACCENT4};
   margin: 0 0 10px 0;
   
-  .swiper-pagination-bullet {
-  padding: 0 10px;
   .swiper-pagination-bullet{
     width: 10px;
     height: 10px;
@@ -37,9 +34,9 @@ export const ImageSection = styled.div`
   }
 `;
 export const Content = styled.div`
+  padding: 10px;
 `;
 export const CompanyInfo = styled.div`
-  margin: 10px 0 10px 10px;
 `;
 
 export const ScheduleWrapper = styled.div`
@@ -50,12 +47,6 @@ export const ScheduleWrapper = styled.div`
   flex-wrap: nowrap;
   color: ${COLOR.ACCENT5};
   display: flex;
-`;
-
-export const DetailsAnchor = styled.div`
-  text-align: right;
-  align-self: center;
-  padding: 0 10px;
 `;
 
 export const Phone = styled.div`
@@ -71,25 +62,6 @@ export const DetailedLink = styled.div`
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
-`;
-
-export const EditBar = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  justify-content: space-between;
-  gap: 27px;
-  margin: 0 auto 10px auto;
-  padding: 0 10px;
-
-  & > * {
-    display: flex;
-    flex: 1;
-  }
-
-  & button {
-    flex: 1;
-  }
 `;
 
 export const Schedule = styled.div`
@@ -141,11 +113,10 @@ export const ScheduleContainer = styled.div`
   }
 `;
 
-
 export const ScheduleContent = styled.div`
   display: flex;
   & > div {
-    margin: 0 5px 0 0;
+    margin: 0 1px 0 0;
   }
 `;
 export const Location = styled.div`
