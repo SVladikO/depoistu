@@ -1,0 +1,50 @@
+
+CREATE TABLE MENU_ITEM
+(
+    ID           SERIAL NOT NULL,
+    CATEGORY_ID  INT    NOT NULL,
+    COMPANY_ID   INT    NOT NULL,
+    NAME         TEXT   NOT NULL,
+    DESCRIPTION  TEXT,
+    COOKING_TIME TEXT   NOT NULL,
+    PRICE        INT    NOT NULL,
+    SIZE         TEXT   NOT NULL,
+    IMAGE_URL    TEXT   NOT NULL
+);
+
+CREATE TABLE CUSTOMER
+(
+    ID                SERIAL NOT NULL,
+    NAME              TEXT   NOT NULL,
+    PHONE             INT    NOT NULL,
+    PASSWORD          TEXT   NOT NULL,
+    EMAIL             TEXT,
+    IS_VERIFIED_PHONE BOOLEAN,
+    IS_VERIFIED_EMAIL BOOLEAN,
+    JOIN_DATE         INT,
+    LIKED_MENU_ITEMS  TEXT
+);
+
+CREATE TABLE COMPANY
+(
+    ID          SERIAL   NOT NULL,
+    CUSTOMER_ID INT      NOT NULL,
+    NAME        TEXT     NOT NULL,
+    PHONE       TEXT     NOT NULL,
+    CITY        TEXT     NOT NULL,
+    STREET      TEXT     NOT NULL,
+    JOIN_DATE   TEXT,
+    SCHEDULE    TEXT    NOT NULL,
+    PHOTOS      TEXT
+);
+
+CREATE TABLE HISTORY
+(
+    ID            SERIAL NOT NULL,
+    CUSTOMER_ID   INT    NOT NULL,
+    COMPANY_ID    INT    NOT NULL,
+    ORDER_DETAILS TEXT,
+    DATE_TIME     TEXT,
+    IS_PAID       BOOLEAN,
+    IS_PREPARED   BOOLEAN
+);
