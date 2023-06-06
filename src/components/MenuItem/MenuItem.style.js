@@ -59,6 +59,13 @@ export const EditPicture = styled.div`
     color: ${COLOR.ACCENT3};
   }
 `;
+export const LabelEdit = styled.span`
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: ${COLOR.PRIMARY};
+  margin: 0 0 0 6px;
+`;
 
 export const AdditionalDetails = styled.div`
   display: flex;

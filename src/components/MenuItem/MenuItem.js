@@ -1,4 +1,4 @@
-import {Wrapper, FoodImage, Title, Description, AdditionalDetails, InvisibleDivider, EditPicture} from "./MenuItem.style";
+import {Wrapper, FoodImage, Title, Description, AdditionalDetails, InvisibleDivider, EditPicture, LabelEdit} from "./MenuItem.style";
 
 import {Price, Flex, Absolute, Like, Popup} from "../index";
 import {ReactComponent as TimeIcon} from "../../icons/time.svg";
@@ -24,7 +24,10 @@ const MenuItem = ({item = {}, withEditIcon = false, onEditClick}) => {
                         <Title>{NAME}</Title>
                         {/*<Like liked={isLiked}/>*/}
                         {withEditIcon && <Link to={URL.EDIT_MENU_ITEM}>
-                            <EditPicture onClick={onEditClick}><EditIcon/></EditPicture>
+                            <EditPicture onClick={onEditClick}>
+                                <EditIcon/>
+                                <LabelEdit>Edit</LabelEdit>
+                            </EditPicture>
                         </Link>}
                     </Flex>
                     <Price>{PRICE}</Price>
