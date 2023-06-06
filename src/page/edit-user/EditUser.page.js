@@ -2,11 +2,12 @@ import React, {useState} from 'react';
 import {Formik} from "formik";
 import * as Yup from "yup";
 import validation from "../../utils/validation";
-import {resolveTranslation} from "../../utils/utils";
 import {PrimaryButton, Label, Input, ContentContainer} from "../../components";
+import {resolveTranslation} from "../../utils/utils";
+
 const SignUpSchema = Yup.object().shape(validation.user.singUp);
 
-const AboutUsPage = () => {
+const EditUserPage = () => {
     const [wasSubmitted, setWasSubmitted] = useState(false);
     return (
         <>
@@ -14,11 +15,7 @@ const AboutUsPage = () => {
                 initialValues={{
                     name: '',
                     email: '',
-                    password: '',
-                    newPassword: '',
-                    confirmedPassword: '',
                     phone: '',
-                    // termsAndConditions: true
                 }}
                 validationSchema={SignUpSchema}
                 onSubmit={values => {
@@ -72,4 +69,4 @@ const AboutUsPage = () => {
     );
 };
 
-export default AboutUsPage;
+export default EditUserPage;
