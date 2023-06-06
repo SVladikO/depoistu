@@ -63,6 +63,10 @@
     "ua": "Пошук",
     "en": "Search"
   },
+  "PAGE.EDIT_USER_PROFILE.TITLE": {
+    "ua": "Змінити профіль",
+    "en": "Edit profile"
+  },
   "PAGE.ABOUT_US.TOP_TITLE": {
     "ua": "Про нашу компанію",
     "en": "About our company"
@@ -98,6 +102,10 @@
   "PAGE.SETTINGS.MENU_ROW.COMPANY": {
     "ua": "Мої заклади",
     "en": "My сompanies"
+  },
+  "PAGE.SETTING.MENU_ROW.EDIT_PROFILE": {
+    "ua": "Редагувати профіль",
+    "en": "Edit Profile"
   },
   "PAGE.SETTINGS.MENU_ROW.MENU": {
     "ua": "Налаштувати меню",
@@ -210,6 +218,10 @@
   "PAGE.CHANGE_PASSWORD.BUTTON.SAVE_PASSWORD": {
     "ua": "Зберегти!",
     "en": "Save now!"
+  },
+  "PAGE.CHANGE_PASSWORD.BUTTON.SAVE_CHANGES": {
+    "ua": "Зберегти зміни",
+    "en": "Save changes"
   },
   "NOTIFICATION.LOADING": {
     "ua": "Завантаження...",
