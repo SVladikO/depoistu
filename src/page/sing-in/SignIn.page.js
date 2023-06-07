@@ -45,10 +45,9 @@ const SignInPage = () => {
                 }, 1000)
 
                 navigate(backUrl);
-
             })
             .catch(e => {
-                setRequestError(e.toString())
+                setRequestError(e.body.message);
                 setTimeout(() => dispatch(stopLoading()), 1000)
             });
     }
