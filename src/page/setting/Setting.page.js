@@ -12,9 +12,10 @@ import {ReactComponent as LockIcon} from '../../icons/lock.svg';
 import {ReactComponent as LogOutIcon} from '../../icons/logout.svg';
 import {ReactComponent as ProfileIcon} from '../../icons/profile.svg';
 // import {ReactComponent as CurrencyIcon} from '../../icons/currency.svg';
-// import {ReactComponent as LanguageIcon} from '../../icons/language.svg';
+import {ReactComponent as LanguageIcon} from '../../icons/language.svg';
+import {ReactComponent as InfoIcon} from "../../icons/info.svg";
 // import {ReactComponent as LinkedAccountIcon} from '../../icons/linked_account.svg';
-// import {ReactComponent as StoreIcon} from '../../icons/house.svg';
+import {ReactComponent as StoreIcon} from '../../icons/house.svg';
 // import {ReactComponent as ConditionsIcon} from '../../icons/list.svg';
 import {ReactComponent as HelpIcon} from '../../icons/chat.svg';
 import {ReactComponent as BusinessIcon} from '../../icons/busines.svg';
@@ -68,16 +69,18 @@ const SettingPage = () => {
                 <SettingMenuRow icon={LogOutIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.EXIT")} changeHandler={logOut}/>
             </AccountSettings>
             <OptionSettings groupTitle={resolveTranslation("PAGE.SETTINGS.GROUP_TITLE.FOR_BUSINESS")}>
-                <SettingMenuRow icon={BusinessIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.COMPANY")}  href={ROUTER.CUSTOMER_COMPANIES.URL}/>
+                <SettingMenuRow icon={StoreIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.COMPANY")}  href={ROUTER.CUSTOMER_COMPANIES.URL}/>
             </OptionSettings>
-            {/*<OptionSettings groupTitle={resolveTranslation("PAGE.SETTINGS.GROUP_TITLE.OPTIONS")}>*/}
-            {/*    /!*<SettingMenuRow icon={NewsletterIcon} title='Newsletter' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*!/*/}
-            {/*    /!*<SettingMenuRow icon={NotificationIcon} title='Notification' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*!/*/}
-            {/*    /!*<SettingMenuRow icon={PhoneCallIcon} title='Phone Call' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*!/*/}
-            {/*    /!*<SettingMenuRow icon={CurrencyIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.CURRENCY")} href='/catalog' label='$USD'/>*!/*/}
-            {/*    <SettingMenuRow icon={LanguageIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.LANGUAGE")} href='/catalog' label='English'/>*/}
-            {/*    /!*<SettingMenuRow icon={LinkedAccountIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.LINKED_ACCOUNTS")} href='/catalog' label='Facebook, go ...'/>*!/*/}
-            {/*</OptionSettings>*/}
+            <OptionSettings groupTitle={resolveTranslation("PAGE.SETTINGS.GROUP_TITLE.OPTIONS")}>
+                {/*<SettingMenuRow icon={NewsletterIcon} title='Newsletter' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
+                {/*<SettingMenuRow icon={NotificationIcon} title='Notification' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
+                {/*<SettingMenuRow icon={PhoneCallIcon} title='Phone Call' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
+                {/*<SettingMenuRow icon={CurrencyIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.CURRENCY")} href='/catalog' label='$USD'/>*/}
+                <SettingMenuRow icon={HelpIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.HELP")} href='/catalog'/>
+                <SettingMenuRow icon={InfoIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.ABOUT_US")} href={URL.ABOUT_US}/>
+                {/*<SettingMenuRow icon={LanguageIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.LANGUAGE")} href='/catalog' label='English'/>*/}
+                {/*<SettingMenuRow icon={LinkedAccountIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.LINKED_ACCOUNTS")} href='/catalog' label='Facebook, go ...'/>*/}
+            </OptionSettings>
         </>
     );
 };
