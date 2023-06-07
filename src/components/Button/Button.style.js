@@ -18,7 +18,6 @@ export const button = styled.button`
     width: 12px;
     height: 12px;
     margin: ${p => p.isOnlyIcon ? 0 : '0 10px 0 0'};
-    display: block;
   }
 `;
 
