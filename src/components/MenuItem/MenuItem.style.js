@@ -17,7 +17,6 @@ export const Wrapper = styled.div`
   svg{
     width: 25px;
     height: 25px;
-    fill: ${COLOR.PRIMARY};
   }
 `
 
