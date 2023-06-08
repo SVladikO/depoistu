@@ -1,12 +1,12 @@
 import React from 'react';
-import {Wrapper,Employee, Photo, FullName, Position} from "./AboutUs.page.style";
+import {Wrapper,Employee, Photo, FullName, Position} from "./OurTeam.page.style";
 import Vlad_imgSrc from '../../images/team/Vlad.png';
 import David_imgSrc from '../../images/team/David.png';
 import Irina_imgSrc from '../../images/team/Irina.png';
 import Alex_imgSrc from '../../images/team/Alex.png';
 
 
-const AboutUsPage = () => {
+const OurTeamPage = () => {
     return (
         <Wrapper>
             <Employee>
@@ -50,4 +50,4 @@ const AboutUsPage = () => {
     );
 };
 
-export default AboutUsPage;
+export default OurTeamPage;
