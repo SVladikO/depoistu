@@ -3,7 +3,7 @@ import React from 'react';
 const AboutUsPage = () => {
     return (
         <div>
-            We are the best
+            We are the best.
         </div>
     );
 };
