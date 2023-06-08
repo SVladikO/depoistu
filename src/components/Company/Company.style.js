@@ -100,7 +100,7 @@ export const Closes = styled.span`
   }
 `;
 export const Day = styled.div`
-  color: ${props => props.condition ? `${COLOR.ACCENT3}` : `${COLOR.ACCENT5}`};
+  color: ${props => props.isToday ? COLOR.ACCENT3 : COLOR.ACCENT5};
 }
 `;
 export const Name = styled.div`
