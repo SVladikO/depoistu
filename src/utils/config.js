@@ -12,7 +12,8 @@ import EditCompanyPage from "../page/edit-company/EditCompany.page";
 import ChangePasswordPage from "../page/change-password/ChangePassword.page";
 import SearchPage from "../page/search/Search.page";
 import SearchDetailsPage from "../page/search-details/SearchDetails.page";
-import AboutUsPage from "../page/our-team/OurTeam.page";
+import AboutUsPage from "../page/about-us/AboutUs.page";
+import OurTeamPage from "../page/our-team/OurTeam.page";
 import {ReactComponent as BakeryIcon} from "../icons/category/bakery.svg";
 import {ReactComponent as BeverageIcon} from "../icons/category/beverage.svg";
 import {ReactComponent as BurgerIcon} from "../icons/category/burger.svg";
@@ -27,7 +28,6 @@ import AddMenuItemPage from "../page/add-menu-item/AddMenuItem.page";
 
 import {resolveTranslation} from "./utils";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
-import OurTeamPage from "../page/our-team/OurTeam.page";
 
 export const DEV_ROUTER = {
     COMPONENTS: 'components',
