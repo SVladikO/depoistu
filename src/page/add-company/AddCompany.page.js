@@ -38,7 +38,7 @@ const AddCompany = () => {
         setIsLoading(true);
 
         fetchData(BE_API.COMPANY.POST_CREATE(), reqObj)
-            .then((res) => {
+            .then(res => {
                 setIsCompanySaved(true);
                 setNewCompanyId(res.body.successMessage.insertId);
                 LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES)
@@ -66,7 +66,6 @@ const AddCompany = () => {
     return (
         <>
             {requestError && <Notification.Error message={requestError}/>}
-            {isCompanySaved}
             <CompanyView
                 initialValues={initialValues}
                 onSubmit={onSubmit}
