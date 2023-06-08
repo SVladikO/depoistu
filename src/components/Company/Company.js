@@ -5,7 +5,6 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import {ReactComponent as RightAnchor} from "../../icons/right-anchor.svg";
-
 import {
     Wrapper,
     ImageSection,
@@ -20,10 +19,11 @@ import {
     Closes,
     Phone,
     DetailedLink,
-    ScheduleContent, Location
+    ScheduleContent, Location,
+    Day
 } from "./Company.style";
 
-import {getScheduleAsObject} from "../../utils/company";
+import {getScheduleAsObject, checkIsToday} from "../../utils/company";
 
 const ScheduleDetails = ({schedule}) => {
     const [isWeekScheduleVisible, setIsWeekScheduleVisible] = useState(false);
@@ -39,19 +39,20 @@ const ScheduleDetails = ({schedule}) => {
     }
 
     if (isWeekScheduleVisible) {
+        const days = Object.keys(scheduleAsObject);
         return (
             <ScheduleContent>
                 {
                     Object.entries(scheduleAsObject)?.map((key, i) => {
-                        const time = `${key[1].split('-').join(' ')}`;
-                        const from = time.split(' ')[0];
-                        const to = time.split(' ')[1];
+                        const dayName = key[0];
+                        const fromToTime = key[1];
+                        const [from,to] = fromToTime.split('-');
 
                         return (
                             <ScheduleWrapper key={i.toString()}>
                                 <ScheduleContainer>
                                     <div>
-                                        <div>{key[0]}</div>
+                                        <Day isToday={checkIsToday(i)}>{dayName}</Day>
                                         <div>{from}</div>
                                         <div>{to}</div>
                                     </div>
@@ -71,6 +72,7 @@ const ScheduleDetails = ({schedule}) => {
         </DetailedLink>
     )
 }
+
 
 
 const Company = (props) => {

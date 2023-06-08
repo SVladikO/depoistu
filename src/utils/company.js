@@ -50,3 +50,12 @@ export function initSchedule(schedule) {
         })
     return result;
 }
+export function checkIsToday (i) {
+    let currentDayIndex = new Date().getDay();
+
+    if(currentDayIndex === 0){
+        currentDayIndex = 7;
+    }
+
+    return (i+1) === currentDayIndex;
+}
