@@ -12,14 +12,13 @@ import {ReactComponent as LockIcon} from '../../icons/lock.svg';
 import {ReactComponent as LogOutIcon} from '../../icons/logout.svg';
 import {ReactComponent as ProfileIcon} from '../../icons/profile.svg';
 // import {ReactComponent as CurrencyIcon} from '../../icons/currency.svg';
-import {ReactComponent as LanguageIcon} from '../../icons/language.svg';
+// import {ReactComponent as LanguageIcon} from '../../icons/language.svg';
 import {ReactComponent as InfoIcon} from "../../icons/info.svg";
 // import {ReactComponent as LinkedAccountIcon} from '../../icons/linked_account.svg';
 import {ReactComponent as StoreIcon} from '../../icons/house.svg';
 import {ReactComponent as TeamIcon} from "../../icons/team.svg";
 // import {ReactComponent as ConditionsIcon} from '../../icons/list.svg';
-import {ReactComponent as HelpIcon} from '../../icons/chat.svg';
-import {ReactComponent as BusinessIcon} from '../../icons/busines.svg';
+// import {ReactComponent as HelpIcon} from '../../icons/chat.svg';
 
 import {
     SettingMenuRow,
@@ -59,14 +58,12 @@ const SettingPage = () => {
                 {/*TODO: Hidden second version*/}
                 {/*<SettingMenuRow icon={LikeIcon} title={ROUTER.Favorite.TITLE} href={ROUTER.Favorite.URL}/>*/}
                 {/*<SettingMenuRow icon={OrderHistoryIcon} title={ROUTER.ORDER_HISTORY.TITLE} href={ROUTER.ORDER_HISTORY.URL}/>*/}
-                <SettingMenuRow icon={LockIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.CHANGE_PASS")} href={URL.CHANGE_PASSWORD}/>
                 {/*<SettingMenuRow icon={PaymentIcon} title='Payment' href='/catalog'/>*/}
                 {/*<SettingMenuRow icon={DeliveryAddressIcon} title='Delivery Address' href='/catalog'/>*/}
                 {/*<SettingMenuRow icon={StoreIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.LOCATION")} href='/catalog'/>*/}
                 {/*<SettingMenuRow icon={ConditionsIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.TERMS")} href='/catalog'/>*/}
-                <SettingMenuRow icon={HelpIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.HELP")} href='/catalog'/>
-                <SettingMenuRow icon={HelpIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.ABOUT_US")} href={URL.ABOUT_US}/>
                 <SettingMenuRow icon={ProfileIcon} title={resolveTranslation("PAGE.SETTING.MENU_ROW.EDIT_PROFILE")} href={URL.EDIT_USER}/>
+                <SettingMenuRow icon={LockIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.CHANGE_PASS")} href={URL.CHANGE_PASSWORD}/>
                 <SettingMenuRow icon={LogOutIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.EXIT")} changeHandler={logOut}/>
             </AccountSettings>
             <OptionSettings groupTitle={resolveTranslation("PAGE.SETTINGS.GROUP_TITLE.FOR_BUSINESS")}>
@@ -77,7 +74,7 @@ const SettingPage = () => {
                 {/*<SettingMenuRow icon={NotificationIcon} title='Notification' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
                 {/*<SettingMenuRow icon={PhoneCallIcon} title='Phone Call' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
                 {/*<SettingMenuRow icon={CurrencyIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.CURRENCY")} href='/catalog' label='$USD'/>*/}
-                <SettingMenuRow icon={HelpIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.HELP")} href='/catalog'/>
+                {/*<SettingMenuRow icon={HelpIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.HELP")} href='/catalog'/>*/}
                 <SettingMenuRow icon={InfoIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.ABOUT_US")} href={URL.ABOUT_US}/>
                 <SettingMenuRow icon={TeamIcon} title={resolveTranslation("PAGE.OUR_TEAM.TOP_TITLE")} href={URL.OUR_TEAM}/>
                 {/*<SettingMenuRow icon={LanguageIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.LANGUAGE")} href='/catalog' label='English'/>*/}
