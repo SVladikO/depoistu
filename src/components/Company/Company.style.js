@@ -99,7 +99,10 @@ export const Closes = styled.span`
     left: -8.5px;
   }
 `;
-
+export const Day = styled.div`
+  color: ${props => props.condition ? `${COLOR.ACCENT3}` : `${COLOR.ACCENT5}`};
+}
+`;
 export const Name = styled.div`
   font-weight: 700;
   font-size: 20px;

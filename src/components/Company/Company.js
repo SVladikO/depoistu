@@ -20,10 +20,12 @@ import {
     Closes,
     Phone,
     DetailedLink,
-    ScheduleContent, Location
+    ScheduleContent, Location,
+    Day
 } from "./Company.style";
 
 import {getScheduleAsObject} from "../../utils/company";
+import {COLOR} from "../../utils/theme";
 
 const ScheduleDetails = ({schedule}) => {
     const [isWeekScheduleVisible, setIsWeekScheduleVisible] = useState(false);
@@ -39,6 +41,7 @@ const ScheduleDetails = ({schedule}) => {
     }
 
     if (isWeekScheduleVisible) {
+        const days = Object.keys(scheduleAsObject);
         return (
             <ScheduleContent>
                 {
@@ -46,12 +49,15 @@ const ScheduleDetails = ({schedule}) => {
                         const time = `${key[1].split('-').join(' ')}`;
                         const from = time.split(' ')[0];
                         const to = time.split(' ')[1];
+                        const day = key[0];
+                        const getCurrentDay = new Date().getDay() - 1;
+                        const condition = days.indexOf(day) === getCurrentDay;
 
                         return (
                             <ScheduleWrapper key={i.toString()}>
                                 <ScheduleContainer>
                                     <div>
-                                        <div>{key[0]}</div>
+                                        <Day condition={condition}>{day}</Day>
                                         <div>{from}</div>
                                         <div>{to}</div>
                                     </div>
