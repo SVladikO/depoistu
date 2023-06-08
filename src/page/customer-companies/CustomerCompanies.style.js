@@ -15,7 +15,6 @@ export const QRCodeButton = styled(PrimaryButton)`
     margin: 0;
     display: block;
   }
-
 `;
 export const EditBar = styled.div`
   padding: 10px 0 0 0;

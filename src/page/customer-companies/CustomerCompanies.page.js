@@ -22,7 +22,7 @@ const PopupQRCode = ({companyId, onClose}) => {
         return;
     }
 
-    const editMenuUrl = `${window.location.origin}${URL.EDIT_MENU}/${companyId}`;
+    const editMenuUrl = `${window.location.origin}/${companyId}`;
 
     QRCode.toDataURL(editMenuUrl)
         .then(url => setSrc(url))
