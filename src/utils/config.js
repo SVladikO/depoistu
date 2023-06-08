@@ -28,6 +28,7 @@ import AddMenuItemPage from "../page/add-menu-item/AddMenuItem.page";
 
 import {resolveTranslation} from "./utils";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
+import EditUserPage from "../page/edit-user/EditUser.page";
 
 export const DEV_ROUTER = {
     COMPONENTS: 'components',
@@ -35,8 +36,10 @@ export const DEV_ROUTER = {
     ADMIN: 'admin',
 };
 
-// export const BE_DOMAIN = 'https://pizza-mobile-api-production.herokuapp.com';
-export const BE_DOMAIN = 'https://pizza-mobile-api-develop.herokuapp.com';
+const MASTER_BE_DOMAIN = 'https://pizza-mobile-api-master.herokuapp.com';
+const DEVELOP_BE_DOMAIN = 'https://pizza-mobile-api-develop.herokuapp.com';
+
+export const BE_DOMAIN = process.env.MODE === 'production' ? MASTER_BE_DOMAIN : DEVELOP_BE_DOMAIN;
 // export const BE_DOMAIN = 'http://localhost:4000';
 
 export const CATEGORY_MAPPER = {
@@ -62,6 +65,7 @@ export const URL = {
     SETTING: '/setting',
     CHANGE_PASSWORD: '/change-password',
     ABOUT_US: '/about-us',
+    EDIT_USER: '/edit-user',
     OUR_TEAM: '/our-team',
 
     CUSTOMER_COMPANIES: '/customer-companies',
@@ -128,6 +132,13 @@ export const ROUTER = {
         URL: URL.OUR_TEAM,
         TITLE: resolveTranslation("PAGE.OUR_TEAM.TOP_TITLE"),
         page: OurTeamPage,
+        showBottomMenu: true,
+        BACK_URL: URL.SETTING,
+    },
+    EDIT_USER: {
+        URL: URL.EDIT_USER,
+        TITLE: resolveTranslation("PAGE.EDIT_USER_PROFILE.TITLE"),
+        page: EditUserPage,
         showBottomMenu: true,
         BACK_URL: URL.SETTING,
     },

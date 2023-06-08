@@ -10,6 +10,7 @@
     "formik": "^2.2.9",
     "minimatch": "^5.1.0",
     "nth-check": "^2.1.1",
+    "qrcode": "^1.5.3",
     "react": "^18.2.0",
     "react_code_tag": "^1.0.2",
     "react-dom": "^18.2.0",
@@ -36,6 +37,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "dev": "react-scripts build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

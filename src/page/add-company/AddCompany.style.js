@@ -42,6 +42,31 @@ export const InstitutionBasketButton = styled.div`
   left: 148px;
 `;
 
+export const WarningText = styled.div`
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: ${COLOR.ACCENT6};
+  max-width: 200px;
+  margin: 0 auto 5px auto;
+`;
+
+export const Reference = styled.div`
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  & > a {
+    color: ${COLOR.ACCENT1};
+  }
+  * > svg {
+    color: ${COLOR.ACCENT1};
+    fill-opacity: 1;
+    display: inline-block;
+    margin: 2px 0 -2px 7px;
+  }
+`;
+
 export const BottomSection = styled.div`
   margin: 84px 0 0 0;
   display: grid;

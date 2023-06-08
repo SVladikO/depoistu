@@ -10,6 +10,7 @@ import {ReactComponent as LockIcon} from '../../icons/lock.svg';
 // import {ReactComponent as LikeIcon} from '../../icons/favorite.svg';
 // import {ReactComponent as DeliveryAddressIcon} from '../../icons/map_point.svg';
 import {ReactComponent as LogOutIcon} from '../../icons/logout.svg';
+import {ReactComponent as ProfileIcon} from '../../icons/profile.svg';
 // import {ReactComponent as CurrencyIcon} from '../../icons/currency.svg';
 import {ReactComponent as LanguageIcon} from '../../icons/language.svg';
 import {ReactComponent as InfoIcon} from "../../icons/info.svg";
@@ -63,6 +64,9 @@ const SettingPage = () => {
                 {/*<SettingMenuRow icon={DeliveryAddressIcon} title='Delivery Address' href='/catalog'/>*/}
                 {/*<SettingMenuRow icon={StoreIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.LOCATION")} href='/catalog'/>*/}
                 {/*<SettingMenuRow icon={ConditionsIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.TERMS")} href='/catalog'/>*/}
+                <SettingMenuRow icon={HelpIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.HELP")} href='/catalog'/>
+                <SettingMenuRow icon={HelpIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.ABOUT_US")} href={URL.ABOUT_US}/>
+                <SettingMenuRow icon={ProfileIcon} title={resolveTranslation("PAGE.SETTING.MENU_ROW.EDIT_PROFILE")} href={URL.EDIT_USER}/>
                 <SettingMenuRow icon={LogOutIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.EXIT")} changeHandler={logOut}/>
             </AccountSettings>
             <OptionSettings groupTitle={resolveTranslation("PAGE.SETTINGS.GROUP_TITLE.FOR_BUSINESS")}>
