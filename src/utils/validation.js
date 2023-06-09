@@ -1,14 +1,14 @@
 import * as Yup from 'yup';
 
 const PHONE = {
-    MIN: 10,
-    MAX: 10
+    MIN: 12,
+    MAX: 12
 };
 
 const PHONE_VALIDATION = from =>
     Yup.string()
-        .min(from.PHONE.MIN, `Example: 0971234567`)
-        .max(from.PHONE.MAX, `Example: 0971234567`)
+        .min(from.PHONE.MIN, `Example: 380971112233`)
+        .max(from.PHONE.MAX, `Example: 380971112233`)
         .required(`Required!`)
 
 const USER = {
@@ -55,9 +55,9 @@ const singInValidation = {
 const singUpValidation = {
     name: user_validation.name,
     email: user_validation.email,
+    phone: user_validation.phone,
     newPassword: user_validation.password,
     confirmedPassword: user_validation.confirmedPassword,
-    phone: user_validation.phone,
 }
 const changePasswordValidation = {
     oldPassword: user_validation.password,
