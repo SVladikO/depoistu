@@ -16,12 +16,12 @@ CREATE TABLE CUSTOMER
 (
     ID                SERIAL NOT NULL,
     NAME              TEXT   NOT NULL,
-    PHONE             INT    NOT NULL,
+    PHONE             TEXT    NOT NULL,
     PASSWORD          TEXT   NOT NULL,
     EMAIL             TEXT,
     IS_VERIFIED_PHONE BOOLEAN,
     IS_VERIFIED_EMAIL BOOLEAN,
-    JOIN_DATE         INT,
+    JOIN_DATE         TEXT,
     LIKED_MENU_ITEMS  TEXT
 );
 
