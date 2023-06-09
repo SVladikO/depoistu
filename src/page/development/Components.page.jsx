@@ -48,7 +48,7 @@ import AccountSettings from "../../components/AccountSettings/AccountSettings";
 import OptionSettings from "../../components/OptionSettings/OptionSettings";
 import ImageContent from "../../components/Popup/content/image/ImageContent";
 import IntroContent from "../../components/Popup/content/info/InfoContent";
-import CityContent from  "../../components/Popup/content/city/CityContent"
+import CityContent from "../../components/Popup/content/city/CityContent"
 import {ReactComponent as LocationIcon} from "../../icons/map_point.svg";
 import Checkbox from "../../components/Checkbox/Checkbox";
 import {EditBar} from "../customer-companies/CustomerCompanies.style";
@@ -73,26 +73,87 @@ function ExampleCategoryWithSelected() {
     )
 }
 
-const columns = [
+const componentsGroup1 = [
+    [
+        {title: 'Checkbox', component: <Checkbox/>},
+        {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
+        {title: 'Rating', component: <Rating>{`4.9`}</Rating>},
+        {title: 'Discount', component: <Discount>{`-10`}</Discount>},
+        {title: 'Price', component: <Price small={false} big>50.00</Price>},
+    ],
     [
         {title: 'PrimaryButton', component: <PrimaryButton><GoogleIcon/>Google</PrimaryButton>},
         {title: 'PrimaryButton', component: <PrimaryButton>Sing in</PrimaryButton>},
-        {title: 'PrimaryButton', component: <PrimaryButton>SING IN</PrimaryButton>},
         {title: 'SecondaryButton', component: <SecondaryButton><FacebookIcon/>facebook</SecondaryButton>},
         {title: 'SecondaryButton', component: <SecondaryButton>Cancel</SecondaryButton>},
-        {title: 'SecondaryButton', component: <SecondaryButton>CANCEL</SecondaryButton>},
+        {title: 'CloseButton', component: <CloseButton clickHandler={() => alert('clicked')}/>},
+    ],
+    [
         {title: 'Label', component: <Label>Change Password</Label>},
-        {title: 'Input 1', component: <Input Icon={MailIcon} isTouched errorMessage={'Email is misspelled!'} value="jodode@mail.com"/>},
-        {title: 'Input 2', component: <Input />},
-        {title: 'Input 3 {withSwitcher}', component: <Input withSwitcher />},
-        {title: 'Input 4 {withCleaner value}', component: <Input withCleaner value={111}/>},
-        {title: 'Textarea {withCleaner}', component: <Textarea withCleaner/>},
-        {title: 'Textarea {withCleaner value}', component: <Textarea withCleaner value={222}/>},
-        {title: 'PInput', component: <PInput withIcon Icon={LocationIcon} value={'Vinnica'} />},
-        {title: 'FromToTime', component: <FromToTime prefix='mon' dayName='Mon' values={{monIsChecked: true}}/>},
+        {title: 'Input', component: <Input/>},
+        {title: 'Input {withCleaner}', component: <Input withCleaner value={111}/>},
+        {title: 'Input {withSwitcher}', component: <Input value={1111} withSwitcher/>},
+        {title: 'Input', component: <Input Icon={MailIcon} isTouched value="jodode@mail.com" withCleaner/>},
+        {title: 'Input', component: <Input isTouched errorMessage={'Max length 12.'} value="++380970663322"/>},
+    ],
+    [
+        {title: 'PInput', component: <PInput withIcon Icon={LocationIcon} value={'Vinnica'}/>},
         {title: 'FromToTime', component: <FromToTime prefix='mon' dayName='Mon' values={{}}/>},
-        {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
-        {title: 'Checkbox', component: <Checkbox/>},
+        {title: 'FromToTime', component: <FromToTime prefix='mon' dayName='Mon' values={{monIsChecked: true}}/>},
+        {title: 'Textarea withCleaner', component: <Textarea withCleaner/>},
+        {title: 'Textarea withCleaner', component: <Textarea withCleaner value={222}/>},
+    ]
+];
+const componentsGroup2 = [
+    [
+        {title: 'CategoryItem', component: <CategoryItem category={{icon: LanguageIcon, title: 'Language'}} title="Sandwich"><SandwichIcon/></CategoryItem>},
+        {
+            title: 'CategoryMenuRow',
+            component: <CategoryMenuRow menuItems={[{CATEGORY_ID: 1}, {CATEGORY_ID: 2}, {CATEGORY_ID: 3}]}/>
+        },
+        {
+            title: 'CategoryMenuRow', component: <ExampleCategoryWithSelected/>
+        },
+    ],
+    [
+        {
+            title: 'MenuItem',
+            component:
+                <MenuItem withEditIcon
+                          item={{
+                              ID: 10,
+                              NAME: '4 Cheese',
+                              DESCRIPTION: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella',
+                              IMAGE_URL: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
+                              COOKING_TIME: 15,
+                              PRICE: 170,
+                              SIZE: 150,
+                          }}
+                />
+        },
+        {
+            title: 'OrderHistoryRow', component:
+                (() => {
+                    const item = {
+                        name: 'Chees Bites Pizza',
+                        description: 'spicy, tomato, sauce, chili, mozzarella',
+                        price: 7
+                    }
+                    return <OrderHistoryRow item={item}/>
+                })()
+        },
+        {
+            title: 'OrderHistoryRow', component: (function () {
+                const item = {
+                    name: 'Chees Bites Pizza',
+                    description: 'spicy, tomato, sauce, chili, mozzarella',
+                    price: 7,
+                    size: 'Medium',
+                    status: 'Completed'
+                }
+                return <OrderHistoryRow isHistory item={item}/>
+            })()
+        },
     ],
     [
         {
@@ -124,12 +185,12 @@ const columns = [
             title: 'Company',
             component: <Company
                 company={{
-                        PHOTOS: 'https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg, https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg, https://afisha.bigmir.net/i/23/51/30/9/2351309/gallery/15b8175dc297f8a58d9de22e77b7b256-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg',
-                        NAME: 'Domono',
-                        CITY: 'Kyiv',
-                        SCHEDULE: '08.00-21.00, 08.00-21.00, 08.00-21.00, 08.00-21.00, 08.00-21.00, 10.00-22.00, 10.00-22.00',
-                        STREET: 'Davidusk 15.',
-                    }}
+                    PHOTOS: 'https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg, https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg, https://afisha.bigmir.net/i/23/51/30/9/2351309/gallery/15b8175dc297f8a58d9de22e77b7b256-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg',
+                    NAME: 'Domono',
+                    CITY: 'Kyiv',
+                    SCHEDULE: '08.00-21.00, 08.00-21.00, 08.00-21.00, 08.00-21.00, 08.00-21.00, 10.00-22.00, 10.00-22.00',
+                    STREET: 'Davidusk 15.',
+                }}
             >
                 <EditBar>
                     <PrimaryButton><EditIcon/>Company</PrimaryButton>
@@ -137,92 +198,16 @@ const columns = [
                 </EditBar>
             </Company>
         },
-        {title: 'CategoryMenuRow', component: <CategoryMenuRow menuItems={[{CATEGORY_ID: 1}, {CATEGORY_ID: 2}, {CATEGORY_ID: 3}]} />},
-        {
-            title: 'CategoryMenuRow', component: <ExampleCategoryWithSelected />
-
-        },
-        {
-            title: 'MenuItem',
-            component:
-                <MenuItem withEditIcon
-                    item={{
-                        ID: 10,
-                        NAME: '4 Cheese',
-                        DESCRIPTION: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella',
-                        IMAGE_URL: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
-                        COOKING_TIME: 15,
-                        PRICE: 170,
-                        SIZE: 150,
-                    }}
-                />
-        },
-        {
-            title: 'OrderHistoryRow', component:
-                (() => {
-                    const item = {
-                        name: 'Chees Bites Pizza',
-                        description: 'spicy, tomato, sauce, chili, mozzarella',
-                        price: 7
-                    }
-                    return <OrderHistoryRow item={item}/>
-                })()
-        },
-        {
-            title: 'OrderHistoryRow', component: (function () {
-                const item = {
-                    name: 'Chees Bites Pizza',
-                    description: 'spicy, tomato, sauce, chili, mozzarella',
-                    price: 7,
-                    size: 'Medium',
-                    status: 'Completed'
-                }
-                return <OrderHistoryRow isHistory item={item}/>
-            })()
-        },
-        {title: 'CategoryItem', component: <CategoryItem title="Sandwich"><SandwichIcon/></CategoryItem>},
-
-
     ],
     [
-        {title: 'CloseButton', component: <CloseButton clickHandler={() => alert('clicked')}/>},
-        {
-            title: 'ImagePopupContent',
-            component: <ImageContent imageUrl="https://raw.githubusercontent.com/SVladikO/testApp/master/images/4_cheese.jpg"/>
-        },
-        {title: 'IntroPopupContent', component: <IntroContent>Some text Some text Some text Some text Some text</IntroContent>},
-        {title: 'CityPopupContent', component: <CityContent />},
-        {
-            title: 'EmptyBasket', component:
-                <NotificationTDB
-                    Icon={EmptyBasketIcon}
-                    title="Your Cart is empty"
-                    description="Looks like you haven't made your order yet."
-                    buttonText="Shop Now"
-                    link="#"
-                />
-        },
-        {title: 'Price', component: <Price small={false} big>50.00</Price>},
-        {title: 'Rating', component: <Rating>{`4.9`}</Rating>},
-        {title: 'Discount', component: <Discount>{`-10`}</Discount>},
+        {title: 'Notification.Loading', component: <Notification.Loading/>},
+        {title: 'Notification.Error', component: <Notification.Error message={'Broken content.'}/>},
+        {title: 'Notification.Success', component: <Notification.Success message={'Company was created.'}/>},
     ],
+
+];
+const componentsGroup3 = [
     [
-        {
-            title: 'AccountSettings', component:
-                <AccountSettings groupTitle="Accounts">
-                    <SettingMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
-                    <SettingMenuRow icon={LogOutIcon} title="Only change handler"
-                                    changeHandler={() => console.log('clicked')}/>
-                </AccountSettings>
-        },
-        {
-            title: 'OptionSettings', component:
-                <OptionSettings groupTitle="Accounts">
-                    <SettingMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
-                    <SettingMenuRow icon={LogOutIcon} title="Only change handler"
-                                    changeHandler={() => console.log('clicked')}/>
-                </OptionSettings>
-        },
         {
             title: 'SettingMenuRow',
             component: <SettingMenuRow icon={LockIcon} title={`Change Password`} toggleHandler={() => {
@@ -239,22 +224,34 @@ const columns = [
         },
 
         {
-            title: 'UserAccountBar',
-            component: <CustomerAccountBar fullName="Jhon Smith" status="Basic Member"/>
-        }
+            title: 'AccountSettings', component:
+                <AccountSettings groupTitle="Accounts">
+                    <SettingMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
+                    <SettingMenuRow icon={LogOutIcon} title="Only change handler"
+                                    changeHandler={() => console.log('clicked')}/>
+                </AccountSettings>
+        },
+        {
+            title: 'OptionSettings', component:
+                <OptionSettings groupTitle="Accounts">
+                    <SettingMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
+                    <SettingMenuRow icon={LogOutIcon} title="Only change handler"
+                                    changeHandler={() => console.log('clicked')}/>
+                </OptionSettings>
+        },
     ],
     [
+        {title: "NavigationHeader", component: <NavigationHeader title="category"/>},
+        {title: 'HistoryTabBar', component: <HistoryTabBar/>},
         {
             title: 'HistoryTabBar in OptionSettings', component:
                 <NavigationHeader title="category" backUrl={' '}>
                     <HistoryTabBar/>
                 </NavigationHeader>
         },
-        {title: "NavigationHeader", component: <NavigationHeader title="category"/>},
-        {title: 'HistoryTabBar', component: <HistoryTabBar/>},
-        {title: 'ContentContainer', component: <ContentContainer>Sign up with</ContentContainer>},
 
         {title: 'BottomMenu', component: <RowSplitter height='80px'><BottomMenu/></RowSplitter>},
+        {title: 'ContentContainer', component: <ContentContainer>Sign up with</ContentContainer>},
         {
             title: 'NavigationLabelHref',
             component: <NavigationLabelHref label="Already have an account?" to="/catalog" hrefTitle="Sing up!"/>
@@ -266,9 +263,32 @@ const columns = [
         },
     ],
     [
-        {title: 'Notification.Loading', component: <Notification.Loading/>},
-        {title: 'Notification.Error', component: <Notification.Error message={'Broken content.'}/>},
-        {title: 'Notification.Success', component: <Notification.Success/>},
+        {
+            title: 'ImagePopupContent',
+            component: <ImageContent
+                imageUrl="https://raw.githubusercontent.com/SVladikO/testApp/master/images/4_cheese.jpg"/>
+        },
+        {
+            title: 'IntroPopupContent',
+            component: <IntroContent>Some text Some text Some text Some text Some text</IntroContent>
+        },
+        {title: 'CityPopupContent', component: <CityContent/>},
+    ],
+    [
+        {
+            title: 'UserAccountBar',
+            component: <CustomerAccountBar fullName="Jhon Smith" status="Basic Member"/>
+        },
+        {
+            title: 'EmptyBasket', component:
+                <NotificationTDB
+                    Icon={EmptyBasketIcon}
+                    title="Your Cart is empty"
+                    description="Looks like you haven't made your order yet."
+                    buttonText="Shop Now"
+                    link="#"
+                />
+        },
     ]
 ]
 
@@ -289,6 +309,17 @@ function ComponentsPage() {
         )
     }
 
+    const renderGroup = (group) => {
+        return (
+            <Wrapper>
+                {group.map((components, index) =>
+                    <Column key={index}>{renderRows(components)}</Column>)
+                }
+            </Wrapper>
+        )
+    }
+
+
     return (
         <div>
             <Header>
@@ -303,11 +334,9 @@ function ComponentsPage() {
                 <Space/>
                 {renderRows(colors)}
             </Header>
-            <Wrapper>
-                {columns.map((components, index) =>
-                    <Column key={index}>{renderRows(components)}</Column>)
-                }
-            </Wrapper>
+            {renderGroup(componentsGroup1)}
+            {renderGroup(componentsGroup2)}
+            {renderGroup(componentsGroup3)}
             {/*<CatalogPage/>*/}
         </div>
     )
