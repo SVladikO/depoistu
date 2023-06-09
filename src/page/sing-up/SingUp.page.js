@@ -31,9 +31,8 @@ const SingUpPage = () => {
                 LocalStorage.set(LOCAL_STORAGE_KEY.CUSTOMER, res.body)
                 navigate(URL.SETTING);
             })
-            .catch(e => {
-                setRequestError(e.body.message);
-            }).finally(() => setIsLoading(false));
+            .catch(e => setRequestError(e.body.message))
+            .finally(() => setIsLoading(false));
     }
 
     if (isLoading) {
@@ -45,11 +44,11 @@ const SingUpPage = () => {
             {requestError && <Notification.Error message={requestError}/>}
             <Formik
                 initialValues={{
-                    name: '111',
-                    email: '1@2.1',
-                    phone: '380970668830',
-                    newPassword: '111111',
-                    confirmedPassword: '111111',
+                    name: '',
+                    email: '',
+                    phone: '',
+                    newPassword: '',
+                    confirmedPassword: '',
                 }}
                 validationSchema={SignUpSchema}
                 onSubmit={onSubmit}
