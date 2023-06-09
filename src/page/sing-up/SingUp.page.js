@@ -45,11 +45,11 @@ const SingUpPage = () => {
             {requestError && <Notification.Error message={requestError}/>}
             <Formik
                 initialValues={{
-                    name: '',
-                    email: '',
-                    phone: '',
-                    newPassword: '',
-                    confirmedPassword: '',
+                    name: '111',
+                    email: '1@2.1',
+                    phone: '380970668830',
+                    newPassword: '111111',
+                    confirmedPassword: '111111',
                 }}
                 validationSchema={SignUpSchema}
                 onSubmit={onSubmit}

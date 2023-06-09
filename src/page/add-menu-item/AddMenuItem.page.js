@@ -38,7 +38,7 @@ const AddMenuItemPage = () => {
             .then(() => {
                 setIsMenuItemCreated(true);
             })
-            .catch(res => setRequestError(res.status + " Error: " + res.body.errorMessage))
+            .catch(res => setRequestError(res.body.message))
             .finally(() => setIsLoading(false))
     }
 
