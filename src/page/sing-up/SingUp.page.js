@@ -23,7 +23,6 @@ const SingUpPage = () => {
     const [wasSubmitted, setWasSubmitted] = useState(false);
 
     const onSubmit = ({name, email, newPassword, phone}) => {
-        console.log(777, {name, email, newPassword, phone})
         setWasSubmitted(true);
         setIsLoading(true);
 
@@ -46,11 +45,11 @@ const SingUpPage = () => {
             {requestError && <Notification.Error message={requestError}/>}
             <Formik
                 initialValues={{
-                    name: 'vvv',
-                    email: new Date().getTime() + '@v.com',
-                    phone: '380930668830',
-                    newPassword: '111111',
-                    confirmedPassword: '111111',
+                    name: '',
+                    email: '',
+                    phone: '',
+                    newPassword: '',
+                    confirmedPassword: '',
                 }}
                 validationSchema={SignUpSchema}
                 onSubmit={onSubmit}
