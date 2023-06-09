@@ -44,7 +44,6 @@ const EditMenu = () => {
                 setTimeout(() => dispatch(stopLoading()), 1000);
             }).catch(e => {
                 setTimeout(() => dispatch(stopLoading()), 1000);
-                console.log(8888, e.body.message);
                 setRequestError(e.body.message)
             })
 
