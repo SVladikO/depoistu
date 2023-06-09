@@ -33,7 +33,7 @@ import
 } from "../../components";
 
 import CatalogPage from "./Catalog.page";
-
+import {ReactComponent as QRCodeIcon} from "../../icons/qr_code.svg";
 import {ReactComponent as EmptyBasketIcon} from "../../icons/empty_basket.svg";
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
 import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
@@ -51,7 +51,7 @@ import IntroContent from "../../components/Popup/content/info/InfoContent";
 import CityContent from "../../components/Popup/content/city/CityContent"
 import {ReactComponent as LocationIcon} from "../../icons/map_point.svg";
 import Checkbox from "../../components/Checkbox/Checkbox";
-import {EditBar} from "../customer-companies/CustomerCompanies.style";
+import {EditBar, QRCodeButton} from "../customer-companies/CustomerCompanies.style";
 import {ReactComponent as EditIcon} from "../../icons/edit.svg";
 
 const colors = Object.keys(COLOR).map(key =>
@@ -194,6 +194,7 @@ const componentsGroup2 = [
             >
                 <EditBar>
                     <PrimaryButton><EditIcon/>Company</PrimaryButton>
+                    <QRCodeButton><QRCodeIcon/></QRCodeButton>
                     <PrimaryButton><EditIcon/>Menu</PrimaryButton>
                 </EditBar>
             </Company>
