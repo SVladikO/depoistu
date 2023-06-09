@@ -9,7 +9,6 @@ const getOptions = body => ({
 })
 
 export const fetchData = async (url, body) => {
-    console.log('Request url: ', url, body);
     let response;
 
     try {
