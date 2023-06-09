@@ -38,7 +38,6 @@ export const DEV_ROUTER = {
 
 const MASTER_BE_DOMAIN = 'https://pizza-mobile-api-master.herokuapp.com';
 const DEVELOP_BE_DOMAIN = 'https://pizza-mobile-api-develop.herokuapp.com';
-
 export const BE_DOMAIN = process.env.MODE === 'production' ? MASTER_BE_DOMAIN : DEVELOP_BE_DOMAIN;
 // export const BE_DOMAIN = 'http://localhost:4000';
 
