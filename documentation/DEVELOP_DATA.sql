@@ -3,11 +3,11 @@
 -- added extra , in the enx script wont work
 
 INSERT INTO CUSTOMER (id, name, phone, password, email, is_verified_phone, is_verified_email, join_date) VALUES
-  (DEFAULT, 'Develop',  970668830, 'pma1111', 'developDevelop@gmail.com',   false, false, 167233),
-  (DEFAULT, 'Vlad',     970668830, 'pma1111', 'vlad.serhiychuk@gmail.com',  false, false, 167233),
-  (DEFAULT, 'Irina',    635957376, 'pma1111', 'serhiichuk.irina@gmail.com', false, false, 167234),
-  (DEFAULT, 'Alex',     635957376, 'pma1111', 'Chorniy315@gmail.com',       false, false, 167234),
-  (DEFAULT, 'Pasha',    972959897, 'pma1111', 'pasha.serhiichuk@gmail.com', false, false, 167235);
+  (DEFAULT, 'Develop',  '380970668830', 'pma1111', 'developDevelop@gmail.com',   false, false, '1686300364887'),
+  (DEFAULT, 'Vlad',     '380970668830', 'pma1111', 'vlad.serhiychuk@gmail.com',  false, false, '1686300364887'),
+  (DEFAULT, 'Irina',    '380635957376', 'pma1111', 'serhiichuk.irina@gmail.com', false, false, '1686300364887'),
+  (DEFAULT, 'Alex',     '380635957376', 'pma1111', 'Chorniy315@gmail.com',       false, false, '1686300364887'),
+  (DEFAULT, 'Pasha',    '380972959897', 'pma1111', 'pasha.serhiichuk@gmail.com', false, false, '1686300364887');
 
 
 INSERT INTO MENU_ITEM (id, category_id, company_id, name, description, cooking_time, price, size, image_url) VALUES

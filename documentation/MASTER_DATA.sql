@@ -4,7 +4,11 @@
 
 
 INSERT INTO CUSTOMER (id, name, phone, password, email, is_verified_phone, is_verified_email, join_date) VALUES
-  (DEFAULT, 'Master',  970668830, 'masterMaster', ' masterMaster@gmail.com ', false, false, 167233)
+  (DEFAULT, 'Master',  '380970668830', 'masterMaster', ' masterMaster@gmail.com ', false, false, '1686300364887'),
+  (DEFAULT, 'Vlad',     '380970668830', 'pma1111', 'vlad.serhiychuk@gmail.com',  false, false, '1686300364887'),
+  (DEFAULT, 'Irina',    '380635957376', 'pma1111', 'serhiichuk.irina@gmail.com', false, false, '1686300364887'),
+  (DEFAULT, 'Alex',     '380635957376', 'pma1111', 'Chorniy315@gmail.com',       false, false, '1686300364887'),
+  (DEFAULT, 'Pasha',    '380972959897', 'pma1111', 'pasha.serhiichuk@gmail.com', false, false, '1686300364887');
   ;
 
 
