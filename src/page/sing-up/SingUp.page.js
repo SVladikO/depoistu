@@ -1,19 +1,23 @@
 import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
 import * as Yup from 'yup';
 import {Formik} from "formik";
 
 import {Title, Wrapper} from "./SingUp.style";
 import {PrimaryButton, Label, Input, ContentContainer, Notification} from "../../components";
 import NavigationLabelHref from "../../components/NavigationLabelHref/NavigationLabelHref";
-import {ROUTER} from '../../utils/config';
-import {resolveTranslation} from "../../utils/utils";
+
+import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import validation from '../../utils/validation';
 import {BE_API, fetchData} from "../../utils/fetch";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
+import {resolveTranslation} from "../../utils/utils";
+import {ROUTER, URL} from '../../utils/config';
 
 const SignUpSchema = Yup.object().shape(validation.user.singUp);
 
 const SingUpPage = () => {
+    const navigate = useNavigate();
+
     const [isLoading, setIsLoading] = useState(false);
     const [requestError, setRequestError] = useState('');
     const [wasSubmitted, setWasSubmitted] = useState(false);
@@ -26,7 +30,7 @@ const SingUpPage = () => {
         fetchData(BE_API.CUSTOMER.SING_UP(), {name, email, password: newPassword, phone})
             .then(res => {
                 LocalStorage.set(LOCAL_STORAGE_KEY.CUSTOMER, res.body)
-                // navigate(backUrl);
+                navigate(URL.SETTING);
             })
             .catch(e => {
                 setRequestError(e.body.message);
@@ -43,7 +47,7 @@ const SingUpPage = () => {
             <Formik
                 initialValues={{
                     name: 'vvv',
-                    email: 'v@v.com',
+                    email: new Date().getTime() + '@v.com',
                     phone: '380930668830',
                     newPassword: '111111',
                     confirmedPassword: '111111',
