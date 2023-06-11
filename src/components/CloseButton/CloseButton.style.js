@@ -9,7 +9,6 @@ export const Wrapper = styled.div`
   height: 45px;
   background-color: ${COLOR.ACCENT4};
   border-radius: ${BORDER_RADIUS.CIRCLE};
-  margin: 0 0 10px auto;
   
   & > svg {
     fill: ${COLOR.ACCENT1} !important;

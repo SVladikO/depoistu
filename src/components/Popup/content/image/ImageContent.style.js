@@ -2,12 +2,9 @@ import styled from 'styled-components';
 import {BORDER_RADIUS, COLOR} from "../../../../utils/theme";
 
 export const Wrapper = styled.div`
-  min-width: 355px;
   min-height: 355px;
-  max-width: 355px;
   max-height: 355px;
   background-color: ${COLOR.ACCENT4};
-  margin: 10px;
   padding: 10px;
   display: flex;
   justify-content: center;
