@@ -50,7 +50,8 @@ const SearchPage = () => {
                     handleClick={openCityPopup}
                     withIcon
                     Icon={LocationIcon}
-                    value={selectedCity ? `${selectedCity}, ${selectedRegion} обл` : "Choose city"}
+                    value={(selectedCity && `${selectedCity}, ${selectedRegion} обл`) || ''}
+                    placeholder={"Choose city"}
                 />
             </ContentContainer>
             {selectedCity && selectedRegion && companies.length === 0

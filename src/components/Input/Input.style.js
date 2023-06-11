@@ -11,9 +11,12 @@ export const Wrapper = styled.div`
     transform: translateY(-50%);
     color: ${COLOR.PRIMARY};
   }
- 
 `;
 
+export const Placeholder = styled.span`
+  color: ${COLOR.ACCENT5};  
+  font-weight: bold;
+`;
 export const SwitchIconWrapper = styled.div`
   position: absolute;
   display: block;
@@ -72,7 +75,9 @@ const st = p => `
 `;
 
 export const PStyle = styled.p`
-  ${p => st(p)}
+  ${p => st(p)};
+  font-size: 20px;
+  font-weight: 500;
 `
 
 export const TextareaStyle = styled.textarea`
