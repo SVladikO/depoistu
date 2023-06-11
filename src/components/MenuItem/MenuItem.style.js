@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import {BORDER_RADIUS, COLOR} from "../../utils/theme";
+import {BORDER_RADIUS, COLOR, SHADOW} from "../../utils/theme";
 
 export const Wrapper = styled.div`
+  ${SHADOW};
   position: relative;
   padding: 10px;
   min-height: 116px;
