@@ -22,7 +22,7 @@ import {startLoading, stopLoading} from "../../features/request/requestSlice";
 import validation  from '../../utils/validation';
 import {ROUTER, URL} from '../../utils/config';
 import {fetchData, BE_API} from "../../utils/fetch";
-import {getParam, resolveTranslation} from "../../utils/utils";
+import {resolveTranslation} from "../../utils/utils";
 import {LocalStorage, LOCAL_STORAGE_KEY} from "../../utils/localStorage"
 
 const SignInSchema = Yup.object().shape(validation.user.singIn);
@@ -30,7 +30,6 @@ const SignInSchema = Yup.object().shape(validation.user.singIn);
 const SignInPage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const backUrl = getParam(`backUrl`) || URL.SETTING;
     const isLoading = useSelector(state => state.request.value.isLoading);
     const [requestError, setRequestError] = useState('');
     const [wasSubmitted, setWasSubmitted] = useState(false);
@@ -44,7 +43,7 @@ const SignInPage = () => {
                     dispatch(stopLoading())
                 }, 1000)
 
-                navigate(backUrl);
+                navigate(URL.SETTING);
             })
             .catch(e => {
                 setRequestError(e.body.message);
@@ -99,7 +98,7 @@ const SignInPage = () => {
                         <Link to={'/'}>{resolveTranslation("PAGE.SING_IN.FORGOT_PASSWORD")}</Link>
                         <NavigationLabelHref
                             hrefTitle={resolveTranslation("PAGE.SIGN_IN.SING_UP_LINK")}
-                            to={`${ROUTER.SING_UP.URL}?backUrl=${backUrl}`}
+                            to={ROUTER.SING_UP.URL}
                             label={resolveTranslation("PAGE.SIGN_IN.ACCOUNT_CONFIRMATION")}
                         />
                     </ContentContainer>

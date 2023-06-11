@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 
+import {EditBar} from './Setting.style';
 
 import {ReactComponent as LockIcon} from '../../icons/lock.svg';
 // import {ReactComponent as OrderHistoryIcon} from '../../icons/order_history.svg';
@@ -23,12 +24,13 @@ import {ReactComponent as TeamIcon} from "../../icons/team.svg";
 import {
     SettingMenuRow,
     AccountSettings,
-    OptionSettings, NotificationTDB,
+    OptionSettings, NotificationTDB, PrimaryButton,
 } from '../../components'
 
 import {ROUTER, URL} from '../../utils/config';
 import {resolveTranslation} from "../../utils/utils";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
+import {Link} from "react-router-dom";
 
 const SettingPage = () => {
     const [customer, setCustomer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
@@ -38,9 +40,16 @@ const SettingPage = () => {
             <NotificationTDB
                 title={resolveTranslation("PAGE.SETTINGS.NOTIFICATION.TITLE")}
                 description={resolveTranslation("PAGE.SETTINGS.NOTIFICATION.DESCRIPTION")}
-                buttonText={resolveTranslation("PAGE.SETTINGS.NOTIFICATION.BUTTON_TEXT")}
-                link={`${ROUTER.SING_IN.URL}?backUrl=${ROUTER.SETTING.URL}`}
-            />
+            >
+                <EditBar>
+                    <Link to={URL.SING_IN}>
+                        <PrimaryButton isWide>Sing In</PrimaryButton>
+                    </Link>
+                    <Link to={URL.SING_UP}>
+                        <PrimaryButton isWide>Sing Up</PrimaryButton>
+                    </Link>
+                </EditBar>
+            </NotificationTDB>
         )
     }
 
@@ -62,12 +71,16 @@ const SettingPage = () => {
                 {/*<SettingMenuRow icon={DeliveryAddressIcon} title='Delivery Address' href='/catalog'/>*/}
                 {/*<SettingMenuRow icon={StoreIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.LOCATION")} href='/catalog'/>*/}
                 {/*<SettingMenuRow icon={ConditionsIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.TERMS")} href='/catalog'/>*/}
-                <SettingMenuRow icon={ProfileIcon} title={resolveTranslation("PAGE.SETTING.MENU_ROW.EDIT_PROFILE")} href={URL.EDIT_USER}/>
-                <SettingMenuRow icon={LockIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.CHANGE_PASS")} href={URL.CHANGE_PASSWORD}/>
-                <SettingMenuRow icon={LogOutIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.EXIT")} changeHandler={logOut}/>
+                <SettingMenuRow icon={ProfileIcon} title={resolveTranslation("PAGE.SETTING.MENU_ROW.EDIT_PROFILE")}
+                                href={URL.EDIT_USER}/>
+                <SettingMenuRow icon={LockIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.CHANGE_PASS")}
+                                href={URL.CHANGE_PASSWORD}/>
+                <SettingMenuRow icon={LogOutIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.EXIT")}
+                                changeHandler={logOut}/>
             </AccountSettings>
             <OptionSettings groupTitle={resolveTranslation("PAGE.SETTINGS.GROUP_TITLE.FOR_BUSINESS")}>
-                <SettingMenuRow icon={StoreIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.COMPANY")}  href={ROUTER.CUSTOMER_COMPANIES.URL}/>
+                <SettingMenuRow icon={StoreIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.COMPANY")}
+                                href={ROUTER.CUSTOMER_COMPANIES.URL}/>
             </OptionSettings>
             <OptionSettings groupTitle={resolveTranslation("PAGE.SETTINGS.GROUP_TITLE.OPTIONS")}>
                 {/*<SettingMenuRow icon={NewsletterIcon} title='Newsletter' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
@@ -75,8 +88,10 @@ const SettingPage = () => {
                 {/*<SettingMenuRow icon={PhoneCallIcon} title='Phone Call' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
                 {/*<SettingMenuRow icon={CurrencyIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.CURRENCY")} href='/catalog' label='$USD'/>*/}
                 {/*<SettingMenuRow icon={HelpIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.HELP")} href='/catalog'/>*/}
-                <SettingMenuRow icon={InfoIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.ABOUT_US")} href={URL.ABOUT_US}/>
-                <SettingMenuRow icon={TeamIcon} title={resolveTranslation("PAGE.OUR_TEAM.TOP_TITLE")} href={URL.OUR_TEAM}/>
+                <SettingMenuRow icon={InfoIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.ABOUT_US")}
+                                href={URL.ABOUT_US}/>
+                <SettingMenuRow icon={TeamIcon} title={resolveTranslation("PAGE.OUR_TEAM.TOP_TITLE")}
+                                href={URL.OUR_TEAM}/>
                 {/*<SettingMenuRow icon={LanguageIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.LANGUAGE")} href='/catalog' label='English'/>*/}
                 {/*<SettingMenuRow icon={LinkedAccountIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.LINKED_ACCOUNTS")} href='/catalog' label='Facebook, go ...'/>*/}
             </OptionSettings>
