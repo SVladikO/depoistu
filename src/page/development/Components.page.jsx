@@ -53,6 +53,7 @@ import {ReactComponent as LocationIcon} from "../../icons/map_point.svg";
 import Checkbox from "../../components/Checkbox/Checkbox";
 import {EditBar, QRCodeButton} from "../customer-companies/CustomerCompanies.style";
 import {ReactComponent as EditIcon} from "../../icons/edit.svg";
+import {Link} from "react-router-dom";
 
 const colors = Object.keys(COLOR).map(key =>
     ({title: key, component: <ColorCircle key={key} bg={COLOR[key]}/>, value: COLOR[key], width: '50px'})
@@ -286,9 +287,11 @@ const componentsGroup3 = [
                     Icon={EmptyBasketIcon}
                     title="Your Cart is empty"
                     description="Looks like you haven't made your order yet."
-                    buttonText="Shop Now"
-                    link="#"
-                />
+                >
+                    <Link to={''}>
+                        <PrimaryButton isWide>Shop Now</PrimaryButton>
+                    </Link>
+                </NotificationTDB>
         },
     ]
 ]

@@ -155,10 +155,6 @@
     "ua": "Ця сторiнка доступна тiльки пicля пiдтвердження",
     "en": "This page is available only after verification."
   },
-  "PAGE.SETTINGS.NOTIFICATION.BUTTON_TEXT": {
-    "ua": "Перейдiть на сторiнку реєстрацiї",
-    "en": "Go to Sign in page"
-  },
   "CATEGORIES.BAKERY": {
       "en": "Bakery",
       "ua": "Випiчка"
