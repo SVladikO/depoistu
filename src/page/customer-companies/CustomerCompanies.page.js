@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 import {Link, useNavigate} from "react-router-dom";
 import QRCode from 'qrcode';
@@ -35,20 +35,27 @@ const PopupQRCode = ({companyId, onClose}) => {
         </Popup.Info>
     )
 }
+
 const CustomerCompaniesPage = () => {
     const navigate = useNavigate();
     const isLoading = useSelector(state => state.request.value.isLoading);
     const [companyIdForQRCode, setCompanyIdForQRCode] = useState();
-
+    const [show, setShow] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.HIDE_CUSTOMER_COMPANIES_WARNING) || true);
     const [requestError, setRequestError] = useState('');
     const [customer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
-
     const [customerCompanies] = useLocalStorageFetch(
         LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES,
         [],
         BE_API.COMPANY.GET_BY_CUSTOMER_ID(customer.ID),
         setRequestError
     );
+
+    useEffect(() => {
+        if(LocalStorage.get(LOCAL_STORAGE_KEY.HIDE_CUSTOMER_COMPANIES_WARNING)){
+            setShow(false)
+        }
+    },[show]);
+
 
     if (!customer) {
         return navigate(URL.SETTING)
@@ -64,8 +71,15 @@ const CustomerCompaniesPage = () => {
 
     const showQRCode = companyId => () => setCompanyIdForQRCode(companyId);
 
+    const closeInfoPopUp = () => {
+        setShow(false);
+        LocalStorage.set('HIDE_CUSTOMER_COMPANIES_WARNING', true);
+    }
+
+
     return (
         <>
+            {show && <Popup.Info onClose={closeInfoPopUp}>Не додавайте компанії заради розваги. Не витрачайте ваш і наш час дарма.</Popup.Info>}
             <PopupQRCode companyId={companyIdForQRCode} onClose={() => setCompanyIdForQRCode('')}/>
             {customerCompanies.map(
                 company =>
