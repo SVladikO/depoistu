@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useLayoutEffect, useState} from "react";
 import {useSelector} from "react-redux";
 import {Link, useNavigate} from "react-router-dom";
 import QRCode from 'qrcode';
@@ -50,7 +50,7 @@ const CustomerCompaniesPage = () => {
         setRequestError
     );
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if(LocalStorage.get(LOCAL_STORAGE_KEY.HIDE_CUSTOMER_COMPANIES_WARNING)){
             setShow(false)
         }
