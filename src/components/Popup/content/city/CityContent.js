@@ -8,7 +8,7 @@ import {ReactComponent as BackIcon} from "../../../../icons/back.svg";
 import uaCities from "./cities";
 import {resolveTranslation} from "../../../../utils/utils";
 
-const enableScrollOnBody = () => document.body.style.position = 'relative';
+const enableScrollOnBody = () => document.body.style.overflowY = 'auto';
 
 const REGIONS = Object.keys(uaCities);
 
