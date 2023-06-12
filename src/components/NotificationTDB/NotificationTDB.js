@@ -1,11 +1,9 @@
 import {Wrapper, Title, Description} from "./NotificationTDB.style";
-import {Link} from "react-router-dom";
 
 import {ContentContainer} from "../ContentContainer/ContentContainer.style";
-import {PrimaryButton} from "../Button/Button.style";
 import {RowSplitter} from "../index";
 
-function NotificationTDB({title, description, link, buttonText, Icon }) {
+function NotificationTDB({title, description, Icon, children }) {
     return (
         <Wrapper>
             {Icon && <Icon/>}
@@ -13,9 +11,7 @@ function NotificationTDB({title, description, link, buttonText, Icon }) {
             <ContentContainer>
                 <Title>{title}</Title>
                 <Description>{description}</Description>
-                <Link to={link}>
-                    <PrimaryButton isWide>{buttonText}</PrimaryButton>
-                </Link>
+                {children}
             </ContentContainer>
         </Wrapper>
     )
