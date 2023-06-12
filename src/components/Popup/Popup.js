@@ -1,5 +1,7 @@
 import {useEffect} from "react";
-import {InvisibleWrapper} from "./Popup.style";
+
+import {InvisibleWrapper, CloseButtonWrapper, Wrapper} from "./Popup.style";
+
 import {CloseButton} from "../index";
 import CityContent from "./content/city/CityContent";
 import ImageContent from "./content/image/ImageContent";
@@ -22,16 +24,18 @@ const Popup = (props) => {
 
     return (
         <InvisibleWrapper>
-            <div>
-                <CloseButton clickHandler={closePopup}/>
+            <Wrapper>
+                <CloseButtonWrapper>
+                    <CloseButton clickHandler={closePopup}/>
+                </CloseButtonWrapper>
                 <Component onClose={closePopup} {...props} />
-            </div>
+            </Wrapper>
         </InvisibleWrapper>
     );
 };
 
 const City = props => <Popup Component={CityContent} {...props} />;
-const Image= props => <Popup Component={ImageContent} {...props} />;
+const Image = props => <Popup Component={ImageContent} {...props} />;
 const Info = props => <Popup Component={InfoContent} {...props} />;
 
 export default {

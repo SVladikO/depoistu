@@ -14,3 +14,16 @@ export const InvisibleWrapper = styled.div`
   align-items: center;
   z-index: 10;
 `;
+
+export const Wrapper = styled.div`
+  min-width: 355px;
+  max-width: 355px;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const CloseButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: row-reverse;
+  margin: 0 0 10px;
+`;
