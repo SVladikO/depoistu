@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 
+import {Wrapper} from './Setting.style'
 
 import {ReactComponent as LockIcon} from '../../icons/lock.svg';
 // import {ReactComponent as OrderHistoryIcon} from '../../icons/order_history.svg';
@@ -51,7 +52,7 @@ const SettingPage = () => {
     }
 
     return (
-        <>
+        <Wrapper>
             {/*<CustomerAccountBar fullName='Jhon Smith' phone="+14844731243"/>*/}
             {/*<RowSplitter height='20px'/>*/}
             <AccountSettings groupTitle={resolveTranslation("PAGE.SETTINGS.GROUP_TITLE.ACCOUNTS")}>
@@ -80,7 +81,7 @@ const SettingPage = () => {
                 {/*<SettingMenuRow icon={LanguageIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.LANGUAGE")} href='/catalog' label='English'/>*/}
                 {/*<SettingMenuRow icon={LinkedAccountIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.LINKED_ACCOUNTS")} href='/catalog' label='Facebook, go ...'/>*/}
             </OptionSettings>
-        </>
+        </Wrapper>
     );
 };
 
