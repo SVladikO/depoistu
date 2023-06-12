@@ -1,3 +1,5 @@
+import {Link} from "react-router-dom";
+import {useState} from "react";
 import {Wrapper, FoodImage, Title, Description, AdditionalDetails, InvisibleDivider, EditPicture, LabelEdit} from "./MenuItem.style";
 
 import {Price, Flex, Absolute, Like, Popup} from "../index";
@@ -7,13 +9,26 @@ import {ReactComponent as BasketIcon} from "../../icons/basket.svg";
 import {ReactComponent as EditIcon} from "../../icons/edit.svg";
 import {addOrderItem} from "../../features/order/orderSlice";
 import {URL} from "../../utils/config";
-import {Link} from "react-router-dom";
-import {useState} from "react";
+import {resolveTranslation} from '../../utils/utils'
+import translation from "../../utils/translation.json";
+
+
 
 const MenuItem = ({item = {}, withEditIcon = false, onEditClick}) => {
     const {NAME, DESCRIPTION, IMAGE_URL, PRICE, COOKING_TIME, SIZE, isLiked} = item;
     const [imageUrl, setImageUrl] = useState('')
 
+    function lineBreak (NAME) {
+        if(NAME.length > 15){
+            let arr = NAME.split(' ');
+            if(arr.length > 1){
+               return `${arr.slice(0,1).join('')}
+                 ${arr.slice(1).join('')}`;
+            }
+            return `${arr.slice(0,arr.length / 2).join('') ${arr.slice(arr.length / 2 + 1)}.join('')}`;
+        }
+        return NAME;
+    }
 
     return (
         <Wrapper className='pm-MenuItem'>
@@ -21,12 +36,12 @@ const MenuItem = ({item = {}, withEditIcon = false, onEditClick}) => {
                 <FoodImage src={IMAGE_URL} onClick={() => setImageUrl(IMAGE_URL)} />
                 <Flex flexDirection='column' width='80%'>
                     <Flex justifyContent="space-between">
-                        <Title>{NAME}</Title>
+                        <Title>{lineBreak(NAME)}</Title>
                         {/*<Like liked={isLiked}/>*/}
                         {withEditIcon && <Link to={URL.EDIT_MENU_ITEM}>
                             <EditPicture onClick={onEditClick}>
                                 <EditIcon/>
-                                <LabelEdit>Edit</LabelEdit>
+                                <LabelEdit>{resolveTranslation("PAGE.MENU_ITEM.BUTTON.EDIT")}</LabelEdit>
                             </EditPicture>
                         </Link>}
                     </Flex>

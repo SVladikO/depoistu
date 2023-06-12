@@ -52,6 +52,8 @@ export const InvisibleDivider = styled.div`
 `;
 
 export const EditPicture = styled.div`
+  display: flex;
+  align-items: center;
   svg{
     width: 14px;
     height: 14px;
