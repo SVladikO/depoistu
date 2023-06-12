@@ -1,6 +1,6 @@
 import "swiper/css";
 import "swiper/css/pagination";
-import {Link, useParams} from "react-router-dom";
+import {Link} from "react-router-dom";
 import React, {useState, useEffect} from "react";
 
 import {Notification} from "../../components";
@@ -40,10 +40,10 @@ const AddCompany = () => {
         fetchData(BE_API.COMPANY.POST_CREATE(), reqObj)
             .then(res => {
                 setIsCompanySaved(true);
-                setNewCompanyId(res.body.successMessage.insertId);
+                setNewCompanyId(res.body.insertId);
                 LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES)
             })
-            .catch(res => setRequestError(res.status + " Error: " + res.body.errorMessage))
+            .catch(res => setRequestError(res.body.message))
             .finally(() => setIsLoading(false))
     }
 
