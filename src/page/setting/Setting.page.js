@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import {EditBar} from './Setting.style';
+import {Wrapper, EditBar} from './Setting.style';
 
 import {ReactComponent as LockIcon} from '../../icons/lock.svg';
 // import {ReactComponent as OrderHistoryIcon} from '../../icons/order_history.svg';
@@ -60,7 +60,7 @@ const SettingPage = () => {
     }
 
     return (
-        <>
+        <Wrapper>
             {/*<CustomerAccountBar fullName='Jhon Smith' phone="+14844731243"/>*/}
             {/*<RowSplitter height='20px'/>*/}
             <AccountSettings groupTitle={resolveTranslation("PAGE.SETTINGS.GROUP_TITLE.ACCOUNTS")}>
@@ -75,9 +75,9 @@ const SettingPage = () => {
                 <SettingMenuRow icon={LockIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.CHANGE_PASS")} href={URL.CHANGE_PASSWORD}/>
                 <SettingMenuRow icon={LogOutIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.EXIT")} changeHandler={logOut}/>
             </AccountSettings>
-            <OptionSettings groupTitle={resolveTranslation("PAGE.SETTINGS.GROUP_TITLE.FOR_BUSINESS")}>
+            <OptionSettings noBorder groupTitle={resolveTranslation("PAGE.SETTINGS.GROUP_TITLE.FOR_BUSINESS")}>
                 <SettingMenuRow icon={StoreIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.COMPANY")}
-                                href={ROUTER.CUSTOMER_COMPANIES.URL}/>
+                                href={URL.CUSTOMER_COMPANIES}/>
             </OptionSettings>
             <OptionSettings groupTitle={resolveTranslation("PAGE.SETTINGS.GROUP_TITLE.OPTIONS")}>
                 {/*<SettingMenuRow icon={NewsletterIcon} title='Newsletter' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
@@ -92,7 +92,7 @@ const SettingPage = () => {
                 {/*<SettingMenuRow icon={LanguageIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.LANGUAGE")} href='/catalog' label='English'/>*/}
                 {/*<SettingMenuRow icon={LinkedAccountIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.LINKED_ACCOUNTS")} href='/catalog' label='Facebook, go ...'/>*/}
             </OptionSettings>
-        </>
+        </Wrapper>
     );
 };
 

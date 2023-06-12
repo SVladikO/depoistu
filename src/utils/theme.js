@@ -18,6 +18,8 @@ export const MEDIA = {
     phone: "(max-width: 414px) and (min-width: 370px)"
 }
 
+export const SHADOW = `box-shadow: 0px 2px 2px 0px #00000033;`
+
 export const BORDER_RADIUS = {
     FIRST: '25px',
     SECOND: '10px',

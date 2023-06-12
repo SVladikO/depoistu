@@ -4,7 +4,7 @@ import {BORDER_RADIUS, COLOR,GRADIENT} from "../../utils/theme";
 
 export const RowsWrapper = styled.div`
   background: ${COLOR.ACCENT4};
-  padding: 5px 10px 10px;
+  padding: 5px 10px 0;
 `
 export const GroupTitle = styled.div`
   display: flex;

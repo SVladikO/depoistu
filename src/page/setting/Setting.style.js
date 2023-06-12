@@ -1,6 +1,9 @@
 import styled from "styled-components";
+import {BORDER_RADIUS, SHADOW} from '../../utils/theme';
 
-export const  A = styled.div`
+export const  Wrapper = styled.div`
+    ${SHADOW};
+    border-radius: ${BORDER_RADIUS.SECOND};
 `;
 
 export const EditBar = styled.div`
