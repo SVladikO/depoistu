@@ -7,8 +7,8 @@ import CityContent from "./content/city/CityContent";
 import ImageContent from "./content/image/ImageContent";
 import InfoContent from "./content/info/InfoContent";
 
-const enableScrollOnBody = () => document.body.style.position = 'relative';
-const disableScrollOnBody = () => document.body.style.position = 'fixed';
+const enableScrollOnBody = () => document.body.style.overflowY = 'auto';
+const disableScrollOnBody = () => document.body.style.overflowY = 'hidden';
 
 const Popup = (props) => {
     const {onClose, Component} = props;
