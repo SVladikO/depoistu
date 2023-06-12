@@ -77,7 +77,7 @@ const SettingPage = () => {
             </AccountSettings>
             <OptionSettings noBorder groupTitle={resolveTranslation("PAGE.SETTINGS.GROUP_TITLE.FOR_BUSINESS")}>
                 <SettingMenuRow icon={StoreIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.COMPANY")}
-                                href={ROUTER.CUSTOMER_COMPANIES.URL}/>
+                                href={URL.CUSTOMER_COMPANIES}/>
             </OptionSettings>
             <OptionSettings groupTitle={resolveTranslation("PAGE.SETTINGS.GROUP_TITLE.OPTIONS")}>
                 {/*<SettingMenuRow icon={NewsletterIcon} title='Newsletter' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
