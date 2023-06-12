@@ -4,18 +4,21 @@ import * as Yup from "yup";
 import validation from "../../utils/validation";
 import {PrimaryButton, Label, Input, ContentContainer} from "../../components";
 import {resolveTranslation} from "../../utils/utils";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 
 const SignUpSchema = Yup.object().shape(validation.user.singUp);
 
-const EditUserPage = () => {
+const EditCustomerPage = () => {
     const [wasSubmitted, setWasSubmitted] = useState(false);
+    const customer = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER);
+
     return (
         <>
             <Formik
                 initialValues={{
-                    name: '',
-                    email: '',
-                    phone: '',
+                    name: customer.NAME,
+                    phone: customer.PHONE,
+                    email: customer.EMAIL,
                 }}
                 validationSchema={SignUpSchema}
                 onSubmit={values => {
@@ -69,4 +72,4 @@ const EditUserPage = () => {
     );
 };
 
-export default EditUserPage;
+export default EditCustomerPage;

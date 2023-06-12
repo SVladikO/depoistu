@@ -8,7 +8,8 @@ import {
     PInputWrapper,
     PStyle,
     TextareaStyle,
-    WarningMessage
+    WarningMessage,
+    Placeholder,
 } from "./Input.style";
 
 import {ReactComponent as ShowEyeIcon} from "../../icons/show-eye.svg";
@@ -94,12 +95,12 @@ export const Input = memo(function ({
     )
 });
 
-export const PInput = ({Icon, value, handleClick, isTouched, errorMessage}) => {
+export const PInput = ({Icon, value, placeholder, handleClick, isTouched, errorMessage}) => {
     return (
         <div>
             <PInputWrapper onClick={handleClick}>
                 {Icon && <Icon/>}
-                <PStyle withLeftIcon={!!Icon}>{value}</PStyle>
+                <PStyle withLeftIcon={!!Icon}>{value || <Placeholder>{placeholder}</Placeholder>}</PStyle>
             </PInputWrapper>
             {isTouched && errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
         </div>

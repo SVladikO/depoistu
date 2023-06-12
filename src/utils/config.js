@@ -28,7 +28,7 @@ import AddMenuItemPage from "../page/add-menu-item/AddMenuItem.page";
 
 import {resolveTranslation} from "./utils";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
-import EditUserPage from "../page/edit-user/EditUser.page";
+import EditCustomerPage from "../page/edit-customer/EditCustomer.page";
 
 export const DEV_ROUTER = {
     COMPONENTS: 'components',
@@ -64,7 +64,7 @@ export const URL = {
     SETTING: '/setting',
     CHANGE_PASSWORD: '/change-password',
     ABOUT_US: '/about-us',
-    EDIT_USER: '/edit-user',
+    EDIT_CUSTOMER: '/edit-customer',
     OUR_TEAM: '/our-team',
 
     CUSTOMER_COMPANIES: '/customer-companies',
@@ -135,9 +135,9 @@ export const ROUTER = {
         BACK_URL: URL.SETTING,
     },
     EDIT_USER: {
-        URL: URL.EDIT_USER,
+        URL: URL.EDIT_CUSTOMER,
         TITLE: resolveTranslation("PAGE.EDIT_USER_PROFILE.TITLE"),
-        page: EditUserPage,
+        page: EditCustomerPage,
         showBottomMenu: true,
         BACK_URL: URL.SETTING,
     },

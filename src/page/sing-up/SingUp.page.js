@@ -31,9 +31,8 @@ const SingUpPage = () => {
                 LocalStorage.set(LOCAL_STORAGE_KEY.CUSTOMER, res.body)
                 navigate(URL.SETTING);
             })
-            .catch(e => {
-                setRequestError(e.body.message);
-            }).finally(() => setIsLoading(false));
+            .catch(e => setRequestError(e.body.message))
+            .finally(() => setIsLoading(false));
     }
 
     if (isLoading) {
