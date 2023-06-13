@@ -13,7 +13,7 @@ import {BE_API, fetchData} from "../../utils/fetch";
 import {resolveTranslation} from "../../utils/utils";
 import {ROUTER, URL} from '../../utils/config';
 
-const SignUpSchema = Yup.object().shape(validation.user.singUp);
+const SignUpSchema = Yup.object().shape(validation.customer.singUp);
 
 const SingUpPage = () => {
     const navigate = useNavigate();

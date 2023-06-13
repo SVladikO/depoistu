@@ -13,14 +13,14 @@ import {resolveTranslation} from "../../utils/utils";
 import validation from "../../utils/validation";
 import {useState} from "react";
 
-const ChangePassWordSchema = Yup.object().shape(validation.user.changePassword);
+const ChangePassWordSchema = Yup.object().shape(validation.customer.changePassword);
 
 const ChangePasswordPage = () => {
     const [wasSubmitted, setWasSubmitted] = useState(false);
     return (
         <Formik
             initialValues={{
-                currentPassword: '',
+                oldPassword: '',
                 newPassword: '',
                 confirmedPassword: ''
             }}
@@ -37,11 +37,11 @@ const ChangePasswordPage = () => {
                         <Input
                             withSwitcher
                             onBlur={handleBlur}
-                            isTouched={wasSubmitted || touched.currentPassword}
-                            name="currentPassword"
-                            value={values.currentPassword}
+                            isTouched={wasSubmitted || touched.oldPassword}
+                            name="oldPassword"
+                            value={values.oldPassword}
                             changeHandler={handleChange}
-                            errorMessage={errors.currentPassword}
+                            errorMessage={errors.oldPassword}
                         />
                         <RowSplitter height='10px'/>
                         <Label>{resolveTranslation("PAGE.CHANGE_PASSWORD.LABEL.NEW_PASSWORD")}</Label>

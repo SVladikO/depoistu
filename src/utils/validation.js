@@ -11,7 +11,7 @@ const PHONE_VALIDATION = from =>
         .max(from.PHONE.MAX, `Example: 380971112233`)
         .required(`Required!`)
 
-const USER = {
+const CUSTOMER = {
     NAME: {
         MIN: 2,
         MAX: 30
@@ -26,43 +26,43 @@ const USER = {
     }
 };
 
-const user_validation = {
+const customer_validation = {
     name: Yup.string()
-        .min(USER.NAME.MIN, `Too Short! Min length ${USER.NAME.MIN}`)
-        .max(USER.NAME.MAX, `Too Long! Max length ${USER.NAME.MAX}`)
+        .min(CUSTOMER.NAME.MIN, `Too Short! Min length ${CUSTOMER.NAME.MIN}`)
+        .max(CUSTOMER.NAME.MAX, `Too Long! Max length ${CUSTOMER.NAME.MAX}`)
         .required(`Required!`),
     password: Yup.string()
-        .min(USER.PASSWORD.MIN, `Too Short! Min length ${USER.PASSWORD.MIN}`)
-        .max(USER.PASSWORD.MAX, `Too Long! Max length ${USER.PASSWORD.MAX}`)
+        .min(CUSTOMER.PASSWORD.MIN, `Too Short! Min length ${CUSTOMER.PASSWORD.MIN}`)
+        .max(CUSTOMER.PASSWORD.MAX, `Too Long! Max length ${CUSTOMER.PASSWORD.MAX}`)
         .required(`Required`),
     email: Yup.string()
         .email(`Invalid email`)
-        .max(USER.EMAIL.MAX, `Too Long! Max length ${USER.EMAIL.MAX}`)
+        .max(CUSTOMER.EMAIL.MAX, `Too Long! Max length ${CUSTOMER.EMAIL.MAX}`)
         .required(`Required`),
-    phone: PHONE_VALIDATION(USER),
+    phone: PHONE_VALIDATION(CUSTOMER),
     confirmedPassword: Yup.string()
         .required(`Required!`)
-        .min(USER.PASSWORD.MIN, `Too Short! Min length ${USER.PASSWORD.MIN}`)
-        .max(USER.PASSWORD.MAX, `Too Long! Max length ${USER.PASSWORD.MAX}`)
+        .min(CUSTOMER.PASSWORD.MIN, `Too Short! Min length ${CUSTOMER.PASSWORD.MIN}`)
+        .max(CUSTOMER.PASSWORD.MAX, `Too Long! Max length ${CUSTOMER.PASSWORD.MAX}`)
         .test(`passwords-match`, `Passwords must match`, function (value) {
             return this.parent.newPassword === value
         })
 }
 const singInValidation = {
-    email: user_validation.email,
-    password: user_validation.password
+    email: customer_validation.email,
+    password: customer_validation.password
 }
 const singUpValidation = {
-    name: user_validation.name,
-    email: user_validation.email,
-    phone: user_validation.phone,
-    newPassword: user_validation.password,
-    confirmedPassword: user_validation.confirmedPassword,
+    name: customer_validation.name,
+    email: customer_validation.email,
+    phone: customer_validation.phone,
+    newPassword: customer_validation.password,
+    confirmedPassword: customer_validation.confirmedPassword,
 }
 const changePasswordValidation = {
-    oldPassword: user_validation.password,
-    newPassword: user_validation.password,
-    confirmedPassword: user_validation.confirmedPassword
+    oldPassword: customer_validation.password,
+    newPassword: customer_validation.password,
+    confirmedPassword: customer_validation.confirmedPassword
 }
 
 
@@ -137,7 +137,7 @@ const company_validation = {
 }
 
 const validation = {
-    user: {
+    customer: {
         singIn: singInValidation,
         singUp: singUpValidation,
         changePassword: changePasswordValidation

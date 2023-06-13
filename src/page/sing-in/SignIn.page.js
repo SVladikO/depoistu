@@ -25,7 +25,7 @@ import {fetchData, BE_API} from "../../utils/fetch";
 import {resolveTranslation} from "../../utils/utils";
 import {LocalStorage, LOCAL_STORAGE_KEY} from "../../utils/localStorage"
 
-const SignInSchema = Yup.object().shape(validation.user.singIn);
+const SignInSchema = Yup.object().shape(validation.customer.singIn);
 
 const SignInPage = () => {
     const dispatch = useDispatch();
