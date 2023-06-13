@@ -1,4 +1,4 @@
-import React, {useEffect, useLayoutEffect, useState} from "react";
+import React, {useState} from "react";
 import {useSelector} from "react-redux";
 import {Link, useNavigate} from "react-router-dom";
 import QRCode from 'qrcode';
@@ -10,7 +10,7 @@ import {ReactComponent as EditIcon} from "../../icons/edit.svg";
 
 import {BE_API} from '../../utils/fetch'
 import {ROUTER, URL} from "../../utils/config";
-import {useLocalStorageFetch} from "../../utils/hook";
+import {useLocalStorage, useLocalStorageFetch} from "../../utils/hook";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {ReactComponent as QRCodeIcon} from "../../icons/qr_code.svg";
 
@@ -40,7 +40,7 @@ const CustomerCompaniesPage = () => {
     const navigate = useNavigate();
     const isLoading = useSelector(state => state.request.value.isLoading);
     const [companyIdForQRCode, setCompanyIdForQRCode] = useState();
-    const [show, setShow] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.HIDE_CUSTOMER_COMPANIES_WARNING) || true);
+    const [showCustomerWarning, setShowCustomerWarning] = useLocalStorage(LocalStorage.get(LOCAL_STORAGE_KEY.SHOW_CUSTOMER_COMPANIES_WARNING), true);
     const [requestError, setRequestError] = useState('');
     const [customer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
     const [customerCompanies] = useLocalStorageFetch(
@@ -49,13 +49,6 @@ const CustomerCompaniesPage = () => {
         BE_API.COMPANY.GET_BY_CUSTOMER_ID(customer.ID),
         setRequestError
     );
-
-    useLayoutEffect(() => {
-        if(LocalStorage.get(LOCAL_STORAGE_KEY.HIDE_CUSTOMER_COMPANIES_WARNING)){
-            setShow(false)
-        }
-    },[show]);
-
 
     if (!customer) {
         return navigate(URL.SETTING)
@@ -72,14 +65,13 @@ const CustomerCompaniesPage = () => {
     const showQRCode = companyId => () => setCompanyIdForQRCode(companyId);
 
     const closeInfoPopUp = () => {
-        setShow(false);
-        LocalStorage.set('HIDE_CUSTOMER_COMPANIES_WARNING', true);
+        setShowCustomerWarning(false);
     }
 
 
     return (
         <>
-            {show && <Popup.Info onClose={closeInfoPopUp}>Не додавайте компанії заради розваги. Не витрачайте ваш і наш час дарма.</Popup.Info>}
+            {showCustomerWarning && <Popup.Info onClose={closeInfoPopUp}>Не додавайте компанії заради розваги. Не витрачайте ваш і наш час дарма.</Popup.Info>}
             <PopupQRCode companyId={companyIdForQRCode} onClose={() => setCompanyIdForQRCode('')}/>
             {customerCompanies.map(
                 company =>
