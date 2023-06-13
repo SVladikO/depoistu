@@ -45,7 +45,6 @@ const customer_validation = {
     oldPassword: CUSTOMER_PASSWORD
         .test(`passwords-match`, `Old passwords must match`, value => {
             const customer = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER);
-            console.log(222, customer.PASSWORD, value);
             return customer.PASSWORD === value
         }),
     confirmedPassword: CUSTOMER_PASSWORD
