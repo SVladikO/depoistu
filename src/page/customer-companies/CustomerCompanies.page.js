@@ -66,6 +66,7 @@ const CustomerCompaniesPage = () => {
 
     const closeInfoPopUp = () => {
         setShowCustomerWarning(false);
+        LocalStorage.set(LOCAL_STORAGE_KEY.SHOW_CUSTOMER_COMPANIES_WARNING, true);
     }
 
 
