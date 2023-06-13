@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
   background: ${COLOR.ACCENT4};
   border-radius: ${BORDER_RADIUS.SECOND};
   margin: 15px 0 15px 0;
-  
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
   svg{
     width: 25px;
     height: 25px;
@@ -36,7 +36,11 @@ export const Title = styled.div`
   font-size: 18px;
   line-height: 24px;
   color: ${COLOR.ACCENT1};
-  margin: 0 0 4px;
+  margin: 0 5px 4px 0;
+  display: flex;
+  max-width: 190px;
+  flex-wrap: wrap;
+  word-break: break-word;
 `;
 
 export const Description = styled.div`
@@ -60,7 +64,7 @@ export const EditPicture = styled.div`
     color: ${COLOR.ACCENT3};
   }
 `;
-export const LabelEdit = styled.span`
+export const LabelEdit = styled.div`
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;

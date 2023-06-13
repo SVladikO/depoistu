@@ -18,31 +18,19 @@ const MenuItem = ({item = {}, withEditIcon = false, onEditClick}) => {
     const {NAME, DESCRIPTION, IMAGE_URL, PRICE, COOKING_TIME, SIZE, isLiked} = item;
     const [imageUrl, setImageUrl] = useState('')
 
-    function lineBreak (NAME) {
-        if(NAME.length > 15){
-            let arr = NAME.split(' ');
-            if(arr.length > 1){
-               return `${arr.slice(0,1).join('')}
-                 ${arr.slice(1).join('')}`;
-            }
-            return `${arr.slice(0,arr.length / 2).join('') ${arr.slice(arr.length / 2 + 1)}.join('')}`;
-        }
-        return NAME;
-    }
-
     return (
         <Wrapper className='pm-MenuItem'>
             <Flex justifyContent="stretch">
                 <FoodImage src={IMAGE_URL} onClick={() => setImageUrl(IMAGE_URL)} />
                 <Flex flexDirection='column' width='80%'>
                     <Flex justifyContent="space-between">
-                        <Title>{lineBreak(NAME)}</Title>
+                        <Title>{NAME}</Title>
                         {/*<Like liked={isLiked}/>*/}
                         {withEditIcon && <Link to={URL.EDIT_MENU_ITEM}>
-                            <EditPicture onClick={onEditClick}>
-                                <EditIcon/>
-                                <LabelEdit>{resolveTranslation("PAGE.MENU_ITEM.BUTTON.EDIT")}</LabelEdit>
-                            </EditPicture>
+                        <EditPicture onClick={onEditClick}>
+                            <EditIcon/>
+                            <LabelEdit>{resolveTranslation("PAGE.MENU_ITEM.BUTTON.EDIT")}</LabelEdit>
+                        </EditPicture>
                         </Link>}
                     </Flex>
                     <Price>{PRICE}</Price>
