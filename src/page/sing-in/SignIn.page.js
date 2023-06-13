@@ -60,8 +60,8 @@ const SignInPage = () => {
         {requestError && <Notification.Error message={requestError}/>}
         <Formik
             initialValues={{
-                email: 'vlad_S@gmail.com',
-                password: 'vv11vv'
+                email: '',
+                password: ''
             }}
             validationSchema={SignInSchema}
             onSubmit={values => {
