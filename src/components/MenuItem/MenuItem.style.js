@@ -13,7 +13,6 @@ export const Wrapper = styled.div`
   background: ${COLOR.ACCENT4};
   border-radius: ${BORDER_RADIUS.SECOND};
   margin: 15px 0 15px 0;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
   svg{
     width: 25px;
     height: 25px;
@@ -55,7 +54,7 @@ export const InvisibleDivider = styled.div`
   height: 10px;
 `;
 
-export const EditPicture = styled.div`
+export const EditWrapper = styled.div`
   display: flex;
   align-items: center;
   svg{
@@ -64,7 +63,7 @@ export const EditPicture = styled.div`
     color: ${COLOR.ACCENT3};
   }
 `;
-export const LabelEdit = styled.div`
+export const EditLabel = styled.span`
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;

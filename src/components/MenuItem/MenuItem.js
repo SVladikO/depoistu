@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 import {useState} from "react";
-import {Wrapper, FoodImage, Title, Description, AdditionalDetails, InvisibleDivider, EditPicture, LabelEdit} from "./MenuItem.style";
+import {Wrapper, FoodImage, Title, Description, AdditionalDetails, InvisibleDivider, EditWrapper, EditLabel} from "./MenuItem.style";
 
 import {Price, Flex, Absolute, Like, Popup} from "../index";
 import {ReactComponent as TimeIcon} from "../../icons/time.svg";
@@ -27,10 +27,10 @@ const MenuItem = ({item = {}, withEditIcon = false, onEditClick}) => {
                         <Title>{NAME}</Title>
                         {/*<Like liked={isLiked}/>*/}
                         {withEditIcon && <Link to={URL.EDIT_MENU_ITEM}>
-                        <EditPicture onClick={onEditClick}>
+                        <EditWrapper onClick={onEditClick}>
                             <EditIcon/>
-                            <LabelEdit>{resolveTranslation("PAGE.MENU_ITEM.BUTTON.EDIT")}</LabelEdit>
-                        </EditPicture>
+                            <EditLabel>{resolveTranslation("PAGE.MENU_ITEM.BUTTON.EDIT")}</EditLabel>
+                        </EditWrapper>
                         </Link>}
                     </Flex>
                     <Price>{PRICE}</Price>
