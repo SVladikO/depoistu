@@ -1,7 +1,6 @@
-import translations from "./translations";
-import translation from "./translation.json";
+import {TRANSLATION} from "./translation.js";
 
-export const setBrowserTabTitle = () => document.title = translations.company_name;
+export const setBrowserTabTitle = () => document.title = resolveTranslation(TRANSLATION.COMPANY_NAME);
 
 export const getParam = (key) => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -10,7 +9,10 @@ export const getParam = (key) => {
 
 
 export const getRegions = cities => Object.keys(cities);
-export const resolveTranslation = key => translation[key]["ua"];
+export const resolveTranslation = obj => {
+    console.log(888, obj);
+    return obj["ua"];
+}
 
 
 

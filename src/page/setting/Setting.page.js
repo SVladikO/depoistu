@@ -31,6 +31,7 @@ import {ROUTER, URL} from '../../utils/config';
 import {resolveTranslation} from "../../utils/utils";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {Link} from "react-router-dom";
+import {TRANSLATION} from "../../utils/translation";
 
 const SettingPage = () => {
     const [customer, setCustomer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
@@ -38,8 +39,8 @@ const SettingPage = () => {
     if (!customer) {
         return (
             <NotificationTDB
-                title={resolveTranslation("PAGE.SETTINGS.NOTIFICATION.TITLE")}
-                description={resolveTranslation("PAGE.SETTINGS.NOTIFICATION.DESCRIPTION")}
+                title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.NOTIFICATION.TITLE)}
+                description={resolveTranslation(TRANSLATION.PAGE.SETTINGS.NOTIFICATION.DESCRIPTION)}
             >
                 <EditBar>
                     <Link to={URL.SING_IN}>
@@ -63,34 +64,34 @@ const SettingPage = () => {
         <Wrapper>
             {/*<CustomerAccountBar fullName='Jhon Smith' phone="+14844731243"/>*/}
             {/*<RowSplitter height='20px'/>*/}
-            <AccountSettings groupTitle={resolveTranslation("PAGE.SETTINGS.GROUP_TITLE.ACCOUNTS")}>
+            <AccountSettings groupTitle={resolveTranslation(TRANSLATION.PAGE.SETTINGS.GROUP_TITLE.ACCOUNTS)}>
                 {/*TODO: Hidden second version*/}
                 {/*<SettingMenuRow icon={LikeIcon} title={ROUTER.Favorite.TITLE} href={ROUTER.Favorite.URL}/>*/}
                 {/*<SettingMenuRow icon={OrderHistoryIcon} title={ROUTER.ORDER_HISTORY.TITLE} href={ROUTER.ORDER_HISTORY.URL}/>*/}
                 {/*<SettingMenuRow icon={PaymentIcon} title='Payment' href='/catalog'/>*/}
                 {/*<SettingMenuRow icon={DeliveryAddressIcon} title='Delivery Address' href='/catalog'/>*/}
-                {/*<SettingMenuRow icon={StoreIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.LOCATION")} href='/catalog'/>*/}
-                {/*<SettingMenuRow icon={ConditionsIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.TERMS")} href='/catalog'/>*/}
-                <SettingMenuRow icon={ProfileIcon} title={resolveTranslation("PAGE.SETTING.MENU_ROW.EDIT_PROFILE")} href={URL.EDIT_CUSTOMER}/>
-                <SettingMenuRow icon={LockIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.CHANGE_PASS")} href={URL.CHANGE_PASSWORD}/>
-                <SettingMenuRow icon={LogOutIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.EXIT")} changeHandler={logOut}/>
+                {/*<SettingMenuRow icon={StoreIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.LOCATION)} href='/catalog'/>*/}
+                {/*<SettingMenuRow icon={ConditionsIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.TERMS)} href='/catalog'/>*/}
+                <SettingMenuRow icon={ProfileIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTING.MENU_ROW.EDIT_PROFILE)} href={URL.EDIT_CUSTOMER}/>
+                <SettingMenuRow icon={LockIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.CHANGE_PASS)} href={URL.CHANGE_PASSWORD}/>
+                <SettingMenuRow icon={LogOutIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.EXIT)} changeHandler={logOut}/>
             </AccountSettings>
-            <OptionSettings noBorder groupTitle={resolveTranslation("PAGE.SETTINGS.GROUP_TITLE.FOR_BUSINESS")}>
-                <SettingMenuRow icon={StoreIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.COMPANY")}
+            <OptionSettings noBorder groupTitle={resolveTranslation(TRANSLATION.PAGE.SETTINGS.GROUP_TITLE.FOR_BUSINESS)}>
+                <SettingMenuRow icon={StoreIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.COMPANY)}
                                 href={URL.CUSTOMER_COMPANIES}/>
             </OptionSettings>
-            <OptionSettings groupTitle={resolveTranslation("PAGE.SETTINGS.GROUP_TITLE.OPTIONS")}>
+            <OptionSettings groupTitle={resolveTranslation(TRANSLATION.PAGE.SETTINGS.GROUP_TITLE.OPTIONS)}>
                 {/*<SettingMenuRow icon={NewsletterIcon} title='Newsletter' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
                 {/*<SettingMenuRow icon={NotificationIcon} title='Notification' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
                 {/*<SettingMenuRow icon={PhoneCallIcon} title='Phone Call' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
-                {/*<SettingMenuRow icon={CurrencyIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.CURRENCY")} href='/catalog' label='$USD'/>*/}
-                {/*<SettingMenuRow icon={HelpIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.HELP")} href='/catalog'/>*/}
-                <SettingMenuRow icon={InfoIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.ABOUT_US")}
+                {/*<SettingMenuRow icon={CurrencyIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.CURRENCY)} href='/catalog' label='$USD'/>*/}
+                {/*<SettingMenuRow icon={HelpIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.HELP)} href='/catalog'/>*/}
+                <SettingMenuRow icon={InfoIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.ABOUT_US)}
                                 href={URL.ABOUT_US}/>
-                <SettingMenuRow icon={TeamIcon} title={resolveTranslation("PAGE.OUR_TEAM.TOP_TITLE")}
+                <SettingMenuRow icon={TeamIcon} title={resolveTranslation(TRANSLATION.PAGE.OUR_TEAM.TOP_TITLE)}
                                 href={URL.OUR_TEAM}/>
-                {/*<SettingMenuRow icon={LanguageIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.LANGUAGE")} href='/catalog' label='English'/>*/}
-                {/*<SettingMenuRow icon={LinkedAccountIcon} title={resolveTranslation("PAGE.SETTINGS.MENU_ROW.LINKED_ACCOUNTS")} href='/catalog' label='Facebook, go ...'/>*/}
+                {/*<SettingMenuRow icon={LanguageIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.LANGUAGE)} href='/catalog' label='English'/>*/}
+                {/*<SettingMenuRow icon={LinkedAccountIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.LINKED_ACCOUNTS)} href='/catalog' label='Facebook, go ...'/>*/}
             </OptionSettings>
         </Wrapper>
     );

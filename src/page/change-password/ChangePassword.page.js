@@ -1,3 +1,4 @@
+import {useState} from "react";
 import {Formik} from "formik";
 import * as Yup from 'yup';
 
@@ -9,11 +10,12 @@ import {
     ContentContainer, Notification,
 } from "../../components";
 
-import {resolveTranslation} from "../../utils/utils";
 import validation from "../../utils/validation";
 import React, {useState} from "react";
 import {BE_API, fetchData} from "../../utils/fetch";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
+import {TRANSLATION} from '../../utils/translation';
+import {resolveTranslation} from "../../utils/utils";
 
 const ChangePassWordSchema = Yup.object().shape(validation.customer.changePassword);
 
@@ -62,7 +64,7 @@ const ChangePasswordPage = () => {
                 {({values, handleBlur, touched, handleSubmit, handleChange, errors}) => (
                     <form onSubmit={handleSubmit}>
                         <ContentContainer>
-                            <Label>{resolveTranslation("PAGE.CHANGE_PASSWORD.LABEL.OLD_PASSWORD")}</Label>
+                            <Label>{resolveTranslation(TRANSLATION.PAGE.CHANGE_PASSWORD.LABEL.OLD_PASSWORD)}</Label>
                             <Input
                                 withSwitcher
                                 onBlur={handleBlur}
@@ -73,7 +75,7 @@ const ChangePasswordPage = () => {
                                 errorMessage={errors.oldPassword}
                             />
                             <RowSplitter height='10px'/>
-                            <Label>{resolveTranslation("PAGE.CHANGE_PASSWORD.LABEL.NEW_PASSWORD")}</Label>
+                            <Label>{resolveTranslation(TRANSLATION.PAGE.CHANGE_PASSWORD.LABEL.NEW_PASSWORD)}</Label>
                             <Input
                                 withSwitcher
                                 name="newPassword"
@@ -83,7 +85,7 @@ const ChangePasswordPage = () => {
                                 changeHandler={handleChange}
                                 errorMessage={errors.newPassword}
                             />
-                            <Label>{resolveTranslation("PAGE.CHANGE_PASSWORD.LABEL.CONFIRM_PASSWORD")}</Label>
+                            <Label>{resolveTranslation(TRANSLATION.PAGE.CHANGE_PASSWORD.LABEL.CONFIRM_PASSWORD)}</Label>
                             <Input
                                 withSwitcher
                                 name="confirmedPassword"
@@ -95,7 +97,7 @@ const ChangePasswordPage = () => {
                             />
                             <RowSplitter margin="20px 0 0"/>
                             <PrimaryButton type="submit"
-                                           isWide>{resolveTranslation("PAGE.CHANGE_PASSWORD.BUTTON.SAVE_PASSWORD")}</PrimaryButton>
+                                           isWide>{resolveTranslation(TRANSLATION.PAGE.CHANGE_PASSWORD.BUTTON.SAVE_PASSWORD)}</PrimaryButton>
                         </ContentContainer>
                     </form>
                 )}

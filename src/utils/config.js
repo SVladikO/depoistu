@@ -1,19 +1,21 @@
+import SearchPage from "../page/search/Search.page";
 import SignInPage from "../page/sing-in/SignIn.page";
 import SingUpPage from "../page/sing-up/SingUp.page";
 import SettingPage from "../page/setting/Setting.page";
+import AboutUsPage from "../page/about-us/AboutUs.page";
+import OurTeamPage from "../page/our-team/OurTeam.page";
 import EditMenuPage from "../page/edit-menu/EditMenu.page";
-import EditMenuItemPage from "../page/edit-menu-item/EditMenuItem.page";
 import EditCompanyPage from "../page/edit-company/EditCompany.page";
+import EditMenuItemPage from "../page/edit-menu-item/EditMenuItem.page";
+import SearchDetailsPage from "../page/search-details/SearchDetails.page";
+import ChangePasswordPage from "../page/change-password/ChangePassword.page";
+
 // TODO: Hidden second version
 // import OrderPage from "../page/order/Order.page";
 // import CategoryPage from "../page/category/Category.page";
 // import OrderHistoryPage from "../page/order-history/OrderHistory.page";
 // import {HistoryTabBar} from "../components";
-import ChangePasswordPage from "../page/change-password/ChangePassword.page";
-import SearchPage from "../page/search/Search.page";
-import SearchDetailsPage from "../page/search-details/SearchDetails.page";
-import AboutUsPage from "../page/about-us/AboutUs.page";
-import OurTeamPage from "../page/our-team/OurTeam.page";
+
 import {ReactComponent as BakeryIcon} from "../icons/category/bakery.svg";
 import {ReactComponent as BeverageIcon} from "../icons/category/beverage.svg";
 import {ReactComponent as BurgerIcon} from "../icons/category/burger.svg";
@@ -23,11 +25,13 @@ import {ReactComponent as SandwitchIcon} from "../icons/category/sandwitch.svg";
 import {ReactComponent as Sea_foodIcon} from "../icons/category/sea_food.svg";
 import {ReactComponent as VagetableIcon} from "../icons/category/vagetable.svg";
 import CustomerCompaniesPage from "../page/customer-companies/CustomerCompanies.page";
+
 import AddCompanyPage from "../page/add-company/AddCompany.page";
 import AddMenuItemPage from "../page/add-menu-item/AddMenuItem.page";
 import ForgetPasswordPage from "../page/forgot-password/ForgetPassword.page";
 
 import {resolveTranslation} from "./utils";
+import {TRANSLATION} from "./translation.js";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
 import EditCustomerPage from "../page/edit-customer/EditCustomer.page";
 
@@ -43,17 +47,32 @@ export const BE_DOMAIN = process.env.MODE === 'production' ? MASTER_BE_DOMAIN : 
 // export const BE_DOMAIN = 'http://localhost:4000';
 
 export const CATEGORY_MAPPER = {
-    1: {id: 1, title: resolveTranslation("CATEGORIES.BAKERY"), icon: BakeryIcon, measurement: 'g'},
-    2: {id: 2, title: resolveTranslation("CATEGORIES.BEVERAGE"), icon: BeverageIcon, measurement: 'L'},
-    3: {id: 3, title: resolveTranslation("CATEGORIES.BURGERS"), icon: BurgerIcon, measurement: 'g'},
-    4: {id: 4, title: resolveTranslation("CATEGORIES.NOODLES"), icon: NoodlesIcon, measurement: 'g'},
-    5: {id: 5, title: resolveTranslation("CATEGORIES.PIZZA"), icon: PizzaIcon, measurement: 'g'},
-    6: {id: 6, title: resolveTranslation("CATEGORIES.SANDWITCH"), icon: SandwitchIcon, measurement: 'g'},
-    7: {id: 7, title: resolveTranslation("CATEGORIES.SEAFOOD"), icon: Sea_foodIcon, measurement: 'g'},
-    8: {id: 8, title: resolveTranslation("CATEGORIES.VEGETABLE"), icon: VagetableIcon, measurement: 'g'},
-    9: {id: 9, title: resolveTranslation("CATEGORIES.ALCOHOL"), icon: BeverageIcon, measurement: 'ml'},
-    10: {id: 10, title: resolveTranslation("CATEGORIES.WINE_CARD"), icon: BeverageIcon, measurement: 'ml'},
-    11: {id: 11, title: resolveTranslation("CATEGORIES.HOT_DRINKS"), icon: BeverageIcon, measurement: 'ml'},
+    1: {id: 11, title: resolveTranslation(TRANSLATION.CATEGORIES.BREAKFAST), icon: '', measurement: 'g'},
+    2: {id: 11, title: resolveTranslation(TRANSLATION.CATEGORIES.SOUPS), icon: '', measurement: 'ml'},
+    3: {id: 11, title: resolveTranslation(TRANSLATION.CATEGORIES.HOT_DISHES), icon: '', measurement: 'g'},
+    4: {id: 11, title: resolveTranslation(TRANSLATION.CATEGORIES.COLD_APPETIZERS), icon: '', measurement: 'g'},
+    5: {id: 11, title: resolveTranslation(TRANSLATION.CATEGORIES.SIDE_DISHES), icon: '', measurement: ''},
+    6: {id: 11, title: resolveTranslation(TRANSLATION.CATEGORIES.SPECIALITIES), icon: '', measurement: 'g'},
+    7: {id: 11, title: resolveTranslation(TRANSLATION.CATEGORIES.BANQUET_MENU), icon: '', measurement: 'g'},
+    8: {id: 6, title: resolveTranslation(TRANSLATION.CATEGORIES.SANDWITCH), icon: SandwitchIcon, measurement: 'g'},
+    9: {id: 3, title: resolveTranslation(TRANSLATION.CATEGORIES.BURGERS), icon: BurgerIcon, measurement: 'g'},
+    10: {id: 11, title: resolveTranslation(TRANSLATION.CATEGORIES.SUSHI), icon: '', measurement: 'g'},
+    11: {id: 4, title: resolveTranslation(TRANSLATION.CATEGORIES.NOODLES), icon: NoodlesIcon, measurement: 'g'},
+    12: {id: 5, title: resolveTranslation(TRANSLATION.CATEGORIES.PIZZA), icon: PizzaIcon, measurement: 'g'},
+    13: {id: 11, title: resolveTranslation(TRANSLATION.CATEGORIES.SHAWARMA), icon: '', measurement: 'g'},
+    14: {id: 7, title: resolveTranslation(TRANSLATION.CATEGORIES.SEAFOOD), icon: Sea_foodIcon, measurement: 'g'},
+    15: {id: 8, title: resolveTranslation(TRANSLATION.CATEGORIES.SALADS), icon: VagetableIcon, measurement: 'g'},
+    16: {id: 11, title: resolveTranslation(TRANSLATION.CATEGORIES.MEAT_DISHES), icon: '', measurement: ''},
+    17: {id: 11, title: resolveTranslation(TRANSLATION.CATEGORIES.FISH_DISHES), icon: '', measurement: ''},
+    18: {id: 11, title: resolveTranslation(TRANSLATION.CATEGORIES.DISHES_ON_FIRE), icon: '', measurement: ''},
+    19: {id: 11, title: resolveTranslation(TRANSLATION.CATEGORIES.SAUCES), icon: '', measurement: ''},
+    20: {id: 1, title: resolveTranslation(TRANSLATION.CATEGORIES.BAKERY), icon: BakeryIcon, measurement: 'g'},
+    21: {id: 11, title: resolveTranslation(TRANSLATION.CATEGORIES.DESERTS), icon: '', measurement: ''},
+    22: {id: 2, title: resolveTranslation(TRANSLATION.CATEGORIES.DRINKS), icon: BeverageIcon, measurement: 'L'},
+    23: {id: 11, title: resolveTranslation(TRANSLATION.CATEGORIES.HOT_DRINKS), icon: BeverageIcon, measurement: 'ml'},
+    24: {id: 11, title: resolveTranslation(TRANSLATION.CATEGORIES.COCKTAILS), icon: '', measurement: ''},
+    25: {id: 10, title: resolveTranslation(TRANSLATION.CATEGORIES.WINE_CARD), icon: BeverageIcon, measurement: 'ml'},
+    26: {id: 9, title: resolveTranslation(TRANSLATION.CATEGORIES.ALCOHOL), icon: BeverageIcon, measurement: 'ml'},
 };
 
 export const URL = {
@@ -85,7 +104,7 @@ export const ROUTER = {
     // USER_ACCOUNT = {URL: '/user_account',  TITLE: 'USER_ACCOUNT', page: () => {}, showBottomMenu: true, BACK_URL: ROUTER.SETTING.URL};
     SEARCH: {
         URL: URL.SEARCH,
-        TITLE: resolveTranslation("PAGE.SEARCH.TOP_TITLE"),
+        TITLE: resolveTranslation(TRANSLATION.PAGE.SEARCH.TOP_TITLE),
         page: SearchPage,
         showBottomMenu: true
     },
@@ -99,19 +118,19 @@ export const ROUTER = {
     },
     SETTING: {
         URL: URL.SETTING,
-        TITLE: resolveTranslation("PAGE.SETTINGS.TOP_TITLE"),
+        TITLE: resolveTranslation(TRANSLATION.PAGE.SETTINGS.TOP_TITLE),
         page: SettingPage,
         showBottomMenu: true
     },
     SING_UP: {
         URL: URL.SING_UP,
-        TITLE: resolveTranslation("PAGE.SING_UP.TOP_TITLE"),
+        TITLE: resolveTranslation(TRANSLATION.PAGE.SING_UP.TOP_TITLE),
         page: SingUpPage,
         showBottomMenu: true
     },
     SING_IN: {
         URL: URL.SING_IN,
-        TITLE: resolveTranslation("PAGE.SING_IN.TOP_TITLE"),
+        TITLE: resolveTranslation(TRANSLATION.PAGE.SING_IN.TOP_TITLE),
         page: SignInPage,
         showBottomMenu: true
     },
@@ -123,28 +142,28 @@ export const ROUTER = {
     },
     CHANGE_PASSWORD: {
         URL: URL.CHANGE_PASSWORD,
-        TITLE: resolveTranslation("PAGE.CHANGE_PASSWORD.TOP_TITLE"),
+        TITLE: resolveTranslation(TRANSLATION.PAGE.CHANGE_PASSWORD.TOP_TITLE),
         page: ChangePasswordPage,
         showBottomMenu: true,
         BACK_URL: URL.SETTING,
     },
     ABOUT_US: {
         URL: URL.ABOUT_US,
-        TITLE: resolveTranslation("PAGE.ABOUT_US.TOP_TITLE"),
+        TITLE: resolveTranslation(TRANSLATION.PAGE.ABOUT_US.TOP_TITLE),
         page: AboutUsPage,
         showBottomMenu: true,
         BACK_URL: URL.SETTING,
     },
     OUR_TEAM: {
         URL: URL.OUR_TEAM,
-        TITLE: resolveTranslation("PAGE.OUR_TEAM.TOP_TITLE"),
+        TITLE: resolveTranslation(TRANSLATION.PAGE.OUR_TEAM.TOP_TITLE),
         page: OurTeamPage,
         showBottomMenu: true,
         BACK_URL: URL.SETTING,
     },
     EDIT_USER: {
         URL: URL.EDIT_CUSTOMER,
-        TITLE: resolveTranslation("PAGE.EDIT_USER_PROFILE.TITLE"),
+        TITLE: resolveTranslation(TRANSLATION.PAGE.EDIT_USER_PROFILE.TITLE),
         page: EditCustomerPage,
         showBottomMenu: true,
         BACK_URL: URL.SETTING,

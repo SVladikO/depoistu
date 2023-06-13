@@ -22,6 +22,7 @@ import {startLoading, stopLoading} from "../../features/request/requestSlice";
 import validation  from '../../utils/validation';
 import {ROUTER, URL} from '../../utils/config';
 import {fetchData, BE_API} from "../../utils/fetch";
+import {TRANSLATION} from "../../utils/translation";
 import {resolveTranslation} from "../../utils/utils";
 import {LocalStorage, LOCAL_STORAGE_KEY} from "../../utils/localStorage"
 
@@ -95,15 +96,15 @@ const SignInPage = () => {
                             withSwitcher
                             errorMessage={errors.password}
                         />
-                        <Link to={URL.FORGOT_PASSWORD}>{resolveTranslation("PAGE.SING_IN.FORGOT_PASSWORD")}</Link>
+                        <Link to={URL.FORGOT_PASSWORD}>{resolveTranslation(TRANSLATION.PAGE.SING_IN.FORGOT_PASSWORD)}</Link>
                         <NavigationLabelHref
-                            hrefTitle={resolveTranslation("PAGE.SIGN_IN.SING_UP_LINK")}
+                            hrefTitle={resolveTranslation(TRANSLATION.PAGE.SIGN_IN.SING_UP_LINK)}
                             to={ROUTER.SING_UP.URL}
-                            label={resolveTranslation("PAGE.SIGN_IN.ACCOUNT_CONFIRMATION")}
+                            label={resolveTranslation(TRANSLATION.PAGE.SIGN_IN.ACCOUNT_CONFIRMATION)}
                         />
                     </ContentContainer>
                     <PrimaryButton type="submit" isWide>
-                        {resolveTranslation("PAGE.SING_IN.TOP_TITLE")}
+                        {resolveTranslation(TRANSLATION.PAGE.SING_IN.TOP_TITLE)}
                     </PrimaryButton>
                 </form>
             )

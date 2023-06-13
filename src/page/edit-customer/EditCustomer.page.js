@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
 import {Formik} from "formik";
 import * as Yup from "yup";
-import validation from "../../utils/validation";
 import {PrimaryButton, Label, Input, ContentContainer} from "../../components";
+
+import validation from "../../utils/validation";
+import {TRANSLATION} from "../../utils/translation";
 import {resolveTranslation} from "../../utils/utils";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 
@@ -29,7 +31,7 @@ const EditCustomerPage = () => {
                 {({values, handleBlur, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                     <form onSubmit={handleSubmit}>
                         <ContentContainer>
-                            <Label>{resolveTranslation("PAGE.SING_UP.LABEL.USER_NAME")}</Label>
+                            <Label>{resolveTranslation(TRANSLATION.PAGE.SING_UP.LABEL.USER_NAME)}</Label>
                             <Input
                                 withCleaner
                                 isTouched={wasSubmitted || touched.name}
@@ -40,7 +42,7 @@ const EditCustomerPage = () => {
                                 clearHandler={() => setFieldValue('name', '')}
                                 errorMessage={errors.name}
                             />
-                            <Label>{resolveTranslation("PAGE.SING_UP.LABEL.PHONE")}</Label>
+                            <Label>{resolveTranslation(TRANSLATION.PAGE.SING_UP.LABEL.PHONE)}</Label>
                             <Input
                                 withCleaner
                                 name="phone"
@@ -51,7 +53,7 @@ const EditCustomerPage = () => {
                                 clearHandler={() => setFieldValue('phone', '')}
                                 errorMessage={errors.phone}
                             />
-                            <Label>{resolveTranslation("PAGE.SING_UP.LABEL.EMAIL")}</Label>
+                            <Label>{resolveTranslation(TRANSLATION.PAGE.SING_UP.LABEL.EMAIL)}</Label>
                             <Input
                                 withCleaner
                                 type="email"
@@ -64,7 +66,7 @@ const EditCustomerPage = () => {
                                 errorMessage={errors.email}
                             />
                         </ContentContainer>
-                        <PrimaryButton type="submit" isWide>{resolveTranslation("PAGE.CHANGE_PASSWORD.BUTTON.SAVE_CHANGES")}</PrimaryButton>
+                        <PrimaryButton type="submit" isWide>{resolveTranslation(TRANSLATION.PAGE.CHANGE_PASSWORD.BUTTON.SAVE_CHANGES)}</PrimaryButton>
                     </form>
                 )}
             </Formik>
