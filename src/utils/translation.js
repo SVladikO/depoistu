@@ -1,11 +1,4 @@
-export const resolveTranslation = obj => {
-    console.log(888, obj);
-    if (!obj) {
-        debugger;
-    }
-    return obj["ua"];
-}
-
+export const resolveTranslation = obj => obj["ua"];
 export const TRANSLATION = {
     COMPANY_NAME: {
         ua: 'DOMONO',
