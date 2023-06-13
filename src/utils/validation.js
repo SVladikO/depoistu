@@ -1,4 +1,5 @@
 import * as Yup from 'yup';
+import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
 
 const PHONE = {
     MIN: 12,
@@ -26,42 +27,46 @@ const CUSTOMER = {
     }
 };
 
+const CUSTOMER_PASSWORD = Yup.string()
+    .required(`Required!`)
+    .min(CUSTOMER.PASSWORD.MIN, `Too Short! Min length ${CUSTOMER.PASSWORD.MIN}`)
+    .max(CUSTOMER.PASSWORD.MAX, `Too Long! Max length ${CUSTOMER.PASSWORD.MAX}`)
+
 const customer_validation = {
     name: Yup.string()
         .min(CUSTOMER.NAME.MIN, `Too Short! Min length ${CUSTOMER.NAME.MIN}`)
         .max(CUSTOMER.NAME.MAX, `Too Long! Max length ${CUSTOMER.NAME.MAX}`)
         .required(`Required!`),
-    password: Yup.string()
-        .min(CUSTOMER.PASSWORD.MIN, `Too Short! Min length ${CUSTOMER.PASSWORD.MIN}`)
-        .max(CUSTOMER.PASSWORD.MAX, `Too Long! Max length ${CUSTOMER.PASSWORD.MAX}`)
-        .required(`Required`),
     email: Yup.string()
         .email(`Invalid email`)
         .max(CUSTOMER.EMAIL.MAX, `Too Long! Max length ${CUSTOMER.EMAIL.MAX}`)
         .required(`Required`),
     phone: PHONE_VALIDATION(CUSTOMER),
-    confirmedPassword: Yup.string()
-        .required(`Required!`)
-        .min(CUSTOMER.PASSWORD.MIN, `Too Short! Min length ${CUSTOMER.PASSWORD.MIN}`)
-        .max(CUSTOMER.PASSWORD.MAX, `Too Long! Max length ${CUSTOMER.PASSWORD.MAX}`)
+    oldPassword: CUSTOMER_PASSWORD
+        .test(`passwords-match`, `Old passwords must match`, value => {
+            const customer = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER);
+            console.log(222, customer.PASSWORD, value);
+            return customer.PASSWORD === value
+        }),
+    confirmedPassword: CUSTOMER_PASSWORD
         .test(`passwords-match`, `Passwords must match`, function (value) {
             return this.parent.newPassword === value
         })
 }
 const singInValidation = {
     email: customer_validation.email,
-    password: customer_validation.password
+    password:CUSTOMER_PASSWORD
 }
 const singUpValidation = {
     name: customer_validation.name,
     email: customer_validation.email,
     phone: customer_validation.phone,
-    newPassword: customer_validation.password,
+    newPassword:CUSTOMER_PASSWORD,
     confirmedPassword: customer_validation.confirmedPassword,
 }
 const changePasswordValidation = {
-    oldPassword: customer_validation.password,
-    newPassword: customer_validation.password,
+    oldPassword: customer_validation.oldPassword,
+    newPassword:CUSTOMER_PASSWORD,
     confirmedPassword: customer_validation.confirmedPassword
 }
 
