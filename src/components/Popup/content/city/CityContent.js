@@ -6,8 +6,7 @@ import {SettingMenuRow} from '../../../index'
 
 import {ReactComponent as BackIcon} from "../../../../icons/back.svg";
 import uaCities from "./cities";
-import {resolveTranslation} from "../../../../utils/utils";
-import {TRANSLATION} from '../../../../utils/translation';
+import {TRANSLATION, resolveTranslation} from '../../../../utils/translation';
 
 const enableScrollOnBody = () => document.body.style.overflowY = 'auto';
 

@@ -30,8 +30,7 @@ import AddCompanyPage from "../page/add-company/AddCompany.page";
 import AddMenuItemPage from "../page/add-menu-item/AddMenuItem.page";
 import ForgetPasswordPage from "../page/forgot-password/ForgetPassword.page";
 
-import {resolveTranslation} from "./utils";
-import {TRANSLATION} from "./translation.js";
+import {TRANSLATION, resolveTranslation} from "./translation.js";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
 import EditCustomerPage from "../page/edit-customer/EditCustomer.page";
 
@@ -47,32 +46,32 @@ export const BE_DOMAIN = process.env.MODE === 'production' ? MASTER_BE_DOMAIN : 
 // export const BE_DOMAIN = 'http://localhost:4000';
 
 export const CATEGORY_MAPPER = {
-    1: {id: 11, title: resolveTranslation(TRANSLATION.CATEGORIES.BREAKFAST), icon: '', measurement: 'g'},
-    2: {id: 11, title: resolveTranslation(TRANSLATION.CATEGORIES.SOUPS), icon: '', measurement: 'ml'},
-    3: {id: 11, title: resolveTranslation(TRANSLATION.CATEGORIES.HOT_DISHES), icon: '', measurement: 'g'},
-    4: {id: 11, title: resolveTranslation(TRANSLATION.CATEGORIES.COLD_APPETIZERS), icon: '', measurement: 'g'},
-    5: {id: 11, title: resolveTranslation(TRANSLATION.CATEGORIES.SIDE_DISHES), icon: '', measurement: ''},
-    6: {id: 11, title: resolveTranslation(TRANSLATION.CATEGORIES.SPECIALITIES), icon: '', measurement: 'g'},
-    7: {id: 11, title: resolveTranslation(TRANSLATION.CATEGORIES.BANQUET_MENU), icon: '', measurement: 'g'},
-    8: {id: 6, title: resolveTranslation(TRANSLATION.CATEGORIES.SANDWITCH), icon: SandwitchIcon, measurement: 'g'},
-    9: {id: 3, title: resolveTranslation(TRANSLATION.CATEGORIES.BURGERS), icon: BurgerIcon, measurement: 'g'},
-    10: {id: 11, title: resolveTranslation(TRANSLATION.CATEGORIES.SUSHI), icon: '', measurement: 'g'},
-    11: {id: 4, title: resolveTranslation(TRANSLATION.CATEGORIES.NOODLES), icon: NoodlesIcon, measurement: 'g'},
-    12: {id: 5, title: resolveTranslation(TRANSLATION.CATEGORIES.PIZZA), icon: PizzaIcon, measurement: 'g'},
-    13: {id: 11, title: resolveTranslation(TRANSLATION.CATEGORIES.SHAWARMA), icon: '', measurement: 'g'},
-    14: {id: 7, title: resolveTranslation(TRANSLATION.CATEGORIES.SEAFOOD), icon: Sea_foodIcon, measurement: 'g'},
-    15: {id: 8, title: resolveTranslation(TRANSLATION.CATEGORIES.SALADS), icon: VagetableIcon, measurement: 'g'},
-    16: {id: 11, title: resolveTranslation(TRANSLATION.CATEGORIES.MEAT_DISHES), icon: '', measurement: ''},
-    17: {id: 11, title: resolveTranslation(TRANSLATION.CATEGORIES.FISH_DISHES), icon: '', measurement: ''},
-    18: {id: 11, title: resolveTranslation(TRANSLATION.CATEGORIES.DISHES_ON_FIRE), icon: '', measurement: ''},
-    19: {id: 11, title: resolveTranslation(TRANSLATION.CATEGORIES.SAUCES), icon: '', measurement: ''},
-    20: {id: 1, title: resolveTranslation(TRANSLATION.CATEGORIES.BAKERY), icon: BakeryIcon, measurement: 'g'},
-    21: {id: 11, title: resolveTranslation(TRANSLATION.CATEGORIES.DESERTS), icon: '', measurement: ''},
-    22: {id: 2, title: resolveTranslation(TRANSLATION.CATEGORIES.DRINKS), icon: BeverageIcon, measurement: 'L'},
-    23: {id: 11, title: resolveTranslation(TRANSLATION.CATEGORIES.HOT_DRINKS), icon: BeverageIcon, measurement: 'ml'},
-    24: {id: 11, title: resolveTranslation(TRANSLATION.CATEGORIES.COCKTAILS), icon: '', measurement: ''},
-    25: {id: 10, title: resolveTranslation(TRANSLATION.CATEGORIES.WINE_CARD), icon: BeverageIcon, measurement: 'ml'},
-    26: {id: 9, title: resolveTranslation(TRANSLATION.CATEGORIES.ALCOHOL), icon: BeverageIcon, measurement: 'ml'},
+    1: {id: 1, title: resolveTranslation(TRANSLATION.CATEGORIES.BREAKFAST), icon: '', measurement: 'g'},
+    2: {id: 2, title: resolveTranslation(TRANSLATION.CATEGORIES.SOUPS), icon: '', measurement: 'ml'},
+    3: {id: 3, title: resolveTranslation(TRANSLATION.CATEGORIES.HOT_DISHES), icon: '', measurement: 'g'},
+    4: {id: 4, title: resolveTranslation(TRANSLATION.CATEGORIES.COLD_APPETIZERS), icon: '', measurement: 'g'},
+    5: {id: 5, title: resolveTranslation(TRANSLATION.CATEGORIES.SIDE_DISHES), icon: '', measurement: ''},
+    6: {id: 6, title: resolveTranslation(TRANSLATION.CATEGORIES.SPECIALITIES), icon: '', measurement: 'g'},
+    7: {id: 7, title: resolveTranslation(TRANSLATION.CATEGORIES.BANQUET_MENU), icon: '', measurement: 'g'},
+    8: {id: 8, title: resolveTranslation(TRANSLATION.CATEGORIES.SANDWITCH), icon: SandwitchIcon, measurement: 'g'},
+    9: {id: 9, title: resolveTranslation(TRANSLATION.CATEGORIES.BURGERS), icon: BurgerIcon, measurement: 'g'},
+    10: {id: 10, title: resolveTranslation(TRANSLATION.CATEGORIES.SUSHI), icon: '', measurement: 'g'},
+    11: {id: 11, title: resolveTranslation(TRANSLATION.CATEGORIES.NOODLES), icon: NoodlesIcon, measurement: 'g'},
+    12: {id: 12, title: resolveTranslation(TRANSLATION.CATEGORIES.PIZZA), icon: PizzaIcon, measurement: 'g'},
+    13: {id: 13, title: resolveTranslation(TRANSLATION.CATEGORIES.SHAWARMA), icon: '', measurement: 'g'},
+    14: {id: 14, title: resolveTranslation(TRANSLATION.CATEGORIES.SEAFOOD), icon: Sea_foodIcon, measurement: 'g'},
+    15: {id: 15, title: resolveTranslation(TRANSLATION.CATEGORIES.SALADS), icon: VagetableIcon, measurement: 'g'},
+    16: {id: 16, title: resolveTranslation(TRANSLATION.CATEGORIES.MEAT_DISHES), icon: '', measurement: ''},
+    17: {id: 17, title: resolveTranslation(TRANSLATION.CATEGORIES.FISH_DISHES), icon: '', measurement: ''},
+    18: {id: 18, title: resolveTranslation(TRANSLATION.CATEGORIES.DISHES_ON_FIRE), icon: '', measurement: ''},
+    19: {id: 19, title: resolveTranslation(TRANSLATION.CATEGORIES.SAUCES), icon: '', measurement: ''},
+    20: {id: 20, itle: resolveTranslation(TRANSLATION.CATEGORIES.BAKERY), icon: BakeryIcon, measurement: 'g'},
+    21: {id: 21, title: resolveTranslation(TRANSLATION.CATEGORIES.DESERTS), icon: '', measurement: ''},
+    22: {id: 22, itle: resolveTranslation(TRANSLATION.CATEGORIES.DRINKS), icon: BeverageIcon, measurement: 'L'},
+    23: {id: 23, title: resolveTranslation(TRANSLATION.CATEGORIES.HOT_DRINKS), icon: BeverageIcon, measurement: 'ml'},
+    24: {id: 24, title: resolveTranslation(TRANSLATION.CATEGORIES.COCKTAILS), icon: '', measurement: ''},
+    25: {id: 25, title: resolveTranslation(TRANSLATION.CATEGORIES.WINE_CARD), icon: BeverageIcon, measurement: 'ml'},
+    26: {id: 26, itle: resolveTranslation(TRANSLATION.CATEGORIES.ALCOHOL), icon: BeverageIcon, measurement: 'ml'},
 };
 
 export const URL = {
@@ -163,7 +162,7 @@ export const ROUTER = {
     },
     EDIT_USER: {
         URL: URL.EDIT_CUSTOMER,
-        TITLE: resolveTranslation(TRANSLATION.PAGE.EDIT_USER_PROFILE.TITLE),
+        TITLE: resolveTranslation(TRANSLATION.PAGE.EDIT_USER_PROFILE.TOP_TITLE),
         page: EditCustomerPage,
         showBottomMenu: true,
         BACK_URL: URL.SETTING,

@@ -22,8 +22,7 @@ import {startLoading, stopLoading} from "../../features/request/requestSlice";
 import validation  from '../../utils/validation';
 import {ROUTER, URL} from '../../utils/config';
 import {fetchData, BE_API} from "../../utils/fetch";
-import {TRANSLATION} from "../../utils/translation";
-import {resolveTranslation} from "../../utils/utils";
+import {TRANSLATION, resolveTranslation} from "../../utils/translation";
 import {LocalStorage, LOCAL_STORAGE_KEY} from "../../utils/localStorage"
 
 const SignInSchema = Yup.object().shape(validation.customer.singIn);

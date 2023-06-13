@@ -5,8 +5,7 @@ import {ReactComponent as SuccessIcon} from "../../icons/success.svg";
 import {ReactComponent as ErrorIcon} from "../../icons/alert.svg";
 
 import {ContentContainer} from "../ContentContainer/ContentContainer.style";
-import {resolveTranslation} from "../../utils/utils";
-import {TRANSLATION} from "../../utils/translation";
+import {TRANSLATION, resolveTranslation} from "../../utils/translation";
 
 
 const Success = ({message, children}) => {

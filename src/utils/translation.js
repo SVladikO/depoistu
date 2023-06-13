@@ -1,3 +1,11 @@
+export const resolveTranslation = obj => {
+    console.log(888, obj);
+    if (!obj) {
+        debugger;
+    }
+    return obj["ua"];
+}
+
 export const TRANSLATION = {
     COMPANY_NAME: {ua: 'DOMONO', en: 'DOMONO'},
     PAGE: {
@@ -14,6 +22,10 @@ export const TRANSLATION = {
             },
         },
         SETTINGS: {
+            TOP_TITLE: {
+                en: "Settings",
+                ua: "Налаштування"
+            },
             MENU_ROW: {
                 CHANGE_PASS: {en: "Change Password", ua: "Змiнити пароль"},
                 COMPANY: {ua: "Мої заклади", en: "My сompanies"},
@@ -32,11 +44,12 @@ export const TRANSLATION = {
                 ACCOUNTS: {en: "Accounts", ua: "Остобистий кабiнет"},
                 FOR_BUSINESS: {en: "For business", ua: "Для бізнесу"},
                 OPTIONS: {en: "More Options", ua: "Розширенi налаштування"},
-            }
+            },
+            USER_PHONE_LABEL: {en: "Phone", ua: "Телефон"},
+
         },
-        USER_PHONE_LABEL: {en: "Phone", ua: "Телефон"},
         EDIT_USER_PROFILE: {
-            TITLE: {ua: "Змінити профіль", en: "Edit profile"}
+            TOP_TITLE: {ua: "Змінити профіль", en: "Edit profile"}
         },
         ABOUT_US: {
             TOP_TITLE: {ua: "Про нашу компанію", en: "About our company"}
@@ -45,12 +58,51 @@ export const TRANSLATION = {
             TOP_TITLE: {ua: "Наша Команда", en: "Our Team"}
         },
         SEARCH: {
+            TOP_TITLE: {ua: "Пошук", en: "Search"},
             ARROW_LABEL: {ua: "Назад", en: "Back"},
-            TOP_TITLE: {ua: "Пошук", en: "Search"}
         },
-        TOP_TITLE: {
-            en: "Settings"
-        }, ua: "Налаштування"
+        SING_IN: {
+            TOP_TITLE: {
+                en: "Sign in",
+                ua: "Вхiд"
+            },
+            USER_NOTIFICATION: {
+                en: "You already logged!",
+                ua: "Вхiд виконаний"
+            },
+            FORGOT_PASSWORD: {
+                ua: "Забули пароль?",
+                en: "Forgot password?"
+            },
+            SING_UP_LINK: {
+                ua: "Зареєструватись",
+                en: "Sing up"
+            },
+            ACCOUNT_CONFIRMATION: {
+                en: "You don’t have an account?",
+                ua: "Ви зареєстрованi?"
+            }
+        },
+        SING_UP: {
+            TOP_TITLE: {
+                en: "Sing up", ua: "Реєстрацiя"
+            },
+            CREATE_ACCOUNT: {
+                en: "Create an account",
+                ua: "Створити аккаунт"
+            },
+            LABEL: {
+                USER_NAME: {en: "Name", ua: "Ім'я"},
+                PHONE: {ua: "Номер Телефону", en: "Phone Number"},
+                EMAIL: {en: "Emial", ua: "Електронна Пошта"},
+                PASSWORD: {ua: "Пароль", en: "Password"},
+                CONFIRM_PASSWORD: {en: "Confirm Password", ua: "Пiдтвердiть Пароль"},
+                CHECKBOX_CONFIRM_TERMS: {
+                    en: "By creating an account you agree to our Terms of Service and Privacy Policy",
+                    ua: "Створенням свого аккаунту ви погоджуєтесь з нашими правилами користування та полiтикою конфiденцiйностi"
+                }
+            }
+        },
     },
     NOTIFICATION: {
         DESCRIPTION: {
@@ -59,48 +111,6 @@ export const TRANSLATION = {
         },
         LOADING: {ua: "Завантаження...", en: "Loading..."},
         TITLE: {en: "Restricted access!", ua: "Обмежений доступ"}
-    },
-    SING_IN: {
-        TOP_TITLE: {
-            en: "Sign in",
-            ua: "Вхiд"
-        },
-        USER_NOTIFICATION: {
-            en: "You already logged!",
-            ua: "Вхiд виконаний"
-        },
-        FORGOT_PASSWORD: {
-            ua: "Забули пароль?",
-            en: "Forgot password?"
-        },
-        SING_UP_LINK: {
-            ua: "Зареєструватись",
-            en: "Sing up"
-        },
-        ACCOUNT_CONFIRMATION: {
-            en: "You don’t have an account?",
-            ua: "Ви зареєстрованi?"
-        }
-    },
-    SING_UP: {
-        TOP_TITLE: {
-            en: "Sing up", ua: "Реєстрацiя"
-        },
-        CREATE_ACCOUNT: {
-            en: "Create an account",
-            ua: "Створити аккаунт"
-        },
-        LABEL: {
-            USER_NAME: {en: "Name", ua: "Ім'я"},
-            PHONE: {ua: "Номер Телефону", en: "Phone Number"},
-            EMAIL: {en: "Emial", ua: "Електронна Пошта"},
-            PASSWORD: {ua: "Пароль", en: "Password"},
-            CONFIRM_PASSWORD: {en: "Confirm Password", ua: "Пiдтвердiть Пароль"},
-            CHECKBOX_CONFIRM_TERMS: {
-                en: "By creating an account you agree to our Terms of Service and Privacy Policy",
-                ua: "Створенням свого аккаунту ви погоджуєтесь з нашими правилами користування та полiтикою конфiденцiйностi"
-            }
-        }
     },
     BOTTOM_MENU: {
         SEARCH_TAB: {
@@ -113,10 +123,22 @@ export const TRANSLATION = {
         },
     },
     CATEGORIES: {
-        BAKERY: {en: "Bakery", ua: "Випiчка"},
-        DRINKS: {ua: "Безалкогольнi напої", en: "Beverage"},
-        BURGERS: {ua: "Бургери", en: "Burgers"},
-        NOODLES: {ua: "Локшина", en: "Noodles"},
+        BAKERY: {
+            en: "Bakery",
+            ua: "Випiчка"
+        },
+        DRINKS: {
+            ua: "Безалкогольнi напої",
+            en: "Beverage"
+        },
+        BURGERS: {
+            ua: "Бургери",
+            en: "Burgers"
+        },
+        NOODLES: {
+            ua: "Локшина", en:
+                "Noodles"
+        },
         PIZZA: {en: "Pizza", ua: "Пiцца"},
         SANDWITCH: {ua: "Сендвичi", en: "Sandwitch"},
         SEAFOOD: {ua: "Морепродукти", en: "Seafood"},

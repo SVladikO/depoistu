@@ -4,8 +4,7 @@ import * as Yup from "yup";
 import {PrimaryButton, Label, Input, ContentContainer} from "../../components";
 
 import validation from "../../utils/validation";
-import {TRANSLATION} from "../../utils/translation";
-import {resolveTranslation} from "../../utils/utils";
+import {TRANSLATION, resolveTranslation} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 
 const SignUpSchema = Yup.object().shape(validation.customer.singUp);

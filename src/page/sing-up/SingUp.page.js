@@ -10,8 +10,7 @@ import NavigationLabelHref from "../../components/NavigationLabelHref/Navigation
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import validation from '../../utils/validation';
 import {BE_API, fetchData} from "../../utils/fetch";
-import {TRANSLATION} from "../../utils/translation";
-import {resolveTranslation} from "../../utils/utils";
+import {TRANSLATION, resolveTranslation} from "../../utils/translation";
 import {ROUTER, URL} from '../../utils/config';
 
 const SignUpSchema = Yup.object().shape(validation.customer.singUp);

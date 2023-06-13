@@ -1,8 +1,7 @@
 import {Link} from "react-router-dom";
 import {Avatar, ContentWrapper, Name, Phone, TextContent, Wrapper} from "./CustomerAccountBar.style";
 import avatar from '../../icons/avatar.svg';
-import {resolveTranslation} from "../../utils/utils";
-import {TRANSLATION} from '../../utils/translation';
+import {TRANSLATION, resolveTranslation} from '../../utils/translation';
 // import {ROUTER} from "../../utils/config";
 
 

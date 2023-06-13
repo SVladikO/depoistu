@@ -1,4 +1,4 @@
-import {useState} from "react";
+import React, {useState} from "react";
 import {Formik} from "formik";
 import * as Yup from 'yup';
 
@@ -11,11 +11,9 @@ import {
 } from "../../components";
 
 import validation from "../../utils/validation";
-import React, {useState} from "react";
 import {BE_API, fetchData} from "../../utils/fetch";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {TRANSLATION} from '../../utils/translation';
-import {resolveTranslation} from "../../utils/utils";
+import {TRANSLATION, resolveTranslation} from '../../utils/translation';
 
 const ChangePassWordSchema = Yup.object().shape(validation.customer.changePassword);
 

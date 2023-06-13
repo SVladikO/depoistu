@@ -28,10 +28,9 @@ import {
 } from '../../components'
 
 import {ROUTER, URL} from '../../utils/config';
-import {resolveTranslation} from "../../utils/utils";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {Link} from "react-router-dom";
-import {TRANSLATION} from "../../utils/translation";
+import {TRANSLATION, resolveTranslation} from "../../utils/translation";
 
 const SettingPage = () => {
     const [customer, setCustomer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
@@ -72,7 +71,7 @@ const SettingPage = () => {
                 {/*<SettingMenuRow icon={DeliveryAddressIcon} title='Delivery Address' href='/catalog'/>*/}
                 {/*<SettingMenuRow icon={StoreIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.LOCATION)} href='/catalog'/>*/}
                 {/*<SettingMenuRow icon={ConditionsIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.TERMS)} href='/catalog'/>*/}
-                <SettingMenuRow icon={ProfileIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTING.MENU_ROW.EDIT_PROFILE)} href={URL.EDIT_CUSTOMER}/>
+                <SettingMenuRow icon={ProfileIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.EDIT_PROFILE)} href={URL.EDIT_CUSTOMER}/>
                 <SettingMenuRow icon={LockIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.CHANGE_PASS)} href={URL.CHANGE_PASSWORD}/>
                 <SettingMenuRow icon={LogOutIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.EXIT)} changeHandler={logOut}/>
             </AccountSettings>

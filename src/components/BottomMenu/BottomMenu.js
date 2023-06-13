@@ -8,8 +8,7 @@ import {ReactComponent as UserIcon} from "../../icons/user.svg";
 // import {OrderIconWithCounter} from '../index'
 
 import {ROUTER} from "../../utils/config";
-import {resolveTranslation} from "../../utils/utils";
-import {TRANSLATION} from "../../utils/translation";
+import {TRANSLATION, resolveTranslation} from "../../utils/translation";
 
 const BottomMenu = () => {
     const isSelected = url => window.location.pathname === url;
