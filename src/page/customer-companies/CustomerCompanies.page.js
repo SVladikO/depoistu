@@ -40,7 +40,7 @@ const CustomerCompaniesPage = () => {
     const navigate = useNavigate();
     const isLoading = useSelector(state => state.request.value.isLoading);
     const [companyIdForQRCode, setCompanyIdForQRCode] = useState();
-    const [showCustomerWarning, setShowCustomerWarning] = useLocalStorage(LocalStorage.get(LOCAL_STORAGE_KEY.SHOW_CUSTOMER_COMPANIES_WARNING), true);
+    const [showCustomerWarning, setShowCustomerWarning] = useLocalStorage(LOCAL_STORAGE_KEY.SHOW_CUSTOMER_COMPANIES_WARNING, true);
     const [requestError, setRequestError] = useState('');
     const [customer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
     const [customerCompanies] = useLocalStorageFetch(
