@@ -1,4 +1,5 @@
 export const resolveTranslation = obj => obj["ua"];
+
 export const TRANSLATION = {
     COMPANY_NAME: {
         ua: 'DOMONO',
