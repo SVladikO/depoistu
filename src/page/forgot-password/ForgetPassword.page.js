@@ -17,7 +17,7 @@ const ForgetPasswordPage = () => {
     if (wasSubmitted) {
         return (
             <NotificationTDB title="Request was sent!" description="Please check your mail to reset password">
-                <Link to={`${URL.SING_IN}`}>
+                <Link to={URL.SING_IN}>
                     <PrimaryButton isWide>
                         {resolveTranslation("PAGE.FORGOT_PASSWORD.LINK_TO_SIGN_IN_PAGE")}
                     </PrimaryButton>
