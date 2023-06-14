@@ -37,7 +37,6 @@ export const Title = styled.div`
   color: ${COLOR.ACCENT1};
   margin: 0 5px 4px 0;
   display: flex;
-  max-width: 190px;
   flex-wrap: wrap;
   word-break: break-word;
 `;
