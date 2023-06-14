@@ -1,4 +1,6 @@
-import {Wrapper, FoodImage, Title, Description, AdditionalDetails, InvisibleDivider, EditPicture, LabelEdit} from "./MenuItem.style";
+import {Link} from "react-router-dom";
+import {useState} from "react";
+import {Wrapper, FoodImage, Title, Description, AdditionalDetails, InvisibleDivider, EditWrapper, EditLabel} from "./MenuItem.style";
 
 import {Price, Flex, Absolute, Like, Popup} from "../index";
 import {ReactComponent as TimeIcon} from "../../icons/time.svg";
@@ -7,13 +9,14 @@ import {ReactComponent as BasketIcon} from "../../icons/basket.svg";
 import {ReactComponent as EditIcon} from "../../icons/edit.svg";
 import {addOrderItem} from "../../features/order/orderSlice";
 import {URL} from "../../utils/config";
-import {Link} from "react-router-dom";
-import {useState} from "react";
+import {resolveTranslation} from '../../utils/utils'
+import translation from "../../utils/translation.json";
+
+
 
 const MenuItem = ({item = {}, withEditIcon = false, onEditClick}) => {
     const {NAME, DESCRIPTION, IMAGE_URL, PRICE, COOKING_TIME, SIZE, isLiked} = item;
     const [imageUrl, setImageUrl] = useState('')
-
 
     return (
         <Wrapper className='pm-MenuItem'>
@@ -24,10 +27,10 @@ const MenuItem = ({item = {}, withEditIcon = false, onEditClick}) => {
                         <Title>{NAME}</Title>
                         {/*<Like liked={isLiked}/>*/}
                         {withEditIcon && <Link to={URL.EDIT_MENU_ITEM}>
-                            <EditPicture onClick={onEditClick}>
-                                <EditIcon/>
-                                <LabelEdit>Edit</LabelEdit>
-                            </EditPicture>
+                        <EditWrapper onClick={onEditClick}>
+                            <EditIcon/>
+                            <EditLabel>{resolveTranslation("PAGE.MENU_ITEM.BUTTON.EDIT")}</EditLabel>
+                        </EditWrapper>
                         </Link>}
                     </Flex>
                     <Price>{PRICE}</Price>

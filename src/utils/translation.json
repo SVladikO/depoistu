@@ -223,6 +223,10 @@
     "ua": "Зберегти зміни",
     "en": "Save changes"
   },
+  "PAGE.MENU_ITEM.BUTTON.EDIT": {
+    "ua": "Редагувати",
+    "en": "Edit"
+  },
   "NOTIFICATION.LOADING": {
     "ua": "Завантаження...",
     "en": "Loading..."

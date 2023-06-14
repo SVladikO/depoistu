@@ -14,7 +14,6 @@ export const Wrapper = styled.div`
   background: ${COLOR.ACCENT4};
   border-radius: ${BORDER_RADIUS.SECOND};
   margin: 15px 0 15px 0;
-  
   svg{
     width: 25px;
     height: 25px;
@@ -37,7 +36,10 @@ export const Title = styled.div`
   font-size: 18px;
   line-height: 24px;
   color: ${COLOR.ACCENT1};
-  margin: 0 0 4px;
+  margin: 0 5px 4px 0;
+  display: flex;
+  flex-wrap: wrap;
+  word-break: break-word;
 `;
 
 export const Description = styled.div`
@@ -52,14 +54,16 @@ export const InvisibleDivider = styled.div`
   height: 10px;
 `;
 
-export const EditPicture = styled.div`
+export const EditWrapper = styled.div`
+  display: flex;
+  align-items: center;
   svg{
     width: 14px;
     height: 14px;
     color: ${COLOR.ACCENT3};
   }
 `;
-export const LabelEdit = styled.span`
+export const EditLabel = styled.span`
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
