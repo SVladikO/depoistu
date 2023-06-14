@@ -12,7 +12,7 @@ import {Title, Notice, Reference} from "./ForgetPassword.style";
 
 const CheckEmailSchema = Yup.object().shape(validation.user.forgetPassword);
 
-const ForgotPasswordPage = () => {
+const ForgetPasswordPage = () => {
     const [wasSubmitted, setWasSubmitted] = useState(false);
 
     if (wasSubmitted) {
@@ -71,4 +71,4 @@ const ForgotPasswordPage = () => {
     </>);
 };
 
-export default ForgotPasswordPage;
+export default ForgetPasswordPage;

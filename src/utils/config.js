@@ -25,7 +25,7 @@ import {ReactComponent as VagetableIcon} from "../icons/category/vagetable.svg";
 import CustomerCompaniesPage from "../page/customer-companies/CustomerCompanies.page";
 import AddCompanyPage from "../page/add-company/AddCompany.page";
 import AddMenuItemPage from "../page/add-menu-item/AddMenuItem.page";
-import ForgotPasswordPage from "../page/forgot-password/ForgotPassword.page";
+import ForgetPasswordPage from "../page/forgot-password/ForgetPassword.page";
 
 import {resolveTranslation} from "./utils";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
@@ -118,7 +118,7 @@ export const ROUTER = {
     FORGOT_PASSWORD: {
         URL: URL.FORGOT_PASSWORD,
         TITLE: resolveTranslation("PAGE.FORGOT_PASSWORD.TOP_TITLE"),
-        page: ForgotPasswordPage,
+        page: ForgetPasswordPage,
     },
     CHANGE_PASSWORD: {
         URL: URL.CHANGE_PASSWORD,
