@@ -52,6 +52,9 @@ const singInValidation = {
     email: user_validation.email,
     password: user_validation.password
 }
+const forgetPasswordValidation = {
+    email: user_validation.email,
+}
 const singUpValidation = {
     name: user_validation.name,
     email: user_validation.email,
@@ -140,7 +143,8 @@ const validation = {
     user: {
         singIn: singInValidation,
         singUp: singUpValidation,
-        changePassword: changePasswordValidation
+        changePassword: changePasswordValidation,
+        forgetPassword: forgetPasswordValidation
     },
     menuItem: menu_item_validation,
     company: company_validation

@@ -25,6 +25,7 @@ import {ReactComponent as VagetableIcon} from "../icons/category/vagetable.svg";
 import CustomerCompaniesPage from "../page/customer-companies/CustomerCompanies.page";
 import AddCompanyPage from "../page/add-company/AddCompany.page";
 import AddMenuItemPage from "../page/add-menu-item/AddMenuItem.page";
+import ForgotPasswordPage from "../page/forgot-password/ForgotPassword.page";
 
 import {resolveTranslation} from "./utils";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
@@ -63,6 +64,7 @@ export const URL = {
     SING_UP: '/sing-up',
     SETTING: '/setting',
     CHANGE_PASSWORD: '/change-password',
+    FORGOT_PASSWORD: '/forgot-password',
     ABOUT_US: '/about-us',
     EDIT_CUSTOMER: '/edit-customer',
     OUR_TEAM: '/our-team',
@@ -112,6 +114,11 @@ export const ROUTER = {
         TITLE: resolveTranslation("PAGE.SING_IN.TOP_TITLE"),
         page: SignInPage,
         showBottomMenu: true
+    },
+    FORGOT_PASSWORD: {
+        URL: URL.FORGOT_PASSWORD,
+        TITLE: resolveTranslation("PAGE.FORGOT_PASSWORD.TOP_TITLE"),
+        page: ForgotPasswordPage,
     },
     CHANGE_PASSWORD: {
         URL: URL.CHANGE_PASSWORD,
