@@ -41,7 +41,6 @@ const uaWeekDayNames = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"];
 
 export class ScheduleParser {
     constructor(scheduleString) {
-        this.scheduleString = scheduleString;                                    //  '9:00-21:00,,,,,,'
         this.workDays = ScheduleParser.cutOnDays(scheduleString);                // ['9:00-21:00',,,,,,]
         this.currentDayAsString = ScheduleParser.getCurrentDay(this.workDays);   //  '9:00-21:00'
         this.currentDayAsObject = ScheduleParser.fromTo(this.currentDayAsString);// { from: '9:00', to: '21:00' }
@@ -65,16 +64,15 @@ export class ScheduleParser {
         const f = +covertToNumber(from);
         const t = +covertToNumber(to);
 
-        function covertToNumber(time) {
-            const [a, b] = time.split(':') ?? ['',''];
-            return a + b;
-        }
-
         const d = new Date();
         const currentTime = +(d.getHours() + '' + d.getMinutes());
-        console.log(888, f, currentTime, t, currentTime > f && currentTime < t)
+
         return currentTime > f && currentTime < t;
 
+        function covertToNumber(time) {
+            const [a, b] = time ? time.split(':') : ['',''];
+            return a + b;
+        }
     }
 }
 
@@ -96,14 +94,4 @@ ScheduleParser.isToday = function (dayIndex) {
     }
 
     return (dayIndex + 1) === currentDayIndex;
-}
-
-export function checkIsToday(i) {
-    let currentDayIndex = new Date().getDay();
-
-    if (currentDayIndex === 0) {
-        currentDayIndex = 7;
-    }
-
-    return (i + 1) === currentDayIndex;
 }

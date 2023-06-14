@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Pagination, Navigation} from "swiper";
 import {Swiper, SwiperSlide} from "swiper/react";
 
@@ -12,55 +12,16 @@ import {
     Address,
     Content,
     CompanyInfo,
-    ScheduleContainer,
-    ScheduleWrapper,
     Schedule,
     Open,
     Closes,
     Phone,
-    DetailedLink,
-    ScheduleContent, Location,
-    Day, CloseStatus
+    Location,
+    CloseStatus
 } from "./Company.style";
 
-import {ScheduleParser} from "../../utils/company";
-
-const ScheduleDetails = ({scheduleAsArray}) => {
-    const [isWeekScheduleVisible, setIsWeekScheduleVisible] = useState(false);
-
-    if (isWeekScheduleVisible) {
-        return (
-            <ScheduleContent>
-                {
-                    scheduleAsArray?.map((day, i) => {
-                        const {dayName, from,to} = day;
-
-                        return (
-                            <ScheduleWrapper key={i.toString()}>
-                                <ScheduleContainer>
-                                    <div>
-                                        <Day isToday={ScheduleParser.isToday(i)}>{dayName}</Day>
-                                        <div>{from}</div>
-                                        <div>{to}</div>
-                                    </div>
-                                </ScheduleContainer>
-                            </ScheduleWrapper>
-                        )
-                    })
-                }
-            </ScheduleContent>
-        )
-
-    }
-
-    return (
-        <DetailedLink onClick={() => setIsWeekScheduleVisible(true)}>
-            Show schedule
-        </DetailedLink>
-    )
-}
-
-
+import {ScheduleParser} from "../../utils/schedule";
+import ScheduleDetails from "./utils";
 
 const Company = (props) => {
 
@@ -68,7 +29,7 @@ const Company = (props) => {
         return;
     }
 
-    const {PHOTOS, NAME, CITY, STREET, SCHEDULE} = props.company;
+    const {PHOTOS, NAME, CITY, STREET, SCHEDULE} = props.company
     const scheduleParser = new ScheduleParser(SCHEDULE);
 
     const renderLocation = () => {

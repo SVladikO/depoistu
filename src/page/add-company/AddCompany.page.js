@@ -11,7 +11,7 @@ import {initialValues} from './utils';
 import {URL} from "../../utils/config";
 import {BE_API} from '../../utils/fetch'
 import {fetchData} from "../../utils/fetch";
-import {getScheduleAsString} from "../../utils/company";
+import {getScheduleAsString} from "../../utils/schedule";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {WarningText, Reference} from "./AddCompany.style";
 import {ReactComponent as LinkArrowIcon} from "../../icons/right-anchor.svg";

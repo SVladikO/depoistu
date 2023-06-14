@@ -2,7 +2,7 @@ import {Link} from "react-router-dom";
 import {Avatar, ContentWrapper, Name, Phone, TextContent, Wrapper} from "./CustomerAccountBar.style";
 import avatar from '../../icons/avatar.svg';
 import {resolveTranslation} from "../../utils/utils";
-// import {ROUTER} from "../../utils/config";
+// import {ROUTER} from "../../utils.js/config";
 
 
 const CustomerAccountBar = ({ fullName, phone}) => {
