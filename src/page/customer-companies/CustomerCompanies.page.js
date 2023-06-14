@@ -10,7 +10,7 @@ import {ReactComponent as EditIcon} from "../../icons/edit.svg";
 
 import {BE_API} from '../../utils/fetch'
 import {ROUTER, URL} from "../../utils/config";
-import {useLocalStorageFetch} from "../../utils/hook";
+import {useLocalStorage, useLocalStorageFetch} from "../../utils/hook";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {ReactComponent as QRCodeIcon} from "../../icons/qr_code.svg";
 
@@ -35,14 +35,14 @@ const PopupQRCode = ({companyId, onClose}) => {
         </Popup.Info>
     )
 }
+
 const CustomerCompaniesPage = () => {
     const navigate = useNavigate();
     const isLoading = useSelector(state => state.request.value.isLoading);
     const [companyIdForQRCode, setCompanyIdForQRCode] = useState();
-
+    const [isVisibleCompanyCreationWarning, setIsVisibleCompanyCreationWarning] = useLocalStorage(LOCAL_STORAGE_KEY.IS_VISIBLE_COMPANY_CREATION_WARNING, false);
     const [requestError, setRequestError] = useState('');
     const [customer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
-
     const [customerCompanies] = useLocalStorageFetch(
         LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES,
         [],
@@ -64,8 +64,12 @@ const CustomerCompaniesPage = () => {
 
     const showQRCode = companyId => () => setCompanyIdForQRCode(companyId);
 
+    const closeInfoPopUp = () => setIsVisibleCompanyCreationWarning(true);
+
+
     return (
         <>
+            {!isVisibleCompanyCreationWarning && <Popup.Info onClose={closeInfoPopUp}>Не додавайте компанії заради розваги. Не витрачайте ваш і наш час дарма.</Popup.Info>}
             <PopupQRCode companyId={companyIdForQRCode} onClose={() => setCompanyIdForQRCode('')}/>
             {customerCompanies.map(
                 company =>
