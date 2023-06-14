@@ -8,6 +8,7 @@ export const Flex = styled.div`
   .swiper{
     display: flex;
     width: 100%;
+    padding: 2px;
   }
   .swiper-slide {
     flex-shrink: 100 !important;
