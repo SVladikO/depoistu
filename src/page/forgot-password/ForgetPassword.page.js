@@ -1,13 +1,12 @@
 import React, {useState} from 'react';
 import {Formik} from "formik";
 import * as Yup from "yup";
-import validation from "../../utils/validation";
-import {Input, Label, PrimaryButton, ContentContainer} from "../../components";
+import {Link} from "react-router-dom";
+import {Input, Label, PrimaryButton, ContentContainer, NotificationTDB} from "../../components";
 import {ReactComponent as MailIcon} from "../../icons/mail.svg";
 import {resolveTranslation} from "../../utils/utils";
-import {Link} from "react-router-dom";
-import {ROUTER, URL} from "../../utils/config";
-import {Title, Notice, Reference} from "./ForgetPassword.style";
+import {URL} from "../../utils/config";
+import validation from "../../utils/validation";
 
 
 const CheckEmailSchema = Yup.object().shape(validation.user.forgetPassword);
@@ -17,21 +16,13 @@ const ForgetPasswordPage = () => {
 
     if (wasSubmitted) {
         return (
-            <ContentContainer>
-                <Title>
-                    Request was sent!
-                </Title>
-                <Notice>
-                    Please check your mail to reset password
-                </Notice>
-                <Reference>
-                    <Link to={`${URL.SING_IN}`}>
-                        <PrimaryButton isWide>
-                            {resolveTranslation("PAGE.FORGOT_PASSWORD.LINK_TO_SIGN_IN_PAGE")}
-                        </PrimaryButton>
-                    </Link>
-                </Reference>
-            </ContentContainer>
+            <NotificationTDB title="Request was sent!" description="Please check your mail to reset password">
+                <Link to={`${URL.SING_IN}`}>
+                    <PrimaryButton isWide>
+                        {resolveTranslation("PAGE.FORGOT_PASSWORD.LINK_TO_SIGN_IN_PAGE")}
+                    </PrimaryButton>
+                </Link>
+            </NotificationTDB>
         );
     }
 
