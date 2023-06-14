@@ -6,7 +6,7 @@ import {PrimaryButton, Label, Input, ContentContainer} from "../../components";
 import {resolveTranslation} from "../../utils/utils";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 
-const SignUpSchema = Yup.object().shape(validation.user.singUp);
+const SignUpSchema = Yup.object().shape(validation.customer.singUp);
 
 const EditCustomerPage = () => {
     const [wasSubmitted, setWasSubmitted] = useState(false);

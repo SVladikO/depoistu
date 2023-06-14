@@ -46,6 +46,7 @@ export const BE_API = {
     CUSTOMER: {
         SING_IN: () => `${BE_DOMAIN}/sign-in`,
         SING_UP: () => `${BE_DOMAIN}/sign-up`,
+        CHANGE_PASSWORD: () => `${BE_DOMAIN}/change-password`
     },
     COMPANY: {
         GET_BY_CUSTOMER_ID: customer_id => `${BE_DOMAIN}/companies/by/customer/${customer_id}`,
