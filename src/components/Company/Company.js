@@ -81,6 +81,8 @@ const Company = (props) => {
 
     const {PHOTOS, NAME, CITY, STREET, SCHEDULE} = props.company;
 
+
+
     const renderLocation = () => {
         if (props.withMoreInfo) {
             return (
@@ -96,6 +98,18 @@ const Company = (props) => {
                 <Address>{CITY}, {STREET}</Address>
             </Location>
         )
+    }
+
+    function getClosedTime () {
+        const scheduleAsObject = getScheduleAsObject(SCHEDULE);
+        const time = Object.values(scheduleAsObject);
+        let currentDayIndex = new Date().getDay();
+
+        if(currentDayIndex === 0){
+            currentDayIndex = 7;
+        }
+
+        return time.map((el,i) =>  i === currentDayIndex ? el.split('-').pop() : null)
     }
 
     return (
@@ -122,7 +136,7 @@ const Company = (props) => {
                     {renderLocation()}
                     <Schedule>
                         <Open>Open</Open>
-                        <Closes>Closes<span>22:00</span></Closes>
+                        <Closes>Closes<span>{getClosedTime()}</span></Closes>
                     </Schedule>
                     {props.withMoreInfo && <Phone>80978432032</Phone>}
                     {props.withMoreInfo && <ScheduleDetails schedule={SCHEDULE}/>}
