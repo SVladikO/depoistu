@@ -20,39 +20,26 @@ import {
     Phone,
     DetailedLink,
     ScheduleContent, Location,
-    Day
+    Day, CloseStatus
 } from "./Company.style";
 
-import {getScheduleAsObject, checkIsToday} from "../../utils/company";
+import {ScheduleParser} from "../../utils/company";
 
-const ScheduleDetails = ({schedule}) => {
+const ScheduleDetails = ({scheduleAsArray}) => {
     const [isWeekScheduleVisible, setIsWeekScheduleVisible] = useState(false);
 
-    if (!schedule || !schedule.length) {
-        return;
-    }
-
-    const scheduleAsObject = getScheduleAsObject(schedule);
-
-    if (!Object.keys(scheduleAsObject).length) {
-        return;
-    }
-
     if (isWeekScheduleVisible) {
-        const days = Object.keys(scheduleAsObject);
         return (
             <ScheduleContent>
                 {
-                    Object.entries(scheduleAsObject)?.map((key, i) => {
-                        const dayName = key[0];
-                        const fromToTime = key[1];
-                        const [from,to] = fromToTime.split('-');
+                    scheduleAsArray?.map((day, i) => {
+                        const {dayName, from,to} = day;
 
                         return (
                             <ScheduleWrapper key={i.toString()}>
                                 <ScheduleContainer>
                                     <div>
-                                        <Day isToday={checkIsToday(i)}>{dayName}</Day>
+                                        <Day isToday={ScheduleParser.isToday(i)}>{dayName}</Day>
                                         <div>{from}</div>
                                         <div>{to}</div>
                                     </div>
@@ -82,6 +69,7 @@ const Company = (props) => {
     }
 
     const {PHOTOS, NAME, CITY, STREET, SCHEDULE} = props.company;
+    const scheduleParser = new ScheduleParser(SCHEDULE);
 
     const renderLocation = () => {
         if (props.withMoreInfo) {
@@ -123,11 +111,16 @@ const Company = (props) => {
                     <Name>{NAME}</Name>
                     {renderLocation()}
                     <Schedule>
-                        <Open>Open</Open>
-                        <Closes>Closes<span>22:00</span></Closes>
+                        {scheduleParser.checkIsCompanyOpenNow()
+                            ? <>
+                                <Open>Open</Open>
+                                <Closes>Closes<span>{scheduleParser.getCurrentDayAsObject().to}</span></Closes>
+                            </>
+                            : <CloseStatus>Close</CloseStatus>
+                        }
                     </Schedule>
                     {props.withMoreInfo && <Phone>80978432032</Phone>}
-                    {props.withMoreInfo && <ScheduleDetails schedule={SCHEDULE}/>}
+                    {props.withMoreInfo && SCHEDULE && SCHEDULE.length && <ScheduleDetails scheduleAsArray={scheduleParser.getScheduleAsArray()}/>}
                 </CompanyInfo>
                 {props.children}
             </Content>

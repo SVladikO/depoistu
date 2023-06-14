@@ -78,6 +78,9 @@ export const Open = styled.span`
   display: inline-block;
   margin: 0 15px 0 0;
 `;
+export const CloseStatus = styled.span`
+  color: ${COLOR.ACCENT6};  
+`;
 
 export const Closes = styled.span`
   font-weight: 400;
