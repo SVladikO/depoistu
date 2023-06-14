@@ -95,7 +95,7 @@ const SignInPage = () => {
                             withSwitcher
                             errorMessage={errors.password}
                         />
-                        <Link to={ROUTER.FORGOT_PASSWORD.URL}>{resolveTranslation("PAGE.SING_IN.FORGOT_PASSWORD")}</Link>
+                        <Link to={URL.FORGOT_PASSWORD}>{resolveTranslation("PAGE.SING_IN.FORGOT_PASSWORD")}</Link>
                         <NavigationLabelHref
                             hrefTitle={resolveTranslation("PAGE.SIGN_IN.SING_UP_LINK")}
                             to={ROUTER.SING_UP.URL}
