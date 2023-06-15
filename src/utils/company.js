@@ -38,42 +38,48 @@ export function initSchedule(schedule) {
 
 const uaWeekDayNames = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"];
 
-export const parseSchedule = (function () {
-    const getCurrentDay = days => days.find((el, i) => isToday(i));
-    const cutOnDays = schedule => schedule.split(',')?.map(el => el.trim());
-    const isToday = dayIndex => (dayIndex + 1) === (new Date().getDay() || 7);
-    const addMarkerToCurrentDay = (el, i) => isToday(i) ? {...el, isToday: true} : el;
-    const addDayName = (fromTo, index) => ({dayName: uaWeekDayNames[index], ...fromTo});
+const getCurrentDay = days => days.find((el, i) => isToday(i));
+const cutOnDays = schedule => schedule.split(',')?.map(el => el.trim());
+const isToday = dayIndex => (dayIndex + 1) === (new Date().getDay() || 7);
+const addMarkerToCurrentDay = (el, i) => isToday(i) ? {...el, isToday: true} : el;
+const addDayName = (fromTo, index) => ({dayName: uaWeekDayNames[index], ...fromTo});
 
-    return function (scheduleAsString) {
-        const workDays = cutOnDays(scheduleAsString)
-            .map(convertToObject)
-            .map(addDayName)
-            .map(addMarkerToCurrentDay);
-        // workDays = [{ from: '9:00', to: '21:00', isToday: true }, ... ]
-        const currentDay = getCurrentDay(workDays);
-        const isCompanyOpenNow = checkIsCompanyOpenNow(currentDay);
+export function parseSchedule(scheduleAsString) {
+    const workDays = cutOnDays(scheduleAsString)
+        .map(convertToObject)
+        .map(addDayName)
+        .map(addMarkerToCurrentDay);
+    //Expected workDays = [{ from: '9:00', to: '21:00', isToday: true }, ... ]
+    const currentDay = getCurrentDay(workDays);
+    const isCompanyOpenNow = checkIsCompanyOpenNow(currentDay);
 
-        return {workDays, currentDay, isCompanyOpenNow}
-    }
+    return {workDays, currentDay, isCompanyOpenNow}
+};
 
-    function convertToObject(day) {
-        const [from = '', to = ''] = day ? day?.split('-') : ['', ''];
+function convertToObject(day) {
+    const [from = '', to = ''] = day ? day?.split('-') : ['', ''];
 
-        return {from, to};
-    }
+    return {from, to};
+}
 
-    function checkIsCompanyOpenNow({from, to}) {
-        const f = +covertToNumber(from);
-        const t = +covertToNumber(to);
+function checkIsCompanyOpenNow({from, to}) {
+    const f = covertToNumber(from);
+    const t = covertToNumber(to);
+    const currentTime = getCurrentTimeAsNumber();
 
-        const currentTime = +(d => d.getHours() + '' + d.getMinutes())(new Date());
+    return currentTime > f && currentTime < t;
+}
 
-        return currentTime > f && currentTime < t;
+function covertToNumber(time) {
+    const [a, b] = time ? time.split(':') : ['', ''];
+    return +(a + b);
+}
 
-        function covertToNumber(time) {
-            const [a, b] = time ? time.split(':') : ['', ''];
-            return a + b;
-        }
-    }
-})();
+function getCurrentTimeAsNumber() {
+    const date = new Date();
+    const currentHours = date.getHours();
+    const currentMinutes = date.getMinutes();
+    const correctMinutes = currentMinutes < 10 ? 0 : '';
+
+    return +(currentHours + correctMinutes + currentMinutes);
+}
