@@ -50,7 +50,8 @@ export const parseSchedule = (function () {
             .map(convertToObject)
             .map(addDayName)
             .map(addMarkerToCurrentDay);
-        const currentDay = getCurrentDay(workDays);  // Expected to be { from: '9:00', to: '21:00' }
+        // workDays = [{ from: '9:00', to: '21:00', isToday: true }, ... ]
+        const currentDay = getCurrentDay(workDays);
         const isCompanyOpenNow = checkIsCompanyOpenNow(currentDay);
 
         return {workDays, currentDay, isCompanyOpenNow}
