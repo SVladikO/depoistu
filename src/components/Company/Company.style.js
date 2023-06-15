@@ -70,7 +70,7 @@ export const Schedule = styled.div`
   height: 19px;
 `;
 
-export const Open = styled.span`
+export const OpenStatus = styled.span`
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;

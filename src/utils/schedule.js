@@ -45,7 +45,18 @@ export const parseSchedule = (function () {
     const addMarkerToCurrentDay = (el, i) => isToday(i) ? {...el, isToday: true} : el;
     const addDayName = (fromTo, index) => ({dayName: uaWeekDayNames[index], ...fromTo});
 
-    const convertToObject = day => {
+    return function (scheduleAsString) {
+        const workDays = cutOnDays(scheduleAsString)
+            .map(convertToObject)
+            .map(addDayName)
+            .map(addMarkerToCurrentDay);
+        const currentDay = getCurrentDay(workDays);  // Expected to be { from: '9:00', to: '21:00' }
+        const isCompanyOpenNow = checkIsCompanyOpenNow(currentDay);
+
+        return {workDays, currentDay, isCompanyOpenNow}
+    }
+
+    function convertToObject(day) {
         const [from = '', to = ''] = day ? day?.split('-') : ['', ''];
 
         return {from, to};
@@ -63,16 +74,5 @@ export const parseSchedule = (function () {
             const [a, b] = time ? time.split(':') : ['', ''];
             return a + b;
         }
-    }
-
-    return function (scheduleString) {
-        const workDays = cutOnDays(scheduleString)
-            .map(convertToObject)
-            .map(addDayName)
-            .map(addMarkerToCurrentDay);
-        const currentDay = getCurrentDay(workDays);  // Expected to be { from: '9:00', to: '21:00' }
-        const isCompanyOpenNow = checkIsCompanyOpenNow(currentDay);
-
-        return {workDays, currentDay, isCompanyOpenNow}
     }
 })();

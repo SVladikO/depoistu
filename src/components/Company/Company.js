@@ -13,7 +13,7 @@ import {
     Content,
     CompanyInfo,
     Schedule,
-    Open,
+    OpenStatus,
     Closes,
     Phone,
     Location,
@@ -74,7 +74,7 @@ const Company = (props) => {
                     <Schedule>
                         {schedule.isCompanyOpenNow
                             ? <>
-                                <Open>Open</Open>
+                                <OpenStatus>Open</OpenStatus>
                                 <Closes>Closes<span>{schedule.currentDay.to}</span></Closes>
                             </>
                             : <CloseStatus>Close</CloseStatus>
