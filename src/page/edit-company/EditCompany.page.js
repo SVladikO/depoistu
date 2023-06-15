@@ -11,8 +11,8 @@ import getInitialValues from "./utils";
 import {URL} from "../../utils/config";
 import {BE_API} from '../../utils/fetch'
 import {fetchData} from "../../utils/fetch";
-import {initSchedule} from "../../utils/schedule";
-import {getScheduleAsString} from "../../utils/schedule";
+import {initSchedule} from "../../utils/company";
+import {getScheduleAsString} from "../../utils/company";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 
 //We need this variable after call LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES) on delete company success

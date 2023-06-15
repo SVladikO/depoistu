@@ -20,7 +20,7 @@ import {
     CloseStatus
 } from "./Company.style";
 
-import {parseSchedule} from "../../utils/schedule";
+import {parseSchedule} from "../../utils/company";
 import ScheduleDetails from "./utils";
 
 const Company = (props) => {
