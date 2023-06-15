@@ -1,4 +1,3 @@
-
 export const getScheduleAsString = values => {
     let result = ''
 
@@ -39,59 +38,41 @@ export function initSchedule(schedule) {
 
 const uaWeekDayNames = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"];
 
-export class ScheduleParser {
-    constructor(scheduleString) {
-        this.workDays = ScheduleParser.cutOnDays(scheduleString);                // ['9:00-21:00',,,,,,]
-        this.currentDayAsString = ScheduleParser.getCurrentDay(this.workDays);   //  '9:00-21:00'
-        this.currentDayAsObject = ScheduleParser.fromTo(this.currentDayAsString);// { from: '9:00', to: '21:00' }
+export const parseSchedule = (function () {
+    const getCurrentDay = days => days.find((el, i) => isToday(i));
+    const cutOnDays = schedule => schedule.split(',')?.map(el => el.trim());
+    const isToday = dayIndex => (dayIndex + 1) === (new Date().getDay() || 7);
+    const addMarkerToCurrentDay = (el, i) => isToday(i) ? {...el, isToday: true} : el;
+    const addDayName = (fromTo, index) => ({dayName: uaWeekDayNames[index], ...fromTo});
+
+    const convertToObject = day => {
+        const [from = '', to = ''] = day ? day?.split('-') : ['', ''];
+
+        return {from, to};
     }
 
-    getScheduleAsArray() {
-        return uaWeekDayNames.map((dayName, i) => {
-            const {from, to} = ScheduleParser.fromTo(this.workDays[i]);
-
-            return {dayName, from, to};
-        });
-    }
-
-    getCurrentDayAsObject() {
-        return this.currentDayAsObject;
-    }
-
-    checkIsCompanyOpenNow = function () {
-        const {from, to} = this.currentDayAsObject;
-
+    function checkIsCompanyOpenNow({from, to}) {
         const f = +covertToNumber(from);
         const t = +covertToNumber(to);
 
-        const d = new Date();
-        const currentTime = +(d.getHours() + '' + d.getMinutes());
+        const currentTime = +(d => d.getHours() + '' + d.getMinutes())(new Date());
 
         return currentTime > f && currentTime < t;
 
         function covertToNumber(time) {
-            const [a, b] = time ? time.split(':') : ['',''];
+            const [a, b] = time ? time.split(':') : ['', ''];
             return a + b;
         }
     }
-}
 
-ScheduleParser.cutOnDays = scheduleString =>  scheduleString.split(',')?.map(el => el.trim());
+    return function (scheduleString) {
+        const workDays = cutOnDays(scheduleString)
+            .map(convertToObject)
+            .map(addDayName)
+            .map(addMarkerToCurrentDay);
+        const currentDay = getCurrentDay(workDays);  // Expected to be { from: '9:00', to: '21:00' }
+        const isCompanyOpenNow = checkIsCompanyOpenNow(currentDay);
 
-ScheduleParser.getCurrentDay = days => days.find((el, i) => ScheduleParser.isToday(i));
-
-ScheduleParser.fromTo = day => {
-    const [from, to] = day?.split('-');
-
-    return {from, to};
-}
-
-ScheduleParser.isToday = function (dayIndex) {
-    let currentDayIndex = new Date().getDay();
-
-    if (currentDayIndex === 0) { // for Sunday only.
-        currentDayIndex = 7;
+        return {workDays, currentDay, isCompanyOpenNow}
     }
-
-    return (dayIndex + 1) === currentDayIndex;
-}
+})();

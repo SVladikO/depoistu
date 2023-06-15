@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import {Day, DetailedLink, ScheduleContainer, ScheduleContent, ScheduleWrapper} from "./Company.style";
-import {ScheduleParser} from "../../utils/schedule";
 
 const ScheduleDetails = ({scheduleAsArray}) => {
     const [isWeekScheduleVisible, setIsWeekScheduleVisible] = useState(false);
@@ -10,13 +9,13 @@ const ScheduleDetails = ({scheduleAsArray}) => {
             <ScheduleContent>
                 {
                     scheduleAsArray?.map((day, i) => {
-                        const {dayName, from,to} = day;
+                        const {dayName, from,to, isToday} = day;
 
                         return (
                             <ScheduleWrapper key={i.toString()}>
                                 <ScheduleContainer>
                                     <div>
-                                        <Day isToday={ScheduleParser.isToday(i)}>{dayName}</Day>
+                                        <Day isToday={isToday}>{dayName}</Day>
                                         <div>{from}</div>
                                         <div>{to}</div>
                                     </div>

@@ -20,7 +20,7 @@ import {
     CloseStatus
 } from "./Company.style";
 
-import {ScheduleParser} from "../../utils/schedule";
+import {parseSchedule} from "../../utils/schedule";
 import ScheduleDetails from "./utils";
 
 const Company = (props) => {
@@ -30,7 +30,7 @@ const Company = (props) => {
     }
 
     const {PHOTOS, NAME, CITY, STREET, SCHEDULE} = props.company
-    const scheduleParser = new ScheduleParser(SCHEDULE);
+    const schedule = parseSchedule(SCHEDULE);
 
     const renderLocation = () => {
         if (props.withMoreInfo) {
@@ -72,16 +72,16 @@ const Company = (props) => {
                     <Name>{NAME}</Name>
                     {renderLocation()}
                     <Schedule>
-                        {scheduleParser.checkIsCompanyOpenNow()
+                        {schedule.isCompanyOpenNow
                             ? <>
                                 <Open>Open</Open>
-                                <Closes>Closes<span>{scheduleParser.getCurrentDayAsObject().to}</span></Closes>
+                                <Closes>Closes<span>{schedule.currentDay.to}</span></Closes>
                             </>
                             : <CloseStatus>Close</CloseStatus>
                         }
                     </Schedule>
                     {props.withMoreInfo && <Phone>80978432032</Phone>}
-                    {props.withMoreInfo && SCHEDULE && SCHEDULE.length && <ScheduleDetails scheduleAsArray={scheduleParser.getScheduleAsArray()}/>}
+                    {props.withMoreInfo && SCHEDULE && SCHEDULE.length && <ScheduleDetails scheduleAsArray={schedule.workDays}/>}
                 </CompanyInfo>
                 {props.children}
             </Content>
