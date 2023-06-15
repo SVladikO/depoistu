@@ -40,29 +40,11 @@ export const Content = styled.div`
 export const CompanyInfo = styled.div`
 `;
 
-export const ScheduleWrapper = styled.div`
-  color: ${COLOR.ACCENT1};
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
-  flex-wrap: nowrap;
-  color: ${COLOR.ACCENT5};
-  display: flex;
-`;
-
 export const Phone = styled.div`
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
   color: ${COLOR.ACCENT5};
-`;
-
-export const DetailedLink = styled.div`
-  text-decoration: underline;
-  color: ${COLOR.ACCENT5};
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
 `;
 
 export const Schedule = styled.div`
@@ -103,10 +85,6 @@ export const Closes = styled.span`
     left: -8.5px;
   }
 `;
-export const Day = styled.div`
-  color: ${props => props.isToday ? COLOR.ACCENT3 : COLOR.ACCENT5};
-}
-`;
 export const Name = styled.div`
   font-weight: 700;
   font-size: 20px;
@@ -114,18 +92,6 @@ export const Name = styled.div`
   color: ${COLOR.ACCENT1};
 `;
 
-export const ScheduleContainer = styled.div`
-  & > * {
-    min-width: 50px;
-  }
-`;
-
-export const ScheduleContent = styled.div`
-  display: flex;
-  & > div {
-    margin: 0 1px 0 0;
-  }
-`;
 export const Location = styled.div`
   display: flex;
   width: 100%;

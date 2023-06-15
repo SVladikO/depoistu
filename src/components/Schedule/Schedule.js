@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Day, DetailedLink, ScheduleContainer, ScheduleContent, ScheduleWrapper} from "./Company.style";
+import {Day, DetailedLink, ScheduleContainer, ScheduleContent, ScheduleWrapper} from "./Schedule.style";
 
 const ScheduleDetails = ({scheduleAsArray}) => {
     const [isWeekScheduleVisible, setIsWeekScheduleVisible] = useState(false);

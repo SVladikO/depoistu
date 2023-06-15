@@ -21,7 +21,7 @@ import {
 } from "./Company.style";
 
 import {parseSchedule} from "../../utils/company";
-import ScheduleDetails from "./utils";
+import ScheduleDetails from "../Schedule/Schedule";
 
 const Company = (props) => {
 
