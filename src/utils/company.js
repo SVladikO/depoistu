@@ -1,18 +1,3 @@
-
-export function getScheduleAsObject(schedule) {
-    const weekDayNames = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"];
-    let obj = {};
-
-    schedule = schedule
-        .split(',')
-        .map(el => el.trim())
-
-    weekDayNames.forEach((el,i) =>{
-        obj[el] = schedule[i];
-    })
-    return obj;
-}
-
 export const getScheduleAsString = values => {
     let result = ''
 
@@ -50,12 +35,51 @@ export function initSchedule(schedule) {
         })
     return result;
 }
-export function checkIsToday (i) {
-    let currentDayIndex = new Date().getDay();
 
-    if(currentDayIndex === 0){
-        currentDayIndex = 7;
-    }
+const uaWeekDayNames = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"];
 
-    return (i+1) === currentDayIndex;
+const getCurrentDay = days => days.find((el, i) => isToday(i));
+const cutOnDays = schedule => schedule.split(',')?.map(el => el.trim());
+const isToday = dayIndex => (dayIndex + 1) === (new Date().getDay() || 7);
+const addMarkerToCurrentDay = (el, i) => isToday(i) ? {...el, isToday: true} : el;
+const addDayName = (fromTo, index) => ({dayName: uaWeekDayNames[index], ...fromTo});
+
+export function parseSchedule(scheduleAsString) {
+    const workDays = cutOnDays(scheduleAsString)
+        .map(convertToObject)
+        .map(addDayName)
+        .map(addMarkerToCurrentDay);
+    //Expected workDays = [{ from: '9:00', to: '21:00', isToday: true }, ... ]
+    const currentDay = getCurrentDay(workDays);
+    const isCompanyOpenNow = checkIsCompanyOpenNow(currentDay);
+
+    return {workDays, currentDay, isCompanyOpenNow}
+};
+
+function convertToObject(day) {
+    const [from = '', to = ''] = day ? day?.split('-') : ['', ''];
+
+    return {from, to};
+}
+
+function checkIsCompanyOpenNow({from, to}) {
+    const f = convertToNumber(from);
+    const t = convertToNumber(to);
+    const currentTime = getCurrentTimeAsNumber();
+
+    return currentTime > f && currentTime < t;
+}
+
+function convertToNumber(time) {
+    const [a, b] = time ? time.split(':') : ['', ''];
+    return +(a + b);
+}
+
+function getCurrentTimeAsNumber() {
+    const date = new Date();
+    const currentHours = date.getHours();
+    const currentMinutes = date.getMinutes();
+    const correctMinutes = currentMinutes < 10 ? 0 : '';
+
+    return +(currentHours + correctMinutes + currentMinutes);
 }

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Pagination, Navigation} from "swiper";
 import {Swiper, SwiperSlide} from "swiper/react";
 
@@ -12,68 +12,16 @@ import {
     Address,
     Content,
     CompanyInfo,
-    ScheduleContainer,
-    ScheduleWrapper,
     Schedule,
-    Open,
+    OpenStatus,
     Closes,
     Phone,
-    DetailedLink,
-    ScheduleContent, Location,
-    Day
+    Location,
+    CloseStatus
 } from "./Company.style";
 
-import {getScheduleAsObject, checkIsToday} from "../../utils/company";
-
-const ScheduleDetails = ({schedule}) => {
-    const [isWeekScheduleVisible, setIsWeekScheduleVisible] = useState(false);
-
-    if (!schedule || !schedule.length) {
-        return;
-    }
-
-    const scheduleAsObject = getScheduleAsObject(schedule);
-
-    if (!Object.keys(scheduleAsObject).length) {
-        return;
-    }
-
-    if (isWeekScheduleVisible) {
-        const days = Object.keys(scheduleAsObject);
-        return (
-            <ScheduleContent>
-                {
-                    Object.entries(scheduleAsObject)?.map((key, i) => {
-                        const dayName = key[0];
-                        const fromToTime = key[1];
-                        const [from,to] = fromToTime.split('-');
-
-                        return (
-                            <ScheduleWrapper key={i.toString()}>
-                                <ScheduleContainer>
-                                    <div>
-                                        <Day isToday={checkIsToday(i)}>{dayName}</Day>
-                                        <div>{from}</div>
-                                        <div>{to}</div>
-                                    </div>
-                                </ScheduleContainer>
-                            </ScheduleWrapper>
-                        )
-                    })
-                }
-            </ScheduleContent>
-        )
-
-    }
-
-    return (
-        <DetailedLink onClick={() => setIsWeekScheduleVisible(true)}>
-            Show schedule
-        </DetailedLink>
-    )
-}
-
-
+import {parseSchedule} from "../../utils/company";
+import ScheduleDetails from "../Schedule/Schedule";
 
 const Company = (props) => {
 
@@ -81,7 +29,8 @@ const Company = (props) => {
         return;
     }
 
-    const {PHOTOS, NAME, CITY, STREET, SCHEDULE} = props.company;
+    const {PHOTOS, NAME, CITY, STREET, SCHEDULE} = props.company
+    const schedule = parseSchedule(SCHEDULE);
 
     const renderLocation = () => {
         if (props.withMoreInfo) {
@@ -123,11 +72,16 @@ const Company = (props) => {
                     <Name>{NAME}</Name>
                     {renderLocation()}
                     <Schedule>
-                        <Open>Open</Open>
-                        <Closes>Closes<span>22:00</span></Closes>
+                        {schedule.isCompanyOpenNow
+                            ? <>
+                                <OpenStatus>Open</OpenStatus>
+                                <Closes>Closes<span>{schedule.currentDay.to}</span></Closes>
+                            </>
+                            : <CloseStatus>Close</CloseStatus>
+                        }
                     </Schedule>
                     {props.withMoreInfo && <Phone>80978432032</Phone>}
-                    {props.withMoreInfo && <ScheduleDetails schedule={SCHEDULE}/>}
+                    {props.withMoreInfo && SCHEDULE && SCHEDULE.length && <ScheduleDetails scheduleAsArray={schedule.workDays}/>}
                 </CompanyInfo>
                 {props.children}
             </Content>
