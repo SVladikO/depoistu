@@ -63,14 +63,14 @@ function convertToObject(day) {
 }
 
 function checkIsCompanyOpenNow({from, to}) {
-    const f = covertToNumber(from);
-    const t = covertToNumber(to);
+    const f = convertToNumber(from);
+    const t = convertToNumber(to);
     const currentTime = getCurrentTimeAsNumber();
 
     return currentTime > f && currentTime < t;
 }
 
-function covertToNumber(time) {
+function convertToNumber(time) {
     const [a, b] = time ? time.split(':') : ['', ''];
     return +(a + b);
 }
