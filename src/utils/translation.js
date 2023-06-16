@@ -1,4 +1,9 @@
-export const resolveTranslation = obj => obj["ua"];
+export const resolveTranslation = obj => {
+    if (!obj) {
+        debugger;
+    }
+    return obj["ua"];
+}
 
 export const TRANSLATION = {
     COMPANY_NAME: {
@@ -90,6 +95,20 @@ export const TRANSLATION = {
                     en: "Linked Account",
                 },
             },
+            NOTIFICATION: {
+                DESCRIPTION: {
+                    ua: "Ця сторiнка доступна тiльки пicля пiдтвердження",
+                    en: "This page is available only after verification."
+                },
+                LOADING: {
+                    ua: "Завантаження...",
+                    en: "Loading..."
+                },
+                TITLE: {
+                    ua: "Обмежений доступ",
+                    en: "Restricted access!",
+                }
+            },
             GROUP_TITLE: {
                 ACCOUNTS: {
                     ua: "Остобистий кабiнет",
@@ -138,7 +157,7 @@ export const TRANSLATION = {
                 en: "Back"
             },
         },
-        SING_IN: {
+        SIGN_IN: {
             TOP_TITLE: {
                 ua: "Вхiд",
                 en: "Sign in",
@@ -198,18 +217,10 @@ export const TRANSLATION = {
         },
     },
     NOTIFICATION: {
-        DESCRIPTION: {
-            ua: "Ця сторiнка доступна тiльки пicля пiдтвердження",
-            en: "This page is available only after verification."
-        },
         LOADING: {
             ua: "Завантаження...",
             en: "Loading..."
         },
-        TITLE: {
-            ua: "Обмежений доступ",
-            en: "Restricted access!",
-        }
     },
     BOTTOM_MENU: {
         SEARCH_TAB: {

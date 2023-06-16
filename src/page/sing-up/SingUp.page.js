@@ -91,7 +91,7 @@ const SingUpPage = () => {
                                 clearHandler={() => setFieldValue('email', '')}
                                 errorMessage={errors.email}
                             />
-                            <Label>{resolveTranslation(TRANSLATION.PAGE.SING_UP.LABEL.PASS)}</Label>
+                            <Label>{resolveTranslation(TRANSLATION.PAGE.SING_UP.LABEL.PASSWORD)}</Label>
                             <Input
                                 withSwitcher
                                 name="newPassword"
@@ -102,7 +102,7 @@ const SingUpPage = () => {
                                 clearHandler={() => setFieldValue('newPassword', '')}
                                 errorMessage={errors.newPassword}
                             />
-                            <Label>{resolveTranslation(TRANSLATION.PAGE.SING_UP.LABEL.CONFIRM_PASS)}</Label>
+                            <Label>{resolveTranslation(TRANSLATION.PAGE.SING_UP.LABEL.CONFIRM_PASSWORD)}</Label>
                             <Input
                                 withSwitcher
                                 value={values.confirmedPassword}
@@ -116,7 +116,7 @@ const SingUpPage = () => {
                         </ContentContainer>
                         <Wrapper>
                             <NavigationLabelHref
-                                hrefTitle={resolveTranslation(TRANSLATION.PAGE.SING_IN.TOP_TITLE)}
+                                hrefTitle={resolveTranslation(TRANSLATION.PAGE.SIGN_IN.TOP_TITLE)}
                                 to={`${ROUTER.SING_IN.URL}`}
                                 label={resolveTranslation(TRANSLATION.PAGE.SIGN_IN.ACCOUNT_CONFIRMATION)}
                             />

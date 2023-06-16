@@ -135,7 +135,7 @@ export const ROUTER = {
     },
     SING_IN: {
         URL: URL.SING_IN,
-        TITLE: resolveTranslation(TRANSLATION.PAGE.SING_IN.TOP_TITLE),
+        TITLE: resolveTranslation(TRANSLATION.PAGE.SIGN_IN.TOP_TITLE),
         page: SignInPage,
         showBottomMenu: true
     },

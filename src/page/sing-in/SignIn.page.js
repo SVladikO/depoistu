@@ -95,7 +95,7 @@ const SignInPage = () => {
                             withSwitcher
                             errorMessage={errors.password}
                         />
-                        <Link to={URL.FORGOT_PASSWORD}>{resolveTranslation(TRANSLATION.PAGE.SING_IN.FORGOT_PASSWORD)}</Link>
+                        <Link to={URL.FORGOT_PASSWORD}>{resolveTranslation(TRANSLATION.PAGE.SIGN_IN.FORGOT_PASSWORD)}</Link>
                         <NavigationLabelHref
                             hrefTitle={resolveTranslation(TRANSLATION.PAGE.SIGN_IN.SING_UP_LINK)}
                             to={ROUTER.SING_UP.URL}
@@ -103,7 +103,7 @@ const SignInPage = () => {
                         />
                     </ContentContainer>
                     <PrimaryButton type="submit" isWide>
-                        {resolveTranslation(TRANSLATION.PAGE.SING_IN.TOP_TITLE)}
+                        {resolveTranslation(TRANSLATION.PAGE.SIGN_IN.TOP_TITLE)}
                     </PrimaryButton>
                 </form>
             )
