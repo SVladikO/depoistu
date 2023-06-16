@@ -29,7 +29,7 @@ const Company = (props) => {
         return;
     }
 
-    const {PHOTOS, NAME, CITY, STREET, SCHEDULE} = props.company
+    const {PHOTOS, NAME, CITY, STREET, PHONE, SCHEDULE} = props.company
     const schedule = parseSchedule(SCHEDULE);
 
     const renderLocation = () => {
@@ -80,7 +80,7 @@ const Company = (props) => {
                             : <CloseStatus>Close</CloseStatus>
                         }
                     </Schedule>
-                    {props.withMoreInfo && <Phone>80978432032</Phone>}
+                    {props.withMoreInfo && <Phone>{PHONE}</Phone>}
                     {props.withMoreInfo && SCHEDULE && SCHEDULE.length && <ScheduleDetails scheduleAsArray={schedule.workDays}/>}
                 </CompanyInfo>
                 {props.children}
