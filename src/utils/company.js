@@ -63,23 +63,23 @@ function convertToObject(day) {
 }
 
 function checkIsCompanyOpenNow({from, to}) {
-    const f = convertToNumber(from);
-    const t = convertToNumber(to);
-    const currentTime = getCurrentTimeAsNumber();
+    to = to === '00:00' ? '23:59' : to;
 
-    return currentTime > f && currentTime < t;
+    if (!from || !to) {
+        return false;
+    }
+
+    const fromTime = getTimeFrom(from);
+    const currentTime = new Date();
+    const toTime = getTimeFrom(to);
+
+    return fromTime < currentTime && currentTime < toTime;
 }
 
-function convertToNumber(time) {
-    const [a, b] = time ? time.split(':') : ['', ''];
-    return +(a + b);
-}
-
-function getCurrentTimeAsNumber() {
+function getTimeFrom(time) {
+    const [h, m] = time ? time.split(':') : ['', ''];
     const date = new Date();
-    const currentHours = date.getHours();
-    const currentMinutes = date.getMinutes();
-    const correctMinutes = currentMinutes < 10 ? 0 : '';
+    date.setHours(h, m, '00');
 
-    return +(currentHours + correctMinutes + currentMinutes);
+    return date
 }
