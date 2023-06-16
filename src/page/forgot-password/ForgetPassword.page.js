@@ -42,11 +42,11 @@ const ForgetPasswordPage = () => {
                     <ContentContainer>
                         <Label>Email</Label>
                         <Input
+                            withCleaner
                             Icon={MailIcon}
                             name='email'
                             type='email'
                             value={values.email}
-                            withCleaner
                             isTouched={wasSubmitted || touched.email}
                             changeHandler={handleChange}
                             clearHandler={() => setFieldValue('email', '')}
@@ -54,7 +54,7 @@ const ForgetPasswordPage = () => {
                         />
                     </ContentContainer>
                     <PrimaryButton type="submit" isWide>
-                        {resolveTranslation("PAGE.FORGOT_PASSWORD.BUTTON_SUBMIT")}
+                        {resolveTranslation(TRANSLATION.PAGE.FORGOT_PASSWORD.SUBMIT_BUTTON)}
                     </PrimaryButton>
                 </form>
             )}

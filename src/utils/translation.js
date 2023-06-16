@@ -184,6 +184,10 @@ export const TRANSLATION = {
                 ua: "Forgot password",
                 en: "Forgot password",
             },
+            SUBMIT_BUTTON: {
+                ua: 'Send',
+                en: 'Send'
+            },
             LINK_TO_SIGN_IN_PAGE: {
                 ua: 'Go to sign in page',
                 en: 'Go to sign in page'
