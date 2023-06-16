@@ -119,6 +119,7 @@ export const ROUTER = {
         URL: URL.FORGOT_PASSWORD,
         TITLE: resolveTranslation("PAGE.FORGOT_PASSWORD.TOP_TITLE"),
         page: ForgetPasswordPage,
+        BACK_URL: URL.SETTING
     },
     CHANGE_PASSWORD: {
         URL: URL.CHANGE_PASSWORD,
