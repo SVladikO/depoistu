@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-import {Link} from "react-router-dom";
+import React from 'react';
 import {Swiper, SwiperSlide} from "swiper/react";
 
 // Import Swiper styles
@@ -9,7 +8,7 @@ import "swiper/css/pagination";
 import {Content, Flex} from "./CategoryMenuRow.style";
 
 import {CategoryItem} from "../../components";
-import {CATEGORY_MAPPER} from '../../utils/config';
+import {CATEGORY_MAPPER} from '../../utils/category';
 
 const CategoryMenuRow = ({
                              showAllCategories = false,

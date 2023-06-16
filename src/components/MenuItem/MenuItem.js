@@ -7,10 +7,7 @@ import {ReactComponent as TimeIcon} from "../../icons/time.svg";
 import {ReactComponent as MeasureIcon} from "../../icons/sss.svg";
 import {ReactComponent as BasketIcon} from "../../icons/basket.svg";
 import {ReactComponent as EditIcon} from "../../icons/edit.svg";
-import {addOrderItem} from "../../features/order/orderSlice";
 import {URL} from "../../utils/config";
-import {resolveTranslation} from '../../utils/utils'
-import translation from "../../utils/translation.json";
 
 
 
@@ -29,7 +26,7 @@ const MenuItem = ({item = {}, withEditIcon = false, onEditClick}) => {
                         {withEditIcon && <Link to={URL.EDIT_MENU_ITEM}>
                         <EditWrapper onClick={onEditClick}>
                             <EditIcon/>
-                            <EditLabel>{resolveTranslation("PAGE.MENU_ITEM.BUTTON.EDIT")}</EditLabel>
+                            <EditLabel>Edit</EditLabel>
                         </EditWrapper>
                         </Link>}
                     </Flex>
