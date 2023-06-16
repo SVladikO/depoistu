@@ -179,6 +179,16 @@ export const TRANSLATION = {
                 en: "You don’t have an account?",
             }
         },
+        FORGOT_PASSWORD:  {
+            TOP_TITLE: {
+                ua: "Forgot password",
+                en: "Forgot password",
+            },
+            LINK_TO_SIGN_IN_PAGE: {
+                ua: 'Go to sign in page',
+                en: 'Go to sign in page'
+            }
+        },
         SING_UP: {
             TOP_TITLE: {
                 ua: "Реєстрацiя",

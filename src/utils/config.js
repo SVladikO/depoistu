@@ -5,31 +5,20 @@ import SettingPage from "../page/setting/Setting.page";
 import AboutUsPage from "../page/about-us/AboutUs.page";
 import OurTeamPage from "../page/our-team/OurTeam.page";
 import EditMenuPage from "../page/edit-menu/EditMenu.page";
+import AddCompanyPage from "../page/add-company/AddCompany.page";
+import AddMenuItemPage from "../page/add-menu-item/AddMenuItem.page";
 import EditCompanyPage from "../page/edit-company/EditCompany.page";
 import EditMenuItemPage from "../page/edit-menu-item/EditMenuItem.page";
 import SearchDetailsPage from "../page/search-details/SearchDetails.page";
 import ChangePasswordPage from "../page/change-password/ChangePassword.page";
+import ForgetPasswordPage from "../page/forgot-password/ForgetPassword.page";
+import CustomerCompaniesPage from "../page/customer-companies/CustomerCompanies.page";
 
 // TODO: Hidden second version
 // import OrderPage from "../page/order/Order.page";
 // import CategoryPage from "../page/category/Category.page";
 // import OrderHistoryPage from "../page/order-history/OrderHistory.page";
 // import {HistoryTabBar} from "../components";
-
-import {ReactComponent as LanguageIcon} from "../icons/language.svg";
-import {ReactComponent as BakeryIcon} from "../icons/category/bakery.svg";
-import {ReactComponent as BeverageIcon} from "../icons/category/beverage.svg";
-import {ReactComponent as BurgerIcon} from "../icons/category/burger.svg";
-import {ReactComponent as NoodlesIcon} from "../icons/category/noodles.svg";
-import {ReactComponent as PizzaIcon} from "../icons/category/pizza.svg";
-import {ReactComponent as SandwitchIcon} from "../icons/category/sandwitch.svg";
-import {ReactComponent as Sea_foodIcon} from "../icons/category/sea_food.svg";
-import {ReactComponent as VagetableIcon} from "../icons/category/vagetable.svg";
-import CustomerCompaniesPage from "../page/customer-companies/CustomerCompanies.page";
-
-import AddCompanyPage from "../page/add-company/AddCompany.page";
-import AddMenuItemPage from "../page/add-menu-item/AddMenuItem.page";
-import ForgetPasswordPage from "../page/forgot-password/ForgetPassword.page";
 
 import {TRANSLATION, resolveTranslation} from "./translation.js";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
@@ -45,44 +34,6 @@ const MASTER_BE_DOMAIN = 'https://pizza-mobile-api-master.herokuapp.com';
 const DEVELOP_BE_DOMAIN = 'https://pizza-mobile-api-develop.herokuapp.com';
 export const BE_DOMAIN = process.env.MODE === 'production' ? MASTER_BE_DOMAIN : DEVELOP_BE_DOMAIN;
 // export const BE_DOMAIN = 'http://localhost:4000';
-
-const MEASUREMENTS = {
-    WEIGHT: 'g',
-    LIQUID: 'ml',
-}
-
-export const CATEGORY_MAPPER = {
-    1: {id: 1, title: resolveTranslation(TRANSLATION.CATEGORIES.BREAKFAST), icon: LanguageIcon, measurement: MEASUREMENTS.WEIGHT},
-    2: {id: 2, title: resolveTranslation(TRANSLATION.CATEGORIES.SOUPS), icon: LanguageIcon, measurement: MEASUREMENTS.LIQUID},
-    3: {id: 3, title: resolveTranslation(TRANSLATION.CATEGORIES.BUSINESS_LUNCH), icon: BeverageIcon, measurement: MEASUREMENTS.LIQUID},
-    4: {id: 4,title: resolveTranslation(TRANSLATION.CATEGORIES.HOT_DISHES), icon: LanguageIcon, measurement: MEASUREMENTS.WEIGHT},
-    5: {id: 5,title: resolveTranslation(TRANSLATION.CATEGORIES.COLD_APPETIZERS), icon: LanguageIcon, measurement: MEASUREMENTS.WEIGHT},
-    6: {id: 6,title: resolveTranslation(TRANSLATION.CATEGORIES.SIDE_DISHES), icon: LanguageIcon, measurement: MEASUREMENTS.WEIGHT},
-    7: {id: 7,title: resolveTranslation(TRANSLATION.CATEGORIES.SPECIALITIES), icon: LanguageIcon, measurement: MEASUREMENTS.WEIGHT},
-    8: {id: 8,title: resolveTranslation(TRANSLATION.CATEGORIES.BANQUET_MENU), icon: LanguageIcon, measurement: MEASUREMENTS.WEIGHT},
-    9: {id: 9,title: resolveTranslation(TRANSLATION.CATEGORIES.SANDWITCH), icon: SandwitchIcon, measurement: MEASUREMENTS.WEIGHT},
-    10: {id: 10, title: resolveTranslation(TRANSLATION.CATEGORIES.BURGERS), icon: BurgerIcon, measurement: MEASUREMENTS.WEIGHT},
-    11: {id: 11, title: resolveTranslation(TRANSLATION.CATEGORIES.SUSHI), icon: LanguageIcon, measurement: MEASUREMENTS.WEIGHT},
-    12: {id: 12, title: resolveTranslation(TRANSLATION.CATEGORIES.ROLLS), icon: BeverageIcon, measurement: MEASUREMENTS.LIQUID},
-    13: {id: 13, title: resolveTranslation(TRANSLATION.CATEGORIES.SUSHI_SETS), icon: BeverageIcon, measurement: MEASUREMENTS.LIQUID},
-    14: {id: 14, title: resolveTranslation(TRANSLATION.CATEGORIES.NOODLES), icon: NoodlesIcon, measurement: MEASUREMENTS.WEIGHT},
-    15: {id: 15, title: resolveTranslation(TRANSLATION.CATEGORIES.PIZZA), icon: PizzaIcon, measurement: MEASUREMENTS.WEIGHT},
-    16: {id: 16, title: resolveTranslation(TRANSLATION.CATEGORIES.SHAWARMA), icon: LanguageIcon, measurement: MEASUREMENTS.WEIGHT},
-    17: {id: 17, title: resolveTranslation(TRANSLATION.CATEGORIES.SEAFOOD), icon: Sea_foodIcon, measurement: MEASUREMENTS.WEIGHT},
-    18: {id: 18, title: resolveTranslation(TRANSLATION.CATEGORIES.SALADS), icon: VagetableIcon, measurement: MEASUREMENTS.WEIGHT},
-    19: {id: 19, title: resolveTranslation(TRANSLATION.CATEGORIES.MEAT_DISHES), icon: LanguageIcon, measurement: MEASUREMENTS.WEIGHT},
-    20: {id: 20, title: resolveTranslation(TRANSLATION.CATEGORIES.FISH_DISHES), icon: LanguageIcon, measurement: MEASUREMENTS.WEIGHT},
-    21: {id: 21, title: resolveTranslation(TRANSLATION.CATEGORIES.DISHES_ON_FIRE), icon: LanguageIcon, measurement: MEASUREMENTS.WEIGHT},
-    22: {id: 22, title: resolveTranslation(TRANSLATION.CATEGORIES.SAUCES), icon: LanguageIcon, measurement: MEASUREMENTS.WEIGHT},
-    23: {id: 23, title: resolveTranslation(TRANSLATION.CATEGORIES.ADDICTIVES), icon: BeverageIcon, measurement: MEASUREMENTS.LIQUID},
-    24: {id: 24, title: resolveTranslation(TRANSLATION.CATEGORIES.BAKERY), icon: BakeryIcon, measurement: MEASUREMENTS.WEIGHT},
-    25: {id: 25, title: resolveTranslation(TRANSLATION.CATEGORIES.DESERTS), icon: LanguageIcon, measurement: MEASUREMENTS.WEIGHT},
-    26: {id: 26, title: resolveTranslation(TRANSLATION.CATEGORIES.DRINKS), icon: BeverageIcon, measurement: MEASUREMENTS.LIQUID},
-    27: {id: 27, title: resolveTranslation(TRANSLATION.CATEGORIES.HOT_DRINKS), icon: BeverageIcon, measurement: MEASUREMENTS.LIQUID},
-    28: {id: 28, title: resolveTranslation(TRANSLATION.CATEGORIES.COCKTAILS), icon: LanguageIcon, measurement: ''},
-    29: {id:29,  title: resolveTranslation(TRANSLATION.CATEGORIES.WINE_CARD), icon: BeverageIcon, measurement: MEASUREMENTS.LIQUID},
-    30: {id: 30, title: resolveTranslation(TRANSLATION.CATEGORIES.ALCOHOL), icon: BeverageIcon, measurement: MEASUREMENTS.LIQUID},
-};
 
 export const URL = {
     SEARCH: '/',
@@ -145,7 +96,7 @@ export const ROUTER = {
     },
     FORGOT_PASSWORD: {
         URL: URL.FORGOT_PASSWORD,
-        TITLE: resolveTranslation("PAGE.FORGOT_PASSWORD.TOP_TITLE"),
+        TITLE: resolveTranslation(TRANSLATION.PAGE.FORGOT_PASSWORD.TOP_TITLE),
         page: ForgetPasswordPage,
         BACK_URL: URL.SETTING
     },
@@ -217,7 +168,6 @@ export const ROUTER = {
             return `${URL.EDIT_MENU}/${COMPANY_ID}`;
         }
     },
-
     ADD_MENU_ITEM: {
         URL: URL.ADD_MENU_ITEM,
         TITLE: 'Add menu item',
