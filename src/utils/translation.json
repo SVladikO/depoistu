@@ -199,6 +199,18 @@
     "ua": "Гарячi напої",
     "en": "Hot drinks"
   },
+  "PAGE.FORGOT_PASSWORD.TOP_TITLE": {
+    "ua": "Забули пароль",
+    "en": "Forgot password"
+  },
+  "PAGE.FORGOT_PASSWORD.BUTTON_SUBMIT": {
+    "ua": "Відправити",
+    "en": "Send"
+  },
+  "PAGE.FORGOT_PASSWORD.LINK_TO_SIGN_IN_PAGE": {
+    "ua": "Перейти на сторінку реєстрації",
+    "en": "Go to sign in page"
+  },
   "PAGE.CHANGE_PASSWORD.TOP_TITLE": {
     "ua": "Змiнити пароль",
     "en": "Change Password"
