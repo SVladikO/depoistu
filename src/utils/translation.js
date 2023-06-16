@@ -245,6 +245,22 @@ export const TRANSLATION = {
             ua: "Бургери",
             en: "Burgers"
         },
+        ROLLS: {
+            ua: "Роли",
+            en: "Rolls",
+        },
+        SUSHI_SETS: {
+            ua: "Суші сети",
+            en: "Sushi sets",
+        },
+        BUSINESS_LUNCH: {
+            ua: "Бізнес ланч",
+            en: "Business lunch",
+        },
+        ADDICTIVES: {
+            ua: "Додатки",
+            en: "Additives",
+        },
         NOODLES: {
             ua: "Локшина",
             en: "Noodles"
