@@ -8,7 +8,7 @@ import {ReactComponent as UserIcon} from "../../icons/user.svg";
 // import {OrderIconWithCounter} from '../index'
 
 import {ROUTER} from "../../utils/config";
-import {resolveTranslation} from "../../utils/utils";
+import {TRANSLATION, resolveTranslation} from "../../utils/translation";
 
 const BottomMenu = () => {
     const isSelected = url => window.location.pathname === url;
@@ -31,13 +31,13 @@ const BottomMenu = () => {
             <NavLink to={ROUTER.SEARCH.URL}>
                 <MenuItem selected={isSelected(ROUTER.SEARCH.URL)}>
                     <SearchIcon/>
-                    <Label>{resolveTranslation(["BOTTOM_MENU.SEARCH_TAB"])}</Label>
+                    <Label>{resolveTranslation(TRANSLATION.BOTTOM_MENU.SEARCH_TAB)}</Label>
                 </MenuItem>
             </NavLink>
             <NavLink to={ROUTER.SETTING.URL}>
                 <MenuItem selected={isSelected(ROUTER.SETTING.URL)}>
                     <UserIcon/>
-                    <Label>{resolveTranslation("BOTTOM_MENU_ACCOUNT_TAB")}</Label>
+                    <Label>{resolveTranslation(TRANSLATION.BOTTOM_MENU.ACCOUNT_TAB)}</Label>
                 </MenuItem>
             </NavLink>
         </Wrapper>
