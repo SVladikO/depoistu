@@ -20,7 +20,7 @@ export function showDevelopmentPageUrls() {
     fetchData(`${BE_DOMAIN}/db-mode`)
         .then(res => {
             console.log(`v${packageInfo.version}`);
-            console.log('BE: ', IS_MASTER_ENV ? "MASTER" : "DEVELOP");
+            console.log('ENV: ', IS_MASTER_ENV ? "MASTER" : "DEVELOP");
             console.log('DB: ', res.body.mode.toUpperCase());
             console.log('BE_DOMAIN: ', BE_DOMAIN);
 
