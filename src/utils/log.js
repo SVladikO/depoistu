@@ -20,7 +20,9 @@ export function showDevelopmentPageUrls() {
     fetchData(`${BE_DOMAIN}/db-mode`)
         .then(res => {
             console.log(`v${packageInfo.version}`);
-            console.log('DB: ', res.body.mode);
+            console.log('MODE: ', process.env.MODE)
+            console.log('BE: ', process.env.MODE === 'production' ? "MASTER" : "DEVELOP");
+            console.log('DB: ', res.body.mode.toUpperCase());
             console.log('BE_DOMAIN: ', BE_DOMAIN);
 
             logDevelopmentPages()
