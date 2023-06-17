@@ -1,5 +1,5 @@
 import packageInfo from '../../package.json';
-import {DEV_ROUTER, BE_DOMAIN} from "./config";
+import {DEV_ROUTER, BE_DOMAIN, IS_MASTER_ENV} from "./config";
 import {fetchData} from "./fetch";
 
 function logDevelopmentPages() {
@@ -20,10 +20,7 @@ export function showDevelopmentPageUrls() {
     fetchData(`${BE_DOMAIN}/db-mode`)
         .then(res => {
             console.log(`v${packageInfo.version}`);
-            console.log('REACT_APP_IS_MASTER: ', process.env.REACT_APP_IS_MASTER)
-            console.log('MODE: ', process.env.MODE)
-            console.log('NODE_ENV: ', process.env.NODE_ENV)
-            console.log('BE: ', process.env.MODE === 'production' ? "MASTER" : "DEVELOP");
+            console.log('BE: ', IS_MASTER_ENV ? "MASTER" : "DEVELOP");
             console.log('DB: ', res.body.mode.toUpperCase());
             console.log('BE_DOMAIN: ', BE_DOMAIN);
 

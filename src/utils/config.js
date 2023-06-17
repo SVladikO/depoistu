@@ -30,9 +30,11 @@ export const DEV_ROUTER = {
     ADMIN: 'admin',
 };
 
+export const IS_MASTER_ENV = process.env.NODE_ENV === 'production';
+
 const MASTER_BE_DOMAIN = 'https://pizza-mobile-api-master.herokuapp.com';
 const DEVELOP_BE_DOMAIN = 'https://pizza-mobile-api-develop.herokuapp.com';
-export const BE_DOMAIN = process.env.NODE_ENV === 'production' ? MASTER_BE_DOMAIN : DEVELOP_BE_DOMAIN;
+export const BE_DOMAIN = IS_MASTER_ENV ? MASTER_BE_DOMAIN : DEVELOP_BE_DOMAIN;
 // export const BE_DOMAIN = 'http://localhost:4000';
 
 export const URL = {
