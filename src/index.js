@@ -1,17 +1,19 @@
 import React from 'react';
 import {Provider} from 'react-redux';
-import {BrowserRouter} from "react-router-dom";
 import {createRoot} from 'react-dom/client';
+import {BrowserRouter} from "react-router-dom";
 
 import {Wrapper} from "./index.style";
 
 import {store} from './store';
 import reportWebVitals from './reportWebVitals';
 
+import WebsiteIntro from "./extra/WebsiteIntro";
+
+import {checkAccess} from "./utils/security";
 import {getRoutes} from "./utils/navigation";
+import {setBrowserTabTitle} from "./utils/utils";
 import {showDevelopmentPageUrls} from "./utils/log";
-import {checkAccess, setBrowserTabTitle} from "./utils/utils";
-import {PopupImage, PopupIntro} from "./components";
 
 const container = document.getElementById('root');
 const root = createRoot(container);
@@ -21,7 +23,7 @@ setBrowserTabTitle()
 checkAccess();
 showDevelopmentPageUrls()
 
-store.subscribe(()=>{
+store.subscribe(() => {
     localStorage.setItem('reduxState', JSON.stringify(store.getState()))
 })
 
@@ -31,8 +33,7 @@ root.render(
             <Provider store={store}>
                 <Wrapper>
                     {getRoutes()}
-                    <PopupImage />
-                    <PopupIntro />
+                    <WebsiteIntro />
                 </Wrapper>
             </Provider>
         </BrowserRouter>

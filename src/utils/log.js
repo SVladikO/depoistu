@@ -1,25 +1,24 @@
 import packageInfo from '../../package.json';
 import {DEV_ROUTER, BE_DOMAIN} from "./config";
 
-export const host = 'http://localhost:3000/';
-
-function getUrls(title, map) {
+function logDevelopmentPages() {
     console.log('')
-    console.log(title)
-    Object.keys(map).forEach(key => console.log(`${host}${map[key]}`))
-    console.log('BE API: ', BE_DOMAIN)
-    console.log(' ');
-    console.log(' ');
-    console.log('FE Enviroments:');
-    console.log('https://master-pma.onrender.com', '             master');
-    console.log('https://develop-pma.onrender.com', '            develop');
-    console.log('https://qa-1-pma.onrender.com', '               qa1');
-    console.log('https://qa-2-pma.onrender.com', '               qa2');
-    console.log('https://dev-1-pma.onrender.com', '              dev1');
-    console.log('https://dev-2-pma.onrender.com', '              dev1');
+    console.log('DEV urls:')
+    Object.keys(DEV_ROUTER).forEach(key => console.log(`${window.location.origin}/${DEV_ROUTER[key]}`))
+}
+function logRemoteFEDomains() {
+    console.log('FE remote domains:');
+    console.log('https://pma-master.onrender.com/');
+    console.log('https://pma-develop.onrender.com/');
+    console.log('https://qa-1-pma.onrender.com');
+    console.log('https://dev-1-pma.onrender.com');
 }
 
 export function showDevelopmentPageUrls() {
-    console.log("Current version: ", packageInfo.version);
-    getUrls('DEV urls:', DEV_ROUTER)
+    console.log(`v${packageInfo.version}`);
+    console.log('BE_DOMAIN: ', BE_DOMAIN)
+
+    logDevelopmentPages()
+    console.log('')
+    logRemoteFEDomains()
 }

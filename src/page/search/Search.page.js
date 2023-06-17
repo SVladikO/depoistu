@@ -3,10 +3,13 @@ import React, {useState} from "react";
 import {useSelector} from "react-redux";
 
 import {ReactComponent as LocationIcon} from "../../icons/map_point.svg";
-import {PInput, ContentContainer, Company, Notification, PopupCity} from "../../components";
-import {BE_API, URL} from "../../utils/config";
+
+import {PInput, ContentContainer, Company, Notification, Popup} from "../../components";
+
+import {URL} from "../../utils/config";
+import {BE_API} from "../../utils/fetch";
 import {useLocalStorage, useLocalStorageFetch} from "../../utils/hook";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/utils";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 
 const SearchPage = () => {
     const [requestError, setRequestError] = useState('');
@@ -19,7 +22,7 @@ const SearchPage = () => {
     let [companies] = useLocalStorageFetch(
         LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT,
         [],
-        BE_API.GET_COMPANIES_BY_CITY(selectedCity),
+        BE_API.COMPANY.GET_BY_CITY(selectedCity),
         setRequestError,
         () => !selectedCity
     );
@@ -59,7 +62,7 @@ const SearchPage = () => {
                     </Link>
                 )
             }
-            {showCityPopup && <PopupCity selectCity={selectCity} closePopup={closeCityPopup}/>}
+            {showCityPopup && <Popup.City selectCity={selectCity} onClose={closeCityPopup}/>}
         </>
     );
 };

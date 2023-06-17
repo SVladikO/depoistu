@@ -13,10 +13,10 @@ import {
 } from "../../components";
 
 import {startLoading, stopLoading} from "../../features/request/requestSlice";
-
+import {URL} from "../../utils/config";
+import {BE_API} from '../../utils/fetch'
 import {fetchData} from "../../utils/fetch";
-import {BE_API, URL} from "../../utils/config";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/utils";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 
 const EditMenu = () => {
     const dispatch = useDispatch();
@@ -26,9 +26,9 @@ const EditMenu = () => {
 
     const [menuItems, setMenuItems] = useState([]);
     const [requestError, setRequestError] = useState('');
-    const [selectedCategoryId, setSelectedCategoryId] = useState(menuItems[0]?.CATEGORY_ID)
+    const [selectedCategoryId, setSelectedCategoryId] = useState();
 
-    const url = BE_API.GET_MENU_ITEMS_BY_COMPANY_ID(companyId);
+    const url = BE_API.MENU_ITEM.GET_BY_COMPANY_ID(companyId);
 
     useEffect(() => {
         LocalStorage.set(LOCAL_STORAGE_KEY.COMPANY_ID_FOR_EDIT_MENU, companyId);
@@ -39,15 +39,15 @@ const EditMenu = () => {
         //TODO: SHOW WARNING WRONG PARAM
         companyId && fetchData(url)
             .then(res => {
-                setMenuItems(res);
-                setSelectedCategoryId(res[0]?.CATEGORY_ID)
+                setMenuItems(res.body);
+                setSelectedCategoryId(res.body[0]?.CATEGORY_ID)
                 setTimeout(() => dispatch(stopLoading()), 1000);
             }).catch(e => {
                 setTimeout(() => dispatch(stopLoading()), 1000);
                 setRequestError(e.message)
             })
 
-    }, [url])
+    }, [url, companyId])
 
     if (isLoading) {
         return <Notification.Loading/>;
@@ -58,7 +58,7 @@ const EditMenu = () => {
     }
 
 
-    const menuItemsPerCategory = selectedCategoryId && menuItems.filter(mi => mi.CATEGORY_ID === selectedCategoryId) || [];
+    const menuItemsPerCategory = (selectedCategoryId && menuItems.filter(mi => mi.CATEGORY_ID === selectedCategoryId)) || [];
 
     const moveToEditMenuItem = menuItem => () => {
         LocalStorage.set(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT, menuItem);
@@ -70,6 +70,7 @@ const EditMenu = () => {
             <Wrapper>
                 {menuItems &&
                     <CategoryMenuRow
+                        showAllCategories
                         showMenuItemAmount
                         menuItems={menuItems}
                         selectedCategoryId={selectedCategoryId}
@@ -85,7 +86,7 @@ const EditMenu = () => {
                         onEditClick={moveToEditMenuItem(elem)}
                     />)}
                 </>
-                <Link to={URL.ADD_MENU_ITEM}>
+                <Link to={`${URL.ADD_MENU_ITEM}?categoryId=${selectedCategoryId}&companyId=${companyId}`}>
                     <PrimaryButton isWide>Add menu item</PrimaryButton>
                 </Link>
             </Wrapper>

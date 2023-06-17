@@ -12,12 +12,23 @@ import {CategoryItem} from "../../components";
 import {CATEGORY_MAPPER} from '../../utils/config';
 
 const CategoryMenuRow = ({
+                             showAllCategories = false,
                              menuItems = [],
                              showMenuItemAmount,
                              selectedCategoryId,
                              changeCategory = () => {},
                          }) => {
-    const menuCategoryIds = [...new Set(menuItems.map(mi => mi.CATEGORY_ID))];
+
+    const menuCategoryIds = [
+        ...new Set(
+            [
+                ...menuItems.map(mi => mi.CATEGORY_ID),
+                ...(showAllCategories ? Object.keys(CATEGORY_MAPPER).map(id => +id) : [])
+            ]
+        ),
+
+    ];
+
     const categories = menuCategoryIds.map((category_id) => (
         <SwiperSlide key={category_id}>
             <CategoryItem

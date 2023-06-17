@@ -5,9 +5,11 @@ import {EditBar} from "./CustomerCompanies.style";
 
 import {Company, Notification, PrimaryButton} from "../../components";
 import {ReactComponent as EditIcon} from "../../icons/edit.svg";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/utils";
-import {BE_API, ROUTER, URL} from "../../utils/config";
+
+import {BE_API} from '../../utils/fetch'
+import {ROUTER, URL} from "../../utils/config";
 import {useLocalStorageFetch} from "../../utils/hook";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 
 const CustomerCompaniesPage = () => {
     const navigate = useNavigate();
@@ -20,7 +22,7 @@ const CustomerCompaniesPage = () => {
     const [customerCompanies] = useLocalStorageFetch(
         LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES,
         [],
-        BE_API.GET_COMPANIES_BY_CUSTOMER_ID(customer.ID),
+        BE_API.COMPANY.GET_BY_CUSTOMER_ID(customer.ID),
         setRequestError
     );
 
@@ -41,16 +43,16 @@ const CustomerCompaniesPage = () => {
             {customerCompanies.map(
                 company =>
                     <div key={company.ID}>
-                        <Company company={company}/>
-                        <EditBar>
-                            <Link to={ROUTER.EDIT_COMPANY.URL + '/' + company.ID}>
-                                <PrimaryButton><EditIcon/>Company</PrimaryButton>
-                            </Link>
-                            <Link to={ROUTER.EDIT_MENU.URL + '/' + company.ID}>
-                                <PrimaryButton><EditIcon/>Menu</PrimaryButton>
-                            </Link>
-                        </EditBar>
-
+                        <Company company={company}>
+                            <EditBar>
+                                <Link to={ROUTER.EDIT_COMPANY.URL + '/' + company.ID}>
+                                    <PrimaryButton><EditIcon/>Company</PrimaryButton>
+                                </Link>
+                                <Link to={ROUTER.EDIT_MENU.URL + '/' + company.ID}>
+                                    <PrimaryButton><EditIcon/>Menu</PrimaryButton>
+                                </Link>
+                            </EditBar>
+                        </Company>
                     </div>)
             }
             <Link to={URL.ADD_COMPANY}>

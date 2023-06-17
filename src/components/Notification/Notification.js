@@ -8,11 +8,12 @@ import {ContentContainer} from "../ContentContainer/ContentContainer.style";
 import {resolveTranslation} from "../../utils/utils";
 
 
-const Success = () => {
+const Success = ({message, children}) => {
     return (
         <ContentContainer>
             <SuccessIcon/>
-            <Text>Order placed.</Text>
+            <Text>{message}</Text>
+            {children}
         </ContentContainer>
     )
 }
@@ -28,11 +29,12 @@ const Loading = () => {
     )
 };
 
-const Error = ({message}) => {
+const Error = ({message, children}) => {
     return (
         <ContentContainer>
             <ErrorIcon/>
             <Text>{message}</Text>
+            {children}
         </ContentContainer>
     );
 };

@@ -1,3 +1,4 @@
+import {useState} from "react";
 import * as Yup from 'yup';
 import {Formik} from "formik";
 
@@ -6,18 +7,13 @@ import {PrimaryButton, Label, Input, ContentContainer} from "../../components";
 import NavigationLabelHref from "../../components/NavigationLabelHref/NavigationLabelHref";
 import {ROUTER} from '../../utils/config';
 import {resolveTranslation} from "../../utils/utils";
-import {user_validation} from "../../utils/validation";
+import validation from '../../utils/validation';
 
-const SignUpSchema = Yup.object().shape({
-    name: user_validation.name,
-    password: user_validation.password,
-    email: user_validation.email,
-    phone: user_validation.phone,
-    newPassword: user_validation.password,
-    confirmedPassword: user_validation.confirmedPassword,
-});
+
+const SignUpSchema = Yup.object().shape(validation.user.singUp);
 
 const SingUpPage = () => {
+    const [wasSubmitted, setWasSubmitted] = useState(false);
     return (
         <>
             <Formik
@@ -33,16 +29,19 @@ const SingUpPage = () => {
                 validationSchema={SignUpSchema}
                 onSubmit={values => {
                     console.log(values);
+                    setWasSubmitted(true);
                 }}
             >
-                {({values, setFieldValue, handleSubmit, handleChange, errors}) => (
+                {({values, handleBlur, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                     <form onSubmit={handleSubmit}>
                         <ContentContainer>
                             <Title>{resolveTranslation("PAGE.SING_UP.CREATE_ACCOUNT")}</Title>
                             <Label>{resolveTranslation("PAGE.SING_UP.LABEL.USER_NAME")}</Label>
                             <Input
                                 withCleaner
+                                isTouched={wasSubmitted || touched.name}
                                 name="name"
+                                onBlur={handleBlur}
                                 value={values.name}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('name', '')}
@@ -52,6 +51,8 @@ const SingUpPage = () => {
                             <Input
                                 withCleaner
                                 name="phone"
+                                onBlur={handleBlur}
+                                isTouched={wasSubmitted || touched.phone}
                                 value={values.phone}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('phone', '')}
@@ -62,6 +63,8 @@ const SingUpPage = () => {
                                 withCleaner
                                 type="email"
                                 name="email"
+                                onBlur={handleBlur}
+                                isTouched={wasSubmitted || touched.email}
                                 value={values.email}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('email', '')}
@@ -71,6 +74,8 @@ const SingUpPage = () => {
                             <Input
                                 withSwitcher
                                 name="newPassword"
+                                onBlur={handleBlur}
+                                isTouched={wasSubmitted || touched.newPassword}
                                 value={values.newPassword}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('newPassword', '')}
@@ -80,6 +85,8 @@ const SingUpPage = () => {
                             <Input
                                 withSwitcher
                                 value={values.confirmedPassword}
+                                onBlur={handleBlur}
+                                isTouched={wasSubmitted || touched.confirmedPassword}
                                 name="confirmedPassword"
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('confirmedPassword', '')}
