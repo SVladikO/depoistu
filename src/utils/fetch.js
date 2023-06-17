@@ -9,7 +9,6 @@ const getOptions = body => ({
 })
 
 export const fetchData = async (url, body) => {
-    console.log('Request url: ', url, body);
     let response;
 
     try {
@@ -46,6 +45,8 @@ export const BE_API = {
     // GET_ALL_MENU_FOR_COMPANY_FOR_CATEGORY: (companyId, categoryId) => `${BE_DOMAIN}/company/${companyId}/menu_item/${categoryId}`,
     CUSTOMER: {
         SING_IN: () => `${BE_DOMAIN}/sign-in`,
+        SING_UP: () => `${BE_DOMAIN}/sign-up`,
+        CHANGE_PASSWORD: () => `${BE_DOMAIN}/change-password`
     },
     COMPANY: {
         GET_BY_CUSTOMER_ID: customer_id => `${BE_DOMAIN}/companies/by/customer/${customer_id}`,

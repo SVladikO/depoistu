@@ -9,8 +9,6 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: start;
   position: relative;
-  min-width: 355px;
-  max-width: 355px;
   min-height: 355px;
   max-height: 355px;
   background-color: ${COLOR.ACCENT4};

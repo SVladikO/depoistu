@@ -6,9 +6,9 @@ import {SettingMenuRow} from '../../../index'
 
 import {ReactComponent as BackIcon} from "../../../../icons/back.svg";
 import uaCities from "./cities";
-import {resolveTranslation} from "../../../../utils/utils";
+import {TRANSLATION, resolveTranslation} from '../../../../utils/translation';
 
-const enableScrollOnBody = () => document.body.style.position = 'relative';
+const enableScrollOnBody = () => document.body.style.overflowY = 'auto';
 
 const REGIONS = Object.keys(uaCities);
 
@@ -33,7 +33,7 @@ export const CityContent = ({selectCity, onClose}) => {
         <BackButtonWrapper>
             <BackButtonInnerWrapper onClick={handleBackButtonClick}>
                 <BackIcon/>
-                {resolveTranslation("PAGE.SEARCH.ARROW_LABEL")}
+                {resolveTranslation(TRANSLATION.PAGE.SEARCH.ARROW_LABEL)}
             </BackButtonInnerWrapper>
         </BackButtonWrapper>
     );

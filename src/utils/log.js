@@ -1,11 +1,13 @@
 import packageInfo from '../../package.json';
 import {DEV_ROUTER, BE_DOMAIN} from "./config";
+import {fetchData} from "./fetch";
 
 function logDevelopmentPages() {
     console.log('')
     console.log('DEV urls:')
     Object.keys(DEV_ROUTER).forEach(key => console.log(`${window.location.origin}/${DEV_ROUTER[key]}`))
 }
+
 function logRemoteFEDomains() {
     console.log('FE remote domains:');
     console.log('https://pma-master.onrender.com/');
@@ -15,10 +17,16 @@ function logRemoteFEDomains() {
 }
 
 export function showDevelopmentPageUrls() {
-    console.log(`v${packageInfo.version}`);
-    console.log('BE_DOMAIN: ', BE_DOMAIN)
+    fetchData(`${BE_DOMAIN}/db-mode`)
+        .then(res => {
+            console.log(`v${packageInfo.version}`);
+            console.log('DB: ', res.body.mode);
+            console.log('BE_DOMAIN: ', BE_DOMAIN);
 
-    logDevelopmentPages()
-    console.log('')
-    logRemoteFEDomains()
+            logDevelopmentPages()
+            console.log('')
+            logRemoteFEDomains()
+        })
+
+
 }

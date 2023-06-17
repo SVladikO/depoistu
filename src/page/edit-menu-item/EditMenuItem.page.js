@@ -45,7 +45,7 @@ const EditMenuItemPage = () => {
                 LocalStorage.set(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT, updatedMenuItem);
                 setIsMenuItemUpdated(true);
             })
-            .catch(res => setRequestError(res.status + " Error: " + res.body.errorMessage))
+            .catch(res => setRequestError(res.body.message))
             .finally(() => setIsLoading(false))
     }
 
@@ -57,7 +57,7 @@ const EditMenuItemPage = () => {
                 setIsMenuItemDeleted(true);
             })
             .catch(res => {
-                setRequestError(res.status + " Error: " + res.body.errorMessage)
+                setRequestError(res.body.message)
             })
             .finally(() => setIsLoading(false))
     }

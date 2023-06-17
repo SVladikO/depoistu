@@ -22,15 +22,14 @@ import {startLoading, stopLoading} from "../../features/request/requestSlice";
 import validation  from '../../utils/validation';
 import {ROUTER, URL} from '../../utils/config';
 import {fetchData, BE_API} from "../../utils/fetch";
-import {getParam, resolveTranslation} from "../../utils/utils";
+import {TRANSLATION, resolveTranslation} from "../../utils/translation";
 import {LocalStorage, LOCAL_STORAGE_KEY} from "../../utils/localStorage"
 
-const SignInSchema = Yup.object().shape(validation.user.singIn);
+const SignInSchema = Yup.object().shape(validation.customer.singIn);
 
 const SignInPage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const backUrl = getParam(`backUrl`) || URL.SETTING;
     const isLoading = useSelector(state => state.request.value.isLoading);
     const [requestError, setRequestError] = useState('');
     const [wasSubmitted, setWasSubmitted] = useState(false);
@@ -44,11 +43,10 @@ const SignInPage = () => {
                     dispatch(stopLoading())
                 }, 1000)
 
-                navigate(backUrl);
-
+                navigate(URL.SETTING);
             })
             .catch(e => {
-                setRequestError(e.toString())
+                setRequestError(e.body.message);
                 setTimeout(() => dispatch(stopLoading()), 1000)
             });
     }
@@ -62,8 +60,8 @@ const SignInPage = () => {
         {requestError && <Notification.Error message={requestError}/>}
         <Formik
             initialValues={{
-                email: 'vlad_S@gmail.com',
-                password: 'vv11vv'
+                email: '',
+                password: ''
             }}
             validationSchema={SignInSchema}
             onSubmit={values => {
@@ -97,15 +95,15 @@ const SignInPage = () => {
                             withSwitcher
                             errorMessage={errors.password}
                         />
-                        <Link to={'/'}>{resolveTranslation("PAGE.SING_IN.FORGOT_PASSWORD")}</Link>
+                        <Link to={URL.FORGOT_PASSWORD}>{resolveTranslation(TRANSLATION.PAGE.SIGN_IN.FORGOT_PASSWORD)}</Link>
                         <NavigationLabelHref
-                            hrefTitle={resolveTranslation("PAGE.SIGN_IN.SING_UP_LINK")}
-                            to={`${ROUTER.SING_UP.URL}?backUrl=${backUrl}`}
-                            label={resolveTranslation("PAGE.SIGN_IN.ACCOUNT_CONFIRMATION")}
+                            hrefTitle={resolveTranslation(TRANSLATION.PAGE.SIGN_IN.SING_UP_LINK)}
+                            to={ROUTER.SING_UP.URL}
+                            label={resolveTranslation(TRANSLATION.PAGE.SIGN_IN.ACCOUNT_CONFIRMATION)}
                         />
                     </ContentContainer>
                     <PrimaryButton type="submit" isWide>
-                        {resolveTranslation("PAGE.SING_IN.TOP_TITLE")}
+                        {resolveTranslation(TRANSLATION.PAGE.SIGN_IN.TOP_TITLE)}
                     </PrimaryButton>
                 </form>
             )

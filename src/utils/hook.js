@@ -36,7 +36,7 @@ export const useLocalStorageFetch = (storageKey, initialState, url, setError = (
             })
             .catch(e => {
                 dispatch(stopLoading());
-                setError(e.message);
+                setError(e.body.message);
             })
     }, [value, storageKey, dispatch, localStorageState, url]);
 

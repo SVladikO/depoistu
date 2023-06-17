@@ -70,7 +70,7 @@ const EditCompany = () => {
                 setIsCompanyDeleted(true);
             })
             .catch(res => {
-                setRequestError(res.status + " Error: " + res.body.errorMessage)
+                setRequestError(res.body.message)
             })
             .finally(() => setIsLoading(false))
     }
@@ -100,7 +100,7 @@ const EditCompany = () => {
 
                 setIsCompanyUpdated(true);
             })
-            .catch(res => setRequestError(res.status + " Error: " + res.body.errorMessage))
+            .catch(res => setRequestError(res.body.message))
             .finally(() => setIsLoading(false))
     }
 

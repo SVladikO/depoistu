@@ -5,7 +5,7 @@ import {ReactComponent as SuccessIcon} from "../../icons/success.svg";
 import {ReactComponent as ErrorIcon} from "../../icons/alert.svg";
 
 import {ContentContainer} from "../ContentContainer/ContentContainer.style";
-import {resolveTranslation} from "../../utils/utils";
+import {TRANSLATION, resolveTranslation} from "../../utils/translation";
 
 
 const Success = ({message, children}) => {
@@ -24,7 +24,7 @@ const Loading = () => {
     return (
         <ContentContainer>
             <LoadingIcon className="animated_svg"/>
-            <Text>{resolveTranslation("NOTIFICATION.LOADING")}</Text>
+            <Text>{resolveTranslation(TRANSLATION.NOTIFICATION.LOADING)}</Text>
         </ContentContainer>
     )
 };

@@ -44,7 +44,7 @@ const EditMenu = () => {
                 setTimeout(() => dispatch(stopLoading()), 1000);
             }).catch(e => {
                 setTimeout(() => dispatch(stopLoading()), 1000);
-                setRequestError(e.message)
+                setRequestError(e.body.message)
             })
 
     }, [url, companyId])

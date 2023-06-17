@@ -1,9 +1,10 @@
 import styled from 'styled-components';
-import {BORDER_RADIUS, COLOR} from "../../utils/theme";
+import {BORDER_RADIUS, COLOR, SHADOW} from "../../utils/theme";
 
 export const ContentContainer = styled.div.attrs({
     className: 'ContentContainer',
 })`
+  ${SHADOW};
   position: relative;
   width: 100%;
   background: ${COLOR.ACCENT4};

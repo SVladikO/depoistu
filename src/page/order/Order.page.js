@@ -1,4 +1,4 @@
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 
 import {Wrapper, AmountInfo, Content, FixedContent} from './Order.page.style';
@@ -9,12 +9,11 @@ import {ReactComponent as EmptyBasketIcon} from "../../icons/empty_basket.svg";
 // import {deleteAllOrders} from '../../features/order/orderSlice'
 
 import {ROUTER} from '../../utils/config'
-// import {fetchData, BE_API} from "../../utils/fetch";
+// import {fetchData, BE_API} from "../../Schedule.js/fetch";
 import {LocalStorage} from "../../utils/localStorage";
 
 const OrderPage = () => {
     const orders = useSelector(state => state.order.value);
-    const dispatch = useDispatch();
 
     const placeOrder = () => {
         const {id: customer_id} = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER);
@@ -67,9 +66,11 @@ const OrderPage = () => {
                     Icon={EmptyBasketIcon}
                     title="Your Cart is empty"
                     description="Looks like you haven't made your order yet."
-                    buttonText="Shop Now"
-                    link={ROUTER.CATEGORY.URL}
-                  />
+                >
+                <Link to={''}>
+                    <PrimaryButton isWide>Shop Now</PrimaryButton>
+                </Link>
+                </NotificationTDB>
         }</Wrapper>
     );
 };

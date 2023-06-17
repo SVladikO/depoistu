@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import {COLOR, BORDER_RADIUS} from "../../utils/theme";
+import {COLOR, BORDER_RADIUS, SHADOW} from "../../utils/theme";
 
 export const Wrapper = styled.div`
+  ${SHADOW};
   border-radius: ${BORDER_RADIUS.SECOND};
   height: auto;
   overflow: hidden;
@@ -39,16 +40,6 @@ export const Content = styled.div`
 export const CompanyInfo = styled.div`
 `;
 
-export const ScheduleWrapper = styled.div`
-  color: ${COLOR.ACCENT1};
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
-  flex-wrap: nowrap;
-  color: ${COLOR.ACCENT5};
-  display: flex;
-`;
-
 export const Phone = styled.div`
   font-weight: 400;
   font-size: 16px;
@@ -56,26 +47,21 @@ export const Phone = styled.div`
   color: ${COLOR.ACCENT5};
 `;
 
-export const DetailedLink = styled.div`
-  text-decoration: underline;
-  color: ${COLOR.ACCENT5};
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
-`;
-
 export const Schedule = styled.div`
   display: flex;
   height: 19px;
 `;
 
-export const Open = styled.span`
+export const OpenStatus = styled.span`
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
   color: ${COLOR.ACCENT3};
   display: inline-block;
   margin: 0 15px 0 0;
+`;
+export const CloseStatus = styled.span`
+  color: ${COLOR.ACCENT6};  
 `;
 
 export const Closes = styled.span`
@@ -99,7 +85,6 @@ export const Closes = styled.span`
     left: -8.5px;
   }
 `;
-
 export const Name = styled.div`
   font-weight: 700;
   font-size: 20px;
@@ -107,18 +92,6 @@ export const Name = styled.div`
   color: ${COLOR.ACCENT1};
 `;
 
-export const ScheduleContainer = styled.div`
-  & > * {
-    min-width: 50px;
-  }
-`;
-
-export const ScheduleContent = styled.div`
-  display: flex;
-  & > div {
-    margin: 0 1px 0 0;
-  }
-`;
 export const Location = styled.div`
   display: flex;
   width: 100%;

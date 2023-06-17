@@ -1,11 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Pagination, Navigation} from "swiper";
 import {Swiper, SwiperSlide} from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import {ReactComponent as RightAnchor} from "../../icons/right-anchor.svg";
-
 import {
     Wrapper,
     ImageSection,
@@ -13,65 +12,16 @@ import {
     Address,
     Content,
     CompanyInfo,
-    ScheduleContainer,
-    ScheduleWrapper,
     Schedule,
-    Open,
+    OpenStatus,
     Closes,
     Phone,
-    DetailedLink,
-    ScheduleContent, Location
+    Location,
+    CloseStatus
 } from "./Company.style";
 
-import {getScheduleAsObject} from "../../utils/company";
-
-const ScheduleDetails = ({schedule}) => {
-    const [isWeekScheduleVisible, setIsWeekScheduleVisible] = useState(false);
-
-    if (!schedule || !schedule.length) {
-        return;
-    }
-
-    const scheduleAsObject = getScheduleAsObject(schedule);
-
-    if (!Object.keys(scheduleAsObject).length) {
-        return;
-    }
-
-    if (isWeekScheduleVisible) {
-        return (
-            <ScheduleContent>
-                {
-                    Object.entries(scheduleAsObject)?.map((key, i) => {
-                        const time = `${key[1].split('-').join(' ')}`;
-                        const from = time.split(' ')[0];
-                        const to = time.split(' ')[1];
-
-                        return (
-                            <ScheduleWrapper key={i.toString()}>
-                                <ScheduleContainer>
-                                    <div>
-                                        <div>{key[0]}</div>
-                                        <div>{from}</div>
-                                        <div>{to}</div>
-                                    </div>
-                                </ScheduleContainer>
-                            </ScheduleWrapper>
-                        )
-                    })
-                }
-            </ScheduleContent>
-        )
-
-    }
-
-    return (
-        <DetailedLink onClick={() => setIsWeekScheduleVisible(true)}>
-            Show schedule
-        </DetailedLink>
-    )
-}
-
+import {parseSchedule} from "../../utils/company";
+import ScheduleDetails from "../Schedule/Schedule";
 
 const Company = (props) => {
 
@@ -79,7 +29,8 @@ const Company = (props) => {
         return;
     }
 
-    const {PHOTOS, NAME, CITY, STREET, SCHEDULE} = props.company;
+    const {PHOTOS, NAME, CITY, STREET, PHONE, SCHEDULE} = props.company
+    const schedule = parseSchedule(SCHEDULE);
 
     const renderLocation = () => {
         if (props.withMoreInfo) {
@@ -121,11 +72,16 @@ const Company = (props) => {
                     <Name>{NAME}</Name>
                     {renderLocation()}
                     <Schedule>
-                        <Open>Open</Open>
-                        <Closes>Closes<span>22:00</span></Closes>
+                        {schedule.isCompanyOpenNow
+                            ? <>
+                                <OpenStatus>Open</OpenStatus>
+                                <Closes>Closes<span>{schedule.currentDay.to}</span></Closes>
+                            </>
+                            : <CloseStatus>Close</CloseStatus>
+                        }
                     </Schedule>
-                    {props.withMoreInfo && <Phone>80978432032</Phone>}
-                    {props.withMoreInfo && <ScheduleDetails schedule={SCHEDULE}/>}
+                    {props.withMoreInfo && <Phone>{PHONE}</Phone>}
+                    {props.withMoreInfo && SCHEDULE && SCHEDULE.length && <ScheduleDetails scheduleAsArray={schedule.workDays}/>}
                 </CompanyInfo>
                 {props.children}
             </Content>

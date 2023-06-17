@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {COLOR, GRADIENT, BORDER_RADIUS} from "../../utils/theme";
+import {COLOR, GRADIENT, BORDER_RADIUS, SHADOW} from "../../utils/theme";
 
 export const Wrapper = styled.div`
   padding: 10px 0;
@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   height: 100px;
   border-radius: ${BORDER_RADIUS.FOURTH};
   background: ${props => props.isSelected ? `linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO})}` : `${COLOR.ACCENT4}`};
+  ${SHADOW};
 `;
 export const Title = styled.div`
   color: ${props => props.isSelected ? `${COLOR.ACCENT4}` : `${COLOR.ACCENT3}`};

@@ -1,17 +1,18 @@
 import * as Yup from 'yup';
+import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
 
 const PHONE = {
-    MIN: 10,
-    MAX: 10
+    MIN: 12,
+    MAX: 12
 };
 
 const PHONE_VALIDATION = from =>
     Yup.string()
-        .min(from.PHONE.MIN, `Example: 0971234567`)
-        .max(from.PHONE.MAX, `Example: 0971234567`)
+        .min(from.PHONE.MIN, `Example: 380971112233`)
+        .max(from.PHONE.MAX, `Example: 380971112233`)
         .required(`Required!`)
 
-const USER = {
+const CUSTOMER = {
     NAME: {
         MIN: 2,
         MAX: 30
@@ -26,43 +27,49 @@ const USER = {
     }
 };
 
-const user_validation = {
+const CUSTOMER_PASSWORD = Yup.string()
+    .required(`Required!`)
+    .min(CUSTOMER.PASSWORD.MIN, `Too Short! Min length ${CUSTOMER.PASSWORD.MIN}`)
+    .max(CUSTOMER.PASSWORD.MAX, `Too Long! Max length ${CUSTOMER.PASSWORD.MAX}`)
+
+const customer_validation = {
     name: Yup.string()
-        .min(USER.NAME.MIN, `Too Short! Min length ${USER.NAME.MIN}`)
-        .max(USER.NAME.MAX, `Too Long! Max length ${USER.NAME.MAX}`)
+        .min(CUSTOMER.NAME.MIN, `Too Short! Min length ${CUSTOMER.NAME.MIN}`)
+        .max(CUSTOMER.NAME.MAX, `Too Long! Max length ${CUSTOMER.NAME.MAX}`)
         .required(`Required!`),
-    password: Yup.string()
-        .min(USER.PASSWORD.MIN, `Too Short! Min length ${USER.PASSWORD.MIN}`)
-        .max(USER.PASSWORD.MAX, `Too Long! Max length ${USER.PASSWORD.MAX}`)
-        .required(`Required`),
     email: Yup.string()
         .email(`Invalid email`)
-        .max(USER.EMAIL.MAX, `Too Long! Max length ${USER.EMAIL.MAX}`)
+        .max(CUSTOMER.EMAIL.MAX, `Too Long! Max length ${CUSTOMER.EMAIL.MAX}`)
         .required(`Required`),
-    phone: PHONE_VALIDATION(USER),
-    confirmedPassword: Yup.string()
-        .required(`Required!`)
-        .min(USER.PASSWORD.MIN, `Too Short! Min length ${USER.PASSWORD.MIN}`)
-        .max(USER.PASSWORD.MAX, `Too Long! Max length ${USER.PASSWORD.MAX}`)
+    phone: PHONE_VALIDATION(CUSTOMER),
+    oldPassword: CUSTOMER_PASSWORD
+        .test(`passwords-match`, `Old passwords must match`, value => {
+            const customer = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER);
+            return customer.PASSWORD === value
+        }),
+    confirmedPassword: CUSTOMER_PASSWORD
         .test(`passwords-match`, `Passwords must match`, function (value) {
             return this.parent.newPassword === value
         })
 }
 const singInValidation = {
-    email: user_validation.email,
-    password: user_validation.password
+    email: customer_validation.email,
+    password:CUSTOMER_PASSWORD
+}
+const forgetPasswordValidation = {
+    email: customer_validation.email,
 }
 const singUpValidation = {
-    name: user_validation.name,
-    email: user_validation.email,
-    newPassword: user_validation.password,
-    confirmedPassword: user_validation.confirmedPassword,
-    phone: user_validation.phone,
+    name: customer_validation.name,
+    email: customer_validation.email,
+    phone: customer_validation.phone,
+    newPassword:CUSTOMER_PASSWORD,
+    confirmedPassword: customer_validation.confirmedPassword,
 }
 const changePasswordValidation = {
-    oldPassword: user_validation.password,
-    newPassword: user_validation.password,
-    confirmedPassword: user_validation.confirmedPassword
+    oldPassword: customer_validation.oldPassword,
+    newPassword:CUSTOMER_PASSWORD,
+    confirmedPassword: customer_validation.confirmedPassword
 }
 
 
@@ -137,10 +144,11 @@ const company_validation = {
 }
 
 const validation = {
-    user: {
+    customer: {
         singIn: singInValidation,
         singUp: singUpValidation,
-        changePassword: changePasswordValidation
+        changePassword: changePasswordValidation,
+        forgetPassword: forgetPasswordValidation
     },
     menuItem: menu_item_validation,
     company: company_validation

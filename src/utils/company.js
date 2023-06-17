@@ -1,18 +1,3 @@
-
-export function getScheduleAsObject(schedule) {
-    const weekDayNames = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"];
-    let obj = {};
-
-    schedule = schedule
-        .split(',')
-        .map(el => el.trim())
-
-    weekDayNames.forEach((el,i) =>{
-        obj[el] = schedule[i];
-    })
-    return obj;
-}
-
 export const getScheduleAsString = values => {
     let result = ''
 
@@ -49,4 +34,52 @@ export function initSchedule(schedule) {
             };
         })
     return result;
+}
+
+const uaWeekDayNames = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"];
+
+const getCurrentDay = days => days.find((el, i) => isToday(i));
+const cutOnDays = schedule => schedule.split(',')?.map(el => el.trim());
+const isToday = dayIndex => (dayIndex + 1) === (new Date().getDay() || 7);
+const addMarkerToCurrentDay = (el, i) => isToday(i) ? {...el, isToday: true} : el;
+const addDayName = (fromTo, index) => ({dayName: uaWeekDayNames[index], ...fromTo});
+
+export function parseSchedule(scheduleAsString) {
+    const workDays = cutOnDays(scheduleAsString)
+        .map(convertToObject)
+        .map(addDayName)
+        .map(addMarkerToCurrentDay);
+    //Expected workDays = [{ from: '9:00', to: '21:00', isToday: true }, ... ]
+    const currentDay = getCurrentDay(workDays);
+    const isCompanyOpenNow = checkIsCompanyOpenNow(currentDay);
+
+    return {workDays, currentDay, isCompanyOpenNow}
+};
+
+function convertToObject(day) {
+    const [from = '', to = ''] = day ? day?.split('-') : ['', ''];
+
+    return {from, to};
+}
+
+function checkIsCompanyOpenNow({from, to}) {
+    to = to === '00:00' ? '23:59' : to;
+
+    if (!from || !to) {
+        return false;
+    }
+
+    const fromTime = getTimeFrom(from);
+    const currentTime = new Date();
+    const toTime = getTimeFrom(to);
+
+    return fromTime < currentTime && currentTime < toTime;
+}
+
+function getTimeFrom(time) {
+    const [h, m] = time ? time.split(':') : ['', ''];
+    const date = new Date();
+    date.setHours(h, m, '00');
+
+    return date
 }
