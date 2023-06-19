@@ -1,11 +1,12 @@
 import {Link} from "react-router-dom";
 import {useState} from "react";
-import {Wrapper, FoodImage, Title, Description, AdditionalDetails, InvisibleDivider, EditWrapper, EditLabel} from "./MenuItem.style";
+import {Wrapper, FoodImage, Title, Description, AdditionalDetails, InvisibleDivider, EditWrapper, EditLabel, ImagesWrapper} from "./MenuItem.style";
 
 import {Price, Flex, Absolute, Like, Popup} from "../index";
 import {ReactComponent as TimeIcon} from "../../icons/time.svg";
 import {ReactComponent as MeasureIcon} from "../../icons/sss.svg";
 import {ReactComponent as BasketIcon} from "../../icons/basket.svg";
+import {ReactComponent as SearchIcon} from "../../icons/search.svg";
 import {ReactComponent as EditIcon} from "../../icons/edit.svg";
 import {URL} from "../../utils/config";
 
@@ -15,10 +16,15 @@ const MenuItem = ({item = {}, withEditIcon = false, onEditClick}) => {
     const {NAME, DESCRIPTION, IMAGE_URL, PRICE, COOKING_TIME, SIZE, isLiked} = item;
     const [imageUrl, setImageUrl] = useState('')
 
+
+
     return (
         <Wrapper className='pm-MenuItem'>
             <Flex justifyContent="stretch">
-                <FoodImage src={IMAGE_URL} onClick={() => setImageUrl(IMAGE_URL)} />
+                <ImagesWrapper>
+                    <FoodImage src={IMAGE_URL} onClick={() => setImageUrl(IMAGE_URL)} />
+                    <SearchIcon onClick={() => alert('start searching')}/>
+                </ImagesWrapper>
                 <Flex flexDirection='column' width='80%'>
                     <Flex justifyContent="space-between">
                         <Title>{NAME}</Title>
