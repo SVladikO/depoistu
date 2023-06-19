@@ -6,7 +6,7 @@ import {Price, Flex, Absolute, Like, Popup} from "../index";
 import {ReactComponent as TimeIcon} from "../../icons/time.svg";
 import {ReactComponent as MeasureIcon} from "../../icons/sss.svg";
 import {ReactComponent as BasketIcon} from "../../icons/basket.svg";
-import {ReactComponent as SearchIcon} from "../../icons/search.svg";
+import {ReactComponent as ZoomIcon} from "../../icons/search.svg";
 import {ReactComponent as EditIcon} from "../../icons/edit.svg";
 import {URL} from "../../utils/config";
 
@@ -23,7 +23,7 @@ const MenuItem = ({item = {}, withEditIcon = false, onEditClick}) => {
             <Flex justifyContent="stretch">
                 <ImagesWrapper>
                     <FoodImage src={IMAGE_URL} onClick={() => setImageUrl(IMAGE_URL)} />
-                    <SearchIcon onClick={() => alert('start searching')}/>
+                    <ZoomIcon onClick={() => alert('zoom')}/>
                 </ImagesWrapper>
                 <Flex flexDirection='column' width='80%'>
                     <Flex justifyContent="space-between">
