@@ -43,7 +43,14 @@ const MenuItem = ({item = {}, withEditIcon = false, onEditClick}) => {
                     {/*</Absolute>*/}
                 </Flex>
             </Flex>
-            {imageUrl && <Popup.Image imageUrl={imageUrl} onClose={() => setImageUrl('')}/>}
+            {imageUrl && <Popup.Image imageUrl={imageUrl} onClose={() => setImageUrl('')}>
+                            <Title>{NAME}</Title>
+                            <Price>{PRICE}</Price>
+                            <Description>{DESCRIPTION}</Description>
+                            <AdditionalDetails>
+                                <TimeIcon/> {COOKING_TIME} m <MeasureIcon/> {SIZE} g
+                            </AdditionalDetails>
+                        </Popup.Image>}
         </Wrapper>
     );
 };
