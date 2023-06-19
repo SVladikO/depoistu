@@ -4,7 +4,7 @@ import {Swiper, SwiperSlide} from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/pagination";
-import {ReactComponent as LocationIcon} from "../../icons/map_point.svg";
+import {ReactComponent as LocationIcon} from "../../icons/location.svg";
 import {ReactComponent as PhoneIcon} from "../../icons/phone.svg";
 import {
     Wrapper,

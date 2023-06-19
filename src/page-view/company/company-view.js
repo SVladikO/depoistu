@@ -16,7 +16,7 @@ import {
     WeekSchedule
 } from "../../components";
 
-import {ReactComponent as LocationIcon} from "../../icons/map_point.svg";
+import {ReactComponent as LocationIcon} from "../../icons/location.svg";
 
 import {WarningMessage} from "../../components/Input/Input.style";
 

@@ -49,7 +49,7 @@ import OptionSettings from "../../components/OptionSettings/OptionSettings";
 import ImageContent from "../../components/Popup/content/image/ImageContent";
 import IntroContent from "../../components/Popup/content/info/InfoContent";
 import CityContent from "../../components/Popup/content/city/CityContent"
-import {ReactComponent as LocationIcon} from "../../icons/map_point.svg";
+import {ReactComponent as LocationIcon} from "../../icons/location.svg";
 import Checkbox from "../../components/Checkbox/Checkbox";
 import {EditBar, QRCodeButton} from "../customer-companies/CustomerCompanies.style";
 import {ReactComponent as EditIcon} from "../../icons/edit.svg";

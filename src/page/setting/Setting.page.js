@@ -9,7 +9,7 @@ import {ReactComponent as LockIcon} from '../../icons/lock.svg';
 // import {ReactComponent as PhoneCallIcon} from '../../icons/phone_call.svg';
 // import {ReactComponent as PaymentIcon} from '../../icons/payment.svg';
 // import {ReactComponent as LikeIcon} from '../../icons/favorite.svg';
-// import {ReactComponent as DeliveryAddressIcon} from '../../icons/map_point.svg';
+// import {ReactComponent as DeliveryAddressIcon} from '../../icons/location.svg';
 import {ReactComponent as LogOutIcon} from '../../icons/logout.svg';
 import {ReactComponent as ProfileIcon} from '../../icons/profile.svg';
 // import {ReactComponent as CurrencyIcon} from '../../icons/currency.svg';
