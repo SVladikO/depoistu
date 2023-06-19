@@ -4,7 +4,8 @@ import {Swiper, SwiperSlide} from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/pagination";
-import {ReactComponent as RightAnchor} from "../../icons/right-anchor.svg";
+import {ReactComponent as LocationIcon} from "../../icons/map_point.svg";
+import {ReactComponent as PhoneIcon} from "../../icons/phone.svg";
 import {
     Wrapper,
     ImageSection,
@@ -35,9 +36,8 @@ const Company = (props) => {
     const renderLocation = () => {
         if (props.withMoreInfo) {
             return (
-                <Location>
-                    <Address>{CITY}, {STREET}</Address>
-                    <RightAnchor/>
+                <Location withAdditionalStyles={props.withMoreInfo}>
+                    <Address><LocationIcon/>{CITY}, {STREET}</Address>
                 </Location>
             );
         }
@@ -70,7 +70,6 @@ const Company = (props) => {
             <Content>
                 <CompanyInfo>
                     <Name>{NAME}</Name>
-                    {renderLocation()}
                     <Schedule>
                         {schedule.isCompanyOpenNow
                             ? <>
@@ -80,7 +79,8 @@ const Company = (props) => {
                             : <CloseStatus>Close</CloseStatus>
                         }
                     </Schedule>
-                    {props.withMoreInfo && <Phone>{PHONE}</Phone>}
+                    {renderLocation()}
+                    {props.withMoreInfo && <Phone><PhoneIcon/>{PHONE}</Phone>}
                     {props.withMoreInfo && SCHEDULE && SCHEDULE.length && <ScheduleDetails scheduleAsArray={schedule.workDays}/>}
                 </CompanyInfo>
                 {props.children}

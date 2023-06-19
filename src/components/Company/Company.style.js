@@ -42,32 +42,47 @@ export const CompanyInfo = styled.div`
 
 export const Phone = styled.div`
   font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
+  font-size: 20px;
+  line-height: 24px;
   color: ${COLOR.ACCENT5};
+  border-radius: ${BORDER_RADIUS.FOURTH};
+  border: 1px solid ${COLOR.ACCENT5};
+  margin: 0 0 10px 0;
+  padding: 2px 10px 4px 10px;
+  svg {
+    width: 15px;
+    height: 15px;
+    color: ${COLOR.ACCENT3};
+    display: inline-block;
+    margin: 0 10px 0 0;
+  }
 `;
 
 export const Schedule = styled.div`
   display: flex;
   height: 19px;
+  margin: 0 0 10px 0;
 `;
 
 export const OpenStatus = styled.span`
   font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
-  color: ${COLOR.ACCENT3};
+  font-size: 20px;
+  line-height: 24px;
+  color: ${COLOR.ACCENT1};
   display: inline-block;
   margin: 0 15px 0 0;
 `;
 export const CloseStatus = styled.span`
-  color: ${COLOR.ACCENT6};  
+  color: ${COLOR.ACCENT1};
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
 `;
 
 export const Closes = styled.span`
   font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
+  font-size: 20px;
+  line-height: 24px;
   color: ${COLOR.ACCENT5};
   position: relative;
   display: inline-block;
@@ -81,14 +96,14 @@ export const Closes = styled.span`
     content: ".";
     position: absolute;
     display: block;
-    top: -16%;
+    top: -25%;
     left: -8.5px;
   }
 `;
 export const Name = styled.div`
   font-weight: 700;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 24px;
+  line-height: 29px;
   color: ${COLOR.ACCENT1};
 `;
 
@@ -96,14 +111,25 @@ export const Location = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
+  border-radius: ${BORDER_RADIUS.FOURTH};
+  border: ${props => props.withAdditionalStyles ? `1px solid ${COLOR.ACCENT5}` : 'none'};
+  padding: ${props => props.withAdditionalStyles ? '2px 10px 4px 10px' : '0'};
+  margin: 0 0 10px 0;
 `;
 
 export const Address = styled.div`
   display: flex;
+  align-items: center;
   flex-grow: 1;
   width: 100%;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
+  font-size: 20px;
+  line-height: 24px;
   color: ${COLOR.ACCENT5};
+  svg {
+    width: 10px;
+    height: 16px;
+    display: block;
+    margin: 0 10px 0 0;
+  }
 `;

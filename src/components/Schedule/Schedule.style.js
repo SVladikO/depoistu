@@ -34,23 +34,48 @@ export const ScheduleWrapper = styled.div`
   display: flex;
 `;
 export const DetailedLink = styled.div`
-  text-decoration: underline;
+  border-radius: ${BORDER_RADIUS.FOURTH};
+  border: 1px solid ${COLOR.ACCENT5};
+  padding: 2px 10px 4px 10px;
   color: ${COLOR.ACCENT5};
   font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
+  font-size: 20px;
+  line-height: 24px;
 `;
 export const Day = styled.div`
-  color: ${props => props.isToday ? COLOR.ACCENT3 : COLOR.ACCENT5};
-}
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: ${props => props.isToday ? COLOR.ACCENT1 : COLOR.ACCENT5};
 `;
+export const From = styled.div`
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: ${props => props.isToday ? COLOR.ACCENT1 : COLOR.ACCENT5};
+  
+`;
+export const To = styled.div`
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: ${props => props.isToday ? COLOR.ACCENT1 : COLOR.ACCENT5};
+`;
+
 export const ScheduleContainer = styled.div`
+  display: flex;
+
   & > * {
     min-width: 50px;
+  }
+  > div {
+    margin: 0 4px 0 0;
   }
 `;
 export const ScheduleContent = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  width: 100%;
   & > div {
     margin: 0 1px 0 0;
   }
