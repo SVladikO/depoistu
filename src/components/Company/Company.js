@@ -16,10 +16,10 @@ import {
     Schedule,
     OpenStatus,
     Closes,
-    Phone,
-    Location,
+    LocationWrapper,
     CloseStatus
 } from "./Company.style";
+import {ThirdButton} from "../Button/Button.style";
 
 import {parseSchedule} from "../../utils/company";
 import ScheduleDetails from "../Schedule/Schedule";
@@ -35,18 +35,10 @@ const Company = (props) => {
 
     const renderLocation = () => {
         if (props.withMoreInfo) {
-            return (
-                <Location withAdditionalStyles={props.withMoreInfo}>
-                    <Address><LocationIcon/>{CITY}, {STREET}</Address>
-                </Location>
-            );
+            return <ThirdButton><LocationIcon/>{CITY}, {STREET}</ThirdButton>
         }
 
-        return (
-            <Location>
-                <Address>{CITY}, {STREET}</Address>
-            </Location>
-        )
+        return <LocationWrapper>{CITY}, {STREET}</LocationWrapper>;
     }
 
     return (
@@ -80,7 +72,7 @@ const Company = (props) => {
                         }
                     </Schedule>
                     {renderLocation()}
-                    {props.withMoreInfo && <Phone><PhoneIcon/>{PHONE}</Phone>}
+                    {props.withMoreInfo && <ThirdButton><PhoneIcon/>{PHONE}</ThirdButton>}
                     {props.withMoreInfo && SCHEDULE && SCHEDULE.length && <ScheduleDetails scheduleAsArray={schedule.workDays}/>}
                 </CompanyInfo>
                 {props.children}

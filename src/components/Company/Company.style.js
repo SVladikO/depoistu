@@ -38,23 +38,8 @@ export const Content = styled.div`
   padding: 10px;
 `;
 export const CompanyInfo = styled.div`
-`;
-
-export const Phone = styled.div`
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 24px;
-  color: ${COLOR.ACCENT5};
-  border-radius: ${BORDER_RADIUS.FOURTH};
-  border: 1px solid ${COLOR.ACCENT5};
-  margin: 0 0 10px 0;
-  padding: 2px 10px 4px 10px;
-  svg {
-    width: 15px;
-    height: 15px;
-    color: ${COLOR.ACCENT3};
-    display: inline-block;
-    margin: 0 10px 0 0;
+  & > button {
+    margin: 0 0 10px 0;
   }
 `;
 
@@ -107,7 +92,7 @@ export const Name = styled.div`
   color: ${COLOR.ACCENT1};
 `;
 
-export const Location = styled.div`
+export const LocationWrapper = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;

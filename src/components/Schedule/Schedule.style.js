@@ -33,7 +33,7 @@ export const ScheduleWrapper = styled.div`
   color: ${COLOR.ACCENT5};
   display: flex;
 `;
-export const DetailedLink = styled.div`
+export const ShowDetailedSchedule = styled.div`
   border-radius: ${BORDER_RADIUS.FOURTH};
   border: 1px solid ${COLOR.ACCENT5};
   padding: 2px 10px 4px 10px;
@@ -42,7 +42,7 @@ export const DetailedLink = styled.div`
   font-size: 20px;
   line-height: 24px;
 `;
-export const Day = styled.div`
+export const DaySchedule = styled.div`
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;

@@ -1,6 +1,6 @@
 import {
     PrimaryButton,
-    SecondaryButton,
+    SecondaryButton, ThirdButton,
 } from "./Button/Button.style";
 
 import {Input, PInput, Textarea} from "./Input/Input";
@@ -50,6 +50,7 @@ export {
     Checkbox,
     Rating,
     WeekSchedule,
+    ThirdButton,
     CategoryMenuRow,
     NotificationTDB,
     RowSplitter,

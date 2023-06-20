@@ -19,6 +19,7 @@ import
     Notification,
     NavigationHeader,
     FromToTime,
+    ThirdButton,
     CustomerAccountBar,
     NavigationLabelHref,
     BottomMenu,
@@ -87,6 +88,7 @@ const componentsGroup1 = [
         {title: 'PrimaryButton', component: <PrimaryButton>Sing in</PrimaryButton>},
         {title: 'SecondaryButton', component: <SecondaryButton><FacebookIcon/>facebook</SecondaryButton>},
         {title: 'SecondaryButton', component: <SecondaryButton>Cancel</SecondaryButton>},
+        {title: 'ThirdButton', component: <ThirdButton><FacebookIcon/>Cancel</ThirdButton>},
         {title: 'CloseButton', component: <CloseButton clickHandler={() => alert('clicked')}/>},
     ],
     [
