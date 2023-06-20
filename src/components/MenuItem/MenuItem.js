@@ -6,7 +6,7 @@ import {Price, Flex, Absolute, Popup} from "../index";
 import {ReactComponent as TimeIcon} from "../../icons/time.svg";
 import {ReactComponent as MeasureIcon} from "../../icons/sss.svg";
 import {ReactComponent as BasketIcon} from "../../icons/basket.svg";
-import {ReactComponent as ZoomIcon} from "../../icons/search.svg";
+import {ReactComponent as ZoomIcon} from "../../icons/zoom.svg";
 import {ReactComponent as EditIcon} from "../../icons/edit.svg";
 import {URL} from "../../utils/config";
 
