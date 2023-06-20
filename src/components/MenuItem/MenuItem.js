@@ -2,7 +2,7 @@ import {Link} from "react-router-dom";
 import {useState} from "react";
 import {Wrapper, FoodImage, Title, Description, AdditionalDetails, InvisibleDivider, EditWrapper, EditLabel, ImagesWrapper} from "./MenuItem.style";
 
-import {Price, Flex, Absolute, Like, Popup} from "../index";
+import {Price, Flex, Absolute, Popup} from "../index";
 import {ReactComponent as TimeIcon} from "../../icons/time.svg";
 import {ReactComponent as MeasureIcon} from "../../icons/sss.svg";
 import {ReactComponent as BasketIcon} from "../../icons/basket.svg";
