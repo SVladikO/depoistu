@@ -22,7 +22,6 @@ const SearchPage = () => {
     const [cityIds] = useLocalStorageFetch(LOCAL_STORAGE_KEY.AVAILABLE_CITIES_FOR_SEARCH_COMPANIES, [], BE_API.COMPANY.GET_AVAILABLE_CITIES(), setRequestError)
     const availableCitiesForSearch = convertCitiesIds(cityIds);
 
-
     let [companies] = useLocalStorageFetch(
         LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT,
         [],

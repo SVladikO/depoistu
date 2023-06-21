@@ -12,7 +12,7 @@ const enableScrollOnBody = () => document.body.style.overflowY = 'auto';
 export const CityContent = ({selectCity, oeCities, onClose}) => {
     const REGIONS = Object.keys(oeCities).map(key => ({name: key}));
     const [selectedRegion, setSelectedRegion] = useState('');
-    const [regionCities, setRegionCities] = useState(REGIONS);
+    const [citiesToRender, setCitiesToRender] = useState(REGIONS);
 
     const [isRegion, setIsRegion] = useState(true);
 
@@ -23,7 +23,7 @@ export const CityContent = ({selectCity, oeCities, onClose}) => {
 
     const handleBackButtonClick = () => {
         setIsRegion(true);
-        setRegionCities(REGIONS);
+        setCitiesToRender(REGIONS);
         setSelectedRegion('')
     }
 
@@ -39,7 +39,7 @@ export const CityContent = ({selectCity, oeCities, onClose}) => {
     const changeHandlerSettingMenuRow = city => () => {
         if (isRegion) {
             setSelectedRegion(city.name)
-            setRegionCities(oeCities[city.name])
+            setCitiesToRender(oeCities[city.name])
             setIsRegion(false)
             return
         }
@@ -57,7 +57,8 @@ export const CityContent = ({selectCity, oeCities, onClose}) => {
                 style={{height: isRegion ? '100%' : '92%'}}
                 onClick={e => e.stopPropagation()}
             >
-                {regionCities.map((city, i) =>
+                {/*Expected array structure: [{name: 'Vinnica'}, ... ]*/}
+                {citiesToRender.map((city, i) =>
                     <SettingMenuRow
                         changeHandler={changeHandlerSettingMenuRow(city)}
                         key={i.toString()}

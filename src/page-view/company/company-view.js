@@ -104,7 +104,7 @@ const CompanyView = ({initialValues, onSubmit}) => {
                             withIcon
                             Icon={LocationIcon}
                             handleClick={openCityPopup}
-                            value={values.city}
+                            value={values.city.name}
                             isTouched={wasSubmitted || touched.city}
                             errorMessage={errors.city}
                         />
