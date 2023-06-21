@@ -9,8 +9,8 @@ import {TRANSLATION, resolveTranslation} from '../../../../utils/translation';
 
 const enableScrollOnBody = () => document.body.style.overflowY = 'auto';
 
-export const CityContent = ({selectCity, oeCities, onClose}) => {
-    const REGIONS = Object.keys(oeCities).map(key => ({name: key}));
+export const CityContent = ({selectCity, availableCities, onClose}) => {
+    const REGIONS = Object.keys(availableCities).map(key => ({name: key}));
     const [selectedRegion, setSelectedRegion] = useState('');
     const [citiesToRender, setCitiesToRender] = useState(REGIONS);
 
@@ -39,7 +39,7 @@ export const CityContent = ({selectCity, oeCities, onClose}) => {
     const changeHandlerSettingMenuRow = city => () => {
         if (isRegion) {
             setSelectedRegion(city.name)
-            setCitiesToRender(oeCities[city.name])
+            setCitiesToRender(availableCities[city.name])
             setIsRegion(false)
             return
         }

@@ -135,7 +135,7 @@ const CompanyView = ({initialValues, onSubmit}) => {
                     </ContentContainer>
                     {showCityPopup && (
                         <Popup.City
-                            oeCities={cities}
+                            availableCities={cities}
                             selectCity={selectCity(city => setFieldValue('city', city))}
                             onClose={closeCityPopup}
                         />

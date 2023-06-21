@@ -39,7 +39,7 @@ const SearchPage = () => {
         closeCityPopup();
     }
 
-    const P = useMemo(() => <Popup.City selectCity={selectCity} oeCities={availableCitiesForSearch} onClose={closeCityPopup}/>, [cityIds])
+    const cityPopup = useMemo(() => <Popup.City selectCity={selectCity} availableCities={availableCitiesForSearch} onClose={closeCityPopup}/>, [cityIds])
 
     if (isLoading) {
         return <Notification.Loading/>;
@@ -68,7 +68,7 @@ const SearchPage = () => {
                     </Link>
                 )
             }
-            {showCityPopup && P}
+            {showCityPopup && cityPopup}
         </>
     );
 };
