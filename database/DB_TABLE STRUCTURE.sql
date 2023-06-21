@@ -1,15 +1,15 @@
 
 CREATE TABLE MENU_ITEM
 (
-    ID           SERIAL     NOT NULL,
-    CATEGORY_ID  INT        NOT NULL,
-    COMPANY_ID   INT        NOT NULL,
-    NAME         CHAR(30)   NOT NULL,
+    ID           SERIAL        NOT NULL,
+    CATEGORY_ID  INT           NOT NULL,
+    COMPANY_ID   INT           NOT NULL,
+    NAME         CHAR(30)      NOT NULL,
     DESCRIPTION  CHAR(255),
-    COOKING_TIME CHAR(2)    NOT NULL,
-    PRICE        CHAR(7)    NOT NULL,
-    SIZE         CHAR(4)    NOT NULL,
-    IMAGE_URL    CHAR(150)  NOT NULL
+    COOKING_TIME CHAR(2)       NOT NULL,
+    PRICE        CHAR(7)       NOT NULL,
+    SIZE         CHAR(4)       NOT NULL,
+    IMAGE_URL    VARCHAR(400)  NOT NULL
 );
 
 CREATE TABLE CUSTOMER
