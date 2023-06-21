@@ -24,7 +24,7 @@ import {ReactComponent as DeleteBasketIcon} from "../../icons/delete_basket.svg"
 
 import validation from "../../utils/validation";
 import {isScheduleValid} from "../../utils/company";
-import {getCities} from '../../utils/cities'
+import {getAllCities} from '../../utils/cities'
 
 const renderCompanyPhotos = (photos, setPictures) => {
     const deleteImage = index => setPictures(photos.filter((_, i) => i !== index));
@@ -62,7 +62,7 @@ const CompanyView = ({initialValues, onSubmit}) => {
     const openCityPopup = () => setShowCityPopup(true);
     const closeCityPopup = () => setShowCityPopup(false);
 
-    const cities = getCities();
+    const allCities = getAllCities();
 
     const selectCity = callback => ([city]) => {
         callback(city);
@@ -135,7 +135,7 @@ const CompanyView = ({initialValues, onSubmit}) => {
                     </ContentContainer>
                     {showCityPopup && (
                         <Popup.City
-                            availableCities={cities}
+                            availableCities={allCities}
                             selectCity={selectCity(city => setFieldValue('city', city))}
                             onClose={closeCityPopup}
                         />

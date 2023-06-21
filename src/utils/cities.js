@@ -16,7 +16,7 @@ export const convertCitiesIds = (cityIds) => {
     return city;
 }
 
-export const getCities = () => {
+export const getAllCities = () => {
     return convertCitiesIds(Object.keys(cities))
 }
 

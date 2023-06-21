@@ -46,7 +46,6 @@ const SearchPage = () => {
     }
 
     // If we use useLocalStorageFetch than we need below code to handle error.
-    console.log(111, selectedCity);
     return (
         <>
             {requestError && <Notification.Error message={requestError}/>}
