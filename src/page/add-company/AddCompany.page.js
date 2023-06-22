@@ -29,11 +29,11 @@ const AddCompany = () => {
 
 
     const onSubmit = values => {
-        const {name, city, street, phone} = values;
+        const {name, cityId, street, phone} = values;
         const schedule = getScheduleAsString(values)
         const customer_id = CUSTOMER.ID;
 
-        const reqObj = {customer_id, name, city, street, phone, schedule};
+        const reqObj = {customer_id, name, city: cityId, street, phone, schedule};
 
         setIsLoading(true);
 

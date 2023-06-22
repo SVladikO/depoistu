@@ -16,6 +16,10 @@ export const convertCitiesIds = (cityIds) => {
     return city;
 }
 
+export const getCityNameById = key => {
+    return cities[key][languageKey];
+}
+
 export const getAllCities = () => {
     return convertCitiesIds(Object.keys(cities))
 }

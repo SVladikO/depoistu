@@ -104,10 +104,11 @@ const CompanyView = ({initialValues, onSubmit}) => {
                             withIcon
                             Icon={LocationIcon}
                             handleClick={openCityPopup}
-                            value={values.city.name}
+                            value={values.city}
                             isTouched={wasSubmitted || touched.city}
-                            errorMessage={errors.city}
+                            errorMessage={errors.city || errors.cityId}
                         />
+                        {}
                         <Label>Street</Label>
                         <Input
                             name='street'
@@ -136,7 +137,11 @@ const CompanyView = ({initialValues, onSubmit}) => {
                     {showCityPopup && (
                         <Popup.City
                             availableCities={allCities}
-                            selectCity={selectCity(city => setFieldValue('city', city))}
+                            selectCity={selectCity(city => {
+                                console.log(3333, city);
+                                setFieldValue('city', city.name)
+                                setFieldValue('cityId', city.id)
+                            })}
                             onClose={closeCityPopup}
                         />
                     )}

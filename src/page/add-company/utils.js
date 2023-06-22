@@ -5,6 +5,7 @@ export const initialValues = {
     photos: [],
     name: '',
     city: '',
+    cityId: '',
     street: '',
     phone: '',
     monIsChecked: false,
