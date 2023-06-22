@@ -5,7 +5,7 @@ export const convertCitiesIds = (cityIds) => {
     const city = {};
 
     cityIds.sort((a, b) => a > b).forEach(cityId => {
-        const regionId = cityId - (cityId % 100);
+        const regionId = getRegionId(cityId);
         const regionName = cities[regionId][languageKey];
         city[regionName] = [
             ...(city[regionName] || []),
@@ -16,12 +16,17 @@ export const convertCitiesIds = (cityIds) => {
     return city;
 }
 
+const getRegionId = cityId => cityId - (cityId % 100)
+
 export const getCityNameById = key => {
     return cities[key][languageKey];
 }
 
 export const getAllCities = () => {
-    return convertCitiesIds(Object.keys(cities))
+    return convertCitiesIds(
+        Object.keys(cities)
+            .filter(cityId => +cityId !== getRegionId(+cityId))
+    )
 }
 
 const cities = {
