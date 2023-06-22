@@ -1,3 +1,5 @@
+import {getCityNameById} from '../../utils/cities';
+
 const defaultFrom = '09:00';
 const defaultTo = '21:00';
 
@@ -5,7 +7,8 @@ const getInitialValues = (company, schedule) => (
     {
         photos: company?.PHOTOS?.split(',') || [],
         name: company.NAME,
-        city: company.CITY,
+        city: getCityNameById(company.CITY),
+        cityId: company.CITY,
         street: company.STREET,
         phone: company.PHONE,
         monIsChecked: !!schedule.mon.from || !!schedule.mon.to,

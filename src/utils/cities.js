@@ -18,6 +18,10 @@ export const convertCitiesIds = (cityIds) => {
 
 const getRegionId = cityId => cityId - (cityId % 100)
 
+export const getCityNameById = key => {
+    return cities[key][languageKey];
+}
+
 export const getAllCities = () => {
     return convertCitiesIds(Object.keys(cities))
         .filter(cityId => cityId !== getRegionId(cityId))

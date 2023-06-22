@@ -27,7 +27,7 @@ import {
     OptionSettings, NotificationTDB, PrimaryButton,
 } from '../../components'
 
-import {ROUTER, URL} from '../../utils/config';
+import {URL} from '../../utils/config';
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {Link} from "react-router-dom";
 import {TRANSLATION, resolveTranslation} from "../../utils/translation";
