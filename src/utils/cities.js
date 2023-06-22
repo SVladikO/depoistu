@@ -1,3 +1,25 @@
+
+const languageKey = 'ua';
+
+export const convertCitiesIds = (cityIds) => {
+    const city = {};
+
+    cityIds.sort((a, b) => a > b).forEach(cityId => {
+        const regionId = cityId - (cityId % 100);
+        const regionName = cities[regionId][languageKey];
+        city[regionName] = [
+            ...(city[regionName] || []),
+            {name: cities[cityId][languageKey], id: cityId}
+        ];
+    })
+
+    return city;
+}
+
+export const getAllCities = () => {
+    return convertCitiesIds(Object.keys(cities))
+}
+
 const cities = {
         100: {ua: "Івано-Франківська", en: ""},
         101: {ua: "Богородчани", en: ""},

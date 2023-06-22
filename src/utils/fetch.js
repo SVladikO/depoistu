@@ -51,6 +51,7 @@ export const BE_API = {
     COMPANY: {
         GET_BY_CUSTOMER_ID: customer_id => `${BE_DOMAIN}/companies/by/customer/${customer_id}`,
         GET_BY_COMPANY_ID: companyId => `${BE_DOMAIN}/companies/by/id/${companyId}`,
+        GET_AVAILABLE_CITIES: () => `${BE_DOMAIN}/companies/cities`,
         GET_BY_CITY: city => `${BE_DOMAIN}/companies/by/city/${city}`,
         POST_CREATE: () => `${BE_DOMAIN}/companies`,
         PUT_UPDATE: () => `${BE_DOMAIN}/companies`,
