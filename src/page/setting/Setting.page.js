@@ -33,10 +33,9 @@ import {Link} from "react-router-dom";
 import {TRANSLATION, resolveTranslation} from "../../utils/translation";
 
 const SettingPage = () => {
-    const [customer, setCustomer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
+        const [customer, setCustomer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
 
-    if (!customer) {
-        return (
+        const singInSingUpNotification = (
             <NotificationTDB
                 title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.NOTIFICATION.TITLE)}
                 description={resolveTranslation(TRANSLATION.PAGE.SETTINGS.NOTIFICATION.DESCRIPTION)}
@@ -50,50 +49,87 @@ const SettingPage = () => {
                     </Link>
                 </EditBar>
             </NotificationTDB>
-        )
-    }
+        );
 
-    const logOut = () => {
-        LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER);
-        setCustomer(undefined);
-        LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
-    }
+        const logOut = () => {
+            LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER);
+            setCustomer(undefined);
+            LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
+        }
 
-    return (
-        <Wrapper>
-            {/*<CustomerAccountBar fullName='Jhon Smith' phone="+14844731243"/>*/}
-            {/*<RowSplitter height='20px'/>*/}
-            <AccountSettings groupTitle={resolveTranslation(TRANSLATION.PAGE.SETTINGS.GROUP_TITLE.ACCOUNTS)}>
-                {/*TODO: Hidden second version*/}
-                {/*<SettingMenuRow icon={LikeIcon} title={ROUTER.Favorite.TITLE} href={ROUTER.Favorite.URL}/>*/}
-                {/*<SettingMenuRow icon={OrderHistoryIcon} title={ROUTER.ORDER_HISTORY.TITLE} href={ROUTER.ORDER_HISTORY.URL}/>*/}
-                {/*<SettingMenuRow icon={PaymentIcon} title='Payment' href='/catalog'/>*/}
-                {/*<SettingMenuRow icon={DeliveryAddressIcon} title='Delivery Address' href='/catalog'/>*/}
-                {/*<SettingMenuRow icon={StoreIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.LOCATION)} href='/catalog'/>*/}
-                {/*<SettingMenuRow icon={ConditionsIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.TERMS)} href='/catalog'/>*/}
-                <SettingMenuRow icon={ProfileIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.EDIT_PROFILE)} href={URL.EDIT_CUSTOMER}/>
-                <SettingMenuRow icon={LockIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.CHANGE_PASS)} href={URL.CHANGE_PASSWORD}/>
-                <SettingMenuRow icon={LogOutIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.EXIT)} changeHandler={logOut}/>
-            </AccountSettings>
-            <OptionSettings noBorder groupTitle={resolveTranslation(TRANSLATION.PAGE.SETTINGS.GROUP_TITLE.FOR_BUSINESS)}>
-                <SettingMenuRow icon={StoreIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.COMPANY)}
-                                href={URL.CUSTOMER_COMPANIES}/>
-            </OptionSettings>
-            <OptionSettings groupTitle={resolveTranslation(TRANSLATION.PAGE.SETTINGS.GROUP_TITLE.OPTIONS)}>
-                {/*<SettingMenuRow icon={NewsletterIcon} title='Newsletter' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
-                {/*<SettingMenuRow icon={NotificationIcon} title='Notification' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
-                {/*<SettingMenuRow icon={PhoneCallIcon} title='Phone Call' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
-                {/*<SettingMenuRow icon={CurrencyIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.CURRENCY)} href='/catalog' label='$USD'/>*/}
-                {/*<SettingMenuRow icon={HelpIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.HELP)} href='/catalog'/>*/}
-                <SettingMenuRow icon={InfoIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.ABOUT_US)}
-                                href={URL.ABOUT_US}/>
-                <SettingMenuRow icon={TeamIcon} title={resolveTranslation(TRANSLATION.PAGE.OUR_TEAM.TOP_TITLE)}
-                                href={URL.OUR_TEAM}/>
-                {/*<SettingMenuRow icon={LanguageIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.LANGUAGE)} href='/catalog' label='English'/>*/}
-                {/*<SettingMenuRow icon={LinkedAccountIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.LINKED_ACCOUNTS)} href='/catalog' label='Facebook, go ...'/>*/}
-            </OptionSettings>
-        </Wrapper>
-    );
-};
+        return (
+            <>
+                {!customer && singInSingUpNotification}
+
+                <Wrapper>
+                    {/*<CustomerAccountBar fullName='Jhon Smith' phone="+14844731243"/>*/}
+                    {/*<RowSplitter height='20px'/>*/}
+                    {customer && (
+                        <>
+                            <AccountSettings
+                                groupTitle={resolveTranslation(TRANSLATION.PAGE.SETTINGS.GROUP_TITLE.ACCOUNTS)}>
+                                {/*TODO: Hidden second version*/}
+                                {/*<SettingMenuRow icon={LikeIcon} title={ROUTER.Favorite.TITLE} href={ROUTER.Favorite.URL}/>*/}
+                                {/*<SettingMenuRow icon={OrderHistoryIcon} title={ROUTER.ORDER_HISTORY.TITLE} href={ROUTER.ORDER_HISTORY.URL}/>*/}
+                                {/*<SettingMenuRow icon={PaymentIcon} title='Payment' href='/catalog'/>*/}
+                                {/*<SettingMenuRow icon={DeliveryAddressIcon} title='Delivery Address' href='/catalog'/>*/}
+                                {/*<SettingMenuRow icon={StoreIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.LOCATION)} href='/catalog'/>*/}
+                                {/*<SettingMenuRow icon={ConditionsIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.TERMS)} href='/catalog'/>*/}
+                                <SettingMenuRow
+                                    icon={ProfileIcon}
+                                    title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.EDIT_PROFILE)}
+                                    href={URL.EDIT_CUSTOMER}
+                                />
+                                <SettingMenuRow
+                                    icon={LockIcon}
+                                    title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.CHANGE_PASS)}
+                                    href={URL.CHANGE_PASSWORD}
+                                />
+                                <SettingMenuRow
+                                    icon={LogOutIcon}
+                                    title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.EXIT)}
+                                    changeHandler={logOut}
+                                />
+                            </AccountSettings>
+
+                            <OptionSettings
+                                noBottomBorder
+                                noTopBorder={!!customer}
+                                groupTitle={resolveTranslation(TRANSLATION.PAGE.SETTINGS.GROUP_TITLE.FOR_BUSINESS)}
+                            >
+                                <SettingMenuRow
+                                    icon={StoreIcon}
+                                    title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.COMPANY)}
+                                    href={URL.CUSTOMER_COMPANIES}
+                                />
+                            </OptionSettings>
+                        </>)
+                    }
+                    <OptionSettings
+                        noTopBorder={!!customer}
+                        groupTitle={resolveTranslation(TRANSLATION.PAGE.SETTINGS.GROUP_TITLE.OPTIONS)}>
+                        {/*<SettingMenuRow icon={NewsletterIcon} title='Newsletter' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
+                        {/*<SettingMenuRow icon={NotificationIcon} title='Notification' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
+                        {/*<SettingMenuRow icon={PhoneCallIcon} title='Phone Call' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
+                        {/*<SettingMenuRow icon={CurrencyIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.CURRENCY)} href='/catalog' label='$USD'/>*/}
+                        {/*<SettingMenuRow icon={HelpIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.HELP)} href='/catalog'/>*/}
+                        <SettingMenuRow
+                            icon={InfoIcon}
+                            title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.ABOUT_US)}
+                            href={URL.ABOUT_US}
+                        />
+                        <SettingMenuRow
+                            icon={TeamIcon}
+                            title={resolveTranslation(TRANSLATION.PAGE.OUR_TEAM.TOP_TITLE)}
+                            href={URL.OUR_TEAM}
+                        />
+                        {/*<SettingMenuRow icon={LanguageIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.LANGUAGE)} href='/catalog' label='English'/>*/}
+                        {/*<SettingMenuRow icon={LinkedAccountIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.LINKED_ACCOUNTS)} href='/catalog' label='Facebook, go ...'/>*/}
+                    </OptionSettings>
+                </Wrapper>
+            </>
+        );
+    }
+;
 
 export default SettingPage;

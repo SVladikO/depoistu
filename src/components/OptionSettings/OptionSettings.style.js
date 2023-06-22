@@ -2,8 +2,10 @@ import styled from "styled-components";
 import {BORDER_RADIUS, COLOR, hexToRgbA} from "../../utils/theme";
 
 export const Wrapper = styled.div`
-  background: ${COLOR.ACCENT4};  
-   ${p => p.noBorder ? "" : `border-radius: 0 0 ${BORDER_RADIUS.SECOND} ${BORDER_RADIUS.SECOND};`};
+  background: ${COLOR.ACCENT4};
+  overflow: hidden;
+  ${p =>
+   `border-radius: ${p.noTopBorder ? 0 : BORDER_RADIUS.SECOND} ${p.noTopBorder ? 0 : BORDER_RADIUS.SECOND} ${p.noBottomBorder ? 0 : BORDER_RADIUS.SECOND} ${p.noBottomBorder ? 0 : BORDER_RADIUS.SECOND};`};
 `;
 
 export const GroupTitle = styled.div`
