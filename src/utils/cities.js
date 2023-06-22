@@ -23,8 +23,10 @@ export const getCityNameById = key => {
 }
 
 export const getAllCities = () => {
-    return convertCitiesIds(Object.keys(cities))
-        .filter(cityId => cityId !== getRegionId(cityId))
+    return convertCitiesIds(
+        Object.keys(cities)
+            .filter(cityId => +cityId !== getRegionId(+cityId))
+    )
 }
 
 const cities = {

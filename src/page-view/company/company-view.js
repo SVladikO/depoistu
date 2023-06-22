@@ -138,7 +138,6 @@ const CompanyView = ({initialValues, onSubmit}) => {
                         <Popup.City
                             availableCities={allCities}
                             selectCity={selectCity(city => {
-                                console.log(3333, city);
                                 setFieldValue('city', city.name)
                                 setFieldValue('cityId', city.id)
                             })}
