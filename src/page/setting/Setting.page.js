@@ -93,7 +93,8 @@ const SettingPage = () => {
                             </AccountSettings>
 
                             <OptionSettings
-                                noBorder
+                                noBottomBorder
+                                noTopBorder={!!customer}
                                 groupTitle={resolveTranslation(TRANSLATION.PAGE.SETTINGS.GROUP_TITLE.FOR_BUSINESS)}
                             >
                                 <SettingMenuRow
@@ -104,7 +105,9 @@ const SettingPage = () => {
                             </OptionSettings>
                         </>)
                     }
-                    <OptionSettings groupTitle={resolveTranslation(TRANSLATION.PAGE.SETTINGS.GROUP_TITLE.OPTIONS)}>
+                    <OptionSettings
+                        noTopBorder={!!customer}
+                        groupTitle={resolveTranslation(TRANSLATION.PAGE.SETTINGS.GROUP_TITLE.OPTIONS)}>
                         {/*<SettingMenuRow icon={NewsletterIcon} title='Newsletter' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
                         {/*<SettingMenuRow icon={NotificationIcon} title='Notification' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
                         {/*<SettingMenuRow icon={PhoneCallIcon} title='Phone Call' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
