@@ -127,7 +127,7 @@ INSERT INTO MENU_ITEM (id, category_id, company_id, name, description, cooking_t
   (DEFAULT, 18,  19,  'Цезарь',                     'салат цезарь, варене куряче філе, огірок, помідор черрі, сухарики, заправка',                                      '10', 60,  '300',  'https://www.pngkey.com/png/detail/379-3791472_caesar-salad-caesar-salad-png.png');
 
 
-INSERT INTO COMPANY (id, customer_id, name, phone, city, street, join_date, schedule, photos) VALUES
+INSERT INTO COMPANY (id, customer_id, name, phone, city_id, street, join_date, schedule, photos) VALUES
   (DEFAULT, 1, 'АрмАто + 100','380665784567',  '204',    'Вінницька, 15',     '22.05.2020', '08:00-21:00, 08:00-21:00, 08:00-21:00, 08:00-21:00, 08:00-21:00,,',                         'https://cdn.pixabay.com/photo/2017/08/02/00/05/places-2568876__340.jpg, https://cdn.pixabay.com/photo/2020/01/31/07/26/chef-4807317__340.jpg, https://cdn.pixabay.com/photo/2016/11/18/14/39/beans-1834984__340.jpg'),
   (DEFAULT, 1, 'ПіццаМанія',  '380665784568',  '204',    'Теліги, 17',        '22.05.2020', '08:00-21:00, 08:00-21:00, 08:00-21:00, 08:00-21:00, 08:00-21:00,,',                         'https://cdn.pixabay.com/photo/2020/03/30/10/18/electric-scooter-4983759__340.jpg'),
   (DEFAULT, 1, 'Мрія',        '380665784565',  '204',    'Шевченка, 15',      '22.05.2020', '10:00-22:00,,,,,,',                                                                         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy-96nRwcUjyGtV1ho1qssXZbEdOLMxX8ngg&usqp=CAU, https://cdn.pixabay.com/photo/2020/10/07/12/33/cafe-5635015__340.jpg'),
