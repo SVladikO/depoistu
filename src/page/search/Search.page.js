@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-import React, {useMemo, useState} from "react";
+import React, {useEffect, useMemo, useState} from "react";
 import {useSelector} from "react-redux";
 
 import {ReactComponent as LocationIcon} from "../../icons/map_point.svg";
@@ -7,7 +7,7 @@ import {ReactComponent as LocationIcon} from "../../icons/map_point.svg";
 import {PInput, ContentContainer, Company, Notification, Popup} from "../../components";
 
 import {URL} from "../../utils/config";
-import {BE_API} from "../../utils/fetch";
+import {BE_API, fetchData} from "../../utils/fetch";
 import {useLocalStorage, useLocalStorageFetch} from "../../utils/hook";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {convertCitiesIds} from '../../utils/cities';
@@ -19,7 +19,17 @@ const SearchPage = () => {
     const [selectedCity, setSelectedCity] = useLocalStorage(LOCAL_STORAGE_KEY.COMPANY_SEARCH_SELECTED_CITY, '');
     const [selectedRegion, setSelectedRegion] = useLocalStorage(LOCAL_STORAGE_KEY.COMPANY_SEARCH_SELECTED_REGION, '');
     const [showCityPopup, setShowCityPopup] = useState(false);
-    const [cityIds] = useLocalStorageFetch(LOCAL_STORAGE_KEY.AVAILABLE_CITIES_FOR_SEARCH_COMPANIES, [], BE_API.COMPANY.GET_AVAILABLE_CITIES(), setRequestError)
+    const [cityIds, setCityIds] = useState([]);
+
+    useEffect(() => {
+        if (cityIds.length === 0) {
+            fetchData(BE_API.COMPANY.GET_AVAILABLE_CITIES())
+                .then(res => {
+                    setCityIds(res.body);
+                })
+        }
+    })
+
     const availableCitiesForSearch = convertCitiesIds(cityIds);
 
     let [companies] = useLocalStorageFetch(
@@ -39,7 +49,13 @@ const SearchPage = () => {
         closeCityPopup();
     }
 
-    const cityPopup = useMemo(() => <Popup.City selectCity={selectCity} availableCities={availableCitiesForSearch} onClose={closeCityPopup}/>, [cityIds])
+    const cityPopup = useMemo(() =>
+        <Popup.City
+            selectCity={selectCity}
+            availableCities={availableCitiesForSearch}
+            onClose={closeCityPopup}
+        />, [cityIds]
+    );
 
     if (isLoading) {
         return <Notification.Loading/>;
