@@ -106,7 +106,7 @@ const CompanyView = ({initialValues, onSubmit}) => {
                             handleClick={openCityPopup}
                             value={values.city}
                             isTouched={wasSubmitted || touched.city}
-                            errorMessage={errors.city || errors.cityId}
+                            errorMessage={errors.city || errors.city_id}
                         />
                         {}
                         <Label>Street</Label>
@@ -139,7 +139,7 @@ const CompanyView = ({initialValues, onSubmit}) => {
                             availableCities={allCities}
                             selectCity={selectCity(city => {
                                 setFieldValue('city', city.name)
-                                setFieldValue('cityId', city.id)
+                                setFieldValue('city_id', city.id)
                             })}
                             onClose={closeCityPopup}
                         />

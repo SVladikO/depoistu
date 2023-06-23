@@ -18,7 +18,7 @@ import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 //We need this variable after call LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES) on delete company success
 //when we open customer companies page it will make request to BE and user will have updated list of companies.
 const companyFakeData = {
-    CITY: '',
+    CITY_ID: '',
     SCHEDULE: ',,,,,,',
     PHOTOS: '',
     PHONE: ''
@@ -88,9 +88,9 @@ const EditCompany = () => {
     }
 
     const onSubmit = values => {
-        const {name, cityId, street, phone} = values;
+        const {name, city_id, street, phone} = values;
         const schedule = getScheduleAsString(values)
-        const reqObj = {id: companyId, name, city: cityId, street, phone, schedule, method: 'put'};
+        const reqObj = {id: companyId, name, city_id, street, phone, schedule, method: 'put'};
         setIsLoading(true);
 
         fetchData(BE_API.COMPANY.PUT_UPDATE(), reqObj)

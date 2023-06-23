@@ -25,7 +25,7 @@ const SearchPage = () => {
     let [companies] = useLocalStorageFetch(
         LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT,
         [],
-        BE_API.COMPANY.GET_BY_CITY(selectedCity.id),
+        BE_API.COMPANY.GET_BY_CITY_ID(selectedCity.id),
         setRequestError,
         () => !selectedCity
     );

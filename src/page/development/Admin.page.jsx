@@ -143,8 +143,8 @@ const checkSuccessRequest = [
         type='GET'
         title='companies by city'
         validateSuccessResponse={checkArrayOfObjects(COMPANY_FIELDS_TO_CHECK)}
-        urlForSuccess={BE_API.COMPANY.GET_BY_CITY('Вінниця')}
-        urlForError={BE_API.COMPANY.GET_BY_CITY(1)}
+        urlForSuccess={BE_API.COMPANY.GET_BY_CITY_ID('Вінниця')}
+        urlForError={BE_API.COMPANY.GET_BY_CITY_ID(1)}
     />,
     <CheckRequest
         key={4}
