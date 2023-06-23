@@ -54,6 +54,7 @@ import Checkbox from "../../components/Checkbox/Checkbox";
 import {EditBar, QRCodeButton} from "../customer-companies/CustomerCompanies.style";
 import {ReactComponent as EditIcon} from "../../icons/edit.svg";
 import {Link} from "react-router-dom";
+import {getAllCities} from "../../utils/cities";
 
 const colors = Object.keys(COLOR).map(key =>
     ({title: key, component: <ColorCircle key={key} bg={COLOR[key]}/>, value: COLOR[key], width: '50px'})
@@ -76,8 +77,14 @@ function ExampleCategoryWithSelected() {
 
 const componentsGroup1 = [
     [
-        {title: 'Checkbox', component: <Checkbox/>},
-        {title: 'ToggleCheckbox', component: <ToggleCheckbox/>},
+        {
+            title: 'Checkbox', component: <Checkbox changeHandler={() => {
+            }}/>
+        },
+        {
+            title: 'ToggleCheckbox', component: <ToggleCheckbox changeHandler={() => {
+            }}/>
+        },
         {title: 'Rating', component: <Rating>{`4.9`}</Rating>},
         {title: 'Discount', component: <Discount>{`-10`}</Discount>},
         {title: 'Price', component: <Price small={false} big>50.00</Price>},
@@ -91,23 +98,53 @@ const componentsGroup1 = [
     ],
     [
         {title: 'Label', component: <Label>Change Password</Label>},
-        {title: 'Input', component: <Input/>},
-        {title: 'Input {withCleaner}', component: <Input withCleaner value={111}/>},
-        {title: 'Input {withSwitcher}', component: <Input value={1111} withSwitcher/>},
-        {title: 'Input', component: <Input Icon={MailIcon} isTouched value="jodode@mail.com" withCleaner/>},
-        {title: 'Input', component: <Input isTouched errorMessage={'Max length 12.'} value="++380970663322"/>},
+        {
+            title: 'Input', component: <Input onChange={() => {
+            }}/>
+        },
+        {
+            title: 'Input {withCleaner}', component: <Input withCleaner value={111} onChange={() => {
+            }}/>
+        },
+        {
+            title: 'Input {withSwitcher}', component: <Input value={1111} withSwitcher onChange={() => {
+            }}/>
+        },
+        {
+            title: 'Input',
+            component: <Input Icon={MailIcon} isTouched value="jodode@mail.com" withCleaner onChange={() => {
+            }}/>
+        },
+        {
+            title: 'Input',
+            component: <Input isTouched errorMessage={'Max length 12.'} value="++380970663322" onChange={() => {
+            }}/>
+        },
     ],
     [
-        {title: 'PInput', component: <PInput withIcon Icon={LocationIcon} value={'Vinnica'}/>},
-        {title: 'FromToTime', component: <FromToTime prefix='mon' dayName='Mon' values={{}}/>},
-        {title: 'FromToTime', component: <FromToTime prefix='mon' dayName='Mon' values={{monIsChecked: true}}/>},
+        {
+            title: 'PInput', component: <PInput withIcon Icon={LocationIcon} value={'Vinnica'} handleClick={() => {
+            }}/>
+        },
+        {
+            title: 'FromToTime', component: <FromToTime prefix='mon' dayName='Mon' values={{}} handleChange={() => {
+            }}/>
+        },
+        {
+            title: 'FromToTime',
+            component: <FromToTime prefix='mon' dayName='Mon' values={{monIsChecked: true}} handleChange={() => {
+            }}/>
+        },
         {title: 'Textarea withCleaner', component: <Textarea withCleaner/>},
         {title: 'Textarea withCleaner', component: <Textarea withCleaner value={222}/>},
     ]
 ];
 const componentsGroup2 = [
     [
-        {title: 'CategoryItem', component: <CategoryItem category={{icon: LanguageIcon, title: 'Language'}} title="Sandwich"><SandwichIcon/></CategoryItem>},
+        {
+            title: 'CategoryItem',
+            component: <CategoryItem category={{icon: LanguageIcon, title: 'Language'}} title="Sandwich"><SandwichIcon/></CategoryItem>
+        },
         {
             title: 'CategoryMenuRow',
             component: <CategoryMenuRow menuItems={[{CATEGORY_ID: 1}, {CATEGORY_ID: 2}, {CATEGORY_ID: 3}]}/>
@@ -212,13 +249,23 @@ const componentsGroup3 = [
     [
         {
             title: 'SettingMenuRow',
-            component: <SettingMenuRow icon={LockIcon} title={`Change Password`} toggleHandler={() => {
-            }} toggleStatus={true}/>
+            component:
+                <SettingMenuRow
+                    icon={LockIcon}
+                    title={`Change Password`}
+                    toggleHandler={() => {
+                    }}
+                    toggleStatus={true}
+                />
         },
         {
             title: 'SettingMenuRow',
-            component: <SettingMenuRow icon={LogOutIcon} title="Only change handler"
-                                       changeHandler={() => console.log('clicked')}/>
+            component:
+                <SettingMenuRow
+                    icon={LogOutIcon}
+                    title="Only change handler"
+                    changeHandler={() => console.log('clicked')}
+                />
         },
         {
             title: 'SettingMenuRow',
@@ -274,7 +321,7 @@ const componentsGroup3 = [
             title: 'IntroPopupContent',
             component: <IntroContent>Some text Some text Some text Some text Some text</IntroContent>
         },
-        {title: 'CityPopupContent', component: <CityContent/>},
+        {title: 'CityPopupContent', component: <CityContent availableCities={getAllCities()}/>},
     ],
     [
         {
