@@ -22,6 +22,7 @@ import {
 
 import {parseSchedule} from "../../utils/company";
 import ScheduleDetails from "../Schedule/Schedule";
+import {getCityNameById} from "../../utils/cities";
 
 const Company = (props) => {
 
@@ -36,7 +37,7 @@ const Company = (props) => {
         if (props.withMoreInfo) {
             return (
                 <Location>
-                    <Address>{CITY}, {STREET}</Address>
+                    <Address>{getCityNameById(CITY)}, {STREET}</Address>
                     <RightAnchor/>
                 </Location>
             );
@@ -44,7 +45,7 @@ const Company = (props) => {
 
         return (
             <Location>
-                <Address>{CITY}, {STREET}</Address>
+                <Address>{getCityNameById(CITY)}, {STREET}</Address>
             </Location>
         )
     }
