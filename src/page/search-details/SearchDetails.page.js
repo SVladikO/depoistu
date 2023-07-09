@@ -5,14 +5,24 @@ import {Divider, Wrapper} from "./SearchDetails.style";
 
 import {CategoryMenuRow, Company, MenuItem} from "../../components";
 
-import {BE_API} from "../../utils/fetch";
-import {useLocalStorageFetch} from "../../utils/hook";
+import {BE_API, fetchData} from "../../utils/fetch";
+import {useLocalStorage} from "../../utils/hook";
 import {LOCAL_STORAGE_KEY} from "../../utils/localStorage";
 
 const SearchDetailsPage = () => {
     let companyId = +useParams().companyId;
-    const [companies] = useLocalStorageFetch(LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT, []);
+    const [companies] = useLocalStorage(LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT, []);
+    const [company, setCompany] = useState(companies?.find(c => c.ID === companyId))
     const [menuItems, setMenuItems] = useState([]);
+
+    useEffect(() => {
+        if (!company) {
+            fetchData(BE_API.COMPANY.GET_BY_COMPANY_ID(companyId))
+                .then(res => {
+                    setCompany(res.body[0]);
+                })
+        }
+    })
 
     useEffect(() => {
         fetch(BE_API.MENU_ITEM.GET_BY_COMPANY_ID(companyId))
@@ -25,7 +35,7 @@ const SearchDetailsPage = () => {
 
     return (
         <Wrapper>
-            {companies && <Company company={companies.find(c => c.ID === companyId)} withMoreInfo/>}
+            {company && <Company company={company} withMoreInfo/>}
             <Divider>Menu</Divider>
             <CategoryMenuRow menuItems={menuItems}/>
             {menuItems.map((el) => <MenuItem key={el.ID} item={el}/>)}
