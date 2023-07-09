@@ -33,15 +33,7 @@ export const ScheduleWrapper = styled.div`
   color: ${COLOR.ACCENT5};
   display: flex;
 `;
-export const ShowDetailedSchedule = styled.div`
-  border-radius: ${BORDER_RADIUS.FOURTH};
-  border: 1px solid ${COLOR.ACCENT5};
-  padding: 2px 10px 4px 10px;
-  color: ${COLOR.ACCENT5};
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 24px;
-`;
+
 export const DaySchedule = styled.div`
   font-weight: 400;
   font-size: 20px;
@@ -74,8 +66,9 @@ export const ScheduleContainer = styled.div`
 `;
 export const ScheduleContent = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  overflow-x: scroll;
   width: 100%;
+  
   & > div {
     margin: 0 1px 0 0;
   }

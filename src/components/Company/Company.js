@@ -22,7 +22,7 @@ import {
 import {ThirdButton} from "../Button/Button.style";
 
 import {parseSchedule} from "../../utils/company";
-import ScheduleDetails from "../Schedule/Schedule";
+import ScheduleDetails from "../WeekScheduleOutput/WeekScheduleOutput";
 
 const Company = (props) => {
 
@@ -41,36 +41,44 @@ const Company = (props) => {
         return <LocationWrapper>{CITY}, {STREET}</LocationWrapper>;
     }
 
+    const renderImages = () => (
+        <ImageSection>
+            <Swiper
+                modules={[Navigation, Pagination]}
+                slidesPerView={1}
+                navigation
+                pagination={{clickable: true}}
+            >
+                {PHOTOS && PHOTOS.split(', ')
+                    .map((src, i) =>
+                        <SwiperSlide key={i}>
+                            <img src={src} alt="#"/>
+                        </SwiperSlide>
+                    )
+                }
+            </Swiper>
+        </ImageSection>
+    );
+
+    const renderDaySchedule = () => (
+        <Schedule>
+            {schedule.isCompanyOpenNow
+                ? <>
+                    <OpenStatus>Open</OpenStatus>
+                    <Closes>Closes<span>{schedule.currentDay.to}</span></Closes>
+                </>
+                : <CloseStatus>Close</CloseStatus>
+            }
+        </Schedule>
+    )
+
     return (
         <Wrapper>
-            <ImageSection>
-                <Swiper
-                    modules={[Navigation, Pagination]}
-                    slidesPerView={1}
-                    navigation
-                    pagination={{clickable: true}}
-                >
-                    {PHOTOS && PHOTOS.split(', ')
-                        .map((src, i) =>
-                            <SwiperSlide key={i}>
-                                <img src={src} alt="#"/>
-                            </SwiperSlide>
-                        )
-                    }
-                </Swiper>
-            </ImageSection>
+            {renderImages()}
             <Content>
                 <CompanyInfo>
                     <Name>{NAME}</Name>
-                    <Schedule>
-                        {schedule.isCompanyOpenNow
-                            ? <>
-                                <OpenStatus>Open</OpenStatus>
-                                <Closes>Closes<span>{schedule.currentDay.to}</span></Closes>
-                            </>
-                            : <CloseStatus>Close</CloseStatus>
-                        }
-                    </Schedule>
+                    {renderDaySchedule()}
                     {renderLocation()}
                     {props.withMoreInfo && <ThirdButton><PhoneIcon/>{PHONE}</ThirdButton>}
                     {props.withMoreInfo && SCHEDULE && SCHEDULE.length && <ScheduleDetails scheduleAsArray={schedule.workDays}/>}

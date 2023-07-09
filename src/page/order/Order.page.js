@@ -9,7 +9,7 @@ import {ReactComponent as EmptyBasketIcon} from "../../icons/empty_basket.svg";
 // import {deleteAllOrders} from '../../features/order/orderSlice'
 
 import {ROUTER} from '../../utils/config'
-// import {fetchData, BE_API} from "../../Schedule.js/fetch";
+// import {fetchData, BE_API} from "../../WeekScheduleOutput.js/fetch";
 import {LocalStorage} from "../../utils/localStorage";
 
 const OrderPage = () => {
