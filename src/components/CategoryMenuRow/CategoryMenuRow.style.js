@@ -1,27 +1,22 @@
 import styled from "styled-components";
 
+export const TopCategoryWrapper = styled.div`
+  display: flex;
+`;
+export const TopCategoryItem = styled.div`
+    padding: 10px;
+  `;
+
 export const Flex = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  
   .swiper{
     display: flex;
     width: 100%;
     padding: 2px;
-  }
-  .swiper-slide {
-    flex-shrink: 100 !important;
-    max-width: 97px;
-    min-width: 97px;
-    height: 100px;
-  }
-  .swiper-slide-active{
-    text-align: left;
-    flex-shrink: 0 !important;
-    min-width: 97px;
-    max-width: 97px;
-    object-fit: cover;
   }
   
   & > a {

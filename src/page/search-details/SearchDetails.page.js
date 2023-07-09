@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {useParams} from 'react-router-dom';
 
 import {Divider, Wrapper} from "./SearchDetails.style";
@@ -13,6 +13,9 @@ const SearchDetailsPage = () => {
     let companyId = +useParams().companyId;
     const [companies] = useLocalStorageFetch(LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT, []);
     const [menuItems, setMenuItems] = useState([]);
+    const [selectedSubCategoryId, setSelectedSubCategoryId]= useState(0);
+
+    const changeSubCategory = useCallback(id => setSelectedSubCategoryId(id), [selectedSubCategoryId]);
 
     useEffect(() => {
         fetch(BE_API.MENU_ITEM.GET_BY_COMPANY_ID(companyId))
@@ -27,7 +30,11 @@ const SearchDetailsPage = () => {
         <Wrapper>
             {companies && <Company company={companies.find(c => c.ID === companyId)} withMoreInfo/>}
             <Divider>Menu</Divider>
-            <CategoryMenuRow menuItems={menuItems}/>
+            <CategoryMenuRow
+                menuItems={menuItems}
+                selectedCategoryId={selectedSubCategoryId}
+                changeCategory={changeSubCategory}
+            />
             {menuItems.map((el) => <MenuItem key={el.ID} item={el}/>)}
         </Wrapper>
     );

@@ -246,7 +246,21 @@ export const TRANSLATION = {
             en: "Account"
         },
     },
-    CATEGORIES: {
+    TOP_CATEGORIES: {
+        KITCHEN: {
+            ua: "KITCHEN",
+            en: "KITCHEN",
+        },
+        DESERT: {
+            ua: "DESERT",
+            en: "DESERT",
+        },
+        DRINKS: {
+            ua: "DRINKS",
+            en: "DRINKS",
+        },
+    },
+    SUB_CATEGORIES: {
         BAKERY: {
             ua: "Випiчка",
             en: "Bakery",
