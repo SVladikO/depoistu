@@ -23,7 +23,7 @@ const MenuItem = ({item = {}, withEditIcon = false, onEditClick}) => {
             <Flex justifyContent="stretch">
                 <ImagesWrapper>
                     <FoodImage src={IMAGE_URL} onClick={() => setImageUrl(IMAGE_URL)} />
-                    <ZoomIcon onClick={() => alert('zoom')}/>
+                    <ZoomIcon />
                 </ImagesWrapper>
                 <Flex flexDirection='column' width='80%'>
                     <Flex justifyContent="space-between">
