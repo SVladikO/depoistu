@@ -24,6 +24,7 @@ import {ReactComponent as DeleteBasketIcon} from "../../icons/delete_basket.svg"
 
 import validation from "../../utils/validation";
 import {isScheduleValid} from "../../utils/company";
+import {getAllCities} from '../../utils/cities'
 
 const renderCompanyPhotos = (photos, setPictures) => {
     const deleteImage = index => setPictures(photos.filter((_, i) => i !== index));
@@ -60,6 +61,8 @@ const CompanyView = ({initialValues, onSubmit}) => {
 
     const openCityPopup = () => setShowCityPopup(true);
     const closeCityPopup = () => setShowCityPopup(false);
+
+    const allCities = getAllCities();
 
     const selectCity = callback => ([city]) => {
         callback(city);
@@ -103,8 +106,9 @@ const CompanyView = ({initialValues, onSubmit}) => {
                             handleClick={openCityPopup}
                             value={values.city}
                             isTouched={wasSubmitted || touched.city}
-                            errorMessage={errors.city}
+                            errorMessage={errors.city || errors.city_id}
                         />
+                        {}
                         <Label>Street</Label>
                         <Input
                             name='street'
@@ -130,8 +134,16 @@ const CompanyView = ({initialValues, onSubmit}) => {
                         <WeekScheduleInput values={values} handleChange={handleChange}/>
                         {wasSubmitted && !isScheduleValid(values) && <WarningMessage>Schedule is a required field</WarningMessage>}
                     </ContentContainer>
-                    {showCityPopup && <Popup.City selectCity={selectCity(city => setFieldValue('city', city))}
-                                                  onClose={closeCityPopup}/>}
+                    {showCityPopup && (
+                        <Popup.City
+                            availableCities={allCities}
+                            selectCity={selectCity(city => {
+                                setFieldValue('city', city.name)
+                                setFieldValue('city_id', city.id)
+                            })}
+                            onClose={closeCityPopup}
+                        />
+                    )}
                     <PrimaryButton type={'submit'} isWide>Save changes</PrimaryButton>
                 </form>
             )}

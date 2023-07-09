@@ -22,7 +22,7 @@ export const useLocalStorageFetch = (storageKey, initialState, url, setError = (
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (localStorageState || customCondition()) {
+        if (localStorageState || customCondition(value)) {
             return;
         }
 

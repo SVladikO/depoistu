@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-import React, {useState} from "react";
+import React, {useEffect, useMemo, useState} from "react";
 import {useSelector} from "react-redux";
 
 import {ReactComponent as LocationIcon} from "../../icons/location.svg";
@@ -7,9 +7,10 @@ import {ReactComponent as LocationIcon} from "../../icons/location.svg";
 import {PInput, ContentContainer, Company, Notification, Popup} from "../../components";
 
 import {URL} from "../../utils/config";
-import {BE_API} from "../../utils/fetch";
+import {BE_API, fetchData} from "../../utils/fetch";
 import {useLocalStorage, useLocalStorageFetch} from "../../utils/hook";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
+import {convertCitiesIds} from '../../utils/cities';
 
 const SearchPage = () => {
     const [requestError, setRequestError] = useState('');
@@ -18,11 +19,23 @@ const SearchPage = () => {
     const [selectedCity, setSelectedCity] = useLocalStorage(LOCAL_STORAGE_KEY.COMPANY_SEARCH_SELECTED_CITY, '');
     const [selectedRegion, setSelectedRegion] = useLocalStorage(LOCAL_STORAGE_KEY.COMPANY_SEARCH_SELECTED_REGION, '');
     const [showCityPopup, setShowCityPopup] = useState(false);
+    const [cityIds, setCityIds] = useState([]);
+
+    useEffect(() => {
+        if (cityIds.length === 0) {
+            fetchData(BE_API.COMPANY.GET_AVAILABLE_CITIES())
+                .then(res => {
+                    setCityIds(res.body);
+                })
+        }
+    })
+
+    const availableCitiesForSearch = convertCitiesIds(cityIds);
 
     let [companies] = useLocalStorageFetch(
         LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT,
         [],
-        BE_API.COMPANY.GET_BY_CITY(selectedCity),
+        BE_API.COMPANY.GET_BY_CITY_ID(selectedCity.id),
         setRequestError,
         () => !selectedCity
     );
@@ -36,12 +49,19 @@ const SearchPage = () => {
         closeCityPopup();
     }
 
+    const cityPopup = useMemo(() =>
+        <Popup.City
+            selectCity={selectCity}
+            availableCities={availableCitiesForSearch}
+            onClose={closeCityPopup}
+        />, [cityIds]
+    );
+
     if (isLoading) {
         return <Notification.Loading/>;
     }
 
     // If we use useLocalStorageFetch than we need below code to handle error.
-
     return (
         <>
             {requestError && <Notification.Error message={requestError}/>}
@@ -50,7 +70,7 @@ const SearchPage = () => {
                     handleClick={openCityPopup}
                     withIcon
                     Icon={LocationIcon}
-                    value={(selectedCity && `${selectedCity}, ${selectedRegion} обл`) || ''}
+                    value={(selectedCity && `${selectedCity.name}, ${selectedRegion} обл`) || ''}
                     placeholder={"Choose city"}
                 />
             </ContentContainer>
@@ -63,7 +83,7 @@ const SearchPage = () => {
                     </Link>
                 )
             }
-            {showCityPopup && <Popup.City selectCity={selectCity} onClose={closeCityPopup}/>}
+            {showCityPopup && cityPopup}
         </>
     );
 };

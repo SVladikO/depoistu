@@ -23,6 +23,7 @@ import {ThirdButton} from "../Button/Button.style";
 
 import {parseSchedule} from "../../utils/company";
 import ScheduleDetails from "../WeekScheduleOutput/WeekScheduleOutput";
+import {getCityNameById} from "../../utils/cities";
 
 const Company = (props) => {
 
@@ -30,15 +31,15 @@ const Company = (props) => {
         return;
     }
 
-    const {PHOTOS, NAME, CITY, STREET, PHONE, SCHEDULE} = props.company
+    const {PHOTOS, NAME, CITY_ID, STREET, PHONE, SCHEDULE} = props.company
     const schedule = parseSchedule(SCHEDULE);
 
     const renderLocation = () => {
         if (props.withMoreInfo) {
-            return <ThirdButton><LocationIcon/>{CITY}, {STREET}</ThirdButton>
+            return <ThirdButton><LocationIcon/>{getCityNameById(CITY_ID)}, {STREET}</ThirdButton>
         }
 
-        return <LocationWrapper>{CITY}, {STREET}</LocationWrapper>;
+        return <LocationWrapper>{getCityNameById(CITY_ID)}, {STREET}</LocationWrapper>;
     }
 
     const renderImages = () => (
