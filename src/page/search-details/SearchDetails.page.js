@@ -22,7 +22,7 @@ const SearchDetailsPage = () => {
                     setCompany(res.body[0]);
                 })
         }
-    })
+    }, [companyId])
 
     useEffect(() => {
         fetch(BE_API.MENU_ITEM.GET_BY_COMPANY_ID(companyId))
@@ -31,7 +31,7 @@ const SearchDetailsPage = () => {
             .then(result => {
                 setMenuItems(result)
             });
-    }, []);
+    }, [companyId]);
 
     return (
         <Wrapper>
