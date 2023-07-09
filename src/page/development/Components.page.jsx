@@ -29,7 +29,8 @@ import
     Textarea,
     Company,
     Label,
-    CloseButton
+    CloseButton,
+    MenuItemDetails
 } from "../../components";
 
 import CatalogPage from "./Catalog.page";
@@ -117,6 +118,36 @@ const componentsGroup2 = [
         },
     ],
     [
+        {
+            title: 'MenuItemDetails',
+            component:
+                <MenuItemDetails
+                          item={{
+                              ID: 10,
+                              NAME: '4 Cheese',
+                              DESCRIPTION: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella',
+                              IMAGE_URL: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
+                              COOKING_TIME: 15,
+                              PRICE: 170,
+                              SIZE: 150,
+                          }}
+                />
+        },
+        {
+            title: 'MenuItem',
+            component:
+                <MenuItem
+                          item={{
+                              ID: 10,
+                              NAME: '4 Cheese',
+                              DESCRIPTION: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella',
+                              IMAGE_URL: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
+                              COOKING_TIME: 15,
+                              PRICE: 170,
+                              SIZE: 150,
+                          }}
+                />
+        },
         {
             title: 'MenuItem',
             component:

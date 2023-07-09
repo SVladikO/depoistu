@@ -5,9 +5,7 @@ export const ImageContent = (props) => (
         <ImageWrapper onClick={e => e.stopPropagation()}>
             <Image src={props.imageUrl}/>
         </ImageWrapper>
-        <div>
-            {props.children}
-        </div>
+        {props.children}
     </Wrapper>
 
 );

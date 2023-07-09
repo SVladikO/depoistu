@@ -57,7 +57,7 @@ export const InvisibleDivider = styled.div`
 export const EditWrapper = styled.div`
   display: flex;
   align-items: center;
-  svg{
+  svg {
     width: 14px;
     height: 14px;
     color: ${COLOR.ACCENT3};
