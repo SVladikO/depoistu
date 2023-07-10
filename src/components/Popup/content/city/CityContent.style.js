@@ -6,11 +6,9 @@ export const Wrapper = styled.div`
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: start;
   position: relative;
-  min-height: 355px;
-  max-height: 355px;
+  max-height: 500px;
   background-color: ${COLOR.ACCENT4};
   border-radius: ${BORDER_RADIUS.SECOND};
   z-index: 100;
