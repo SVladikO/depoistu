@@ -13,7 +13,7 @@ const SearchDetailsPage = () => {
     let companyId = +useParams().companyId;
     const [companies] = useLocalStorageFetch(LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT, []);
     const [menuItems, setMenuItems] = useState([]);
-    const [selectedSubCategoryId, setSelectedSubCategoryId]= useState(0);
+    const [selectedSubCategoryId, setSelectedSubCategoryId] = useState(0);
 
     const changeSubCategory = useCallback(id => setSelectedSubCategoryId(id), [selectedSubCategoryId]);
 
@@ -35,7 +35,11 @@ const SearchDetailsPage = () => {
                 selectedCategoryId={selectedSubCategoryId}
                 changeCategory={changeSubCategory}
             />
-            {menuItems.map((el) => <MenuItem key={el.ID} item={el}/>)}
+            {
+                menuItems
+                    .filter(mi => mi.CATEGORY_ID === selectedSubCategoryId)
+                    .map(el => <MenuItem key={el.ID} item={el}/>)
+            }
         </Wrapper>
     );
 };
