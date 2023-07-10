@@ -40,8 +40,8 @@ export const ImagesWrapper = styled.div`
 `;
 
 export const FoodImage = styled.img`
-  width: 100%;
-  height: auto;
+  width: 90px;
+  height: 90px;
   border-radius: ${BORDER_RADIUS.CIRCLE};
 `;
 
