@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   border: solid 1px ${p => p.isSelected ? COLOR.ACCENT3 : COLOR.ACCENT5};
   border-radius: ${BORDER_RADIUS.FOURTH};
   color: ${props => props.isSelected ? COLOR.ACCENT3 : COLOR.ACCENT1};
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 700;
   margin: 6px 0 0;
   text-align: center;

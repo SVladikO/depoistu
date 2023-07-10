@@ -1,8 +1,11 @@
 import React, {memo, useEffect, useState} from 'react';
-import {Swiper, SwiperSlide} from "swiper/react";
-
+import  { Scrollbar, FreeMode} from 'swiper';
+import {Swiper, SwiperSlide } from 'swiper/react';
+// Scrollbar, FreeMode, Navigation, Pagination
 import "swiper/css";
 import "swiper/css/pagination";
+import 'swiper/css/scrollbar';
+// import 'swiper/css/freemode';
 
 import {TopCategoryWrapper, TopCategoryItem} from "./CategoryMenuRow.style";
 
@@ -47,6 +50,9 @@ const CategoryMenuRow = ({
 
     const renderSubCategories = () => (
         <Swiper
+            modules={[Scrollbar, FreeMode]}
+            scrollbar={{enabled: true, hide: true, draggable: true}}
+            freeMode={{enabled: true, momentum: true,momentumBounce: true}}
             slidesPerView={3}
             spaceBetween={10}
             className="category-slider"
