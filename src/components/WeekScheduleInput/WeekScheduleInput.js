@@ -1,8 +1,7 @@
 import {FromToTime} from "../index";
 import React from "react";
 
-
-function WeekSchedule({values, handleChange}) {
+function WeekScheduleInput({values, handleChange}) {
     const days = ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'];
     const prefixes = [ 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
@@ -17,4 +16,4 @@ function WeekSchedule({values, handleChange}) {
     )
 }
 
-export default WeekSchedule
+export default WeekScheduleInput;

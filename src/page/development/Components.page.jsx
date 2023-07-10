@@ -19,6 +19,7 @@ import
     Notification,
     NavigationHeader,
     FromToTime,
+    ThirdButton,
     CustomerAccountBar,
     NavigationLabelHref,
     BottomMenu,
@@ -49,7 +50,7 @@ import OptionSettings from "../../components/OptionSettings/OptionSettings";
 import ImageContent from "../../components/Popup/content/image/ImageContent";
 import IntroContent from "../../components/Popup/content/info/InfoContent";
 import CityContent from "../../components/Popup/content/city/CityContent"
-import {ReactComponent as LocationIcon} from "../../icons/map_point.svg";
+import {ReactComponent as LocationIcon} from "../../icons/location.svg";
 import Checkbox from "../../components/Checkbox/Checkbox";
 import {EditBar, QRCodeButton} from "../customer-companies/CustomerCompanies.style";
 import {ReactComponent as EditIcon} from "../../icons/edit.svg";
@@ -94,6 +95,7 @@ const componentsGroup1 = [
         {title: 'PrimaryButton', component: <PrimaryButton>Sing in</PrimaryButton>},
         {title: 'SecondaryButton', component: <SecondaryButton><FacebookIcon/>facebook</SecondaryButton>},
         {title: 'SecondaryButton', component: <SecondaryButton>Cancel</SecondaryButton>},
+        {title: 'ThirdButton', component: <ThirdButton><FacebookIcon/>Cancel</ThirdButton>},
         {title: 'CloseButton', component: <CloseButton clickHandler={() => alert('clicked')}/>},
     ],
     [
@@ -216,6 +218,7 @@ const componentsGroup2 = [
                     CITY_ID: '204',
                     SCHEDULE: '01:00-21:00, 01:00-21:00, 01:00-21:00, 01:00-21:00, 01:00-21:00, 01:00-22:00, 01:00-22:00',
                     STREET: 'Davidusk 15.',
+                    PHONE: '38 097 066 8820'
                 }}
             />
         },

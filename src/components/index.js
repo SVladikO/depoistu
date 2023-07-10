@@ -1,6 +1,7 @@
 import {
     PrimaryButton,
     SecondaryButton,
+    ThirdButton,
 } from "./Button/Button.style";
 
 import {Input, PInput, Textarea} from "./Input/Input";
@@ -32,7 +33,7 @@ import MenuItem from "./MenuItem/MenuItem";
 import OrderHistoryRow from "./OrderHistoryRow/OrderHistoryRow";
 import OrderIconWithCounter from "./OrderIconWithCounter/OrderIconWithCounter.jsx";
 import Popup from "./Popup/Popup";
-import WeekSchedule from "./WeekSchedule/WeekSchedule";
+import WeekScheduleInput from "./WeekScheduleInput/WeekScheduleInput";
 import Company from "./Company/Company";
 import CategoryMenuRow from "./CategoryMenuRow/CategoryMenuRow";
 import EditMenuRow from "./EditMenuRow/EditMenuRow";
@@ -49,7 +50,8 @@ export {
     Like,
     Checkbox,
     Rating,
-    WeekSchedule,
+    WeekScheduleInput,
+    ThirdButton,
     CategoryMenuRow,
     NotificationTDB,
     RowSplitter,

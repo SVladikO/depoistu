@@ -1,5 +1,8 @@
 import React, {useState} from "react";
-import {Day, DetailedLink, ScheduleContainer, ScheduleContent, ScheduleWrapper} from "./Schedule.style";
+
+import {DaySchedule, From, To, ScheduleContainer, ScheduleContent, ScheduleWrapper} from "./WeekScheduleOutput.style";
+
+import {ThirdButton} from '../Button/Button.style';
 
 const ScheduleDetails = ({scheduleAsArray}) => {
     const [isWeekScheduleVisible, setIsWeekScheduleVisible] = useState(false);
@@ -15,9 +18,9 @@ const ScheduleDetails = ({scheduleAsArray}) => {
                             <ScheduleWrapper key={i.toString()}>
                                 <ScheduleContainer>
                                     <div>
-                                        <Day isToday={isToday}>{dayName}</Day>
-                                        <div>{from}</div>
-                                        <div>{to}</div>
+                                        <DaySchedule isToday={isToday}>{dayName}</DaySchedule>
+                                        <From isToday={isToday}>{from}</From>
+                                        <To isToday={isToday}>{to}</To>
                                     </div>
                                 </ScheduleContainer>
                             </ScheduleWrapper>
@@ -29,9 +32,9 @@ const ScheduleDetails = ({scheduleAsArray}) => {
     }
 
     return (
-        <DetailedLink onClick={() => setIsWeekScheduleVisible(true)}>
+        <ThirdButton onClick={() => setIsWeekScheduleVisible(true)}>
             Show schedule
-        </DetailedLink>
+        </ThirdButton>
     )
 }
 
