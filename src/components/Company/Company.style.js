@@ -100,7 +100,7 @@ export const LocationWrapper = styled.div`
   border: ${props => props.withAdditionalStyles ? `1px solid ${COLOR.ACCENT5}` : 'none'};
   padding: ${props => props.withAdditionalStyles ? '2px 10px 4px 10px' : '0'};
   margin: 0 0 10px 0;
-  color: ${COLOR.ACCENT1};
+  color: ${COLOR.ACCENT5};
 `;
 
 export const Address = styled.div`
