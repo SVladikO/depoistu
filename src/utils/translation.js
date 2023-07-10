@@ -255,9 +255,9 @@ export const TRANSLATION = {
             ua: "DESERT",
             en: "DESERT",
         },
-        DRINKS: {
-            ua: "DRINKS",
-            en: "DRINKS",
+        BAR: {
+            ua: "BAR",
+            en: "BAR",
         },
     },
     SUB_CATEGORIES: {

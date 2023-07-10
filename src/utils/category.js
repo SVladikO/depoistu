@@ -41,14 +41,14 @@ export const CATEGORY_MAPPER = {
 export const TOP_CATEGORIES = {
     KITCHEN: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
     DESERT: [24, 25],
-    DRINKS: [26, 27, 28, 29, 30],
+    BAR: [26, 27, 28, 29, 30],
 }
 
 export const getTopCategories = (menuCategoryIds = []) => {
     const topCategories = {
         KITCHEN: {ids: [], translationKey: TR.TOP_CATEGORIES.KITCHEN},
         DESERT: {ids: [], translationKey: TR.TOP_CATEGORIES.DESERT},
-        DRINKS: {ids: [], translationKey: TR.TOP_CATEGORIES.DRINKS},
+        BAR: {ids: [], translationKey: TR.TOP_CATEGORIES.BAR},
     }
 
     menuCategoryIds.forEach(id => {
@@ -58,8 +58,8 @@ export const getTopCategories = (menuCategoryIds = []) => {
         if (TOP_CATEGORIES.DESERT.includes(id)) {
             topCategories.DESERT.ids.push(id)
         }
-        if (TOP_CATEGORIES.DRINKS.includes(id)) {
-            topCategories.DRINKS.ids.push(id)
+        if (TOP_CATEGORIES.BAR.includes(id)) {
+            topCategories.BAR.ids.push(id)
         }
     })
 
