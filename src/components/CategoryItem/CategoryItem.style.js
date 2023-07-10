@@ -8,7 +8,6 @@ export const Wrapper = styled.div`
   color: ${props => props.isSelected ? COLOR.ACCENT3 : COLOR.ACCENT1};
   font-size: 16px;
   font-weight: 700;
-  margin: 6px 0 0;
   text-align: center;
   line-height: 14px;
 `;

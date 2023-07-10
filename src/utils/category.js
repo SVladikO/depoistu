@@ -30,7 +30,7 @@ export const CATEGORY_MAPPER = {
     22: {id: 22, title: resolveTranslation(TR.SUB_CATEGORIES.SAUCES), measurement: MEASUREMENTS.WEIGHT},
     23: {id: 23, title: resolveTranslation(TR.SUB_CATEGORIES.ADDICTIVES), measurement: MEASUREMENTS.LIQUID},
     24: {id: 24, title: resolveTranslation(TR.SUB_CATEGORIES.BAKERY), measurement: MEASUREMENTS.WEIGHT},
-    25: {id: 25, title: resolveTranslation(TR.SUB_CATEGORIES.DESERTS), measurement: MEASUREMENTS.WEIGHT},
+    25: {id: 25, title: resolveTranslation(TR.SUB_CATEGORIES.DESSERTS), measurement: MEASUREMENTS.WEIGHT},
     26: {id: 26, title: resolveTranslation(TR.SUB_CATEGORIES.DRINKS), measurement: MEASUREMENTS.LIQUID},
     27: {id: 27, title: resolveTranslation(TR.SUB_CATEGORIES.HOT_DRINKS), measurement: MEASUREMENTS.LIQUID},
     28: {id: 28, title: resolveTranslation(TR.SUB_CATEGORIES.COCKTAILS), measurement: ''},
@@ -40,14 +40,14 @@ export const CATEGORY_MAPPER = {
 
 export const TOP_CATEGORIES = {
     KITCHEN: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
-    DESERT: [24, 25],
+    DESSERTS: [24, 25],
     BAR: [26, 27, 28, 29, 30],
 }
 
 export const getTopCategories = (menuCategoryIds = []) => {
     const topCategories = {
         KITCHEN: {ids: [], translationKey: TR.TOP_CATEGORIES.KITCHEN},
-        DESERT: {ids: [], translationKey: TR.TOP_CATEGORIES.DESERT},
+        DESSERTS: {ids: [], translationKey: TR.TOP_CATEGORIES.DESSERTS},
         BAR: {ids: [], translationKey: TR.TOP_CATEGORIES.BAR},
     }
 
@@ -55,8 +55,8 @@ export const getTopCategories = (menuCategoryIds = []) => {
         if (TOP_CATEGORIES.KITCHEN.includes(id)) {
             topCategories.KITCHEN.ids.push(id)
         }
-        if (TOP_CATEGORIES.DESERT.includes(id)) {
-            topCategories.DESERT.ids.push(id)
+        if (TOP_CATEGORIES.DESSERTS.includes(id)) {
+            topCategories.DESSERTS.ids.push(id)
         }
         if (TOP_CATEGORIES.BAR.includes(id)) {
             topCategories.BAR.ids.push(id)

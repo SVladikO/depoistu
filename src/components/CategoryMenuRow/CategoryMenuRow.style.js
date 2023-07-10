@@ -16,24 +16,15 @@ export const TopCategoryItem = styled.div`
   border-bottom: solid 2px ${p => p.isSelected ? COLOR.ACCENT3 : ''};;
 `;
 
-export const Flex = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-
+export const SliderStyle = styled.div`
+  height: 36px;
   .swiper {
     display: flex;
     width: 100%;
-    padding: 2px;
+    padding: 0 0 10px 0;
   }
-
-  & > a {
-    margin: 15px 0 0;
-  }
-
-  & > a:first-child,
-  & > a:nth-child(2) {
-    margin: 0;
+  .swiper-slide {
+      width: auto !important;
+      min-width: 100px;
   }
 `;
