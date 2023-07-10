@@ -61,7 +61,7 @@ export const Description = styled.div`
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
-  margin: 4px 0 28px 0;
+  margin: 4px 0 18px 0;
 `;
 export const InvisibleDivider = styled.div`
   opacity: 0;
@@ -71,7 +71,7 @@ export const InvisibleDivider = styled.div`
 export const EditWrapper = styled.div`
   display: flex;
   align-items: center;
-  svg{
+  svg {
     width: 14px;
     height: 14px;
     color: ${COLOR.ACCENT3};
@@ -88,7 +88,7 @@ export const EditLabel = styled.span`
 export const AdditionalDetails = styled.div`
   display: flex;
   align-items: center;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 16px;
   line-height: 19px;
   color: ${COLOR.ACCENT5};

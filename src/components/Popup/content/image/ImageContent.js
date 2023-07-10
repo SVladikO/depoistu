@@ -1,11 +1,12 @@
-import {Wrapper, Image} from './ImageContent.style';
+import {Wrapper, Image, ImageWrapper} from './ImageContent.style';
 
-export const ImageContent = ({imageUrl}) => (
-    <div>
-        <Wrapper onClick={e => e.stopPropagation()}>
-            <Image src={imageUrl}/>
-        </Wrapper>
-    </div>
+export const ImageContent = (props) => (
+    <Wrapper>
+        <ImageWrapper onClick={e => e.stopPropagation()}>
+            <Image src={props.imageUrl}/>
+        </ImageWrapper>
+        {props.children}
+    </Wrapper>
 
 );
 

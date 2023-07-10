@@ -3,7 +3,7 @@ import {useParams, Link} from "react-router-dom";
 
 import {Wrapper, Title, NestedContent, MainContent} from "./NavigationHeader.style";
 
-// import {ROUTER} from "../../Schedule.js/config";
+// import {ROUTER} from "../../WeekScheduleOutput.js/config";
 // import {OrderIconWithCounter} from "../index";
 
 import {ReactComponent as BackArrow} from "../../icons/back_arrow.svg";
