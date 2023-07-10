@@ -67,8 +67,6 @@ const CategoryMenuRow = ({
 
 
     useEffect(() => {
-        console.log(777, menuItems, showAllCategories);
-
         if (!menuItems.length && !showAllCategories) {
             return
         }
