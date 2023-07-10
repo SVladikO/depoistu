@@ -13,10 +13,10 @@ import {
     Popup,
     PrimaryButton,
     SecondaryButton,
-    WeekSchedule
+    WeekScheduleInput
 } from "../../components";
 
-import {ReactComponent as LocationIcon} from "../../icons/map_point.svg";
+import {ReactComponent as LocationIcon} from "../../icons/location.svg";
 
 import {WarningMessage} from "../../components/Input/Input.style";
 
@@ -131,7 +131,7 @@ const CompanyView = ({initialValues, onSubmit}) => {
                             withCleaner
                         />
                         <Label>Work Schedule</Label>
-                        <WeekSchedule values={values} handleChange={handleChange}/>
+                        <WeekScheduleInput values={values} handleChange={handleChange}/>
                         {wasSubmitted && !isScheduleValid(values) && <WarningMessage>Schedule is a required field</WarningMessage>}
                     </ContentContainer>
                     {showCityPopup && (
