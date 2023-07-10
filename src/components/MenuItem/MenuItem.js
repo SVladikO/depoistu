@@ -7,18 +7,22 @@ import {
     Description,
     AdditionalDetails,
     EditWrapper,
+    ImagesWrapper,
     EditLabel
 } from "./MenuItem.style";
 
-import {Price, Flex, Like, Popup} from "../index";
+import {Price, Flex, Popup} from "../index";
 import {ReactComponent as TimeIcon} from "../../icons/time.svg";
 import {ReactComponent as MeasureIcon} from "../../icons/sss.svg";
 import {ReactComponent as BasketIcon} from "../../icons/basket.svg";
+import {ReactComponent as ZoomIcon} from "../../icons/zoom.svg";
 import {ReactComponent as EditIcon} from "../../icons/edit.svg";
 import {URL} from "../../utils/config";
 
 export const MenuItemDetails = ({item = {}, withEditIcon = false, onEditClick}) => {
     const {NAME, DESCRIPTION, PRICE, COOKING_TIME, SIZE, isLiked} = item;
+
+
 
     return (
         <Flex flexDirection='column'>
@@ -52,7 +56,10 @@ const MenuItem = props => {
     return (
         <Wrapper className='pm-MenuItem'>
             <Flex justifyContent="stretch">
-                <FoodImage src={IMAGE_URL} onClick={() => setImageUrl(IMAGE_URL)}/>
+                <ImagesWrapper>
+                    <FoodImage src={IMAGE_URL} onClick={() => setImageUrl(IMAGE_URL)} />
+                    <ZoomIcon />
+                </ImagesWrapper>
                 <MenuItemDetails {...props} />
             </Flex>
             {imageUrl && <Popup.Image imageUrl={imageUrl} onClose={() => setImageUrl('')}>

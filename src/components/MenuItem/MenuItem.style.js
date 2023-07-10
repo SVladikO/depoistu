@@ -19,8 +19,7 @@ export const Wrapper = styled.div`
     height: 25px;
   }
 `
-
-export const FoodImage = styled.img`
+export const ImagesWrapper = styled.div`
   min-width: 90px;
   min-height: 90px;
   max-width: 90px;
@@ -29,6 +28,21 @@ export const FoodImage = styled.img`
   border-radius: ${BORDER_RADIUS.CIRCLE};
   border: solid 1px ${COLOR.ACCENT4};
   margin: 0 10px 0 0;
+  position: relative;
+  svg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    color: ${COLOR.ACCENT5};
+  }
+`;
+
+export const FoodImage = styled.img`
+  width: 90px;
+  height: 90px;
+  border-radius: ${BORDER_RADIUS.CIRCLE};
 `;
 
 export const Title = styled.div`
