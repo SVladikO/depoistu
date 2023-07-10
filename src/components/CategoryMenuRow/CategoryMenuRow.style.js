@@ -4,7 +4,6 @@ import {COLOR} from "../../utils/theme";
 export const TopCategoryWrapper = styled.div`
   display: flex;
   &:after {
-    content: " 🦄";
     border-bottom: solid 2px ${COLOR.ACCENT5};
   }
 `;
