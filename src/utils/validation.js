@@ -136,6 +136,7 @@ const company_validation = {
         .min(COMPANY.NAME.MIN, `Min length ${COMPANY.NAME.MIN}`)
         .max(COMPANY.NAME.MAX, `Max length ${COMPANY.NAME.MAX}`),
     city: Yup.string().required(`Required`),
+    city_id: Yup.string().required(`city_id is required.`),
     street: Yup.string()
         .required(`Required`)
         .min(COMPANY.STREET.MIN, `Min length ${COMPANY.STREET.MIN}`)

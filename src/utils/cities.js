@@ -1,3 +1,34 @@
+
+const languageKey = 'ua';
+
+export const convertCitiesIds = (cityIds) => {
+    const city = {};
+
+    cityIds.sort((a, b) => a > b).forEach(cityId => {
+        const regionId = getRegionId(cityId);
+        const regionName = cities[regionId][languageKey];
+        city[regionName] = [
+            ...(city[regionName] || []),
+            {name: cities[cityId][languageKey], id: cityId}
+        ];
+    })
+
+    return city;
+}
+
+const getRegionId = cityId => cityId - (cityId % 100)
+
+export const getCityNameById = key => {
+    return cities[key] && cities[key][languageKey];
+}
+
+export const getAllCities = () => {
+    return convertCitiesIds(
+        Object.keys(cities)
+            .filter(cityId => +cityId !== getRegionId(+cityId))
+    )
+}
+
 const cities = {
         100: {ua: "Івано-Франківська", en: ""},
         101: {ua: "Богородчани", en: ""},
