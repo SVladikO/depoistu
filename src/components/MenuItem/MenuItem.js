@@ -1,49 +1,64 @@
 import {Link} from "react-router-dom";
 import {useState} from "react";
-import {Wrapper, FoodImage, Title, Description, AdditionalDetails, InvisibleDivider, EditWrapper, EditLabel} from "./MenuItem.style";
+import {
+    Wrapper,
+    FoodImage,
+    Title,
+    Description,
+    AdditionalDetails,
+    EditWrapper,
+    EditLabel
+} from "./MenuItem.style";
 
-import {Price, Flex, Absolute, Like, Popup} from "../index";
+import {Price, Flex, Like, Popup} from "../index";
 import {ReactComponent as TimeIcon} from "../../icons/time.svg";
 import {ReactComponent as MeasureIcon} from "../../icons/sss.svg";
 import {ReactComponent as BasketIcon} from "../../icons/basket.svg";
 import {ReactComponent as EditIcon} from "../../icons/edit.svg";
 import {URL} from "../../utils/config";
 
+export const MenuItemDetails = ({item = {}, withEditIcon = false, onEditClick}) => {
+    const {NAME, DESCRIPTION, PRICE, COOKING_TIME, SIZE, isLiked} = item;
 
+    return (
+        <Flex flexDirection='column'>
+            <Flex justifyContent="space-between">
+                <Title>{NAME}</Title>
+                {/*<Like liked={isLiked}/>*/}
+                {withEditIcon && <Link to={URL.EDIT_MENU_ITEM}>
+                    <EditWrapper onClick={onEditClick}>
+                        <EditIcon/>
+                        <EditLabel>Edit</EditLabel>
+                    </EditWrapper>
+                </Link>}
+            </Flex>
+            <Price>{PRICE}</Price>
+            <Description>{DESCRIPTION}</Description>
+            <AdditionalDetails>
+                <TimeIcon/> {COOKING_TIME} m <MeasureIcon/> {SIZE} g
+            </AdditionalDetails>
+            {/*<Absolute bottom={'10px'} right={'10px'}>*/}
+            {/*    <BasketIcon />*/}
+            {/*() => dispatch(addOrderItem(item))*/}
+            {/*</Absolute>*/}
+        </Flex>
+    )
+}
 
-const MenuItem = ({item = {}, withEditIcon = false, onEditClick}) => {
-    const {NAME, DESCRIPTION, IMAGE_URL, PRICE, COOKING_TIME, SIZE, isLiked} = item;
-    const [imageUrl, setImageUrl] = useState('')
+const MenuItem = props => {
+    const {IMAGE_URL} = props.item;
+    const [imageUrl, setImageUrl] = useState('');
 
     return (
         <Wrapper className='pm-MenuItem'>
             <Flex justifyContent="stretch">
-                <FoodImage src={IMAGE_URL} onClick={() => setImageUrl(IMAGE_URL)} />
-                <Flex flexDirection='column' width='80%'>
-                    <Flex justifyContent="space-between">
-                        <Title>{NAME}</Title>
-                        {/*<Like liked={isLiked}/>*/}
-                        {withEditIcon && <Link to={URL.EDIT_MENU_ITEM}>
-                        <EditWrapper onClick={onEditClick}>
-                            <EditIcon/>
-                            <EditLabel>Edit</EditLabel>
-                        </EditWrapper>
-                        </Link>}
-                    </Flex>
-                    <Price>{PRICE}</Price>
-                    <Description>{DESCRIPTION}</Description>
-                    <InvisibleDivider/>
-                    <Absolute bottom={'10px'}>
-                        <AdditionalDetails>
-                            <TimeIcon/> {COOKING_TIME} m <MeasureIcon/> {SIZE} g
-                        </AdditionalDetails>
-                    </Absolute>
-                    {/*<Absolute bottom={'10px'} right={'10px'}>*/}
-                    {/*    <BasketIcon onClick={() => dispatch(addOrderItem(item))}/>*/}
-                    {/*</Absolute>*/}
-                </Flex>
+                <FoodImage src={IMAGE_URL} onClick={() => setImageUrl(IMAGE_URL)}/>
+                <MenuItemDetails {...props} />
             </Flex>
-            {imageUrl && <Popup.Image imageUrl={imageUrl} onClose={() => setImageUrl('')}/>}
+            {imageUrl && <Popup.Image imageUrl={imageUrl} onClose={() => setImageUrl('')}>
+                <MenuItemDetails {...props} />
+            </Popup.Image>
+            }
         </Wrapper>
     );
 };
