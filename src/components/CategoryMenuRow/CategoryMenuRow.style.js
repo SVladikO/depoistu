@@ -3,10 +3,18 @@ import {COLOR} from "../../utils/theme";
 
 export const TopCategoryWrapper = styled.div`
   display: flex;
+  &:after {
+    content: " 🦄";
+    border-bottom: solid 2px ${COLOR.ACCENT5};
+  }
 `;
+
 export const TopCategoryItem = styled.div`
-  color: ${p => p.isSelected ? COLOR.ACCENT6 : COLOR.ACCENT1};
+  color: ${p => p.isSelected ? COLOR.ACCENT1 : COLOR.ACCENT5};
+  font-size: 20px;
+  font-weight: bold;
   padding: 10px;
+  border-bottom: solid 2px ${p => p.isSelected ? COLOR.ACCENT3 : ''};;
 `;
 
 export const Flex = styled.div`

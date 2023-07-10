@@ -9,8 +9,6 @@ import {ReactComponent as BasketIcon} from "../../icons/basket.svg";
 import {ReactComponent as EditIcon} from "../../icons/edit.svg";
 import {URL} from "../../utils/config";
 
-
-
 const MenuItem = ({item = {}, withEditIcon = false, onEditClick}) => {
     const {NAME, DESCRIPTION, IMAGE_URL, PRICE, COOKING_TIME, SIZE, isLiked} = item;
     const [imageUrl, setImageUrl] = useState('')
