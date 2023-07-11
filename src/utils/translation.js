@@ -7,7 +7,7 @@ export const resolveTranslation = obj => {
 
 export const TRANSLATION = {
     COMPANY_NAME: {
-        ua: 'DOMONO',
+        ua: 'ДОМОНО',
         en: 'DOMONO'
     },
     PAGE: {
@@ -29,35 +29,35 @@ export const TRANSLATION = {
             LABEL: {
                 OLD_PASSWORD: {
                     ua: "Старий Пароль",
-                    en: "Old Password",
+                    en: "Old Password"
                 },
                 NEW_PASSWORD: {
                     ua: "Новий Пароль",
-                    en: "New Password",
+                    en: "New Password"
                 },
                 CONFIRM_PASSWORD: {
                     ua: "Пiдтвердiть Пароль",
-                    en: "Confirm Password",
+                    en: "Confirm Password"
                 },
             },
         },
         SETTINGS: {
             TOP_TITLE: {
                 ua: "Налаштування",
-                en: "Settings",
+                en: "Settings"
             },
             MENU_ROW: {
                 CHANGE_PASS: {
                     ua: "Змiнити пароль",
-                    en: "Change Password",
+                    en: "Change Password"
                 },
                 COMPANY: {
                     en: "My сompanies",
-                    ua: "Мої заклади",
+                    ua: "Мої заклади"
                 },
                 EDIT_PROFILE: {
                     en: "Edit Profile",
-                    ua: "Редагувати профіль",
+                    ua: "Редагувати профіль"
                 },
                 MENU: {
                     ua: "Налаштувати меню",
@@ -81,51 +81,52 @@ export const TRANSLATION = {
                 },
                 EXIT: {
                     ua: "Вихiд",
-                    en: "Sing out",
+                    en: "Sing out"
                 },
                 CURRENCY: {
-                    ua: "Валюта", en: "Currency"
+                    ua: "Валюта",
+                    en: "Currency"
                 },
                 LANGUAGE: {
                     ua: "Мова",
-                    en: "Language",
+                    en: "Language"
                 },
                 LINKED_ACCOUNTS: {
                     ua: "Пов'язанi Аккаути",
-                    en: "Linked Account",
+                    en: "Linked Accounts"
                 },
             },
             NOTIFICATION: {
                 DESCRIPTION: {
                     ua: "Ця сторiнка доступна тiльки пicля пiдтвердження",
-                    en: "This page is available only after verification."
+                    en: "This page is available only after verification"
                 },
                 LOADING: {
                     ua: "Завантаження...",
                     en: "Loading..."
                 },
                 TITLE: {
-                    ua: "Обмежений доступ",
-                    en: "Restricted access!",
+                    ua: "Обмежений доступ!",
+                    en: "Restricted access!"
                 }
             },
             GROUP_TITLE: {
                 ACCOUNTS: {
                     ua: "Остобистий кабiнет",
-                    en: "Accounts",
+                    en: "My account"
                 },
                 FOR_BUSINESS: {
                     ua: "Для бізнесу",
-                    en: "For business",
+                    en: "For business"
                 },
                 OPTIONS: {
                     ua: "Розширенi налаштування",
-                    en: "More Options",
+                    en: "More Options"
                 },
             },
             USER_PHONE_LABEL: {
                 ua: "Телефон",
-                en: "Phone",
+                en: "Phone"
             },
 
         },
@@ -160,11 +161,11 @@ export const TRANSLATION = {
         SIGN_IN: {
             TOP_TITLE: {
                 ua: "Вхiд",
-                en: "Sign in",
+                en: "Sign in"
             },
             USER_NOTIFICATION: {
                 ua: "Вхiд виконаний",
-                en: "You already logged!",
+                en: "You already logged!"
             },
             FORGOT_PASSWORD: {
                 ua: "Забули пароль?",
@@ -176,31 +177,31 @@ export const TRANSLATION = {
             },
             ACCOUNT_CONFIRMATION: {
                 ua: "Ви зареєстрованi?",
-                en: "You don’t have an account?",
+                en: "You don’t have an account?"
             }
         },
         FORGOT_PASSWORD:  {
             TOP_TITLE: {
-                ua: "Forgot password",
-                en: "Forgot password",
+                ua: "Забули пароль",
+                en: "Forgot password"
             },
             SUBMIT_BUTTON: {
-                ua: 'Send',
+                ua: 'Відправити',
                 en: 'Send'
             },
             LINK_TO_SIGN_IN_PAGE: {
-                ua: 'Go to sign in page',
+                ua: 'Перейти на сторінку входу',
                 en: 'Go to sign in page'
             }
         },
         SING_UP: {
             TOP_TITLE: {
                 ua: "Реєстрацiя",
-                en: "Sing up",
+                en: "Sing up"
             },
             CREATE_ACCOUNT: {
                 ua: "Створити аккаунт",
-                en: "Create an account",
+                en: "Create an account"
             },
             LABEL: {
                 USER_NAME: {
@@ -213,7 +214,7 @@ export const TRANSLATION = {
                 },
                 EMAIL: {
                     ua: "Електронна Пошта",
-                    en: "Emial",
+                    en: "Emial"
                 },
                 PASSWORD: {
                     ua: "Пароль",
@@ -221,11 +222,11 @@ export const TRANSLATION = {
                 },
                 CONFIRM_PASSWORD: {
                     ua: "Пiдтвердiть Пароль",
-                    en: "Confirm Password",
+                    en: "Confirm Password"
                 },
                 CHECKBOX_CONFIRM_TERMS: {
                     ua: "Створенням свого аккаунту ви погоджуєтесь з нашими правилами користування та полiтикою конфiденцiйностi",
-                    en: "By creating an account you agree to our Terms of Service and Privacy Policy",
+                    en: "By creating an account you agree to our Terms of Service and Privacy Policy"
                 }
             }
         },
@@ -263,7 +264,7 @@ export const TRANSLATION = {
     SUB_CATEGORIES: {
         BAKERY: {
             ua: "Випiчка",
-            en: "Bakery",
+            en: "Bakery"
         },
         DRINKS: {
             ua: "Напої",
@@ -275,19 +276,19 @@ export const TRANSLATION = {
         },
         ROLLS: {
             ua: "Роли",
-            en: "Rolls",
+            en: "Rolls"
         },
         SUSHI_SETS: {
             ua: "Суші сети",
-            en: "Sushi sets",
+            en: "Sushi sets"
         },
         BUSINESS_LUNCH: {
             ua: "Бізнес ланч",
-            en: "Business lunch",
+            en: "Business lunch"
         },
         ADDICTIVES: {
             ua: "Додатки",
-            en: "Additives",
+            en: "Additives"
         },
         NOODLES: {
             ua: "Локшина",
@@ -295,7 +296,7 @@ export const TRANSLATION = {
         },
         PIZZA: {
             ua: "Пiцца",
-            en: "Pizza",
+            en: "Pizza"
         },
         SANDWITCH: {
             ua: "Сендвичi",
@@ -323,7 +324,7 @@ export const TRANSLATION = {
         },
         SPECIALITIES: {
             ua: 'Фірмові страві',
-            en: 'Specialities',
+            en: 'Specialities'
         },
         BREAKFAST: {
             en: 'Breakfasts',
@@ -331,55 +332,55 @@ export const TRANSLATION = {
         },
         COLD_APPETIZERS: {
             ua: 'Холодні закуски',
-            en: 'Cold appetizers',
+            en: 'Cold appetizers'
         },
         HOT_DISHES: {
             ua: 'Гарячі страви',
-            en: 'Hot dishes (Main Course)',
+            en: 'Hot dishes (Main Course)'
         },
         MEAT_DISHES: {
             ua: "М'ясні страви",
-            en: 'Meat dishes',
+            en: 'Meat dishes'
         },
         FISH_DISHES: {
             ua: 'Рибні страви',
-            en: 'Fish dishes',
+            en: 'Fish dishes'
         },
         DISHES_ON_FIRE: {
             ua: 'Страви на вогні',
-            en: 'Dishes on fire (weight in raw form)',
+            en: 'Dishes on fire (weight in raw form)'
         },
         SAUCES: {
             ua: 'Соуси',
-            en: 'Sauces',
+            en: 'Sauces'
         },
         SIDE_DISHES: {
             ua: 'Гарніри',
-            en: 'Side dishes',
+            en: 'Side dishes'
         },
         SOUPS: {
             ua: 'Супи',
-            en: 'Soups',
+            en: 'Soups'
         },
         DESSERTS: {
             ua: 'Десерти',
-            en: 'Desserts',
+            en: 'Desserts'
         },
         BANQUET_MENU: {
             ua: 'Банкетне меню',
-            en: 'Banquet menu',
+            en: 'Banquet menu'
         },
         SUSHI: {
             ua: 'Суші',
-            en: 'Sushi',
+            en: 'Sushi'
         },
         COCKTAILS: {
             ua: 'Коктейлі',
-            en: 'Cocktails',
+            en: 'Cocktails'
         },
         SHAWARMA: {
             ua: 'Шаверма',
-            en: 'Shawarma',
+            en: 'Shawarma'
         }
     },
 }
