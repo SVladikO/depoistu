@@ -13,7 +13,7 @@ import {ReactComponent as LockIcon} from '../../icons/lock.svg';
 import {ReactComponent as LogOutIcon} from '../../icons/logout.svg';
 import {ReactComponent as ProfileIcon} from '../../icons/profile.svg';
 // import {ReactComponent as CurrencyIcon} from '../../icons/currency.svg';
-// import {ReactComponent as LanguageIcon} from '../../icons/language.svg';
+import {ReactComponent as LanguageIcon} from '../../icons/language.svg';
 import {ReactComponent as InfoIcon} from "../../icons/info.svg";
 // import {ReactComponent as LinkedAccountIcon} from '../../icons/linked_account.svg';
 import {ReactComponent as StoreIcon} from '../../icons/house.svg';
@@ -24,13 +24,14 @@ import {ReactComponent as TeamIcon} from "../../icons/team.svg";
 import {
     SettingMenuRow,
     AccountSettings,
-    OptionSettings, NotificationTDB, PrimaryButton,
+    OptionSettings, NotificationTDB, PrimaryButton
 } from '../../components'
 
 import {URL} from '../../utils/config';
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {Link} from "react-router-dom";
 import {TRANSLATION, resolveTranslation} from "../../utils/translation";
+import LanguagePopup from "../../page-view/language-popup/LanguagePopup";
 
 const SettingPage = () => {
         const [customer, setCustomer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
@@ -60,6 +61,19 @@ const SettingPage = () => {
         useEffect(() => {
             window.scrollTo(0, 0)
         }, [])
+
+        const [isShowLanguagePopup, setIsShowLanguagePopup] = useState(false);
+
+        const openLanguagePopup = () => setIsShowLanguagePopup(true);
+        const closeLanguagePopup = () => setIsShowLanguagePopup(false);
+
+        const renderLanguagePopup = () => {
+            if (!isShowLanguagePopup) {
+                return;
+            }
+
+            return <LanguagePopup onClose={closeLanguagePopup} />
+        }
 
         return (
             <>
@@ -117,6 +131,8 @@ const SettingPage = () => {
                         {/*<SettingMenuRow icon={PhoneCallIcon} title='Phone Call' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
                         {/*<SettingMenuRow icon={CurrencyIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.CURRENCY)} href='/catalog' label='$USD'/>*/}
                         {/*<SettingMenuRow icon={HelpIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.HELP)} href='/catalog'/>*/}
+                        <SettingMenuRow icon={LanguageIcon} changeHandler={openLanguagePopup} label='English'
+                                        title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.LANGUAGE)}/>
                         <SettingMenuRow
                             icon={InfoIcon}
                             title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.ABOUT_US)}
@@ -127,9 +143,9 @@ const SettingPage = () => {
                             title={resolveTranslation(TRANSLATION.PAGE.OUR_TEAM.TOP_TITLE)}
                             href={URL.OUR_TEAM}
                         />
-                        {/*<SettingMenuRow icon={LanguageIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.LANGUAGE)} href='/catalog' label='English'/>*/}
                         {/*<SettingMenuRow icon={LinkedAccountIcon} title={resolveTranslation(TRANSLATION.PAGE.SETTINGS.MENU_ROW.LINKED_ACCOUNTS)} href='/catalog' label='Facebook, go ...'/>*/}
                     </OptionSettings>
+                    {renderLanguagePopup()}
                 </Wrapper>
             </>
         );

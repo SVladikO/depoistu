@@ -49,7 +49,7 @@ import {COLOR} from "../../utils/theme";
 import AccountSettings from "../../components/AccountSettings/AccountSettings";
 import OptionSettings from "../../components/OptionSettings/OptionSettings";
 import ImageContent from "../../components/Popup/content/image/ImageContent";
-import IntroContent from "../../components/Popup/content/info/InfoContent";
+import IntroContent from "../../components/Popup/content/info/Info";
 import CityContent from "../../components/Popup/content/city/CityContent"
 import {ReactComponent as LocationIcon} from "../../icons/location.svg";
 import Checkbox from "../../components/Checkbox/Checkbox";
