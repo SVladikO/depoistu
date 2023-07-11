@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom";
 import * as Yup from 'yup';
 import {Formik} from "formik";
 
-import {Title, Wrapper} from "./SingUp.style";
+import {Wrapper} from "./SingUp.style";
 import {PrimaryButton, Label, Input, ContentContainer, Notification} from "../../components";
 import NavigationLabelHref from "../../components/NavigationLabelHref/NavigationLabelHref";
 
@@ -56,7 +56,6 @@ const SingUpPage = () => {
                 {({values, handleBlur, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                     <form onSubmit={handleSubmit}>
                         <ContentContainer>
-                            <Title>{resolveTranslation(TRANSLATION.PAGE.SING_UP.CREATE_ACCOUNT)}</Title>
                             <Label>{resolveTranslation(TRANSLATION.PAGE.SING_UP.LABEL.USER_NAME)}</Label>
                             <Input
                                 withCleaner
