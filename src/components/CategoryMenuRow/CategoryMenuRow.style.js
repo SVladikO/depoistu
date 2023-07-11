@@ -11,7 +11,7 @@ export const BottomLine = styled.div`
   position: relative;
   width: 100%;
   border-bottom: 2px solid rgb(181, 181, 181);
-  bottom: -42px;
+  bottom: -28px;
   z-index: 0;
 `;
 export const TopCategoryItem = styled.div`
@@ -19,7 +19,7 @@ export const TopCategoryItem = styled.div`
   color: ${p => p.isSelected ? COLOR.ACCENT1 : COLOR.ACCENT5};
   font-size: 20px;
   font-weight: bold;
-  padding: 10px 0;
+  padding: 0 0 6px;
   border-bottom: solid 2px ${p => p.isSelected ? COLOR.ACCENT3 : ''};;
 `;
 
