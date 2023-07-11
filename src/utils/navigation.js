@@ -44,6 +44,7 @@ export const Centralicer = styled.div`
   flex-direction: column;
   justify-content: start;
   padding: 90px 10px 110px;
+  min-height: 1500px;
 `;
 
 const routes = ROUTERS.map(r =>
@@ -51,13 +52,13 @@ const routes = ROUTERS.map(r =>
         key={r.URL}
         path={r.URL + (r.PARAMS || '')}
         element={
-            <MobileDevice>
-                <TopWrapper>
+            <MobileDevice className="MobileDevice">
+                <TopWrapper className="TopWrapper">
                     <NavigationHeader backUrl={r.BACK_URL} title={r.TITLE} getTitle={r.getTitle}>
                         {r.subHeader && <r.subHeader/>}
                     </NavigationHeader>
                 </TopWrapper>
-                <Centralicer>
+                <Centralicer className="Centralicer">
                     <r.page/>
                 </Centralicer>
                 {r.showBottomMenu &&

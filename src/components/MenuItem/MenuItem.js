@@ -20,9 +20,7 @@ import {ReactComponent as EditIcon} from "../../icons/edit.svg";
 import {URL} from "../../utils/config";
 
 export const MenuItemDetails = ({item = {}, withEditIcon = false, onEditClick}) => {
-    const {NAME, DESCRIPTION, PRICE, COOKING_TIME, SIZE, isLiked} = item;
-
-
+    const {NAME, DESCRIPTION, IMAGE_URL, PRICE, COOKING_TIME, SIZE, isLiked} = item;
 
     return (
         <Flex flexDirection='column'>

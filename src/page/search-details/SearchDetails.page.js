@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {useParams} from 'react-router-dom';
 
 import {Divider, Wrapper} from "./SearchDetails.style";
@@ -14,6 +14,9 @@ const SearchDetailsPage = () => {
     const [companies] = useLocalStorage(LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT, []);
     const [company, setCompany] = useState(companies?.find(c => c.ID === companyId))
     const [menuItems, setMenuItems] = useState([]);
+    const [selectedSubCategoryId, setSelectedSubCategoryId] = useState(0);
+
+    const changeSubCategory = useCallback(id => setSelectedSubCategoryId(id), [selectedSubCategoryId]);
 
     useEffect(() => {
         if (!company) {
@@ -36,9 +39,17 @@ const SearchDetailsPage = () => {
     return (
         <Wrapper>
             {company && <Company company={company} withMoreInfo/>}
-            <Divider>Menu</Divider>
-            <CategoryMenuRow menuItems={menuItems}/>
-            {menuItems.map((el) => <MenuItem key={el.ID} item={el}/>)}
+            <Divider id="menu">MENU</Divider>
+            <CategoryMenuRow
+                menuItems={menuItems}
+                selectedCategoryId={selectedSubCategoryId}
+                changeCategory={changeSubCategory}
+            />
+            {
+                menuItems
+                    .filter(mi => mi.CATEGORY_ID === selectedSubCategoryId)
+                    .map(el => <MenuItem key={el.ID} item={el}/>)
+            }
         </Wrapper>
     );
 };

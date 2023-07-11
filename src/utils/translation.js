@@ -247,14 +247,28 @@ export const TRANSLATION = {
             en: "Account"
         },
     },
-    CATEGORIES: {
+    TOP_CATEGORIES: {
+        KITCHEN: {
+            ua: "КУХНЯ",
+            en: "KITCHEN",
+        },
+        DESSERTS: {
+            ua: "ДЕСЕРТИ",
+            en: "DESSERTS",
+        },
+        BAR: {
+            ua: "БАР",
+            en: "BAR",
+        },
+    },
+    SUB_CATEGORIES: {
         BAKERY: {
             ua: "Випiчка",
             en: "Bakery"
         },
         DRINKS: {
-            ua: "Безалкогольнi напої",
-            en: "Beverage"
+            ua: "Напої",
+            en: "Drinks"
         },
         BURGERS: {
             ua: "Бургери",
@@ -348,9 +362,9 @@ export const TRANSLATION = {
             ua: 'Супи',
             en: 'Soups'
         },
-        DESERTS: {
+        DESSERTS: {
             ua: 'Десерти',
-            en: 'Deserts'
+            en: 'Desserts'
         },
         BANQUET_MENU: {
             ua: 'Банкетне меню',
