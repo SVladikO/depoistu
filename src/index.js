@@ -19,7 +19,7 @@ const container = document.getElementById('root');
 const root = createRoot(container);
 
 setBrowserTabTitle()
-// checkAccess();
+checkAccess();
 showDevelopmentPageUrls();
 
 store.subscribe(() => {
