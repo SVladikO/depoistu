@@ -18,10 +18,9 @@ import {showDevelopmentPageUrls} from "./utils/log";
 const container = document.getElementById('root');
 const root = createRoot(container);
 
-
 setBrowserTabTitle()
-checkAccess();
-showDevelopmentPageUrls()
+// checkAccess();
+showDevelopmentPageUrls();
 
 store.subscribe(() => {
     localStorage.setItem('reduxState', JSON.stringify(store.getState()))
@@ -32,7 +31,7 @@ root.render(
         <BrowserRouter>
             <Provider store={store}>
                 <Wrapper>
-                    <WebsiteIntro />
+                    <WebsiteIntro/>
                     {getRoutes()}
                 </Wrapper>
             </Provider>

@@ -1,8 +1,10 @@
 import React, {useState} from "react";
-import {Popup} from '../components/index'
+
+import {Notification, Popup} from '../components/index'
+import {useLocalStorage} from "../utils/hook";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../utils/localStorage";
 import LanguagePopup from "../page-view/language-popup/LanguagePopup";
-import {useLocalStorage} from "../utils/hook";
+import {DEFAULT_LANGUAGE, translate, TRANSLATION} from "../utils/translation";
 
 const WebsiteIntro = () => {
     const [currentLanguage, setCurrentLanguage] = useLocalStorage(LOCAL_STORAGE_KEY.CURRENT_LANGUAGE);
@@ -18,19 +20,22 @@ const WebsiteIntro = () => {
 
     return (
         <div>
+            {!hideIntro && !isShowLanguagePopup && (
+                <Popup.InfoText onClose={closePopup}>
+                    {translate(TRANSLATION.INTRODUCTION)}
+                </Popup.InfoText>)
+            }
             {isShowLanguagePopup &&
                 <LanguagePopup
                     onClose={closeLanguagePopup}
-                    setCurrentLanguage={setCurrentLanguage}
+                    setCurrentLanguage={selectedLanguage => {
+                        setCurrentLanguage(selectedLanguage);
+                        if (DEFAULT_LANGUAGE !== selectedLanguage) {
+                            window.location.reload();
+                        }
+                    }}
                     showCloseButton={false}
                 />
-            }
-            {!hideIntro && !isShowLanguagePopup && (
-                <Popup.InfoText onClose={closePopup}>
-                    Меню всіх кафе та ресторанів України має бути в одному місці.
-                    Знайдіть заклад своєї мрії та допоможи іншим.
-                    Розкажи адміністраторам своїх улюблених закладів про наш сайт.
-                </Popup.InfoText>)
             }
         </div>
     )
