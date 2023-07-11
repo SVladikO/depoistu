@@ -10,7 +10,7 @@ import 'swiper/css/scrollbar';
 import {
     TopCategoryWrapper,
     TopCategoryItem,
-    SliderStyle
+    SliderStyle, BottomLine
 } from "./CategoryMenuRow.style";
 
 import {CategoryItem, ContentContainer} from "../../components";
@@ -37,23 +37,27 @@ const CategoryMenuRow = ({
     }
 
     const renderTopCategories = () => (
-        <TopCategoryWrapper>
-            {
-                topCategories.map((tc, index) => (
-                    <TopCategoryItem
-                        key={tc.key}
-                        isSelected={index === selectedTopCategoryIndex}
-                        onClick={selectTopCategory(index)}
-                    >
-                        {resolveTranslation(tc.translationKey)}
-                    </TopCategoryItem>
-                ))
-            }
-        </TopCategoryWrapper>
+        <div>
+            <BottomLine/>
+            <TopCategoryWrapper>
+                {
+                    topCategories.map((tc, index) => (
+                        <TopCategoryItem
+                            key={tc.key}
+                            isSelected={index === selectedTopCategoryIndex}
+                            onClick={selectTopCategory(index)}
+                        >
+                            {resolveTranslation(tc.translationKey)}
+                        </TopCategoryItem>
+                    ))
+                }
+            </TopCategoryWrapper>
+        </div>
     )
 
     const renderSubCategories = () => (
         <SliderStyle>
+            {/*https://studio.swiperjs.com/play*/}
             <Swiper
                 modules={[Scrollbar, FreeMode]}
                 scrollbar={{enabled: true, hide: true, draggable: true}}

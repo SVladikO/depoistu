@@ -39,7 +39,7 @@ const SearchDetailsPage = () => {
     return (
         <Wrapper>
             {company && <Company company={company} withMoreInfo/>}
-            <Divider>Menu</Divider>
+            <Divider>MENU</Divider>
             <CategoryMenuRow
                 menuItems={menuItems}
                 selectedCategoryId={selectedSubCategoryId}

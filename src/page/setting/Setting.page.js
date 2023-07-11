@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import {Wrapper, EditBar} from './Setting.style';
 
@@ -56,6 +56,10 @@ const SettingPage = () => {
             setCustomer(undefined);
             LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
         }
+
+        useEffect(() => {
+            window.scrollTo(0, 0)
+        }, [])
 
         return (
             <>
