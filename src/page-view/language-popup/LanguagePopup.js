@@ -1,8 +1,11 @@
 import React from "react";
 
+import {Wrapper} from "./LanguagePopup.style";
+
 import {Popup, ThirdButton} from "../../components";
-import {useLocalStorage} from "../../utils/hook";
+
 import {LOCAL_STORAGE_KEY} from "../../utils/localStorage";
+import {useLocalStorage} from "../../utils/hook";
 import {languageKey} from "../../utils/translation";
 
 const LanguagePopup = ({onClose}) => {
@@ -20,8 +23,10 @@ const LanguagePopup = ({onClose}) => {
 
     return (
         <Popup.Info onClose={onClose}>
-            <ThirdButton onClick={setUA}>Українська</ThirdButton>
-            <ThirdButton onClick={setEN}>English</ThirdButton>
+            <Wrapper>
+                <ThirdButton onClick={setUA}>Українська</ThirdButton>
+                <ThirdButton onClick={setEN}>English</ThirdButton>
+            </Wrapper>
         </Popup.Info>
     );
 }
