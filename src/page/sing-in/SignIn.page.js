@@ -22,7 +22,7 @@ import {startLoading, stopLoading} from "../../features/request/requestSlice";
 import validation  from '../../utils/validation';
 import {ROUTER, URL} from '../../utils/config';
 import {fetchData, BE_API} from "../../utils/fetch";
-import {TRANSLATION, resolveTranslation} from "../../utils/translation";
+import {TRANSLATION, translate} from "../../utils/translation";
 import {LocalStorage, LOCAL_STORAGE_KEY} from "../../utils/localStorage"
 
 const SignInSchema = Yup.object().shape(validation.customer.singIn);
@@ -95,15 +95,15 @@ const SignInPage = () => {
                             withSwitcher
                             errorMessage={errors.password}
                         />
-                        <Link to={URL.FORGOT_PASSWORD}>{resolveTranslation(TRANSLATION.PAGE.SIGN_IN.FORGOT_PASSWORD)}</Link>
+                        <Link to={URL.FORGOT_PASSWORD}>{translate(TRANSLATION.PAGE.SIGN_IN.FORGOT_PASSWORD)}</Link>
                         <NavigationLabelHref
-                            hrefTitle={resolveTranslation(TRANSLATION.PAGE.SIGN_IN.SING_UP_LINK)}
+                            hrefTitle={translate(TRANSLATION.PAGE.SIGN_IN.SING_UP_LINK)}
                             to={ROUTER.SING_UP.URL}
-                            label={resolveTranslation(TRANSLATION.PAGE.SIGN_IN.ACCOUNT_CONFIRMATION)}
+                            label={translate(TRANSLATION.PAGE.SIGN_IN.ACCOUNT_CONFIRMATION)}
                         />
                     </ContentContainer>
                     <PrimaryButton type="submit" isWide>
-                        {resolveTranslation(TRANSLATION.PAGE.SIGN_IN.TOP_TITLE)}
+                        {translate(TRANSLATION.PAGE.SIGN_IN.TOP_TITLE)}
                     </PrimaryButton>
                 </form>
             )

@@ -32,8 +32,8 @@ root.render(
         <BrowserRouter>
             <Provider store={store}>
                 <Wrapper>
-                    {getRoutes()}
                     <WebsiteIntro />
+                    {getRoutes()}
                 </Wrapper>
             </Provider>
         </BrowserRouter>

@@ -5,7 +5,7 @@ import {BackButtonWrapper, BackButtonInnerWrapper, Wrapper, CitiesWrapper} from 
 import {SettingMenuRow} from '../../../index'
 
 import {ReactComponent as BackIcon} from "../../../../icons/back.svg";
-import {TRANSLATION, resolveTranslation} from '../../../../utils/translation';
+import {TRANSLATION, translate} from '../../../../utils/translation';
 
 const enableScrollOnBody = () => document.body.style.overflowY = 'auto';
 
@@ -31,7 +31,7 @@ export const CityContent = ({selectCity, availableCities, onClose}) => {
         <BackButtonWrapper>
             <BackButtonInnerWrapper onClick={handleBackButtonClick}>
                 <BackIcon/>
-                {resolveTranslation(TRANSLATION.PAGE.SEARCH.ARROW_LABEL)}
+                {translate(TRANSLATION.PAGE.SEARCH.ARROW_LABEL)}
             </BackButtonInnerWrapper>
         </BackButtonWrapper>
     );

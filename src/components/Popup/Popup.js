@@ -11,7 +11,7 @@ const enableScrollOnBody = () => document.body.style.overflowY = 'auto';
 const disableScrollOnBody = () => document.body.style.overflowY = 'hidden';
 
 const Popup = (props) => {
-    const {onClose, Component} = props;
+    const {onClose, Component, showCloseButton = true} = props;
 
     useEffect(() => {
         disableScrollOnBody();
@@ -26,7 +26,7 @@ const Popup = (props) => {
         <InvisibleWrapper>
             <Wrapper>
                 <CloseButtonWrapper>
-                    <CloseButton clickHandler={closePopup}/>
+                    {showCloseButton && <CloseButton clickHandler={closePopup}/>}
                 </CloseButtonWrapper>
                 <Component onClose={closePopup} {...props} />
             </Wrapper>

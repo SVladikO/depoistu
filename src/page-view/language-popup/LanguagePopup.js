@@ -4,25 +4,21 @@ import {Wrapper} from "./LanguagePopup.style";
 
 import {Popup, ThirdButton} from "../../components";
 
-import {LOCAL_STORAGE_KEY} from "../../utils/localStorage";
-import {useLocalStorage} from "../../utils/hook";
-import {languageKey} from "../../utils/translation";
+import {LANGUAGE_KEYS} from "../../utils/translation";
 
-const LanguagePopup = ({onClose}) => {
-    const [, setCurrentLanguage] = useLocalStorage(LOCAL_STORAGE_KEY.CURRENT_LANGUAGE, languageKey.ua);
-
+const LanguagePopup = ({onClose, setCurrentLanguage, showCloseButton= true}) => {
     const setUA = () => {
-        setCurrentLanguage(languageKey.ua)
+        setCurrentLanguage(LANGUAGE_KEYS.UA)
         onClose();
     }
 
     const setEN = () => {
-        setCurrentLanguage(languageKey.en)
+        setCurrentLanguage(LANGUAGE_KEYS.EN)
         onClose();
     }
 
     return (
-        <Popup.Info onClose={onClose}>
+        <Popup.Info onClose={onClose} showCloseButton={showCloseButton}>
             <Wrapper>
                 <ThirdButton onClick={setUA}>Українська</ThirdButton>
                 <ThirdButton onClick={setEN}>English</ThirdButton>

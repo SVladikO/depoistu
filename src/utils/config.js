@@ -20,7 +20,7 @@ import CustomerCompaniesPage from "../page/customer-companies/CustomerCompanies.
 // import OrderHistoryPage from "../page/order-history/OrderHistory.page";
 // import {HistoryTabBar} from "../components";
 
-import {TRANSLATION, resolveTranslation} from "./translation.js";
+import {TRANSLATION, translate} from "./translation.js";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
 import EditCustomerPage from "../page/edit-customer/EditCustomer.page";
 
@@ -66,7 +66,7 @@ export const ROUTER = {
     // USER_ACCOUNT = {URL: '/user_account',  TITLE: 'USER_ACCOUNT', page: () => {}, showBottomMenu: true, BACK_URL: ROUTER.SETTING.URL};
     SEARCH: {
         URL: URL.SEARCH,
-        TITLE: resolveTranslation(TRANSLATION.PAGE.SEARCH.TOP_TITLE),
+        TITLE: translate(TRANSLATION.PAGE.SEARCH.TOP_TITLE),
         page: SearchPage,
         showBottomMenu: true
     },
@@ -80,52 +80,52 @@ export const ROUTER = {
     },
     SETTING: {
         URL: URL.SETTING,
-        TITLE: resolveTranslation(TRANSLATION.PAGE.SETTINGS.TOP_TITLE),
+        TITLE: translate(TRANSLATION.PAGE.SETTINGS.TOP_TITLE),
         page: SettingPage,
         showBottomMenu: true
     },
     SING_UP: {
         URL: URL.SING_UP,
-        TITLE: resolveTranslation(TRANSLATION.PAGE.SING_UP.TOP_TITLE),
+        TITLE: translate(TRANSLATION.PAGE.SING_UP.TOP_TITLE),
         page: SingUpPage,
         showBottomMenu: true
     },
     SING_IN: {
         URL: URL.SING_IN,
-        TITLE: resolveTranslation(TRANSLATION.PAGE.SIGN_IN.TOP_TITLE),
+        TITLE: translate(TRANSLATION.PAGE.SIGN_IN.TOP_TITLE),
         page: SignInPage,
         showBottomMenu: true
     },
     FORGOT_PASSWORD: {
         URL: URL.FORGOT_PASSWORD,
-        TITLE: resolveTranslation(TRANSLATION.PAGE.FORGOT_PASSWORD.TOP_TITLE),
+        TITLE: translate(TRANSLATION.PAGE.FORGOT_PASSWORD.TOP_TITLE),
         page: ForgetPasswordPage,
         BACK_URL: URL.SETTING
     },
     CHANGE_PASSWORD: {
         URL: URL.CHANGE_PASSWORD,
-        TITLE: resolveTranslation(TRANSLATION.PAGE.CHANGE_PASSWORD.TOP_TITLE),
+        TITLE: translate(TRANSLATION.PAGE.CHANGE_PASSWORD.TOP_TITLE),
         page: ChangePasswordPage,
         showBottomMenu: true,
         BACK_URL: URL.SETTING,
     },
     ABOUT_US: {
         URL: URL.ABOUT_US,
-        TITLE: resolveTranslation(TRANSLATION.PAGE.ABOUT_US.TOP_TITLE),
+        TITLE: translate(TRANSLATION.PAGE.ABOUT_US.TOP_TITLE),
         page: AboutUsPage,
         showBottomMenu: true,
         BACK_URL: URL.SETTING,
     },
     OUR_TEAM: {
         URL: URL.OUR_TEAM,
-        TITLE: resolveTranslation(TRANSLATION.PAGE.OUR_TEAM.TOP_TITLE),
+        TITLE: translate(TRANSLATION.PAGE.OUR_TEAM.TOP_TITLE),
         page: OurTeamPage,
         showBottomMenu: true,
         BACK_URL: URL.SETTING,
     },
     EDIT_USER: {
         URL: URL.EDIT_CUSTOMER,
-        TITLE: resolveTranslation(TRANSLATION.PAGE.EDIT_USER_PROFILE.TOP_TITLE),
+        TITLE: translate(TRANSLATION.PAGE.EDIT_USER_PROFILE.TOP_TITLE),
         page: EditCustomerPage,
         showBottomMenu: true,
         BACK_URL: URL.SETTING,

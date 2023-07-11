@@ -1,6 +1,6 @@
-import {TRANSLATION, resolveTranslation} from "./translation.js";
+import {TRANSLATION, translate} from "./translation.js";
 
-export const setBrowserTabTitle = () => document.title = resolveTranslation(TRANSLATION.COMPANY_NAME);
+export const setBrowserTabTitle = () => document.title = translate(TRANSLATION.COMPANY_NAME);
 
 export const getParam = (key) => {
     const urlParams = new URLSearchParams(window.location.search);

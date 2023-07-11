@@ -1,16 +1,18 @@
 import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
 
-export const resolveTranslation = obj => {
+export const translate = obj => {
     const currentLanguage = LocalStorage.get(LOCAL_STORAGE_KEY.CURRENT_LANGUAGE)
-    if (!obj) {
-        debugger;
+
+    if (!currentLanguage) {
+        return '';
     }
+
     return obj[currentLanguage];
 }
 
-export const languageKey = {
-    ua: 'ua',
-    en: 'en'
+export const LANGUAGE_KEYS = {
+    UA: 'ua',
+    EN: 'en'
 }
 
 export const TRANSLATION = {

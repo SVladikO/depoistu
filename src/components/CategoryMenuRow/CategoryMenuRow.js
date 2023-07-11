@@ -15,7 +15,7 @@ import {
 import {CategoryItem, ContentContainer} from "../../components";
 import {CATEGORY_MAPPER} from '../../utils/category';
 import {getTopCategories} from '../../utils/category';
-import {resolveTranslation} from "../../utils/translation";
+import {translate} from "../../utils/translation";
 
 const CategoryMenuRow = ({
                              showAllCategories = false,
@@ -46,7 +46,7 @@ const CategoryMenuRow = ({
                             isSelected={index === selectedTopCategoryIndex}
                             onClick={selectTopCategory(index)}
                         >
-                            {resolveTranslation(tc.translationKey)}
+                            {translate(tc.translationKey)}
                         </TopCategoryItem>
                     ))
                 }
