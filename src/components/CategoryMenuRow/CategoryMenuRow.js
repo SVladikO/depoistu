@@ -1,11 +1,10 @@
 import React, {memo, useEffect, useState} from 'react';
 import {Scrollbar, FreeMode} from 'swiper';
 import {Swiper, SwiperSlide} from 'swiper/react';
-// Scrollbar, FreeMode, Navigation, Pagination
+
 import "swiper/css";
 import "swiper/css/pagination";
 import 'swiper/css/scrollbar';
-// import 'swiper/css/freemode';
 
 import {
     TopCategoryWrapper,

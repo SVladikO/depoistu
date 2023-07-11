@@ -4,7 +4,6 @@ import {COLOR} from "../../utils/theme";
 export const TopCategoryWrapper = styled.div`
   display: flex;
   gap: 30px;
-
 `;
 
 export const BottomLine = styled.div`
@@ -20,7 +19,7 @@ export const TopCategoryItem = styled.div`
   font-size: 20px;
   font-weight: bold;
   padding: 0 0 6px;
-  border-bottom: solid 2px ${p => p.isSelected ? COLOR.ACCENT3 : ''};;
+  border-bottom: solid 2px ${p => p.isSelected ? COLOR.ACCENT3 : ''};
 `;
 
 export const SliderStyle = styled.div`
