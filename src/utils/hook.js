@@ -16,6 +16,12 @@ export const useLocalStorage = (storageKey, initialState) => {
     return [value, set];
 };
 
+export const useScrollUp = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+};
+
 export const useLocalStorageFetch = (storageKey, initialState, url, setError = () => {}, customCondition = () => {}) => {
     const localStorageState = LocalStorage.get(storageKey);
     const [value, setValue] = useState(localStorageState ?? initialState);

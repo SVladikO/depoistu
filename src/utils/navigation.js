@@ -44,7 +44,7 @@ export const Centralicer = styled.div`
   flex-direction: column;
   justify-content: start;
   padding: 90px 10px 110px;
-  min-height: 1500px;
+  min-height: 500px;
 `;
 
 const routes = ROUTERS.map(r =>

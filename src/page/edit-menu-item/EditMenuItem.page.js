@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
 import {Notification, RowSplitter, SecondaryButton} from "../../components";
@@ -8,6 +8,7 @@ import {ReactComponent as RemoveIcon} from "../../icons/remove_icon.svg";
 import {URL} from "../../utils/config";
 import {fetchData, BE_API} from "../../utils/fetch";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
+import {useScrollUp} from "../../utils/hook";
 
 const EditMenuItemPage = () => {
     const navigate = useNavigate();
@@ -17,9 +18,8 @@ const EditMenuItemPage = () => {
     const [requestError, setRequestError] = useState("");
     const [isMenuItemDeleted, setIsMenuItemDeleted] = useState(false);
     const [isMenuItemUpdated, setIsMenuItemUpdated] = useState(false);
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [])
+
+    useScrollUp();
 
     if (!menuItemCandidateToEdit && URL.EDIT_MENU) {
         return navigate(URL.SETTING)

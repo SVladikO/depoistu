@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 
 import {Wrapper, EditBar} from './Setting.style';
 
@@ -31,6 +31,7 @@ import {URL} from '../../utils/config';
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {Link} from "react-router-dom";
 import {TRANSLATION, resolveTranslation} from "../../utils/translation";
+import {useScrollUp} from "../../utils/hook";
 
 const SettingPage = () => {
         const [customer, setCustomer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
@@ -57,9 +58,7 @@ const SettingPage = () => {
             LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
         }
 
-        useEffect(() => {
-            window.scrollTo(0, 0)
-        }, [])
+        useScrollUp();
 
         return (
             <>
