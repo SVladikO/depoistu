@@ -5,12 +5,14 @@ import * as Yup from 'yup';
 import {ImagePlace, MenuItemPhoto} from "./menu-item-view.style";
 import {ContentContainer, Input, Label, PrimaryButton, SecondaryButton, Textarea} from "../../components";
 import validation from "../../utils/validation";
+import {CATEGORY_MAPPER} from "../../utils/category";
 
 const EditMenuItemSchema = Yup.object().shape(validation.menuItem);
 
 const MenuItemView = ({initialValue, onSubmit}) => {
     const [wasSubmitted, setWasSubmitted] = useState(false);
-    const [imageURL, setImageURL] = useState(initialValue.imageURL);
+    const [imageURL] = useState(initialValue.imageURL);
+
     return (
         <Formik
             initialValues={initialValue}
@@ -53,6 +55,14 @@ const MenuItemView = ({initialValue, onSubmit}) => {
                             errorMessage={errors.price}
                             withCleaner
                         />
+                        <Label>Category</Label>
+                        <select value={values.categoryId} onChange={e => setFieldValue('categoryId', e.target.value)}>
+                            {
+                                Object.keys(CATEGORY_MAPPER).map(
+                                    id => <option key={id} value={id}>{CATEGORY_MAPPER[id].title}</option>
+                                )
+                            }
+                        </select>
                         <Label>Description</Label>
                         <Textarea
                             value={values.description}

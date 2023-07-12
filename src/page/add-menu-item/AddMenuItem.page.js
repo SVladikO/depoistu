@@ -6,7 +6,7 @@ import {fetchData, BE_API} from "../../utils/fetch";
 import {getParam} from "../../utils/utils";
 
 const AddMenuItemPage = () => {
-    const categoryId = getParam(`categoryId`)
+    const categoryId = getParam(`categoryId`);
     const companyId = getParam(`companyId`)
 
     const [isLoading, setIsLoading] = useState(false);
@@ -16,6 +16,7 @@ const AddMenuItemPage = () => {
     const initialValue = {
         name: '',
         price: '',
+        categoryId: categoryId,
         description: '',
         cookingTime: '',
         size: '',
@@ -30,7 +31,6 @@ const AddMenuItemPage = () => {
 
         const requestObj = {
             ...values,
-            category_id: categoryId,
             company_id: companyId,
         }
 
