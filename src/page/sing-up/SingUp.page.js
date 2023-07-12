@@ -12,6 +12,7 @@ import validation from '../../utils/validation';
 import {BE_API, fetchData} from "../../utils/fetch";
 import {TRANSLATION, resolveTranslation} from "../../utils/translation";
 import {ROUTER, URL} from '../../utils/config';
+import {useScrollUp} from "../../utils/hook";
 
 const SignUpSchema = Yup.object().shape(validation.customer.singUp);
 
@@ -34,6 +35,8 @@ const SingUpPage = () => {
             .catch(e => setRequestError(e.body.message))
             .finally(() => setIsLoading(false));
     }
+
+    useScrollUp();
 
     if (isLoading) {
         return <Notification.Loading/>

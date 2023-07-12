@@ -1,7 +1,7 @@
 import "swiper/css";
 import "swiper/css/pagination";
 import {Link} from "react-router-dom";
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 
 import {Notification} from "../../components";
 
@@ -15,6 +15,7 @@ import {getScheduleAsString} from "../../utils/company";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {WarningText, Reference} from "./AddCompany.style";
 import {ReactComponent as LinkArrowIcon} from "../../icons/right-anchor.svg";
+import {useScrollUp} from "../../utils/hook";
 
 
 const AddCompany = () => {
@@ -23,10 +24,8 @@ const AddCompany = () => {
     const [isCompanySaved, setIsCompanySaved] = useState(false);
     const [requestError, setRequestError] = useState("");
     const [newCompanyId, setNewCompanyId] = useState();
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [])
 
+    useScrollUp();
 
     const onSubmit = values => {
         const {name, city_id, street, phone} = values;
