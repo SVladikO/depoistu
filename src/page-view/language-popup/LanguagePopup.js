@@ -5,16 +5,19 @@ import {Wrapper} from "./LanguagePopup.style";
 import {Popup, ThirdButton} from "../../components";
 
 import {LANGUAGE_KEYS} from "../../utils/translation";
+import {enableScrollOnBody} from "../../components/Popup/Popup";
 
 const LanguagePopup = ({onClose, setCurrentLanguage, showCloseButton= true}) => {
     const setUA = () => {
         setCurrentLanguage(LANGUAGE_KEYS.UA)
         onClose();
+        enableScrollOnBody()
     }
 
     const setEN = () => {
         setCurrentLanguage(LANGUAGE_KEYS.EN)
         onClose();
+        enableScrollOnBody()
     }
 
     return (
