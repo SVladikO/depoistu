@@ -54,7 +54,7 @@ const routes = ROUTERS.map(r =>
         element={
             <MobileDevice className="MobileDevice">
                 <TopWrapper className="TopWrapper">
-                    <NavigationHeader backUrl={r.BACK_URL} title={r.TITLE} getTitle={r.getTitle}>
+                    <NavigationHeader backUrl={r.BACK_URL} title={r.TITLE}>
                         {r.subHeader && <r.subHeader/>}
                     </NavigationHeader>
                 </TopWrapper>

@@ -1,14 +1,26 @@
-export const resolveTranslation = obj => {
-    if (!obj) {
-        debugger;
-    }
-    return obj["ua"];
+import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
+
+export const translate = obj => {
+    const currentLanguage = LocalStorage.get(LOCAL_STORAGE_KEY.CURRENT_LANGUAGE) || DEFAULT_LANGUAGE;
+
+    return obj[currentLanguage];
 }
+
+export const LANGUAGE_KEYS = {
+    UA: 'ua',
+    EN: 'en'
+}
+
+export const DEFAULT_LANGUAGE = LANGUAGE_KEYS.UA;
 
 export const TRANSLATION = {
     COMPANY_NAME: {
         ua: 'ДОМОНО',
         en: 'DOMONO'
+    },
+    INTRODUCTION: {
+        ua: 'Меню всіх кафе та ресторанів України має бути в одному місці.Знайдіть заклад своєї мрії та допоможи іншим. Розкажи адміністраторам своїх улюблених закладів про наш сайт.',
+        en: 'The menu of all cafes and restaurants of Ukraine should be in one place. Find the bookmark of your dreams and help others. Tell the administrators of your favorite bookmarks about our site.'
     },
     PAGE: {
         CHANGE_PASSWORD: {

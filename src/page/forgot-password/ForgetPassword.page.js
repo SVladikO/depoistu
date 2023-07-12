@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import {Link} from "react-router-dom";
 import {Input, Label, PrimaryButton, ContentContainer, NotificationTDB} from "../../components";
 import {ReactComponent as MailIcon} from "../../icons/mail.svg";
-import {resolveTranslation, TRANSLATION} from "../../utils/translation";
+import {translate, TRANSLATION} from "../../utils/translation";
 import {URL} from "../../utils/config";
 import validation from "../../utils/validation";
 import {useScrollUp} from "../../utils/hook";
@@ -22,7 +22,7 @@ const ForgetPasswordPage = () => {
             <NotificationTDB title="Request was sent!" description="Please check your mail to reset password">
                 <Link to={URL.SING_IN}>
                     <PrimaryButton isWide>
-                        {resolveTranslation(TRANSLATION.PAGE.FORGOT_PASSWORD.LINK_TO_SIGN_IN_PAGE)}
+                        {translate(TRANSLATION.PAGE.FORGOT_PASSWORD.LINK_TO_SIGN_IN_PAGE)}
                     </PrimaryButton>
                 </Link>
             </NotificationTDB>
@@ -57,7 +57,7 @@ const ForgetPasswordPage = () => {
                         />
                     </ContentContainer>
                     <PrimaryButton type="submit" isWide>
-                        {resolveTranslation(TRANSLATION.PAGE.FORGOT_PASSWORD.SUBMIT_BUTTON)}
+                        {translate(TRANSLATION.PAGE.FORGOT_PASSWORD.SUBMIT_BUTTON)}
                     </PrimaryButton>
                 </form>
             )}

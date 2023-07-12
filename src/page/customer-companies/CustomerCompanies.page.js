@@ -29,10 +29,10 @@ const PopupQRCode = ({companyId, onClose}) => {
         .catch(err => setQrCodeGenerationError(err))
 
     return (
-        <Popup.Info onClose={onClose}>
+        <Popup.InfoText onClose={onClose}>
             {src && <ImageQR src={src}/>}
             {qrCodeGenerationError}
-        </Popup.Info>
+        </Popup.InfoText>
     )
 }
 

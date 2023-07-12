@@ -10,7 +10,7 @@ import NavigationLabelHref from "../../components/NavigationLabelHref/Navigation
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import validation from '../../utils/validation';
 import {BE_API, fetchData} from "../../utils/fetch";
-import {TRANSLATION, resolveTranslation} from "../../utils/translation";
+import {TRANSLATION, translate} from "../../utils/translation";
 import {ROUTER, URL} from '../../utils/config';
 import {useScrollUp} from "../../utils/hook";
 
@@ -59,7 +59,7 @@ const SingUpPage = () => {
                 {({values, handleBlur, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                     <form onSubmit={handleSubmit}>
                         <ContentContainer>
-                            <Label>{resolveTranslation(TRANSLATION.PAGE.SING_UP.LABEL.USER_NAME)}</Label>
+                            <Label>{translate(TRANSLATION.PAGE.SING_UP.LABEL.USER_NAME)}</Label>
                             <Input
                                 withCleaner
                                 isTouched={wasSubmitted || touched.name}
@@ -70,7 +70,7 @@ const SingUpPage = () => {
                                 clearHandler={() => setFieldValue('name', '')}
                                 errorMessage={errors.name}
                             />
-                            <Label>{resolveTranslation(TRANSLATION.PAGE.SING_UP.LABEL.PHONE)}</Label>
+                            <Label>{translate(TRANSLATION.PAGE.SING_UP.LABEL.PHONE)}</Label>
                             <Input
                                 withCleaner
                                 name="phone"
@@ -81,7 +81,7 @@ const SingUpPage = () => {
                                 clearHandler={() => setFieldValue('phone', '')}
                                 errorMessage={errors.phone}
                             />
-                            <Label>{resolveTranslation(TRANSLATION.PAGE.SING_UP.LABEL.EMAIL)}</Label>
+                            <Label>{translate(TRANSLATION.PAGE.SING_UP.LABEL.EMAIL)}</Label>
                             <Input
                                 withCleaner
                                 type="email"
@@ -93,7 +93,7 @@ const SingUpPage = () => {
                                 clearHandler={() => setFieldValue('email', '')}
                                 errorMessage={errors.email}
                             />
-                            <Label>{resolveTranslation(TRANSLATION.PAGE.SING_UP.LABEL.PASSWORD)}</Label>
+                            <Label>{translate(TRANSLATION.PAGE.SING_UP.LABEL.PASSWORD)}</Label>
                             <Input
                                 withSwitcher
                                 name="newPassword"
@@ -104,7 +104,7 @@ const SingUpPage = () => {
                                 clearHandler={() => setFieldValue('newPassword', '')}
                                 errorMessage={errors.newPassword}
                             />
-                            <Label>{resolveTranslation(TRANSLATION.PAGE.SING_UP.LABEL.CONFIRM_PASSWORD)}</Label>
+                            <Label>{translate(TRANSLATION.PAGE.SING_UP.LABEL.CONFIRM_PASSWORD)}</Label>
                             <Input
                                 withSwitcher
                                 value={values.confirmedPassword}
@@ -118,13 +118,13 @@ const SingUpPage = () => {
                         </ContentContainer>
                         <Wrapper>
                             <NavigationLabelHref
-                                hrefTitle={resolveTranslation(TRANSLATION.PAGE.SIGN_IN.TOP_TITLE)}
+                                hrefTitle={translate(TRANSLATION.PAGE.SIGN_IN.TOP_TITLE)}
                                 to={`${ROUTER.SING_IN.URL}`}
-                                label={resolveTranslation(TRANSLATION.PAGE.SIGN_IN.ACCOUNT_CONFIRMATION)}
+                                label={translate(TRANSLATION.PAGE.SIGN_IN.ACCOUNT_CONFIRMATION)}
                             />
                         </Wrapper>
                         <PrimaryButton type="submit"
-                                       isWide>{resolveTranslation(TRANSLATION.PAGE.SING_UP.TOP_TITLE)}</PrimaryButton>
+                                       isWide>{translate(TRANSLATION.PAGE.SING_UP.TOP_TITLE)}</PrimaryButton>
                     </form>
                 )}
             </Formik>
