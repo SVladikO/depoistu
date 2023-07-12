@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {Link, useParams} from "react-router-dom";
 
 import {Notification, SecondaryButton} from "../../components";
@@ -14,6 +14,7 @@ import {fetchData} from "../../utils/fetch";
 import {initSchedule} from "../../utils/company";
 import {getScheduleAsString} from "../../utils/company";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
+import {useScrollUp} from "../../utils/hook";
 
 //We need this variable after call LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES) on delete company success
 //when we open customer companies page it will make request to BE and user will have updated list of companies.
@@ -37,9 +38,7 @@ const EditCompany = () => {
     const [isCompanyDeleted, setIsCompanyDeleted] = useState(false);
     const [isCompanyUpdated, setIsCompanyUpdated] = useState(false);
 
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [])
+    useScrollUp();
 
     if (isLoading) {
         return <Notification.Loading/>;

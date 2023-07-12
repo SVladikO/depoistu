@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 
 import {Wrapper, EditBar} from './Setting.style';
 
@@ -33,6 +33,7 @@ import {Link} from "react-router-dom";
 import {TRANSLATION as TR, translate, LANGUAGE_KEYS} from "../../utils/translation";
 import LanguagePopup from "../../page-view/language-popup/LanguagePopup";
 import {useLocalStorage} from "../../utils/hook";
+import {useScrollUp} from "../../utils/hook";
 
 const SettingPage = () => {
     const [currentLanguage, setCurrentLanguage] = useLocalStorage(LOCAL_STORAGE_KEY.CURRENT_LANGUAGE);
@@ -64,9 +65,7 @@ const SettingPage = () => {
         LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
     }
 
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [])
+        useScrollUp();
 
 
     return (

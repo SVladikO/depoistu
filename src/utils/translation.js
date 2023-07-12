@@ -211,10 +211,6 @@ export const TRANSLATION = {
                 ua: "Реєстрацiя",
                 en: "Sing up"
             },
-            CREATE_ACCOUNT: {
-                ua: "Створити аккаунт",
-                en: "Create an account"
-            },
             LABEL: {
                 USER_NAME: {
                     en: "Name",

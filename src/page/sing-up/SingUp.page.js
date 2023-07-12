@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom";
 import * as Yup from 'yup';
 import {Formik} from "formik";
 
-import {Title, Wrapper} from "./SingUp.style";
+import {Wrapper} from "./SingUp.style";
 import {PrimaryButton, Label, Input, ContentContainer, Notification} from "../../components";
 import NavigationLabelHref from "../../components/NavigationLabelHref/NavigationLabelHref";
 
@@ -12,6 +12,7 @@ import validation from '../../utils/validation';
 import {BE_API, fetchData} from "../../utils/fetch";
 import {TRANSLATION, translate} from "../../utils/translation";
 import {ROUTER, URL} from '../../utils/config';
+import {useScrollUp} from "../../utils/hook";
 
 const SignUpSchema = Yup.object().shape(validation.customer.singUp);
 
@@ -35,6 +36,8 @@ const SingUpPage = () => {
             .finally(() => setIsLoading(false));
     }
 
+    useScrollUp();
+
     if (isLoading) {
         return <Notification.Loading/>
     }
@@ -56,7 +59,6 @@ const SingUpPage = () => {
                 {({values, handleBlur, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                     <form onSubmit={handleSubmit}>
                         <ContentContainer>
-                            <Title>{translate(TRANSLATION.PAGE.SING_UP.CREATE_ACCOUNT)}</Title>
                             <Label>{translate(TRANSLATION.PAGE.SING_UP.LABEL.USER_NAME)}</Label>
                             <Input
                                 withCleaner

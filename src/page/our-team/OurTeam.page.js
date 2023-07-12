@@ -6,6 +6,8 @@ import Alex_imgSrc from '../../images/team/Alex.png';
 
 
 const OurTeamPage = () => {
+    window.scrollTo(0, 0);
+
     return (
         <Wrapper>
             <Employee>
