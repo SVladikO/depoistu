@@ -13,7 +13,7 @@ import {useScrollUp} from "../../utils/hook";
 const EditMenuItemPage = () => {
     const navigate = useNavigate();
     const menuItemCandidateToEdit = LocalStorage.get(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT);
-    const {ID, NAME, PRICE, DESCRIPTION, COOKING_TIME, IMAGE_URL, SIZE} = menuItemCandidateToEdit;
+    const {ID, NAME, PRICE, CATEGORY_ID, DESCRIPTION, COOKING_TIME, IMAGE_URL, SIZE} = menuItemCandidateToEdit;
     const [isLoading, setIsLoading] = useState(false);
     const [requestError, setRequestError] = useState("");
     const [isMenuItemDeleted, setIsMenuItemDeleted] = useState(false);
@@ -28,16 +28,16 @@ const EditMenuItemPage = () => {
     const initialValue = {
         name: NAME,
         price: PRICE,
+        category_id: CATEGORY_ID,
         description: DESCRIPTION,
         cookingTime: COOKING_TIME,
         size: SIZE,
-        imageURL: IMAGE_URL
+        image_url: IMAGE_URL
     }
 
     const onSubmit = values => {
         setIsLoading(true);
-        const {name, price, description, cookingTime, size, imageURL } = values;
-        const reqObj = {method: 'put', id: ID, name, price, description, cookingTime, size, imageURL};
+        const reqObj = {method: 'put', id: ID, ...values};
 
         fetchData(BE_API.MENU_ITEM.PUT_UPDATE(), reqObj)
             .then(res => {
