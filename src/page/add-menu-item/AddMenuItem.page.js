@@ -16,11 +16,11 @@ const AddMenuItemPage = () => {
     const initialValue = {
         name: '',
         price: '',
-        categoryId: categoryId,
+        category_id: categoryId,
         description: '',
         cookingTime: '',
         size: '',
-        imageUrl: ''
+        image_url: ''
     }
 
     const onSubmit = values => {

@@ -56,7 +56,7 @@ const MenuItemView = ({initialValue, onSubmit}) => {
                             withCleaner
                         />
                         <Label>Category</Label>
-                        <select value={values.categoryId} onChange={e => setFieldValue('categoryId', e.target.value)}>
+                        <select value={values.category_id} onChange={e => setFieldValue('category_id', e.target.value)}>
                             {
                                 Object.keys(CATEGORY_MAPPER).map(
                                     id => <option key={id} value={id}>{CATEGORY_MAPPER[id].title}</option>

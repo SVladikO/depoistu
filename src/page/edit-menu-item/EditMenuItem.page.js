@@ -28,17 +28,16 @@ const EditMenuItemPage = () => {
     const initialValue = {
         name: NAME,
         price: PRICE,
-        categoryId: CATEGORY_ID,
+        category_id: CATEGORY_ID,
         description: DESCRIPTION,
         cookingTime: COOKING_TIME,
         size: SIZE,
-        imageURL: IMAGE_URL
+        image_url: IMAGE_URL
     }
 
     const onSubmit = values => {
         setIsLoading(true);
-        const {name, price, description, categoryId, cookingTime, size, imageURL } = values;
-        const reqObj = {method: 'put', id: ID, name, price, categoryId, description, cookingTime, size, imageURL};
+        const reqObj = {method: 'put', id: ID, ...values};
 
         fetchData(BE_API.MENU_ITEM.PUT_UPDATE(), reqObj)
             .then(res => {
