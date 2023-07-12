@@ -16,7 +16,7 @@ export const GroupTitle = styled.div`
   font-size: 18px;
   font-weight: 600;
   color: ${COLOR.PRIMARY};
-  background: ${hexToRgbA(COLOR.ACCENT3, 0.1)};;
+  background: ${hexToRgbA(COLOR.ACCENT3, 0.2)};;
 `
 
 export const RowsWrapper = styled.div`
