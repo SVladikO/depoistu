@@ -30,13 +30,11 @@ import {
 import {URL} from '../../utils/config';
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {Link} from "react-router-dom";
-import {TRANSLATION as TR, translate, LANGUAGE_KEYS} from "../../utils/translation";
+import {TRANSLATION as TR, translate} from "../../utils/translation";
 import LanguagePopup from "../../page-view/language-popup/LanguagePopup";
-import {useLocalStorage} from "../../utils/hook";
 import {useScrollUp} from "../../utils/hook";
 
 const SettingPage = () => {
-    const [currentLanguage, setCurrentLanguage] = useLocalStorage(LOCAL_STORAGE_KEY.CURRENT_LANGUAGE);
     const [isShowLanguagePopup, setIsShowLanguagePopup] = useState(false);
     const openLanguagePopup = () => setIsShowLanguagePopup(true);
     const closeLanguagePopup = () => setIsShowLanguagePopup(false);
@@ -71,7 +69,7 @@ const SettingPage = () => {
     return (
         <>
             {!customer && singInSingUpNotification}
-            {isShowLanguagePopup && <LanguagePopup onClose={closeLanguagePopup} setCurrentLanguage={setCurrentLanguage}/>}
+            <LanguagePopup onClose={closeLanguagePopup} isShow={isShowLanguagePopup}/>
             <Wrapper>
                 {/*<CustomerAccountBar fullName='Jhon Smith' phone="+14844731243"/>*/}
                 {/*<RowSplitter height='20px'/>*/}
@@ -126,9 +124,9 @@ const SettingPage = () => {
                     {/*<SettingMenuRow icon={HelpIcon} title={translate(TR.PAGE.SETTINGS.MENU_ROW.HELP)} href='/catalog'/>*/}
                     <SettingMenuRow
                         icon={LanguageIcon}
-                        changeHandler={openLanguagePopup}
-                        label={currentLanguage}
                         title={translate(TR.PAGE.SETTINGS.MENU_ROW.LANGUAGE)}
+                        changeHandler={openLanguagePopup}
+                        label={translate(TR.PAGE.SETTINGS.LABEL.CURRENT_LANGUAGE)}
                     />
                     <SettingMenuRow
                         icon={InfoIcon}

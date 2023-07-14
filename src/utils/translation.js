@@ -108,6 +108,12 @@ export const TRANSLATION = {
                     en: "Linked Accounts"
                 },
             },
+            LABEL: {
+                CURRENT_LANGUAGE: {
+                    ua: "Українська",
+                    en: "English"
+                }
+            },
             NOTIFICATION: {
                 DESCRIPTION: {
                     ua: "Ця сторiнка доступна тiльки пicля пiдтвердження",
@@ -319,8 +325,8 @@ export const TRANSLATION = {
             en: "Salads"
         },
         ALCOHOL: {
-            ua: "Алкогольнi напої",
-            en: "Alcohol drinks"
+            ua: "Алкоголь",
+            en: "Alcohol"
         },
         WINE_CARD: {
             ua: "Винна карта",
