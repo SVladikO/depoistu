@@ -32,7 +32,7 @@ export const MenuItemDetails = ({item = {}, withEditIcon = false, onEditClick}) 
                 {withEditIcon && <Link to={URL.EDIT_MENU_ITEM}>
                     <EditWrapper onClick={onEditClick}>
                         <EditIcon/>
-                        <EditLabel>Edit</EditLabel>
+                        <EditLabel>{translate(TRANSLATION.COMPONENTS.MENU_ITEM.BUTTON.EDIT_MENU_ITEM)}</EditLabel>
                     </EditWrapper>
                 </Link>}
             </Flex>

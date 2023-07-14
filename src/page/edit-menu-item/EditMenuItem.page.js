@@ -9,6 +9,7 @@ import {URL} from "../../utils/config";
 import {fetchData, BE_API} from "../../utils/fetch";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {useScrollUp} from "../../utils/hook";
+import {translate, TRANSLATION} from "../../utils/translation";
 
 const EditMenuItemPage = () => {
     const navigate = useNavigate();
@@ -74,11 +75,12 @@ const EditMenuItemPage = () => {
         <>
             {isMenuItemUpdated && <Notification.Success message={"Menu item was updated."} />}
             {requestError && <Notification.Error message={requestError}/>}
-            <SecondaryButton onClick={deleteCompany}><RemoveIcon/> Delete</SecondaryButton>
+            <SecondaryButton onClick={deleteCompany}><RemoveIcon/>{translate(TRANSLATION.PAGE.EDIT_MENU_ITEM.BUTTON.DELETE_MENU_ITEM)}</SecondaryButton>
             <RowSplitter height={'15px'}/>
             <MenuItemView
                 initialValue={initialValue}
                 onSubmit={onSubmit}
+                submitButtonTitle={translate(TRANSLATION.PAGE.EDIT_MENU_ITEM.BUTTON.EDIT_MENU_ITEM)}
             />
         </>
     )

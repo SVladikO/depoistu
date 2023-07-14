@@ -215,14 +215,30 @@ export const TRANSLATION = {
         },
         EDIT_MENU: {
             TOP_TITLE: {
-                ua: "Редагувати меню",
-                en: 'Edit menu'
+                en: 'Edit menu',
+                ua: "Редагувати меню"
             },
+            BUTTON: {
+                ADD_MENU_ITEM: {
+                    en: 'Add menu item',
+                    ua: "Додати пункт меню",
+                }
+            }
         },
         EDIT_MENU_ITEM: {
             TOP_TITLE: {
+                en: 'Edit menu item',
                 ua: "Редагувати позицію меню",
-                en: 'Edit menu item'
+            },
+            BUTTON: {
+                DELETE_MENU_ITEM: {
+                    en: 'Delete menu item',
+                    ua: "Видалити пункт меню",
+                },
+                EDIT_MENU_ITEM: {
+                    en: 'Save changes',
+                    ua: "Зберегти зміни",
+                }
             },
         },
         EDIT_COMPANY: {
@@ -245,6 +261,12 @@ export const TRANSLATION = {
             TOP_TITLE: {
                 ua: "Додати позицію меню",
                 en: 'Add menu item'
+            },
+            BUTTON: {
+                ADD_MENU_ITEM: {
+                    en: 'Save',
+                    ua: "Зберегти",
+                }
             },
         },
         CHANGE_PASSWORD: {
@@ -471,6 +493,14 @@ export const TRANSLATION = {
                 ua: "Показати графік",
                 en: "Show schedule"
             }
+        },
+        MENU_ITEM: {
+            BUTTON: {
+                EDIT_MENU_ITEM: {
+                    en: "Edit",
+                    ua: "Редагувати"
+                },
+            },
         }
     },
     NOTIFICATION: {
