@@ -8,22 +8,16 @@ import {translate, TRANSLATION} from "../utils/translation";
 
 const WebsiteIntro = () => {
     const [showIntro, setHideIntro] = useLocalStorage(LOCAL_STORAGE_KEY.SHOW_INTRO, true);
-    const [currentLanguage] = useLocalStorage(LOCAL_STORAGE_KEY.CURRENT_LANGUAGE);
-
     const closeIntroPopup = () => setHideIntro(false);
 
     return (
         <div>
-            {showIntro && currentLanguage && (
+            {showIntro && (
                 <Popup.InfoText onClose={closeIntroPopup}>
                     {translate(TRANSLATION.INTRODUCTION)}
                 </Popup.InfoText>)
             }
-            {!currentLanguage &&
-                <LanguagePopup
-                    showCloseButton={false}
-                />
-            }
+            <LanguagePopup showCloseButton={false} />
         </div>
     )
 }

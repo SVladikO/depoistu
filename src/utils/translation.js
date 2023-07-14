@@ -325,8 +325,8 @@ export const TRANSLATION = {
             en: "Salads"
         },
         ALCOHOL: {
-            ua: "Алкогольнi напої",
-            en: "Alcohol drinks"
+            ua: "Алкоголь",
+            en: "Alcohol"
         },
         WINE_CARD: {
             ua: "Винна карта",

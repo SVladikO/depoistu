@@ -69,7 +69,7 @@ const SettingPage = () => {
     return (
         <>
             {!customer && singInSingUpNotification}
-            {isShowLanguagePopup && <LanguagePopup onClose={closeLanguagePopup} />}
+            <LanguagePopup onClose={closeLanguagePopup} isShow={isShowLanguagePopup}/>
             <Wrapper>
                 {/*<CustomerAccountBar fullName='Jhon Smith' phone="+14844731243"/>*/}
                 {/*<RowSplitter height='20px'/>*/}

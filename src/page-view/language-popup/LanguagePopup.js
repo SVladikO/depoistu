@@ -9,13 +9,13 @@ import {enableScrollOnBody} from "../../components/Popup/Popup";
 import {useLocalStorage} from "../../utils/hook";
 import {LOCAL_STORAGE_KEY} from "../../utils/localStorage";
 
-const LanguagePopup = ({onClose=() => {}, showCloseButton= true}) => {
-    const [currentLanguage, setCurrentLanguage] = useLocalStorage(LOCAL_STORAGE_KEY.CURRENT_LANGUAGE, DEFAULT_LANGUAGE);
+const LanguagePopup = ({onClose=() => {}, showCloseButton, isShow=false}) => {
+    const [currentLanguage, setCurrentLanguage] = useLocalStorage(LOCAL_STORAGE_KEY.CURRENT_LANGUAGE);
 
     const setLanguage = language => () => {
         setCurrentLanguage(language);
         enableScrollOnBody();
-        if (language !== currentLanguage) {
+        if (currentLanguage ? language !== currentLanguage : language !== DEFAULT_LANGUAGE) {
             window.location.reload();
         }
         onClose();
@@ -24,6 +24,12 @@ const LanguagePopup = ({onClose=() => {}, showCloseButton= true}) => {
     const setUA = setLanguage(LANGUAGE_KEYS.UA)
     const setEN = setLanguage(LANGUAGE_KEYS.EN)
 
+    console.log(111, currentLanguage);
+    if (currentLanguage && !isShow) {
+        return;
+    }
+
+    console.log(222, 'showCloseButton ', showCloseButton);
     return (
         <Popup.Info onClose={onClose} showCloseButton={showCloseButton}>
             <Wrapper>
