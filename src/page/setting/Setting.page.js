@@ -48,10 +48,10 @@ const SettingPage = () => {
         >
             <EditBar>
                 <Link to={URL.SING_IN}>
-                    <PrimaryButton isWide>Sing In</PrimaryButton>
+                    <PrimaryButton isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.SING_IN)}</PrimaryButton>
                 </Link>
                 <Link to={URL.SING_UP}>
-                    <PrimaryButton isWide>Sing Up</PrimaryButton>
+                    <PrimaryButton isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.SING_UP)}</PrimaryButton>
                 </Link>
             </EditBar>
         </NotificationTDB>

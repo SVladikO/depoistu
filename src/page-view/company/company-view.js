@@ -25,6 +25,7 @@ import {ReactComponent as DeleteBasketIcon} from "../../icons/delete_basket.svg"
 import validation from "../../utils/validation";
 import {isScheduleValid} from "../../utils/company";
 import {getAllCities} from '../../utils/cities'
+import {translate, TRANSLATION} from "../../utils/translation";
 
 const renderCompanyPhotos = (photos, setPictures) => {
     const deleteImage = index => setPictures(photos.filter((_, i) => i !== index));
@@ -49,13 +50,13 @@ const renderCompanyPhotos = (photos, setPictures) => {
                     }
                 </Swiper>
             </Pictures>
-            <SecondaryButton isWide>+Photo</SecondaryButton>
+            <SecondaryButton isWide>{translate(TRANSLATION.PAGE_VIEW.COMPANY.ADD_IMAGE)}</SecondaryButton>
             <Divider/>
         </>
     );
 }
 
-const CompanyView = ({initialValues, onSubmit}) => {
+const CompanyView = ({initialValues, onSubmit, submitButtonTitle}) => {
     const [showCityPopup, setShowCityPopup] = useState(false);
     const [wasSubmitted, setWasSubmitted] = useState(false);
 
@@ -88,7 +89,7 @@ const CompanyView = ({initialValues, onSubmit}) => {
                 <form onSubmit={handleSubmit}>
                     {renderCompanyPhotos(initialValues.photos, pictures => setFieldValue('photos', pictures))}
                     <ContentContainer>
-                        <Label>Company Name</Label>
+                        <Label>{translate(TRANSLATION.INPUT_LABEL.COMPANY.NAME)}</Label>
                         <Input
                             name='name'
                             value={values.name}
@@ -99,7 +100,7 @@ const CompanyView = ({initialValues, onSubmit}) => {
                             clearHandler={() => setFieldValue('name', '')}
                             errorMessage={errors.name}
                         />
-                        <Label>City</Label>
+                        <Label>{translate(TRANSLATION.INPUT_LABEL.COMPANY.CITY)}</Label>
                         <PInput
                             withIcon
                             Icon={LocationIcon}
@@ -109,7 +110,7 @@ const CompanyView = ({initialValues, onSubmit}) => {
                             errorMessage={errors.city || errors.city_id}
                         />
                         {}
-                        <Label>Street</Label>
+                        <Label>{translate(TRANSLATION.INPUT_LABEL.COMPANY.STREET)}</Label>
                         <Input
                             name='street'
                             value={values.street}
@@ -120,7 +121,7 @@ const CompanyView = ({initialValues, onSubmit}) => {
                             clearHandler={() => setFieldValue('street', '')}
                             errorMessage={errors.street}
                         />
-                        <Label>Phone</Label>
+                        <Label>{translate(TRANSLATION.INPUT_LABEL.COMPANY.PHONE)}</Label>
                         <Input
                             name="phone"
                             value={values.phone}
@@ -130,7 +131,7 @@ const CompanyView = ({initialValues, onSubmit}) => {
                             clearHandler={() => setFieldValue('phone', '')}
                             withCleaner
                         />
-                        <Label>Work Schedule</Label>
+                        <Label>{translate(TRANSLATION.INPUT_LABEL.COMPANY.WORK_SCHEDULE)}</Label>
                         <WeekScheduleInput values={values} handleChange={handleChange}/>
                         {wasSubmitted && !isScheduleValid(values) && <WarningMessage>Schedule is a required field</WarningMessage>}
                     </ContentContainer>
@@ -144,7 +145,7 @@ const CompanyView = ({initialValues, onSubmit}) => {
                             onClose={closeCityPopup}
                         />
                     )}
-                    <PrimaryButton type={'submit'} isWide>Save changes</PrimaryButton>
+                    <PrimaryButton type={'submit'} isWide>{submitButtonTitle}</PrimaryButton>
                 </form>
             )}
         </Formik>

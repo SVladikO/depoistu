@@ -4,6 +4,7 @@ import {Notification} from "../../components";
 import MenuItemView from "../../page-view/menu-item/menu-item-view";
 import {fetchData, BE_API} from "../../utils/fetch";
 import {getParam} from "../../utils/utils";
+import {translate, TRANSLATION} from "../../utils/translation";
 
 const AddMenuItemPage = () => {
     const categoryId = getParam(`categoryId`);
@@ -56,6 +57,7 @@ const AddMenuItemPage = () => {
             <MenuItemView
                 initialValue={initialValue}
                 onSubmit={onSubmit}
+                submitButtonTitle={translate(TRANSLATION.PAGE.ADD_MENU_ITEM.BUTTON.ADD_MENU_ITEM)}
             />
         </>
     );

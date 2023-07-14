@@ -17,6 +17,7 @@ import {URL} from "../../utils/config";
 import {BE_API} from '../../utils/fetch'
 import {fetchData} from "../../utils/fetch";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
+import {translate, TRANSLATION} from "../../utils/translation";
 
 const EditMenu = () => {
     const dispatch = useDispatch();
@@ -87,7 +88,7 @@ const EditMenu = () => {
                     />)}
                 </>
                 <Link to={`${URL.ADD_MENU_ITEM}?categoryId=${selectedCategoryId}&companyId=${companyId}`}>
-                    <PrimaryButton isWide>Add menu item</PrimaryButton>
+                    <PrimaryButton isWide>{translate(TRANSLATION.PAGE.EDIT_MENU.BUTTON.ADD_MENU_ITEM)}</PrimaryButton>
                 </Link>
             </Wrapper>
         </>

@@ -75,7 +75,7 @@ const SignInPage = () => {
             {({values,touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                 <form onSubmit={handleSubmit}>
                     <ContentContainer>
-                        <Label>Email</Label>
+                        <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.EMAIL)}</Label>
                         <Input
                             Icon={MailIcon}
                             name='email'
@@ -87,7 +87,7 @@ const SignInPage = () => {
                             clearHandler={() => setFieldValue('email', '')}
                             errorMessage={errors.email}
                         />
-                        <Label>Password</Label>
+                        <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.PASSWORD)}</Label>
                         <Input
                             Icon={LockIcon}
                             name='password'

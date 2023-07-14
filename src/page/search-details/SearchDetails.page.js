@@ -8,6 +8,7 @@ import {CategoryMenuRow, Company, MenuItem} from "../../components";
 import {BE_API, fetchData} from "../../utils/fetch";
 import {useLocalStorage} from "../../utils/hook";
 import {LOCAL_STORAGE_KEY} from "../../utils/localStorage";
+import {translate, TRANSLATION as TR} from "../../utils/translation";
 
 const SearchDetailsPage = () => {
     let companyId = +useParams().companyId;
@@ -39,7 +40,7 @@ const SearchDetailsPage = () => {
     return (
         <Wrapper>
             {company && <Company company={company} withMoreInfo/>}
-            <Divider id="menu">MENU</Divider>
+            <Divider id="menu">{translate(TR.PAGE.COMPANY_DETAILS.MENU_TITLE)}</Divider>
             <CategoryMenuRow
                 menuItems={menuItems}
                 selectedCategoryId={selectedSubCategoryId}

@@ -1,3 +1,5 @@
+import {translate, TRANSLATION} from "./translation";
+
 export const getScheduleAsString = values => {
     let result = ''
 
@@ -36,13 +38,21 @@ export function initSchedule(schedule) {
     return result;
 }
 
-const uaWeekDayNames = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"];
+export const weekDayNames = [
+    translate(TRANSLATION.WEEK_DAY.MON),
+    translate(TRANSLATION.WEEK_DAY.TU),
+    translate(TRANSLATION.WEEK_DAY.WED),
+    translate(TRANSLATION.WEEK_DAY.TH),
+    translate(TRANSLATION.WEEK_DAY.FRI),
+    translate(TRANSLATION.WEEK_DAY.SAT),
+    translate(TRANSLATION.WEEK_DAY.SUN),
+];
 
 const getCurrentDay = days => days.find((el, i) => isToday(i));
 const cutOnDays = schedule => schedule.split(',')?.map(el => el.trim());
 const isToday = dayIndex => (dayIndex + 1) === (new Date().getDay() || 7);
 const addMarkerToCurrentDay = (el, i) => isToday(i) ? {...el, isToday: true} : el;
-const addDayName = (fromTo, index) => ({dayName: uaWeekDayNames[index], ...fromTo});
+const addDayName = (fromTo, index) => ({dayName: weekDayNames[index], ...fromTo});
 
 export function parseSchedule(scheduleAsString) {
     const workDays = cutOnDays(scheduleAsString)
@@ -54,7 +64,7 @@ export function parseSchedule(scheduleAsString) {
     const isCompanyOpenNow = checkIsCompanyOpenNow(currentDay);
 
     return {workDays, currentDay, isCompanyOpenNow}
-};
+}
 
 function convertToObject(day) {
     const [from = '', to = ''] = day ? day?.split('-') : ['', ''];

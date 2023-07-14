@@ -73,7 +73,7 @@ export const ROUTER = {
     SEARCH_DETAILS: {
         URL: URL.SEARCH_DETAILS,
         PARAMS: '/:companyId',
-        TITLE: 'Company details',
+        TITLE: translate(TRANSLATION.PAGE.COMPANY_DETAILS.TOP_TITLE),
         page: SearchDetailsPage,
         showBottomMenu: true,
         BACK_URL: URL.SEARCH
@@ -132,7 +132,7 @@ export const ROUTER = {
     },
     CUSTOMER_COMPANIES: {
         URL: URL.CUSTOMER_COMPANIES,
-        TITLE: 'Your companies',
+        TITLE: translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.TOP_TITLE),
         page: CustomerCompaniesPage,
         showBottomMenu: true,
         BACK_URL: URL.SETTING
@@ -140,14 +140,14 @@ export const ROUTER = {
     EDIT_COMPANY: {
         URL: URL.EDIT_COMPANY,
         PARAMS: '/:companyId',
-        TITLE: 'Edit company',
+        TITLE: translate(TRANSLATION.PAGE.EDIT_COMPANY.TOP_TITLE),
         page: EditCompanyPage,
         showBottomMenu: true,
         BACK_URL: URL.CUSTOMER_COMPANIES
     },
     ADD_COMPANY: {
         URL: URL.ADD_COMPANY,
-        TITLE: 'Add company',
+        TITLE: translate(TRANSLATION.PAGE.ADD_COMPANY.TOP_TITLE),
         page: AddCompanyPage,
         showBottomMenu: true,
         BACK_URL: URL.CUSTOMER_COMPANIES
@@ -155,14 +155,14 @@ export const ROUTER = {
     EDIT_MENU: {
         URL: URL.EDIT_MENU,
         PARAMS: '/:companyId',
-        TITLE: 'Edit menu',
+        TITLE: translate(TRANSLATION.PAGE.EDIT_MENU.TOP_TITLE),
         page: EditMenuPage,
         showBottomMenu: true,
         BACK_URL: URL.CUSTOMER_COMPANIES
     },
     EDIT_MENU_ITEM: {
         URL: URL.EDIT_MENU_ITEM,
-        TITLE: 'Edit menu item',
+        TITLE: translate(TRANSLATION.PAGE.EDIT_MENU_ITEM.TOP_TITLE),
         page: EditMenuItemPage,
         showBottomMenu: true,
         BACK_URL: () => {
@@ -172,7 +172,7 @@ export const ROUTER = {
     },
     ADD_MENU_ITEM: {
         URL: URL.ADD_MENU_ITEM,
-        TITLE: 'Add menu item',
+        TITLE: translate(TRANSLATION.PAGE.ADD_MENU_ITEM.TOP_TITLE),
         page: AddMenuItemPage,
         showBottomMenu: true,
         BACK_URL: () => {
