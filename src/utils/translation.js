@@ -108,6 +108,12 @@ export const TRANSLATION = {
                     en: "Linked Accounts"
                 },
             },
+            LABEL: {
+                CURRENT_LANGUAGE: {
+                    ua: "Українська",
+                    en: "English"
+                }
+            },
             NOTIFICATION: {
                 DESCRIPTION: {
                     ua: "Ця сторiнка доступна тiльки пicля пiдтвердження",
