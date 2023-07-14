@@ -18,9 +18,11 @@ import {ReactComponent as BasketIcon} from "../../icons/basket.svg";
 import {ReactComponent as ZoomIcon} from "../../icons/zoom.svg";
 import {ReactComponent as EditIcon} from "../../icons/edit.svg";
 import {URL} from "../../utils/config";
+import {translate, TRANSLATION} from "../../utils/translation";
+import {CATEGORY_MAPPER} from "../../utils/category";
 
 export const MenuItemDetails = ({item = {}, withEditIcon = false, onEditClick}) => {
-    const {NAME, DESCRIPTION, PRICE, COOKING_TIME, SIZE, isLiked} = item;
+    const {NAME, DESCRIPTION, CATEGORY_ID, PRICE, COOKING_TIME, SIZE, isLiked} = item;
 
     return (
         <Flex flexDirection='column' width={'100%'}>
@@ -37,7 +39,7 @@ export const MenuItemDetails = ({item = {}, withEditIcon = false, onEditClick}) 
             <Price>{PRICE}</Price>
             <Description>{DESCRIPTION}</Description>
             <AdditionalDetails>
-                <TimeIcon/> {COOKING_TIME} m <MeasureIcon/> {SIZE} g
+                <TimeIcon/> {COOKING_TIME} {translate(TRANSLATION.MEASUREMENTS.PREPARING)} <MeasureIcon/> {SIZE} {CATEGORY_MAPPER[CATEGORY_ID].measurement}
             </AdditionalDetails>
             {/*<Absolute bottom={'10px'} right={'10px'}>*/}
             {/*    <BasketIcon />*/}

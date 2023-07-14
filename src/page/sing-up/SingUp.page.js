@@ -59,7 +59,7 @@ const SingUpPage = () => {
                 {({values, handleBlur, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                     <form onSubmit={handleSubmit}>
                         <ContentContainer>
-                            <Label>{translate(TRANSLATION.PAGE.SING_UP.LABEL.USER_NAME)}</Label>
+                            <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.NAME)}</Label>
                             <Input
                                 withCleaner
                                 isTouched={wasSubmitted || touched.name}
@@ -70,7 +70,7 @@ const SingUpPage = () => {
                                 clearHandler={() => setFieldValue('name', '')}
                                 errorMessage={errors.name}
                             />
-                            <Label>{translate(TRANSLATION.PAGE.SING_UP.LABEL.PHONE)}</Label>
+                            <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.PHONE)}</Label>
                             <Input
                                 withCleaner
                                 name="phone"
@@ -81,7 +81,7 @@ const SingUpPage = () => {
                                 clearHandler={() => setFieldValue('phone', '')}
                                 errorMessage={errors.phone}
                             />
-                            <Label>{translate(TRANSLATION.PAGE.SING_UP.LABEL.EMAIL)}</Label>
+                            <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.EMAIL)}</Label>
                             <Input
                                 withCleaner
                                 type="email"
@@ -93,7 +93,7 @@ const SingUpPage = () => {
                                 clearHandler={() => setFieldValue('email', '')}
                                 errorMessage={errors.email}
                             />
-                            <Label>{translate(TRANSLATION.PAGE.SING_UP.LABEL.PASSWORD)}</Label>
+                            <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.PASSWORD)}</Label>
                             <Input
                                 withSwitcher
                                 name="newPassword"
@@ -104,7 +104,7 @@ const SingUpPage = () => {
                                 clearHandler={() => setFieldValue('newPassword', '')}
                                 errorMessage={errors.newPassword}
                             />
-                            <Label>{translate(TRANSLATION.PAGE.SING_UP.LABEL.CONFIRM_PASSWORD)}</Label>
+                            <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.CONFIRM_PASSWORD)}</Label>
                             <Input
                                 withSwitcher
                                 value={values.confirmedPassword}

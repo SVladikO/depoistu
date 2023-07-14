@@ -1,10 +1,10 @@
-import {translate, TRANSLATION as TR} from "./translation";
+import {translate, TRANSLATION, TRANSLATION as TR} from "./translation";
 
-const MEASUREMENTS = {
-    WEIGHT: 'g',
-    LIQUID: 'ml',
+export const MEASUREMENTS = {
+    WEIGHT: translate(TRANSLATION.MEASUREMENTS.WEIGHT),
+    LIQUID: translate(TRANSLATION.MEASUREMENTS.LIQUID),
 }
-
+console.log(111111, MEASUREMENTS)
 export const CATEGORY_MAPPER = {
     1: {id: 1, title: translate(TR.SUB_CATEGORIES.BREAKFAST), measurement: MEASUREMENTS.WEIGHT},
     2: {id: 2, title: translate(TR.SUB_CATEGORIES.SOUPS), measurement: MEASUREMENTS.LIQUID},
@@ -17,8 +17,8 @@ export const CATEGORY_MAPPER = {
     9: {id: 9, title: translate(TR.SUB_CATEGORIES.SANDWITCH), measurement: MEASUREMENTS.WEIGHT},
     10: {id: 10, title: translate(TR.SUB_CATEGORIES.BURGERS), measurement: MEASUREMENTS.WEIGHT},
     11: {id: 11, title: translate(TR.SUB_CATEGORIES.SUSHI), measurement: MEASUREMENTS.WEIGHT},
-    12: {id: 12, title: translate(TR.SUB_CATEGORIES.ROLLS), measurement: MEASUREMENTS.LIQUID},
-    13: {id: 13, title: translate(TR.SUB_CATEGORIES.SUSHI_SETS), measurement: MEASUREMENTS.LIQUID},
+    12: {id: 12, title: translate(TR.SUB_CATEGORIES.ROLLS), measurement: MEASUREMENTS.WEIGHT},
+    13: {id: 13, title: translate(TR.SUB_CATEGORIES.SUSHI_SETS), measurement: MEASUREMENTS.WEIGHT},
     14: {id: 14, title: translate(TR.SUB_CATEGORIES.NOODLES), measurement: MEASUREMENTS.WEIGHT},
     15: {id: 15, title: translate(TR.SUB_CATEGORIES.PIZZA), measurement: MEASUREMENTS.WEIGHT},
     16: {id: 16, title: translate(TR.SUB_CATEGORIES.SHAWARMA), measurement: MEASUREMENTS.WEIGHT},

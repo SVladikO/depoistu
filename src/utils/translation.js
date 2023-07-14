@@ -22,7 +22,95 @@ export const TRANSLATION = {
         ua: 'Меню всіх кафе та ресторанів України має бути в одному місці.Знайдіть заклад своєї мрії та допоможи іншим. Розкажи адміністраторам своїх улюблених закладів про наш сайт.',
         en: 'The menu of all cafes and restaurants of Ukraine should be in one place. Find the bookmark of your dreams and help others. Tell the administrators of your favorite bookmarks about our site.'
     },
+    INPUT_LABEL: {
+        CUSTOMER: {
+            NAME: {
+                en: "Name",
+                ua: "Ім'я"
+            },
+            PHONE: {
+                ua: "Номер Телефону",
+                en: "Phone Number"
+            },
+            EMAIL: {
+                ua: "Електронна Пошта",
+                en: "Emial"
+            },
+            PASSWORD: {
+                ua: "Пароль",
+                en: "Password"
+            },
+            CONFIRM_PASSWORD: {
+                ua: "Пiдтвердiть Пароль",
+                en: "Confirm Password"
+            },
+            CHECKBOX_CONFIRM_TERMS: {
+                ua: "Створенням свого аккаунту ви погоджуєтесь з нашими правилами користування та полiтикою конфiденцiйностi",
+                en: "By creating an account you agree to our Terms of Service and Privacy Policy"
+            }
+        }
+    },
+    MEASUREMENTS: {
+        WEIGHT: {
+            ua: "г",
+            en: 'g'
+        },
+        LIQUID: {
+            ua: "мл",
+            en: 'ml'
+        },
+        PREPARING: {
+            ua: "хв",
+            en: 'mim'
+        },
+    },
     PAGE: {
+        COMPANY_DETAILS: {
+            TOP_TITLE: {
+                ua: "Деталі компанії",
+                en: 'Company details'
+            },
+            MENU_TITLE: {
+                ua: "МЕНЮ",
+                en: 'MENU'
+            }
+        },
+        CUSTOMER_COMPANIES: {
+            TOP_TITLE: {
+                ua: "Ваші компанії",
+                en: 'Your companies'
+            },
+        },
+        ADD_COMPANY: {
+            TOP_TITLE: {
+                ua: "Додати компанію",
+                en: 'Add company'
+            },
+        },
+        EDIT_MENU: {
+            TOP_TITLE: {
+                ua: "Редагувати меню",
+                en: 'Edit menu'
+            },
+        },
+        EDIT_MENU_ITEM: {
+            TOP_TITLE: {
+                ua: "Редагувати позицію меню",
+                en: 'Edit menu item'
+            },
+        },
+        EDIT_COMPANY: {
+            TOP_TITLE: {
+                ua: "Редагувати компанію",
+                en: 'Edit company'
+            },
+        },
+        ADD_MENU_ITEM: {
+            TOP_TITLE: {
+                ua: "Додати позицію меню",
+                en: 'Add menu item'
+            },
+        },
         CHANGE_PASSWORD: {
             TOP_TITLE: {
                 ua: "Змiнити пароль",
@@ -58,6 +146,16 @@ export const TRANSLATION = {
                 ua: "Налаштування",
                 en: "Settings"
             },
+            BUTTONS: {
+                SING_IN: {
+                    ua: "Вхiд",
+                    en: "Sign in"
+                },
+                SING_UP: {
+                    ua: "Реєстрація",
+                    en: "Sign up"
+                }
+            } ,
             MENU_ROW: {
                 CHANGE_PASS: {
                     ua: "Змiнити пароль",
@@ -216,34 +314,28 @@ export const TRANSLATION = {
             TOP_TITLE: {
                 ua: "Реєстрацiя",
                 en: "Sing up"
-            },
-            LABEL: {
-                USER_NAME: {
-                    en: "Name",
-                    ua: "Ім'я"
-                },
-                PHONE: {
-                    ua: "Номер Телефону",
-                    en: "Phone Number"
-                },
-                EMAIL: {
-                    ua: "Електронна Пошта",
-                    en: "Emial"
-                },
-                PASSWORD: {
-                    ua: "Пароль",
-                    en: "Password"
-                },
-                CONFIRM_PASSWORD: {
-                    ua: "Пiдтвердiть Пароль",
-                    en: "Confirm Password"
-                },
-                CHECKBOX_CONFIRM_TERMS: {
-                    ua: "Створенням свого аккаунту ви погоджуєтесь з нашими правилами користування та полiтикою конфiденцiйностi",
-                    en: "By creating an account you agree to our Terms of Service and Privacy Policy"
-                }
             }
         },
+    },
+    COMPONENTS: {
+        COMPANY: {
+            STATUS_OPEN: {
+                ua: "Відкрито",
+                en: "Open"
+            },
+            STATUS_CLOSE: {
+                ua: "Закрито",
+                en: "Close"
+            },
+            TILL: {
+                ua: "до",
+                en: "till"
+            },
+            SCHEDULE_BUTTON: {
+                ua: "Показати графік",
+                en: "Show schedule"
+            }
+        }
     },
     NOTIFICATION: {
         LOADING: {
@@ -361,8 +453,8 @@ export const TRANSLATION = {
             en: 'Fish dishes'
         },
         DISHES_ON_FIRE: {
-            ua: 'Страви на вогні',
-            en: 'Dishes on fire (weight in raw form)'
+            ua: 'Монгал',
+            en: 'Dishes on fire'
         },
         SAUCES: {
             ua: 'Соуси',

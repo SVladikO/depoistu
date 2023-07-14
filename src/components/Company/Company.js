@@ -10,7 +10,6 @@ import {
     Wrapper,
     ImageSection,
     Name,
-    Address,
     Content,
     CompanyInfo,
     Schedule,
@@ -24,6 +23,7 @@ import {ThirdButton} from "../Button/Button.style";
 import {parseSchedule} from "../../utils/company";
 import ScheduleDetails from "../WeekScheduleOutput/WeekScheduleOutput";
 import {getCityNameById} from "../../utils/cities";
+import {translate, TRANSLATION as TR} from "../../utils/translation";
 
 const Company = (props) => {
 
@@ -65,10 +65,10 @@ const Company = (props) => {
         <Schedule>
             {schedule.isCompanyOpenNow
                 ? <>
-                    <OpenStatus>Open</OpenStatus>
-                    <Closes>Closes<span>{schedule.currentDay.to}</span></Closes>
+                    <OpenStatus>{translate(TR.COMPONENTS.COMPANY.STATUS_OPEN)}</OpenStatus>
+                    <Closes><span>{translate(TR.COMPONENTS.COMPANY.TILL)} {schedule.currentDay.to}</span></Closes>
                 </>
-                : <CloseStatus>Close</CloseStatus>
+                : <CloseStatus>{translate(TR.COMPONENTS.COMPANY.STATUS_CLOSE)}</CloseStatus>
             }
         </Schedule>
     )
