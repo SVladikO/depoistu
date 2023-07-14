@@ -22,6 +22,36 @@ export const TRANSLATION = {
         ua: 'Меню всіх кафе та ресторанів України має бути в одному місці.Знайдіть заклад своєї мрії та допоможи іншим. Розкажи адміністраторам своїх улюблених закладів про наш сайт.',
         en: 'The menu of all cafes and restaurants of Ukraine should be in one place. Find the bookmark of your dreams and help others. Tell the administrators of your favorite bookmarks about our site.'
     },
+    VALIDATION: {
+        REQUIRED: {
+            en: "Required",
+            ua: "Обов'язковий"
+        },
+        MIN_LENGTH: {
+            en: "Min length",
+            ua: "Мінімальна довжина"
+        },
+        MAX_LENGTH: {
+            en: "Max length",
+            ua: "Максимальна довжина"
+        },
+        EXAMPLE: {
+            en: "Example",
+            ua: "Приклад"
+        },
+        PASSWORD_MUST_MUCH: {
+            en: "Password must much",
+            ua: "Паролі мають співпадати"
+        },
+        OLD_PASSWORD_MUST_MUCH: {
+            en: "Old password must much",
+            ua: "Старий пароль має співпасти"
+        },
+        INVALID_EMAIL: {
+            en: "Invalid email",
+            ua: "Невалідний мейл"
+        }
+    },
     WEEK_DAY: {
         MON: {
             en: "Mon",
