@@ -147,7 +147,11 @@ export const TRANSLATION = {
             WEEKEND: {
                 ua: "Вихідний",
                 en: 'Weekend'
-            }
+            },
+            ADD_IMAGE: {
+                ua: "Додати фото",
+                en: 'Add photo'
+            },
         },
         MENU_ITEM: {
             BUTTON: {
@@ -181,13 +185,33 @@ export const TRANSLATION = {
             WARNING: {
                 ua: "Не додавайте компанії заради розваги. Не витрачайте ваш і наш час дарма.",
                 en: "Don't add companies for fun. Don\'t waste your time and ours."
+            },
+            BUTTON: {
+                COMPANY: {
+                    en: 'Company',
+                    ua: "Компанія"
+                },
+                MENU: {
+                    en: 'Menu',
+                    ua: "Меню"
+                },
+                ADD_COMPANY: {
+                    en: 'Add company',
+                    ua: "Додати компанію"
+                }
             }
         },
         ADD_COMPANY: {
             TOP_TITLE: {
-                ua: "Додати компанію",
-                en: 'Add company'
+                en: 'Add company',
+                ua: "Додати компанію"
             },
+            BUTTON: {
+                ADD_COMPANY: {
+                    en: 'Add company',
+                    ua: "Додати компанію"
+                }
+            }
         },
         EDIT_MENU: {
             TOP_TITLE: {
@@ -206,6 +230,16 @@ export const TRANSLATION = {
                 ua: "Редагувати компанію",
                 en: 'Edit company'
             },
+            BUTTON: {
+                EDIT_COMPANY: {
+                    en: 'Save',
+                    ua: "Зберегти"
+                },
+                DELETE_COMPANY: {
+                    en: 'Delete company',
+                    ua: "Видалити компанію"
+                }
+            }
         },
         ADD_MENU_ITEM: {
             TOP_TITLE: {

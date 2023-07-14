@@ -50,13 +50,13 @@ const renderCompanyPhotos = (photos, setPictures) => {
                     }
                 </Swiper>
             </Pictures>
-            <SecondaryButton isWide>+Photo</SecondaryButton>
+            <SecondaryButton isWide>{translate(TRANSLATION.PAGE_VIEW.COMPANY.ADD_IMAGE)}</SecondaryButton>
             <Divider/>
         </>
     );
 }
 
-const CompanyView = ({initialValues, onSubmit}) => {
+const CompanyView = ({initialValues, onSubmit, submitButtonTitle}) => {
     const [showCityPopup, setShowCityPopup] = useState(false);
     const [wasSubmitted, setWasSubmitted] = useState(false);
 
@@ -145,7 +145,7 @@ const CompanyView = ({initialValues, onSubmit}) => {
                             onClose={closeCityPopup}
                         />
                     )}
-                    <PrimaryButton type={'submit'} isWide>Save changes</PrimaryButton>
+                    <PrimaryButton type={'submit'} isWide>{submitButtonTitle}</PrimaryButton>
                 </form>
             )}
         </Formik>

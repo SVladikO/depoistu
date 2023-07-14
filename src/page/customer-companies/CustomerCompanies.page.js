@@ -77,18 +77,18 @@ const CustomerCompaniesPage = () => {
                     <Company company={company} key={company.ID}>
                         <EditBar>
                             <Link to={ROUTER.EDIT_COMPANY.URL + '/' + company.ID} style={{width: '140px'}}>
-                                <PrimaryButton isWide><EditIcon/>Company</PrimaryButton>
+                                <PrimaryButton isWide><EditIcon/>{translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.COMPANY)}</PrimaryButton>
                             </Link>
                             <QRCodeButton onClick={showQRCode(company.ID)}><QRCodeIcon/></QRCodeButton>
                             <Link to={ROUTER.EDIT_MENU.URL + '/' + company.ID} style={{width: '140px'}}>
-                                <PrimaryButton isWide><EditIcon/>Menu</PrimaryButton>
+                                <PrimaryButton isWide><EditIcon/>{translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.MENU)}</PrimaryButton>
                             </Link>
                         </EditBar>
                     </Company>
             )
             }
             <Link to={URL.ADD_COMPANY}>
-                <PrimaryButton isWide>+ Add new company</PrimaryButton>
+                <PrimaryButton isWide>{translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.ADD_COMPANY)}</PrimaryButton>
             </Link>
         < />
     )
