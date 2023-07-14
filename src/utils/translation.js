@@ -22,7 +22,85 @@ export const TRANSLATION = {
         ua: 'Меню всіх кафе та ресторанів України має бути в одному місці.Знайдіть заклад своєї мрії та допоможи іншим. Розкажи адміністраторам своїх улюблених закладів про наш сайт.',
         en: 'The menu of all cafes and restaurants of Ukraine should be in one place. Find the bookmark of your dreams and help others. Tell the administrators of your favorite bookmarks about our site.'
     },
+    WEEK_DAY: {
+        MON: {
+            en: "Mon",
+            ua: "Пн"
+        },
+        TU: {
+            en: "Tu",
+            ua: "Вт"
+        },
+        WED: {
+            en: "Wed",
+            ua: "Ср"
+        },
+        TH: {
+            en: "Th",
+            ua: "Чт"
+        },
+        FRI: {
+            en: "Fri",
+            ua: "Пт"
+        },
+        SAT: {
+            en: "Sat",
+            ua: "Сб"
+        },
+        SUN: {
+            en: "Sun",
+            ua: "Нд"
+        },
+    },
     INPUT_LABEL: {
+        COMPANY: {
+            NAME: {
+                en: "Name",
+                ua: "Ім'я"
+            },
+            CITY: {
+                en: "City",
+                ua: "Місто"
+            },
+            STREET: {
+                en: "Street",
+                ua: "Вулиця"
+            },
+            PHONE: {
+                en: "Phone",
+                ua: "Телефон"
+            },
+            WORK_SCHEDULE: {
+                en: "Work schedule",
+                ua: "Графік роботи"
+            },
+        },
+        MENU_ITEM: {
+            NAME: {
+                en: "Name",
+                ua: "Ім'я"
+            },
+            PRICE: {
+                en: "PriceЦіна",
+                ua: "Ціна"
+            },
+            CATEGORY: {
+                en: "Category",
+                ua: "Категорія"
+            },
+            DESCRIPTION: {
+                en: "Description",
+                ua: "Опис"
+            },
+            COOKING_TIME: {
+                en: "Cooking time (in minutes)",
+                ua: "Час приготування (в хвилинах)"
+            },
+            MEAL_SIZE: {
+                en: "Size",
+                ua: "Розмір"
+            }
+        },
         CUSTOMER: {
             NAME: {
                 en: "Name",
@@ -64,6 +142,26 @@ export const TRANSLATION = {
             en: 'mim'
         },
     },
+    PAGE_VIEW: {
+        COMPANY: {
+            WEEKEND: {
+                ua: "Вихідний",
+                en: 'Weekend'
+            }
+        },
+        MENU_ITEM: {
+            BUTTON: {
+                ADD_IMAGE: {
+                    ua: "Додати фото",
+                    en: 'Add photo'
+                },
+                CHANGE_IMAGE: {
+                    ua: "Змінити фото",
+                    en: 'Change photo'
+                }
+            }
+        }
+    },
     PAGE: {
         COMPANY_DETAILS: {
             TOP_TITLE: {
@@ -80,6 +178,10 @@ export const TRANSLATION = {
                 ua: "Ваші компанії",
                 en: 'Your companies'
             },
+            WARNING: {
+                ua: "Не додавайте компанії заради розваги. Не витрачайте ваш і наш час дарма.",
+                en: "Don't add companies for fun. Don\'t waste your time and ours."
+            }
         },
         ADD_COMPANY: {
             TOP_TITLE: {
@@ -155,7 +257,7 @@ export const TRANSLATION = {
                     ua: "Реєстрація",
                     en: "Sign up"
                 }
-            } ,
+            },
             MENU_ROW: {
                 CHANGE_PASS: {
                     ua: "Змiнити пароль",
@@ -296,7 +398,7 @@ export const TRANSLATION = {
                 en: "You don’t have an account?"
             }
         },
-        FORGOT_PASSWORD:  {
+        FORGOT_PASSWORD: {
             TOP_TITLE: {
                 ua: "Забули пароль",
                 en: "Forgot password"

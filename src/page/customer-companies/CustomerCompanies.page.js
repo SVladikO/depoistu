@@ -13,6 +13,7 @@ import {ROUTER, URL} from "../../utils/config";
 import {useLocalStorage, useLocalStorageFetch} from "../../utils/hook";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {ReactComponent as QRCodeIcon} from "../../icons/qr_code.svg";
+import {translate, TRANSLATION} from "../../utils/translation";
 
 const PopupQRCode = ({companyId, onClose}) => {
     const [qrCodeGenerationError, setQrCodeGenerationError] = useState('');
@@ -69,7 +70,7 @@ const CustomerCompaniesPage = () => {
 
     return (
         <>
-            {!isVisibleCompanyCreationWarning && <Popup.Info onClose={closeInfoPopUp}>Не додавайте компанії заради розваги. Не витрачайте ваш і наш час дарма.</Popup.Info>}
+            {!isVisibleCompanyCreationWarning && <Popup.Info onClose={closeInfoPopUp}>{translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.WARNING)}</Popup.Info>}
             <PopupQRCode companyId={companyIdForQRCode} onClose={() => setCompanyIdForQRCode('')}/>
             {customerCompanies.map(
                 company =>
