@@ -111,7 +111,7 @@ export const TRANSLATION = {
                 ua: "Ім'я"
             },
             PRICE: {
-                en: "PriceЦіна",
+                en: "Price",
                 ua: "Ціна"
             },
             CATEGORY: {
@@ -258,7 +258,7 @@ export const TRANSLATION = {
         EDIT_MENU_ITEM: {
             TOP_TITLE: {
                 en: 'Edit menu item',
-                ua: "Редагувати позицію меню",
+                ua: "Редагувати пункт меню",
             },
             BUTTON: {
                 DELETE_MENU_ITEM: {
