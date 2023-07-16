@@ -12,6 +12,7 @@ import styled from 'styled-components'
 import {DEVICE_WIDTH} from "./theme";
 import {BottomMenu, NavigationHeader} from "../components";
 import AdminPage from "../page/development/Admin.page";
+import {useScrollUp} from "./hook";
 
 export const MobileDevice = styled.div`
   min-width: ${DEVICE_WIDTH.MIN};
@@ -47,11 +48,13 @@ export const Centralicer = styled.div`
   min-height: 500px;
 `;
 
-const routes = ROUTERS.map(r =>
-    <Route
-        key={r.URL}
-        path={r.URL + (r.PARAMS || '')}
-        element={
+const routes = ROUTERS.map(r => {
+
+    const Element = () => {
+
+        useScrollUp();
+
+        return (
             <MobileDevice className="MobileDevice">
                 <TopWrapper className="TopWrapper">
                     <NavigationHeader backUrl={r.BACK_URL} title={r.TITLE}>
@@ -61,13 +64,22 @@ const routes = ROUTERS.map(r =>
                 <Centralicer className="Centralicer">
                     <r.page/>
                 </Centralicer>
-                {r.showBottomMenu &&
+                {r.showBottomMenu && (
                     <BottomWrapper>
                         <BottomMenu/>
                     </BottomWrapper>
-                }
+                )}
             </MobileDevice>
-        }/>);
+        )
+    };
+
+    return (
+        <Route
+            key={r.URL}
+            path={r.URL + (r.PARAMS || '')}
+            element={<Element />}
+        />)
+});
 
 export const getRoutes = () => {
     return (

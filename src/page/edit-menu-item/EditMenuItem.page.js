@@ -8,7 +8,6 @@ import {ReactComponent as RemoveIcon} from "../../icons/remove_icon.svg";
 import {URL} from "../../utils/config";
 import {fetchData, BE_API} from "../../utils/fetch";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {useScrollUp} from "../../utils/hook";
 import {translate, TRANSLATION} from "../../utils/translation";
 
 const EditMenuItemPage = () => {
@@ -19,8 +18,6 @@ const EditMenuItemPage = () => {
     const [requestError, setRequestError] = useState("");
     const [isMenuItemDeleted, setIsMenuItemDeleted] = useState(false);
     const [isMenuItemUpdated, setIsMenuItemUpdated] = useState(false);
-
-    useScrollUp();
 
     if (!menuItemCandidateToEdit && URL.EDIT_MENU) {
         return navigate(URL.SETTING)
