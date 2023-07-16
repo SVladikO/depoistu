@@ -24,7 +24,6 @@ const LanguagePopup = ({onClose=() => {}, showCloseButton, isShow=false}) => {
     const setUA = setLanguage(LANGUAGE_KEYS.UA)
     const setEN = setLanguage(LANGUAGE_KEYS.EN)
 
-    console.log(111, currentLanguage);
     if (currentLanguage && !isShow) {
         return;
     }

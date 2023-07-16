@@ -4,7 +4,6 @@ export const MEASUREMENTS = {
     WEIGHT: translate(TRANSLATION.MEASUREMENTS.WEIGHT),
     LIQUID: translate(TRANSLATION.MEASUREMENTS.LIQUID),
 }
-console.log(111111, MEASUREMENTS)
 export const CATEGORY_MAPPER = {
     1: {id: 1, title: translate(TR.SUB_CATEGORIES.BREAKFAST), measurement: MEASUREMENTS.WEIGHT},
     2: {id: 2, title: translate(TR.SUB_CATEGORIES.SOUPS), measurement: MEASUREMENTS.LIQUID},

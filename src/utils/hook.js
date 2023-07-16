@@ -17,23 +17,19 @@ export const useLocalStorage = (storageKey, initialState) => {
 };
 
 export const useHideOnScroll = (id, top) => {
-    const onScroll = () => {
-        let prevScrollpos = window.pageYOffset;
-        window.onscroll = function() {
-            let currentScrollPos = window.pageYOffset;
+    let prevScrollpos = window.pageYOffset;
 
-            if (prevScrollpos > currentScrollPos) {
-                document.getElementById(id).style.top = "0";
-            } else {
-                document.getElementById(id).style.top = top;
-            }
+    const onScroll = () => {
+        window.onscroll = function () {
+            let currentScrollPos = window.pageYOffset;
+            document.getElementById(id).style.top = prevScrollpos > currentScrollPos ? "0" : top;
             prevScrollpos = currentScrollPos;
         }
     }
     useEffect(() => {
         window.addEventListener('scroll', onScroll);
         return () => window.removeEventListener('scroll', onScroll);
-    })
+    }, [id, top])
 }
 
 export const useScrollUp = () => {
@@ -42,7 +38,9 @@ export const useScrollUp = () => {
     }, [])
 };
 
-export const useLocalStorageFetch = (storageKey, initialState, url, setError = () => {}, customCondition = () => {}) => {
+export const useLocalStorageFetch = (storageKey, initialState, url, setError = () => {
+}, customCondition = () => {
+}) => {
     const localStorageState = LocalStorage.get(storageKey);
     const [value, setValue] = useState(localStorageState ?? initialState);
     const dispatch = useDispatch();
