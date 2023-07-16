@@ -54,7 +54,7 @@ const SearchDetailsPage = () => {
                 <MenuItem key={el.ID} item={el}/>
             ];
         })?.flat()
-    }, [menuItems])
+    }, [menuItems]);
 
     return (
         <Wrapper>
