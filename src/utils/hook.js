@@ -16,6 +16,26 @@ export const useLocalStorage = (storageKey, initialState) => {
     return [value, set];
 };
 
+export const useHideOnScroll = (id, top) => {
+    const onScroll = () => {
+        let prevScrollpos = window.pageYOffset;
+        window.onscroll = function() {
+            let currentScrollPos = window.pageYOffset;
+
+            if (prevScrollpos > currentScrollPos) {
+                document.getElementById(id).style.top = "0";
+            } else {
+                document.getElementById(id).style.top = top;
+            }
+            prevScrollpos = currentScrollPos;
+        }
+    }
+    useEffect(() => {
+        window.addEventListener('scroll', onScroll);
+        return () => window.removeEventListener('scroll', onScroll);
+    })
+}
+
 export const useScrollUp = () => {
     useEffect(() => {
         window.scrollTo(0, 0)
