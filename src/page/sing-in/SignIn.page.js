@@ -24,7 +24,6 @@ import {ROUTER, URL} from '../../utils/config';
 import {fetchData, BE_API} from "../../utils/fetch";
 import {TRANSLATION, translate} from "../../utils/translation";
 import {LocalStorage, LOCAL_STORAGE_KEY} from "../../utils/localStorage"
-import {useScrollUp} from "../../utils/hook";
 
 const SignInSchema = Yup.object().shape(validation.customer.singIn);
 
@@ -51,8 +50,6 @@ const SignInPage = () => {
                 setTimeout(() => dispatch(stopLoading()), 1000)
             });
     }
-
-    useScrollUp();
 
     if (isLoading) {
         return <Notification.Loading/>

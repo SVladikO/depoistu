@@ -14,7 +14,6 @@ import {fetchData} from "../../utils/fetch";
 import {initSchedule} from "../../utils/company";
 import {getScheduleAsString} from "../../utils/company";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {useScrollUp} from "../../utils/hook";
 import {translate, TRANSLATION} from "../../utils/translation";
 
 //We need this variable after call LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES) on delete company success
@@ -38,8 +37,6 @@ const EditCompany = () => {
     const [requestError, setRequestError] = useState("");
     const [isCompanyDeleted, setIsCompanyDeleted] = useState(false);
     const [isCompanyUpdated, setIsCompanyUpdated] = useState(false);
-
-    useScrollUp();
 
     if (isLoading) {
         return <Notification.Loading/>;

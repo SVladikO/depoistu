@@ -13,7 +13,6 @@ import {initialValues} from './utils';
 import {URL} from "../../utils/config";
 import {BE_API} from '../../utils/fetch'
 import {fetchData} from "../../utils/fetch";
-import {useScrollUp} from "../../utils/hook";
 import {getScheduleAsString} from "../../utils/company";
 import {translate, TRANSLATION} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
@@ -26,8 +25,6 @@ const AddCompany = () => {
     const [isCompanySaved, setIsCompanySaved] = useState(false);
     const [requestError, setRequestError] = useState("");
     const [newCompanyId, setNewCompanyId] = useState();
-
-    useScrollUp();
 
     const onSubmit = values => {
         const {name, city_id, street, phone} = values;

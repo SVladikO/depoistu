@@ -32,7 +32,6 @@ import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {Link} from "react-router-dom";
 import {TRANSLATION as TR, translate} from "../../utils/translation";
 import LanguagePopup from "../../page-view/language-popup/LanguagePopup";
-import {useScrollUp} from "../../utils/hook";
 
 const SettingPage = () => {
     const [isShowLanguagePopup, setIsShowLanguagePopup] = useState(false);
@@ -62,9 +61,6 @@ const SettingPage = () => {
         setCustomer(undefined);
         LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
     }
-
-        useScrollUp();
-
 
     return (
         <>

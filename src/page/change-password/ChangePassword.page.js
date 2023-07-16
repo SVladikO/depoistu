@@ -14,7 +14,6 @@ import validation from "../../utils/validation";
 import {BE_API, fetchData} from "../../utils/fetch";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {TRANSLATION, translate} from '../../utils/translation';
-import {useScrollUp} from "../../utils/hook";
 
 const ChangePassWordSchema = Yup.object().shape(validation.customer.changePassword);
 
@@ -39,8 +38,6 @@ const ChangePasswordPage = () => {
             .catch(e => setRequestError(e.body.message))
             .finally(() => setIsLoading(false));
     }
-
-    useScrollUp();
 
     if (isLoading) {
         return <Notification.Loading/>
