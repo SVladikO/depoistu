@@ -21,7 +21,6 @@ import CustomerCompaniesPage from "../page/customer-companies/CustomerCompanies.
 // import {HistoryTabBar} from "../components";
 
 import {TRANSLATION, translate} from "./translation.js";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
 import EditCustomerPage from "../page/edit-customer/EditCustomer.page";
 
 export const DEV_ROUTER = {
