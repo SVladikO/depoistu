@@ -9,9 +9,9 @@ export const Wrapper = styled.div`
   border-radius: 0 0 ${BORDER_RADIUS.FOURTH} ${BORDER_RADIUS.FOURTH};
   margin-bottom: 30px;
 
-  -webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,0.11);
-  -moz-box-shadow: 0 2px 4px 0 rgba(0,0,0,0.11);
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.11);
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.11);
+  -moz-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.11);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.11);
 `
 export const Title = styled.div`
   font-weight: 700;
@@ -30,22 +30,21 @@ export const MainContent = styled.div`
   display: flex;
   justify-content: center;
   position: relative;
+
+
+`;
+export const BackButton = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  padding: 25px 15px 20px 15px;
+
+  & > svg {
+    height: 16px;
+    width: 16px;
   
-  & > a {
-    height: 64px;
-    width: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    left: 0;
-  }
-  
-  & > a:first-child > svg {
     fill: ${COLOR.ACCENT1};
-  }
-  
-  & > a:last-child {
-    right: 15px;
   }
 `;
