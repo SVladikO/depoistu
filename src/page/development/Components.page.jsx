@@ -164,6 +164,7 @@ const componentsGroup2 = [
                           item={{
                               ID: 10,
                               NAME: '4 Cheese',
+                              CATEGORY_ID: 1,
                               DESCRIPTION: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella',
                               IMAGE_URL: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
                               COOKING_TIME: 15,
@@ -179,6 +180,7 @@ const componentsGroup2 = [
                           item={{
                               ID: 10,
                               NAME: '4 Cheese',
+                              CATEGORY_ID: 1,
                               DESCRIPTION: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella',
                               IMAGE_URL: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
                               COOKING_TIME: 15,
@@ -194,6 +196,7 @@ const componentsGroup2 = [
                           item={{
                               ID: 10,
                               NAME: '4 Cheese',
+                              CATEGORY_ID: 5,
                               DESCRIPTION: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella',
                               IMAGE_URL: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
                               COOKING_TIME: 15,
@@ -352,8 +355,12 @@ const componentsGroup3 = [
                 imageUrl="https://raw.githubusercontent.com/SVladikO/testApp/master/images/4_cheese.jpg"/>
         },
         {
-            title: 'IntroPopupContent',
-            component: <IntroContent>Some text Some text Some text Some text Some text</IntroContent>
+            title: 'IntroContent.Info',
+            component: <IntroContent.Info>Some text Some text Some text Some text Some text</IntroContent.Info>
+        },
+        {
+            title: 'IntroContent.InfoText',
+            component: <IntroContent.InfoText>Some text Some text Some text Some text Some text</IntroContent.InfoText>
         },
         {title: 'CityPopupContent', component: <CityContent availableCities={getAllCities()}/>},
     ],
