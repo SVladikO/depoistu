@@ -50,7 +50,7 @@ const SearchDetailsPage = () => {
             ids.push(CATEGORY_ID);
 
             return [
-                <Divider id={CATEGORY_ID}>{CATEGORY_MAPPER[CATEGORY_ID].title.toUpperCase()}</Divider>,
+                <Divider id={CATEGORY_ID} key={CATEGORY_MAPPER[CATEGORY_ID].title}>{CATEGORY_MAPPER[CATEGORY_ID].title.toUpperCase()}</Divider>,
                 <MenuItem key={el.ID} item={el}/>
             ];
         })?.flat()
