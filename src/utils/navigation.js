@@ -12,7 +12,7 @@ import styled from 'styled-components'
 import {DEVICE_WIDTH} from "./theme";
 import {BottomMenu, NavigationHeader} from "../components";
 import AdminPage from "../page/development/Admin.page";
-import {useScrollUp} from "./hook";
+import {useHideOnScroll, useScrollUp} from "./hook";
 
 export const MobileDevice = styled.div`
   min-width: ${DEVICE_WIDTH.MIN};
@@ -35,6 +35,7 @@ export const PositionWrapper = styled.div`
 
 export const TopWrapper = styled(PositionWrapper)`
   top: 0;
+  transition: top 0.3s;
 `;
 
 export const BottomWrapper = styled(PositionWrapper)`
@@ -53,10 +54,11 @@ const routes = ROUTERS.map(r => {
     const Element = () => {
 
         useScrollUp();
+        useHideOnScroll('TopWrapper', '-65px')
 
         return (
             <MobileDevice className="MobileDevice">
-                <TopWrapper className="TopWrapper">
+                <TopWrapper id="TopWrapper">
                     <NavigationHeader backUrl={r.BACK_URL} title={r.TITLE}>
                         {r.subHeader && <r.subHeader/>}
                     </NavigationHeader>
