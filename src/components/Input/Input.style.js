@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
     top: 50%;
     transform: translateY(-50%);
     color: ${COLOR.PRIMARY};
+    fill: ${COLOR.PRIMARY};
   }
 `;
 
@@ -47,9 +48,12 @@ export const PInputWrapper = styled.div`
   position: relative;
   & > svg {
     position: absolute;
-    top: 12px;
-    left: 10px;
+    top: 15px;
+    left: 11px;
     z-index: 1;
+    height: 20px;
+    width: 14px;
+    fill: ${COLOR.PRIMARY};
   }
 `;
 export const WarningMessage = styled.div`
