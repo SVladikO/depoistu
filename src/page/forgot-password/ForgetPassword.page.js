@@ -7,15 +7,12 @@ import {ReactComponent as MailIcon} from "../../icons/mail.svg";
 import {translate, TRANSLATION} from "../../utils/translation";
 import {URL} from "../../utils/config";
 import validation from "../../utils/validation";
-import {useScrollUp} from "../../utils/hook";
 
 
 const CheckEmailSchema = Yup.object().shape(validation.customer.forgetPassword);
 
 const ForgetPasswordPage = () => {
     const [wasSubmitted, setWasSubmitted] = useState(false);
-
-    useScrollUp();
 
     if (wasSubmitted) {
         return (
@@ -43,7 +40,7 @@ const ForgetPasswordPage = () => {
             {({values, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                 <form onSubmit={handleSubmit}>
                     <ContentContainer>
-                        <Label>Email</Label>
+                        <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.EMAIL)}</Label>
                         <Input
                             withCleaner
                             Icon={MailIcon}

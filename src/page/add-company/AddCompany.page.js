@@ -5,6 +5,8 @@ import React, {useState} from "react";
 
 import {Notification} from "../../components";
 
+import {WarningText, Reference} from "./AddCompany.style";
+
 import CompanyView from "../../page-view/company/company-view";
 
 import {initialValues} from './utils';
@@ -12,10 +14,9 @@ import {URL} from "../../utils/config";
 import {BE_API} from '../../utils/fetch'
 import {fetchData} from "../../utils/fetch";
 import {getScheduleAsString} from "../../utils/company";
+import {translate, TRANSLATION} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {WarningText, Reference} from "./AddCompany.style";
 import {ReactComponent as LinkArrowIcon} from "../../icons/right-anchor.svg";
-import {useScrollUp} from "../../utils/hook";
 
 
 const AddCompany = () => {
@@ -24,8 +25,6 @@ const AddCompany = () => {
     const [isCompanySaved, setIsCompanySaved] = useState(false);
     const [requestError, setRequestError] = useState("");
     const [newCompanyId, setNewCompanyId] = useState();
-
-    useScrollUp();
 
     const onSubmit = values => {
         const {name, city_id, street, phone} = values;
@@ -68,6 +67,7 @@ const AddCompany = () => {
             <CompanyView
                 initialValues={initialValues}
                 onSubmit={onSubmit}
+                submitButtonTitle={translate(TRANSLATION.PAGE.ADD_COMPANY.BUTTON.ADD_COMPANY)}
             />
         </>
     )

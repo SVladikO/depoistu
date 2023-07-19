@@ -24,7 +24,6 @@ import {ROUTER, URL} from '../../utils/config';
 import {fetchData, BE_API} from "../../utils/fetch";
 import {TRANSLATION, translate} from "../../utils/translation";
 import {LocalStorage, LOCAL_STORAGE_KEY} from "../../utils/localStorage"
-import {useScrollUp} from "../../utils/hook";
 
 const SignInSchema = Yup.object().shape(validation.customer.singIn);
 
@@ -52,8 +51,6 @@ const SignInPage = () => {
             });
     }
 
-    useScrollUp();
-
     if (isLoading) {
         return <Notification.Loading/>
     }
@@ -75,7 +72,7 @@ const SignInPage = () => {
             {({values,touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                 <form onSubmit={handleSubmit}>
                     <ContentContainer>
-                        <Label>Email</Label>
+                        <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.EMAIL)}</Label>
                         <Input
                             Icon={MailIcon}
                             name='email'
@@ -87,7 +84,7 @@ const SignInPage = () => {
                             clearHandler={() => setFieldValue('email', '')}
                             errorMessage={errors.email}
                         />
-                        <Label>Password</Label>
+                        <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.PASSWORD)}</Label>
                         <Input
                             Icon={LockIcon}
                             name='password'

@@ -30,7 +30,7 @@ const EditCustomerPage = () => {
                 {({values, handleBlur, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                     <form onSubmit={handleSubmit}>
                         <ContentContainer>
-                            <Label>{translate(TRANSLATION.PAGE.SING_UP.LABEL.USER_NAME)}</Label>
+                            <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.NAME)}</Label>
                             <Input
                                 withCleaner
                                 isTouched={wasSubmitted || touched.name}
@@ -41,7 +41,7 @@ const EditCustomerPage = () => {
                                 clearHandler={() => setFieldValue('name', '')}
                                 errorMessage={errors.name}
                             />
-                            <Label>{translate(TRANSLATION.PAGE.SING_UP.LABEL.PHONE)}</Label>
+                            <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.PHONE)}</Label>
                             <Input
                                 withCleaner
                                 name="phone"
@@ -52,7 +52,7 @@ const EditCustomerPage = () => {
                                 clearHandler={() => setFieldValue('phone', '')}
                                 errorMessage={errors.phone}
                             />
-                            <Label>{translate(TRANSLATION.PAGE.SING_UP.LABEL.EMAIL)}</Label>
+                            <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.EMAIL)}</Label>
                             <Input
                                 withCleaner
                                 type="email"
