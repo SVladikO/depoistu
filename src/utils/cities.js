@@ -1,15 +1,15 @@
-
-const languageKey = 'ua';
+import {currentLanguage} from "./translation";
 
 export const convertCitiesIds = (cityIds) => {
+
     const city = {};
 
     cityIds.sort((a, b) => a > b).forEach(cityId => {
         const regionId = getRegionId(cityId);
-        const regionName = cities[regionId][languageKey];
+        const regionName = cities[regionId][currentLanguage];
         city[regionName] = [
             ...(city[regionName] || []),
-            {name: cities[cityId][languageKey], id: cityId}
+            {name: cities[cityId][currentLanguage], id: cityId}
         ];
     })
 
@@ -19,7 +19,7 @@ export const convertCitiesIds = (cityIds) => {
 const getRegionId = cityId => cityId - (cityId % 100)
 
 export const getCityNameById = key => {
-    return cities[key] && cities[key][languageKey];
+    return cities[key] && cities[key][currentLanguage];
 }
 
 export const getAllCities = () => {
@@ -30,7 +30,7 @@ export const getAllCities = () => {
 }
 
 const cities = {
-        100: {ua: "Івано-Франківська", en: "Ivano-Frankivsk region"},
+        100: {ua: "Івано-Франківська", en: "Ivano-Frankivsk"},
         101: {ua: "Богородчани", en: "Bohorodchany"},
         102: {ua: "Болехів", en: "Bolehiv"},
         103: {ua: "Бурштин", en: "Burshtyn"},
@@ -53,7 +53,7 @@ const cities = {
         120: {ua: "Тлумач", en: "Tlumach"},
         121: {ua: "Яремче", en: "Yaremche"},
 
-        200: {ua: "Вінницька", en: "Vinnytsia region"},
+        200: {ua: "Вінницька", en: "Vinnytsia"},
         201: {ua: "Бар", en: "Bar"},
         202: {ua: "Бершадь", en: "Bershad"},
         203: {ua: "Війтівці", en: "Viytivtsi"},
@@ -80,7 +80,7 @@ const cities = {
         224: {ua: "Шаргород", en: "Shargorod"},
         225: {ua: "Ямпіль", en: "Yampil"},
 
-        300: {ua: "Волинська", en: "Volyn region"},
+        300: {ua: "Волинська", en: "Volyn"},
         301: {ua: "Броди", en: "Brody"},
         302: {ua: "Володимир", en: "Volodymyr"},
         303: {ua: "Горохів", en: "Horohiv"},
@@ -102,7 +102,7 @@ const cities = {
         319: {ua: "Цумань", en: "Tsuman"},
         320: {ua: "Шацьк", en: "Shatsk"},
 
-        400: {ua: "Дніпропетровська", en: "Dnipropetrovsk region"},
+        400: {ua: "Дніпропетровська", en: "Dnipropetrovsk"},
         401: {ua: "Апостолове", en: "Apostolove"},
         402: {ua: "Богуслав", en: "Boguslav"},
         403: {ua: "Верхньодніпровськ", en: "Verkhnyodniprovsk"},
@@ -122,7 +122,7 @@ const cities = {
         417: {ua: "Синельникове", en: "Synelnikove"},
         418: {ua: "Чаплинка", en: "Chaplinka"},
 
-        500: {ua: "Донецька", en: "Donetsk region"},
+        500: {ua: "Донецька", en: "Donetsk"},
         501: {ua: "Авдіївка", en: "Avdiivka"},
         502: {ua: "Амвросіївка", en: "Amvrosiivka"},
         503: {ua: "Бахмут", en: "Bakhmut"},
@@ -160,7 +160,7 @@ const cities = {
         536: {ua: "Шахтарськ", en: "Shakhtarsk"},
         537: {ua: "Ясинувата", en: "Yasynuvata"},
 
-        600: {ua: "Житомирська", en: "Zhytomyr region"},
+        600: {ua: "Житомирська", en: "Zhytomyr"},
         601: {ua: "Андрушівка", en: "Andrushivka"},
         602: {ua: "Баранівка", en: "Baranivka"},
         603: {ua: "Бердичів", en: "Berdychiv"},
@@ -180,7 +180,7 @@ const cities = {
         617: {ua: "Романів", en: "Romaniv"},
         618: {ua: "Черняхів", en: "Chernyakhiv"},
 
-        700: {ua: "Закарпатська", en: "Zakarpattia region"},
+        700: {ua: "Закарпатська", en: "Zakarpattia"},
         701: {ua: "Берегове", en: "Berehove"},
         702: {ua: "Буштино", en: "Bushtyno"},
         703: {ua: "Великий Бичків", en: "Velikiy Bychkiv"},
@@ -200,7 +200,7 @@ const cities = {
         717: {ua: "Хуст", en: "Khust"},
         718: {ua: "Чоп", en: "Chop"},
 
-        800: {ua: "Запорізька", en: "Zaporizhzhya region"},
+        800: {ua: "Запорізька", en: "Zaporizhzhya"},
         801: {ua: "Бердянськ", en: "Berdyansk"},
         802: {ua: "Біляївка", en: "Bilyaivka"},
         803: {ua: "Василівка", en: "Vasylivka"},
@@ -223,7 +223,7 @@ const cities = {
         820: {ua: "Токмак", en: "Tokmak"},
         821: {ua: "Якимівка", en: "Yakymivka"},
 
-        900: {ua: "Кіровоградська", en: "Kirovohradsk region"},
+        900: {ua: "Кіровоградська", en: "Kirovohradsk"},
         901: {ua: "Бобринець", en: "Bobrynets"},
         902: {ua: "Власівка", en: "Vlasivka"},
         903: {ua: "Гайворон", en: "Hayvoron"},
@@ -243,7 +243,7 @@ const cities = {
         917: {ua: "Світловодськ", en: "Svitlovodsk"},
         918: {ua: "Смолине", en: "Smolyne"},
 
-        1000: {ua: "Київська", en: "Kyiv region"},
+        1000: {ua: "Київська", en: "Kyiv"},
         1001: {ua: "Баришівка", en: "Baryshivka"},
         1002: {ua: "Березань", en: "Berezan"},
         1003: {ua: "Біла Церква", en: "Bila Tserkva"},
@@ -306,7 +306,7 @@ const cities = {
         1123: {ua: "Щолкіне", en: "Shcholkine"},
         1124: {ua: "Ялта", en: "Yalta"},
 
-        1200: {ua: "Луганська", en: "Luhansk region"},
+        1200: {ua: "Луганська", en: "Luhansk"},
         1201: {ua: "Алмазна", en: "Almazna"},
         1202: {ua: "Алчевськ", en: "Alchevsk"},
         1203: {ua: "Антрацит", en: "Anthratsyt"},
@@ -349,7 +349,7 @@ const cities = {
         1240: {ua: "Чорнухине", en: "Chornukhyne"},
         1241: {ua: "Щастя", en: "Shchastya"},
 
-        1300: {ua: "Львівська", en: "Lviv region"},
+        1300: {ua: "Львівська", en: "Lviv"},
         1301: {ua: "Белз", en: "Belz"},
         1302: {ua: "Бібрка", en: "Bibrka"},
         1303: {ua: "Борислав", en: "Boryslav"},
@@ -387,7 +387,7 @@ const cities = {
         1335: {ua: "Червоноград", en: "Chervonohrad"},
         1336: {ua: "Яворів", en: "Yavoriv"},
 
-        1400: {ua: "Миколаївська", en: "Mykolaiv region"},
+        1400: {ua: "Миколаївська", en: "Mykolaiv"},
         1401: {ua: "Арбузинка", en: "Arbuzynka"},
         1402: {ua: "Баштанка", en: "Bashtanka"},
         1403: {ua: "Березнегувате", en: "Berezneguvate"},
@@ -408,7 +408,7 @@ const cities = {
         1418: {ua: "Снігурівка", en: "Snihurivka"},
         1419: {ua: "Южноукраїнськ", en: "Yuzhnoukrainsk"},
 
-        1500: {ua: "Одеська", en: "Odesa region"},
+        1500: {ua: "Одеська", en: "Odesa"},
         1501: {ua: "Ананьїв", en: "Ananyiv"},
         1502: {ua: "Арциз", en: "Artsyz"},
         1503: {ua: "Балта", en: "Balta"},
@@ -432,7 +432,7 @@ const cities = {
         1521: {ua: "Ширяєве", en: "Shyryaeve"},
         1522: {ua: "Южне", en: "Yuzhne"},
 
-        1600: {ua:"Полтавська", en:"Poltava region"},
+        1600: {ua:"Полтавська", en:"Poltava"},
         1601: {ua:"Гадяч", en:"Hadyach"},
         1602: {ua:"Глобино", en:"Globyno"},
         1603: {ua:"Горішні Плавні", en:"Horishni Plavni"},
@@ -457,7 +457,7 @@ const cities = {
         1622: {ua:"Краснозаводське", en:"Krasnozavodske"},
         1623: {ua:"Слишне", en:"Slyshne"},
 
-        1700:{ua:"Рівненська",en:"Rivne region"},
+        1700:{ua:"Рівненська",en:"Rivne"},
         1701:{ua:"Березине",en:"Berezyne"},
         1702:{ua:"Вараш",en:"Varash"},
         1703:{ua:"Володимирець",en:"Volodymyrets"},
@@ -476,7 +476,7 @@ const cities = {
         1716:{ua:"Рокитне",en:"Rokytne"},
         1717:{ua:"Сарни",en:"Sarny"},
 
-        1800: {ua:"Сумська",en:"Sumy region"},
+        1800: {ua:"Сумська",en:"Sumy"},
         1801: {ua:"Білопілля",en:"Bilopillya"},
         1802: {ua:"Буринь",en:"Buryn"},
         1803: {ua:"Ворожба",en:"Vorozhba"},
@@ -497,7 +497,7 @@ const cities = {
         1818: {ua:"Шостка",en:"Shostka"},
 
 
-        1900: {ua:"Тернопільська",en:"Ternopil region"},
+        1900: {ua:"Тернопільська",en:"Ternopil"},
         1901: {ua:"Бережани",en:"Berezhany"},
         1902: {ua:"Борщів",en:"Borshchiv"},
         1903: {ua:"Бучач",en:"Buchach"},
@@ -522,7 +522,7 @@ const cities = {
         1922: {ua:"Шумськ",en:"Shumsk"},
 
 
-        2000:{ua:"Харківська",en:"Kharkiv region"},
+        2000:{ua:"Харківська",en:"Kharkiv"},
         2001:{ua:"Балаклія",en:"Balaklia"},
         2002:{ua:"Барвінкове",en:"Barvinkove"},
         2003:{ua:"Богодухів",en:"Bohodukhiv"},
@@ -545,7 +545,7 @@ const cities = {
         2020:{ua:"Харків", en:"Kharkiv"},
         2021:{ua:"Чугуїв",en:"Chuhuiv"},
 
-        2100:{ua:"Херсонська",en:"Kherson region"},
+        2100:{ua:"Херсонська",en:"Kherson"},
         2101:{ua:"Антонівка", en:"Antonivka"},
         2102:{ua:"Берислав",en:"Beryslav"},
         2103:{ua:"Білозерка",en:"Bilozerka"},
@@ -565,7 +565,7 @@ const cities = {
         2117:{ua:"Таврійськ",en:"Tavriysk"},
         2118:{ua:"Херсон",en:"Kherson"},
 
-        2200:{ua:"Хмельницька",en:"Khmelnytskyi region"},
+        2200:{ua:"Хмельницька",en:"Khmelnytskyi"},
         2201:{ua:"Віньківці",en:"Vinkivtsi"},
         2202:{ua:"Волочиськ", en:"Vinkivtsi"},
         2203:{ua:"Деражня",en:"Derazhnya"},
@@ -583,7 +583,7 @@ const cities = {
         2215:{ua:"Хмельницкий",en:"Khmelnytskyi"},
         2216:{ua:"Шепетівка",en:"Shepetivka"},
 
-        2300:{ua:"Черкаська",en:"Cherkasy купшщт"},
+        2300:{ua:"Черкаська",en:"Cherkasy"},
         2301:{ua:"Ватутіне",en:"Vatutine"},
         2302:{ua:"Городище", en:"Horodyshche"},
         2303:{ua:"Драбів",en:"Drabiv"},
@@ -605,7 +605,7 @@ const cities = {
         2319:{ua:"Чорнобай",en:"Chornobay"},
         2320:{ua:"Шпола",en:"Shpola"},
 
-        2400:{ua:"Чернівецька",en:"Chernivtsi region"},
+        2400:{ua:"Чернівецька",en:"Chernivtsi"},
         2401:{ua:"Берегомет",en:"Berehomet"},
         2402:{ua:"Вашківці",en:"Vashkivtsi"},
         2403:{ua:"Вижниця",en:"Vyzhnytsia"},
@@ -623,7 +623,7 @@ const cities = {
         2415:{ua:"Хотин", en:"Khotyn"},
         2416:{ua:"Чернівці",en:"Chernivtsi"},
 
-        2500:{ua:"Чернігівська",en:"Chernihiv region"},
+        2500:{ua:"Чернігівська",en:"Chernihiv"},
         2501:{ua:"Бахмач",en:"Bakhmach"},
         2502:{ua:"Бобровиця",en:"Bobrovytsia"},
         2503:{ua:"Борзна",en:"Borzna"},

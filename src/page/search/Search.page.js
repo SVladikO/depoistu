@@ -11,6 +11,7 @@ import {BE_API, fetchData} from "../../utils/fetch";
 import {useLocalStorage, useLocalStorageFetch} from "../../utils/hook";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {convertCitiesIds} from '../../utils/cities';
+import {translate, TRANSLATION} from "../../utils/translation";
 
 const SearchPage = () => {
     const [requestError, setRequestError] = useState('');
@@ -70,7 +71,7 @@ const SearchPage = () => {
                     handleClick={openCityPopup}
                     withIcon
                     Icon={LocationIcon}
-                    value={(selectedCity && `${selectedCity.name}, ${selectedRegion} обл`) || ''}
+                    value={(selectedCity && `${selectedCity.name}, ${selectedRegion}${translate(TRANSLATION.COMPONENTS.POPUP.CITY.INPUT)}`) || ''}
                     placeholder={"Choose city"}
                 />
             </ContentContainer>

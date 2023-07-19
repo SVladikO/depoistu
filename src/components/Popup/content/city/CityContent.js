@@ -62,7 +62,7 @@ export const CityContent = ({selectCity, availableCities, onClose}) => {
                     <SettingMenuRow
                         changeHandler={changeHandlerSettingMenuRow(city)}
                         key={i.toString()}
-                        title={isRegion ? city.name + ' область' : city.name}
+                        title={isRegion ? city.name + translate(TRANSLATION.COMPONENTS.POPUP.CITY.INPUT) : city.name}
                         label=""
                         style={{margin: 0, padding: '0 0 20px'}}
                     />
