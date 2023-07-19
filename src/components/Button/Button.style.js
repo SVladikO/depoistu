@@ -49,10 +49,11 @@ export const ThirdButton = styled(button)`
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
-  svg {
+  & > svg {
     width: 15px;
     height: 15px;
     color: ${COLOR.ACCENT3};
+    fill: ${COLOR.ACCENT3};
     display: inline-block;
     margin: 0 10px 0 0;
   }

@@ -5,7 +5,7 @@ import {DEV_ROUTER, ROUTERS} from "./config";
 
 import {COLOR} from './theme'
 
-import CatalogPage from '../page/development/Catalog.page';
+// import CatalogPage from '../page/development/Catalog.page';
 import ComponentsPage from '../page/development/Components.page';
 
 import styled from 'styled-components'
@@ -88,7 +88,7 @@ export const getRoutes = () => {
         <>
             <Routes>
                 <Route path={DEV_ROUTER.COMPONENTS} element={<ComponentsPage/>}/>
-                <Route path={DEV_ROUTER.PAGES} element={<CatalogPage/>}/>
+                {/*<Route path={DEV_ROUTER.PAGES} element={<CatalogPage/>}/>*/}
                 <Route path={DEV_ROUTER.ADMIN} element={<AdminPage/>}/>
                 {routes}
             </Routes>
