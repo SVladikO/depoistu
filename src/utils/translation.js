@@ -1,5 +1,7 @@
 import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
 
+export const currentLanguage = LocalStorage.get(LOCAL_STORAGE_KEY.CURRENT_LANGUAGE) || DEFAULT_LANGUAGE;
+
 export const translate = obj => {
     const currentLanguage = LocalStorage.get(LOCAL_STORAGE_KEY.CURRENT_LANGUAGE) || DEFAULT_LANGUAGE;
 
@@ -531,6 +533,14 @@ export const TRANSLATION = {
                     ua: "Редагувати"
                 },
             },
+        },
+        POPUP : {
+            CITY: {
+                INPUT: {
+                    en: " region",
+                    ua: " область"
+                }
+            }
         }
     },
     NOTIFICATION: {
