@@ -1,5 +1,10 @@
 import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
 
+export const LANGUAGE_KEYS = {
+    UA: 'ua',
+    EN: 'en'
+}
+export const DEFAULT_LANGUAGE = LANGUAGE_KEYS.UA;
 export const currentLanguage = LocalStorage.get(LOCAL_STORAGE_KEY.CURRENT_LANGUAGE) || DEFAULT_LANGUAGE;
 
 export const translate = obj => {
@@ -8,12 +13,6 @@ export const translate = obj => {
     return obj[currentLanguage];
 }
 
-export const LANGUAGE_KEYS = {
-    UA: 'ua',
-    EN: 'en'
-}
-
-export const DEFAULT_LANGUAGE = LANGUAGE_KEYS.UA;
 
 export const TRANSLATION = {
     COMPANY_NAME: {
