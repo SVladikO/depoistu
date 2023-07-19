@@ -19,8 +19,7 @@ export const Wrapper = styled.div`
     height: 25px;
   }
 `
-
-export const FoodImage = styled.img`
+export const ImagesWrapper = styled.div`
   min-width: 90px;
   min-height: 90px;
   max-width: 90px;
@@ -29,11 +28,26 @@ export const FoodImage = styled.img`
   border-radius: ${BORDER_RADIUS.CIRCLE};
   border: solid 1px ${COLOR.ACCENT4};
   margin: 0 10px 0 0;
+  position: relative;
+  svg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    color: ${COLOR.ACCENT5};
+  }
+`;
+
+export const FoodImage = styled.img`
+  width: 90px;
+  height: 90px;
+  border-radius: ${BORDER_RADIUS.CIRCLE};
 `;
 
 export const Title = styled.div`
   font-weight: 700;
-  font-size: 18px;
+  font-size: 22px;
   line-height: 24px;
   color: ${COLOR.ACCENT1};
   margin: 0 5px 4px 0;
@@ -45,19 +59,15 @@ export const Title = styled.div`
 export const Description = styled.div`
   //width: 250px;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 19px;
-  margin: 4px 0 28px 0;
-`;
-export const InvisibleDivider = styled.div`
-  opacity: 0;
-  height: 10px;
+  margin: 4px 0 18px 0;
 `;
 
 export const EditWrapper = styled.div`
   display: flex;
   align-items: center;
-  svg{
+  svg {
     width: 14px;
     height: 14px;
     color: ${COLOR.ACCENT3};
@@ -74,8 +84,8 @@ export const EditLabel = styled.span`
 export const AdditionalDetails = styled.div`
   display: flex;
   align-items: center;
-  font-weight: 500;
-  font-size: 16px;
+  font-weight: 100;
+  font-size: 18px;
   line-height: 19px;
   color: ${COLOR.ACCENT5};
 

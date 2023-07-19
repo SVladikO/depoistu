@@ -1,26 +1,24 @@
-import React, {useState} from "react";
-import {Popup} from '../components/index'
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../utils/localStorage";
+import React from "react";
 
+import {Popup} from '../components/index'
+import {useLocalStorage} from "../utils/hook";
+import {LOCAL_STORAGE_KEY} from "../utils/localStorage";
+import LanguagePopup from "../page-view/language-popup/LanguagePopup";
+import {translate, TRANSLATION} from "../utils/translation";
 
 const WebsiteIntro = () => {
-    const [hideIntro, setHideIntro] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.HIDE_INTRO))
-
-    const closePopup = () => {
-        setHideIntro(true)
-        LocalStorage.set(LOCAL_STORAGE_KEY.HIDE_INTRO, true)
-    }
-
-    if (hideIntro) {
-        return;
-    }
+    const [showIntro, setHideIntro] = useLocalStorage(LOCAL_STORAGE_KEY.SHOW_INTRO, true);
+    const closeIntroPopup = () => setHideIntro(false);
 
     return (
-        <Popup.Info onClose={closePopup}>
-            Меню всіх кафе та ресторанів України має бути в одному місці.
-            Знайдіть заклад своєї мрії та допоможи іншим.
-            Розкажи адміністраторам своїх улюблених закладів про наш сайт.
-        </Popup.Info>
+        <div>
+            {showIntro && (
+                <Popup.InfoText onClose={closeIntroPopup}>
+                    {translate(TRANSLATION.INTRODUCTION)}
+                </Popup.InfoText>)
+            }
+            <LanguagePopup showCloseButton={false} />
+        </div>
     )
 }
 export default WebsiteIntro;

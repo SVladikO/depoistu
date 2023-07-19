@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {Link, useParams} from "react-router-dom";
 
 import {Notification, SecondaryButton} from "../../components";
@@ -14,11 +14,12 @@ import {fetchData} from "../../utils/fetch";
 import {initSchedule} from "../../utils/company";
 import {getScheduleAsString} from "../../utils/company";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
+import {translate, TRANSLATION} from "../../utils/translation";
 
 //We need this variable after call LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES) on delete company success
 //when we open customer companies page it will make request to BE and user will have updated list of companies.
 const companyFakeData = {
-    CITY: '',
+    CITY_ID: '',
     SCHEDULE: ',,,,,,',
     PHOTOS: '',
     PHONE: ''
@@ -36,10 +37,6 @@ const EditCompany = () => {
     const [requestError, setRequestError] = useState("");
     const [isCompanyDeleted, setIsCompanyDeleted] = useState(false);
     const [isCompanyUpdated, setIsCompanyUpdated] = useState(false);
-
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [])
 
     if (isLoading) {
         return <Notification.Loading/>;
@@ -88,9 +85,9 @@ const EditCompany = () => {
     }
 
     const onSubmit = values => {
-        const {name, city, street, phone} = values;
+        const {name, city_id, street, phone} = values;
         const schedule = getScheduleAsString(values)
-        const reqObj = {id: companyId, name, city, street, phone, schedule, method: 'put'};
+        const reqObj = {id: companyId, name, city_id, street, phone, schedule, method: 'put'};
         setIsLoading(true);
 
         fetchData(BE_API.COMPANY.PUT_UPDATE(), reqObj)
@@ -112,10 +109,13 @@ const EditCompany = () => {
         <>
             {requestError && <Notification.Error message={requestError}/>}
             {isCompanyUpdated && <Notification.Success message={"Company was updated."} />}
-            <SecondaryButton isWide onClick={deleteCompany}><RemoveIcon/> Delete company</SecondaryButton>
+            <SecondaryButton isWide onClick={deleteCompany}><RemoveIcon/>
+                {translate(TRANSLATION.PAGE.EDIT_COMPANY.BUTTON.DELETE_COMPANY)}
+            </SecondaryButton>
             <CompanyView
                 initialValues={getInitialValues(company, schedule)}
                 onSubmit={onSubmit}
+                submitButtonTitle={translate(TRANSLATION.PAGE.EDIT_COMPANY.BUTTON.EDIT_COMPANY)}
             />
         </>
     )

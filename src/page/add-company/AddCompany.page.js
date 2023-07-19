@@ -1,9 +1,11 @@
 import "swiper/css";
 import "swiper/css/pagination";
 import {Link} from "react-router-dom";
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 
 import {Notification} from "../../components";
+
+import {WarningText, Reference} from "./AddCompany.style";
 
 import CompanyView from "../../page-view/company/company-view";
 
@@ -12,8 +14,8 @@ import {URL} from "../../utils/config";
 import {BE_API} from '../../utils/fetch'
 import {fetchData} from "../../utils/fetch";
 import {getScheduleAsString} from "../../utils/company";
+import {translate, TRANSLATION} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {WarningText, Reference} from "./AddCompany.style";
 import {ReactComponent as LinkArrowIcon} from "../../icons/right-anchor.svg";
 
 
@@ -23,17 +25,13 @@ const AddCompany = () => {
     const [isCompanySaved, setIsCompanySaved] = useState(false);
     const [requestError, setRequestError] = useState("");
     const [newCompanyId, setNewCompanyId] = useState();
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [])
-
 
     const onSubmit = values => {
-        const {name, city, street, phone} = values;
+        const {name, city_id, street, phone} = values;
         const schedule = getScheduleAsString(values)
         const customer_id = CUSTOMER.ID;
 
-        const reqObj = {customer_id, name, city, street, phone, schedule};
+        const reqObj = {customer_id, name, city_id, street, phone, schedule};
 
         setIsLoading(true);
 
@@ -69,6 +67,7 @@ const AddCompany = () => {
             <CompanyView
                 initialValues={initialValues}
                 onSubmit={onSubmit}
+                submitButtonTitle={translate(TRANSLATION.PAGE.ADD_COMPANY.BUTTON.ADD_COMPANY)}
             />
         </>
     )

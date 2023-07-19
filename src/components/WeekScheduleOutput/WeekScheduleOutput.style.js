@@ -33,24 +33,42 @@ export const ScheduleWrapper = styled.div`
   color: ${COLOR.ACCENT5};
   display: flex;
 `;
-export const DetailedLink = styled.div`
-  text-decoration: underline;
-  color: ${COLOR.ACCENT5};
+
+export const DaySchedule = styled.div`
   font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
+  font-size: 20px;
+  line-height: 24px;
+  color: ${props => props.isToday ? COLOR.ACCENT1 : COLOR.ACCENT5};
 `;
-export const Day = styled.div`
-  color: ${props => props.isToday ? COLOR.ACCENT3 : COLOR.ACCENT5};
-}
+export const From = styled.div`
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: ${props => props.isToday ? COLOR.ACCENT1 : COLOR.ACCENT5};
+  
 `;
+export const To = styled.div`
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: ${props => props.isToday ? COLOR.ACCENT1 : COLOR.ACCENT5};
+`;
+
 export const ScheduleContainer = styled.div`
+  display: flex;
+
   & > * {
     min-width: 50px;
+  }
+  > div {
+    margin: 0 4px 0 0;
   }
 `;
 export const ScheduleContent = styled.div`
   display: flex;
+  overflow-x: scroll;
+  width: 100%;
+  
   & > div {
     margin: 0 1px 0 0;
   }

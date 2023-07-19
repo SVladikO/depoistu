@@ -3,6 +3,7 @@ import {memo} from 'react';
 import {Wrapper, GroupWrapper, Label, Weekend} from "./FromToTime.style";
 
 import {Checkbox, Input} from "../index";
+import {translate, TRANSLATION} from "../../utils/translation";
 
 function FromToTime({prefix, values, dayName, handleChange}) {
     const renderInputs = () => (
@@ -23,7 +24,7 @@ function FromToTime({prefix, values, dayName, handleChange}) {
             </GroupWrapper>
             {isChecked
                 ? renderInputs()
-                : <Weekend>Weekend</Weekend>
+                : <Weekend>{translate(TRANSLATION.PAGE_VIEW.COMPANY.WEEKEND)}</Weekend>
             }
         </Wrapper>
     );

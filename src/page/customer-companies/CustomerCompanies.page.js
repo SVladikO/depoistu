@@ -13,6 +13,7 @@ import {ROUTER, URL} from "../../utils/config";
 import {useLocalStorage, useLocalStorageFetch} from "../../utils/hook";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {ReactComponent as QRCodeIcon} from "../../icons/qr_code.svg";
+import {translate, TRANSLATION} from "../../utils/translation";
 
 const PopupQRCode = ({companyId, onClose}) => {
     const [qrCodeGenerationError, setQrCodeGenerationError] = useState('');
@@ -29,10 +30,10 @@ const PopupQRCode = ({companyId, onClose}) => {
         .catch(err => setQrCodeGenerationError(err))
 
     return (
-        <Popup.Info onClose={onClose}>
+        <Popup.InfoText onClose={onClose}>
             {src && <ImageQR src={src}/>}
             {qrCodeGenerationError}
-        </Popup.Info>
+        </Popup.InfoText>
     )
 }
 
@@ -69,25 +70,25 @@ const CustomerCompaniesPage = () => {
 
     return (
         <>
-            {!isVisibleCompanyCreationWarning && <Popup.Info onClose={closeInfoPopUp}>Не додавайте компанії заради розваги. Не витрачайте ваш і наш час дарма.</Popup.Info>}
+            {!isVisibleCompanyCreationWarning && <Popup.Info onClose={closeInfoPopUp}>{translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.WARNING)}</Popup.Info>}
             <PopupQRCode companyId={companyIdForQRCode} onClose={() => setCompanyIdForQRCode('')}/>
             {customerCompanies.map(
                 company =>
                     <Company company={company} key={company.ID}>
                         <EditBar>
                             <Link to={ROUTER.EDIT_COMPANY.URL + '/' + company.ID} style={{width: '140px'}}>
-                                <PrimaryButton isWide><EditIcon/>Company</PrimaryButton>
+                                <PrimaryButton isWide><EditIcon/>{translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.COMPANY)}</PrimaryButton>
                             </Link>
                             <QRCodeButton onClick={showQRCode(company.ID)}><QRCodeIcon/></QRCodeButton>
                             <Link to={ROUTER.EDIT_MENU.URL + '/' + company.ID} style={{width: '140px'}}>
-                                <PrimaryButton isWide><EditIcon/>Menu</PrimaryButton>
+                                <PrimaryButton isWide><EditIcon/>{translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.MENU)}</PrimaryButton>
                             </Link>
                         </EditBar>
                     </Company>
             )
             }
             <Link to={URL.ADD_COMPANY}>
-                <PrimaryButton isWide>+ Add new company</PrimaryButton>
+                <PrimaryButton isWide>{translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.ADD_COMPANY)}</PrimaryButton>
             </Link>
         < />
     )

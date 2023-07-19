@@ -1,9 +1,9 @@
 import React from 'react';
 import {Wrapper} from "./Price.style";
 
-const Price = ({small = false, children}) => {
+const Price = ({children}) => {
     return (
-       <Wrapper small={small}>
+       <Wrapper>
            {children}.00 UAH
        </Wrapper>
     );

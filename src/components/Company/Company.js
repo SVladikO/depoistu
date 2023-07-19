@@ -4,24 +4,26 @@ import {Swiper, SwiperSlide} from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/pagination";
-import {ReactComponent as RightAnchor} from "../../icons/right-anchor.svg";
+import {ReactComponent as LocationIcon} from "../../icons/location.svg";
+import {ReactComponent as PhoneIcon} from "../../icons/phone.svg";
 import {
     Wrapper,
     ImageSection,
     Name,
-    Address,
     Content,
     CompanyInfo,
     Schedule,
     OpenStatus,
     Closes,
-    Phone,
-    Location,
+    LocationWrapper,
     CloseStatus
 } from "./Company.style";
+import {ThirdButton} from "../Button/Button.style";
 
 import {parseSchedule} from "../../utils/company";
-import ScheduleDetails from "../Schedule/Schedule";
+import ScheduleDetails from "../WeekScheduleOutput/WeekScheduleOutput";
+import {getCityNameById} from "../../utils/cities";
+import {translate, TRANSLATION as TR} from "../../utils/translation";
 
 const Company = (props) => {
 
@@ -29,58 +31,57 @@ const Company = (props) => {
         return;
     }
 
-    const {PHOTOS, NAME, CITY, STREET, PHONE, SCHEDULE} = props.company
+    const {PHOTOS, NAME, CITY_ID, STREET, PHONE, SCHEDULE} = props.company
     const schedule = parseSchedule(SCHEDULE);
 
     const renderLocation = () => {
         if (props.withMoreInfo) {
-            return (
-                <Location>
-                    <Address>{CITY}, {STREET}</Address>
-                    <RightAnchor/>
-                </Location>
-            );
+            return <ThirdButton><LocationIcon/>{getCityNameById(CITY_ID)}, {STREET}</ThirdButton>
         }
 
-        return (
-            <Location>
-                <Address>{CITY}, {STREET}</Address>
-            </Location>
-        )
+        return <LocationWrapper>{getCityNameById(CITY_ID)}, {STREET}</LocationWrapper>;
     }
+
+    const renderImages = () => (
+        <ImageSection>
+            <Swiper
+                modules={[Navigation, Pagination]}
+                slidesPerView={1}
+                navigation
+                pagination={{clickable: true}}
+            >
+                {PHOTOS && PHOTOS.split(', ')
+                    .map((src, i) =>
+                        <SwiperSlide key={i}>
+                            <img src={src} alt="#"/>
+                        </SwiperSlide>
+                    )
+                }
+            </Swiper>
+        </ImageSection>
+    );
+
+    const renderDaySchedule = () => (
+        <Schedule>
+            {schedule.isCompanyOpenNow
+                ? <>
+                    <OpenStatus>{translate(TR.COMPONENTS.COMPANY.STATUS_OPEN)}</OpenStatus>
+                    <Closes><span>{translate(TR.COMPONENTS.COMPANY.TILL)} {schedule.currentDay.to}</span></Closes>
+                </>
+                : <CloseStatus>{translate(TR.COMPONENTS.COMPANY.STATUS_CLOSE)}</CloseStatus>
+            }
+        </Schedule>
+    )
 
     return (
         <Wrapper>
-            <ImageSection>
-                <Swiper
-                    modules={[Navigation, Pagination]}
-                    slidesPerView={1}
-                    navigation
-                    pagination={{clickable: true}}
-                >
-                    {PHOTOS && PHOTOS.split(', ')
-                        .map((src, i) =>
-                            <SwiperSlide key={i}>
-                                <img src={src} alt="#"/>
-                            </SwiperSlide>
-                        )
-                    }
-                </Swiper>
-            </ImageSection>
+            {renderImages()}
             <Content>
                 <CompanyInfo>
                     <Name>{NAME}</Name>
+                    {renderDaySchedule()}
                     {renderLocation()}
-                    <Schedule>
-                        {schedule.isCompanyOpenNow
-                            ? <>
-                                <OpenStatus>Open</OpenStatus>
-                                <Closes>Closes<span>{schedule.currentDay.to}</span></Closes>
-                            </>
-                            : <CloseStatus>Close</CloseStatus>
-                        }
-                    </Schedule>
-                    {props.withMoreInfo && <Phone>{PHONE}</Phone>}
+                    {props.withMoreInfo && <ThirdButton><PhoneIcon/>{PHONE}</ThirdButton>}
                     {props.withMoreInfo && SCHEDULE && SCHEDULE.length && <ScheduleDetails scheduleAsArray={schedule.workDays}/>}
                 </CompanyInfo>
                 {props.children}

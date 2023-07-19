@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
 import {Notification, RowSplitter, SecondaryButton} from "../../components";
@@ -8,18 +8,16 @@ import {ReactComponent as RemoveIcon} from "../../icons/remove_icon.svg";
 import {URL} from "../../utils/config";
 import {fetchData, BE_API} from "../../utils/fetch";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
+import {translate, TRANSLATION} from "../../utils/translation";
 
 const EditMenuItemPage = () => {
     const navigate = useNavigate();
     const menuItemCandidateToEdit = LocalStorage.get(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT);
-    const {ID, NAME, PRICE, DESCRIPTION, COOKING_TIME, IMAGE_URL, SIZE} = menuItemCandidateToEdit;
+    const {ID, NAME, PRICE, CATEGORY_ID, DESCRIPTION, COOKING_TIME, IMAGE_URL, SIZE} = menuItemCandidateToEdit;
     const [isLoading, setIsLoading] = useState(false);
     const [requestError, setRequestError] = useState("");
     const [isMenuItemDeleted, setIsMenuItemDeleted] = useState(false);
     const [isMenuItemUpdated, setIsMenuItemUpdated] = useState(false);
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [])
 
     if (!menuItemCandidateToEdit && URL.EDIT_MENU) {
         return navigate(URL.SETTING)
@@ -28,16 +26,16 @@ const EditMenuItemPage = () => {
     const initialValue = {
         name: NAME,
         price: PRICE,
+        category_id: CATEGORY_ID,
         description: DESCRIPTION,
         cookingTime: COOKING_TIME,
         size: SIZE,
-        imageURL: IMAGE_URL
+        image_url: IMAGE_URL
     }
 
     const onSubmit = values => {
         setIsLoading(true);
-        const {name, price, description, cookingTime, size, imageURL } = values;
-        const reqObj = {method: 'put', id: ID, name, price, description, cookingTime, size, imageURL};
+        const reqObj = {method: 'put', id: ID, ...values};
 
         fetchData(BE_API.MENU_ITEM.PUT_UPDATE(), reqObj)
             .then(res => {
@@ -74,11 +72,12 @@ const EditMenuItemPage = () => {
         <>
             {isMenuItemUpdated && <Notification.Success message={"Menu item was updated."} />}
             {requestError && <Notification.Error message={requestError}/>}
-            <SecondaryButton onClick={deleteCompany}><RemoveIcon/> Delete</SecondaryButton>
+            <SecondaryButton onClick={deleteCompany}><RemoveIcon/>{translate(TRANSLATION.PAGE.EDIT_MENU_ITEM.BUTTON.DELETE_MENU_ITEM)}</SecondaryButton>
             <RowSplitter height={'15px'}/>
             <MenuItemView
                 initialValue={initialValue}
                 onSubmit={onSubmit}
+                submitButtonTitle={translate(TRANSLATION.PAGE.EDIT_MENU_ITEM.BUTTON.EDIT_MENU_ITEM)}
             />
         </>
     )

@@ -5,13 +5,14 @@ import {DEV_ROUTER, ROUTERS} from "./config";
 
 import {COLOR} from './theme'
 
-import CatalogPage from '../page/development/Catalog.page';
+// import CatalogPage from '../page/development/Catalog.page';
 import ComponentsPage from '../page/development/Components.page';
 
 import styled from 'styled-components'
 import {DEVICE_WIDTH} from "./theme";
 import {BottomMenu, NavigationHeader} from "../components";
 import AdminPage from "../page/development/Admin.page";
+import {useHideOnScroll, useScrollUp} from "./hook";
 
 export const MobileDevice = styled.div`
   min-width: ${DEVICE_WIDTH.MIN};
@@ -34,6 +35,7 @@ export const PositionWrapper = styled.div`
 
 export const TopWrapper = styled(PositionWrapper)`
   top: 0;
+  transition: top 0.3s;
 `;
 
 export const BottomWrapper = styled(PositionWrapper)`
@@ -44,36 +46,49 @@ export const Centralicer = styled.div`
   flex-direction: column;
   justify-content: start;
   padding: 90px 10px 110px;
+  min-height: 500px;
 `;
 
-const routes = ROUTERS.map(r =>
-    <Route
-        key={r.URL}
-        path={r.URL + (r.PARAMS || '')}
-        element={
-            <MobileDevice>
-                <TopWrapper>
-                    <NavigationHeader backUrl={r.BACK_URL} title={r.TITLE} getTitle={r.getTitle}>
+const routes = ROUTERS.map(r => {
+
+    const Element = () => {
+
+        useScrollUp();
+        useHideOnScroll('TopWrapper', '-65px')
+
+        return (
+            <MobileDevice className="MobileDevice">
+                <TopWrapper id="TopWrapper">
+                    <NavigationHeader backUrl={r.BACK_URL} title={r.TITLE}>
                         {r.subHeader && <r.subHeader/>}
                     </NavigationHeader>
                 </TopWrapper>
-                <Centralicer>
+                <Centralicer className="Centralicer">
                     <r.page/>
                 </Centralicer>
-                {r.showBottomMenu &&
+                {r.showBottomMenu && (
                     <BottomWrapper>
                         <BottomMenu/>
                     </BottomWrapper>
-                }
+                )}
             </MobileDevice>
-        }/>);
+        )
+    };
+
+    return (
+        <Route
+            key={r.URL}
+            path={r.URL + (r.PARAMS || '')}
+            element={<Element />}
+        />)
+});
 
 export const getRoutes = () => {
     return (
         <>
             <Routes>
                 <Route path={DEV_ROUTER.COMPONENTS} element={<ComponentsPage/>}/>
-                <Route path={DEV_ROUTER.PAGES} element={<CatalogPage/>}/>
+                {/*<Route path={DEV_ROUTER.PAGES} element={<CatalogPage/>}/>*/}
                 <Route path={DEV_ROUTER.ADMIN} element={<AdminPage/>}/>
                 {routes}
             </Routes>

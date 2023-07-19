@@ -5,16 +5,14 @@ import {BackButtonWrapper, BackButtonInnerWrapper, Wrapper, CitiesWrapper} from 
 import {SettingMenuRow} from '../../../index'
 
 import {ReactComponent as BackIcon} from "../../../../icons/back.svg";
-import uaCities from "./cities";
-import {TRANSLATION, resolveTranslation} from '../../../../utils/translation';
+import {TRANSLATION, translate} from '../../../../utils/translation';
 
 const enableScrollOnBody = () => document.body.style.overflowY = 'auto';
 
-const REGIONS = Object.keys(uaCities);
-
-export const CityContent = ({selectCity, onClose}) => {
-    const [cities, setCities] = useState(REGIONS);
+export const CityContent = ({selectCity, availableCities, onClose}) => {
+    const REGIONS = Object.keys(availableCities).map(key => ({name: key}));
     const [selectedRegion, setSelectedRegion] = useState('');
+    const [citiesToRender, setCitiesToRender] = useState(REGIONS);
 
     const [isRegion, setIsRegion] = useState(true);
 
@@ -25,7 +23,7 @@ export const CityContent = ({selectCity, onClose}) => {
 
     const handleBackButtonClick = () => {
         setIsRegion(true);
-        setCities(REGIONS);
+        setCitiesToRender(REGIONS);
         setSelectedRegion('')
     }
 
@@ -33,15 +31,15 @@ export const CityContent = ({selectCity, onClose}) => {
         <BackButtonWrapper>
             <BackButtonInnerWrapper onClick={handleBackButtonClick}>
                 <BackIcon/>
-                {resolveTranslation(TRANSLATION.PAGE.SEARCH.ARROW_LABEL)}
+                {translate(TRANSLATION.PAGE.SEARCH.ARROW_LABEL)}
             </BackButtonInnerWrapper>
         </BackButtonWrapper>
     );
 
     const changeHandlerSettingMenuRow = city => () => {
         if (isRegion) {
-            setSelectedRegion(city)
-            setCities(uaCities[city])
+            setSelectedRegion(city.name)
+            setCitiesToRender(availableCities[city.name])
             setIsRegion(false)
             return
         }
@@ -59,11 +57,12 @@ export const CityContent = ({selectCity, onClose}) => {
                 style={{height: isRegion ? '100%' : '92%'}}
                 onClick={e => e.stopPropagation()}
             >
-                {cities.map((city, i) =>
+                {/*Expected array structure: [{name: 'Vinnica'}, ... ]*/}
+                {citiesToRender.map((city, i) =>
                     <SettingMenuRow
                         changeHandler={changeHandlerSettingMenuRow(city)}
                         key={i.toString()}
-                        title={isRegion ? city + ' область' : city}
+                        title={isRegion ? city.name + translate(TRANSLATION.COMPONENTS.POPUP.CITY.INPUT) : city.name}
                         label=""
                         style={{margin: 0, padding: '0 0 20px'}}
                     />

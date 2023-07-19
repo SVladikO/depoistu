@@ -52,6 +52,7 @@ const SettingMenuRow = ({
                     <Title>{title}</Title>
                 </LeftContent>
                 <RightContent>
+                    <Label>{label}</Label>
                     <RightAnchor/>
                 </RightContent>
             </Wrapper>

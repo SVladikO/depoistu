@@ -1,16 +1,305 @@
-export const resolveTranslation = obj => {
-    if (!obj) {
-        debugger;
-    }
-    return obj["ua"];
+import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
+
+export const LANGUAGE_KEYS = {
+    UA: 'ua',
+    EN: 'en'
 }
+export const DEFAULT_LANGUAGE = LANGUAGE_KEYS.UA;
+export const currentLanguage = LocalStorage.get(LOCAL_STORAGE_KEY.CURRENT_LANGUAGE) || DEFAULT_LANGUAGE;
+
+export const translate = obj => {
+    const currentLanguage = LocalStorage.get(LOCAL_STORAGE_KEY.CURRENT_LANGUAGE) || DEFAULT_LANGUAGE;
+
+    return obj[currentLanguage];
+}
+
 
 export const TRANSLATION = {
     COMPANY_NAME: {
-        ua: 'DOMONO',
+        ua: 'ДОМОНО',
         en: 'DOMONO'
     },
+    INTRODUCTION: {
+        ua: 'Меню всіх кафе та ресторанів України має бути в одному місці.Знайдіть заклад своєї мрії та допоможи іншим. Розкажи адміністраторам своїх улюблених закладів про наш сайт.',
+        en: 'The menu of all cafes and restaurants of Ukraine should be in one place. Find the bookmark of your dreams and help others. Tell the administrators of your favorite bookmarks about our site.'
+    },
+    VALIDATION: {
+        REQUIRED: {
+            en: "Required",
+            ua: "Обов'язковий"
+        },
+        MIN_LENGTH: {
+            en: "Min length",
+            ua: "Мінімальна довжина"
+        },
+        MAX_LENGTH: {
+            en: "Max length",
+            ua: "Максимальна довжина"
+        },
+        EXAMPLE: {
+            en: "Example",
+            ua: "Приклад"
+        },
+        PASSWORD_MUST_MUCH: {
+            en: "Password must much",
+            ua: "Паролі мають співпадати"
+        },
+        OLD_PASSWORD_MUST_MUCH: {
+            en: "Old password must much",
+            ua: "Старий пароль має співпасти"
+        },
+        INVALID_EMAIL: {
+            en: "Invalid email",
+            ua: "Невалідний мейл"
+        }
+    },
+    WEEK_DAY: {
+        MON: {
+            en: "Mon",
+            ua: "Пн"
+        },
+        TU: {
+            en: "Tu",
+            ua: "Вт"
+        },
+        WED: {
+            en: "Wed",
+            ua: "Ср"
+        },
+        TH: {
+            en: "Th",
+            ua: "Чт"
+        },
+        FRI: {
+            en: "Fri",
+            ua: "Пт"
+        },
+        SAT: {
+            en: "Sat",
+            ua: "Сб"
+        },
+        SUN: {
+            en: "Sun",
+            ua: "Нд"
+        },
+    },
+    INPUT_LABEL: {
+        COMPANY: {
+            NAME: {
+                en: "Name",
+                ua: "Ім'я"
+            },
+            CITY: {
+                en: "City",
+                ua: "Місто"
+            },
+            STREET: {
+                en: "Street",
+                ua: "Вулиця"
+            },
+            PHONE: {
+                en: "Phone",
+                ua: "Телефон"
+            },
+            WORK_SCHEDULE: {
+                en: "Work schedule",
+                ua: "Графік роботи"
+            },
+        },
+        MENU_ITEM: {
+            NAME: {
+                en: "Name",
+                ua: "Ім'я"
+            },
+            PRICE: {
+                en: "Price",
+                ua: "Ціна"
+            },
+            CATEGORY: {
+                en: "Category",
+                ua: "Категорія"
+            },
+            DESCRIPTION: {
+                en: "Description",
+                ua: "Опис"
+            },
+            COOKING_TIME: {
+                en: "Cooking time (in minutes)",
+                ua: "Час приготування (в хвилинах)"
+            },
+            MEAL_SIZE: {
+                en: "Size",
+                ua: "Розмір"
+            }
+        },
+        CUSTOMER: {
+            NAME: {
+                en: "Name",
+                ua: "Ім'я"
+            },
+            PHONE: {
+                ua: "Номер Телефону",
+                en: "Phone Number"
+            },
+            EMAIL: {
+                ua: "Електронна Пошта",
+                en: "Emial"
+            },
+            PASSWORD: {
+                ua: "Пароль",
+                en: "Password"
+            },
+            CONFIRM_PASSWORD: {
+                ua: "Пiдтвердiть Пароль",
+                en: "Confirm Password"
+            },
+            CHECKBOX_CONFIRM_TERMS: {
+                ua: "Створенням свого аккаунту ви погоджуєтесь з нашими правилами користування та полiтикою конфiденцiйностi",
+                en: "By creating an account you agree to our Terms of Service and Privacy Policy"
+            }
+        }
+    },
+    MEASUREMENTS: {
+        WEIGHT: {
+            ua: "г",
+            en: 'g'
+        },
+        LIQUID: {
+            ua: "мл",
+            en: 'ml'
+        },
+        PREPARING: {
+            ua: "хв",
+            en: 'mim'
+        },
+    },
+    PAGE_VIEW: {
+        COMPANY: {
+            WEEKEND: {
+                ua: "Вихідний",
+                en: 'Weekend'
+            },
+            ADD_IMAGE: {
+                ua: "Додати фото",
+                en: 'Add photo'
+            },
+        },
+        MENU_ITEM: {
+            BUTTON: {
+                ADD_IMAGE: {
+                    ua: "Додати фото",
+                    en: 'Add photo'
+                },
+                CHANGE_IMAGE: {
+                    ua: "Змінити фото",
+                    en: 'Change photo'
+                }
+            }
+        }
+    },
     PAGE: {
+        COMPANY_DETAILS: {
+            TOP_TITLE: {
+                ua: "Деталі компанії",
+                en: 'Company details'
+            },
+            MENU_TITLE: {
+                ua: "МЕНЮ",
+                en: 'MENU'
+            }
+        },
+        CUSTOMER_COMPANIES: {
+            TOP_TITLE: {
+                ua: "Ваші компанії",
+                en: 'Your companies'
+            },
+            WARNING: {
+                ua: "Не додавайте компанії заради розваги. Не витрачайте ваш і наш час дарма.",
+                en: "Don't add companies for fun. Don\'t waste your time and ours."
+            },
+            BUTTON: {
+                COMPANY: {
+                    en: 'Company',
+                    ua: "Компанія"
+                },
+                MENU: {
+                    en: 'Menu',
+                    ua: "Меню"
+                },
+                ADD_COMPANY: {
+                    en: 'Add company',
+                    ua: "Додати компанію"
+                }
+            }
+        },
+        ADD_COMPANY: {
+            TOP_TITLE: {
+                en: 'Add company',
+                ua: "Додати компанію"
+            },
+            BUTTON: {
+                ADD_COMPANY: {
+                    en: 'Add company',
+                    ua: "Додати компанію"
+                }
+            }
+        },
+        EDIT_MENU: {
+            TOP_TITLE: {
+                en: 'Edit menu',
+                ua: "Редагувати меню"
+            },
+            BUTTON: {
+                ADD_MENU_ITEM: {
+                    en: 'Add menu item',
+                    ua: "Додати пункт меню",
+                }
+            }
+        },
+        EDIT_MENU_ITEM: {
+            TOP_TITLE: {
+                en: 'Edit menu item',
+                ua: "Редагувати пункт меню",
+            },
+            BUTTON: {
+                DELETE_MENU_ITEM: {
+                    en: 'Delete menu item',
+                    ua: "Видалити пункт меню",
+                },
+                EDIT_MENU_ITEM: {
+                    en: 'Save changes',
+                    ua: "Зберегти зміни",
+                }
+            },
+        },
+        EDIT_COMPANY: {
+            TOP_TITLE: {
+                ua: "Редагувати компанію",
+                en: 'Edit company'
+            },
+            BUTTON: {
+                EDIT_COMPANY: {
+                    en: 'Save',
+                    ua: "Зберегти"
+                },
+                DELETE_COMPANY: {
+                    en: 'Delete company',
+                    ua: "Видалити компанію"
+                }
+            }
+        },
+        ADD_MENU_ITEM: {
+            TOP_TITLE: {
+                ua: "Додати позицію меню",
+                en: 'Add menu item'
+            },
+            BUTTON: {
+                ADD_MENU_ITEM: {
+                    en: 'Save',
+                    ua: "Зберегти",
+                }
+            },
+        },
         CHANGE_PASSWORD: {
             TOP_TITLE: {
                 ua: "Змiнити пароль",
@@ -29,35 +318,45 @@ export const TRANSLATION = {
             LABEL: {
                 OLD_PASSWORD: {
                     ua: "Старий Пароль",
-                    en: "Old Password",
+                    en: "Old Password"
                 },
                 NEW_PASSWORD: {
                     ua: "Новий Пароль",
-                    en: "New Password",
+                    en: "New Password"
                 },
                 CONFIRM_PASSWORD: {
                     ua: "Пiдтвердiть Пароль",
-                    en: "Confirm Password",
+                    en: "Confirm Password"
                 },
             },
         },
         SETTINGS: {
             TOP_TITLE: {
                 ua: "Налаштування",
-                en: "Settings",
+                en: "Settings"
+            },
+            BUTTONS: {
+                SING_IN: {
+                    ua: "Вхiд",
+                    en: "Sign in"
+                },
+                SING_UP: {
+                    ua: "Реєстрація",
+                    en: "Sign up"
+                }
             },
             MENU_ROW: {
                 CHANGE_PASS: {
                     ua: "Змiнити пароль",
-                    en: "Change Password",
+                    en: "Change Password"
                 },
                 COMPANY: {
                     en: "My сompanies",
-                    ua: "Мої заклади",
+                    ua: "Мої заклади"
                 },
                 EDIT_PROFILE: {
                     en: "Edit Profile",
-                    ua: "Редагувати профіль",
+                    ua: "Редагувати профіль"
                 },
                 MENU: {
                     ua: "Налаштувати меню",
@@ -81,51 +380,58 @@ export const TRANSLATION = {
                 },
                 EXIT: {
                     ua: "Вихiд",
-                    en: "Sing out",
+                    en: "Sing out"
                 },
                 CURRENCY: {
-                    ua: "Валюта", en: "Currency"
+                    ua: "Валюта",
+                    en: "Currency"
                 },
                 LANGUAGE: {
                     ua: "Мова",
-                    en: "Language",
+                    en: "Language"
                 },
                 LINKED_ACCOUNTS: {
                     ua: "Пов'язанi Аккаути",
-                    en: "Linked Account",
+                    en: "Linked Accounts"
                 },
+            },
+            LABEL: {
+                CURRENT_LANGUAGE: {
+                    ua: "Українська",
+                    en: "English"
+                }
             },
             NOTIFICATION: {
                 DESCRIPTION: {
                     ua: "Ця сторiнка доступна тiльки пicля пiдтвердження",
-                    en: "This page is available only after verification."
+                    en: "This page is available only after verification"
                 },
                 LOADING: {
                     ua: "Завантаження...",
                     en: "Loading..."
                 },
                 TITLE: {
-                    ua: "Обмежений доступ",
-                    en: "Restricted access!",
+                    ua: "Обмежений доступ!",
+                    en: "Restricted access!"
                 }
             },
             GROUP_TITLE: {
                 ACCOUNTS: {
                     ua: "Остобистий кабiнет",
-                    en: "Accounts",
+                    en: "My account"
                 },
                 FOR_BUSINESS: {
                     ua: "Для бізнесу",
-                    en: "For business",
+                    en: "For business"
                 },
                 OPTIONS: {
                     ua: "Розширенi налаштування",
-                    en: "More Options",
+                    en: "More Options"
                 },
             },
             USER_PHONE_LABEL: {
                 ua: "Телефон",
-                en: "Phone",
+                en: "Phone"
             },
 
         },
@@ -160,11 +466,11 @@ export const TRANSLATION = {
         SIGN_IN: {
             TOP_TITLE: {
                 ua: "Вхiд",
-                en: "Sign in",
+                en: "Sign in"
             },
             USER_NOTIFICATION: {
                 ua: "Вхiд виконаний",
-                en: "You already logged!",
+                en: "You already logged!"
             },
             FORGOT_PASSWORD: {
                 ua: "Забули пароль?",
@@ -176,59 +482,65 @@ export const TRANSLATION = {
             },
             ACCOUNT_CONFIRMATION: {
                 ua: "Ви зареєстрованi?",
-                en: "You don’t have an account?",
+                en: "You don’t have an account?"
             }
         },
-        FORGOT_PASSWORD:  {
+        FORGOT_PASSWORD: {
             TOP_TITLE: {
-                ua: "Forgot password",
-                en: "Forgot password",
+                ua: "Забули пароль",
+                en: "Forgot password"
             },
             SUBMIT_BUTTON: {
-                ua: 'Send',
+                ua: 'Відправити',
                 en: 'Send'
             },
             LINK_TO_SIGN_IN_PAGE: {
-                ua: 'Go to sign in page',
+                ua: 'Перейти на сторінку входу',
                 en: 'Go to sign in page'
             }
         },
         SING_UP: {
             TOP_TITLE: {
                 ua: "Реєстрацiя",
-                en: "Sing up",
-            },
-            CREATE_ACCOUNT: {
-                ua: "Створити аккаунт",
-                en: "Create an account",
-            },
-            LABEL: {
-                USER_NAME: {
-                    en: "Name",
-                    ua: "Ім'я"
-                },
-                PHONE: {
-                    ua: "Номер Телефону",
-                    en: "Phone Number"
-                },
-                EMAIL: {
-                    ua: "Електронна Пошта",
-                    en: "Emial",
-                },
-                PASSWORD: {
-                    ua: "Пароль",
-                    en: "Password"
-                },
-                CONFIRM_PASSWORD: {
-                    ua: "Пiдтвердiть Пароль",
-                    en: "Confirm Password",
-                },
-                CHECKBOX_CONFIRM_TERMS: {
-                    ua: "Створенням свого аккаунту ви погоджуєтесь з нашими правилами користування та полiтикою конфiденцiйностi",
-                    en: "By creating an account you agree to our Terms of Service and Privacy Policy",
-                }
+                en: "Sing up"
             }
         },
+    },
+    COMPONENTS: {
+        COMPANY: {
+            STATUS_OPEN: {
+                ua: "Відкрито",
+                en: "Open"
+            },
+            STATUS_CLOSE: {
+                ua: "Закрито",
+                en: "Close"
+            },
+            TILL: {
+                ua: "до",
+                en: "till"
+            },
+            SCHEDULE_BUTTON: {
+                ua: "Показати графік",
+                en: "Show schedule"
+            }
+        },
+        MENU_ITEM: {
+            BUTTON: {
+                EDIT_MENU_ITEM: {
+                    en: "Edit",
+                    ua: "Редагувати"
+                },
+            },
+        },
+        POPUP : {
+            CITY: {
+                INPUT: {
+                    en: " region",
+                    ua: " область"
+                }
+            }
+        }
     },
     NOTIFICATION: {
         LOADING: {
@@ -246,14 +558,28 @@ export const TRANSLATION = {
             en: "Account"
         },
     },
-    CATEGORIES: {
+    TOP_CATEGORIES: {
+        KITCHEN: {
+            ua: "КУХНЯ",
+            en: "KITCHEN",
+        },
+        DESSERTS: {
+            ua: "ДЕСЕРТИ",
+            en: "DESSERTS",
+        },
+        BAR: {
+            ua: "БАР",
+            en: "BAR",
+        },
+    },
+    SUB_CATEGORIES: {
         BAKERY: {
             ua: "Випiчка",
-            en: "Bakery",
+            en: "Bakery"
         },
         DRINKS: {
-            ua: "Безалкогольнi напої",
-            en: "Beverage"
+            ua: "Напої",
+            en: "Drinks"
         },
         BURGERS: {
             ua: "Бургери",
@@ -261,19 +587,19 @@ export const TRANSLATION = {
         },
         ROLLS: {
             ua: "Роли",
-            en: "Rolls",
+            en: "Rolls"
         },
         SUSHI_SETS: {
             ua: "Суші сети",
-            en: "Sushi sets",
+            en: "Sushi sets"
         },
         BUSINESS_LUNCH: {
             ua: "Бізнес ланч",
-            en: "Business lunch",
+            en: "Business lunch"
         },
         ADDICTIVES: {
             ua: "Додатки",
-            en: "Additives",
+            en: "Additives"
         },
         NOODLES: {
             ua: "Локшина",
@@ -281,7 +607,7 @@ export const TRANSLATION = {
         },
         PIZZA: {
             ua: "Пiцца",
-            en: "Pizza",
+            en: "Pizza"
         },
         SANDWITCH: {
             ua: "Сендвичi",
@@ -296,8 +622,8 @@ export const TRANSLATION = {
             en: "Salads"
         },
         ALCOHOL: {
-            ua: "Алкогольнi напої",
-            en: "Alcohol drinks"
+            ua: "Алкоголь",
+            en: "Alcohol"
         },
         WINE_CARD: {
             ua: "Винна карта",
@@ -309,7 +635,7 @@ export const TRANSLATION = {
         },
         SPECIALITIES: {
             ua: 'Фірмові страві',
-            en: 'Specialities',
+            en: 'Specialities'
         },
         BREAKFAST: {
             en: 'Breakfasts',
@@ -317,55 +643,55 @@ export const TRANSLATION = {
         },
         COLD_APPETIZERS: {
             ua: 'Холодні закуски',
-            en: 'Cold appetizers',
+            en: 'Cold appetizers'
         },
         HOT_DISHES: {
             ua: 'Гарячі страви',
-            en: 'Hot dishes (Main Course)',
+            en: 'Hot dishes (Main Course)'
         },
         MEAT_DISHES: {
             ua: "М'ясні страви",
-            en: 'Meat dishes',
+            en: 'Meat dishes'
         },
         FISH_DISHES: {
             ua: 'Рибні страви',
-            en: 'Fish dishes',
+            en: 'Fish dishes'
         },
         DISHES_ON_FIRE: {
-            ua: 'Страви на вогні',
-            en: 'Dishes on fire (weight in raw form)',
+            ua: 'Монгал',
+            en: 'Dishes on fire'
         },
         SAUCES: {
             ua: 'Соуси',
-            en: 'Sauces',
+            en: 'Sauces'
         },
         SIDE_DISHES: {
             ua: 'Гарніри',
-            en: 'Side dishes',
+            en: 'Side dishes'
         },
         SOUPS: {
             ua: 'Супи',
-            en: 'Soups',
+            en: 'Soups'
         },
-        DESERTS: {
+        DESSERTS: {
             ua: 'Десерти',
-            en: 'Deserts',
+            en: 'Desserts'
         },
         BANQUET_MENU: {
             ua: 'Банкетне меню',
-            en: 'Banquet menu',
+            en: 'Banquet menu'
         },
         SUSHI: {
             ua: 'Суші',
-            en: 'Sushi',
+            en: 'Sushi'
         },
         COCKTAILS: {
             ua: 'Коктейлі',
-            en: 'Cocktails',
+            en: 'Cocktails'
         },
         SHAWARMA: {
             ua: 'Шаверма',
-            en: 'Shawarma',
+            en: 'Shawarma'
         }
     },
 }

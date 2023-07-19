@@ -1,20 +1,19 @@
 import {FromToTime} from "../index";
 import React from "react";
+import {weekDayNames} from "../../utils/company";
 
-
-function WeekSchedule({values, handleChange}) {
-    const days = ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'];
+function WeekScheduleInput({values, handleChange}) {
     const prefixes = [ 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
     return prefixes.map((key, index) =>
         <FromToTime
             key={key}
             prefix={key}
-            dayName={days[index]}
+            dayName={weekDayNames[index]}
             values={values}
             handleChange={handleChange}
         />
     )
 }
 
-export default WeekSchedule
+export default WeekScheduleInput;

@@ -6,10 +6,8 @@ export const Wrapper = styled.div`
 `;
 
 export const Divider = styled.div`
-  font-weight: 700;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 24px;
   color: ${COLOR.ACCENT5};
-  text-align: center;
-  margin: 10px auto 10px auto;
+  margin: 10px 0 10px 10px;
 `;

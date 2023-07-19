@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import {PrimaryButton, Label, Input, ContentContainer} from "../../components";
 
 import validation from "../../utils/validation";
-import {TRANSLATION, resolveTranslation} from "../../utils/translation";
+import {TRANSLATION, translate} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 
 const SignUpSchema = Yup.object().shape(validation.customer.singUp);
@@ -30,7 +30,7 @@ const EditCustomerPage = () => {
                 {({values, handleBlur, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                     <form onSubmit={handleSubmit}>
                         <ContentContainer>
-                            <Label>{resolveTranslation(TRANSLATION.PAGE.SING_UP.LABEL.USER_NAME)}</Label>
+                            <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.NAME)}</Label>
                             <Input
                                 withCleaner
                                 isTouched={wasSubmitted || touched.name}
@@ -41,7 +41,7 @@ const EditCustomerPage = () => {
                                 clearHandler={() => setFieldValue('name', '')}
                                 errorMessage={errors.name}
                             />
-                            <Label>{resolveTranslation(TRANSLATION.PAGE.SING_UP.LABEL.PHONE)}</Label>
+                            <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.PHONE)}</Label>
                             <Input
                                 withCleaner
                                 name="phone"
@@ -52,7 +52,7 @@ const EditCustomerPage = () => {
                                 clearHandler={() => setFieldValue('phone', '')}
                                 errorMessage={errors.phone}
                             />
-                            <Label>{resolveTranslation(TRANSLATION.PAGE.SING_UP.LABEL.EMAIL)}</Label>
+                            <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.EMAIL)}</Label>
                             <Input
                                 withCleaner
                                 type="email"
@@ -65,7 +65,7 @@ const EditCustomerPage = () => {
                                 errorMessage={errors.email}
                             />
                         </ContentContainer>
-                        <PrimaryButton type="submit" isWide>{resolveTranslation(TRANSLATION.PAGE.CHANGE_PASSWORD.BUTTON.SAVE_CHANGES)}</PrimaryButton>
+                        <PrimaryButton type="submit" isWide>{translate(TRANSLATION.PAGE.CHANGE_PASSWORD.BUTTON.SAVE_CHANGES)}</PrimaryButton>
                     </form>
                 )}
             </Formik>
