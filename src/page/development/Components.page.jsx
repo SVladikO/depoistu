@@ -47,7 +47,6 @@ import {ReactComponent as LanguageIcon} from "../../icons/language.svg";
 
 import {COLOR} from "../../utils/theme";
 import AccountSettings from "../../components/AccountSettings/AccountSettings";
-import OptionSettings from "../../components/OptionSettings/OptionSettings";
 import ImageContent from "../../components/Popup/content/image/ImageContent";
 import IntroContent from "../../components/Popup/content/info/Info";
 import CityContent from "../../components/Popup/content/city/CityContent"
@@ -316,14 +315,6 @@ const componentsGroup3 = [
                     <SettingMenuRow icon={LogOutIcon} title="Only change handler"
                                     changeHandler={() => console.log('clicked')}/>
                 </AccountSettings>
-        },
-        {
-            title: 'OptionSettings', component:
-                <OptionSettings groupTitle="Accounts">
-                    <SettingMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
-                    <SettingMenuRow icon={LogOutIcon} title="Only change handler"
-                                    changeHandler={() => console.log('clicked')}/>
-                </OptionSettings>
         },
     ],
     [

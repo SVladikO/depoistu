@@ -24,7 +24,8 @@ import {ReactComponent as TeamIcon} from "../../icons/team.svg";
 import {
     SettingMenuRow,
     AccountSettings,
-    OptionSettings, NotificationTDB, PrimaryButton
+    NotificationTDB,
+    PrimaryButton
 } from '../../components'
 
 import {URL} from '../../utils/config';
@@ -97,9 +98,8 @@ const SettingPage = () => {
                             />
                         </AccountSettings>
 
-                        <OptionSettings
-                            noBottomBorder
-                            noTopBorder={!!customer}
+                        <AccountSettings
+                            noTopBorder
                             groupTitle={translate(TR.PAGE.SETTINGS.GROUP_TITLE.FOR_BUSINESS)}
                         >
                             <SettingMenuRow
@@ -107,10 +107,10 @@ const SettingPage = () => {
                                 title={translate(TR.PAGE.SETTINGS.MENU_ROW.COMPANY)}
                                 href={URL.CUSTOMER_COMPANIES}
                             />
-                        </OptionSettings>
+                        </AccountSettings>
                     </>)
                 }
-                <OptionSettings
+                <AccountSettings
                     noTopBorder={!!customer}
                     groupTitle={translate(TR.PAGE.SETTINGS.GROUP_TITLE.OPTIONS)}>
                     {/*<SettingMenuRow icon={NewsletterIcon} title='Newsletter' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
@@ -135,7 +135,7 @@ const SettingPage = () => {
                         href={URL.OUR_TEAM}
                     />
                     {/*<SettingMenuRow icon={LinkedAccountIcon} title={translate(TR.PAGE.SETTINGS.MENU_ROW.LINKED_ACCOUNTS)} href='/catalog' label='Facebook, go ...'/>*/}
-                </OptionSettings>
+                </AccountSettings>
             </Wrapper>
         </>
     );
