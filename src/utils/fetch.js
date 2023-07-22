@@ -2,7 +2,7 @@ import {BE_DOMAIN} from "./config";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
 
 // it's function because we take data from localStorage
-const getOptions = (body = {}) => {
+const getOptions = body => {
     const defaultOption = {
         headers: {
             'Content-Type': 'application/json',
@@ -17,7 +17,7 @@ const getOptions = (body = {}) => {
     return {
         ...defaultOption,
         ...{
-            method: body.method || 'POST',
+            method: body?.method || 'POST',
             body: JSON.stringify(body)
         }
     }
@@ -25,7 +25,6 @@ const getOptions = (body = {}) => {
 
 export const fetchData = async (url, body) => {
     let response;
-
     try {
         response = await fetch(decodeURIComponent(url), getOptions(body));
     } catch (error) {
