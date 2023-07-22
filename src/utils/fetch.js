@@ -1,21 +1,33 @@
 import {BE_DOMAIN} from "./config";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
 
-const getOptions = body => ({
-    method: body.method || 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(body)
-})
+// it's function because we take data from localStorage
+const getOptions = (body = {}) => {
+    const defaultOption = {
+        headers: {
+            'Content-Type': 'application/json',
+            "x-access-token": LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER)?.token
+        }
+    };
+
+    if (!body) {
+        return defaultOption;
+    }
+
+    return {
+        ...defaultOption,
+        ...{
+            method: body.method || 'POST',
+            body: JSON.stringify(body)
+        }
+    }
+};
 
 export const fetchData = async (url, body) => {
     let response;
 
     try {
-        response = await (body
-                ? fetch(decodeURIComponent(url), getOptions(body))
-                : fetch(decodeURIComponent(url))
-        );
+        response = await fetch(decodeURIComponent(url), getOptions(body));
     } catch (error) {
         return new Promise((resolve, reject) => {
             reject({status: 500, body: {errorMessage: 'Unable to make request.'}});
