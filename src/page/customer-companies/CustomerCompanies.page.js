@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {useSelector} from "react-redux";
-import {Link, useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 import QRCode from 'qrcode';
 
 import {EditBar, QRCodeButton, ImageQR} from "./CustomerCompanies.style";
@@ -10,10 +10,70 @@ import {ReactComponent as EditIcon} from "../../icons/edit.svg";
 
 import {BE_API} from '../../utils/fetch'
 import {ROUTER, URL} from "../../utils/config";
-import {useLocalStorage, useLocalStorageFetch} from "../../utils/hook";
+import {useLocalStorage, useLocalStorageFetch, useRedirectToSettingPage} from "../../utils/hook";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {ReactComponent as QRCodeIcon} from "../../icons/qr_code.svg";
 import {translate, TRANSLATION} from "../../utils/translation";
+
+const CustomerCompaniesPage = () => {
+    useRedirectToSettingPage();
+    const [customer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
+    const isLoading = useSelector(state => state.request.value.isLoading);
+    const [companyIdForQRCode, setCompanyIdForQRCode] = useState();
+    const [isVisibleCompanyCreationWarning, setIsVisibleCompanyCreationWarning] = useLocalStorage(LOCAL_STORAGE_KEY.IS_VISIBLE_COMPANY_CREATION_WARNING, false);
+    const [requestError, setRequestError] = useState('');
+    const [customerCompanies] = useLocalStorageFetch(
+        LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES,
+        [],
+        BE_API.COMPANY.GET_BY_CUSTOMER_ID(customer?.ID),
+        setRequestError
+    );
+
+
+    if (isLoading) {
+        return <Notification.Loading/>;
+    }
+
+    if (requestError) {
+        return <Notification.Error message={requestError}/>;
+    }
+
+    const showQRCode = companyId => () => setCompanyIdForQRCode(companyId);
+
+    const closeInfoPopUp = () => setIsVisibleCompanyCreationWarning(true);
+
+
+    return (
+        <>
+            {!isVisibleCompanyCreationWarning && <Popup.Info
+                onClose={closeInfoPopUp}>{translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.WARNING)}</Popup.Info>}
+            <PopupQRCode companyId={companyIdForQRCode} onClose={() => setCompanyIdForQRCode('')}/>
+            {customerCompanies.map(
+                company =>
+                    <Company company={company} key={company.ID}>
+                        <EditBar>
+                            <Link to={ROUTER.EDIT_COMPANY.URL + '/' + company.ID} style={{width: '140px'}}>
+                                <PrimaryButton
+                                    isWide><EditIcon/>{translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.COMPANY)}
+                                </PrimaryButton>
+                            </Link>
+                            <QRCodeButton onClick={showQRCode(company.ID)}><QRCodeIcon/></QRCodeButton>
+                            <Link to={ROUTER.EDIT_MENU.URL + '/' + company.ID} style={{width: '140px'}}>
+                                <PrimaryButton
+                                    isWide><EditIcon/>{translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.MENU)}
+                                </PrimaryButton>
+                            </Link>
+                        </EditBar>
+                    </Company>
+            )
+            }
+            <Link to={URL.ADD_COMPANY}>
+                <PrimaryButton
+                    isWide>{translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.ADD_COMPANY)}</PrimaryButton>
+            </Link>
+        < />
+    )
+};
 
 const PopupQRCode = ({companyId, onClose}) => {
     const [qrCodeGenerationError, setQrCodeGenerationError] = useState('');
@@ -36,62 +96,5 @@ const PopupQRCode = ({companyId, onClose}) => {
         </Popup.InfoText>
     )
 }
-
-const CustomerCompaniesPage = () => {
-    const navigate = useNavigate();
-    const isLoading = useSelector(state => state.request.value.isLoading);
-    const [companyIdForQRCode, setCompanyIdForQRCode] = useState();
-    const [isVisibleCompanyCreationWarning, setIsVisibleCompanyCreationWarning] = useLocalStorage(LOCAL_STORAGE_KEY.IS_VISIBLE_COMPANY_CREATION_WARNING, false);
-    const [requestError, setRequestError] = useState('');
-    const [customer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
-    const [customerCompanies] = useLocalStorageFetch(
-        LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES,
-        [],
-        BE_API.COMPANY.GET_BY_CUSTOMER_ID(customer.ID),
-        setRequestError
-    );
-
-    if (!customer) {
-        return navigate(URL.SETTING)
-    }
-
-    if (isLoading) {
-        return <Notification.Loading/>;
-    }
-
-    if (requestError) {
-        return <Notification.Error message={requestError}/>;
-    }
-
-    const showQRCode = companyId => () => setCompanyIdForQRCode(companyId);
-
-    const closeInfoPopUp = () => setIsVisibleCompanyCreationWarning(true);
-
-
-    return (
-        <>
-            {!isVisibleCompanyCreationWarning && <Popup.Info onClose={closeInfoPopUp}>{translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.WARNING)}</Popup.Info>}
-            <PopupQRCode companyId={companyIdForQRCode} onClose={() => setCompanyIdForQRCode('')}/>
-            {customerCompanies.map(
-                company =>
-                    <Company company={company} key={company.ID}>
-                        <EditBar>
-                            <Link to={ROUTER.EDIT_COMPANY.URL + '/' + company.ID} style={{width: '140px'}}>
-                                <PrimaryButton isWide><EditIcon/>{translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.COMPANY)}</PrimaryButton>
-                            </Link>
-                            <QRCodeButton onClick={showQRCode(company.ID)}><QRCodeIcon/></QRCodeButton>
-                            <Link to={ROUTER.EDIT_MENU.URL + '/' + company.ID} style={{width: '140px'}}>
-                                <PrimaryButton isWide><EditIcon/>{translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.MENU)}</PrimaryButton>
-                            </Link>
-                        </EditBar>
-                    </Company>
-            )
-            }
-            <Link to={URL.ADD_COMPANY}>
-                <PrimaryButton isWide>{translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.ADD_COMPANY)}</PrimaryButton>
-            </Link>
-        < />
-    )
-};
 
 export default CustomerCompaniesPage;

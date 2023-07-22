@@ -5,8 +5,10 @@ import MenuItemView from "../../page-view/menu-item/menu-item-view";
 import {fetchData, BE_API} from "../../utils/fetch";
 import {getParam} from "../../utils/utils";
 import {translate, TRANSLATION} from "../../utils/translation";
+import {useRedirectToSettingPage} from "../../utils/hook";
 
 const AddMenuItemPage = () => {
+    useRedirectToSettingPage();
     const categoryId = getParam(`categoryId`);
     const companyId = getParam(`companyId`)
 

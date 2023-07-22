@@ -9,17 +9,19 @@ import {URL} from "../../utils/config";
 import {fetchData, BE_API} from "../../utils/fetch";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {translate, TRANSLATION} from "../../utils/translation";
+import {useRedirectToSettingPage} from "../../utils/hook";
 
 const EditMenuItemPage = () => {
+    useRedirectToSettingPage();
     const navigate = useNavigate();
-    const menuItemCandidateToEdit = LocalStorage.get(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT);
-    const {ID, NAME, PRICE, CATEGORY_ID, DESCRIPTION, COOKING_TIME, IMAGE_URL, SIZE} = menuItemCandidateToEdit;
     const [isLoading, setIsLoading] = useState(false);
     const [requestError, setRequestError] = useState("");
     const [isMenuItemDeleted, setIsMenuItemDeleted] = useState(false);
     const [isMenuItemUpdated, setIsMenuItemUpdated] = useState(false);
+    const menuItemCandidateToEdit = LocalStorage.get(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT);
+    const {ID, NAME, PRICE, CATEGORY_ID, DESCRIPTION, COOKING_TIME, IMAGE_URL, SIZE} = menuItemCandidateToEdit || {};
 
-    if (!menuItemCandidateToEdit && URL.EDIT_MENU) {
+    if (!menuItemCandidateToEdit) {
         return navigate(URL.SETTING)
     }
 

@@ -18,8 +18,10 @@ import {BE_API} from '../../utils/fetch'
 import {fetchData} from "../../utils/fetch";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {translate, TRANSLATION} from "../../utils/translation";
+import {useRedirectToSettingPage} from "../../utils/hook";
 
 const EditMenu = () => {
+    useRedirectToSettingPage();
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const {companyId} = useParams();

@@ -14,10 +14,12 @@ import validation from "../../utils/validation";
 import {BE_API, fetchData} from "../../utils/fetch";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {TRANSLATION, translate} from '../../utils/translation';
+import {useRedirectToSettingPage} from "../../utils/hook";
 
 const ChangePassWordSchema = Yup.object().shape(validation.customer.changePassword);
 
 const ChangePasswordPage = () => {
+    useRedirectToSettingPage();
     const [isLoading, setIsLoading] = useState(false);
     const [isPasswordUpdated, setIsPasswordUpdated] = useState(false);
     const [requestError, setRequestError] = useState('');
