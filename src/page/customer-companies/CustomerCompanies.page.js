@@ -10,10 +10,10 @@ import {ReactComponent as EditIcon} from "../../icons/edit.svg";
 
 import {BE_API} from '../../utils/fetch'
 import {ROUTER, URL} from "../../utils/config";
-import {useLocalStorage, useLocalStorageFetch, useRedirectToSettingPage} from "../../utils/hook";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {ReactComponent as QRCodeIcon} from "../../icons/qr_code.svg";
 import {translate, TRANSLATION} from "../../utils/translation";
+import {ReactComponent as QRCodeIcon} from "../../icons/qr_code.svg";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
+import {useLocalStorage, useLocalStorageFetch, useRedirectToSettingPage} from "../../utils/hook";
 
 const CustomerCompaniesPage = () => {
     useRedirectToSettingPage();

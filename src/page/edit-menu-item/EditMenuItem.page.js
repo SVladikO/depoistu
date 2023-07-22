@@ -7,9 +7,9 @@ import {ReactComponent as RemoveIcon} from "../../icons/remove_icon.svg";
 
 import {URL} from "../../utils/config";
 import {fetchData, BE_API} from "../../utils/fetch";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {translate, TRANSLATION} from "../../utils/translation";
 import {useRedirectToSettingPage} from "../../utils/hook";
+import {translate, TRANSLATION} from "../../utils/translation";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 
 const EditMenuItemPage = () => {
     useRedirectToSettingPage();

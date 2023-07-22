@@ -2,10 +2,11 @@ import React, {useState} from "react";
 
 import {Notification} from "../../components";
 import MenuItemView from "../../page-view/menu-item/menu-item-view";
-import {fetchData, BE_API} from "../../utils/fetch";
+
 import {getParam} from "../../utils/utils";
-import {translate, TRANSLATION} from "../../utils/translation";
+import {fetchData, BE_API} from "../../utils/fetch";
 import {useRedirectToSettingPage} from "../../utils/hook";
+import {translate, TRANSLATION} from "../../utils/translation";
 
 const AddMenuItemPage = () => {
     useRedirectToSettingPage();

@@ -13,12 +13,13 @@ import {
 } from "../../components";
 
 import {startLoading, stopLoading} from "../../features/request/requestSlice";
+
 import {URL} from "../../utils/config";
 import {BE_API} from '../../utils/fetch'
 import {fetchData} from "../../utils/fetch";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {translate, TRANSLATION} from "../../utils/translation";
 import {useRedirectToSettingPage} from "../../utils/hook";
+import {translate, TRANSLATION} from "../../utils/translation";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 
 const EditMenu = () => {
     useRedirectToSettingPage();
