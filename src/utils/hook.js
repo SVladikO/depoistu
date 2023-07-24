@@ -1,8 +1,12 @@
 import {useState, useEffect} from "react";
-import {fetchData} from "./fetch";
 import {useDispatch} from "react-redux";
+import {useNavigate} from "react-router-dom";
+
+import {fetchData} from "./fetch";
+
+import {URL} from "./config";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
 import {startLoading, stopLoading} from "../features/request/requestSlice";
-import {LocalStorage} from "./localStorage";
 
 export const useLocalStorage = (storageKey, initialState) => {
     const localStorageState = LocalStorage.get(storageKey);
@@ -32,6 +36,16 @@ export const useHideOnScroll = (id, top) => {
     }, [id, top])
 }
 
+export const useRedirectToSettingPage = () => {
+    const [customer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!customer) {
+            navigate(URL.SETTING)
+        }
+    })
+}
 export const useScrollUp = () => {
     useEffect(() => {
         window.scrollTo(0, 0)
