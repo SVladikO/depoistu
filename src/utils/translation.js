@@ -169,6 +169,10 @@ export const TRANSLATION = {
                 ua: "Назад",
                 en: "Back"
             },
+            INPUT_PLACEHOLDER: {
+                ua: "Виберіть місто",
+                en: "Choose the city"
+            },
         },
         SIGN_IN: {
             TOP_TITLE: {

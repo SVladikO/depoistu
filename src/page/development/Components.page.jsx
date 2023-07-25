@@ -351,10 +351,10 @@ const componentsGroup3 = [
             component: <ImageContent
                 imageUrl="https://raw.githubusercontent.com/SVladikO/testApp/master/images/4_cheese.jpg"/>
         },
-        {
-            title: 'IntroPopupContent',
-            component: <IntroContent>Some text Some text Some text Some text Some text</IntroContent>
-        },
+        // {
+        //     title: 'IntroPopupContent',
+        //     component: <IntroContent>Some text Some text Some text Some text Some text</IntroContent>
+        // },
         {title: 'CityPopupContent', component: <CityContent availableCities={getAllCities()}/>},
     ],
     [

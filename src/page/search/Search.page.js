@@ -11,6 +11,7 @@ import {BE_API, fetchData} from "../../utils/fetch";
 import {useLocalStorage, useLocalStorageFetch} from "../../utils/hook";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {convertCitiesIds} from '../../utils/cities';
+import {TRANSLATION, translate} from "../../utils/translation";
 
 const SearchPage = () => {
     const [requestError, setRequestError] = useState('');
@@ -71,7 +72,7 @@ const SearchPage = () => {
                     withIcon
                     Icon={LocationIcon}
                     value={(selectedCity && `${selectedCity.name}, ${selectedRegion} обл`) || ''}
-                    placeholder={"Choose city"}
+                    placeholder={translate(TRANSLATION.PAGE.SEARCH.INPUT_PLACEHOLDER)}
                 />
             </ContentContainer>
             {selectedCity && selectedRegion && companies.length === 0
