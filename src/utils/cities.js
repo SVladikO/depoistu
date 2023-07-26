@@ -1,35 +1,36 @@
 import {currentLanguage} from "./translation";
 
-export const convertCitiesIds = (cityIds) => {
+export const generateRegionCityTree = (cityIds) => {
 
     const city = {};
 
     cityIds.sort((a, b) => a > b).forEach(cityId => {
-        const regionId = getRegionId(cityId);
-        const regionName = cities[regionId][currentLanguage];
-        city[regionName] = [
-            ...(city[regionName] || []),
-            {name: cities[cityId][currentLanguage], id: cityId}
+        const regionId = isItRegionId(cityId);
+
+        city[regionId] = [
+            ...(city[regionId] || []),
+            cityId
         ];
     })
 
     return city;
 }
 
-const getRegionId = cityId => cityId - (cityId % 100)
-
+const isItRegionId = cityId => +cityId !== (+cityId - (+cityId % 100))
+console.log(isItRegionId(100));
 export const getCityNameById = key => {
     return cities[key] && cities[key][currentLanguage];
 }
 
-export const getAllCities = () => {
-    return convertCitiesIds(
-        Object.keys(cities)
-            .filter(cityId => +cityId !== getRegionId(+cityId))
-    )
+export const getOnlyCityIds = () => {
+       const regionAndCityIds=  Object.keys(cities);
+        console.log(5555, regionAndCityIds.length)
+       const cityIds = regionAndCityIds.filter(isItRegionId);
+        console.log(5555,cityIds.length);
+       return generateRegionCityTree(cityIds);
 }
 
-const cities = {
+export const cities = {
         100: {ua: "Івано-Франківська", en: "Ivano-Frankivsk"},
         101: {ua: "Богородчани", en: "Bohorodchany"},
         102: {ua: "Болехів", en: "Bolehiv"},

@@ -38,7 +38,7 @@ export const CityContent = ({selectCity, availableCities, onClose}) => {
 
     const changeHandlerSettingMenuRow = city => () => {
         if (isRegion) {
-            setSelectedRegion(city.name)
+            setSelectedRegion(city)
             setCitiesToRender(availableCities[city.name])
             setIsRegion(false)
             return
@@ -48,7 +48,7 @@ export const CityContent = ({selectCity, availableCities, onClose}) => {
         enableScrollOnBody();
         onClose()
     }
-
+    console.log(citiesToRender);
     return (
         <Wrapper onClick={disableEventBubbling}>
             {!isRegion && renderBackButton()}

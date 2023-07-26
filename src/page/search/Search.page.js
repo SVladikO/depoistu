@@ -10,8 +10,9 @@ import {URL} from "../../utils/config";
 import {BE_API, fetchData} from "../../utils/fetch";
 import {useLocalStorage, useLocalStorageFetch} from "../../utils/hook";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {convertCitiesIds} from '../../utils/cities';
+import {generateRegionCityTree} from '../../utils/cities';
 import {translate, TRANSLATION} from "../../utils/translation";
+import {cities} from "../../utils/cities";
 
 const SearchPage = () => {
     const [requestError, setRequestError] = useState('');
@@ -31,7 +32,7 @@ const SearchPage = () => {
         }
     })
 
-    const availableCitiesForSearch = convertCitiesIds(cityIds);
+    const availableCitiesForSearch = generateRegionCityTree(cityIds);
 
     let [companies] = useLocalStorageFetch(
         LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT,
@@ -49,7 +50,6 @@ const SearchPage = () => {
         setSelectedRegion(region);
         closeCityPopup();
     }
-
     const cityPopup = useMemo(() =>
         <Popup.City
             selectCity={selectCity}
@@ -63,6 +63,9 @@ const SearchPage = () => {
     }
 
     // If we use useLocalStorageFetch than we need below code to handle error.
+    // console.log(selectedCity)
+    // console.log(selectedRegion)
+    console.log(selectedRegion)
     return (
         <>
             {requestError && <Notification.Error message={requestError}/>}
@@ -71,7 +74,7 @@ const SearchPage = () => {
                     handleClick={openCityPopup}
                     withIcon
                     Icon={LocationIcon}
-                    value={(selectedCity && `${selectedCity.name}, ${selectedRegion}${translate(TRANSLATION.COMPONENTS.POPUP.CITY.INPUT)}`) || ''}
+                    value={(selectedCity && `${translate(cities[selectedCity])}, ${selectedRegion}${translate(TRANSLATION.COMPONENTS.POPUP.CITY.INPUT)}`) || ''}
                     placeholder={"Choose city"}
                 />
             </ContentContainer>
