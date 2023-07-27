@@ -49,7 +49,7 @@ import {COLOR} from "../../utils/theme";
 import AccountSettings from "../../components/AccountSettings/AccountSettings";
 import OptionSettings from "../../components/OptionSettings/OptionSettings";
 import ImageContent from "../../components/Popup/content/image/ImageContent";
-import IntroContent from "../../components/Popup/content/info/Info";
+import IntroContent, {InfoText} from "../../components/Popup/content/info/Info";
 import CityContent from "../../components/Popup/content/city/CityContent"
 import {ReactComponent as LocationIcon} from "../../icons/location.svg";
 import Checkbox from "../../components/Checkbox/Checkbox";
@@ -351,10 +351,10 @@ const componentsGroup3 = [
             component: <ImageContent
                 imageUrl="https://raw.githubusercontent.com/SVladikO/testApp/master/images/4_cheese.jpg"/>
         },
-        // {
-        //     title: 'IntroPopupContent',
-        //     component: <IntroContent>Some text Some text Some text Some text Some text</IntroContent>
-        // },
+        {
+            title: 'IntroPopupContent',
+            component: <InfoText>Some text Some text Some text Some text Some text</InfoText>
+        },
         {title: 'CityPopupContent', component: <CityContent availableCities={getAllCities()}/>},
     ],
     [
