@@ -28,7 +28,7 @@ const SingUpPage = () => {
 
         fetchData(BE_API.CUSTOMER.SING_UP(), {name, email, password: newPassword, phone})
             .then(res => {
-                LocalStorage.set(LOCAL_STORAGE_KEY.CUSTOMER, res.body)
+                LocalStorage.set(LOCAL_STORAGE_KEY.CUSTOMER, {...res.body, IS_VERIFIED_EMAIL: false})
                 navigate(URL.SETTING);
             })
             .catch(e => setRequestError(e.body.message))

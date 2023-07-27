@@ -25,7 +25,8 @@ import {
     SettingMenuRow,
     AccountSettings,
     NotificationTDB,
-    PrimaryButton
+    PrimaryButton,
+    Input
 } from '../../components'
 
 import {URL} from '../../utils/config';
@@ -57,6 +58,16 @@ const SettingPage = () => {
         </NotificationTDB>
     );
 
+    const emailVerificationNotification = (
+        <NotificationTDB
+            title={translate(TR.PAGE.SETTINGS.NOTIFICATION.VERIFICATION_TITLE)}
+            description={translate(TR.PAGE.SETTINGS.NOTIFICATION.VERIFICATION_DESCRIPTION)}
+        >
+            <Input/>
+            <PrimaryButton isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.VERIFICATION)}</PrimaryButton>
+        </NotificationTDB>
+    );
+
     const logOut = () => {
         LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER);
         setCustomer(undefined);
@@ -66,6 +77,7 @@ const SettingPage = () => {
     return (
         <>
             {!customer && singInSingUpNotification}
+            {customer && !customer.IS_VERIFIED_EMAIL && emailVerificationNotification}
             <LanguagePopup onClose={closeLanguagePopup} isShow={isShowLanguagePopup}/>
             <Wrapper>
                 {/*<CustomerAccountBar fullName='Jhon Smith' phone="+14844731243"/>*/}
