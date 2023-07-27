@@ -6,8 +6,7 @@ import {SettingMenuRow} from '../../../index'
 
 import {ReactComponent as BackIcon} from "../../../../icons/back.svg";
 import {TRANSLATION, translate} from '../../../../utils/translation';
-import {generateRegionCityTree} from "../../../../utils/cities";
-import {cities} from "../../../../utils/cities";
+import {generateRegionCityTree, CITY_TRANSLATION_IDS} from "../../../../utils/cities";
 
 const enableScrollOnBody = () => document.body.style.overflowY = 'auto';
 
@@ -82,7 +81,7 @@ export const CityContent = ({onSelectCity, availableCityIds, onClose}) => {
                     <SettingMenuRow
                         changeHandler={changeHandlerSettingMenuRow(id)}
                         key={i.toString()}
-                        title={isRegion ? translate(cities[id]) + regionLabel : translate(cities[id])}
+                        title={isRegion ? translate(CITY_TRANSLATION_IDS[id]) + regionLabel : translate(CITY_TRANSLATION_IDS[id])}
                         label=""
                         style={{margin: 0, padding: '0 0 20px'}}
                     />

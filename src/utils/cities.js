@@ -38,11 +38,11 @@ const isItCityId = cityId => +cityId !== getRegionId(cityId)
 const getRegionId = cityId => cityId - (cityId % 100)
 
 export const getOnlyCityIds = () => {
-    const regionAndCityIds = Object.keys(cities);
+    const regionAndCityIds = Object.keys(CITY_TRANSLATION_IDS);
     return regionAndCityIds.filter(isItCityId);
 }
 
-export const cities = {
+export const CITY_TRANSLATION_IDS = {
     100: {ua: "Івано-Франківська", en: "Ivano-Frankivsk"},
     101: {ua: "Богородчани", en: "Bohorodchany"},
     102: {ua: "Болехів", en: "Bolehiv"},
