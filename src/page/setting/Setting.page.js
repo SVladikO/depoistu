@@ -98,7 +98,8 @@ const SettingPage = () => {
                             withCleaner
                         />
                         <RowSplitterStyle height={'10px'}/>
-                        <PrimaryButton type="submit" isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.VERIFICATION)}</PrimaryButton>
+                        <PrimaryButton type="submit"
+                                       isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.VERIFICATION)}</PrimaryButton>
                     </form>
                 )}
             </Formik>
@@ -158,8 +159,18 @@ const SettingPage = () => {
                         </AccountSettings>
                     </>)
                 }
+                {customer && !customer.IS_VERIFIED_EMAIL && (
+                    <AccountSettings groupTitle={translate(TR.PAGE.SETTINGS.GROUP_TITLE.ACCOUNTS)}>
+                        <SettingMenuRow
+                            icon={LogOutIcon}
+                            title={translate(TR.PAGE.SETTINGS.MENU_ROW.EXIT)}
+                            changeHandler={logOut}
+                        />
+                    </AccountSettings>
+                )
+                }
                 <AccountSettings
-                    noTopBorder={customer && customer.IS_VERIFIED_EMAIL}
+                    noTopBorder={customer}
                     groupTitle={translate(TR.PAGE.SETTINGS.GROUP_TITLE.OPTIONS)}>
                     {/*<SettingMenuRow icon={NewsletterIcon} title='Newsletter' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
                     {/*<SettingMenuRow icon={NotificationIcon} title='Notification' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
