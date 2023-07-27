@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Formik} from "formik";
 
 import {Wrapper, EditBar} from './Setting.style';
 
@@ -34,13 +35,18 @@ import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {Link} from "react-router-dom";
 import {TRANSLATION as TR, translate} from "../../utils/translation";
 import LanguagePopup from "../../page-view/language-popup/LanguagePopup";
+import {BE_API, fetchData} from "../../utils/fetch";
+import * as Yup from "yup";
+import validation from "../../utils/validation";
+import {RowSplitterStyle} from "../../components/RowSplitter/RowSplitter.style";
+import {useLocalStorage} from "../../utils/hook";
 
 const SettingPage = () => {
     const [isShowLanguagePopup, setIsShowLanguagePopup] = useState(false);
     const openLanguagePopup = () => setIsShowLanguagePopup(true);
     const closeLanguagePopup = () => setIsShowLanguagePopup(false);
 
-    const [customer, setCustomer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
+    const [customer, setCustomer] = useLocalStorage(LOCAL_STORAGE_KEY.CUSTOMER);
 
     const singInSingUpNotification = (
         <NotificationTDB
@@ -57,19 +63,49 @@ const SettingPage = () => {
             </EditBar>
         </NotificationTDB>
     );
+    const onCheckVerification = ({emailVerificationCode}) => {
+        fetchData(BE_API.CUSTOMER.PUT_VERIFY_EMAIL(), {email: customer.EMAIL, emailVerificationCode, method: 'put'})
+            .then(res => {
+                if (res.body.isEmailVerified) {
+                    setCustomer({...customer, IS_VERIFIED_EMAIL: true})
+                }
+            })
+            .catch(res => console.log(res))
+    }
+
+    const EmailVerificationCodeSchema = Yup.object().shape(validation.customer.emailVerificationCode);
 
     const emailVerificationNotification = (
         <NotificationTDB
             title={translate(TR.PAGE.SETTINGS.NOTIFICATION.VERIFICATION_TITLE)}
             description={translate(TR.PAGE.SETTINGS.NOTIFICATION.VERIFICATION_DESCRIPTION)}
         >
-            <Input/>
-            <PrimaryButton isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.VERIFICATION)}</PrimaryButton>
+            <Formik
+                initialValues={{emailVerificationCode: ''}}
+                validationSchema={EmailVerificationCodeSchema}
+                onSubmit={onCheckVerification}
+            >
+                {({values, handleBlur, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
+                    <form onSubmit={handleSubmit}>
+                        <Input
+                            value={values.emailVerificationCode}
+                            name="emailVerificationCode"
+                            onBlur={handleBlur}
+                            isTouched={touched.emailVerificationCode}
+                            changeHandler={handleChange}
+                            clearHandler={() => setFieldValue('emailVerificationCode', '')}
+                            errorMessage={errors.emailVerificationCode}
+                            withCleaner
+                        />
+                        <RowSplitterStyle height={'10px'}/>
+                        <PrimaryButton type="submit" isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.VERIFICATION)}</PrimaryButton>
+                    </form>
+                )}
+            </Formik>
         </NotificationTDB>
     );
 
     const logOut = () => {
-        LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER);
         setCustomer(undefined);
         LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
     }
