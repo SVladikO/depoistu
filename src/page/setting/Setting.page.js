@@ -27,7 +27,8 @@ import {
     AccountSettings,
     NotificationTDB,
     PrimaryButton,
-    Input
+    Input,
+    Notification
 } from '../../components'
 
 import {URL} from '../../utils/config';
@@ -42,6 +43,8 @@ import {RowSplitterStyle} from "../../components/RowSplitter/RowSplitter.style";
 import {useLocalStorage} from "../../utils/hook";
 
 const SettingPage = () => {
+    const [isLoading, setIsLoading] = useState(false);
+    const [requestError, setRequestError] = useState('');
     const [isShowLanguagePopup, setIsShowLanguagePopup] = useState(false);
     const openLanguagePopup = () => setIsShowLanguagePopup(true);
     const closeLanguagePopup = () => setIsShowLanguagePopup(false);
@@ -64,13 +67,15 @@ const SettingPage = () => {
         </NotificationTDB>
     );
     const onCheckVerification = ({emailVerificationCode}) => {
+        setIsLoading(true)
         fetchData(BE_API.CUSTOMER.PUT_VERIFY_EMAIL(), {email: customer.EMAIL, emailVerificationCode, method: 'put'})
             .then(res => {
                 if (res.body.isEmailVerified) {
                     setCustomer({...customer, IS_VERIFIED_EMAIL: true})
                 }
             })
-            .catch(res => console.log(res))
+            .catch(e => setRequestError(e.body.message))
+            .finally(() => setIsLoading(false));
     }
 
     const EmailVerificationCodeSchema = Yup.object().shape(validation.customer.emailVerificationCode);
@@ -115,6 +120,8 @@ const SettingPage = () => {
         <>
             {!customer && singInSingUpNotification}
             {customer && !customer.IS_VERIFIED_EMAIL && emailVerificationNotification}
+            {isLoading && <Notification.Loading/>}
+            {requestError && <Notification.Error message={requestError}/>}
             <LanguagePopup onClose={closeLanguagePopup} isShow={isShowLanguagePopup}/>
             <Wrapper>
                 {/*<CustomerAccountBar fullName='Jhon Smith' phone="+14844731243"/>*/}
