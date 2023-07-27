@@ -118,7 +118,7 @@ const SettingPage = () => {
             <Wrapper>
                 {/*<CustomerAccountBar fullName='Jhon Smith' phone="+14844731243"/>*/}
                 {/*<RowSplitter height='20px'/>*/}
-                {customer && (
+                {customer && !!customer.IS_VERIFIED_EMAIL && (
                     <>
                         <AccountSettings
                             groupTitle={translate(TR.PAGE.SETTINGS.GROUP_TITLE.ACCOUNTS)}>
@@ -159,7 +159,7 @@ const SettingPage = () => {
                     </>)
                 }
                 <AccountSettings
-                    noTopBorder={!!customer}
+                    noTopBorder={customer && customer.IS_VERIFIED_EMAIL}
                     groupTitle={translate(TR.PAGE.SETTINGS.GROUP_TITLE.OPTIONS)}>
                     {/*<SettingMenuRow icon={NewsletterIcon} title='Newsletter' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
                     {/*<SettingMenuRow icon={NotificationIcon} title='Notification' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
