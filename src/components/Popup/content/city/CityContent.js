@@ -6,13 +6,25 @@ import {SettingMenuRow} from '../../../index'
 
 import {ReactComponent as BackIcon} from "../../../../icons/back.svg";
 import {TRANSLATION, translate} from '../../../../utils/translation';
+import {generateRegionCityTree} from "../../../../utils/cities";
+import {cities} from "../../../../utils/cities";
 
 const enableScrollOnBody = () => document.body.style.overflowY = 'auto';
 
-export const CityContent = ({selectCity, availableCities, onClose}) => {
-    const REGIONS = Object.keys(availableCities).map(key => ({name: key}));
-    const [selectedRegion, setSelectedRegion] = useState('');
-    const [citiesToRender, setCitiesToRender] = useState(REGIONS);
+/**
+ * Should render popup with list of regions and cities generated from availableCityIds.
+ *
+ * @param {function} onSelectCity
+ * @param {array} availableCityIds
+ * @param {function} onClose
+ * @return {JSX.Element}
+ * @constructor
+ */
+export const CityContent = ({onSelectCity, availableCityIds, onClose}) => {
+    const regionCityTree = generateRegionCityTree(availableCityIds);
+    const regionIds = Object.keys(regionCityTree);
+    const [selectedRegionId, setSelectedRegionId] = useState('');
+    const [citiesOrRegionsToRender, setCitiesOrRegionsToRender] = useState(regionIds);
 
     const [isRegion, setIsRegion] = useState(true);
 
@@ -23,8 +35,8 @@ export const CityContent = ({selectCity, availableCities, onClose}) => {
 
     const handleBackButtonClick = () => {
         setIsRegion(true);
-        setCitiesToRender(REGIONS);
-        setSelectedRegion('')
+        setCitiesOrRegionsToRender(regionIds);
+        setSelectedRegionId('')
     }
 
     const renderBackButton = () => (
@@ -36,19 +48,27 @@ export const CityContent = ({selectCity, availableCities, onClose}) => {
         </BackButtonWrapper>
     );
 
-    const changeHandlerSettingMenuRow = city => () => {
+    /**
+     * Should handle select region or city by id.
+     *
+     * @param {string} id - Expect region id or city id.
+     * @return {(function(): void)|*}
+     */
+    const changeHandlerSettingMenuRow = id => () => {
         if (isRegion) {
-            setSelectedRegion(city)
-            setCitiesToRender(availableCities[city.name])
+            setSelectedRegionId(id)
+            setCitiesOrRegionsToRender(regionCityTree[id])
             setIsRegion(false)
             return
         }
 
-        selectCity([city, selectedRegion])
+        onSelectCity([id, selectedRegionId])
         enableScrollOnBody();
         onClose()
     }
-    console.log(citiesToRender);
+
+    const regionLabel = translate(TRANSLATION.COMPONENTS.POPUP.CITY.INPUT);
+
     return (
         <Wrapper onClick={disableEventBubbling}>
             {!isRegion && renderBackButton()}
@@ -57,12 +77,12 @@ export const CityContent = ({selectCity, availableCities, onClose}) => {
                 style={{height: isRegion ? '100%' : '92%'}}
                 onClick={e => e.stopPropagation()}
             >
-                {/*Expected array structure: [{name: 'Vinnica'}, ... ]*/}
-                {citiesToRender.map((city, i) =>
+                {/*Expected array structure: ['101', '202', ... ]*/}
+                {citiesOrRegionsToRender.map((id, i) =>
                     <SettingMenuRow
-                        changeHandler={changeHandlerSettingMenuRow(city)}
+                        changeHandler={changeHandlerSettingMenuRow(id)}
                         key={i.toString()}
-                        title={isRegion ? city.name + translate(TRANSLATION.COMPONENTS.POPUP.CITY.INPUT) : city.name}
+                        title={isRegion ? translate(cities[id]) + regionLabel : translate(cities[id])}
                         label=""
                         style={{margin: 0, padding: '0 0 20px'}}
                     />

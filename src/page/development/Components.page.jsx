@@ -34,7 +34,6 @@ import
     MenuItemDetails
 } from "../../components";
 
-import CatalogPage from "./Catalog.page";
 import {ReactComponent as QRCodeIcon} from "../../icons/qr_code.svg";
 import {ReactComponent as EmptyBasketIcon} from "../../icons/empty_basket.svg";
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
@@ -353,7 +352,7 @@ const componentsGroup3 = [
             title: 'IntroContent.InfoText',
             component: <IntroContent.InfoText>Some text Some text Some text Some text Some text</IntroContent.InfoText>
         },
-        {title: 'CityPopupContent', component: <CityContent availableCities={getOnlyCityIds()}/>},
+        {title: 'CityPopupContent', component: <CityContent availableCityIds={getOnlyCityIds()}/>},
     ],
     [
         {

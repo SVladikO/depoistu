@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useMemo} from "react";
 import * as Yup from "yup";
 import {Formik} from "formik";
 import {Swiper, SwiperSlide} from "swiper/react";
@@ -24,7 +24,7 @@ import {ReactComponent as DeleteBasketIcon} from "../../icons/delete_basket.svg"
 
 import validation from "../../utils/validation";
 import {isScheduleValid} from "../../utils/company";
-import {getOnlyCityIds} from '../../utils/cities'
+import {cities, getOnlyCityIds} from '../../utils/cities'
 import {translate, TRANSLATION} from "../../utils/translation";
 
 const renderCompanyPhotos = (photos, setPictures) => {
@@ -61,9 +61,10 @@ const CompanyView = ({initialValues, onSubmit, submitButtonTitle}) => {
     const [wasSubmitted, setWasSubmitted] = useState(false);
 
     const openCityPopup = () => setShowCityPopup(true);
+
     const closeCityPopup = () => setShowCityPopup(false);
 
-    const allCities = getOnlyCityIds();
+    const availableAllCityIds = useMemo(() => getOnlyCityIds(), []);
 
     const selectCity = callback => ([city]) => {
         callback(city);
@@ -105,8 +106,8 @@ const CompanyView = ({initialValues, onSubmit, submitButtonTitle}) => {
                             withIcon
                             Icon={LocationIcon}
                             handleClick={openCityPopup}
-                            value={values.city}
-                            isTouched={wasSubmitted || touched.city}
+                            value={values.city_id && translate(cities[values.city_id])}
+                            isTouched={wasSubmitted || touched.city_id}
                             errorMessage={errors.city || errors.city_id}
                         />
                         {}
@@ -137,10 +138,9 @@ const CompanyView = ({initialValues, onSubmit, submitButtonTitle}) => {
                     </ContentContainer>
                     {showCityPopup && (
                         <Popup.City
-                            availableCities={allCities}
-                            selectCity={selectCity(city => {
-                                setFieldValue('city', city.name)
-                                setFieldValue('city_id', city.id)
+                            availableCityIds={availableAllCityIds}
+                            onSelectCity={selectCity(cityId => {
+                                setFieldValue('city_id', cityId)
                             })}
                             onClose={closeCityPopup}
                         />
