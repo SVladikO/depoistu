@@ -8,12 +8,13 @@ import {Wrapper} from "./index.style";
 import {store} from './store';
 import reportWebVitals from './reportWebVitals';
 
-import WebsiteIntro from "./extra/WebsiteIntro";
-
 import {checkAccess} from "./utils/security";
 import {getRoutes} from "./utils/navigation";
 import {setBrowserTabTitle} from "./utils/utils";
 import {showDevelopmentPageUrls} from "./utils/log";
+import LanguagePopup from "./features/language/LanguagePopup";
+import Intro from "./features/intro/Intro";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "./utils/localStorage";
 
 const container = document.getElementById('root');
 const root = createRoot(container);
@@ -23,7 +24,7 @@ checkAccess();
 showDevelopmentPageUrls();
 
 store.subscribe(() => {
-    localStorage.setItem('reduxState', JSON.stringify(store.getState()))
+    LocalStorage.set(LOCAL_STORAGE_KEY.REDUX_STATE, store.getState());
 })
 
 root.render(
@@ -31,7 +32,10 @@ root.render(
         <BrowserRouter>
             <Provider store={store}>
                 <Wrapper>
-                    <WebsiteIntro/>
+                    <div>
+                        <Intro />
+                        <LanguagePopup />
+                    </div>
                     {getRoutes()}
                 </Wrapper>
             </Provider>

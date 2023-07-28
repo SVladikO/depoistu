@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {useDispatch} from "react-redux";
 
 import {Wrapper, EditBar} from './Setting.style';
 
@@ -28,16 +29,16 @@ import {
     PrimaryButton
 } from '../../components'
 
+import {openLanguagePopup} from '../../features/language/languageSlice';
+
 import {URL} from '../../utils/config';
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {Link} from "react-router-dom";
 import {TRANSLATION as TR, translate} from "../../utils/translation";
-import LanguagePopup from "../../page-view/language-popup/LanguagePopup";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
+import LanguagePopup from "../../features/language/LanguagePopup";
 
 const SettingPage = () => {
-    const [isShowLanguagePopup, setIsShowLanguagePopup] = useState(false);
-    const openLanguagePopup = () => setIsShowLanguagePopup(true);
-    const closeLanguagePopup = () => setIsShowLanguagePopup(false);
+    const dispatch = useDispatch();
 
     const [customer, setCustomer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
 
@@ -66,7 +67,7 @@ const SettingPage = () => {
     return (
         <>
             {!customer && singInSingUpNotification}
-            <LanguagePopup onClose={closeLanguagePopup} isShow={isShowLanguagePopup}/>
+            <LanguagePopup />
             <Wrapper>
                 {/*<CustomerAccountBar fullName='Jhon Smith' phone="+14844731243"/>*/}
                 {/*<RowSplitter height='20px'/>*/}
@@ -121,7 +122,7 @@ const SettingPage = () => {
                     <SettingMenuRow
                         icon={LanguageIcon}
                         title={translate(TR.PAGE.SETTINGS.MENU_ROW.LANGUAGE)}
-                        changeHandler={openLanguagePopup}
+                        changeHandler={() => dispatch(openLanguagePopup())}
                         label={translate(TR.PAGE.SETTINGS.LABEL.CURRENT_LANGUAGE)}
                     />
                     <SettingMenuRow
