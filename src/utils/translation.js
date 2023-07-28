@@ -17,8 +17,8 @@ export const translate = obj => {
 
 export const TRANSLATION = {
     COMPANY_NAME: {
-        ua: 'ДОМОНО',
-        en: 'DOMONO'
+        ua: 'DEPOISTU',
+        en: 'DEPOISTU'
     },
     INTRODUCTION: {
         ua: 'Меню всіх кафе та ресторанів України має бути в одному місці.Знайдіть заклад своєї мрії та допоможи іншим. Розкажи адміністраторам своїх улюблених закладів про наш сайт.',
