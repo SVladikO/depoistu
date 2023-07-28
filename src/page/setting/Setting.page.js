@@ -1,3 +1,4 @@
+import {Link} from "react-router-dom";
 import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
 
@@ -29,13 +30,12 @@ import {
     PrimaryButton
 } from '../../components'
 
+import LanguagePopup from "../../features/language/LanguagePopup";
 import {openLanguagePopup} from '../../features/language/languageSlice';
 
 import {URL} from '../../utils/config';
-import {Link} from "react-router-dom";
 import {TRANSLATION as TR, translate} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import LanguagePopup from "../../features/language/LanguagePopup";
 
 const SettingPage = () => {
     const dispatch = useDispatch();

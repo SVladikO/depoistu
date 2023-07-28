@@ -1,13 +1,14 @@
 import React from "react";
+import {useSelector, useDispatch} from "react-redux";
 
 import {Wrapper} from "./LanguagePopup.style";
 
 import {Popup, ThirdButton} from "../../components";
+import {enableScrollOnBody} from "../../components/Popup/Popup";
+
+import {closeLanguagePopup, setWebsiteLanguage} from "./languageSlice";
 
 import {LANGUAGE_KEYS} from "../../utils/translation";
-import {enableScrollOnBody} from "../../components/Popup/Popup";
-import {useSelector, useDispatch} from "react-redux";
-import {closeLanguagePopup, setWebsiteLanguage} from "./languageSlice";
 
 const LanguagePopup = () => {
     const dispatch = useDispatch();

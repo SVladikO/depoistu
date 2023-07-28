@@ -5,7 +5,6 @@ export const LANGUAGE_KEYS = {
     EN: 'en'
 }
 
-console.log('translation.js')
 export const currentLanguage = LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE).language.siteLanguage;
 
 export const translate = obj => {
