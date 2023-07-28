@@ -52,9 +52,13 @@ export const useScrollUp = () => {
     }, [])
 };
 
-export const useLocalStorageFetch = (storageKey, initialState, url, setError = () => {
-}, customCondition = () => {
-}) => {
+export const useLocalStorageFetch = (
+    storageKey,
+    initialState,
+    url,
+    setError = () => {},
+    customCondition = () => {}
+) => {
     const localStorageState = LocalStorage.get(storageKey);
     const [value, setValue] = useState(localStorageState ?? initialState);
     const dispatch = useDispatch();
@@ -76,7 +80,7 @@ export const useLocalStorageFetch = (storageKey, initialState, url, setError = (
                 dispatch(stopLoading());
                 setError(e.body.message);
             })
-    }, [value, storageKey, dispatch, localStorageState, url]);
+    }, [value, storageKey, dispatch, localStorageState, url, setError]);
 
     return [value, setValue];
 };
