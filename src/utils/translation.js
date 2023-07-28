@@ -14,6 +14,7 @@ export const translate = obj => {
 }
 
 
+
 export const TRANSLATION = {
     COMPANY_NAME: {
         ua: 'ДОМОНО',

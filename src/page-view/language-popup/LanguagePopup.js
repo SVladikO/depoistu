@@ -28,7 +28,7 @@ const LanguagePopup = ({onClose=() => {}, showCloseButton, isShow=false}) => {
         return;
     }
 
-    console.log(222, 'showCloseButton ', showCloseButton);
+
     return (
         <Popup.Info onClose={onClose} showCloseButton={showCloseButton}>
             <Wrapper>
