@@ -4,12 +4,17 @@
 
 
 INSERT INTO `CUSTOMER` (id, name, phone, password, email, is_verified_phone, is_verified_email, join_date) VALUES
-  (DEFAULT, 'Master',  '380970668830', 'masterMaster', ' masterMaster@gmail.com ', false, false, '1686300364887'),
-  (DEFAULT, 'Vlad',     '380970668830', 'pma1111', 'vlad.serhiychuk@gmail.com',  false, false, '1686300364887'),
-  (DEFAULT, 'Irina',    '380635957376', 'pma1111', 'serhiichuk.irina@gmail.com', false, false, '1686300364887'),
-  (DEFAULT, 'Alex',     '380635957376', 'pma1111', 'Chorniy315@gmail.com',       false, false, '1686300364887'),
-  (DEFAULT, 'Pasha',    '380972959897', 'pma1111', 'pasha.serhiichuk@gmail.com', false, false, '1686300364887');
-  ;
+  (DEFAULT, 'Master',    '380970668830', 'masterMaster', 'masterMaster@gmail.com',     false, true, '1686300364887'),
+  (DEFAULT, 'Irina',     '380635957376', 'pma1111',      'serhiichuk.irina@gmail.com', false, true, '1686300364887'),
+  (DEFAULT, 'Vlad',      '380970668830', 'pma1111',      'vlad.serhiychuk@gmail.com',  false, true, '1686300364887'),
+  (DEFAULT, 'Alex',      '380635957376', 'pma1111',      'Chorniy315@gmail.com',       false, true, '1686300364887'),
+  (DEFAULT, 'Pasha',     '380972959897', 'pma1111',      'pasha.serhiichuk@gmail.com', false, true, '1686300364887'),
+  (DEFAULT, 'Customer1', '380981112233', '123456',       'customer1@gmail.com',        false, true, '1686300364887'),
+  (DEFAULT, 'Customer2', '380981112233', '123456',       'customer2@gmail.com',        false, true, '1686300364887'),
+  (DEFAULT, 'Customer3', '380981112233', '123456',       'customer3@gmail.com',        false, true, '1686300364887'),
+  (DEFAULT, 'Customer4', '380981112233', '123456',       'customer4@gmail.com',        false, true, '1686300364887'),
+  (DEFAULT, 'Customer5', '380981112233', '123456',       'customer5@gmail.com',        false, true, '1686300364887');
+
 
 INSERT INTO COMPANY (id, customer_id, name, phone, city_id, street, join_date, schedule, photos) VALUES
     (1, 1, 'Пузата хата +100',    '380443914699', '1018', 'Георгія Кірпи, 3',                  '22.05.2020', '08:00-22:00, 08:00-22:00, 08:00-22:00, 08:00-22:00, 08:00-22:00, 08:00-22:00, 08:00-22:00', 'https://lh3.googleusercontent.com/p/AF1QipPOHkIGkDvpeRzRzGoCHJLJ1vlcPLMuJyH379il=s1360-w1360-h1020, https://lh3.googleusercontent.com/p/AF1QipN1fGK5RlKsMBFmtX4PsHDBIjPbGRmf3nUBcWia=s1360-w1360-h1020, https://lh3.googleusercontent.com/p/AF1QipMyxT4bIXtSLU6jgw2AaUTLUJN8fvvole2qmw84=s1360-w1360-h1020'),
