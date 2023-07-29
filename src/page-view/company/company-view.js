@@ -88,7 +88,7 @@ const CompanyView = ({initialValues, onSubmit, submitButtonTitle}) => {
         >
             {({values, touched, handleBlur, setFieldValue, handleSubmit, handleChange, errors}) => (
                 <form onSubmit={handleSubmit}>
-                    {renderCompanyPhotos(initialValues.photos, pictures => setFieldValue('photos', pictures))}
+                    {/*{renderCompanyPhotos(initialValues.photos, pictures => setFieldValue('photos', pictures))}*/}
                     <ContentContainer>
                         <Label>{translate(TRANSLATION.INPUT_LABEL.COMPANY.NAME)}</Label>
                         <Input

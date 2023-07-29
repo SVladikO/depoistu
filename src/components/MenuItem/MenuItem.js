@@ -39,7 +39,8 @@ export const MenuItemDetails = ({item = {}, withEditIcon = false, onEditClick}) 
             <Price>{PRICE}</Price>
             <Description>{DESCRIPTION}</Description>
             <AdditionalDetails>
-                <TimeIcon/> {COOKING_TIME} {translate(TRANSLATION.MEASUREMENTS.PREPARING)} <MeasureIcon/> {SIZE} {CATEGORY_MAPPER[CATEGORY_ID].measurement}
+                <TimeIcon/> {COOKING_TIME} {translate(TRANSLATION.MEASUREMENTS.PREPARING)}
+                <MeasureIcon/> {SIZE} {CATEGORY_MAPPER[CATEGORY_ID].measurement}
             </AdditionalDetails>
             {/*<Absolute bottom={'10px'} right={'10px'}>*/}
             {/*    <BasketIcon />*/}
@@ -53,19 +54,26 @@ const MenuItem = props => {
     const {IMAGE_URL} = props.item;
     const [imageUrl, setImageUrl] = useState('');
 
+    const renderImages = () => (
+        <ImagesWrapper>
+            <FoodImage src={IMAGE_URL} onClick={() => setImageUrl(IMAGE_URL)}/>
+            <ZoomIcon/>
+        </ImagesWrapper>
+    );
+
+    const renderPopup = () => (
+        imageUrl && <Popup.Image imageUrl={imageUrl} onClose={() => setImageUrl('')}>
+            <MenuItemDetails {...props} />
+        </Popup.Image>
+    )
+
     return (
         <Wrapper className='pm-MenuItem'>
             <Flex justifyContent="stretch">
-                <ImagesWrapper>
-                    <FoodImage src={IMAGE_URL} onClick={() => setImageUrl(IMAGE_URL)} />
-                    <ZoomIcon />
-                </ImagesWrapper>
+                {/*{renderImages()}*/}
                 <MenuItemDetails {...props} />
             </Flex>
-            {imageUrl && <Popup.Image imageUrl={imageUrl} onClose={() => setImageUrl('')}>
-                <MenuItemDetails {...props} />
-            </Popup.Image>
-            }
+            {/*{renderPopup()}*/}
         </Wrapper>
     );
 };
