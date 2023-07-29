@@ -26,7 +26,13 @@ export const useHideOnScroll = (id, top) => {
     const onScroll = () => {
         window.onscroll = function () {
             let currentScrollPos = window.pageYOffset;
-            document.getElementById(id).style.top = prevScrollpos > currentScrollPos ? "0" : top;
+
+            if (currentScrollPos < 250) {
+                document.getElementById(id).style.top = "0";
+            } else {
+                document.getElementById(id).style.top = prevScrollpos > currentScrollPos ? "0" : top;
+            }
+
             prevScrollpos = currentScrollPos;
         }
     }
@@ -56,8 +62,10 @@ export const useLocalStorageFetch = (
     storageKey,
     initialState,
     url,
-    setError = () => {},
-    customCondition = () => {}
+    setError = () => {
+    },
+    customCondition = () => {
+    }
 ) => {
     const localStorageState = LocalStorage.get(storageKey);
     const [value, setValue] = useState(localStorageState ?? initialState);
