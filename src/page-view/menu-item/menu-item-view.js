@@ -24,6 +24,7 @@ const MenuItemView = ({initialValue, onSubmit, submitButtonTitle}) => {
         >
             {({values, handleBlur, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                 <form onSubmit={handleSubmit}>
+                    {console.log(values)}
                     <ContentContainer>
                         <MenuItemPhoto>
                             {imageURL
@@ -63,7 +64,8 @@ const MenuItemView = ({initialValue, onSubmit, submitButtonTitle}) => {
                         <Dropdown
                             options={Object.values(CATEGORY_MAPPER)}
                             value={values.category}
-                            onSelect={handleChange}
+                            onSelect={option => setFieldValue( 'category', option.title)}
+                            as="select"
                             name="category"
                             errorMessage={errors.category}
                             />
