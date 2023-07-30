@@ -24,7 +24,6 @@ const MenuItemView = ({initialValue, onSubmit, submitButtonTitle}) => {
         >
             {({values, handleBlur, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                 <form onSubmit={handleSubmit}>
-                    {console.log(values)}
                     <ContentContainer>
                         <MenuItemPhoto>
                             {imageURL
