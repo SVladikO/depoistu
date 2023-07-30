@@ -31,7 +31,7 @@ import
     Company,
     Label,
     CloseButton,
-    MenuItemDetails
+    MenuItemDetails, Dropdown
 } from "../../components";
 
 import {ReactComponent as QRCodeIcon} from "../../icons/qr_code.svg";
@@ -277,8 +277,11 @@ const componentsGroup2 = [
         {title: 'Notification.Loading', component: <Notification.Loading/>},
         {title: 'Notification.Error', component: <Notification.Error message={'Broken content.'}/>},
         {title: 'Notification.Success', component: <Notification.Success message={'Company was created.'}/>},
+        {title: 'Dropdown', component: <Dropdown options={[
+                { title: 'Burger' },
+                { title: 'Pizza' }]
+            }/>}
     ],
-
 ];
 const componentsGroup3 = [
     [

@@ -3,13 +3,12 @@ import {Formik} from "formik";
 import * as Yup from 'yup';
 
 import {ImagePlace, MenuItemPhoto} from "./menu-item-view.style";
-import {ContentContainer, Input, Label, PrimaryButton, SecondaryButton, Textarea} from "../../components";
+import {Dropdown,ContentContainer, Input, Label, PrimaryButton, SecondaryButton, Textarea} from "../../components";
 import validation from "../../utils/validation";
 import {CATEGORY_MAPPER} from "../../utils/category";
 import {translate, TRANSLATION} from "../../utils/translation";
 
 const EditMenuItemSchema = Yup.object().shape(validation.menuItem);
-
 const MenuItemView = ({initialValue, onSubmit, submitButtonTitle}) => {
     const [wasSubmitted, setWasSubmitted] = useState(false);
     const [imageURL] = useState(initialValue.imageURL);
@@ -25,7 +24,6 @@ const MenuItemView = ({initialValue, onSubmit, submitButtonTitle}) => {
         >
             {({values, handleBlur, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                 <form onSubmit={handleSubmit}>
-
                     <ContentContainer>
                         <MenuItemPhoto>
                             {imageURL
@@ -62,13 +60,13 @@ const MenuItemView = ({initialValue, onSubmit, submitButtonTitle}) => {
                             withCleaner
                         />
                         <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.CATEGORY)}</Label>
-                        <select value={values.category_id} onChange={e => setFieldValue('category_id', e.target.value)}>
-                            {
-                                Object.keys(CATEGORY_MAPPER).map(
-                                    id => <option key={id} value={id}>{CATEGORY_MAPPER[id].title}</option>
-                                )
-                            }
-                        </select>
+                        <Dropdown
+                            options={Object.values(CATEGORY_MAPPER)}
+                            value={values.category}
+                            onSelect={handleChange}
+                            name="category"
+                            errorMessage={errors.category}
+                            />
                         <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.DESCRIPTION)}</Label>
                         <Textarea
                             value={values.description}
