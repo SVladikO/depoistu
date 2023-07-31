@@ -3,16 +3,16 @@
 -- added extra , in the enx script wont work
 
 INSERT INTO CUSTOMER (id, name, phone, password, email, is_verified_phone, is_verified_email, join_date) VALUES
-  (DEFAULT, 'Develop',      '380970668830', 'pma1111', 'developDevelop@gmail.com',   false, true, '1686300364887'),
-  (DEFAULT, 'Vlad',         '380970668830', 'pma1111', 'vlad.serhiychuk@gmail.com',  false, true, '1686300364887'),
-  (DEFAULT, 'Irina',        '380635957376', 'pma1111', 'serhiichuk.irina@gmail.com', false, true, '1686300364887'),
-  (DEFAULT, 'Alex',         '380635957376', 'pma1111', 'Chorniy315@gmail.com',       false, true, '1686300364887'),
-  (DEFAULT, 'Pasha',        '380972959897', 'pma1111', 'pasha.serhiichuk@gmail.com', false, true, '1686300364887'),
-  (DEFAULT, 'Customer1',    '380981112233', '123456',  'customer1@gmail.com',        false, true, '1686300364887'),
-  (DEFAULT, 'Customer2',    '380981112233', '123456',  'customer2@gmail.com',        false, true, '1686300364887'),
-  (DEFAULT, 'Customer3',    '380981112233', '123456',  'customer3@gmail.com',        false, true, '1686300364887'),
-  (DEFAULT, 'Customer4',    '380981112233', '123456',  'customer4@gmail.com',        false, true, '1686300364887'),
-  (DEFAULT, 'Customer5',    '380981112233', '123456',  'customer5@gmail.com',        false, true, '1686300364887');
+  (DEFAULT, 'Develop',      '380970668830', 'pma1111',  'developDevelop@gmail.com',   false, true, '1686300364887'),
+  (DEFAULT, 'Vlad',         '380970668830', 'pma1111',  'vlad.serhiychuk@gmail.com',  false, true, '1686300364887'),
+  (DEFAULT, 'Irina',        '380635957376', 'pma1111',  'serhiichuk.irina@gmail.com', false, true, '1686300364887'),
+  (DEFAULT, 'Alex',         '380635957376', 'pma1111',  'Chorniy315@gmail.com',       false, true, '1686300364887'),
+  (DEFAULT, 'Pasha',        '380972959897', 'pma1111',  'pasha.serhiichuk@gmail.com', false, true, '1686300364887'),
+  (DEFAULT, 'Customer1',    '380981112233', 'depoistu', 'customer1@gmail.com',        false, true, '1686300364887'),
+  (DEFAULT, 'Customer2',    '380981112233', 'depoistu', 'customer2@gmail.com',        false, true, '1686300364887'),
+  (DEFAULT, 'Customer3',    '380981112233', 'depoistu', 'customer3@gmail.com',        false, true, '1686300364887'),
+  (DEFAULT, 'Customer4',    '380981112233', 'depoistu', 'customer4@gmail.com',        false, true, '1686300364887'),
+  (DEFAULT, 'Customer5',    '380981112233', 'depoistu', 'customer5@gmail.com',        false, true, '1686300364887');
 
 
 INSERT INTO MENU_ITEM (id, category_id, company_id, name, description, cooking_time, price, size, image_url) VALUES
