@@ -3,7 +3,7 @@ import {Link, useParams} from "react-router-dom";
 
 import {Notification, SecondaryButton} from "../../components";
 
-import {ReactComponent as RemoveIcon} from "../../icons/remove_icon.svg";
+import {ReactComponent as RemoveIcon} from "../../assets/icons/remove_icon.svg";
 
 import CompanyView from "../../page-view/company/company-view";
 

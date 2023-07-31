@@ -34,25 +34,25 @@ import
     MenuItemDetails
 } from "../../components";
 
-import {ReactComponent as QRCodeIcon} from "../../icons/qr_code.svg";
-import {ReactComponent as EmptyBasketIcon} from "../../icons/empty_basket.svg";
-import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
-import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
-import {ReactComponent as MailIcon} from '../../icons/mail.svg';
-import {ReactComponent as LockIcon} from '../../icons/lock.svg';
-import {ReactComponent as LogOutIcon} from "../../icons/logout.svg";
-import {ReactComponent as SandwichIcon} from '../../icons/sandwich.svg';
-import {ReactComponent as LanguageIcon} from "../../icons/language.svg";
+import {ReactComponent as QRCodeIcon} from "../../assets/icons/qr_code.svg";
+import {ReactComponent as EmptyBasketIcon} from "../../assets/icons/empty_basket.svg";
+import {ReactComponent as GoogleIcon} from '../../assets/icons/google.svg';
+import {ReactComponent as FacebookIcon} from '../../assets/icons/facebook.svg';
+import {ReactComponent as MailIcon} from '../../assets/icons/mail.svg';
+import {ReactComponent as LockIcon} from '../../assets/icons/lock.svg';
+import {ReactComponent as LogOutIcon} from "../../assets/icons/logout.svg";
+import {ReactComponent as SandwichIcon} from '../../assets/icons/sandwich.svg';
+import {ReactComponent as LanguageIcon} from "../../assets/icons/language.svg";
 
 import {COLOR} from "../../utils/theme";
 import AccountSettings from "../../components/AccountSettings/AccountSettings";
 import ImageContent from "../../components/Popup/content/image/ImageContent";
-import IntroContent, {InfoText} from "../../components/Popup/content/info/Info";
+import IntroContent from "../../components/Popup/content/info/Info";
 import CityContent from "../../components/Popup/content/city/CityContent"
-import {ReactComponent as LocationIcon} from "../../icons/location.svg";
+import {ReactComponent as LocationIcon} from "../../assets/icons/location.svg";
 import Checkbox from "../../components/Checkbox/Checkbox";
 import {EditBar, QRCodeButton} from "../customer-companies/CustomerCompanies.style";
-import {ReactComponent as EditIcon} from "../../icons/edit.svg";
+import {ReactComponent as EditIcon} from "../../assets/icons/edit.svg";
 import {Link} from "react-router-dom";
 import {getOnlyCityIds} from "../../utils/cities";
 

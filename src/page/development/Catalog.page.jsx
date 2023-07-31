@@ -9,7 +9,9 @@ function CatalogPage() {
     return (
         <MobileWrapper>
             {ROUTERS.map((p, index) =>
-                <MobileDevice key={p.URL+index} index={index} {...p}><p.page /></MobileDevice>
+                <MobileDevice key={p.URL+index} index={index} {...p}>
+                    <p.page />
+                </MobileDevice>
             )}
         </MobileWrapper>
     )

@@ -9,7 +9,7 @@ import {enableScrollOnBody} from "../../components/Popup/Popup";
 import {useLocalStorage} from "../../utils/hook";
 import {LOCAL_STORAGE_KEY} from "../../utils/localStorage";
 
-const LanguagePopup = ({onClose=() => {}, showCloseButton, isShow=false}) => {
+const LanguagePopup = ({onClose=() => {}, showCloseButton = false, isShow=false}) => {
     const [currentLanguage, setCurrentLanguage] = useLocalStorage(LOCAL_STORAGE_KEY.CURRENT_LANGUAGE);
 
     const setLanguage = language => () => {

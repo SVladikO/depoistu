@@ -1,8 +1,8 @@
 import {Text} from "./Notification.style";
 
-import {ReactComponent as LoadingIcon} from "../../icons/spinner.svg";
-import {ReactComponent as SuccessIcon} from "../../icons/success.svg";
-import {ReactComponent as ErrorIcon} from "../../icons/alert.svg";
+import {ReactComponent as LoadingIcon} from "../../assets/icons/spinner.svg";
+import {ReactComponent as SuccessIcon} from "../../assets/icons/success.svg";
+import {ReactComponent as ErrorIcon} from "../../assets/icons/alert.svg";
 
 import {ContentContainer} from "../ContentContainer/ContentContainer.style";
 import {TRANSLATION, translate} from "../../utils/translation";

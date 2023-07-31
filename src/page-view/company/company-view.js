@@ -16,11 +16,11 @@ import {
     WeekScheduleInput
 } from "../../components";
 
-import {ReactComponent as LocationIcon} from "../../icons/location.svg";
+import {ReactComponent as LocationIcon} from "../../assets/icons/location.svg";
 
 import {WarningMessage} from "../../components/Input/Input.style";
 
-import {ReactComponent as DeleteBasketIcon} from "../../icons/delete_basket.svg";
+import {ReactComponent as DeleteBasketIcon} from "../../assets/icons/delete_basket.svg";
 
 import validation from "../../utils/validation";
 import {isScheduleValid} from "../../utils/company";

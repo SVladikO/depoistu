@@ -2,21 +2,19 @@ import {Wrapper, Text} from './Info.style';
 import {ContentContainer} from "../../../ContentContainer/ContentContainer.style";
 
 export const Info = ({children}) => (
-    <div>
         <ContentContainer>
             {children}
         </ContentContainer>
-    </div>
 )
 
 export const InfoText = ({children}) => (
-    <Info>
+    <ContentContainer>
         <Wrapper>
             <Text>
                 {children}
             </Text>
         </Wrapper>
-    </Info>
+    </ContentContainer>
 );
 
 export default {

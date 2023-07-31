@@ -1,7 +1,7 @@
 import {Link} from "react-router-dom";
 
 import {Wrapper, Title, EditSection} from "./EditMenuRow.style";
-import {ReactComponent as EditIcon} from "../../icons/edit.svg";
+import {ReactComponent as EditIcon} from "../../assets/icons/edit.svg";
 import {SecondaryButton} from "../Button/Button.style";
 import {URL} from '../../utils/config'
 
