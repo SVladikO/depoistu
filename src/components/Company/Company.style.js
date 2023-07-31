@@ -74,7 +74,6 @@ export const Closes = styled.span`
 
   & > span {
     display: inline-block;
-    margin: 0 0 0 10px;
   }
 
   &:before {

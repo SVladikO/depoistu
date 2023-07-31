@@ -6,10 +6,11 @@ import {ImagePlace, MenuItemPhoto} from "./menu-item-view.style";
 import {ContentContainer, Input, Label, PrimaryButton, SecondaryButton, Textarea} from "../../components";
 import validation from "../../utils/validation";
 import {CATEGORY_MAPPER} from "../../utils/category";
+import {translate, TRANSLATION} from "../../utils/translation";
 
 const EditMenuItemSchema = Yup.object().shape(validation.menuItem);
 
-const MenuItemView = ({initialValue, onSubmit}) => {
+const MenuItemView = ({initialValue, onSubmit, submitButtonTitle}) => {
     const [wasSubmitted, setWasSubmitted] = useState(false);
     const [imageURL] = useState(initialValue.imageURL);
 
@@ -17,12 +18,12 @@ const MenuItemView = ({initialValue, onSubmit}) => {
         <Formik
             initialValues={initialValue}
             validationSchema={EditMenuItemSchema}
-            onSubmit={ values => {
+            onSubmit={values => {
                 setWasSubmitted(true);
                 onSubmit(values)
             }}
         >
-            {({values, handleBlur, touched,setFieldValue, handleSubmit, handleChange, errors}) => (
+            {({values, handleBlur, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                 <form onSubmit={handleSubmit}>
 
                     <ContentContainer>
@@ -30,9 +31,14 @@ const MenuItemView = ({initialValue, onSubmit}) => {
                             {imageURL
                                 ? <img src={imageURL} alt='Food'/>   // setImageURL
                                 : <ImagePlace/>}
-                            <SecondaryButton>{imageURL ? 'Change image' : 'Add image'}</SecondaryButton>
+                            <SecondaryButton>
+                                {imageURL
+                                    ? translate(TRANSLATION.PAGE_VIEW.MENU_ITEM.BUTTON.CHANGE_IMAGE)
+                                    : translate(TRANSLATION.PAGE_VIEW.MENU_ITEM.BUTTON.ADD_IMAGE)
+                                }
+                            </SecondaryButton>
                         </MenuItemPhoto>
-                        <Label>Name</Label>
+                        <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.NAME)}</Label>
                         <Input
                             value={values.name}
                             name="name"
@@ -43,7 +49,7 @@ const MenuItemView = ({initialValue, onSubmit}) => {
                             errorMessage={errors.name}
                             withCleaner
                         />
-                        <Label>Price</Label>
+                        <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.PRICE)}</Label>
                         <Input
                             value={values.price}
                             name="price"
@@ -55,7 +61,7 @@ const MenuItemView = ({initialValue, onSubmit}) => {
                             errorMessage={errors.price}
                             withCleaner
                         />
-                        <Label>Category</Label>
+                        <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.CATEGORY)}</Label>
                         <select value={values.category_id} onChange={e => setFieldValue('category_id', e.target.value)}>
                             {
                                 Object.keys(CATEGORY_MAPPER).map(
@@ -63,7 +69,7 @@ const MenuItemView = ({initialValue, onSubmit}) => {
                                 )
                             }
                         </select>
-                        <Label>Description</Label>
+                        <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.DESCRIPTION)}</Label>
                         <Textarea
                             value={values.description}
                             name="description"
@@ -74,7 +80,7 @@ const MenuItemView = ({initialValue, onSubmit}) => {
                             errorMessage={errors.description}
                             withCleaner
                         />
-                        <Label>Cooking time (in minutes)</Label>
+                        <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.COOKING_TIME)}</Label>
                         <Input
                             value={values.cookingTime}
                             type="number"
@@ -86,7 +92,7 @@ const MenuItemView = ({initialValue, onSubmit}) => {
                             errorMessage={errors.cookingTime}
                             withCleaner
                         />
-                        <Label>Meal Size</Label>
+                        <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.MEAL_SIZE)} {CATEGORY_MAPPER[values.category_id].measurement}</Label>
                         <Input
                             value={values.size}
                             name="size"
@@ -99,7 +105,7 @@ const MenuItemView = ({initialValue, onSubmit}) => {
                             withCleaner
                         />
                     </ContentContainer>
-                    <PrimaryButton type="submit" isWide>Save</PrimaryButton>
+                    <PrimaryButton type="submit" isWide>{submitButtonTitle}</PrimaryButton>
                 </form>
             )}
         </Formik>

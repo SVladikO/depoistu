@@ -13,8 +13,9 @@ import {BE_API} from '../../utils/fetch'
 import {fetchData} from "../../utils/fetch";
 import {initSchedule} from "../../utils/company";
 import {getScheduleAsString} from "../../utils/company";
+import {useRedirectToSettingPage} from "../../utils/hook";
+import {translate, TRANSLATION} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {useScrollUp} from "../../utils/hook";
 
 //We need this variable after call LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES) on delete company success
 //when we open customer companies page it will make request to BE and user will have updated list of companies.
@@ -26,6 +27,7 @@ const companyFakeData = {
 }
 
 const EditCompany = () => {
+    useRedirectToSettingPage();
     const companyId = +useParams().companyId;
     const customerCompaniesFromLocalStorage = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES) || [{ID: companyId, ...companyFakeData}];
     const companies = customerCompaniesFromLocalStorage.length ? customerCompaniesFromLocalStorage : [{ID: companyId, ...companyFakeData}];
@@ -37,8 +39,6 @@ const EditCompany = () => {
     const [requestError, setRequestError] = useState("");
     const [isCompanyDeleted, setIsCompanyDeleted] = useState(false);
     const [isCompanyUpdated, setIsCompanyUpdated] = useState(false);
-
-    useScrollUp();
 
     if (isLoading) {
         return <Notification.Loading/>;
@@ -111,10 +111,13 @@ const EditCompany = () => {
         <>
             {requestError && <Notification.Error message={requestError}/>}
             {isCompanyUpdated && <Notification.Success message={"Company was updated."} />}
-            <SecondaryButton isWide onClick={deleteCompany}><RemoveIcon/> Delete company</SecondaryButton>
+            <SecondaryButton isWide onClick={deleteCompany}><RemoveIcon/>
+                {translate(TRANSLATION.PAGE.EDIT_COMPANY.BUTTON.DELETE_COMPANY)}
+            </SecondaryButton>
             <CompanyView
                 initialValues={getInitialValues(company, schedule)}
                 onSubmit={onSubmit}
+                submitButtonTitle={translate(TRANSLATION.PAGE.EDIT_COMPANY.BUTTON.EDIT_COMPANY)}
             />
         </>
     )

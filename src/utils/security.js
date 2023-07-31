@@ -5,7 +5,7 @@ export const checkAccess = () => {
 
     if(isTrustedCustomer) return;
 
-    const secretKey = "****";
+    const secretKey = "2222";
     let test = prompt("Entry secret key");
 
     if (test !== secretKey) {

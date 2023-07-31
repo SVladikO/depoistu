@@ -10,74 +10,74 @@ import {URL} from "../../utils/config";
 import {BE_API, fetchData} from "../../utils/fetch";
 import {useLocalStorage, useLocalStorageFetch} from "../../utils/hook";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {convertCitiesIds} from '../../utils/cities';
-import {TRANSLATION, translate} from "../../utils/translation";
+import {translate, TRANSLATION} from "../../utils/translation";
+import {CITY_TRANSLATION_IDS} from "../../utils/cities";
 
 const SearchPage = () => {
     const [requestError, setRequestError] = useState('');
-
     const isLoading = useSelector(state => state.request.value.isLoading);
-    const [selectedCity, setSelectedCity] = useLocalStorage(LOCAL_STORAGE_KEY.COMPANY_SEARCH_SELECTED_CITY, '');
-    const [selectedRegion, setSelectedRegion] = useLocalStorage(LOCAL_STORAGE_KEY.COMPANY_SEARCH_SELECTED_REGION, '');
+    const [selectedCityId, setSelectedCity] = useLocalStorage(LOCAL_STORAGE_KEY.COMPANY_SEARCH_SELECTED_CITY_ID, '');
+    const [selectedRegionId, setSelectedRegion] = useLocalStorage(LOCAL_STORAGE_KEY.COMPANY_SEARCH_SELECTED_REGION_ID, '');
     const [showCityPopup, setShowCityPopup] = useState(false);
-    const [cityIds, setCityIds] = useState([]);
-
+    const [availableFromDatabaseCityIds, setAvailableFromDatabaseCityIds] = useState([]);
     useEffect(() => {
-        if (cityIds.length === 0) {
+        if (availableFromDatabaseCityIds.length === 0) {
             fetchData(BE_API.COMPANY.GET_AVAILABLE_CITIES())
                 .then(res => {
-                    setCityIds(res.body);
+                    setAvailableFromDatabaseCityIds(res.body);
                 })
         }
     })
 
-    const availableCitiesForSearch = convertCitiesIds(cityIds);
-
     let [companies] = useLocalStorageFetch(
         LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT,
         [],
-        BE_API.COMPANY.GET_BY_CITY_ID(selectedCity.id),
+        BE_API.COMPANY.GET_BY_CITY_ID(selectedCityId),
         setRequestError,
-        () => !selectedCity
+        () => !selectedCityId
     );
 
-    const openCityPopup = () => setShowCityPopup(true);
-    const closeCityPopup = () => setShowCityPopup(false);
-    const selectCity = ([city, region]) => {
+    const onOpenCityPopup = () => setShowCityPopup(true);
+    const onCloseCityPopup = () => setShowCityPopup(false);
+
+    const onSelectCity = ([city, region]) => {
         LocalStorage.remove(LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT)
         setSelectedCity(city);
         setSelectedRegion(region);
-        closeCityPopup();
+        onCloseCityPopup();
     }
-
     const cityPopup = useMemo(() =>
         <Popup.City
-            selectCity={selectCity}
-            availableCities={availableCitiesForSearch}
-            onClose={closeCityPopup}
-        />, [cityIds]
-    );
+            onSelectCity={onSelectCity}
+            availableCityIds={availableFromDatabaseCityIds}
+            onClose={onCloseCityPopup}
+        />, [availableFromDatabaseCityIds]);
 
     if (isLoading) {
         return <Notification.Loading/>;
     }
 
-    // If we use useLocalStorageFetch than we need below code to handle error.
+    const regionLabel = translate(TRANSLATION.COMPONENTS.POPUP.CITY.INPUT)
+
     return (
         <>
             {requestError && <Notification.Error message={requestError}/>}
             <ContentContainer>
                 <PInput
-                    handleClick={openCityPopup}
+                    handleClick={onOpenCityPopup}
                     withIcon
                     Icon={LocationIcon}
-                    value={(selectedCity && `${selectedCity.name}, ${selectedRegion} обл`) || ''}
+                    value={
+                        selectedCityId && selectedRegionId
+                            ? `${translate(CITY_TRANSLATION_IDS[selectedCityId])}, ${translate(CITY_TRANSLATION_IDS[selectedRegionId])} ${regionLabel}`
+                            : ''
+                    }
                     placeholder={translate(TRANSLATION.PAGE.SEARCH.INPUT_PLACEHOLDER)}
                 />
             </ContentContainer>
-            {selectedCity && selectedRegion && companies.length === 0
+            {selectedCityId && selectedRegionId && companies.length === 0
                 ? <Notification.Error message={'There is no companies in current city'}/>
-                : companies && selectedCity &&
+                : companies && selectedCityId &&
                 companies.map(company =>
                     <Link to={`${URL.SEARCH_DETAILS}${company.ID}`} key={company.ID}>
                         <Company key={company.ID} company={company}/>

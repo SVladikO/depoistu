@@ -3,6 +3,7 @@ import React, {useState} from "react";
 import {DaySchedule, From, To, ScheduleContainer, ScheduleContent, ScheduleWrapper} from "./WeekScheduleOutput.style";
 
 import {ThirdButton} from '../Button/Button.style';
+import {translate, TRANSLATION as TR} from "../../utils/translation";
 
 const ScheduleDetails = ({scheduleAsArray}) => {
     const [isWeekScheduleVisible, setIsWeekScheduleVisible] = useState(false);
@@ -33,7 +34,7 @@ const ScheduleDetails = ({scheduleAsArray}) => {
 
     return (
         <ThirdButton onClick={() => setIsWeekScheduleVisible(true)}>
-            Show schedule
+            {translate(TR.COMPONENTS.COMPANY.SCHEDULE_BUTTON)}
         </ThirdButton>
     )
 }

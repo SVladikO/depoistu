@@ -7,21 +7,21 @@ import {ReactComponent as RemoveIcon} from "../../icons/remove_icon.svg";
 
 import {URL} from "../../utils/config";
 import {fetchData, BE_API} from "../../utils/fetch";
+import {useRedirectToSettingPage} from "../../utils/hook";
+import {translate, TRANSLATION} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {useScrollUp} from "../../utils/hook";
 
 const EditMenuItemPage = () => {
+    useRedirectToSettingPage();
     const navigate = useNavigate();
-    const menuItemCandidateToEdit = LocalStorage.get(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT);
-    const {ID, NAME, PRICE, CATEGORY_ID, DESCRIPTION, COOKING_TIME, IMAGE_URL, SIZE} = menuItemCandidateToEdit;
     const [isLoading, setIsLoading] = useState(false);
     const [requestError, setRequestError] = useState("");
     const [isMenuItemDeleted, setIsMenuItemDeleted] = useState(false);
     const [isMenuItemUpdated, setIsMenuItemUpdated] = useState(false);
+    const menuItemCandidateToEdit = LocalStorage.get(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT);
+    const {ID, NAME, PRICE, CATEGORY_ID, DESCRIPTION, COOKING_TIME, IMAGE_URL, SIZE} = menuItemCandidateToEdit || {};
 
-    useScrollUp();
-
-    if (!menuItemCandidateToEdit && URL.EDIT_MENU) {
+    if (!menuItemCandidateToEdit) {
         return navigate(URL.SETTING)
     }
 
@@ -74,11 +74,12 @@ const EditMenuItemPage = () => {
         <>
             {isMenuItemUpdated && <Notification.Success message={"Menu item was updated."} />}
             {requestError && <Notification.Error message={requestError}/>}
-            <SecondaryButton onClick={deleteCompany}><RemoveIcon/> Delete</SecondaryButton>
+            <SecondaryButton onClick={deleteCompany}><RemoveIcon/>{translate(TRANSLATION.PAGE.EDIT_MENU_ITEM.BUTTON.DELETE_MENU_ITEM)}</SecondaryButton>
             <RowSplitter height={'15px'}/>
             <MenuItemView
                 initialValue={initialValue}
                 onSubmit={onSubmit}
+                submitButtonTitle={translate(TRANSLATION.PAGE.EDIT_MENU_ITEM.BUTTON.EDIT_MENU_ITEM)}
             />
         </>
     )

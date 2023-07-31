@@ -1,8 +1,8 @@
 export const COLOR = {
-    PRIMARY: '#709900',
+    PRIMARY: '#FF3937', //'#709900',
     ACCENT1: '#3F3D56',
     ACCENT2: '#F5F6FB',
-    ACCENT3: '#96CC00',
+    ACCENT3: '#FF7E5B', //'#96CC00',
     ACCENT4: '#FFFFFF',
     ACCENT5: '#B5B5B5',
     ACCENT6: '#FF3937',

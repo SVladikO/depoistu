@@ -34,7 +34,6 @@ import
     MenuItemDetails
 } from "../../components";
 
-import CatalogPage from "./Catalog.page";
 import {ReactComponent as QRCodeIcon} from "../../icons/qr_code.svg";
 import {ReactComponent as EmptyBasketIcon} from "../../icons/empty_basket.svg";
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
@@ -47,7 +46,6 @@ import {ReactComponent as LanguageIcon} from "../../icons/language.svg";
 
 import {COLOR} from "../../utils/theme";
 import AccountSettings from "../../components/AccountSettings/AccountSettings";
-import OptionSettings from "../../components/OptionSettings/OptionSettings";
 import ImageContent from "../../components/Popup/content/image/ImageContent";
 import IntroContent, {InfoText} from "../../components/Popup/content/info/Info";
 import CityContent from "../../components/Popup/content/city/CityContent"
@@ -56,7 +54,7 @@ import Checkbox from "../../components/Checkbox/Checkbox";
 import {EditBar, QRCodeButton} from "../customer-companies/CustomerCompanies.style";
 import {ReactComponent as EditIcon} from "../../icons/edit.svg";
 import {Link} from "react-router-dom";
-import {getAllCities} from "../../utils/cities";
+import {getOnlyCityIds} from "../../utils/cities";
 
 const colors = Object.keys(COLOR).map(key =>
     ({title: key, component: <ColorCircle key={key} bg={COLOR[key]}/>, value: COLOR[key], width: '50px'})
@@ -164,6 +162,7 @@ const componentsGroup2 = [
                           item={{
                               ID: 10,
                               NAME: '4 Cheese',
+                              CATEGORY_ID: 1,
                               DESCRIPTION: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella',
                               IMAGE_URL: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
                               COOKING_TIME: 15,
@@ -179,6 +178,7 @@ const componentsGroup2 = [
                           item={{
                               ID: 10,
                               NAME: '4 Cheese',
+                              CATEGORY_ID: 1,
                               DESCRIPTION: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella',
                               IMAGE_URL: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
                               COOKING_TIME: 15,
@@ -194,6 +194,7 @@ const componentsGroup2 = [
                           item={{
                               ID: 10,
                               NAME: '4 Cheese',
+                              CATEGORY_ID: 5,
                               DESCRIPTION: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella',
                               IMAGE_URL: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
                               COOKING_TIME: 15,
@@ -314,14 +315,6 @@ const componentsGroup3 = [
                                     changeHandler={() => console.log('clicked')}/>
                 </AccountSettings>
         },
-        {
-            title: 'OptionSettings', component:
-                <OptionSettings groupTitle="Accounts">
-                    <SettingMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
-                    <SettingMenuRow icon={LogOutIcon} title="Only change handler"
-                                    changeHandler={() => console.log('clicked')}/>
-                </OptionSettings>
-        },
     ],
     [
         {title: "NavigationHeader", component: <NavigationHeader title="category"/>},
@@ -352,10 +345,14 @@ const componentsGroup3 = [
                 imageUrl="https://raw.githubusercontent.com/SVladikO/testApp/master/images/4_cheese.jpg"/>
         },
         {
-            title: 'IntroPopupContent',
-            component: <InfoText>Some text Some text Some text Some text Some text</InfoText>
+            title: 'IntroContent.Info',
+            component: <IntroContent.Info>Some text Some text Some text Some text Some text</IntroContent.Info>
         },
-        {title: 'CityPopupContent', component: <CityContent availableCities={getAllCities()}/>},
+        {
+            title: 'IntroContent.InfoText',
+            component: <IntroContent.InfoText>Some text Some text Some text Some text Some text</IntroContent.InfoText>
+        },
+        {title: 'CityPopupContent', component: <CityContent availableCityIds={getOnlyCityIds()}/>},
     ],
     [
         {

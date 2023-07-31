@@ -24,7 +24,6 @@ import {Flex} from "./Flex/Flex.style";
 import CustomerAccountBar from "./UserAccountBar/CustomerAccountBar";
 import NavigationLabelHref from './NavigationLabelHref/NavigationLabelHref';
 import AccountSettings from "./AccountSettings/AccountSettings";
-import OptionSettings from "./OptionSettings/OptionSettings";
 import BottomMenu from "./BottomMenu/BottomMenu";
 import FromToTime from "./FromToTime/FromToTime";
 import Checkbox from "./Checkbox/Checkbox";
@@ -76,7 +75,6 @@ export {
     NavigationLabelHref,
     CustomerAccountBar,
     AccountSettings,
-    OptionSettings,
     OrderHistoryRow,
     OrderIconWithCounter,
     EditMenuRow,

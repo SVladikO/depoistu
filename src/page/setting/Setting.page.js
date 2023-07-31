@@ -24,19 +24,17 @@ import {ReactComponent as TeamIcon} from "../../icons/team.svg";
 import {
     SettingMenuRow,
     AccountSettings,
-    OptionSettings, NotificationTDB, PrimaryButton
+    NotificationTDB,
+    PrimaryButton
 } from '../../components'
 
 import {URL} from '../../utils/config';
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {Link} from "react-router-dom";
-import {TRANSLATION as TR, translate, LANGUAGE_KEYS} from "../../utils/translation";
+import {TRANSLATION as TR, translate} from "../../utils/translation";
 import LanguagePopup from "../../page-view/language-popup/LanguagePopup";
-import {useLocalStorage} from "../../utils/hook";
-import {useScrollUp} from "../../utils/hook";
 
 const SettingPage = () => {
-    const [currentLanguage, setCurrentLanguage] = useLocalStorage(LOCAL_STORAGE_KEY.CURRENT_LANGUAGE);
     const [isShowLanguagePopup, setIsShowLanguagePopup] = useState(false);
     const openLanguagePopup = () => setIsShowLanguagePopup(true);
     const closeLanguagePopup = () => setIsShowLanguagePopup(false);
@@ -50,10 +48,10 @@ const SettingPage = () => {
         >
             <EditBar>
                 <Link to={URL.SING_IN}>
-                    <PrimaryButton isWide>Sing In</PrimaryButton>
+                    <PrimaryButton isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.SING_IN)}</PrimaryButton>
                 </Link>
                 <Link to={URL.SING_UP}>
-                    <PrimaryButton isWide>Sing Up</PrimaryButton>
+                    <PrimaryButton isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.SING_UP)}</PrimaryButton>
                 </Link>
             </EditBar>
         </NotificationTDB>
@@ -65,13 +63,10 @@ const SettingPage = () => {
         LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
     }
 
-        useScrollUp();
-
-
     return (
         <>
             {!customer && singInSingUpNotification}
-            {isShowLanguagePopup && <LanguagePopup onClose={closeLanguagePopup} setCurrentLanguage={setCurrentLanguage}/>}
+            <LanguagePopup onClose={closeLanguagePopup} isShow={isShowLanguagePopup}/>
             <Wrapper>
                 {/*<CustomerAccountBar fullName='Jhon Smith' phone="+14844731243"/>*/}
                 {/*<RowSplitter height='20px'/>*/}
@@ -103,9 +98,8 @@ const SettingPage = () => {
                             />
                         </AccountSettings>
 
-                        <OptionSettings
-                            noBottomBorder
-                            noTopBorder={!!customer}
+                        <AccountSettings
+                            noTopBorder
                             groupTitle={translate(TR.PAGE.SETTINGS.GROUP_TITLE.FOR_BUSINESS)}
                         >
                             <SettingMenuRow
@@ -113,10 +107,10 @@ const SettingPage = () => {
                                 title={translate(TR.PAGE.SETTINGS.MENU_ROW.COMPANY)}
                                 href={URL.CUSTOMER_COMPANIES}
                             />
-                        </OptionSettings>
+                        </AccountSettings>
                     </>)
                 }
-                <OptionSettings
+                <AccountSettings
                     noTopBorder={!!customer}
                     groupTitle={translate(TR.PAGE.SETTINGS.GROUP_TITLE.OPTIONS)}>
                     {/*<SettingMenuRow icon={NewsletterIcon} title='Newsletter' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
@@ -126,9 +120,9 @@ const SettingPage = () => {
                     {/*<SettingMenuRow icon={HelpIcon} title={translate(TR.PAGE.SETTINGS.MENU_ROW.HELP)} href='/catalog'/>*/}
                     <SettingMenuRow
                         icon={LanguageIcon}
-                        changeHandler={openLanguagePopup}
-                        label={currentLanguage}
                         title={translate(TR.PAGE.SETTINGS.MENU_ROW.LANGUAGE)}
+                        changeHandler={openLanguagePopup}
+                        label={translate(TR.PAGE.SETTINGS.LABEL.CURRENT_LANGUAGE)}
                     />
                     <SettingMenuRow
                         icon={InfoIcon}
@@ -141,7 +135,7 @@ const SettingPage = () => {
                         href={URL.OUR_TEAM}
                     />
                     {/*<SettingMenuRow icon={LinkedAccountIcon} title={translate(TR.PAGE.SETTINGS.MENU_ROW.LINKED_ACCOUNTS)} href='/catalog' label='Facebook, go ...'/>*/}
-                </OptionSettings>
+                </AccountSettings>
             </Wrapper>
         </>
     );

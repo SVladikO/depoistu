@@ -47,7 +47,7 @@ export const FoodImage = styled.img`
 
 export const Title = styled.div`
   font-weight: 700;
-  font-size: 18px;
+  font-size: 22px;
   line-height: 24px;
   color: ${COLOR.ACCENT1};
   margin: 0 5px 4px 0;
@@ -59,13 +59,9 @@ export const Title = styled.div`
 export const Description = styled.div`
   //width: 250px;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 19px;
   margin: 4px 0 18px 0;
-`;
-export const InvisibleDivider = styled.div`
-  opacity: 0;
-  height: 10px;
 `;
 
 export const EditWrapper = styled.div`
@@ -88,8 +84,8 @@ export const EditLabel = styled.span`
 export const AdditionalDetails = styled.div`
   display: flex;
   align-items: center;
-  font-weight: 700;
-  font-size: 16px;
+  font-weight: 100;
+  font-size: 18px;
   line-height: 19px;
   color: ${COLOR.ACCENT5};
 

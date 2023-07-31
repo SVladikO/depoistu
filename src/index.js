@@ -12,13 +12,11 @@ import WebsiteIntro from "./extra/WebsiteIntro";
 
 import {checkAccess} from "./utils/security";
 import {getRoutes} from "./utils/navigation";
-import {setBrowserTabTitle} from "./utils/utils";
 import {showDevelopmentPageUrls} from "./utils/log";
 
 const container = document.getElementById('root');
 const root = createRoot(container);
 
-setBrowserTabTitle()
 checkAccess();
 showDevelopmentPageUrls();
 

@@ -59,8 +59,8 @@ const CategoryMenuRow = ({
             {/*https://studio.swiperjs.com/play*/}
             <Swiper
                 modules={[Scrollbar, FreeMode]}
-                scrollbar={{enabled: true, hide: true, draggable: true}}
-                freeMode={{enabled: true, momentum: true, momentumBounce: true, sticky: true}}
+                scrollbar={{enabled: true, hide: true}}
+                freeMode={{enabled: true, momentum: false, momentumRatio: 1, momentumVelocityRatio: 1}}
                 slidesPerView={3}
                 spaceBetween={10}
                 className="category-slider"
