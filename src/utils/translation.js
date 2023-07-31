@@ -1,19 +1,15 @@
-import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
+import {LocalStorage, LOCAL_STORAGE_KEY} from "./localStorage";
 
 export const LANGUAGE_KEYS = {
     UA: 'ua',
     EN: 'en'
 }
-export const DEFAULT_LANGUAGE = LANGUAGE_KEYS.UA;
-export const currentLanguage = LocalStorage.get(LOCAL_STORAGE_KEY.CURRENT_LANGUAGE) || DEFAULT_LANGUAGE;
+
+export const currentLanguage = LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE).language.siteLanguage;
 
 export const translate = obj => {
-    const currentLanguage = LocalStorage.get(LOCAL_STORAGE_KEY.CURRENT_LANGUAGE) || DEFAULT_LANGUAGE;
-
     return obj[currentLanguage];
 }
-
-
 
 export const TRANSLATION = {
     COMPANY_NAME: {
@@ -216,7 +212,7 @@ export const TRANSLATION = {
             },
             WARNING: {
                 ua: "Не додавайте компанії заради розваги. Не витрачайте ваш і наш час дарма.",
-                en: "Don't add companies for fun. Don\'t waste your time and ours."
+                en: "Don't add companies for fun. Don't waste your time and ours."
             },
             BUTTON: {
                 COMPANY: {
