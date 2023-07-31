@@ -67,6 +67,7 @@ const SettingPage = () => {
         </NotificationTDB>
     );
     const onCheckVerification = ({emailVerificationCode}) => {
+        setRequestError(''); //Each request should hide previous requestError message.
         setIsLoading(true)
         fetchData(BE_API.CUSTOMER.PUT_VERIFY_EMAIL(), {email: customer.EMAIL, emailVerificationCode, method: 'put'})
             .then(res => {
