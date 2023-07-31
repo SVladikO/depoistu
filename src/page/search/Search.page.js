@@ -72,7 +72,7 @@ const SearchPage = () => {
                             ? `${translate(CITY_TRANSLATION_IDS[selectedCityId])}, ${translate(CITY_TRANSLATION_IDS[selectedRegionId])} ${regionLabel}`
                             : ''
                     }
-                    placeholder={"Choose city"}
+                    placeholder={translate(TRANSLATION.PAGE.SEARCH.INPUT_PLACEHOLDER)}
                 />
             </ContentContainer>
             {selectedCityId && selectedRegionId && companies.length === 0
