@@ -3,16 +3,14 @@ import {Provider} from 'react-redux';
 import {createRoot} from 'react-dom/client';
 import {BrowserRouter} from "react-router-dom";
 
-import {Wrapper} from "./index.style";
-
 import {store} from './store';
 import reportWebVitals from './reportWebVitals';
 
-import WebsiteIntro from "./extra/WebsiteIntro";
-
 import {checkAccess} from "./utils/security";
-import {getRoutes} from "./utils/navigation";
 import {showDevelopmentPageUrls} from "./utils/log";
+import App from "./page/App";
+
+document.body.style.backgroundColor = '#d8d8d8';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
@@ -28,10 +26,7 @@ root.render(
     <React.StrictMode>
         <BrowserRouter>
             <Provider store={store}>
-                <Wrapper>
-                    <WebsiteIntro/>
-                    {getRoutes()}
-                </Wrapper>
+                <App />
             </Provider>
         </BrowserRouter>
     </React.StrictMode>

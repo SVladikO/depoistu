@@ -1,9 +1,0 @@
-import styled from 'styled-components'
-
-export const Wrapper = styled.div`
-  min-height: 100vh;
-  margin: 0 auto;
-  position: relative;
-`;
-
-document.body.style.backgroundColor = '#d8d8d8';
