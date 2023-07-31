@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {COLOR} from "../../utils/theme";
+import {COLOR, SHADOW} from "../../utils/theme";
 
 export const SelectWrapper = styled.div`
   position: relative;
@@ -13,7 +13,7 @@ export const SelectButton = styled.button`
   align-items: center;
   width: 100%;
   padding: 10px;
-  border: 1px solid ${COLOR.ACCENT5};
+  ${SHADOW};
   background-color: ${COLOR.ACCENT2};
   cursor: pointer;
   font-size: 16px;
@@ -44,7 +44,7 @@ export const Option = styled.div`
   cursor: pointer;
   font-size: 16px;
   line-height: 19px;
-  border: 1px solid ${COLOR.ACCENT5};
+  ${SHADOW};
   color: ${COLOR.ACCENT1};
   
   &:hover {

@@ -277,10 +277,10 @@ const componentsGroup2 = [
         {title: 'Notification.Loading', component: <Notification.Loading/>},
         {title: 'Notification.Error', component: <Notification.Error message={'Broken content.'}/>},
         {title: 'Notification.Success', component: <Notification.Success message={'Company was created.'}/>},
-        {title: 'Dropdown', component: <Dropdown options={[
-                { title: 'Burger' },
-                { title: 'Pizza' }]
-            }/>}
+        {title: 'Dropdown', component: <Dropdown onSelect={() => alert('option checked')} options={[
+                { id: 1, title: 'Burger' },
+                { id: 2, title: 'Pizza' }]
+        }/>},
     ],
 ];
 const componentsGroup3 = [

@@ -9,10 +9,11 @@ import {CATEGORY_MAPPER} from "../../utils/category";
 import {translate, TRANSLATION} from "../../utils/translation";
 
 const EditMenuItemSchema = Yup.object().shape(validation.menuItem);
+
 const MenuItemView = ({initialValue, onSubmit, submitButtonTitle}) => {
     const [wasSubmitted, setWasSubmitted] = useState(false);
     const [imageURL] = useState(initialValue.imageURL);
-
+    const options  = Object.values(CATEGORY_MAPPER).map(({id, title}) => ({id, title}))
     return (
         <Formik
             initialValues={initialValue}
@@ -61,12 +62,12 @@ const MenuItemView = ({initialValue, onSubmit, submitButtonTitle}) => {
                         />
                         <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.CATEGORY)}</Label>
                         <Dropdown
-                            options={Object.values(CATEGORY_MAPPER)}
-                            value={values.category}
-                            onSelect={option => setFieldValue( 'category', option.title)}
+                            options={options}
+                            value={values.category_id}
+                            onSelect={category_id => setFieldValue( 'category_id', category_id)}
                             as="select"
-                            name="category"
-                            errorMessage={errors.category}
+                            name="category_id"
+                            errorMessage={errors.category_id}
                             />
                         <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.DESCRIPTION)}</Label>
                         <Textarea

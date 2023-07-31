@@ -20,7 +20,6 @@ const AddMenuItemPage = () => {
     const initialValue = {
         name: '',
         price: '',
-        category: '',
         category_id: categoryId,
         description: '',
         cookingTime: '',
