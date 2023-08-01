@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useMemo, useState} from "react";
 import {Formik} from "formik";
 import * as Yup from 'yup';
 
@@ -13,7 +13,9 @@ const EditMenuItemSchema = Yup.object().shape(validation.menuItem);
 const MenuItemView = ({initialValue, onSubmit, submitButtonTitle}) => {
     const [wasSubmitted, setWasSubmitted] = useState(false);
     const [imageURL] = useState(initialValue.imageURL);
-    const options  = Object.values(CATEGORY_MAPPER).map(({id, title}) => ({id, title}))
+    const [selectedOptionMenu, setSelectedOptionMenu] = useState()
+    const options  = useMemo(() => Object.values(CATEGORY_MAPPER).map(({id,title}) => ({value: id, title})),[initialValue])
+
     return (
         <Formik
             initialValues={initialValue}
@@ -63,10 +65,11 @@ const MenuItemView = ({initialValue, onSubmit, submitButtonTitle}) => {
                         <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.CATEGORY)}</Label>
                         <Dropdown
                             options={options}
-                            value={values.category_id}
-                            onSelect={category_id => setFieldValue( 'category_id', category_id)}
+                            selectedOption={(options.filter(o => o.value === values.category_id))[0]}
+                            onSelect={option => setFieldValue( 'category_id', +option.value)}
                             as="select"
                             name="category_id"
+                            isTouched={touched.category_id || wasSubmitted}
                             errorMessage={errors.category_id}
                             />
                         <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.DESCRIPTION)}</Label>
