@@ -35,8 +35,7 @@ export const OptionsContainer = styled.div`
   width: 100%;
   max-height: 250px;
   overflow-y: auto;
-  background-color: #fff;
-  border: 1px solid #ccc;
+  background-color: ${COLOR.ACCENT4};
   ${SHADOW};
 `;
 

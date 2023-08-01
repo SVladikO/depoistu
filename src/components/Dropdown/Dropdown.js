@@ -43,7 +43,11 @@ const Dropdown = ({ options, selectedOption, onSelect, isTouched, errorMessage }
             {isOpen && (
                 <OptionsContainer>
                     {options.map(option => (
-                        <Option isSelected={selectedOption?.value === option.value} key={option.value} onClick={() => handleOptionSelect(option)}>
+                        <Option
+                            isSelected={selectedOption?.value === option.value}
+                            key={option.value}
+                            onClick={() => handleOptionSelect(option)}
+                        >
                             {option.title}
                         </Option>
                     ))}
