@@ -14,6 +14,20 @@ const MenuItemView = ({initialValue, onSubmit, submitButtonTitle}) => {
     const [wasSubmitted, setWasSubmitted] = useState(false);
     const [imageURL] = useState(initialValue.imageURL);
 
+    const renderImages = () => (
+        <MenuItemPhoto>
+            {imageURL
+                ? <img src={imageURL} alt='Food'/>   // setImageURL
+                : <ImagePlace/>}
+            <SecondaryButton>
+                {imageURL
+                    ? translate(TRANSLATION.PAGE_VIEW.MENU_ITEM.BUTTON.CHANGE_IMAGE)
+                    : translate(TRANSLATION.PAGE_VIEW.MENU_ITEM.BUTTON.ADD_IMAGE)
+                }
+            </SecondaryButton>
+        </MenuItemPhoto>
+    );
+
     return (
         <Formik
             initialValues={initialValue}
@@ -25,19 +39,8 @@ const MenuItemView = ({initialValue, onSubmit, submitButtonTitle}) => {
         >
             {({values, handleBlur, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                 <form onSubmit={handleSubmit}>
-
                     <ContentContainer>
-                        <MenuItemPhoto>
-                            {imageURL
-                                ? <img src={imageURL} alt='Food'/>   // setImageURL
-                                : <ImagePlace/>}
-                            <SecondaryButton>
-                                {imageURL
-                                    ? translate(TRANSLATION.PAGE_VIEW.MENU_ITEM.BUTTON.CHANGE_IMAGE)
-                                    : translate(TRANSLATION.PAGE_VIEW.MENU_ITEM.BUTTON.ADD_IMAGE)
-                                }
-                            </SecondaryButton>
-                        </MenuItemPhoto>
+                        {/*{renderImages()}*/}
                         <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.NAME)}</Label>
                         <Input
                             value={values.name}

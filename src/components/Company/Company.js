@@ -75,7 +75,7 @@ const Company = (props) => {
 
     return (
         <Wrapper>
-            {renderImages()}
+            {/*{renderImages()}*/}
             <Content>
                 <CompanyInfo>
                     <Name>{NAME}</Name>
