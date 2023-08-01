@@ -10,7 +10,7 @@ import {translate, TRANSLATION} from "../../utils/translation";
 
 const AddMenuItemPage = () => {
     useRedirectToSettingPage();
-    const categoryId = getParam(`categoryId`);
+    const categoryId = +getParam(`categoryId`);
     const companyId = getParam(`companyId`)
 
     const [isLoading, setIsLoading] = useState(false);
@@ -26,7 +26,7 @@ const AddMenuItemPage = () => {
         size: '',
         image_url: ''
     }
-
+    console.log(22, categoryId);
     const onSubmit = values => {
         console.log(values);
 

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {COLOR, SHADOW} from "../../utils/theme";
+import {COLOR, hexToRgbA, SHADOW} from "../../utils/theme";
 
 export const SelectWrapper = styled.div`
   position: relative;
@@ -33,10 +33,11 @@ export const OptionsContainer = styled.div`
   top: 100%;
   left: 0;
   width: 100%;
-  max-height: 150px;
+  max-height: 250px;
   overflow-y: auto;
   background-color: #fff;
   border: 1px solid #ccc;
+  ${SHADOW};
 `;
 
 export const Option = styled.div`
@@ -44,9 +45,10 @@ export const Option = styled.div`
   cursor: pointer;
   font-size: 16px;
   line-height: 19px;
-  ${SHADOW};
   color: ${COLOR.ACCENT1};
-  
+  display: flex;
+  justify-content: flex-start;
+  background-color: ${p => p.isSelected ? hexToRgbA(COLOR.ACCENT3, 0.1) : ''};
   &:hover {
     background-color: ${COLOR.ACCENT3};
   }
