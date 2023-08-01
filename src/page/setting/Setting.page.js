@@ -113,6 +113,7 @@ const SettingPage = () => {
     );
 
     const logOut = () => {
+        setRequestError('')
         setCustomer(undefined);
         LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
     }
