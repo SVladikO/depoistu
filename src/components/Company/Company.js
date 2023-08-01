@@ -34,9 +34,16 @@ const Company = (props) => {
     const {PHOTOS, NAME, CITY_ID, STREET, PHONE, SCHEDULE} = props.company
     const schedule = parseSchedule(SCHEDULE);
 
+    const redirectToGoogleMaps = (CITY_ID, STREET) => {
+        const address = `${STREET}, ${translate(CITY_TRANSLATION_IDS[CITY_ID])}`
+        const encodedAddress = encodeURIComponent(address);
+        window.location.href = `https://www.google.com/maps?q=${encodedAddress}`;
+    };
+
+
     const renderLocation = () => {
         if (props.withMoreInfo) {
-            return <ThirdButton><LocationIcon/>{translate(CITY_TRANSLATION_IDS[CITY_ID])}, {STREET}</ThirdButton>
+            return <ThirdButton onClick={() => redirectToGoogleMaps(CITY_ID, STREET)}><LocationIcon/>{translate(CITY_TRANSLATION_IDS[CITY_ID])}, {STREET}</ThirdButton>
         }
 
         return <LocationWrapper>{translate(CITY_TRANSLATION_IDS[CITY_ID])}, {STREET}</LocationWrapper>;
