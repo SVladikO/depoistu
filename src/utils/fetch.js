@@ -74,5 +74,9 @@ export const BE_API = {
         PUT_UPDATE: () => `${BE_DOMAIN}/menu`,
         DELETE: () => `${BE_DOMAIN}/menu`,
     },
+    DEVELOPMENT: {
+        API: () =>   `${BE_DOMAIN}/api`,
+        DB_MODE: () =>   `${BE_DOMAIN}/db-mode`
+    }
     // PLACE_ORDER: () => `${BE_DOMAIN}/place-order`,
 };
