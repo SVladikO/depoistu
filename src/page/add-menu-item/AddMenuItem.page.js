@@ -26,7 +26,7 @@ const AddMenuItemPage = () => {
         size: '',
         image_url: ''
     }
-    console.log(22, categoryId);
+
     const onSubmit = values => {
         console.log(values);
 

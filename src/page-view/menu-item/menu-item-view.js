@@ -13,7 +13,6 @@ const EditMenuItemSchema = Yup.object().shape(validation.menuItem);
 const MenuItemView = ({initialValue, onSubmit, submitButtonTitle}) => {
     const [wasSubmitted, setWasSubmitted] = useState(false);
     const [imageURL] = useState(initialValue.imageURL);
-    const [selectedOptionMenu, setSelectedOptionMenu] = useState()
     const options  = useMemo(() => Object.values(CATEGORY_MAPPER).map(({id,title}) => ({value: id, title})),[initialValue])
 
     return (
