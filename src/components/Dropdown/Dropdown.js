@@ -9,7 +9,7 @@ import WarningMessage from "../WarningMessage/WarningMessage";
 const Dropdown = ({ options, selectedCategoryId , onSelect, isTouched, errorMessage }) => {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);
-    const [selectedOption, setSelectedOption] = useState(null);
+    const [selectedOption, setSelectedOption] = useState(selectedCategoryId);
 
     const toggleDropdown = () => {setIsOpen(!isOpen)};
 
@@ -38,7 +38,7 @@ const Dropdown = ({ options, selectedCategoryId , onSelect, isTouched, errorMess
     return (
         <SelectWrapper ref={dropdownRef}>
             <SelectButton type="button" isOpen={isOpen} onClick={toggleDropdown}>
-                {!selectedOption?.title ? translate(TRANSLATION.INPUT_LABEL.DROPDOWN_TITLE) : selectedOption?.title || selectedCategoryId?.title}
+                {selectedOption?.title || translate(TRANSLATION.INPUT_LABEL.DROPDOWN_TITLE)}
                 <DropdownIcon/>
             </SelectButton>
             {isOpen && (
