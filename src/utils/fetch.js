@@ -73,6 +73,7 @@ export const BE_API = {
         POST_CREATE: () => `${BE_DOMAIN}/menu`,
         PUT_UPDATE: () => `${BE_DOMAIN}/menu`,
         DELETE: () => `${BE_DOMAIN}/menu`,
+        IS_ITEM_VISIBLE: () => `${BE_DOMAIN}/menu/visible`
     },
     // PLACE_ORDER: () => `${BE_DOMAIN}/place-order`,
 };

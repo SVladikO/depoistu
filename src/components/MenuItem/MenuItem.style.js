@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {BORDER_RADIUS, COLOR, SHADOW} from "../../utils/theme";
+import {BORDER_RADIUS, COLOR, FONT_16, SHADOW} from "../../utils/theme";
 
 export const Wrapper = styled.div`
   ${SHADOW};
@@ -18,6 +18,8 @@ export const Wrapper = styled.div`
     width: 25px;
     height: 25px;
   }
+  background-color: ${({isVisible}) => isVisible ? 'none': `#FFF1F1`};
+  transition: background-color 0.5s;
 `
 export const ImagesWrapper = styled.div`
   min-width: 90px;
@@ -99,4 +101,16 @@ export const AdditionalDetails = styled.div`
   & > svg:nth-child(2) {
     margin: 0 2px 0 12px;
   }
+  
+  .ToggleCheckbox {
+    margin-left: auto;
+  }
 `;
+
+export const StatusHidden = styled.div`
+  ${FONT_16};
+  display: ${({isVisible}) => isVisible ? 'none': 'flex' };
+  justify-content: center;
+  margin-top: 10px;
+  color: ${COLOR.ERROR1};
+`

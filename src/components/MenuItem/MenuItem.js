@@ -8,10 +8,11 @@ import {
     AdditionalDetails,
     EditWrapper,
     ImagesWrapper,
-    EditLabel
+    EditLabel,
+    StatusHidden
 } from "./MenuItem.style";
 
-import {Price, Flex, Popup} from "../index";
+import {Price, Flex, Popup, ToggleCheckbox} from "../index";
 import {ReactComponent as TimeIcon} from "../../icons/time.svg";
 import {ReactComponent as MeasureIcon} from "../../icons/sss.svg";
 import {ReactComponent as BasketIcon} from "../../icons/basket.svg";
@@ -20,9 +21,29 @@ import {ReactComponent as EditIcon} from "../../icons/edit.svg";
 import {URL} from "../../utils/config";
 import {translate, TRANSLATION} from "../../utils/translation";
 import {CATEGORY_MAPPER} from "../../utils/category";
+import {BE_API, fetchData} from "../../utils/fetch";
 
-export const MenuItemDetails = ({item = {}, withEditIcon = false, onEditClick}) => {
-    const {NAME, DESCRIPTION, CATEGORY_ID, PRICE, COOKING_TIME, SIZE, isLiked} = item;
+export const MenuItemDetails = ({
+                                    item = {},
+                                    isVisible,
+                                    setIsVisible,
+                                    withEditIcon = false,
+                                    onEditClick,
+                                }) => {
+    const {NAME, DESCRIPTION, CATEGORY_ID, PRICE, COOKING_TIME, SIZE, ID} = item;
+
+    const toggleIsMenuItemVisible = async () => {
+        try {
+            await fetchData(BE_API.MENU_ITEM.IS_ITEM_VISIBLE(), {
+                method: 'put',
+                id: ID,
+                is_visible: !isVisible,
+            })
+            setIsVisible(!isVisible)
+        } catch (e) {
+            console.log(e)
+        }
+    }
 
     return (
         <Flex flexDirection='column' width={'100%'}>
@@ -41,6 +62,11 @@ export const MenuItemDetails = ({item = {}, withEditIcon = false, onEditClick}) 
             <AdditionalDetails>
                 <TimeIcon/> {COOKING_TIME} {translate(TRANSLATION.MEASUREMENTS.PREPARING)}
                 <MeasureIcon/> {SIZE} {CATEGORY_MAPPER[CATEGORY_ID].measurement}
+                <ToggleCheckbox
+                    isChecked={isVisible}
+                    changeHandler={toggleIsMenuItemVisible}
+                    className="ToggleCheckbox"
+                />
             </AdditionalDetails>
             {/*<Absolute bottom={'10px'} right={'10px'}>*/}
             {/*    <BasketIcon />*/}
@@ -51,29 +77,42 @@ export const MenuItemDetails = ({item = {}, withEditIcon = false, onEditClick}) 
 }
 
 const MenuItem = props => {
-    const {IMAGE_URL} = props.item;
+    const {IMAGE_URL, IS_VISIBLE} = props.item;
     const [imageUrl, setImageUrl] = useState('');
+    const [isVisible, setIsVisible] = useState(!!IS_VISIBLE)
 
-    const renderImages = () => (
+    const MenuItemImages = () => (
         <ImagesWrapper>
             <FoodImage src={IMAGE_URL} onClick={() => setImageUrl(IMAGE_URL)}/>
             <ZoomIcon/>
         </ImagesWrapper>
     );
 
-    const renderPopup = () => (
+    const MenuItemPopup = () => (
         imageUrl && <Popup.Image imageUrl={imageUrl} onClose={() => setImageUrl('')}>
-            <MenuItemDetails {...props} />
+            <MenuItemDetails
+                {...props}
+            />
         </Popup.Image>
     )
 
     return (
-        <Wrapper className='pm-MenuItem'>
+        <Wrapper
+            isVisible={isVisible}
+            className='pm-MenuItem'
+        >
             <Flex justifyContent="stretch">
-                {/*{renderImages()}*/}
-                <MenuItemDetails {...props} />
+                {/*<MenuItemImages />*/}
+                <MenuItemDetails
+                    {...props}
+                    isVisible={isVisible}
+                    setIsVisible={setIsVisible}
+                />
             </Flex>
-            {/*{renderPopup()}*/}
+            <StatusHidden isVisible={isVisible}>
+                {translate(TRANSLATION.COMPONENTS.EDIT_MENU_ITEM.BUTTON.HIDDEN)}
+            </StatusHidden>
+            {/*<MenuItemPopup />*/}
         </Wrapper>
     );
 };

@@ -532,6 +532,10 @@ export const TRANSLATION = {
                     en: "Edit",
                     ua: "Редагувати"
                 },
+                HIDDEN: {
+                    en: "HIDDEN",
+                    ua: "ПРИХОВАНО"
+                },
             },
         },
         POPUP : {

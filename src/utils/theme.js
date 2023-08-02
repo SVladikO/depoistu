@@ -1,3 +1,13 @@
+export const FONT_16 = `
+    font-size: 16px;
+    font-height: 24px;
+    font-weight: 400;
+`
+export const FONT_16_BOLD = `
+    ${FONT_16};
+    font-weight: 600;
+`
+
 export const COLOR = {
     PRIMARY: '#FF3937', //'#709900',
     ACCENT1: '#3F3D56',
