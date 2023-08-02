@@ -8,7 +8,7 @@ import {
     RouteWrapper,
     ContentWrapper,
     Button,
-    Description, Details,
+    Description, Details, BorderOnly,
 } from './Api.style';
 
 import {Flex} from '../../components/index'
@@ -61,6 +61,7 @@ const ApiPage = () => {
 const Route = ({route}) => {
     const [isDetailsVisible, setIsDetailsVisible] = useState(false);
     const {method, url, description, details = {}} = route;
+    const isDetailsEmpty = !route.details;
 
     const RowInnerWrapper = Row[route.method.toLowerCase()];
     const MethodWrapper = Method[route.method.toLowerCase()];
@@ -69,24 +70,32 @@ const Route = ({route}) => {
     return (
         <RouteWrapper>
             {details.permission && <ProtectedIcon/>}
-            <RowInnerWrapper key={method + url}>
-                <Flex alignItems={'center'}>
-                    <MethodWrapper>{method}</MethodWrapper>
-                    <URL>{url}</URL>
-                </Flex>
-                <Description>{description}</Description>
-                <ButtonWrapper
-                    onClick={() => setIsDetailsVisible(!isDetailsVisible)}>{isDetailsVisible ? 'HIDE' : 'SHOW'}</ButtonWrapper>
-            </RowInnerWrapper>
-            {isDetailsVisible &&
-                <Details>
-                    {details.permission &&
-                        <div className="permission">PERMISSON: {details.permission}</div>}
-                    {details.validation &&
-                        <div className="permission">VALIDATION: {details.validation}</div>}
-                    {/*{details.requestBody && <div className="permission">REQYEST BODY: ${details.requestBody}</div>}*/}
-                </Details>
-            }
+            <BorderOnly>
+                <RowInnerWrapper key={method + url}>
+                    <Flex alignItems={'center'}>
+                        <MethodWrapper>{method}</MethodWrapper>
+                        <URL>{url}</URL>
+                    </Flex>
+                    <Description>{description}</Description>
+
+                    <ButtonWrapper
+                        style={isDetailsEmpty ? {'opacity': 0} : {}}
+                        onClick={isDetailsEmpty ? () => {} : () => setIsDetailsVisible(!isDetailsVisible)}
+                    >
+                        {isDetailsVisible ? 'HIDE' : 'SHOW'}
+                    </ButtonWrapper>
+
+                </RowInnerWrapper>
+                {isDetailsVisible &&
+                    <Details>
+                        {details.permission &&
+                            <div className="permission">PERMISSON: {details.permission}</div>}
+                        {details.validation &&
+                            <div className="permission">VALIDATION: {details.validation}</div>}
+                        {/*{details.requestBody && <div className="permission">REQYEST BODY: ${details.requestBody}</div>}*/}
+                    </Details>
+                }
+            </BorderOnly>
         </RouteWrapper>
     )
 }

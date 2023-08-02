@@ -6,10 +6,6 @@ export const ContentWrapper = styled.div`
   margin: auto;
 `;
 export const RouteWrapper = styled.div`
-
-  display: flex;
-  flex-direction: column;
-
   position: relative;
 
   & > svg {
@@ -27,15 +23,20 @@ export const URL = styled.div`
   width: 320px;
 `;
 
-export const RowDefault = css`
+export const BorderOnly = styled.div`
+  border: solid 2px grey;
+  display: flex;
+  flex-direction: column;
   margin: 8px 0 8px 30px;
+  
+  `;
+export const RowDefault = css`
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 4px;
   border-radius: 4px;
   width: 100%;
-  border: solid 2px grey;
 `
 export const Row = {
     get: styled.div`
@@ -126,12 +127,11 @@ export const Button = {
 };
 
 export const Details = styled.button`
-  border: solid 1px red;
   display: flex;
+  flex-direction: column;
+  font-size: 18px;
   background: none;
-  margin: 0 0 0 30px;
   padding: 10px;
-
 `;
 
 
