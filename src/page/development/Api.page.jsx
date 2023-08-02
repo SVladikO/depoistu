@@ -3,14 +3,8 @@ import {BE_API, fetchData} from "../../utils/fetch";
 
 import {
     URL,
-    RowGET,
-    RowPOST,
-    RowPUT,
-    RowDELETE,
-    MethodGET,
-    MethodPOST,
-    MethodPUT,
-    MethodDELETE,
+    Row,
+    Method,
     RouteWrapper,
     ContentWrapper,
     Button,
@@ -68,8 +62,9 @@ const Route = ({route}) => {
     const [isDetailsVisible, setIsDetailsVisible] = useState(false);
     const {method, url, description, details = {}} = route;
 
-    const RowInnerWrapper = getRowWrapper(route.method);
-    const MethodWrapper = getMethodWrapper(route.method);
+    const RowInnerWrapper = Row[route.method.toLowerCase()];
+    const MethodWrapper = Method[route.method.toLowerCase()];
+    const ButtonWrapper = Button[route.method.toLowerCase()];
 
     return (
         <RouteWrapper>
@@ -80,8 +75,8 @@ const Route = ({route}) => {
                     <URL>{url}</URL>
                 </Flex>
                 <Description>{description}</Description>
-                <Button
-                    onClick={() => setIsDetailsVisible(!isDetailsVisible)}>{isDetailsVisible ? 'HIDE' : 'SHOW'}</Button>
+                <ButtonWrapper
+                    onClick={() => setIsDetailsVisible(!isDetailsVisible)}>{isDetailsVisible ? 'HIDE' : 'SHOW'}</ButtonWrapper>
             </RowInnerWrapper>
             {isDetailsVisible &&
                 <Details>
@@ -94,32 +89,6 @@ const Route = ({route}) => {
             }
         </RouteWrapper>
     )
-}
-
-const getRowWrapper = method => {
-    switch (method.toLowerCase()) {
-        case "get":
-            return RowGET;
-        case "post":
-            return RowPOST;
-        case "put":
-            return RowPUT;
-        case "delete":
-            return RowDELETE;
-    }
-}
-
-const getMethodWrapper = method => {
-    switch (method.toLowerCase()) {
-        case "get":
-            return MethodGET;
-        case "post":
-            return MethodPOST;
-        case "put":
-            return MethodPUT;
-        case "delete":
-            return MethodDELETE;
-    }
 }
 
 function getPermission(r) {
