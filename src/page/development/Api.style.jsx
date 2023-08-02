@@ -6,9 +6,12 @@ export const ContentWrapper = styled.div`
   margin: auto;
 `;
 export const RouteWrapper = styled.div`
+
   display: flex;
-  align-items: center;
+  flex-direction: column;
+
   position: relative;
+
   & > svg {
     position: absolute;
     top: 20px;
@@ -19,17 +22,20 @@ export const RouteWrapper = styled.div`
 export const URL = styled.div`
   font-size: 18px;
   font-weight: 600;
-  margin: 0 10px;
+  margin: 0 10px 0 20px;
+  
+  width: 320px;
 `;
-
 
 export const RowDefault = css`
   margin: 8px 0 8px 30px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   border: solid;
   padding: 4px;
   border-radius: 4px;
+  width: 100%;
 `
 export const RowGET = styled.div`
   border-color: dodgerblue;
@@ -58,7 +64,7 @@ export const MethodDefault = css`
   font-weight: bold;
   font-size: 16px;
   color: white;
-  padding: 4px;
+  padding: 6px;
   width: 90px;
   text-align: center;
   text-transform: uppercase;
@@ -84,6 +90,23 @@ export const MethodDELETE = styled.div`
   ${MethodDefault}
 `;
 
+export const Description = styled.button`
+  width: 400px;
+  display: flex;
+  font-size: 20px;
+  background: none;
+`;
+export const Button = styled.button`
+  background: none;
+  border: solid 1px;
+  padding: 6px;
+  color: black;
+`;
+
+export const Details = styled.button`
+
+
+`;
 
 
 

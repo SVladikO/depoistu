@@ -13,7 +13,11 @@ import {
     MethodDELETE,
     RouteWrapper,
     ContentWrapper,
+    Button,
+    Description,
 } from './Api.style';
+
+import {Flex} from '../../components/index'
 
 import {ReactComponent as ProtectedIcon} from "../../icons/secure.svg";
 
@@ -42,31 +46,6 @@ const ApiPage = () => {
             })
     }, [])
 
-    const getRowWrapper = method => {
-        switch (method.toLowerCase()) {
-            case "get":
-                return RowGET;
-            case "post":
-                return RowPOST;
-            case "put":
-                return RowPUT;
-            case "delete":
-                return RowDELETE;
-        }
-    }
-
-    const getMethodWrapper = method => {
-        switch (method.toLowerCase()) {
-            case "get":
-                return MethodGET;
-            case "post":
-                return MethodPOST;
-            case "put":
-                return MethodPUT;
-            case "delete":
-                return MethodDELETE;
-        }
-    }
 
     console.log({api})
 
@@ -77,36 +56,70 @@ const ApiPage = () => {
                 api.length && api.map(entity => (
                     <div key={entity.name}>
                         <h2>{entity.name}</h2>
-                        {entity.routes.map(route => {
-                            const {method, url, description, details = {}} = route;
-
-                            const RowInnerWrapper = getRowWrapper(route.method);
-                            const MethodWrapper = getMethodWrapper(route.method);
-
-                            return (
-                                <RouteWrapper>
-                                    {details.permission && <ProtectedIcon/>}
-                                        <RowInnerWrapper key={method + url}>
-                                            <MethodWrapper>{method}</MethodWrapper>
-                                            <URL>{url}</URL>
-                                            <div>{description}</div>
-                                        </RowInnerWrapper>
-
-                                        {/*<div>*/}
-                                        {/*    {details.permission &&*/}
-                                        {/*        <div className="permission">PERMISSON: {details.permission}</div>}*/}
-                                        {/*    {details.validation &&*/}
-                                        {/*        <div className="permission">VALIDATION: {details.validation}</div>}*/}
-                                        {/*    /!*{details.requestBody && <div className="permission">REQYEST BODY: ${details.requestBody}</div>}*!/*/}
-                                        {/*</div>*/}
-                                </RouteWrapper>
-                            )
-                        })}
+                        {entity.routes.map(route => <Route route={route}/>)}
                     </div>
                 ))
             }
         </ContentWrapper>
     )
+}
+
+const Route = ({route}) => {
+    const [isDetailsVisible, setIsDetailsVisible] = useState(false);
+    const {method, url, description, details = {}} = route;
+
+    const RowInnerWrapper = getRowWrapper(route.method);
+    const MethodWrapper = getMethodWrapper(route.method);
+
+    return (
+        <RouteWrapper>
+            {details.permission && <ProtectedIcon/>}
+            <RowInnerWrapper key={method + url}>
+                <Flex alignItems={'center'}>
+                    <MethodWrapper>{method}</MethodWrapper>
+                    <URL>{url}</URL>
+                </Flex>
+                <Description>{description}</Description>
+                <Button
+                    onClick={() => setIsDetailsVisible(!isDetailsVisible)}>{isDetailsVisible ? 'Hide' : 'Show'}</Button>
+            </RowInnerWrapper>
+            {isDetailsVisible &&
+                <div>
+                    {details.permission &&
+                        <div className="permission">PERMISSON: {details.permission}</div>}
+                    {details.validation &&
+                        <div className="permission">VALIDATION: {details.validation}</div>}
+                    {/*{details.requestBody && <div className="permission">REQYEST BODY: ${details.requestBody}</div>}*/}
+                </div>
+            }
+        </RouteWrapper>
+    )
+}
+
+const getRowWrapper = method => {
+    switch (method.toLowerCase()) {
+        case "get":
+            return RowGET;
+        case "post":
+            return RowPOST;
+        case "put":
+            return RowPUT;
+        case "delete":
+            return RowDELETE;
+    }
+}
+
+const getMethodWrapper = method => {
+    switch (method.toLowerCase()) {
+        case "get":
+            return MethodGET;
+        case "post":
+            return MethodPOST;
+        case "put":
+            return MethodPUT;
+        case "delete":
+            return MethodDELETE;
+    }
 }
 
 function getPermission(r) {
