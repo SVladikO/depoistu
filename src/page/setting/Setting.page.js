@@ -2,6 +2,7 @@ import {Link} from "react-router-dom";
 import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
 import {Formik} from "formik";
+import * as Yup from "yup";
 
 import {Wrapper, EditBar} from './Setting.style';
 
@@ -30,22 +31,20 @@ import {
     NotificationTDB,
     PrimaryButton,
     Input,
-    Notification
+    Notification,
+    RowSplitter
 } from '../../components'
-import * as Yup from "yup";
-import validation from "../../utils/validation";
+
 import LanguagePopup from "../../features/language/LanguagePopup";
 import {openLanguagePopup} from '../../features/language/languageSlice';
 
 import {URL} from '../../utils/config';
+import validation from "../../utils/validation";
+import {useLocalStorage} from "../../utils/hook";
+import {BE_API, fetchData} from "../../utils/fetch";
 import {TRANSLATION as TR, translate} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import LanguagePopup from "../../page-view/language-popup/LanguagePopup";
-import {BE_API, fetchData} from "../../utils/fetch";
-import * as Yup from "yup";
-import validation from "../../utils/validation";
-import {RowSplitterStyle} from "../../components/RowSplitter/RowSplitter.style";
-import {useLocalStorage} from "../../utils/hook";
+
 const SettingPage = () => {
     const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(false);
@@ -104,7 +103,7 @@ const SettingPage = () => {
                             errorMessage={errors.emailVerificationCode}
                             withCleaner
                         />
-                        <RowSplitterStyle height={'10px'}/>
+                        <RowSplitter height={'10px'}/>
                         <PrimaryButton type="submit"
                                        isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.VERIFICATION)}</PrimaryButton>
                     </form>
