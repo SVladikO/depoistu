@@ -127,11 +127,11 @@ export const Button = {
     `
 };
 
-export const Details = styled.button`
+export const Details = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 18px;
-  background: none;
+  background: antiquewhite;
   padding: 10px;
 `;
 

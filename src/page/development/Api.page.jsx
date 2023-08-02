@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {BE_API, fetchData} from "../../utils/fetch";
+import {BE_API} from "../../utils/fetch";
 
 import {
     URL,
@@ -41,12 +41,9 @@ const ApiPage = () => {
             })
     }, [])
 
-
-    console.log({api})
-
     return (
         <ContentWrapper>
-            {/*<div>{modeDB}</div>*/}
+            <h2>{modeDB?.mode?.toUpperCase()} DB</h2>
             {
                 api.length && api.map(entity => (
                     <div key={entity.name}>
@@ -62,7 +59,6 @@ const ApiPage = () => {
 const Route = ({route}) => {
     const [isDetailsVisible, setIsDetailsVisible] = useState(false);
     const {method, url, url_example, description, details = {}} = route;
-    const isDetailsEmpty = !route.details;
 
     const RowInnerWrapper = Row[route.method.toLowerCase()];
     const MethodWrapper = Method[route.method.toLowerCase()];
@@ -79,20 +75,17 @@ const Route = ({route}) => {
                     </Flex>
                     <Description>{description}</Description>
 
-                    <ButtonWrapper
-                        onClick={isDetailsEmpty ? () => {
-                        } : () => setIsDetailsVisible(!isDetailsVisible)}
-                    >
+                    <ButtonWrapper onClick={() => setIsDetailsVisible(!isDetailsVisible)}>
                         {isDetailsVisible ? 'HIDE' : 'SHOW'}
                     </ButtonWrapper>
-
                 </RowInnerWrapper>
                 {isDetailsVisible &&
                     <Details>
-                        <div>URL EXAMPLE:
-                        <span style={{color: '#246fb7'}}>                            {BE_DOMAIN}</span>
-                        <span style={{color: '#023162'}}>{url_example}</span>
-
+                        <div>EXAMPLE:{' '}
+                            <a href={BE_DOMAIN + url_example} target="_blank">
+                                <span style={{color: 'red'}}>{BE_DOMAIN}</span>
+                                <span style={{color: 'blue'}}>{url_example}</span> ->>>
+                            </a>
 
                         </div>
                         {details.permission && (
@@ -107,16 +100,16 @@ const Route = ({route}) => {
                             <>
                                 <DetailsTitle>REQYEST BODY:</DetailsTitle>
                                 <DetailsBody>
-                                <Flex alignItems={"flex-start"} flexDirection={'column'}>
-                                    <div>{'{'}</div>
-                                    {Object.keys(details.requestBody).map(key => (
-                                        <div key={key} style={{padding: '0 0 0 20px'}}>
-                                            <span>{key}: {' '}</span>
-                                            <span>{' '}{details.requestBody[key]}</span>
-                                        </div>
-                                    ))}
-                                    <div>{'}'}</div>
-                                </Flex>
+                                    <Flex alignItems={"flex-start"} flexDirection={'column'}>
+                                        <div>{'{'}</div>
+                                        {Object.keys(details.requestBody).map(key => (
+                                            <div key={key} style={{padding: '0 0 0 20px'}}>
+                                                <span>{key}: {' '}</span>
+                                                <span>{' '}{details.requestBody[key]}</span>
+                                            </div>
+                                        ))}
+                                        <div>{'}'}</div>
+                                    </Flex>
                                 </DetailsBody>
                             </>
                         )}
@@ -127,60 +120,4 @@ const Route = ({route}) => {
     )
 }
 
-function getPermission(r) {
-    const {permission} = r.details;
-    if (permission) {
-        return ``;
-    }
-
-    return '';
-
-}
-
-function getValidation(r) {
-    const {validation} = r.details;
-    if (validation) {
-        return `<div class="validation">VALIDATION: ${validation}</div>`;
-    }
-
-    return '';
-}
-
-function getRequestBody(r) {
-    const {requestBody} = r.details;
-    if (requestBody) {
-        return `<div class="requestBody">REQYEST BODY: ${requestBody}</div>`;
-    }
-
-    return '';
-}
-
-
 export default ApiPage;
-
-// <div class="space"></div>
-// <h1>Example of possible routes</h1>
-// <div class="route">
-//     <div class="entity">Company</div>
-//     <div class="description">Everything about Company</div>
-// </div>
-// <div class="row row_get">
-//     <div>get</div>
-//     <div>/comapany</div>
-//     <div class="description">Everything about Company</div>
-// </div>
-// <div class="row row_post">
-//     <div>post</div>
-//     <div>/comapany</div>
-//     <div class="description">Everything about Company</div>
-// </div>
-// <div class="row row_delete">
-//     <div>DELETE</div>
-//     <div>/comapany</div>
-//     <div class="description">Everything about Company</div>
-// </div>
-// <div class="row row_update">
-//     <div>update</div>
-//     <div>/comapany</div>
-//     <div class="description">Everything about Company</div>
-// </div>
