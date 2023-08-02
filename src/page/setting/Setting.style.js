@@ -4,6 +4,7 @@ import {BORDER_RADIUS, SHADOW} from '../../utils/theme';
 export const  Wrapper = styled.div`
     ${SHADOW};
     border-radius: ${BORDER_RADIUS.SECOND};
+    overflow: hidden;
 `;
 
 export const EditBar = styled.div`

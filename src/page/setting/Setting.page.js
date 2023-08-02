@@ -1,4 +1,6 @@
+import {Link} from "react-router-dom";
 import React, {useState} from 'react';
+import {useDispatch} from "react-redux";
 import {Formik} from "formik";
 
 import {Wrapper, EditBar} from './Setting.style';
@@ -30,25 +32,24 @@ import {
     Input,
     Notification
 } from '../../components'
+import * as Yup from "yup";
+import validation from "../../utils/validation";
+import LanguagePopup from "../../features/language/LanguagePopup";
+import {openLanguagePopup} from '../../features/language/languageSlice';
 
 import {URL} from '../../utils/config';
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {Link} from "react-router-dom";
 import {TRANSLATION as TR, translate} from "../../utils/translation";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import LanguagePopup from "../../page-view/language-popup/LanguagePopup";
 import {BE_API, fetchData} from "../../utils/fetch";
 import * as Yup from "yup";
 import validation from "../../utils/validation";
 import {RowSplitterStyle} from "../../components/RowSplitter/RowSplitter.style";
 import {useLocalStorage} from "../../utils/hook";
-
 const SettingPage = () => {
+    const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(false);
     const [requestError, setRequestError] = useState('');
-    const [isShowLanguagePopup, setIsShowLanguagePopup] = useState(false);
-    const openLanguagePopup = () => setIsShowLanguagePopup(true);
-    const closeLanguagePopup = () => setIsShowLanguagePopup(false);
-
     const [customer, setCustomer] = useLocalStorage(LOCAL_STORAGE_KEY.CUSTOMER);
 
     const singInSingUpNotification = (
@@ -121,10 +122,9 @@ const SettingPage = () => {
     return (
         <>
             {!customer && singInSingUpNotification}
-            {customer && !customer.IS_VERIFIED_EMAIL && emailVerificationNotification}
             {isLoading && <Notification.Loading/>}
             {requestError && <Notification.Error message={requestError}/>}
-            <LanguagePopup onClose={closeLanguagePopup} isShow={isShowLanguagePopup}/>
+            <LanguagePopup />
             <Wrapper>
                 {/*<CustomerAccountBar fullName='Jhon Smith' phone="+14844731243"/>*/}
                 {/*<RowSplitter height='20px'/>*/}
@@ -189,7 +189,7 @@ const SettingPage = () => {
                     <SettingMenuRow
                         icon={LanguageIcon}
                         title={translate(TR.PAGE.SETTINGS.MENU_ROW.LANGUAGE)}
-                        changeHandler={openLanguagePopup}
+                        changeHandler={() => dispatch(openLanguagePopup())}
                         label={translate(TR.PAGE.SETTINGS.LABEL.CURRENT_LANGUAGE)}
                     />
                     <SettingMenuRow

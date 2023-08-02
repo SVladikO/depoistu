@@ -34,7 +34,6 @@ import
     MenuItemDetails
 } from "../../components";
 
-import CatalogPage from "./Catalog.page";
 import {ReactComponent as QRCodeIcon} from "../../icons/qr_code.svg";
 import {ReactComponent as EmptyBasketIcon} from "../../icons/empty_basket.svg";
 import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
@@ -48,14 +47,14 @@ import {ReactComponent as LanguageIcon} from "../../icons/language.svg";
 import {COLOR} from "../../utils/theme";
 import AccountSettings from "../../components/AccountSettings/AccountSettings";
 import ImageContent from "../../components/Popup/content/image/ImageContent";
-import IntroContent from "../../components/Popup/content/info/Info";
+import IntroContent, {InfoText} from "../../components/Popup/content/info/Info";
 import CityContent from "../../components/Popup/content/city/CityContent"
 import {ReactComponent as LocationIcon} from "../../icons/location.svg";
 import Checkbox from "../../components/Checkbox/Checkbox";
 import {EditBar, QRCodeButton} from "../customer-companies/CustomerCompanies.style";
 import {ReactComponent as EditIcon} from "../../icons/edit.svg";
 import {Link} from "react-router-dom";
-import {getAllCities} from "../../utils/cities";
+import {getOnlyCityIds} from "../../utils/cities";
 
 const colors = Object.keys(COLOR).map(key =>
     ({title: key, component: <ColorCircle key={key} bg={COLOR[key]}/>, value: COLOR[key], width: '50px'})
@@ -353,7 +352,7 @@ const componentsGroup3 = [
             title: 'IntroContent.InfoText',
             component: <IntroContent.InfoText>Some text Some text Some text Some text Some text</IntroContent.InfoText>
         },
-        {title: 'CityPopupContent', component: <CityContent availableCities={getAllCities()}/>},
+        {title: 'CityPopupContent', component: <CityContent availableCityIds={getOnlyCityIds()}/>},
     ],
     [
         {

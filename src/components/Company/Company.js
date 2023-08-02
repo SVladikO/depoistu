@@ -22,7 +22,7 @@ import {ThirdButton} from "../Button/Button.style";
 
 import {parseSchedule} from "../../utils/company";
 import ScheduleDetails from "../WeekScheduleOutput/WeekScheduleOutput";
-import {getCityNameById} from "../../utils/cities";
+import {CITY_TRANSLATION_IDS} from "../../utils/cities";
 import {translate, TRANSLATION as TR} from "../../utils/translation";
 
 const Company = (props) => {
@@ -36,10 +36,10 @@ const Company = (props) => {
 
     const renderLocation = () => {
         if (props.withMoreInfo) {
-            return <ThirdButton><LocationIcon/>{getCityNameById(CITY_ID)}, {STREET}</ThirdButton>
+            return <ThirdButton><LocationIcon/>{translate(CITY_TRANSLATION_IDS[CITY_ID])}, {STREET}</ThirdButton>
         }
 
-        return <LocationWrapper>{getCityNameById(CITY_ID)}, {STREET}</LocationWrapper>;
+        return <LocationWrapper>{translate(CITY_TRANSLATION_IDS[CITY_ID])}, {STREET}</LocationWrapper>;
     }
 
     const renderImages = () => (
@@ -75,7 +75,7 @@ const Company = (props) => {
 
     return (
         <Wrapper>
-            {renderImages()}
+            {/*{renderImages()}*/}
             <Content>
                 <CompanyInfo>
                     <Name>{NAME}</Name>
