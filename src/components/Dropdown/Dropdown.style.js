@@ -22,7 +22,7 @@ export const SelectButton = styled.button`
   transition: all 0.2s;
   svg {
     display: inline-block;
-    transform: rotate(${(props) => (props.isOpen ? '0' : '180deg')}); 
+    transform: rotate(${p => p.isOpen ? 0 : '180deg'});
     transition: transform 0.2s; 
     color: ${COLOR.ACCENT5};
   }

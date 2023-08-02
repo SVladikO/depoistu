@@ -75,6 +75,25 @@ function ExampleCategoryWithSelected() {
     )
 }
 
+function ExampleDropDown(){
+    const options = [
+        { value: 1, title: 'Burger' },
+        { value: 2, title: 'Pizza' }];
+
+    const [selectedValue, setSelectedValue] = useState(options[0].value);
+
+    const handleSelect = (option) => {setSelectedValue(option.value)}
+
+    return (
+        <Dropdown selectedCategoryId={options[0].title}
+                  options={options}
+                  isTouched
+                  errorMessage={'required'}
+                  onSelect={handleSelect}
+        />
+    )
+}
+
 const componentsGroup1 = [
     [
         {
@@ -277,10 +296,7 @@ const componentsGroup2 = [
         {title: 'Notification.Loading', component: <Notification.Loading/>},
         {title: 'Notification.Error', component: <Notification.Error message={'Broken content.'}/>},
         {title: 'Notification.Success', component: <Notification.Success message={'Company was created.'}/>},
-        {title: 'Dropdown', component: <Dropdown selectedOption={'Pizza'} onSelect={() => alert('option checked')} options={[
-                { value: 1, title: 'Burger' },
-                { value: 2, title: 'Pizza' }]
-        }/>},
+        {title: 'Dropdown', component: <ExampleDropDown/>},
     ],
 ];
 const componentsGroup3 = [

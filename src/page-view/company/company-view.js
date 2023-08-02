@@ -18,7 +18,7 @@ import {
 
 import {ReactComponent as LocationIcon} from "../../icons/location.svg";
 
-import {WarningMessage} from "../../components/Input/Input.style";
+import WarningMessage from "../../components/WarningMessage/WarningMessage";
 
 import {ReactComponent as DeleteBasketIcon} from "../../icons/delete_basket.svg";
 

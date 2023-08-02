@@ -56,16 +56,7 @@ export const PInputWrapper = styled.div`
     fill: ${COLOR.PRIMARY};
   }
 `;
-export const WarningMessage = styled.div`
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
-  color: ${COLOR.ACCENT6};
-  background: ${COLOR.ACCENT7};
-  padding: 2px 0 4px 13px;
-  display: flex;
-  justify-content: left;
-`;
+
 const st = p => `
   background: ${COLOR.ACCENT2};
   color: ${COLOR.ACCENT1};

@@ -8,13 +8,14 @@ import {
     PInputWrapper,
     PStyle,
     TextareaStyle,
-    WarningMessage,
     Placeholder,
 } from "./Input.style";
 
 import {ReactComponent as ShowEyeIcon} from "../../icons/show-eye.svg";
 import {ReactComponent as HideEyeIcon} from "../../icons/hide-eye.svg";
 import {ReactComponent as ClearIcon} from "../../icons/close.svg";
+import WarningMessage from '../WarningMessage/WarningMessage';
+
 
 export const Textarea = memo(function ({
                                            errorMessage,
