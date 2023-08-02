@@ -8,7 +8,7 @@ import {
     RouteWrapper,
     ContentWrapper,
     Button,
-    Description, Details, BorderOnly,
+    Description, Details, BorderOnly, DetailsTitle, DetailsBody,
 } from './Api.style';
 
 import {Flex} from '../../components/index'
@@ -49,8 +49,8 @@ const ApiPage = () => {
             {
                 api.length && api.map(entity => (
                     <div key={entity.name}>
-                        <h2>{entity.name}</h2>
-                        {entity.routes.map(route => <Route route={route}/>)}
+                        <h2 style={{padding: '30px 0 6px 30px'}}>{entity.name}</h2>
+                        {entity.routes.map((route, i) => <Route key={i} route={route}/>)}
                     </div>
                 ))
             }
@@ -67,7 +67,6 @@ const Route = ({route}) => {
     const MethodWrapper = Method[route.method.toLowerCase()];
     const ButtonWrapper = Button[route.method.toLowerCase()];
 
-    console.log(444, details.requestBody);
     return (
         <RouteWrapper>
             {details.permission && <ProtectedIcon/>}
@@ -90,24 +89,32 @@ const Route = ({route}) => {
                 </RowInnerWrapper>
                 {isDetailsVisible &&
                     <Details>
-                        {details.permission && <div>PERMISSON: {details.permission}</div>}
-                        {details.validation && <div>VALIDATION: {details.validation}</div>}
 
-                        {details.requestBody && <div>REQYEST BODY:</div>}
-
-                        {
-                            details.requestBody &&
-                            <Flex alignItems={"flex-start"} flexDirection={'column'}>
-                                <div>{'{'}</div>
-                                {Object.keys(details.requestBody).map(key => (
-                                    <div style={{padding: '0 0 0 20px'}}>
-                                        <span>{key}: {' '}</span>
-                                        <span>{' '}{details.requestBody[key]}</span>
-                                    </div>
-                                ))}
-                                <div>{'}'}</div>
-                            </Flex>
+                        {details.permission && (
+                            <div>
+                                <DetailsTitle>PERMISSON:</DetailsTitle>
+                                <DetailsBody>{details.permission}</DetailsBody>
+                            </div>
+                        )
                         }
+                        {details.validation && <DetailsTitle>VALIDATION: {details.validation}</DetailsTitle>}
+                        {details.requestBody && (
+                            <>
+                                <DetailsTitle>REQYEST BODY:</DetailsTitle>
+                                <DetailsBody>
+                                <Flex alignItems={"flex-start"} flexDirection={'column'}>
+                                    <div>{'{'}</div>
+                                    {Object.keys(details.requestBody).map(key => (
+                                        <div key={key} style={{padding: '0 0 0 20px'}}>
+                                            <span>{key}: {' '}</span>
+                                            <span>{' '}{details.requestBody[key]}</span>
+                                        </div>
+                                    ))}
+                                    <div>{'}'}</div>
+                                </Flex>
+                                </DetailsBody>
+                            </>
+                        )}
                     </Details>
                 }
             </BorderOnly>

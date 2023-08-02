@@ -64,7 +64,7 @@ export const Row = {
 export const MethodDefault = css`
   font-weight: bold;
   font-size: 18px;
-  color: white;
+  color: #313131;
   padding: 8px 4px;
   width: 90px;
   text-align: center;
@@ -132,6 +132,15 @@ export const Details = styled.button`
   font-size: 18px;
   background: none;
   padding: 10px;
+`;
+
+export const DetailsTitle = styled.div`
+ display: flex;
+  align-items: flex-start;
+  margin: 12px 0 2px;
+`;
+export const DetailsBody = styled.div`
+   padding: 0 0 0 20px;
 `;
 
 
