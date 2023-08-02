@@ -121,6 +121,7 @@ const SettingPage = () => {
     return (
         <>
             {!customer && singInSingUpNotification}
+            {customer && !customer.IS_VERIFIED_EMAIL && emailVerificationNotification}
             {isLoading && <Notification.Loading/>}
             {requestError && <Notification.Error message={requestError}/>}
             <LanguagePopup />
