@@ -14,6 +14,7 @@ import {
 import {Flex} from '../../components/index'
 
 import {ReactComponent as ProtectedIcon} from "../../icons/secure.svg";
+import {BE_DOMAIN} from "../../utils/config";
 
 const ApiPage = () => {
     const [modeDB, setModeDB] = useState('')
@@ -60,7 +61,7 @@ const ApiPage = () => {
 
 const Route = ({route}) => {
     const [isDetailsVisible, setIsDetailsVisible] = useState(false);
-    const {method, url, description, details = {}} = route;
+    const {method, url, url_example, description, details = {}} = route;
     const isDetailsEmpty = !route.details;
 
     const RowInnerWrapper = Row[route.method.toLowerCase()];
@@ -79,7 +80,6 @@ const Route = ({route}) => {
                     <Description>{description}</Description>
 
                     <ButtonWrapper
-                        style={isDetailsEmpty ? {'opacity': 0} : {}}
                         onClick={isDetailsEmpty ? () => {
                         } : () => setIsDetailsVisible(!isDetailsVisible)}
                     >
@@ -89,7 +89,12 @@ const Route = ({route}) => {
                 </RowInnerWrapper>
                 {isDetailsVisible &&
                     <Details>
+                        <div>URL EXAMPLE:
+                        <span style={{color: '#246fb7'}}>                            {BE_DOMAIN}</span>
+                        <span style={{color: '#023162'}}>{url_example}</span>
 
+
+                        </div>
                         {details.permission && (
                             <div>
                                 <DetailsTitle>PERMISSON:</DetailsTitle>
