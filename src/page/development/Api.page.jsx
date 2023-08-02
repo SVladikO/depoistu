@@ -67,6 +67,7 @@ const Route = ({route}) => {
     const MethodWrapper = Method[route.method.toLowerCase()];
     const ButtonWrapper = Button[route.method.toLowerCase()];
 
+    console.log(444, details.requestBody);
     return (
         <RouteWrapper>
             {details.permission && <ProtectedIcon/>}
@@ -80,7 +81,8 @@ const Route = ({route}) => {
 
                     <ButtonWrapper
                         style={isDetailsEmpty ? {'opacity': 0} : {}}
-                        onClick={isDetailsEmpty ? () => {} : () => setIsDetailsVisible(!isDetailsVisible)}
+                        onClick={isDetailsEmpty ? () => {
+                        } : () => setIsDetailsVisible(!isDetailsVisible)}
                     >
                         {isDetailsVisible ? 'HIDE' : 'SHOW'}
                     </ButtonWrapper>
@@ -88,11 +90,24 @@ const Route = ({route}) => {
                 </RowInnerWrapper>
                 {isDetailsVisible &&
                     <Details>
-                        {details.permission &&
-                            <div className="permission">PERMISSON: {details.permission}</div>}
-                        {details.validation &&
-                            <div className="permission">VALIDATION: {details.validation}</div>}
-                        {/*{details.requestBody && <div className="permission">REQYEST BODY: ${details.requestBody}</div>}*/}
+                        {details.permission && <div>PERMISSON: {details.permission}</div>}
+                        {details.validation && <div>VALIDATION: {details.validation}</div>}
+
+                        {details.requestBody && <div>REQYEST BODY:</div>}
+
+                        {
+                            details.requestBody &&
+                            <Flex alignItems={"flex-start"} flexDirection={'column'}>
+                                <div>{'{'}</div>
+                                {Object.keys(details.requestBody).map(key => (
+                                    <div style={{padding: '0 0 0 20px'}}>
+                                        <span>{key}: {' '}</span>
+                                        <span>{' '}{details.requestBody[key]}</span>
+                                    </div>
+                                ))}
+                                <div>{'}'}</div>
+                            </Flex>
+                        }
                     </Details>
                 }
             </BorderOnly>
