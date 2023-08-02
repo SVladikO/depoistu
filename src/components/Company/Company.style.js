@@ -38,7 +38,8 @@ export const Content = styled.div`
   padding: 10px;
 `;
 export const CompanyInfo = styled.div`
-  & > button {
+  & > button, a {
+    display: block;
     margin: 0 0 10px 0;
   }
 `;

@@ -88,7 +88,7 @@ const Company = (props) => {
                     <Name>{NAME}</Name>
                     {renderDaySchedule()}
                     {renderLocation()}
-                    {props.withMoreInfo && <ThirdButton><PhoneIcon/>{PHONE}</ThirdButton>}
+                    {props.withMoreInfo && <a href={`tel:${PHONE}`}><ThirdButton><PhoneIcon/>{PHONE}</ThirdButton></a>}
                     {props.withMoreInfo && SCHEDULE && SCHEDULE.length && <ScheduleDetails scheduleAsArray={schedule.workDays}/>}
                 </CompanyInfo>
                 {props.children}
