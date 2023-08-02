@@ -14,7 +14,7 @@ import {
     RouteWrapper,
     ContentWrapper,
     Button,
-    Description,
+    Description, Details,
 } from './Api.style';
 
 import {Flex} from '../../components/index'
@@ -81,16 +81,16 @@ const Route = ({route}) => {
                 </Flex>
                 <Description>{description}</Description>
                 <Button
-                    onClick={() => setIsDetailsVisible(!isDetailsVisible)}>{isDetailsVisible ? 'Hide' : 'Show'}</Button>
+                    onClick={() => setIsDetailsVisible(!isDetailsVisible)}>{isDetailsVisible ? 'HIDE' : 'SHOW'}</Button>
             </RowInnerWrapper>
             {isDetailsVisible &&
-                <div>
+                <Details>
                     {details.permission &&
                         <div className="permission">PERMISSON: {details.permission}</div>}
                     {details.validation &&
                         <div className="permission">VALIDATION: {details.validation}</div>}
                     {/*{details.requestBody && <div className="permission">REQYEST BODY: ${details.requestBody}</div>}*/}
-                </div>
+                </Details>
             }
         </RouteWrapper>
     )

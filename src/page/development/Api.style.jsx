@@ -32,30 +32,29 @@ export const RowDefault = css`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: solid;
   padding: 4px;
   border-radius: 4px;
   width: 100%;
 `
 export const RowGET = styled.div`
-  border-color: dodgerblue;
+  border: solid 2px dodgerblue;
   background-color: rgba(30, 144, 255, 0.2);
   ${RowDefault}
 `;
 
 export const RowPOST = styled.div`
-  border-color: limegreen;
+  border: solid 2px limegreen;
   background-color: rgba(50, 205, 50, 0.2);
   ${RowDefault}
 `;
 
 export const RowPUT = styled.div`
-  border-color: orange;
+  border: solid 2px orange;
   background: rgba(255, 165, 0, 0.2);
   ${RowDefault}
 `;
 export const RowDELETE = styled.div`
-  border-color: red;
+  border: solid 2px red;
   background: rgba(255, 0, 0, 0.2);
   ${RowDefault}
 `;
@@ -98,14 +97,19 @@ export const Description = styled.button`
 `;
 export const Button = styled.button`
   background: none;
-  border: solid 1px;
+  border: solid 1px lightgrey;
+  color: #a69c9c;
   padding: 6px;
-  color: black;
+  width: 60px;
 `;
 
 export const Details = styled.button`
-
-
+  border: solid 1px red;
+  display: flex;
+  background: none;
+  margin: 0 0 0 30px;
+  padding: 10px;
+  
 `;
 
 
