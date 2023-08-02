@@ -13,7 +13,12 @@ export const useLocalStorage = (storageKey, initialState) => {
     const [value, setValue] = useState(localStorageState ?? initialState);
 
     const set = value => {
-        LocalStorage.set(storageKey, value);
+        if (value === undefined) {
+            LocalStorage.remove(storageKey, value);
+        } else {
+            LocalStorage.set(storageKey, value);
+        }
+
         setValue(value);
     }
 
