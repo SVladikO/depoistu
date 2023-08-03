@@ -340,6 +340,10 @@ export const TRANSLATION = {
                 SING_UP: {
                     ua: "Реєстрація",
                     en: "Sign up"
+                },
+                VERIFICATION: {
+                    ua: "Перевірити",
+                    en: "Verify"
                 }
             },
             MENU_ROW: {
@@ -403,6 +407,10 @@ export const TRANSLATION = {
                     ua: "Ця сторiнка доступна тiльки пicля пiдтвердження",
                     en: "This page is available only after verification"
                 },
+                VERIFICATION_DESCRIPTION: {
+                    ua: "Перевірте пошту. Ми надіслали вам лист з кодом. Введіть його в поле нижче.",
+                    en: "Check your email. We already sent you letter with verification code. Enter him in the row below."
+                },
                 LOADING: {
                     ua: "Завантаження...",
                     en: "Loading..."
@@ -410,6 +418,10 @@ export const TRANSLATION = {
                 TITLE: {
                     ua: "Обмежений доступ!",
                     en: "Restricted access!"
+                },
+                VERIFICATION_TITLE: {
+                    ua: "Підтвердіть емаїл",
+                    en: "Verify email"
                 }
             },
             GROUP_TITLE: {

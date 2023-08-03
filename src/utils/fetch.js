@@ -57,7 +57,8 @@ export const BE_API = {
     CUSTOMER: {
         SING_IN: () => `${BE_DOMAIN}/sign-in`,
         SING_UP: () => `${BE_DOMAIN}/sign-up`,
-        CHANGE_PASSWORD: () => `${BE_DOMAIN}/change-password`
+        CHANGE_PASSWORD: () => `${BE_DOMAIN}/change-password`,
+        PUT_VERIFY_EMAIL: () => `${BE_DOMAIN}/verify-email`,
     },
     COMPANY: {
         GET_BY_CUSTOMER_ID: customer_id => `${BE_DOMAIN}/companies/by/customer/${customer_id}`,
@@ -75,5 +76,9 @@ export const BE_API = {
         DELETE: () => `${BE_DOMAIN}/menu`,
         IS_ITEM_VISIBLE: () => `${BE_DOMAIN}/menu/visible`
     },
+    DEVELOPMENT: {
+        API: () =>   `${BE_DOMAIN}/api`,
+        DB_MODE: () =>   `${BE_DOMAIN}/db-mode`
+    }
     // PLACE_ORDER: () => `${BE_DOMAIN}/place-order`,
 };
