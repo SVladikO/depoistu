@@ -1,23 +1,20 @@
-import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
+import {LocalStorage, LOCAL_STORAGE_KEY} from "./localStorage";
 
 export const LANGUAGE_KEYS = {
     UA: 'ua',
     EN: 'en'
 }
-export const DEFAULT_LANGUAGE = LANGUAGE_KEYS.UA;
-export const currentLanguage = LocalStorage.get(LOCAL_STORAGE_KEY.CURRENT_LANGUAGE) || DEFAULT_LANGUAGE;
+
+export const currentLanguage = LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE).language.siteLanguage;
 
 export const translate = obj => {
-    const currentLanguage = LocalStorage.get(LOCAL_STORAGE_KEY.CURRENT_LANGUAGE) || DEFAULT_LANGUAGE;
-
     return obj[currentLanguage];
 }
 
-
 export const TRANSLATION = {
     COMPANY_NAME: {
-        ua: 'ДОМОНО',
-        en: 'DOMONO'
+        ua: 'DEPOISTU',
+        en: 'DEPOISTU'
     },
     INTRODUCTION: {
         ua: 'Меню всіх кафе та ресторанів України має бути в одному місці.Знайдіть заклад своєї мрії та допоможи іншим. Розкажи адміністраторам своїх улюблених закладів про наш сайт.',
@@ -215,7 +212,7 @@ export const TRANSLATION = {
             },
             WARNING: {
                 ua: "Не додавайте компанії заради розваги. Не витрачайте ваш і наш час дарма.",
-                en: "Don't add companies for fun. Don\'t waste your time and ours."
+                en: "Don't add companies for fun. Don't waste your time and ours."
             },
             BUTTON: {
                 COMPANY: {
@@ -343,6 +340,10 @@ export const TRANSLATION = {
                 SING_UP: {
                     ua: "Реєстрація",
                     en: "Sign up"
+                },
+                VERIFICATION: {
+                    ua: "Перевірити",
+                    en: "Verify"
                 }
             },
             MENU_ROW: {
@@ -406,6 +407,10 @@ export const TRANSLATION = {
                     ua: "Ця сторiнка доступна тiльки пicля пiдтвердження",
                     en: "This page is available only after verification"
                 },
+                VERIFICATION_DESCRIPTION: {
+                    ua: "Перевірте пошту. Ми надіслали вам лист з кодом. Введіть його в поле нижче.",
+                    en: "Check your email. We already sent you letter with verification code. Enter him in the row below."
+                },
                 LOADING: {
                     ua: "Завантаження...",
                     en: "Loading..."
@@ -413,6 +418,10 @@ export const TRANSLATION = {
                 TITLE: {
                     ua: "Обмежений доступ!",
                     en: "Restricted access!"
+                },
+                VERIFICATION_TITLE: {
+                    ua: "Підтвердіть емаїл",
+                    en: "Verify email"
                 }
             },
             GROUP_TITLE: {
@@ -461,6 +470,10 @@ export const TRANSLATION = {
             ARROW_LABEL: {
                 ua: "Назад",
                 en: "Back"
+            },
+            INPUT_PLACEHOLDER: {
+                ua: "Виберіть місто",
+                en: "Choose the city"
             },
         },
         SIGN_IN: {

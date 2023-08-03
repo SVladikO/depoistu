@@ -4,14 +4,16 @@ import * as Yup from "yup";
 import {PrimaryButton, Label, Input, ContentContainer} from "../../components";
 
 import validation from "../../utils/validation";
+import {useRedirectToSettingPage} from "../../utils/hook";
 import {TRANSLATION, translate} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 
 const SignUpSchema = Yup.object().shape(validation.customer.singUp);
 
 const EditCustomerPage = () => {
+    useRedirectToSettingPage();
     const [wasSubmitted, setWasSubmitted] = useState(false);
-    const customer = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER);
+    const customer = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER) || {};
 
     return (
         <>

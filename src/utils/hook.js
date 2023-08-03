@@ -1,15 +1,24 @@
 import {useState, useEffect} from "react";
-import {fetchData} from "./fetch";
 import {useDispatch} from "react-redux";
+import {useNavigate} from "react-router-dom";
+
+import {fetchData} from "./fetch";
+
+import {URL} from "./config";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
 import {startLoading, stopLoading} from "../features/request/requestSlice";
-import {LocalStorage} from "./localStorage";
 
 export const useLocalStorage = (storageKey, initialState) => {
     const localStorageState = LocalStorage.get(storageKey);
     const [value, setValue] = useState(localStorageState ?? initialState);
 
     const set = value => {
-        LocalStorage.set(storageKey, value);
+        if (value === undefined) {
+            LocalStorage.remove(storageKey, value);
+        } else {
+            LocalStorage.set(storageKey, value);
+        }
+
         setValue(value);
     }
 
@@ -32,15 +41,29 @@ export const useHideOnScroll = (id, top) => {
     }, [id, top])
 }
 
+export const useRedirectToSettingPage = () => {
+    const [customer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!customer) {
+            navigate(URL.SETTING)
+        }
+    })
+}
 export const useScrollUp = () => {
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
 };
 
-export const useLocalStorageFetch = (storageKey, initialState, url, setError = () => {
-}, customCondition = () => {
-}) => {
+export const useLocalStorageFetch = (
+    storageKey,
+    initialState,
+    url,
+    setError = () => {},
+    customCondition = () => {}
+) => {
     const localStorageState = LocalStorage.get(storageKey);
     const [value, setValue] = useState(localStorageState ?? initialState);
     const dispatch = useDispatch();
@@ -62,7 +85,7 @@ export const useLocalStorageFetch = (storageKey, initialState, url, setError = (
                 dispatch(stopLoading());
                 setError(e.body.message);
             })
-    }, [value, storageKey, dispatch, localStorageState, url]);
+    }, [value, storageKey, dispatch, localStorageState, url, setError]);
 
     return [value, setValue];
 };

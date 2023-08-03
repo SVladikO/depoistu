@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Link, useParams} from "react-router-dom";
 
-import {Notification, SecondaryButton} from "../../components";
+import {Notification, RowSplitter, SecondaryButton} from "../../components";
 
 import {ReactComponent as RemoveIcon} from "../../icons/remove_icon.svg";
 
@@ -13,8 +13,9 @@ import {BE_API} from '../../utils/fetch'
 import {fetchData} from "../../utils/fetch";
 import {initSchedule} from "../../utils/company";
 import {getScheduleAsString} from "../../utils/company";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
+import {useRedirectToSettingPage} from "../../utils/hook";
 import {translate, TRANSLATION} from "../../utils/translation";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 
 //We need this variable after call LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES) on delete company success
 //when we open customer companies page it will make request to BE and user will have updated list of companies.
@@ -26,6 +27,7 @@ const companyFakeData = {
 }
 
 const EditCompany = () => {
+    useRedirectToSettingPage();
     const companyId = +useParams().companyId;
     const customerCompaniesFromLocalStorage = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES) || [{ID: companyId, ...companyFakeData}];
     const companies = customerCompaniesFromLocalStorage.length ? customerCompaniesFromLocalStorage : [{ID: companyId, ...companyFakeData}];
@@ -105,13 +107,18 @@ const EditCompany = () => {
         return <Notification.Loading/>;
     }
 
+    const renderDeleteCompanyButton = () => (
+        <SecondaryButton isWide onClick={deleteCompany}><RemoveIcon/>
+            {translate(TRANSLATION.PAGE.EDIT_COMPANY.BUTTON.DELETE_COMPANY)}
+        </SecondaryButton>
+    )
+
     return (
         <>
             {requestError && <Notification.Error message={requestError}/>}
             {isCompanyUpdated && <Notification.Success message={"Company was updated."} />}
-            <SecondaryButton isWide onClick={deleteCompany}><RemoveIcon/>
-                {translate(TRANSLATION.PAGE.EDIT_COMPANY.BUTTON.DELETE_COMPANY)}
-            </SecondaryButton>
+            {renderDeleteCompanyButton()}
+            <RowSplitter height="15px" />
             <CompanyView
                 initialValues={getInitialValues(company, schedule)}
                 onSubmit={onSubmit}

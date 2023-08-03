@@ -7,11 +7,12 @@ import {COLOR} from './theme'
 
 // import CatalogPage from '../page/development/Catalog.page';
 import ComponentsPage from '../page/development/Components.page';
+import AdminPage from "../page/development/Admin.page";
+import ApiPage from "../page/development/Api.page";
 
 import styled from 'styled-components'
 import {DEVICE_WIDTH} from "./theme";
 import {BottomMenu, NavigationHeader} from "../components";
-import AdminPage from "../page/development/Admin.page";
 import {useHideOnScroll, useScrollUp} from "./hook";
 
 export const MobileDevice = styled.div`
@@ -90,6 +91,7 @@ export const getRoutes = () => {
                 <Route path={DEV_ROUTER.COMPONENTS} element={<ComponentsPage/>}/>
                 {/*<Route path={DEV_ROUTER.PAGES} element={<CatalogPage/>}/>*/}
                 <Route path={DEV_ROUTER.ADMIN} element={<AdminPage/>}/>
+                <Route path={DEV_ROUTER.API} element={<ApiPage />}/>
                 {routes}
             </Routes>
 

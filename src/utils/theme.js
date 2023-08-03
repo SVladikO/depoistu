@@ -7,6 +7,14 @@ export const COLOR = {
     ACCENT5: '#B5B5B5',
     ACCENT6: '#FF3937',
     ACCENT7: '#F6EBEF',
+    WARNING1: '#F1C21B',
+    WARNING2: '#FFF8E1',
+    INFO1: '#0244CF',
+    INFO2: '#EDF5FF',
+    ERROR1: '#DA1E28',
+    ERROR2: '#FFF1F1',
+    SUCCESS1: '#25A249',
+    SUCCESS2: '#DEFCE6',
 }
 
 export const GRADIENT = {

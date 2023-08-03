@@ -1,21 +1,32 @@
 import {BE_DOMAIN} from "./config";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
 
-const getOptions = body => ({
-    method: body.method || 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(body)
-})
+// it's function because we take data from localStorage
+const getOptions = body => {
+    const defaultOption = {
+        headers: {
+            'Content-Type': 'application/json',
+            "x-access-token": LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER)?.token
+        }
+    };
+
+    if (!body) {
+        return defaultOption;
+    }
+
+    return {
+        ...defaultOption,
+        ...{
+            method: body?.method || 'POST',
+            body: JSON.stringify(body)
+        }
+    }
+};
 
 export const fetchData = async (url, body) => {
     let response;
-
     try {
-        response = await (body
-                ? fetch(decodeURIComponent(url), getOptions(body))
-                : fetch(decodeURIComponent(url))
-        );
+        response = await fetch(decodeURIComponent(url), getOptions(body));
     } catch (error) {
         return new Promise((resolve, reject) => {
             reject({status: 500, body: {errorMessage: 'Unable to make request.'}});
@@ -46,7 +57,8 @@ export const BE_API = {
     CUSTOMER: {
         SING_IN: () => `${BE_DOMAIN}/sign-in`,
         SING_UP: () => `${BE_DOMAIN}/sign-up`,
-        CHANGE_PASSWORD: () => `${BE_DOMAIN}/change-password`
+        CHANGE_PASSWORD: () => `${BE_DOMAIN}/change-password`,
+        PUT_VERIFY_EMAIL: () => `${BE_DOMAIN}/verify-email`,
     },
     COMPANY: {
         GET_BY_CUSTOMER_ID: customer_id => `${BE_DOMAIN}/companies/by/customer/${customer_id}`,
@@ -63,5 +75,9 @@ export const BE_API = {
         PUT_UPDATE: () => `${BE_DOMAIN}/menu`,
         DELETE: () => `${BE_DOMAIN}/menu`,
     },
+    DEVELOPMENT: {
+        API: () =>   `${BE_DOMAIN}/api`,
+        DB_MODE: () =>   `${BE_DOMAIN}/db-mode`
+    }
     // PLACE_ORDER: () => `${BE_DOMAIN}/place-order`,
 };

@@ -1,17 +1,23 @@
 import { configureStore} from "@reduxjs/toolkit";
 import orderReducer from './features/order/orderSlice'
-import requestReducer from "./features/request/requestSlice";
+import introReducer from "./features/intro/introSlice";
 import errorReducer from "./features/error/errorSlice";
+import requestReducer from "./features/request/requestSlice";
+import languageReducer from "./features/language/languageSlice";
 import imagePopupReducer from "./features/imagePopup/imagePopupSlice";
-import introPopupReducer from "./features/introPopup/introPopupSlice";
+
+import {LOCAL_STORAGE_KEY, LocalStorage} from "./utils/localStorage";
 
 export const store = configureStore({
     reducer: {
         order: orderReducer,
-        request: requestReducer,
+        intro: introReducer,
         error: errorReducer,
+        request: requestReducer,
+        language: languageReducer,
         imagePopup: imagePopupReducer,
-        introPopup: introPopupReducer,
     }
 })
+
+LocalStorage.set(LOCAL_STORAGE_KEY.REDUX_STATE, store.getState());
 
