@@ -41,18 +41,25 @@ const SearchDetailsPage = () => {
     const menuItemComponents = useMemo(() => {
         const ids = [];
         return menuItems?.map(el => {
-            const {CATEGORY_ID} = el;
+            const {CATEGORY_ID, IS_VISIBLE} = el;
 
-            if (ids.includes(CATEGORY_ID)) {
-                return <MenuItem key={el.ID} item={el}/>
+            if (IS_VISIBLE) {
+                if (ids.includes(CATEGORY_ID)) {
+                    return <MenuItem key={el.ID} item={el} />
+                }
+
+                ids.push(CATEGORY_ID);
+
+                return [
+                    <Divider
+                        id={CATEGORY_ID}
+                        key={CATEGORY_MAPPER[CATEGORY_ID].title}
+                    >
+                        {CATEGORY_MAPPER[CATEGORY_ID].title.toUpperCase()}
+                    </Divider>,
+                    <MenuItem key={el.ID} item={el} />
+                ];
             }
-
-            ids.push(CATEGORY_ID);
-
-            return [
-                <Divider id={CATEGORY_ID} key={CATEGORY_MAPPER[CATEGORY_ID].title}>{CATEGORY_MAPPER[CATEGORY_ID].title.toUpperCase()}</Divider>,
-                <MenuItem key={el.ID} item={el}/>
-            ];
         })?.flat()
     }, [menuItems]);
 

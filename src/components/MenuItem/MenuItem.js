@@ -12,7 +12,7 @@ import {
     StatusHidden
 } from "./MenuItem.style";
 
-import {Price, Flex, Popup, ToggleCheckbox} from "../index";
+import {Price, Flex, Popup, ToggleCheckbox, Notification} from "../index";
 import {ReactComponent as TimeIcon} from "../../icons/time.svg";
 import {ReactComponent as MeasureIcon} from "../../icons/sss.svg";
 import {ReactComponent as BasketIcon} from "../../icons/basket.svg";
@@ -41,7 +41,7 @@ export const MenuItemDetails = ({
             })
             setIsVisible(!isVisible)
         } catch (e) {
-            console.log(e)
+            console.log(e.body.errorMessage)
         }
     }
 
@@ -50,23 +50,26 @@ export const MenuItemDetails = ({
             <Flex justifyContent="space-between">
                 <Title>{NAME}</Title>
                 {/*<Like liked={isLiked}/>*/}
-                {withEditIcon && <Link to={URL.EDIT_MENU_ITEM}>
+                {withEditIcon && (
+                    <Link to={URL.EDIT_MENU_ITEM}>
                     <EditWrapper onClick={onEditClick}>
                         <EditIcon/>
                         <EditLabel>{translate(TRANSLATION.COMPONENTS.MENU_ITEM.BUTTON.EDIT_MENU_ITEM)}</EditLabel>
                     </EditWrapper>
-                </Link>}
+                </Link>
+                )}
             </Flex>
             <Price>{PRICE}</Price>
             <Description>{DESCRIPTION}</Description>
             <AdditionalDetails>
                 <TimeIcon/> {COOKING_TIME} {translate(TRANSLATION.MEASUREMENTS.PREPARING)}
                 <MeasureIcon/> {SIZE} {CATEGORY_MAPPER[CATEGORY_ID].measurement}
+                {withEditIcon && (
                 <ToggleCheckbox
                     isChecked={isVisible}
                     changeHandler={toggleIsMenuItemVisible}
                     className="ToggleCheckbox"
-                />
+                />)}
             </AdditionalDetails>
             {/*<Absolute bottom={'10px'} right={'10px'}>*/}
             {/*    <BasketIcon />*/}
@@ -109,9 +112,11 @@ const MenuItem = props => {
                     setIsVisible={setIsVisible}
                 />
             </Flex>
-            <StatusHidden isVisible={isVisible}>
-                {translate(TRANSLATION.COMPONENTS.EDIT_MENU_ITEM.BUTTON.HIDDEN)}
+            {!isVisible && (
+                <StatusHidden>
+                {translate(TRANSLATION.COMPONENTS.MENU_ITEM.BUTTON.HIDDEN)}
             </StatusHidden>
+            )}
             {/*<MenuItemPopup />*/}
         </Wrapper>
     );

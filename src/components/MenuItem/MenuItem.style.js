@@ -18,7 +18,7 @@ export const Wrapper = styled.div`
     width: 25px;
     height: 25px;
   }
-  background-color: ${({isVisible}) => isVisible ? 'none': `#FFF1F1`};
+  background-color: ${({isVisible}) => isVisible ? 'none': COLOR.ERROR2};
   transition: background-color 0.5s;
 `
 export const ImagesWrapper = styled.div`
@@ -109,7 +109,7 @@ export const AdditionalDetails = styled.div`
 
 export const StatusHidden = styled.div`
   ${FONT_16};
-  display: ${({isVisible}) => isVisible ? 'none': 'flex' };
+  display: flex;
   justify-content: center;
   margin-top: 10px;
   color: ${COLOR.ERROR1};
