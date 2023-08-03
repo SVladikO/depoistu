@@ -12,4 +12,6 @@ export const checkAccess = () => {
         return checkAccess();
     }
     LocalStorage.set(LOCAL_STORAGE_KEY.IS_TRUSTED_CUSTOMER, true);
+
+
 }

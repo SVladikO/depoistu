@@ -14,7 +14,7 @@ import {
 import {Flex} from '../../components/index'
 
 import {ReactComponent as ProtectedIcon} from "../../icons/secure.svg";
-import {BE_DOMAIN} from "../../utils/config";
+import {BE_DOMAIN, SELECTED_BE_DOMAIN} from "../../utils/config";
 
 const ApiPage = () => {
     const [modeDB, setModeDB] = useState('')
@@ -43,7 +43,7 @@ const ApiPage = () => {
 
     return (
         <ContentWrapper>
-            <h2>{modeDB?.mode?.toUpperCase()} DB</h2>
+            <h2>{modeDB?.mode?.toUpperCase()} DB - {SELECTED_BE_DOMAIN.name.toUpperCase()} API</h2>
             {
                 api.length && api.map(entity => (
                     <div key={entity.name}>
