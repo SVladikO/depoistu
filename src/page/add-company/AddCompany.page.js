@@ -17,7 +17,7 @@ import {getScheduleAsString} from "../../utils/company";
 import {useRedirectToSettingPage} from "../../utils/hook";
 import {translate, TRANSLATION} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {ReactComponent as LinkArrowIcon} from "../../icons/right-anchor.svg";
+import {ReactComponent as LinkArrowIcon} from "../../assets/icons/right-anchor.svg";
 
 
 const AddCompany = () => {

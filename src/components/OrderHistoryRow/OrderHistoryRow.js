@@ -17,8 +17,8 @@ import {
     Status, RowLeftSide
 } from "./OrderHistoryRow.style";
 import Price from "../Price/Price";
-import {ReactComponent as AvatarIcon} from "../../icons/avatar.svg";
-import {ReactComponent as DeleteIcon} from "../../icons/delete.svg";
+import {ReactComponent as AvatarIcon} from "../../assets/icons/avatar.svg";
+import {ReactComponent as DeleteIcon} from "../../assets/icons/delete.svg";
 
 const OrderHistoryRow = ({item, isHistory}) => {
     const dispatch = useDispatch();

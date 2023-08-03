@@ -2,7 +2,7 @@ import {Link} from "react-router-dom";
 import React, {useEffect, useMemo, useState} from "react";
 import {useSelector} from "react-redux";
 
-import {ReactComponent as LocationIcon} from "../../icons/location.svg";
+import {ReactComponent as LocationIcon} from "../../assets/icons/location.svg";
 
 import {PInput, ContentContainer, Company, Notification, Popup} from "../../components";
 
