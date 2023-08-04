@@ -291,6 +291,21 @@ export const TRANSLATION = {
                     en: 'Delete company',
                     ua: "Видалити компанію"
                 }
+            },
+            NOTIFICATION: {
+                COMPANY_WAS_DELETED: {
+                    en: 'Company was deleted.',
+                    ua: "Компанію видалено."
+                },
+                OPEN_MY_COMPANIES_PAGE: {
+                    en: 'Open my companies page.',
+                    ua: "Відкрийте сторінку моїх компаній."
+                },
+                NO_COMPANY_BY_THIS_ID: {
+                    en: 'No company by this id',
+                    ua: "Немає компанії з цим ідентифікатором"
+                },
+
             }
         },
         ADD_MENU_ITEM: {

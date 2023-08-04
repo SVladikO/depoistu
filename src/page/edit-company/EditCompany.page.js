@@ -41,19 +41,19 @@ const EditCompany = () => {
     const [requestError, setRequestError] = useState("");
     const [isCompanyDeleted, setIsCompanyDeleted] = useState(false);
     const [isCompanyUpdated, setIsCompanyUpdated] = useState(false);
-    const [isModalOpen, setIsModalOpen] = useState(false)
+    const [isConfirmDeletePopupOpen, setIsConfirmDeletePopupOpen] = useState(false)
 
-    const openPopup = () => setIsModalOpen(true)
-    const closePopup = () => setIsModalOpen(false)
+    const openPopup = () => setIsConfirmDeletePopupOpen(true)
+    const closePopup = () => setIsConfirmDeletePopupOpen(false)
 
     const deleteCompany = () => {
         setIsLoading(true)
+        closePopup()
 
         fetchData(BE_API.COMPANY.DELETE(companyId), {method: 'delete'})
             .then(() => {
                 LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
                 setIsCompanyDeleted(true);
-                setIsModalOpen(false)
             })
             .catch(res => {
                 setRequestError(res.body.message)
@@ -92,16 +92,16 @@ const EditCompany = () => {
 
     if (isCompanyDeleted) {
         return (
-            <Notification.Success message={`Company was deleted.`}>
-                <Link to={URL.CUSTOMER_COMPANIES}>Open my companies page.</Link>
+            <Notification.Success message={translate(TRANSLATION.PAGE.EDIT_COMPANY.NOTIFICATION.COMPANY_WAS_DELETED)}>
+                <Link to={URL.CUSTOMER_COMPANIES}>{translate(TRANSLATION.PAGE.EDIT_COMPANY.NOTIFICATION.OPEN_MY_COMPANIES_PAGE)}</Link>
             </Notification.Success>
         );
     }
 
     if (!customerCompaniesFromLocalStorage.length || !companies.find((c => c.ID === companyId))) {
         return (
-            <Notification.Error message={'No company by this id'}>
-                <Link to={URL.CUSTOMER_COMPANIES}>Open my companies page.</Link>
+            <Notification.Error message={translate(TRANSLATION.PAGE.EDIT_COMPANY.NOTIFICATION.NO_COMPANY_BY_THIS_ID)}>
+                <Link to={URL.CUSTOMER_COMPANIES}>{translate(TRANSLATION.PAGE.EDIT_COMPANY.NOTIFICATION.OPEN_MY_COMPANIES_PAGE)}</Link>
             </Notification.Error>
         );
     }
@@ -119,7 +119,7 @@ const EditCompany = () => {
 
     return (
         <>
-            {isModalOpen && (
+            {isConfirmDeletePopupOpen && (
                 <Popup.Info showCloseButton={false}>
                     <PopupTitle>
                         {translate(TRANSLATION.COMPONENTS.POPUP.ARE_YOU_SURE)}
