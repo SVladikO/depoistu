@@ -12,6 +12,14 @@ export const translate = obj => {
 }
 
 export const TRANSLATION = {
+    YES: {
+        en: 'Yes',
+        ua: 'Так'
+    },
+    NO: {
+        en: 'No',
+        ua: 'Ні'
+    },
     COMPANY_NAME: {
         ua: 'DEPOISTU',
         en: 'DEPOISTU'
@@ -552,6 +560,10 @@ export const TRANSLATION = {
                     en: " region",
                     ua: " область"
                 }
+            },
+            ARE_YOU_SURE: {
+                en: "Are you sure you want to delete the company and menu? ",
+                ua: "Ви впевнені, що хочете видалити компанію та меню?"
             }
         }
     },

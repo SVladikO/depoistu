@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Link, useParams} from "react-router-dom";
 
-import {Notification, RowSplitter, SecondaryButton} from "../../components";
+import {Notification, PrimaryButton, RowSplitter, SecondaryButton} from "../../components";
 
 import {ReactComponent as RemoveIcon} from "../../icons/remove_icon.svg";
 
@@ -16,6 +16,8 @@ import {getScheduleAsString} from "../../utils/company";
 import {useRedirectToSettingPage} from "../../utils/hook";
 import {translate, TRANSLATION} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
+import Popup from "../../components/Popup/Popup";
+import {PopupButtons, PopupTitle} from "./EditCompany.style";
 
 //We need this variable after call LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES) on delete company success
 //when we open customer companies page it will make request to BE and user will have updated list of companies.
@@ -39,26 +41,10 @@ const EditCompany = () => {
     const [requestError, setRequestError] = useState("");
     const [isCompanyDeleted, setIsCompanyDeleted] = useState(false);
     const [isCompanyUpdated, setIsCompanyUpdated] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false)
 
-    if (isLoading) {
-        return <Notification.Loading/>;
-    }
-
-    if (isCompanyDeleted) {
-        return (
-            <Notification.Success message={`Company was deleted.`}>
-                <Link to={URL.CUSTOMER_COMPANIES}>Open my companies page.</Link>
-            </Notification.Success>
-        );
-    }
-
-    if (!customerCompaniesFromLocalStorage.length || !companies.find((c => c.ID === companyId))) {
-        return (
-            <Notification.Error message={'No company by this id'}>
-                <Link to={URL.CUSTOMER_COMPANIES}>Open my companies page.</Link>
-            </Notification.Error>
-        );
-    }
+    const openPopup = () => setIsModalOpen(true)
+    const closePopup = () => setIsModalOpen(false)
 
     const deleteCompany = () => {
         setIsLoading(true)
@@ -67,6 +53,7 @@ const EditCompany = () => {
             .then(() => {
                 LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
                 setIsCompanyDeleted(true);
+                setIsModalOpen(false)
             })
             .catch(res => {
                 setRequestError(res.body.message)
@@ -103,21 +90,53 @@ const EditCompany = () => {
             .finally(() => setIsLoading(false))
     }
 
+    if (isCompanyDeleted) {
+        return (
+            <Notification.Success message={`Company was deleted.`}>
+                <Link to={URL.CUSTOMER_COMPANIES}>Open my companies page.</Link>
+            </Notification.Success>
+        );
+    }
+
+    if (!customerCompaniesFromLocalStorage.length || !companies.find((c => c.ID === companyId))) {
+        return (
+            <Notification.Error message={'No company by this id'}>
+                <Link to={URL.CUSTOMER_COMPANIES}>Open my companies page.</Link>
+            </Notification.Error>
+        );
+    }
+
     if (isLoading) {
         return <Notification.Loading/>;
     }
 
-    const renderDeleteCompanyButton = () => (
-        <SecondaryButton isWide onClick={deleteCompany}><RemoveIcon/>
+    const DeleteCompanyButton = () => (
+        <SecondaryButton isWide onClick={openPopup}>
+            <RemoveIcon/>
             {translate(TRANSLATION.PAGE.EDIT_COMPANY.BUTTON.DELETE_COMPANY)}
         </SecondaryButton>
     )
 
     return (
         <>
-            {requestError && <Notification.Error message={requestError}/>}
+            {isModalOpen && (
+                <Popup.Info showCloseButton={false}>
+                    <PopupTitle>
+                        {translate(TRANSLATION.COMPONENTS.POPUP.ARE_YOU_SURE)}
+                    </PopupTitle>
+                    <PopupButtons>
+                        <PrimaryButton isWide onClick={deleteCompany}>
+                            {translate(TRANSLATION.YES)}
+                        </PrimaryButton>
+                        <PrimaryButton isWide onClick={closePopup}>
+                            {translate(TRANSLATION.NO)}
+                        </PrimaryButton>
+                    </PopupButtons>
+                </Popup.Info>
+            )}
+            {requestError && <Notification.Error message={requestError} />}
             {isCompanyUpdated && <Notification.Success message={"Company was updated."} />}
-            {renderDeleteCompanyButton()}
+            <DeleteCompanyButton />
             <RowSplitter height="15px" />
             <CompanyView
                 initialValues={getInitialValues(company, schedule)}
