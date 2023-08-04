@@ -34,9 +34,16 @@ const Company = (props) => {
     const {PHOTOS, NAME, CITY_ID, STREET, PHONE, SCHEDULE} = props.company
     const schedule = parseSchedule(SCHEDULE);
 
+    const redirectToGoogleMaps = (CITY_ID, STREET) => {
+        const address = `,${STREET}, ${translate(CITY_TRANSLATION_IDS[CITY_ID])}`
+        const encodedAddress = encodeURIComponent(address);
+        window.location.href = `https://www.google.com/maps?q=${encodedAddress}`;
+    };
+
+
     const renderLocation = () => {
         if (props.withMoreInfo) {
-            return <ThirdButton><LocationIcon/>{translate(CITY_TRANSLATION_IDS[CITY_ID])}, {STREET}</ThirdButton>
+            return <ThirdButton onClick={() => redirectToGoogleMaps(CITY_ID, STREET)}><LocationIcon/>{translate(CITY_TRANSLATION_IDS[CITY_ID])}, {STREET}</ThirdButton>
         }
 
         return <LocationWrapper>{translate(CITY_TRANSLATION_IDS[CITY_ID])}, {STREET}</LocationWrapper>;
@@ -75,13 +82,13 @@ const Company = (props) => {
 
     return (
         <Wrapper>
-            {renderImages()}
+            {/*{renderImages()}*/}
             <Content>
                 <CompanyInfo>
                     <Name>{NAME}</Name>
                     {renderDaySchedule()}
                     {renderLocation()}
-                    {props.withMoreInfo && <ThirdButton><PhoneIcon/>{PHONE}</ThirdButton>}
+                    {props.withMoreInfo && <a href={`tel:${PHONE}`}><ThirdButton><PhoneIcon/>{PHONE}</ThirdButton></a>}
                     {props.withMoreInfo && SCHEDULE && SCHEDULE.length && <ScheduleDetails scheduleAsArray={schedule.workDays}/>}
                 </CompanyInfo>
                 {props.children}

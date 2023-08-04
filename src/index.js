@@ -19,7 +19,7 @@ checkAccess();
 showDevelopmentPageUrls();
 
 store.subscribe(() => {
-    localStorage.setItem('reduxState', JSON.stringify(store.getState()))
+    LocalStorage.set(LOCAL_STORAGE_KEY.REDUX_STATE, store.getState());
 })
 
 root.render(

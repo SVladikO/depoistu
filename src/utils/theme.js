@@ -1,3 +1,13 @@
+export const FONT_16 = `
+    font-size: 16px;
+    font-height: 24px;
+    font-weight: 400;
+`
+export const FONT_16_BOLD = `
+    ${FONT_16};
+    font-weight: 600;
+`
+
 export const COLOR = {
     PRIMARY: '#FF3937', //'#709900',
     ACCENT1: '#3F3D56',
@@ -7,6 +17,14 @@ export const COLOR = {
     ACCENT5: '#B5B5B5',
     ACCENT6: '#FF3937',
     ACCENT7: '#F6EBEF',
+    WARNING1: '#F1C21B',
+    WARNING2: '#FFF8E1',
+    INFO1: '#0244CF',
+    INFO2: '#EDF5FF',
+    ERROR1: '#DA1E28',
+    ERROR2: '#FFF1F1',
+    SUCCESS1: '#25A249',
+    SUCCESS2: '#DEFCE6',
 }
 
 export const GRADIENT = {

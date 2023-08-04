@@ -1,5 +1,16 @@
-# Pizza mobile app
+# DEPOISTU
 Web application to order pizza or other fast food.
+### FE DOMAINS
+##### [PRODUCTION](https://depoistu.com)
+##### [STAGE](https://depoistu-stage.onrender.com)
+##### [DEVELOP](https://depoistu-develop.onrender.com)
+
+### BE DOMAINS
+##### [PRODUCTION](https://depoistu-develop-ab315caf64ab.herokuapp.com)
+##### [STAGE](https://depoistu-stage-8139a3f5250c.herokuapp.com)
+##### [DEVELOP](https://depoistu-main-bb2676f3bc70.herokuapp.com)
+
+### [ENVIRONMENT DOC](https://docs.google.com/spreadsheets/d/1Jo9U5YKBhM-jpmidB8j_12qdYbdfd445rJ0H3hYuTDs/edit?usp=sharing)
 
 ## Quick Start 
 Open terminal in folder with your git repositories:
