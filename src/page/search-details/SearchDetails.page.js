@@ -30,7 +30,7 @@ const SearchDetailsPage = () => {
     }, [companyId])
 
     useEffect(() => {
-        fetch(BE_API.MENU_ITEM.GET_BY_COMPANY_ID(companyId))
+        fetch(BE_API.MENU_ITEM.GET_ONLY_VISIBLE_BY_COMPANY_ID(companyId))
             .then(res => res.json())
             .then(data => data.sort((a, b) => a.CATEGORY_ID - b.CATEGORY_ID))
             .then(result => {
@@ -50,7 +50,12 @@ const SearchDetailsPage = () => {
             ids.push(CATEGORY_ID);
 
             return [
-                <Divider id={CATEGORY_ID} key={CATEGORY_MAPPER[CATEGORY_ID].title}>{CATEGORY_MAPPER[CATEGORY_ID].title.toUpperCase()}</Divider>,
+                <Divider
+                    id={CATEGORY_ID}
+                    key={CATEGORY_MAPPER[CATEGORY_ID].title}
+                >
+                    {CATEGORY_MAPPER[CATEGORY_ID].title.toUpperCase()}
+                </Divider>,
                 <MenuItem key={el.ID} item={el}/>
             ];
         })?.flat()

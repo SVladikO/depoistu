@@ -3,17 +3,16 @@ import {Provider} from 'react-redux';
 import {createRoot} from 'react-dom/client';
 import {BrowserRouter} from "react-router-dom";
 
-import {Wrapper} from "./index.style";
+import App from "./page/App";
 
 import {store} from './store';
 import reportWebVitals from './reportWebVitals';
 
 import {checkAccess} from "./utils/security";
-import {getRoutes} from "./utils/navigation";
 import {showDevelopmentPageUrls} from "./utils/log";
-import LanguagePopup from "./features/language/LanguagePopup";
-import Intro from "./features/intro/Intro";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "./utils/localStorage";
+import {LocalStorage, LOCAL_STORAGE_KEY} from "./utils/localStorage";
+
+document.body.style.backgroundColor = '#d8d8d8';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
@@ -29,13 +28,7 @@ root.render(
     <React.StrictMode>
         <BrowserRouter>
             <Provider store={store}>
-                <Wrapper>
-                    <div>
-                        <Intro />
-                        <LanguagePopup />
-                    </div>
-                    {getRoutes()}
-                </Wrapper>
+                <App />
             </Provider>
         </BrowserRouter>
     </React.StrictMode>
