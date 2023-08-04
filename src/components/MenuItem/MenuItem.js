@@ -13,11 +13,11 @@ import {
 } from "./MenuItem.style";
 
 import {Price, Flex, Popup, ToggleCheckbox, Notification} from "../index";
-import {ReactComponent as TimeIcon} from "../../icons/time.svg";
-import {ReactComponent as MeasureIcon} from "../../icons/sss.svg";
-import {ReactComponent as BasketIcon} from "../../icons/basket.svg";
-import {ReactComponent as ZoomIcon} from "../../icons/zoom.svg";
-import {ReactComponent as EditIcon} from "../../icons/edit.svg";
+import {ReactComponent as TimeIcon} from "../../assets/icons/time.svg";
+import {ReactComponent as MeasureIcon} from "../../assets/icons/sss.svg";
+import {ReactComponent as BasketIcon} from "../../assets/icons/basket.svg";
+import {ReactComponent as ZoomIcon} from "../../assets/icons/zoom.svg";
+import {ReactComponent as EditIcon} from "../../assets/icons/edit.svg";
 import {URL} from "../../utils/config";
 import {translate, TRANSLATION} from "../../utils/translation";
 import {CATEGORY_MAPPER} from "../../utils/category";

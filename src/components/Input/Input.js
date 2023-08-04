@@ -12,9 +12,9 @@ import {
     Placeholder,
 } from "./Input.style";
 
-import {ReactComponent as ShowEyeIcon} from "../../icons/show-eye.svg";
-import {ReactComponent as HideEyeIcon} from "../../icons/hide-eye.svg";
-import {ReactComponent as ClearIcon} from "../../icons/close.svg";
+import {ReactComponent as ShowEyeIcon} from "../../assets/icons/show-eye.svg";
+import {ReactComponent as HideEyeIcon} from "../../assets/icons/hide-eye.svg";
+import {ReactComponent as ClearIcon} from "../../assets/icons/close.svg";
 
 export const Textarea = memo(function ({
                                            errorMessage,
