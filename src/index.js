@@ -3,12 +3,14 @@ import {Provider} from 'react-redux';
 import {createRoot} from 'react-dom/client';
 import {BrowserRouter} from "react-router-dom";
 
+import App from "./page/App";
+
 import {store} from './store';
 import reportWebVitals from './reportWebVitals';
 
 import {checkAccess} from "./utils/security";
 import {showDevelopmentPageUrls} from "./utils/log";
-import App from "./page/App";
+import {LocalStorage, LOCAL_STORAGE_KEY} from "./utils/localStorage";
 
 document.body.style.backgroundColor = '#d8d8d8';
 
