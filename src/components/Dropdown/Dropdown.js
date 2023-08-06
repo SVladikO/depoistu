@@ -11,7 +11,7 @@ const Dropdown = ({ options, selectedOption , onSelect, isTouched, errorMessage 
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);
 
-    const toggleDropdown = () => {setIsOpen(!isOpen)};
+    const toggleDropdown = () => setIsOpen(!isOpen);
 
     const handleOptionSelect = option => {
         setIsOpen(false);
@@ -28,10 +28,7 @@ const Dropdown = ({ options, selectedOption , onSelect, isTouched, errorMessage 
 
         document.addEventListener('click', handleClickOutside);
 
-        return () => {
-            document.removeEventListener('click', handleClickOutside);
-        }
-
+        return () => document.removeEventListener('click', handleClickOutside);
     },[])
 
     return (
