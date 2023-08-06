@@ -5,7 +5,7 @@ import {Wrapper, BackButton, Title, NestedContent, MainContent} from "./Navigati
 // import {ROUTER} from "../../WeekScheduleOutput.js/config";
 // import {OrderIconWithCounter} from "../index";
 
-import {ReactComponent as BackArrow} from "../../icons/back_arrow.svg";
+import {ReactComponent as BackArrow} from "../../assets/icons/back_arrow.svg";
 
 const NavigationHeader = (props) => {
     const {title, showBackButton} = props;

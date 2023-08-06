@@ -2,7 +2,7 @@ import {Link} from "react-router-dom";
 import React, {useEffect, useMemo, useState} from "react";
 import {useSelector} from "react-redux";
 
-import {ReactComponent as LocationIcon} from "../../icons/location.svg";
+import {ReactComponent as LocationIcon} from "../../assets/icons/location.svg";
 
 import {PInput, ContentContainer, Company, Notification, Popup} from "../../components";
 
@@ -72,7 +72,7 @@ const SearchPage = () => {
                             ? `${translate(CITY_TRANSLATION_IDS[selectedCityId])}, ${translate(CITY_TRANSLATION_IDS[selectedRegionId])} ${regionLabel}`
                             : ''
                     }
-                    placeholder={"Choose city"}
+                    placeholder={translate(TRANSLATION.PAGE.SEARCH.INPUT_PLACEHOLDER)}
                 />
             </ContentContainer>
             {selectedCityId && selectedRegionId && companies.length === 0

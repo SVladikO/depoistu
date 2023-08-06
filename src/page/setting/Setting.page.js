@@ -1,8 +1,12 @@
+import {Link} from "react-router-dom";
 import React, {useState} from 'react';
+import {useDispatch} from "react-redux";
+import {Formik} from "formik";
+import * as Yup from "yup";
 
 import {Wrapper, EditBar} from './Setting.style';
 
-import {ReactComponent as LockIcon} from '../../icons/lock.svg';
+import {ReactComponent as LockIcon} from '../../assets/icons/lock.svg';
 // import {ReactComponent as OrderHistoryIcon} from '../../icons/order_history.svg';
 // import {ReactComponent as NotificationIcon} from '../../icons/notification.svg';
 // import {ReactComponent as NewsletterIcon} from '../../icons/newsletter.svg';
@@ -10,14 +14,14 @@ import {ReactComponent as LockIcon} from '../../icons/lock.svg';
 // import {ReactComponent as PaymentIcon} from '../../icons/payment.svg';
 // import {ReactComponent as LikeIcon} from '../../icons/favorite.svg';
 // import {ReactComponent as DeliveryAddressIcon} from '../../icons/location.svg';
-import {ReactComponent as LogOutIcon} from '../../icons/logout.svg';
-import {ReactComponent as ProfileIcon} from '../../icons/profile.svg';
+import {ReactComponent as LogOutIcon} from '../../assets/icons/logout.svg';
+import {ReactComponent as ProfileIcon} from '../../assets/icons/profile.svg';
 // import {ReactComponent as CurrencyIcon} from '../../icons/currency.svg';
-import {ReactComponent as LanguageIcon} from '../../icons/language.svg';
-import {ReactComponent as InfoIcon} from "../../icons/info.svg";
+import {ReactComponent as LanguageIcon} from '../../assets/icons/language.svg';
+import {ReactComponent as InfoIcon} from "../../assets/icons/info.svg";
 // import {ReactComponent as LinkedAccountIcon} from '../../icons/linked_account.svg';
-import {ReactComponent as StoreIcon} from '../../icons/house.svg';
-import {ReactComponent as TeamIcon} from "../../icons/team.svg";
+import {ReactComponent as StoreIcon} from '../../assets/icons/house.svg';
+import {ReactComponent as TeamIcon} from "../../assets/icons/team.svg";
 // import {ReactComponent as ConditionsIcon} from '../../icons/list.svg';
 // import {ReactComponent as HelpIcon} from '../../icons/chat.svg';
 
@@ -25,21 +29,27 @@ import {
     SettingMenuRow,
     AccountSettings,
     NotificationTDB,
-    PrimaryButton
+    PrimaryButton,
+    Input,
+    Notification,
+    RowSplitter
 } from '../../components'
 
+import LanguagePopup from "../../features/language/LanguagePopup";
+import {openLanguagePopup} from '../../features/language/languageSlice';
+
 import {URL} from '../../utils/config';
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {Link} from "react-router-dom";
+import validation from "../../utils/validation";
+import {useLocalStorage} from "../../utils/hook";
+import {BE_API, fetchData} from "../../utils/fetch";
 import {TRANSLATION as TR, translate} from "../../utils/translation";
-import LanguagePopup from "../../page-view/language-popup/LanguagePopup";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 
 const SettingPage = () => {
-    const [isShowLanguagePopup, setIsShowLanguagePopup] = useState(false);
-    const openLanguagePopup = () => setIsShowLanguagePopup(true);
-    const closeLanguagePopup = () => setIsShowLanguagePopup(false);
-
-    const [customer, setCustomer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
+    const dispatch = useDispatch();
+    const [isLoading, setIsLoading] = useState(false);
+    const [requestError, setRequestError] = useState('');
+    const [customer, setCustomer] = useLocalStorage(LOCAL_STORAGE_KEY.CUSTOMER);
 
     const singInSingUpNotification = (
         <NotificationTDB
@@ -56,9 +66,54 @@ const SettingPage = () => {
             </EditBar>
         </NotificationTDB>
     );
+    const onCheckVerification = ({emailVerificationCode}) => {
+        setRequestError(''); //Each request should hide previous requestError message.
+        setIsLoading(true)
+        fetchData(BE_API.CUSTOMER.PUT_VERIFY_EMAIL(), {email: customer.EMAIL, emailVerificationCode, method: 'put'})
+            .then(res => {
+                if (res.body.isEmailVerified) {
+                    setCustomer({...customer, IS_VERIFIED_EMAIL: true})
+                }
+            })
+            .catch(e => setRequestError(e.body.message))
+            .finally(() => setIsLoading(false));
+    }
+
+    const EmailVerificationCodeSchema = Yup.object().shape(validation.customer.emailVerificationCode);
+
+    const emailVerificationNotification = (
+        <NotificationTDB
+            title={translate(TR.PAGE.SETTINGS.NOTIFICATION.VERIFICATION_TITLE)}
+            description={translate(TR.PAGE.SETTINGS.NOTIFICATION.VERIFICATION_DESCRIPTION)}
+        >
+            <Formik
+                initialValues={{emailVerificationCode: ''}}
+                validationSchema={EmailVerificationCodeSchema}
+                onSubmit={onCheckVerification}
+            >
+                {({values, handleBlur, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
+                    <form onSubmit={handleSubmit}>
+                        <Input
+                            value={values.emailVerificationCode}
+                            name="emailVerificationCode"
+                            onBlur={handleBlur}
+                            isTouched={touched.emailVerificationCode}
+                            changeHandler={handleChange}
+                            clearHandler={() => setFieldValue('emailVerificationCode', '')}
+                            errorMessage={errors.emailVerificationCode}
+                            withCleaner
+                        />
+                        <RowSplitter height={'10px'}/>
+                        <PrimaryButton type="submit"
+                                       isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.VERIFICATION)}</PrimaryButton>
+                    </form>
+                )}
+            </Formik>
+        </NotificationTDB>
+    );
 
     const logOut = () => {
-        LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER);
+        setRequestError('')
         setCustomer(undefined);
         LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
     }
@@ -66,11 +121,14 @@ const SettingPage = () => {
     return (
         <>
             {!customer && singInSingUpNotification}
-            <LanguagePopup onClose={closeLanguagePopup} isShow={isShowLanguagePopup}/>
+            {customer && !customer.IS_VERIFIED_EMAIL && emailVerificationNotification}
+            {isLoading && <Notification.Loading/>}
+            {requestError && <Notification.Error message={requestError}/>}
+            <LanguagePopup />
             <Wrapper>
                 {/*<CustomerAccountBar fullName='Jhon Smith' phone="+14844731243"/>*/}
                 {/*<RowSplitter height='20px'/>*/}
-                {customer && (
+                {customer && !!customer.IS_VERIFIED_EMAIL && (
                     <>
                         <AccountSettings
                             groupTitle={translate(TR.PAGE.SETTINGS.GROUP_TITLE.ACCOUNTS)}>
@@ -110,8 +168,18 @@ const SettingPage = () => {
                         </AccountSettings>
                     </>)
                 }
+                {customer && !customer.IS_VERIFIED_EMAIL && (
+                    <AccountSettings groupTitle={translate(TR.PAGE.SETTINGS.GROUP_TITLE.ACCOUNTS)}>
+                        <SettingMenuRow
+                            icon={LogOutIcon}
+                            title={translate(TR.PAGE.SETTINGS.MENU_ROW.EXIT)}
+                            changeHandler={logOut}
+                        />
+                    </AccountSettings>
+                )
+                }
                 <AccountSettings
-                    noTopBorder={!!customer}
+                    noTopBorder={customer}
                     groupTitle={translate(TR.PAGE.SETTINGS.GROUP_TITLE.OPTIONS)}>
                     {/*<SettingMenuRow icon={NewsletterIcon} title='Newsletter' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
                     {/*<SettingMenuRow icon={NotificationIcon} title='Notification' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
@@ -121,7 +189,7 @@ const SettingPage = () => {
                     <SettingMenuRow
                         icon={LanguageIcon}
                         title={translate(TR.PAGE.SETTINGS.MENU_ROW.LANGUAGE)}
-                        changeHandler={openLanguagePopup}
+                        changeHandler={() => dispatch(openLanguagePopup())}
                         label={translate(TR.PAGE.SETTINGS.LABEL.CURRENT_LANGUAGE)}
                     />
                     <SettingMenuRow

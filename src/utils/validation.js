@@ -62,7 +62,8 @@ const customer_validation = {
     confirmedPassword: CUSTOMER_PASSWORD
         .test(`passwords-match`, MESSAGE.PASSWORD_MUST_MUCH, function (value) {
             return this.parent.newPassword === value
-        })
+        }),
+    emailVerificationCode: Yup.string().required(MESSAGE.REQUIRED),
 }
 const singInValidation = {
     email: customer_validation.email,
@@ -70,6 +71,9 @@ const singInValidation = {
 }
 const forgetPasswordValidation = {
     email: customer_validation.email,
+}
+const emailVerificationCodeValidation = {
+    emailVerificationCode: customer_validation.emailVerificationCode,
 }
 const singUpValidation = {
     name: customer_validation.name,
@@ -159,6 +163,7 @@ const validation = {
     customer: {
         singIn: singInValidation,
         singUp: singUpValidation,
+        emailVerificationCode: emailVerificationCodeValidation,
         changePassword: changePasswordValidation,
         forgetPassword: forgetPasswordValidation
     },

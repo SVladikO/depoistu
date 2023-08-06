@@ -5,11 +5,13 @@ export const checkAccess = () => {
 
     if(isTrustedCustomer) return;
 
-    const secretKey = "2222";
+    const secretKey = "****";
     let test = prompt("Entry secret key");
 
     if (test !== secretKey) {
         return checkAccess();
     }
     LocalStorage.set(LOCAL_STORAGE_KEY.IS_TRUSTED_CUSTOMER, true);
+
+
 }

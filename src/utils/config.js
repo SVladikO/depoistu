@@ -27,14 +27,32 @@ export const DEV_ROUTER = {
     COMPONENTS: 'components',
     PAGES: 'pages',
     ADMIN: 'admin',
+    API: 'api'
 };
 
-export const IS_MASTER_ENV = process.env.REACT_APP_NODE_ENV === 'production';
+export const {REACT_APP_NODE_ENV} = process.env;
 
-const MASTER_BE_DOMAIN = 'https://pizza-mobile-api-master.herokuapp.com';
-const DEVELOP_BE_DOMAIN = 'https://pizza-mobile-api-develop.herokuapp.com';
-export const BE_DOMAIN = IS_MASTER_ENV ? MASTER_BE_DOMAIN : DEVELOP_BE_DOMAIN;
-// export const BE_DOMAIN = 'http://localhost:4000';
+export const AVAILABLE_DOMAINS = {
+    0: {
+        name: 'localhost',
+        url: 'http://localhost:4000'
+    },
+    1: {
+        name: 'develop',
+        url: 'https://depoistu-develop-ab315caf64ab.herokuapp.com'
+    },
+    2: {
+        name: 'stage',
+        url: 'https://depoistu-stage-8139a3f5250c.herokuapp.com'
+    },
+    3: {
+        name: 'production',
+        url: 'https://depoistu-main-bb2676f3bc70.herokuapp.com'
+    }
+}
+
+export const SELECTED_BE_DOMAIN = AVAILABLE_DOMAINS[REACT_APP_NODE_ENV || 0];
+export const BE_DOMAIN = SELECTED_BE_DOMAIN.url;
 
 export const URL = {
     SEARCH: '/',

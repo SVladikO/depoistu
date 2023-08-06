@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import {Wrapper, AmountInfo, Content, FixedContent} from './Order.page.style';
 import {NotificationTDB, OrderHistoryRow, Price, PrimaryButton} from "../../components";
 
-import {ReactComponent as EmptyBasketIcon} from "../../icons/empty_basket.svg";
+import {ReactComponent as EmptyBasketIcon} from "../../assets/icons/empty_basket.svg";
 
 // import {deleteAllOrders} from '../../features/order/orderSlice'
 

@@ -6,12 +6,12 @@ import QRCode from 'qrcode';
 import {EditBar, QRCodeButton, ImageQR} from "./CustomerCompanies.style";
 
 import {Company, Notification, PrimaryButton, Popup} from "../../components";
-import {ReactComponent as EditIcon} from "../../icons/edit.svg";
+import {ReactComponent as EditIcon} from "../../assets/icons/edit.svg";
 
 import {BE_API} from '../../utils/fetch'
 import {ROUTER, URL} from "../../utils/config";
 import {translate, TRANSLATION} from "../../utils/translation";
-import {ReactComponent as QRCodeIcon} from "../../icons/qr_code.svg";
+import {ReactComponent as QRCodeIcon} from "../../assets/icons/qr_code.svg";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {useLocalStorage, useLocalStorageFetch, useRedirectToSettingPage} from "../../utils/hook";
 

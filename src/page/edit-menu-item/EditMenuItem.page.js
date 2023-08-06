@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom";
 
 import {Notification, RowSplitter, SecondaryButton} from "../../components";
 import MenuItemView from "../../page-view/menu-item/menu-item-view";
-import {ReactComponent as RemoveIcon} from "../../icons/remove_icon.svg";
+import {ReactComponent as RemoveIcon} from "../../assets/icons/remove_icon.svg";
 
 import {URL} from "../../utils/config";
 import {fetchData, BE_API} from "../../utils/fetch";

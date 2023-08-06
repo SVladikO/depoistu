@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 
 import {Wrapper, Header, SubHeader, Table, LedError, LedSuccess, A, SpinnerWrapper} from './Admin.style';
 
-import {ReactComponent as LoadingIcon} from "../../icons/spinner.svg";
+import {ReactComponent as LoadingIcon} from "../../assets/icons/spinner.svg";
 import {RowSplitter} from "../../components";
 import {fetchData} from "../../utils/fetch";
 

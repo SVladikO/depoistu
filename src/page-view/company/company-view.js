@@ -16,11 +16,11 @@ import {
     WeekScheduleInput
 } from "../../components";
 
-import {ReactComponent as LocationIcon} from "../../icons/location.svg";
+import {ReactComponent as LocationIcon} from "../../assets/icons/location.svg";
 
 import WarningMessage from "../../components/WarningMessage/WarningMessage";
 
-import {ReactComponent as DeleteBasketIcon} from "../../icons/delete_basket.svg";
+import {ReactComponent as DeleteBasketIcon} from "../../assets/icons/delete_basket.svg";
 
 import validation from "../../utils/validation";
 import {isScheduleValid} from "../../utils/company";
@@ -88,7 +88,7 @@ const CompanyView = ({initialValues, onSubmit, submitButtonTitle}) => {
         >
             {({values, touched, handleBlur, setFieldValue, handleSubmit, handleChange, errors}) => (
                 <form onSubmit={handleSubmit}>
-                    {renderCompanyPhotos(initialValues.photos, pictures => setFieldValue('photos', pictures))}
+                    {/*{renderCompanyPhotos(initialValues.photos, pictures => setFieldValue('photos', pictures))}*/}
                     <ContentContainer>
                         <Label>{translate(TRANSLATION.INPUT_LABEL.COMPANY.NAME)}</Label>
                         <Input

@@ -1,12 +1,12 @@
 import {Wrapper,Employee, Photo, FullName, Position} from "./OurTeam.page.style";
-import Vlad_imgSrc from '../../images/team/Vlad.png';
-import David_imgSrc from '../../images/team/David.png';
-import Irina_imgSrc from '../../images/team/Irina.png';
-import Alex_imgSrc from '../../images/team/Alex.png';
-
+import Vlad_imgSrc from '../../assets/images/team/Vlad.png';
+import David_imgSrc from '../../assets/images/team/David.png';
+import Irina_imgSrc from '../../assets/images/team/Irina.png';
+import Alex_imgSrc from '../../assets/images/team/Alex.png';
+import {useScrollUp} from "../../utils/hook";
 
 const OurTeamPage = () => {
-    window.scrollTo(0, 0);
+    useScrollUp()
 
     return (
         <Wrapper>
