@@ -6,15 +6,13 @@ import {WarningMessage} from "../../components";
 
 
 
-const Dropdown = ({ options, initiallySelectedOption , onSelect, isTouched, errorMessage }) => {
+const Dropdown = ({ options, selectedOption , onSelect, isTouched, errorMessage }) => {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);
-    const [selectedOption, setSelectedOption] = useState(initiallySelectedOption);
 
     const toggleDropdown = () => {setIsOpen(!isOpen)};
 
     const handleOptionSelect = option => {
-        setSelectedOption(option)
         setIsOpen(false);
         onSelect(option);
     };
@@ -45,7 +43,7 @@ const Dropdown = ({ options, initiallySelectedOption , onSelect, isTouched, erro
                 <OptionsContainer>
                     {options.map(option => (
                         <Option
-                            isSelected={initiallySelectedOption?.value === option.value}
+                            isSelected={selectedOption?.value === option.value}
                             key={option.value}
                             onClick={() => handleOptionSelect(option)}
                         >
