@@ -87,9 +87,9 @@ const EditCompany = () => {
     }
 
     const onSubmit = values => {
-        const {name, city_id, street, phone} = values;
+        const {name, city_id, street, phone1, phone2, phone3} = values;
         const schedule = getScheduleAsString(values)
-        const reqObj = {id: companyId, name, city_id, street, phone, schedule, method: 'put'};
+        const reqObj = {id: companyId, name, city_id, street, phone1, phone2, phone3, schedule, method: 'put'};
         setIsLoading(true);
 
         fetchData(BE_API.COMPANY.PUT_UPDATE(), reqObj)

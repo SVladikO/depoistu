@@ -19,7 +19,6 @@ import {translate, TRANSLATION} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {ReactComponent as LinkArrowIcon} from "../../assets/icons/right-anchor.svg";
 
-
 const AddCompany = () => {
     useRedirectToSettingPage();
     const CUSTOMER = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER)
@@ -29,11 +28,11 @@ const AddCompany = () => {
     const [newCompanyId, setNewCompanyId] = useState();
 
     const onSubmit = values => {
-        const {name, city_id, street, phone} = values;
+        const {name, city_id, street, phone1, phone2, phone3} = values;
         const schedule = getScheduleAsString(values)
         const customer_id = CUSTOMER.ID;
 
-        const reqObj = {customer_id, name, city_id, street, phone, schedule};
+        const reqObj = {customer_id, name, city_id, street, phone1, phone2, phone3, schedule};
 
         setIsLoading(true);
 

@@ -13,6 +13,7 @@ import {DEVICE_WIDTH} from "./theme";
 import {BottomMenu, NavigationHeader} from "../components";
 import AdminPage from "../page/development/Admin.page";
 import {useHideOnScroll, useScrollUp} from "./hook";
+import ApiPage from "../page/development/Api.page";
 
 export const MobileDevice = styled.div`
   min-width: ${DEVICE_WIDTH.MIN};
@@ -79,6 +80,7 @@ export const AllRoutes = () => {
             <Route path={DEV_ROUTER.COMPONENTS} element={<ComponentsPage />} />
             {/*<Route path={DEV_ROUTER.PAGES} element={<CatalogPage/>}/>*/}
             <Route path={DEV_ROUTER.ADMIN} element={<AdminPage />} />
+            <Route path={DEV_ROUTER.API} element={<ApiPage />} />
             {ROUTERS.map(r => (
                 <Route
                     key={r.URL}
