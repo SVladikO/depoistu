@@ -12,7 +12,6 @@ import
     SettingMenuRow,
     ToggleCheckbox,
     CheckBoxWithLabel,
-    WarningMessage,
     CategoryMenuRow,
     SecondaryButton,
     PrimaryButton,
@@ -49,7 +48,7 @@ import {ReactComponent as LanguageIcon} from "../../assets/icons/language.svg";
 import {COLOR} from "../../utils/theme";
 import AccountSettings from "../../components/AccountSettings/AccountSettings";
 import ImageContent from "../../components/Popup/content/image/ImageContent";
-import IntroContent, {InfoText} from "../../components/Popup/content/info/Info";
+import IntroContent from "../../components/Popup/content/info/Info";
 import CityContent from "../../components/Popup/content/city/CityContent"
 import {ReactComponent as LocationIcon} from "../../assets/icons/location.svg";
 import Checkbox from "../../components/Checkbox/Checkbox";
@@ -77,7 +76,7 @@ function ExampleCategoryWithSelected() {
     )
 }
 
-function ExampleDropDown() {
+const [UnselectedDropdown, SelectedDropdown, WithErrorDropdown] = (() => {
     const options = [
         {value: 1, title: 'Burger1'},
         {value: 2, title: 'Burger2'},
@@ -93,8 +92,8 @@ function ExampleDropDown() {
         {value: 12, title: 'Burger12'},
     ];
 
-    return {
-        Unselected: () => {
+    return [
+         () => {
             const [selectedOption, setSelectedOption] = useState();
             return (
                 <Dropdown
@@ -104,7 +103,7 @@ function ExampleDropDown() {
                 />
             )
         },
-        WithSelected: () => {
+        () => {
             const [selectedOption, setSelectedOption] = useState(options[0]);
             return (
                 <Dropdown
@@ -114,7 +113,7 @@ function ExampleDropDown() {
                 />
             )
         },
-        WithError: () => {
+        () => {
             const [selectedOption, setSelectedOption] = useState(options[0]);
             return (
                 <Dropdown
@@ -126,8 +125,8 @@ function ExampleDropDown() {
                 />
             )
         }
-    }
-}
+    ]
+})();
 
 const componentsGroup1 = [
     [
@@ -331,9 +330,9 @@ const componentsGroup2 = [
         {title: 'Notification.Loading', component: <Notification.Loading/>},
         {title: 'Notification.Error', component: <Notification.Error message={'Broken content.'}/>},
         {title: 'Notification.Success', component: <Notification.Success message={'Company was created.'}/>},
-        {title: 'Dropdown Unselected', component: (({Unselected}) => <Unselected/>)(ExampleDropDown())},
-        {title: 'Dropdown WithSelected', component: (({WithSelected}) => <WithSelected/>)(ExampleDropDown())},
-        {title: 'Dropdown WithError', component: (({WithError}) => <WithError/>)(ExampleDropDown())},
+        {title: 'Dropdown Unselected', component: <UnselectedDropdown />},
+        {title: 'Dropdown WithSelected', component:<SelectedDropdown />},
+        {title: 'Dropdown WithError', component: <WithErrorDropdown />},
     ],
 ];
 const componentsGroup3 = [
