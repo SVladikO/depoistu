@@ -1,10 +1,11 @@
 import React, {useEffect, useRef, useState} from 'react';
+
 import {SelectWrapper,SelectButton, OptionsContainer, Option} from "./Dropdown.style";
-import {ReactComponent as DropdownIcon} from "../../icons/dropdownicon.svg";
-import {TRANSLATION, translate} from "../../utils/translation";
+
+import {ReactComponent as DropdownIcon} from "../../assets/icons/dropdownicon.svg";
+
 import {WarningMessage} from "../../components";
-
-
+import {TRANSLATION, translate} from "../../utils/translation";
 
 const Dropdown = ({ options, selectedOption , onSelect, isTouched, errorMessage }) => {
     const [isOpen, setIsOpen] = useState(false);
