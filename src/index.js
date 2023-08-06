@@ -3,9 +3,9 @@ import {Provider} from 'react-redux';
 import {createRoot} from 'react-dom/client';
 import {BrowserRouter} from "react-router-dom";
 
+import {store} from './store';
 import App from "./page/App";
 
-import {store} from './store';
 import reportWebVitals from './reportWebVitals';
 
 import {checkAccess} from "./utils/security";

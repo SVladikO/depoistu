@@ -19,9 +19,14 @@ const PHONE = {
 
 const PHONE_VALIDATION = from =>
     Yup.string()
+        .required(MESSAGE.REQUIRED)
         .min(from.PHONE.MIN, `${MESSAGE.EXAMPLE}: 380970122333`)
         .max(from.PHONE.MAX, `${MESSAGE.EXAMPLE}: 380970122333`)
-        .required(MESSAGE.REQUIRED)
+
+const PHONE_VALIDATION_WITHOUT_REQUIRED = from =>
+    Yup.string()
+        .min(from.PHONE.MIN, `${MESSAGE.EXAMPLE}: 380970122333`)
+        .max(from.PHONE.MAX, `${MESSAGE.EXAMPLE}: 380970122333`)
 
 const CUSTOMER = {
     NAME: {
@@ -156,7 +161,9 @@ const company_validation = {
         .required(MESSAGE.REQUIRED)
         .min(COMPANY.STREET.MIN, `${MESSAGE.MIN_LENGTH} ${COMPANY.STREET.MIN}`)
         .max(COMPANY.STREET.MAX, `${MESSAGE.MAX_LENGTH} ${COMPANY.STREET.MAX}`),
-    phone: PHONE_VALIDATION(COMPANY),
+    phone1: PHONE_VALIDATION(COMPANY),
+    phone2: PHONE_VALIDATION_WITHOUT_REQUIRED(COMPANY),
+    phone3: PHONE_VALIDATION_WITHOUT_REQUIRED(COMPANY),
 }
 
 const validation = {
