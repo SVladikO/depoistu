@@ -39,10 +39,12 @@ import EditMenuRow from "./EditMenuRow/EditMenuRow";
 import {Label} from "./Label/Label.style";
 import {MenuItemDetails} from './MenuItem/MenuItem';
 import Dropdown from "./Dropdown/Dropdown";
+import WarningMessage from "./WarningMessage/WarningMessage";
 
 export {
     MenuItemDetails,
     SettingMenuRow,
+    WarningMessage,
     Company,
     Dropdown,
     CategoryItem,

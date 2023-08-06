@@ -64,7 +64,7 @@ const MenuItemView = ({initialValue, onSubmit, submitButtonTitle}) => {
                         <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.CATEGORY)}</Label>
                         <Dropdown
                             options={options}
-                            selectedCategoryId={(options.filter(o => o.value === values.category_id))[0]}
+                            initiallySelectedOption={(options.filter(o => o.value === values.category_id))[0]}
                             onSelect={option => setFieldValue( 'category_id', +option.value)}
                             as="select"
                             name="category_id"

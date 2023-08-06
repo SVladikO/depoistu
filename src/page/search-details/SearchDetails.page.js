@@ -62,7 +62,7 @@ const SearchDetailsPage = () => {
             <Divider id="menu">{translate(TR.PAGE.COMPANY_DETAILS.MENU_TITLE)}</Divider>
             <CategoryMenuRow
                 menuItems={menuItems}
-                selectedCategoryId={selectedSubCategoryId}
+                selectedOption={selectedSubCategoryId}
                 changeCategory={changeSubCategory}
             />
             {menuItemComponents}

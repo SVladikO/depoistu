@@ -2,14 +2,14 @@ import React, {useEffect, useRef, useState} from 'react';
 import {SelectWrapper,SelectButton, OptionsContainer, Option} from "./Dropdown.style";
 import {ReactComponent as DropdownIcon} from "../../icons/dropdownicon.svg";
 import {TRANSLATION, translate} from "../../utils/translation";
-import WarningMessage from "../WarningMessage/WarningMessage";
+import {WarningMessage} from "../../components";
 
 
 
-const Dropdown = ({ options, selectedCategoryId , onSelect, isTouched, errorMessage }) => {
+const Dropdown = ({ options, initiallySelectedOption , onSelect, isTouched, errorMessage }) => {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);
-    const [selectedOption, setSelectedOption] = useState(selectedCategoryId);
+    const [selectedOption, setSelectedOption] = useState(initiallySelectedOption);
 
     const toggleDropdown = () => {setIsOpen(!isOpen)};
 
@@ -45,7 +45,7 @@ const Dropdown = ({ options, selectedCategoryId , onSelect, isTouched, errorMess
                 <OptionsContainer>
                     {options.map(option => (
                         <Option
-                            isSelected={selectedCategoryId?.value === option.value}
+                            isSelected={initiallySelectedOption?.value === option.value}
                             key={option.value}
                             onClick={() => handleOptionSelect(option)}
                         >

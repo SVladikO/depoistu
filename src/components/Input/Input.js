@@ -14,7 +14,7 @@ import {
 import {ReactComponent as ShowEyeIcon} from "../../icons/show-eye.svg";
 import {ReactComponent as HideEyeIcon} from "../../icons/hide-eye.svg";
 import {ReactComponent as ClearIcon} from "../../icons/close.svg";
-import WarningMessage from '../WarningMessage/WarningMessage';
+import {WarningMessage} from "../../components";
 
 
 export const Textarea = memo(function ({

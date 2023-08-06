@@ -12,6 +12,7 @@ import
     SettingMenuRow,
     ToggleCheckbox,
     CheckBoxWithLabel,
+    WarningMessage,
     CategoryMenuRow,
     SecondaryButton,
     PrimaryButton,
@@ -31,7 +32,8 @@ import
     Company,
     Label,
     CloseButton,
-    MenuItemDetails, Dropdown
+    MenuItemDetails,
+    Dropdown
 } from "../../components";
 
 import {ReactComponent as QRCodeIcon} from "../../icons/qr_code.svg";
@@ -82,10 +84,11 @@ function ExampleDropDown(){
 
     const [selectedValue, setSelectedValue] = useState(options[0]?.title);
 
-    const handleSelect = (option) => {setSelectedValue(option.title)}
+    const handleSelect = option => {setSelectedValue(option.title)}
 
     return (
-        <Dropdown selectedCategoryId={selectedValue}
+        <Dropdown
+                  selectedCategoryId={selectedValue}
                   options={options}
                   isTouched
                   errorMessage={'required'}
