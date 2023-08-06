@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 
 import {SelectWrapper,SelectButton, OptionsContainer, Option} from "./Dropdown.style";
 
-import {ReactComponent as DropdownIcon} from "../../assets/icons/dropdownicon.svg";
+import {ReactComponent as DropdownIcon} from "../../assets/icons/chevron.svg";
 
 import {WarningMessage} from "../../components";
 import {TRANSLATION, translate} from "../../utils/translation";

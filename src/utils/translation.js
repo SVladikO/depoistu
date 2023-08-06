@@ -104,8 +104,8 @@ export const TRANSLATION = {
             },
         },
         DROPDOWN_TITLE: {
-            en: 'Select a category',
-            ua: 'Виберіть категорію'
+            en: 'Select ...',
+            ua: 'Виберіть ...'
         },
         MENU_ITEM: {
             NAME: {

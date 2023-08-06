@@ -79,8 +79,18 @@ function ExampleCategoryWithSelected() {
 
 function ExampleDropDown() {
     const options = [
-        {value: 1, title: 'Burger'},
-        {value: 2, title: 'Pizza'}
+        {value: 1, title: 'Burger1'},
+        {value: 2, title: 'Burger2'},
+        {value: 3, title: 'Burger3'},
+        {value: 4, title: 'Burger4'},
+        {value: 5, title: 'Burger5'},
+        {value: 6, title: 'Burger6'},
+        {value: 7, title: 'Burger7'},
+        {value: 8, title: 'Burger8'},
+        {value: 9, title: 'Burger9'},
+        {value: 10, title: 'Burger10'},
+        {value: 11, title: 'Burger11'},
+        {value: 12, title: 'Burger12'},
     ];
 
     return {
