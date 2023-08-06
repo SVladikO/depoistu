@@ -82,13 +82,13 @@ function ExampleDropDown(){
         { value: 1, title: 'Burger' },
         { value: 2, title: 'Pizza' }];
 
-    const [selectedValue, setSelectedValue] = useState(options[0]?.title);
+    const [selectedTitle, setSelectedTitle] = useState(options[0]?.title);
 
-    const handleSelect = option => {setSelectedValue(option.title)}
+    const handleSelect = option => {setSelectedTitle(option.title)}
 
     return (
         <Dropdown
-                  selectedCategoryId={selectedValue}
+                  selectedCategoryId={selectedTitle}
                   options={options}
                   isTouched
                   errorMessage={'required'}
