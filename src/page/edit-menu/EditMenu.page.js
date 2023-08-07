@@ -28,9 +28,8 @@ const EditMenu = () => {
     const navigate = useNavigate();
     const {companyId} = useParams();
     const isLoading = useSelector(state => state.request.value.isLoading);
-    const customerCompaniesFromLocalStorage = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES) || [{ID: companyId }];
-    const companies = customerCompaniesFromLocalStorage.length ? customerCompaniesFromLocalStorage : [{ID: companyId}];
-    const company = companies.find((c => c.ID === +companyId))
+    const customerCompanies = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
+    const currentCompany = customerCompanies.find((c => c.ID === +companyId));
     const [menuItems, setMenuItems] = useState([]);
     const [requestError, setRequestError] = useState('');
     const [selectedCategoryId, setSelectedCategoryId] = useState();
@@ -72,11 +71,11 @@ const EditMenu = () => {
 
     return (
         <>
-            {company &&
+            {currentCompany &&
                <CompanyDetails>
-                   {company.NAME},
-                   {translate(CITY_TRANSLATION_IDS[company.CITY_ID])},
-                   {company.STREET}
+                   {currentCompany.NAME},
+                   {translate(CITY_TRANSLATION_IDS[currentCompany.CITY_ID])},
+                   {currentCompany.STREET}
                </CompanyDetails>
             }
             <Wrapper>
