@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Link, useNavigate, useParams} from "react-router-dom";
 
-import {Wrapper} from "./EditMenu.style";
+import {Wrapper, CompanyDetails} from "./EditMenu.style";
 
 import {
     CategoryMenuRow,
@@ -20,6 +20,7 @@ import {fetchData} from "../../utils/fetch";
 import {useRedirectToSettingPage} from "../../utils/hook";
 import {translate, TRANSLATION} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
+import {CITY_TRANSLATION_IDS} from "../../utils/cities";
 
 const EditMenu = () => {
     useRedirectToSettingPage();
@@ -27,12 +28,14 @@ const EditMenu = () => {
     const navigate = useNavigate();
     const {companyId} = useParams();
     const isLoading = useSelector(state => state.request.value.isLoading);
-
+    const [companies, setCompanies] = useState([]);
     const [menuItems, setMenuItems] = useState([]);
     const [requestError, setRequestError] = useState('');
     const [selectedCategoryId, setSelectedCategoryId] = useState();
 
     const url = BE_API.MENU_ITEM.GET_BY_COMPANY_ID(companyId);
+    const companyUrl = BE_API.COMPANY.GET_BY_COMPANY_ID(companyId);
+
 
     useEffect(() => {
         LocalStorage.set(LOCAL_STORAGE_KEY.COMPANY_ID_FOR_EDIT_MENU, companyId);
@@ -50,8 +53,13 @@ const EditMenu = () => {
                 setTimeout(() => dispatch(stopLoading()), 1000);
                 setRequestError(e.body.message)
             })
-
-    }, [url, companyId])
+        companyId && fetchData(companyUrl)
+            .then(res => {
+                setCompanies(res.body)
+            }).catch(e => {
+                setRequestError(e.body.message);
+            })
+    }, [url, companyUrl, companyId])
 
     if (isLoading) {
         return <Notification.Loading/>;
@@ -60,7 +68,6 @@ const EditMenu = () => {
     if (requestError) {
         return <Notification.Error message={requestError}/>;
     }
-
 
     const menuItemsPerCategory = (selectedCategoryId && menuItems.filter(mi => mi.CATEGORY_ID === selectedCategoryId)) || [];
 
@@ -71,6 +78,9 @@ const EditMenu = () => {
 
     return (
         <>
+            {companies && companies.map(company => {
+                return <CompanyDetails key={company.ID}>{company.NAME}, {translate(CITY_TRANSLATION_IDS[company.CITY_ID])}, {company.STREET}</CompanyDetails>
+            })}
             <Wrapper>
                 {menuItems &&
                     <CategoryMenuRow
