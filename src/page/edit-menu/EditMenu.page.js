@@ -17,7 +17,7 @@ import {startLoading, stopLoading} from "../../features/request/requestSlice";
 import {URL} from "../../utils/config";
 import {BE_API} from '../../utils/fetch'
 import {fetchData} from "../../utils/fetch";
-import {useRedirectToSettingPage} from "../../utils/hook";
+import {useLocalStorage, useRedirectToSettingPage} from "../../utils/hook";
 import {translate, TRANSLATION} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {CITY_TRANSLATION_IDS} from "../../utils/cities";
@@ -28,14 +28,14 @@ const EditMenu = () => {
     const navigate = useNavigate();
     const {companyId} = useParams();
     const isLoading = useSelector(state => state.request.value.isLoading);
-    const [companies, setCompanies] = useState([]);
+    const customerCompaniesFromLocalStorage = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES) || [{ID: companyId }];
+    const companies = customerCompaniesFromLocalStorage.length ? customerCompaniesFromLocalStorage : [{ID: companyId}];
+    const company = companies.find((c => c.ID === +companyId))
     const [menuItems, setMenuItems] = useState([]);
     const [requestError, setRequestError] = useState('');
     const [selectedCategoryId, setSelectedCategoryId] = useState();
 
     const url = BE_API.MENU_ITEM.GET_BY_COMPANY_ID(companyId);
-    const companyUrl = BE_API.COMPANY.GET_BY_COMPANY_ID(companyId);
-
 
     useEffect(() => {
         LocalStorage.set(LOCAL_STORAGE_KEY.COMPANY_ID_FOR_EDIT_MENU, companyId);
@@ -53,13 +53,7 @@ const EditMenu = () => {
                 setTimeout(() => dispatch(stopLoading()), 1000);
                 setRequestError(e.body.message)
             })
-        companyId && fetchData(companyUrl)
-            .then(res => {
-                setCompanies(res.body)
-            }).catch(e => {
-                setRequestError(e.body.message);
-            })
-    }, [url, companyUrl, companyId])
+    }, [url,companyId])
 
     if (isLoading) {
         return <Notification.Loading/>;
@@ -78,9 +72,13 @@ const EditMenu = () => {
 
     return (
         <>
-            {companies && companies.map(company => {
-                return <CompanyDetails key={company.ID}>{company.NAME}, {translate(CITY_TRANSLATION_IDS[company.CITY_ID])}, {company.STREET}</CompanyDetails>
-            })}
+            {company &&
+               <CompanyDetails>
+                   {company.NAME},
+                   {translate(CITY_TRANSLATION_IDS[company.CITY_ID])},
+                   {company.STREET}
+               </CompanyDetails>
+            }
             <Wrapper>
                 {menuItems &&
                     <CategoryMenuRow
