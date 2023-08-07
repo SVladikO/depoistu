@@ -87,7 +87,7 @@ export const AdditionalDetails = styled.div`
   display: flex;
   align-items: center;
   font-weight: 100;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 19px;
   color: ${COLOR.ACCENT5};
 
