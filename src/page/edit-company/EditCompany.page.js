@@ -43,12 +43,12 @@ const EditCompany = () => {
     const [isCompanyUpdated, setIsCompanyUpdated] = useState(false);
     const [isConfirmDeletePopupOpen, setIsConfirmDeletePopupOpen] = useState(false)
 
-    const openPopup = () => setIsConfirmDeletePopupOpen(true)
-    const closePopup = () => setIsConfirmDeletePopupOpen(false)
+    const openDeletePopup = () => setIsConfirmDeletePopupOpen(true)
+    const closeDeletePopup = () => setIsConfirmDeletePopupOpen(false)
 
     const deleteCompany = () => {
         setIsLoading(true)
-        closePopup()
+        closeDeletePopup()
 
         fetchData(BE_API.COMPANY.DELETE(companyId), {method: 'delete'})
             .then(() => {
@@ -111,7 +111,7 @@ const EditCompany = () => {
     }
 
     const DeleteCompanyButton = () => (
-        <SecondaryButton isWide onClick={openPopup}>
+        <SecondaryButton isWide onClick={openDeletePopup}>
             <RemoveIcon/>
             {translate(TRANSLATION.PAGE.EDIT_COMPANY.BUTTON.DELETE_COMPANY)}
         </SecondaryButton>
@@ -128,7 +128,7 @@ const EditCompany = () => {
                         <PrimaryButton isWide onClick={deleteCompany}>
                             {translate(TRANSLATION.YES)}
                         </PrimaryButton>
-                        <PrimaryButton isWide onClick={closePopup}>
+                        <PrimaryButton isWide onClick={closeDeletePopup}>
                             {translate(TRANSLATION.NO)}
                         </PrimaryButton>
                     </PopupButtons>
