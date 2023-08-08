@@ -50,7 +50,7 @@ const EditCompany = () => {
         setIsLoading(true)
         closeDeletePopup()
 
-        fetchData(BE_API.COMPANY.DELETE(companyId), {method: 'delete'})
+        fetchData(BE_API.COMPANY.DELETE(), {method: 'delete', companyId})
             .then(() => {
                 LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
                 setIsCompanyDeleted(true);
