@@ -13,7 +13,7 @@ import {
 
 import {Flex} from '../../components/index'
 
-import {ReactComponent as ProtectedIcon} from "../../icons/secure.svg";
+import {ReactComponent as ProtectedIcon} from "../../assets/icons/secure.svg";
 import {BE_DOMAIN, SELECTED_BE_DOMAIN} from "../../utils/config";
 
 const ApiPage = () => {

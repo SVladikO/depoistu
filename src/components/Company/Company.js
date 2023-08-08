@@ -4,8 +4,8 @@ import {Swiper, SwiperSlide} from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/pagination";
-import {ReactComponent as LocationIcon} from "../../icons/location.svg";
-import {ReactComponent as PhoneIcon} from "../../icons/phone.svg";
+import {ReactComponent as LocationIcon} from "../../assets/icons/location.svg";
+import {ReactComponent as PhoneIcon} from "../../assets/icons/phone.svg";
 import {
     Wrapper,
     ImageSection,
@@ -31,7 +31,7 @@ const Company = (props) => {
         return;
     }
 
-    const {PHOTOS, NAME, CITY_ID, STREET, PHONE, SCHEDULE} = props.company
+    const {PHOTOS, NAME, CITY_ID, STREET, PHONE1, PHONE2, PHONE3, SCHEDULE} = props.company
     const schedule = parseSchedule(SCHEDULE);
 
     const redirectToGoogleMaps = (CITY_ID, STREET) => {
@@ -88,7 +88,9 @@ const Company = (props) => {
                     <Name>{NAME}</Name>
                     {renderDaySchedule()}
                     {renderLocation()}
-                    {props.withMoreInfo && <a href={`tel:${PHONE}`}><ThirdButton><PhoneIcon/>{PHONE}</ThirdButton></a>}
+                    {props.withMoreInfo && <a href={`tel:${PHONE1}`}><ThirdButton><PhoneIcon/>{PHONE1}</ThirdButton></a>}
+                    {props.withMoreInfo && PHONE2 && <a href={`tel:${PHONE2}`}><ThirdButton><PhoneIcon/>{PHONE2}</ThirdButton></a>}
+                    {props.withMoreInfo && PHONE3 && <a href={`tel:${PHONE3}`}><ThirdButton><PhoneIcon/>{PHONE3}</ThirdButton></a>}
                     {props.withMoreInfo && SCHEDULE && SCHEDULE.length && <ScheduleDetails scheduleAsArray={schedule.workDays}/>}
                 </CompanyInfo>
                 {props.children}

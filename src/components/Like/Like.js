@@ -1,5 +1,5 @@
-import {ReactComponent as LikeIcon} from "../../icons/like.svg";
-import {ReactComponent as EmptyLikeIcon} from "../../icons/empty_like.svg";
+import {ReactComponent as LikeIcon} from "../../assets/icons/like.svg";
+import {ReactComponent as EmptyLikeIcon} from "../../assets/icons/empty_like.svg";
 
 const Like = ({liked = false, clickHandler = () => {}}) =>
     liked

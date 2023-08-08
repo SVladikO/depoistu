@@ -3,7 +3,7 @@ import {Link, useParams} from "react-router-dom";
 
 import {Notification, PrimaryButton, RowSplitter, SecondaryButton} from "../../components";
 
-import {ReactComponent as RemoveIcon} from "../../icons/remove_icon.svg";
+import {ReactComponent as RemoveIcon} from "../../assets/icons/remove_icon.svg";
 
 import CompanyView from "../../page-view/company/company-view";
 
@@ -74,9 +74,9 @@ const EditCompany = () => {
     }
 
     const onSubmit = values => {
-        const {name, city_id, street, phone} = values;
+        const {name, city_id, street, phone1, phone2, phone3} = values;
         const schedule = getScheduleAsString(values)
-        const reqObj = {id: companyId, name, city_id, street, phone, schedule, method: 'put'};
+        const reqObj = {id: companyId, name, city_id, street, phone1, phone2, phone3, schedule, method: 'put'};
         setIsLoading(true);
 
         fetchData(BE_API.COMPANY.PUT_UPDATE(), reqObj)
