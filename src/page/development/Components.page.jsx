@@ -87,7 +87,7 @@ const componentsGroup1 = [
         },
         {title: 'Rating', component: <Rating>{`4.9`}</Rating>},
         {title: 'Discount', component: <Discount>{`-10`}</Discount>},
-        {title: 'Price', component: <Price small={false} big>50</Price>},
+        {title: 'Price', component: <Price>50</Price>},
     ],
     [
         {title: 'PrimaryButton', component: <PrimaryButton><GoogleIcon/>Google</PrimaryButton>},
