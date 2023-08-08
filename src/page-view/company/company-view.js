@@ -19,7 +19,7 @@ import {
 import {ReactComponent as LocationIcon} from "../../assets/icons/location.svg";
 import {ReactComponent as PhoneIcon} from "../../assets/icons/phone.svg";
 
-import {WarningMessage} from "../../components/Input/Input.style";
+import WarningMessage from "../../components/WarningMessage/WarningMessage";
 
 import {ReactComponent as DeleteBasketIcon} from "../../assets/icons/delete_basket.svg";
 

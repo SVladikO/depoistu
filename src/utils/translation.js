@@ -103,6 +103,10 @@ export const TRANSLATION = {
                 ua: "Графік роботи"
             },
         },
+        DROPDOWN_TITLE: {
+            en: 'Select ...',
+            ua: 'Виберіть ...'
+        },
         MENU_ITEM: {
             NAME: {
                 en: "Name",

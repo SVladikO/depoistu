@@ -119,6 +119,7 @@ const menu_item_validation = {
         .required(MESSAGE.REQUIRED)
         .min(MENU_ITEM.NAME.MIN, `${MESSAGE.MIN_LENGTH} ${MENU_ITEM.NAME.MIN}`)
         .max(MENU_ITEM.NAME.MAX, `${MESSAGE.MAX_LENGTH} ${MENU_ITEM.NAME.MAX}`),
+    category_id: Yup.string().required(MESSAGE.REQUIRED),
     price: Yup.string()
         .required(MESSAGE.REQUIRED)
         .min(MENU_ITEM.PRICE.MIN, `${MESSAGE.MIN_LENGTH} ${MENU_ITEM.PRICE.MIN}`),

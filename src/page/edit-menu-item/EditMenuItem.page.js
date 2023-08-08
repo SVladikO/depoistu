@@ -34,7 +34,6 @@ const EditMenuItemPage = () => {
         size: SIZE,
         image_url: IMAGE_URL
     }
-
     const onSubmit = values => {
         setIsLoading(true);
         const reqObj = {method: 'put', id: ID, ...values};

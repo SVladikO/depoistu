@@ -31,7 +31,8 @@ import
     Company,
     Label,
     CloseButton,
-    MenuItemDetails
+    MenuItemDetails,
+    Dropdown
 } from "../../components";
 
 import {ReactComponent as QRCodeIcon} from "../../assets/icons/qr_code.svg";
@@ -47,7 +48,7 @@ import {ReactComponent as LanguageIcon} from "../../assets/icons/language.svg";
 import {COLOR} from "../../utils/theme";
 import AccountSettings from "../../components/AccountSettings/AccountSettings";
 import ImageContent from "../../components/Popup/content/image/ImageContent";
-import IntroContent, {InfoText} from "../../components/Popup/content/info/Info";
+import IntroContent from "../../components/Popup/content/info/Info";
 import CityContent from "../../components/Popup/content/city/CityContent"
 import {ReactComponent as LocationIcon} from "../../assets/icons/location.svg";
 import Checkbox from "../../components/Checkbox/Checkbox";
@@ -74,6 +75,58 @@ function ExampleCategoryWithSelected() {
         />
     )
 }
+
+const [UnselectedDropdown, SelectedDropdown, WithErrorDropdown] = (() => {
+    const options = [
+        {value: 1, title: 'Burger1'},
+        {value: 2, title: 'Burger2'},
+        {value: 3, title: 'Burger3'},
+        {value: 4, title: 'Burger4'},
+        {value: 5, title: 'Burger5'},
+        {value: 6, title: 'Burger6'},
+        {value: 7, title: 'Burger7'},
+        {value: 8, title: 'Burger8'},
+        {value: 9, title: 'Burger9'},
+        {value: 10, title: 'Burger10'},
+        {value: 11, title: 'Burger11'},
+        {value: 12, title: 'Burger12'},
+    ];
+
+    return [
+         () => {
+            const [selectedOption, setSelectedOption] = useState();
+            return (
+                <Dropdown
+                    selectedOption={selectedOption}
+                    options={options}
+                    onSelect={setSelectedOption}
+                />
+            )
+        },
+        () => {
+            const [selectedOption, setSelectedOption] = useState(options[0]);
+            return (
+                <Dropdown
+                    selectedOption={selectedOption}
+                    options={options}
+                    onSelect={setSelectedOption}
+                />
+            )
+        },
+        () => {
+            const [selectedOption, setSelectedOption] = useState(options[0]);
+            return (
+                <Dropdown
+                    selectedOption={selectedOption}
+                    options={options}
+                    onSelect={setSelectedOption}
+                    errorMessage={'Some error'}
+                    isTouched
+                />
+            )
+        }
+    ]
+})();
 
 const componentsGroup1 = [
     [
@@ -159,32 +212,32 @@ const componentsGroup2 = [
             title: 'MenuItemDetails',
             component:
                 <MenuItemDetails
-                          item={{
-                              ID: 10,
-                              NAME: '4 Cheese',
-                              CATEGORY_ID: 1,
-                              DESCRIPTION: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella',
-                              IMAGE_URL: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
-                              COOKING_TIME: 15,
-                              PRICE: 170,
-                              SIZE: 150,
-                          }}
+                    item={{
+                        ID: 10,
+                        NAME: '4 Cheese',
+                        CATEGORY_ID: 1,
+                        DESCRIPTION: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella',
+                        IMAGE_URL: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
+                        COOKING_TIME: 15,
+                        PRICE: 170,
+                        SIZE: 150,
+                    }}
                 />
         },
         {
             title: 'MenuItem',
             component:
                 <MenuItem
-                          item={{
-                              ID: 10,
-                              NAME: '4 Cheese',
-                              CATEGORY_ID: 1,
-                              DESCRIPTION: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella',
-                              IMAGE_URL: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
-                              COOKING_TIME: 15,
-                              PRICE: 170,
-                              SIZE: 150,
-                          }}
+                    item={{
+                        ID: 10,
+                        NAME: '4 Cheese',
+                        CATEGORY_ID: 1,
+                        DESCRIPTION: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella',
+                        IMAGE_URL: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
+                        COOKING_TIME: 15,
+                        PRICE: 170,
+                        SIZE: 150,
+                    }}
                 />
         },
         {
@@ -277,8 +330,10 @@ const componentsGroup2 = [
         {title: 'Notification.Loading', component: <Notification.Loading/>},
         {title: 'Notification.Error', component: <Notification.Error message={'Broken content.'}/>},
         {title: 'Notification.Success', component: <Notification.Success message={'Company was created.'}/>},
+        {title: 'Dropdown Unselected', component: <UnselectedDropdown />},
+        {title: 'Dropdown WithSelected', component:<SelectedDropdown />},
+        {title: 'Dropdown WithError', component: <WithErrorDropdown />},
     ],
-
 ];
 const componentsGroup3 = [
     [
