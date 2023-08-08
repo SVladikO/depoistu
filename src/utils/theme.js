@@ -1,3 +1,13 @@
+export const FONT_22 = `
+    font-size: 22px;
+    font-height: 26.4px;
+`
+
+export const FONT_22_500 = `
+    ${FONT_22};
+    font-weight: 500;
+`
+
 export const COLOR = {
     PRIMARY: '#FF3937', //'#709900',
     ACCENT1: '#3F3D56',
@@ -53,3 +63,12 @@ export function hexToRgbA(hex, a=1){
     }
     throw new Error('Bad Hex');
 }
+
+export const rotationAnimation = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`

@@ -15,6 +15,7 @@ import
     CategoryMenuRow,
     SecondaryButton,
     PrimaryButton,
+    LoadingButton,
     ContentContainer,
     Notification,
     NavigationHeader,
@@ -31,7 +32,7 @@ import
     Company,
     Label,
     CloseButton,
-    MenuItemDetails
+    MenuItemDetails,
 } from "../../components";
 
 import {ReactComponent as QRCodeIcon} from "../../icons/qr_code.svg";
@@ -92,6 +93,7 @@ const componentsGroup1 = [
     [
         {title: 'PrimaryButton', component: <PrimaryButton><GoogleIcon/>Google</PrimaryButton>},
         {title: 'PrimaryButton', component: <PrimaryButton>Sing in</PrimaryButton>},
+        {title: 'LoadingButton', component: <LoadingButton>Loading</LoadingButton>},
         {title: 'SecondaryButton', component: <SecondaryButton><FacebookIcon/>facebook</SecondaryButton>},
         {title: 'SecondaryButton', component: <SecondaryButton>Cancel</SecondaryButton>},
         {title: 'ThirdButton', component: <ThirdButton><FacebookIcon/>Cancel</ThirdButton>},

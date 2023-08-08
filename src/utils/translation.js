@@ -12,6 +12,10 @@ export const translate = obj => {
 }
 
 export const TRANSLATION = {
+    LOADING: {
+        en: 'Loading',
+        ua: 'Завантажується'
+    },
     COMPANY_NAME: {
         ua: 'DEPOISTU',
         en: 'DEPOISTU'
@@ -140,7 +144,7 @@ export const TRANSLATION = {
             },
             EMAIL: {
                 ua: "Електронна Пошта",
-                en: "Emial"
+                en: "Email"
             },
             PASSWORD: {
                 ua: "Пароль",

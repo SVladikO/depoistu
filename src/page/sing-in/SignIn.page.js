@@ -2,7 +2,6 @@ import * as Yup from 'yup';
 import {Formik} from "formik";
 import React, {useState} from 'react';
 import {Link, useNavigate} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
 
 import {
     Input,
@@ -11,13 +10,12 @@ import {
     Label,
     NavigationLabelHref,
     Notification,
+    LoadingButton,
 } from "../../components";
 
 import {ReactComponent as LockIcon} from "../../icons/lock.svg";
 import {ReactComponent as MailIcon} from "../../icons/mail.svg";
-
-
-import {startLoading, stopLoading} from "../../features/request/requestSlice";
+import {ReactComponent as LoadingIcon} from "../../icons/loading.svg";
 
 import validation  from '../../utils/validation';
 import {ROUTER, URL} from '../../utils/config';
@@ -27,49 +25,52 @@ import {LocalStorage, LOCAL_STORAGE_KEY} from "../../utils/localStorage"
 
 const SignInSchema = Yup.object().shape(validation.customer.singIn);
 
+const signInInitialValues = {
+    email: '',
+    password: ''
+}
+
 const SignInPage = () => {
-    const dispatch = useDispatch();
     const navigate = useNavigate();
-    const isLoading = useSelector(state => state.request.value.isLoading);
     const [requestError, setRequestError] = useState('');
     const [wasSubmitted, setWasSubmitted] = useState(false);
+    const [isLoading, setIsLoading] = useState(false)
+
     const handleSingIn = ({email, password}) => {
-        dispatch(startLoading());
+        setIsLoading(true)
 
         fetchData(BE_API.CUSTOMER.SING_IN(), {email, password})
             .then(res => {
-                LocalStorage.set(LOCAL_STORAGE_KEY.CUSTOMER, res.body)
                 setTimeout(() => {
-                    dispatch(stopLoading())
-                }, 1000)
-
-                navigate(URL.SETTING);
+                    LocalStorage.set(LOCAL_STORAGE_KEY.CUSTOMER, res.body)
+                    navigate(URL.SETTING);
+                    setIsLoading(false);
+                }, 3000)
             })
             .catch(e => {
+                setIsLoading(false);
                 setRequestError(e.body.message);
-                setTimeout(() => dispatch(stopLoading()), 1000)
-            });
+            })
     }
 
-    if (isLoading) {
-        return <Notification.Loading/>
+    const onSubmitForm = (values) => {
+        handleSingIn(values)
+        setWasSubmitted(true);
     }
 
-    return (<>
-        {requestError && <Notification.Error message={requestError}/>}
+    if(requestError) {
+        return (
+            <Notification.Error message={requestError}/>
+        )
+    }
+
+    return (
         <Formik
-            initialValues={{
-                email: '',
-                password: ''
-            }}
+            initialValues={signInInitialValues}
             validationSchema={SignInSchema}
-            onSubmit={values => {
-                console.log(values);
-                handleSingIn(values)
-                setWasSubmitted(true);
-            }}
+            onSubmit={onSubmitForm}
         >
-            {({values,touched, setFieldValue, handleSubmit, handleChange, errors}) => (
+            {({values, touched, setFieldValue, handleSubmit, handleChange, errors, isSubmitting}) => (
                 <form onSubmit={handleSubmit}>
                     <ContentContainer>
                         <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.EMAIL)}</Label>
@@ -101,14 +102,21 @@ const SignInPage = () => {
                             label={translate(TRANSLATION.PAGE.SIGN_IN.ACCOUNT_CONFIRMATION)}
                         />
                     </ContentContainer>
-                    <PrimaryButton type="submit" isWide>
-                        {translate(TRANSLATION.PAGE.SIGN_IN.TOP_TITLE)}
-                    </PrimaryButton>
+                    {isLoading
+                        ? (
+                            <LoadingButton disabled={isSubmitting || errors} isWide>
+                                <LoadingIcon />
+                                {translate(TRANSLATION.LOADING)}
+                            </LoadingButton>
+                        ) : (
+                            <PrimaryButton type="submit" isWide>
+                                {translate(TRANSLATION.PAGE.SIGN_IN.TOP_TITLE)}
+                            </PrimaryButton>
+                        )}
                 </form>
-            )
-            }
+            )}
         </Formik>
-    </>);
+    );
 };
 
 export default SignInPage;
