@@ -134,7 +134,9 @@ const EditCompany = () => {
                     </PopupButtons>
                 </Popup.Info>
             )}
-            {requestError && <Notification.Error message={requestError} />}
+            {requestError && (
+                <Notification.Error message={requestError} />
+            )}
             {isCompanyUpdated && <Notification.Success message={"Company was updated."} />}
             <DeleteCompanyButton />
             <RowSplitter height="15px" />
