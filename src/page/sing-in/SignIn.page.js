@@ -17,7 +17,7 @@ import {ReactComponent as LockIcon} from "../../icons/lock.svg";
 import {ReactComponent as MailIcon} from "../../icons/mail.svg";
 import {ReactComponent as LoadingIcon} from "../../icons/loading.svg";
 
-import validation  from '../../utils/validation';
+import validation from '../../utils/validation';
 import {ROUTER, URL} from '../../utils/config';
 import {fetchData, BE_API} from "../../utils/fetch";
 import {TRANSLATION, translate} from "../../utils/translation";
@@ -58,7 +58,7 @@ const SignInPage = () => {
         setWasSubmitted(true);
     }
 
-    if(requestError) {
+    if (requestError) {
         return (
             <Notification.Error message={requestError}/>
         )
@@ -102,17 +102,13 @@ const SignInPage = () => {
                             label={translate(TRANSLATION.PAGE.SIGN_IN.ACCOUNT_CONFIRMATION)}
                         />
                     </ContentContainer>
-                    {isLoading
-                        ? (
-                            <LoadingButton disabled={isSubmitting || errors} isWide>
-                                <LoadingIcon />
-                                {translate(TRANSLATION.LOADING)}
-                            </LoadingButton>
-                        ) : (
-                            <PrimaryButton type="submit" isWide>
-                                {translate(TRANSLATION.PAGE.SIGN_IN.TOP_TITLE)}
-                            </PrimaryButton>
-                        )}
+                    <PrimaryButton
+                        isWide
+                        type="submit"
+                        isLoading={isLoading}
+                    >
+                        {translate(TRANSLATION.PAGE.SIGN_IN.TOP_TITLE)}
+                    </PrimaryButton>
                 </form>
             )}
         </Formik>

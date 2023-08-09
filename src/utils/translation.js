@@ -12,10 +12,7 @@ export const translate = obj => {
 }
 
 export const TRANSLATION = {
-    LOADING: {
-        en: 'Loading',
-        ua: 'Завантажується'
-    },
+
     COMPANY_NAME: {
         ua: 'DEPOISTU',
         en: 'DEPOISTU'
@@ -524,6 +521,12 @@ export const TRANSLATION = {
         },
     },
     COMPONENTS: {
+        BUTTON: {
+            LOADING: {
+                en: 'Loading',
+                ua: 'Завантажується'
+            },
+        },
         COMPANY: {
             STATUS_OPEN: {
                 ua: "Відкрито",

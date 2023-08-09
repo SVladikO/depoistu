@@ -1,3 +1,5 @@
+import {keyframes} from "styled-components";
+
 export const FONT_22 = `
     font-size: 22px;
     font-height: 26.4px;

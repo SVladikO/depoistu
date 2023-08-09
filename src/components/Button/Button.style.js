@@ -21,7 +21,7 @@ export const button = styled.button`
   }
 `;
 
-export const PrimaryButton = styled(button)`
+export const PrimaryButtonStyle = styled(button)`
   background-image: linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO});
 
   & > svg {

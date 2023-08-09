@@ -1,10 +1,10 @@
 import {
-    PrimaryButton,
     SecondaryButton,
     ThirdButton,
     LoadingButton
 } from "./Button/Button.style";
 
+import {PrimaryButton} from './Button/Button';
 import {Input, PInput, Textarea} from "./Input/Input";
 import NotificationTDB from "./NotificationTDB/NotificationTDB";
 import Price from "./Price/Price";
