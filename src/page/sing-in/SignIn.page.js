@@ -61,7 +61,7 @@ const SignInPage = () => {
                 validationSchema={SignInSchema}
                 onSubmit={onSubmitForm}
             >
-                {({values, touched, setFieldValue, handleSubmit, handleChange, errors, isSubmitting}) => (
+                {({values, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                     <form onSubmit={handleSubmit}>
                         <ContentContainer>
                             <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.EMAIL)}</Label>
