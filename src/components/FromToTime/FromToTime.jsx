@@ -1,4 +1,4 @@
-import {memo} from 'react';
+import {memo, useState} from 'react';
 
 import {Wrapper, GroupWrapper, Label, Weekend} from "./FromToTime.style";
 
@@ -14,11 +14,15 @@ function FromToTime({prefix, values, dayName, handleChange}) {
         </GroupWrapper>
     );
 
-    const isChecked = values[prefix + 'IsChecked'];
+    const [isChecked, setIsChecked] = useState(values[prefix + 'IsChecked']);
+
+    const handleCheckbox = () => {
+        setIsChecked(!isChecked);
+    }
 
     return (
         <Wrapper>
-            <GroupWrapper>
+            <GroupWrapper onClick={handleCheckbox}>
                 <Checkbox name={prefix + 'IsChecked'} isChecked={isChecked} changeHandler={handleChange}/>
                 <Label>{dayName}</Label>
             </GroupWrapper>
