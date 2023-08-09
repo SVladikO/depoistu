@@ -40,10 +40,6 @@ const EditCompany = () => {
     const [isCompanyDeleted, setIsCompanyDeleted] = useState(false);
     const [isCompanyUpdated, setIsCompanyUpdated] = useState(false);
 
-    if (isLoading) {
-        return <Notification.Loading/>;
-    }
-
     if (isCompanyDeleted) {
         return (
             <Notification.Success message={`Company was deleted.`}>
@@ -68,8 +64,9 @@ const EditCompany = () => {
                 LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
                 setIsCompanyDeleted(true);
             })
-            .catch(res => {
-                setRequestError(res.body.message)
+            .catch(e => {
+                console.log(222222222222, e);
+                setRequestError(e.body.errorMessage)
             })
             .finally(() => setIsLoading(false))
     }
@@ -103,10 +100,6 @@ const EditCompany = () => {
             .finally(() => setIsLoading(false))
     }
 
-    if (isLoading) {
-        return <Notification.Loading/>;
-    }
-
     const renderDeleteCompanyButton = () => (
         <SecondaryButton isWide onClick={deleteCompany}><RemoveIcon/>
             {translate(TRANSLATION.PAGE.EDIT_COMPANY.BUTTON.DELETE_COMPANY)}
@@ -120,6 +113,7 @@ const EditCompany = () => {
             {renderDeleteCompanyButton()}
             <RowSplitter height="15px" />
             <CompanyView
+                isLoading={isLoading}
                 initialValues={getInitialValues(company, schedule)}
                 onSubmit={onSubmit}
                 submitButtonTitle={translate(TRANSLATION.PAGE.EDIT_COMPANY.BUTTON.EDIT_COMPANY)}

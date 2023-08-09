@@ -62,10 +62,6 @@ const EditMenuItemPage = () => {
             .finally(() => setIsLoading(false))
     }
 
-    if (isLoading) {
-        return <Notification.Loading/>;
-    }
-
     if (isMenuItemDeleted) {
         return <Notification.Success message={"Menu item was deleted."} />
     }
@@ -77,6 +73,7 @@ const EditMenuItemPage = () => {
             <SecondaryButton onClick={deleteCompany}><RemoveIcon/>{translate(TRANSLATION.PAGE.EDIT_MENU_ITEM.BUTTON.DELETE_MENU_ITEM)}</SecondaryButton>
             <RowSplitter height={'15px'}/>
             <MenuItemView
+                isLoading={isLoading}
                 initialValue={initialValue}
                 onSubmit={onSubmit}
                 submitButtonTitle={translate(TRANSLATION.PAGE.EDIT_MENU_ITEM.BUTTON.EDIT_MENU_ITEM)}

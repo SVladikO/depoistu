@@ -75,7 +75,7 @@ const SettingPage = () => {
                     setCustomer({...customer, IS_VERIFIED_EMAIL: true})
                 }
             })
-            .catch(e => setRequestError(e.body.message))
+            .catch(e => setRequestError(e.body.errorMessage))
             .finally(() => setIsLoading(false));
     }
 

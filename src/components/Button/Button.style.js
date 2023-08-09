@@ -28,30 +28,19 @@ export const PrimaryButtonStyle = styled(button)`
     fill: ${COLOR.ACCENT4};
   }
 
-  ${({isLoading}) => isLoading && css`
-    cursor: default;
-    background: ${COLOR.ACCENT5};
-
-    & > svg {
-      margin-right: 10px;
-      animation: ${rotationAnimation} 1s infinite linear;
-    }
-    
-    &::after {
-      display: inline-block;
-      animation: appearingDots steps(1, end) 2s infinite;
-      content: '';
-    }
-
-    @keyframes appearingDots {
-        0% {content: '';}
-        25% {content: '.';}
-        50% {content: '..';}
-        75% {content: '...';}
-        100% {content: '';}
-      }
-    `}
 `;
+export const LoadingButtonStyle = styled(button)`
+  background: ${COLOR.ACCENT5};
+  
+
+  & > svg {
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+    animation: ${rotationAnimation} 1s infinite linear;
+  }
+`;
+
 
 export const SecondaryButton = styled(button)`
   color: ${COLOR.ACCENT3};
@@ -73,6 +62,7 @@ export const ThirdButton = styled(button)`
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
+
   & > svg {
     width: 15px;
     height: 15px;

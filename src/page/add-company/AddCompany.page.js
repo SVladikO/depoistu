@@ -47,10 +47,6 @@ const AddCompany = () => {
             .finally(() => setIsLoading(false))
     }
 
-    if (isLoading) {
-        return <Notification.Loading/>;
-    }
-
     if (isCompanySaved) {
         return (
             <Notification.Success message={"Company was created"}>
@@ -67,6 +63,7 @@ const AddCompany = () => {
         <>
             {requestError && <Notification.Error message={requestError}/>}
             <CompanyView
+                isLoading={isLoading}
                 initialValues={initialValues}
                 onSubmit={onSubmit}
                 submitButtonTitle={translate(TRANSLATION.PAGE.ADD_COMPANY.BUTTON.ADD_COMPANY)}

@@ -46,10 +46,6 @@ const AddMenuItemPage = () => {
             .finally(() => setIsLoading(false))
     }
 
-    if (isLoading) {
-        return <Notification.Loading/>;
-    }
-
     if (requestError) {
         return <Notification.Error message={requestError}/>;
     }
@@ -58,6 +54,7 @@ const AddMenuItemPage = () => {
         <>
             {isMenuItemCreated && <Notification.Success message={"Menu item was created."}/>}
             <MenuItemView
+                isLoading={isLoading}
                 initialValue={initialValue}
                 onSubmit={onSubmit}
                 submitButtonTitle={translate(TRANSLATION.PAGE.ADD_MENU_ITEM.BUTTON.ADD_MENU_ITEM)}

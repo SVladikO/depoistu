@@ -1,17 +1,20 @@
-import {LoadingButton, PrimaryButtonStyle} from "./Button.style";
+import {LoadingButtonStyle, PrimaryButtonStyle} from "./Button.style";
 
+import {ReactComponent as LoadingIcon} from "../../icons/loading.svg";
 import {translate, TRANSLATION} from "../../utils/translation";
 
 
 export const PrimaryButton = ({isLoading, children, isWide}) => {
 
-
     if (isLoading) {
-        return <LoadingButton>{translate(TRANSLATION.COMPONENTS.BUTTON.LOADING)}</LoadingButton>
+        return <LoadingButtonStyle isWide={isWide}>
+            <LoadingIcon />
+            {translate(TRANSLATION.COMPONENTS.BUTTON.LOADING)}{' ...'}
+        </LoadingButtonStyle>
     }
 
     return (
-        <PrimaryButtonStyle isWide>{children}</PrimaryButtonStyle>
+        <PrimaryButtonStyle isWide={isWide}>{children}</PrimaryButtonStyle>
     )
 
 }
