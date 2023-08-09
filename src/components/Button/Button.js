@@ -1,6 +1,6 @@
 import {LoadingButtonStyle, PrimaryButtonStyle} from "./Button.style";
 
-import {ReactComponent as LoadingIcon} from "../../icons/loading.svg";
+import {ReactComponent as LoadingIcon} from "../../assets/icons/loading.svg";
 import {translate, TRANSLATION} from "../../utils/translation";
 
 

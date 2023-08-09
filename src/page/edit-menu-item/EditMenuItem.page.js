@@ -10,6 +10,7 @@ import {fetchData, BE_API} from "../../utils/fetch";
 import {useRedirectToSettingPage} from "../../utils/hook";
 import {translate, TRANSLATION} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
+import {stopLoading} from "../../features/request/requestSlice";
 
 const EditMenuItemPage = () => {
     useRedirectToSettingPage();
@@ -44,7 +45,7 @@ const EditMenuItemPage = () => {
                 LocalStorage.set(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT, updatedMenuItem);
                 setIsMenuItemUpdated(true);
             })
-            .catch(res => setRequestError(res.body.message))
+            .catch(e => setRequestError(e.body.errorMessage))
             .finally(() => setIsLoading(false))
     }
 
@@ -55,10 +56,8 @@ const EditMenuItemPage = () => {
             .then(() => {
                 setIsMenuItemDeleted(true);
             })
-            .catch(res => {
-                setRequestError(res.body.message)
-            })
-            .finally(() => setIsLoading(false))
+            .catch(e => setRequestError(e.body.errorMessage))
+            .finally(() => setTimeout(() => setIsLoading(false), 1000))
     }
 
     if (isMenuItemDeleted) {

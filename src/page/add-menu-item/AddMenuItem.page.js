@@ -38,20 +38,18 @@ const AddMenuItemPage = () => {
             company_id: companyId,
         }
 
+        setRequestError('')
         fetchData(BE_API.MENU_ITEM.POST_CREATE(), requestObj)
             .then(() => {
                 setIsMenuItemCreated(true);
             })
-            .catch(res => setRequestError(res.body.message))
+            .catch(e => setRequestError(e.body.errorMessage))
             .finally(() => setIsLoading(false))
-    }
-
-    if (requestError) {
-        return <Notification.Error message={requestError}/>;
     }
 
     return (
         <>
+            {requestError && <Notification.Error message={requestError}/>}
             {isMenuItemCreated && <Notification.Success message={"Menu item was created."}/>}
             <MenuItemView
                 isLoading={isLoading}

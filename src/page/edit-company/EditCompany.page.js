@@ -71,10 +71,7 @@ const EditCompany = () => {
                 LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
                 setIsCompanyDeleted(true);
             })
-            .catch(e => {
-                console.log(222222222222, e);
-                setRequestError(e.body.errorMessage)
-            })
+            .catch(e => setRequestError(e.body.errorMessage))
             .finally(() => setIsLoading(false))
     }
 
@@ -95,6 +92,7 @@ const EditCompany = () => {
         const schedule = getScheduleAsString(values)
         const reqObj = {id: companyId, name, city_id, street, phone1, phone2, phone3, schedule, method: 'put'};
         setIsLoading(true);
+        setRequestError('')
 
         fetchData(BE_API.COMPANY.PUT_UPDATE(), reqObj)
             .then(res => {
@@ -103,7 +101,7 @@ const EditCompany = () => {
 
                 setIsCompanyUpdated(true);
             })
-            .catch(res => setRequestError(res.body.message))
+            .catch(e => setRequestError(e.body.errorMessage))
             .finally(() => setIsLoading(false))
     }
 
@@ -123,7 +121,7 @@ const EditCompany = () => {
         );
     }
 
-    const renderDeleteCompanyButton = () => (
+    const DeleteCompanyButton = () => (
         <SecondaryButton isWide onClick={deleteCompany}><RemoveIcon/>
             {translate(TRANSLATION.PAGE.EDIT_COMPANY.BUTTON.DELETE_COMPANY)}
         </SecondaryButton>

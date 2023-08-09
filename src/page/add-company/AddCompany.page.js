@@ -35,14 +35,14 @@ const AddCompany = () => {
         const reqObj = {customer_id, name, city_id, street, phone1, phone2, phone3, schedule};
 
         setIsLoading(true);
-
+        setRequestError('')
         fetchData(BE_API.COMPANY.POST_CREATE(), reqObj)
             .then(res => {
                 setIsCompanySaved(true);
                 setNewCompanyId(res.body.insertId);
                 LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES)
             })
-            .catch(res => setRequestError(res.body.message))
+            .catch(e => setRequestError(e.body.errorMessage))
             .finally(() => setIsLoading(false))
     }
 

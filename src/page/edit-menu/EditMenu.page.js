@@ -47,12 +47,11 @@ const EditMenu = () => {
             .then(res => {
                 setMenuItems(res.body);
                 setSelectedCategoryId(res.body[0]?.CATEGORY_ID)
-                setTimeout(() => dispatch(stopLoading()), 1000);
-            }).catch(e => {
-                setTimeout(() => dispatch(stopLoading()), 1000);
-                setRequestError(e.body.message)
+                setTimeout(() => dispatch(stopLoading()), 1000)
             })
-    }, [url,companyId])
+            .catch(e => setRequestError(e.body.errorMessage))
+            .finally(() => setTimeout(() => dispatch(stopLoading()), 1000))
+    }, [url, companyId])
 
     if (isLoading) {
         return <Notification.Loading/>;
@@ -72,11 +71,11 @@ const EditMenu = () => {
     return (
         <>
             {currentCompany &&
-               <CompanyDetails>
-                   {currentCompany.NAME},
-                   {translate(CITY_TRANSLATION_IDS[currentCompany.CITY_ID])},
-                   {currentCompany.STREET}
-               </CompanyDetails>
+                <CompanyDetails>
+                    {currentCompany.NAME},
+                    {translate(CITY_TRANSLATION_IDS[currentCompany.CITY_ID])},
+                    {currentCompany.STREET}
+                </CompanyDetails>
             }
             <Wrapper>
                 {menuItems &&
