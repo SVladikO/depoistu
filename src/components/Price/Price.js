@@ -1,10 +1,11 @@
 import React from 'react';
 import {Wrapper} from "./Price.style";
+import {translate, TRANSLATION} from "../../utils/translation";
 
 const Price = ({children}) => {
     return (
        <Wrapper>
-           {children}.00 UAH
+           {children} {translate(TRANSLATION.MEASUREMENTS.PRICE)}
        </Wrapper>
     );
 };

@@ -169,6 +169,10 @@ export const TRANSLATION = {
         }
     },
     MEASUREMENTS: {
+        PRICE: {
+            ua: 'грн',
+            en: 'uah'
+        },
         WEIGHT: {
             ua: "г",
             en: 'g'

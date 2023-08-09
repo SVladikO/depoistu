@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Divider = styled.div`
-  font-size: 16px;
+  font-size: 20px;
   line-height: 24px;
   color: ${COLOR.ACCENT5};
   margin: 10px 0 10px 10px;
