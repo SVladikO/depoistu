@@ -10,7 +10,6 @@ import {
     Label,
     NavigationLabelHref,
     Notification,
-    LoadingButton,
 } from "../../components";
 
 import {ReactComponent as LockIcon} from "../../icons/lock.svg";
@@ -102,17 +101,19 @@ const SignInPage = () => {
                             label={translate(TRANSLATION.PAGE.SIGN_IN.ACCOUNT_CONFIRMATION)}
                         />
                     </ContentContainer>
-                    {isLoading
-                        ? (
-                            <LoadingButton disabled={isSubmitting || errors} isWide>
+                    <PrimaryButton
+                        isLoading={isLoading}
+                        type="submit"
+                        isWide
+                        disable={isSubmitting || errors}
+                    >
+                        {isLoading ? (
+                            <>
                                 <LoadingIcon />
                                 {translate(TRANSLATION.LOADING)}
-                            </LoadingButton>
-                        ) : (
-                            <PrimaryButton type="submit" isWide>
-                                {translate(TRANSLATION.PAGE.SIGN_IN.TOP_TITLE)}
-                            </PrimaryButton>
-                        )}
+                            </>)
+                            : translate(TRANSLATION.PAGE.SIGN_IN.TOP_TITLE)}
+                    </PrimaryButton>
                 </form>
             )}
         </Formik>

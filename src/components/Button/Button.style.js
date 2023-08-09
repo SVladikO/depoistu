@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
 import {BORDER_RADIUS, COLOR, GRADIENT, hexToRgbA, rotationAnimation} from "../../utils/theme";
 
 export const button = styled.button`
@@ -22,11 +22,35 @@ export const button = styled.button`
 `;
 
 export const PrimaryButton = styled(button)`
-  background-image: linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO});
+  background: linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO});
 
   & > svg {
     fill: ${COLOR.ACCENT4};
   }
+
+  ${({isLoading}) => isLoading && css`
+    cursor: default;
+    background: ${COLOR.ACCENT5};
+
+    & > svg {
+      margin-right: 10px;
+      animation: ${rotationAnimation} 1s infinite linear;
+    }
+    
+    &::after {
+      display: inline-block;
+      animation: appearingDots steps(1, end) 2s infinite;
+      content: '';
+    }
+
+    @keyframes appearingDots {
+        0% {content: '';}
+        25% {content: '.';}
+        50% {content: '..';}
+        75% {content: '...';}
+        100% {content: '';}
+      }
+    `}
 `;
 
 export const SecondaryButton = styled(button)`
@@ -56,29 +80,5 @@ export const ThirdButton = styled(button)`
     fill: ${COLOR.ACCENT3};
     display: inline-block;
     margin: 0 10px 0 0;
-  }
-`;
-
-export const LoadingButton = styled(button)`
-  background: ${COLOR.ACCENT5};
-  cursor: default;
-  & > svg {
-    fill: ${COLOR.ACCENT4};
-    margin-right: 10px;
-    animation: ${rotationAnimation} 1s infinite linear;
-  }
-
-  &::after {
-    display: inline-block;
-    animation: appearingDots steps(1, end) 2s infinite;
-    content: '';
-  }
-
-  @keyframes appearingDots {
-    0% {content: '';} 
-    25% {content: '.';} 
-    50% {content: '..';} 
-    75% {content: '...';}
-    100% {content: '';}
   }
 `;

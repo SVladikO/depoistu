@@ -2,7 +2,6 @@ import {
     PrimaryButton,
     SecondaryButton,
     ThirdButton,
-    LoadingButton
 } from "./Button/Button.style";
 
 import {Input, PInput, Textarea} from "./Input/Input";
@@ -71,7 +70,6 @@ export {
     CloseButton,
     PrimaryButton,
     SecondaryButton,
-    LoadingButton,
     ContentContainer,
     NavigationHeader,
     NavigationLabelHref,
