@@ -12,7 +12,14 @@ export const translate = obj => {
 }
 
 export const TRANSLATION = {
-
+    YES: {
+        en: 'Yes',
+        ua: 'Так'
+    },
+    NO: {
+        en: 'No',
+        ua: 'Ні'
+    },
     COMPANY_NAME: {
         ua: 'DEPOISTU',
         en: 'DEPOISTU'
@@ -103,6 +110,10 @@ export const TRANSLATION = {
                 en: "Work schedule",
                 ua: "Графік роботи"
             },
+        },
+        DROPDOWN_TITLE: {
+            en: 'Select ...',
+            ua: 'Виберіть ...'
         },
         MENU_ITEM: {
             NAME: {
@@ -284,6 +295,21 @@ export const TRANSLATION = {
                     en: 'Delete company',
                     ua: "Видалити компанію"
                 }
+            },
+            NOTIFICATION: {
+                COMPANY_WAS_DELETED: {
+                    en: 'Company was deleted.',
+                    ua: "Компанію видалено."
+                },
+                OPEN_MY_COMPANIES_PAGE: {
+                    en: 'Open my companies page.',
+                    ua: "Відкрийте сторінку моїх компаній."
+                },
+                NO_COMPANY_BY_THIS_ID: {
+                    en: 'No company by this id',
+                    ua: "Немає компанії з цим ідентифікатором"
+                },
+
             }
         },
         ADD_MENU_ITEM: {
@@ -551,6 +577,10 @@ export const TRANSLATION = {
                     en: "Edit",
                     ua: "Редагувати"
                 },
+                HIDDEN: {
+                    en: "HIDDEN",
+                    ua: "ПРИХОВАНО"
+                },
             },
         },
         POPUP : {
@@ -559,6 +589,10 @@ export const TRANSLATION = {
                     en: " region",
                     ua: " область"
                 }
+            },
+            ARE_YOU_SURE: {
+                en: "Are you sure you want to delete the company and menu? ",
+                ua: "Ви впевнені, що хочете видалити компанію та меню?"
             }
         }
     },

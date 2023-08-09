@@ -67,13 +67,15 @@ export const BE_API = {
         GET_BY_CITY_ID: city_id => `${BE_DOMAIN}/companies/by/city_id/${city_id}`,
         POST_CREATE: () => `${BE_DOMAIN}/companies`,
         PUT_UPDATE: () => `${BE_DOMAIN}/companies`,
-        DELETE: id => `${BE_DOMAIN}/companies/${id}`,
+        DELETE: () => `${BE_DOMAIN}/companies`,
     },
     MENU_ITEM: {
         GET_BY_COMPANY_ID: company_id => `${BE_DOMAIN}/menu/${company_id}`,
+        GET_ONLY_VISIBLE_BY_COMPANY_ID: company_id => `${BE_DOMAIN}/menu/only-visible/${company_id}`,
         POST_CREATE: () => `${BE_DOMAIN}/menu`,
         PUT_UPDATE: () => `${BE_DOMAIN}/menu`,
         DELETE: () => `${BE_DOMAIN}/menu`,
+        IS_ITEM_VISIBLE: () => `${BE_DOMAIN}/menu/visible`
     },
     DEVELOPMENT: {
         API: () =>   `${BE_DOMAIN}/api`,

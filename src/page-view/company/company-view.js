@@ -16,11 +16,12 @@ import {
     WeekScheduleInput
 } from "../../components";
 
-import {ReactComponent as LocationIcon} from "../../icons/location.svg";
+import {ReactComponent as LocationIcon} from "../../assets/icons/location.svg";
+import {ReactComponent as PhoneIcon} from "../../assets/icons/phone.svg";
 
-import {WarningMessage} from "../../components/Input/Input.style";
+import WarningMessage from "../../components/WarningMessage/WarningMessage";
 
-import {ReactComponent as DeleteBasketIcon} from "../../icons/delete_basket.svg";
+import {ReactComponent as DeleteBasketIcon} from "../../assets/icons/delete_basket.svg";
 
 import validation from "../../utils/validation";
 import {isScheduleValid} from "../../utils/company";
@@ -122,14 +123,37 @@ const CompanyView = ({initialValues, onSubmit, submitButtonTitle, isLoading}) =>
                             clearHandler={() => setFieldValue('street', '')}
                             errorMessage={errors.street}
                         />
-                        <Label>{translate(TRANSLATION.INPUT_LABEL.COMPANY.PHONE)}</Label>
+                        <Label>{translate(TRANSLATION.INPUT_LABEL.COMPANY.PHONE)} 1</Label>
                         <Input
-                            name="phone"
-                            value={values.phone}
-                            errorMessage={errors.phone}
-                            isTouched={touched.phone || wasSubmitted}
+                            Icon={PhoneIcon}
+                            name="phone1"
+                            value={values.phone1}
+                            errorMessage={errors.phone1}
+                            isTouched={touched.phone1 || wasSubmitted}
                             changeHandler={handleChange}
-                            clearHandler={() => setFieldValue('phone', '')}
+                            clearHandler={() => setFieldValue('phone1', '')}
+                            withCleaner
+                        />
+                        <Label>{translate(TRANSLATION.INPUT_LABEL.COMPANY.PHONE)} 2</Label>
+                        <Input
+                            Icon={PhoneIcon}
+                            name="phone2"
+                            value={values.phone2}
+                            errorMessage={errors.phone2}
+                            isTouched={touched.phone2 || wasSubmitted}
+                            changeHandler={handleChange}
+                            clearHandler={() => setFieldValue('phone2', '')}
+                            withCleaner
+                        />
+                        <Label>{translate(TRANSLATION.INPUT_LABEL.COMPANY.PHONE)} 3</Label>
+                        <Input
+                            Icon={PhoneIcon}
+                            name="phone3"
+                            value={values.phone3}
+                            errorMessage={errors.phone3}
+                            isTouched={touched.phone3 || wasSubmitted}
+                            changeHandler={handleChange}
+                            clearHandler={() => setFieldValue('phone3', '')}
                             withCleaner
                         />
                         <Label>{translate(TRANSLATION.INPUT_LABEL.COMPANY.WORK_SCHEDULE)}</Label>

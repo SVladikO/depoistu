@@ -2,8 +2,8 @@ import {NavLink} from 'react-router-dom';
 
 import {Wrapper, MenuItem, Label} from './BottomMenu.style';
 
-import {ReactComponent as SearchIcon} from "../../icons/search.svg";
-import {ReactComponent as UserIcon} from "../../icons/user.svg";
+import {ReactComponent as SearchIcon} from "../../assets/icons/search.svg";
+import {ReactComponent as UserIcon} from "../../assets/icons/user.svg";
 // import {ReactComponent as HomeIcon} from "../../icons/menu.svg";
 // import {OrderIconWithCounter} from '../index'
 

@@ -12,8 +12,8 @@ import {
     Notification,
 } from "../../components";
 
-import {ReactComponent as LockIcon} from "../../icons/lock.svg";
-import {ReactComponent as MailIcon} from "../../icons/mail.svg";
+import {ReactComponent as LockIcon} from "../../assets/icons/lock.svg";
+import {ReactComponent as MailIcon} from "../../assets/icons/mail.svg";
 
 import validation from '../../utils/validation';
 import {ROUTER, URL} from '../../utils/config';

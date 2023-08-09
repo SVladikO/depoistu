@@ -1,5 +1,14 @@
 import {keyframes} from "styled-components";
 
+export const FONT_16 = `
+    font-size: 16px;
+    font-height: 24px;
+    font-weight: 400;
+`
+export const FONT_16_BOLD = `
+    ${FONT_16};
+    font-weight: 600;
+`
 export const FONT_22 = `
     font-size: 22px;
     font-height: 26.4px;
@@ -9,7 +18,6 @@ export const FONT_22_500 = `
     ${FONT_22};
     font-weight: 500;
 `
-
 export const COLOR = {
     PRIMARY: '#FF3937', //'#709900',
     ACCENT1: '#3F3D56',

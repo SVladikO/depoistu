@@ -4,6 +4,7 @@ import {COLOR} from "../../utils/theme";
 export const Wrapper = styled.label`
   position: relative;
 `;
+
 export const Input = styled.input`
   position: absolute;
   top: 0;
@@ -19,8 +20,8 @@ export const Input = styled.input`
   &:checked + span:before {
     background-color: ${COLOR.PRIMARY};
   }
-  
 `;
+
 export const RoundSlider = styled.span`
   display: flex;
   cursor: pointer;

@@ -10,7 +10,7 @@ import {translate, TRANSLATION} from "../../utils/translation";
 
 const AddMenuItemPage = () => {
     useRedirectToSettingPage();
-    const categoryId = getParam(`categoryId`);
+    const categoryId = +getParam(`categoryId`);
     const companyId = getParam(`companyId`)
 
     const [isLoading, setIsLoading] = useState(false);

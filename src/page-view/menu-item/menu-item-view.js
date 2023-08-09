@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React, {useMemo, useState} from "react";
 import {Formik} from "formik";
 import * as Yup from 'yup';
 
 import {ImagePlace, MenuItemPhoto} from "./menu-item-view.style";
-import {ContentContainer, Input, Label, PrimaryButton, SecondaryButton, Textarea} from "../../components";
+import {Dropdown,ContentContainer, Input, Label, PrimaryButton, SecondaryButton, Textarea} from "../../components";
 import validation from "../../utils/validation";
 import {CATEGORY_MAPPER} from "../../utils/category";
 import {translate, TRANSLATION} from "../../utils/translation";
@@ -13,6 +13,7 @@ const EditMenuItemSchema = Yup.object().shape(validation.menuItem);
 const MenuItemView = ({initialValue, onSubmit, submitButtonTitle, isLoading}) => {
     const [wasSubmitted, setWasSubmitted] = useState(false);
     const [imageURL] = useState(initialValue.imageURL);
+    const options  = useMemo(() => Object.values(CATEGORY_MAPPER).map(({id,title}) => ({value: id, title})),[initialValue])
 
     const renderImages = () => (
         <MenuItemPhoto>
@@ -65,13 +66,15 @@ const MenuItemView = ({initialValue, onSubmit, submitButtonTitle, isLoading}) =>
                             withCleaner
                         />
                         <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.CATEGORY)}</Label>
-                        <select value={values.category_id} onChange={e => setFieldValue('category_id', e.target.value)}>
-                            {
-                                Object.keys(CATEGORY_MAPPER).map(
-                                    id => <option key={id} value={id}>{CATEGORY_MAPPER[id].title}</option>
-                                )
-                            }
-                        </select>
+                        <Dropdown
+                            options={options}
+                            selectedOption={(options.filter(o => o.value === values.category_id))[0]}
+                            onSelect={option => setFieldValue( 'category_id', +option.value)}
+                            as="select"
+                            name="category_id"
+                            isTouched={touched.category_id || wasSubmitted}
+                            errorMessage={errors.category_id}
+                            />
                         <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.DESCRIPTION)}</Label>
                         <Textarea
                             value={values.description}
