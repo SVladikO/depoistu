@@ -1,7 +1,6 @@
 import {
     SecondaryButton,
     ThirdButton,
-    LoadingButton
 } from "./Button/Button.style";
 
 import {PrimaryButton} from './Button/Button';
@@ -71,7 +70,6 @@ export {
     CloseButton,
     PrimaryButton,
     SecondaryButton,
-    LoadingButton,
     ContentContainer,
     NavigationHeader,
     NavigationLabelHref,
