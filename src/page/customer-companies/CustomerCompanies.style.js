@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import {PrimaryButton} from "../../components";
+import {PrimaryButtonStyle} from "../../components/Button/Button.style";
 
 export const ImageQR = styled.img`
   height: 250px;
   margin: 40px;
 `;
 
-export const QRCodeButton = styled(PrimaryButton)`
+export const QRCodeButton = styled(PrimaryButtonStyle)`
   padding: 10px;
 
   & > svg {

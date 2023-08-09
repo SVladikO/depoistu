@@ -145,7 +145,8 @@ const componentsGroup1 = [
     [
         {title: 'PrimaryButton', component: <PrimaryButton><GoogleIcon/>Google</PrimaryButton>},
         {title: 'PrimaryButton', component: <PrimaryButton>Sing in</PrimaryButton>},
-        {title: 'PrimaryButton is loading', component: <PrimaryButton isLoading>Loading</PrimaryButton>},
+        {title: 'PrimaryButton isWide', component: <PrimaryButton isWide>Sing in</PrimaryButton>},
+        {title: 'PrimaryButton isLoading isWide', component: <PrimaryButton isLoading isWide>Loading</PrimaryButton>},
         {title: 'SecondaryButton', component: <SecondaryButton><FacebookIcon/>facebook</SecondaryButton>},
         {title: 'SecondaryButton', component: <SecondaryButton>Cancel</SecondaryButton>},
         {title: 'ThirdButton', component: <ThirdButton><FacebookIcon/>Cancel</ThirdButton>},
