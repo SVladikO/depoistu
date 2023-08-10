@@ -152,7 +152,7 @@ export const TRANSLATION = {
             },
             EMAIL: {
                 ua: "Електронна Пошта",
-                en: "Emial"
+                en: "Email"
             },
             PASSWORD: {
                 ua: "Пароль",
@@ -551,6 +551,12 @@ export const TRANSLATION = {
         },
     },
     COMPONENTS: {
+        BUTTON: {
+            LOADING: {
+                en: 'Loading',
+                ua: 'Завантажується'
+            },
+        },
         COMPANY: {
             STATUS_OPEN: {
                 ua: "Відкрито",

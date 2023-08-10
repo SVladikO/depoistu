@@ -1,3 +1,5 @@
+import {keyframes} from "styled-components";
+
 export const FONT_16 = `
     font-size: 16px;
     font-height: 24px;
@@ -71,3 +73,12 @@ export function hexToRgbA(hex, a=1){
     }
     throw new Error('Bad Hex');
 }
+
+export const rotationAnimation = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`

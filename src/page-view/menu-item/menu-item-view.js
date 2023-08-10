@@ -10,7 +10,7 @@ import {translate, TRANSLATION} from "../../utils/translation";
 
 const EditMenuItemSchema = Yup.object().shape(validation.menuItem);
 
-const MenuItemView = ({initialValue, onSubmit, submitButtonTitle}) => {
+const MenuItemView = ({initialValue, onSubmit, submitButtonTitle, isLoading}) => {
     const [wasSubmitted, setWasSubmitted] = useState(false);
     const [imageURL] = useState(initialValue.imageURL);
     const options  = useMemo(() => Object.values(CATEGORY_MAPPER).map(({id,title}) => ({value: id, title})),[initialValue])
@@ -111,7 +111,13 @@ const MenuItemView = ({initialValue, onSubmit, submitButtonTitle}) => {
                             withCleaner
                         />
                     </ContentContainer>
-                    <PrimaryButton type="submit" isWide>{submitButtonTitle}</PrimaryButton>
+                    <PrimaryButton
+                        isWide
+                        type="submit"
+                        isLoading={isLoading}
+                    >
+                        {submitButtonTitle}
+                    </PrimaryButton>
                 </form>
             )}
         </Formik>

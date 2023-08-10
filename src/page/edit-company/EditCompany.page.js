@@ -46,6 +46,22 @@ const EditCompany = () => {
     const openDeletePopup = () => setIsConfirmDeletePopupOpen(true)
     const closeDeletePopup = () => setIsConfirmDeletePopupOpen(false)
 
+    if (isCompanyDeleted) {
+        return (
+            <Notification.Success message={`Company was deleted.`}>
+                <Link to={URL.CUSTOMER_COMPANIES}>Open my companies page.</Link>
+            </Notification.Success>
+        );
+    }
+
+    if (!customerCompaniesFromLocalStorage.length || !companies.find((c => c.ID === companyId))) {
+        return (
+            <Notification.Error message={'No company by this id'}>
+                <Link to={URL.CUSTOMER_COMPANIES}>Open my companies page.</Link>
+            </Notification.Error>
+        );
+    }
+
     const deleteCompany = () => {
         setIsLoading(true)
         closeDeletePopup()
@@ -55,9 +71,7 @@ const EditCompany = () => {
                 LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
                 setIsCompanyDeleted(true);
             })
-            .catch(res => {
-                setRequestError(res.body.message)
-            })
+            .catch(e => setRequestError(e.body.errorMessage))
             .finally(() => setIsLoading(false))
     }
 
@@ -78,6 +92,7 @@ const EditCompany = () => {
         const schedule = getScheduleAsString(values)
         const reqObj = {id: companyId, name, city_id, street, phone1, phone2, phone3, schedule, method: 'put'};
         setIsLoading(true);
+        setRequestError('')
 
         fetchData(BE_API.COMPANY.PUT_UPDATE(), reqObj)
             .then(res => {
@@ -86,7 +101,7 @@ const EditCompany = () => {
 
                 setIsCompanyUpdated(true);
             })
-            .catch(res => setRequestError(res.body.message))
+            .catch(e => setRequestError(e.body.errorMessage))
             .finally(() => setIsLoading(false))
     }
 
@@ -106,13 +121,8 @@ const EditCompany = () => {
         );
     }
 
-    if (isLoading) {
-        return <Notification.Loading/>;
-    }
-
     const DeleteCompanyButton = () => (
-        <SecondaryButton isWide onClick={openDeletePopup}>
-            <RemoveIcon/>
+        <SecondaryButton isWide onClick={deleteCompany}><RemoveIcon/>
             {translate(TRANSLATION.PAGE.EDIT_COMPANY.BUTTON.DELETE_COMPANY)}
         </SecondaryButton>
     )
@@ -141,6 +151,7 @@ const EditCompany = () => {
             <DeleteCompanyButton />
             <RowSplitter height="15px" />
             <CompanyView
+                isLoading={isLoading}
                 initialValues={getInitialValues(company, schedule)}
                 onSubmit={onSubmit}
                 submitButtonTitle={translate(TRANSLATION.PAGE.EDIT_COMPANY.BUTTON.EDIT_COMPANY)}

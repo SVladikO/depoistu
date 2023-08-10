@@ -57,7 +57,7 @@ const renderCompanyPhotos = (photos, setPictures) => {
     );
 }
 
-const CompanyView = ({initialValues, onSubmit, submitButtonTitle}) => {
+const CompanyView = ({initialValues, onSubmit, submitButtonTitle, isLoading}) => {
     const [showCityPopup, setShowCityPopup] = useState(false);
     const [wasSubmitted, setWasSubmitted] = useState(false);
 
@@ -169,7 +169,13 @@ const CompanyView = ({initialValues, onSubmit, submitButtonTitle}) => {
                             onClose={closeCityPopup}
                         />
                     )}
-                    <PrimaryButton type={'submit'} isWide>{submitButtonTitle}</PrimaryButton>
+                    <PrimaryButton
+                        isWide
+                        type="submit"
+                        isLoading={isLoading}
+                    >
+                        {submitButtonTitle}
+                    </PrimaryButton>
                 </form>
             )}
         </Formik>

@@ -35,19 +35,15 @@ const AddCompany = () => {
         const reqObj = {customer_id, name, city_id, street, phone1, phone2, phone3, schedule};
 
         setIsLoading(true);
-
+        setRequestError('')
         fetchData(BE_API.COMPANY.POST_CREATE(), reqObj)
             .then(res => {
                 setIsCompanySaved(true);
                 setNewCompanyId(res.body.insertId);
                 LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES)
             })
-            .catch(res => setRequestError(res.body.message))
+            .catch(e => setRequestError(e.body.errorMessage))
             .finally(() => setIsLoading(false))
-    }
-
-    if (isLoading) {
-        return <Notification.Loading/>;
     }
 
     if (isCompanySaved) {
@@ -66,6 +62,7 @@ const AddCompany = () => {
         <>
             {requestError && <Notification.Error message={requestError}/>}
             <CompanyView
+                isLoading={isLoading}
                 initialValues={initialValues}
                 onSubmit={onSubmit}
                 submitButtonTitle={translate(TRANSLATION.PAGE.ADD_COMPANY.BUTTON.ADD_COMPANY)}
