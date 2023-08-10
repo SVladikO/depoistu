@@ -4,7 +4,7 @@ import {ReactComponent as LoadingIcon} from "../../assets/icons/loading.svg";
 import {translate, TRANSLATION} from "../../utils/translation";
 
 
-export const PrimaryButton = ({isLoading, children, isWide}) => {
+export const PrimaryButton = ({isLoading, children, isWide, clickHandler}) => {
 
     if (isLoading) {
         return <LoadingButtonStyle isWide={isWide}>
@@ -14,7 +14,7 @@ export const PrimaryButton = ({isLoading, children, isWide}) => {
     }
 
     return (
-        <PrimaryButtonStyle isWide={isWide}>{children}</PrimaryButtonStyle>
+        <PrimaryButtonStyle isWide={isWide} onClick={clickHandler}>{children}</PrimaryButtonStyle>
     )
 
 }

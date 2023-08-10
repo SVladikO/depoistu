@@ -122,10 +122,12 @@ const EditCompany = () => {
     }
 
     const DeleteCompanyButton = () => (
-        <SecondaryButton isWide onClick={deleteCompany}><RemoveIcon/>
+        <SecondaryButton isWide onClick={openDeletePopup}><RemoveIcon/>
             {translate(TRANSLATION.PAGE.EDIT_COMPANY.BUTTON.DELETE_COMPANY)}
         </SecondaryButton>
     )
+
+    console.log(isConfirmDeletePopupOpen)
 
     return (
         <>
@@ -135,10 +137,10 @@ const EditCompany = () => {
                         {translate(TRANSLATION.COMPONENTS.POPUP.ARE_YOU_SURE)}
                     </PopupTitle>
                     <PopupButtons>
-                        <PrimaryButton isWide onClick={deleteCompany}>
+                        <PrimaryButton isWide clickHandler={deleteCompany}>
                             {translate(TRANSLATION.YES)}
                         </PrimaryButton>
-                        <PrimaryButton isWide onClick={closeDeletePopup}>
+                        <PrimaryButton isWide clickHandler={closeDeletePopup}>
                             {translate(TRANSLATION.NO)}
                         </PrimaryButton>
                     </PopupButtons>
