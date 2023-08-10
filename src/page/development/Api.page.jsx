@@ -91,23 +91,26 @@ const Route = ({route}) => {
                         {details.permission && (
                             <div>
                                 <DetailsTitle>PERMISSON:</DetailsTitle>
-                                <DetailsBody>{details.permission}</DetailsBody>
+                                <DetailsBody>{details.permission.map(row => <div>{row}</div>)}</DetailsBody>
                             </div>
                         )
                         }
-                        {details.validation && <DetailsTitle>VALIDATION: {details.validation}</DetailsTitle>}
+                        {details.bodyValidation &&
+                            <DetailsTitle>BODY_VALIDATION: {' ' + details.bodyValidation}</DetailsTitle>}
                         {details.requestBody && (
                             <>
                                 <DetailsTitle>REQYEST BODY:</DetailsTitle>
                                 <DetailsBody>
                                     <Flex alignItems={"flex-start"} flexDirection={'column'}>
                                         <div>{'{'}</div>
-                                        {Object.keys(details.requestBody).map(key => (
-                                            <div key={key} style={{padding: '0 0 0 20px'}}>
-                                                <span>{key}: {' '}</span>
-                                                <span>{' '}{details.requestBody[key]}</span>
-                                            </div>
-                                        ))}
+                                        <table style={{padding: '0 0 0 20px'}}>
+                                            {Object.keys(details.requestBody).map(key => (
+                                                <tr key={key}>
+                                                    <td>{key}:</td>
+                                                    <td>{details.requestBody[key]}</td>
+                                                </tr>
+                                            ))}
+                                        </table>
                                         <div>{'}'}</div>
                                     </Flex>
                                 </DetailsBody>
