@@ -104,8 +104,7 @@ const SettingPage = () => {
                             withCleaner
                         />
                         <RowSplitter height={'10px'}/>
-                        <PrimaryButton type="submit"
-                                       isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.VERIFICATION)}</PrimaryButton>
+                        <PrimaryButton type="submit" isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.VERIFICATION)}</PrimaryButton>
                     </form>
                 )}
             </Formik>

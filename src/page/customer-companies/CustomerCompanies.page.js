@@ -59,8 +59,8 @@ const CustomerCompaniesPage = () => {
                             </Link>
                             <QRCodeButton onClick={showQRCode(company.ID)}><QRCodeIcon/></QRCodeButton>
                             <Link to={ROUTER.EDIT_MENU.URL + '/' + company.ID} style={{width: '140px'}}>
-                                <PrimaryButton
-                                    isWide><EditIcon/>{translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.MENU)}
+                                <PrimaryButton isWide>
+                                    <EditIcon/>{translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.MENU)}
                                 </PrimaryButton>
                             </Link>
                         </EditBar>
@@ -68,8 +68,9 @@ const CustomerCompaniesPage = () => {
             )
             }
             <Link to={URL.ADD_COMPANY}>
-                <PrimaryButton
-                    isWide>{translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.ADD_COMPANY)}</PrimaryButton>
+                <PrimaryButton isWide>
+                    {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.ADD_COMPANY)}
+                </PrimaryButton>
             </Link>
         < />
     )
