@@ -2,7 +2,7 @@ import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 
 import {Wrapper, AmountInfo, Content, FixedContent} from './Order.page.style';
-import {NotificationTDB, OrderHistoryRow, Price, PrimaryButton} from "../../components";
+import {NotificationTDB, OrderHistoryRow, Price, FetchButton} from "../../components";
 
 import {ReactComponent as EmptyBasketIcon} from "../../assets/icons/empty_basket.svg";
 
@@ -40,9 +40,9 @@ const OrderPage = () => {
 
     const orderButton =
         isCustomerLogged
-            ? <PrimaryButton onClick={placeOrder}>Place Order</PrimaryButton>
+            ? <FetchButton onClick={placeOrder}>Place Order</FetchButton>
             : <Link to={`${ROUTER.SING_IN.URL}?backUrl=${ROUTER.ORDER_REVIEW.URL}`}>
-                <PrimaryButton>Login to place Order</PrimaryButton>
+                <FetchButton>Login to place Order</FetchButton>
             </Link>
 
     const getOrderItems = () => (
@@ -68,7 +68,7 @@ const OrderPage = () => {
                     description="Looks like you haven't made your order yet."
                 >
                 <Link to={''}>
-                    <PrimaryButton isWide>Shop Now</PrimaryButton>
+                    <FetchButton isWide>Shop Now</FetchButton>
                 </Link>
                 </NotificationTDB>
         }</Wrapper>

@@ -11,7 +11,7 @@ import {
     Label,
     PInput,
     Popup,
-    PrimaryButton,
+    FetchButton,
     SecondaryButton,
     WeekScheduleInput
 } from "../../components";
@@ -169,13 +169,13 @@ const CompanyView = ({initialValues, onSubmit, submitButtonTitle, isLoading}) =>
                             onClose={closeCityPopup}
                         />
                     )}
-                    <PrimaryButton
+                    <FetchButton
                         isWide
                         type="submit"
                         isLoading={isLoading}
                     >
                         {submitButtonTitle}
-                    </PrimaryButton>
+                    </FetchButton>
                 </form>
             )}
         </Formik>

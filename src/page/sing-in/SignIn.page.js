@@ -5,7 +5,7 @@ import {Link, useNavigate} from "react-router-dom";
 
 import {
     Input,
-    PrimaryButton,
+    FetchButton,
     ContentContainer,
     Label,
     NavigationLabelHref,
@@ -93,13 +93,13 @@ const SignInPage = () => {
                                 label={translate(TRANSLATION.PAGE.SIGN_IN.ACCOUNT_CONFIRMATION)}
                             />
                         </ContentContainer>
-                        <PrimaryButton
+                        <FetchButton
                             isWide
                             type="submit"
                             isLoading={isLoading}
                         >
                             {translate(TRANSLATION.PAGE.SIGN_IN.TOP_TITLE)}
-                        </PrimaryButton>
+                        </FetchButton>
                     </form>
                 )}
             </Formik>

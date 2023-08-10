@@ -18,12 +18,12 @@ import {
     LocationWrapper,
     CloseStatus
 } from "./Company.style";
-import {ThirdButton} from "../Button/Button.style";
 
 import {parseSchedule} from "../../utils/company";
 import ScheduleDetails from "../WeekScheduleOutput/WeekScheduleOutput";
 import {CITY_TRANSLATION_IDS} from "../../utils/cities";
 import {translate, TRANSLATION as TR} from "../../utils/translation";
+import {ThirdButton} from "../Buttons/ThirdButton";
 
 const Company = (props) => {
 

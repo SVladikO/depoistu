@@ -1,9 +1,5 @@
-import {
-    SecondaryButton,
-    ThirdButton,
-} from "./Button/Button.style";
-
-import {PrimaryButton} from './Button/Button';
+import {FetchButton} from './Buttons/FetchButton';
+import {PrimaryButton} from './Buttons/PrimaryButton';
 import {Input, PInput, Textarea} from "./Input/Input";
 import NotificationTDB from "./NotificationTDB/NotificationTDB";
 import Price from "./Price/Price";
@@ -40,6 +36,8 @@ import {Label} from "./Label/Label.style";
 import {MenuItemDetails} from './MenuItem/MenuItem';
 import Dropdown from "./Dropdown/Dropdown";
 import WarningMessage from "./WarningMessage/WarningMessage";
+import {SecondaryButton} from "./Buttons/SecondaryButton";
+import {ThirdButton} from "./Buttons/ThirdButton";
 
 export {
     MenuItemDetails,
@@ -72,6 +70,7 @@ export {
     Absolute,
     Popup,
     CloseButton,
+    FetchButton,
     PrimaryButton,
     SecondaryButton,
     ContentContainer,

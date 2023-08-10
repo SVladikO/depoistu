@@ -29,7 +29,7 @@ import {
     SettingMenuRow,
     AccountSettings,
     NotificationTDB,
-    PrimaryButton,
+    FetchButton,
     Input,
     Notification,
     RowSplitter
@@ -58,10 +58,10 @@ const SettingPage = () => {
         >
             <EditBar>
                 <Link to={URL.SING_IN}>
-                    <PrimaryButton isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.SING_IN)}</PrimaryButton>
+                    <FetchButton isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.SING_IN)}</FetchButton>
                 </Link>
                 <Link to={URL.SING_UP}>
-                    <PrimaryButton isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.SING_UP)}</PrimaryButton>
+                    <FetchButton isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.SING_UP)}</FetchButton>
                 </Link>
             </EditBar>
         </NotificationTDB>
@@ -104,7 +104,7 @@ const SettingPage = () => {
                             withCleaner
                         />
                         <RowSplitter height={'10px'}/>
-                        <PrimaryButton type="submit" isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.VERIFICATION)}</PrimaryButton>
+                        <FetchButton type="submit" isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.VERIFICATION)}</FetchButton>
                     </form>
                 )}
             </Formik>
