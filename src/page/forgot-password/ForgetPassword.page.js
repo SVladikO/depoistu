@@ -3,7 +3,7 @@ import {Formik} from "formik";
 import * as Yup from "yup";
 import {Link} from "react-router-dom";
 import {Input, Label, PrimaryButton, ContentContainer, NotificationTDB} from "../../components";
-import {ReactComponent as MailIcon} from "../../icons/mail.svg";
+import {ReactComponent as MailIcon} from "../../assets/icons/mail.svg";
 import {translate, TRANSLATION} from "../../utils/translation";
 import {URL} from "../../utils/config";
 import validation from "../../utils/validation";

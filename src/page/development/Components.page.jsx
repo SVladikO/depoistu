@@ -31,28 +31,29 @@ import
     Company,
     Label,
     CloseButton,
-    MenuItemDetails
+    MenuItemDetails,
+    Dropdown
 } from "../../components";
 
-import {ReactComponent as QRCodeIcon} from "../../icons/qr_code.svg";
-import {ReactComponent as EmptyBasketIcon} from "../../icons/empty_basket.svg";
-import {ReactComponent as GoogleIcon} from '../../icons/google.svg';
-import {ReactComponent as FacebookIcon} from '../../icons/facebook.svg';
-import {ReactComponent as MailIcon} from '../../icons/mail.svg';
-import {ReactComponent as LockIcon} from '../../icons/lock.svg';
-import {ReactComponent as LogOutIcon} from "../../icons/logout.svg";
-import {ReactComponent as SandwichIcon} from '../../icons/sandwich.svg';
-import {ReactComponent as LanguageIcon} from "../../icons/language.svg";
+import {ReactComponent as QRCodeIcon} from "../../assets/icons/qr_code.svg";
+import {ReactComponent as EmptyBasketIcon} from "../../assets/icons/empty_basket.svg";
+import {ReactComponent as GoogleIcon} from '../../assets/icons/google.svg';
+import {ReactComponent as FacebookIcon} from '../../assets/icons/facebook.svg';
+import {ReactComponent as MailIcon} from '../../assets/icons/mail.svg';
+import {ReactComponent as LockIcon} from '../../assets/icons/lock.svg';
+import {ReactComponent as LogOutIcon} from "../../assets/icons/logout.svg";
+import {ReactComponent as SandwichIcon} from '../../assets/icons/sandwich.svg';
+import {ReactComponent as LanguageIcon} from "../../assets/icons/language.svg";
 
 import {COLOR} from "../../utils/theme";
 import AccountSettings from "../../components/AccountSettings/AccountSettings";
 import ImageContent from "../../components/Popup/content/image/ImageContent";
-import IntroContent, {InfoText} from "../../components/Popup/content/info/Info";
+import IntroContent from "../../components/Popup/content/info/Info";
 import CityContent from "../../components/Popup/content/city/CityContent"
-import {ReactComponent as LocationIcon} from "../../icons/location.svg";
+import {ReactComponent as LocationIcon} from "../../assets/icons/location.svg";
 import Checkbox from "../../components/Checkbox/Checkbox";
 import {EditBar, QRCodeButton} from "../customer-companies/CustomerCompanies.style";
-import {ReactComponent as EditIcon} from "../../icons/edit.svg";
+import {ReactComponent as EditIcon} from "../../assets/icons/edit.svg";
 import {Link} from "react-router-dom";
 import {getOnlyCityIds} from "../../utils/cities";
 
@@ -75,6 +76,58 @@ function ExampleCategoryWithSelected() {
     )
 }
 
+const [UnselectedDropdown, SelectedDropdown, WithErrorDropdown] = (() => {
+    const options = [
+        {value: 1, title: 'Burger1'},
+        {value: 2, title: 'Burger2'},
+        {value: 3, title: 'Burger3'},
+        {value: 4, title: 'Burger4'},
+        {value: 5, title: 'Burger5'},
+        {value: 6, title: 'Burger6'},
+        {value: 7, title: 'Burger7'},
+        {value: 8, title: 'Burger8'},
+        {value: 9, title: 'Burger9'},
+        {value: 10, title: 'Burger10'},
+        {value: 11, title: 'Burger11'},
+        {value: 12, title: 'Burger12'},
+    ];
+
+    return [
+         () => {
+            const [selectedOption, setSelectedOption] = useState();
+            return (
+                <Dropdown
+                    selectedOption={selectedOption}
+                    options={options}
+                    onSelect={setSelectedOption}
+                />
+            )
+        },
+        () => {
+            const [selectedOption, setSelectedOption] = useState(options[0]);
+            return (
+                <Dropdown
+                    selectedOption={selectedOption}
+                    options={options}
+                    onSelect={setSelectedOption}
+                />
+            )
+        },
+        () => {
+            const [selectedOption, setSelectedOption] = useState(options[0]);
+            return (
+                <Dropdown
+                    selectedOption={selectedOption}
+                    options={options}
+                    onSelect={setSelectedOption}
+                    errorMessage={'Some error'}
+                    isTouched
+                />
+            )
+        }
+    ]
+})();
+
 const componentsGroup1 = [
     [
         {
@@ -87,11 +140,13 @@ const componentsGroup1 = [
         },
         {title: 'Rating', component: <Rating>{`4.9`}</Rating>},
         {title: 'Discount', component: <Discount>{`-10`}</Discount>},
-        {title: 'Price', component: <Price small={false} big>50.00</Price>},
+        {title: 'Price', component: <Price>50</Price>},
     ],
     [
         {title: 'PrimaryButton', component: <PrimaryButton><GoogleIcon/>Google</PrimaryButton>},
         {title: 'PrimaryButton', component: <PrimaryButton>Sing in</PrimaryButton>},
+        {title: 'PrimaryButton isWide', component: <PrimaryButton isWide>Sing in</PrimaryButton>},
+        {title: 'PrimaryButton isLoading isWide', component: <PrimaryButton isLoading isWide>Loading</PrimaryButton>},
         {title: 'SecondaryButton', component: <SecondaryButton><FacebookIcon/>facebook</SecondaryButton>},
         {title: 'SecondaryButton', component: <SecondaryButton>Cancel</SecondaryButton>},
         {title: 'ThirdButton', component: <ThirdButton><FacebookIcon/>Cancel</ThirdButton>},
@@ -159,32 +214,32 @@ const componentsGroup2 = [
             title: 'MenuItemDetails',
             component:
                 <MenuItemDetails
-                          item={{
-                              ID: 10,
-                              NAME: '4 Cheese',
-                              CATEGORY_ID: 1,
-                              DESCRIPTION: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella',
-                              IMAGE_URL: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
-                              COOKING_TIME: 15,
-                              PRICE: 170,
-                              SIZE: 150,
-                          }}
+                    item={{
+                        ID: 10,
+                        NAME: '4 Cheese',
+                        CATEGORY_ID: 1,
+                        DESCRIPTION: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella',
+                        IMAGE_URL: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
+                        COOKING_TIME: 15,
+                        PRICE: 170,
+                        SIZE: 150,
+                    }}
                 />
         },
         {
             title: 'MenuItem',
             component:
                 <MenuItem
-                          item={{
-                              ID: 10,
-                              NAME: '4 Cheese',
-                              CATEGORY_ID: 1,
-                              DESCRIPTION: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella',
-                              IMAGE_URL: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
-                              COOKING_TIME: 15,
-                              PRICE: 170,
-                              SIZE: 150,
-                          }}
+                    item={{
+                        ID: 10,
+                        NAME: '4 Cheese',
+                        CATEGORY_ID: 1,
+                        DESCRIPTION: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella',
+                        IMAGE_URL: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
+                        COOKING_TIME: 15,
+                        PRICE: 170,
+                        SIZE: 150,
+                    }}
                 />
         },
         {
@@ -277,8 +332,10 @@ const componentsGroup2 = [
         {title: 'Notification.Loading', component: <Notification.Loading/>},
         {title: 'Notification.Error', component: <Notification.Error message={'Broken content.'}/>},
         {title: 'Notification.Success', component: <Notification.Success message={'Company was created.'}/>},
+        {title: 'Dropdown Unselected', component: <UnselectedDropdown />},
+        {title: 'Dropdown WithSelected', component:<SelectedDropdown />},
+        {title: 'Dropdown WithError', component: <WithErrorDropdown />},
     ],
-
 ];
 const componentsGroup3 = [
     [

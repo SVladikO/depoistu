@@ -1,9 +1,9 @@
 import {
-    PrimaryButton,
     SecondaryButton,
     ThirdButton,
 } from "./Button/Button.style";
 
+import {PrimaryButton} from './Button/Button';
 import {Input, PInput, Textarea} from "./Input/Input";
 import NotificationTDB from "./NotificationTDB/NotificationTDB";
 import Price from "./Price/Price";
@@ -38,11 +38,15 @@ import CategoryMenuRow from "./CategoryMenuRow/CategoryMenuRow";
 import EditMenuRow from "./EditMenuRow/EditMenuRow";
 import {Label} from "./Label/Label.style";
 import {MenuItemDetails} from './MenuItem/MenuItem';
+import Dropdown from "./Dropdown/Dropdown";
+import WarningMessage from "./WarningMessage/WarningMessage";
 
 export {
     MenuItemDetails,
     SettingMenuRow,
+    WarningMessage,
     Company,
+    Dropdown,
     CategoryItem,
     Discount,
     Input,

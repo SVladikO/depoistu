@@ -53,7 +53,7 @@ export const BackButtonInnerWrapper = styled.div`
 `;
 
 export const CitiesWrapper = styled.div`
-  padding: 0 10px 10px;
+  padding: 6px 12px 5px 10px;
   width: 100%;
   overflow: auto;
   

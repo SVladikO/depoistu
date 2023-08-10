@@ -17,38 +17,30 @@ import {getScheduleAsString} from "../../utils/company";
 import {useRedirectToSettingPage} from "../../utils/hook";
 import {translate, TRANSLATION} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {ReactComponent as LinkArrowIcon} from "../../icons/right-anchor.svg";
-
+import {ReactComponent as LinkArrowIcon} from "../../assets/icons/right-anchor.svg";
 
 const AddCompany = () => {
     useRedirectToSettingPage();
-    const CUSTOMER = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER)
     const [isLoading, setIsLoading] = useState(false);
     const [isCompanySaved, setIsCompanySaved] = useState(false);
     const [requestError, setRequestError] = useState("");
     const [newCompanyId, setNewCompanyId] = useState();
 
     const onSubmit = values => {
-        const {name, city_id, street, phone} = values;
+        const {name, city_id, street, phone1, phone2, phone3} = values;
         const schedule = getScheduleAsString(values)
-        const customer_id = CUSTOMER.ID;
-
-        const reqObj = {customer_id, name, city_id, street, phone, schedule};
+        const reqObj = {name, city_id, street, phone1, phone2, phone3, schedule};
 
         setIsLoading(true);
-
+        setRequestError('')
         fetchData(BE_API.COMPANY.POST_CREATE(), reqObj)
             .then(res => {
                 setIsCompanySaved(true);
                 setNewCompanyId(res.body.insertId);
                 LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES)
             })
-            .catch(res => setRequestError(res.body.message))
+            .catch(e => setRequestError(e.body.errorMessage))
             .finally(() => setIsLoading(false))
-    }
-
-    if (isLoading) {
-        return <Notification.Loading/>;
     }
 
     if (isCompanySaved) {
@@ -67,6 +59,7 @@ const AddCompany = () => {
         <>
             {requestError && <Notification.Error message={requestError}/>}
             <CompanyView
+                isLoading={isLoading}
                 initialValues={initialValues}
                 onSubmit={onSubmit}
                 submitButtonTitle={translate(TRANSLATION.PAGE.ADD_COMPANY.BUTTON.ADD_COMPANY)}
