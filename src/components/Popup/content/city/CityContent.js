@@ -38,15 +38,6 @@ export const CityContent = ({onSelectCity, availableCityIds, onClose}) => {
         setSelectedRegionId('')
     }
 
-    const renderBackButton = () => (
-        <BackButtonWrapper>
-            <BackButtonInnerWrapper onClick={handleBackButtonClick}>
-                <BackIcon/>
-                {translate(TRANSLATION.PAGE.SEARCH.ARROW_LABEL)}
-            </BackButtonInnerWrapper>
-        </BackButtonWrapper>
-    );
-
     /**
      * Should handle select region or city by id.
      *
@@ -66,15 +57,23 @@ export const CityContent = ({onSelectCity, availableCityIds, onClose}) => {
         onClose()
     }
 
+    const BackButton = () => (
+        <BackButtonWrapper>
+            <BackButtonInnerWrapper onClick={handleBackButtonClick}>
+                <BackIcon/>
+                {translate(TRANSLATION.PAGE.SEARCH.ARROW_LABEL)}
+            </BackButtonInnerWrapper>
+        </BackButtonWrapper>
+    );
+
     const regionLabel = translate(TRANSLATION.COMPONENTS.POPUP.CITY.INPUT);
 
     return (
-        <Wrapper onClick={disableEventBubbling}>
-            {!isRegion && renderBackButton()}
+        <Wrapper isRegion={isRegion} onClick={disableEventBubbling}>
+            {!isRegion && <BackButton />}
             <CitiesWrapper
                 className="pma-cities"
-                style={{height: isRegion ? '100%' : '92%'}}
-                onClick={e => e.stopPropagation()}
+                onClick={disableEventBubbling}
             >
                 {/*Expected array structure: ['101', '202', ... ]*/}
                 {citiesOrRegionsToRender.map((id, i) =>
