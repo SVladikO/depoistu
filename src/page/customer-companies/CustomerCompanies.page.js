@@ -5,7 +5,7 @@ import QRCode from 'qrcode';
 
 import {EditBar, QRCodeButton, ImageQR} from "./CustomerCompanies.style";
 
-import {Company, Notification, FetchButton, Popup} from "../../components";
+import {Company, Notification, Popup, PrimaryButton} from "../../components";
 import {ReactComponent as EditIcon} from "../../assets/icons/edit.svg";
 
 import {BE_API} from '../../utils/fetch'
@@ -53,24 +53,24 @@ const CustomerCompaniesPage = () => {
                     <Company company={company} key={company.ID}>
                         <EditBar>
                             <Link to={ROUTER.EDIT_COMPANY.URL + '/' + company.ID} style={{width: '140px'}}>
-                                <FetchButton
+                                <PrimaryButton
                                     isWide><EditIcon/>{translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.COMPANY)}
-                                </FetchButton>
+                                </PrimaryButton>
                             </Link>
                             <QRCodeButton onClick={showQRCode(company.ID)}><QRCodeIcon/></QRCodeButton>
                             <Link to={ROUTER.EDIT_MENU.URL + '/' + company.ID} style={{width: '140px'}}>
-                                <FetchButton isWide>
+                                <PrimaryButton isWide>
                                     <EditIcon/>{translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.MENU)}
-                                </FetchButton>
+                                </PrimaryButton>
                             </Link>
                         </EditBar>
                     </Company>
             )
             }
             <Link to={URL.ADD_COMPANY}>
-                <FetchButton isWide>
+                <PrimaryButton isWide>
                     {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.ADD_COMPANY)}
-                </FetchButton>
+                </PrimaryButton>
             </Link>
         < />
     )

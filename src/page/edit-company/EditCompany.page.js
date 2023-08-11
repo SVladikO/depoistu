@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Link, useParams} from "react-router-dom";
 
-import {Notification, FetchButton, RowSplitter, SecondaryButton} from "../../components";
+import {Notification, RowSplitter, SecondaryButton, PrimaryButton} from "../../components";
 
 import {ReactComponent as RemoveIcon} from "../../assets/icons/remove_icon.svg";
 
@@ -137,12 +137,12 @@ const EditCompany = () => {
                         {translate(TRANSLATION.COMPONENTS.POPUP.ARE_YOU_SURE)}
                     </PopupTitle>
                     <PopupButtons>
-                        <FetchButton isWide clickHandler={deleteCompany}>
+                        <PrimaryButton isWide clickHandler={deleteCompany}>
                             {translate(TRANSLATION.YES)}
-                        </FetchButton>
-                        <FetchButton isWide clickHandler={closeDeletePopup}>
+                        </PrimaryButton>
+                        <PrimaryButton isWide clickHandler={closeDeletePopup}>
                             {translate(TRANSLATION.NO)}
-                        </FetchButton>
+                        </PrimaryButton>
                     </PopupButtons>
                 </Popup.Info>
             )}

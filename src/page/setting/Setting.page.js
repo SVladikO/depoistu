@@ -32,7 +32,8 @@ import {
     FetchButton,
     Input,
     Notification,
-    RowSplitter
+    RowSplitter,
+    PrimaryButton
 } from '../../components'
 
 import LanguagePopup from "../../features/language/LanguagePopup";
@@ -58,10 +59,10 @@ const SettingPage = () => {
         >
             <EditBar>
                 <Link to={URL.SING_IN}>
-                    <FetchButton isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.SING_IN)}</FetchButton>
+                    <PrimaryButton isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.SING_IN)}</PrimaryButton>
                 </Link>
                 <Link to={URL.SING_UP}>
-                    <FetchButton isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.SING_UP)}</FetchButton>
+                    <PrimaryButton isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.SING_UP)}</PrimaryButton>
                 </Link>
             </EditBar>
         </NotificationTDB>

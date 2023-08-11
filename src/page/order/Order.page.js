@@ -2,7 +2,7 @@ import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 
 import {Wrapper, AmountInfo, Content, FixedContent} from './Order.page.style';
-import {NotificationTDB, OrderHistoryRow, Price, FetchButton} from "../../components";
+import {NotificationTDB, OrderHistoryRow, Price, FetchButton, PrimaryButton} from "../../components";
 
 import {ReactComponent as EmptyBasketIcon} from "../../assets/icons/empty_basket.svg";
 
@@ -10,7 +10,7 @@ import {ReactComponent as EmptyBasketIcon} from "../../assets/icons/empty_basket
 
 import {ROUTER} from '../../utils/config'
 // import {fetchData, BE_API} from "../../WeekScheduleOutput.js/fetch";
-import {LocalStorage} from "../../utils/localStorage";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 
 const OrderPage = () => {
     const orders = useSelector(state => state.order.value);
@@ -42,7 +42,7 @@ const OrderPage = () => {
         isCustomerLogged
             ? <FetchButton onClick={placeOrder}>Place Order</FetchButton>
             : <Link to={`${ROUTER.SING_IN.URL}?backUrl=${ROUTER.ORDER_REVIEW.URL}`}>
-                <FetchButton>Login to place Order</FetchButton>
+                <PrimaryButton>Login to place Order</PrimaryButton>
             </Link>
 
     const getOrderItems = () => (
@@ -68,7 +68,7 @@ const OrderPage = () => {
                     description="Looks like you haven't made your order yet."
                 >
                 <Link to={''}>
-                    <FetchButton isWide>Shop Now</FetchButton>
+                    <PrimaryButton isWide>Shop Now</PrimaryButton>
                 </Link>
                 </NotificationTDB>
         }</Wrapper>

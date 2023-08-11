@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Formik} from "formik";
 import * as Yup from "yup";
 import {Link} from "react-router-dom";
-import {Input, Label, FetchButton, ContentContainer, NotificationTDB} from "../../components";
+import {Input, Label, FetchButton, ContentContainer, NotificationTDB, PrimaryButton} from "../../components";
 import {ReactComponent as MailIcon} from "../../assets/icons/mail.svg";
 import {translate, TRANSLATION} from "../../utils/translation";
 import {URL} from "../../utils/config";
@@ -18,9 +18,9 @@ const ForgetPasswordPage = () => {
         return (
             <NotificationTDB title="Request was sent!" description="Please check your mail to reset password">
                 <Link to={URL.SING_IN}>
-                    <FetchButton isWide>
+                    <PrimaryButton isWide>
                         {translate(TRANSLATION.PAGE.FORGOT_PASSWORD.LINK_TO_SIGN_IN_PAGE)}
-                    </FetchButton>
+                    </PrimaryButton>
                 </Link>
             </NotificationTDB>
         );
