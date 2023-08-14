@@ -43,6 +43,12 @@ export const TOP_CATEGORIES = {
     BAR: [26, 27, 28, 29, 30],
 }
 
+export const getCategoryUniqueIds = (menuItems = [], showAllCategories) => {
+    const categoryIds = menuItems.map(mi => mi.CATEGORY_ID);
+    const allCategories = showAllCategories ? Object.keys(CATEGORY_MAPPER).map(id => +id) : []
+
+    return [...new Set([...categoryIds, ...allCategories])]
+}
 export const getTopCategories = (menuCategoryIds = []) => {
     const topCategories = {
         KITCHEN: {ids: [], translationKey: TR.TOP_CATEGORIES.KITCHEN},
