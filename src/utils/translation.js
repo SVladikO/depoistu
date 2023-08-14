@@ -187,7 +187,7 @@ export const TRANSLATION = {
     MEASUREMENTS: {
         PRICE: {
             ua: 'грн',
-            en: 'uah'
+            en: 'UAH'
         },
         WEIGHT: {
             ua: "г",
@@ -199,7 +199,7 @@ export const TRANSLATION = {
         },
         PREPARING: {
             ua: "хв",
-            en: 'mim'
+            en: 'min'
         },
     },
     PAGE_VIEW: {
