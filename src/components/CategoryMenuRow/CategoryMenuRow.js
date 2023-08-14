@@ -12,7 +12,7 @@ import {
     SliderStyle, BottomLine
 } from "./CategoryMenuRow.style";
 
-import {CategoryItem, ContentContainer} from "../../components";
+import {CategoryItem, ContentContainer, RowSplitter} from "../../components";
 import {CATEGORY_MAPPER} from '../../utils/category';
 import {getTopCategories} from '../../utils/category';
 import {translate} from "../../utils/translation";
@@ -98,10 +98,17 @@ const CategoryMenuRow = ({
     }, [menuItems]);
 
     return (
-        <ContentContainer>
-            {renderTopCategories()}
-            {renderSubCategories()}
-        </ContentContainer>
+        <div style={{position: 'sticky', top: -1, zIndex: 10}}>
+            <div style={{position: 'relative', top: 0, zIndex: 10, left: 0, right: 0}}>
+                <div style={{position: 'absolute', top: 0, zIndex: 10, left: -10, right: -10}}>
+                    <ContentContainer borderRadius={'0 0 0 0'}>
+                        {renderTopCategories()}
+                        {renderSubCategories()}
+                    </ContentContainer>
+                </div>
+                <RowSplitter height={'100px'}/>
+            </div>
+        </div>
     )
 }
 
