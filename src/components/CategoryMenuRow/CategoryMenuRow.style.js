@@ -41,5 +41,11 @@ export const SliderStyle = styled.div`
   .swiper-slide {
     //width: auto !important;
     min-width: 100px;
+    & > div {
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 `;
