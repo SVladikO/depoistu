@@ -21,7 +21,7 @@ const CategoryMenuRow = ({
                              showAllCategories = false,
                              menuItems = [],
                              showMenuItemAmount,
-                             selectedCategoryId,
+                             selectedSubCategoryId,
                              changeSubCategory,
                          }) => {
     const [topCategories, setTopCategories] = useState([]);
@@ -59,25 +59,34 @@ const CategoryMenuRow = ({
             <Swiper
                 modules={[Scrollbar, FreeMode]}
                 scrollbar={{enabled: true, hide: true}}
-                freeMode={{enabled: true, sticky: false, momentum: true, momentumBounce: true, momentumRatio: 1, momentumVelocityRatio: 1}}
+                freeMode={{
+                    enabled: true,
+                    sticky: false,
+                    momentum: true,
+                    momentumBounce: true,
+                    momentumRatio: 1,
+                    momentumVelocityRatio: 1
+                }}
                 slidesPerView={3}
                 spaceBetween={10}
                 className="category-slider"
             >
-                {subCategories?.ids?.map((category_id) => (
-                    <SwiperSlide key={category_id}>
+                {subCategories?.ids?.map((category_id) => {
+                    console.log('selectedSubCategoryId === category_id', selectedSubCategoryId === category_id, selectedSubCategoryId, category_id)
+
+                    return <SwiperSlide key={category_id}>
                         <CategoryItem
                             category={CATEGORY_MAPPER[category_id]}
                             clickHandler={() => changeSubCategory(category_id)}
-                            isSelected={selectedCategoryId === category_id}
+                            isSelected={selectedSubCategoryId === category_id}
                             itemsAmountPerCategory={showMenuItemAmount ? menuItems.filter(mi => mi.CATEGORY_ID === category_id).length : 0}
                         />
                     </SwiperSlide>
-                ))
+                })
                 }
             </Swiper>
         </SliderStyle>
-    ), [subCategories]);
+    ), [subCategories, selectedSubCategoryId]);
 
 
     useEffect(() => {

@@ -19,13 +19,13 @@ const SearchDetailsPage = () => {
     const [selectedSubCategoryId, setSelectedSubCategoryId] = useState(0);
 
     const scrollTo = category_id => {
-        const topOfElement = document.querySelector(`#category_${category_id}`).offsetTop - 108;
+        const topOfElement = document.querySelector(`#category_${category_id}`).offsetTop - 110;
         window.scroll({ top: topOfElement, behavior: "smooth" });
     }
 
     const changeSubCategory = useCallback(category_id => {
-        scrollTo(category_id);
         setSelectedSubCategoryId(category_id);
+        scrollTo(category_id);
     }, [selectedSubCategoryId]);
 
     useEffect(() => {
@@ -46,7 +46,7 @@ const SearchDetailsPage = () => {
             });
     }, [companyId]);
 
-    const menuItemComponents = useMemo(() => {
+    const AllMenuItems = useMemo(() => {
         const ids = [];
         return menuItems?.map(mi => {
             const {CATEGORY_ID} = mi;
@@ -75,10 +75,11 @@ const SearchDetailsPage = () => {
             <CategoryTitle id="menu">{translate(TR.PAGE.COMPANY_DETAILS.MENU_TITLE)}</CategoryTitle>
             <CategoryMenuRow
                 menuItems={menuItems}
-                selectedOption={selectedSubCategoryId}
+                selectedSubCategoryId={selectedSubCategoryId}
                 changeSubCategory={changeSubCategory}
             />
-            {menuItemComponents}
+            {AllMenuItems}
+            {/*Let's scroll work after click on the last sub category */}
             <RowSplitter height={'550px'} />
         </Wrapper>
     );
