@@ -27,7 +27,7 @@ export const Wrapper = styled.div`
   ${ContentContainerDefault};
   border: solid 1px red;
   border-radius: 0;
-  padding: 10px 10px 0;
+  padding: 8px 8px 0;
 `;
 export const SliderStyle = styled.div`
   //height: 36px;

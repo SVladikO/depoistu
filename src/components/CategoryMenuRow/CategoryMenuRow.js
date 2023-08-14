@@ -10,7 +10,7 @@ import {
     TopCategoryWrapper, TopCategoryItem, SliderStyle, BottomLine, Wrapper
 } from "./CategoryMenuRow.style";
 
-import {CategoryItem, ContentContainer, RowSplitter} from "../../components";
+import {CategoryItem, RowSplitter} from "../../components";
 import {CATEGORY_MAPPER, getCategoryUniqueIds} from '../../utils/category';
 import {getTopCategories} from '../../utils/category';
 import {translate} from "../../utils/translation";
@@ -85,7 +85,7 @@ const CategoryMenuRow = ({
                     {SubCategories}
                 </Wrapper>
             </div>
-            <RowSplitter height={'100px'}/>
+            <RowSplitter height={'110px'}/>
         </div>
     </div>)
 }
@@ -95,14 +95,12 @@ const SwiperWrapper = ({selectedSubCategoryId, children}) => {
     const [swiper, setSwiper] = useState(null);
 
     const slideTo = index => {
-        console.log('INDEX: ', index)
         if (swiper) swiper.slideTo(index - 1)
     };
 
     useEffect(() => {
         slideTo(selectedSubCategoryId)
     }, [selectedSubCategoryId])
-
 
     return (
         <SliderStyle>

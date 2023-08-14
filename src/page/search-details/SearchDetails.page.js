@@ -12,7 +12,7 @@ import {translate, TRANSLATION as TR} from "../../utils/translation";
 import {CATEGORY_MAPPER} from "../../utils/category";
 
 const CATEGORY_TITLE_CLASS_NAME = 'CATEGORY_TITLE_CLASS_NAME';
-const CATEGORY_ROW_HEIGHT = 110;
+const CATEGORY_ROW_HEIGHT = 120;
 
 const SearchDetailsPage = () => {
     let companyId = +useParams().companyId;
@@ -21,26 +21,27 @@ const SearchDetailsPage = () => {
     const [menuItems, setMenuItems] = useState([]);
     const [selectedSubCategoryId, setSelectedSubCategoryId] = useState(0);
 
-    useEffect(() => {
-        const onScroll = () => {
-            const categoryTitles = document.getElementsByClassName(CATEGORY_TITLE_CLASS_NAME)
-            Object.values(categoryTitles).map(ct => {
-                    const y = ct.offsetTop - window.scrollY - CATEGORY_ROW_HEIGHT;
-                    if (y < 120 && y > 20) {
-                        const candidateCategoryId = +(ct.id.split('_')[1])
+    const onScrollPage = () => {
+        const categoryTitles = document.getElementsByClassName(CATEGORY_TITLE_CLASS_NAME)
+        Object.values(categoryTitles).map(ct => {
+                const y = ct.offsetTop - window.scrollY - CATEGORY_ROW_HEIGHT;
+                if (y < 120 && y > 20) {
+                    const candidateCategoryId = +(ct.id.split('_')[1])
 
-                        if (candidateCategoryId !== selectedSubCategoryId) {
-                            setSelectedSubCategoryId(candidateCategoryId)
-                        }
+                    if (candidateCategoryId !== selectedSubCategoryId) {
+                        setSelectedSubCategoryId(candidateCategoryId)
                     }
                 }
-            )
-        }
+            }
+        )
+    }
 
-        document.addEventListener("scroll", onScroll)
+    useEffect(() => {
+
+        document.addEventListener("scroll", onScrollPage)
 
         return () => {
-            document.removeEventListener("scroll", onScroll);
+            document.removeEventListener("scroll", onScrollPage);
         }
     }, [])
 
@@ -49,9 +50,20 @@ const SearchDetailsPage = () => {
         window.scroll({top: topOfElement, behavior: "smooth"});
     }
 
+    /**
+     * Our `window.scroll` is blocked by `document.addEventListener("scroll", onScrollPage)`.
+     * After click on category we publish scroll which trigger scroll listener.
+     * As a solutions I propose to delete listener before `window.scroll`
+     * And add it with small delay.
+     *
+     */
     const changeSubCategory = useCallback(category_id => {
-        setSelectedSubCategoryId(category_id);
+        document.removeEventListener("scroll", onScrollPage);
         scrollTo(category_id);
+        setSelectedSubCategoryId(category_id);
+        setTimeout(() => {
+            document.addEventListener("scroll", onScrollPage)
+        }, 1500)
     }, [selectedSubCategoryId]);
 
     useEffect(() => {
