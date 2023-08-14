@@ -11,6 +11,9 @@ import {LOCAL_STORAGE_KEY} from "../../utils/localStorage";
 import {translate, TRANSLATION as TR} from "../../utils/translation";
 import {CATEGORY_MAPPER} from "../../utils/category";
 
+const CATEGORY_TITLE_CLASS_NAME = 'CATEGORY_TITLE_CLASS_NAME';
+const CATEGORY_ROW_HEIGHT = 110;
+
 const SearchDetailsPage = () => {
     let companyId = +useParams().companyId;
     const [companies] = useLocalStorage(LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT, []);
@@ -18,9 +21,32 @@ const SearchDetailsPage = () => {
     const [menuItems, setMenuItems] = useState([]);
     const [selectedSubCategoryId, setSelectedSubCategoryId] = useState(0);
 
+    useEffect(() => {
+        const onScroll = () => {
+            const categoryTitles = document.getElementsByClassName(CATEGORY_TITLE_CLASS_NAME)
+            Object.values(categoryTitles).map(ct => {
+                    const y = ct.offsetTop - window.scrollY - CATEGORY_ROW_HEIGHT;
+                    if (y < 120 && y > 20) {
+                        const candidateCategoryId = +(ct.id.split('_')[1])
+
+                        if (candidateCategoryId !== selectedSubCategoryId) {
+                            setSelectedSubCategoryId(candidateCategoryId)
+                        }
+                    }
+                }
+            )
+        }
+
+        document.addEventListener("scroll", onScroll)
+
+        return () => {
+            document.removeEventListener("scroll", onScroll);
+        }
+    }, [])
+
     const scrollTo = category_id => {
-        const topOfElement = document.querySelector(`#category_${category_id}`).offsetTop - 110;
-        window.scroll({ top: topOfElement, behavior: "smooth" });
+        const topOfElement = document.querySelector(`#category_${category_id}`).offsetTop - CATEGORY_ROW_HEIGHT;
+        window.scroll({top: topOfElement, behavior: "smooth"});
     }
 
     const changeSubCategory = useCallback(category_id => {
@@ -59,6 +85,7 @@ const SearchDetailsPage = () => {
 
             return [
                 <CategoryTitle
+                    className={CATEGORY_TITLE_CLASS_NAME}
                     id={"category_" + CATEGORY_ID}
                     key={CATEGORY_MAPPER[CATEGORY_ID].title}
                 >
@@ -80,7 +107,7 @@ const SearchDetailsPage = () => {
             />
             {AllMenuItems}
             {/*Let's scroll work after click on the last sub category */}
-            <RowSplitter height={'550px'} />
+            <RowSplitter height={'550px'}/>
         </Wrapper>
     );
 };

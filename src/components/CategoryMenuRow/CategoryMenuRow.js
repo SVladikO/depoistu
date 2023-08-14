@@ -53,12 +53,25 @@ const CategoryMenuRow = ({
         </div>
     ), [selectedTopCategoryIndex, topCategories])
 
+    const [swiper, setSwiper] = useState(null);
+
+    const slideTo = index => {
+        if (swiper) swiper.slideTo(index)
+    };
+
+    useEffect(() => {
+        slideTo(selectedSubCategoryId)
+    }, [selectedSubCategoryId])
+
+
     const SubCategories = useMemo(() => (
         <SliderStyle>
             {/*https://studio.swiperjs.com/play*/}
             <Swiper
+                activeIndex={selectedSubCategoryId}
                 modules={[Scrollbar, FreeMode]}
                 scrollbar={{enabled: true, hide: true}}
+                onSwiper={setSwiper}
                 freeMode={{
                     enabled: true,
                     sticky: false,
@@ -72,8 +85,6 @@ const CategoryMenuRow = ({
                 className="category-slider"
             >
                 {subCategories?.ids?.map((category_id) => {
-                    console.log('selectedSubCategoryId === category_id', selectedSubCategoryId === category_id, selectedSubCategoryId, category_id)
-
                     return <SwiperSlide key={category_id}>
                         <CategoryItem
                             category={CATEGORY_MAPPER[category_id]}
