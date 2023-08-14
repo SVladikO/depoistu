@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useRef, useState} from "react";
 
 import {BackButtonWrapper, BackButtonInnerWrapper, Wrapper, CitiesWrapper} from "./CityContent.style"
 
@@ -24,8 +24,10 @@ export const CityContent = ({onSelectCity, availableCityIds, onClose}) => {
     const regionIds = Object.keys(regionCityTree);
     const [selectedRegionId, setSelectedRegionId] = useState('');
     const [citiesOrRegionsToRender, setCitiesOrRegionsToRender] = useState(regionIds);
-
     const [isRegion, setIsRegion] = useState(true);
+    const topRef = useRef()
+
+    const scrollToTop = () => topRef.current?.scrollIntoView({ behavior: 'smooth' });
 
     const disableEventBubbling = e => {
         e.stopPropagation();
@@ -36,6 +38,7 @@ export const CityContent = ({onSelectCity, availableCityIds, onClose}) => {
         setIsRegion(true);
         setCitiesOrRegionsToRender(regionIds);
         setSelectedRegionId('')
+        scrollToTop()
     }
 
     /**
@@ -45,6 +48,7 @@ export const CityContent = ({onSelectCity, availableCityIds, onClose}) => {
      * @return {(function(): void)|*}
      */
     const changeHandlerSettingMenuRow = id => () => {
+        scrollToTop()
         if (isRegion) {
             setSelectedRegionId(id)
             setCitiesOrRegionsToRender(regionCityTree[id])
@@ -75,6 +79,7 @@ export const CityContent = ({onSelectCity, availableCityIds, onClose}) => {
                 className="pma-cities"
                 onClick={disableEventBubbling}
             >
+                <div ref={topRef} />
                 {/*Expected array structure: ['101', '202', ... ]*/}
                 {citiesOrRegionsToRender.map((id, i) =>
                     <SettingMenuRow
