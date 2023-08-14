@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: start;
   position: relative;
-  max-height: ${p => p.isRegion ? '500px': '90vh'};
+  max-height: 500px;
   background-color: ${COLOR.ACCENT4};
   border-radius: ${BORDER_RADIUS.SECOND};
   z-index: 100;
