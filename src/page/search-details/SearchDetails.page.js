@@ -1,9 +1,9 @@
 import {useCallback, useEffect, useMemo, useState} from "react";
 import {useParams} from 'react-router-dom';
 
-import {Divider, Wrapper} from "./SearchDetails.style";
+import {CategoryTitle, Wrapper} from "./SearchDetails.style";
 
-import {CategoryMenuRow, Company, MenuItem} from "../../components";
+import {CategoryMenuRow, Company, MenuItem, RowSplitter} from "../../components";
 
 import {useLocalStorage} from "../../utils/hook";
 import {BE_API, fetchData} from "../../utils/fetch";
@@ -18,7 +18,15 @@ const SearchDetailsPage = () => {
     const [menuItems, setMenuItems] = useState([]);
     const [selectedSubCategoryId, setSelectedSubCategoryId] = useState(0);
 
-    const changeSubCategory = useCallback(id => setSelectedSubCategoryId(id), [selectedSubCategoryId]);
+    const scrollTo = category_id => {
+        const topOfElement = document.querySelector(`#category_${category_id}`).offsetTop - 108;
+        window.scroll({ top: topOfElement, behavior: "smooth" });
+    }
+
+    const changeSubCategory = useCallback(category_id => {
+        scrollTo(category_id);
+        setSelectedSubCategoryId(category_id);
+    }, [selectedSubCategoryId]);
 
     useEffect(() => {
         if (!company) {
@@ -33,30 +41,30 @@ const SearchDetailsPage = () => {
         fetch(BE_API.MENU_ITEM.GET_ONLY_VISIBLE_BY_COMPANY_ID(companyId))
             .then(res => res.json())
             .then(data => data.sort((a, b) => a.CATEGORY_ID - b.CATEGORY_ID))
-            .then(result => {
-                setMenuItems(result)
+            .then(menuItems => {
+                setMenuItems(menuItems)
             });
     }, [companyId]);
 
     const menuItemComponents = useMemo(() => {
         const ids = [];
-        return menuItems?.map(el => {
-            const {CATEGORY_ID} = el;
+        return menuItems?.map(mi => {
+            const {CATEGORY_ID} = mi;
 
             if (ids.includes(CATEGORY_ID)) {
-                return <MenuItem key={el.ID} item={el}/>
+                return <MenuItem key={mi.ID} item={mi}/>
             }
 
             ids.push(CATEGORY_ID);
 
             return [
-                <Divider
-                    id={CATEGORY_ID}
+                <CategoryTitle
+                    id={"category_" + CATEGORY_ID}
                     key={CATEGORY_MAPPER[CATEGORY_ID].title}
                 >
                     {CATEGORY_MAPPER[CATEGORY_ID].title.toUpperCase()}
-                </Divider>,
-                <MenuItem key={el.ID} item={el}/>
+                </CategoryTitle>,
+                <MenuItem key={mi.ID} item={mi}/>
             ];
         })?.flat()
     }, [menuItems]);
@@ -64,13 +72,14 @@ const SearchDetailsPage = () => {
     return (
         <Wrapper>
             {company && <Company company={company} withMoreInfo/>}
-            <Divider id="menu">{translate(TR.PAGE.COMPANY_DETAILS.MENU_TITLE)}</Divider>
+            <CategoryTitle id="menu">{translate(TR.PAGE.COMPANY_DETAILS.MENU_TITLE)}</CategoryTitle>
             <CategoryMenuRow
                 menuItems={menuItems}
                 selectedOption={selectedSubCategoryId}
-                changeCategory={changeSubCategory}
+                changeSubCategory={changeSubCategory}
             />
             {menuItemComponents}
+            <RowSplitter height={'550px'} />
         </Wrapper>
     );
 };

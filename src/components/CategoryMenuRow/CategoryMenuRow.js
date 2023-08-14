@@ -1,4 +1,4 @@
-import React, {memo, useEffect, useState} from 'react';
+import React, {memo, useEffect, useMemo, useState} from 'react';
 import {Scrollbar, FreeMode} from 'swiper';
 import {Swiper, SwiperSlide} from 'swiper/react';
 
@@ -22,8 +22,7 @@ const CategoryMenuRow = ({
                              menuItems = [],
                              showMenuItemAmount,
                              selectedCategoryId,
-                             changeCategory = () => {
-                             },
+                             changeSubCategory,
                          }) => {
     const [topCategories, setTopCategories] = useState([]);
     const [subCategories, setSubCategories] = useState([]);
@@ -32,10 +31,10 @@ const CategoryMenuRow = ({
     const selectTopCategory = index => () => {
         setSelectedTopCategoryIndex(index);
         setSubCategories(topCategories[index])
-        changeCategory(topCategories[index].ids[0])
+        changeSubCategory(topCategories[index].ids[0])
     }
 
-    const renderTopCategories = () => (
+    const TopCategories = useMemo(() => (
         <div>
             <BottomLine/>
             <TopCategoryWrapper>
@@ -52,15 +51,15 @@ const CategoryMenuRow = ({
                 }
             </TopCategoryWrapper>
         </div>
-    )
+    ), [selectedTopCategoryIndex, topCategories])
 
-    const renderSubCategories = () => (
+    const SubCategories = useMemo(() => (
         <SliderStyle>
             {/*https://studio.swiperjs.com/play*/}
             <Swiper
                 modules={[Scrollbar, FreeMode]}
                 scrollbar={{enabled: true, hide: true}}
-                freeMode={{enabled: true, momentum: false, momentumRatio: 1, momentumVelocityRatio: 1}}
+                freeMode={{enabled: true, sticky: false, momentum: true, momentumBounce: true, momentumRatio: 1, momentumVelocityRatio: 1}}
                 slidesPerView={3}
                 spaceBetween={10}
                 className="category-slider"
@@ -69,7 +68,7 @@ const CategoryMenuRow = ({
                     <SwiperSlide key={category_id}>
                         <CategoryItem
                             category={CATEGORY_MAPPER[category_id]}
-                            clickHandler={() => changeCategory(category_id)}
+                            clickHandler={() => changeSubCategory(category_id)}
                             isSelected={selectedCategoryId === category_id}
                             itemsAmountPerCategory={showMenuItemAmount ? menuItems.filter(mi => mi.CATEGORY_ID === category_id).length : 0}
                         />
@@ -78,7 +77,7 @@ const CategoryMenuRow = ({
                 }
             </Swiper>
         </SliderStyle>
-    );
+    ), [subCategories]);
 
 
     useEffect(() => {
@@ -93,7 +92,7 @@ const CategoryMenuRow = ({
         setSubCategories(tc[0])
         setSelectedTopCategoryIndex(0);
         setSubCategories(tc[0])
-        changeCategory(tc[0].ids[0])
+        changeSubCategory(tc[0].ids[0])
 
     }, [menuItems]);
 
@@ -102,8 +101,8 @@ const CategoryMenuRow = ({
             <div style={{position: 'relative', top: 0, zIndex: 10, left: 0, right: 0}}>
                 <div style={{position: 'absolute', top: 0, zIndex: 10, left: -10, right: -10}}>
                     <ContentContainer borderRadius={'0 0 0 0'}>
-                        {renderTopCategories()}
-                        {renderSubCategories()}
+                        {TopCategories}
+                        {SubCategories}
                     </ContentContainer>
                 </div>
                 <RowSplitter height={'100px'}/>
