@@ -41,7 +41,7 @@ const Company = (props) => {
             let url = `https://www.google.com/maps?q=${encodeURIComponent(address)}`
 
             return (
-                <Link to={url} target="_blank">
+                <Link to={url} target="_blank" rel="noopener">
                     <ThirdButton>
                         <LocationIcon />
                         {translate(CITY_TRANSLATION_IDS[CITY_ID])}, {STREET}
