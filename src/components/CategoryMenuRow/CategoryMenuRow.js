@@ -7,7 +7,7 @@ import "swiper/css/pagination";
 import 'swiper/css/scrollbar';
 
 import {
-    TopCategoryWrapper, TopCategoryItem, SliderStyle, BottomLine
+    TopCategoryWrapper, TopCategoryItem, SliderStyle, BottomLine, Wrapper
 } from "./CategoryMenuRow.style";
 
 import {CategoryItem, ContentContainer, RowSplitter} from "../../components";
@@ -80,10 +80,10 @@ const CategoryMenuRow = ({
     return (<div style={{position: 'sticky', top: -1, zIndex: 10}}>
         <div style={{position: 'relative', top: 0, zIndex: 10, left: 0, right: 0}}>
             <div style={{position: 'absolute', top: 0, zIndex: 10, left: -10, right: -10}}>
-                <ContentContainer borderRadius={'0 0 0 0'}>
+                <Wrapper className="category-menu-row-wrapper">
                     {TopCategories}
                     {SubCategories}
-                </ContentContainer>
+                </Wrapper>
             </div>
             <RowSplitter height={'100px'}/>
         </div>

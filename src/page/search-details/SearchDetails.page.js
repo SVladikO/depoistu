@@ -101,6 +101,7 @@ const SearchDetailsPage = () => {
             {company && <Company company={company} withMoreInfo/>}
             <CategoryTitle id="menu">{translate(TR.PAGE.COMPANY_DETAILS.MENU_TITLE)}</CategoryTitle>
             <CategoryMenuRow
+                className="category-menu-row"
                 menuItems={menuItems}
                 selectedSubCategoryId={selectedSubCategoryId}
                 changeSubCategory={changeSubCategory}

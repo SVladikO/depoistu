@@ -1,9 +1,7 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import {BORDER_RADIUS, COLOR, SHADOW} from "../../utils/theme";
 
-export const ContentContainer = styled.div.attrs({
-    className: 'ContentContainer',
-})`
+export const ContentContainerDefault = css`
   ${SHADOW};
   width: 100%;
   background: ${COLOR.ACCENT4};
@@ -17,14 +15,21 @@ export const ContentContainer = styled.div.attrs({
   left: 0;
   right: 0;
   z-index: 10;
-  
+
   & > a {
     color: ${COLOR.ACCENT3};
   }
+
   & > * {
     margin-bottom: 10px;
   }
+
   & > *:last-child {
     margin-bottom: 0;
   }
 `
+export const ContentContainer = styled.div.attrs({
+    className: 'ContentContainer',
+})`
+  ${ContentContainerDefault}
+`;

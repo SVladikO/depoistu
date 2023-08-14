@@ -721,7 +721,7 @@ export const TRANSLATION = {
         },
         HOT_DISHES: {
             ua: 'Гарячі страви',
-            en: 'Hot dishes (Main Course)'
+            en: 'Hot dishes'
         },
         MEAT_DISHES: {
             ua: "М'ясні страви",

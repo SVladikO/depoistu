@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {COLOR} from "../../utils/theme";
+import {ContentContainerDefault} from "../ContentContainer/ContentContainer.style";
 
 export const TopCategoryWrapper = styled.div`
   display: flex;
@@ -22,8 +23,14 @@ export const TopCategoryItem = styled.div`
   border-bottom: solid 2px ${p => p.isSelected ? COLOR.ACCENT3 : ''};
 `;
 
+export const Wrapper = styled.div`
+  ${ContentContainerDefault};
+  border: solid 1px red;
+  border-radius: 0;
+  padding: 10px 10px 0;
+`;
 export const SliderStyle = styled.div`
-  height: 36px;
+  //height: 36px;
 
   .swiper {
     display: flex;
@@ -32,7 +39,7 @@ export const SliderStyle = styled.div`
   }
 
   .swiper-slide {
-    width: auto !important;
+    //width: auto !important;
     min-width: 100px;
   }
 `;
