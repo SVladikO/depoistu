@@ -19,7 +19,7 @@ const SearchDetailsPage = () => {
     const [companies] = useLocalStorage(LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT, []);
     const [company, setCompany] = useState(companies?.find(c => c.ID === companyId))
     const [menuItems, setMenuItems] = useState([]);
-    const [selectedSubCategoryId, setSelectedSubCategoryId] = useState(0);
+    const [selectedCategoryId, setSelectedCategoryId] = useState(0);
 
     const onScrollPage = () => {
         const categoryTitles = document.getElementsByClassName(CATEGORY_TITLE_CLASS_NAME)
@@ -28,8 +28,8 @@ const SearchDetailsPage = () => {
                 if (y < 120 && y > 20) {
                     const candidateCategoryId = +(ct.id.split('_')[1])
 
-                    if (candidateCategoryId !== selectedSubCategoryId) {
-                        setSelectedSubCategoryId(candidateCategoryId)
+                    if (candidateCategoryId !== selectedCategoryId) {
+                        setSelectedCategoryId(candidateCategoryId)
                     }
                 }
             }
@@ -37,7 +37,6 @@ const SearchDetailsPage = () => {
     }
 
     useEffect(() => {
-
         document.addEventListener("scroll", onScrollPage)
 
         return () => {
@@ -57,14 +56,14 @@ const SearchDetailsPage = () => {
      * And add it with small delay.
      *
      */
-    const changeSubCategory = useCallback(category_id => {
+    const changeCategory = useCallback(category_id => {
         document.removeEventListener("scroll", onScrollPage);
         scrollTo(category_id);
-        setSelectedSubCategoryId(category_id);
+        setSelectedCategoryId(category_id);
         setTimeout(() => {
             document.addEventListener("scroll", onScrollPage)
         }, 1500)
-    }, [selectedSubCategoryId]);
+    }, [selectedCategoryId]);
 
     useEffect(() => {
         if (!company) {
@@ -115,8 +114,8 @@ const SearchDetailsPage = () => {
             <CategoryMenuRow
                 className="category-menu-row"
                 menuItems={menuItems}
-                selectedSubCategoryId={selectedSubCategoryId}
-                changeSubCategory={changeSubCategory}
+                selectedCategoryId={selectedCategoryId}
+                changeCategory={changeCategory}
             />
             {AllMenuItems}
             {/*Let's scroll work after click on the last sub category */}

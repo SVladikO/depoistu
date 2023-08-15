@@ -19,8 +19,8 @@ const CategoryMenuRow = ({
                              showAllCategories = false,
                              menuItems = [],
                              showMenuItemAmount,
-                             selectedSubCategoryId,
-                             changeSubCategory,
+                             selectedCategoryId,
+                             changeCategory,
                          }) => {
     const [topCategories, setTopCategories] = useState([]);
     const [categoryUniqueIds, setCategoryUniqueIds] = useState([]);
@@ -28,7 +28,7 @@ const CategoryMenuRow = ({
 
     const selectTopCategory = index => () => {
         setSelectedTopCategoryIndex(index);
-        changeSubCategory(topCategories[index].ids[0])
+        changeCategory(topCategories[index].ids[0])
     }
 
     useEffect(() => {
@@ -43,7 +43,7 @@ const CategoryMenuRow = ({
         setCategoryUniqueIds(_categoryUniqueIds)
         setTopCategories(availableTopCategories)
         setSelectedTopCategoryIndex(0);
-        // changeSubCategory(_topCategories[0].ids[0])
+        // changeCategory(_topCategories[0].ids[0])
     }, [menuItems]);
 
 
@@ -61,21 +61,21 @@ const CategoryMenuRow = ({
     </div>), [selectedTopCategoryIndex, topCategories])
 
     const SubCategories = useMemo(() => (
-        <SwiperWrapper selectedSubCategoryId={selectedSubCategoryId}>
+        <SwiperWrapper selectedCategoryId={selectedCategoryId}>
             {
                 categoryUniqueIds?.map(category_id => (
                     <SwiperSlide key={category_id}>
                         <CategoryItem
                             category={CATEGORY_MAPPER[category_id]}
-                            isSelected={selectedSubCategoryId === category_id}
-                            clickHandler={() => changeSubCategory(category_id)}
+                            isSelected={selectedCategoryId === category_id}
+                            clickHandler={() => changeCategory(category_id)}
                             itemsAmountPerCategory={showMenuItemAmount ? menuItems.filter(mi => mi.CATEGORY_ID === mi.CATEGORY_ID).length : 0}
                         />
                     </SwiperSlide>
                 ))
             }
         </SwiperWrapper>
-    ), [menuItems, selectedSubCategoryId]);
+    ), [menuItems, selectedCategoryId]);
 
     return (<div style={{position: 'sticky', top: -1, zIndex: 10}}>
         <div style={{position: 'relative', top: 0, zIndex: 10, left: 0, right: 0}}>
@@ -91,7 +91,7 @@ const CategoryMenuRow = ({
 }
 
 
-const SwiperWrapper = ({selectedSubCategoryId, children}) => {
+const SwiperWrapper = ({selectedCategoryId, children}) => {
     const [swiper, setSwiper] = useState(null);
 
     const slideTo = index => {
@@ -99,14 +99,14 @@ const SwiperWrapper = ({selectedSubCategoryId, children}) => {
     };
 
     useEffect(() => {
-        slideTo(selectedSubCategoryId)
-    }, [selectedSubCategoryId])
+        slideTo(selectedCategoryId)
+    }, [selectedCategoryId])
 
     return (
         <SliderStyle>
             {/*https://studio.swiperjs.com/play*/}
             <Swiper
-                activeIndex={selectedSubCategoryId}
+                activeIndex={selectedCategoryId}
                 modules={[Scrollbar, FreeMode]}
                 scrollbar={{enabled: true, hide: true}}
                 onSwiper={setSwiper}
