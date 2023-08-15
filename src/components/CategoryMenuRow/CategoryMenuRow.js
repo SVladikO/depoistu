@@ -18,6 +18,8 @@ import {CategoryTitle} from "../../page/search-details/SearchDetails.style";
 
 const CATEGORY_TITLE_CLASS_NAME = 'CATEGORY_TITLE_CLASS_NAME';
 const CATEGORY_ROW_HEIGHT = 100;
+const CATEGORY_ID_PREFIX = 'category_'
+const generateTagId = (id, index) => `${CATEGORY_ID_PREFIX}${id}_${index}`
 
 const CategoryMenuRow = ({
                              showAllCategories = false,
@@ -34,39 +36,42 @@ const CategoryMenuRow = ({
             return;
         }
 
-        const categoryTitles = document.getElementsByClassName(CATEGORY_TITLE_CLASS_NAME)
+        const categoryTitleTags = document.getElementsByClassName(CATEGORY_TITLE_CLASS_NAME)
 
-        Object.values(categoryTitles).forEach(ct => {
-                const y = ct.offsetTop - window.scrollY - CATEGORY_ROW_HEIGHT;
+        Object.values(categoryTitleTags).forEach(element => {
+                const y = element.offsetTop - window.scrollY - CATEGORY_ROW_HEIGHT;
                 if (y < 120 && y > 20) {
-                    const candidateCategoryId = +(ct.id.split('_')[1])
+                    const [extra, candidateCategoryId, candidateCategoryIndex] = element.id.split('_')
 
-                    if (candidateCategoryId !== selectedCategory) {
-                        setSelectedCategory(candidateCategoryId)
+                    if (+candidateCategoryId !== selectedCategory.id) {
+                        console.log(11111112 , selectedCategory, {id: +candidateCategoryId, index: +candidateCategoryIndex})
+                        setSelectedCategory({id: +candidateCategoryId, index: +candidateCategoryIndex})
                     }
                 }
             }
         )
     }
 
-    const scrollTo = category_id => {
+    const scrollTo = category => {
         disableScrollListener();
-
-        const topOfElement = document.querySelector(`#category_${category_id}`).offsetTop - CATEGORY_ROW_HEIGHT;
+        const categoryTitleTag = document.querySelector('#' + generateTagId(category.id, category.index));
+        console.log('ID: ', generateTagId(category.id, category.index))
+        console.log(3333, category, categoryTitleTag)
+        const topOfElement = categoryTitleTag.offsetTop - CATEGORY_ROW_HEIGHT;
         window.scroll({top: topOfElement, behavior: "smooth"});
 
         enableScrollListener()
     }
 
-    const changeCategory = useCallback(category_id => {
-        setSelectedCategory(category_id);
-        scrollTo(category_id);
+    const changeCategory = useCallback(category => {
+        setSelectedCategory(category);
+        scrollTo(category);
     }, [selectedCategory]);
 
 
     const selectTopCategory = index => () => {
         setSelectedTopCategoryIndex(index);
-        changeCategory(topCategories[index].ids[0])
+        // changeCategory(topCategories[index].ids[0])
     }
 
     useEffect(() => {
@@ -87,11 +92,11 @@ const CategoryMenuRow = ({
         const uniqueCategoryIds = getCategoryUniqueIds(menuItems, showAllCategories);
         const availableTopCategories = getTopCategories(uniqueCategoryIds);
         console.log("TOP categories: ", availableTopCategories)
+        console.log("PREPARED: ", uniqueCategoryIds.map((id, index) => ({id, index})))
         setUniqueCategory(uniqueCategoryIds.map((id, index) => ({id, index})))
         setTopCategories(availableTopCategories)
         setSelectedTopCategoryIndex(0);
     }, [menuItems]);
-
 
     const TopCategories = useMemo(() => (<div>
         <BottomLine/>
@@ -128,11 +133,13 @@ const CategoryMenuRow = ({
 
     const AllMenuItems = useMemo(() => {
         const ids = [];
-        return menuItems?.map(mi => {
-            const {CATEGORY_ID} = mi;
+        let categoryIndex = 0; // We need index for swiper horizontal scroll. Which may be triggered by scroll page.
+
+        return menuItems?.map(menu_item => {
+            const {CATEGORY_ID} = menu_item;
 
             if (ids.includes(CATEGORY_ID)) {
-                return <MenuItem key={mi.ID} item={mi}/>
+                return <MenuItem key={menu_item.ID} item={menu_item}/>
             }
 
             ids.push(CATEGORY_ID);
@@ -140,12 +147,12 @@ const CategoryMenuRow = ({
             return [
                 <CategoryTitle
                     className={CATEGORY_TITLE_CLASS_NAME}
-                    id={"category_" + CATEGORY_ID}
+                    id={generateTagId(CATEGORY_ID, categoryIndex++)}
                     key={CATEGORY_MAPPER[CATEGORY_ID].title}
                 >
                     {CATEGORY_MAPPER[CATEGORY_ID].title.toUpperCase()}
                 </CategoryTitle>,
-                <MenuItem key={mi.ID} item={mi}/>
+                <MenuItem key={menu_item.ID} item={menu_item}/>
             ];
         })?.flat()
     }, [menuItems]);
@@ -206,14 +213,14 @@ const SwiperWrapper = ({selectedCategory, children}) => {
     )
 }
 
-function enableScrollListener(){
+function enableScrollListener() {
     setTimeout(() => {
         const domElement = document.getElementsByClassName("category-menu-row-wrapper")[0]
         domElement.classList.remove('stop-scroll')
     }, 2500);
 }
 
-function disableScrollListener(){
+function disableScrollListener() {
     if (getIsScrollDisabled()) {
         return;
     }
@@ -223,12 +230,11 @@ function disableScrollListener(){
     domElement.classList.add('stop-scroll');
 }
 
-function getIsScrollDisabled(){
+function getIsScrollDisabled() {
     const stopScroll = document.getElementsByClassName("stop-scroll");
 
     return !!stopScroll?.length
 }
-
 
 
 export default memo(CategoryMenuRow);
