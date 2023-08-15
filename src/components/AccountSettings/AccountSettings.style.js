@@ -18,5 +18,4 @@ export const GroupTitle = styled.div`
 
 export const RowsWrapper = styled.div`
   background: ${COLOR.ACCENT4};
-  padding: 5px 10px 0;
 `

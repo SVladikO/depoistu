@@ -56,6 +56,22 @@ export const TRANSLATION = {
         INVALID_EMAIL: {
             en: "Invalid email",
             ua: "Невалідний мейл"
+        },
+        MIN_VALUE: {
+            en: "Min value is ",
+            ua: "Мінімальне значення "
+        },
+        MAX_VALUE: {
+            en: "Max value is ",
+            ua: "Максимальне значення "
+        },
+        MIN_SYMBOLS: {
+            en: "Min number of characters is ",
+            ua: "Мінімальна кількість символів "
+        },
+        MAX_SYMBOLS: {
+            en: "Max number of characters is ",
+            ua: "Максимальне кількість символів "
         }
     },
     WEEK_DAY: {
@@ -171,7 +187,7 @@ export const TRANSLATION = {
     MEASUREMENTS: {
         PRICE: {
             ua: 'грн',
-            en: 'uah'
+            en: 'UAH'
         },
         WEIGHT: {
             ua: "г",
@@ -183,7 +199,7 @@ export const TRANSLATION = {
         },
         PREPARING: {
             ua: "хв",
-            en: 'mim'
+            en: 'min'
         },
     },
     PAGE_VIEW: {
