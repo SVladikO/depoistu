@@ -12,30 +12,10 @@ import {translate, TRANSLATION as TR} from "../../utils/translation";
 import {CATEGORY_MAPPER} from "../../utils/category";
 
 const CATEGORY_TITLE_CLASS_NAME = 'CATEGORY_TITLE_CLASS_NAME';
+
 const CATEGORY_ROW_HEIGHT = 100;
 
-const getIsScrollDisabled = () => {
-    const stopScroll = document.getElementsByClassName("stop-scroll");
 
-    return !!stopScroll?.length
-}
-
-const enableScrollListener = () => {
-    setTimeout(() => {
-        const domElement = document.getElementsByClassName("category-menu-row-wrapper")[0]
-        domElement.classList.remove('stop-scroll')
-    }, 2500);
-}
-
-const disableScrollListener = () => {
-    if (getIsScrollDisabled()) {
-        return;
-    }
-
-    //The only possible way to stop scroll listener when you triggerred scrollTo is adding class
-    const domElement = document.getElementsByClassName("category-menu-row-wrapper")[0]
-    domElement.classList.add('stop-scroll');
-}
 
 const SearchDetailsPage = () => {
     let companyId = +useParams().companyId;
@@ -145,6 +125,29 @@ const SearchDetailsPage = () => {
         </Wrapper>
     );
 };
+
+function getIsScrollDisabled(){
+    const stopScroll = document.getElementsByClassName("stop-scroll");
+
+    return !!stopScroll?.length
+}
+
+function enableScrollListener(){
+    setTimeout(() => {
+        const domElement = document.getElementsByClassName("category-menu-row-wrapper")[0]
+        domElement.classList.remove('stop-scroll')
+    }, 2500);
+}
+
+function disableScrollListener(){
+    if (getIsScrollDisabled()) {
+        return;
+    }
+
+    //The only possible way to stop scroll listener when you triggerred scrollTo is adding class
+    const domElement = document.getElementsByClassName("category-menu-row-wrapper")[0]
+    domElement.classList.add('stop-scroll');
+}
 
 
 export default SearchDetailsPage;
