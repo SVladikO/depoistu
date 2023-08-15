@@ -235,6 +235,10 @@ export const TRANSLATION = {
             MENU_TITLE: {
                 ua: "МЕНЮ",
                 en: 'MENU'
+            },
+            MENU_PROBLEM: {
+                ua: 'Меню компанії відсутнє',
+                en: 'There is no menu in company'
             }
         },
         CUSTOMER_COMPANIES: {
