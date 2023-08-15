@@ -18,7 +18,6 @@ import {CategoryTitle} from "../../page/search-details/SearchDetails.style";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {URL} from "../../utils/config";
 import {Link, useNavigate, useParams} from "react-router-dom";
-import {useScrollUp} from "../../utils/hook";
 
 const CATEGORY_TITLE_CLASS_NAME = 'CATEGORY_TITLE_CLASS_NAME';
 const CATEGORY_ROW_HEIGHT = 100;

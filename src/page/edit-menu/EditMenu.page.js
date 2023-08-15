@@ -1,23 +1,20 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {Link, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 
 import {Wrapper, CompanyDetails} from "./EditMenu.style";
 
 import {
     CategoryMenuRow,
     Notification,
-    PrimaryButton,
-    RowSplitter
 } from "../../components";
 
 import {startLoading, stopLoading} from "../../features/request/requestSlice";
 
-import {URL} from "../../utils/config";
 import {BE_API} from '../../utils/fetch'
 import {fetchData} from "../../utils/fetch";
 import {useRedirectToSettingPage} from "../../utils/hook";
-import {translate, TRANSLATION} from "../../utils/translation";
+import {translate} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {CITY_TRANSLATION_IDS} from "../../utils/cities";
 
