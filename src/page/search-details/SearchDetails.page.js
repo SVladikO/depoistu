@@ -14,7 +14,7 @@ const SearchDetailsPage = () => {
     let companyId = +useParams().companyId;
     const [companies] = useLocalStorage(LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT, []);
     const [company, setCompany] = useState(companies?.find(c => c.ID === companyId))
-    const [menuItems, setMenuItems] = useState([]);
+    const [menuItems, setMenuItems] = useState();
 
     useEffect(() => {
         if (!company) {

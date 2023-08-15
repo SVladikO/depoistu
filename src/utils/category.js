@@ -46,8 +46,9 @@ export const TOP_CATEGORIES = {
 export const getCategoryUniqueIds = (menuItems = [], showAllCategories) => {
     const categoryIds = menuItems.map(mi => mi.CATEGORY_ID);
     const allCategories = showAllCategories ? Object.keys(CATEGORY_MAPPER).map(id => +id) : []
+    const uniqueCategories = [...new Set([...categoryIds, ...allCategories])];
 
-    return [...new Set([...categoryIds, ...allCategories])]
+    return uniqueCategories.sort((a, b) => a -b);
 }
 export const getCategoryOwnerId = (categoryId, topCategories) => {
     let topCategoryName = '';
