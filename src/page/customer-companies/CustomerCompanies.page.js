@@ -5,7 +5,7 @@ import QRCode from 'qrcode';
 
 import {EditBar, QRCodeButton, ImageQR} from "./CustomerCompanies.style";
 
-import {Company, Notification, PrimaryButton, Popup} from "../../components";
+import {Company, Notification, Popup, PrimaryButton} from "../../components";
 import {ReactComponent as EditIcon} from "../../assets/icons/edit.svg";
 
 import {BE_API} from '../../utils/fetch'

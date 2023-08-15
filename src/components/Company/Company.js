@@ -1,9 +1,11 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 import {Pagination, Navigation} from "swiper";
 import {Swiper, SwiperSlide} from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/pagination";
+
 import {ReactComponent as LocationIcon} from "../../assets/icons/location.svg";
 import {ReactComponent as PhoneIcon} from "../../assets/icons/phone.svg";
 import {
@@ -18,13 +20,12 @@ import {
     LocationWrapper,
     CloseStatus
 } from "./Company.style";
-import {ThirdButton} from "../Button/Button.style";
 
 import {parseSchedule} from "../../utils/company";
 import ScheduleDetails from "../WeekScheduleOutput/WeekScheduleOutput";
 import {CITY_TRANSLATION_IDS} from "../../utils/cities";
 import {translate, TRANSLATION as TR} from "../../utils/translation";
-import {Link} from "react-router-dom";
+import {ThirdButton} from "../Buttons/ThirdButton";
 
 const Company = (props) => {
 

@@ -8,7 +8,7 @@ import {
     CategoryMenuRow,
     MenuItem,
     Notification,
-    PrimaryButton,
+    FetchButton,
     RowSplitter
 } from "../../components";
 
@@ -97,7 +97,7 @@ const EditMenu = () => {
                     />)}
                 </>
                 <Link to={`${URL.ADD_MENU_ITEM}?categoryId=${selectedCategoryId}&companyId=${companyId}`}>
-                    <PrimaryButton isWide>{translate(TRANSLATION.PAGE.EDIT_MENU.BUTTON.ADD_MENU_ITEM)}</PrimaryButton>
+                    <FetchButton isWide>{translate(TRANSLATION.PAGE.EDIT_MENU.BUTTON.ADD_MENU_ITEM)}</FetchButton>
                 </Link>
             </Wrapper>
         </>
