@@ -14,7 +14,6 @@ export const ContentContainerDefault = css`
   top: 0;
   left: 0;
   right: 0;
-  z-index: 10;
 
   & > a {
     color: ${COLOR.ACCENT3};
