@@ -13,7 +13,6 @@ export const enableScrollOnBody = () => {
 };
 export const disableScrollOnBody = () => {
     document.body.style.overflowY = 'hidden';
-    document.body.style.position = 'fixed';
 };
 
 const Popup = (props) => {
