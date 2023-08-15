@@ -12,7 +12,30 @@ import {translate, TRANSLATION as TR} from "../../utils/translation";
 import {CATEGORY_MAPPER} from "../../utils/category";
 
 const CATEGORY_TITLE_CLASS_NAME = 'CATEGORY_TITLE_CLASS_NAME';
-const CATEGORY_ROW_HEIGHT = 120;
+const CATEGORY_ROW_HEIGHT = 100;
+
+const getIsScrollDisabled = () => {
+    const stopScroll = document.getElementsByClassName("stop-scroll");
+
+    return !!stopScroll?.length
+}
+
+const enableScrollListener = () => {
+    setTimeout(() => {
+        const domElement = document.getElementsByClassName("category-menu-row-wrapper")[0]
+        domElement.classList.remove('stop-scroll')
+    }, 2500);
+}
+
+const disableScrollListener = () => {
+    if (getIsScrollDisabled()) {
+        return;
+    }
+
+    //The only possible way to stop scroll listener when you triggerred scrollTo is adding class
+    const domElement = document.getElementsByClassName("category-menu-row-wrapper")[0]
+    domElement.classList.add('stop-scroll');
+}
 
 const SearchDetailsPage = () => {
     let companyId = +useParams().companyId;
@@ -22,15 +45,13 @@ const SearchDetailsPage = () => {
     const [selectedCategoryId, setSelectedCategoryId] = useState(0);
 
     const onScrollPage = () => {
-        const categoryTitles = document.getElementsByClassName(CATEGORY_TITLE_CLASS_NAME)
-        const stopScroll =  document.getElementsByClassName("stop-scroll");
 
-        if (stopScroll?.length) {
-            console.log('Pizdec')
+        if (getIsScrollDisabled()) {
             return;
         }
 
-            console.log('WORK ??? ', stopScroll);
+        const categoryTitles = document.getElementsByClassName(CATEGORY_TITLE_CLASS_NAME)
+
         Object.values(categoryTitles).forEach(ct => {
                 const y = ct.offsetTop - window.scrollY - CATEGORY_ROW_HEIGHT;
                 if (y < 120 && y > 20) {
@@ -53,17 +74,12 @@ const SearchDetailsPage = () => {
     }, [])
 
     const scrollTo = category_id => {
-        const domElement = document.getElementsByClassName("category-menu-row-wrapper")[0]
-        domElement.classList.add('stop-scroll');
+        disableScrollListener();
 
         const topOfElement = document.querySelector(`#category_${category_id}`).offsetTop - CATEGORY_ROW_HEIGHT;
         window.scroll({top: topOfElement, behavior: "smooth"});
 
-        setTimeout(() => {
-            console.log('let scroll back')
-        domElement.classList.remove('stop-scroll');
-
-        }, 1500);
+        enableScrollListener()
     }
 
     const changeCategory = useCallback(category_id => {

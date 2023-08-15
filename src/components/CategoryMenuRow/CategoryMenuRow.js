@@ -39,7 +39,7 @@ const CategoryMenuRow = ({
 
         const _categoryUniqueIds = getCategoryUniqueIds(menuItems, showAllCategories);
         const availableTopCategories = getTopCategories(_categoryUniqueIds);
-
+        console.log("TOP categories: ", availableTopCategories)
         setCategoryUniqueIds(_categoryUniqueIds)
         setTopCategories(availableTopCategories)
         setSelectedTopCategoryIndex(0);
@@ -96,7 +96,6 @@ const SwiperWrapper = ({selectedCategoryId, children}) => {
     const [swiper, setSwiper] = useState(null);
 
     const slideTo = index => {
-        // console.log(1111111, index, selectedCategoryId);
         if (swiper) swiper.slideTo(index-1)
     };
 
@@ -108,7 +107,6 @@ const SwiperWrapper = ({selectedCategoryId, children}) => {
         <SliderStyle>
             {/*https://studio.swiperjs.com/play*/}
             <Swiper
-                activeIndex={selectedCategoryId}
                 modules={[Scrollbar, FreeMode]}
                 scrollbar={{enabled: true, hide: true}}
                 onSwiper={setSwiper}
