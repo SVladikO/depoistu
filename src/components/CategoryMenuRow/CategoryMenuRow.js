@@ -44,7 +44,6 @@ const CategoryMenuRow = ({
                     const [extra, candidateCategoryId, candidateCategoryIndex] = element.id.split('_')
 
                     if (+candidateCategoryId !== selectedCategory.id) {
-                        console.log(11111112 , selectedCategory, {id: +candidateCategoryId, index: +candidateCategoryIndex})
                         setSelectedCategory({id: +candidateCategoryId, index: +candidateCategoryIndex})
                     }
                 }
@@ -56,7 +55,6 @@ const CategoryMenuRow = ({
         disableScrollListener();
         const categoryTitleTag = document.querySelector('#' + generateTagId(category.id, category.index));
         console.log('ID: ', generateTagId(category.id, category.index))
-        console.log(3333, category, categoryTitleTag)
         const topOfElement = categoryTitleTag.offsetTop - CATEGORY_ROW_HEIGHT;
         window.scroll({top: topOfElement, behavior: "smooth"});
 
@@ -71,7 +69,9 @@ const CategoryMenuRow = ({
 
     const selectTopCategory = index => () => {
         setSelectedTopCategoryIndex(index);
-        // changeCategory(topCategories[index].ids[0])
+        const firstCategoryIdInTop = topCategories[index].ids[0];
+        const candidateCategory = uniqueCategory.find(category => category.id === firstCategoryIdInTop)
+        changeCategory(candidateCategory)
     }
 
     useEffect(() => {
@@ -181,7 +181,10 @@ const SwiperWrapper = ({selectedCategory, children}) => {
     const [swiper, setSwiper] = useState(null);
 
     const slideTo = category => {
-        if (swiper && category?.index) swiper.slideTo(category.index)
+        // we should let 0 pass if too.
+        if (swiper && (category?.index || category?.index === 0)) {
+            swiper.slideTo(category.index)
+        }
     };
 
     useEffect(() => {
