@@ -80,7 +80,8 @@ const CategoryMenuRow = ({
     return (<div style={{position: 'sticky', top: -1, zIndex: 10}}>
         <div style={{position: 'relative', top: 0, zIndex: 10, left: 0, right: 0}}>
             <div style={{position: 'absolute', top: 0, zIndex: 10, left: -10, right: -10}}>
-                <Wrapper className="category-menu-row-wrapper">
+                {/* Don't delete id and className as we use them to scroll handle */}
+                <Wrapper id="category-menu-row" className="category-menu-row-wrapper">
                     {TopCategories}
                     {SubCategories}
                 </Wrapper>
@@ -95,7 +96,8 @@ const SwiperWrapper = ({selectedCategoryId, children}) => {
     const [swiper, setSwiper] = useState(null);
 
     const slideTo = index => {
-        if (swiper) swiper.slideTo(index - 1)
+        // console.log(1111111, index, selectedCategoryId);
+        if (swiper) swiper.slideTo(index-1)
     };
 
     useEffect(() => {

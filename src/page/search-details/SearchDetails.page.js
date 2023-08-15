@@ -23,7 +23,15 @@ const SearchDetailsPage = () => {
 
     const onScrollPage = () => {
         const categoryTitles = document.getElementsByClassName(CATEGORY_TITLE_CLASS_NAME)
-        Object.values(categoryTitles).map(ct => {
+        const stopScroll =  document.getElementsByClassName("stop-scroll");
+
+        if (stopScroll?.length) {
+            console.log('Pizdec')
+            return;
+        }
+
+            console.log('WORK ??? ', stopScroll);
+        Object.values(categoryTitles).forEach(ct => {
                 const y = ct.offsetTop - window.scrollY - CATEGORY_ROW_HEIGHT;
                 if (y < 120 && y > 20) {
                     const candidateCategoryId = +(ct.id.split('_')[1])
@@ -45,20 +53,22 @@ const SearchDetailsPage = () => {
     }, [])
 
     const scrollTo = category_id => {
+        const domElement = document.getElementsByClassName("category-menu-row-wrapper")[0]
+        domElement.classList.add('stop-scroll');
+
         const topOfElement = document.querySelector(`#category_${category_id}`).offsetTop - CATEGORY_ROW_HEIGHT;
         window.scroll({top: topOfElement, behavior: "smooth"});
+
+        setTimeout(() => {
+            console.log('let scroll back')
+        domElement.classList.remove('stop-scroll');
+
+        }, 1500);
     }
 
-    /**
-     * Our `window.scroll` is blocked by `document.addEventListener("scroll", onScrollPage)`.
-     * After click on category we publish scroll which trigger scroll listener.
-     * As a solutions I propose to delete listener before `window.scroll`
-     * And add it with small delay.
-     *
-     */
     const changeCategory = useCallback(category_id => {
-        scrollTo(category_id);
         setSelectedCategoryId(category_id);
+        scrollTo(category_id);
     }, [selectedCategoryId]);
 
     useEffect(() => {
