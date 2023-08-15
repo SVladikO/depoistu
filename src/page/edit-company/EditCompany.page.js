@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Link, useParams} from "react-router-dom";
 
-import {Notification, PrimaryButton, RowSplitter, SecondaryButton} from "../../components";
+import {Notification, RowSplitter, SecondaryButton, PrimaryButton} from "../../components";
 
 import {ReactComponent as RemoveIcon} from "../../assets/icons/remove_icon.svg";
 

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import {COLOR} from '../../utils/theme';
-import {PrimaryButton} from '../../components';
+import {FetchButton} from '../../components';
 export const Wrapper = styled.div`
   padding: 0 0 18px 0;
   display: flex;
@@ -37,6 +37,6 @@ export const AmountInfo = styled.div`
   text-align: center;
   margin-bottom: 19px;
 `;
-export const Button = styled(PrimaryButton)`
+export const Button = styled(FetchButton)`
   font-weight: 700;
 `;

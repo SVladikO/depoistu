@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import {Formik} from "formik";
 
 import {Wrapper} from "./SingUp.style";
-import {PrimaryButton, Label, Input, ContentContainer, Notification} from "../../components";
+import {FetchButton, Label, Input, ContentContainer, Notification} from "../../components";
 import NavigationLabelHref from "../../components/NavigationLabelHref/NavigationLabelHref";
 
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
@@ -116,13 +116,13 @@ const SingUpPage = () => {
                                 label={translate(TRANSLATION.PAGE.SIGN_IN.ACCOUNT_CONFIRMATION)}
                             />
                         </Wrapper>
-                        <PrimaryButton
+                        <FetchButton
                             isWide
                             type="submit"
                             isLoading={isLoading}
                         >
                             {translate(TRANSLATION.PAGE.SING_UP.TOP_TITLE)}
-                        </PrimaryButton>
+                        </FetchButton>
                     </form>
                 )}
             </Formik>
