@@ -57,12 +57,8 @@ const SearchDetailsPage = () => {
      *
      */
     const changeCategory = useCallback(category_id => {
-        document.removeEventListener("scroll", onScrollPage);
         scrollTo(category_id);
         setSelectedCategoryId(category_id);
-        setTimeout(() => {
-            document.addEventListener("scroll", onScrollPage)
-        }, 1500)
     }, [selectedCategoryId]);
 
     useEffect(() => {
