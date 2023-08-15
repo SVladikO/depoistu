@@ -29,10 +29,11 @@ import {
     SettingMenuRow,
     AccountSettings,
     NotificationTDB,
-    PrimaryButton,
+    FetchButton,
     Input,
     Notification,
-    RowSplitter
+    RowSplitter,
+    PrimaryButton
 } from '../../components'
 
 import LanguagePopup from "../../features/language/LanguagePopup";
@@ -104,7 +105,7 @@ const SettingPage = () => {
                             withCleaner
                         />
                         <RowSplitter height={'10px'}/>
-                        <PrimaryButton type="submit" isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.VERIFICATION)}</PrimaryButton>
+                        <FetchButton type="submit" isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.VERIFICATION)}</FetchButton>
                     </form>
                 )}
             </Formik>

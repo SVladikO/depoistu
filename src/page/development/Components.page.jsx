@@ -14,7 +14,7 @@ import
     CheckBoxWithLabel,
     CategoryMenuRow,
     SecondaryButton,
-    PrimaryButton,
+    FetchButton,
     ContentContainer,
     Notification,
     NavigationHeader,
@@ -143,10 +143,10 @@ const componentsGroup1 = [
         {title: 'Price', component: <Price>50</Price>},
     ],
     [
-        {title: 'PrimaryButton', component: <PrimaryButton><GoogleIcon/>Google</PrimaryButton>},
-        {title: 'PrimaryButton', component: <PrimaryButton>Sing in</PrimaryButton>},
-        {title: 'PrimaryButton isWide', component: <PrimaryButton isWide>Sing in</PrimaryButton>},
-        {title: 'PrimaryButton isLoading isWide', component: <PrimaryButton isLoading isWide>Loading</PrimaryButton>},
+        {title: 'FetchButton', component: <FetchButton><GoogleIcon/>Google</FetchButton>},
+        {title: 'FetchButton', component: <FetchButton>Sing in</FetchButton>},
+        {title: 'FetchButton isWide', component: <FetchButton isWide>Sing in</FetchButton>},
+        {title: 'FetchButton isLoading isWide', component: <FetchButton isLoading isWide>Loading</FetchButton>},
         {title: 'SecondaryButton', component: <SecondaryButton><FacebookIcon/>facebook</SecondaryButton>},
         {title: 'SecondaryButton', component: <SecondaryButton>Cancel</SecondaryButton>},
         {title: 'ThirdButton', component: <ThirdButton><FacebookIcon/>Cancel</ThirdButton>},
@@ -321,9 +321,9 @@ const componentsGroup2 = [
                 }}
             >
                 <EditBar>
-                    <PrimaryButton><EditIcon/>Company</PrimaryButton>
+                    <FetchButton><EditIcon/>Company</FetchButton>
                     <QRCodeButton><QRCodeIcon/></QRCodeButton>
-                    <PrimaryButton><EditIcon/>Menu</PrimaryButton>
+                    <FetchButton><EditIcon/>Menu</FetchButton>
                 </EditBar>
             </Company>
         },
@@ -424,7 +424,7 @@ const componentsGroup3 = [
                     description="Looks like you haven't made your order yet."
                 >
                     <Link to={''}>
-                        <PrimaryButton isWide>Shop Now</PrimaryButton>
+                        <FetchButton isWide>Shop Now</FetchButton>
                     </Link>
                 </NotificationTDB>
         },
@@ -463,11 +463,11 @@ function ComponentsPage() {
         <div>
             <Header>
                 <Space/>
-                <PrimaryButton onClick={setWhiteBackground}>White</PrimaryButton>
+                <FetchButton onClick={setWhiteBackground}>White</FetchButton>
                 <Space/>
-                <PrimaryButton onClick={setGreyBackground}>Grey</PrimaryButton>
+                <FetchButton onClick={setGreyBackground}>Grey</FetchButton>
                 <Space/>
-                <PrimaryButton onClick={setBlueBackground}>Blue</PrimaryButton>
+                <FetchButton onClick={setBlueBackground}>Blue</FetchButton>
                 <Space/>
                 <Space/>
                 <Space/>
