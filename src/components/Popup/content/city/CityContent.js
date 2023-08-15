@@ -85,7 +85,7 @@ export const CityContent = ({onSelectCity, availableCityIds, onClose}) => {
                         key={i.toString()}
                         title={isRegion ? translate(CITY_TRANSLATION_IDS[id]) + regionLabel : translate(CITY_TRANSLATION_IDS[id])}
                         label=""
-                        style={{margin: 0, padding: '0 0 20px', border: 'solid 1px red'}}
+                        style={{margin: 0, padding: '0 0 20px'}}
                     />
                 )}
             </CitiesWrapper>

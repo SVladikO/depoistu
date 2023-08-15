@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   background: transparent;
 `;
 
-export const Divider = styled.div`
+export const CategoryTitle = styled.div`
   font-size: 20px;
   line-height: 24px;
   color: ${COLOR.ACCENT5};
