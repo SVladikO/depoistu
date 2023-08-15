@@ -1,24 +1,29 @@
 import React, {memo, useCallback, useEffect, useMemo, useState} from 'react';
 import {Scrollbar, FreeMode} from 'swiper';
 import {Swiper, SwiperSlide} from 'swiper/react';
+import {Link, useNavigate, useParams} from "react-router-dom";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import 'swiper/css/scrollbar';
 
 import {
-    TopCategoryWrapper, TopCategoryItem, SliderStyle, BottomLine, Wrapper
+    TopCategoryWrapper,
+    TopCategoryItem,
+    SliderStyle,
+    BottomLine,
+    Wrapper
 } from "./CategoryMenuRow.style";
 
-import {CategoryItem, MenuItem, PrimaryButton, RowSplitter} from "../../components";
-import {CATEGORY_MAPPER, getCategoryOwnerId, getCategoryUniqueIds} from '../../utils/category';
+import {CategoryItem, MenuItem, FetchButton, RowSplitter} from "../../components";
+import {CategoryTitle} from "../../page/search-details/SearchDetails.style";
+
+import {URL} from "../../utils/config";
+import {useScrollUp} from "../../utils/hook";
 import {getTopCategories} from '../../utils/category';
 import {translate, TRANSLATION} from "../../utils/translation";
-import {CategoryTitle} from "../../page/search-details/SearchDetails.style";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {URL} from "../../utils/config";
-import {Link, useNavigate, useParams} from "react-router-dom";
-import {useScrollUp} from "../../utils/hook";
+import {CATEGORY_MAPPER, getCategoryOwnerId, getCategoryUniqueIds} from '../../utils/category';
 
 const CATEGORY_TITLE_CLASS_NAME = 'CATEGORY_TITLE_CLASS_NAME';
 const CATEGORY_ROW_HEIGHT = 100;
@@ -56,7 +61,7 @@ const CategoryMenuRow = ({
                     const [extra, candidateCategoryId, candidateCategoryIndex] = element.id.split('_').map(Number)
 
                     if (candidateCategoryId !== selectedCategory.id) {
-                        setSelectedCategory({id: candidateCategoryId, index: candidateCategoryIndex})
+                        changeCategory({id: candidateCategoryId, index: candidateCategoryIndex})
                     }
                 }
             }
@@ -78,10 +83,16 @@ const CategoryMenuRow = ({
         enableScrollListener()
     }
 
-    const changeCategory = useCallback(category => {
+    const changeCategory = category => {
+        console.log(getCategoryOwnerId(category.id, topCategories))
+        setSelectedTopCategoryIndex(getCategoryOwnerId(category.id, topCategories));
         setSelectedCategory(category);
+    };
+
+    const changeCategoryWithScroll = category => {
+        changeCategory(category)
         scrollTo(category);
-    }, [selectedCategory]);
+    };
 
 
     const selectTopCategory = index => () => {
@@ -145,10 +156,7 @@ const CategoryMenuRow = ({
                         <CategoryItem
                             category={CATEGORY_MAPPER[category.id]}
                             isSelected={selectedCategory.id === category.id}
-                            clickHandler={() => {
-                                changeCategory(category)
-                                setSelectedTopCategoryIndex(getCategoryOwnerId(category.id, topCategories));
-                            }}
+                            clickHandler={() => changeCategoryWithScroll(category)}
                             itemsAmountPerCategory={
                                 showMenuItemAmount
                                     ? menuItems.filter(mi => mi.CATEGORY_ID === category.id).length
@@ -217,8 +225,8 @@ const CategoryMenuRow = ({
                 <>
                     <RowSplitter height={'15px'}/>
                     <Link to={`${URL.ADD_MENU_ITEM}?categoryId=${selectedCategory.id}&companyId=${companyId}`}>
-                        <PrimaryButton
-                            isWide>{translate(TRANSLATION.PAGE.EDIT_MENU.BUTTON.ADD_MENU_ITEM)}</PrimaryButton>
+                        <FetchButton
+                            isWide>{translate(TRANSLATION.PAGE.EDIT_MENU.BUTTON.ADD_MENU_ITEM)}</FetchButton>
                     </Link>
                 </>
             }

@@ -1,8 +1,8 @@
-import {useEffect, useMemo, useState} from "react";
+import {useEffect, useState} from "react";
 import {useParams} from 'react-router-dom';
 import {CategoryTitle, Wrapper} from "./SearchDetails.style";
 
-import {CategoryMenuRow, Company, MenuItem, Notification, RowSplitter} from "../../components";
+import {CategoryMenuRow, Company, Notification, RowSplitter} from "../../components";
 
 import {useLocalStorage} from "../../utils/hook";
 import {BE_API, fetchData} from "../../utils/fetch";

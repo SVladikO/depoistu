@@ -52,7 +52,6 @@ export const getCategoryUniqueIds = (menuItems = [], showAllCategories) => {
 }
 export const getCategoryOwnerId = (categoryId, topCategories) => {
     let topCategoryName = '';
-
     if (TOP_CATEGORIES.KITCHEN.includes(categoryId)) {
         topCategoryName = 'KITCHEN'
     }
@@ -72,6 +71,8 @@ export const getCategoryOwnerId = (categoryId, topCategories) => {
             topCategoryIndex = index;
         }
     })
+
+    console.log(categoryId, topCategoryName, topCategoryIndex)
 
     return topCategoryIndex;
 }
