@@ -55,7 +55,7 @@ const CategoryMenuRow = ({
 
                     const [extra, candidateCategoryId, candidateCategoryIndex] = element.id.split('_').map(Number)
 
-                    if (+candidateCategoryId !== selectedCategory.id) {
+                    if (candidateCategoryId !== selectedCategory.id) {
                         setSelectedCategory({id: candidateCategoryId, index: candidateCategoryIndex})
                     }
                 }
