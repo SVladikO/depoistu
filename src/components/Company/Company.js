@@ -24,32 +24,40 @@ import {parseSchedule} from "../../utils/company";
 import ScheduleDetails from "../WeekScheduleOutput/WeekScheduleOutput";
 import {CITY_TRANSLATION_IDS} from "../../utils/cities";
 import {translate, TRANSLATION as TR} from "../../utils/translation";
+import {Link} from "react-router-dom";
 
 const Company = (props) => {
 
     if (!props.company) {
-        return;
+        return null;
     }
 
     const {PHOTOS, NAME, CITY_ID, STREET, PHONE1, PHONE2, PHONE3, SCHEDULE} = props.company
     const schedule = parseSchedule(SCHEDULE);
 
-    const redirectToGoogleMaps = (CITY_ID, STREET) => {
-        const address = `,${STREET}, ${translate(CITY_TRANSLATION_IDS[CITY_ID])}`
-        const encodedAddress = encodeURIComponent(address);
-        window.location.href = `https://www.google.com/maps?q=${encodedAddress}`;
-    };
-
-
-    const renderLocation = () => {
+    const CompanyLocationButton = () => {
         if (props.withMoreInfo) {
-            return <ThirdButton onClick={() => redirectToGoogleMaps(CITY_ID, STREET)}><LocationIcon/>{translate(CITY_TRANSLATION_IDS[CITY_ID])}, {STREET}</ThirdButton>
+            const address = `,${STREET}, ${translate(CITY_TRANSLATION_IDS[CITY_ID])}`
+            let url = `https://www.google.com/maps?q=${encodeURIComponent(address)}`
+
+            return (
+                <Link to={url} target="_blank" rel="noopener">
+                    <ThirdButton>
+                        <LocationIcon />
+                        {translate(CITY_TRANSLATION_IDS[CITY_ID])}, {STREET}
+                    </ThirdButton>
+                </Link>
+            )
         }
 
-        return <LocationWrapper>{translate(CITY_TRANSLATION_IDS[CITY_ID])}, {STREET}</LocationWrapper>;
+        return (
+            <LocationWrapper>
+            {translate(CITY_TRANSLATION_IDS[CITY_ID])}, {STREET}
+        </LocationWrapper>
+        );
     }
 
-    const renderImages = () => (
+    const Images = () => (
         <ImageSection>
             <Swiper
                 modules={[Navigation, Pagination]}
@@ -82,12 +90,12 @@ const Company = (props) => {
 
     return (
         <Wrapper>
-            {/*{renderImages()}*/}
+            {/*<Images />*/}
             <Content>
                 <CompanyInfo>
                     <Name>{NAME}</Name>
                     {renderDaySchedule()}
-                    {renderLocation()}
+                    <CompanyLocationButton />
                     {props.withMoreInfo && <a href={`tel:${PHONE1}`}><ThirdButton><PhoneIcon/>{PHONE1}</ThirdButton></a>}
                     {props.withMoreInfo && PHONE2 && <a href={`tel:${PHONE2}`}><ThirdButton><PhoneIcon/>{PHONE2}</ThirdButton></a>}
                     {props.withMoreInfo && PHONE3 && <a href={`tel:${PHONE3}`}><ThirdButton><PhoneIcon/>{PHONE3}</ThirdButton></a>}
