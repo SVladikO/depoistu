@@ -11,7 +11,7 @@ import {
 } from "./CategoryMenuRow.style";
 
 import {CategoryItem, RowSplitter} from "../../components";
-import {CATEGORY_MAPPER, getCategoryUniqueIds} from '../../utils/category';
+import {CATEGORY_MAPPER, getCategoryOwnerId, getCategoryUniqueIds} from '../../utils/category';
 import {getTopCategories} from '../../utils/category';
 import {translate} from "../../utils/translation";
 
@@ -68,7 +68,10 @@ const CategoryMenuRow = ({
                         <CategoryItem
                             category={CATEGORY_MAPPER[category_id]}
                             isSelected={selectedCategoryId === category_id}
-                            clickHandler={() => changeCategory(category_id)}
+                            clickHandler={() => {
+                                changeCategory(category_id)
+                                setSelectedTopCategoryIndex(getCategoryOwnerId(category_id, topCategories));
+                            }}
                             itemsAmountPerCategory={showMenuItemAmount ? menuItems.filter(mi => mi.CATEGORY_ID === mi.CATEGORY_ID).length : 0}
                         />
                     </SwiperSlide>

@@ -49,6 +49,31 @@ export const getCategoryUniqueIds = (menuItems = [], showAllCategories) => {
 
     return [...new Set([...categoryIds, ...allCategories])]
 }
+export const getCategoryOwnerId = (categoryId, topCategories) => {
+    let topCategoryName = '';
+
+    if (TOP_CATEGORIES.KITCHEN.includes(categoryId)) {
+        topCategoryName = 'KITCHEN'
+    }
+
+    if (TOP_CATEGORIES.DESSERTS.includes(categoryId)) {
+        topCategoryName = 'DESSERTS'
+    }
+
+    if (TOP_CATEGORIES.BAR.includes(categoryId)) {
+        topCategoryName = 'BAR'
+    }
+
+    let topCategoryIndex = 0;
+
+    topCategories.forEach((tp, index) => {
+        if (tp.key === topCategoryName) {
+            topCategoryIndex = index;
+        }
+    })
+
+    return topCategoryIndex;
+}
 export const getTopCategories = (menuCategoryIds = []) => {
     const topCategories = {
         KITCHEN: {ids: [], translationKey: TR.TOP_CATEGORIES.KITCHEN},
