@@ -688,7 +688,7 @@ export const TRANSLATION = {
             en: "Sandwitch"
         },
         SEAFOOD: {
-            ua: "Морепродукти",
+            ua: "Море продукти",
             en: "Seafood"
         },
         SALADS: {

@@ -25,7 +25,6 @@ export const TopCategoryItem = styled.div`
 
 export const Wrapper = styled.div`
   ${ContentContainerDefault};
-  border: solid 1px red;
   border-radius: 0;
   padding: 8px 8px 0;
 `;
@@ -40,9 +39,9 @@ export const SliderStyle = styled.div`
 
   .swiper-slide {
     //width: auto !important;
-    min-width: 100px;
+    //min-width: 100px;
     & > div {
-      height: 50px;
+      height: 36px;
       display: flex;
       justify-content: center;
       align-items: center;
