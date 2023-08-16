@@ -7,16 +7,13 @@ import {Wrapper, CompanyDetails} from "./EditMenu.style";
 import {
     CategoryMenuRow,
     Notification,
-    PrimaryButton,
-    FetchButton,
-    RowSplitter
 } from "../../components";
 
 import {startLoading, stopLoading} from "../../features/request/requestSlice";
 
 import {BE_API} from '../../utils/fetch'
 import {fetchData} from "../../utils/fetch";
-import {useRedirectToSettingPage} from "../../utils/hook";
+import {useLocalStorage, useLocalStorageFetch, useRedirectToSettingPage} from "../../utils/hook";
 import {translate} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {CITY_TRANSLATION_IDS} from "../../utils/cities";
@@ -26,11 +23,16 @@ const EditMenu = () => {
     const dispatch = useDispatch();
     const {companyId} = useParams();
     const isLoading = useSelector(state => state.request.value.isLoading);
-    const customerCompanies = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
-    const currentCompany = customerCompanies.find((c => c.ID === +companyId));
     const [menuItems, setMenuItems] = useState();
     const [requestError, setRequestError] = useState('');
-
+    const [customer] = useLocalStorage(LOCAL_STORAGE_KEY.CUSTOMER);
+    const [customerCompanies] = useLocalStorageFetch(
+        LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES,
+        [],
+        BE_API.COMPANY.GET_BY_CUSTOMER_ID(customer?.ID),
+        setRequestError
+    );
+    const currentCompany = customerCompanies?.find((c => c.ID === +companyId));
     useEffect(() => {
         LocalStorage.set(LOCAL_STORAGE_KEY.COMPANY_ID_FOR_EDIT_MENU, companyId);
     })

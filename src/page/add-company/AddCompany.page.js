@@ -3,9 +3,9 @@ import "swiper/css/pagination";
 import {Link} from "react-router-dom";
 import React, {useState} from "react";
 
-import {Notification} from "../../components";
+import {FetchButton, Notification, PrimaryButton} from "../../components";
 
-import {WarningText, Reference} from "./AddCompany.style";
+import {WarningText} from "./AddCompany.style";
 
 import CompanyView from "../../page-view/company/company-view";
 
@@ -17,7 +17,6 @@ import {getScheduleAsString} from "../../utils/company";
 import {useRedirectToSettingPage} from "../../utils/hook";
 import {translate, TRANSLATION} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {ReactComponent as LinkArrowIcon} from "../../assets/icons/right-anchor.svg";
 
 const AddCompany = () => {
     useRedirectToSettingPage();
@@ -49,22 +48,28 @@ const AddCompany = () => {
                 <WarningText>
                     Without menu this company won’t be shown in search
                 </WarningText>
-                <Reference>
-                    <Link to={`${URL.EDIT_MENU}/${newCompanyId}`}>Add menu for this company<LinkArrowIcon/></Link>
-                </Reference>
+                <Link to={`${URL.EDIT_MENU}/${newCompanyId}`}>
+                    <PrimaryButton isWide>
+                        Add menu for this company
+                    </PrimaryButton>
+                </Link>
             </Notification.Success>
-        );
+        )
+            ;
     }
+
     return (
-        <>
-            {requestError && <Notification.Error message={requestError}/>}
-            <CompanyView
-                isLoading={isLoading}
-                initialValues={initialValues}
-                onSubmit={onSubmit}
-                submitButtonTitle={translate(TRANSLATION.PAGE.ADD_COMPANY.BUTTON.ADD_COMPANY)}
-            />
-        </>
+        <CompanyView
+            initialValues={initialValues}
+            onSubmit={onSubmit}
+        >
+            <>
+                {requestError && <Notification.Error message={requestError}/>}
+                <FetchButton isWide type="submit" isLoading={isLoading}>
+                    {translate(TRANSLATION.PAGE.ADD_COMPANY.BUTTON.ADD_COMPANY)}
+                </FetchButton>
+            </>
+        </CompanyView>
     )
 };
 
