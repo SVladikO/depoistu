@@ -75,6 +75,8 @@ const EditCompany = () => {
     }
 
     const deleteCompany = () => {
+        setRequestUpdateError('')
+        setRequestDeleteError('')
         setIsLoadingDelete(true)
         closeDeletePopup()
 
@@ -181,8 +183,9 @@ const EditCompany = () => {
                     {requestUpdateError && <Notification.Error message={requestUpdateError}/>}
                     {isCompanyUpdated && <Notification.Success message={"Company was updated."}/>}
                     <EditCompanyButton />
+                    <RowSplitter height={'25px'}/>
                     {requestDeleteError && <Notification.Error message={requestDeleteError}/>}
-                    <RowSplitter height={'50px'}/>
+                    <RowSplitter height={'25px'}/>
                     <DeleteCompanyButton/>
                 </>
             </CompanyView>
