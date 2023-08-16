@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
-import {FetchButton, Notification, RowSplitter, SecondaryButton} from "../../components";
+import {FetchButton, Notification, RowSplitter} from "../../components";
 import MenuItemView from "../../page-view/menu-item/menu-item-view";
 import {ReactComponent as RemoveIcon} from "../../assets/icons/remove_icon.svg";
 
@@ -10,7 +10,6 @@ import {fetchData, BE_API} from "../../utils/fetch";
 import {useRedirectToSettingPage} from "../../utils/hook";
 import {translate, TRANSLATION} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {stopLoading} from "../../features/request/requestSlice";
 
 const EditMenuItemPage = () => {
     useRedirectToSettingPage();
