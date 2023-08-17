@@ -65,6 +65,7 @@ const EditCompany = () => {
     const deleteCompany = () => {
         setIsLoading(true)
         closeDeletePopup()
+        document.body.style.overflowY = 'auto';
 
         fetchData(BE_API.COMPANY.DELETE(), {method: 'delete', companyId})
             .then(() => {
