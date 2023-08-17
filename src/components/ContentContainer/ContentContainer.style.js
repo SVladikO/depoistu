@@ -10,11 +10,6 @@ export const ContentContainerDefault = css`
   border-radius: ${p => p.borderRadius ? p.borderRadius : BORDER_RADIUS.SECOND};
   margin: 0 0 15px;
 
-  position: sticky;
-  top: 0;
-  left: 0;
-  right: 0;
-
   & > a {
     color: ${COLOR.ACCENT3};
   }

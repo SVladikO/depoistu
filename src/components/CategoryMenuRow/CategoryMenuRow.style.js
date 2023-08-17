@@ -25,6 +25,10 @@ export const TopCategoryItem = styled.div`
 
 export const Wrapper = styled.div`
   ${ContentContainerDefault};
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
   border-radius: 0;
   padding: 8px 8px 0;
   z-index: 10;
