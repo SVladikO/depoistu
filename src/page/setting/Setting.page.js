@@ -6,7 +6,7 @@ import * as Yup from "yup";
 
 import {Wrapper, EditBar} from './Setting.style';
 
-import {ReactComponent as LockIcon} from '../../icons/lock.svg';
+import {ReactComponent as LockIcon} from '../../assets/icons/lock.svg';
 // import {ReactComponent as OrderHistoryIcon} from '../../icons/order_history.svg';
 // import {ReactComponent as NotificationIcon} from '../../icons/notification.svg';
 // import {ReactComponent as NewsletterIcon} from '../../icons/newsletter.svg';
@@ -14,14 +14,14 @@ import {ReactComponent as LockIcon} from '../../icons/lock.svg';
 // import {ReactComponent as PaymentIcon} from '../../icons/payment.svg';
 // import {ReactComponent as LikeIcon} from '../../icons/favorite.svg';
 // import {ReactComponent as DeliveryAddressIcon} from '../../icons/location.svg';
-import {ReactComponent as LogOutIcon} from '../../icons/logout.svg';
-import {ReactComponent as ProfileIcon} from '../../icons/profile.svg';
+import {ReactComponent as LogOutIcon} from '../../assets/icons/logout.svg';
+import {ReactComponent as ProfileIcon} from '../../assets/icons/profile.svg';
 // import {ReactComponent as CurrencyIcon} from '../../icons/currency.svg';
-import {ReactComponent as LanguageIcon} from '../../icons/language.svg';
-import {ReactComponent as InfoIcon} from "../../icons/info.svg";
+import {ReactComponent as LanguageIcon} from '../../assets/icons/language.svg';
+import {ReactComponent as InfoIcon} from "../../assets/icons/info.svg";
 // import {ReactComponent as LinkedAccountIcon} from '../../icons/linked_account.svg';
-import {ReactComponent as StoreIcon} from '../../icons/house.svg';
-import {ReactComponent as TeamIcon} from "../../icons/team.svg";
+import {ReactComponent as StoreIcon} from '../../assets/icons/house.svg';
+import {ReactComponent as TeamIcon} from "../../assets/icons/team.svg";
 // import {ReactComponent as ConditionsIcon} from '../../icons/list.svg';
 // import {ReactComponent as HelpIcon} from '../../icons/chat.svg';
 
@@ -29,10 +29,11 @@ import {
     SettingMenuRow,
     AccountSettings,
     NotificationTDB,
-    PrimaryButton,
+    FetchButton,
     Input,
     Notification,
-    RowSplitter
+    RowSplitter,
+    PrimaryButton
 } from '../../components'
 
 import LanguagePopup from "../../features/language/LanguagePopup";
@@ -75,7 +76,7 @@ const SettingPage = () => {
                     setCustomer({...customer, IS_VERIFIED_EMAIL: true})
                 }
             })
-            .catch(e => setRequestError(e.body.message))
+            .catch(e => setRequestError(e.body.errorMessage))
             .finally(() => setIsLoading(false));
     }
 
@@ -104,8 +105,7 @@ const SettingPage = () => {
                             withCleaner
                         />
                         <RowSplitter height={'10px'}/>
-                        <PrimaryButton type="submit"
-                                       isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.VERIFICATION)}</PrimaryButton>
+                        <FetchButton type="submit" isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.VERIFICATION)}</FetchButton>
                     </form>
                 )}
             </Formik>

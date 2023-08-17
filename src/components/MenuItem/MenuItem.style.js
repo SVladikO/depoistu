@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {BORDER_RADIUS, COLOR, SHADOW} from "../../utils/theme";
+import {BORDER_RADIUS, COLOR, FONT_16, SHADOW} from "../../utils/theme";
 
 export const Wrapper = styled.div`
   ${SHADOW};
@@ -18,6 +18,8 @@ export const Wrapper = styled.div`
     width: 25px;
     height: 25px;
   }
+  background-color: ${({isVisible}) => isVisible ? 'none': COLOR.ERROR2};
+  transition: background-color 0.5s;
 `
 export const ImagesWrapper = styled.div`
   min-width: 90px;
@@ -84,7 +86,7 @@ export const EditLabel = styled.span`
 export const AdditionalDetails = styled.div`
   display: flex;
   align-items: center;
-  font-weight: 100;
+  font-weight: 700;
   font-size: 18px;
   line-height: 19px;
   color: ${COLOR.ACCENT5};
@@ -92,11 +94,23 @@ export const AdditionalDetails = styled.div`
   & > svg {
     fill: #b5b5b5;
     height: 14px;
-    width: 14px;
+    width: 16px;
     margin: 0 2px 0 0;
   } 
   
   & > svg:nth-child(2) {
     margin: 0 2px 0 12px;
   }
+  
+  .ToggleCheckbox {
+    margin-left: auto;
+  }
 `;
+
+export const StatusHidden = styled.div`
+  ${FONT_16};
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  color: ${COLOR.ERROR1};
+`

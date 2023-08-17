@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-import {Notification} from "../../components";
+import {FetchButton, Notification} from "../../components";
 import MenuItemView from "../../page-view/menu-item/menu-item-view";
 
 import {getParam} from "../../utils/utils";
@@ -10,7 +10,7 @@ import {translate, TRANSLATION} from "../../utils/translation";
 
 const AddMenuItemPage = () => {
     useRedirectToSettingPage();
-    const categoryId = getParam(`categoryId`);
+    const categoryId = +getParam(`categoryId`);
     const companyId = getParam(`companyId`)
 
     const [isLoading, setIsLoading] = useState(false);
@@ -38,30 +38,34 @@ const AddMenuItemPage = () => {
             company_id: companyId,
         }
 
+        setRequestError('')
         fetchData(BE_API.MENU_ITEM.POST_CREATE(), requestObj)
             .then(() => {
                 setIsMenuItemCreated(true);
             })
-            .catch(res => setRequestError(res.body.message))
+            .catch(e => setRequestError(e.body.errorMessage))
             .finally(() => setIsLoading(false))
-    }
-
-    if (isLoading) {
-        return <Notification.Loading/>;
-    }
-
-    if (requestError) {
-        return <Notification.Error message={requestError}/>;
     }
 
     return (
         <>
-            {isMenuItemCreated && <Notification.Success message={"Menu item was created."}/>}
             <MenuItemView
                 initialValue={initialValue}
                 onSubmit={onSubmit}
-                submitButtonTitle={translate(TRANSLATION.PAGE.ADD_MENU_ITEM.BUTTON.ADD_MENU_ITEM)}
-            />
+            >
+                <>
+                    {requestError && <Notification.Error message={requestError}/>}
+                    {isMenuItemCreated && <Notification.Success message={"Menu item was created."}/>}
+                    <FetchButton
+                        isWide
+                        type="submit"
+                        isLoading={isLoading}
+                    >
+                        {translate(TRANSLATION.PAGE.ADD_MENU_ITEM.BUTTON.ADD_MENU_ITEM)}
+                    </FetchButton>
+                </>
+
+            </MenuItemView>
         </>
     );
 }

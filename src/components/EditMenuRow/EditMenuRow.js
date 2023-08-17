@@ -1,9 +1,9 @@
 import {Link} from "react-router-dom";
 
 import {Wrapper, Title, EditSection} from "./EditMenuRow.style";
-import {ReactComponent as EditIcon} from "../../icons/edit.svg";
-import {SecondaryButton} from "../Button/Button.style";
+import {ReactComponent as EditIcon} from "../../assets/icons/edit.svg";
 import {URL} from '../../utils/config'
+import {SecondaryButton} from "../Buttons/SecondaryButton";
 
 const EditMenuRow = ({title, onEditClick}) => {
     return (

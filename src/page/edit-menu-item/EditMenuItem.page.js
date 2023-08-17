@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
-import {Notification, RowSplitter, SecondaryButton} from "../../components";
+import {FetchButton, Notification, RowSplitter} from "../../components";
 import MenuItemView from "../../page-view/menu-item/menu-item-view";
-import {ReactComponent as RemoveIcon} from "../../icons/remove_icon.svg";
+import {ReactComponent as RemoveIcon} from "../../assets/icons/remove_icon.svg";
 
 import {URL} from "../../utils/config";
 import {fetchData, BE_API} from "../../utils/fetch";
@@ -14,8 +14,10 @@ import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 const EditMenuItemPage = () => {
     useRedirectToSettingPage();
     const navigate = useNavigate();
-    const [isLoading, setIsLoading] = useState(false);
-    const [requestError, setRequestError] = useState("");
+    const [isLoadingUpdate, setIsLoadingUpdate] = useState(false);
+    const [isLoadingDelete, setIsLoadingDelete] = useState(false);
+    const [requestUpdateError, setRequestUpdateError] = useState("");
+    const [requestDeleteError, setRequestDeleteError] = useState("");
     const [isMenuItemDeleted, setIsMenuItemDeleted] = useState(false);
     const [isMenuItemUpdated, setIsMenuItemUpdated] = useState(false);
     const menuItemCandidateToEdit = LocalStorage.get(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT);
@@ -34,9 +36,11 @@ const EditMenuItemPage = () => {
         size: SIZE,
         image_url: IMAGE_URL
     }
-
     const onSubmit = values => {
-        setIsLoading(true);
+        setIsLoadingUpdate(true);
+        setRequestUpdateError('')
+        setRequestDeleteError('')
+
         const reqObj = {method: 'put', id: ID, ...values};
 
         fetchData(BE_API.MENU_ITEM.PUT_UPDATE(), reqObj)
@@ -45,42 +49,61 @@ const EditMenuItemPage = () => {
                 LocalStorage.set(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT, updatedMenuItem);
                 setIsMenuItemUpdated(true);
             })
-            .catch(res => setRequestError(res.body.message))
-            .finally(() => setIsLoading(false))
+            .catch(e => setRequestUpdateError(e.body.errorMessage))
+            .finally(() => setIsLoadingUpdate(false))
     }
 
     const deleteCompany = () => {
-        setIsLoading(true)
+        setIsLoadingDelete(true)
+        setRequestUpdateError('')
+        setRequestDeleteError('')
 
         fetchData(BE_API.MENU_ITEM.DELETE(), {method: 'delete', id: menuItemCandidateToEdit.ID})
             .then(() => {
                 setIsMenuItemDeleted(true);
             })
-            .catch(res => {
-                setRequestError(res.body.message)
-            })
-            .finally(() => setIsLoading(false))
-    }
-
-    if (isLoading) {
-        return <Notification.Loading/>;
+            .catch(e => setRequestDeleteError(e.body.errorMessage))
+            .finally(() => setTimeout(() => setIsLoadingDelete(false), 1000))
     }
 
     if (isMenuItemDeleted) {
-        return <Notification.Success message={"Menu item was deleted."} />
+        return <Notification.Success message={"Menu item was deleted."}/>
     }
 
     return (
         <>
-            {isMenuItemUpdated && <Notification.Success message={"Menu item was updated."} />}
-            {requestError && <Notification.Error message={requestError}/>}
-            <SecondaryButton onClick={deleteCompany}><RemoveIcon/>{translate(TRANSLATION.PAGE.EDIT_MENU_ITEM.BUTTON.DELETE_MENU_ITEM)}</SecondaryButton>
+
+
             <RowSplitter height={'15px'}/>
             <MenuItemView
                 initialValue={initialValue}
                 onSubmit={onSubmit}
                 submitButtonTitle={translate(TRANSLATION.PAGE.EDIT_MENU_ITEM.BUTTON.EDIT_MENU_ITEM)}
-            />
+            >
+                <>
+                    {isMenuItemUpdated && <Notification.Success message={"Menu item was updated."}/>}
+                    {requestUpdateError && <Notification.Error message={requestUpdateError}/>}
+                    <FetchButton
+                        isWide
+                        type="submit"
+                        isLoading={isLoadingUpdate}
+                    >
+                        {translate(TRANSLATION.PAGE.ADD_MENU_ITEM.BUTTON.ADD_MENU_ITEM)}
+                    </FetchButton>
+                    <RowSplitter height={'25px'}/>
+                    {requestDeleteError && <Notification.Error message={requestDeleteError}/>}
+                    <RowSplitter height={'25px'}/>
+                    <FetchButton
+                        isWide
+                        isLoading={isLoadingDelete}
+                        clickHandler={deleteCompany}
+                    >
+                        <RemoveIcon/>
+                        {translate(TRANSLATION.PAGE.EDIT_MENU_ITEM.BUTTON.DELETE_MENU_ITEM)}
+                    </FetchButton>
+                </>
+
+            </MenuItemView>
         </>
     )
 }

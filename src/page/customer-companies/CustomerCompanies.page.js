@@ -5,13 +5,13 @@ import QRCode from 'qrcode';
 
 import {EditBar, QRCodeButton, ImageQR} from "./CustomerCompanies.style";
 
-import {Company, Notification, PrimaryButton, Popup} from "../../components";
-import {ReactComponent as EditIcon} from "../../icons/edit.svg";
+import {Company, Notification, Popup, PrimaryButton} from "../../components";
+import {ReactComponent as EditIcon} from "../../assets/icons/edit.svg";
 
 import {BE_API} from '../../utils/fetch'
 import {ROUTER, URL} from "../../utils/config";
 import {translate, TRANSLATION} from "../../utils/translation";
-import {ReactComponent as QRCodeIcon} from "../../icons/qr_code.svg";
+import {ReactComponent as QRCodeIcon} from "../../assets/icons/qr_code.svg";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {useLocalStorage, useLocalStorageFetch, useRedirectToSettingPage} from "../../utils/hook";
 
@@ -53,14 +53,16 @@ const CustomerCompaniesPage = () => {
                     <Company company={company} key={company.ID}>
                         <EditBar>
                             <Link to={ROUTER.EDIT_COMPANY.URL + '/' + company.ID} style={{width: '140px'}}>
-                                <PrimaryButton
-                                    isWide><EditIcon/>{translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.COMPANY)}
+                                <PrimaryButton isWide>
+                                    <EditIcon/>
+                                    {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.COMPANY)}
                                 </PrimaryButton>
                             </Link>
                             <QRCodeButton onClick={showQRCode(company.ID)}><QRCodeIcon/></QRCodeButton>
                             <Link to={ROUTER.EDIT_MENU.URL + '/' + company.ID} style={{width: '140px'}}>
-                                <PrimaryButton
-                                    isWide><EditIcon/>{translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.MENU)}
+                                <PrimaryButton isWide>
+                                    <EditIcon/>
+                                    {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.MENU)}
                                 </PrimaryButton>
                             </Link>
                         </EditBar>
@@ -68,8 +70,9 @@ const CustomerCompaniesPage = () => {
             )
             }
             <Link to={URL.ADD_COMPANY}>
-                <PrimaryButton
-                    isWide>{translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.ADD_COMPANY)}</PrimaryButton>
+                <PrimaryButton isWide>
+                    {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.ADD_COMPANY)}
+                </PrimaryButton>
             </Link>
         < />
     )

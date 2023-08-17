@@ -2,16 +2,16 @@ import {Link} from "react-router-dom";
 import React, {useEffect, useMemo, useState} from "react";
 import {useSelector} from "react-redux";
 
-import {ReactComponent as LocationIcon} from "../../icons/location.svg";
+import {ReactComponent as LocationIcon} from "../../assets/icons/location.svg";
 
 import {PInput, ContentContainer, Company, Notification, Popup} from "../../components";
 
 import {URL} from "../../utils/config";
 import {BE_API, fetchData} from "../../utils/fetch";
+import {CITY_TRANSLATION_IDS} from "../../utils/cities";
+import {translate, TRANSLATION} from "../../utils/translation";
 import {useLocalStorage, useLocalStorageFetch} from "../../utils/hook";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {translate, TRANSLATION} from "../../utils/translation";
-import {CITY_TRANSLATION_IDS} from "../../utils/cities";
 
 const SearchPage = () => {
     const [requestError, setRequestError] = useState('');

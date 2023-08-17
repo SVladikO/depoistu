@@ -6,7 +6,7 @@ import {
     Label,
     Input,
     RowSplitter,
-    PrimaryButton,
+    FetchButton,
     ContentContainer, Notification,
 } from "../../components";
 
@@ -37,16 +37,12 @@ const ChangePasswordPage = () => {
                 LocalStorage.set(LOCAL_STORAGE_KEY.CUSTOMER, res.body);
                 setIsPasswordUpdated(true);
             })
-            .catch(e => setRequestError(e.body.message))
+            .catch(e => setRequestError(e.body.errorMessage))
             .finally(() => setIsLoading(false));
     }
 
-    if (isLoading) {
-        return <Notification.Loading/>
-    }
-
     if (isPasswordUpdated) {
-        return <Notification.Success message={"Password was updated."} />
+        return <Notification.Success message={"Password was updated."}/>
     }
 
     return (
@@ -96,8 +92,13 @@ const ChangePasswordPage = () => {
                                 errorMessage={errors.confirmedPassword}
                             />
                             <RowSplitter margin="20px 0 0"/>
-                            <PrimaryButton type="submit"
-                                           isWide>{translate(TRANSLATION.PAGE.CHANGE_PASSWORD.BUTTON.SAVE_PASSWORD)}</PrimaryButton>
+                            <FetchButton
+                                isWide
+                                type="submit"
+                                isLoading={isLoading}
+                            >
+                                {translate(TRANSLATION.PAGE.CHANGE_PASSWORD.BUTTON.SAVE_PASSWORD)}
+                            </FetchButton>
                         </ContentContainer>
                     </form>
                 )}
