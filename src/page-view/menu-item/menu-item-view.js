@@ -3,14 +3,15 @@ import {Formik} from "formik";
 import * as Yup from 'yup';
 
 import {ImagePlace, MenuItemPhoto} from "./menu-item-view.style";
-import {Dropdown,ContentContainer, Input, Label, FetchButton, SecondaryButton, Textarea} from "../../components";
+import {Dropdown,ContentContainer, Input, Label, SecondaryButton, Textarea} from "../../components";
+
 import validation from "../../utils/validation";
 import {CATEGORY_MAPPER} from "../../utils/category";
 import {translate, TRANSLATION} from "../../utils/translation";
 
 const EditMenuItemSchema = Yup.object().shape(validation.menuItem);
 
-const MenuItemView = ({initialValue, onSubmit, submitButtonTitle, isLoading}) => {
+const MenuItemView = ({initialValue, onSubmit, children}) => {
     const [wasSubmitted, setWasSubmitted] = useState(false);
     const [imageURL] = useState(initialValue.imageURL);
     const options  = useMemo(() => Object.values(CATEGORY_MAPPER).map(({id,title}) => ({value: id, title})),[initialValue])
@@ -111,13 +112,7 @@ const MenuItemView = ({initialValue, onSubmit, submitButtonTitle, isLoading}) =>
                             withCleaner
                         />
                     </ContentContainer>
-                    <FetchButton
-                        isWide
-                        type="submit"
-                        isLoading={isLoading}
-                    >
-                        {submitButtonTitle}
-                    </FetchButton>
+                    {children}
                 </form>
             )}
         </Formik>

@@ -11,7 +11,6 @@ import {
     Label,
     PInput,
     Popup,
-    FetchButton,
     SecondaryButton,
     WeekScheduleInput
 } from "../../components";
@@ -57,7 +56,7 @@ const renderCompanyPhotos = (photos, setPictures) => {
     );
 }
 
-const CompanyView = ({initialValues, onSubmit, submitButtonTitle, isLoading}) => {
+const CompanyView = ({initialValues, onSubmit, children}) => {
     const [showCityPopup, setShowCityPopup] = useState(false);
     const [wasSubmitted, setWasSubmitted] = useState(false);
 
@@ -169,13 +168,7 @@ const CompanyView = ({initialValues, onSubmit, submitButtonTitle, isLoading}) =>
                             onClose={closeCityPopup}
                         />
                     )}
-                    <FetchButton
-                        isWide
-                        type="submit"
-                        isLoading={isLoading}
-                    >
-                        {submitButtonTitle}
-                    </FetchButton>
+                    {children}
                 </form>
             )}
         </Formik>
