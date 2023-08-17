@@ -199,7 +199,7 @@ const CategoryMenuRow = ({
                     MenuItemComponent
                 ];
             })?.flat()
-    }, [menuItems]);
+    }, [menuItems, uniqueCategories]);
 
     return (
         <>
