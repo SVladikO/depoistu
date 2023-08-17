@@ -25,8 +25,22 @@ export const TRANSLATION = {
         en: 'DEPOISTU'
     },
     INTRODUCTION: {
-        ua: 'Меню всіх кафе та ресторанів України має бути в одному місці.Знайдіть заклад своєї мрії та допоможи іншим. Розкажи адміністраторам своїх улюблених закладів про наш сайт.',
-        en: 'The menu of all cafes and restaurants of Ukraine should be in one place. Find the bookmark of your dreams and help others. Tell the administrators of your favorite bookmarks about our site.'
+        BUTTON: {
+            ua: 'Далі',
+            en: 'Further'
+        },
+        INTRODUCTION_MAIN: {
+            ua: 'Меню всіх кафе та ресторанів України має бути в одному місці',
+            en: 'The menu of all cafes and restaurants of Ukraine should be in one place'
+        },
+        INTRODUCTION_HELP: {
+            ua: 'Знайдіть заклад своєї мрії та допоможи іншим',
+            en: 'Find the bookmark of your dreams and help others',
+        },
+        INTRODUCTION_TELL: {
+            ua: 'Розкажи адміністраторам своїх улюблених закладів про наш сайт.',
+            en: 'Tell the administrators of your favorite bookmarks about our site.'
+        }
     },
     VALIDATION: {
         REQUIRED: {

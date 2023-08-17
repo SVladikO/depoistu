@@ -9,6 +9,9 @@ export const Wrapper = styled.div`
   border-radius: ${BORDER_RADIUS.SECOND};
   overflow: hidden;
   z-index: 100;
+  * > div {
+    margin: 0 0 20px 0;
+  }
 `;
 
 export const Text = styled.div`
