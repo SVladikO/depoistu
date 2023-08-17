@@ -5,10 +5,10 @@ export const button = styled.button`
   color: ${COLOR.ACCENT4};
   width: ${p => p.isWide ? '100%' : 'auto'};
   height: 50px;
-  padding: 12px 24px;
+  padding: 12px;
   border: none;
   border-radius: ${BORDER_RADIUS.FOURTH};
-  font-size: 16px;
+  font-size: 20px;
   line-height: 19px;
   display: flex;
   justify-content: center;
