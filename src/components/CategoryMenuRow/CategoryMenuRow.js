@@ -1,4 +1,4 @@
-import React, {memo, useCallback, useEffect, useMemo, useState} from 'react';
+import React, {memo, useEffect, useMemo, useState} from 'react';
 import {Scrollbar, FreeMode} from 'swiper';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Link, useNavigate, useParams} from "react-router-dom";
@@ -23,13 +23,13 @@ import {useScrollUp} from "../../utils/hook";
 import {getTopCategories} from '../../utils/category';
 import {translate, TRANSLATION} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {CATEGORY_MAPPER, getCategoryOwnerId, getCategoryUniqueIds} from '../../utils/category';
+import {CATEGORY_MAPPER, getTopCategoryId, getCategoryUniqueIds} from '../../utils/category';
 
 const CATEGORY_TITLE_CLASS_NAME = 'CATEGORY_TITLE_CLASS_NAME';
 const CATEGORY_ROW_HEIGHT = 100;
 const CATEGORY_ID_PREFIX = 'category_'
-const generateTagId = (id, index) => `${CATEGORY_ID_PREFIX}${id}_${index}`
-const getCategoryIndex = (categoryId, uniqueCategories) => uniqueCategories.find(uc => uc.id === categoryId).index;
+const generateTagId = ({id, index, topCategoryId}) => `${CATEGORY_ID_PREFIX}${id}_${index}_${topCategoryId}`;
+const getCategoryIndex = (categoryId, uniqueCategories) => uniqueCategories.find(uc => uc.id === categoryId);
 
 const CategoryMenuRow = ({
                              showAllCategories = false,
@@ -42,7 +42,6 @@ const CategoryMenuRow = ({
     const {companyId} = useParams();
     const [topCategories, setTopCategories] = useState([]);
     const [uniqueCategories, setUniqueCategories] = useState();
-    const [selectedTopCategoryIndex, setSelectedTopCategoryIndex] = useState(0);
     const [selectedCategory, setSelectedCategory] = useState({});
 
     useScrollUp()
@@ -53,15 +52,14 @@ const CategoryMenuRow = ({
         }
 
         const categoryTitleTags = document.getElementsByClassName(CATEGORY_TITLE_CLASS_NAME)
-
         Object.values(categoryTitleTags).forEach(element => {
                 const y = element.offsetTop - window.scrollY - CATEGORY_ROW_HEIGHT;
-                if (y < 120 && y > 10) {
 
-                    const [extra, candidateCategoryId, candidateCategoryIndex] = element.id.split('_').map(Number)
+                if (y < 60 && y > 0) {
+                    const [idName, candidateCategoryId, candidateCategoryIndex, candidateTopCategoryId] = element.id.split('_').map(Number)
 
                     if (candidateCategoryId !== selectedCategory.id) {
-                        changeCategory({id: candidateCategoryId, index: candidateCategoryIndex})
+                        setSelectedCategory({id: candidateCategoryId, index: candidateCategoryIndex, topCategoryId: candidateTopCategoryId});
                     }
                 }
             }
@@ -70,7 +68,7 @@ const CategoryMenuRow = ({
 
     const scrollTo = category => {
         disableScrollListener();
-        const categoryTitleTag = document.querySelector('#' + generateTagId(category.id, category.index));
+        const categoryTitleTag = document.querySelector('#' + generateTagId(category));
 
         //This check for EditMenuPage no menu
         if (!categoryTitleTag) {
@@ -83,30 +81,26 @@ const CategoryMenuRow = ({
         enableScrollListener()
     }
 
-    const changeCategory = category => {
-        console.log(getCategoryOwnerId(category.id, topCategories))
-        setSelectedTopCategoryIndex(getCategoryOwnerId(category.id, topCategories));
+    const onChangeCategory = category => {
         setSelectedCategory(category);
     };
 
-    const changeCategoryWithScroll = category => {
-        changeCategory(category)
+    const onChangeCategoryWithScroll = category => {
+        onChangeCategory(category)
         scrollTo(category);
     };
 
-
-    const selectTopCategory = index => () => {
-        setSelectedTopCategoryIndex(index);
+    const onChangeTopCategory = index => () => {
         const firstCategoryIdInTop = topCategories[index].ids[0];
         const candidateCategory = uniqueCategories.find(category => category.id === firstCategoryIdInTop)
-        changeCategory(candidateCategory)
+        setSelectedCategory(candidateCategory);
+        scrollTo(candidateCategory);
     }
 
     const navigateToEditMenuItemPage = menuItem => () => {
         LocalStorage.set(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT, menuItem);
         return navigate(URL.EDIT_MENU_ITEM)
     }
-
 
     useEffect(() => {
         document.addEventListener("scroll", onScrollPage)
@@ -123,15 +117,15 @@ const CategoryMenuRow = ({
         }
 
         const uniqueCategoryIds = getCategoryUniqueIds(menuItems, showAllCategories);
-        const idIndexCategories = uniqueCategoryIds.map((id, index) => ({id, index}))
-
-        setUniqueCategories(idIndexCategories)
         const availableTopCategories = getTopCategories(uniqueCategoryIds);
         setTopCategories(availableTopCategories)
 
+        const categories = uniqueCategoryIds.map((id, index) => ({id, index, topCategoryId: getTopCategoryId(id, availableTopCategories) }))
+        setUniqueCategories(categories)
+
         //Edit page will have error without selected category by default
         if (editPage) {
-            setSelectedCategory(idIndexCategories[0])
+            setSelectedCategory(categories[0])
         }
     }, [menuItems, showAllCategories]);
 
@@ -140,13 +134,13 @@ const CategoryMenuRow = ({
         <TopCategoryWrapper>
             {topCategories.map((tc, index) => (<TopCategoryItem
                 key={tc.key}
-                isSelected={index === selectedTopCategoryIndex}
-                onClick={selectTopCategory(index)}
+                isSelected={index === selectedCategory.topCategoryId}
+                onClick={onChangeTopCategory(index)}
             >
                 {translate(tc.translationKey)}
             </TopCategoryItem>))}
         </TopCategoryWrapper>
-    </div>), [selectedTopCategoryIndex, topCategories])
+    </div>), [selectedCategory, topCategories])
 
     const SubCategories = useMemo(() => (
         <SwiperWrapper selectedCategory={selectedCategory}>
@@ -156,7 +150,7 @@ const CategoryMenuRow = ({
                         <CategoryItem
                             category={CATEGORY_MAPPER[category.id]}
                             isSelected={selectedCategory.id === category.id}
-                            clickHandler={() => changeCategoryWithScroll(category)}
+                            clickHandler={() => onChangeCategoryWithScroll(category)}
                             itemsAmountPerCategory={
                                 showMenuItemAmount
                                     ? menuItems.filter(mi => mi.CATEGORY_ID === category.id).length
@@ -172,7 +166,9 @@ const CategoryMenuRow = ({
     const AllMenuItems = useMemo(() => {
         const ids = [];
 
-        const categoryIndexIds = getCategoryUniqueIds(menuItems, showAllCategories).map((id, index) => ({id, index}))
+        if (!uniqueCategories?.length) {
+            return;
+        }
 
         return menuItems
             ?.sort((a, b) => a.CATEGORY_ID - b.CATEGORY_ID)
@@ -195,7 +191,7 @@ const CategoryMenuRow = ({
                 return [
                     <CategoryTitle
                         className={CATEGORY_TITLE_CLASS_NAME}
-                        id={generateTagId(CATEGORY_ID, getCategoryIndex(CATEGORY_ID, categoryIndexIds))}
+                        id={generateTagId(getCategoryIndex(CATEGORY_ID, uniqueCategories))}
                         key={CATEGORY_MAPPER[CATEGORY_ID].title}
                     >
                         {CATEGORY_MAPPER[CATEGORY_ID].title.toUpperCase()}
@@ -216,7 +212,7 @@ const CategoryMenuRow = ({
                             {SubCategories}
                         </Wrapper>
                     </div>
-                    <RowSplitter height={'110px'}/>
+                    <RowSplitter height={'96px'}/>
                 </div>
             </div>
             {AllMenuItems}

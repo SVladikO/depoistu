@@ -31,6 +31,7 @@ export const Wrapper = styled.div`
   right: 0;
   border-radius: 0;
   padding: 8px 8px 0;
+  margin: 0;
   z-index: 10;
 `;
 export const SliderStyle = styled.div`
