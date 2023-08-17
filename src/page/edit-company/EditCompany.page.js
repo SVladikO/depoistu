@@ -44,7 +44,11 @@ const EditCompany = () => {
     const [isConfirmDeletePopupOpen, setIsConfirmDeletePopupOpen] = useState(false)
 
     const openDeletePopup = () => setIsConfirmDeletePopupOpen(true)
-    const closeDeletePopup = () => setIsConfirmDeletePopupOpen(false)
+
+    const closeDeletePopup = () => {
+        document.body.style.overflowY = 'auto';
+        setIsConfirmDeletePopupOpen(false)
+    }
 
     if (isCompanyDeleted) {
         return (
@@ -52,6 +56,10 @@ const EditCompany = () => {
                 <Link to={URL.CUSTOMER_COMPANIES}>Open my companies page.</Link>
             </Notification.Success>
         );
+    }
+
+    if(isCompanyUpdated){
+        document.body.style.overflowY = 'auto';
     }
 
     if (!customerCompaniesFromLocalStorage.length || !companies.find((c => c.ID === companyId))) {
