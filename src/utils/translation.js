@@ -187,7 +187,7 @@ export const TRANSLATION = {
     MEASUREMENTS: {
         PRICE: {
             ua: 'грн',
-            en: 'uah'
+            en: 'UAH'
         },
         WEIGHT: {
             ua: "г",
@@ -199,7 +199,7 @@ export const TRANSLATION = {
         },
         PREPARING: {
             ua: "хв",
-            en: 'mim'
+            en: 'min'
         },
     },
     PAGE_VIEW: {
@@ -235,6 +235,10 @@ export const TRANSLATION = {
             MENU_TITLE: {
                 ua: "МЕНЮ",
                 en: 'MENU'
+            },
+            MENU_PROBLEM: {
+                ua: 'Меню компанії відсутнє',
+                en: 'There is no menu in company'
             }
         },
         CUSTOMER_COMPANIES: {
@@ -688,7 +692,7 @@ export const TRANSLATION = {
             en: "Sandwitch"
         },
         SEAFOOD: {
-            ua: "Морепродукти",
+            ua: "Море продукти",
             en: "Seafood"
         },
         SALADS: {
@@ -721,7 +725,7 @@ export const TRANSLATION = {
         },
         HOT_DISHES: {
             ua: 'Гарячі страви',
-            en: 'Hot dishes (Main Course)'
+            en: 'Hot dishes'
         },
         MEAT_DISHES: {
             ua: "М'ясні страви",

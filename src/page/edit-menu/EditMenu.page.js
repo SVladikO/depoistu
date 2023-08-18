@@ -1,41 +1,38 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {Link, useNavigate, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 
 import {Wrapper, CompanyDetails} from "./EditMenu.style";
 
 import {
     CategoryMenuRow,
-    MenuItem,
     Notification,
-    PrimaryButton,
-    RowSplitter
 } from "../../components";
 
 import {startLoading, stopLoading} from "../../features/request/requestSlice";
 
-import {URL} from "../../utils/config";
 import {BE_API} from '../../utils/fetch'
 import {fetchData} from "../../utils/fetch";
-import {useRedirectToSettingPage} from "../../utils/hook";
-import {translate, TRANSLATION} from "../../utils/translation";
+import {useLocalStorage, useLocalStorageFetch, useRedirectToSettingPage} from "../../utils/hook";
+import {translate} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {CITY_TRANSLATION_IDS} from "../../utils/cities";
 
 const EditMenu = () => {
     useRedirectToSettingPage();
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const {companyId} = useParams();
     const isLoading = useSelector(state => state.request.value.isLoading);
-    const customerCompanies = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
-    const currentCompany = customerCompanies.find((c => c.ID === +companyId));
-    const [menuItems, setMenuItems] = useState([]);
+    const [menuItems, setMenuItems] = useState();
     const [requestError, setRequestError] = useState('');
-    const [selectedCategoryId, setSelectedCategoryId] = useState();
-
-    const url = BE_API.MENU_ITEM.GET_BY_COMPANY_ID(companyId);
-
+    const [customer] = useLocalStorage(LOCAL_STORAGE_KEY.CUSTOMER);
+    const [customerCompanies] = useLocalStorageFetch(
+        LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES,
+        [],
+        BE_API.COMPANY.GET_BY_CUSTOMER_ID(customer?.ID),
+        setRequestError
+    );
+    const currentCompany = customerCompanies?.find((c => c.ID === +companyId));
     useEffect(() => {
         LocalStorage.set(LOCAL_STORAGE_KEY.COMPANY_ID_FOR_EDIT_MENU, companyId);
     })
@@ -43,15 +40,14 @@ const EditMenu = () => {
     useEffect(() => {
         dispatch(startLoading());
         //TODO: SHOW WARNING WRONG PARAM
-        companyId && fetchData(url)
+        companyId && fetchData(BE_API.MENU_ITEM.GET_BY_COMPANY_ID(companyId))
             .then(res => {
                 setMenuItems(res.body);
-                setSelectedCategoryId(res.body[0]?.CATEGORY_ID)
                 setTimeout(() => dispatch(stopLoading()), 1000)
             })
             .catch(e => setRequestError(e.body.errorMessage))
             .finally(() => setTimeout(() => dispatch(stopLoading()), 1000))
-    }, [url, companyId])
+    }, [companyId])
 
     if (isLoading) {
         return <Notification.Loading/>;
@@ -61,12 +57,6 @@ const EditMenu = () => {
         return <Notification.Error message={requestError}/>;
     }
 
-    const menuItemsPerCategory = (selectedCategoryId && menuItems.filter(mi => mi.CATEGORY_ID === selectedCategoryId)) || [];
-
-    const moveToEditMenuItem = menuItem => () => {
-        LocalStorage.set(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT, menuItem);
-        return navigate(URL.EDIT_MENU_ITEM)
-    }
 
     return (
         <>
@@ -83,22 +73,11 @@ const EditMenu = () => {
                         showAllCategories
                         showMenuItemAmount
                         menuItems={menuItems}
-                        selectedCategoryId={selectedCategoryId}
-                        changeCategory={id => setSelectedCategoryId(id)}
+                        withEditIcon
+                        editPage
                     />
                 }
-                <RowSplitter height={'15px'}/>
-                <>
-                    {menuItemsPerCategory.map(elem => <MenuItem
-                        withEditIcon
-                        item={elem}
-                        key={elem.ID}
-                        onEditClick={moveToEditMenuItem(elem)}
-                    />)}
-                </>
-                <Link to={`${URL.ADD_MENU_ITEM}?categoryId=${selectedCategoryId}&companyId=${companyId}`}>
-                    <PrimaryButton isWide>{translate(TRANSLATION.PAGE.EDIT_MENU.BUTTON.ADD_MENU_ITEM)}</PrimaryButton>
-                </Link>
+
             </Wrapper>
         </>
     )

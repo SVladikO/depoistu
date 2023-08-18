@@ -1,9 +1,7 @@
 import React from "react";
 import {useSelector, useDispatch} from "react-redux";
 
-import {Wrapper} from "./LanguagePopup.style";
-
-import {Popup, ThirdButton} from "../../components";
+import {Popup, PrimaryButton} from "../../components";
 import {enableScrollOnBody} from "../../components/Popup/Popup";
 
 import {closeLanguagePopup, setWebsiteLanguage} from "./languageSlice";
@@ -34,10 +32,8 @@ const LanguagePopup = () => {
 
     return (
         <Popup.Info showCloseButton={false}>
-            <Wrapper>
-                <ThirdButton onClick={setUA}>Українська</ThirdButton>
-                <ThirdButton onClick={setEN}>English</ThirdButton>
-            </Wrapper>
+            <PrimaryButton isWide onClick={setUA}>Українська</PrimaryButton>
+            <PrimaryButton isWide onClick={setEN}>English</PrimaryButton>
         </Popup.Info>
     );
 }

@@ -3,7 +3,7 @@ import {Wrapper} from './CategoryItem.style'
 
 function CategoryItem({category = {}, clickHandler, isSelected, itemsAmountPerCategory}) {
     return (
-        <Wrapper onClick={clickHandler}  isSelected={isSelected}>
+        <Wrapper isSelected={isSelected} onClick={clickHandler}>
             {category.title}{itemsAmountPerCategory ? `(${itemsAmountPerCategory})` : ''}
         </Wrapper>
     )
