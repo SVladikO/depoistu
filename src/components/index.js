@@ -25,6 +25,7 @@ import FromToTime from "./FromToTime/FromToTime";
 import Checkbox from "./Checkbox/Checkbox";
 import Like from "./Like/Like";
 import MenuItem from "./MenuItem/MenuItem";
+import Footer from "./Footer/Footer";
 import OrderHistoryRow from "./OrderHistoryRow/OrderHistoryRow";
 import OrderIconWithCounter from "./OrderIconWithCounter/OrderIconWithCounter.jsx";
 import Popup from "./Popup/Popup";
@@ -69,6 +70,7 @@ export {
     Notification,
     Absolute,
     Popup,
+    Footer,
     CloseButton,
     FetchButton,
     PrimaryButton,
