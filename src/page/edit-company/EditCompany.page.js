@@ -16,7 +16,7 @@ import {getScheduleAsString} from "../../utils/company";
 import {useRedirectToSettingPage} from "../../utils/hook";
 import {translate, TRANSLATION} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import Popup, {enableScrollOnBody} from "../../components/Popup/Popup";
+import Popup, {enableScrollOnBody, disableScrollOnBody} from "../../components/Popup/Popup";
 import {PopupButtons, PopupTitle} from "./EditCompany.style";
 
 //We need this variable after call LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES) on delete company success
@@ -46,7 +46,7 @@ const EditCompany = () => {
     const [isConfirmDeletePopupOpen, setIsConfirmDeletePopupOpen] = useState(false)
 
     const openDeletePopup = () => {
-        enableScrollOnBody();
+        disableScrollOnBody();
         setIsConfirmDeletePopupOpen(true)
     }
     const closeDeletePopup = () => {
@@ -66,6 +66,10 @@ const EditCompany = () => {
         );
     }
 
+    if(isCompanyUpdated){
+        document.body.style.overflowY = 'auto';
+    }
+
     if (!customerCompaniesFromLocalStorage.length || !companies.find((c => c.ID === companyId))) {
         return (
             <Notification.Error message={'No company by this id'}>
@@ -79,6 +83,7 @@ const EditCompany = () => {
         setRequestDeleteError('')
         setIsLoadingDelete(true)
         closeDeletePopup()
+        document.body.style.overflowY = 'auto';
 
         fetchData(BE_API.COMPANY.DELETE(), {method: 'delete', companyId})
             .then(() => {
