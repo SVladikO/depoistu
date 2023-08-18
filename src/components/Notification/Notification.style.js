@@ -1,19 +1,40 @@
-import styled from "styled-components";
-import {COLOR} from "../../utils/theme";
+import styled, {css} from "styled-components";
+import {BORDER_RADIUS, COLOR, SHADOW} from "../../utils/theme";
+import {NOTIFICATION} from "./Notification";
 
 export const Wrapper = styled.div`
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  min-width: 325px;
-  background-color: ${COLOR.ACCENT4};
-  padding: 15px;
-  & > span {
-    margin: 10px 0 0 0;
+  ${SHADOW};
+  display: inline-flex;
+  position: relative;
+  align-items: ${p => p.status === NOTIFICATION.LOADING ? 'center': 'start'};
+  gap: 10px;
+  width: 100%;
+  background: ${p => p.backgroundColor};
+  padding: 10px 30px 10px 10px;
+  border-radius: ${p => p.borderRadius ? p.borderRadius : BORDER_RADIUS.SECOND};
+  margin: 0 0 15px;
+  
+  & > .closeSvg {
+    fill: ${COLOR.ACCENT1};
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    
   }
-`;
+  & > .animated_svg {
+    fill: ${COLOR.ACCENT1};
+    cursor: pointer;
+  }
+`
+
+export const IconWrapper = styled.div`
+  width: 40px;
+
+  & > svg {
+    fill: ${p => p.svgFill};
+  }
+`
 
 export const Text = styled.div`
   font-weight: 400;

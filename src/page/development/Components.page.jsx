@@ -32,7 +32,7 @@ import
     Label,
     CloseButton,
     MenuItemDetails,
-    Dropdown, PrimaryButton
+    Dropdown, PrimaryButton, StatusNotification, NOTIFICATION
 } from "../../components";
 
 import {ReactComponent as QRCodeIcon} from "../../assets/icons/qr_code.svg";
@@ -206,7 +206,7 @@ const componentsGroup2 = [
         },
         {
             title: 'CategoryMenuRow',
-            component: <CategoryMenuRow menuItems={[{CATEGORY_ID: 1}, {CATEGORY_ID: 2}, {CATEGORY_ID: 3}]}/>
+            // component: <CategoryMenuRow menuItems={[{CATEGORY_ID: 1}, {CATEGORY_ID: 2}, {CATEGORY_ID: 3}]}/>
         },
         {
             title: 'CategoryMenuRow', component: <ExampleCategoryWithSelected/>
@@ -332,6 +332,11 @@ const componentsGroup2 = [
         },
     ],
     [
+        {title: 'StatusNotification info', component: <StatusNotification status={NOTIFICATION.INFO}>No Internet Connection.</StatusNotification>},
+        {title: 'StatusNotification error', component: <StatusNotification status={NOTIFICATION.ERROR}>No Internet Connection.</StatusNotification>},
+        {title: 'StatusNotification success', component: <StatusNotification status={NOTIFICATION.SUCCESS}>Order placed. Order placed.</StatusNotification>},
+        {title: 'StatusNotification warning', component: <StatusNotification status={NOTIFICATION.WARNING}>No Internet Connection.</StatusNotification>},
+        {title: 'StatusNotification loading', component: <StatusNotification status={NOTIFICATION.LOADING}>Loading...</StatusNotification>},
         {title: 'Notification.Loading', component: <Notification.Loading/>},
         {title: 'Notification.Error', component: <Notification.Error message={'Broken content.'}/>},
         {title: 'Notification.Success', component: <Notification.Success message={'Company was created.'}/>},
