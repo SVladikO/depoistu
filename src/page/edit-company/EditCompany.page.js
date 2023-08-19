@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Link, useParams} from "react-router-dom";
 
-import {Notification, RowSplitter, PrimaryButton, FetchButton, ContentContainer} from "../../components";
+import {RowSplitter, PrimaryButton, FetchButton, ContentContainer} from "../../components";
 
 import {ReactComponent as RemoveIcon} from "../../assets/icons/remove_icon.svg";
 
@@ -65,10 +65,10 @@ const EditCompany = () => {
     }
 
     if (!customerCompaniesFromLocalStorage.length || !companies.find((c => c.ID === companyId))) {
+        publishNotificationEvent.error('No company by this id');
+
         return (
-            <Notification.Error message={'No company by this id'}>
-                <Link to={URL.CUSTOMER_COMPANIES}>Open my companies page.</Link>
-            </Notification.Error>
+            <Link to={URL.CUSTOMER_COMPANIES}>Open my companies page.</Link>
         );
     }
 
@@ -118,11 +118,12 @@ const EditCompany = () => {
 
 
     if (!customerCompaniesFromLocalStorage.length || !companies.find((c => c.ID === companyId))) {
+        publishNotificationEvent.error(translate(TRANSLATION.PAGE.EDIT_COMPANY.NOTIFICATION.NO_COMPANY_BY_THIS_ID));
+
         return (
-            <Notification.Error message={translate(TRANSLATION.PAGE.EDIT_COMPANY.NOTIFICATION.NO_COMPANY_BY_THIS_ID)}>
-                <Link
-                    to={URL.CUSTOMER_COMPANIES}>{translate(TRANSLATION.PAGE.EDIT_COMPANY.NOTIFICATION.OPEN_MY_COMPANIES_PAGE)}</Link>
-            </Notification.Error>
+            <Link to={URL.CUSTOMER_COMPANIES}>
+                {translate(TRANSLATION.PAGE.EDIT_COMPANY.NOTIFICATION.OPEN_MY_COMPANIES_PAGE)}
+            </Link>
         );
     }
 
@@ -164,7 +165,7 @@ const EditCompany = () => {
                             </PopupButtons>
                         </Popup.Info>
                     )}
-                    <EditCompanyButton />
+                    <EditCompanyButton/>
                     <RowSplitter height={'25px'}/>
                     <RowSplitter height={'25px'}/>
                     <DeleteCompanyButton/>

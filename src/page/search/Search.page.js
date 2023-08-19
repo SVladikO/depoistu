@@ -60,6 +60,11 @@ const SearchPage = () => {
 
     const regionLabel = translate(TRANSLATION.COMPONENTS.POPUP.CITY.INPUT)
 
+    if (selectedCityId && selectedRegionId && companies.length === 0) {
+        publishNotificationEvent.error('There is no companies in current city');
+    }
+
+
     return (
         <>
             <ContentContainer>
@@ -75,9 +80,7 @@ const SearchPage = () => {
                     placeholder={translate(TRANSLATION.PAGE.SEARCH.INPUT_PLACEHOLDER)}
                 />
             </ContentContainer>
-            {selectedCityId && selectedRegionId && companies.length === 0
-                ? <Notification.Error message={'There is no companies in current city'}/>
-                : companies && selectedCityId &&
+            {companies && selectedCityId &&
                 companies.map(company =>
                     <Link to={`${URL.SEARCH_DETAILS}${company.ID}`} key={company.ID}>
                         <Company key={company.ID} company={company}/>

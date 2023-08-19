@@ -3,7 +3,7 @@ import "swiper/css/pagination";
 import {Link} from "react-router-dom";
 import React, {useState} from "react";
 
-import {ContentContainer, FetchButton, Notification, PrimaryButton} from "../../components";
+import {ContentContainer, FetchButton, PrimaryButton} from "../../components";
 
 import CompanyView from "../../page-view/company/company-view";
 
@@ -49,7 +49,6 @@ const AddCompany = () => {
                 </Link>
             </ContentContainer>
         )
-            ;
     }
 
     return (

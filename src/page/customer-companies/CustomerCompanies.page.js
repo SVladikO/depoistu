@@ -20,8 +20,8 @@ const CustomerCompaniesPage = () => {
     useRedirectToSettingPage();
     const [customer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
     const isLoading = useSelector(state => state.request.value.isLoading);
+    const [wasWarningShown, setWasWarningShown] = useLocalStorage(LOCAL_STORAGE_KEY.WAS_COMPANY_CREATION_WARNING_SHOW, false)
     const [companyIdForQRCode, setCompanyIdForQRCode] = useState();
-    const [isVisibleCompanyCreationWarning, setIsVisibleCompanyCreationWarning] = useLocalStorage(LOCAL_STORAGE_KEY.IS_VISIBLE_COMPANY_CREATION_WARNING, false);
     const [customerCompanies] = useLocalStorageFetch(
         LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES,
         [],
@@ -29,6 +29,10 @@ const CustomerCompaniesPage = () => {
         publishNotificationEvent.error
     );
 
+    if (!wasWarningShown) {
+        publishNotificationEvent.warning(translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.WARNING))
+        setWasWarningShown(true);
+    }
 
     if (isLoading) {
         return <Notification.Loading/>;
@@ -36,12 +40,8 @@ const CustomerCompaniesPage = () => {
 
     const showQRCode = companyId => () => setCompanyIdForQRCode(companyId);
 
-    const closeInfoPopUp = () => setIsVisibleCompanyCreationWarning(true);
-
     return (
         <>
-            {!isVisibleCompanyCreationWarning && <Popup.Info
-                onClose={closeInfoPopUp}>{translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.WARNING)}</Popup.Info>}
             <PopupQRCode companyId={companyIdForQRCode} onClose={() => setCompanyIdForQRCode('')}/>
             {customerCompanies.map(
                 company =>

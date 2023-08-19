@@ -25,13 +25,13 @@ store.subscribe(() => {
 })
 
 root.render(
-    <React.StrictMode>
+    <React.Fragment>
         <BrowserRouter>
             <Provider store={store}>
                 <App />
             </Provider>
         </BrowserRouter>
-    </React.StrictMode>
+    </React.Fragment>
 );
 
 // If you want to start measuring performance in your app, pass a function

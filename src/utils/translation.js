@@ -251,8 +251,8 @@ export const TRANSLATION = {
                 en: 'Your companies'
             },
             WARNING: {
-                ua: "Не додавайте компанії заради розваги. Не витрачайте ваш і наш час дарма.",
-                en: "Don't add companies for fun. Don't waste your time and ours."
+                ua: "Не додавайте компанії заради розваги. Інакше будемо змушені заблокувати ваш аккаунт. Не витрачайте ваш і наш час дарма.",
+                en: "Don't add companies for fun as we will block your account.  Don't waste your time and ours."
             },
             BUTTON: {
                 COMPANY: {
