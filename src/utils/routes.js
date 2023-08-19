@@ -14,6 +14,7 @@ import {BottomMenu, NavigationHeader} from "../components";
 import AdminPage from "../page/development/Admin.page";
 import {useHideOnScroll, useScrollUp} from "./hook";
 import ApiPage from "../page/development/Api.page";
+import NotificationView from "../page-view/notification/NotificationView";
 
 export const MobileDevice = styled.div`
   min-width: ${DEVICE_WIDTH.MIN};
@@ -56,7 +57,7 @@ const Element = ({r}) => {
     useHideOnScroll('TopWrapper', '-65px')
 
     return (
-        <MobileDevice className="MobileDevice">
+        <>
             <TopWrapper id="TopWrapper">
                 <NavigationHeader backUrl={r.BACK_URL} title={r.TITLE}>
                     {r.subHeader && <r.subHeader/>}
@@ -70,24 +71,28 @@ const Element = ({r}) => {
                     <BottomMenu/>
                 </BottomWrapper>
             )}
-        </MobileDevice>
+        </>
     )
 };
 
 export const AllRoutes = () => {
     return (
-        <Routes>
-            <Route path={DEV_ROUTER.COMPONENTS} element={<ComponentsPage />} />
-            {/*<Route path={DEV_ROUTER.PAGES} element={<CatalogPage/>}/>*/}
-            <Route path={DEV_ROUTER.ADMIN} element={<AdminPage />} />
-            <Route path={DEV_ROUTER.API} element={<ApiPage />} />
-            {ROUTERS.map(r => (
-                <Route
-                    key={r.URL}
-                    path={r.URL + (r.PARAMS || '')}
-                    element={<Element r={r}/>}
-                />
-            ))}
-        </Routes>
+        <MobileDevice className="MobileDevice">
+            <Routes>
+                <Route path={DEV_ROUTER.COMPONENTS} element={<ComponentsPage/>}/>
+                {/*<Route path={DEV_ROUTER.PAGES} element={<CatalogPage/>}/>*/}
+                <Route path={DEV_ROUTER.ADMIN} element={<AdminPage/>}/>
+                <Route path={DEV_ROUTER.API} element={<ApiPage/>}/>
+                {ROUTERS.map(r => (
+                    <Route
+                        key={r.URL}
+                        path={r.URL + (r.PARAMS || '')}
+                        element={<Element r={r}/>}
+                    />
+                ))}
+            </Routes>
+
+            <NotificationView />
+        </MobileDevice>
     );
 };
