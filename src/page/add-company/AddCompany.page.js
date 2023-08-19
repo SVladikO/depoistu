@@ -3,9 +3,7 @@ import "swiper/css/pagination";
 import {Link} from "react-router-dom";
 import React, {useState} from "react";
 
-import {FetchButton, Notification, PrimaryButton} from "../../components";
-
-import {WarningText} from "./AddCompany.style";
+import {ContentContainer, FetchButton, Notification, PrimaryButton} from "../../components";
 
 import CompanyView from "../../page-view/company/company-view";
 
@@ -17,11 +15,12 @@ import {getScheduleAsString} from "../../utils/company";
 import {useRedirectToSettingPage} from "../../utils/hook";
 import {translate, TRANSLATION} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
+import {publishNotificationEvent} from "../../utils/event";
 
 const AddCompany = () => {
     useRedirectToSettingPage();
     const [isLoading, setIsLoading] = useState(false);
-    const [isCompanySaved, setIsCompanySaved] = useState(false);
+    const [wasCompanyCreated, setWasCompanyCreated] = useState(false);
     const [requestError, setRequestError] = useState("");
     const [newCompanyId, setNewCompanyId] = useState();
 
@@ -34,26 +33,23 @@ const AddCompany = () => {
         setRequestError('')
         fetchData(BE_API.COMPANY.POST_CREATE(), reqObj)
             .then(res => {
-                setIsCompanySaved(true);
+                setWasCompanyCreated(true);
                 setNewCompanyId(res.body.insertId);
                 LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES)
+                publishNotificationEvent.success("Company was created");
+                publishNotificationEvent.warning("Without menu this company won’t be shown in search")
             })
-            .catch(e => setRequestError(e.body.errorMessage))
+            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
             .finally(() => setIsLoading(false))
     }
 
-    if (isCompanySaved) {
+    if (wasCompanyCreated) {
         return (
-            <Notification.Success message={"Company was created"}>
-                <WarningText>
-                    Without menu this company won’t be shown in search
-                </WarningText>
+            <ContentContainer>
                 <Link to={`${URL.EDIT_MENU}/${newCompanyId}`}>
-                    <PrimaryButton isWide>
-                        Add menu for this company
-                    </PrimaryButton>
+                    <PrimaryButton isWide>Add menu for this company</PrimaryButton>
                 </Link>
-            </Notification.Success>
+            </ContentContainer>
         )
             ;
     }
