@@ -12,6 +12,7 @@ export const LinkItem = styled(Link)`
   border-bottom: 1px ${COLOR.ACCENT2} solid;
   width: 100%;
   display: flex;
+  text-transform: uppercase;
   justify-content: center;
   font-weight: 500;
   font-size: 20px;
@@ -21,6 +22,7 @@ export const LinkItem = styled(Link)`
   &:nth-child(5) {
     margin: 34px 0 0 0;
     border: none;
+    text-transform: unset;
   }
 `;
 

@@ -1,10 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {Wrapper, LinkItem, LocationInfo} from './Footer.style';
 import {URL} from "../../utils/config";
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import {useLocalStorage} from "../../utils/hook";
+import {LOCAL_STORAGE_KEY} from "../../utils/localStorage";
+import {translate, TRANSLATION as TR} from "../../utils/translation";
+import {CITY_TRANSLATION_IDS} from "../../utils/cities";
 
 const Footer = () => {
-    const apiKey = '';
+    const [selectedCityId, setSelectedCity] = useLocalStorage(LOCAL_STORAGE_KEY.COMPANY_SEARCH_SELECTED_CITY_ID, '');
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
@@ -18,45 +21,15 @@ const Footer = () => {
         const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
         return new Date(date).toLocaleDateString(undefined, options);
     };
-
-    const [cityName, setCityName] = useState('');
-    const [geolocationError, setGeolocationError] = useState(null);
-
-    useEffect(() => {
-        const fetchCityName = async (latitude, longitude) => {
-            try {
-                const apiKey = 'AIzaSyAJhvBkm0uoHJd0v8TKgKhb44km_8TdDQg';
-                const response = await fetch(
-                    `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`
-                );
-                const data = await response.json();
-
-                if (data.results.length > 0) {
-                    setCityName(data.results[0].formatted_address);
-                }
-            } catch (error) {
-                console.error('Error fetching city name:', error);
-            }
-        };
-
-        if ('geolocation' in navigator) {
-            navigator.geolocation.getCurrentPosition((position) => {
-                const { latitude, longitude } = position.coords;
-                fetchCityName(latitude, longitude);
-            }, (error) => {
-                console.error('Error getting geolocation:', error);
-            });
-        }
-    }, []);
-
+    console.log(selectedCityId)
     return (
         <Wrapper>
-            <LinkItem to={URL.CUSTOMER_COMPANIES}>FOR BUSINESS</LinkItem>
-            <LinkItem to={URL.ABOUT_US}>ABOUT US</LinkItem>
-            <LinkItem to={URL.OUR_TEAM}>OUR TEAM</LinkItem>
-            <LinkItem onClick={scrollToTop}>BACK TO TOP</LinkItem>
+            <LinkItem to={URL.CUSTOMER_COMPANIES}>{translate(TR.PAGE.SETTINGS.GROUP_TITLE.FOR_BUSINESS)}</LinkItem>
+            <LinkItem to={URL.ABOUT_US}>{translate(TR.PAGE.SETTINGS.MENU_ROW.ABOUT_US)}</LinkItem>
+            <LinkItem to={URL.OUR_TEAM}>{translate(TR.PAGE.OUR_TEAM.TOP_TITLE)}</LinkItem>
+            <LinkItem onClick={scrollToTop}>{translate(TR.PAGE.FOOTER.BACK_TO_TOP_BUTTON)}</LinkItem>
             <LinkItem to={'https://depoistu-develop.onrender.com/'}>depoistu.support@gmail.com</LinkItem>
-            <LocationInfo>{formatDate(dateFormat)}</LocationInfo>
+            <LocationInfo>{formatDate(dateFormat)}  {translate(CITY_TRANSLATION_IDS[selectedCityId])}</LocationInfo>
         </Wrapper>
     );
 };
