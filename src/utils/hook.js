@@ -109,7 +109,7 @@ export const useLocalStorageFetch = (
             })
             .catch(e => {
                 dispatch(stopLoading());
-                setError(e.body.message);
+                setError(e.body.errorMessage);
             })
     }, [value, storageKey, dispatch, localStorageState, url, setError]);
 

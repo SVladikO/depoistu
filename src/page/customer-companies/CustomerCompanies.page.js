@@ -14,6 +14,7 @@ import {translate, TRANSLATION} from "../../utils/translation";
 import {ReactComponent as QRCodeIcon} from "../../assets/icons/qr_code.svg";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {useLocalStorage, useLocalStorageFetch, useRedirectToSettingPage} from "../../utils/hook";
+import {publishNotificationEvent} from "../../utils/event";
 
 const CustomerCompaniesPage = () => {
     useRedirectToSettingPage();
@@ -21,12 +22,11 @@ const CustomerCompaniesPage = () => {
     const isLoading = useSelector(state => state.request.value.isLoading);
     const [companyIdForQRCode, setCompanyIdForQRCode] = useState();
     const [isVisibleCompanyCreationWarning, setIsVisibleCompanyCreationWarning] = useLocalStorage(LOCAL_STORAGE_KEY.IS_VISIBLE_COMPANY_CREATION_WARNING, false);
-    const [requestError, setRequestError] = useState('');
     const [customerCompanies] = useLocalStorageFetch(
         LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES,
         [],
         BE_API.COMPANY.GET_BY_CUSTOMER_ID(customer?.ID),
-        setRequestError
+        publishNotificationEvent.error
     );
 
 
@@ -34,9 +34,6 @@ const CustomerCompaniesPage = () => {
         return <Notification.Loading/>;
     }
 
-    if (requestError) {
-        return <Notification.Error message={requestError}/>;
-    }
 
     const showQRCode = companyId => () => setCompanyIdForQRCode(companyId);
 
