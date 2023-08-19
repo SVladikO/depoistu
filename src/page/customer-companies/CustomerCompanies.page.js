@@ -34,11 +34,9 @@ const CustomerCompaniesPage = () => {
         return <Notification.Loading/>;
     }
 
-
     const showQRCode = companyId => () => setCompanyIdForQRCode(companyId);
 
     const closeInfoPopUp = () => setIsVisibleCompanyCreationWarning(true);
-
 
     return (
         <>

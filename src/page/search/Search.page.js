@@ -12,9 +12,9 @@ import {CITY_TRANSLATION_IDS} from "../../utils/cities";
 import {translate, TRANSLATION} from "../../utils/translation";
 import {useLocalStorage, useLocalStorageFetch} from "../../utils/hook";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
+import {publishNotificationEvent} from "../../utils/event";
 
 const SearchPage = () => {
-    const [requestError, setRequestError] = useState('');
     const isLoading = useSelector(state => state.request.value.isLoading);
     const [selectedCityId, setSelectedCity] = useLocalStorage(LOCAL_STORAGE_KEY.COMPANY_SEARCH_SELECTED_CITY_ID, '');
     const [selectedRegionId, setSelectedRegion] = useLocalStorage(LOCAL_STORAGE_KEY.COMPANY_SEARCH_SELECTED_REGION_ID, '');
@@ -26,6 +26,7 @@ const SearchPage = () => {
                 .then(res => {
                     setAvailableFromDatabaseCityIds(res.body);
                 })
+                .catch(e => publishNotificationEvent.error(e.body.errorMessage))
         }
     })
 
@@ -33,7 +34,7 @@ const SearchPage = () => {
         LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT,
         [],
         BE_API.COMPANY.GET_BY_CITY_ID(selectedCityId),
-        setRequestError,
+        publishNotificationEvent.error,
         () => !selectedCityId
     );
 
@@ -61,7 +62,6 @@ const SearchPage = () => {
 
     return (
         <>
-            {requestError && <Notification.Error message={requestError}/>}
             <ContentContainer>
                 <PInput
                     handleClick={onOpenCityPopup}

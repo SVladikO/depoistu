@@ -21,7 +21,6 @@ const AddCompany = () => {
     useRedirectToSettingPage();
     const [isLoading, setIsLoading] = useState(false);
     const [wasCompanyCreated, setWasCompanyCreated] = useState(false);
-    const [requestError, setRequestError] = useState("");
     const [newCompanyId, setNewCompanyId] = useState();
 
     const onSubmit = values => {
@@ -30,7 +29,6 @@ const AddCompany = () => {
         const reqObj = {name, city_id, street, phone1, phone2, phone3, schedule};
 
         setIsLoading(true);
-        setRequestError('')
         fetchData(BE_API.COMPANY.POST_CREATE(), reqObj)
             .then(res => {
                 setWasCompanyCreated(true);
@@ -60,7 +58,6 @@ const AddCompany = () => {
             onSubmit={onSubmit}
         >
             <>
-                {requestError && <Notification.Error message={requestError}/>}
                 <FetchButton isWide type="submit" isLoading={isLoading}>
                     {translate(TRANSLATION.PAGE.ADD_COMPANY.BUTTON.ADD_COMPANY)}
                 </FetchButton>

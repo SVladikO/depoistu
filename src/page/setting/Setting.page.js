@@ -45,11 +45,11 @@ import {useLocalStorage} from "../../utils/hook";
 import {BE_API, fetchData} from "../../utils/fetch";
 import {TRANSLATION as TR, translate} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
+import {publishNotificationEvent} from "../../utils/event";
 
 const SettingPage = () => {
     const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(false);
-    const [requestError, setRequestError] = useState('');
     const [customer, setCustomer] = useLocalStorage(LOCAL_STORAGE_KEY.CUSTOMER);
 
     const singInSingUpNotification = (
@@ -68,7 +68,6 @@ const SettingPage = () => {
         </NotificationTDB>
     );
     const onCheckVerification = ({emailVerificationCode}) => {
-        setRequestError(''); //Each request should hide previous requestError message.
         setIsLoading(true)
         fetchData(BE_API.CUSTOMER.PUT_VERIFY_EMAIL(), {email: customer.EMAIL, emailVerificationCode, method: 'put'})
             .then(res => {
@@ -76,7 +75,7 @@ const SettingPage = () => {
                     setCustomer({...customer, IS_VERIFIED_EMAIL: true})
                 }
             })
-            .catch(e => setRequestError(e.body.errorMessage))
+            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
             .finally(() => setIsLoading(false));
     }
 
@@ -113,7 +112,6 @@ const SettingPage = () => {
     );
 
     const logOut = () => {
-        setRequestError('')
         setCustomer(undefined);
         LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
     }
@@ -123,7 +121,6 @@ const SettingPage = () => {
             {!customer && singInSingUpNotification}
             {customer && !customer.IS_VERIFIED_EMAIL && emailVerificationNotification}
             {isLoading && <Notification.Loading/>}
-            {requestError && <Notification.Error message={requestError}/>}
             <LanguagePopup />
             <Wrapper>
                 {/*<CustomerAccountBar fullName='Jhon Smith' phone="+14844731243"/>*/}

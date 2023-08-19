@@ -17,6 +17,7 @@ import {useLocalStorage, useLocalStorageFetch, useRedirectToSettingPage} from ".
 import {translate} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {CITY_TRANSLATION_IDS} from "../../utils/cities";
+import {publishNotificationEvent} from "../../utils/event";
 
 const EditMenu = () => {
     useRedirectToSettingPage();
@@ -24,13 +25,12 @@ const EditMenu = () => {
     const {companyId} = useParams();
     const isLoading = useSelector(state => state.request.value.isLoading);
     const [menuItems, setMenuItems] = useState();
-    const [requestError, setRequestError] = useState('');
     const [customer] = useLocalStorage(LOCAL_STORAGE_KEY.CUSTOMER);
     const [customerCompanies] = useLocalStorageFetch(
         LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES,
         [],
         BE_API.COMPANY.GET_BY_CUSTOMER_ID(customer?.ID),
-        setRequestError
+        publishNotificationEvent.error
     );
     const currentCompany = customerCompanies?.find((c => c.ID === +companyId));
     useEffect(() => {
@@ -45,16 +45,12 @@ const EditMenu = () => {
                 setMenuItems(res.body);
                 setTimeout(() => dispatch(stopLoading()), 1000)
             })
-            .catch(e => setRequestError(e.body.errorMessage))
+            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
             .finally(() => setTimeout(() => dispatch(stopLoading()), 1000))
     }, [companyId])
 
     if (isLoading) {
         return <Notification.Loading/>;
-    }
-
-    if (requestError) {
-        return <Notification.Error message={requestError}/>;
     }
 
 
