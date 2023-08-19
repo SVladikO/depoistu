@@ -4,8 +4,9 @@ import {Link} from "react-router-dom";
 
 export const Wrapper =  styled.div`
   height: 499px;
-  width: 100%;
+  max-width: 414px;
   background-image: linear-gradient(180deg, ${COLOR.ACCENT1} 55.42%, #202429 100%);
+  margin: 0 auto;
 `;
 
 export const LinkItem = styled(Link)`

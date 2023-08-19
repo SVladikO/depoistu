@@ -2,7 +2,7 @@ import React from 'react';
 import {AllRoutes} from "../utils/routes";
 import {useLocalStorage} from "../utils/hook";
 import {LOCAL_STORAGE_KEY} from "../utils/localStorage";
-import {Popup} from "../components";
+import {Footer, Popup} from "../components";
 import {translate, TRANSLATION} from "../utils/translation";
 import LanguagePopup from "../features/language/LanguagePopup";
 
@@ -19,6 +19,7 @@ const App = () => {
             }
             <LanguagePopup />
             <AllRoutes />
+            <Footer/>
         </>
     );
 };
