@@ -11,6 +11,9 @@ export const Wrapper = styled.div`
   z-index: 100;
   * > div {
     margin: 0 0 20px 0;
+    &:first-child {
+      font-weight: bold;
+    }
   }
 `;
 
@@ -18,4 +21,5 @@ export const Text = styled.div`
   line-height: 26px;
   font-size: 22px;
   text-align: left;
+  
 `;

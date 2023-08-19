@@ -30,8 +30,8 @@ export const TRANSLATION = {
             en: 'Further'
         },
         INTRODUCTION_MAIN: {
-            ua: 'Меню всіх кафе та ресторанів України має бути в одному місці.',
-            en: 'The menu of all cafes and restaurants of Ukraine should be in one place.'
+            ua: 'Меню всіх закладів харчування України має бути в  одному місці. На цьому сайті.',
+            en: 'The menu of all cafes and restaurants of Ukraine should be in one place. On this site.'
         },
         INTRODUCTION_HELP: {
             ua: 'Знайдіть заклад своєї мрії та допоможи іншим.',
