@@ -95,6 +95,7 @@ export const Name = styled.div`
 export const LocationWrapper = styled.div`
   display: flex;
   width: 100%;
+  font-size: 20px;
   justify-content: space-between;
   border-radius: ${BORDER_RADIUS.FOURTH};
   border: ${props => props.withAdditionalStyles ? `1px solid ${COLOR.ACCENT5}` : 'none'};
