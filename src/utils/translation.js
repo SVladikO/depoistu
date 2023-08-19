@@ -5,6 +5,10 @@ export const LANGUAGE_KEYS = {
     EN: 'en'
 }
 
+export const truncate = (text, availableLength = 1) => {
+    return text.substring(0, availableLength) + ' ...';
+};
+
 export const currentLanguage = LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE).language.siteLanguage;
 
 export const translate = obj => {
@@ -607,7 +611,7 @@ export const TRANSLATION = {
                 },
             },
         },
-        POPUP : {
+        POPUP: {
             CITY: {
                 INPUT: {
                     en: " region",

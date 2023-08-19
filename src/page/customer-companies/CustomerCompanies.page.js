@@ -3,7 +3,7 @@ import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import QRCode from 'qrcode';
 
-import {EditBar, QRCodeButton, ImageQR} from "./CustomerCompanies.style";
+import {EditBar, QRCodeButton, QRCodeMenuTitle, ImageQR} from "./CustomerCompanies.style";
 
 import {Company, Notification, Popup, PrimaryButton} from "../../components";
 import {ReactComponent as EditIcon} from "../../assets/icons/edit.svg";
@@ -94,6 +94,7 @@ const PopupQRCode = ({companyId, onClose}) => {
 
     return (
         <Popup.InfoText onClose={onClose}>
+            <QRCodeMenuTitle>Menu</QRCodeMenuTitle>
             {src && <ImageQR src={src}/>}
             {qrCodeGenerationError}
         </Popup.InfoText>
