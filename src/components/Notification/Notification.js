@@ -24,13 +24,13 @@ export const NOTIFICATION_STATUS = {
     LOADING: 'LOADING'
 }
 
-export const NotificationFactory = ({type, children}) => {
+export const NotificationFactory = ({type, children, onClose}) => {
     switch (type) {
         case NOTIFICATION_STATUS.INFO: {
             return (
                 <NotificationInfo>
                     <InfoIcon/>
-                    <CloseIcon className="closeSvg"/>
+                    <CloseIcon className="closeSvg" onClick={onClose}/>
                     {children}
                 </NotificationInfo>
             )
@@ -39,7 +39,7 @@ export const NotificationFactory = ({type, children}) => {
             return (
                 <NotificationError>
                     <ErrorIcon/>
-                    <CloseIcon className="closeSvg"/>
+                    <CloseIcon className="closeSvg" onClick={onClose}/>
                     {children}
                 </NotificationError>
             )
@@ -49,7 +49,7 @@ export const NotificationFactory = ({type, children}) => {
             return (
                 <NotificationSuccess>
                     <SuccessIcon/>
-                    <CloseIcon className="closeSvg"/>
+                    <CloseIcon className="closeSvg" onClick={onClose}/>
                     {children}
                 </NotificationSuccess>
             )
@@ -58,13 +58,12 @@ export const NotificationFactory = ({type, children}) => {
             return (
                 <NotificationWarning>
                     <WarningIcon/>
-                    <CloseIcon className="closeSvg"/>
+                    <CloseIcon className="closeSvg" onClick={onClose}/>
                     {children}
                 </NotificationWarning>
             )
         }
     }
-
 };
 
 const Success = ({message, children}) => {
