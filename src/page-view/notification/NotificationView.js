@@ -2,7 +2,6 @@ import {useEffect, useState} from "react";
 
 import {Wrapper} from './NotificationView.style';
 
-import {useNotification} from "../../utils/hook";
 import {EVENT_TYPE} from "../../utils/event";
 import {NotificationFactory} from "../../components";
 
@@ -20,7 +19,6 @@ const NotificationView = () => {
     }, [])
 
     if (!notifications.length) {
-        console.log(2222, notifications)
         return;
     }
 

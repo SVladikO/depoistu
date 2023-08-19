@@ -7,7 +7,6 @@ import {fetchData} from "./fetch";
 import {URL} from "./config";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
 import {startLoading, stopLoading} from "../features/request/requestSlice";
-import {NotificationFactory} from "../components";
 
 export const useLocalStorage = (storageKey, initialState) => {
     const localStorageState = LocalStorage.get(storageKey);
@@ -26,23 +25,12 @@ export const useLocalStorage = (storageKey, initialState) => {
     return [value, set];
 };
 
-export const useNotification = () => {
-    const [notifications, setNotifications] = useState([])
-
-    useEffect(() => {
-
-        return () => {
-            setNotifications([])
-        }
-    }, [])
-
-
-    return [notifications, setNotificationByType];
-
-    function setNotificationByType (type, message) {
-        setNotifications(prevState => [...prevState, <NotificationFactory type={type} >{message}</NotificationFactory>]);
-    }
-}
+/**
+ * Let us hide elements on scroll.
+ *
+ * @param id
+ * @param top
+ */
 export const useHideOnScroll = (id, top) => {
     let prevScrollpos = window.pageYOffset;
 
@@ -65,6 +53,11 @@ export const useHideOnScroll = (id, top) => {
     }, [id, top])
 }
 
+/**
+ * Redirect to settings page is customer isn't signed in.
+ * That's for security reasons on frontend side.
+ *
+ */
 export const useRedirectToSettingPage = () => {
     const [customer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
     const navigate = useNavigate();
