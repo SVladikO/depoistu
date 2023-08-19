@@ -1,12 +1,13 @@
 import React, {useState} from "react";
 
-import {FetchButton, Notification} from "../../components";
+import {FetchButton} from "../../components";
 import MenuItemView from "../../page-view/menu-item/menu-item-view";
 
 import {getParam} from "../../utils/utils";
 import {fetchData, BE_API} from "../../utils/fetch";
 import {useRedirectToSettingPage} from "../../utils/hook";
 import {translate, TRANSLATION} from "../../utils/translation";
+import {publishNotificationEvent} from "../../utils/event";
 
 const AddMenuItemPage = () => {
     useRedirectToSettingPage();
@@ -14,8 +15,6 @@ const AddMenuItemPage = () => {
     const companyId = getParam(`companyId`)
 
     const [isLoading, setIsLoading] = useState(false);
-    const [isMenuItemCreated, setIsMenuItemCreated] = useState(false);
-    const [requestError, setRequestError] = useState("");
 
     const initialValue = {
         name: '',
@@ -28,22 +27,16 @@ const AddMenuItemPage = () => {
     }
 
     const onSubmit = values => {
-        console.log(values);
-
         setIsLoading(true);
-        setIsMenuItemCreated(false)
 
         const requestObj = {
             ...values,
             company_id: companyId,
         }
 
-        setRequestError('')
         fetchData(BE_API.MENU_ITEM.POST_CREATE(), requestObj)
-            .then(() => {
-                setIsMenuItemCreated(true);
-            })
-            .catch(e => setRequestError(e.body.errorMessage))
+            .then(() => publishNotificationEvent.success("Menu item was created."))
+            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
             .finally(() => setIsLoading(false))
     }
 
@@ -54,8 +47,6 @@ const AddMenuItemPage = () => {
                 onSubmit={onSubmit}
             >
                 <>
-                    {requestError && <Notification.Error message={requestError}/>}
-                    {isMenuItemCreated && <Notification.Success message={"Menu item was created."}/>}
                     <FetchButton
                         isWide
                         type="submit"
