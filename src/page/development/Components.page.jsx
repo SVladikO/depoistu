@@ -32,7 +32,7 @@ import
     Label,
     CloseButton,
     MenuItemDetails,
-    Dropdown, PrimaryButton, StatusNotification, NOTIFICATION
+    Dropdown, PrimaryButton, NotificationFactory, NOTIFICATION_STATUS
 } from "../../components";
 
 import {ReactComponent as QRCodeIcon} from "../../assets/icons/qr_code.svg";
@@ -332,11 +332,11 @@ const componentsGroup2 = [
         },
     ],
     [
-        {title: 'StatusNotification info', component: <StatusNotification status={NOTIFICATION.INFO}>No Internet Connection.</StatusNotification>},
-        {title: 'StatusNotification error', component: <StatusNotification status={NOTIFICATION.ERROR}>No Internet Connection.</StatusNotification>},
-        {title: 'StatusNotification success', component: <StatusNotification status={NOTIFICATION.SUCCESS}>Order placed. Order placed.</StatusNotification>},
-        {title: 'StatusNotification warning', component: <StatusNotification status={NOTIFICATION.WARNING}>No Internet Connection.</StatusNotification>},
-        {title: 'StatusNotification loading', component: <StatusNotification status={NOTIFICATION.LOADING}>Loading...</StatusNotification>},
+        {title: 'StatusNotification info', component: <NotificationFactory status={NOTIFICATION_STATUS.INFO}>No Internet Connection.</NotificationFactory>},
+        {title: 'StatusNotification error', component: <NotificationFactory status={NOTIFICATION_STATUS.ERROR}>No Internet Connection.</NotificationFactory>},
+        {title: 'StatusNotification success', component: <NotificationFactory status={NOTIFICATION_STATUS.SUCCESS}>Order placed. Order placed.</NotificationFactory>},
+        {title: 'StatusNotification warning', component: <NotificationFactory status={NOTIFICATION_STATUS.WARNING}>No Internet Connection.</NotificationFactory>},
+        {title: 'StatusNotification loading', component: <NotificationFactory status={NOTIFICATION_STATUS.LOADING}>Loading...</NotificationFactory>},
         {title: 'Notification.Loading', component: <Notification.Loading/>},
         {title: 'Notification.Error', component: <Notification.Error message={'Broken content.'}/>},
         {title: 'Notification.Success', component: <Notification.Success message={'Company was created.'}/>},

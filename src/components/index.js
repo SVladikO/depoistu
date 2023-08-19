@@ -5,7 +5,7 @@ import NotificationTDB from "./NotificationTDB/NotificationTDB";
 import Price from "./Price/Price";
 import Rating from "./Rating/Rating";
 import CategoryItem from "./CategoryItem/CategoryItem";
-import Notification, {StatusNotification, NOTIFICATION} from "./Notification/Notification";
+import Notification, {NotificationFactory, NOTIFICATION_STATUS} from "./Notification/NOTIFICATION_STATUS";
 import {RowSplitterStyle as RowSplitter} from "./RowSplitter/RowSplitter.style";
 import CheckBoxWithLabel from "./CheckBoxWithLabel/CheckBoxWithLabel";
 import ToggleCheckbox from "./ToggleCheckbox/ToggleCheckbox";
@@ -67,8 +67,8 @@ export {
     Price,
     Flex,
     Notification,
-    StatusNotification,
-    NOTIFICATION,
+    NotificationFactory,
+    NOTIFICATION_STATUS,
     Absolute,
     Popup,
     CloseButton,

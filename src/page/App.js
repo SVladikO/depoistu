@@ -19,6 +19,7 @@ const App = () => {
             }
             <LanguagePopup />
             <AllRoutes />
+
         </>
     );
 };

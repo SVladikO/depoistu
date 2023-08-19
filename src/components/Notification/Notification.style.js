@@ -1,15 +1,14 @@
 import styled, {css} from "styled-components";
 import {BORDER_RADIUS, COLOR, SHADOW} from "../../utils/theme";
-import {NOTIFICATION} from "./Notification";
+import {NOTIFICATION_STATUS} from "./NOTIFICATION_STATUS";
 
-export const Wrapper = styled.div`
+export const DefaultNotification = css`
   ${SHADOW};
   display: inline-flex;
   position: relative;
-  align-items: ${p => p.status === NOTIFICATION.LOADING ? 'center': 'start'};
+  align-items: ${p => p.status === NOTIFICATION_STATUS.LOADING ? 'center': 'start'};
   gap: 10px;
   width: 100%;
-  background: ${p => p.backgroundColor};
   padding: 10px 30px 10px 10px;
   border-radius: ${p => p.borderRadius ? p.borderRadius : BORDER_RADIUS.SECOND};
   margin: 0 0 15px;
@@ -18,6 +17,8 @@ export const Wrapper = styled.div`
     fill: ${COLOR.ACCENT1};
     cursor: pointer;
     position: absolute;
+    height: 13px;
+    width: 13px;
     right: 10px;
     top: 10px;
     
@@ -28,13 +29,27 @@ export const Wrapper = styled.div`
   }
 `
 
-export const IconWrapper = styled.div`
-  width: 40px;
-
-  & > svg {
-    fill: ${p => p.svgFill};
-  }
-`
+export const NotificationInfo = styled.div`
+  ${DefaultNotification};
+  background: ${COLOR.INFO2};
+  
+  
+`;
+export const NotificationWarning = styled.div`
+  ${DefaultNotification};
+  background: ${COLOR.WARNING2};
+  
+`;
+export const NotificationError = styled.div`
+  ${DefaultNotification};
+  background: ${COLOR.ERROR2};
+  
+`;
+export const NotificationSuccess = styled.div`
+  ${DefaultNotification};
+  background: ${COLOR.SUCCESS2};
+  
+`;
 
 export const Text = styled.div`
   font-weight: 400;
