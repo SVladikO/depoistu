@@ -16,35 +16,6 @@ import {ReactComponent as InfoIcon} from "../../assets/icons/info.svg";
 import {ContentContainer} from "../ContentContainer/ContentContainer.style";
 import {TRANSLATION, translate} from "../../utils/translation";
 
-const Success = ({message, children}) => {
-    return (
-        <ContentContainer>
-            <SuccessIcon/>
-            <Text>{message}</Text>
-            {children}
-        </ContentContainer>
-    )
-}
-
-const Loading = () => {
-    return (
-        <ContentContainer>
-            <LoadingIcon className="animated_svg"/>
-            <Text>{translate(TRANSLATION.NOTIFICATION.LOADING)}</Text>
-        </ContentContainer>
-    )
-};
-
-const Error = ({message, children}) => {
-    return (
-        <ContentContainer>
-            <ErrorIcon/>
-            <Text>{message}</Text>
-            {children}
-        </ContentContainer>
-    );
-};
-
 export const NOTIFICATION_STATUS = {
     INFO: 'INFO',
     ERROR: 'ERROR',
@@ -53,8 +24,8 @@ export const NOTIFICATION_STATUS = {
     LOADING: 'LOADING'
 }
 
-export const NotificationFactory = ({children, status}) => {
-    switch (status) {
+export const NotificationFactory = ({type, children}) => {
+    switch (type) {
         case NOTIFICATION_STATUS.INFO: {
             return (
                 <NotificationInfo>
@@ -94,6 +65,37 @@ export const NotificationFactory = ({children, status}) => {
         }
     }
 
+};
+
+const Success = ({message, children}) => {
+    return (
+        <NotificationSuccess>
+            <SuccessIcon/>
+            <CloseIcon className="closeSvg"/>
+            {message}
+            {children}
+        </NotificationSuccess>
+    )
+}
+
+const Loading = () => {
+    return (
+        <ContentContainer>
+            <LoadingIcon className="animated_svg"/>
+            <Text>{translate(TRANSLATION.NOTIFICATION.LOADING)}</Text>
+        </ContentContainer>
+    )
+};
+
+const Error = ({message, children}) => {
+    return (
+        <NotificationError>
+            <ErrorIcon/>
+            <CloseIcon className="closeSvg"/>
+            {message}
+            {children}
+        </NotificationError>
+    );
 };
 
 export default {

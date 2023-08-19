@@ -1,6 +1,6 @@
 import styled, {css} from "styled-components";
 import {BORDER_RADIUS, COLOR, SHADOW} from "../../utils/theme";
-import {NOTIFICATION_STATUS} from "./NOTIFICATION_STATUS";
+import {NOTIFICATION_STATUS} from "./Notification";
 
 export const DefaultNotification = css`
   ${SHADOW};
