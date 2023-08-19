@@ -3,9 +3,6 @@ import {BORDER_RADIUS, COLOR, SHADOW} from "../../utils/theme";
 
 export const ContentContainerDefault = css`
   ${SHADOW};
-  display: inline-flex;
-  align-items: start;
-  gap: 10px;
   width: 100%;
   background: ${COLOR.ACCENT4};
   padding: 10px;
