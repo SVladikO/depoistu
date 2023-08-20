@@ -5,7 +5,7 @@ import {hexToRgbA} from "../../utils/theme";
 export const Wrapper = styled.div`
   border: solid 1px red;
   padding: 15px  2px 0;
-  position: fixed;
+  position: absolute;
   top: 0;
   width: 100%;
   background: ${hexToRgbA('#000', 0.8)};
