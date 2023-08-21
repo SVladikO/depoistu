@@ -25,26 +25,7 @@ export const MobileDevice = styled.div`
   position: relative;
 `;
 
-export const PositionWrapper = styled.div`
-  position: fixed;
-  left: 0;
-  right: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  z-index: 2;
-`;
-
-export const TopWrapper = styled(PositionWrapper)`
-  top: 0;
-  transition: top 0.3s;
-`;
-
-export const BottomWrapper = styled(PositionWrapper)`
-  bottom: -1px;
-`;
-
-export const Centralicer = styled.div`
+export const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -54,23 +35,20 @@ export const Centralicer = styled.div`
 
 const Element = ({r}) => {
     useScrollUp();
-    useHideOnScroll('TopWrapper', '-65px')
+    useHideOnScroll('NavigationHeader', '-65px')
 
     return (
         <>
-            <TopWrapper id="TopWrapper">
-                <NavigationHeader backUrl={r.BACK_URL} title={r.TITLE}>
-                    {r.subHeader && <r.subHeader/>}
-                </NavigationHeader>
-            </TopWrapper>
-            <Centralicer className="Centralicer">
+            <NavigationHeader
+                title={r.TITLE}
+                backUrl={r.BACK_URL}
+            >
+                {r.subHeader && <r.subHeader/>}
+            </NavigationHeader>
+            <Content className="Centralicer">
                 <r.page/>
-            </Centralicer>
-            {r.showBottomMenu && (
-                <BottomWrapper>
-                    <BottomMenu/>
-                </BottomWrapper>
-            )}
+            </Content>
+            {r.showBottomMenu && <BottomMenu/>}
         </>
     )
 };
@@ -91,7 +69,7 @@ export const AllRoutes = () => {
                     />
                 ))}
             </Routes>
-            <NotificationView />
+            <NotificationView/>
         </MobileDevice>
     );
 };
