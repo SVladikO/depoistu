@@ -58,7 +58,7 @@ const Element = ({r}) => {
     return (
         <MobileDevice className="MobileDevice">
             <TopWrapper id="TopWrapper">
-                <NavigationHeader backUrl={r.BACK_URL} title={r.TITLE}>
+                <NavigationHeader backUrl={r.backUrl} title={r.TITLE}>
                     {r.subHeader && <r.subHeader/>}
                 </NavigationHeader>
             </TopWrapper>

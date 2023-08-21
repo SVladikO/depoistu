@@ -1,6 +1,6 @@
 import "swiper/css";
 import "swiper/css/pagination";
-import {Link} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import React, {useState} from "react";
 
 import {FetchButton, Notification, PrimaryButton} from "../../components";
@@ -20,6 +20,7 @@ import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 
 const AddCompany = () => {
     useRedirectToSettingPage();
+    const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
     const [isCompanySaved, setIsCompanySaved] = useState(false);
     const [requestError, setRequestError] = useState("");
@@ -48,11 +49,16 @@ const AddCompany = () => {
                 <WarningText>
                     Without menu this company won’t be shown in search
                 </WarningText>
-                <Link to={`${URL.EDIT_MENU}/${newCompanyId}`}>
-                    <PrimaryButton isWide>
-                        Add menu for this company
-                    </PrimaryButton>
-                </Link>
+
+                <PrimaryButton
+                    isWide
+                    onClick={() => {
+                        LocalStorage.set(LOCAL_STORAGE_KEY.COMPANY_ID_TO_EDIT_MENU_PAGE, newCompanyId)
+                        navigate(URL.EDIT_MENU)
+                    }}
+                >
+                    Add menu for this company
+                </PrimaryButton>
             </Notification.Success>
         )
             ;
