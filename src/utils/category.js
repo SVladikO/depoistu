@@ -50,8 +50,10 @@ export const getCategoryUniqueIds = (menuItems = [], showAllCategories) => {
 
     return uniqueCategories.sort((a, b) => a -b);
 }
-export const getCategoryOwnerId = (categoryId, topCategories) => {
+
+export const getTopCategoryId = (categoryId, topCategories) => {
     let topCategoryName = '';
+
     if (TOP_CATEGORIES.KITCHEN.includes(categoryId)) {
         topCategoryName = 'KITCHEN'
     }
@@ -72,10 +74,9 @@ export const getCategoryOwnerId = (categoryId, topCategories) => {
         }
     })
 
-    console.log(categoryId, topCategoryName, topCategoryIndex)
-
     return topCategoryIndex;
 }
+
 export const getTopCategories = (menuCategoryIds = []) => {
     const topCategories = {
         KITCHEN: {ids: [], translationKey: TR.TOP_CATEGORIES.KITCHEN},
