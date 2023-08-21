@@ -12,8 +12,6 @@ import {checkAccess} from "./utils/security";
 import {showDevelopmentPageUrls} from "./utils/log";
 import {LocalStorage, LOCAL_STORAGE_KEY} from "./utils/localStorage";
 
-document.body.style.backgroundColor = '#d8d8d8';
-
 const container = document.getElementById('root');
 const root = createRoot(container);
 

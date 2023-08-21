@@ -11,21 +11,21 @@ const NavigationHeader = (props) => {
     const {title, showBackButton} = props;
 
     return (
-        <Wrapper className='pm-NavigationHeader' id="NavigationHeader">
-            {!showBackButton &&
-                <BackButton className="back-button" onClick={() => window.history.back()}>
-                    <BackArrow/>
-                </BackButton>
-            }
-            <Title>{title}</Title>
-            {/*TODO: Hidden second version*/}
-            {/*<Link to={ROUTER.ORDER_REVIEW.URL}>*/}
-            {/*    <OrderIconWithCounter hideOnZeroOrderAmount/>*/}
-            {/*</Link>*/}
-            {/*    <NestedContent>*/}
-            {/*{props.children}*/}
-            {/*    </NestedContent>*/}
-        </Wrapper>
+            <Wrapper className='pm-NavigationHeader'>
+                {!showBackButton &&
+                    <BackButton className="back-button" onClick={() => window.history.back()}>
+                        <BackArrow/>
+                    </BackButton>
+                }
+                <Title>{title}</Title>
+                {/*TODO: Hidden second version*/}
+                {/*<Link to={ROUTER.ORDER_REVIEW.URL}>*/}
+                {/*    <OrderIconWithCounter hideOnZeroOrderAmount/>*/}
+                {/*</Link>*/}
+                {/*    <NestedContent>*/}
+                {/*{props.children}*/}
+                {/*    </NestedContent>*/}
+            </Wrapper>
     );
 };
 

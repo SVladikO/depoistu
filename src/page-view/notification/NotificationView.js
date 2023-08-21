@@ -2,8 +2,9 @@ import {useEffect, useState} from "react";
 
 import {Wrapper} from './NotificationView.style';
 
+import {NotificationFactory, FixedWrapper} from "../../components";
+
 import {EVENT_TYPE} from "../../utils/event";
-import {NotificationFactory} from "../../components";
 import {getRandom} from "../../utils/utils";
 
 
@@ -29,12 +30,15 @@ const NotificationView = () => {
     }
 
     return (
-        <Wrapper>
-            {notifications.map(n => (
-                <NotificationFactory key={n.key} type={n.type} onClose={deleteNotification(n.key)}>{n.message}</NotificationFactory>
-            ))
-            }
-        </Wrapper>
+        <FixedWrapper fixTop>
+            <Wrapper>
+                {notifications.map(n => (
+                    <NotificationFactory key={n.key} type={n.type}
+                                         onClose={deleteNotification(n.key)}>{n.message}</NotificationFactory>
+                ))
+                }
+            </Wrapper>
+        </FixedWrapper>
     )
 }
 //

@@ -439,7 +439,7 @@ const componentsGroup3 = [
     ]
 ]
 
-document.body.style.backgroundColor = '#d8d8d8'
+// document.body.style.backgroundColor = '#d8d8d8'
 
 function ComponentsPage() {
     const setWhiteBackground = useCallback(() => document.body.style.backgroundColor = '#ffffff', []);

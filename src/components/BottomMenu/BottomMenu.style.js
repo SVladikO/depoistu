@@ -1,21 +1,13 @@
 import styled from "styled-components";
-import {COLOR,BORDER_RADIUS, DEVICE_WIDTH, hexToRgbA} from "../../utils/theme";
-
+import {COLOR,BORDER_RADIUS} from "../../utils/theme";
 
 export const Wrapper = styled.div`
-  position: fixed;
-  left: 0;
-  right: 0;
   z-index: 2;
   bottom: -1px;
-  box-shadow: 0 0 22px ${hexToRgbA('#000', 0.08)};
   background-color: ${COLOR.ACCENT4};
   border-radius: ${BORDER_RADIUS.SECOND} ${BORDER_RADIUS.SECOND} 0 0;
   display: flex;
   justify-content: space-around;
-  min-width: ${DEVICE_WIDTH.MIN};
-  width: 100%;
-  max-width: ${DEVICE_WIDTH.MAX};
 
   & > a {
     width: 25%;

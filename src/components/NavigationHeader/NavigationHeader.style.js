@@ -1,20 +1,12 @@
 import styled from "styled-components";
-import {BORDER_RADIUS, COLOR, DEVICE_WIDTH} from "../../utils/theme";
+import {BORDER_RADIUS, COLOR} from "../../utils/theme";
+
 
 export const Wrapper = styled.div`
-  position: fixed;
-  left: 0;
-  right: 0;
-  width: 100%;
   display: flex;
-  z-index: 2;
-  top: 0;
-  transition: top 0.3s;
   background: ${COLOR.ACCENT4};
-  min-width: ${DEVICE_WIDTH.MIN};
-  max-width: ${DEVICE_WIDTH.MAX};
-  border-radius: 0 0 ${BORDER_RADIUS.FOURTH} ${BORDER_RADIUS.FOURTH};
   margin-bottom: 30px;
+  border-radius: 0 0 ${BORDER_RADIUS.FOURTH} ${BORDER_RADIUS.FOURTH};
 
   -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.11);
   -moz-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.11);
