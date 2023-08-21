@@ -533,7 +533,7 @@ export const TRANSLATION = {
         },
         FOOTER: {
             BACK_TO_TOP_BUTTON:{
-                ua: 'Назад нагору',
+                ua: 'Догори',
                 en: 'Back to top'
             }
         },
