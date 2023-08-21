@@ -34,12 +34,12 @@ export const TRANSLATION = {
             en: 'The menu of all cafes and restaurants of Ukraine should be in one place. On this site.'
         },
         INTRODUCTION_HELP: {
-            ua: 'Знайдіть заклад своєї мрії та допоможи іншим.',
-            en: 'Find the best place and help others.',
+            ua: 'Знайомтесь з меню до або під час візиту.',
+            en: 'Familiarize yourself with the menu before or during your visit.',
         },
         INTRODUCTION_TELL: {
-            ua: 'Розкажи адміністраторам своїх улюблених закладів про наш сайт.',
-            en: 'Tell the administrators of your favorite bookmarks about our site.'
+            ua: 'Ми не показуємо в пушуку міста в яких ще не зареєструвались заклади.',
+            en: 'We don`t show in the search engine cities in which establishments have not yet been registered.'
         }
     },
     VALIDATION: {
