@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {useParams} from 'react-router-dom';
 import {CategoryTitle, Wrapper} from "./SearchDetails.style";
 
-import {CategoryMenuRow, Company, Notification, RowSplitter} from "../../components";
+import {CategoryMenuRow, Company, NotificationLoading, RowSplitter} from "../../components";
 
 import {useLocalStorage} from "../../utils/hook";
 import {BE_API, fetchData} from "../../utils/fetch";
@@ -49,11 +49,11 @@ const SearchDetailsPage = () => {
 
     return (
         <Wrapper>
-            {isLoadingCompany && <Notification.Loading/>}
+            {isLoadingCompany && <NotificationLoading/>}
             {company && <Company company={company} withMoreInfo/>}
 
             <CategoryTitle id="menu">{translate(TR.PAGE.COMPANY_DETAILS.MENU_TITLE)}</CategoryTitle>
-            {isLoadingMenu && <Notification.Loading/>}
+            {isLoadingMenu && <NotificationLoading/>}
 
             {menuItems?.length && (
                 <CategoryMenuRow

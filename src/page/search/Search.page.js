@@ -4,7 +4,7 @@ import {useSelector} from "react-redux";
 
 import {ReactComponent as LocationIcon} from "../../assets/icons/location.svg";
 
-import {PInput, ContentContainer, Company, Notification, Popup} from "../../components";
+import {PInput, ContentContainer, Company, NotificationLoading, Popup} from "../../components";
 
 import {URL} from "../../utils/config";
 import {BE_API, fetchData} from "../../utils/fetch";
@@ -55,7 +55,7 @@ const SearchPage = () => {
         />, [availableFromDatabaseCityIds]);
 
     if (isLoading) {
-        return <Notification.Loading/>;
+        return <NotificationLoading/>;
     }
 
     const regionLabel = translate(TRANSLATION.COMPONENTS.POPUP.CITY.INPUT)

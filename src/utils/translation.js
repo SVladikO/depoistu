@@ -626,8 +626,8 @@ export const TRANSLATION = {
     },
     NOTIFICATION: {
         LOADING: {
-            ua: "Завантаження...",
-            en: "Loading..."
+            ua: "Завантаження ...",
+            en: "Loading ..."
         },
     },
     BOTTOM_MENU: {

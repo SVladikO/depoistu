@@ -5,7 +5,7 @@ import QRCode from 'qrcode';
 
 import {EditBar, QRCodeButton, QRCodeMenuTitle, ImageQR} from "./CustomerCompanies.style";
 
-import {Company, Notification, Popup, PrimaryButton} from "../../components";
+import {Company, NotificationLoading, Popup, PrimaryButton} from "../../components";
 import {ReactComponent as EditIcon} from "../../assets/icons/edit.svg";
 
 import {BE_API} from '../../utils/fetch'
@@ -35,7 +35,7 @@ const CustomerCompaniesPage = () => {
     }
 
     if (isLoading) {
-        return <Notification.Loading/>;
+        return <NotificationLoading/>;
     }
 
     const showQRCode = companyId => () => setCompanyIdForQRCode(companyId);

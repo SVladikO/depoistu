@@ -13,11 +13,18 @@ export const DefaultNotification = css`
   border-radius: ${p => p.borderRadius ? p.borderRadius : BORDER_RADIUS.SECOND};
   margin: 0 0 15px;
   
-  & > .closeSvg {
+  & > svg:first-child {
+    min-height: 40px;
+    max-height: 40px;
+    min-width: 40px;
+    max-width: 40px;
+  }
+  
+  & > svg.close {
     fill: ${COLOR.ACCENT1};
     cursor: pointer;
     position: absolute;
-    height: 13px;
+    height: 13px ;
     width: 13px;
     right: 10px;
     top: 10px;
@@ -48,7 +55,11 @@ export const NotificationError = styled.div`
 export const NotificationSuccess = styled.div`
   ${DefaultNotification};
   background: ${COLOR.SUCCESS2};
-  
+`;
+
+export const NotificationLoadingWrapper = styled.div`
+  ${DefaultNotification};
+  background: ${COLOR.ACCENT2};
 `;
 
 export const Text = styled.div`

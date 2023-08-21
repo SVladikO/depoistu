@@ -6,7 +6,7 @@ import {Wrapper, CompanyDetails} from "./EditMenu.style";
 
 import {
     CategoryMenuRow,
-    Notification,
+    NotificationLoading,
 } from "../../components";
 
 import {startLoading, stopLoading} from "../../features/request/requestSlice";
@@ -50,7 +50,7 @@ const EditMenu = () => {
     }, [companyId])
 
     if (isLoading) {
-        return <Notification.Loading/>;
+        return <NotificationLoading/>;
     }
 
 

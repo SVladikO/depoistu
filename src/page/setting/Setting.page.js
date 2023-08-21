@@ -31,7 +31,7 @@ import {
     NotificationTDB,
     FetchButton,
     Input,
-    Notification,
+    NotificationLoading,
     RowSplitter,
     PrimaryButton
 } from '../../components'
@@ -120,7 +120,7 @@ const SettingPage = () => {
         <>
             {!customer && singInSingUpNotification}
             {customer && !customer.IS_VERIFIED_EMAIL && emailVerificationNotification}
-            {isLoading && <Notification.Loading/>}
+            {isLoading && <NotificationLoading/>}
             <LanguagePopup />
             <Wrapper>
                 {/*<CustomerAccountBar fullName='Jhon Smith' phone="+14844731243"/>*/}

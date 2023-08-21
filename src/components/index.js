@@ -34,7 +34,7 @@ import {FixedWrapper} from "./FixedWrapper/FixedWrapper.style";
 import {Input, PInput, Textarea} from "./Input/Input";
 import {Label} from "./Label/Label.style";
 import {MenuItemDetails} from "./MenuItem/MenuItem";
-import Notification, {NotificationFactory, NOTIFICATION_STATUS} from "./Notification/Notification";
+import {NotificationFactory, NOTIFICATION_STATUS, NotificationLoading} from "./Notification/Notification";
 import {PrimaryButton} from "./Buttons/PrimaryButton";
 import {RowSplitterStyle as RowSplitter} from "./RowSplitter/RowSplitter.style";
 import {SecondaryButton} from "./Buttons/SecondaryButton";
@@ -69,7 +69,7 @@ export {
     NavigationLabelHref,
     NotificationFactory,
     NotificationTDB,
-    Notification,
+    NotificationLoading,
     OrderHistoryRow,
     OrderIconWithCounter,
     PInput,

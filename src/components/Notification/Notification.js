@@ -2,7 +2,9 @@ import {
     NotificationInfo,
     NotificationError,
     NotificationSuccess,
-    Text, NotificationWarning
+    NotificationWarning,
+    NotificationLoadingWrapper,
+    Text,
 } from "./Notification.style";
 
 import {ReactComponent as CloseIcon} from "../../assets/icons/close.svg";
@@ -12,8 +14,6 @@ import {ReactComponent as ErrorIcon} from "../../assets/icons/error.svg";
 import {ReactComponent as WarningIcon} from "../../assets/icons/warning.svg";
 import {ReactComponent as InfoIcon} from "../../assets/icons/info.svg";
 
-
-import {ContentContainer} from "../ContentContainer/ContentContainer.style";
 import {TRANSLATION, translate} from "../../utils/translation";
 
 export const NOTIFICATION_STATUS = {
@@ -30,7 +30,7 @@ export const NotificationFactory = ({type, children, onClose}) => {
             return (
                 <NotificationInfo>
                     <InfoIcon/>
-                    <CloseIcon className="closeSvg" onClick={onClose}/>
+                    <CloseIcon className="close" onClick={onClose}/>
                     {children}
                 </NotificationInfo>
             )
@@ -39,7 +39,7 @@ export const NotificationFactory = ({type, children, onClose}) => {
             return (
                 <NotificationError>
                     <ErrorIcon/>
-                    <CloseIcon className="closeSvg" onClick={onClose}/>
+                    <CloseIcon className="close" onClick={onClose}/>
                     {children}
                 </NotificationError>
             )
@@ -49,7 +49,7 @@ export const NotificationFactory = ({type, children, onClose}) => {
             return (
                 <NotificationSuccess>
                     <SuccessIcon/>
-                    <CloseIcon className="closeSvg" onClick={onClose}/>
+                    <CloseIcon className="close" onClick={onClose}/>
                     {children}
                 </NotificationSuccess>
             )
@@ -58,7 +58,7 @@ export const NotificationFactory = ({type, children, onClose}) => {
             return (
                 <NotificationWarning>
                     <WarningIcon/>
-                    <CloseIcon className="closeSvg" onClick={onClose}/>
+                    <CloseIcon className="close" onClick={onClose}/>
                     {children}
                 </NotificationWarning>
             )
@@ -66,39 +66,9 @@ export const NotificationFactory = ({type, children, onClose}) => {
     }
 };
 
-const Success = ({message, children}) => {
-    return (
-        <NotificationSuccess>
-            <SuccessIcon/>
-            <CloseIcon className="closeSvg"/>
-            {message}
-            {children}
-        </NotificationSuccess>
-    )
-}
-
-const Loading = () => {
-    return (
-        <ContentContainer>
-            <LoadingIcon className="animated_svg"/>
-            <Text>{translate(TRANSLATION.NOTIFICATION.LOADING)}</Text>
-        </ContentContainer>
-    )
-};
-
-const Error = ({message, children}) => {
-    return (
-        <NotificationError>
-            <ErrorIcon/>
-            <CloseIcon className="closeSvg"/>
-            {message}
-            {children}
-        </NotificationError>
-    );
-};
-
-export default {
-    Success,
-    Loading,
-    Error
-}
+export const NotificationLoading = () => (
+    <NotificationLoadingWrapper>
+        <LoadingIcon className="animated_svg"/>
+        <Text>{translate(TRANSLATION.NOTIFICATION.LOADING)}</Text>
+    </NotificationLoadingWrapper>
+)
