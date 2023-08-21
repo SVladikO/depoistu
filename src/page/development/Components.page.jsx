@@ -32,7 +32,7 @@ import
     Label,
     CloseButton,
     MenuItemDetails,
-    Dropdown
+    Dropdown, PrimaryButton
 } from "../../components";
 
 import {ReactComponent as QRCodeIcon} from "../../assets/icons/qr_code.svg";
@@ -143,13 +143,16 @@ const componentsGroup1 = [
         {title: 'Price', component: <Price>50</Price>},
     ],
     [
-        {title: 'FetchButton', component: <FetchButton><GoogleIcon/>Google</FetchButton>},
-        {title: 'FetchButton', component: <FetchButton>Sing in</FetchButton>},
-        {title: 'FetchButton isWide', component: <FetchButton isWide>Sing in</FetchButton>},
+        {title: 'PrimaryButton', component: <PrimaryButton><GoogleIcon/>Google</PrimaryButton>},
+        {title: 'PrimaryButton', component: <PrimaryButton>Sing in</PrimaryButton>},
+        {title: 'PrimaryButton isWide', component: <PrimaryButton isWide>Sing in</PrimaryButton>},
+        {title: 'FetchButton isWide', component: <PrimaryButton isWide>Sing in</PrimaryButton>},
         {title: 'FetchButton isLoading isWide', component: <FetchButton isLoading isWide>Loading</FetchButton>},
         {title: 'SecondaryButton', component: <SecondaryButton><FacebookIcon/>facebook</SecondaryButton>},
         {title: 'SecondaryButton', component: <SecondaryButton>Cancel</SecondaryButton>},
+        {title: 'SecondaryButton isWide', component: <SecondaryButton isWide>Cancel</SecondaryButton>},
         {title: 'ThirdButton', component: <ThirdButton><FacebookIcon/>Cancel</ThirdButton>},
+        {title: 'ThirdButton isWide', component: <ThirdButton isWide><FacebookIcon/>Cancel</ThirdButton>},
         {title: 'CloseButton', component: <CloseButton clickHandler={() => alert('clicked')}/>},
     ],
     [
@@ -305,7 +308,7 @@ const componentsGroup2 = [
                     CITY_ID: '204',
                     SCHEDULE: '01:00-21:00, 01:00-21:00, 01:00-21:00, 01:00-21:00, 01:00-21:00, 01:00-22:00, 01:00-22:00',
                     STREET: 'Davidusk 15.',
-                    PHONE: '38 097 066 8820'
+                    PHONE1: '38 097 066 8820'
                 }}
             />
         },

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-import {Notification} from "../../components";
+import {FetchButton, Notification} from "../../components";
 import MenuItemView from "../../page-view/menu-item/menu-item-view";
 
 import {getParam} from "../../utils/utils";
@@ -49,14 +49,23 @@ const AddMenuItemPage = () => {
 
     return (
         <>
-            {requestError && <Notification.Error message={requestError}/>}
-            {isMenuItemCreated && <Notification.Success message={"Menu item was created."}/>}
             <MenuItemView
-                isLoading={isLoading}
                 initialValue={initialValue}
                 onSubmit={onSubmit}
-                submitButtonTitle={translate(TRANSLATION.PAGE.ADD_MENU_ITEM.BUTTON.ADD_MENU_ITEM)}
-            />
+            >
+                <>
+                    {requestError && <Notification.Error message={requestError}/>}
+                    {isMenuItemCreated && <Notification.Success message={"Menu item was created."}/>}
+                    <FetchButton
+                        isWide
+                        type="submit"
+                        isLoading={isLoading}
+                    >
+                        {translate(TRANSLATION.PAGE.ADD_MENU_ITEM.BUTTON.ADD_MENU_ITEM)}
+                    </FetchButton>
+                </>
+
+            </MenuItemView>
         </>
     );
 }

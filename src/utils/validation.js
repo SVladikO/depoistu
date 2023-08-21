@@ -6,6 +6,10 @@ const MESSAGE = {
     REQUIRED: translate(TRANSLATION.VALIDATION.REQUIRED),
     MIN_LENGTH:  translate(TRANSLATION.VALIDATION.MIN_LENGTH),
     MAX_LENGTH: translate(TRANSLATION.VALIDATION.MAX_LENGTH),
+    MIN_VALUE:  translate(TRANSLATION.VALIDATION.MIN_VALUE),
+    MAX_VALUE:  translate(TRANSLATION.VALIDATION.MAX_VALUE),
+    MIN_SYMBOLS:  translate(TRANSLATION.VALIDATION.MIN_SYMBOLS),
+    MAX_SYMBOLS:  translate(TRANSLATION.VALIDATION.MAX_SYMBOLS),
     EXAMPLE: translate(TRANSLATION.VALIDATION.EXAMPLE),
     PASSWORD_MUST_MUCH: translate(TRANSLATION.VALIDATION.PASSWORD_MUST_MUCH),
     OLD_PASSWORD_MUST_MUCH: translate(TRANSLATION.VALIDATION.OLD_PASSWORD_MUST_MUCH),
@@ -93,46 +97,25 @@ const changePasswordValidation = {
     confirmedPassword: customer_validation.confirmedPassword
 }
 
-const MENU_ITEM = {
-    NAME: {
-        MIN: 2,
-        MAX: 30
-    },
-    PRICE: {
-        MIN: 1,
-    },
-    DESCRIPTION: {
-        MAX: 100
-    },
-    COOKING_TIME: {
-        MIN: 1,
-        MAX: 2
-    },
-    MEAL_SIZE: {
-        MIN: 1,
-        MAX: 4
-    },
-};
-
 const menu_item_validation = {
     name: Yup.string()
         .required(MESSAGE.REQUIRED)
-        .min(MENU_ITEM.NAME.MIN, `${MESSAGE.MIN_LENGTH} ${MENU_ITEM.NAME.MIN}`)
-        .max(MENU_ITEM.NAME.MAX, `${MESSAGE.MAX_LENGTH} ${MENU_ITEM.NAME.MAX}`),
+        .min(2, `${MESSAGE.MIN_SYMBOLS} 2`)
+        .max(30, `${MESSAGE.MAX_SYMBOLS} 30`),
     category_id: Yup.string().required(MESSAGE.REQUIRED),
-    price: Yup.string()
+    price: Yup.number()
         .required(MESSAGE.REQUIRED)
-        .min(MENU_ITEM.PRICE.MIN, `${MESSAGE.MIN_LENGTH} ${MENU_ITEM.PRICE.MIN}`),
+        .moreThan(0, `${MESSAGE.MIN_VALUE} 1`),
     description: Yup.string()
-        .max(MENU_ITEM.DESCRIPTION.MAX, `${MESSAGE.MAX_LENGTH} ${MENU_ITEM.DESCRIPTION.MAX}`),
-    cookingTime: Yup.string()
+        .max(100, `${MESSAGE.MAX_SYMBOLS} 100`),
+    cookingTime: Yup.number()
         .required(MESSAGE.REQUIRED)
-        .min(MENU_ITEM.COOKING_TIME.MIN, `${MESSAGE.MIN_LENGTH} ${MENU_ITEM.COOKING_TIME.MIN}`)
-        .max(MENU_ITEM.COOKING_TIME.MAX, `${MESSAGE.MAX_LENGTH} ${MENU_ITEM.COOKING_TIME.MAX}`),
-    size: Yup.string()
+        .moreThan(0, `${MESSAGE.MIN_VALUE} 1`)
+        .lessThan(100, `${MESSAGE.MAX_VALUE} 99`),
+    size: Yup.number()
         .required(MESSAGE.REQUIRED)
-        .min(MENU_ITEM.MEAL_SIZE.MIN, `${MESSAGE.MIN_LENGTH} ${MENU_ITEM.MEAL_SIZE.MIN}`)
-        .max(MENU_ITEM.MEAL_SIZE.MAX, `${MESSAGE.MAX_LENGTH} ${MENU_ITEM.MEAL_SIZE.MAX}`)
+        .moreThan(0, `${MESSAGE.MIN_VALUE} 1`)
+        .lessThan(10000, `${MESSAGE.MAX_VALUE} 9999`),
 }
 
 const COMPANY = {

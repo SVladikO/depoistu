@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useRef, useState} from "react";
 
 import {BackButtonWrapper, BackButtonInnerWrapper, Wrapper, CitiesWrapper} from "./CityContent.style"
 
@@ -24,8 +24,10 @@ export const CityContent = ({onSelectCity, availableCityIds, onClose}) => {
     const regionIds = Object.keys(regionCityTree);
     const [selectedRegionId, setSelectedRegionId] = useState('');
     const [citiesOrRegionsToRender, setCitiesOrRegionsToRender] = useState(regionIds);
-
     const [isRegion, setIsRegion] = useState(true);
+
+    const topRef = useRef()
+    const scrollToTop = () => topRef.current?.scrollIntoView({ behavior: 'smooth' });
 
     const disableEventBubbling = e => {
         e.stopPropagation();
@@ -33,19 +35,11 @@ export const CityContent = ({onSelectCity, availableCityIds, onClose}) => {
     }
 
     const handleBackButtonClick = () => {
+        scrollToTop();
         setIsRegion(true);
         setCitiesOrRegionsToRender(regionIds);
         setSelectedRegionId('')
     }
-
-    const renderBackButton = () => (
-        <BackButtonWrapper>
-            <BackButtonInnerWrapper onClick={handleBackButtonClick}>
-                <BackIcon/>
-                {translate(TRANSLATION.PAGE.SEARCH.ARROW_LABEL)}
-            </BackButtonInnerWrapper>
-        </BackButtonWrapper>
-    );
 
     /**
      * Should handle select region or city by id.
@@ -54,6 +48,8 @@ export const CityContent = ({onSelectCity, availableCityIds, onClose}) => {
      * @return {(function(): void)|*}
      */
     const changeHandlerSettingMenuRow = id => () => {
+        scrollToTop();
+
         if (isRegion) {
             setSelectedRegionId(id)
             setCitiesOrRegionsToRender(regionCityTree[id])
@@ -66,16 +62,22 @@ export const CityContent = ({onSelectCity, availableCityIds, onClose}) => {
         onClose()
     }
 
+    const BackButton = () => (
+        <BackButtonWrapper>
+            <BackButtonInnerWrapper onClick={handleBackButtonClick}>
+                <BackIcon/>
+                {translate(TRANSLATION.PAGE.SEARCH.ARROW_LABEL)}
+            </BackButtonInnerWrapper>
+        </BackButtonWrapper>
+    );
+
     const regionLabel = translate(TRANSLATION.COMPONENTS.POPUP.CITY.INPUT);
 
     return (
         <Wrapper onClick={disableEventBubbling}>
-            {!isRegion && renderBackButton()}
-            <CitiesWrapper
-                className="pma-cities"
-                style={{height: isRegion ? '100%' : '92%'}}
-                onClick={e => e.stopPropagation()}
-            >
+            {!isRegion && <BackButton />}
+            <CitiesWrapper onClick={disableEventBubbling}>
+                <div ref={topRef} />
                 {/*Expected array structure: ['101', '202', ... ]*/}
                 {citiesOrRegionsToRender.map((id, i) =>
                     <SettingMenuRow

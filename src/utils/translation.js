@@ -5,6 +5,10 @@ export const LANGUAGE_KEYS = {
     EN: 'en'
 }
 
+export const truncate = (text, availableLength = 1) => {
+    return text.substring(0, availableLength) + ' ...';
+};
+
 export const currentLanguage = LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE).language.siteLanguage;
 
 export const translate = obj => {
@@ -56,6 +60,22 @@ export const TRANSLATION = {
         INVALID_EMAIL: {
             en: "Invalid email",
             ua: "Невалідний мейл"
+        },
+        MIN_VALUE: {
+            en: "Min value is ",
+            ua: "Мінімальне значення "
+        },
+        MAX_VALUE: {
+            en: "Max value is ",
+            ua: "Максимальне значення "
+        },
+        MIN_SYMBOLS: {
+            en: "Min number of characters is ",
+            ua: "Мінімальна кількість символів "
+        },
+        MAX_SYMBOLS: {
+            en: "Max number of characters is ",
+            ua: "Максимальне кількість символів "
         }
     },
     WEEK_DAY: {
@@ -171,7 +191,7 @@ export const TRANSLATION = {
     MEASUREMENTS: {
         PRICE: {
             ua: 'грн',
-            en: 'uah'
+            en: 'UAH'
         },
         WEIGHT: {
             ua: "г",
@@ -183,7 +203,7 @@ export const TRANSLATION = {
         },
         PREPARING: {
             ua: "хв",
-            en: 'mim'
+            en: 'min'
         },
     },
     PAGE_VIEW: {
@@ -219,6 +239,10 @@ export const TRANSLATION = {
             MENU_TITLE: {
                 ua: "МЕНЮ",
                 en: 'MENU'
+            },
+            MENU_PROBLEM: {
+                ua: 'Меню компанії відсутнє',
+                en: 'There is no menu in company'
             }
         },
         CUSTOMER_COMPANIES: {
@@ -587,7 +611,7 @@ export const TRANSLATION = {
                 },
             },
         },
-        POPUP : {
+        POPUP: {
             CITY: {
                 INPUT: {
                     en: " region",
@@ -672,7 +696,7 @@ export const TRANSLATION = {
             en: "Sandwitch"
         },
         SEAFOOD: {
-            ua: "Морепродукти",
+            ua: "Море продукти",
             en: "Seafood"
         },
         SALADS: {
@@ -705,7 +729,7 @@ export const TRANSLATION = {
         },
         HOT_DISHES: {
             ua: 'Гарячі страви',
-            en: 'Hot dishes (Main Course)'
+            en: 'Hot dishes'
         },
         MEAT_DISHES: {
             ua: "М'ясні страви",
