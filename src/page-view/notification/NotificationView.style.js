@@ -3,12 +3,11 @@ import {hexToRgbA} from "../../utils/theme";
 
 
 export const Wrapper = styled.div`
-  border: solid 1px red;
-  padding: 15px  2px 0;
+  padding: 15px 6px 0;
   position: absolute;
   top: 0;
   width: 100%;
-  background: ${hexToRgbA('#000', 0.8)};
+  background: ${hexToRgbA('#000', 0.5)};
   z-index: 8;
   animation: myfirst 2s;
   animation-direction: alternate;

@@ -3,7 +3,7 @@ import {DEVICE_WIDTH} from "../../utils/theme";
 
 export const FixedWrapper = styled.div`
   position: fixed;
-  z-index: 2;
+  z-index: 10;
   ${p => p.fixTop ? 'top: 0' : ''};
   ${p => p.fixBottom ? 'bottom: 0' : ''};
   left: 0;
