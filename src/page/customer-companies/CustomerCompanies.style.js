@@ -6,8 +6,7 @@ export const ImageQR = styled.img`
   width: 250px;
 `;
 
-// export const QRCodeButton = styled(PrimaryButton)`
-export const QRCodeButton = styled.div`
+export const QRCodeButton = styled(PrimaryButton)`
   padding: 10px;
 
   & > svg {

@@ -387,7 +387,6 @@ const componentsGroup3 = [
                     <HistoryTabBar/>
                 </NavigationHeader>
         },
-
         {title: 'BottomMenu', component: <RowSplitter height='80px'><BottomMenu/></RowSplitter>},
         {title: 'ContentContainer', component: <ContentContainer>Sign up with</ContentContainer>},
         {
