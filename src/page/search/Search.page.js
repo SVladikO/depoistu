@@ -12,6 +12,7 @@ import {translate, TRANSLATION} from "../../utils/translation";
 import {useLocalStorage, useLocalStorageFetch} from "../../utils/hook";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {publishNotificationEvent} from "../../utils/event";
+import {stopLoadingWithDelay} from "../../utils/utils";
 
 const SearchPage = () => {
         const [isLoadingCityIds, setIsLoadingCityIds] = useState(false);
@@ -30,14 +31,15 @@ const SearchPage = () => {
         );
 
         const onOpenCityPopup = () => {
-            setIsLoadingCityIds(true)
+            setIsLoadingCityIds(true);
+            const stopLoading = stopLoadingWithDelay(setIsLoadingCityIds);
             fetchData(BE_API.COMPANY.GET_AVAILABLE_CITIES())
                 .then(res => {
                     setShowCityPopup(true);
                     setAvailableFromDatabaseCityIds(res.body);
                 })
                 .catch(e => publishNotificationEvent.error(e.body.errorMessage))
-                .finally(() => setIsLoadingCityIds(false))
+                .finally(() => stopLoading())
         }
 
         const onCloseCityPopup = () => setShowCityPopup(false);

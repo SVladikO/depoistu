@@ -7,6 +7,7 @@ import {fetchData} from "./fetch";
 import {URL} from "./config";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
 import {publishNotificationEvent} from "./event";
+import {stopLoadingWithDelay} from "./utils";
 
 export const useLocalStorage = (storageKey, initialState) => {
     const localStorageState = LocalStorage.get(storageKey);
@@ -90,6 +91,7 @@ export const useLocalStorageFetch = (
         }
 
         setLoading(true)
+        const stopLoading = stopLoadingWithDelay(setLoading)
 
         fetchData(url)
             .then(res => {
@@ -97,7 +99,7 @@ export const useLocalStorageFetch = (
                 localStorage.setItem(storageKey, JSON.stringify(res.body))
             })
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))
-            .finally(() => setTimeout(() => dispatch(setLoading(false)), 1000))
+            .finally(() => stopLoading())
     }, [value, storageKey, dispatch, localStorageState, url]);
 
     return [value, setValue];
