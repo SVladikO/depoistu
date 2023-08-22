@@ -28,8 +28,7 @@ const EditMenu = () => {
     const [customerCompanies] = useLocalStorageFetch(
         LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES,
         [],
-        BE_API.COMPANY.GET_BY_CUSTOMER_ID(customer?.ID),
-        publishNotificationEvent.error
+        BE_API.COMPANY.GET_BY_CUSTOMER_ID(customer?.ID)
     );
     const currentCompany = customerCompanies?.find((c => c.ID === +companyId));
     useEffect(() => {

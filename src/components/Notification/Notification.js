@@ -66,9 +66,11 @@ export const NotificationFactory = ({type, children, onClose}) => {
     }
 };
 
-export const NotificationLoading = () => (
+export const NotificationLoading = ({children}) => (
     <NotificationLoadingWrapper>
         <LoadingIcon className="animated_svg"/>
-        <Text>{translate(TRANSLATION.NOTIFICATION.LOADING)}</Text>
+        <Text>
+            {children || translate(TRANSLATION.NOTIFICATION.LOADING)}
+        </Text>
     </NotificationLoadingWrapper>
 )
