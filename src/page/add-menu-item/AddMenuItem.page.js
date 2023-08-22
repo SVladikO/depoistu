@@ -3,15 +3,14 @@ import React, {useState} from "react";
 import {FetchButton, Notification} from "../../components";
 import MenuItemView from "../../page-view/menu-item/menu-item-view";
 
-import {getParam} from "../../utils/utils";
 import {fetchData, BE_API} from "../../utils/fetch";
-import {useRedirectToSettingPage} from "../../utils/hook";
+import {useRedirectToSettingPage, useScrollUp} from "../../utils/hook";
 import {translate, TRANSLATION} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 
 const AddMenuItemPage = () => {
     useRedirectToSettingPage();
-    const categoryId = +getParam(`categoryId`);
+    useScrollUp()
     const companyId = LocalStorage.get(LOCAL_STORAGE_KEY.COMPANY_ID_FOR_EDIT_MENU);
 
     const [isLoading, setIsLoading] = useState(false);
@@ -21,7 +20,7 @@ const AddMenuItemPage = () => {
     const initialValue = {
         name: '',
         price: '',
-        category_id: categoryId,
+        category_id: 1,
         description: '',
         cookingTime: '',
         size: '',

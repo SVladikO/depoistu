@@ -7,12 +7,13 @@ import {ReactComponent as RemoveIcon} from "../../assets/icons/remove_icon.svg";
 
 import {URL} from "../../utils/config";
 import {fetchData, BE_API} from "../../utils/fetch";
-import {useRedirectToSettingPage} from "../../utils/hook";
+import {useRedirectToSettingPage, useScrollUp} from "../../utils/hook";
 import {translate, TRANSLATION} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 
 const EditMenuItemPage = () => {
     useRedirectToSettingPage();
+    useScrollUp()
     const navigate = useNavigate();
     const [isLoadingUpdate, setIsLoadingUpdate] = useState(false);
     const [isLoadingDelete, setIsLoadingDelete] = useState(false);

@@ -43,6 +43,16 @@ const MenuItemView = ({initialValue, onSubmit, children}) => {
                 <form onSubmit={handleSubmit}>
                     <ContentContainer>
                         {/*{renderImages()}*/}
+                        <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.CATEGORY)}</Label>
+                        <Dropdown
+                            options={options}
+                            selectedOption={(options.filter(o => o.value === values.category_id))[0]}
+                            onSelect={option => setFieldValue( 'category_id', +option.value)}
+                            as="select"
+                            name="category_id"
+                            isTouched={touched.category_id || wasSubmitted}
+                            errorMessage={errors.category_id}
+                        />
                         <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.NAME)}</Label>
                         <Input
                             value={values.name}
@@ -66,16 +76,7 @@ const MenuItemView = ({initialValue, onSubmit, children}) => {
                             errorMessage={errors.price}
                             withCleaner
                         />
-                        <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.CATEGORY)}</Label>
-                        <Dropdown
-                            options={options}
-                            selectedOption={(options.filter(o => o.value === values.category_id))[0]}
-                            onSelect={option => setFieldValue( 'category_id', +option.value)}
-                            as="select"
-                            name="category_id"
-                            isTouched={touched.category_id || wasSubmitted}
-                            errorMessage={errors.category_id}
-                            />
+
                         <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.DESCRIPTION)}</Label>
                         <Textarea
                             value={values.description}

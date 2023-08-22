@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import {COLOR} from "../../utils/theme";
-import {ContentContainerDefault} from "../ContentContainer/ContentContainer.style";
+import {ContentContainerDefault} from "../../components/ContentContainer/ContentContainer.style";
 
 export const TopCategoryWrapper = styled.div`
   display: flex;

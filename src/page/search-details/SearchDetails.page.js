@@ -2,7 +2,9 @@ import {useEffect, useState} from "react";
 import {useParams} from 'react-router-dom';
 import {CategoryTitle, Wrapper} from "./SearchDetails.style";
 
-import {CategoryMenuRow, Company, Notification, RowSplitter} from "../../components";
+import {Company, Notification, RowSplitter} from "../../components";
+
+import CategoryMenuView from '../../page-view/category-menu-view/CategoryMenuView'
 
 import {useLocalStorage} from "../../utils/hook";
 import {BE_API, fetchData} from "../../utils/fetch";
@@ -54,7 +56,7 @@ const SearchDetailsPage = () => {
             {isLoadingMenu && <Notification.Loading/>}
             {menuItems && menuItems.length
                 ? (
-                    <CategoryMenuRow
+                    <CategoryMenuView
                         className="category-menu-row"
                         menuItems={menuItems}
                     />
