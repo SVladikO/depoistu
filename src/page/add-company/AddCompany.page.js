@@ -1,6 +1,6 @@
 import "swiper/css";
 import "swiper/css/pagination";
-import {Link} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import React, {useState} from "react";
 
 import {ContentContainer, FetchButton, PrimaryButton} from "../../components";
@@ -19,6 +19,7 @@ import {publishNotificationEvent} from "../../utils/event";
 
 const AddCompany = () => {
     useRedirectToSettingPage();
+    const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
     const [wasCompanyCreated, setWasCompanyCreated] = useState(false);
     const [newCompanyId, setNewCompanyId] = useState();
@@ -44,9 +45,13 @@ const AddCompany = () => {
     if (wasCompanyCreated) {
         return (
             <ContentContainer>
-                <Link to={`${URL.EDIT_MENU}/${newCompanyId}`}>
-                    <PrimaryButton isWide>Add menu for this company</PrimaryButton>
-                </Link>
+                <PrimaryButton
+                    isWide
+                    onClick={() => {
+                        LocalStorage.set(LOCAL_STORAGE_KEY.COMPANY_ID_TO_EDIT_MENU_PAGE, newCompanyId)
+                        navigate(URL.EDIT_MENU)
+                    }}
+                >Add menu for this company</PrimaryButton>
             </ContentContainer>
         )
     }

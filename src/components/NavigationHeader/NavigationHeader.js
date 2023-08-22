@@ -6,26 +6,31 @@ import {Wrapper, BackButton, Title} from "./NavigationHeader.style";
 // import {OrderIconWithCounter} from "../index";
 
 import {ReactComponent as BackArrow} from "../../assets/icons/back_arrow.svg";
+import {Link} from "react-router-dom";
 
 const NavigationHeader = (props) => {
-    const {title, showBackButton} = props;
+    const {title, backUrl} = props;
 
     return (
-            <Wrapper className='pm-NavigationHeader'>
-                {!showBackButton &&
-                    <BackButton className="back-button" onClick={() => window.history.back()}>
-                        <BackArrow/>
-                    </BackButton>
+        <Wrapper className='pm-NavigationHeader'>
+            <MainContent>
+                {backUrl &&
+                    <Link to={backUrl}>
+                        <BackButton className="back-button">
+                            <BackArrow/>
+                        </BackButton>
+                    </Link>
                 }
                 <Title>{title}</Title>
                 {/*TODO: Hidden second version*/}
                 {/*<Link to={ROUTER.ORDER_REVIEW.URL}>*/}
                 {/*    <OrderIconWithCounter hideOnZeroOrderAmount/>*/}
                 {/*</Link>*/}
-                {/*    <NestedContent>*/}
-                {/*{props.children}*/}
-                {/*    </NestedContent>*/}
-            </Wrapper>
+            </MainContent>
+            {/*<NestedContent>*/}
+            {/*    {props.children}*/}
+            {/*</NestedContent>*/}
+        </Wrapper>
     );
 };
 

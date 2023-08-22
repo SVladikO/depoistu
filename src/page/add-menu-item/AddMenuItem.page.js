@@ -7,12 +7,13 @@ import {getParam} from "../../utils/utils";
 import {fetchData, BE_API} from "../../utils/fetch";
 import {useRedirectToSettingPage} from "../../utils/hook";
 import {translate, TRANSLATION} from "../../utils/translation";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {publishNotificationEvent} from "../../utils/event";
 
 const AddMenuItemPage = () => {
     useRedirectToSettingPage();
     const categoryId = +getParam(`categoryId`);
-    const companyId = getParam(`companyId`)
+    const companyId = LocalStorage.get(LOCAL_STORAGE_KEY.COMPANY_ID_FOR_EDIT_MENU);
 
     const [isLoading, setIsLoading] = useState(false);
 

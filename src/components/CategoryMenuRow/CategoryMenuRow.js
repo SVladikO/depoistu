@@ -39,7 +39,6 @@ const CategoryMenuRow = ({
                              editPage = false,
                          }) => {
     const navigate = useNavigate();
-    const {companyId} = useParams();
     const [topCategories, setTopCategories] = useState([]);
     const [uniqueCategories, setUniqueCategories] = useState();
     const [selectedCategory, setSelectedCategory] = useState({});
@@ -220,7 +219,7 @@ const CategoryMenuRow = ({
                 editPage &&
                 <>
                     <RowSplitter height={'15px'}/>
-                    <Link to={`${URL.ADD_MENU_ITEM}?categoryId=${selectedCategory.id}&companyId=${companyId}`}>
+                    <Link to={`${URL.ADD_MENU_ITEM}?categoryId=${selectedCategory.id}`}>
                         <FetchButton
                             isWide>{translate(TRANSLATION.PAGE.EDIT_MENU.BUTTON.ADD_MENU_ITEM)}</FetchButton>
                     </Link>

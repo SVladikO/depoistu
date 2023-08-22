@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {useParams} from "react-router-dom";
 
 import {Wrapper, CompanyDetails} from "./EditMenu.style";
 
@@ -22,7 +21,7 @@ import {publishNotificationEvent} from "../../utils/event";
 const EditMenu = () => {
     useRedirectToSettingPage();
     const dispatch = useDispatch();
-    const {companyId} = useParams();
+    const companyId = LocalStorage.get(LOCAL_STORAGE_KEY.COMPANY_ID_TO_EDIT_MENU_PAGE);
     const isLoading = useSelector(state => state.request.value.isLoading);
     const [menuItems, setMenuItems] = useState();
     const [customer] = useLocalStorage(LOCAL_STORAGE_KEY.CUSTOMER);

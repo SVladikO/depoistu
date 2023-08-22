@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {useSelector} from "react-redux";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import QRCode from 'qrcode';
 
 import {EditBar, QRCodeButton, QRCodeMenuTitle, ImageQR} from "./CustomerCompanies.style";
@@ -18,6 +18,7 @@ import {publishNotificationEvent} from "../../utils/event";
 
 const CustomerCompaniesPage = () => {
     useRedirectToSettingPage();
+    const navigate = useNavigate();
     const [customer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
     const isLoading = useSelector(state => state.request.value.isLoading);
     const [wasWarningShown, setWasWarningShown] = useLocalStorage(LOCAL_STORAGE_KEY.WAS_COMPANY_CREATION_WARNING_SHOW, false)
@@ -54,12 +55,18 @@ const CustomerCompaniesPage = () => {
                                 </PrimaryButton>
                             </Link>
                             <QRCodeButton onClick={showQRCode(company.ID)}><QRCodeIcon/></QRCodeButton>
-                            <Link to={ROUTER.EDIT_MENU.URL + '/' + company.ID} style={{width: '140px'}}>
-                                <PrimaryButton isWide>
-                                    <EditIcon/>
-                                    {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.MENU)}
-                                </PrimaryButton>
-                            </Link>
+                            <PrimaryButton
+                                isWide
+                                style={{width: '140px'}}
+                                onClick={
+                                    () => {
+                                        LocalStorage.set(LOCAL_STORAGE_KEY.COMPANY_ID_TO_EDIT_MENU_PAGE, company.ID)
+                                        navigate(ROUTER.EDIT_MENU.URL)
+                                    }
+                                }>
+                                <EditIcon/>
+                                {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.MENU)}
+                            </PrimaryButton>
                         </EditBar>
                     </Company>
             )
