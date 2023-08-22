@@ -17,6 +17,7 @@ import {stopLoadingWithDelay} from "../../utils/utils";
 const SearchPage = () => {
         const [isLoadingCityIds, setIsLoadingCityIds] = useState(false);
         const [isLoadingCompanies, setIsLoadingCompanies] = useState(false);
+
         const [selectedCityId, setSelectedCity] = useLocalStorage(LOCAL_STORAGE_KEY.COMPANY_SEARCH_SELECTED_CITY_ID, '');
         const [selectedRegionId, setSelectedRegion] = useLocalStorage(LOCAL_STORAGE_KEY.COMPANY_SEARCH_SELECTED_REGION_ID, '');
         const [showCityPopup, setShowCityPopup] = useState(false);
@@ -32,10 +33,16 @@ const SearchPage = () => {
 
         const onOpenCityPopup = () => {
             setIsLoadingCityIds(true);
-            const stopLoading = stopLoadingWithDelay(setIsLoadingCityIds);
+            const stopLoading = stopLoadingWithDelay([
+                () => setIsLoadingCityIds(false),
+            ]);
+
+            const stopLoading2 = stopLoadingWithDelay([
+                () => setShowCityPopup(true)
+            ]);
             fetchData(BE_API.COMPANY.GET_AVAILABLE_CITIES())
                 .then(res => {
-                    setShowCityPopup(true);
+                    stopLoading2()
                     setAvailableFromDatabaseCityIds(res.body);
                 })
                 .catch(e => publishNotificationEvent.error(e.body.errorMessage))
@@ -80,7 +87,7 @@ const SearchPage = () => {
                 </ContentContainer>
                 {isLoadingCityIds && <NotificationLoading>Loading cities ...</NotificationLoading>}
                 {isLoadingCompanies && <NotificationLoading>Loading companies ...</NotificationLoading>}
-                {companies && !!companies.length && selectedCityId &&
+                {!isLoadingCompanies && companies && !!companies.length && selectedCityId &&
                     companies?.map(company =>
                         <Link to={`${URL.SEARCH_DETAILS}${company.ID}`} key={company.ID}>
                             <Company key={company.ID} company={company}/>

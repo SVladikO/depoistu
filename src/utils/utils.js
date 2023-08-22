@@ -9,19 +9,19 @@ export const getParam = (key) => {
     return urlParams.get(key);
 }
 
-export const stopLoadingWithDelay = callback => {
+export const stopLoadingWithDelay = callbacks => {
     let isLoaded = false;
 
     setTimeout(() => {
         console.log('timeout')
 
         if (isLoaded) {
-            callback(false)
+            callbacks.forEach(cb => cb())
         } else {
             const intervalId = setInterval(() => {
                 console.log('interval')
                 if (isLoaded) {
-                    callback(false)
+                    callbacks.forEach(cb => cb())
                     clearInterval(intervalId)
                 }
             }, 1000)

@@ -91,7 +91,7 @@ export const useLocalStorageFetch = (
         }
 
         setLoading(true)
-        const stopLoading = stopLoadingWithDelay(setLoading)
+        const stopLoading = stopLoadingWithDelay([() => setLoading(false)])
 
         fetchData(url)
             .then(res => {
