@@ -13,7 +13,6 @@ const NavigationHeader = (props) => {
 
     return (
         <Wrapper className='pm-NavigationHeader'>
-            <MainContent>
                 {backUrl &&
                     <Link to={backUrl}>
                         <BackButton className="back-button">
@@ -26,7 +25,6 @@ const NavigationHeader = (props) => {
                 {/*<Link to={ROUTER.ORDER_REVIEW.URL}>*/}
                 {/*    <OrderIconWithCounter hideOnZeroOrderAmount/>*/}
                 {/*</Link>*/}
-            </MainContent>
             {/*<NestedContent>*/}
             {/*    {props.children}*/}
             {/*</NestedContent>*/}

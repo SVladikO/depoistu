@@ -41,17 +41,19 @@ export const Content = styled.div`
   min-height: 500px;
 `;
 
-const Element = ({r}) => {
+const Element = (props) => {
     useScrollUp();
     useHideOnScroll('NavigationHeader', '-65px')
+
+    const {route} = props;
 
     return (
         <MobileDevice>
             <FixedWrapper fixTop id="NavigationHeader">
-                <NavigationHeader title={r.TITLE} backUrl={r.BACK_URL}/>
+                <NavigationHeader title={route.TITLE} backUrl={route.backUrl}/>
             </FixedWrapper>
             <Content className="Centralicer">
-                <r.page/>
+                <route.page/>
             </Content>
             <FixedWrapper fixBottom className='ta-BottomMenu'>
                 <BottomMenu/>
@@ -71,7 +73,7 @@ export const AllRoutes = () => {
                     <Route
                         key={r.URL}
                         path={r.URL + (r.PARAMS || '')}
-                        element={<Element r={r}/>}
+                        element={<Element route={r}/>}
                     />
                 ))}
             </Routes>
