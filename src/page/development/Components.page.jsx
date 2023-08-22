@@ -478,6 +478,7 @@ function ComponentsPage() {
                 <Space/>
                 {renderRows(colors)}
             </Header>
+            <RowSplitter height="140px" />
             {renderGroup(componentsGroup1)}
             {renderGroup(componentsGroup2)}
             {renderGroup(componentsGroup3)}
