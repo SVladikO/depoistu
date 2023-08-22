@@ -32,7 +32,6 @@ const generateTagId = ({id, index, topCategoryId}) => `${CATEGORY_ID_PREFIX}${id
 const getCategoryIndex = (categoryId, uniqueCategories) => uniqueCategories.find(uc => uc.id === categoryId);
 
 const CategoryMenuView = ({
-                              showAllCategories = false,
                               menuItems = [],
                               showMenuItemAmount,
                               withEditIcon,
@@ -115,11 +114,11 @@ const CategoryMenuView = ({
 
     useEffect(() => {
         //Very important to use undefined as initial value to menuItems SearchDetailsPage, EditMenuPage.
-        if (!menuItems && !showAllCategories) {
+        if (!menuItems) {
             return
         }
 
-        const uniqueCategoryIds = getCategoryUniqueIds(menuItems, showAllCategories);
+        const uniqueCategoryIds = getCategoryUniqueIds(menuItems);
         const availableTopCategories = getTopCategories(uniqueCategoryIds);
         setTopCategories(availableTopCategories)
 
@@ -130,7 +129,7 @@ const CategoryMenuView = ({
         }))
         setUniqueCategories(categories)
 
-    }, [menuItems, showAllCategories]);
+    }, [menuItems]);
 
     const TopCategories = useMemo(() => (<div>
         <BottomLine/>
@@ -164,7 +163,7 @@ const CategoryMenuView = ({
                 ))
             }
         </SwiperWrapper>
-    ), [uniqueCategories, selectedCategory, showAllCategories]);
+    ), [uniqueCategories, selectedCategory]);
 
     const AllMenuItems = useMemo(() => {
         const ids = [];
