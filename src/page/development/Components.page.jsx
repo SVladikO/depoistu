@@ -439,9 +439,9 @@ const componentsGroup3 = [
 // document.body.style.backgroundColor = '#d8d8d8'
 
 function ComponentsPage() {
-    const setWhiteBackground = useCallback(() => document.body.style.backgroundColor = '#ffffff', []);
-    const setGreyBackground = useCallback(() => document.body.style.backgroundColor = '#d8d8d8', []);
-    const setBlueBackground = useCallback(() => document.body.style.backgroundColor = '#001993', []);
+    const setWhiteBackground = useCallback(() => document.body.style.background = '#ffffff', []);
+    const setGreyBackground = useCallback(() => document.body.style.background = '#d8d8d8', []);
+    const setBlueBackground = useCallback(() => document.body.style.background = '#001993', []);
 
     function renderRows(components) {
         return components.map((c, index) =>
@@ -468,11 +468,11 @@ function ComponentsPage() {
         <div>
             <Header>
                 <Space/>
-                <FetchButton onClick={setWhiteBackground}>White</FetchButton>
+                <PrimaryButton onClick={setWhiteBackground}>White</PrimaryButton>
                 <Space/>
-                <FetchButton onClick={setGreyBackground}>Grey</FetchButton>
+                <PrimaryButton onClick={setGreyBackground}>Grey</PrimaryButton>
                 <Space/>
-                <FetchButton onClick={setBlueBackground}>Blue</FetchButton>
+                <PrimaryButton onClick={setBlueBackground}>Blue</PrimaryButton>
                 <Space/>
                 <Space/>
                 <Space/>

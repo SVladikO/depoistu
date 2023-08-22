@@ -18,7 +18,7 @@ import {ReactComponent as LogOutIcon} from '../../assets/icons/logout.svg';
 import {ReactComponent as ProfileIcon} from '../../assets/icons/profile.svg';
 // import {ReactComponent as CurrencyIcon} from '../../icons/currency.svg';
 import {ReactComponent as LanguageIcon} from '../../assets/icons/language.svg';
-import {ReactComponent as InfoIcon} from "../../assets/icons/info.svg";
+import {ReactComponent as AboutUsIcon} from "../../assets/icons/about_us.svg";
 // import {ReactComponent as LinkedAccountIcon} from '../../icons/linked_account.svg';
 import {ReactComponent as StoreIcon} from '../../assets/icons/house.svg';
 import {ReactComponent as TeamIcon} from "../../assets/icons/team.svg";
@@ -190,7 +190,7 @@ const SettingPage = () => {
                         label={translate(TR.PAGE.SETTINGS.LABEL.CURRENT_LANGUAGE)}
                     />
                     <SettingMenuRow
-                        icon={InfoIcon}
+                        icon={AboutUsIcon}
                         title={translate(TR.PAGE.SETTINGS.MENU_ROW.ABOUT_US)}
                         href={URL.ABOUT_US}
                     />

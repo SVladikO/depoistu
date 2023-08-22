@@ -53,6 +53,9 @@ const Element = ({r}) => {
             <Content className="Centralicer">
                 <r.page/>
             </Content>
+            <FixedWrapper fixBottom className='ta-BottomMenu'>
+                <BottomMenu/>
+            </FixedWrapper>
         </MobileDevice>
     )
 };
@@ -72,9 +75,7 @@ export const AllRoutes = () => {
                     />
                 ))}
             </Routes>
-            <FixedWrapper fixBottom className='ta-BottomMenu'>
-                <BottomMenu/>
-            </FixedWrapper>
+
             <NotificationView/>
         </Wrapper>
     );
