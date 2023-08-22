@@ -1,7 +1,7 @@
 import React, {memo, useEffect, useMemo, useState} from 'react';
 import {Scrollbar, FreeMode} from 'swiper';
 import {Swiper, SwiperSlide} from 'swiper/react';
-import {Link, useNavigate, useParams} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 import "swiper/css";
 import "swiper/css/pagination";
