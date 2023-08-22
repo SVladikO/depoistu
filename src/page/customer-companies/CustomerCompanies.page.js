@@ -5,7 +5,7 @@ import QRCode from 'qrcode';
 
 import {EditBar, QRCodeButton, QRCodeMenuTitle, ImageQR} from "./CustomerCompanies.style";
 
-import {Company, Notification, Popup, PrimaryButton} from "../../components";
+import {Company, NotificationLoading, Popup, PrimaryButton} from "../../components";
 import {ReactComponent as EditIcon} from "../../assets/icons/edit.svg";
 
 import {BE_API} from '../../utils/fetch'
@@ -14,39 +14,35 @@ import {translate, TRANSLATION} from "../../utils/translation";
 import {ReactComponent as QRCodeIcon} from "../../assets/icons/qr_code.svg";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {useLocalStorage, useLocalStorageFetch, useRedirectToSettingPage} from "../../utils/hook";
+import {publishNotificationEvent} from "../../utils/event";
 
 const CustomerCompaniesPage = () => {
     useRedirectToSettingPage();
     const navigate = useNavigate();
     const [customer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
     const isLoading = useSelector(state => state.request.value.isLoading);
+    const [wasWarningShown, setWasWarningShown] = useLocalStorage(LOCAL_STORAGE_KEY.WAS_COMPANY_CREATION_WARNING_SHOW, false)
     const [companyIdForQRCode, setCompanyIdForQRCode] = useState();
-    const [isVisibleCompanyCreationWarning, setIsVisibleCompanyCreationWarning] = useLocalStorage(LOCAL_STORAGE_KEY.IS_VISIBLE_COMPANY_CREATION_WARNING, false);
-    const [requestError, setRequestError] = useState('');
     const [customerCompanies] = useLocalStorageFetch(
         LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES,
         [],
         BE_API.COMPANY.GET_BY_CUSTOMER_ID(customer?.ID),
-        setRequestError
+        publishNotificationEvent.error
     );
 
-    if (isLoading) {
-        return <Notification.Loading/>;
+    if (!wasWarningShown) {
+        publishNotificationEvent.warning(translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.WARNING))
+        setWasWarningShown(true);
     }
 
-    if (requestError) {
-        return <Notification.Error message={requestError}/>;
+    if (isLoading) {
+        return <NotificationLoading/>;
     }
 
     const showQRCode = companyId => () => setCompanyIdForQRCode(companyId);
 
-    const closeInfoPopUp = () => setIsVisibleCompanyCreationWarning(true);
-
-
     return (
         <>
-            {!isVisibleCompanyCreationWarning && <Popup.Info
-                onClose={closeInfoPopUp}>{translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.WARNING)}</Popup.Info>}
             <PopupQRCode companyId={companyIdForQRCode} onClose={() => setCompanyIdForQRCode('')}/>
             {customerCompanies.map(
                 company =>

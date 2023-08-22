@@ -2,23 +2,22 @@ import {useEffect, useState} from "react";
 import {useParams} from 'react-router-dom';
 import {CategoryTitle, Wrapper} from "./SearchDetails.style";
 
-import {CategoryMenuRow, Company, Notification, RowSplitter} from "../../components";
+import {CategoryMenuRow, Company, NotificationLoading, RowSplitter} from "../../components";
 
 import {useLocalStorage} from "../../utils/hook";
 import {BE_API, fetchData} from "../../utils/fetch";
 import {LOCAL_STORAGE_KEY} from "../../utils/localStorage";
 import {translate, TRANSLATION as TR} from "../../utils/translation";
+import {publishNotificationEvent} from "../../utils/event";
 
 
 const SearchDetailsPage = () => {
     let companyId = +useParams().companyId;
-    const [errorMessage, setErrorMessage] = useState('');
     const [isLoadingMenu, setIsLoadingMenu] = useState(false);
     const [isLoadingCompany, setIsLoadingCompany] = useState(false);
     const [companies] = useLocalStorage(LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT, []);
     const [company, setCompany] = useState(companies?.find(c => c.ID === companyId))
     const [menuItems, setMenuItems] = useState();
-
 
 
     useEffect(() => {
@@ -28,7 +27,7 @@ const SearchDetailsPage = () => {
                 .then(res => {
                     setCompany(res.body[0]);
                 })
-                .catch(e => setErrorMessage(e.message))
+                .catch(e => publishNotificationEvent.error(e.body.errorMessage))
                 .finally(() => setIsLoadingCompany(false));
         }
     }, [companyId])
@@ -40,26 +39,30 @@ const SearchDetailsPage = () => {
             .then(data => data.sort((a, b) => a.CATEGORY_ID - b.CATEGORY_ID))
             .then(menuItems => {
                 setMenuItems(menuItems)
+                if (!menuItems.length) {
+                    publishNotificationEvent.warning(translate(TR.PAGE.COMPANY_DETAILS.MENU_PROBLEM));
+                }
             })
-            .catch(e => setErrorMessage(e.message))
+            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
             .finally(() => setIsLoadingMenu(false));
     }, [companyId]);
 
     return (
         <Wrapper>
-            {isLoadingCompany && <Notification.Loading/>}
+            {isLoadingCompany && <NotificationLoading/>}
             {company && <Company company={company} withMoreInfo/>}
-            {errorMessage && <Notification.Error message={errorMessage}/>}
+
             <CategoryTitle id="menu">{translate(TR.PAGE.COMPANY_DETAILS.MENU_TITLE)}</CategoryTitle>
-            {isLoadingMenu && <Notification.Loading/>}
-            {menuItems && menuItems.length
-                ? (
-                    <CategoryMenuRow
-                        className="category-menu-row"
-                        menuItems={menuItems}
-                    />
-                )
-                : isLoadingMenu ? null : <Notification.Error message={translate(TR.PAGE.COMPANY_DETAILS.MENU_PROBLEM)}/>}
+            {isLoadingMenu && <NotificationLoading/>}
+
+            {menuItems?.length && (
+                <CategoryMenuRow
+                    className="category-menu-row"
+                    menuItems={menuItems}
+                />
+            )
+            }
+
             {/*Let's scroll work after click on the last sub category */}
             <RowSplitter height={'550px'}/>
         </Wrapper>
