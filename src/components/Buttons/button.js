@@ -4,6 +4,7 @@ import {BORDER_RADIUS, COLOR} from "../../utils/theme";
 export const button = styled.button`
   color: ${COLOR.ACCENT4};
   width: ${p => p.isWide ? '100%' : 'auto'};
+  ${p => p.minWidth && `min-width: ${p.minWidth}`};
   height: 50px;
   padding: 12px;
   border: none;
