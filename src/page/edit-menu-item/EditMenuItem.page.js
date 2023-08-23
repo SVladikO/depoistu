@@ -19,7 +19,7 @@ const EditMenuItemPage = () => {
     const [isLoadingUpdate, setIsLoadingUpdate] = useState(false);
     const [isLoadingDelete, setIsLoadingDelete] = useState(false);
     const menuItemCandidateToEdit = LocalStorage.get(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT);
-    const {ID, NAME, PRICE, CATEGORY_ID, COMPANY_ID, DESCRIPTION, COOKING_TIME, IMAGE_URL, SIZE} = menuItemCandidateToEdit || {};
+    const {ID, NAME, PRICE, CATEGORY_ID, DESCRIPTION, COOKING_TIME, IMAGE_URL, SIZE} = menuItemCandidateToEdit || {};
 
     if (!menuItemCandidateToEdit) {
         return navigate(URL.SETTING)
@@ -39,7 +39,6 @@ const EditMenuItemPage = () => {
         const reqObj = {
             method: 'put',
             id: ID,
-            company_id: COMPANY_ID,
             ...values};
 
         fetchData(BE_API.MENU_ITEM.PUT_UPDATE(), reqObj)

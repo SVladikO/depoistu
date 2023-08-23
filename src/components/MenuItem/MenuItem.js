@@ -30,7 +30,7 @@ export const MenuItemDetails = ({
                                     withEditIcon = false,
                                     onEditClick,
                                 }) => {
-    const {NAME, DESCRIPTION, CATEGORY_ID, COMPANY_ID, PRICE, COOKING_TIME, SIZE, ID} = item;
+    const {NAME, DESCRIPTION, CATEGORY_ID, PRICE, COOKING_TIME, SIZE, ID} = item;
 
     const toggleIsMenuItemVisible = async () => {
         try {
@@ -38,7 +38,6 @@ export const MenuItemDetails = ({
                 method: 'put',
                 id: ID,
                 is_visible: !isVisible,
-                company_id: COMPANY_ID,
             })
             setIsVisible(!isVisible)
         } catch (e) {
