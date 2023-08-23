@@ -23,7 +23,6 @@ export const FullName = styled.div`
   align-items: flex-end;
   margin: 0 0 10px 0;
   
-  
   > a {
     color: ${COLOR.ACCENT1};
     font-weight: 400;
