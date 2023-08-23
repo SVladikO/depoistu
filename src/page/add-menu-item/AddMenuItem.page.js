@@ -11,7 +11,7 @@ import {publishNotificationEvent} from "../../utils/event";
 
 const AddMenuItemPage = () => {
     useRedirectToSettingPage();
-    useScrollUp()
+    useScrollUp();
     const companyId = LocalStorage.get(LOCAL_STORAGE_KEY.COMPANY_ID_FOR_EDIT_MENU);
 
     const [isLoading, setIsLoading] = useState(false);
