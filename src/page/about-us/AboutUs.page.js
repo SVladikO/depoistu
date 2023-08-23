@@ -6,9 +6,16 @@ console.log(translate(TRANSLATION.PAGE.ABOUT_US.CONTENT))
 const AboutUsPage = () => {
     return (
         <Wrapper>
-            {/*<Title>{TR.PAGE.ABOUT_US[currentLanguage][0].question}</Title>*/}
-            {/*<Description>{TR.PAGE.ABOUT_US[currentLanguage][0].answer}</Description>*/}
-
+            {translate(TRANSLATION.PAGE.ABOUT_US.CONTENT).map(
+                el => {
+                    return (
+                        <>
+                            <Title>{el.question}</Title>
+                            <Description>{el.answer.map(a => <div>{a}</div>)}</Description>
+                        </>
+                    )
+                }
+            )}
         </Wrapper>
     );
 };

@@ -11,16 +11,16 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.div`
-  font-weight: 900;
-  font-size: 22px;
+  font-size: 24px;
   line-height: 26.4px;
   margin: 0 0 10px 0;
+  text-transform: uppercase;
 `;
 export const Description = styled.div`
-  font-weight: 500;
-  font-size: 22px;
+  font-size: 20px;
   line-height: 26.4px;
+  margin: 0 0 20px 0;
   &:last-child {
-    margin: 5px 0 0 0;
+    margin: 0;
   }
 `;
