@@ -4,6 +4,7 @@ import David_imgSrc from '../../assets/images/team/David.png';
 import Irina_imgSrc from '../../assets/images/team/Irina.png';
 import Alex_imgSrc from '../../assets/images/team/Alex.png';
 import {useScrollUp} from "../../utils/hook";
+import {ReactComponent as LinkIcon} from '../../assets/icons/link.svg';
 
 const OurTeamPage = () => {
     useScrollUp()
@@ -17,15 +18,7 @@ const OurTeamPage = () => {
                     <a href="https://www.linkedin.com/in/david-yarmolenko-778a7a279/" target="_blank">
                         David Yarmolenko
                     </a>
-                </FullName>
-            </Employee>
-            <Employee>
-                <Photo src={Irina_imgSrc}/>
-                <Position>Junior QA</Position>
-                <FullName>
-                    <a href="https://www.linkedin.com/in/irina-serhiichuk-556886279" target="_blank">
-                        Irina Serhiichuk
-                    </a>
+                    <LinkIcon />
                 </FullName>
             </Employee>
             <Employee>
@@ -35,6 +28,17 @@ const OurTeamPage = () => {
                     <a href="https://www.linkedin.com/in/%D0%B0%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80-%D1%87%D0%B5%D1%80%D0%BD%D1%83%D1%85%D0%B0/" target="_blank">
                         Alexandr Chernukha
                     </a>
+                    <LinkIcon />
+                </FullName>
+            </Employee>
+            <Employee>
+                <Photo src={Irina_imgSrc}/>
+                <Position>Junior QA</Position>
+                <FullName>
+                    <a href="https://www.linkedin.com/in/irina-serhiichuk-556886279" target="_blank">
+                        Irina Serhiichuk
+                    </a>
+                    <LinkIcon />
                 </FullName>
             </Employee>
             <Employee>
@@ -45,6 +49,7 @@ const OurTeamPage = () => {
                     <a href="https://www.linkedin.com/in/vlad-serhiychuk-b753b7188/" target="_blank">
                         Vlad Serhiychuk
                     </a>
+                    <LinkIcon />
                 </FullName>
             </Employee>
         </Wrapper>
