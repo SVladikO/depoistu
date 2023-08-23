@@ -4,7 +4,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {Wrapper, CompanyDetails} from "./EditMenu.style";
 
 import {
-    CategoryMenuRow,
     NotificationLoading,
 } from "../../components";
 
