@@ -16,6 +16,7 @@ import {useLocalStorage, useLocalStorageFetch, useRedirectToSettingPage} from ".
 import {translate} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {CITY_TRANSLATION_IDS} from "../../utils/cities";
+import CategoryMenuView from "../../page-view/category-menu-view/CategoryMenuView";
 import {publishNotificationEvent} from "../../utils/event";
 
 const EditMenu = () => {
@@ -52,20 +53,19 @@ const EditMenu = () => {
         return <NotificationLoading/>;
     }
 
-
     return (
         <>
             {currentCompany &&
                 <CompanyDetails>
-                    {currentCompany.NAME},
-                    {translate(CITY_TRANSLATION_IDS[currentCompany.CITY_ID])},
+                    {currentCompany.NAME}, {" "}
+                    {translate(CITY_TRANSLATION_IDS[currentCompany.CITY_ID])}, {" "}
                     {currentCompany.STREET}
                 </CompanyDetails>
             }
             <Wrapper>
                 {menuItems &&
-                    <CategoryMenuRow
-                        showAllCategories
+                    <CategoryMenuView
+                        // showAllCategories
                         showMenuItemAmount
                         menuItems={menuItems}
                         withEditIcon

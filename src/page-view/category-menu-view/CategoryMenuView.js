@@ -13,7 +13,7 @@ import {
     SliderStyle,
     BottomLine,
     Wrapper
-} from "./CategoryMenuRow.style";
+} from "./CategoryMenuView.style";
 
 import {CategoryItem, MenuItem, FetchButton, RowSplitter} from "../../components";
 import {CategoryTitle} from "../../page/search-details/SearchDetails.style";
@@ -31,13 +31,12 @@ const CATEGORY_ID_PREFIX = 'category_'
 const generateTagId = ({id, index, topCategoryId}) => `${CATEGORY_ID_PREFIX}${id}_${index}_${topCategoryId}`;
 const getCategoryIndex = (categoryId, uniqueCategories) => uniqueCategories.find(uc => uc.id === categoryId);
 
-const CategoryMenuRow = ({
-                             showAllCategories = false,
-                             menuItems = [],
-                             showMenuItemAmount,
-                             withEditIcon,
-                             editPage = false,
-                         }) => {
+const CategoryMenuView = ({
+                              menuItems = [],
+                              showMenuItemAmount,
+                              withEditIcon,
+                              editPage = false,
+                          }) => {
     const navigate = useNavigate();
     const [topCategories, setTopCategories] = useState([]);
     const [uniqueCategories, setUniqueCategories] = useState();
@@ -58,7 +57,11 @@ const CategoryMenuRow = ({
                     const [idName, candidateCategoryId, candidateCategoryIndex, candidateTopCategoryId] = element.id.split('_').map(Number)
 
                     if (candidateCategoryId !== selectedCategory.id) {
-                        setSelectedCategory({id: candidateCategoryId, index: candidateCategoryIndex, topCategoryId: candidateTopCategoryId});
+                        setSelectedCategory({
+                            id: candidateCategoryId,
+                            index: candidateCategoryIndex,
+                            topCategoryId: candidateTopCategoryId
+                        });
                     }
                 }
             }
@@ -111,22 +114,22 @@ const CategoryMenuRow = ({
 
     useEffect(() => {
         //Very important to use undefined as initial value to menuItems SearchDetailsPage, EditMenuPage.
-        if (!menuItems && !showAllCategories) {
+        if (!menuItems) {
             return
         }
 
-        const uniqueCategoryIds = getCategoryUniqueIds(menuItems, showAllCategories);
+        const uniqueCategoryIds = getCategoryUniqueIds(menuItems);
         const availableTopCategories = getTopCategories(uniqueCategoryIds);
         setTopCategories(availableTopCategories)
 
-        const categories = uniqueCategoryIds.map((id, index) => ({id, index, topCategoryId: getTopCategoryId(id, availableTopCategories) }))
+        const categories = uniqueCategoryIds.map((id, index) => ({
+            id,
+            index,
+            topCategoryId: getTopCategoryId(id, availableTopCategories)
+        }))
         setUniqueCategories(categories)
 
-        //Edit page will have error without selected category by default
-        if (editPage) {
-            setSelectedCategory(categories[0])
-        }
-    }, [menuItems, showAllCategories]);
+    }, [menuItems]);
 
     const TopCategories = useMemo(() => (<div>
         <BottomLine/>
@@ -160,7 +163,7 @@ const CategoryMenuRow = ({
                 ))
             }
         </SwiperWrapper>
-    ), [uniqueCategories, selectedCategory, showAllCategories]);
+    ), [uniqueCategories, selectedCategory]);
 
     const AllMenuItems = useMemo(() => {
         const ids = [];
@@ -202,24 +205,23 @@ const CategoryMenuRow = ({
 
     return (
         <>
-            <div style={{position: 'sticky', top: -1, zIndex: 10}}>
-                <div style={{position: 'relative', top: 0, zIndex: 10, left: 0, right: 0}}>
-                    <div style={{position: 'absolute', top: 0, zIndex: 10, left: -10, right: -10}}>
+            {
+                !!menuItems.length && (
+                    <PositionWrapper>
                         {/* Don't delete id and className as we use them to scroll handle */}
                         <Wrapper id="category-menu-row" className="category-menu-row-wrapper">
                             {TopCategories}
                             {SubCategories}
                         </Wrapper>
-                    </div>
-                    <RowSplitter height={'96px'}/>
-                </div>
-            </div>
+                    </PositionWrapper>
+                )
+            }
             {AllMenuItems}
             {
                 editPage &&
                 <>
                     <RowSplitter height={'15px'}/>
-                    <Link to={`${URL.ADD_MENU_ITEM}?categoryId=${selectedCategory.id}`}>
+                    <Link to={`${URL.ADD_MENU_ITEM}`}>
                         <FetchButton
                             isWide>{translate(TRANSLATION.PAGE.EDIT_MENU.BUTTON.ADD_MENU_ITEM)}</FetchButton>
                     </Link>
@@ -229,6 +231,16 @@ const CategoryMenuRow = ({
     )
 }
 
+const PositionWrapper = ({children}) => (
+    <div style={{position: 'sticky', top: -1, zIndex: 10}}>
+        <div style={{position: 'relative', top: 0, zIndex: 10, left: 0, right: 0}}>
+            <div style={{position: 'absolute', top: 0, zIndex: 10, left: -10, right: -10}}>
+                {children}
+            </div>
+            <RowSplitter height={'96px'}/>
+        </div>
+    </div>
+);
 
 const SwiperWrapper = ({selectedCategory, children}) => {
     const [swiper, setSwiper] = useState(null);
@@ -293,4 +305,4 @@ function getIsScrollDisabled() {
 }
 
 
-export default memo(CategoryMenuRow);
+export default memo(CategoryMenuView);

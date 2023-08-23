@@ -2,8 +2,9 @@ import {useEffect, useState} from "react";
 import {useParams} from 'react-router-dom';
 import {CategoryTitle, Wrapper} from "./SearchDetails.style";
 
-import {CategoryMenuRow, Company, NotificationLoading, RowSplitter} from "../../components";
+import {Company, NotificationLoading, RowSplitter} from "../../components";
 
+import CategoryMenuView from '../../page-view/category-menu-view/CategoryMenuView'
 import {useLocalStorage} from "../../utils/hook";
 import {BE_API, fetchData} from "../../utils/fetch";
 import {LOCAL_STORAGE_KEY} from "../../utils/localStorage";
@@ -30,7 +31,7 @@ const SearchDetailsPage = () => {
                 .catch(e => publishNotificationEvent.error(e.body.errorMessage))
                 .finally(() => setIsLoadingCompany(false));
         }
-    }, [companyId])
+    }, [companyId, company])
 
     useEffect(() => {
         setIsLoadingMenu(true)
@@ -56,7 +57,7 @@ const SearchDetailsPage = () => {
             {isLoadingMenu && <NotificationLoading/>}
 
             {menuItems?.length && (
-                <CategoryMenuRow
+                <CategoryMenuView
                     className="category-menu-row"
                     menuItems={menuItems}
                 />
