@@ -38,7 +38,7 @@ export const TRANSLATION = {
             en: 'Familiarize yourself with the menu before or during your visit.',
         },
         INTRODUCTION_TELL: {
-            ua: 'Ми не показуємо в пушуку міста в яких ще не зареєструвались заклади.',
+            ua: 'Ми не показуємо в пошуку міста в яких ще не зареєструвались заклади.',
             en: 'We don`t show in the search engine cities in which establishments have not yet been registered.'
         }
     },
