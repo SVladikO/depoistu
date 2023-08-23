@@ -20,12 +20,12 @@ import NotificationView from "../page-view/notification/NotificationView";
 
 
 export const Wrapper = styled.div`
-  min-height: 100vh;
+  min-height: 90vh;
   margin: 0 auto;
   position: relative;
 `;
 export const MobileDevice = styled.div`
-  min-height: 100vh;
+  min-height: 90vh;
   min-width: ${DEVICE_WIDTH.MIN};
   max-width: ${DEVICE_WIDTH.MAX};
   margin: 0 auto;
