@@ -9,12 +9,13 @@ import {URL} from "../../utils/config";
 import {BE_API, fetchData} from "../../utils/fetch";
 import {CITY_TRANSLATION_IDS} from "../../utils/cities";
 import {translate, TRANSLATION} from "../../utils/translation";
-import {useLocalStorage, useLocalStorageFetch} from "../../utils/hook";
+import {useLocalStorage, useLocalStorageFetch, useScrollUp} from "../../utils/hook";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {publishNotificationEvent} from "../../utils/event";
 import {stopLoadingWithDelay} from "../../utils/utils";
 
 const SearchPage = () => {
+        useScrollUp();
         const [isLoadingCityIds, setIsLoadingCityIds] = useState(false);
         const [isLoadingCompanies, setIsLoadingCompanies] = useState(false);
 

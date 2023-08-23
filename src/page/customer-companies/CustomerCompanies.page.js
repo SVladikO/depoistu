@@ -13,10 +13,11 @@ import {ROUTER, URL} from "../../utils/config";
 import {translate, TRANSLATION} from "../../utils/translation";
 import {ReactComponent as QRCodeIcon} from "../../assets/icons/qr_code.svg";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {useLocalStorage, useLocalStorageFetch, useRedirectToSettingPage} from "../../utils/hook";
+import {useLocalStorage, useLocalStorageFetch, useRedirectToSettingPage, useScrollUp} from "../../utils/hook";
 import {publishNotificationEvent} from "../../utils/event";
 
 const CustomerCompaniesPage = () => {
+    useScrollUp();
     useRedirectToSettingPage();
     const navigate = useNavigate();
     const [customer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));

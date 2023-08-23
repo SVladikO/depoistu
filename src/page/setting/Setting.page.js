@@ -41,13 +41,14 @@ import {openLanguagePopup} from '../../features/language/languageSlice';
 
 import {URL} from '../../utils/config';
 import validation from "../../utils/validation";
-import {useLocalStorage} from "../../utils/hook";
+import {useLocalStorage, useScrollUp} from "../../utils/hook";
 import {BE_API, fetchData} from "../../utils/fetch";
 import {TRANSLATION as TR, translate} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {publishNotificationEvent} from "../../utils/event";
 
 const SettingPage = () => {
+    useScrollUp();
     const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(false);
     const [customer, setCustomer] = useLocalStorage(LOCAL_STORAGE_KEY.CUSTOMER);
