@@ -11,6 +11,7 @@ export const getParam = (key) => {
 
 export const stopLoadingWithDelay = callbacks => {
     let isLoaded = false;
+    let intervalId;
 
     setTimeout(() => {
         console.log('timeout')
@@ -18,9 +19,10 @@ export const stopLoadingWithDelay = callbacks => {
         if (isLoaded) {
             callbacks.forEach(cb => cb())
         } else {
-            const intervalId = setInterval(() => {
+             intervalId = setInterval(() => {
                 console.log('interval')
                 if (isLoaded) {
+                    console.log('DONE')
                     callbacks.forEach(cb => cb())
                     clearInterval(intervalId)
                 }
@@ -28,8 +30,15 @@ export const stopLoadingWithDelay = callbacks => {
         }
     }, 1500)
 
-    return () => {
-        isLoaded = true;
+    return {
+        /**
+         * Only stop interval no actions.
+         */
+        onError: () => clearInterval(intervalId),
+        /**
+         * Let run callback
+         */
+        allow: () => {isLoaded = true}
     }
 }
 

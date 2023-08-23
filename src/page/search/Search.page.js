@@ -31,32 +31,35 @@ const SearchPage = () => {
             () => !selectedCityId
         );
 
-        const onOpenCityPopup = () => {
-            setIsLoadingCityIds(true);
-            const stopLoading = stopLoadingWithDelay([
-                () => setIsLoadingCityIds(false),
-            ]);
-
-            const stopLoading2 = stopLoadingWithDelay([
-                () => setShowCityPopup(true)
-            ]);
-            fetchData(BE_API.COMPANY.GET_AVAILABLE_CITIES())
-                .then(res => {
-                    stopLoading2()
-                    setAvailableFromDatabaseCityIds(res.body);
-                })
-                .catch(e => publishNotificationEvent.error(e.body.errorMessage))
-                .finally(() => stopLoading())
-        }
-
-        const onCloseCityPopup = () => setShowCityPopup(false);
-
         const onSelectCity = ([city, region]) => {
             LocalStorage.remove(LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT)
             setSelectedCity(city);
             setSelectedRegion(region);
             onCloseCityPopup();
         }
+
+        const onCloseCityPopup = () => setShowCityPopup(false);
+
+        const onOpenCityPopup = () => {
+            setIsLoadingCityIds(true);
+
+            const cityLoadingDelay = stopLoadingWithDelay([() => setIsLoadingCityIds(false)]);
+            const showCityPopupDelay = stopLoadingWithDelay([() => setShowCityPopup(true)]);
+
+            fetchData(BE_API.COMPANY.GET_AVAILABLE_CITIES())
+                .then(res => {
+                    showCityPopupDelay.allow()
+                    setAvailableFromDatabaseCityIds(res.body);
+                })
+                .catch(e => {
+                    publishNotificationEvent.error(e.body.errorMessage)
+                    showCityPopupDelay.onError()
+                })
+                .finally(() => {
+                    cityLoadingDelay.allow();
+                })
+        }
+
         const cityPopup = useMemo(() =>
             <Popup.City
                 onSelectCity={onSelectCity}
@@ -85,8 +88,10 @@ const SearchPage = () => {
                         placeholder={translate(TRANSLATION.PAGE.SEARCH.INPUT_PLACEHOLDER)}
                     />
                 </ContentContainer>
-                {isLoadingCityIds && <NotificationLoading>Loading cities ...</NotificationLoading>}
+
+                {isLoadingCityIds && <NotificationLoading>Loading available cities ...</NotificationLoading>}
                 {isLoadingCompanies && <NotificationLoading>Loading companies ...</NotificationLoading>}
+
                 {!isLoadingCompanies && companies && !!companies.length && selectedCityId &&
                     companies?.map(company =>
                         <Link to={`${URL.SEARCH_DETAILS}${company.ID}`} key={company.ID}>

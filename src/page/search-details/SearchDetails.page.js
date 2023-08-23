@@ -4,36 +4,35 @@ import {CategoryTitle, Wrapper} from "./SearchDetails.style";
 
 import {CategoryMenuRow, Company, NotificationLoading, RowSplitter} from "../../components";
 
-import {useLocalStorage} from "../../utils/hook";
 import {BE_API, fetchData} from "../../utils/fetch";
-import {LOCAL_STORAGE_KEY} from "../../utils/localStorage";
 import {translate, TRANSLATION as TR} from "../../utils/translation";
 import {publishNotificationEvent} from "../../utils/event";
+import {stopLoadingWithDelay} from "../../utils/utils";
 
 
 const SearchDetailsPage = () => {
     let companyId = +useParams().companyId;
     const [isLoadingMenu, setIsLoadingMenu] = useState(false);
     const [isLoadingCompany, setIsLoadingCompany] = useState(false);
-    const [companies] = useLocalStorage(LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT, []);
-    const [company, setCompany] = useState(companies?.find(c => c.ID === companyId))
+    const [company, setCompany] = useState()
     const [menuItems, setMenuItems] = useState();
 
-
     useEffect(() => {
-        if (!company) {
-            setIsLoadingCompany(true)
-            fetchData(BE_API.COMPANY.GET_BY_COMPANY_ID(companyId))
-                .then(res => {
-                    setCompany(res.body[0]);
-                })
-                .catch(e => publishNotificationEvent.error(e.body.errorMessage))
-                .finally(() => setIsLoadingCompany(false));
-        }
+        setIsLoadingCompany(true)
+
+        const companyLoadingDelay = stopLoadingWithDelay([() => setIsLoadingCompany(false)])
+
+        fetchData(BE_API.COMPANY.GET_BY_COMPANY_ID(companyId))
+            .then(res => {
+                setCompany(res.body[0]);
+            })
+            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
+            .finally(() => companyLoadingDelay.allow());
     }, [companyId])
 
     useEffect(() => {
-        setIsLoadingMenu(true)
+        setIsLoadingMenu(true);
+        const menuLoadingDelay = stopLoadingWithDelay([() => setIsLoadingMenu(false)]);
         fetch(BE_API.MENU_ITEM.GET_ONLY_VISIBLE_BY_COMPANY_ID(companyId))
             .then(res => res.json())
             .then(data => data.sort((a, b) => a.CATEGORY_ID - b.CATEGORY_ID))
@@ -44,22 +43,24 @@ const SearchDetailsPage = () => {
                 }
             })
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))
-            .finally(() => setIsLoadingMenu(false));
+            .finally(() => menuLoadingDelay.allow());
     }, [companyId]);
 
     return (
         <Wrapper>
-            {isLoadingCompany && <NotificationLoading/>}
-            {company && <Company company={company} withMoreInfo/>}
+            {isLoadingCompany && <NotificationLoading>Loading company ...</NotificationLoading>}
+            {!isLoadingCompany && company && <Company company={company} withMoreInfo/>}
 
-            <CategoryTitle id="menu">{translate(TR.PAGE.COMPANY_DETAILS.MENU_TITLE)}</CategoryTitle>
-            {isLoadingMenu && <NotificationLoading/>}
+            {isLoadingMenu && <NotificationLoading>Loading menu ... </NotificationLoading>}
 
-            {menuItems?.length && (
-                <CategoryMenuRow
-                    className="category-menu-row"
-                    menuItems={menuItems}
-                />
+            {!isLoadingMenu && menuItems?.length && (
+                <>
+                    <CategoryTitle id="menu">{translate(TR.PAGE.COMPANY_DETAILS.MENU_TITLE)}</CategoryTitle>
+                    <CategoryMenuRow
+                        className="category-menu-row"
+                        menuItems={menuItems}
+                    />
+                </>
             )
             }
 
