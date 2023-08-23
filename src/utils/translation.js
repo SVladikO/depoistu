@@ -520,66 +520,58 @@ export const TRANSLATION = {
                 en: [
                     {
                         question: "Who we are?",
-                        answer: ["We are a team of soulmates from different places of Ukraine, who want to resolve common problem:",
-                            "'Find cafes very fast.', 'Find cafes very fast.'"]
+                        answers: ["We are a team of soulmates from different places of Ukraine, who want to resolve common problem:",
+                            "Find cafes very fast."]
                     },
                     {
                         question: "What united us?",
-                        answer: ["Willingness to learn and create something new."]
+                        answers: ["Willingness to learn and create something new."]
                     },
                     {
                         question: "When did we start?",
-                        answer: ["1.11.22"]
+                        answers: ["1.11.22"]
                     },
                     {
                         question: "When was the first version released?",
-                        answer: ["1.09.23"]
+                        answers: ["1.09.23"]
                     },
                     {
                         question: "Main idea of the project",
-                        answer: ["All restaurants of Ukraine in one place."]
+                        answers: ["All restaurants of Ukraine in one place.", "If your institution is not on our website, then you do not exist at all."]
+                    },
+                    {
+                        question: "Cost",
+                        answers: ["This set of functionality is free for visitors and businesses."]
                     },
 
                 ],
                 ua: [
                     {
                         question: "Хто ми?",
-                        answer: ["Ми команда однодумців з різних куточків України, які хочуть вирішити спільну проблему:", "Швидко знаходити заклади харчування."]
+                        answers: ["Ми команда однодумців з різних куточків України, які хочуть вирішити спільну проблему:", "Швидко знаходити заклади харчування."]
                     },
                     {
                         question: "Що нас об`єднує?",
-                        answer: ["Бажання навчатись і створювати щось нове."]
+                        answers: ["Бажання навчатись і створювати щось нове."]
                     },
                     {
                         question: "Коли ми почали?",
-                        answer: ["1.11.22"]
+                        answers: ["1.11.22"]
                     },
                     {
                         question: "Коли випустили першу версію?",
-                        answer: ["1.09.23"]
+                        answers: ["1.09.23"]
                     },
-
+                    {
+                        question: "Головна ідея проекту",
+                        answers: ["Всі заклади України в одному місці.", "Якщо вашого закладу немає на нашому сайті, значить вас взагалі не існує."]
+                    },
+                    {
+                        question: "Вартість",
+                        answers: ["Даний набір функціоналу безкоштовний для користувачів та бізнесу."]
+                    },
                 ],
             }
-
-
-
-            //     PROBLEM: {
-            //         ua: 'Якщо вашого закладу немає на нашому сайті, значить вас взагалі не існує.',
-            //         en: 'If your institution is not on our website, then you do not exist at all.'
-            //     }
-            // },
-            // COST: {
-            //     TOP_TITLE: {
-            //         en: 'Cost',
-            //         ua: 'Вартість'
-            //     },
-            //     DESCRIPTION: {
-            //         en: 'This set of functionality is free for visitors and businesses.',
-            //         ua: 'Даний набір функціоналу безкоштовний для користувачів та бізнесу.'
-            //     },
-            // }
-
         },
         OUR_TEAM: {
             TOP_TITLE: {
