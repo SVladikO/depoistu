@@ -145,7 +145,6 @@ const EditCompany = () => {
 
     return (
         <>
-
             <CompanyView
                 initialValues={getInitialValues(company, schedule)}
                 onSubmit={onSubmit}

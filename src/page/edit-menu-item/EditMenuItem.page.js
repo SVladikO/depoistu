@@ -18,9 +18,8 @@ const EditMenuItemPage = () => {
     const navigate = useNavigate();
     const [isLoadingUpdate, setIsLoadingUpdate] = useState(false);
     const [isLoadingDelete, setIsLoadingDelete] = useState(false);
-    const [isMenuItemDeleted, setIsMenuItemDeleted] = useState(false);
     const menuItemCandidateToEdit = LocalStorage.get(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT);
-    const {ID, NAME, PRICE, CATEGORY_ID, DESCRIPTION, COOKING_TIME, IMAGE_URL, SIZE} = menuItemCandidateToEdit || {};
+    const {ID, NAME, PRICE, CATEGORY_ID, COMPANY_ID, DESCRIPTION, COOKING_TIME, IMAGE_URL, SIZE} = menuItemCandidateToEdit || {};
 
     if (!menuItemCandidateToEdit) {
         return navigate(URL.SETTING)
@@ -37,7 +36,11 @@ const EditMenuItemPage = () => {
     }
     const onSubmit = values => {
         setIsLoadingUpdate(true);
-        const reqObj = {method: 'put', id: ID, ...values};
+        const reqObj = {
+            method: 'put',
+            id: ID,
+            company_id: COMPANY_ID,
+            ...values};
 
         fetchData(BE_API.MENU_ITEM.PUT_UPDATE(), reqObj)
             .then(res => {
@@ -52,17 +55,18 @@ const EditMenuItemPage = () => {
     const deleteCompany = () => {
         setIsLoadingDelete(true)
 
-        fetchData(BE_API.MENU_ITEM.DELETE(), {method: 'delete', id: menuItemCandidateToEdit.ID})
+        fetchData(BE_API.MENU_ITEM.DELETE(),
+            {
+                method: 'delete',
+                menuItemId: menuItemCandidateToEdit.ID,
+                companyId: COMPANY_ID
+            })
             .then(() => {
-                setIsMenuItemDeleted(true);
+                navigate(URL.EDIT_MENU)
                 publishNotificationEvent.success("Menu item was deleted.")
             })
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))
             .finally(() => setTimeout(() => setIsLoadingDelete(false), 1000))
-    }
-
-    if (isMenuItemDeleted) {
-        return;
     }
 
     return (

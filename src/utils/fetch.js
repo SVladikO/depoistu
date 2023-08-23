@@ -76,7 +76,7 @@ export const BE_API = {
         POST_CREATE: () => `${BE_DOMAIN}/menu`,
         PUT_UPDATE: () => `${BE_DOMAIN}/menu`,
         DELETE: () => `${BE_DOMAIN}/menu`,
-        IS_ITEM_VISIBLE: () => `${BE_DOMAIN}/menu/visible`
+        CHANGE_IS_VISIBLE: () => `${BE_DOMAIN}/menu/visible`
     },
     DEVELOPMENT: {
         API: () =>   `${BE_DOMAIN}/api`,
