@@ -1,7 +1,6 @@
 import AccountSettings from "./AccountSettings/AccountSettings";
 import BottomMenu from "./BottomMenu/BottomMenu";
 import CategoryItem from "./CategoryItem/CategoryItem";
-import CategoryMenuRow from "./CategoryMenuRow/CategoryMenuRow";
 import CheckBoxWithLabel from "./CheckBoxWithLabel/CheckBoxWithLabel";
 import Checkbox from "./Checkbox/Checkbox";
 import CloseButton from "./CloseButton/CloseButton";
@@ -30,6 +29,7 @@ import {ContentContainer} from "./ContentContainer/ContentContainer.style.js";
 import {Discount} from "./Discount/Discount.style";
 import {FetchButton} from "./Buttons/FetchButton";
 import {Flex} from "./Flex/Flex.style";
+import Footer from "./Footer/Footer";
 import {FixedWrapper} from "./FixedWrapper/FixedWrapper.style";
 import {Input, PInput, Textarea} from "./Input/Input";
 import {Label} from "./Label/Label.style";
@@ -45,7 +45,6 @@ export {
     AccountSettings,
     BottomMenu,
     CategoryItem,
-    CategoryMenuRow,
     CheckBoxWithLabel,
     Checkbox,
     CloseButton,
@@ -57,6 +56,7 @@ export {
     EditMenuRow,
     FetchButton,
     Flex,
+    Footer,
     FixedWrapper,
     FromToTime,
     HistoryTabBar,

@@ -12,7 +12,6 @@ import
     SettingMenuRow,
     ToggleCheckbox,
     CheckBoxWithLabel,
-    CategoryMenuRow,
     SecondaryButton,
     FetchButton,
     ContentContainer,
@@ -32,7 +31,11 @@ import
     Label,
     CloseButton,
     MenuItemDetails,
-    Dropdown, PrimaryButton, NotificationFactory, NOTIFICATION_STATUS
+    Dropdown,
+    PrimaryButton,
+    NotificationFactory,
+    NOTIFICATION_STATUS,
+    Footer
 } from "../../components";
 
 import {ReactComponent as QRCodeIcon} from "../../assets/icons/qr_code.svg";
@@ -61,20 +64,20 @@ const colors = Object.keys(COLOR).map(key =>
     ({title: key, component: <ColorCircle key={key} bg={COLOR[key]}/>, value: COLOR[key], width: '50px'})
 )
 
-function ExampleCategoryWithSelected() {
-    const menuItems = [{CATEGORY_ID: 1}, {CATEGORY_ID: 2}, {CATEGORY_ID: 3}];
-    const [selectedCategoryId, setSelectedCategoryId] = useState(menuItems[0].CATEGORY_ID)
+// function ExampleCategoryWithSelected() {
+//     const menuItems = [{CATEGORY_ID: 1}, {CATEGORY_ID: 2}, {CATEGORY_ID: 3}];
+//     const [selectedCategoryId, setSelectedCategoryId] = useState(menuItems[0].CATEGORY_ID)
 
-    return (
-        <CategoryMenuRow
-            showAllCategories
-            showMenuItemAmount
-            menuItems={menuItems}
-            selectedCategoryId={selectedCategoryId}
-            changeCategory={id => setSelectedCategoryId(id)}
-        />
-    )
-}
+    // return (
+    //     <CategoryMenuRow
+    //         showAllCategories
+    //         showMenuItemAmount
+    //         menuItems={menuItems}
+    //         selectedCategoryId={selectedCategoryId}
+    //         changeCategory={id => setSelectedCategoryId(id)}
+    //     />
+    // )
+// }
 
 const [UnselectedDropdown, SelectedDropdown, WithErrorDropdown] = (() => {
     const options = [
@@ -204,13 +207,13 @@ const componentsGroup2 = [
             title: 'CategoryItem',
             component: <CategoryItem category={{icon: LanguageIcon, title: 'Language'}} title="Sandwich"><SandwichIcon/></CategoryItem>
         },
-        {
-            title: 'CategoryMenuRow',
-            // component: <CategoryMenuRow menuItems={[{CATEGORY_ID: 1}, {CATEGORY_ID: 2}, {CATEGORY_ID: 3}]}/>
-        },
-        {
-            title: 'CategoryMenuRow', component: <ExampleCategoryWithSelected/>
-        },
+        // {
+        //     title: 'CategoryMenuRow',
+        //     component: <CategoryMenuRow menuItems={[{CATEGORY_ID: 1}, {CATEGORY_ID: 2}, {CATEGORY_ID: 3}]}/>
+        // },
+        // {
+        //     title: 'CategoryMenuRow', component: <ExampleCategoryWithSelected/>
+        // },
     ],
     [
         {
@@ -432,6 +435,7 @@ const componentsGroup3 = [
                     </Link>
                 </NotificationTDB>
         },
+        {title: 'Footer', component: <Footer/>}
     ]
 ]
 

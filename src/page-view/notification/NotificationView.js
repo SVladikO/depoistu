@@ -7,7 +7,6 @@ import {NotificationFactory, FixedWrapper} from "../../components";
 import {EVENT_TYPE} from "../../utils/event";
 import {getRandom} from "../../utils/utils";
 
-
 const NotificationView = () => {
     const [notifications, setNotifications] = useState([]);
 

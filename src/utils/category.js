@@ -43,10 +43,9 @@ export const TOP_CATEGORIES = {
     BAR: [26, 27, 28, 29, 30],
 }
 
-export const getCategoryUniqueIds = (menuItems = [], showAllCategories) => {
+export const getCategoryUniqueIds = (menuItems = []) => {
     const categoryIds = menuItems.map(mi => mi.CATEGORY_ID);
-    const allCategories = showAllCategories ? Object.keys(CATEGORY_MAPPER).map(id => +id) : []
-    const uniqueCategories = [...new Set([...categoryIds, ...allCategories])];
+    const uniqueCategories = [...new Set([...categoryIds])];
 
     return uniqueCategories.sort((a, b) => a -b);
 }

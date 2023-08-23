@@ -531,6 +531,12 @@ export const TRANSLATION = {
                 en: "Choose the city"
             },
         },
+        FOOTER: {
+            BACK_TO_TOP_BUTTON:{
+                ua: 'Догори',
+                en: 'Back to top'
+            }
+        },
         SIGN_IN: {
             TOP_TITLE: {
                 ua: "Вхiд",
