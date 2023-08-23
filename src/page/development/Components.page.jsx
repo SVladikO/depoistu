@@ -31,7 +31,11 @@ import
     Label,
     CloseButton,
     MenuItemDetails,
-    Dropdown, PrimaryButton, NotificationFactory, NOTIFICATION_STATUS
+    Dropdown,
+    PrimaryButton,
+    NotificationFactory,
+    NOTIFICATION_STATUS,
+    Footer
 } from "../../components";
 
 import {ReactComponent as QRCodeIcon} from "../../assets/icons/qr_code.svg";
@@ -431,6 +435,7 @@ const componentsGroup3 = [
                     </Link>
                 </NotificationTDB>
         },
+        {title: 'Footer', component: <Footer/>}
     ]
 ]
 

@@ -29,6 +29,7 @@ import {ContentContainer} from "./ContentContainer/ContentContainer.style.js";
 import {Discount} from "./Discount/Discount.style";
 import {FetchButton} from "./Buttons/FetchButton";
 import {Flex} from "./Flex/Flex.style";
+import Footer from "./Footer/Footer";
 import {FixedWrapper} from "./FixedWrapper/FixedWrapper.style";
 import {Input, PInput, Textarea} from "./Input/Input";
 import {Label} from "./Label/Label.style";
@@ -55,6 +56,7 @@ export {
     EditMenuRow,
     FetchButton,
     Flex,
+    Footer,
     FixedWrapper,
     FromToTime,
     HistoryTabBar,
