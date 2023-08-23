@@ -6,12 +6,10 @@ import {Company, NotificationLoading, RowSplitter} from "../../components";
 
 import CategoryMenuView from '../../page-view/category-menu-view/CategoryMenuView'
 
-import {useLocalStorage} from "../../utils/hook";
 import {BE_API, fetchData} from "../../utils/fetch";
 import {translate, TRANSLATION as TR} from "../../utils/translation";
 import {publishNotificationEvent} from "../../utils/event";
 import {stopLoadingWithDelay} from "../../utils/utils";
-
 
 const SearchDetailsPage = () => {
     let companyId = +useParams().companyId;
