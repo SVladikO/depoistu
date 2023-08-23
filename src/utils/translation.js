@@ -12,7 +12,13 @@ export const truncate = (text, availableLength = 1) => {
 export const currentLanguage = LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE).language.siteLanguage;
 
 export const translate = obj => {
-    return obj[currentLanguage];
+    let language = currentLanguage;
+
+    if (!currentLanguage) {
+        language = 'en'
+    }
+
+    return obj[language];
 }
 
 export const TRANSLATION = {

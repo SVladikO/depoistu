@@ -1,9 +1,8 @@
 import React from 'react';
 import {Wrapper, Title, Description} from "./AboutUs.page.style";
-import {currentLanguage, translate, TRANSLATION as TR} from "../../utils/translation";
+import {translate, TRANSLATION} from "../../utils/translation";
 
-debugger;
-console.log(translate(TR.PAGE.ABOUT_US.CONTENT))
+console.log(translate(TRANSLATION.PAGE.ABOUT_US.CONTENT))
 const AboutUsPage = () => {
     return (
         <Wrapper>
