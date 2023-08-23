@@ -31,7 +31,7 @@ const SearchDetailsPage = () => {
                 .catch(e => publishNotificationEvent.error(e.body.errorMessage))
                 .finally(() => setIsLoadingCompany(false));
         }
-    }, [companyId])
+    }, [companyId, company])
 
     useEffect(() => {
         setIsLoadingMenu(true)

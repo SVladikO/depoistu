@@ -1,7 +1,6 @@
 import AccountSettings from "./AccountSettings/AccountSettings";
 import BottomMenu from "./BottomMenu/BottomMenu";
 import CategoryItem from "./CategoryItem/CategoryItem";
-import CategoryMenuRow from "./CategoryMenuRow/CategoryMenuRow";
 import CheckBoxWithLabel from "./CheckBoxWithLabel/CheckBoxWithLabel";
 import Checkbox from "./Checkbox/Checkbox";
 import CloseButton from "./CloseButton/CloseButton";
@@ -45,7 +44,6 @@ export {
     AccountSettings,
     BottomMenu,
     CategoryItem,
-    CategoryMenuRow,
     CheckBoxWithLabel,
     Checkbox,
     CloseButton,
