@@ -12,6 +12,7 @@ export const Title = styled.div`
   line-height: 19px;
   font-weight: 700;
   color: ${COLOR.ACCENT1};
+  text-align: center;
   
 `;
 
@@ -19,5 +20,6 @@ export const Description = styled.div`
   font-size: 16px;
   line-height: 17px;
   color: ${COLOR.ACCENT1};
+  text-align: center;
 `;
 
