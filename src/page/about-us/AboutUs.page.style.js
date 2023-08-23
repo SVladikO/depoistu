@@ -9,9 +9,7 @@ export const Wrapper = styled.div`
   background: ${COLOR.ACCENT4};
   border-radius: ${p => p.borderRadius ? p.borderRadius : BORDER_RADIUS.SECOND};
 `;
-export const AboutUsItem = styled.div`
-  margin: 0 0 20px 0;
-`;
+
 export const Title = styled.div`
   font-weight: 900;
   font-size: 22px;

@@ -510,74 +510,69 @@ export const TRANSLATION = {
                 ua: "Про нашу компанію",
                 en: "About our company"
             },
-            WHO_WE_ARE: {
-                TOP_TITLE: {
-                  ua:'Хто ми?',
-                  en:'Who we are?'
-                },
-                DESCRIPTION: {
-                    ua: 'Ми команда однодумців з різних куточків України, які хочуть вирішити спільну проблему:',
-                    en: 'We are a team of soulmates from different places of Ukraine, who want to resolve common problem:',
-                },
-                PROBLEM: {
-                    ua: '"Швидко знаходити заклади харчування."',
-                    en: '"Find cafes very fast."'
-                }
-            },
-            WHAT_UNITED_US: {
-                TOP_TITLE: {
-                    ua: 'Що нас об`єднує?',
-                    en: 'What united us?',
-                },
-                DESCRIPTION: {
-                    en: 'Willingness to learn and create something new.',
-                    ua: 'Бажання навчатись і створювати щось нове.'
-                }
-            },
-            WHEN_DID_WE_START: {
-                TOP_TITLE: {
-                    en: 'When did we start?',
-                    ua: 'Коли ми почали?'
-                },
-                DESCRIPTION: {
-                    en: '1.11.22',
-                    ua: '1.11.22'
-                }
-            },
-            WHEN_WAS_THE_FIRST_VERSION_RELEASED: {
-                TOP_TITLE: {
-                    en: 'When was the first version released?',
-                    ua: 'Коли випустили першу версію?'
-                },
-                DESCRIPTION: {
-                    en: '1.09.23',
-                    ua: '1.09.23'
-                }
-            },
-            MAIN_IDEA_OF_THE_PROJECT: {
-                TOP_TITLE: {
-                    en: 'Main idea of the project',
-                    ua: 'Головна ідея проекту'
-                },
-                DESCRIPTION: {
-                    en: 'All restaurants of Ukraine in one place.',
-                    ua: 'Всі заклади України в одному місці.'
-                },
-                PROBLEM: {
-                    ua: 'Якщо вашого закладу немає на нашому сайті, значить вас взагалі не існує.',
-                    en: 'If your institution is not on our website, then you do not exist at all.'
-                }
-            },
-            COST: {
-                TOP_TITLE: {
-                    en: 'Cost',
-                    ua: 'Вартість'
-                },
-                DESCRIPTION: {
-                    en: 'This set of functionality is free for visitors and businesses.',
-                    ua: 'Даний набір функціоналу безкоштовний для користувачів та бізнесу.'
-                },
+            CONTENT: {
+                en: [
+                    {
+                        question: "Who we are?",
+                        answer: ["We are a team of soulmates from different places of Ukraine, who want to resolve common problem:",
+                            "'Find cafes very fast.', 'Find cafes very fast.'"]
+                    },
+                    {
+                        question: "What united us?",
+                        answer: ["Willingness to learn and create something new."]
+                    },
+                    {
+                        question: "When did we start?",
+                        answer: ["1.11.22"]
+                    },
+                    {
+                        question: "When was the first version released?",
+                        answer: ["1.09.23"]
+                    },
+                    {
+                        question: "Main idea of the project",
+                        answer: ["All restaurants of Ukraine in one place."]
+                    },
+
+                ],
+                ua: [
+                    {
+                        question: "Хто ми?",
+                        answer: ["Ми команда однодумців з різних куточків України, які хочуть вирішити спільну проблему:", "Швидко знаходити заклади харчування."]
+                    },
+                    {
+                        question: "Що нас об`єднує?",
+                        answer: ["Бажання навчатись і створювати щось нове."]
+                    },
+                    {
+                        question: "Коли ми почали?",
+                        answer: ["1.11.22"]
+                    },
+                    {
+                        question: "Коли випустили першу версію?",
+                        answer: ["1.09.23"]
+                    },
+
+                ],
             }
+
+
+
+            //     PROBLEM: {
+            //         ua: 'Якщо вашого закладу немає на нашому сайті, значить вас взагалі не існує.',
+            //         en: 'If your institution is not on our website, then you do not exist at all.'
+            //     }
+            // },
+            // COST: {
+            //     TOP_TITLE: {
+            //         en: 'Cost',
+            //         ua: 'Вартість'
+            //     },
+            //     DESCRIPTION: {
+            //         en: 'This set of functionality is free for visitors and businesses.',
+            //         ua: 'Даний набір функціоналу безкоштовний для користувачів та бізнесу.'
+            //     },
+            // }
 
         },
         OUR_TEAM: {
