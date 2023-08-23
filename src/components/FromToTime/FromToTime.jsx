@@ -1,29 +1,28 @@
-import {memo, useState} from 'react';
+import {memo} from 'react';
 
 import {Wrapper, GroupWrapper, Label, Weekend} from "./FromToTime.style";
 
 import {Checkbox, Input} from "../index";
 import {translate, TRANSLATION} from "../../utils/translation";
 
-function FromToTime({prefix, values, dayName, handleChange}) {
+function FromToTime({prefix, values, dayName, handleChange, setFieldValue}) {
+    const fromName = prefix + "From";
+    const toName = prefix + "To";
+    const checkboxName = prefix + 'IsChecked'
+    const isChecked = values[checkboxName];
+
     const renderInputs = () => (
         <GroupWrapper>
-            <Input type="time" name={prefix + "From"} value={values[prefix + 'From']} changeHandler={handleChange} />
+            <Input type="time" name={fromName} value={values[fromName]} changeHandler={handleChange} />
             <span>-</span>
-            <Input type="time" name={prefix + "To"} value={values[prefix + 'To']} changeHandler={handleChange}/>
+            <Input type="time" name={toName} value={values[toName]} changeHandler={handleChange}/>
         </GroupWrapper>
     );
 
-    const [isChecked, setIsChecked] = useState(values[prefix + 'IsChecked']);
-
-    const handleCheckbox = () => {
-        setIsChecked(!isChecked);
-    }
-
     return (
         <Wrapper>
-            <GroupWrapper onClick={handleCheckbox}>
-                <Checkbox name={prefix + 'IsChecked'} isChecked={isChecked} changeHandler={handleChange}/>
+            <GroupWrapper onClick={() => setFieldValue(checkboxName, !isChecked)}>
+                <Checkbox name={checkboxName} isChecked={isChecked} changeHandler={handleChange}/>
                 <Label>{dayName}</Label>
             </GroupWrapper>
             {isChecked
