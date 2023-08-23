@@ -10,6 +10,7 @@ const App = () => {
     const [showIntro, setHideIntro] = useLocalStorage(LOCAL_STORAGE_KEY.SHOW_INTRO, true);
     const closeIntroPopup = () => setHideIntro(false);
 
+
     return (
         <>
             {showIntro && (

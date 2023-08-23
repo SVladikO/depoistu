@@ -9,7 +9,6 @@ import {
     ContentContainer,
     Label,
     NavigationLabelHref,
-    Notification,
 } from "../../components";
 
 import {ReactComponent as LockIcon} from "../../assets/icons/lock.svg";
@@ -20,6 +19,7 @@ import {ROUTER, URL} from '../../utils/config';
 import {fetchData, BE_API} from "../../utils/fetch";
 import {TRANSLATION, translate} from "../../utils/translation";
 import {LocalStorage, LOCAL_STORAGE_KEY} from "../../utils/localStorage"
+import {publishNotificationEvent} from "../../utils/event";
 
 const SignInSchema = Yup.object().shape(validation.customer.singIn);
 
@@ -30,7 +30,6 @@ const signInInitialValues = {
 
 const SignInPage = () => {
     const navigate = useNavigate();
-    const [requestError, setRequestError] = useState('');
     const [wasSubmitted, setWasSubmitted] = useState(false);
     const [isLoading, setIsLoading] = useState(false)
 
@@ -43,7 +42,7 @@ const SignInPage = () => {
                 navigate(URL.SETTING);
                 setIsLoading(false);
             })
-            .catch(e => setRequestError(e.body.errorMessage))
+            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
             .finally(() => setIsLoading(false));
     }
 
@@ -55,7 +54,6 @@ const SignInPage = () => {
 
     return (
         <>
-            {requestError && <Notification.Error message={requestError}/>}
             <Formik
                 initialValues={signInInitialValues}
                 validationSchema={SignInSchema}

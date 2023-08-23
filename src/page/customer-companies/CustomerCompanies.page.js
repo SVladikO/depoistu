@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 import {useSelector} from "react-redux";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import QRCode from 'qrcode';
 
-import {EditBar, QRCodeButton, ImageQR} from "./CustomerCompanies.style";
+import {EditBar, QRCodeButton, QRCodeMenuTitle, ImageQR} from "./CustomerCompanies.style";
 
-import {Company, Notification, Popup, PrimaryButton} from "../../components";
+import {Company, NotificationLoading, Popup, PrimaryButton} from "../../components";
 import {ReactComponent as EditIcon} from "../../assets/icons/edit.svg";
 
 import {BE_API} from '../../utils/fetch'
@@ -14,39 +14,35 @@ import {translate, TRANSLATION} from "../../utils/translation";
 import {ReactComponent as QRCodeIcon} from "../../assets/icons/qr_code.svg";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {useLocalStorage, useLocalStorageFetch, useRedirectToSettingPage} from "../../utils/hook";
+import {publishNotificationEvent} from "../../utils/event";
 
 const CustomerCompaniesPage = () => {
     useRedirectToSettingPage();
+    const navigate = useNavigate();
     const [customer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
     const isLoading = useSelector(state => state.request.value.isLoading);
+    const [wasWarningShown, setWasWarningShown] = useLocalStorage(LOCAL_STORAGE_KEY.WAS_COMPANY_CREATION_WARNING_SHOW, false)
     const [companyIdForQRCode, setCompanyIdForQRCode] = useState();
-    const [isVisibleCompanyCreationWarning, setIsVisibleCompanyCreationWarning] = useLocalStorage(LOCAL_STORAGE_KEY.IS_VISIBLE_COMPANY_CREATION_WARNING, false);
-    const [requestError, setRequestError] = useState('');
     const [customerCompanies] = useLocalStorageFetch(
         LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES,
         [],
         BE_API.COMPANY.GET_BY_CUSTOMER_ID(customer?.ID),
-        setRequestError
+        publishNotificationEvent.error
     );
 
-
-    if (isLoading) {
-        return <Notification.Loading/>;
+    if (!wasWarningShown) {
+        publishNotificationEvent.warning(translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.WARNING))
+        setWasWarningShown(true);
     }
 
-    if (requestError) {
-        return <Notification.Error message={requestError}/>;
+    if (isLoading) {
+        return <NotificationLoading/>;
     }
 
     const showQRCode = companyId => () => setCompanyIdForQRCode(companyId);
 
-    const closeInfoPopUp = () => setIsVisibleCompanyCreationWarning(true);
-
-
     return (
         <>
-            {!isVisibleCompanyCreationWarning && <Popup.Info
-                onClose={closeInfoPopUp}>{translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.WARNING)}</Popup.Info>}
             <PopupQRCode companyId={companyIdForQRCode} onClose={() => setCompanyIdForQRCode('')}/>
             {customerCompanies.map(
                 company =>
@@ -59,12 +55,18 @@ const CustomerCompaniesPage = () => {
                                 </PrimaryButton>
                             </Link>
                             <QRCodeButton onClick={showQRCode(company.ID)}><QRCodeIcon/></QRCodeButton>
-                            <Link to={ROUTER.EDIT_MENU.URL + '/' + company.ID} style={{width: '140px'}}>
-                                <PrimaryButton isWide>
-                                    <EditIcon/>
-                                    {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.MENU)}
-                                </PrimaryButton>
-                            </Link>
+                            <PrimaryButton
+                                isWide
+                                style={{width: '140px'}}
+                                onClick={
+                                    () => {
+                                        LocalStorage.set(LOCAL_STORAGE_KEY.COMPANY_ID_TO_EDIT_MENU_PAGE, company.ID)
+                                        navigate(ROUTER.EDIT_MENU.URL)
+                                    }
+                                }>
+                                <EditIcon/>
+                                {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.MENU)}
+                            </PrimaryButton>
                         </EditBar>
                     </Company>
             )
@@ -94,6 +96,7 @@ const PopupQRCode = ({companyId, onClose}) => {
 
     return (
         <Popup.InfoText onClose={onClose}>
+            <QRCodeMenuTitle>Menu</QRCodeMenuTitle>
             {src && <ImageQR src={src}/>}
             {qrCodeGenerationError}
         </Popup.InfoText>

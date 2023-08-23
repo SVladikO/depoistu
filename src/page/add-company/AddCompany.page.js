@@ -1,11 +1,9 @@
 import "swiper/css";
 import "swiper/css/pagination";
-import {Link} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import React, {useState} from "react";
 
-import {FetchButton, Notification, PrimaryButton} from "../../components";
-
-import {WarningText} from "./AddCompany.style";
+import {ContentContainer, FetchButton, PrimaryButton} from "../../components";
 
 import CompanyView from "../../page-view/company/company-view";
 
@@ -17,12 +15,13 @@ import {getScheduleAsString} from "../../utils/company";
 import {useRedirectToSettingPage} from "../../utils/hook";
 import {translate, TRANSLATION} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
+import {publishNotificationEvent} from "../../utils/event";
 
 const AddCompany = () => {
     useRedirectToSettingPage();
+    const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
-    const [isCompanySaved, setIsCompanySaved] = useState(false);
-    const [requestError, setRequestError] = useState("");
+    const [wasCompanyCreated, setWasCompanyCreated] = useState(false);
     const [newCompanyId, setNewCompanyId] = useState();
 
     const onSubmit = values => {
@@ -31,31 +30,30 @@ const AddCompany = () => {
         const reqObj = {name, city_id, street, phone1, phone2, phone3, schedule};
 
         setIsLoading(true);
-        setRequestError('')
         fetchData(BE_API.COMPANY.POST_CREATE(), reqObj)
             .then(res => {
-                setIsCompanySaved(true);
+                setWasCompanyCreated(true);
                 setNewCompanyId(res.body.insertId);
                 LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES)
+                publishNotificationEvent.success("Company was created");
+                publishNotificationEvent.warning("Without menu this company won’t be shown in search")
             })
-            .catch(e => setRequestError(e.body.errorMessage))
+            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
             .finally(() => setIsLoading(false))
     }
 
-    if (isCompanySaved) {
+    if (wasCompanyCreated) {
         return (
-            <Notification.Success message={"Company was created"}>
-                <WarningText>
-                    Without menu this company won’t be shown in search
-                </WarningText>
-                <Link to={`${URL.EDIT_MENU}/${newCompanyId}`}>
-                    <PrimaryButton isWide>
-                        Add menu for this company
-                    </PrimaryButton>
-                </Link>
-            </Notification.Success>
+            <ContentContainer>
+                <PrimaryButton
+                    isWide
+                    onClick={() => {
+                        LocalStorage.set(LOCAL_STORAGE_KEY.COMPANY_ID_TO_EDIT_MENU_PAGE, newCompanyId)
+                        navigate(URL.EDIT_MENU)
+                    }}
+                >Add menu for this company</PrimaryButton>
+            </ContentContainer>
         )
-            ;
     }
 
     return (
@@ -64,7 +62,6 @@ const AddCompany = () => {
             onSubmit={onSubmit}
         >
             <>
-                {requestError && <Notification.Error message={requestError}/>}
                 <FetchButton isWide type="submit" isLoading={isLoading}>
                     {translate(TRANSLATION.PAGE.ADD_COMPANY.BUTTON.ADD_COMPANY)}
                 </FetchButton>

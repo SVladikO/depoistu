@@ -25,6 +25,12 @@ export const useLocalStorage = (storageKey, initialState) => {
     return [value, set];
 };
 
+/**
+ * Let us hide elements on scroll.
+ *
+ * @param id
+ * @param top
+ */
 export const useHideOnScroll = (id, top) => {
     let prevScrollpos = window.pageYOffset;
 
@@ -47,6 +53,11 @@ export const useHideOnScroll = (id, top) => {
     }, [id, top])
 }
 
+/**
+ * Redirect to settings page is customer isn't signed in.
+ * That's for security reasons on frontend side.
+ *
+ */
 export const useRedirectToSettingPage = () => {
     const [customer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
     const navigate = useNavigate();
@@ -91,7 +102,7 @@ export const useLocalStorageFetch = (
             })
             .catch(e => {
                 dispatch(stopLoading());
-                setError(e.body.message);
+                setError(e.body.errorMessage);
             })
     }, [value, storageKey, dispatch, localStorageState, url, setError]);
 

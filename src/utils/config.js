@@ -93,6 +93,7 @@ export const ROUTER = {
         TITLE: translate(TRANSLATION.PAGE.COMPANY_DETAILS.TOP_TITLE),
         page: SearchDetailsPage,
         showBottomMenu: true,
+        backUrl: URL.SEARCH
     },
     SETTING: {
         URL: URL.SETTING,
@@ -104,48 +105,56 @@ export const ROUTER = {
         URL: URL.SING_UP,
         TITLE: translate(TRANSLATION.PAGE.SING_UP.TOP_TITLE),
         page: SingUpPage,
-        showBottomMenu: true
+        showBottomMenu: true,
+        backUrl: URL.SETTING
     },
     SING_IN: {
         URL: URL.SING_IN,
         TITLE: translate(TRANSLATION.PAGE.SIGN_IN.TOP_TITLE),
         page: SignInPage,
-        showBottomMenu: true
+        showBottomMenu: true,
+        backUrl: URL.SETTING
     },
     FORGOT_PASSWORD: {
         URL: URL.FORGOT_PASSWORD,
         TITLE: translate(TRANSLATION.PAGE.FORGOT_PASSWORD.TOP_TITLE),
         page: ForgetPasswordPage,
+        backUrl: URL.SETTING
     },
     CHANGE_PASSWORD: {
         URL: URL.CHANGE_PASSWORD,
         TITLE: translate(TRANSLATION.PAGE.CHANGE_PASSWORD.TOP_TITLE),
         page: ChangePasswordPage,
         showBottomMenu: true,
+        backUrl: URL.SETTING
     },
     ABOUT_US: {
         URL: URL.ABOUT_US,
         TITLE: translate(TRANSLATION.PAGE.ABOUT_US.TOP_TITLE),
         page: AboutUsPage,
         showBottomMenu: true,
+        backUrl: URL.SETTING
     },
     OUR_TEAM: {
         URL: URL.OUR_TEAM,
         TITLE: translate(TRANSLATION.PAGE.OUR_TEAM.TOP_TITLE),
         page: OurTeamPage,
         showBottomMenu: true,
+        backUrl: URL.SETTING
     },
     EDIT_USER: {
         URL: URL.EDIT_CUSTOMER,
         TITLE: translate(TRANSLATION.PAGE.EDIT_USER_PROFILE.TOP_TITLE),
         page: EditCustomerPage,
         showBottomMenu: true,
+        backUrl: URL.SETTING
     },
     CUSTOMER_COMPANIES: {
         URL: URL.CUSTOMER_COMPANIES,
         TITLE: translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.TOP_TITLE),
         page: CustomerCompaniesPage,
         showBottomMenu: true,
+        backUrl: URL.SETTING
     },
     EDIT_COMPANY: {
         URL: URL.EDIT_COMPANY,
@@ -153,31 +162,35 @@ export const ROUTER = {
         TITLE: translate(TRANSLATION.PAGE.EDIT_COMPANY.TOP_TITLE),
         page: EditCompanyPage,
         showBottomMenu: true,
+        backUrl: URL.CUSTOMER_COMPANIES
     },
     ADD_COMPANY: {
         URL: URL.ADD_COMPANY,
         TITLE: translate(TRANSLATION.PAGE.ADD_COMPANY.TOP_TITLE),
         page: AddCompanyPage,
         showBottomMenu: true,
+        backUrl: URL.CUSTOMER_COMPANIES
     },
     EDIT_MENU: {
         URL: URL.EDIT_MENU,
-        PARAMS: '/:companyId',
         TITLE: translate(TRANSLATION.PAGE.EDIT_MENU.TOP_TITLE),
         page: EditMenuPage,
         showBottomMenu: true,
+        backUrl: URL.CUSTOMER_COMPANIES
     },
     EDIT_MENU_ITEM: {
         URL: URL.EDIT_MENU_ITEM,
         TITLE: translate(TRANSLATION.PAGE.EDIT_MENU_ITEM.TOP_TITLE),
         page: EditMenuItemPage,
         showBottomMenu: true,
+        backUrl: URL.EDIT_MENU
     },
     ADD_MENU_ITEM: {
         URL: URL.ADD_MENU_ITEM,
         TITLE: translate(TRANSLATION.PAGE.ADD_MENU_ITEM.TOP_TITLE),
         page: AddMenuItemPage,
         showBottomMenu: true,
+        backUrl: URL.EDIT_MENU
     },
 };
 

@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import {PrimaryButton} from "../../components";
+import {PrimaryButton} from "../../components/Buttons/PrimaryButton";
 
 export const ImageQR = styled.img`
   height: 250px;
-  margin: 40px;
+  width: 250px;
 `;
 
 export const QRCodeButton = styled(PrimaryButton)`
@@ -16,6 +16,15 @@ export const QRCodeButton = styled(PrimaryButton)`
     display: block;
   }
 `;
+
+export const QRCodeMenuTitle = styled.div`
+  font-weight: 700;
+  font-size: 32px;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 10px auto 10px auto;
+`
+
 export const EditBar = styled.div`
   padding: 10px 0 0 0;
   display: flex;
