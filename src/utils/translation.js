@@ -6,6 +6,10 @@ export const LANGUAGE_KEYS = {
 }
 
 export const truncate = (text, availableLength = 1) => {
+    if (text.length < availableLength) {
+        return text;
+    }
+
     return text.substring(0, availableLength) + ' ...';
 };
 
