@@ -29,8 +29,22 @@ export const TRANSLATION = {
         en: 'DEPOISTU'
     },
     INTRODUCTION: {
-        ua: 'Меню всіх кафе та ресторанів України має бути в одному місці.Знайдіть заклад своєї мрії та допоможи іншим. Розкажи адміністраторам своїх улюблених закладів про наш сайт.',
-        en: 'The menu of all cafes and restaurants of Ukraine should be in one place. Find the bookmark of your dreams and help others. Tell the administrators of your favorite bookmarks about our site.'
+        BUTTON: {
+            ua: 'Далі',
+            en: 'Further'
+        },
+        INTRODUCTION_MAIN: {
+            ua: 'Меню всіх закладів харчування України має бути в  одному місці. На цьому сайті.',
+            en: 'The menu of all cafes and restaurants of Ukraine should be in one place. On this site.'
+        },
+        INTRODUCTION_HELP: {
+            ua: 'Знайомтесь з меню до або під час візиту.',
+            en: 'Familiarize yourself with the menu before or during your visit.',
+        },
+        INTRODUCTION_TELL: {
+            ua: 'Ми не показуємо в пошуку міста в яких ще не зареєструвались заклади.',
+            en: 'We don`t show in the search engine cities in which establishments have not yet been registered.'
+        }
     },
     VALIDATION: {
         REQUIRED: {
