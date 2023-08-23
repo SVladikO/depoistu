@@ -18,12 +18,22 @@ export const Photo = styled.img`
   margin: 0 0 5px 0;
 `;
 export const FullName = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 0 0 10px 0;
+  
   > a {
     color: ${COLOR.ACCENT1};
     font-weight: 400;
     font-size: 24px;
-    line-height: 29px;
-    margin: 0 0 10px 0;
+    line-height: 24px;
+  }
+  
+  > svg {
+    fill: ${COLOR.ACCENT1};
+    width: 20px;
+    height: 20px;
   }
 `;
 export const Position = styled.div`
