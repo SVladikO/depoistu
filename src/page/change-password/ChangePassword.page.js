@@ -7,7 +7,7 @@ import {
     Input,
     RowSplitter,
     FetchButton,
-    ContentContainer, Notification,
+    ContentContainer,
 } from "../../components";
 
 import validation from "../../utils/validation";
@@ -15,14 +15,13 @@ import {BE_API, fetchData} from "../../utils/fetch";
 import {useRedirectToSettingPage} from "../../utils/hook";
 import {TRANSLATION, translate} from '../../utils/translation';
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
+import {publishNotificationEvent} from "../../utils/event";
 
 const ChangePassWordSchema = Yup.object().shape(validation.customer.changePassword);
 
 const ChangePasswordPage = () => {
     useRedirectToSettingPage();
     const [isLoading, setIsLoading] = useState(false);
-    const [isPasswordUpdated, setIsPasswordUpdated] = useState(false);
-    const [requestError, setRequestError] = useState('');
     const [wasSubmitted, setWasSubmitted] = useState(false);
 
     const onSubmit = values => {
@@ -35,19 +34,14 @@ const ChangePasswordPage = () => {
         fetchData(BE_API.CUSTOMER.CHANGE_PASSWORD(), reqObj)
             .then(res => {
                 LocalStorage.set(LOCAL_STORAGE_KEY.CUSTOMER, res.body);
-                setIsPasswordUpdated(true);
+                publishNotificationEvent.success("Password was updated.")
             })
-            .catch(e => setRequestError(e.body.errorMessage))
+            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
             .finally(() => setIsLoading(false));
-    }
-
-    if (isPasswordUpdated) {
-        return <Notification.Success message={"Password was updated."}/>
     }
 
     return (
         <>
-            {requestError && <Notification.Error message={requestError}/>}
             <Formik
                 initialValues={{
                     oldPassword: '',

@@ -15,7 +15,7 @@ import
     SecondaryButton,
     FetchButton,
     ContentContainer,
-    Notification,
+    NotificationLoading,
     NavigationHeader,
     FromToTime,
     ThirdButton,
@@ -31,7 +31,7 @@ import
     Label,
     CloseButton,
     MenuItemDetails,
-    Dropdown, PrimaryButton
+    Dropdown, PrimaryButton, NotificationFactory, NOTIFICATION_STATUS
 } from "../../components";
 
 import {ReactComponent as QRCodeIcon} from "../../assets/icons/qr_code.svg";
@@ -331,9 +331,11 @@ const componentsGroup2 = [
         },
     ],
     [
-        {title: 'Notification.Loading', component: <Notification.Loading/>},
-        {title: 'Notification.Error', component: <Notification.Error message={'Broken content.'}/>},
-        {title: 'Notification.Success', component: <Notification.Success message={'Company was created.'}/>},
+        {title: 'StatusNotification info', component: <NotificationFactory type={NOTIFICATION_STATUS.INFO}>No Internet Connection.</NotificationFactory>},
+        {title: 'StatusNotification error', component: <NotificationFactory type={NOTIFICATION_STATUS.ERROR}>No Internet Connection.</NotificationFactory>},
+        {title: 'StatusNotification success', component: <NotificationFactory type={NOTIFICATION_STATUS.SUCCESS}>Order placed. Order placed.</NotificationFactory>},
+        {title: 'StatusNotification warning', component: <NotificationFactory type={NOTIFICATION_STATUS.WARNING}>No Internet Connection.</NotificationFactory>},
+        {title: 'NotificationLoading', component: <NotificationLoading/>},
         {title: 'Dropdown Unselected', component: <UnselectedDropdown />},
         {title: 'Dropdown WithSelected', component:<SelectedDropdown />},
         {title: 'Dropdown WithError', component: <WithErrorDropdown />},
@@ -384,7 +386,6 @@ const componentsGroup3 = [
                     <HistoryTabBar/>
                 </NavigationHeader>
         },
-
         {title: 'BottomMenu', component: <RowSplitter height='80px'><BottomMenu/></RowSplitter>},
         {title: 'ContentContainer', component: <ContentContainer>Sign up with</ContentContainer>},
         {
@@ -433,12 +434,12 @@ const componentsGroup3 = [
     ]
 ]
 
-document.body.style.backgroundColor = '#d8d8d8'
+// document.body.style.backgroundColor = '#d8d8d8'
 
 function ComponentsPage() {
-    const setWhiteBackground = useCallback(() => document.body.style.backgroundColor = '#ffffff', []);
-    const setGreyBackground = useCallback(() => document.body.style.backgroundColor = '#d8d8d8', []);
-    const setBlueBackground = useCallback(() => document.body.style.backgroundColor = '#001993', []);
+    const setWhiteBackground = useCallback(() => document.body.style.background = '#ffffff', []);
+    const setGreyBackground = useCallback(() => document.body.style.background = '#d8d8d8', []);
+    const setBlueBackground = useCallback(() => document.body.style.background = '#001993', []);
 
     function renderRows(components) {
         return components.map((c, index) =>
@@ -465,16 +466,17 @@ function ComponentsPage() {
         <div>
             <Header>
                 <Space/>
-                <FetchButton onClick={setWhiteBackground}>White</FetchButton>
+                <PrimaryButton onClick={setWhiteBackground}>White</PrimaryButton>
                 <Space/>
-                <FetchButton onClick={setGreyBackground}>Grey</FetchButton>
+                <PrimaryButton onClick={setGreyBackground}>Grey</PrimaryButton>
                 <Space/>
-                <FetchButton onClick={setBlueBackground}>Blue</FetchButton>
+                <PrimaryButton onClick={setBlueBackground}>Blue</PrimaryButton>
                 <Space/>
                 <Space/>
                 <Space/>
                 {renderRows(colors)}
             </Header>
+            <RowSplitter height="140px" />
             {renderGroup(componentsGroup1)}
             {renderGroup(componentsGroup2)}
             {renderGroup(componentsGroup3)}

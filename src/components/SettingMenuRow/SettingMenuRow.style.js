@@ -53,8 +53,6 @@ export const RightAnchor = styled.div`
 
 export const Label = styled.div`
   color: #B4C2CD;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
+  font-size: 18px;
   margin-right: 11.5px;
 `;

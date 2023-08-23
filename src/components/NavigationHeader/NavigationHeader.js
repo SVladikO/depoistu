@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Wrapper, BackButton, Title, NestedContent, MainContent} from "./NavigationHeader.style";
+import {Wrapper, BackButton, Title} from "./NavigationHeader.style";
 
 // import {ROUTER} from "../../WeekScheduleOutput.js/config";
 // import {OrderIconWithCounter} from "../index";
@@ -13,7 +13,6 @@ const NavigationHeader = (props) => {
 
     return (
         <Wrapper className='pm-NavigationHeader'>
-            <MainContent>
                 {backUrl &&
                     <Link to={backUrl}>
                         <BackButton className="back-button">
@@ -26,10 +25,9 @@ const NavigationHeader = (props) => {
                 {/*<Link to={ROUTER.ORDER_REVIEW.URL}>*/}
                 {/*    <OrderIconWithCounter hideOnZeroOrderAmount/>*/}
                 {/*</Link>*/}
-            </MainContent>
-            <NestedContent>
-                {props.children}
-            </NestedContent>
+            {/*<NestedContent>*/}
+            {/*    {props.children}*/}
+            {/*</NestedContent>*/}
         </Wrapper>
     );
 };
