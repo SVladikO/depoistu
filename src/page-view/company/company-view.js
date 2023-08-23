@@ -156,7 +156,7 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                             withCleaner
                         />
                         <Label>{translate(TRANSLATION.INPUT_LABEL.COMPANY.WORK_SCHEDULE)}</Label>
-                        <WeekScheduleInput values={values} handleChange={handleChange}/>
+                        <WeekScheduleInput values={values} handleChange={handleChange} setFieldValue={setFieldValue}/>
                         {wasSubmitted && !isScheduleValid(values) && <WarningMessage>Schedule is a required field</WarningMessage>}
                     </ContentContainer>
                     {showCityPopup && (
