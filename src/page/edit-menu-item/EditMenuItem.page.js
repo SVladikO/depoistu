@@ -58,8 +58,7 @@ const EditMenuItemPage = () => {
         fetchData(BE_API.MENU_ITEM.DELETE(),
             {
                 method: 'delete',
-                menuItemId: menuItemCandidateToEdit.ID,
-                companyId: COMPANY_ID
+                id: menuItemCandidateToEdit.ID,
             })
             .then(() => {
                 navigate(URL.EDIT_MENU)
