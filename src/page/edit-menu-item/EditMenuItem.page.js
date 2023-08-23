@@ -14,7 +14,7 @@ import {publishNotificationEvent} from "../../utils/event";
 
 const EditMenuItemPage = () => {
     useRedirectToSettingPage();
-    useScrollUp()
+    useScrollUp();
     const navigate = useNavigate();
     const [isLoadingUpdate, setIsLoadingUpdate] = useState(false);
     const [isLoadingDelete, setIsLoadingDelete] = useState(false);

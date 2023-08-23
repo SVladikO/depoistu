@@ -1,4 +1,4 @@
-import {NavLink} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 import {Wrapper, MenuItem, Label} from './BottomMenu.style';
 
@@ -11,6 +11,7 @@ import {ROUTER} from "../../utils/config";
 import {TRANSLATION, translate} from "../../utils/translation";
 
 const BottomMenu = () => {
+    const navigate = useNavigate();
     const isSelected = url => window.location.pathname === url;
 
     return (
@@ -28,18 +29,20 @@ const BottomMenu = () => {
                 {/*        <Label>Cart</Label>*/}
                 {/*    </MenuItem>*/}
                 {/*</NavLink>*/}
-                <NavLink to={ROUTER.SEARCH.URL}>
-                    <MenuItem selected={isSelected(ROUTER.SEARCH.URL)}>
+                    <MenuItem
+                        selected={isSelected(ROUTER.SEARCH.URL)}
+                        onClick={() => navigate(ROUTER.SEARCH.URL)}
+                    >
                         <SearchIcon/>
                         <Label>{translate(TRANSLATION.BOTTOM_MENU.SEARCH_TAB)}</Label>
                     </MenuItem>
-                </NavLink>
-                <NavLink to={ROUTER.SETTING.URL}>
-                    <MenuItem selected={isSelected(ROUTER.SETTING.URL)}>
+                    <MenuItem
+                        selected={isSelected(ROUTER.SETTING.URL)}
+                        onClick={() => navigate(ROUTER.SETTING.URL)}
+                    >
                         <UserIcon/>
                         <Label>{translate(TRANSLATION.BOTTOM_MENU.ACCOUNT_TAB)}</Label>
                     </MenuItem>
-                </NavLink>
             </Wrapper>
     );
 };

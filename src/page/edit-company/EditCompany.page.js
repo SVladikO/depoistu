@@ -13,7 +13,7 @@ import {BE_API} from '../../utils/fetch'
 import {fetchData} from "../../utils/fetch";
 import {initSchedule} from "../../utils/company";
 import {getScheduleAsString} from "../../utils/company";
-import {useRedirectToSettingPage} from "../../utils/hook";
+import {useRedirectToSettingPage, useScrollUp} from "../../utils/hook";
 import {translate, TRANSLATION} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import Popup, {enableScrollOnBody, disableScrollOnBody} from "../../components/Popup/Popup";
@@ -31,6 +31,7 @@ const companyFakeData = {
 
 const EditCompany = () => {
     useRedirectToSettingPage();
+    useScrollUp();
     const companyId = +useParams().companyId;
     const customerCompaniesFromLocalStorage = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES) || [{ID: companyId, ...companyFakeData}];
     const companies = customerCompaniesFromLocalStorage.length ? customerCompaniesFromLocalStorage : [{ID: companyId, ...companyFakeData}];
