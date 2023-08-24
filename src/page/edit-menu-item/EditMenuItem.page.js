@@ -83,7 +83,7 @@ const EditMenuItemPage = () => {
                         type="submit"
                         isLoading={isLoadingUpdate}
                     >
-                        {translate(TRANSLATION.PAGE.ADD_MENU_ITEM.BUTTON.ADD_MENU_ITEM)}
+                        {translate(TRANSLATION.PAGE.ADD_MENU_ITEM.BUTTON.UPDATE_MENU_ITEM)}
                     </FetchButton>
                     <RowSplitter height={'25px'}/>
                     <RowSplitter height={'25px'}/>
@@ -100,6 +100,7 @@ const EditMenuItemPage = () => {
             </MenuItemView>
         </>
     )
+
 }
 
 export default EditMenuItemPage;
