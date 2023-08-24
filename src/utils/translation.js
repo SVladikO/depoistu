@@ -297,6 +297,16 @@ export const TRANSLATION = {
                     en: 'Add company',
                     ua: "Додати компанію"
                 }
+            },
+            NOTIFICATION: {
+                SUCCESS: {
+                    ua: 'Було створено компанію',
+                    en: 'Company was created'
+                },
+                WARNING: {
+                    en: 'Without menu this company won’t be shown in search',
+                    ua: 'Без меню ця компанія не буде видима в пошуку'
+                }
             }
         },
         EDIT_MENU: {
@@ -326,6 +336,16 @@ export const TRANSLATION = {
                     ua: "Зберегти зміни",
                 }
             },
+            NOTIFICATION: {
+                UPDATED: {
+                    en: 'Menu item was updated.',
+                    ua: 'Пункт меню було змінено.'
+                },
+                DELETED: {
+                    en: 'Menu item was deleted',
+                    ua: 'Пункт меню видалено'
+                }
+            }
         },
         EDIT_COMPANY: {
             TOP_TITLE: {
@@ -340,7 +360,7 @@ export const TRANSLATION = {
                 DELETE_COMPANY: {
                     en: 'Delete company',
                     ua: "Видалити компанію"
-                }
+                },
             },
             NOTIFICATION: {
                 COMPANY_WAS_DELETED: {
@@ -354,6 +374,10 @@ export const TRANSLATION = {
                 NO_COMPANY_BY_THIS_ID: {
                     en: 'No company by this id',
                     ua: "Немає компанії з цим ідентифікатором"
+                },
+                SUCCESS: {
+                    ua: 'Інформацію про компанію змінено',
+                    en: 'Information about company was updated'
                 },
 
             }
@@ -369,6 +393,12 @@ export const TRANSLATION = {
                     ua: "Зберегти",
                 }
             },
+            NOTIFICATION: {
+                CREATED: {
+                    en: 'Menu item was created',
+                    ua: 'Був стровений пункт меню'
+                }
+            }
         },
         CHANGE_PASSWORD: {
             TOP_TITLE: {
@@ -548,9 +578,13 @@ export const TRANSLATION = {
                 ua: "Виберіть місто",
                 en: "Choose the city"
             },
+            NOTIFICATION_ERROR: {
+                ua: 'В цьому місті немає закладів',
+                en: 'There is no companies in current city'
+            }
         },
         FOOTER: {
-            BACK_TO_TOP_BUTTON:{
+            BACK_TO_TOP_BUTTON: {
                 ua: 'Догори',
                 en: 'Back to top'
             }
@@ -575,6 +609,12 @@ export const TRANSLATION = {
             ACCOUNT_CONFIRMATION: {
                 ua: "Ви зареєстрованi?",
                 en: "You don’t have an account?"
+            },
+            NOTIFICATION: {
+                ERROR: {
+                    en: "Wrong credentials. Customer doesn't exist",
+                    ua: "Неправильні облікові данні. Клієнта не існує"
+                }
             }
         },
         FORGOT_PASSWORD: {
@@ -653,6 +693,30 @@ export const TRANSLATION = {
             ua: "Завантаження ...",
             en: "Loading ..."
         },
+        LOADING_COMPANY: {
+            ua: 'Завантажується компанія...',
+            en: 'Loading company...'
+        },
+        LOADING_MENU: {
+            en: 'Loading menu...',
+            ua: 'Завантажується меню...'
+        },
+        LOADING_AVAILABLE_CITIES: {
+            en: 'Loading available cities ...',
+            ua: 'Завантажуються доступні міста...'
+        },
+        LOADING_AVAILABLE_COMPANIES: {
+            en: 'Loading available companies',
+            ua: 'Завантажуються доступні компанії'
+        },
+        STATUS_INFO: {
+            ua: 'Немає інтернет з`єднання.',
+            en: 'No Internet Connection.'
+        },
+        CHANGE_PASSWORD: {
+            ua: 'Пароль було змінено',
+            en: 'Password was changed'
+        }
     },
     BOTTOM_MENU: {
         SEARCH_TAB: {

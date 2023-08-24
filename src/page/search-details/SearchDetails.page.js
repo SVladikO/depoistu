@@ -49,10 +49,10 @@ const SearchDetailsPage = () => {
 
     return (
         <Wrapper>
-            {isLoadingCompany && <NotificationLoading>Loading company ...</NotificationLoading>}
+            {isLoadingCompany && <NotificationLoading>{translate(TR.NOTIFICATION.LOADING_COMPANY)}</NotificationLoading>}
             {!isLoadingCompany && company && <Company company={company} withMoreInfo/>}
 
-            {isLoadingMenu && <NotificationLoading>Loading menu ... </NotificationLoading>}
+            {isLoadingMenu && <NotificationLoading>{translate(TR.NOTIFICATION.LOADING_MENU)}</NotificationLoading>}
 
             {!isLoadingMenu && menuItems?.length && (
                 <>

@@ -42,7 +42,7 @@ const SignInPage = () => {
                 navigate(URL.SETTING);
                 setIsLoading(false);
             })
-            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
+            .catch(e => publishNotificationEvent.error(translate(TRANSLATION.PAGE.SIGN_IN.NOTIFICATION.ERROR)))
             .finally(() => setIsLoading(false));
     }
 

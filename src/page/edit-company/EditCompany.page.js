@@ -111,7 +111,7 @@ const EditCompany = () => {
                 const updatedCompany = res.body[0];
                 updateCompaniesInLocalStorage(updatedCompany)
 
-                publishNotificationEvent.success('Company was updated')
+                publishNotificationEvent.success(translate(TRANSLATION.PAGE.EDIT_COMPANY.NOTIFICATION.SUCCESS))
             })
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))
             .finally(() => setIsLoadingUpdate(false))

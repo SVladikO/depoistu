@@ -36,8 +36,8 @@ const AddCompany = () => {
                 setWasCompanyCreated(true);
                 setNewCompanyId(res.body.insertId);
                 LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES)
-                publishNotificationEvent.success("Company was created");
-                publishNotificationEvent.warning("Without menu this company won’t be shown in search")
+                publishNotificationEvent.success(translate(TRANSLATION.PAGE.ADD_COMPANY.NOTIFICATION.SUCCESS));
+                publishNotificationEvent.warning(translate(TRANSLATION.PAGE.ADD_COMPANY.NOTIFICATION.WARNING))
             })
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))
             .finally(() => setIsLoading(false))

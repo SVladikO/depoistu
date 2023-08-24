@@ -71,7 +71,7 @@ const SearchPage = () => {
         const regionLabel = translate(TRANSLATION.COMPONENTS.POPUP.CITY.INPUT)
 
         if (selectedCityId && selectedRegionId && companies.length === 0) {
-            publishNotificationEvent.error('There is no companies in current city');
+            publishNotificationEvent.error(translate(TRANSLATION.PAGE.SEARCH.NOTIFICATION_ERROR));
         }
 
         return (
@@ -90,8 +90,8 @@ const SearchPage = () => {
                     />
                 </ContentContainer>
 
-                {isLoadingCityIds && <NotificationLoading>Loading available cities ...</NotificationLoading>}
-                {isLoadingCompanies && <NotificationLoading>Loading companies ...</NotificationLoading>}
+                {isLoadingCityIds && <NotificationLoading>{translate(TRANSLATION.NOTIFICATION.LOADING_AVAILABLE_CITIES)}</NotificationLoading>}
+                {isLoadingCompanies && <NotificationLoading>{translate(TRANSLATION.NOTIFICATION.LOADING_AVAILABLE_COMPANIES)}</NotificationLoading>}
 
                 {!isLoadingCompanies && companies && !!companies.length && selectedCityId &&
                     companies?.map(company =>
