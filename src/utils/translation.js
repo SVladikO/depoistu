@@ -521,7 +521,8 @@ export const TRANSLATION = {
                     {
                         question: "Who we are?",
                         answers: ["We are a team of soulmates from different places of Ukraine, who want to resolve common problem:",
-                            "Find cafes very fast."]
+                                  "Find cafes very fast."
+                        ]
                     },
                     {
                         question: "What united us?",
@@ -537,7 +538,9 @@ export const TRANSLATION = {
                     },
                     {
                         question: "Main idea of the project",
-                        answers: ["All restaurants of Ukraine in one place.", "If your institution is not on our website, then you do not exist at all."]
+                        answers: ["All restaurants of Ukraine in one place.",
+                                  "If your institution is not on our website, then you do not exist at all."
+                        ]
                     },
                     {
                         question: "Cost",
@@ -564,7 +567,9 @@ export const TRANSLATION = {
                     },
                     {
                         question: "Головна ідея проекту",
-                        answers: ["Всі заклади України в одному місці.", "Якщо вашого закладу немає на нашому сайті, значить вас взагалі не існує."]
+                        answers: ["Всі заклади України в одному місці.",
+                                  "Якщо вашого закладу немає на нашому сайті, значить вас взагалі не існує."
+                        ]
                     },
                     {
                         question: "Вартість",

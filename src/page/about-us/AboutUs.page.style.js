@@ -18,7 +18,6 @@ export const Title = styled.div`
 `;
 export const Description = styled.div`
   font-size: 20px;
-  line-height: 26.4px;
   margin: 0 0 20px 0;
   &:last-child {
     margin: 0;
