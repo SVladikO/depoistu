@@ -70,7 +70,7 @@ const SettingPage = () => {
     );
     const onCheckVerification = ({emailVerificationCode}) => {
         setIsLoading(true)
-        fetchData(BE_API.CUSTOMER.PUT_VERIFY_EMAIL(), {email: customer.EMAIL, emailVerificationCode, method: 'put'})
+        fetchData(BE_API.CUSTOMER.PUT_VERIFY_EMAIL(), {email: customer.email, emailVerificationCode, method: 'put'})
             .then(res => {
                 if (res.body.isEmailVerified) {
                     setCustomer({...customer, IS_VERIFIED_EMAIL: true})
@@ -120,13 +120,13 @@ const SettingPage = () => {
     return (
         <>
             {!customer && singInSingUpNotification}
-            {customer && !customer.IS_VERIFIED_EMAIL && emailVerificationNotification}
+            {customer && !customer.isVerifiedEmail && emailVerificationNotification}
             {isLoading && <NotificationLoading/>}
             <LanguagePopup />
             <Wrapper>
                 {/*<CustomerAccountBar fullName='Jhon Smith' phone="+14844731243"/>*/}
                 {/*<RowSplitter height='20px'/>*/}
-                {customer && !!customer.IS_VERIFIED_EMAIL && (
+                {customer && !!customer.isVerifiedEmail && (
                     <>
                         <AccountSettings
                             groupTitle={translate(TR.PAGE.SETTINGS.GROUP_TITLE.ACCOUNTS)}>
@@ -166,7 +166,7 @@ const SettingPage = () => {
                         </AccountSettings>
                     </>)
                 }
-                {customer && !customer.IS_VERIFIED_EMAIL && (
+                {customer && !customer.isVerifiedEmail && (
                     <AccountSettings groupTitle={translate(TR.PAGE.SETTINGS.GROUP_TITLE.ACCOUNTS)}>
                         <SettingMenuRow
                             icon={LogOutIcon}

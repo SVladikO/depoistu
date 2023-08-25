@@ -27,7 +27,7 @@ const CustomerCompaniesPage = () => {
     const [customerCompanies] = useLocalStorageFetch(
         LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES,
         [],
-        BE_API.COMPANY.GET_BY_CUSTOMER_ID(customer?.ID)
+        BE_API.COMPANY.GET_BY_CUSTOMER_ID(customer?.id)
     );
 
     if (!wasWarningShown) {
