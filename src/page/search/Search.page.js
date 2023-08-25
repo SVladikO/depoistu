@@ -95,8 +95,8 @@ const SearchPage = () => {
 
                 {!isLoadingCompanies && companies && !!companies.length && selectedCityId &&
                     companies?.map(company =>
-                        <Link to={`${URL.SEARCH_DETAILS}${company.ID}`} key={company.ID}>
-                            <Company key={company.ID} company={company}/>
+                        <Link to={`${URL.SEARCH_DETAILS}${company.id}`} key={company.id}>
+                            <Company key={company.id} company={company}/>
                         </Link>
                     )
                 }

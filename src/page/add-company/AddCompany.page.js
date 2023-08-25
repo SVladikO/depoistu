@@ -26,9 +26,9 @@ const AddCompany = () => {
     const [newCompanyId, setNewCompanyId] = useState();
 
     const onSubmit = values => {
-        const {name, city_id, street, phone1, phone2, phone3} = values;
+        const {name, cityId, street, phone1, phone2, phone3} = values;
         const schedule = getScheduleAsString(values)
-        const reqObj = {name, city_id, street, phone1, phone2, phone3, schedule};
+        const reqObj = {name, cityId, street, phone1, phone2, phone3, schedule};
 
         setIsLoading(true);
         fetchData(BE_API.COMPANY.POST_CREATE(), reqObj)
