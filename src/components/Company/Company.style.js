@@ -94,6 +94,7 @@ export const Name = styled.div`
 
 export const LocationWrapper = styled.div`
   display: flex;
+  flex-wrap: nowrap;
   width: 100%;
   font-size: 20px;
   justify-content: space-between;
