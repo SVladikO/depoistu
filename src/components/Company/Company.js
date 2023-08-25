@@ -24,7 +24,7 @@ import {
 import {parseSchedule} from "../../utils/company";
 import ScheduleDetails from "../WeekScheduleOutput/WeekScheduleOutput";
 import {CITY_TRANSLATION_IDS} from "../../utils/cities";
-import {translate, TRANSLATION as TR} from "../../utils/translation";
+import {translate, TRANSLATION as TR, truncate} from "../../utils/translation";
 import {ThirdButton} from "../Buttons/ThirdButton";
 
 const Company = (props) => {
@@ -39,13 +39,13 @@ const Company = (props) => {
     const CompanyLocationButton = () => {
         if (props.withMoreInfo) {
             const address = `,${STREET}, ${translate(CITY_TRANSLATION_IDS[CITY_ID])}`
-            let url = `https://www.google.com/maps?q=${encodeURIComponent(address)}`
+            let addressUrl = `https://www.google.com/maps?q=${encodeURIComponent(address)}`
 
             return (
-                <Link to={url} target="_blank" rel="noopener">
+                <Link to={addressUrl} target="_blank" rel="noopener">
                     <ThirdButton>
                         <LocationIcon />
-                        {translate(CITY_TRANSLATION_IDS[CITY_ID])}, {STREET}
+                        {truncate(`${translate(CITY_TRANSLATION_IDS[CITY_ID])}, ${STREET}`, 28)}
                     </ThirdButton>
                 </Link>
             )

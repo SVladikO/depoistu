@@ -12,7 +12,7 @@ import {
     StatusHidden
 } from "./MenuItem.style";
 
-import {Price, Flex, Popup, ToggleCheckbox, Notification} from "../index";
+import {Price, Flex, Popup, ToggleCheckbox} from "../index";
 import {ReactComponent as TimeIcon} from "../../assets/icons/time.svg";
 import {ReactComponent as MeasureIcon} from "../../assets/icons/sss.svg";
 import {ReactComponent as BasketIcon} from "../../assets/icons/basket.svg";
@@ -34,7 +34,7 @@ export const MenuItemDetails = ({
 
     const toggleIsMenuItemVisible = async () => {
         try {
-            await fetchData(BE_API.MENU_ITEM.IS_ITEM_VISIBLE(), {
+            await fetchData(BE_API.MENU_ITEM.CHANGE_IS_VISIBLE(), {
                 method: 'put',
                 id: ID,
                 is_visible: !isVisible,

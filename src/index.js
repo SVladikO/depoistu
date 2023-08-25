@@ -12,8 +12,6 @@ import {checkAccess} from "./utils/security";
 import {showDevelopmentPageUrls} from "./utils/log";
 import {LocalStorage, LOCAL_STORAGE_KEY} from "./utils/localStorage";
 
-document.body.style.backgroundColor = '#d8d8d8';
-
 const container = document.getElementById('root');
 const root = createRoot(container);
 
@@ -25,13 +23,13 @@ store.subscribe(() => {
 })
 
 root.render(
-    <React.StrictMode>
+    <React.Fragment>
         <BrowserRouter>
             <Provider store={store}>
                 <App />
             </Provider>
         </BrowserRouter>
-    </React.StrictMode>
+    </React.Fragment>
 );
 
 // If you want to start measuring performance in your app, pass a function

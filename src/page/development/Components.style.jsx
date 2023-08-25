@@ -16,6 +16,11 @@ export const Space = styled.span`
 `;
 
 export const Header = styled.div`
+  position: fixed;
+  background: white;
+  border-bottom: solid 1px black;
+  width: 100%;
+  z-index: 30;
   display: flex;
   align-items: center;
 `;
