@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {useParams} from 'react-router-dom';
 import {CategoryTitle, Wrapper} from "./SearchDetails.style";
 
-import {Company, NotificationLoading, RowSplitter} from "../../components";
+import {Company, NotificationLoading} from "../../components";
 
 import CategoryMenuView from '../../page-view/category-menu-view/CategoryMenuView'
 
@@ -64,9 +64,7 @@ const SearchDetailsPage = () => {
                 </>
             )
             }
-
             {/*Let's scroll work after click on the last sub category */}
-            <RowSplitter height={'550px'}/>
         </Wrapper>
     );
 };
