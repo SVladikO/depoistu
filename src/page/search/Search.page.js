@@ -9,7 +9,7 @@ import {URL} from "../../utils/config";
 import {BE_API, fetchData} from "../../utils/fetch";
 import {CITY_TRANSLATION_IDS} from "../../utils/cities";
 import {translate, TRANSLATION} from "../../utils/translation";
-import {useLocalStorage, useLocalStorageFetch, useScrollUp} from "../../utils/hook";
+import {useLocalStorage, useScrollUp, useLocalStorageFetch} from "../../utils/hook";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {publishNotificationEvent} from "../../utils/event";
 import {stopLoadingWithDelay} from "../../utils/utils";
@@ -69,10 +69,6 @@ const SearchPage = () => {
             />, [availableFromDatabaseCityIds]);
 
         const regionLabel = translate(TRANSLATION.COMPONENTS.POPUP.CITY.INPUT)
-
-        if (selectedCityId && selectedRegionId && companies.length === 0) {
-            publishNotificationEvent.error('There is no companies in current city');
-        }
 
         return (
             <>
