@@ -163,7 +163,7 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                         <Popup.City
                             availableCityIds={availableAllCityIds}
                             onSelectCity={selectCity(cityId => {
-                                setFieldValue('city_id', cityId)
+                                setFieldValue('cityId', cityId)
                             })}
                             onClose={closeCityPopup}
                         />

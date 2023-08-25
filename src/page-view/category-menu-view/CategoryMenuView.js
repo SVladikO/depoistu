@@ -155,7 +155,7 @@ const CategoryMenuView = ({
                             clickHandler={() => onChangeCategoryWithScroll(category)}
                             itemsAmountPerCategory={
                                 showMenuItemAmount
-                                    ? menuItems.filter(mi => mi.CATEGORY_ID === category.id).length
+                                    ? menuItems.filter(mi => mi.categoryId === category.id).length
                                     : 0
                             }
                         />
