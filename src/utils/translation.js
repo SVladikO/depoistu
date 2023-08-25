@@ -367,6 +367,10 @@ export const TRANSLATION = {
                 ADD_MENU_ITEM: {
                     en: 'Save',
                     ua: "Зберегти",
+                },
+                UPDATE_MENU_ITEM: {
+                    en: 'Update',
+                    ua: "Оновити",
                 }
             },
         },

@@ -98,7 +98,10 @@ export const useLocalStorageFetch = (
                 setValue(res.body)
                 localStorage.setItem(storageKey, JSON.stringify(res.body))
             })
-            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
+            .catch(e => {
+                console.log(1111, e);
+                publishNotificationEvent.error(e.body.errorMessage)
+            })
             .finally(() => stopLoading.allow())
     }, [value, storageKey, dispatch, localStorageState, url]);
 
