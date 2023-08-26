@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Link, useParams} from "react-router-dom";
 
-import {Notification, RowSplitter, PrimaryButton, FetchButton} from "../../components";
+import {RowSplitter, PrimaryButton, FetchButton, ContentContainer} from "../../components";
 
 import {ReactComponent as RemoveIcon} from "../../assets/icons/remove_icon.svg";
 
@@ -13,11 +13,12 @@ import {BE_API} from '../../utils/fetch'
 import {fetchData} from "../../utils/fetch";
 import {initSchedule} from "../../utils/company";
 import {getScheduleAsString} from "../../utils/company";
-import {useRedirectToSettingPage} from "../../utils/hook";
+import {useRedirectToSettingPage, useScrollUp} from "../../utils/hook";
 import {translate, TRANSLATION} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import Popup, {enableScrollOnBody, disableScrollOnBody} from "../../components/Popup/Popup";
 import {PopupButtons, PopupTitle} from "./EditCompany.style";
+import {publishNotificationEvent} from "../../utils/event";
 
 //We need this variable after call LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES) on delete company success
 //when we open customer companies page it will make request to BE and user will have updated list of companies.
@@ -30,6 +31,7 @@ const companyFakeData = {
 
 const EditCompany = () => {
     useRedirectToSettingPage();
+    useScrollUp();
     const companyId = +useParams().companyId;
     const customerCompaniesFromLocalStorage = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES) || [{ID: companyId, ...companyFakeData}];
     const companies = customerCompaniesFromLocalStorage.length ? customerCompaniesFromLocalStorage : [{ID: companyId, ...companyFakeData}];
@@ -39,10 +41,7 @@ const EditCompany = () => {
 
     const [isLoadingUpdate, setIsLoadingUpdate] = useState(false);
     const [isLoadingDelete, setIsLoadingDelete] = useState(false);
-    const [requestUpdateError, setRequestUpdateError] = useState("");
-    const [requestDeleteError, setRequestDeleteError] = useState("");
-    const [isCompanyDeleted, setIsCompanyDeleted] = useState(false);
-    const [isCompanyUpdated, setIsCompanyUpdated] = useState(false);
+    const [wasCompanyDeleted, setWasCompanyDeleted] = useState(false);
     const [isConfirmDeletePopupOpen, setIsConfirmDeletePopupOpen] = useState(false)
 
     const openDeletePopup = () => {
@@ -54,33 +53,27 @@ const EditCompany = () => {
         setIsConfirmDeletePopupOpen(false)
     }
 
-    if (isCompanyDeleted) {
+    if (wasCompanyDeleted) {
         return (
-            <Notification.Success message={`Company was deleted.`}>
+            <ContentContainer>
                 <Link to={URL.CUSTOMER_COMPANIES}>
                     <PrimaryButton isWide>
                         Open my companies page
                     </PrimaryButton>
                 </Link>
-            </Notification.Success>
+            </ContentContainer>
         );
     }
 
-    if(isCompanyUpdated){
-        document.body.style.overflowY = 'auto';
-    }
-
     if (!customerCompaniesFromLocalStorage.length || !companies.find((c => c.ID === companyId))) {
+        publishNotificationEvent.error('No company by this id');
+
         return (
-            <Notification.Error message={'No company by this id'}>
-                <Link to={URL.CUSTOMER_COMPANIES}>Open my companies page.</Link>
-            </Notification.Error>
+            <Link to={URL.CUSTOMER_COMPANIES}>Open my companies page.</Link>
         );
     }
 
     const deleteCompany = () => {
-        setRequestUpdateError('')
-        setRequestDeleteError('')
         setIsLoadingDelete(true)
         closeDeletePopup()
         document.body.style.overflowY = 'auto';
@@ -88,9 +81,10 @@ const EditCompany = () => {
         fetchData(BE_API.COMPANY.DELETE(), {method: 'delete', companyId})
             .then(() => {
                 LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
-                setIsCompanyDeleted(true);
+                publishNotificationEvent.success(translate(TRANSLATION.PAGE.EDIT_COMPANY.NOTIFICATION.COMPANY_WAS_DELETED))
+                setWasCompanyDeleted(true)
             })
-            .catch(e => setRequestDeleteError(e.body.errorMessage))
+            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
             .finally(() => setIsLoadingDelete(false))
     }
 
@@ -111,39 +105,26 @@ const EditCompany = () => {
         const schedule = getScheduleAsString(values)
         const reqObj = {id: companyId, name, city_id, street, phone1, phone2, phone3, schedule, method: 'put'};
         setIsLoadingUpdate(true);
-        setRequestUpdateError('')
-        setRequestDeleteError('')
-        setIsCompanyUpdated(false)
 
         fetchData(BE_API.COMPANY.PUT_UPDATE(), reqObj)
             .then(res => {
                 const updatedCompany = res.body[0];
                 updateCompaniesInLocalStorage(updatedCompany)
 
-                setIsCompanyUpdated(true);
+                publishNotificationEvent.success('Company was updated')
             })
-            .catch(e => setRequestUpdateError(e.body.errorMessage))
+            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
             .finally(() => setIsLoadingUpdate(false))
     }
 
-    if (isCompanyDeleted) {
-        return (
-            <Notification.Success message={translate(TRANSLATION.PAGE.EDIT_COMPANY.NOTIFICATION.COMPANY_WAS_DELETED)}>
-                <Link to={URL.CUSTOMER_COMPANIES}>
-                    <PrimaryButton isWide>
-                        {translate(TRANSLATION.PAGE.EDIT_COMPANY.NOTIFICATION.OPEN_MY_COMPANIES_PAGE)}
-                    </PrimaryButton>
-                </Link>
-            </Notification.Success>
-        );
-    }
 
     if (!customerCompaniesFromLocalStorage.length || !companies.find((c => c.ID === companyId))) {
+        publishNotificationEvent.error(translate(TRANSLATION.PAGE.EDIT_COMPANY.NOTIFICATION.NO_COMPANY_BY_THIS_ID));
+
         return (
-            <Notification.Error message={translate(TRANSLATION.PAGE.EDIT_COMPANY.NOTIFICATION.NO_COMPANY_BY_THIS_ID)}>
-                <Link
-                    to={URL.CUSTOMER_COMPANIES}>{translate(TRANSLATION.PAGE.EDIT_COMPANY.NOTIFICATION.OPEN_MY_COMPANIES_PAGE)}</Link>
-            </Notification.Error>
+            <Link to={URL.CUSTOMER_COMPANIES}>
+                {translate(TRANSLATION.PAGE.EDIT_COMPANY.NOTIFICATION.OPEN_MY_COMPANIES_PAGE)}
+            </Link>
         );
     }
 
@@ -164,7 +145,6 @@ const EditCompany = () => {
 
     return (
         <>
-
             <CompanyView
                 initialValues={getInitialValues(company, schedule)}
                 onSubmit={onSubmit}
@@ -185,11 +165,8 @@ const EditCompany = () => {
                             </PopupButtons>
                         </Popup.Info>
                     )}
-                    {requestUpdateError && <Notification.Error message={requestUpdateError}/>}
-                    {isCompanyUpdated && <Notification.Success message={"Company was updated."}/>}
-                    <EditCompanyButton />
+                    <EditCompanyButton/>
                     <RowSplitter height={'25px'}/>
-                    {requestDeleteError && <Notification.Error message={requestDeleteError}/>}
                     <RowSplitter height={'25px'}/>
                     <DeleteCompanyButton/>
                 </>

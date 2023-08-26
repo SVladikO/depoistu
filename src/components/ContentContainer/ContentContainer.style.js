@@ -5,7 +5,6 @@ export const ContentContainerDefault = css`
   ${SHADOW};
   width: 100%;
   background: ${COLOR.ACCENT4};
-  text-align: center;
   padding: 10px;
   border-radius: ${p => p.borderRadius ? p.borderRadius : BORDER_RADIUS.SECOND};
   margin: 0 0 15px;

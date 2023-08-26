@@ -6,6 +6,10 @@ export const LANGUAGE_KEYS = {
 }
 
 export const truncate = (text, availableLength = 1) => {
+    if (text.length < availableLength) {
+        return text;
+    }
+
     return text.substring(0, availableLength) + ' ...';
 };
 
@@ -29,8 +33,22 @@ export const TRANSLATION = {
         en: 'DEPOISTU'
     },
     INTRODUCTION: {
-        ua: 'Меню всіх кафе та ресторанів України має бути в одному місці.Знайдіть заклад своєї мрії та допоможи іншим. Розкажи адміністраторам своїх улюблених закладів про наш сайт.',
-        en: 'The menu of all cafes and restaurants of Ukraine should be in one place. Find the bookmark of your dreams and help others. Tell the administrators of your favorite bookmarks about our site.'
+        BUTTON: {
+            ua: 'Далі',
+            en: 'Continue'
+        },
+        INTRODUCTION_MAIN: {
+            ua: 'Меню всіх закладів харчування України має бути в  одному місці. На цьому сайті.',
+            en: 'The menu of all cafes and restaurants of Ukraine should be in one place. On this site.'
+        },
+        INTRODUCTION_HELP: {
+            ua: 'Знайомтесь з меню до або під час візиту.',
+            en: 'Familiarize yourself with the menu before or during your visit.',
+        },
+        INTRODUCTION_TELL: {
+            ua: 'Ми не показуємо в пошуку міста в яких ще не зареєструвались заклади.',
+            en: 'We don`t show in the search engine cities in which establishments have not yet been registered.'
+        }
     },
     VALIDATION: {
         REQUIRED: {
@@ -251,8 +269,8 @@ export const TRANSLATION = {
                 en: 'Your companies'
             },
             WARNING: {
-                ua: "Не додавайте компанії заради розваги. Не витрачайте ваш і наш час дарма.",
-                en: "Don't add companies for fun. Don't waste your time and ours."
+                ua: "Не додавайте компанії заради розваги. Інакше будемо змушені заблокувати ваш аккаунт. Не витрачайте ваш і наш час дарма.",
+                en: "Don't add companies for fun as we will block your account.  Don't waste your time and ours."
             },
             BUTTON: {
                 COMPANY: {
@@ -349,6 +367,10 @@ export const TRANSLATION = {
                 ADD_MENU_ITEM: {
                     en: 'Save',
                     ua: "Зберегти",
+                },
+                UPDATE_MENU_ITEM: {
+                    en: 'Update',
+                    ua: "Оновити",
                 }
             },
         },
@@ -531,6 +553,12 @@ export const TRANSLATION = {
                 en: "Choose the city"
             },
         },
+        FOOTER: {
+            BACK_TO_TOP_BUTTON:{
+                ua: 'Догори',
+                en: 'Back to top'
+            }
+        },
         SIGN_IN: {
             TOP_TITLE: {
                 ua: "Вхiд",
@@ -626,8 +654,8 @@ export const TRANSLATION = {
     },
     NOTIFICATION: {
         LOADING: {
-            ua: "Завантаження...",
-            en: "Loading..."
+            ua: "Завантаження ...",
+            en: "Loading ..."
         },
     },
     BOTTOM_MENU: {
