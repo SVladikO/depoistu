@@ -89,7 +89,7 @@ export const ROUTER = {
     },
     SEARCH_DETAILS: {
         URL: URL.SEARCH_DETAILS,
-        PARAMS: '/:companyId',
+        PARAMS: '/:companyId/:companyName',
         TITLE: translate(TRANSLATION.PAGE.COMPANY_DETAILS.TOP_TITLE),
         page: SearchDetailsPage,
         showBottomMenu: true,

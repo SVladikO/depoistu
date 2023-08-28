@@ -91,7 +91,7 @@ const SearchPage = () => {
 
                 {!isLoadingCompanies && companies && !!companies.length && selectedCityId &&
                     companies?.map(company =>
-                        <Link to={`${URL.SEARCH_DETAILS}${company.ID}`} key={company.ID}>
+                        <Link to={`${URL.SEARCH_DETAILS}${company.ID}/${company.NAME.split(' ').join('')}`} key={company.ID}>
                             <Company key={company.ID} company={company}/>
                         </Link>
                     )
