@@ -657,6 +657,10 @@ export const TRANSLATION = {
             ua: "Завантаження ...",
             en: "Loading ..."
         },
+        BACKEND_DOWN: {
+            ua: 'Сервер не відповідає',
+            en: 'Server is not responding'
+        },
     },
     BOTTOM_MENU: {
         SEARCH_TAB: {

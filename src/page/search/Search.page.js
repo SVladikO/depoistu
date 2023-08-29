@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-import React, {useMemo, useState} from "react";
+import React, {useMemo, useState, useEffect} from "react";
 
 import {ReactComponent as LocationIcon} from "../../assets/icons/location.svg";
 
@@ -18,6 +18,8 @@ const SearchPage = () => {
         useScrollUp();
         const [isLoadingCityIds, setIsLoadingCityIds] = useState(false);
         const [isLoadingCompanies, setIsLoadingCompanies] = useState(false);
+        const [backendStatus, setBackendStatus] = useState('');
+
 
         const [selectedCityId, setSelectedCity] = useLocalStorage(LOCAL_STORAGE_KEY.COMPANY_SEARCH_SELECTED_CITY_ID, '');
         const [selectedRegionId, setSelectedRegion] = useLocalStorage(LOCAL_STORAGE_KEY.COMPANY_SEARCH_SELECTED_REGION_ID, '');
@@ -32,6 +34,18 @@ const SearchPage = () => {
             () => !selectedCityId
         );
 
+
+        useEffect(() => {
+            fetchData(BE_API.COMPANY.GET_AVAILABLE_CITIES())
+                .then(res => {
+                    setBackendStatus(res.status)
+                })
+                .catch(e => {
+                    setBackendStatus(e.status)
+                })
+        }, [backendStatus]);
+
+
         const onSelectCity = ([city, region]) => {
             LocalStorage.remove(LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT)
             setSelectedCity(city);
@@ -42,23 +56,28 @@ const SearchPage = () => {
         const onCloseCityPopup = () => setShowCityPopup(false);
 
         const onOpenCityPopup = () => {
-            setIsLoadingCityIds(true);
+            if(backendStatus !== 200) {
+                publishNotificationEvent.error(translate(TRANSLATION.NOTIFICATION.BACKEND_DOWN))
+            }else {
+                setIsLoadingCityIds(true);
 
-            const cityLoadingDelay = stopLoadingWithDelay([() => setIsLoadingCityIds(false)]);
-            const showCityPopupDelay = stopLoadingWithDelay([() => setShowCityPopup(true)]);
+                const cityLoadingDelay = stopLoadingWithDelay([() => setIsLoadingCityIds(false)]);
+                const showCityPopupDelay = stopLoadingWithDelay([() => setShowCityPopup(true)]);
 
-            fetchData(BE_API.COMPANY.GET_AVAILABLE_CITIES())
-                .then(res => {
-                    showCityPopupDelay.allow()
-                    setAvailableFromDatabaseCityIds(res.body);
-                })
-                .catch(e => {
-                    publishNotificationEvent.error(e.body.errorMessage)
-                    showCityPopupDelay.onError()
-                })
-                .finally(() => {
-                    cityLoadingDelay.allow();
-                })
+                fetchData(BE_API.COMPANY.GET_AVAILABLE_CITIES())
+                    .then(res => {
+                        showCityPopupDelay.allow()
+                        setAvailableFromDatabaseCityIds(res.body);
+                    })
+                    .catch(e => {
+                        publishNotificationEvent.error(e.body.errorMessage)
+                        showCityPopupDelay.onError()
+                    })
+                    .finally(() => {
+                        cityLoadingDelay.allow();
+                    })
+            }
+
         }
 
         const cityPopup = useMemo(() =>
@@ -72,6 +91,7 @@ const SearchPage = () => {
 
         return (
             <>
+                {backendStatus !== 200 && publishNotificationEvent.error(translate(TRANSLATION.NOTIFICATION.BACKEND_DOWN))}
                 <ContentContainer>
                     <PInput
                         handleClick={onOpenCityPopup}
@@ -96,7 +116,7 @@ const SearchPage = () => {
                         </Link>
                     )
                 }
-                {showCityPopup && cityPopup}
+                {backendStatus !== 200 ? publishNotificationEvent.error(translate(TRANSLATION.NOTIFICATION.BACKEND_DOWN)) : showCityPopup && cityPopup}
             </>
         );
     }
