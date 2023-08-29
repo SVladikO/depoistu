@@ -23,7 +23,8 @@ const CustomerCompaniesPage = () => {
     const [customer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
     const isLoading = useSelector(state => state.request.value.isLoading);
     const [wasWarningShown, setWasWarningShown] = useLocalStorage(LOCAL_STORAGE_KEY.WAS_COMPANY_CREATION_WARNING_SHOW, false)
-    const [companyIdForQRCode, setCompanyIdForQRCode] = useState();
+    const [companyIdForQRCode, setCompanyIdForQRCode] = useState('');
+    const [companyNameForQRCode, setCompanyNameForQRCode] = useState('');
     const [customerCompanies] = useLocalStorageFetch(
         LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES,
         [],
@@ -39,11 +40,23 @@ const CustomerCompaniesPage = () => {
         return <NotificationLoading/>;
     }
 
-    const showQRCode = companyId => () => setCompanyIdForQRCode(companyId);
+    const showQRCode = (companyId, companyName) => () => {
+        setCompanyIdForQRCode(companyId)
+        setCompanyNameForQRCode(companyName)
+    }
+
+    const onClosePopup = () => () => {
+        setCompanyIdForQRCode('')
+        setCompanyNameForQRCode('')
+    }
 
     return (
         <>
-            <PopupQRCode companyId={companyIdForQRCode} onClose={() => setCompanyIdForQRCode('')}/>
+            <PopupQRCode
+                companyId={companyIdForQRCode}
+                companyName={companyNameForQRCode}
+                onClose={onClosePopup}
+            />
             {customerCompanies.map(
                 company =>
                     <Company company={company} key={company.ID}>
@@ -54,7 +67,7 @@ const CustomerCompaniesPage = () => {
                                     {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.COMPANY)}
                                 </PrimaryButton>
                             </Link>
-                            <QRCodeButton onClick={showQRCode(company.ID)}><QRCodeIcon/></QRCodeButton>
+                            <QRCodeButton onClick={showQRCode(company.ID, company.NAME)}><QRCodeIcon/></QRCodeButton>
                             <PrimaryButton
                                 isWide
                                 style={{width: '140px'}}
@@ -80,7 +93,7 @@ const CustomerCompaniesPage = () => {
     )
 };
 
-const PopupQRCode = ({companyId, onClose}) => {
+const PopupQRCode = ({companyId, companyName, onClose}) => {
     const [qrCodeGenerationError, setQrCodeGenerationError] = useState('');
     const [src, setSrc] = useState('');
 
@@ -88,7 +101,7 @@ const PopupQRCode = ({companyId, onClose}) => {
         return;
     }
 
-    const editMenuUrl = `${window.location.origin}/${companyId}`;
+    const editMenuUrl = `${window.location.origin}/${companyId}/${companyName}`;
 
     QRCode.toDataURL(editMenuUrl)
         .then(url => setSrc(url))
