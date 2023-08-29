@@ -10,7 +10,7 @@ import {ReactComponent as EditIcon} from "../../assets/icons/edit.svg";
 
 import {BE_API} from '../../utils/fetch'
 import {ROUTER, URL} from "../../utils/config";
-import {translate, TRANSLATION} from "../../utils/translation";
+import {cyrillicToLatin, translate, TRANSLATION} from "../../utils/translation";
 import {ReactComponent as QRCodeIcon} from "../../assets/icons/qr_code.svg";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {useLocalStorage, useLocalStorageFetch, useRedirectToSettingPage, useScrollUp} from "../../utils/hook";
@@ -45,7 +45,7 @@ const CustomerCompaniesPage = () => {
         setCompanyNameForQRCode(companyName)
     }
 
-    const onClosePopup = () => () => {
+    const onClosePopup = () => {
         setCompanyIdForQRCode('')
         setCompanyNameForQRCode('')
     }
@@ -101,7 +101,8 @@ const PopupQRCode = ({companyId, companyName, onClose}) => {
         return;
     }
 
-    const editMenuUrl = `${window.location.origin}/${companyId}/${companyName}`;
+    const latinCompanyName = cyrillicToLatin(companyName).split(' ').join('_')
+    const editMenuUrl = `${window.location.origin}/${companyId}/${latinCompanyName}`;
 
     QRCode.toDataURL(editMenuUrl)
         .then(url => setSrc(url))

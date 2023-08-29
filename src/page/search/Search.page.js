@@ -8,7 +8,7 @@ import {PInput, ContentContainer, Company, NotificationLoading, Popup} from "../
 import {URL} from "../../utils/config";
 import {BE_API, fetchData} from "../../utils/fetch";
 import {CITY_TRANSLATION_IDS} from "../../utils/cities";
-import {translate, TRANSLATION} from "../../utils/translation";
+import {cyrillicToLatin, translate, TRANSLATION} from "../../utils/translation";
 import {useLocalStorage, useScrollUp, useLocalStorageFetch} from "../../utils/hook";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {publishNotificationEvent} from "../../utils/event";
@@ -90,11 +90,15 @@ const SearchPage = () => {
                 {isLoadingCompanies && <NotificationLoading>Loading companies ...</NotificationLoading>}
 
                 {!isLoadingCompanies && companies && !!companies.length && selectedCityId &&
-                    companies?.map(company =>
-                        <Link to={`${URL.SEARCH_DETAILS}${company.ID}/${company.NAME.split(' ').join('')}`} key={company.ID}>
-                            <Company key={company.ID} company={company}/>
-                        </Link>
-                    )
+                    companies?.map(company => {
+                        const latinCompanyName = cyrillicToLatin(company.NAME).split(' ').join('_')
+
+                        return (
+                                <Link to={`${URL.SEARCH_DETAILS}${company.ID}/${latinCompanyName}`}
+                                  key={company.ID}>
+                                <Company key={company.ID} company={company} />
+                            </Link>
+                            )})
                 }
                 {showCityPopup && cityPopup}
             </>
