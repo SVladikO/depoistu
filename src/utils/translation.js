@@ -297,16 +297,6 @@ export const TRANSLATION = {
                     en: 'Add company',
                     ua: "Додати компанію"
                 }
-            },
-            NOTIFICATION: {
-                SUCCESS: {
-                    ua: 'Було створено компанію',
-                    en: 'Company was created'
-                },
-                WARNING: {
-                    en: 'Without menu this company won’t be shown in search',
-                    ua: 'Без меню ця компанія не буде видима в пошуку'
-                }
             }
         },
         EDIT_MENU: {
@@ -334,16 +324,6 @@ export const TRANSLATION = {
                 EDIT_MENU_ITEM: {
                     en: 'Save changes',
                     ua: "Зберегти зміни",
-                }
-            },
-            NOTIFICATION: {
-                UPDATED: {
-                    en: 'Menu item was updated.',
-                    ua: 'Пункт меню було змінено.'
-                },
-                DELETED: {
-                    en: 'Menu item was deleted',
-                    ua: 'Пункт меню видалено'
                 }
             }
         },
@@ -391,12 +371,6 @@ export const TRANSLATION = {
                 ADD_MENU_ITEM: {
                     en: 'Save',
                     ua: "Зберегти",
-                }
-            },
-            NOTIFICATION: {
-                CREATED: {
-                    en: 'Menu item was created',
-                    ua: 'Був стровений пункт меню'
                 }
             }
         },
@@ -609,12 +583,6 @@ export const TRANSLATION = {
             ACCOUNT_CONFIRMATION: {
                 ua: "Ви зареєстрованi?",
                 en: "You don’t have an account?"
-            },
-            NOTIFICATION: {
-                ERROR: {
-                    en: "Wrong credentials. Customer doesn't exist",
-                    ua: "Неправильні облікові данні. Клієнта не існує"
-                }
             }
         },
         FORGOT_PASSWORD: {
@@ -689,10 +657,6 @@ export const TRANSLATION = {
         }
     },
     NOTIFICATION: {
-        LOADING: {
-            ua: "Завантаження ...",
-            en: "Loading ..."
-        },
         LOADING_COMPANY: {
             ua: 'Завантажується компанія...',
             en: 'Loading company...'
@@ -716,6 +680,30 @@ export const TRANSLATION = {
         CHANGE_PASSWORD: {
             ua: 'Пароль було змінено',
             en: 'Password was changed'
+        },
+        SUCCESS_ADD_COMPANY: {
+            ua: 'Було створено компанію',
+            en: 'Company was created'
+        },
+        WARNING_MENU_ABSENCE: {
+            en: 'Without menu this company won’t be shown in search',
+            ua: 'Без меню ця компанія не буде видима в пошуку'
+        },
+        UPDATED_MENU_ITEM: {
+            en: 'Menu item was updated.',
+            ua: 'Пункт меню було змінено.'
+        },
+        DELETED_MENU_ITEM: {
+            en: 'Menu item was deleted',
+            ua: 'Пункт меню видалено'
+        },
+        CREATED_MENU_ITEM: {
+            en: 'Menu item was created',
+            ua: 'Був стровений пункт меню'
+        },
+        ERROR_SIGN_UP: {
+            en: "Wrong credentials. Customer doesn't exist",
+            ua: "Неправильні облікові данні. Клієнта не існує"
         }
     },
     BOTTOM_MENU: {

@@ -43,7 +43,7 @@ const EditMenuItemPage = () => {
             .then(res => {
                 const updatedMenuItem = res.body[0]
                 LocalStorage.set(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT, updatedMenuItem);
-                publishNotificationEvent.success(translate(TRANSLATION.PAGE.EDIT_MENU_ITEM.NOTIFICATION.UPDATED))
+                publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.UPDATED_MENU_ITEM))
             })
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))
             .finally(() => setIsLoadingUpdate(false))
@@ -55,7 +55,7 @@ const EditMenuItemPage = () => {
         fetchData(BE_API.MENU_ITEM.DELETE(), {method: 'delete', id: menuItemCandidateToEdit.ID})
             .then(() => {
                 setIsMenuItemDeleted(true);
-                publishNotificationEvent.success(translate(TRANSLATION.PAGE.EDIT_MENU_ITEM.NOTIFICATION.DELETED))
+                publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.DELETED_MENU_ITEM))
             })
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))
             .finally(() => setTimeout(() => setIsLoadingDelete(false), 1000))

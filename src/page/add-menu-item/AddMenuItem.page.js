@@ -35,7 +35,7 @@ const AddMenuItemPage = () => {
         }
 
         fetchData(BE_API.MENU_ITEM.POST_CREATE(), requestObj)
-            .then(() => publishNotificationEvent.success(translate(TRANSLATION.PAGE.ADD_MENU_ITEM.NOTIFICATION.CREATED)))
+            .then(() => publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.CREATED_MENU_ITEM)))
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))
             .finally(() => setIsLoading(false))
     }
