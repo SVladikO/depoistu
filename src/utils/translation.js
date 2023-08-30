@@ -657,7 +657,12 @@ export const TRANSLATION = {
             ua: "Завантаження ...",
             en: "Loading ..."
         },
+        NO_COMPANY: {
+            ua: 'Нема зареєстрованих закладів',
+            en: 'No companies in db yet'
+        },
     },
+
     BOTTOM_MENU: {
         SEARCH_TAB: {
             ua: "Пошук",

@@ -32,6 +32,7 @@ const SearchPage = () => {
             () => !selectedCityId
         );
 
+
         const onSelectCity = ([city, region]) => {
             LocalStorage.remove(LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT)
             setSelectedCity(city);
@@ -51,6 +52,9 @@ const SearchPage = () => {
                 .then(res => {
                     showCityPopupDelay.allow()
                     setAvailableFromDatabaseCityIds(res.body);
+                    if (availableFromDatabaseCityIds.length === 0){
+                        publishNotificationEvent.error(translate(TRANSLATION.NOTIFICATION.NO_COMPANY));
+                    }
                 })
                 .catch(e => {
                     publishNotificationEvent.error(e.body.errorMessage)
@@ -59,6 +63,7 @@ const SearchPage = () => {
                 .finally(() => {
                     cityLoadingDelay.allow();
                 })
+
         }
 
         const cityPopup = useMemo(() =>
@@ -72,6 +77,7 @@ const SearchPage = () => {
 
         return (
             <>
+
                 <ContentContainer>
                     <PInput
                         handleClick={onOpenCityPopup}
@@ -96,7 +102,9 @@ const SearchPage = () => {
                         </Link>
                     )
                 }
-                {showCityPopup && cityPopup}
+                {!selectedCityId && !selectedRegionId ?
+                    publishNotificationEvent.error(translate(TRANSLATION.NOTIFICATION.NO_COMPANY))
+                    : (showCityPopup && cityPopup)}
             </>
         );
     }
