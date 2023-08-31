@@ -1,13 +1,25 @@
 import React from 'react';
+import {Wrapper, Title, Description} from "./AboutUs.page.style";
+
 import {useScrollUp} from "../../utils/hook";
+import {translate, TRANSLATION} from "../../utils/translation";
 
 const AboutUsPage = () => {
     useScrollUp();
 
     return (
-        <div>
-            We are the best.
-        </div>
+        <Wrapper>
+            {translate(TRANSLATION.PAGE.ABOUT_US.CONTENT).map(
+                el => {
+                    return (
+                        <>
+                            <Title>{el.question}</Title>
+                            <Description>{el.answers.map(answer => <div>{answer}</div>)}</Description>
+                        </>
+                    )
+                }
+            )}
+        </Wrapper>
     );
 };
 
