@@ -6,13 +6,19 @@ import {NotificationFactory, FixedWrapper} from "../../components";
 
 import {EVENT_TYPE} from "../../utils/event";
 import {getRandom} from "../../utils/utils";
+import {translate, TRANSLATION} from "../../utils/translation";
 
 const NotificationView = () => {
     const [notifications, setNotifications] = useState([]);
 
     useEffect(() => {
         document.addEventListener(EVENT_TYPE.NOTIFICATION, e => {
-            const {type, message} = e.detail;
+            let {type, message} = e.detail;
+            if (message === 'Unable to make request.') {
+                message = translate(TRANSLATION.NOTIFICATION.UNABLE_TO_MAKE_REQUEST);
+            }else if(message === 'Invalid Token'){
+                message = translate(TRANSLATION.NOTIFICATION.WRONG_TOKEN);
+            }
             console.log({key: getRandom(), type, message})
             setNotifications(prevState => [...prevState, {key: getRandom(), type, message}])
         })

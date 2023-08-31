@@ -665,6 +665,7 @@ export const TRANSLATION = {
             en: 'Loading menu...',
             ua: 'Завантажується меню...'
         },
+
         LOADING_AVAILABLE_CITIES: {
             en: 'Loading available cities ...',
             ua: 'Завантажуються доступні міста...'
@@ -688,6 +689,14 @@ export const TRANSLATION = {
         WARNING_MENU_ABSENCE: {
             en: 'Without menu this company won’t be shown in search',
             ua: 'Без меню ця компанія не буде видима в пошуку'
+        },
+        WRONG_TOKEN: {
+            ua: 'Невірний токен',
+            en: 'Invalid token'
+        },
+        UNABLE_TO_MAKE_REQUEST: {
+            ua: 'Неможливо зробити запит',
+            en: 'Unable to make a request'
         },
         UPDATED_MENU_ITEM: {
             en: 'Menu item was updated.',

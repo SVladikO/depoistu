@@ -1,12 +1,14 @@
 import {BE_DOMAIN} from "./config";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
+import {publishNotificationEvent} from "./event";
+import {translate, TRANSLATION} from "./translation";
 
 // it's function because we take data from localStorage
 const getOptions = body => {
     const defaultOption = {
         headers: {
             'Content-Type': 'application/json',
-            "x-access-token": LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER)?.token,
+            "x-access-token": LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER)?.token && publishNotificationEvent.error(translate(TRANSLATION.NOTIFICATION.WRONG_TOKEN)),
             "current-language": LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE).language.siteLanguage,
         }
     };
