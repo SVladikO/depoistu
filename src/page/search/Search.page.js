@@ -52,8 +52,9 @@ const SearchPage = () => {
                 .then(res => {
                     showCityPopupDelay.allow()
                     setAvailableFromDatabaseCityIds(res.body);
-                    if (availableFromDatabaseCityIds.length === 0){
+                    if (!availableFromDatabaseCityIds.length){
                         publishNotificationEvent.error(translate(TRANSLATION.NOTIFICATION.NO_COMPANY));
+                        showCityPopupDelay.onError();
                     }
                 })
                 .catch(e => {
