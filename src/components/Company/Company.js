@@ -8,6 +8,7 @@ import "swiper/css/pagination";
 
 import {ReactComponent as LocationIcon} from "../../assets/icons/location.svg";
 import {ReactComponent as PhoneIcon} from "../../assets/icons/phone.svg";
+import {ReactComponent as TimeIcon} from "../../assets/icons/time.svg";
 import {
     Wrapper,
     ImageSection,
@@ -53,8 +54,8 @@ const Company = (props) => {
 
         return (
             <LocationWrapper>
-            {translate(CITY_TRANSLATION_IDS[CITY_ID])}, {STREET}
-        </LocationWrapper>
+                <LocationIcon/>{translate(CITY_TRANSLATION_IDS[CITY_ID])}, {STREET}
+            </LocationWrapper>
         );
     }
 
@@ -81,10 +82,10 @@ const Company = (props) => {
         <Schedule>
             {schedule.isCompanyOpenNow
                 ? <>
-                    <OpenStatus>{translate(TR.COMPONENTS.COMPANY.STATUS_OPEN)}</OpenStatus>
-                    <Closes><span>{translate(TR.COMPONENTS.COMPANY.TILL)} {schedule.currentDay.to}</span></Closes>
+                    <OpenStatus><TimeIcon/>{translate(TR.COMPONENTS.COMPANY.STATUS_OPEN)}</OpenStatus>
+                    <Closes><span>{schedule.currentDay.to}</span></Closes>
                 </>
-                : <CloseStatus>{translate(TR.COMPONENTS.COMPANY.STATUS_CLOSE)}</CloseStatus>
+                : <CloseStatus><TimeIcon/>{translate(TR.COMPONENTS.COMPANY.STATUS_CLOSE)}</CloseStatus>
             }
         </Schedule>
     )
