@@ -6,7 +6,8 @@ import {fetchData} from "./fetch";
 
 import {URL} from "./config";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
-import {startLoading, stopLoading} from "../features/request/requestSlice";
+import {publishNotificationEvent} from "./event";
+import {stopLoadingWithDelay} from "./utils";
 
 export const useLocalStorage = (storageKey, initialState) => {
     const localStorageState = LocalStorage.get(storageKey);
@@ -25,6 +26,12 @@ export const useLocalStorage = (storageKey, initialState) => {
     return [value, set];
 };
 
+/**
+ * Let us hide elements on scroll.
+ *
+ * @param id
+ * @param top
+ */
 export const useHideOnScroll = (id, top) => {
     let prevScrollpos = window.pageYOffset;
 
@@ -47,6 +54,11 @@ export const useHideOnScroll = (id, top) => {
     }, [id, top])
 }
 
+/**
+ * Redirect to settings page is customer isn't signed in.
+ * That's for security reasons on frontend side.
+ *
+ */
 export const useRedirectToSettingPage = () => {
     const [customer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
     const navigate = useNavigate();
@@ -67,33 +79,31 @@ export const useLocalStorageFetch = (
     storageKey,
     initialState,
     url,
-    setError = () => {
-    },
-    customCondition = () => {
-    }
+    setLoading = () => {},
+    customCondition = () => {}
 ) => {
     const localStorageState = LocalStorage.get(storageKey);
     const [value, setValue] = useState(localStorageState ?? initialState);
     const dispatch = useDispatch();
-
     useEffect(() => {
         if (localStorageState || customCondition(value)) {
             return;
         }
 
-        dispatch(startLoading());
+        setLoading(true)
+        const stopLoading = stopLoadingWithDelay([() => setLoading(false)])
 
         fetchData(url)
             .then(res => {
                 setValue(res.body)
                 localStorage.setItem(storageKey, JSON.stringify(res.body))
-                setTimeout(() => dispatch(stopLoading()), 1000)
             })
             .catch(e => {
-                dispatch(stopLoading());
-                setError(e.body.message);
+                console.log(1111, e);
+                publishNotificationEvent.error(e.body.errorMessage)
             })
-    }, [value, storageKey, dispatch, localStorageState, url, setError]);
+            .finally(() => stopLoading.allow())
+    }, [value, storageKey, dispatch, localStorageState, url]);
 
     return [value, setValue];
 };

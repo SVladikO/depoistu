@@ -1,8 +1,12 @@
 import React from 'react';
 import {Wrapper, Title, Description} from "./AboutUs.page.style";
+
+import {useScrollUp} from "../../utils/hook";
 import {translate, TRANSLATION} from "../../utils/translation";
 
 const AboutUsPage = () => {
+    useScrollUp();
+
     return (
         <Wrapper>
             {translate(TRANSLATION.PAGE.ABOUT_US.CONTENT).map(

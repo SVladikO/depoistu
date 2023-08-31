@@ -2,7 +2,7 @@ import {FromToTime} from "../index";
 import React from "react";
 import {weekDayNames} from "../../utils/company";
 
-function WeekScheduleInput({values, handleChange}) {
+function WeekScheduleInput({values, handleChange, setFieldValue}) {
     const prefixes = [ 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
     return prefixes.map((key, index) =>
@@ -12,6 +12,7 @@ function WeekScheduleInput({values, handleChange}) {
             dayName={weekDayNames[index]}
             values={values}
             handleChange={handleChange}
+            setFieldValue={setFieldValue}
         />
     )
 }
