@@ -1,6 +1,5 @@
 import React, {memo, useEffect, useMemo, useState} from 'react';
-import {Scrollbar, FreeMode} from 'swiper';
-import {Swiper, SwiperSlide} from 'swiper/react';
+import {SwiperSlide} from 'swiper/react';
 import {Link, useNavigate} from "react-router-dom";
 
 import "swiper/css";
@@ -10,12 +9,11 @@ import 'swiper/css/scrollbar';
 import {
     TopCategoryWrapper,
     TopCategoryItem,
-    SliderStyle,
     BottomLine,
-    Wrapper
+    SubCategoryWrapper
 } from "./CategoryMenuView.style";
 
-import {CategoryItem, MenuItem, FetchButton, RowSplitter} from "../../components";
+import {CategoryItem, MenuItem, FetchButton, RowSplitter, HorizontalSwiper} from "../../components";
 import {CategoryTitle} from "../../page/search-details/SearchDetails.style";
 
 import {URL} from "../../utils/config";
@@ -24,12 +22,18 @@ import {getTopCategories} from '../../utils/category';
 import {translate, TRANSLATION} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {CATEGORY_MAPPER, getTopCategoryId, getCategoryUniqueIds} from '../../utils/category';
+import {
+    enableScrollListener,
+    MenuHeader,
+    generateTagId,
+    getCategoryIndex,
+    disableScrollListener,
+    getIsScrollDisabled
+} from "./utils";
 
 const CATEGORY_TITLE_CLASS_NAME = 'CATEGORY_TITLE_CLASS_NAME';
 const CATEGORY_ROW_HEIGHT = 100;
-const CATEGORY_ID_PREFIX = 'category_'
-const generateTagId = ({id, index, topCategoryId}) => `${CATEGORY_ID_PREFIX}${id}_${index}_${topCategoryId}`;
-const getCategoryIndex = (categoryId, uniqueCategories) => uniqueCategories.find(uc => uc.id === categoryId);
+
 
 const CategoryMenuView = ({
                               menuItems = [],
@@ -134,38 +138,41 @@ const CategoryMenuView = ({
     const TopCategories = useMemo(() => (<div>
         <BottomLine/>
         <TopCategoryWrapper>
-            {topCategories.map((tc, index) => (<TopCategoryItem
-                key={tc.key}
-                isSelected={index === selectedCategory.topCategoryId}
-                onClick={onChangeTopCategory(index)}
-            >
-                {translate(tc.translationKey)}
-            </TopCategoryItem>))}
+            {topCategories.map((tc, index) => (
+                <TopCategoryItem
+                    key={tc.key}
+                    isSelected={index === selectedCategory.topCategoryId}
+                    onClick={onChangeTopCategory(index)}
+                >
+                    {translate(tc.translationKey)}
+                </TopCategoryItem>))}
         </TopCategoryWrapper>
     </div>), [selectedCategory, topCategories])
 
     const SubCategories = useMemo(() => (
-        <SwiperWrapper selectedCategory={selectedCategory}>
-            {
-                uniqueCategories?.map(category => (
-                    <SwiperSlide key={category.id}>
-                        <CategoryItem
-                            category={CATEGORY_MAPPER[category.id]}
-                            isSelected={selectedCategory.id === category.id}
-                            clickHandler={() => onChangeCategoryWithScroll(category)}
-                            itemsAmountPerCategory={
-                                showMenuItemAmount
-                                    ? menuItems.filter(mi => mi.categoryId === category.id).length
-                                    : 0
-                            }
-                        />
-                    </SwiperSlide>
-                ))
-            }
-        </SwiperWrapper>
+        <SubCategoryWrapper className="category_menu_row_wrapper">
+            <HorizontalSwiper selectedCategory={selectedCategory}>
+                {
+                    uniqueCategories?.map(category => (
+                        <SwiperSlide key={category.id}>
+                            <CategoryItem
+                                category={CATEGORY_MAPPER[category.id]}
+                                isSelected={selectedCategory.id === category.id}
+                                clickHandler={() => onChangeCategoryWithScroll(category)}
+                                itemsAmountPerCategory={
+                                    showMenuItemAmount
+                                        ? menuItems.filter(mi => mi.categoryId === category.id).length
+                                        : 0
+                                }
+                            />
+                        </SwiperSlide>
+                    ))
+                }
+            </HorizontalSwiper>
+        </SubCategoryWrapper>
     ), [uniqueCategories, selectedCategory]);
 
-    const AllMenuItems = useMemo(() => {
+    const MenuItemComponents = useMemo(() => {
         const ids = [];
 
         if (!uniqueCategories?.length) {
@@ -202,20 +209,19 @@ const CategoryMenuView = ({
             })?.flat()
     }, [menuItems, uniqueCategories]);
 
+    // *** render ***
     return (
         <>
             {
                 !!menuItems.length && (
-                    <PositionWrapper>
-                        {/* Don't delete id and className as we use them to scroll handle */}
-                        <Wrapper id="category-menu-row" className="category-menu-row-wrapper">
-                            {TopCategories}
-                            {SubCategories}
-                        </Wrapper>
-                    </PositionWrapper>
+                    <MenuHeader>
+                        {TopCategories}
+                        {SubCategories}
+                    </MenuHeader>
                 )
             }
-            {AllMenuItems}
+            <RowSplitter height={'100px'}/>
+            {MenuItemComponents}
             {
                 editPage &&
                 <>
@@ -229,79 +235,5 @@ const CategoryMenuView = ({
         </>
     )
 }
-
-const PositionWrapper = ({children}) => (
-    <div style={{position: 'sticky', top: -1, zIndex: 10}}>
-        <div style={{position: 'relative', top: 0, zIndex: 10, left: 0, right: 0}}>
-            <div style={{position: 'absolute', top: 0, zIndex: 10, left: -10, right: -10}}>
-                {children}
-            </div>
-            <RowSplitter height={'96px'}/>
-        </div>
-    </div>
-);
-
-const SwiperWrapper = ({selectedCategory, children}) => {
-    const [swiper, setSwiper] = useState(null);
-
-    const slideTo = category => {
-        // we should let 0 pass if too.
-        if (swiper && (category?.index || category?.index === 0)) {
-            swiper.slideTo(category.index)
-        }
-    };
-
-    useEffect(() => {
-        slideTo(selectedCategory)
-    }, [selectedCategory])
-
-    return (
-        <SliderStyle>
-            {/*https://studio.swiperjs.com/play*/}
-            <Swiper
-                modules={[Scrollbar, FreeMode]}
-                scrollbar={{enabled: true, hide: true}}
-                onSwiper={setSwiper}
-                freeMode={{
-                    enabled: true,
-                    sticky: false,
-                    momentum: true,
-                    momentumBounce: true,
-                    momentumRatio: 1,
-                    momentumVelocityRatio: 1
-                }}
-                slidesPerView={3}
-                spaceBetween={10}
-                className="category-slider"
-            >
-                {children}
-            </Swiper>
-        </SliderStyle>
-    )
-}
-
-function enableScrollListener() {
-    setTimeout(() => {
-        const domElement = document.getElementsByClassName("category-menu-row-wrapper")[0]
-        domElement.classList.remove('stop-scroll')
-    }, 2500);
-}
-
-function disableScrollListener() {
-    if (getIsScrollDisabled()) {
-        return;
-    }
-
-    //The only possible way to stop scroll listener when you triggerred scrollTo is adding class
-    const domElement = document.getElementsByClassName("category-menu-row-wrapper")[0]
-    domElement.classList.add('stop-scroll');
-}
-
-function getIsScrollDisabled() {
-    const stopScroll = document.getElementsByClassName("stop-scroll");
-
-    return !!stopScroll?.length
-}
-
 
 export default memo(CategoryMenuView);

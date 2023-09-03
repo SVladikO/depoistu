@@ -8,7 +8,7 @@ export const button = styled.button`
   height: 50px;
   padding: 12px;
   border: none;
-  border-radius: ${BORDER_RADIUS.FOURTH};
+  border-radius: ${BORDER_RADIUS.BUTTON};
   font-size: 20px;
   line-height: 19px;
   display: flex;

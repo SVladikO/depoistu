@@ -48,8 +48,8 @@ export const TRANSLATION = {
             en: 'The menu of all cafes and restaurants of Ukraine should be in one place. On this site.'
         },
         INTRODUCTION_HELP: {
-            ua: 'Знайомтесь з меню до або під час візиту.',
-            en: 'Familiarize yourself with the menu before or during your visit.',
+            ua: 'Знайомтесь з меню до або під час візиту. Вартість в гривні.',
+            en: 'Familiarize yourself with the menu before or during your visit. All price in uah.',
         },
         INTRODUCTION_TELL: {
             ua: 'Ми не показуємо в пошуку міста в яких ще не зареєструвались заклади.',
@@ -259,10 +259,6 @@ export const TRANSLATION = {
             TOP_TITLE: {
                 ua: "Деталі компанії",
                 en: 'Company details'
-            },
-            MENU_TITLE: {
-                ua: "МЕНЮ",
-                en: 'MENU'
             },
             MENU_PROBLEM: {
                 ua: 'Меню компанії відсутнє',
@@ -737,16 +733,16 @@ export const TRANSLATION = {
     },
     TOP_CATEGORIES: {
         KITCHEN: {
-            ua: "КУХНЯ",
-            en: "KITCHEN",
+            ua: "Кухня",
+            en: "Kitchen",
         },
         DESSERTS: {
-            ua: "ДЕСЕРТИ",
-            en: "DESSERTS",
+            ua: "Десерти",
+            en: "Desserts",
         },
         BAR: {
-            ua: "БАР",
-            en: "BAR",
+            ua: "Бар",
+            en: "Bar",
         },
     },
     SUB_CATEGORIES: {
