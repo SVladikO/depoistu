@@ -73,7 +73,8 @@ const SettingPage = () => {
         fetchData(BE_API.CUSTOMER.PUT_VERIFY_EMAIL(), {email: customer.email, emailVerificationCode, method: 'put'})
             .then(res => {
                 if (res.body.isEmailVerified) {
-                    setCustomer({...customer, IS_VERIFIED_EMAIL: true})
+                    debugger
+                    setCustomer({...customer, isVerifiedEmail: true})
                 }
             })
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))
