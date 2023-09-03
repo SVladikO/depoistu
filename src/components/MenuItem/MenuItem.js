@@ -9,7 +9,8 @@ import {
     EditWrapper,
     ImagesWrapper,
     EditLabel,
-    StatusHidden
+    StatusHidden,
+    EditRow,
 } from "./MenuItem.style";
 
 import {Price, Flex, Popup, ToggleCheckbox} from "../index";
@@ -50,31 +51,33 @@ export const MenuItemDetails = ({
             <Flex justifyContent="space-between">
                 <Title>{item.name}</Title>
                 {/*<Like liked={isLiked}/>*/}
-                {withEditIcon && (
-                    <Link to={URL.EDIT_MENU_ITEM}>
-                    <EditWrapper onClick={onEditClick}>
-                        <EditIcon/>
-                        <EditLabel>{translate(TRANSLATION.COMPONENTS.MENU_ITEM.BUTTON.EDIT_MENU_ITEM)}</EditLabel>
-                    </EditWrapper>
-                </Link>
-                )}
+                <Price>{item.price}</Price>
             </Flex>
-            <Price>{item.price}</Price>
             <Description>{item.description}</Description>
             <AdditionalDetails>
                 <TimeIcon/> {item.cookingTime} {translate(TRANSLATION.MEASUREMENTS.PREPARING)}
                 <MeasureIcon/> {item.size} {CATEGORY_MAPPER[item.categoryId].measurement}
-                {withEditIcon && (
-                <ToggleCheckbox
-                    isChecked={isVisible}
-                    changeHandler={toggleIsMenuItemVisible}
-                    className="ToggleCheckbox"
-                />)}
+
             </AdditionalDetails>
             {/*<Absolute bottom={'10px'} right={'10px'}>*/}
             {/*    <BasketIcon />*/}
             {/*() => dispatch(addOrderItem(item))*/}
             {/*</Absolute>*/}
+            {withEditIcon &&
+                <EditRow>
+                    <ToggleCheckbox
+                        isChecked={isVisible}
+                        changeHandler={toggleIsMenuItemVisible}
+                        className="ToggleCheckbox"
+                    />
+                    <Link to={URL.EDIT_MENU_ITEM}>
+                        <EditWrapper onClick={onEditClick}>
+                            <EditIcon/>
+                            <EditLabel>{translate(TRANSLATION.COMPONENTS.MENU_ITEM.BUTTON.EDIT_MENU_ITEM)}</EditLabel>
+                        </EditWrapper>
+                    </Link>
+            </EditRow>
+            }
         </Flex>
     )
 }

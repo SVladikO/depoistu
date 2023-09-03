@@ -17,26 +17,20 @@ import {BottomMenu, NavigationHeader} from "../components";
 
 import NotificationView from "../page-view/notification/NotificationView";
 
-
-export const Wrapper = styled.div`
-  min-height: 90vh;
-  margin: 0 auto;
-  position: relative;
-`;
-export const MobileDevice = styled.div`
+export const MobileWrapper = styled.div`
   min-height: 90vh;
   min-width: ${DEVICE_WIDTH.MIN};
   max-width: ${DEVICE_WIDTH.MAX};
   margin: 0 auto;
   position: relative;
-  background: ${COLOR.ACCENT2};
+  background: ${COLOR.ACCENT8};
 `;
 
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: start;
-  padding: 90px 10px 110px;
+  padding: 90px 0 0;
   min-height: 500px;
 `;
 
@@ -47,24 +41,24 @@ const Element = (props) => {
     const {route} = props;
 
     return (
-        <MobileDevice>
+        <MobileWrapper className="mobile-wrapper">
             <FixedWrapper fixTop id="NavigationHeader">
                 <NavigationHeader title={route.TITLE} backUrl={route.backUrl}/>
             </FixedWrapper>
-            <Content className="Centralicer">
+            <Content className="content-centralazer">
                 <route.page/>
             </Content>
             <FixedWrapper fixBottom className='ta-BottomMenu'>
                 <BottomMenu/>
             </FixedWrapper>
             <Footer/>
-        </MobileDevice>
+        </MobileWrapper>
     )
 };
 
 export const AllRoutes = () => {
     return (
-        <Wrapper>
+        <>
             <Routes>
                 <Route path={DEV_ROUTER.COMPONENTS} element={<ComponentsPage/>}/>
                 <Route path={DEV_ROUTER.ADMIN} element={<AdminPage/>}/>
@@ -79,6 +73,6 @@ export const AllRoutes = () => {
             </Routes>
 
             <NotificationView/>
-        </Wrapper>
+        </>
     );
 };

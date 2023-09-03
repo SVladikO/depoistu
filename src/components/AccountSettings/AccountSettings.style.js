@@ -14,8 +14,8 @@ export const GroupTitle = styled.div`
   color: ${COLOR.ACCENT4};
   ${p => `border-radius: ${p.noTopBorder ? border2 : border1};`}
   background-image: linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO});
+  //background: ${COLOR.PRIMARY};
 `;
 
 export const RowsWrapper = styled.div`
-  background: ${COLOR.ACCENT4};
 `

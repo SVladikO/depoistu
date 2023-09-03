@@ -73,7 +73,6 @@ const SettingPage = () => {
         fetchData(BE_API.CUSTOMER.PUT_VERIFY_EMAIL(), {email: customer.email, emailVerificationCode, method: 'put'})
             .then(res => {
                 if (res.body.isEmailVerified) {
-                    debugger
                     setCustomer({...customer, isVerifiedEmail: true})
                 }
             })

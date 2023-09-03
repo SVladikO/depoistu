@@ -19,6 +19,9 @@ const Footer = () => {
         <>
             <RowSplitter height={'200px'}/>
             <Wrapper>
+                <Link>
+                    <Row onClick={scrollToTop}>{translate(TR.PAGE.FOOTER.BACK_TO_TOP_BUTTON)}</Row>
+                </Link>
                 <Link to={URL.CUSTOMER_COMPANIES}>
                     <Row>{translate(TR.PAGE.SETTINGS.GROUP_TITLE.FOR_BUSINESS)}</Row>
                 </Link>
@@ -28,9 +31,7 @@ const Footer = () => {
                 <Link to={URL.OUR_TEAM}>
                     <Row>{translate(TR.PAGE.OUR_TEAM.TOP_TITLE)}</Row>
                 </Link>
-                <Link>
-                    <Row onClick={scrollToTop}>{translate(TR.PAGE.FOOTER.BACK_TO_TOP_BUTTON)}</Row>
-                </Link>
+
                 <Support>
                     <a href="mailto:support@depoistu.com">support@depoistu.com</a>
                 </Support>
