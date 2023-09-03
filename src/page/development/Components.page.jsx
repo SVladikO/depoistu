@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import {Wrapper, Column, Component, Row, ColorCircle, Header, Space} from './Components.style';
 import
 {
@@ -221,14 +221,14 @@ const componentsGroup2 = [
             component:
                 <MenuItemDetails
                     item={{
-                        ID: 10,
-                        NAME: '4 Cheese',
-                        CATEGORY_ID: 1,
-                        DESCRIPTION: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella',
-                        IMAGE_URL: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
-                        COOKING_TIME: 15,
-                        PRICE: 170,
-                        SIZE: 150,
+                        id: 10,
+                        name: '4 Cheese',
+                        categoryId: 1,
+                        description: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella',
+                        imageUrl: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
+                        cookingTime: 15,
+                        price: 170,
+                        size: 150,
                     }}
                 />
         },
@@ -237,14 +237,14 @@ const componentsGroup2 = [
             component:
                 <MenuItem
                     item={{
-                        ID: 10,
-                        NAME: '4 Cheese',
-                        CATEGORY_ID: 1,
-                        DESCRIPTION: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella',
-                        IMAGE_URL: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
-                        COOKING_TIME: 15,
-                        PRICE: 170,
-                        SIZE: 150,
+                        id: 10,
+                        name: '4 Cheese',
+                        categoryId: 1,
+                        description: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella',
+                        imageUrl: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
+                        cookingTime: 15,
+                        price: 170,
+                        size: 150,
                     }}
                 />
         },
@@ -253,14 +253,14 @@ const componentsGroup2 = [
             component:
                 <MenuItem withEditIcon
                           item={{
-                              ID: 10,
-                              NAME: '4 Cheese',
-                              CATEGORY_ID: 5,
-                              DESCRIPTION: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella',
-                              IMAGE_URL: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
-                              COOKING_TIME: 15,
-                              PRICE: 170,
-                              SIZE: 150,
+                              id: 10,
+                              name: '4 Cheese',
+                              categoryId: 5,
+                              description: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella',
+                              imageUrl: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
+                              cookingTime: 15,
+                              price: 170,
+                              size: 150,
                           }}
                 />
         },
@@ -293,11 +293,11 @@ const componentsGroup2 = [
             title: 'Company',
             component: <Company
                 company={{
-                    PHOTOS: 'https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg, https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg, https://afisha.bigmir.net/i/23/51/30/9/2351309/gallery/15b8175dc297f8a58d9de22e77b7b256-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg',
-                    NAME: 'Domono',
-                    CITY_ID: '204',
-                    SCHEDULE: ', , , , , 11:00-22:00, 10:00-19:00',
-                    STREET: 'Davidusk 15.',
+                    photos: 'https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg, https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg, https://afisha.bigmir.net/i/23/51/30/9/2351309/gallery/15b8175dc297f8a58d9de22e77b7b256-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg',
+                    name: 'Domono',
+                    cityId: '204',
+                    schedule: ', , , , , 11:00-22:00, 10:00-19:00',
+                    street: 'Davidusk 15.',
                 }}
             />
         },
@@ -306,12 +306,12 @@ const componentsGroup2 = [
             component: <Company
                 withMoreInfo
                 company={{
-                    PHOTOS: 'https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg, https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg, https://afisha.bigmir.net/i/23/51/30/9/2351309/gallery/15b8175dc297f8a58d9de22e77b7b256-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg',
-                    NAME: 'Domono',
-                    CITY_ID: '204',
-                    SCHEDULE: '01:00-21:00, 01:00-21:00, 01:00-21:00, 01:00-21:00, 01:00-21:00, 01:00-22:00, 01:00-22:00',
-                    STREET: 'Davidusk 15.',
-                    PHONE1: '38 097 066 8820'
+                    photos: 'https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg, https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg, https://afisha.bigmir.net/i/23/51/30/9/2351309/gallery/15b8175dc297f8a58d9de22e77b7b256-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg',
+                    name: 'Domono',
+                    cityId: '204',
+                    schedule: '01:00-21:00, 01:00-21:00, 01:00-21:00, 01:00-21:00, 01:00-21:00, 01:00-22:00, 01:00-22:00',
+                    street: 'Davidusk 15.',
+                    phone1: '38 097 066 8820'
                 }}
             />
         },
@@ -319,11 +319,11 @@ const componentsGroup2 = [
             title: 'Company',
             component: <Company
                 company={{
-                    PHOTOS: 'https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg, https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg, https://afisha.bigmir.net/i/23/51/30/9/2351309/gallery/15b8175dc297f8a58d9de22e77b7b256-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg',
-                    NAME: 'Domono',
-                    CITY_ID: '204',
-                    SCHEDULE: ',,,,,,',
-                    STREET: 'Davidusk 15.',
+                    photos: 'https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg, https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg, https://afisha.bigmir.net/i/23/51/30/9/2351309/gallery/15b8175dc297f8a58d9de22e77b7b256-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg',
+                    name: 'Domono',
+                    cityId: '204',
+                    schedule: ',,,,,,',
+                    street: 'Davidusk 15.',
                 }}
             >
                 <EditBar>
@@ -466,6 +466,9 @@ function ComponentsPage() {
         )
     }
 
+    useEffect(() => {
+        document.body.style.background = '#ffffff'
+    }, [])
 
     return (
         <div>

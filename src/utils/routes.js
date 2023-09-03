@@ -2,8 +2,7 @@ import React from 'react';
 import styled from 'styled-components'
 import {Route, Routes} from "react-router-dom";
 
-import {FixedWrapper} from "../components";
-
+import {FixedWrapper, Footer} from "../components";
 
 import {DEV_ROUTER, ROUTERS} from "./config";
 
@@ -58,6 +57,7 @@ const Element = (props) => {
             <FixedWrapper fixBottom className='ta-BottomMenu'>
                 <BottomMenu/>
             </FixedWrapper>
+            <Footer/>
         </MobileDevice>
     )
 };

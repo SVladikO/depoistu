@@ -155,7 +155,7 @@ const CategoryMenuView = ({
                             clickHandler={() => onChangeCategoryWithScroll(category)}
                             itemsAmountPerCategory={
                                 showMenuItemAmount
-                                    ? menuItems.filter(mi => mi.CATEGORY_ID === category.id).length
+                                    ? menuItems.filter(mi => mi.categoryId === category.id).length
                                     : 0
                             }
                         />
@@ -174,29 +174,28 @@ const CategoryMenuView = ({
 
         return menuItems
             ?.sort((a, b) => a.CATEGORY_ID - b.CATEGORY_ID)
-            ?.map(menu_item => {
-                const {CATEGORY_ID} = menu_item;
+            ?.map(menuItem => {
 
                 const MenuItemComponent = <MenuItem
-                    key={menu_item.ID}
-                    item={menu_item}
+                    key={menuItem.id}
+                    item={menuItem}
                     withEditIcon={withEditIcon}
-                    onEditClick={navigateToEditMenuItemPage(menu_item)}
+                    onEditClick={navigateToEditMenuItemPage(menuItem)}
                 />
 
-                if (ids.includes(CATEGORY_ID)) {
+                if (ids.includes(menuItem.categoryId)) {
                     return MenuItemComponent;
                 }
 
-                ids.push(CATEGORY_ID);
+                ids.push(menuItem.categoryId);
 
                 return [
                     <CategoryTitle
                         className={CATEGORY_TITLE_CLASS_NAME}
-                        id={generateTagId(getCategoryIndex(CATEGORY_ID, uniqueCategories))}
-                        key={CATEGORY_MAPPER[CATEGORY_ID].title}
+                        id={generateTagId(getCategoryIndex(menuItem.categoryId, uniqueCategories))}
+                        key={CATEGORY_MAPPER[menuItem.categoryId].title}
                     >
-                        {CATEGORY_MAPPER[CATEGORY_ID].title.toUpperCase()}
+                        {CATEGORY_MAPPER[menuItem.categoryId].title.toUpperCase()}
                     </CategoryTitle>,
                     MenuItemComponent
                 ];

@@ -46,10 +46,10 @@ const MenuItemView = ({initialValue, onSubmit, children}) => {
                         <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.CATEGORY)}</Label>
                         <Dropdown
                             options={options}
-                            selectedOption={(options.filter(o => o.value === values.category_id))[0]}
-                            onSelect={option => setFieldValue( 'category_id', +option.value)}
+                            selectedOption={(options.filter(o => o.value === values.categoryId))[0]}
+                            onSelect={option => setFieldValue( 'categoryId', +option.value)}
                             as="select"
-                            name="category_id"
+                            name="categoryId"
                             isTouched={touched.category_id || wasSubmitted}
                             errorMessage={errors.category_id}
                         />
@@ -100,7 +100,7 @@ const MenuItemView = ({initialValue, onSubmit, children}) => {
                             errorMessage={errors.cookingTime}
                             withCleaner
                         />
-                        <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.MEAL_SIZE)} {CATEGORY_MAPPER[values.category_id].measurement}</Label>
+                        <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.MEAL_SIZE)} {CATEGORY_MAPPER[values.categoryId].measurement}</Label>
                         <Input
                             value={values.size}
                             name="size"

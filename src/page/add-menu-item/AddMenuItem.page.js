@@ -19,11 +19,11 @@ const AddMenuItemPage = () => {
     const initialValue = {
         name: '',
         price: '',
-        category_id: 1,
+        categoryId: 1,
         description: '',
         cookingTime: '',
         size: '',
-        image_url: ''
+        imageUrl: ''
     }
 
     const onSubmit = values => {
@@ -31,7 +31,7 @@ const AddMenuItemPage = () => {
 
         const requestObj = {
             ...values,
-            company_id: companyId,
+            companyId,
         }
 
         fetchData(BE_API.MENU_ITEM.POST_CREATE(), requestObj)
