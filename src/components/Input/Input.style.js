@@ -12,6 +12,12 @@ export const Wrapper = styled.div`
     color: ${COLOR.PRIMARY};
     fill: ${COLOR.PRIMARY};
   }
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
 `;
 
 export const Placeholder = styled.span`
@@ -83,6 +89,7 @@ export const TextareaStyle = styled.textarea`
   padding: 14px 40px 17px 10px;
 `;
 export const InputText = styled.input`
+
   ${p => st(p)}
   &:active,
   &:focus {

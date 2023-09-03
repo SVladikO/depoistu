@@ -32,7 +32,7 @@ export const CATEGORY_MAPPER = {
     25: {id: 25, title: translate(TR.SUB_CATEGORIES.DESSERTS),        measurement: MEASUREMENTS.WEIGHT},
     26: {id: 26, title: translate(TR.SUB_CATEGORIES.DRINKS),          measurement: MEASUREMENTS.LIQUID},
     27: {id: 27, title: translate(TR.SUB_CATEGORIES.HOT_DRINKS),      measurement: MEASUREMENTS.LIQUID},
-    28: {id: 28, title: translate(TR.SUB_CATEGORIES.COCKTAILS),       measurement: ''},
+    28: {id: 28, title: translate(TR.SUB_CATEGORIES.COCKTAILS),       measurement: MEASUREMENTS.LIQUID},
     29: {id: 29, title: translate(TR.SUB_CATEGORIES.WINE_CARD),       measurement: MEASUREMENTS.LIQUID},
     30: {id: 30, title: translate(TR.SUB_CATEGORIES.ALCOHOL),         measurement: MEASUREMENTS.LIQUID},
 };

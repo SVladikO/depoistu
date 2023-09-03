@@ -35,7 +35,7 @@ export const TRANSLATION = {
     INTRODUCTION: {
         BUTTON: {
             ua: 'Далі',
-            en: 'Further'
+            en: 'Continue'
         },
         INTRODUCTION_MAIN: {
             ua: 'Меню всіх закладів харчування України має бути в  одному місці. На цьому сайті.',

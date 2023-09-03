@@ -32,7 +32,7 @@ const Footer = () => {
                     <Row onClick={scrollToTop}>{translate(TR.PAGE.FOOTER.BACK_TO_TOP_BUTTON)}</Row>
                 </Link>
                 <Support>
-                    <a href="mailto:depoistu.support@gmail.com">depoistu.support@gmail.com</a>
+                    <a href="mailto:support@depoistu.com">support@depoistu.com</a>
                 </Support>
                 <LocationInfo>1.11.2023 Kyiv</LocationInfo>
             </Wrapper>

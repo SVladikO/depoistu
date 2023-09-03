@@ -126,6 +126,7 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                         <Input
                             Icon={PhoneIcon}
                             name="phone1"
+                            type="number"
                             value={values.phone1}
                             errorMessage={errors.phone1}
                             isTouched={touched.phone1 || wasSubmitted}
@@ -137,6 +138,7 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                         <Input
                             Icon={PhoneIcon}
                             name="phone2"
+                            type="number"
                             value={values.phone2}
                             errorMessage={errors.phone2}
                             isTouched={touched.phone2 || wasSubmitted}
@@ -148,6 +150,7 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                         <Input
                             Icon={PhoneIcon}
                             name="phone3"
+                            type="number"
                             value={values.phone3}
                             errorMessage={errors.phone3}
                             isTouched={touched.phone3 || wasSubmitted}
