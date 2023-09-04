@@ -270,7 +270,7 @@ export const TRANSLATION = {
             },
             COMPANY_DOESNT_EXIST: {
                 ua: 'Компанії не існує',
-                en: 'Company doesn\'t exist'
+                en: "Company doesn't exist"
             }
         },
         CUSTOMER_COMPANIES: {

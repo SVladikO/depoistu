@@ -19,8 +19,8 @@ const SearchDetailsPage = () => {
     let companyId = +useParams().companyId;
     const [isLoadingMenu, setIsLoadingMenu] = useState(false);
     const [isLoadingCompany, setIsLoadingCompany] = useState(false);
-    const [company, setCompany] = useState(null)
-    const [menuItems, setMenuItems] = useState(null);
+    const [company, setCompany] = useState()
+    const [menuItems, setMenuItems] = useState();
 
     useEffect(() => {
         setIsLoadingCompany(true)
@@ -51,7 +51,7 @@ const SearchDetailsPage = () => {
             .finally(() => menuLoadingDelay.allow());
     }, [companyId]);
 
-    if (menuItems !== null && !menuItems?.length) {
+    if (menuItems !== undefined && !menuItems?.length) {
         return (
             <NotificationTDB title={translate(TR.PAGE.COMPANY_DETAILS.COMPANY_DOESNT_EXIST)}>
                 <NavLink to={ROUTER.SEARCH.URL}>
