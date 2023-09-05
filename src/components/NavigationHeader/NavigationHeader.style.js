@@ -1,12 +1,10 @@
 import styled from "styled-components";
-import {BORDER_RADIUS, COLOR} from "../../utils/theme";
-
+import {COLOR} from "../../utils/theme";
 
 export const Wrapper = styled.div`
   display: flex;
   background: ${COLOR.ACCENT4};
   margin-bottom: 30px;
-  border-radius: 0 0 ${BORDER_RADIUS.FOURTH} ${BORDER_RADIUS.FOURTH};
   position: relative;
   -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.11);
   -moz-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.11);

@@ -10,6 +10,7 @@ import Dropdown from "./Dropdown/Dropdown";
 import EditMenuRow from "./EditMenuRow/EditMenuRow";
 import FromToTime from "./FromToTime/FromToTime";
 import HistoryTabBar from "./HistoryTabBar/HistoryTabBar";
+import HorizontalSwiper from "./HorizontalSwiper/HorizontalSwiper";
 import Like from "./Like/Like";
 import MenuItem from "./MenuItem/MenuItem";
 import NavigationHeader from "./NavigationHeader/NavigationHeader";
@@ -60,6 +61,7 @@ export {
     FixedWrapper,
     FromToTime,
     HistoryTabBar,
+    HorizontalSwiper,
     Input,
     Label,
     Like,

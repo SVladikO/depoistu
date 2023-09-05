@@ -3,7 +3,7 @@ import {COLOR, BORDER_RADIUS, SHADOW} from "../../utils/theme";
 
 export const Wrapper = styled.div`
   ${SHADOW};
-  border-radius: ${BORDER_RADIUS.SECOND};
+  border-radius: ${BORDER_RADIUS.COMPANY};
   height: auto;
   overflow: hidden;
   perspective: 1px;

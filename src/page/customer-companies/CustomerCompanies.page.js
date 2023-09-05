@@ -27,7 +27,7 @@ const CustomerCompaniesPage = () => {
     const [customerCompanies] = useLocalStorageFetch(
         LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES,
         [],
-        BE_API.COMPANY.GET_BY_CUSTOMER_ID(customer?.ID)
+        BE_API.COMPANY.GET_BY_CUSTOMER_ID(customer?.id)
     );
 
     if (!wasWarningShown) {
@@ -46,21 +46,21 @@ const CustomerCompaniesPage = () => {
             <PopupQRCode companyId={companyIdForQRCode} onClose={() => setCompanyIdForQRCode('')}/>
             {customerCompanies.map(
                 company =>
-                    <Company company={company} key={company.ID}>
+                    <Company company={company} key={company.id}>
                         <EditBar>
-                            <Link to={ROUTER.EDIT_COMPANY.URL + '/' + company.ID} style={{width: '140px'}}>
+                            <Link to={ROUTER.EDIT_COMPANY.URL + '/' + company.id} style={{width: '140px'}}>
                                 <PrimaryButton isWide>
                                     <EditIcon/>
                                     {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.COMPANY)}
                                 </PrimaryButton>
                             </Link>
-                            <QRCodeButton onClick={showQRCode(company.ID)}><QRCodeIcon/></QRCodeButton>
+                            <QRCodeButton onClick={showQRCode(company.id)}><QRCodeIcon/></QRCodeButton>
                             <PrimaryButton
                                 isWide
                                 style={{width: '140px'}}
                                 onClick={
                                     () => {
-                                        LocalStorage.set(LOCAL_STORAGE_KEY.COMPANY_ID_TO_EDIT_MENU_PAGE, company.ID)
+                                        LocalStorage.set(LOCAL_STORAGE_KEY.COMPANY_ID_TO_EDIT_MENU_PAGE, company.id)
                                         navigate(ROUTER.EDIT_MENU.URL)
                                     }
                                 }>

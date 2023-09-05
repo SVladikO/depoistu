@@ -6,5 +6,5 @@ export const Wrapper = styled.div`
   font-weight: 700;
   font-size: 18px;
   line-height: 24px;
-  color: ${COLOR.PRIMARY};
+  color: ${COLOR.ACCENT1};
 `

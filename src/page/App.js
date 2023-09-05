@@ -2,7 +2,7 @@ import React from 'react';
 import {AllRoutes} from "../utils/routes";
 import {useLocalStorage} from "../utils/hook";
 import {LOCAL_STORAGE_KEY} from "../utils/localStorage";
-import {Footer, Popup} from "../components";
+import {Popup} from "../components";
 import {translate, TRANSLATION} from "../utils/translation";
 import LanguagePopup from "../features/language/LanguagePopup";
 import {PrimaryButton} from "../components";
@@ -10,7 +10,6 @@ import {PrimaryButton} from "../components";
 const App = () => {
     const [showIntro, setHideIntro] = useLocalStorage(LOCAL_STORAGE_KEY.SHOW_INTRO, true);
     const closeIntroPopup = () => setHideIntro(false);
-
 
     return (
         <>
@@ -30,7 +29,6 @@ const App = () => {
             }
             <LanguagePopup />
             <AllRoutes />
-            <Footer/>
         </>
     );
 };

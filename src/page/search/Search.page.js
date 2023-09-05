@@ -8,7 +8,7 @@ import {PInput, ContentContainer, Company, NotificationLoading, Popup} from "../
 import {URL} from "../../utils/config";
 import {BE_API, fetchData} from "../../utils/fetch";
 import {CITY_TRANSLATION_IDS} from "../../utils/cities";
-import {translate, TRANSLATION} from "../../utils/translation";
+import {translate, TRANSLATION, truncate} from "../../utils/translation";
 import {useLocalStorage, useScrollUp, useLocalStorageFetch} from "../../utils/hook";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {publishNotificationEvent} from "../../utils/event";
@@ -79,7 +79,7 @@ const SearchPage = () => {
                         Icon={LocationIcon}
                         value={
                             selectedCityId && selectedRegionId
-                                ? `${translate(CITY_TRANSLATION_IDS[selectedCityId])}, ${translate(CITY_TRANSLATION_IDS[selectedRegionId])} ${regionLabel}`
+                                ? truncate(`${translate(CITY_TRANSLATION_IDS[selectedCityId])}, ${translate(CITY_TRANSLATION_IDS[selectedRegionId])} ${regionLabel}`, 27)
                                 : ''
                         }
                         placeholder={translate(TRANSLATION.PAGE.SEARCH.INPUT_PLACEHOLDER)}
@@ -91,8 +91,8 @@ const SearchPage = () => {
 
                 {!isLoadingCompanies && companies && !!companies.length && selectedCityId &&
                     companies?.map(company =>
-                        <Link to={`${URL.SEARCH_DETAILS}${company.ID}`} key={company.ID}>
-                            <Company key={company.ID} company={company}/>
+                        <Link to={`${URL.SEARCH_DETAILS}${company.id}`} key={company.id}>
+                            <Company key={company.id} company={company}/>
                         </Link>
                     )
                 }
