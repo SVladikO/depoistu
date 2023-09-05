@@ -70,7 +70,7 @@ export const NotificationLoading = ({children}) => (
     <NotificationLoadingWrapper>
         <LoadingIcon className="animated_svg"/>
         <Text>
-            {children || translate(TRANSLATION.NOTIFICATION.LOADING)}
+            {children || translate(TRANSLATION.NOTIFICATION.LOADING_COMPANY)}
         </Text>
     </NotificationLoadingWrapper>
 )
