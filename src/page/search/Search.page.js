@@ -50,11 +50,12 @@ const SearchPage = () => {
 
             fetchData(BE_API.COMPANY.GET_AVAILABLE_CITIES())
                 .then(res => {
-                    showCityPopupDelay.allow()
                     setAvailableFromDatabaseCityIds(res.body);
-                    if (!availableFromDatabaseCityIds.length){
+                    if (!res.body.length) {
                         publishNotificationEvent.error(translate(TRANSLATION.NOTIFICATION.NO_COMPANY));
                         showCityPopupDelay.onError();
+                    } else {
+                        showCityPopupDelay.allow()
                     }
                 })
                 .catch(e => {
@@ -103,9 +104,7 @@ const SearchPage = () => {
                         </Link>
                     )
                 }
-                {!selectedCityId && !selectedRegionId ?
-                    publishNotificationEvent.error(translate(TRANSLATION.NOTIFICATION.NO_COMPANY))
-                    : (showCityPopup && cityPopup)}
+                {showCityPopup && cityPopup}
             </>
         );
     }
