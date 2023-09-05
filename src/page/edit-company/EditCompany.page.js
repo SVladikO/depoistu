@@ -23,10 +23,10 @@ import {publishNotificationEvent} from "../../utils/event";
 //We need this variable after call LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES) on delete company success
 //when we open customer companies page it will make request to BE and user will have updated list of companies.
 const companyFakeData = {
-    CITY_ID: '',
-    SCHEDULE: ',,,,,,',
-    PHOTOS: '',
-    PHONE: ''
+    cityId: '',
+    schedule: ',,,,,,',
+    photos: '',
+    phone: ''
 }
 
 const EditCompany = () => {
@@ -35,9 +35,8 @@ const EditCompany = () => {
     const companyId = +useParams().companyId;
     const customerCompaniesFromLocalStorage = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES) || [{ID: companyId, ...companyFakeData}];
     const companies = customerCompaniesFromLocalStorage.length ? customerCompaniesFromLocalStorage : [{ID: companyId, ...companyFakeData}];
-    const company = companies.find((c => c.ID === companyId)) || companyFakeData;
-
-    const schedule = initSchedule(company?.SCHEDULE);
+    const company = companies.find((c => c.id === companyId)) || companyFakeData;
+    const schedule = initSchedule(company?.schedule);
 
     const [isLoadingUpdate, setIsLoadingUpdate] = useState(false);
     const [isLoadingDelete, setIsLoadingDelete] = useState(false);
@@ -65,7 +64,7 @@ const EditCompany = () => {
         );
     }
 
-    if (!customerCompaniesFromLocalStorage.length || !companies.find((c => c.ID === companyId))) {
+    if (!customerCompaniesFromLocalStorage.length || !company) {
         publishNotificationEvent.error('No company by this id');
 
         return (
@@ -90,7 +89,7 @@ const EditCompany = () => {
 
     const updateCompaniesInLocalStorage = updatedCompany => {
         const updatedCompanies = customerCompaniesFromLocalStorage.map(company => {
-            if (company.ID === updatedCompany.ID) {
+            if (company.id === updatedCompany.id) {
                 return updatedCompany;
             }
 
@@ -101,9 +100,9 @@ const EditCompany = () => {
     }
 
     const onSubmit = values => {
-        const {name, city_id, street, phone1, phone2, phone3} = values;
+        const {name, cityId, street, phone1, phone2, phone3} = values;
         const schedule = getScheduleAsString(values)
-        const reqObj = {id: companyId, name, city_id, street, phone1, phone2, phone3, schedule, method: 'put'};
+        const reqObj = {id: companyId, name, cityId, street, phone1, phone2, phone3, schedule, method: 'put'};
         setIsLoadingUpdate(true);
 
         fetchData(BE_API.COMPANY.PUT_UPDATE(), reqObj)
@@ -117,8 +116,7 @@ const EditCompany = () => {
             .finally(() => setIsLoadingUpdate(false))
     }
 
-
-    if (!customerCompaniesFromLocalStorage.length || !companies.find((c => c.ID === companyId))) {
+    if (!customerCompaniesFromLocalStorage.length || !company) {
         publishNotificationEvent.error(translate(TRANSLATION.PAGE.EDIT_COMPANY.NOTIFICATION.NO_COMPANY_BY_THIS_ID));
 
         return (
@@ -145,7 +143,6 @@ const EditCompany = () => {
 
     return (
         <>
-
             <CompanyView
                 initialValues={getInitialValues(company, schedule)}
                 onSubmit={onSubmit}

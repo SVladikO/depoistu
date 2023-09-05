@@ -5,7 +5,6 @@ export const Wrapper = styled.div`
   ${SHADOW};
   position: relative;
   padding: 10px;
-  min-height: 116px;
   width: 100%;
   font-style: normal;
   font-weight: 700;
@@ -13,7 +12,7 @@ export const Wrapper = styled.div`
   line-height: 19px;
   background: ${COLOR.ACCENT4};
   border-radius: ${BORDER_RADIUS.SECOND};
-  margin: 15px 0 15px 0;
+  margin: 0 0 2px;
   svg{
     width: 25px;
     height: 25px;
@@ -50,7 +49,7 @@ export const FoodImage = styled.img`
 export const Title = styled.div`
   font-weight: 700;
   font-size: 22px;
-  line-height: 24px;
+  line-height: 22px;
   color: ${COLOR.ACCENT1};
   margin: 0 5px 4px 0;
   display: flex;
@@ -61,9 +60,9 @@ export const Title = styled.div`
 export const Description = styled.div`
   //width: 250px;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 19px;
-  margin: 4px 0 18px 0;
+  font-size: 16px;
+  line-height: 16px;
+  margin: 4px 0 10px 0;
 `;
 
 export const EditWrapper = styled.div`
@@ -76,9 +75,8 @@ export const EditWrapper = styled.div`
   }
 `;
 export const EditLabel = styled.span`
-  font-weight: 400;
   font-size: 16px;
-  line-height: 19px;
+  line-height: 16px;
   color: ${COLOR.PRIMARY};
   margin: 0 0 0 6px;
 `;
@@ -86,9 +84,9 @@ export const EditLabel = styled.span`
 export const AdditionalDetails = styled.div`
   display: flex;
   align-items: center;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 19px;
+  font-size: 16px;
+  line-height: 16px;
+  font-family: LatoReqular;
   color: ${COLOR.ACCENT5};
 
   & > svg {
@@ -114,3 +112,9 @@ export const StatusHidden = styled.div`
   margin-top: 10px;
   color: ${COLOR.ERROR1};
 `
+
+export const EditRow = styled.div`
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0 4px;
+`;

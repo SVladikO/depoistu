@@ -29,9 +29,9 @@ const EditMenu = () => {
     const [customerCompanies] = useLocalStorageFetch(
         LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES,
         [],
-        BE_API.COMPANY.GET_BY_CUSTOMER_ID(customer?.ID)
+        BE_API.COMPANY.GET_BY_CUSTOMER_ID(customer?.id)
     );
-    const currentCompany = customerCompanies?.find((c => c.ID === +companyId));
+    const currentCompany = customerCompanies?.find((c => c.id === +companyId));
     useEffect(() => {
         LocalStorage.set(LOCAL_STORAGE_KEY.COMPANY_ID_FOR_EDIT_MENU, companyId);
     })
@@ -56,9 +56,9 @@ const EditMenu = () => {
         <>
             {currentCompany &&
                 <CompanyDetails>
-                    {currentCompany.NAME}, {" "}
-                    {translate(CITY_TRANSLATION_IDS[currentCompany.CITY_ID])}, {" "}
-                    {currentCompany.STREET}
+                    {currentCompany.name}, {" "}
+                    {translate(CITY_TRANSLATION_IDS[currentCompany.cityId])}, {" "}
+                    {currentCompany.street}
                 </CompanyDetails>
             }
             <Wrapper>

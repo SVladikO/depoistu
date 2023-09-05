@@ -18,26 +18,19 @@ const EditMenuItemPage = () => {
     const navigate = useNavigate();
     const [isLoadingUpdate, setIsLoadingUpdate] = useState(false);
     const [isLoadingDelete, setIsLoadingDelete] = useState(false);
-    const [isMenuItemDeleted, setIsMenuItemDeleted] = useState(false);
     const menuItemCandidateToEdit = LocalStorage.get(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT);
-    const {ID, NAME, PRICE, CATEGORY_ID, DESCRIPTION, COOKING_TIME, IMAGE_URL, SIZE} = menuItemCandidateToEdit || {};
 
     if (!menuItemCandidateToEdit) {
         return navigate(URL.SETTING)
     }
 
-    const initialValue = {
-        name: NAME,
-        price: PRICE,
-        category_id: CATEGORY_ID,
-        description: DESCRIPTION,
-        cookingTime: COOKING_TIME,
-        size: SIZE,
-        image_url: IMAGE_URL
-    }
     const onSubmit = values => {
         setIsLoadingUpdate(true);
-        const reqObj = {method: 'put', id: ID, ...values};
+        const reqObj = {
+            method: 'put',
+            id: menuItemCandidateToEdit.id,
+            ...values
+        };
 
         fetchData(BE_API.MENU_ITEM.PUT_UPDATE(), reqObj)
             .then(res => {
@@ -52,26 +45,24 @@ const EditMenuItemPage = () => {
     const deleteCompany = () => {
         setIsLoadingDelete(true)
 
-        fetchData(BE_API.MENU_ITEM.DELETE(), {method: 'delete', id: menuItemCandidateToEdit.ID})
+        fetchData(BE_API.MENU_ITEM.DELETE(),
+            {
+                method: 'delete',
+                id: menuItemCandidateToEdit.id,
+            })
             .then(() => {
-                setIsMenuItemDeleted(true);
-                publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.DELETED_MENU_ITEM))
+                navigate(URL.EDIT_MENU)
+                publishNotificationEvent.success("Menu item was deleted.")
             })
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))
             .finally(() => setTimeout(() => setIsLoadingDelete(false), 1000))
     }
 
-    if (isMenuItemDeleted) {
-        return;
-    }
-
     return (
         <>
-
-
             <RowSplitter height={'15px'}/>
             <MenuItemView
-                initialValue={initialValue}
+                initialValue={menuItemCandidateToEdit || {}}
                 onSubmit={onSubmit}
                 submitButtonTitle={translate(TRANSLATION.PAGE.EDIT_MENU_ITEM.BUTTON.EDIT_MENU_ITEM)}
             >
@@ -81,7 +72,7 @@ const EditMenuItemPage = () => {
                         type="submit"
                         isLoading={isLoadingUpdate}
                     >
-                        {translate(TRANSLATION.PAGE.ADD_MENU_ITEM.BUTTON.ADD_MENU_ITEM)}
+                        {translate(TRANSLATION.PAGE.ADD_MENU_ITEM.BUTTON.UPDATE_MENU_ITEM)}
                     </FetchButton>
                     <RowSplitter height={'25px'}/>
                     <RowSplitter height={'25px'}/>
@@ -98,6 +89,7 @@ const EditMenuItemPage = () => {
             </MenuItemView>
         </>
     )
+
 }
 
 export default EditMenuItemPage;

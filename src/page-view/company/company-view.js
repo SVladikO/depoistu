@@ -106,9 +106,9 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                             withIcon
                             Icon={LocationIcon}
                             handleClick={openCityPopup}
-                            value={values.city_id && translate(CITY_TRANSLATION_IDS[values.city_id])}
-                            isTouched={wasSubmitted || touched.city_id}
-                            errorMessage={errors.city || errors.city_id}
+                            value={values.cityId && translate(CITY_TRANSLATION_IDS[values.cityId])}
+                            isTouched={wasSubmitted || touched.cityId}
+                            errorMessage={errors.city || errors.cityId}
                         />
                         {}
                         <Label>{translate(TRANSLATION.INPUT_LABEL.COMPANY.STREET)}</Label>
@@ -126,6 +126,7 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                         <Input
                             Icon={PhoneIcon}
                             name="phone1"
+                            type="number"
                             value={values.phone1}
                             errorMessage={errors.phone1}
                             isTouched={touched.phone1 || wasSubmitted}
@@ -137,6 +138,7 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                         <Input
                             Icon={PhoneIcon}
                             name="phone2"
+                            type="number"
                             value={values.phone2}
                             errorMessage={errors.phone2}
                             isTouched={touched.phone2 || wasSubmitted}
@@ -148,6 +150,7 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                         <Input
                             Icon={PhoneIcon}
                             name="phone3"
+                            type="number"
                             value={values.phone3}
                             errorMessage={errors.phone3}
                             isTouched={touched.phone3 || wasSubmitted}
@@ -163,7 +166,7 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                         <Popup.City
                             availableCityIds={availableAllCityIds}
                             onSelectCity={selectCity(cityId => {
-                                setFieldValue('city_id', cityId)
+                                setFieldValue('cityId', cityId)
                             })}
                             onClose={closeCityPopup}
                         />

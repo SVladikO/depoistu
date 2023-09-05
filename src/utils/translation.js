@@ -16,7 +16,13 @@ export const truncate = (text, availableLength = 1) => {
 export const currentLanguage = LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE).language.siteLanguage;
 
 export const translate = obj => {
-    return obj[currentLanguage];
+    let language = currentLanguage;
+
+    if (!currentLanguage) {
+        language = 'en'
+    }
+
+    return obj[language];
 }
 
 export const TRANSLATION = {
@@ -35,15 +41,15 @@ export const TRANSLATION = {
     INTRODUCTION: {
         BUTTON: {
             ua: 'Далі',
-            en: 'Further'
+            en: 'Continue'
         },
         INTRODUCTION_MAIN: {
             ua: 'Меню всіх закладів харчування України має бути в  одному місці. На цьому сайті.',
             en: 'The menu of all cafes and restaurants of Ukraine should be in one place. On this site.'
         },
         INTRODUCTION_HELP: {
-            ua: 'Знайомтесь з меню до або під час візиту.',
-            en: 'Familiarize yourself with the menu before or during your visit.',
+            ua: 'Знайомтесь з меню до або під час візиту. Вартість в гривні.',
+            en: 'Familiarize yourself with the menu before or during your visit. All price in uah.',
         },
         INTRODUCTION_TELL: {
             ua: 'Ми не показуємо в пошуку міста в яких ще не зареєструвались заклади.',
@@ -254,10 +260,6 @@ export const TRANSLATION = {
                 ua: "Деталі компанії",
                 en: 'Company details'
             },
-            MENU_TITLE: {
-                ua: "МЕНЮ",
-                en: 'MENU'
-            },
             MENU_PROBLEM: {
                 ua: 'Меню компанії відсутнє',
                 en: 'There is no menu in company'
@@ -371,6 +373,10 @@ export const TRANSLATION = {
                 ADD_MENU_ITEM: {
                     en: 'Save',
                     ua: "Зберегти",
+                },
+                UPDATE_MENU_ITEM: {
+                    en: 'Update',
+                    ua: "Оновити",
                 }
             }
         },
@@ -531,6 +537,67 @@ export const TRANSLATION = {
             TOP_TITLE: {
                 ua: "Про нашу компанію",
                 en: "About our company"
+            },
+            CONTENT: {
+                en: [
+                    {
+                        question: "Who we are?",
+                        answers: ["We are a team of soulmates from different places of Ukraine, who want to resolve common problem:",
+                                  "Find cafes very fast."
+                        ]
+                    },
+                    {
+                        question: "What united us?",
+                        answers: ["Willingness to learn and create something new."]
+                    },
+                    {
+                        question: "When did we start?",
+                        answers: ["1.11.22"]
+                    },
+                    {
+                        question: "When was the first version released?",
+                        answers: ["1.09.23"]
+                    },
+                    {
+                        question: "Main idea of the project",
+                        answers: ["All restaurants of Ukraine in one place.",
+                                  "If your institution is not on our website, then you do not exist at all."
+                        ]
+                    },
+                    {
+                        question: "Cost",
+                        answers: ["This set of functionality is free for visitors and businesses."]
+                    },
+
+                ],
+                ua: [
+                    {
+                        question: "Хто ми?",
+                        answers: ["Ми команда однодумців з різних куточків України, які хочуть вирішити спільну проблему:", "Швидко знаходити заклади харчування."]
+                    },
+                    {
+                        question: "Що нас об`єднує?",
+                        answers: ["Бажання навчатись і створювати щось нове."]
+                    },
+                    {
+                        question: "Коли ми почали?",
+                        answers: ["1.11.22"]
+                    },
+                    {
+                        question: "Коли випустили першу версію?",
+                        answers: ["1.09.23"]
+                    },
+                    {
+                        question: "Головна ідея проекту",
+                        answers: ["Всі заклади України в одному місці.",
+                                  "Якщо вашого закладу немає на нашому сайті, значить вас взагалі не існує."
+                        ]
+                    },
+                    {
+                        question: "Вартість",
+                        answers: ["Даний набір функціоналу безкоштовний для користувачів та бізнесу."]
+                    },
+                ],
             }
         },
         OUR_TEAM: {
@@ -727,16 +794,16 @@ export const TRANSLATION = {
     },
     TOP_CATEGORIES: {
         KITCHEN: {
-            ua: "КУХНЯ",
-            en: "KITCHEN",
+            ua: "Кухня",
+            en: "Kitchen",
         },
         DESSERTS: {
-            ua: "ДЕСЕРТИ",
-            en: "DESSERTS",
+            ua: "Десерти",
+            en: "Desserts",
         },
         BAR: {
-            ua: "БАР",
-            en: "BAR",
+            ua: "Бар",
+            en: "Bar",
         },
     },
     SUB_CATEGORIES: {
