@@ -3,13 +3,13 @@ const defaultTo = '21:00';
 
 const getInitialValues = (company, schedule) => (
     {
-        photos: company?.PHOTOS?.split(',') || [],
-        name: company.NAME,
-        city_id: company.CITY_ID,
-        street: company.STREET,
-        phone1: company.PHONE1,
-        phone2: company.PHONE2,
-        phone3: company.PHONE3,
+        photos: company?.photos?.split(',') || [],
+        name: company.name,
+        cityId: company.cityId,
+        street: company.street,
+        phone1: company.phone1,
+        phone2: company.phone2,
+        phone3: company.phone3,
         monIsChecked: !!schedule.mon.from || !!schedule.mon.to,
         monFrom: schedule.mon.from,
         monTo: schedule.mon.to,

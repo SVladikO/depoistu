@@ -20,9 +20,9 @@ const EditCustomerPage = () => {
         <>
             <Formik
                 initialValues={{
-                    name: customer.NAME,
-                    phone: customer.PHONE,
-                    email: customer.EMAIL,
+                    name: customer.name,
+                    phone: customer.phone,
+                    email: customer.email,
                 }}
                 validationSchema={SignUpSchema}
                 onSubmit={values => {

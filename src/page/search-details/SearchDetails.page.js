@@ -1,8 +1,8 @@
 import {useEffect, useState} from "react";
 import {useParams} from 'react-router-dom';
-import {CategoryTitle, Wrapper} from "./SearchDetails.style";
+import {Wrapper} from "./SearchDetails.style";
 
-import {Company, NotificationLoading, RowSplitter} from "../../components";
+import {Company, NotificationLoading} from "../../components";
 
 import CategoryMenuView from '../../page-view/category-menu-view/CategoryMenuView'
 
@@ -10,8 +10,10 @@ import {BE_API, fetchData} from "../../utils/fetch";
 import {translate, TRANSLATION as TR} from "../../utils/translation";
 import {publishNotificationEvent} from "../../utils/event";
 import {stopLoadingWithDelay} from "../../utils/utils";
+import {useScrollUp} from "../../utils/hook";
 
 const SearchDetailsPage = () => {
+    useScrollUp();
     let companyId = +useParams().companyId;
     const [isLoadingMenu, setIsLoadingMenu] = useState(false);
     const [isLoadingCompany, setIsLoadingCompany] = useState(false);
@@ -56,7 +58,6 @@ const SearchDetailsPage = () => {
 
             {!isLoadingMenu && menuItems?.length && (
                 <>
-                    <CategoryTitle id="menu">{translate(TR.PAGE.COMPANY_DETAILS.MENU_TITLE)}</CategoryTitle>
                     <CategoryMenuView
                         className="category-menu-row"
                         menuItems={menuItems}
@@ -64,9 +65,7 @@ const SearchDetailsPage = () => {
                 </>
             )
             }
-
             {/*Let's scroll work after click on the last sub category */}
-            <RowSplitter height={'550px'}/>
         </Wrapper>
     );
 };

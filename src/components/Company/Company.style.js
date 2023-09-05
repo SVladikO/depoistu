@@ -3,7 +3,7 @@ import {COLOR, BORDER_RADIUS, SHADOW} from "../../utils/theme";
 
 export const Wrapper = styled.div`
   ${SHADOW};
-  border-radius: ${BORDER_RADIUS.SECOND};
+  border-radius: ${BORDER_RADIUS.COMPANY};
   height: auto;
   overflow: hidden;
   perspective: 1px;
@@ -98,7 +98,7 @@ export const LocationWrapper = styled.div`
   width: 100%;
   font-size: 20px;
   justify-content: space-between;
-  border-radius: ${BORDER_RADIUS.FOURTH};
+  border-radius: ${BORDER_RADIUS.COMPANY};
   border: ${props => props.withAdditionalStyles ? `1px solid ${COLOR.ACCENT5}` : 'none'};
   padding: ${props => props.withAdditionalStyles ? '2px 10px 4px 10px' : '0'};
   margin: 0 0 10px 0;
