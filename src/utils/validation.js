@@ -66,7 +66,7 @@ const customer_validation = {
     oldPassword: CUSTOMER_PASSWORD
         .test(`passwords-match`, MESSAGE.OLD_PASSWORD_MUST_MUCH, value => {
             const customer = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER);
-            return customer.PASSWORD === value
+            return customer.password === value
         }),
     confirmedPassword: CUSTOMER_PASSWORD
         .test(`passwords-match`, MESSAGE.PASSWORD_MUST_MUCH, function (value) {

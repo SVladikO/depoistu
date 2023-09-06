@@ -52,7 +52,7 @@ const EditMenuItemPage = () => {
             })
             .then(() => {
                 navigate(URL.EDIT_MENU)
-                publishNotificationEvent.success("Menu item was deleted.")
+                publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.DELETED_MENU_ITEM));
             })
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))
             .finally(() => setTimeout(() => setIsLoadingDelete(false), 1000))
