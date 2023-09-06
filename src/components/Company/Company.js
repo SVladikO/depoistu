@@ -52,7 +52,7 @@ const Company = ({company, withMoreInfo, children}) => {
 
         return (
             <LocationWrapper>
-                 {translate(CITY_TRANSLATION_IDS[company.cityId])}, {company.street}
+                <LocationIcon />{translate(CITY_TRANSLATION_IDS[company.cityId])}, {company.street}
             </LocationWrapper>
         );
     }
@@ -80,7 +80,7 @@ const Company = ({company, withMoreInfo, children}) => {
         <Schedule>
             {parsedSchedule.isCompanyOpenNow
                 ? <>
-                    <OpenStatus>{translate(TR.COMPONENTS.COMPANY.STATUS_OPEN)}</OpenStatus>
+                    <OpenStatus><TimeIcon/>{translate(TR.COMPONENTS.COMPANY.STATUS_OPEN)}</OpenStatus>
                     <Closes><span>{translate(TR.COMPONENTS.COMPANY.TILL)} {parsedSchedule.currentDay.to}</span></Closes>
                 </>
                 : <CloseStatus><TimeIcon/>{translate(TR.COMPONENTS.COMPANY.STATUS_CLOSE)}</CloseStatus>

@@ -2,13 +2,12 @@ import styled from "styled-components";
 import {COLOR, BORDER_RADIUS, SHADOW} from "../../utils/theme";
 
 export const Wrapper = styled.div`
-  ${SHADOW};
   border-radius: ${BORDER_RADIUS.COMPANY};
   height: auto;
   overflow: hidden;
   perspective: 1px;
   background-color: ${COLOR.ACCENT4};
-  margin: 0 0 10px 0;
+
   
   .swiper-pagination-bullet{
     width: 10px;
@@ -108,7 +107,6 @@ export const LocationWrapper = styled.div`
   flex-wrap: nowrap;
   width: 100%;
   font-size: 20px;
-  align-items: center;
   border-radius: ${BORDER_RADIUS.FOURTH};
   border: ${props => props.withAdditionalStyles ? `1px solid ${COLOR.ACCENT5}` : 'none'};
   padding: ${props => props.withAdditionalStyles ? '2px 10px 4px 10px' : '0'};

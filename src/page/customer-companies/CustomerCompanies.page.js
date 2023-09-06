@@ -15,6 +15,7 @@ import {ReactComponent as QRCodeIcon} from "../../assets/icons/qr_code.svg";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {useLocalStorage, useLocalStorageFetch, useRedirectToSettingPage, useScrollUp} from "../../utils/hook";
 import {publishNotificationEvent} from "../../utils/event";
+import {DisabledButton} from "../../components/Buttons/DisabledButton";
 
 const CustomerCompaniesPage = () => {
     useScrollUp();
@@ -49,15 +50,13 @@ const CustomerCompaniesPage = () => {
                     <Company company={company} key={company.id}>
                         <EditBar>
                             <Link to={ROUTER.EDIT_COMPANY.URL + '/' + company.id} style={{width: '140px'}}>
-                                <PrimaryButton isWide>
+                                <DisabledButton>
                                     <EditIcon/>
                                     {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.COMPANY)}
-                                </PrimaryButton>
+                                </DisabledButton>
                             </Link>
                             <QRCodeButton onClick={showQRCode(company.id)}><QRCodeIcon/></QRCodeButton>
-                            <PrimaryButton
-                                isWide
-                                style={{width: '140px'}}
+                            <DisabledButton
                                 onClick={
                                     () => {
                                         LocalStorage.set(LOCAL_STORAGE_KEY.COMPANY_ID_TO_EDIT_MENU_PAGE, company.id)
@@ -66,13 +65,13 @@ const CustomerCompaniesPage = () => {
                                 }>
                                 <EditIcon/>
                                 {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.MENU)}
-                            </PrimaryButton>
+                            </DisabledButton>
                         </EditBar>
                     </Company>
             )
             }
             <Link to={URL.ADD_COMPANY}>
-                <PrimaryButton isWide>
+                <PrimaryButton style={{width: '95%', margin: '0 auto'}}>
                     {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.ADD_COMPANY)}
                 </PrimaryButton>
             </Link>
