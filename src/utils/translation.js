@@ -38,6 +38,10 @@ export const TRANSLATION = {
         ua: 'DEPOISTU',
         en: 'DEPOISTU'
     },
+    SEE_MORE: {
+        ua: 'більше',
+        en: 'see more'
+    },
     INTRODUCTION: {
         BUTTON: {
             ua: 'Далі',
@@ -695,6 +699,10 @@ export const TRANSLATION = {
                 EDIT_MENU_ITEM: {
                     en: "Edit",
                     ua: "Редагувати"
+                },
+                CHANGE_VISIBILITY: {
+                    en: "Change visibility",
+                    ua: "Змінити відоб"
                 },
                 HIDDEN: {
                     en: "HIDDEN",

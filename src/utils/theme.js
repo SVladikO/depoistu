@@ -1,17 +1,38 @@
 import {keyframes} from "styled-components";
 
+export const FONT_14 = `
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+`
+export const FONT_14_BOLD = `
+    ${FONT_14};
+    font-weight: 600;
+`
+
 export const FONT_16 = `
     font-size: 16px;
-    font-height: 24px;
+    line-height: 24px;
     font-weight: 400;
 `
 export const FONT_16_BOLD = `
     ${FONT_16};
     font-weight: 600;
 `
+
+export const FONT_18 = `
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 400;
+`
+export const FONT_18_500 = `
+    ${FONT_18};
+    font-weight: 500;
+`
+
 export const FONT_22 = `
     font-size: 22px;
-    font-height: 26.4px;
+    line-height: 26.4px;
 `
 
 export const FONT_22_500 = `
