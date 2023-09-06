@@ -504,6 +504,10 @@ export const TRANSLATION = {
                 }
             },
             GROUP_TITLE: {
+                DO_YOU_LIKE: {
+                    ua: "Вам подобається цей сайт?",
+                    en: "Do you like this website?"
+                },
                 ACCOUNTS: {
                     ua: "Остобистий кабiнет",
                     en: "My account"

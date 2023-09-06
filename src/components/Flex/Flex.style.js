@@ -7,4 +7,5 @@ export const Flex = styled.div`
   justify-content: ${p => p.justifyContent || 'norman'};
   align-items: ${p => p.alignItems || 'norman'};
   ${p => p.margin ? `margin: ${p.margin}` : ''};
+  ${p => p.gap ? `gap: ${p.gap}` : ''};
 `;
