@@ -30,6 +30,16 @@ export const FONT_18_500 = `
     font-weight: 500;
 `
 
+export const FONT_20 = `
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 400;
+`
+export const FONT_20_700 = `
+    ${FONT_20};
+    font-weight: 700;
+`
+
 export const FONT_22 = `
     font-size: 22px;
     line-height: 26.4px;
@@ -38,6 +48,16 @@ export const FONT_22 = `
 export const FONT_22_500 = `
     ${FONT_22};
     font-weight: 500;
+`
+
+export const FONT_24 = `
+    font-size: 24px;
+    line-height: 32px;
+`
+
+export const FONT_24_700 = `
+    ${FONT_24};
+    font-weight: 700;
 `
 export const COLOR = {
     PRIMARY: '#FF3937', //'#709900',

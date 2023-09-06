@@ -29,7 +29,6 @@ export const MenuItemDetails = ({
                                     setIsVisible,
                                     withEditIcon = false,
                                     onEditClick,
-                                    isWithDescription,
                                     isWithImage,
                                     isNewItemFlag
                                 }) => {
@@ -89,7 +88,7 @@ export const MenuItemDetails = ({
                         {/*<Like liked={isLiked}/>*/}
                         <Price>{item.price}</Price>
                     </Flex>
-                    {isWithDescription && <DescriptionContent/>}
+                    {item.description && <DescriptionContent/>}
                 </MainInfo>
             </MainInfoWrapper>
             <AdditionalDetails

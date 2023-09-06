@@ -230,10 +230,10 @@ const componentsGroup2 = [
     ],
     [
         {
-            title: 'MenuItemDetails',
+            title: 'MenuItemDetails without description',
             component:
                 <MenuItemDetails
-                    item={mockMenuItem}
+                    item={{...mockMenuItem, description: ''}}
                     isVisible
                 />
         },{
@@ -241,7 +241,6 @@ const componentsGroup2 = [
             component:
                 <MenuItemDetails
                     item={mockMenuItem}
-                    isWithDescription
                     isVisible
                 />
         },
@@ -249,7 +248,7 @@ const componentsGroup2 = [
             title: 'MenuItemDetails with image',
             component:
                 <MenuItemDetails
-                    item={mockMenuItem}
+                    item={{...mockMenuItem, description: ''}}
                     isWithImage
                     isVisible
                 />
@@ -258,7 +257,6 @@ const componentsGroup2 = [
             component:
                 <MenuItemDetails
                     item={mockMenuItem}
-                    isWithDescription
                     isWithImage
                     isVisible
                 />
@@ -267,7 +265,6 @@ const componentsGroup2 = [
             component:
                 <MenuItemDetails
                     item={mockMenuItem}
-                    isWithDescription
                     isWithImage
                     isNewItemFlag
                     isVisible
@@ -279,7 +276,6 @@ const componentsGroup2 = [
                 <MenuItem
                     item={mockMenuItem}
                     withEditIcon
-                    isWithDescription
                     isWithImage
                 />
         },

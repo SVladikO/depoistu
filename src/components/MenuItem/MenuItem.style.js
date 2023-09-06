@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {BORDER_RADIUS, COLOR, FONT_14_BOLD, FONT_16, FONT_18_500, SHADOW} from "../../utils/theme";
+import {BORDER_RADIUS, COLOR, FONT_14_BOLD, FONT_16, FONT_18_500, FONT_24_700, SHADOW} from "../../utils/theme";
 import {Flex} from "../Flex/Flex.style";
 
 export const Wrapper = styled.div`
@@ -67,9 +67,7 @@ export const FoodImage = styled.img`
 `;
 
 export const Title = styled.div`
-  font-weight: 700;
-  font-size: 22px;
-  line-height: 22px;
+  ${FONT_24_700};
   color: ${COLOR.ACCENT1};
   margin: 0 5px 4px 0;
   display: flex;
