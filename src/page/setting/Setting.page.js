@@ -120,13 +120,14 @@ const SettingPage = () => {
     return (
         <>
             {!customer && singInSingUpNotification}
-            {customer && !customer.isVerifiedEmail && emailVerificationNotification}
+            {/*{customer && !customer.isVerifiedEmail && emailVerificationNotification}*/}
             {isLoading && <NotificationLoading/>}
             <LanguagePopup />
             <Wrapper>
                 {/*<CustomerAccountBar fullName='Jhon Smith' phone="+14844731243"/>*/}
                 {/*<RowSplitter height='20px'/>*/}
-                {customer && !!customer.isVerifiedEmail && (
+                {/*{customer && !!customer.isVerifiedEmail && (*/}
+                {customer && (
                     <>
                         <AccountSettings
                             groupTitle={translate(TR.PAGE.SETTINGS.GROUP_TITLE.ACCOUNTS)}>
@@ -166,7 +167,7 @@ const SettingPage = () => {
                         </AccountSettings>
                     </>)
                 }
-                {customer && !customer.isVerifiedEmail && (
+                {customer && (
                     <AccountSettings groupTitle={translate(TR.PAGE.SETTINGS.GROUP_TITLE.ACCOUNTS)}>
                         <SettingMenuRow
                             icon={LogOutIcon}
