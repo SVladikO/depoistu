@@ -50,13 +50,13 @@ const SearchPage = () => {
 
             fetchData(BE_API.COMPANY.GET_AVAILABLE_CITIES())
                 .then(res => {
-                    setAvailableFromDatabaseCityIds(res.body);
                     if (!res.body.length) {
                         publishNotificationEvent.error(translate(TRANSLATION.NOTIFICATION.NO_COMPANY));
                         showCityPopupDelay.onError();
                     } else {
                         showCityPopupDelay.allow()
                     }
+                    setAvailableFromDatabaseCityIds(res.body);
                 })
                 .catch(e => {
                     publishNotificationEvent.error(e.body.errorMessage)
