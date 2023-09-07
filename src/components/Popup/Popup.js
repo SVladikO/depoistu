@@ -5,7 +5,7 @@ import {InvisibleWrapper, CloseButtonWrapper, Wrapper} from "./Popup.style";
 import {CloseButton} from "../index";
 import CityContent from "./content/city/CityContent";
 import ImageContent from "./content/image/ImageContent";
-import {Info as _Info, InfoText as _InfoText} from "./content/info/Info";
+import {Info as _Info} from "./content/info/Info";
 
 export const enableScrollOnBody = () => {
     document.body.style.overflowY = 'auto';
@@ -16,7 +16,7 @@ export const disableScrollOnBody = () => {
 };
 
 const Popup = (props) => {
-    const {onClose, Component, showCloseButton = true} = props;
+    const {onClose, Component, showCloseButton = true, position} = props;
 
     useEffect(() => {
         disableScrollOnBody();
@@ -28,7 +28,7 @@ const Popup = (props) => {
     }
 
     return (
-        <InvisibleWrapper>
+        <InvisibleWrapper position={position} className="invisible-wrapper">
             <Wrapper>
                 <CloseButtonWrapper>
                     {showCloseButton && <CloseButton clickHandler={closePopup}/>}
@@ -39,14 +39,12 @@ const Popup = (props) => {
     );
 };
 
-const City = props => <Popup Component={CityContent} {...props} />;
-const Image = props => <Popup Component={ImageContent} {...props} />;
+const City = props => <Popup Component={CityContent} {...props} position="center" />;
+const Image = props => <Popup Component={ImageContent} {...props} position="end" />;
 const Info = props => <Popup Component={_Info} {...props} />;
-const InfoText = props => <Popup Component={_InfoText} {...props} />;
 
 export default {
     City,
     Image,
     Info,
-    InfoText
 }

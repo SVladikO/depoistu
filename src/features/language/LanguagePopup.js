@@ -31,7 +31,7 @@ const LanguagePopup = () => {
     }
 
     return (
-        <Popup.Info showCloseButton={false}>
+        <Popup.Info showCloseButton={false} position="center">
             <PrimaryButton isWide onClick={setUA}>Українська</PrimaryButton>
             <PrimaryButton isWide onClick={setEN}>English</PrimaryButton>
         </Popup.Info>

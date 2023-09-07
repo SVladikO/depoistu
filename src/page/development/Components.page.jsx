@@ -412,10 +412,6 @@ const componentsGroup3 = [
             title: 'IntroContent.Info',
             component: <IntroContent.Info>Some text Some text Some text Some text Some text</IntroContent.Info>
         },
-        {
-            title: 'IntroContent.InfoText',
-            component: <IntroContent.InfoText >Some text Some text Some text Some text Some text</IntroContent.InfoText>
-        },
         {title: 'CityPopupContent', component: <CityContent availableCityIds={getOnlyCityIds()}/>},
     ],
     [

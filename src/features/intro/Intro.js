@@ -14,9 +14,9 @@ const Intro = () => {
     }
 
     return (
-        <Popup.InfoText onClose={() => dispatch(closeIntroPopup())}>
+        <Popup.Info onClose={() => dispatch(closeIntroPopup())}>
             {translate(TRANSLATION.INTRODUCTION)}
-        </Popup.InfoText>
+        </Popup.Info>
     )
 }
 export default Intro;

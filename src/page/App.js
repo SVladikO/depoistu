@@ -14,7 +14,7 @@ const App = () => {
     return (
         <>
             {showIntro && (
-                <Popup.InfoText showCloseButton={false}>
+                <Popup.Info showCloseButton={false}>
                     <div>
                         {translate(TRANSLATION.INTRODUCTION.INTRODUCTION_MAIN)}
                     </div>
@@ -25,7 +25,7 @@ const App = () => {
                         {translate(TRANSLATION.INTRODUCTION.INTRODUCTION_TELL)}
                     </div>
                     <PrimaryButton isWide onClick={closeIntroPopup}>{translate(TRANSLATION.INTRODUCTION.BUTTON)}</PrimaryButton>
-                </Popup.InfoText>)
+                </Popup.Info>)
             }
             <LanguagePopup />
             <AllRoutes />
