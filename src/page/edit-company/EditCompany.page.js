@@ -17,7 +17,7 @@ import {useRedirectToSettingPage, useScrollUp} from "../../utils/hook";
 import {translate, TRANSLATION} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import Popup, {enableScrollOnBody, disableScrollOnBody} from "../../components/Popup/Popup";
-import {PopupButtons, PopupTitle} from "./EditCompany.style";
+import {PopupButtons, PopupContentContainer, PopupTitle} from "./EditCompany.style";
 import {publishNotificationEvent} from "../../utils/event";
 
 //We need this variable after call LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES) on delete company success
@@ -150,17 +150,22 @@ const EditCompany = () => {
                 <>
                     {isConfirmDeletePopupOpen && (
                         <Popup.Center showCloseButton={false}>
-                            <PopupTitle>
-                                {translate(TRANSLATION.COMPONENTS.POPUP.ARE_YOU_SURE)}
-                            </PopupTitle>
-                            <PopupButtons>
-                                <PrimaryButton isWide onClick={deleteCompany}>
-                                    {translate(TRANSLATION.YES)}
-                                </PrimaryButton>
-                                <PrimaryButton isWide onClick={closeDeletePopup}>
-                                    {translate(TRANSLATION.NO)}
-                                </PrimaryButton>
-                            </PopupButtons>
+                            <PopupContentContainer>
+                                <PopupTitle>
+                                    {translate(TRANSLATION.COMPONENTS.POPUP.ARE_YOU_SURE)}
+                                </PopupTitle>
+                                <PopupTitle>
+                                    {translate(TRANSLATION.COMPONENTS.POPUP.DELETE_COMPANY_QUESTION)}
+                                </PopupTitle>
+                                <PopupButtons>
+                                    <PrimaryButton onClick={closeDeletePopup}>
+                                        {translate(TRANSLATION.NO)}
+                                    </PrimaryButton>
+                                    <PrimaryButton onClick={deleteCompany}>
+                                        {translate(TRANSLATION.YES)}
+                                    </PrimaryButton>
+                                </PopupButtons>
+                            </PopupContentContainer>
                         </Popup.Center>
                     )}
                     <EditCompanyButton/>
