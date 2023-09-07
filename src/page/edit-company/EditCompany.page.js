@@ -149,7 +149,7 @@ const EditCompany = () => {
             >
                 <>
                     {isConfirmDeletePopupOpen && (
-                        <Popup.Info showCloseButton={false}>
+                        <Popup.Center showCloseButton={false}>
                             <PopupTitle>
                                 {translate(TRANSLATION.COMPONENTS.POPUP.ARE_YOU_SURE)}
                             </PopupTitle>
@@ -161,7 +161,7 @@ const EditCompany = () => {
                                     {translate(TRANSLATION.NO)}
                                 </PrimaryButton>
                             </PopupButtons>
-                        </Popup.Info>
+                        </Popup.Center>
                     )}
                     <EditCompanyButton/>
                     <RowSplitter height={'25px'}/>

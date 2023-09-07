@@ -49,8 +49,8 @@ import {ReactComponent as LanguageIcon} from "../../assets/icons/language.svg";
 
 import {COLOR} from "../../utils/theme";
 import AccountSettings from "../../components/AccountSettings/AccountSettings";
-import IntroContent from "../../components/Popup/content/info/Info";
-import CityContent from "../../components/Popup/content/city/CityContent"
+import IntroContent from "../../components/Popup/info/Info";
+import CityContent from "../../components/Popup/city/CityContent"
 import {ReactComponent as LocationIcon} from "../../assets/icons/location.svg";
 import Checkbox from "../../components/Checkbox/Checkbox";
 import {EditBar, QRCodeButton} from "../customer-companies/CustomerCompanies.style";

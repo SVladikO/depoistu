@@ -1,4 +1,4 @@
-import {ContentContainer} from "../../../ContentContainer/ContentContainer.style";
+import {ContentContainer} from "../../ContentContainer/ContentContainer.style";
 
 export const Info = (props) => (
     <ContentContainer noBg noShadow {...props}>

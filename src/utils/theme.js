@@ -28,6 +28,7 @@ export const COLOR = {
     ACCENT6: '#FF3937',
     ACCENT7: '#F6EBEF',
     ACCENT8: '#F5F6FB',
+    ACCENT9: '#E6E8E9',
     WARNING1: '#F1C21B',
     WARNING2: '#FFF8E1',
     INFO1: '#0244CF',
@@ -55,7 +56,7 @@ export const BORDER_RADIUS = {
     COMPANY: '0px',
     MENU_ITEM: '',
     FIRST: '0px',
-    SECOND: '0px',
+    CITY_POPUP: '20px',
     THIRD: '0px',
     FOURTH: '0px',
     CIRCLE: '50%'

@@ -31,10 +31,10 @@ const LanguagePopup = () => {
     }
 
     return (
-        <Popup.Info showCloseButton={false} position="center">
+        <Popup.Center showCloseButton={false}>
             <PrimaryButton isWide onClick={setUA}>Українська</PrimaryButton>
             <PrimaryButton isWide onClick={setEN}>English</PrimaryButton>
-        </Popup.Info>
+        </Popup.Center>
     );
 }
 

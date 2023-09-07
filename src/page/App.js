@@ -14,7 +14,7 @@ const App = () => {
     return (
         <>
             {showIntro && (
-                <Popup.Info position='end' noPadding>
+                <Popup.Bottom onClose={closeIntroPopup}>
                     <>
                         <Text22>
                             {translate(TRANSLATION.INTRODUCTION.INTRODUCTION_MAIN)}
@@ -28,7 +28,7 @@ const App = () => {
                         <PrimaryButton isWide
                                        onClick={closeIntroPopup}>{translate(TRANSLATION.INTRODUCTION.BUTTON)}</PrimaryButton>
                     </>
-                </Popup.Info>)
+                </Popup.Bottom>)
             }
             <LanguagePopup/>
             <AllRoutes/>
