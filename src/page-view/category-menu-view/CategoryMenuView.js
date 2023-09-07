@@ -10,11 +10,11 @@ import {
     TopCategoryWrapper,
     TopCategoryItem,
     BottomLine,
-    SubCategoryWrapper
+    SubCategoryWrapper,
+    CategoryTitle
 } from "./CategoryMenuView.style";
 
 import {CategoryItem, MenuItem, FetchButton, RowSplitter, HorizontalSwiper} from "../../components";
-import {CategoryTitle} from "../../page/search-details/SearchDetails.style";
 
 import {URL} from "../../utils/config";
 import {useScrollUp} from "../../utils/hook";

@@ -1,13 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 
-import {Wrapper, Row, LocationInfo, Support} from './Footer.style';
+import {Wrapper, Row, LocationInfo, Support, Question} from './Footer.style';
+
+import {ReactComponent as ThumbUpClickedIcon} from "../../assets/icons/thump-up-clicked.svg";
+import {ReactComponent as ThumbDownNotClickedIcon} from "../../assets/icons/thump-down-not-clicked.svg";
+
+import {RowSplitter} from "../index";
+
 import {URL} from "../../utils/config";
 import {translate, TRANSLATION as TR} from "../../utils/translation";
-import {RowSplitter} from "../index";
 
 
 const Footer = () => {
+    const [isLike, setIsLike] = useState()
+
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
@@ -15,13 +22,34 @@ const Footer = () => {
         });
     };
 
+    const onLikeWebsite = () => setIsLike(true)
+    const onDislikeWebsite = () => setIsLike(false)
+
     return (
         <>
-            <RowSplitter height={'200px'}/>
+            <RowSplitter height={'241px'}/>
             <Wrapper>
-                <Link>
-                    <Row onClick={scrollToTop}>{translate(TR.PAGE.FOOTER.BACK_TO_TOP_BUTTON)}</Row>
-                </Link>
+                <Question justifyContent="center" alignItems="center" gap={'10px'}>
+                    <span>{translate(TR.PAGE.SETTINGS.GROUP_TITLE.DO_YOU_LIKE)}</span>
+                    {isLike === undefined
+                        ? (
+                            <>
+                                <ThumbDownNotClickedIcon onClick={onLikeWebsite} className="reversed unClicked"/>
+                                <ThumbDownNotClickedIcon onClick={onDislikeWebsite} className="unClicked"/>
+                            </>
+                        ) : isLike ? (
+                            <>
+                                <ThumbUpClickedIcon/>
+                                <ThumbDownNotClickedIcon/>
+                            </>
+                        ) : (
+                            <>
+                                <ThumbDownNotClickedIcon className="reversed"/>
+                                <ThumbUpClickedIcon className="reversed"/>
+                            </>
+                        )}
+                </Question>
+                <Row onClick={scrollToTop}>{translate(TR.PAGE.FOOTER.BACK_TO_TOP_BUTTON)}</Row>
                 <Link to={URL.CUSTOMER_COMPANIES}>
                     <Row>{translate(TR.PAGE.SETTINGS.GROUP_TITLE.FOR_BUSINESS)}</Row>
                 </Link>
@@ -31,6 +59,7 @@ const Footer = () => {
                 <Link to={URL.OUR_TEAM}>
                     <Row>{translate(TR.PAGE.OUR_TEAM.TOP_TITLE)}</Row>
                 </Link>
+
 
                 <Support>
                     <a href="mailto:support@depoistu.com">support@depoistu.com</a>
