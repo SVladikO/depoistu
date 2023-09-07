@@ -127,18 +127,18 @@ const EditCompany = () => {
     }
 
     const EditCompanyButton = () => (
-        <FetchButton
+        <PrimaryButton
             isWide
             type="submit"
             isLoading={isLoadingUpdate}
         >
             {translate(TRANSLATION.PAGE.EDIT_COMPANY.BUTTON.EDIT_COMPANY)}
-        </FetchButton>
+        </PrimaryButton>
     );
     const DeleteCompanyButton = () => (
-        <FetchButton isWide isLoading={isLoadingDelete} clickHandler={openDeletePopup}><RemoveIcon/>
+        <PrimaryButton isWide isLoading={isLoadingDelete} clickHandler={openDeletePopup}><RemoveIcon/>
             {translate(TRANSLATION.PAGE.EDIT_COMPANY.BUTTON.DELETE_COMPANY)}
-        </FetchButton>
+        </PrimaryButton>
     )
 
     return (

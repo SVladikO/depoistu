@@ -14,7 +14,7 @@ import {
     CategoryTitle
 } from "./CategoryMenuView.style";
 
-import {CategoryItem, MenuItem, FetchButton, RowSplitter, HorizontalSwiper} from "../../components";
+import {CategoryItem, MenuItem, RowSplitter, HorizontalSwiper, PrimaryButton} from "../../components";
 
 import {URL} from "../../utils/config";
 import {useScrollUp} from "../../utils/hook";
@@ -227,8 +227,9 @@ const CategoryMenuView = ({
                 <>
                     <RowSplitter height={'15px'}/>
                     <Link to={`${URL.ADD_MENU_ITEM}`}>
-                        <FetchButton
-                            isWide>{translate(TRANSLATION.PAGE.EDIT_MENU.BUTTON.ADD_MENU_ITEM)}</FetchButton>
+                        <PrimaryButton isWide>
+                            {translate(TRANSLATION.PAGE.EDIT_MENU.BUTTON.ADD_MENU_ITEM)}
+                        </PrimaryButton>
                     </Link>
                 </>
             }

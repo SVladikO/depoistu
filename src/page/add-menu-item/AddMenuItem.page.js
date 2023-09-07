@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-import {FetchButton} from "../../components";
+import { PrimaryButton} from "../../components";
 import MenuItemView from "../../page-view/menu-item/menu-item-view";
 
 import {fetchData, BE_API} from "../../utils/fetch";
@@ -47,13 +47,13 @@ const AddMenuItemPage = () => {
                 onSubmit={onSubmit}
             >
                 <>
-                    <FetchButton
+                    <PrimaryButton
                         isWide
                         type="submit"
                         isLoading={isLoading}
                     >
                         {translate(TRANSLATION.PAGE.ADD_MENU_ITEM.BUTTON.ADD_MENU_ITEM)}
-                    </FetchButton>
+                    </PrimaryButton>
                 </>
 
             </MenuItemView>
