@@ -29,7 +29,6 @@ import
     Textarea,
     Company,
     Label,
-    CloseButton,
     MenuItemDetails,
     Dropdown,
     PrimaryButton,
@@ -155,7 +154,6 @@ const componentsGroup1 = [
         {title: 'SecondaryButton isWide', component: <SecondaryButton isWide>Cancel</SecondaryButton>},
         {title: 'ThirdButton', component: <ThirdButton><FacebookIcon/>Cancel</ThirdButton>},
         {title: 'ThirdButton isWide', component: <ThirdButton isWide><FacebookIcon/>Cancel</ThirdButton>},
-        {title: 'CloseButton', component: <CloseButton clickHandler={() => alert('clicked')}/>},
     ],
     [
         {title: 'Label', component: <Label>Change Password</Label>},

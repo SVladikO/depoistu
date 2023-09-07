@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {COLOR} from "../../utils/theme";
 
 export const InvisibleWrapper = styled.div`
   background: rgba(0, 0, 0, 0.9);
@@ -27,12 +28,19 @@ export const Wrapper = styled.div`
   ${p => p.position === 'end' && 'border-radius: 28px 28px 0 0'};
   ${p => p.position === 'end' && 'background: white'};
   
+  
+  
 `;
 
 export const CloseButtonWrapper = styled.div`
   position: absolute;
   right: 17px;
   top: 14px;
-  display: flex;
-  flex-direction: row-reverse;
+
+  width: 14px;
+  height: 14px;
+
+  & > svg {
+    fill: ${COLOR.ACCENT1} !important;
+  }
 `;

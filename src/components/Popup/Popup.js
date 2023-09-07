@@ -2,7 +2,8 @@ import {useEffect} from "react";
 
 import {InvisibleWrapper, CloseButtonWrapper, Wrapper} from "./Popup.style";
 
-import {CloseButton} from "../index";
+import {ReactComponent as CloseIcon} from "../../assets/icons/close.svg";
+
 import CityContent from "./content/city/CityContent";
 import {Info as _Info} from "./content/info/Info";
 
@@ -14,6 +15,13 @@ export const disableScrollOnBody = () => {
     document.body.style.overflowY = 'hidden';
 };
 
+const CloseButton = ({clickHandler}) => {
+    return (
+        <CloseButtonWrapper onClick={clickHandler} className="pma-close-button-wrapper">
+            <CloseIcon />
+        </CloseButtonWrapper>
+    );
+};
 
 const Popup = (props) => {
     const {onClose, Component, showCloseButton = true, position} = props;

@@ -3,7 +3,6 @@ import BottomMenu from "./BottomMenu/BottomMenu";
 import CategoryItem from "./CategoryItem/CategoryItem";
 import CheckBoxWithLabel from "./CheckBoxWithLabel/CheckBoxWithLabel";
 import Checkbox from "./Checkbox/Checkbox";
-import CloseButton from "./CloseButton/CloseButton";
 import Company from "./Company/Company";
 import CustomerAccountBar from "./UserAccountBar/CustomerAccountBar";
 import Dropdown from "./Dropdown/Dropdown";
@@ -49,7 +48,6 @@ export {
     CategoryItem,
     CheckBoxWithLabel,
     Checkbox,
-    CloseButton,
     Company,
     ContentContainer,
     CustomerAccountBar,
