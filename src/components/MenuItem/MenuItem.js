@@ -13,7 +13,7 @@ import {
     EditRow,
 } from "./MenuItem.style";
 
-import {Price, Flex, Popup, ToggleCheckbox} from "../index";
+import {Price, Flex, ToggleCheckbox} from "../index";
 import {ReactComponent as TimeIcon} from "../../assets/icons/time.svg";
 import {ReactComponent as MeasureIcon} from "../../assets/icons/sss.svg";
 import {ReactComponent as BasketIcon} from "../../assets/icons/basket.svg";
@@ -94,13 +94,13 @@ const MenuItem = (props) => {
         </ImagesWrapper>
     );
 
-    const MenuItemPopup = () => (
-        imageUrl && <Popup.Image imageUrl={imageUrl} onClose={() => setImageUrl('')}>
-            <MenuItemDetails
-                {...props}
-            />
-        </Popup.Image>
-    )
+    // const MenuItemPopup = () => (
+    //     imageUrl && <Popup.Image imageUrl={imageUrl} onClose={() => setImageUrl('')}>
+    //         <MenuItemDetails
+    //             {...props}
+    //         />
+    //     </Popup.Image>
+    // )
 
     return (
         <Wrapper

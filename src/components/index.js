@@ -40,6 +40,7 @@ import {PrimaryButton} from "./Buttons/PrimaryButton";
 import {RowSplitterStyle as RowSplitter} from "./RowSplitter/RowSplitter.style";
 import {SecondaryButton} from "./Buttons/SecondaryButton";
 import {ThirdButton} from "./Buttons/ThirdButton";
+import {Text22} from "./Text/Text.style";
 
 export {
     Absolute,
@@ -82,6 +83,7 @@ export {
     RowSplitter,
     SecondaryButton,
     SettingMenuRow,
+    Text22,
     Textarea,
     ThirdButton,
     ToggleCheckbox,

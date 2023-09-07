@@ -50,7 +50,6 @@ import {ReactComponent as LanguageIcon} from "../../assets/icons/language.svg";
 
 import {COLOR} from "../../utils/theme";
 import AccountSettings from "../../components/AccountSettings/AccountSettings";
-import ImageContent from "../../components/Popup/content/image/ImageContent";
 import IntroContent from "../../components/Popup/content/info/Info";
 import CityContent from "../../components/Popup/content/city/CityContent"
 import {ReactComponent as LocationIcon} from "../../assets/icons/location.svg";
@@ -403,11 +402,6 @@ const componentsGroup3 = [
         },
     ],
     [
-        {
-            title: 'ImagePopupContent',
-            component: <ImageContent
-                imageUrl="https://raw.githubusercontent.com/SVladikO/testApp/master/images/4_cheese.jpg"/>
-        },
         {
             title: 'IntroContent.Info',
             component: <IntroContent.Info>Some text Some text Some text Some text Some text</IntroContent.Info>

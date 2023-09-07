@@ -21,12 +21,18 @@ export const Wrapper = styled.div`
   max-width: 375px;
   display: flex;
   flex-direction: column;
-  border-radius: 28px 28px 0 0;
-  overflow: hidden;
-  padding: 12px 23px 0;
+  position: relative;
+  ${p => p.position === 'end' && 'overflow: hidden'};
+  ${p => p.position === 'end' && 'padding: 40px 23px 40px'};
+  ${p => p.position === 'end' && 'border-radius: 28px 28px 0 0'};
+  ${p => p.position === 'end' && 'background: white'};
+  
 `;
 
 export const CloseButtonWrapper = styled.div`
+  position: absolute;
+  right: 17px;
+  top: 14px;
   display: flex;
   flex-direction: row-reverse;
 `;
