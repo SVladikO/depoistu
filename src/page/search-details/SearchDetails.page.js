@@ -1,17 +1,21 @@
 import {useEffect, useState} from "react";
-import {useParams} from 'react-router-dom';
-import {CategoryTitle, Wrapper} from "./SearchDetails.style";
+import {NavLink, useParams} from 'react-router-dom';
+import {Wrapper} from "./SearchDetails.style";
 
-import {Company, NotificationLoading, RowSplitter} from "components";
+import {Company, NotificationLoading, PrimaryButton} from "../../components";
 
-import CategoryMenuView from 'page-view/category-menu-view/CategoryMenuView'
+import CategoryMenuView from '../../page-view/category-menu-view/CategoryMenuView'
 
-import {BE_API, fetchData} from "utils/fetch";
-import {translate, TRANSLATION as TR} from "utils/translation";
-import {publishNotificationEvent} from "utils/event";
-import {stopLoadingWithDelay} from "utils/utils";
+import {BE_API, fetchData} from "../../utils/fetch";
+import {translate, TRANSLATION as TR} from "../../utils/translation";
+import {publishNotificationEvent} from "../../utils/event";
+import {stopLoadingWithDelay} from "../../utils/utils";
+import {useScrollUp} from "../../utils/hook";
+import {ROUTER} from "../../utils/config";
+import NotificationTDB from "../../components/NotificationTDB/NotificationTDB";
 
 const SearchDetailsPage = () => {
+    useScrollUp();
     let companyId = +useParams().companyId;
     const [isLoadingMenu, setIsLoadingMenu] = useState(false);
     const [isLoadingCompany, setIsLoadingCompany] = useState(false);
@@ -47,6 +51,18 @@ const SearchDetailsPage = () => {
             .finally(() => menuLoadingDelay.allow());
     }, [companyId]);
 
+    if (menuItems !== undefined && !menuItems?.length) {
+        return (
+            <NotificationTDB title={translate(TR.PAGE.COMPANY_DETAILS.COMPANY_DOESNT_EXIST)}>
+                <NavLink to={ROUTER.SEARCH.URL}>
+                    <PrimaryButton isWide>
+                        {translate(TR.GO_TO_A_SEARCH_PAGE)}
+                    </PrimaryButton>
+                </NavLink>
+            </NotificationTDB>
+        )
+    }
+
     return (
         <Wrapper>
             {isLoadingCompany && <NotificationLoading>Loading company ...</NotificationLoading>}
@@ -54,9 +70,8 @@ const SearchDetailsPage = () => {
 
             {isLoadingMenu && <NotificationLoading>Loading menu ... </NotificationLoading>}
 
-            {!isLoadingMenu && menuItems?.length && (
+            {!isLoadingMenu && !!menuItems?.length && (
                 <>
-                    <CategoryTitle id="menu">{translate(TR.PAGE.COMPANY_DETAILS.MENU_TITLE)}</CategoryTitle>
                     <CategoryMenuView
                         className="category-menu-row"
                         menuItems={menuItems}
@@ -64,9 +79,7 @@ const SearchDetailsPage = () => {
                 </>
             )
             }
-
             {/*Let's scroll work after click on the last sub category */}
-            <RowSplitter height={'550px'}/>
         </Wrapper>
     );
 };

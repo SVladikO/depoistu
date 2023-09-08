@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import {Wrapper, Column, Component, Row, ColorCircle, Header, Space} from './Components.style';
 import
 {
@@ -13,7 +13,6 @@ import
     ToggleCheckbox,
     CheckBoxWithLabel,
     SecondaryButton,
-    FetchButton,
     ContentContainer,
     NotificationLoading,
     NavigationHeader,
@@ -29,36 +28,35 @@ import
     Textarea,
     Company,
     Label,
-    CloseButton,
     MenuItemDetails,
     Dropdown,
     PrimaryButton,
     NotificationFactory,
     NOTIFICATION_STATUS,
     Footer
-} from "components";
+} from "../../components";
 
-import {ReactComponent as QRCodeIcon} from "assets/icons/qr_code.svg";
-import {ReactComponent as EmptyBasketIcon} from "assets/icons/empty_basket.svg";
-import {ReactComponent as GoogleIcon} from 'assets/icons/google.svg';
-import {ReactComponent as FacebookIcon} from 'assets/icons/facebook.svg';
-import {ReactComponent as MailIcon} from 'assets/icons/mail.svg';
-import {ReactComponent as LockIcon} from 'assets/icons/lock.svg';
-import {ReactComponent as LogOutIcon} from "assets/icons/logout.svg";
-import {ReactComponent as SandwichIcon} from 'assets/icons/sandwich.svg';
-import {ReactComponent as LanguageIcon} from "assets/icons/language.svg";
+import {ReactComponent as QRCodeIcon} from "../../assets/icons/qr_code.svg";
+import {ReactComponent as EmptyBasketIcon} from "../../assets/icons/empty_basket.svg";
+import {ReactComponent as GoogleIcon} from '../../assets/icons/google.svg';
+import {ReactComponent as FacebookIcon} from '../../assets/icons/facebook.svg';
+import {ReactComponent as MailIcon} from '../../assets/icons/mail.svg';
+import {ReactComponent as LockIcon} from '../../assets/icons/lock.svg';
+import {ReactComponent as LogOutIcon} from "../../assets/icons/logout.svg";
+import {ReactComponent as SandwichIcon} from '../../assets/icons/sandwich.svg';
+import {ReactComponent as LanguageIcon} from "../../assets/icons/language.svg";
 
-import {COLOR} from "utils/theme";
-import AccountSettings from "components/AccountSettings/AccountSettings";
-import ImageContent from "components/Popup/content/image/ImageContent";
-import IntroContent from "components/Popup/content/info/Info";
-import CityContent from "components/Popup/content/city/CityContent"
-import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
-import Checkbox from "components/Checkbox/Checkbox";
+import {COLOR} from "../../utils/theme";
+import AccountSettings from "../../components/AccountSettings/AccountSettings";
+import IntroContent from "../../components/Popup/info/Info";
+import CityContent from "../../components/Popup/city/CityContent"
+import {ReactComponent as LocationIcon} from "../../assets/icons/location.svg";
+import Checkbox from "../../components/Checkbox/Checkbox";
 import {EditBar, QRCodeButton} from "../customer-companies/CustomerCompanies.style";
-import {ReactComponent as EditIcon} from "assets/icons/edit.svg";
+import {ReactComponent as EditIcon} from "../../assets/icons/edit.svg";
 import {Link} from "react-router-dom";
-import {getOnlyCityIds} from "utils/cities";
+import {getOnlyCityIds} from "../../utils/cities";
+
 
 const colors = Object.keys(COLOR).map(key =>
     ({title: key, component: <ColorCircle key={key} bg={COLOR[key]}/>, value: COLOR[key], width: '50px'})
@@ -78,6 +76,19 @@ const colors = Object.keys(COLOR).map(key =>
     //     />
     // )
 // }
+
+const mockMenuItem = {
+    id: 10,
+    name: '4 Cheese',
+    categoryId: 1,
+    description: 'spicy , tomato, sauce, chilies, mozzare, lla, spicy, ice, tomato, sauce, chili, mozzarella, sauce, chili',
+    imageUrl: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
+    cookingTime: 15,
+    price: 170,
+    size: 150,
+    likes: 5,
+
+}
 
 const [UnselectedDropdown, SelectedDropdown, WithErrorDropdown] = (() => {
     const options = [
@@ -146,17 +157,16 @@ const componentsGroup1 = [
         {title: 'Price', component: <Price>50</Price>},
     ],
     [
-        {title: 'PrimaryButton', component: <PrimaryButton><GoogleIcon/>Google</PrimaryButton>},
-        {title: 'PrimaryButton', component: <PrimaryButton>Sing in</PrimaryButton>},
-        {title: 'PrimaryButton isWide', component: <PrimaryButton isWide>Sing in</PrimaryButton>},
-        {title: 'FetchButton isWide', component: <PrimaryButton isWide>Sing in</PrimaryButton>},
-        {title: 'FetchButton isLoading isWide', component: <FetchButton isLoading isWide>Loading</FetchButton>},
-        {title: 'SecondaryButton', component: <SecondaryButton><FacebookIcon/>facebook</SecondaryButton>},
-        {title: 'SecondaryButton', component: <SecondaryButton>Cancel</SecondaryButton>},
-        {title: 'SecondaryButton isWide', component: <SecondaryButton isWide>Cancel</SecondaryButton>},
-        {title: 'ThirdButton', component: <ThirdButton><FacebookIcon/>Cancel</ThirdButton>},
-        {title: 'ThirdButton isWide', component: <ThirdButton isWide><FacebookIcon/>Cancel</ThirdButton>},
-        {title: 'CloseButton', component: <CloseButton clickHandler={() => alert('clicked')}/>},
+        {title: 'PrimaryButton', component: <PrimaryButton>Primary</PrimaryButton>},
+        {title: 'PrimaryButton isDisabled', component: <PrimaryButton isDisabled>Primary</PrimaryButton>},
+        {title: 'PrimaryButton isLoading', component: <PrimaryButton isLoading>Primary</PrimaryButton>},
+        {title: 'PrimaryButton isWide', component: <PrimaryButton isWide>Primary wide</PrimaryButton>},
+        {title: 'SecondaryButton', component: <SecondaryButton>Secondary</SecondaryButton>},
+        {title: 'SecondaryButton isDisabled', component: <SecondaryButton isDisabled>Secondary</SecondaryButton>},
+        {title: 'SecondaryButton isLoading', component: <SecondaryButton isLoading={true}>Secondary</SecondaryButton>},
+        {title: 'SecondaryButton isWide', component: <SecondaryButton isWide>Secondary wide</SecondaryButton>},
+        {title: 'ThirdButton', component: <ThirdButton>Third</ThirdButton>},
+        {title: 'ThirdButton isWide', component: <ThirdButton isWide>Third</ThirdButton>},
     ],
     [
         {title: 'Label', component: <Label>Change Password</Label>},
@@ -217,51 +227,53 @@ const componentsGroup2 = [
     ],
     [
         {
-            title: 'MenuItemDetails',
+            title: 'MenuItemDetails without description',
             component:
                 <MenuItemDetails
-                    item={{
-                        ID: 10,
-                        NAME: '4 Cheese',
-                        CATEGORY_ID: 1,
-                        DESCRIPTION: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella',
-                        IMAGE_URL: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
-                        COOKING_TIME: 15,
-                        PRICE: 170,
-                        SIZE: 150,
-                    }}
+                    item={{...mockMenuItem, description: ''}}
+                    isVisible
+                />
+        },{
+            title: 'MenuItemDetails with description',
+            component:
+                <MenuItemDetails
+                    item={mockMenuItem}
+                    isVisible
                 />
         },
         {
-            title: 'MenuItem',
+            title: 'MenuItemDetails with image',
+            component:
+                <MenuItemDetails
+                    item={{...mockMenuItem, description: ''}}
+                    isWithImage
+                    isVisible
+                />
+        },{
+            title: 'MenuItemDetails with image & description',
+            component:
+                <MenuItemDetails
+                    item={mockMenuItem}
+                    isWithImage
+                    isVisible
+                />
+        },{
+            title: 'MenuItemDetails with image & description & "new" flag',
+            component:
+                <MenuItemDetails
+                    item={mockMenuItem}
+                    isWithImage
+                    isNewItemFlag
+                    isVisible
+                />
+        },
+        {
+            title: 'MenuItem editing',
             component:
                 <MenuItem
-                    item={{
-                        ID: 10,
-                        NAME: '4 Cheese',
-                        CATEGORY_ID: 1,
-                        DESCRIPTION: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella',
-                        IMAGE_URL: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
-                        COOKING_TIME: 15,
-                        PRICE: 170,
-                        SIZE: 150,
-                    }}
-                />
-        },
-        {
-            title: 'MenuItem',
-            component:
-                <MenuItem withEditIcon
-                          item={{
-                              ID: 10,
-                              NAME: '4 Cheese',
-                              CATEGORY_ID: 5,
-                              DESCRIPTION: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella',
-                              IMAGE_URL: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
-                              COOKING_TIME: 15,
-                              PRICE: 170,
-                              SIZE: 150,
-                          }}
+                    item={mockMenuItem}
+                    withEditIcon
+                    isWithImage
                 />
         },
         {
@@ -293,11 +305,11 @@ const componentsGroup2 = [
             title: 'Company',
             component: <Company
                 company={{
-                    PHOTOS: 'https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg, https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg, https://afisha.bigmir.net/i/23/51/30/9/2351309/gallery/15b8175dc297f8a58d9de22e77b7b256-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg',
-                    NAME: 'Domono',
-                    CITY_ID: '204',
-                    SCHEDULE: ', , , , , 11:00-22:00, 10:00-19:00',
-                    STREET: 'Davidusk 15.',
+                    photos: 'https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg, https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg, https://afisha.bigmir.net/i/23/51/30/9/2351309/gallery/15b8175dc297f8a58d9de22e77b7b256-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg',
+                    name: 'Domono',
+                    cityId: '204',
+                    schedule: ', , , , , 11:00-22:00, 10:00-19:00',
+                    street: 'Davidusk 15.',
                 }}
             />
         },
@@ -306,12 +318,12 @@ const componentsGroup2 = [
             component: <Company
                 withMoreInfo
                 company={{
-                    PHOTOS: 'https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg, https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg, https://afisha.bigmir.net/i/23/51/30/9/2351309/gallery/15b8175dc297f8a58d9de22e77b7b256-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg',
-                    NAME: 'Domono',
-                    CITY_ID: '204',
-                    SCHEDULE: '01:00-21:00, 01:00-21:00, 01:00-21:00, 01:00-21:00, 01:00-21:00, 01:00-22:00, 01:00-22:00',
-                    STREET: 'Davidusk 15.',
-                    PHONE1: '38 097 066 8820'
+                    photos: 'https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg, https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg, https://afisha.bigmir.net/i/23/51/30/9/2351309/gallery/15b8175dc297f8a58d9de22e77b7b256-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg',
+                    name: 'Domono',
+                    cityId: '204',
+                    schedule: '01:00-21:00, 01:00-21:00, 01:00-21:00, 01:00-21:00, 01:00-21:00, 01:00-22:00, 01:00-22:00',
+                    street: 'Davidusk 15.',
+                    phone1: '38 097 066 8820'
                 }}
             />
         },
@@ -319,17 +331,17 @@ const componentsGroup2 = [
             title: 'Company',
             component: <Company
                 company={{
-                    PHOTOS: 'https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg, https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg, https://afisha.bigmir.net/i/23/51/30/9/2351309/gallery/15b8175dc297f8a58d9de22e77b7b256-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg',
-                    NAME: 'Domono',
-                    CITY_ID: '204',
-                    SCHEDULE: ',,,,,,',
-                    STREET: 'Davidusk 15.',
+                    photos: 'https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg, https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg, https://afisha.bigmir.net/i/23/51/30/9/2351309/gallery/15b8175dc297f8a58d9de22e77b7b256-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg',
+                    name: 'Domono',
+                    cityId: '204',
+                    schedule: ',,,,,,',
+                    street: 'Davidusk 15.',
                 }}
             >
                 <EditBar>
-                    <FetchButton><EditIcon/>Company</FetchButton>
+                    <PrimaryButton><EditIcon/>Company</PrimaryButton>
                     <QRCodeButton><QRCodeIcon/></QRCodeButton>
-                    <FetchButton><EditIcon/>Menu</FetchButton>
+                    <PrimaryButton><EditIcon/>Menu</PrimaryButton>
                 </EditBar>
             </Company>
         },
@@ -404,17 +416,8 @@ const componentsGroup3 = [
     ],
     [
         {
-            title: 'ImagePopupContent',
-            component: <ImageContent
-                imageUrl="https://raw.githubusercontent.com/SVladikO/testApp/master/images/4_cheese.jpg"/>
-        },
-        {
             title: 'IntroContent.Info',
             component: <IntroContent.Info>Some text Some text Some text Some text Some text</IntroContent.Info>
-        },
-        {
-            title: 'IntroContent.InfoText',
-            component: <IntroContent.InfoText >Some text Some text Some text Some text Some text</IntroContent.InfoText>
         },
         {title: 'CityPopupContent', component: <CityContent availableCityIds={getOnlyCityIds()}/>},
     ],
@@ -431,7 +434,7 @@ const componentsGroup3 = [
                     description="Looks like you haven't made your order yet."
                 >
                     <Link to={''}>
-                        <FetchButton isWide>Shop Now</FetchButton>
+                        <PrimaryButton isWide>Shop Now</PrimaryButton>
                     </Link>
                 </NotificationTDB>
         },
@@ -466,6 +469,9 @@ function ComponentsPage() {
         )
     }
 
+    useEffect(() => {
+        document.body.style.background = '#ffffff'
+    }, [])
 
     return (
         <div>

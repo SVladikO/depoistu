@@ -36,22 +36,29 @@ export const ScheduleWrapper = styled.div`
 
 export const DaySchedule = styled.div`
   font-weight: 400;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 24px;
-  color: ${props => props.isToday ? COLOR.ACCENT1 : COLOR.ACCENT5};
+  color: ${COLOR.ACCENT1};
 `;
 export const From = styled.div`
-  font-weight: 400;
-  font-size: 20px;
+  font-weight: 500;
+  font-size: 16px;
   line-height: 24px;
-  color: ${props => props.isToday ? COLOR.ACCENT1 : COLOR.ACCENT5};
-  
+  color: ${props => props.isToday ? COLOR.ACCENT3 : COLOR.ACCENT1};
+  border: ${props => props.isToday ? `${COLOR.ACCENT3} solid 1px` : '1px solid #e7e7e7'};
+  display: flex;
+  justify-content: center;
+  border-radius: ${BORDER_RADIUS.DAY_IN_SCHEDULE} ${BORDER_RADIUS.DAY_IN_SCHEDULE} 0 0;
 `;
 export const To = styled.div`
-  font-weight: 400;
-  font-size: 20px;
+  font-weight: 500;
+  font-size: 16px;
   line-height: 24px;
-  color: ${props => props.isToday ? COLOR.ACCENT1 : COLOR.ACCENT5};
+  display: flex;
+  justify-content: center;
+  color: ${props => props.isToday ? COLOR.ACCENT3 : COLOR.ACCENT1};
+  border: ${props => props.isToday ? `${COLOR.ACCENT3} solid 1px` : '1px solid #e7e7e7'};
+  border-radius: 0 0 ${BORDER_RADIUS.DAY_IN_SCHEDULE} ${BORDER_RADIUS.DAY_IN_SCHEDULE};
 `;
 
 export const ScheduleContainer = styled.div`
@@ -68,8 +75,13 @@ export const ScheduleContent = styled.div`
   display: flex;
   overflow-x: scroll;
   width: 100%;
-  
+  margin: 16px 0 0 0;
   & > div {
     margin: 0 1px 0 0;
   }
+  padding: 0 0 6px;
+`;
+
+export const Border = styled.div`
+  border: 1px solid #e7e7e7;
 `;

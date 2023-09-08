@@ -102,7 +102,7 @@ const menu_item_validation = {
         .required(MESSAGE.REQUIRED)
         .min(2, `${MESSAGE.MIN_SYMBOLS} 2`)
         .max(30, `${MESSAGE.MAX_SYMBOLS} 30`),
-    category_id: Yup.string().required(MESSAGE.REQUIRED),
+    categoryId: Yup.string().required(MESSAGE.REQUIRED),
     price: Yup.number()
         .required(MESSAGE.REQUIRED)
         .moreThan(0, `${MESSAGE.MIN_VALUE} 1`),
@@ -139,7 +139,7 @@ const company_validation = {
         .required(MESSAGE.REQUIRED)
         .min(COMPANY.NAME.MIN, `${MESSAGE.MIN_LENGTH} ${COMPANY.NAME.MIN}`)
         .max(COMPANY.NAME.MAX, `${MESSAGE.MAX_LENGTH} ${COMPANY.NAME.MAX}`),
-    city_id: Yup.string().required(MESSAGE.REQUIRED),
+    cityId: Yup.string().required(MESSAGE.REQUIRED),
     street: Yup.string()
         .required(MESSAGE.REQUIRED)
         .min(COMPANY.STREET.MIN, `${MESSAGE.MIN_LENGTH} ${COMPANY.STREET.MIN}`)

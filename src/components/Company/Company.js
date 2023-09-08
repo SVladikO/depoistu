@@ -6,8 +6,9 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
-import {ReactComponent as PhoneIcon} from "assets/icons/phone.svg";
+import {ReactComponent as LocationIcon} from "../../assets/icons/location.svg";
+import {ReactComponent as PhoneIcon} from "../../assets/icons/phone.svg";
+import {ReactComponent as TimeIcon} from "../../assets/icons/time.svg";
 import {
     Wrapper,
     ImageSection,
@@ -21,31 +22,29 @@ import {
     CloseStatus
 } from "./Company.style";
 
-import {parseSchedule} from "utils/company";
+import {parseSchedule} from "../../utils/company";
 import ScheduleDetails from "../WeekScheduleOutput/WeekScheduleOutput";
-import {CITY_TRANSLATION_IDS} from "utils/cities";
-import {translate, TRANSLATION as TR, truncate} from "utils/translation";
+import {CITY_TRANSLATION_IDS} from "../../utils/cities";
+import {translate, TRANSLATION as TR, truncate} from "../../utils/translation";
 import {ThirdButton} from "../Buttons/ThirdButton";
 
-const Company = (props) => {
-
-    if (!props.company) {
+const Company = ({company, withMoreInfo, children}) => {
+    if (!company) {
         return null;
     }
 
-    const {PHOTOS, NAME, CITY_ID, STREET, PHONE1, PHONE2, PHONE3, SCHEDULE} = props.company
-    const schedule = parseSchedule(SCHEDULE);
+    const parsedSchedule = parseSchedule(company.schedule);
 
     const CompanyLocationButton = () => {
-        if (props.withMoreInfo) {
-            const address = `,${STREET}, ${translate(CITY_TRANSLATION_IDS[CITY_ID])}`
+        if (withMoreInfo) {
+            const address = `,${company.street}, ${translate(CITY_TRANSLATION_IDS[company.cityId])}`
             let addressUrl = `https://www.google.com/maps?q=${encodeURIComponent(address)}`
 
             return (
                 <Link to={addressUrl} target="_blank" rel="noopener">
                     <ThirdButton>
                         <LocationIcon />
-                        {truncate(`${translate(CITY_TRANSLATION_IDS[CITY_ID])}, ${STREET}`, 28)}
+                        {truncate(`${translate(CITY_TRANSLATION_IDS[company.cityId])}, ${company.street}`, 28)}
                     </ThirdButton>
                 </Link>
             )
@@ -53,8 +52,8 @@ const Company = (props) => {
 
         return (
             <LocationWrapper>
-            {translate(CITY_TRANSLATION_IDS[CITY_ID])}, {STREET}
-        </LocationWrapper>
+                <LocationIcon />{translate(CITY_TRANSLATION_IDS[company.cityId])}, {company.street}
+            </LocationWrapper>
         );
     }
 
@@ -66,7 +65,7 @@ const Company = (props) => {
                 navigation
                 pagination={{clickable: true}}
             >
-                {PHOTOS && PHOTOS.split(', ')
+                {company.photos && company.photos.split(', ')
                     .map((src, i) =>
                         <SwiperSlide key={i}>
                             <img src={src} alt="#"/>
@@ -79,30 +78,30 @@ const Company = (props) => {
 
     const renderDaySchedule = () => (
         <Schedule>
-            {schedule.isCompanyOpenNow
+            {parsedSchedule.isCompanyOpenNow
                 ? <>
-                    <OpenStatus>{translate(TR.COMPONENTS.COMPANY.STATUS_OPEN)}</OpenStatus>
-                    <Closes><span>{translate(TR.COMPONENTS.COMPANY.TILL)} {schedule.currentDay.to}</span></Closes>
+                    <OpenStatus><TimeIcon/>{translate(TR.COMPONENTS.COMPANY.STATUS_OPEN)}</OpenStatus>
+                    <Closes><span>{translate(TR.COMPONENTS.COMPANY.TILL)} {parsedSchedule.currentDay.to}</span></Closes>
                 </>
-                : <CloseStatus>{translate(TR.COMPONENTS.COMPANY.STATUS_CLOSE)}</CloseStatus>
+                : <CloseStatus><TimeIcon/>{translate(TR.COMPONENTS.COMPANY.STATUS_CLOSE)}</CloseStatus>
             }
         </Schedule>
     )
 
     return (
-        <Wrapper>
+        <Wrapper withMoreInfo={withMoreInfo}>
             {/*<Images />*/}
             <Content>
                 <CompanyInfo>
-                    <Name>{NAME}</Name>
+                    <Name>{company.name}</Name>
                     {renderDaySchedule()}
                     <CompanyLocationButton />
-                    {props.withMoreInfo && <a href={`tel:${PHONE1}`}><ThirdButton><PhoneIcon/>{PHONE1}</ThirdButton></a>}
-                    {props.withMoreInfo && PHONE2 && <a href={`tel:${PHONE2}`}><ThirdButton><PhoneIcon/>{PHONE2}</ThirdButton></a>}
-                    {props.withMoreInfo && PHONE3 && <a href={`tel:${PHONE3}`}><ThirdButton><PhoneIcon/>{PHONE3}</ThirdButton></a>}
-                    {props.withMoreInfo && SCHEDULE && SCHEDULE.length && <ScheduleDetails scheduleAsArray={schedule.workDays}/>}
+                    {withMoreInfo && <a href={`tel:${company.phone1}`}><ThirdButton><PhoneIcon/>{company.phone1}</ThirdButton></a>}
+                    {withMoreInfo && company.phone2 && <a href={`tel:${company.phone2}`}><ThirdButton><PhoneIcon/>{company.phone2}</ThirdButton></a>}
+                    {withMoreInfo && company.phone3 && <a href={`tel:${company.phone3}`}><ThirdButton><PhoneIcon/>{company.phone3}</ThirdButton></a>}
+                    {withMoreInfo && company.schedule && company.schedule.length && <ScheduleDetails scheduleAsArray={parsedSchedule.workDays}/>}
                 </CompanyInfo>
-                {props.children}
+                {children}
             </Content>
         </Wrapper>
     );

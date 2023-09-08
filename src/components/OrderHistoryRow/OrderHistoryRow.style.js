@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import {BORDER_RADIUS, COLOR, hexToRgbA} from 'utils/theme';
+import {COLOR, hexToRgbA} from '../../utils/theme';
 
 export const Wrapper = styled.div`
   padding: 10px 10px 10px 10px;
-  border-radius: ${BORDER_RADIUS.FOURTH};
   background-color: ${COLOR.ACCENT4};
   display: flex;
   min-width: 325px;
@@ -90,7 +89,6 @@ export const Button = styled.button`
 export const WideButton = styled(Button)`
   width: 50%;
   height: 35px;
-  border-radius: ${BORDER_RADIUS.FOURTH};
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;

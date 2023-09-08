@@ -1,18 +1,18 @@
 import {Link} from "react-router-dom";
 import React, {useMemo, useState} from "react";
 
-import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
+import {ReactComponent as LocationIcon} from "../../assets/icons/location.svg";
 
-import {PInput, ContentContainer, Company, NotificationLoading, Popup} from "components";
+import {PInput, ContentContainer, Company, NotificationLoading, Popup, RowSplitter} from "../../components";
 
-import {URL} from "utils/config";
-import {BE_API, fetchData} from "utils/fetch";
-import {CITY_TRANSLATION_IDS} from "utils/cities";
-import {translate, TRANSLATION} from "utils/translation";
-import {useLocalStorage, useScrollUp, useLocalStorageFetch} from "utils/hook";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
-import {publishNotificationEvent} from "utils/event";
-import {stopLoadingWithDelay} from "utils/utils";
+import {URL} from "../../utils/config";
+import {BE_API, fetchData} from "../../utils/fetch";
+import {CITY_TRANSLATION_IDS} from "../../utils/cities";
+import {translate, TRANSLATION, truncate} from "../../utils/translation";
+import {useLocalStorage, useScrollUp, useLocalStorageFetch} from "../../utils/hook";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
+import {publishNotificationEvent} from "../../utils/event";
+import {stopLoadingWithDelay} from "../../utils/utils";
 
 const SearchPage = () => {
         useScrollUp();
@@ -32,6 +32,7 @@ const SearchPage = () => {
             () => !selectedCityId
         );
 
+
         const onSelectCity = ([city, region]) => {
             LocalStorage.remove(LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT)
             setSelectedCity(city);
@@ -49,7 +50,12 @@ const SearchPage = () => {
 
             fetchData(BE_API.COMPANY.GET_AVAILABLE_CITIES())
                 .then(res => {
-                    showCityPopupDelay.allow()
+                    if (!res.body.length) {
+                        publishNotificationEvent.error(translate(TRANSLATION.NOTIFICATION.NO_COMPANY));
+                        showCityPopupDelay.onError();
+                    } else {
+                        showCityPopupDelay.allow()
+                    }
                     setAvailableFromDatabaseCityIds(res.body);
                 })
                 .catch(e => {
@@ -59,6 +65,7 @@ const SearchPage = () => {
                 .finally(() => {
                     cityLoadingDelay.allow();
                 })
+
         }
 
         const cityPopup = useMemo(() =>
@@ -72,6 +79,7 @@ const SearchPage = () => {
 
         return (
             <>
+
                 <ContentContainer>
                     <PInput
                         handleClick={onOpenCityPopup}
@@ -79,7 +87,7 @@ const SearchPage = () => {
                         Icon={LocationIcon}
                         value={
                             selectedCityId && selectedRegionId
-                                ? `${translate(CITY_TRANSLATION_IDS[selectedCityId])}, ${translate(CITY_TRANSLATION_IDS[selectedRegionId])} ${regionLabel}`
+                                ? truncate(`${translate(CITY_TRANSLATION_IDS[selectedCityId])}, ${translate(CITY_TRANSLATION_IDS[selectedRegionId])} ${regionLabel}`, 27)
                                 : ''
                         }
                         placeholder={translate(TRANSLATION.PAGE.SEARCH.INPUT_PLACEHOLDER)}
@@ -88,11 +96,11 @@ const SearchPage = () => {
 
                 {isLoadingCityIds && <NotificationLoading>Loading available cities ...</NotificationLoading>}
                 {isLoadingCompanies && <NotificationLoading>Loading companies ...</NotificationLoading>}
-
+                <RowSplitter height="10px" />
                 {!isLoadingCompanies && companies && !!companies.length && selectedCityId &&
                     companies?.map(company =>
-                        <Link to={`${URL.SEARCH_DETAILS}${company.ID}`} key={company.ID}>
-                            <Company key={company.ID} company={company}/>
+                        <Link to={`${URL.SEARCH_DETAILS}${company.id}`} key={company.id}>
+                            <Company key={company.id} company={company}/>
                         </Link>
                     )
                 }

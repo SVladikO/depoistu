@@ -4,15 +4,15 @@ import * as Yup from 'yup';
 import {Formik} from "formik";
 
 import {Wrapper} from "./SingUp.style";
-import {FetchButton, Label, Input, ContentContainer} from "components";
-import NavigationLabelHref from "components/NavigationLabelHref/NavigationLabelHref";
+import {Label, Input, ContentContainer, PrimaryButton} from "../../components";
+import NavigationLabelHref from "../../components/NavigationLabelHref/NavigationLabelHref";
 
-import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
-import validation from 'utils/validation';
-import {BE_API, fetchData} from "utils/fetch";
-import {TRANSLATION, translate} from "utils/translation";
-import {ROUTER, URL} from 'utils/config';
-import {publishNotificationEvent} from "utils/event";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
+import validation from '../../utils/validation';
+import {BE_API, fetchData} from "../../utils/fetch";
+import {TRANSLATION, translate} from "../../utils/translation";
+import {ROUTER, URL} from '../../utils/config';
+import {publishNotificationEvent} from "../../utils/event";
 
 const SignUpSchema = Yup.object().shape(validation.customer.singUp);
 
@@ -115,13 +115,13 @@ const SingUpPage = () => {
                                 label={translate(TRANSLATION.PAGE.SIGN_IN.ACCOUNT_CONFIRMATION)}
                             />
                         </Wrapper>
-                        <FetchButton
+                        <PrimaryButton
                             isWide
                             type="submit"
                             isLoading={isLoading}
                         >
                             {translate(TRANSLATION.PAGE.SING_UP.TOP_TITLE)}
-                        </FetchButton>
+                        </PrimaryButton>
                     </form>
                 )}
             </Formik>

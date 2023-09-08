@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {BORDER_RADIUS} from "utils/theme";
+import {BORDER_RADIUS} from "../../../utils/theme";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -14,9 +14,4 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Text = styled.div`
-  line-height: 26px;
-  font-size: 22px;
-  text-align: left;
-  
-`;
+

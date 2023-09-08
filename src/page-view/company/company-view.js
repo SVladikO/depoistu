@@ -106,9 +106,9 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                             withIcon
                             Icon={LocationIcon}
                             handleClick={openCityPopup}
-                            value={values.city_id && translate(CITY_TRANSLATION_IDS[values.city_id])}
-                            isTouched={wasSubmitted || touched.city_id}
-                            errorMessage={errors.city || errors.city_id}
+                            value={values.cityId && translate(CITY_TRANSLATION_IDS[values.cityId])}
+                            isTouched={wasSubmitted || touched.cityId}
+                            errorMessage={errors.city || errors.cityId}
                         />
                         {}
                         <Label>{translate(TRANSLATION.INPUT_LABEL.COMPANY.STREET)}</Label>
@@ -166,7 +166,7 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                         <Popup.City
                             availableCityIds={availableAllCityIds}
                             onSelectCity={selectCity(cityId => {
-                                setFieldValue('city_id', cityId)
+                                setFieldValue('cityId', cityId)
                             })}
                             onClose={closeCityPopup}
                         />

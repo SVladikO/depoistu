@@ -29,7 +29,6 @@ import {
     SettingMenuRow,
     AccountSettings,
     NotificationTDB,
-    FetchButton,
     Input,
     NotificationLoading,
     RowSplitter,
@@ -70,10 +69,10 @@ const SettingPage = () => {
     );
     const onCheckVerification = ({emailVerificationCode}) => {
         setIsLoading(true)
-        fetchData(BE_API.CUSTOMER.PUT_VERIFY_EMAIL(), {email: customer.EMAIL, emailVerificationCode, method: 'put'})
+        fetchData(BE_API.CUSTOMER.PUT_VERIFY_EMAIL(), {email: customer.email, emailVerificationCode, method: 'put'})
             .then(res => {
                 if (res.body.isEmailVerified) {
-                    setCustomer({...customer, IS_VERIFIED_EMAIL: true})
+                    setCustomer({...customer, isVerifiedEmail: true})
                 }
             })
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))
@@ -105,7 +104,7 @@ const SettingPage = () => {
                             withCleaner
                         />
                         <RowSplitter height={'10px'}/>
-                        <FetchButton type="submit" isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.VERIFICATION)}</FetchButton>
+                        <PrimaryButton type="submit" isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.VERIFICATION)}</PrimaryButton>
                     </form>
                 )}
             </Formik>
@@ -120,13 +119,14 @@ const SettingPage = () => {
     return (
         <>
             {!customer && singInSingUpNotification}
-            {customer && !customer.IS_VERIFIED_EMAIL && emailVerificationNotification}
+            {/*{customer && !customer.isVerifiedEmail && emailVerificationNotification}*/}
             {isLoading && <NotificationLoading/>}
             <LanguagePopup />
             <Wrapper>
                 {/*<CustomerAccountBar fullName='Jhon Smith' phone="+14844731243"/>*/}
                 {/*<RowSplitter height='20px'/>*/}
-                {customer && !!customer.IS_VERIFIED_EMAIL && (
+                {/*{customer && !!customer.isVerifiedEmail && (*/}
+                {customer && (
                     <>
                         <AccountSettings
                             groupTitle={translate(TR.PAGE.SETTINGS.GROUP_TITLE.ACCOUNTS)}>
@@ -165,16 +165,6 @@ const SettingPage = () => {
                             />
                         </AccountSettings>
                     </>)
-                }
-                {customer && !customer.IS_VERIFIED_EMAIL && (
-                    <AccountSettings groupTitle={translate(TR.PAGE.SETTINGS.GROUP_TITLE.ACCOUNTS)}>
-                        <SettingMenuRow
-                            icon={LogOutIcon}
-                            title={translate(TR.PAGE.SETTINGS.MENU_ROW.EXIT)}
-                            changeHandler={logOut}
-                        />
-                    </AccountSettings>
-                )
                 }
                 <AccountSettings
                     noTopBorder={customer}

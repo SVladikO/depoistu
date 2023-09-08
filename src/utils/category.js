@@ -44,7 +44,7 @@ export const TOP_CATEGORIES = {
 }
 
 export const getCategoryUniqueIds = (menuItems = []) => {
-    const categoryIds = menuItems.map(mi => mi.CATEGORY_ID);
+    const categoryIds = menuItems.map(mi => mi.categoryId);
     const uniqueCategories = [...new Set([...categoryIds])];
 
     return uniqueCategories.sort((a, b) => a -b);

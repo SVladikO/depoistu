@@ -1,13 +1,13 @@
 import React, {useState} from "react";
 
-import {FetchButton} from "components";
-import MenuItemView from "page-view/menu-item/menu-item-view";
+import {PrimaryButton, RowSplitter} from "../../components";
+import MenuItemView from "../../page-view/menu-item/menu-item-view";
 
-import {fetchData, BE_API} from "utils/fetch";
-import {useRedirectToSettingPage, useScrollUp} from "utils/hook";
-import {translate, TRANSLATION} from "utils/translation";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
-import {publishNotificationEvent} from "utils/event";
+import {fetchData, BE_API} from "../../utils/fetch";
+import {useRedirectToSettingPage, useScrollUp} from "../../utils/hook";
+import {translate, TRANSLATION} from "../../utils/translation";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
+import {publishNotificationEvent} from "../../utils/event";
 
 const AddMenuItemPage = () => {
     useRedirectToSettingPage();
@@ -19,11 +19,11 @@ const AddMenuItemPage = () => {
     const initialValue = {
         name: '',
         price: '',
-        category_id: 1,
+        categoryId: 1,
         description: '',
         cookingTime: '',
         size: '',
-        image_url: ''
+        imageUrl: ''
     }
 
     const onSubmit = values => {
@@ -31,7 +31,7 @@ const AddMenuItemPage = () => {
 
         const requestObj = {
             ...values,
-            company_id: companyId,
+            companyId,
         }
 
         fetchData(BE_API.MENU_ITEM.POST_CREATE(), requestObj)
@@ -47,13 +47,14 @@ const AddMenuItemPage = () => {
                 onSubmit={onSubmit}
             >
                 <>
-                    <FetchButton
+                    <RowSplitter height="10px" />
+                    <PrimaryButton
                         isWide
                         type="submit"
                         isLoading={isLoading}
                     >
                         {translate(TRANSLATION.PAGE.ADD_MENU_ITEM.BUTTON.ADD_MENU_ITEM)}
-                    </FetchButton>
+                    </PrimaryButton>
                 </>
 
             </MenuItemView>

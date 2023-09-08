@@ -1,10 +1,8 @@
 import styled from "styled-components";
-import {COLOR} from "utils/theme";
+import {COLOR, FONT} from "../../utils/theme";
 
 export const Wrapper = styled.div`
-  font-style: normal;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 24px;
-  color: ${COLOR.PRIMARY};
+  ${FONT.SIZE_20};
+  ${FONT.WEIGHT_700};
+  color: ${COLOR.ACCENT1};
 `

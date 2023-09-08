@@ -1,11 +1,11 @@
 import React from 'react';
-import {RowsWrapper, GroupTitle} from "./AccountSettings.style";
+import {GroupTitle} from "./AccountSettings.style";
 
 const AccountSettings = ({groupTitle, noTopBorder, children}) => {
     return (
         <>
-            <GroupTitle noTopBorder={noTopBorder}>{groupTitle}</GroupTitle>
-            <RowsWrapper className="user-account-rows-wrapper">{children}</RowsWrapper>
+            <GroupTitle noTopBorder={noTopBorder} className="group_title">{groupTitle}</GroupTitle>
+            <div className="user-account-rows-wrapper">{children}</div>
         </>
     );
 };
