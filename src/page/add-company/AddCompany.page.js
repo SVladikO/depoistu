@@ -48,7 +48,7 @@ const AddCompany = () => {
             <ContentContainer>
                 <PrimaryButton
                     isWide
-                    onClick={() => {
+                    clickHandler={() => {
                         LocalStorage.set(LOCAL_STORAGE_KEY.COMPANY_ID_TO_EDIT_MENU_PAGE, newCompanyId)
                         navigate(URL.EDIT_MENU)
                     }}

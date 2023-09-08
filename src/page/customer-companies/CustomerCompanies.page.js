@@ -71,7 +71,7 @@ const CustomerCompaniesPage = () => {
             )
             }
             <Link to={URL.ADD_COMPANY}>
-                <PrimaryButton style={{width: '95%', margin: '0 auto'}}>
+                <PrimaryButton isWide>
                     {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.ADD_COMPANY)}
                 </PrimaryButton>
             </Link>

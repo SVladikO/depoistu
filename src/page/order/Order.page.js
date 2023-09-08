@@ -40,7 +40,7 @@ const OrderPage = () => {
 
     const orderButton =
         isCustomerLogged
-            ? <PrimaryButton onClick={placeOrder}>Place Order</PrimaryButton>
+            ? <PrimaryButton clickHandler={placeOrder}>Place Order</PrimaryButton>
             : <Link to={`${ROUTER.SING_IN.URL}?backUrl=${ROUTER.ORDER_REVIEW.URL}`}>
                 <PrimaryButton>Login to place Order</PrimaryButton>
             </Link>
