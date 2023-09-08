@@ -62,10 +62,10 @@ export const MenuItemDetails = ({
     }
 
     const DescriptionContent = () => {
-        const shortDescription = item.description.split('').slice(0, 80).join('')
+        const shortDescription = item.description.split('').slice(0, 62).join('')
         return (
              <Description>
-                 {item.description.length > 80 && !isShowItemDescription
+                 {item.description.length > 62 && !isShowItemDescription
                      ? <>
                          {shortDescription}...&nbsp;
                          <SeeMore onClick={showItemDescription}>

@@ -83,7 +83,7 @@ const mockMenuItem = {
     id: 10,
     name: '4 Cheese',
     categoryId: 1,
-    description: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella, sauce, chili',
+    description: 'spicy , tomato, sauce, chilies, mozzare, lla, spicy, ice, tomato, sauce, chili, mozzarella, sauce, chili',
     imageUrl: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
     cookingTime: 15,
     price: 170,

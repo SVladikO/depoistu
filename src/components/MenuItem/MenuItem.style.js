@@ -81,6 +81,7 @@ export const Description = styled.div`
   font-size: 16px;
   line-height: 16px;
   margin-top: 8px;
+  margin-right: 58px;
 `;
 
 export const EditWrapper = styled.div`
