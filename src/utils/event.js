@@ -1,4 +1,4 @@
-import {NOTIFICATION_STATUS} from "../components";
+import {NOTIFICATION_STATUS} from "components";
 
 export const EVENT_TYPE = {
     NOTIFICATION: 'notification_event',

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {COLOR, hexToRgbA} from '../../utils/theme';
+import {COLOR, hexToRgbA} from 'utils/theme';
 
 export const Wrapper = styled.div`
   padding: 10px 10px 10px 10px;

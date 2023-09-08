@@ -1,16 +1,16 @@
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
-import {PrimaryButton, RowSplitter} from "../../components";
-import MenuItemView from "../../page-view/menu-item/menu-item-view";
-import {ReactComponent as RemoveIcon} from "../../assets/icons/remove_icon.svg";
+import {PrimaryButton, RowSplitter} from "components";
+import MenuItemView from "page-view/menu-item/menu-item-view";
+import {ReactComponent as RemoveIcon} from "assets/icons/remove_icon.svg";
 
-import {URL} from "../../utils/config";
-import {fetchData, BE_API} from "../../utils/fetch";
-import {useRedirectToSettingPage, useScrollUp} from "../../utils/hook";
-import {translate, TRANSLATION} from "../../utils/translation";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {publishNotificationEvent} from "../../utils/event";
+import {URL} from "utils/config";
+import {fetchData, BE_API} from "utils/fetch";
+import {useRedirectToSettingPage, useScrollUp} from "utils/hook";
+import {translate, TRANSLATION} from "utils/translation";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
+import {publishNotificationEvent} from "utils/event";
 
 const EditMenuItemPage = () => {
     useRedirectToSettingPage();

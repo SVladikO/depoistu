@@ -12,15 +12,17 @@ import {
     EditRow, MainInfo, GreyDot, SeeMore, MainInfoWrapper, NewFlag,
 } from "./MenuItem.style";
 
-import {Price, Flex, ToggleCheckbox} from "../index";
-import {ReactComponent as TimeIcon} from "../../assets/icons/time.svg";
-import {ReactComponent as MeasureIcon} from "../../assets/icons/sss.svg";
-import {ReactComponent as ZoomIcon} from "../../assets/icons/zoom.svg";
-import {ReactComponent as EditIcon} from "../../assets/icons/edit.svg";
-import {URL} from "../../utils/config";
-import {translate, TRANSLATION as TR, TRANSLATION} from "../../utils/translation";
-import {CATEGORY_MAPPER} from "../../utils/category";
-import {BE_API, fetchData} from "../../utils/fetch";
+import {ReactComponent as TimeIcon} from "assets/icons/time.svg";
+import {ReactComponent as MeasureIcon} from "assets/icons/sss.svg";
+import {ReactComponent as ZoomIcon} from "assets/icons/zoom.svg";
+import {ReactComponent as EditIcon} from "assets/icons/edit.svg";
+
+import {Price, Flex, ToggleCheckbox} from "components";
+
+import {URL} from "utils/config";
+import {BE_API, fetchData} from "utils/fetch";
+import {CATEGORY_MAPPER} from "utils/category";
+import {translate, TRANSLATION as TR, TRANSLATION} from "utils/translation";
 
 export const MenuItemDetails = ({
                                     item = {},

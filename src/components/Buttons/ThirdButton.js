@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import {button} from "./button";
-import {COLOR} from "../../utils/theme";
+import {COLOR} from "utils/theme";
 
 export const ThirdButton = styled(button)`
   border: none;

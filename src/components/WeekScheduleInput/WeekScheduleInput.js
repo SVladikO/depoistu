@@ -1,5 +1,6 @@
-import {FromToTime} from "../index";
 import React from "react";
+
+import FromToTime from "components/FromToTime/FromToTime";
 import {weekDayNames} from "utils/company";
 
 function WeekScheduleInput({values, handleChange, setFieldValue}) {

@@ -1,5 +1,5 @@
 import styled, {css} from 'styled-components';
-import {COLOR, SHADOW} from "../../utils/theme";
+import {COLOR, SHADOW} from "utils/theme";
 
 export const ContentContainerDefault = css`
   width: 100%;

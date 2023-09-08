@@ -3,19 +3,19 @@ import "swiper/css/pagination";
 import {useNavigate} from "react-router-dom";
 import React, {useState} from "react";
 
-import {ContentContainer, PrimaryButton} from "../../components";
+import {ContentContainer, PrimaryButton} from "components";
 
-import CompanyView from "../../page-view/company/company-view";
+import CompanyView from "page-view/company/company-view";
 
 import {initialValues} from './utils';
-import {URL} from "../../utils/config";
-import {BE_API} from '../../utils/fetch'
-import {fetchData} from "../../utils/fetch";
-import {getScheduleAsString} from "../../utils/company";
-import {useRedirectToSettingPage, useScrollUp} from "../../utils/hook";
-import {translate, TRANSLATION} from "../../utils/translation";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {publishNotificationEvent} from "../../utils/event";
+import {URL} from "utils/config";
+import {BE_API} from 'utils/fetch'
+import {fetchData} from "utils/fetch";
+import {getScheduleAsString} from "utils/company";
+import {useRedirectToSettingPage, useScrollUp} from "utils/hook";
+import {translate, TRANSLATION} from "utils/translation";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
+import {publishNotificationEvent} from "utils/event";
 
 const AddCompany = () => {
     useRedirectToSettingPage();

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import {button} from "./button";
-import {COLOR, GRADIENT} from "../../utils/theme";
+import {COLOR} from "utils/theme";
 
 export const DisabledButton = styled(button)`
   min-width: calc(33.3% + 15px);

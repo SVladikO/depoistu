@@ -1,7 +1,7 @@
 import styled, {css} from "styled-components";
 import {button} from "./button";
-import {COLOR, hexToRgbA, rotationAnimation} from "../../utils/theme";
-import {ReactComponent as LoadingIcon} from "../../assets/icons/loading-red.svg";
+import {COLOR, hexToRgbA, rotationAnimation} from "utils/theme";
+import {ReactComponent as LoadingIcon} from "assets/icons/loading-red.svg";
 
 export const SecondaryButtonWrapper = styled(button)`
   color:      ${p => p.isDisabled ? COLOR.ACCENT5 : COLOR.ACCENT3};

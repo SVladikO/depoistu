@@ -2,7 +2,7 @@ import {memo} from 'react';
 
 import {Wrapper, GroupWrapper, Label, Weekend} from "./FromToTime.style";
 
-import {Checkbox, Input} from "../index";
+import {Checkbox, Input} from "components";
 import {translate, TRANSLATION} from "utils/translation";
 
 function FromToTime({prefix, values, dayName, handleChange, setFieldValue}) {

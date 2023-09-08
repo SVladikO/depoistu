@@ -3,14 +3,13 @@ import {Link} from "react-router-dom";
 
 import {Wrapper, Row, LocationInfo, Support, Question} from './Footer.style';
 
-import {ReactComponent as ThumbUpClickedIcon} from "../../assets/icons/thump-up-clicked.svg";
-import {ReactComponent as ThumbDownNotClickedIcon} from "../../assets/icons/thump-down-not-clicked.svg";
+import {ReactComponent as ThumbUpClickedIcon} from "assets/icons/thump-up-clicked.svg";
+import {ReactComponent as ThumbDownNotClickedIcon} from "assets/icons/thump-down-not-clicked.svg";
 
-import {RowSplitter} from "../index";
+import {RowSplitter} from "components";
 
-import {URL} from "../../utils/config";
-import {translate, TRANSLATION as TR} from "../../utils/translation";
-
+import {URL} from "utils/config";
+import {translate, TRANSLATION as TR} from "utils/translation";
 
 const Footer = () => {
     const [isLike, setIsLike] = useState()
