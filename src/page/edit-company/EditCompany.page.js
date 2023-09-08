@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Link, useParams} from "react-router-dom";
 
-import {RowSplitter, PrimaryButton, ContentContainer} from "../../components";
+import {RowSplitter, PrimaryButton, ContentContainer, SecondaryButton} from "../../components";
 
 import {ReactComponent as RemoveIcon} from "../../assets/icons/remove_icon.svg";
 
@@ -136,9 +136,9 @@ const EditCompany = () => {
         </PrimaryButton>
     );
     const DeleteCompanyButton = () => (
-        <PrimaryButton isWide isLoading={isLoadingDelete} clickHandler={openDeletePopup}><RemoveIcon/>
+        <SecondaryButton isWide isLoading={isLoadingDelete} clickHandler={openDeletePopup}><RemoveIcon/>
             {translate(TRANSLATION.PAGE.EDIT_COMPANY.BUTTON.DELETE_COMPANY)}
-        </PrimaryButton>
+        </SecondaryButton>
     )
 
     return (
@@ -158,9 +158,9 @@ const EditCompany = () => {
                                     {translate(TRANSLATION.COMPONENTS.POPUP.DELETE_COMPANY_QUESTION)}
                                 </PopupTitle>
                                 <PopupButtons>
-                                    <PrimaryButton clickHandler={closeDeletePopup}>
+                                    <SecondaryButton clickHandler={closeDeletePopup}>
                                         {translate(TRANSLATION.NO)}
-                                    </PrimaryButton>
+                                    </SecondaryButton>
                                     <PrimaryButton clickHandler={deleteCompany}>
                                         {translate(TRANSLATION.YES)}
                                     </PrimaryButton>
