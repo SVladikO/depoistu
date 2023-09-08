@@ -168,10 +168,10 @@ const EditCompany = () => {
                             </PopupContentContainer>
                         </Popup.Center>
                     )}
-                    <EditCompanyButton/>
-                    <RowSplitter height={'25px'}/>
-                    <RowSplitter height={'25px'}/>
-                    <DeleteCompanyButton/>
+                        <RowSplitter height={'10px'}/>
+                        <EditCompanyButton/>
+                        <RowSplitter height={'50px'}/>
+                        <DeleteCompanyButton/>
                 </>
             </CompanyView>
         </>

@@ -58,7 +58,8 @@ export const FONT = {
 }
 
 export const BORDER_RADIUS = {
-    BUTTON: '8px',
+    BUTTON: '0px',
+    DAY_IN_SCHEDULE: '8px',
     SUB_CATEGORY: '4px',
     COMPANY: '0px',
     MENU_ITEM: '',

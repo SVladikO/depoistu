@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-import { PrimaryButton} from "../../components";
+import {PrimaryButton, RowSplitter} from "../../components";
 import MenuItemView from "../../page-view/menu-item/menu-item-view";
 
 import {fetchData, BE_API} from "../../utils/fetch";
@@ -47,6 +47,7 @@ const AddMenuItemPage = () => {
                 onSubmit={onSubmit}
             >
                 <>
+                    <RowSplitter height="10px" />
                     <PrimaryButton
                         isWide
                         type="submit"

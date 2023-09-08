@@ -70,11 +70,11 @@ const CustomerCompaniesPage = () => {
                     </Company>
             )
             }
-            <Link to={URL.ADD_COMPANY}>
-                <PrimaryButton isWide>
-                    {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.ADD_COMPANY)}
-                </PrimaryButton>
-            </Link>
+                <Link to={URL.ADD_COMPANY}>
+                    <PrimaryButton isWide>
+                        {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.ADD_COMPANY)}
+                    </PrimaryButton>
+                </Link>
         < />
     )
 };
