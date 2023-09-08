@@ -13,8 +13,6 @@ import
     ToggleCheckbox,
     CheckBoxWithLabel,
     SecondaryButton,
-    FetchButton,
-    DisabledButton,
     ContentContainer,
     NotificationLoading,
     NavigationHeader,
@@ -169,7 +167,6 @@ const componentsGroup1 = [
         {title: 'SecondaryButton isWide', component: <SecondaryButton isWide>Secondary wide</SecondaryButton>},
         {title: 'ThirdButton', component: <ThirdButton>Third</ThirdButton>},
         {title: 'ThirdButton isWide', component: <ThirdButton isWide>Third</ThirdButton>},
-        {title: 'CloseButton', component: <CloseButton clickHandler={() => alert('clicked')}/>},
     ],
     [
         {title: 'Label', component: <Label>Change Password</Label>},

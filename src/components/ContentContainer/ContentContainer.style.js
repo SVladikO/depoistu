@@ -13,7 +13,7 @@ export const ContentContainerDefault = css`
   }
 
   & > * {
-    margin-bottom: 10px;
+    margin-bottom: 22px;
   }
 
   & > *:last-child {

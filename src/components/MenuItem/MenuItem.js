@@ -9,7 +9,6 @@ import {
     EditWrapper,
     ImagesWrapper,
     EditLabel,
-    StatusHidden,
     EditRow, MainInfo, GreyDot, SeeMore, MainInfoWrapper, NewFlag,
 } from "./MenuItem.style";
 
@@ -124,12 +123,12 @@ const MenuItem = (props) => {
     const {item} = props;
     const [isVisible, setIsVisible] = useState(!!item.isVisible)
 
-    const MenuItemImages = () => (
-        <ImagesWrapper>
-            <FoodImage src={item.imageUrl} onClick={() => setImageUrl(item.imageUrl)}/>
-            <ZoomIcon/>
-        </ImagesWrapper>
-    );
+    // const MenuItemImages = () => (
+    //     <ImagesWrapper>
+    //         <FoodImage src={item.imageUrl} onClick={() => setImageUrl(item.imageUrl)}/>
+    //         <ZoomIcon/>
+    //     </ImagesWrapper>
+    // );
 
     // const MenuItemPopup = () => (
     //     imageUrl && <Popup.Image imageUrl={imageUrl} onClose={() => setImageUrl('')}>
