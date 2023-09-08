@@ -89,7 +89,7 @@ const Company = ({company, withMoreInfo, children}) => {
     )
 
     return (
-        <Wrapper>
+        <Wrapper withMoreInfo={withMoreInfo}>
             {/*<Images />*/}
             <Content>
                 <CompanyInfo>

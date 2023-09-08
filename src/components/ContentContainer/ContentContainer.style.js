@@ -12,11 +12,11 @@ export const ContentContainerDefault = css`
     color: ${COLOR.ACCENT3};
   }
 
-  & > * {
+  & > button, a {
     margin-bottom: 22px;
   }
 
-  & > *:last-child {
+  & > button:last-child {
     margin-bottom: 0;
   }
 `

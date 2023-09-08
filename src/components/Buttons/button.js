@@ -2,24 +2,18 @@ import styled from "styled-components";
 import {BORDER_RADIUS, COLOR, rotationAnimation, FONT} from "../../utils/theme";
 
 export const button = styled.button`
-  ${FONT.SIZE_20};
-  color: ${COLOR.ACCENT4};
-  width: ${p => p.isWide ? '100%' : 'auto'};
-  ${p => p.minWidth && `min-width: ${p.minWidth}`};
   height: 50px;
   padding: 10px 24px;
-  border: ${p => p.isPrimary ? 'none' : `2px solid ${COLOR.PRIMARY}`};
-  border-radius: ${BORDER_RADIUS.BUTTON};
   display: flex;
   justify-content: center;
   align-items: center;
+  ${FONT.SIZE_20};
+  
+  border-radius: ${BORDER_RADIUS.BUTTON};
+  ${p => p.isLoading && 'opacity: 0.7'};
+  ${p => p.minWidth && `min-width: ${p.minWidth}`};
+  width: ${p => p.isWide ? '100%' : 'auto'};
   cursor: ${p => p.isDisabled ? 'default' : 'pointer'};
-  box-sizing: border-box;
-
-  &:active {
-    border: ${p => p.isPrimary && p.isDisabled ? 'none' : `2px solid ${COLOR.PRIMARY}`};
-    padding: ${p => p.isPrimary && !p.isDisabled ? '10px 22px' : `10px 24px`};
-  }
 
   & > svg {
     width: 12px;

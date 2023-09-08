@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import {button} from "./button";
-import {COLOR, BORDER_RADIUS} from "../../utils/theme";
+import {COLOR} from "../../utils/theme";
 
 export const ThirdButton = styled(button)`
+  border: none;
   background-color: ${COLOR.ACCENT4};
   color: ${COLOR.ACCENT5};
   height: 30px;
@@ -14,6 +15,11 @@ export const ThirdButton = styled(button)`
   display: flex;
   flex-wrap: nowrap;
   justify-content: flex-start;
+  
+  &:active {
+    border: none;
+    padding: 0;
+  }
 
   & > svg {
     width: 15px;

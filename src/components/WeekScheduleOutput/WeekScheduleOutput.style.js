@@ -79,6 +79,7 @@ export const ScheduleContent = styled.div`
   & > div {
     margin: 0 1px 0 0;
   }
+  padding: 0 0 6px;
 `;
 
 export const Border = styled.div`

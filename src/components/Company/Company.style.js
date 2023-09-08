@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   overflow: hidden;
   perspective: 1px;
   background-color: ${COLOR.ACCENT4};
-  margin: 0 0 10px 0;
+  margin: ${p => p.withMoreInfo ? 0 : '0 0 10px 0'};
   .swiper-pagination-bullet{
     width: 10px;
     height: 10px;
@@ -37,9 +37,13 @@ export const Content = styled.div`
   padding: 16px 16px 20px 16px;
 `;
 export const CompanyInfo = styled.div`
-  & > button, a {
+  & > * {
     display: block;
     margin: 0 0 10px 0;
+  }
+
+  & > *:last-child {
+    margin: 0;
   }
 `;
 
