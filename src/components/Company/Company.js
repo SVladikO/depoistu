@@ -6,8 +6,8 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import {ReactComponent as LocationIcon} from "../../assets/icons/location.svg";
-import {ReactComponent as PhoneIcon} from "../../assets/icons/phone.svg";
+import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
+import {ReactComponent as PhoneIcon} from "assets/icons/phone.svg";
 import {
     Wrapper,
     ImageSection,
@@ -21,10 +21,10 @@ import {
     CloseStatus
 } from "./Company.style";
 
-import {parseSchedule} from "../../utils/company";
+import {parseSchedule} from "utils/company";
 import ScheduleDetails from "../WeekScheduleOutput/WeekScheduleOutput";
-import {CITY_TRANSLATION_IDS} from "../../utils/cities";
-import {translate, TRANSLATION as TR, truncate} from "../../utils/translation";
+import {CITY_TRANSLATION_IDS} from "utils/cities";
+import {translate, TRANSLATION as TR, truncate} from "utils/translation";
 import {ThirdButton} from "../Buttons/ThirdButton";
 
 const Company = (props) => {

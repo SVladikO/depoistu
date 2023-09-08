@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {COLOR} from "../../utils/theme";
+import {COLOR} from "utils/theme";
 
 export const WarningMessageWrapper = styled.div`
   font-weight: 400;

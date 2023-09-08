@@ -11,11 +11,11 @@ import {
     Placeholder,
 } from "./Input.style";
 
-import {ReactComponent as ShowEyeIcon} from "../../assets/icons/show-eye.svg";
-import {ReactComponent as HideEyeIcon} from "../../assets/icons/hide-eye.svg";
-import {ReactComponent as ClearIcon} from "../../assets/icons/close.svg";
+import {ReactComponent as ShowEyeIcon} from "assets/icons/show-eye.svg";
+import {ReactComponent as HideEyeIcon} from "assets/icons/hide-eye.svg";
+import {ReactComponent as ClearIcon} from "assets/icons/close.svg";
 
-import {WarningMessage} from "../../components";
+import {WarningMessage} from "components";
 
 export const Textarea = memo(function ({
                                            errorMessage,

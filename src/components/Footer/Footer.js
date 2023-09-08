@@ -2,8 +2,8 @@ import React from 'react';
 import {Link} from "react-router-dom";
 
 import {Wrapper, Row, LocationInfo, Support} from './Footer.style';
-import {URL} from "../../utils/config";
-import {translate, TRANSLATION as TR} from "../../utils/translation";
+import {URL} from "utils/config";
+import {translate, TRANSLATION as TR} from "utils/translation";
 
 
 const Footer = () => {

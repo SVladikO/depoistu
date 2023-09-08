@@ -3,7 +3,7 @@ import {memo} from 'react';
 import {Wrapper, GroupWrapper, Label, Weekend} from "./FromToTime.style";
 
 import {Checkbox, Input} from "../index";
-import {translate, TRANSLATION} from "../../utils/translation";
+import {translate, TRANSLATION} from "utils/translation";
 
 function FromToTime({prefix, values, dayName, handleChange, setFieldValue}) {
     const fromName = prefix + "From";

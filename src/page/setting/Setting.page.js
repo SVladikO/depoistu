@@ -6,24 +6,24 @@ import * as Yup from "yup";
 
 import {Wrapper, EditBar} from './Setting.style';
 
-import {ReactComponent as LockIcon} from '../../assets/icons/lock.svg';
-// import {ReactComponent as OrderHistoryIcon} from '../../icons/order_history.svg';
-// import {ReactComponent as NotificationIcon} from '../../icons/notification.svg';
-// import {ReactComponent as NewsletterIcon} from '../../icons/newsletter.svg';
-// import {ReactComponent as PhoneCallIcon} from '../../icons/phone_call.svg';
-// import {ReactComponent as PaymentIcon} from '../../icons/payment.svg';
-// import {ReactComponent as LikeIcon} from '../../icons/favorite.svg';
-// import {ReactComponent as DeliveryAddressIcon} from '../../icons/location.svg';
-import {ReactComponent as LogOutIcon} from '../../assets/icons/logout.svg';
-import {ReactComponent as ProfileIcon} from '../../assets/icons/profile.svg';
-// import {ReactComponent as CurrencyIcon} from '../../icons/currency.svg';
-import {ReactComponent as LanguageIcon} from '../../assets/icons/language.svg';
-import {ReactComponent as AboutUsIcon} from "../../assets/icons/about_us.svg";
-// import {ReactComponent as LinkedAccountIcon} from '../../icons/linked_account.svg';
-import {ReactComponent as StoreIcon} from '../../assets/icons/house.svg';
-import {ReactComponent as TeamIcon} from "../../assets/icons/team.svg";
-// import {ReactComponent as ConditionsIcon} from '../../icons/list.svg';
-// import {ReactComponent as HelpIcon} from '../../icons/chat.svg';
+import {ReactComponent as LockIcon} from 'assets/icons/lock.svg';
+// import {ReactComponent as OrderHistoryIcon} from 'icons/order_history.svg';
+// import {ReactComponent as NotificationIcon} from 'icons/notification.svg';
+// import {ReactComponent as NewsletterIcon} from 'icons/newsletter.svg';
+// import {ReactComponent as PhoneCallIcon} from 'icons/phone_call.svg';
+// import {ReactComponent as PaymentIcon} from 'icons/payment.svg';
+// import {ReactComponent as LikeIcon} from 'icons/favorite.svg';
+// import {ReactComponent as DeliveryAddressIcon} from 'icons/location.svg';
+import {ReactComponent as LogOutIcon} from 'assets/icons/logout.svg';
+import {ReactComponent as ProfileIcon} from 'assets/icons/profile.svg';
+// import {ReactComponent as CurrencyIcon} from 'icons/currency.svg';
+import {ReactComponent as LanguageIcon} from 'assets/icons/language.svg';
+import {ReactComponent as AboutUsIcon} from "assets/icons/about_us.svg";
+// import {ReactComponent as LinkedAccountIcon} from 'icons/linked_account.svg';
+import {ReactComponent as StoreIcon} from 'assets/icons/house.svg';
+import {ReactComponent as TeamIcon} from "assets/icons/team.svg";
+// import {ReactComponent as ConditionsIcon} from 'icons/list.svg';
+// import {ReactComponent as HelpIcon} from 'icons/chat.svg';
 
 import {
     SettingMenuRow,
@@ -34,18 +34,18 @@ import {
     NotificationLoading,
     RowSplitter,
     PrimaryButton
-} from '../../components'
+} from 'components'
 
-import LanguagePopup from "../../features/language/LanguagePopup";
-import {openLanguagePopup} from '../../features/language/languageSlice';
+import LanguagePopup from "features/language/LanguagePopup";
+import {openLanguagePopup} from 'features/language/languageSlice';
 
-import {URL} from '../../utils/config';
-import validation from "../../utils/validation";
-import {useLocalStorage, useScrollUp} from "../../utils/hook";
-import {BE_API, fetchData} from "../../utils/fetch";
-import {TRANSLATION as TR, translate} from "../../utils/translation";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {publishNotificationEvent} from "../../utils/event";
+import {URL} from 'utils/config';
+import validation from "utils/validation";
+import {useLocalStorage, useScrollUp} from "utils/hook";
+import {BE_API, fetchData} from "utils/fetch";
+import {TRANSLATION as TR, translate} from "utils/translation";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
+import {publishNotificationEvent} from "utils/event";
 
 const SettingPage = () => {
     useScrollUp();

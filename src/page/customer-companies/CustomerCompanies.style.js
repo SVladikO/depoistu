@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {PrimaryButton} from "../../components/Buttons/PrimaryButton";
+import {PrimaryButton} from "components/Buttons/PrimaryButton";
 
 export const ImageQR = styled.img`
   height: 250px;

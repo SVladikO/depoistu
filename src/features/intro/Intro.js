@@ -1,9 +1,9 @@
 import React from "react";
 import {useSelector, useDispatch} from "react-redux";
 
-import {Popup} from '../../components/index'
+import {Popup} from 'components/index'
 import {closeIntroPopup} from './introSlice';
-import {translate, TRANSLATION} from "../../utils/translation";
+import {translate, TRANSLATION} from "utils/translation";
 
 const Intro = () => {
     const dispatch = useDispatch();

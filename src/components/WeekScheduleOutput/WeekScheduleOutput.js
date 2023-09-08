@@ -2,7 +2,7 @@ import React, {useState} from "react";
 
 import {DaySchedule, From, To, ScheduleContainer, ScheduleContent, ScheduleWrapper} from "./WeekScheduleOutput.style";
 
-import {translate, TRANSLATION as TR} from "../../utils/translation";
+import {translate, TRANSLATION as TR} from "utils/translation";
 import {ThirdButton} from "../Buttons/ThirdButton";
 
 const ScheduleDetails = ({scheduleAsArray}) => {

@@ -2,15 +2,15 @@ import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 
 import {Wrapper, AmountInfo, Content, FixedContent} from './Order.page.style';
-import {NotificationTDB, OrderHistoryRow, Price, FetchButton, PrimaryButton} from "../../components";
+import {NotificationTDB, OrderHistoryRow, Price, FetchButton, PrimaryButton} from "components";
 
-import {ReactComponent as EmptyBasketIcon} from "../../assets/icons/empty_basket.svg";
+import {ReactComponent as EmptyBasketIcon} from "assets/icons/empty_basket.svg";
 
-// import {deleteAllOrders} from '../../features/order/orderSlice'
+// import {deleteAllOrders} from 'features/order/orderSlice'
 
-import {ROUTER} from '../../utils/config'
-// import {fetchData, BE_API} from "../../WeekScheduleOutput.js/fetch";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
+import {ROUTER} from 'utils/config'
+// import {fetchData, BE_API} from "WeekScheduleOutput.js/fetch";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 
 const OrderPage = () => {
     const orders = useSelector(state => state.order.value);

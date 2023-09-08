@@ -1,5 +1,5 @@
-import {ReactComponent as LoadingIcon} from "../../assets/icons/loading.svg";
-import {translate, TRANSLATION} from "../../utils/translation";
+import {ReactComponent as LoadingIcon} from "assets/icons/loading.svg";
+import {translate, TRANSLATION} from "utils/translation";
 import {PrimaryButton} from "./PrimaryButton";
 import {LoadingButton} from "./LoadingButton";
 

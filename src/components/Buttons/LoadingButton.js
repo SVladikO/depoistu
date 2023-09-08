@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import {button} from "./button";
-import {COLOR, rotationAnimation} from "../../utils/theme";
+import {COLOR, rotationAnimation} from "utils/theme";
 
 export const LoadingButton = styled(button)`
   background: ${COLOR.ACCENT5};

@@ -1,18 +1,18 @@
 import {Link} from "react-router-dom";
 import React, {useMemo, useState} from "react";
 
-import {ReactComponent as LocationIcon} from "../../assets/icons/location.svg";
+import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
 
-import {PInput, ContentContainer, Company, NotificationLoading, Popup} from "../../components";
+import {PInput, ContentContainer, Company, NotificationLoading, Popup} from "components";
 
-import {URL} from "../../utils/config";
-import {BE_API, fetchData} from "../../utils/fetch";
-import {CITY_TRANSLATION_IDS} from "../../utils/cities";
-import {translate, TRANSLATION} from "../../utils/translation";
-import {useLocalStorage, useScrollUp, useLocalStorageFetch} from "../../utils/hook";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {publishNotificationEvent} from "../../utils/event";
-import {stopLoadingWithDelay} from "../../utils/utils";
+import {URL} from "utils/config";
+import {BE_API, fetchData} from "utils/fetch";
+import {CITY_TRANSLATION_IDS} from "utils/cities";
+import {translate, TRANSLATION} from "utils/translation";
+import {useLocalStorage, useScrollUp, useLocalStorageFetch} from "utils/hook";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
+import {publishNotificationEvent} from "utils/event";
+import {stopLoadingWithDelay} from "utils/utils";
 
 const SearchPage = () => {
         useScrollUp();

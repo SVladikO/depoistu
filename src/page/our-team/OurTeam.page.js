@@ -1,10 +1,10 @@
 import {Wrapper, Employee, Photo, FullName, Position} from "./OurTeam.page.style";
-import Vlad_imgSrc from '../../assets/images/team/Vlad.png';
-import David_imgSrc from '../../assets/images/team/David.png';
-import Irina_imgSrc from '../../assets/images/team/Irina.png';
-import Alex_imgSrc from '../../assets/images/team/Alex.png';
-import {useScrollUp} from "../../utils/hook";
-import {ReactComponent as LinkIcon} from '../../assets/icons/link.svg';
+import Vlad_imgSrc from 'assets/images/team/Vlad.png';
+import David_imgSrc from 'assets/images/team/David.png';
+import Irina_imgSrc from 'assets/images/team/Irina.png';
+import Alex_imgSrc from 'assets/images/team/Alex.png';
+import {useScrollUp} from "utils/hook";
+import {ReactComponent as LinkIcon} from 'assets/icons/link.svg';
 
 const team = [
     {

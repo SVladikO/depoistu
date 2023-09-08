@@ -13,19 +13,19 @@ import {
     Popup,
     SecondaryButton,
     WeekScheduleInput
-} from "../../components";
+} from "components";
 
-import {ReactComponent as LocationIcon} from "../../assets/icons/location.svg";
-import {ReactComponent as PhoneIcon} from "../../assets/icons/phone.svg";
+import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
+import {ReactComponent as PhoneIcon} from "assets/icons/phone.svg";
 
-import WarningMessage from "../../components/WarningMessage/WarningMessage";
+import WarningMessage from "components/WarningMessage/WarningMessage";
 
-import {ReactComponent as DeleteBasketIcon} from "../../assets/icons/delete_basket.svg";
+import {ReactComponent as DeleteBasketIcon} from "assets/icons/delete_basket.svg";
 
-import validation from "../../utils/validation";
-import {isScheduleValid} from "../../utils/company";
-import {CITY_TRANSLATION_IDS, getOnlyCityIds} from '../../utils/cities'
-import {translate, TRANSLATION} from "../../utils/translation";
+import validation from "utils/validation";
+import {isScheduleValid} from "utils/company";
+import {CITY_TRANSLATION_IDS, getOnlyCityIds} from 'utils/cities'
+import {translate, TRANSLATION} from "utils/translation";
 
 const renderCompanyPhotos = (photos, setPictures) => {
     const deleteImage = index => setPictures(photos.filter((_, i) => i !== index));

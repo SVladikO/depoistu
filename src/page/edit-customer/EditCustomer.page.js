@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import {Formik} from "formik";
 import * as Yup from "yup";
-import {FetchButton, Label, Input, ContentContainer} from "../../components";
+import {FetchButton, Label, Input, ContentContainer} from "components";
 
-import validation from "../../utils/validation";
-import {useRedirectToSettingPage, useScrollUp} from "../../utils/hook";
-import {TRANSLATION, translate} from "../../utils/translation";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
+import validation from "utils/validation";
+import {useRedirectToSettingPage, useScrollUp} from "utils/hook";
+import {TRANSLATION, translate} from "utils/translation";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 
 const SignUpSchema = Yup.object().shape(validation.customer.singUp);
 

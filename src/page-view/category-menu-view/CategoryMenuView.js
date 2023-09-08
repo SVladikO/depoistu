@@ -15,15 +15,15 @@ import {
     Wrapper
 } from "./CategoryMenuView.style";
 
-import {CategoryItem, MenuItem, FetchButton, RowSplitter} from "../../components";
-import {CategoryTitle} from "../../page/search-details/SearchDetails.style";
+import {CategoryItem, MenuItem, FetchButton, RowSplitter} from "components";
+import {CategoryTitle} from "page/search-details/SearchDetails.style";
 
-import {URL} from "../../utils/config";
-import {useScrollUp} from "../../utils/hook";
-import {getTopCategories} from '../../utils/category';
-import {translate, TRANSLATION} from "../../utils/translation";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {CATEGORY_MAPPER, getTopCategoryId, getCategoryUniqueIds} from '../../utils/category';
+import {URL} from "utils/config";
+import {useScrollUp} from "utils/hook";
+import {getTopCategories} from 'utils/category';
+import {translate, TRANSLATION} from "utils/translation";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
+import {CATEGORY_MAPPER, getTopCategoryId, getCategoryUniqueIds} from 'utils/category';
 
 const CATEGORY_TITLE_CLASS_NAME = 'CATEGORY_TITLE_CLASS_NAME';
 const CATEGORY_ROW_HEIGHT = 100;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {FONT_22_500} from "../../utils/theme";
+import {FONT_22_500} from "utils/theme";
 
 export const PopupButtons = styled.div`
   display: inline-flex;

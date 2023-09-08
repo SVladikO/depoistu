@@ -1,5 +1,5 @@
 import React from 'react';
-import {useScrollUp} from "../../utils/hook";
+import {useScrollUp} from "utils/hook";
 
 const AboutUsPage = () => {
     useScrollUp();

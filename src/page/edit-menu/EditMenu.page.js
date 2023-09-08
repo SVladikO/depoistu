@@ -5,18 +5,18 @@ import {Wrapper, CompanyDetails} from "./EditMenu.style";
 
 import {
     NotificationLoading,
-} from "../../components";
+} from "components";
 
-import {startLoading, stopLoading} from "../../features/request/requestSlice";
+import {startLoading, stopLoading} from "features/request/requestSlice";
 
-import {BE_API} from '../../utils/fetch'
-import {fetchData} from "../../utils/fetch";
-import {useLocalStorage, useLocalStorageFetch, useRedirectToSettingPage, useScrollUp} from "../../utils/hook";
-import {translate} from "../../utils/translation";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {CITY_TRANSLATION_IDS} from "../../utils/cities";
-import CategoryMenuView from "../../page-view/category-menu-view/CategoryMenuView";
-import {publishNotificationEvent} from "../../utils/event";
+import {BE_API} from 'utils/fetch'
+import {fetchData} from "utils/fetch";
+import {useLocalStorage, useLocalStorageFetch, useRedirectToSettingPage, useScrollUp} from "utils/hook";
+import {translate} from "utils/translation";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
+import {CITY_TRANSLATION_IDS} from "utils/cities";
+import CategoryMenuView from "page-view/category-menu-view/CategoryMenuView";
+import {publishNotificationEvent} from "utils/event";
 
 const EditMenu = () => {
     useRedirectToSettingPage();

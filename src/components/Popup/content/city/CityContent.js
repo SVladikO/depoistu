@@ -4,9 +4,9 @@ import {BackButtonWrapper, BackButtonInnerWrapper, Wrapper, CitiesWrapper} from 
 
 import {SettingMenuRow} from '../../../index'
 
-import {ReactComponent as BackIcon} from "../../../../assets/icons/back.svg";
-import {TRANSLATION, translate} from '../../../../utils/translation';
-import {generateRegionCityTree, CITY_TRANSLATION_IDS} from "../../../../utils/cities";
+import {ReactComponent as BackIcon} from "assets/icons/back.svg";
+import {TRANSLATION, translate} from 'utils/translation';
+import {generateRegionCityTree, CITY_TRANSLATION_IDS} from "utils/cities";
 
 const enableScrollOnBody = () => document.body.style.overflowY = 'auto';
 

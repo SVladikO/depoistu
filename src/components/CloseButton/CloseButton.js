@@ -1,5 +1,5 @@
 import {Wrapper} from "./CloseButton.style";
-import {ReactComponent as CloseIcon} from "../../assets/icons/close.svg";
+import {ReactComponent as CloseIcon} from "assets/icons/close.svg";
 
 const CloseButton = ({clickHandler}) => {
 

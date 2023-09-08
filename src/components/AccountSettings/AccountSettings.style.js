@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {BORDER_RADIUS, COLOR,GRADIENT} from "../../utils/theme";
+import {BORDER_RADIUS, COLOR,GRADIENT} from "utils/theme";
 
 const border1 = `${BORDER_RADIUS.SECOND} ${BORDER_RADIUS.SECOND} 0 0`;
 const border2 = `0 0 0 0`;

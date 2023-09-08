@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {COLOR, BORDER_RADIUS, SHADOW} from "../../utils/theme";
+import {COLOR, BORDER_RADIUS, SHADOW} from "utils/theme";
 
 export const Wrapper = styled.div`
   ${SHADOW};

@@ -2,10 +2,10 @@ import React from 'react';
 
 import {Wrapper, BackButton, Title} from "./NavigationHeader.style";
 
-// import {ROUTER} from "../../WeekScheduleOutput.js/config";
+// import {ROUTER} from "WeekScheduleOutput.js/config";
 // import {OrderIconWithCounter} from "../index";
 
-import {ReactComponent as BackArrow} from "../../assets/icons/back_arrow.svg";
+import {ReactComponent as BackArrow} from "assets/icons/back_arrow.svg";
 import {Link} from "react-router-dom";
 
 const NavigationHeader = (props) => {

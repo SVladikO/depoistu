@@ -1,24 +1,24 @@
 import React, {useState} from "react";
 import {Link, useParams} from "react-router-dom";
 
-import {RowSplitter, PrimaryButton, FetchButton, ContentContainer} from "../../components";
+import {RowSplitter, PrimaryButton, FetchButton, ContentContainer} from "components";
 
-import {ReactComponent as RemoveIcon} from "../../assets/icons/remove_icon.svg";
+import {ReactComponent as RemoveIcon} from "assets/icons/remove_icon.svg";
 
-import CompanyView from "../../page-view/company/company-view";
+import CompanyView from "page-view/company/company-view";
 
 import getInitialValues from "./utils";
-import {URL} from "../../utils/config";
-import {BE_API} from '../../utils/fetch'
-import {fetchData} from "../../utils/fetch";
-import {initSchedule} from "../../utils/company";
-import {getScheduleAsString} from "../../utils/company";
-import {useRedirectToSettingPage, useScrollUp} from "../../utils/hook";
-import {translate, TRANSLATION} from "../../utils/translation";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import Popup, {enableScrollOnBody, disableScrollOnBody} from "../../components/Popup/Popup";
+import {URL} from "utils/config";
+import {BE_API} from 'utils/fetch'
+import {fetchData} from "utils/fetch";
+import {initSchedule} from "utils/company";
+import {getScheduleAsString} from "utils/company";
+import {useRedirectToSettingPage, useScrollUp} from "utils/hook";
+import {translate, TRANSLATION} from "utils/translation";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
+import Popup, {enableScrollOnBody, disableScrollOnBody} from "components/Popup/Popup";
 import {PopupButtons, PopupTitle} from "./EditCompany.style";
-import {publishNotificationEvent} from "../../utils/event";
+import {publishNotificationEvent} from "utils/event";
 
 //We need this variable after call LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES) on delete company success
 //when we open customer companies page it will make request to BE and user will have updated list of companies.

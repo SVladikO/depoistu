@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import {button} from "./button";
-import {BORDER_RADIUS, COLOR} from "../../utils/theme";
+import {BORDER_RADIUS, COLOR} from "utils/theme";
 
 export const ThirdButton = styled(button)`
   background-color: ${COLOR.ACCENT4};
