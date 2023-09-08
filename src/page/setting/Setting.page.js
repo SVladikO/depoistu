@@ -29,7 +29,6 @@ import {
     SettingMenuRow,
     AccountSettings,
     NotificationTDB,
-    FetchButton,
     Input,
     NotificationLoading,
     RowSplitter,
@@ -105,7 +104,7 @@ const SettingPage = () => {
                             withCleaner
                         />
                         <RowSplitter height={'10px'}/>
-                        <FetchButton type="submit" isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.VERIFICATION)}</FetchButton>
+                        <PrimaryButton type="submit" isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.VERIFICATION)}</PrimaryButton>
                     </form>
                 )}
             </Formik>

@@ -27,7 +27,7 @@ import WeekScheduleInput from "./WeekScheduleInput/WeekScheduleInput";
 import {Absolute} from "./Absolute/Absolute.style";
 import {ContentContainer} from "./ContentContainer/ContentContainer.style.js";
 import {Discount} from "./Discount/Discount.style";
-import {FetchButton} from "./Buttons/FetchButton";
+import {DisabledButton} from "./Buttons/DisabledButton";
 import {Flex} from "./Flex/Flex.style";
 import Footer from "./Footer/Footer";
 import {FixedWrapper} from "./FixedWrapper/FixedWrapper.style";
@@ -46,6 +46,7 @@ export {
     AccountSettings,
     BottomMenu,
     CategoryItem,
+    DisabledButton,
     CheckBoxWithLabel,
     Checkbox,
     Company,
@@ -54,7 +55,6 @@ export {
     Discount,
     Dropdown,
     EditMenuRow,
-    FetchButton,
     Flex,
     Footer,
     FixedWrapper,

@@ -3,7 +3,7 @@ import "swiper/css/pagination";
 import {useNavigate} from "react-router-dom";
 import React, {useState} from "react";
 
-import {ContentContainer, FetchButton, PrimaryButton} from "../../components";
+import {ContentContainer, PrimaryButton} from "../../components";
 
 import CompanyView from "../../page-view/company/company-view";
 
@@ -48,7 +48,7 @@ const AddCompany = () => {
             <ContentContainer>
                 <PrimaryButton
                     isWide
-                    onClick={() => {
+                    clickHandler={() => {
                         LocalStorage.set(LOCAL_STORAGE_KEY.COMPANY_ID_TO_EDIT_MENU_PAGE, newCompanyId)
                         navigate(URL.EDIT_MENU)
                     }}
@@ -63,9 +63,9 @@ const AddCompany = () => {
             onSubmit={onSubmit}
         >
             <>
-                <FetchButton isWide type="submit" isLoading={isLoading}>
+                <PrimaryButton isWide type="submit" isLoading={isLoading}>
                     {translate(TRANSLATION.PAGE.ADD_COMPANY.BUTTON.ADD_COMPANY)}
-                </FetchButton>
+                </PrimaryButton>
             </>
         </CompanyView>
     )

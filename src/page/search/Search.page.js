@@ -32,6 +32,7 @@ const SearchPage = () => {
             () => !selectedCityId
         );
 
+
         const onSelectCity = ([city, region]) => {
             LocalStorage.remove(LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT)
             setSelectedCity(city);
@@ -49,7 +50,12 @@ const SearchPage = () => {
 
             fetchData(BE_API.COMPANY.GET_AVAILABLE_CITIES())
                 .then(res => {
-                    showCityPopupDelay.allow()
+                    if (!res.body.length) {
+                        publishNotificationEvent.error(translate(TRANSLATION.NOTIFICATION.NO_COMPANY));
+                        showCityPopupDelay.onError();
+                    } else {
+                        showCityPopupDelay.allow()
+                    }
                     setAvailableFromDatabaseCityIds(res.body);
                 })
                 .catch(e => {
@@ -59,6 +65,7 @@ const SearchPage = () => {
                 .finally(() => {
                     cityLoadingDelay.allow();
                 })
+
         }
 
         const cityPopup = useMemo(() =>
@@ -72,6 +79,7 @@ const SearchPage = () => {
 
         return (
             <>
+
                 <ContentContainer>
                     <PInput
                         handleClick={onOpenCityPopup}

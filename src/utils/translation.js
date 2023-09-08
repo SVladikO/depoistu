@@ -38,6 +38,10 @@ export const TRANSLATION = {
         ua: 'DEPOISTU',
         en: 'DEPOISTU'
     },
+    SEE_MORE: {
+        ua: 'більше',
+        en: 'see more'
+    },
     GO_TO_A_SEARCH_PAGE: {
         ua: 'Перейти на сторінку пошуку',
         en: 'Go to a search page'
@@ -708,6 +712,10 @@ export const TRANSLATION = {
                     en: "Edit",
                     ua: "Редагувати"
                 },
+                CHANGE_VISIBILITY: {
+                    en: "Change visibility",
+                    ua: "Змінити відоб"
+                },
                 HIDDEN: {
                     en: "HIDDEN",
                     ua: "ПРИХОВАНО"
@@ -736,7 +744,12 @@ export const TRANSLATION = {
             ua: "Завантаження ...",
             en: "Loading ..."
         },
+        NO_COMPANY: {
+            ua: 'Нема зареєстрованих закладів',
+            en: 'No companies in db yet'
+        },
     },
+
     BOTTOM_MENU: {
         SEARCH_TAB: {
             ua: "Пошук",

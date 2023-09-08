@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Formik} from "formik";
 import * as Yup from "yup";
 import {Link} from "react-router-dom";
-import {Input, Label, FetchButton, ContentContainer, NotificationTDB, PrimaryButton} from "../../components";
+import {Input, Label, ContentContainer, NotificationTDB, PrimaryButton} from "../../components";
 import {ReactComponent as MailIcon} from "../../assets/icons/mail.svg";
 import {translate, TRANSLATION} from "../../utils/translation";
 import {URL} from "../../utils/config";
@@ -53,9 +53,9 @@ const ForgetPasswordPage = () => {
                             errorMessage={errors.email}
                         />
                     </ContentContainer>
-                    <FetchButton type="submit" isWide>
+                    <PrimaryButton type="submit" isWide>
                         {translate(TRANSLATION.PAGE.FORGOT_PASSWORD.SUBMIT_BUTTON)}
-                    </FetchButton>
+                    </PrimaryButton>
                 </form>
             )}
         </Formik>

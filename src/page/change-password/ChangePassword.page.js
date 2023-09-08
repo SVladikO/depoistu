@@ -6,8 +6,7 @@ import {
     Label,
     Input,
     RowSplitter,
-    FetchButton,
-    ContentContainer,
+    ContentContainer, PrimaryButton,
 } from "../../components";
 
 import validation from "../../utils/validation";
@@ -86,13 +85,13 @@ const ChangePasswordPage = () => {
                                 errorMessage={errors.confirmedPassword}
                             />
                             <RowSplitter margin="20px 0 0"/>
-                            <FetchButton
+                            <PrimaryButton
                                 isWide
                                 type="submit"
                                 isLoading={isLoading}
                             >
                                 {translate(TRANSLATION.PAGE.CHANGE_PASSWORD.BUTTON.SAVE_PASSWORD)}
-                            </FetchButton>
+                            </PrimaryButton>
                         </ContentContainer>
                     </form>
                 )}

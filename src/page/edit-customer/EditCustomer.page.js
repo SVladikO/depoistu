@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Formik} from "formik";
 import * as Yup from "yup";
-import {FetchButton, Label, Input, ContentContainer} from "../../components";
+import {Label, Input, ContentContainer, PrimaryButton} from "../../components";
 
 import validation from "../../utils/validation";
 import {useRedirectToSettingPage, useScrollUp} from "../../utils/hook";
@@ -68,7 +68,9 @@ const EditCustomerPage = () => {
                                 errorMessage={errors.email}
                             />
                         </ContentContainer>
-                        <FetchButton type="submit" isWide>{translate(TRANSLATION.PAGE.CHANGE_PASSWORD.BUTTON.SAVE_CHANGES)}</FetchButton>
+                        <PrimaryButton type="submit" isWide>
+                            {translate(TRANSLATION.PAGE.CHANGE_PASSWORD.BUTTON.SAVE_CHANGES)}
+                        </PrimaryButton>
                     </form>
                 )}
             </Formik>

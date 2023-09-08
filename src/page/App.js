@@ -25,8 +25,9 @@ const App = () => {
                         <Text22>
                             {translate(TRANSLATION.INTRODUCTION.INTRODUCTION_TELL)}
                         </Text22>
-                        <PrimaryButton isWide
-                                       onClick={closeIntroPopup}>{translate(TRANSLATION.INTRODUCTION.BUTTON)}</PrimaryButton>
+                        <PrimaryButton isWide clickHandler={closeIntroPopup}>
+                            {translate(TRANSLATION.INTRODUCTION.BUTTON)}
+                        </PrimaryButton>
                     </>
                 </Popup.Bottom>)
             }

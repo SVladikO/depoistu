@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Link, useParams} from "react-router-dom";
 
-import {RowSplitter, PrimaryButton, FetchButton, ContentContainer} from "../../components";
+import {RowSplitter, PrimaryButton, ContentContainer} from "../../components";
 
 import {ReactComponent as RemoveIcon} from "../../assets/icons/remove_icon.svg";
 
@@ -127,18 +127,18 @@ const EditCompany = () => {
     }
 
     const EditCompanyButton = () => (
-        <FetchButton
+        <PrimaryButton
             isWide
             type="submit"
             isLoading={isLoadingUpdate}
         >
             {translate(TRANSLATION.PAGE.EDIT_COMPANY.BUTTON.EDIT_COMPANY)}
-        </FetchButton>
+        </PrimaryButton>
     );
     const DeleteCompanyButton = () => (
-        <FetchButton isWide isLoading={isLoadingDelete} clickHandler={openDeletePopup}><RemoveIcon/>
+        <PrimaryButton isWide isLoading={isLoadingDelete} clickHandler={openDeletePopup}><RemoveIcon/>
             {translate(TRANSLATION.PAGE.EDIT_COMPANY.BUTTON.DELETE_COMPANY)}
-        </FetchButton>
+        </PrimaryButton>
     )
 
     return (
@@ -158,10 +158,10 @@ const EditCompany = () => {
                                     {translate(TRANSLATION.COMPONENTS.POPUP.DELETE_COMPANY_QUESTION)}
                                 </PopupTitle>
                                 <PopupButtons>
-                                    <PrimaryButton onClick={closeDeletePopup}>
+                                    <PrimaryButton clickHandler={closeDeletePopup}>
                                         {translate(TRANSLATION.NO)}
                                     </PrimaryButton>
-                                    <PrimaryButton onClick={deleteCompany}>
+                                    <PrimaryButton clickHandler={deleteCompany}>
                                         {translate(TRANSLATION.YES)}
                                     </PrimaryButton>
                                 </PopupButtons>
