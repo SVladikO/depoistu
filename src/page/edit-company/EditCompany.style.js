@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {COLOR, FONT_22_500} from "../../utils/theme";
+import {COLOR, FONT} from "../../utils/theme";
 
 export const PopupButtons = styled.div`
   display: flex;
@@ -15,6 +15,7 @@ export const PopupContentContainer = styled.div`
   border-radius: 5px;
 `;
 export const PopupTitle = styled.div`
-  ${FONT_22_500};
+  ${FONT.SIZE_22};
+  ${FONT.WEIGHT_500};
   padding-bottom: 30px;
 `;

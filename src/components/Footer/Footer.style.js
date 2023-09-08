@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {COLOR, FONT_16, GRADIENT} from "../../utils/theme";
+import {COLOR, FONT} from "../../utils/theme";
 import {Flex} from "../Flex/Flex.style";
 
 export const Wrapper = styled.div`
@@ -27,7 +27,8 @@ export const Question = styled(Flex)`
 
 
 export const Row = styled.div`
-  ${FONT_16};
+  ${FONT.SIZE_16};
+  ${FONT.WEIGHT_400};
   border-bottom: 1px ${COLOR.ACCENT2} solid;
   width: 100%;
   display: flex;
@@ -37,13 +38,15 @@ export const Row = styled.div`
 `;
 
 export const LocationInfo = styled.div`
-  ${FONT_16};
+  ${FONT.SIZE_16};
+  ${FONT.WEIGHT_400};
   color: ${COLOR.ACCENT1};
   margin: 16px auto 16px auto;
   text-align: center;
 `;
 export const Support = styled.div`
-  ${FONT_16};
+  ${FONT.SIZE_16};
+  ${FONT.WEIGHT_400};
   margin: 16px 0 0 0;
   border: none;
   display: flex;
