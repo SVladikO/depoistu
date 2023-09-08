@@ -5,8 +5,8 @@ import {ReactComponent as LoadingIcon} from "../../assets/icons/loading-red.svg"
 
 export const SecondaryButtonWrapper = styled(button)`
   color: ${COLOR.PRIMARY};
-  background: ${p => p.isDisabled ? COLOR.ERROR2 :hexToRgbA(COLOR.ACCENT3, 0.1)};
-  border: 2px solid ${COLOR.PRIMARY};
+  background: ${p => p.isDisabled ? COLOR.ACCENT4 :hexToRgbA(COLOR.ACCENT3, 0.1)};
+  // border: 2px solid ${COLOR.PRIMARY};
   opacity: ${p => p.isDisabled ? 0.5: 1};
 
   & > svg {
