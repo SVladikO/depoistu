@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {COLOR} from "../../utils/theme";
+import {COLOR} from "utils/theme";
 
 export const CheckboxStyle = styled.input`
   -webkit-appearance: textfield;

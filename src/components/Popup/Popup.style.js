@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {COLOR, DEVICE_WIDTH} from "../../utils/theme";
+import {COLOR, DEVICE_WIDTH} from "utils/theme";
 
 export const InvisibleWrapper = styled.div`
   min-width: ${DEVICE_WIDTH.MIN};

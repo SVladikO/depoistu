@@ -2,8 +2,8 @@ import React, {useState} from "react";
 
 import {DaySchedule, From, To, ScheduleContainer, ScheduleContent, ScheduleWrapper, Border} from "./WeekScheduleOutput.style";
 
-import {translate, TRANSLATION as TR} from "../../utils/translation";
-import {ThirdButton} from "../Buttons/ThirdButton";
+import {translate, TRANSLATION as TR} from "utils/translation";
+import {ThirdButton} from "components/Buttons/ThirdButton";
 
 const ScheduleDetails = ({scheduleAsArray}) => {
     const [isWeekScheduleVisible, setIsWeekScheduleVisible] = useState(false);

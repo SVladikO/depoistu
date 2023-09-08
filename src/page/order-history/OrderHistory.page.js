@@ -1,5 +1,5 @@
 import {Content, Wrapper,Date} from './OrderHistory.page.style';
-import {OrderHistoryRow} from "../../components";
+import {OrderHistoryRow} from "components";
 
 
 const item = {

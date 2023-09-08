@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import {DisabledButton} from "../../components/Buttons/DisabledButton";
-import {COLOR} from "../../utils/theme";
+import {DisabledButton} from "components/Buttons/DisabledButton";
 
 export const ImageQR = styled.img`
   height: 250px;

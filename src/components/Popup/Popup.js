@@ -2,7 +2,7 @@ import {useEffect} from "react";
 
 import {InvisibleWrapper, CloseButtonWrapper, Wrapper} from "./Popup.style";
 
-import {ReactComponent as CloseIcon} from "../../assets/icons/close.svg";
+import {ReactComponent as CloseIcon} from "assets/icons/close.svg";
 
 import CityContent from "./city/CityContent";
 import {Info as _Info} from "./info/Info";

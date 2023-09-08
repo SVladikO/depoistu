@@ -1,5 +1,7 @@
 import React, {useCallback, useEffect, useState} from "react";
+
 import {Wrapper, Column, Component, Row, ColorCircle, Header, Space} from './Components.style';
+
 import
 {
     Input,
@@ -34,28 +36,28 @@ import
     NotificationFactory,
     NOTIFICATION_STATUS,
     Footer
-} from "../../components";
+} from "components";
 
-import {ReactComponent as QRCodeIcon} from "../../assets/icons/qr_code.svg";
-import {ReactComponent as EmptyBasketIcon} from "../../assets/icons/empty_basket.svg";
-import {ReactComponent as GoogleIcon} from '../../assets/icons/google.svg';
-import {ReactComponent as FacebookIcon} from '../../assets/icons/facebook.svg';
-import {ReactComponent as MailIcon} from '../../assets/icons/mail.svg';
-import {ReactComponent as LockIcon} from '../../assets/icons/lock.svg';
-import {ReactComponent as LogOutIcon} from "../../assets/icons/logout.svg";
-import {ReactComponent as SandwichIcon} from '../../assets/icons/sandwich.svg';
-import {ReactComponent as LanguageIcon} from "../../assets/icons/language.svg";
+import {ReactComponent as QRCodeIcon} from "assets/icons/qr_code.svg";
+import {ReactComponent as EmptyBasketIcon} from "assets/icons/empty_basket.svg";
+import {ReactComponent as GoogleIcon} from 'assets/icons/google.svg';
+import {ReactComponent as FacebookIcon} from 'assets/icons/facebook.svg';
+import {ReactComponent as MailIcon} from 'assets/icons/mail.svg';
+import {ReactComponent as LockIcon} from 'assets/icons/lock.svg';
+import {ReactComponent as LogOutIcon} from "assets/icons/logout.svg";
+import {ReactComponent as SandwichIcon} from 'assets/icons/sandwich.svg';
+import {ReactComponent as LanguageIcon} from "assets/icons/language.svg";
 
-import {COLOR} from "../../utils/theme";
-import AccountSettings from "../../components/AccountSettings/AccountSettings";
-import IntroContent from "../../components/Popup/info/Info";
-import CityContent from "../../components/Popup/city/CityContent"
-import {ReactComponent as LocationIcon} from "../../assets/icons/location.svg";
-import Checkbox from "../../components/Checkbox/Checkbox";
-import {EditBar, QRCodeButton} from "../customer-companies/CustomerCompanies.style";
-import {ReactComponent as EditIcon} from "../../assets/icons/edit.svg";
+import {COLOR} from "utils/theme";
+import AccountSettings from "components/AccountSettings/AccountSettings";
+import IntroContent from "components/Popup/info/Info";
+import CityContent from "components/Popup/city/CityContent"
+import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
+import Checkbox from "components/Checkbox/Checkbox";
+import {EditBar, QRCodeButton} from "page/customer-companies/CustomerCompanies.style";
+import {ReactComponent as EditIcon} from "assets/icons/edit.svg";
 import {Link} from "react-router-dom";
-import {getOnlyCityIds} from "../../utils/cities";
+import {getOnlyCityIds} from "utils/cities";
 
 
 const colors = Object.keys(COLOR).map(key =>

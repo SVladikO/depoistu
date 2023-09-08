@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {COLOR, FONT} from "../../utils/theme";
+import {COLOR, FONT} from "utils/theme";
 
 export const PopupButtons = styled.div`
   display: flex;

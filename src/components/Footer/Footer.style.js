@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import {COLOR, FONT} from "../../utils/theme";
-import {Flex} from "../Flex/Flex.style";
+import {COLOR, FONT} from "utils/theme";
+import {Flex} from "components/Flex/Flex.style";
 
 export const Wrapper = styled.div`
   height: 356px;

@@ -2,13 +2,13 @@ import {useRef, useState} from "react";
 
 import {Header, BackButton, CloseIconWrapper, Wrapper, CitiesWrapper} from "./CityContent.style"
 
-import {SettingMenuRow} from '../../index'
+import {SettingMenuRow} from 'components'
 
-import {ReactComponent as CloseIcon} from "../../../assets/icons/close.svg";
-import {ReactComponent as BackIcon} from "../../../assets/icons/back.svg";
+import {ReactComponent as CloseIcon} from "assets/icons/close.svg";
+import {ReactComponent as BackIcon} from "assets/icons/back.svg";
 
-import {TRANSLATION, translate} from '../../../utils/translation';
-import {generateRegionCityTree, CITY_TRANSLATION_IDS} from "../../../utils/cities";
+import {TRANSLATION, translate} from 'utils/translation';
+import {generateRegionCityTree, CITY_TRANSLATION_IDS} from "utils/cities";
 
 const enableScrollOnBody = () => document.body.style.overflowY = 'auto';
 

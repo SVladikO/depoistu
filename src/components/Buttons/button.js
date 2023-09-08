@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {BORDER_RADIUS, COLOR, rotationAnimation, FONT} from "../../utils/theme";
+import {BORDER_RADIUS, COLOR, rotationAnimation, FONT} from "utils/theme";
 
 export const button = styled.button`
   height: 50px;

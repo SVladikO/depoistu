@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import {BORDER_RADIUS, COLOR, FONT, SHADOW} from "../../utils/theme";
-import {Flex} from "../Flex/Flex.style";
+import {BORDER_RADIUS, COLOR, FONT, SHADOW} from "utils/theme";
+import {Flex} from "components/Flex/Flex.style";
 
 export const Wrapper = styled.div`
   ${SHADOW};

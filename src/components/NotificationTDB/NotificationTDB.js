@@ -1,7 +1,7 @@
 import {Wrapper, Title, Description} from "./NotificationTDB.style";
 
-import {ContentContainer} from "../ContentContainer/ContentContainer.style";
-import {RowSplitter} from "../index";
+import {RowSplitter} from "components";
+import {ContentContainer} from "components/ContentContainer/ContentContainer.style";
 
 function NotificationTDB({title, description, Icon, children }) {
     return (

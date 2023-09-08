@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {BE_API} from "../../utils/fetch";
+import {BE_API} from "utils/fetch";
 
 import {
     URL,
@@ -11,10 +11,10 @@ import {
     Description, Details, BorderOnly, DetailsTitle, DetailsBody,
 } from './Api.style';
 
-import {Flex} from '../../components/index'
+import {Flex} from 'components/index'
 
-import {ReactComponent as ProtectedIcon} from "../../assets/icons/secure.svg";
-import {BE_DOMAIN, SELECTED_BE_DOMAIN} from "../../utils/config";
+import {ReactComponent as ProtectedIcon} from "assets/icons/secure.svg";
+import {BE_DOMAIN, SELECTED_BE_DOMAIN} from "utils/config";
 
 const ApiPage = () => {
     const [modeDB, setModeDB] = useState('')

@@ -2,17 +2,17 @@ import {useEffect, useState} from "react";
 import {NavLink, useParams} from 'react-router-dom';
 import {Wrapper} from "./SearchDetails.style";
 
-import {Company, NotificationLoading, PrimaryButton} from "../../components";
+import {Company, NotificationLoading, PrimaryButton} from "components";
 
-import CategoryMenuView from '../../page-view/category-menu-view/CategoryMenuView'
+import CategoryMenuView from 'page-view/category-menu-view/CategoryMenuView'
 
-import {BE_API, fetchData} from "../../utils/fetch";
-import {translate, TRANSLATION as TR} from "../../utils/translation";
-import {publishNotificationEvent} from "../../utils/event";
-import {stopLoadingWithDelay} from "../../utils/utils";
-import {useScrollUp} from "../../utils/hook";
-import {ROUTER} from "../../utils/config";
-import NotificationTDB from "../../components/NotificationTDB/NotificationTDB";
+import {BE_API, fetchData} from "utils/fetch";
+import {translate, TRANSLATION as TR} from "utils/translation";
+import {publishNotificationEvent} from "utils/event";
+import {stopLoadingWithDelay} from "utils/utils";
+import {useScrollUp} from "utils/hook";
+import {ROUTER} from "utils/config";
+import NotificationTDB from "components/NotificationTDB/NotificationTDB";
 
 const SearchDetailsPage = () => {
     useScrollUp();

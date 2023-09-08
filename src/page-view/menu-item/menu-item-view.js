@@ -3,11 +3,11 @@ import {Formik} from "formik";
 import * as Yup from 'yup';
 
 import {ImagePlace, MenuItemPhoto} from "./menu-item-view.style";
-import {Dropdown,ContentContainer, Input, Label, SecondaryButton, Textarea} from "../../components";
+import {Dropdown,ContentContainer, Input, Label, SecondaryButton, Textarea} from "components";
 
-import validation from "../../utils/validation";
-import {CATEGORY_MAPPER} from "../../utils/category";
-import {translate, TRANSLATION} from "../../utils/translation";
+import validation from "utils/validation";
+import {CATEGORY_MAPPER} from "utils/category";
+import {translate, TRANSLATION} from "utils/translation";
 
 const EditMenuItemSchema = Yup.object().shape(validation.menuItem);
 

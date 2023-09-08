@@ -9,17 +9,17 @@ import {
     Label,
     NavigationLabelHref,
     PrimaryButton,
-} from "../../components";
+} from "components";
 
-import {ReactComponent as LockIcon} from "../../assets/icons/lock.svg";
-import {ReactComponent as MailIcon} from "../../assets/icons/mail.svg";
+import {ReactComponent as LockIcon} from "assets/icons/lock.svg";
+import {ReactComponent as MailIcon} from "assets/icons/mail.svg";
 
-import validation from '../../utils/validation';
-import {ROUTER, URL} from '../../utils/config';
-import {fetchData, BE_API} from "../../utils/fetch";
-import {TRANSLATION, translate} from "../../utils/translation";
-import {LocalStorage, LOCAL_STORAGE_KEY} from "../../utils/localStorage"
-import {publishNotificationEvent} from "../../utils/event";
+import validation from 'utils/validation';
+import {ROUTER, URL} from 'utils/config';
+import {fetchData, BE_API} from "utils/fetch";
+import {TRANSLATION, translate} from "utils/translation";
+import {LocalStorage, LOCAL_STORAGE_KEY} from "utils/localStorage"
+import {publishNotificationEvent} from "utils/event";
 
 const SignInSchema = Yup.object().shape(validation.customer.singIn);
 

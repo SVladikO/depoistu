@@ -5,17 +5,17 @@ import QRCode from 'qrcode';
 
 import {EditBar, QRCodeButton, QRCodeMenuTitle, ImageQR} from "./CustomerCompanies.style";
 
-import {Company, NotificationLoading, Popup, PrimaryButton} from "../../components";
-import {ReactComponent as EditIcon} from "../../assets/icons/edit.svg";
+import {Company, NotificationLoading, Popup, PrimaryButton} from "components";
+import {ReactComponent as EditIcon} from "assets/icons/edit.svg";
 
-import {BE_API} from '../../utils/fetch'
-import {ROUTER, URL} from "../../utils/config";
-import {translate, TRANSLATION} from "../../utils/translation";
-import {ReactComponent as QRCodeIcon} from "../../assets/icons/qr_code.svg";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {useLocalStorage, useLocalStorageFetch, useRedirectToSettingPage, useScrollUp} from "../../utils/hook";
-import {publishNotificationEvent} from "../../utils/event";
-import {DisabledButton} from "../../components/Buttons/DisabledButton";
+import {BE_API} from 'utils/fetch'
+import {ROUTER, URL} from "utils/config";
+import {translate, TRANSLATION} from "utils/translation";
+import {ReactComponent as QRCodeIcon} from "assets/icons/qr_code.svg";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
+import {useLocalStorage, useLocalStorageFetch, useRedirectToSettingPage, useScrollUp} from "utils/hook";
+import {publishNotificationEvent} from "utils/event";
+import {DisabledButton} from "components/Buttons/DisabledButton";
 
 const CustomerCompaniesPage = () => {
     useScrollUp();

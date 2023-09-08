@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-import {ReactComponent as LoadingIcon} from "../../assets/icons/loading-white.svg";
+import {ReactComponent as LoadingIcon} from "assets/icons/loading-white.svg";
 import {button} from "./button";
-import {COLOR} from "../../utils/theme";
+import {COLOR} from "utils/theme";
 
 const PrimaryButtonWrapper = styled(button)`
   color: ${COLOR.ACCENT4};
@@ -13,7 +13,7 @@ const PrimaryButtonWrapper = styled(button)`
   }
 `;
 
-export const PrimaryButton = ({clickHandler, children, isLoading, isWide, isDisabled, withContainerPadding}) => {
+export const PrimaryButton = ({clickHandler, children, isLoading, isWide, isDisabled}) => {
     return (
         <PrimaryButtonWrapper
             onClick={clickHandler}
