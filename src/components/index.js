@@ -40,12 +40,13 @@ import {PrimaryButton} from "./Buttons/PrimaryButton";
 import {RowSplitterStyle as RowSplitter} from "./RowSplitter/RowSplitter.style";
 import {SecondaryButton} from "./Buttons/SecondaryButton";
 import {ThirdButton} from "./Buttons/ThirdButton";
-
+import {DisabledButton} from "./Buttons/DisabledButton";
 export {
     Absolute,
     AccountSettings,
     BottomMenu,
     CategoryItem,
+    DisabledButton,
     CheckBoxWithLabel,
     Checkbox,
     CloseButton,

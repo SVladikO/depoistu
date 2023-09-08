@@ -14,6 +14,7 @@ import
     CheckBoxWithLabel,
     SecondaryButton,
     FetchButton,
+    DisabledButton,
     ContentContainer,
     NotificationLoading,
     NavigationHeader,
@@ -59,6 +60,7 @@ import {EditBar, QRCodeButton} from "../customer-companies/CustomerCompanies.sty
 import {ReactComponent as EditIcon} from "../../assets/icons/edit.svg";
 import {Link} from "react-router-dom";
 import {getOnlyCityIds} from "../../utils/cities";
+
 
 const colors = Object.keys(COLOR).map(key =>
     ({title: key, component: <ColorCircle key={key} bg={COLOR[key]}/>, value: COLOR[key], width: '50px'})
@@ -327,9 +329,9 @@ const componentsGroup2 = [
                 }}
             >
                 <EditBar>
-                    <FetchButton><EditIcon/>Company</FetchButton>
+                    <DisabledButton><EditIcon/>Company</DisabledButton>
                     <QRCodeButton><QRCodeIcon/></QRCodeButton>
-                    <FetchButton><EditIcon/>Menu</FetchButton>
+                    <DisabledButton><EditIcon/>Menu</DisabledButton>
                 </EditBar>
             </Company>
         },

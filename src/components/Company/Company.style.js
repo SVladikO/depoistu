@@ -2,13 +2,13 @@ import styled from "styled-components";
 import {COLOR, BORDER_RADIUS, SHADOW} from "../../utils/theme";
 
 export const Wrapper = styled.div`
+  ${SHADOW};
   border-radius: ${BORDER_RADIUS.COMPANY};
   height: auto;
   overflow: hidden;
   perspective: 1px;
   background-color: ${COLOR.ACCENT4};
-
-  
+  margin: 0 0 10px 0;
   .swiper-pagination-bullet{
     width: 10px;
     height: 10px;
@@ -37,8 +37,6 @@ export const Content = styled.div`
   padding: 16px 16px 20px 16px;
 `;
 export const CompanyInfo = styled.div`
-  margin: 0 0 16px 0;
-  
   & > button, a {
     display: block;
     margin: 0 0 10px 0;
@@ -63,7 +61,7 @@ export const OpenStatus = styled.span`
     width: 15px;
     height: 18px;
     color: ${COLOR.ACCENT3};
-    margin: 4px 10px 0 0;
+    margin: 4px 8px 0 -1px;
   }
 `;
 export const CloseStatus = styled.span`
@@ -71,13 +69,13 @@ export const CloseStatus = styled.span`
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
-  display: inline-block;
+  display: inline-flex;
   svg {
     display: inline-block;
     width: 15px;
     height: 18px;
     color: ${COLOR.ACCENT3};
-    margin: 4px 10px 0 0;
+    margin: 4px 8px 0 -1px;
   }
 `;
 
@@ -105,11 +103,12 @@ export const Name = styled.div`
 export const LocationWrapper = styled.div`
   display: flex;
   flex-wrap: nowrap;
+  justify-content: flex-start;
   width: 100%;
   font-size: 20px;
   border-radius: ${BORDER_RADIUS.FOURTH};
   border: ${props => props.withAdditionalStyles ? `1px solid ${COLOR.ACCENT5}` : 'none'};
-  padding: ${props => props.withAdditionalStyles ? '2px 10px 4px 10px' : '0'};
+  //padding: ${props => props.withAdditionalStyles ? '2px 10px 4px 10px' : '0'};
   margin: 0 0 10px 0;
   color: ${COLOR.ACCENT1};
   svg {

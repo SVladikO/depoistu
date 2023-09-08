@@ -14,8 +14,8 @@ export const DisabledButton = styled(button)`
   flex: 1;
   svg {
     color: ${COLOR.ACCENT5};
-    height: 24px;
-    width: 24px;
+    height: 17px;
+    width: 17px;
     display: block;
   }
 `;
