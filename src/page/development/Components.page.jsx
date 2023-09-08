@@ -161,44 +161,37 @@ const componentsGroup1 = [
     [
         {title: 'Label', component: <Label>Change Password</Label>},
         {
-            title: 'Input', component: <Input onChange={() => {
-            }}/>
+            title: 'Input', component: <Input labelName={'Label'} />
         },
         {
-            title: 'Input {withCleaner}', component: <Input withCleaner value={111} onChange={() => {
-            }}/>
+            title: 'Input {withCleaner} isRequired', component: <Input labelName={'Label'} withCleaner value={111} isRequired/>
         },
         {
-            title: 'Input {withSwitcher}', component: <Input value={1111} withSwitcher onChange={() => {
-            }}/>
+            title: 'Input {withSwitcher}', component: <Input labelName={'Label name'} value={1111} withSwitcher />
         },
         {
-            title: 'Input',
-            component: <Input Icon={MailIcon} isTouched value="jodode@mail.com" withCleaner onChange={() => {
-            }}/>
+            title: 'Input with icon',
+            component: <Input Icon={MailIcon} value="jodode@mail.com" withCleaner labelName={'Label name'}  />
         },
         {
-            title: 'Input',
-            component: <Input isTouched errorMessage={'Max length 12.'} value="++380970663322" onChange={() => {
-            }}/>
+            title: 'Input with errorMessage',
+            component: <Input isTouched errorMessage={'Max length 12.'} isRequired value="+380970663322" labelName={'Label'}/>
         },
     ],
     [
         {
-            title: 'PInput', component: <PInput withIcon Icon={LocationIcon} value={'Vinnica'} handleClick={() => {
-            }}/>
+            title: 'PInput', component: <PInput withIcon Icon={LocationIcon} value={'Vinnica'} />
         },
         {
-            title: 'FromToTime', component: <FromToTime prefix='mon' dayName='Mon' values={{}} handleChange={() => {
-            }}/>
+            title: 'FromToTime', component: <FromToTime prefix='mon' dayName='Mon' values={{}} handleChange={() => {}}/>
         },
         {
             title: 'FromToTime',
             component: <FromToTime prefix='mon' dayName='Mon' values={{monIsChecked: true}} handleChange={() => {
             }}/>
         },
-        {title: 'Textarea withCleaner', component: <Textarea withCleaner/>},
-        {title: 'Textarea withCleaner', component: <Textarea withCleaner value={222}/>},
+        {title: 'Textarea', component: <Textarea labelName={'Textarea'} isRequired withCleaner placeholder={'Write here'}/>},
+        {title: 'Textarea withCleaner', component: <Textarea labelName={'Textarea'} withCleaner value={222} placeholder={'Write here'}/>},
     ]
 ];
 const componentsGroup2 = [

@@ -20,6 +20,7 @@ export const Title = styled.div`
   padding: 16px;
   color: ${COLOR.ACCENT1};
   display: block;
+  z-index: 3;
 `
 export const BackButton = styled.div`
   position: absolute;

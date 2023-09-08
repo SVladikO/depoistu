@@ -1,9 +1,13 @@
 import styled,{css} from 'styled-components'
-import {COLOR} from "../../utils/theme";
+import {BORDER_RADIUS, COLOR, FONT_16} from "../../utils/theme";
 
 export const Wrapper = styled.div`
   position: relative;
-  & > svg:first-child {
+  margin-top: 25px;
+  border: 1px solid ${p => p.isTouched || p.errorMessage ? COLOR.PRIMARY :COLOR.ACCENT1};
+  border-radius: ${BORDER_RADIUS.INPUT};
+  
+  & > svg {
     position: absolute;
     display: block;
     left: 10px;
@@ -17,7 +21,6 @@ export const Wrapper = styled.div`
     -webkit-appearance: none;
     margin: 0;
   }
-
 `;
 
 export const Placeholder = styled.span`
@@ -36,6 +39,12 @@ export const CenterWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  
+  & > svg {
+    fill: ${COLOR.ACCENT1};
+    width: 24px;
+    height: 24px;
+  }
 `;
 
 export const ClearWrapper = styled.div`
@@ -46,30 +55,17 @@ export const ClearWrapper = styled.div`
   height: 18px;
   display: block;
   & > svg:first-child {
-    color: ${COLOR.ACCENT5};
-  }
-`;
-
-export const PInputWrapper = styled.div`
-  position: relative;
-  & > svg {
-    position: absolute;
-    top: 15px;
-    left: 11px;
-    z-index: 1;
-    height: 20px;
-    width: 14px;
-    fill: ${COLOR.PRIMARY};
+    color: ${COLOR.ACCENT1};
   }
 `;
 
 const st = p => `
-  background: ${COLOR.ACCENT2};
+  ${FONT_16};
+  background: ${COLOR.ACCENT4};
   color: ${COLOR.ACCENT1};
+    border-radius: ${BORDER_RADIUS.INPUT};
   width: 100%;
   height: 50px;
-  border: none;
-  font-size: 16px;
   display: flex;
   align-items: center;
   padding: 14px  ${p.withRightIcon ? '40px' : '10px'} 17px ${p.withLeftIcon ? '35px' : '10px'};
@@ -88,13 +84,30 @@ export const TextareaStyle = styled.textarea`
   min-height: 50px;
   padding: 14px 40px 17px 10px;
 `;
-export const InputText = styled.input`
 
-  ${p => st(p)}
+export const Label = styled.label`
+  ${FONT_16};
+  position: absolute;
+  left: 16px;
+  top: -13px;
+  z-index: 2;
+  padding: 3px;
+  background-color: ${COLOR.ACCENT4};
+  
+  ${p => p.isRequired && css`
+    &:after {
+      content: ' *';
+      color: ${COLOR.PRIMARY};
+    }
+  `};
+`
+
+export const InputText = styled.input`
+  ${p => st(p)};
+
   &:active,
   &:focus {
     outline: none;
-    border: none;
   }
 
   ::placeholder {

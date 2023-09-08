@@ -53,63 +53,63 @@ const MenuItemView = ({initialValue, onSubmit, children}) => {
                             isTouched={touched.category_id || wasSubmitted}
                             errorMessage={errors.category_id}
                         />
-                        <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.NAME)}</Label>
                         <Input
                             value={values.name}
                             name="name"
                             onBlur={handleBlur}
-                            isTouched={touched.name || wasSubmitted}
+                            labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.NAME)}
                             changeHandler={handleChange}
                             clearHandler={() => setFieldValue('name', '')}
-                            errorMessage={errors.name}
+                            // isTouched={touched.name || wasSubmitted}
+                            // errorMessage={errors.name}
                             withCleaner
                         />
-                        <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.PRICE)}</Label>
                         <Input
                             value={values.price}
                             name="price"
                             type="number"
+                            labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.PRICE)}
                             onBlur={handleBlur}
-                            isTouched={touched.price || wasSubmitted}
                             changeHandler={handleChange}
                             clearHandler={() => setFieldValue('price', '')}
-                            errorMessage={errors.price}
+                            // isTouched={touched.price || wasSubmitted}
+                            // errorMessage={errors.price}
                             withCleaner
                         />
 
-                        <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.DESCRIPTION)}</Label>
                         <Textarea
+                            labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.DESCRIPTION)}
                             value={values.description}
                             name="description"
                             onBlur={handleBlur}
-                            isTouched={touched.description || wasSubmitted}
                             changeHandler={handleChange}
                             clearHandler={() => setFieldValue('description', '')}
-                            errorMessage={errors.description}
+                            // isTouched={touched.description || wasSubmitted}
+                            // errorMessage={errors.description}
                             withCleaner
                         />
-                        <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.COOKING_TIME)}</Label>
                         <Input
                             value={values.cookingTime}
                             type="number"
                             name="cookingTime"
+                            labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.COOKING_TIME)}
                             onBlur={handleBlur}
-                            isTouched={touched.cookingTime || wasSubmitted}
                             changeHandler={handleChange}
                             clearHandler={() => setFieldValue('cookingTime', '')}
-                            errorMessage={errors.cookingTime}
+                            // isTouched={touched.cookingTime || wasSubmitted}
+                            // errorMessage={errors.cookingTime}
                             withCleaner
                         />
-                        <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.MEAL_SIZE)} {CATEGORY_MAPPER[values.categoryId].measurement}</Label>
                         <Input
                             value={values.size}
                             name="size"
                             type="number"
+                            labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.MEAL_SIZE)}
                             onBlur={handleBlur}
-                            isTouched={touched.size || wasSubmitted}
                             changeHandler={handleChange}
                             clearHandler={() => setFieldValue('size', '')}
-                            errorMessage={errors.size}
+                            // isTouched={touched.size || wasSubmitted}
+                            // errorMessage={errors.size}
                             withCleaner
                         />
                     </ContentContainer>

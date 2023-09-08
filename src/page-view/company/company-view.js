@@ -90,7 +90,6 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                 <form onSubmit={handleSubmit}>
                     {/*{renderCompanyPhotos(initialValues.photos, pictures => setFieldValue('photos', pictures))}*/}
                     <ContentContainer>
-                        <Label>{translate(TRANSLATION.INPUT_LABEL.COMPANY.NAME)}</Label>
                         <Input
                             name='name'
                             value={values.name}
@@ -100,60 +99,65 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                             changeHandler={handleChange}
                             clearHandler={() => setFieldValue('name', '')}
                             errorMessage={errors.name}
+                            labelName={translate(TRANSLATION.INPUT_LABEL.COMPANY.NAME)}
+                            isRequired
                         />
-                        <Label>{translate(TRANSLATION.INPUT_LABEL.COMPANY.CITY)}</Label>
                         <PInput
                             withIcon
                             Icon={LocationIcon}
                             handleClick={openCityPopup}
+                            labelName={translate(TRANSLATION.INPUT_LABEL.COMPANY.CITY)}
                             value={values.cityId && translate(CITY_TRANSLATION_IDS[values.cityId])}
                             isTouched={wasSubmitted || touched.cityId}
                             errorMessage={errors.city || errors.cityId}
+                            isRequired
                         />
                         {}
-                        <Label>{translate(TRANSLATION.INPUT_LABEL.COMPANY.STREET)}</Label>
                         <Input
                             name='street'
                             value={values.street}
                             onBlur={handleBlur}
+                            labelName={translate(TRANSLATION.INPUT_LABEL.COMPANY.STREET)}
                             isTouched={wasSubmitted || touched.street}
                             withCleaner
                             changeHandler={handleChange}
                             clearHandler={() => setFieldValue('street', '')}
                             errorMessage={errors.street}
+                            isRequired
                         />
-                        <Label>{translate(TRANSLATION.INPUT_LABEL.COMPANY.PHONE)} 1</Label>
                         <Input
                             Icon={PhoneIcon}
                             name="phone1"
                             type="number"
                             value={values.phone1}
+                            labelName={`${translate(TRANSLATION.INPUT_LABEL.COMPANY.PHONE)} 1`}
                             errorMessage={errors.phone1}
                             isTouched={touched.phone1 || wasSubmitted}
                             changeHandler={handleChange}
                             clearHandler={() => setFieldValue('phone1', '')}
                             withCleaner
+                            isRequired
                         />
-                        <Label>{translate(TRANSLATION.INPUT_LABEL.COMPANY.PHONE)} 2</Label>
                         <Input
+                            labelName={`${translate(TRANSLATION.INPUT_LABEL.COMPANY.PHONE)} 2`}
                             Icon={PhoneIcon}
                             name="phone2"
                             type="number"
                             value={values.phone2}
                             errorMessage={errors.phone2}
-                            isTouched={touched.phone2 || wasSubmitted}
+                            // isTouched={touched.phone2 || wasSubmitted}
                             changeHandler={handleChange}
                             clearHandler={() => setFieldValue('phone2', '')}
                             withCleaner
                         />
-                        <Label>{translate(TRANSLATION.INPUT_LABEL.COMPANY.PHONE)} 3</Label>
                         <Input
                             Icon={PhoneIcon}
                             name="phone3"
                             type="number"
                             value={values.phone3}
                             errorMessage={errors.phone3}
-                            isTouched={touched.phone3 || wasSubmitted}
+                            labelName={`${translate(TRANSLATION.INPUT_LABEL.COMPANY.PHONE)} 3`}
+                            // isTouched={touched.phone3 || wasSubmitted}
                             changeHandler={handleChange}
                             clearHandler={() => setFieldValue('phone3', '')}
                             withCleaner

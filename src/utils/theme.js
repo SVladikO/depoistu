@@ -58,7 +58,8 @@ export const BORDER_RADIUS = {
     SECOND: '0px',
     THIRD: '0px',
     FOURTH: '0px',
-    CIRCLE: '50%'
+    CIRCLE: '50%',
+    INPUT: '4px'
 }
 
 export const DEVICE_WIDTH = {

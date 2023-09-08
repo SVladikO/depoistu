@@ -14,7 +14,7 @@ export const ContentContainerDefault = css`
   }
 
   & > * {
-    margin-bottom: 10px;
+    margin-top: 10px;
   }
 
   & > *:last-child {
