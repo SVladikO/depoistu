@@ -729,9 +729,13 @@ export const TRANSLATION = {
                     ua: " область"
                 }
             },
-            ARE_YOU_SURE: {
+            DELETE_COMPANY_QUESTION: {
                 en: "Are you sure you want to delete the company and menu? ",
                 ua: "Ви впевнені, що хочете видалити компанію та меню?"
+            },
+            ARE_YOU_SURE: {
+                en: "Are you sure? ",
+                ua: "Ви впевнені?"
             }
         }
     },

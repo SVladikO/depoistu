@@ -9,11 +9,10 @@ import {
     EditWrapper,
     ImagesWrapper,
     EditLabel,
-    StatusHidden,
     EditRow, MainInfo, GreyDot, SeeMore, MainInfoWrapper, NewFlag,
 } from "./MenuItem.style";
 
-import {Price, Flex, Popup, ToggleCheckbox} from "../index";
+import {Price, Flex, ToggleCheckbox} from "../index";
 import {ReactComponent as TimeIcon} from "../../assets/icons/time.svg";
 import {ReactComponent as MeasureIcon} from "../../assets/icons/sss.svg";
 import {ReactComponent as ZoomIcon} from "../../assets/icons/zoom.svg";
@@ -123,6 +122,13 @@ export const MenuItemDetails = ({
 const MenuItem = (props) => {
     const {item} = props;
     const [isVisible, setIsVisible] = useState(!!item.isVisible)
+
+    // const MenuItemImages = () => (
+    //     <ImagesWrapper>
+    //         <FoodImage src={item.imageUrl} onClick={() => setImageUrl(item.imageUrl)}/>
+    //         <ZoomIcon/>
+    //     </ImagesWrapper>
+    // );
 
     // const MenuItemPopup = () => (
     //     imageUrl && <Popup.Image imageUrl={imageUrl} onClose={() => setImageUrl('')}>

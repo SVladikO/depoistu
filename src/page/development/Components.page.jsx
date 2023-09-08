@@ -13,8 +13,6 @@ import
     ToggleCheckbox,
     CheckBoxWithLabel,
     SecondaryButton,
-    FetchButton,
-    DisabledButton,
     ContentContainer,
     NotificationLoading,
     NavigationHeader,
@@ -30,7 +28,6 @@ import
     Textarea,
     Company,
     Label,
-    CloseButton,
     MenuItemDetails,
     Dropdown,
     PrimaryButton,
@@ -51,9 +48,8 @@ import {ReactComponent as LanguageIcon} from "../../assets/icons/language.svg";
 
 import {COLOR} from "../../utils/theme";
 import AccountSettings from "../../components/AccountSettings/AccountSettings";
-import ImageContent from "../../components/Popup/content/image/ImageContent";
-import IntroContent from "../../components/Popup/content/info/Info";
-import CityContent from "../../components/Popup/content/city/CityContent"
+import IntroContent from "../../components/Popup/info/Info";
+import CityContent from "../../components/Popup/city/CityContent"
 import {ReactComponent as LocationIcon} from "../../assets/icons/location.svg";
 import Checkbox from "../../components/Checkbox/Checkbox";
 import {EditBar, QRCodeButton} from "../customer-companies/CustomerCompanies.style";
@@ -171,7 +167,6 @@ const componentsGroup1 = [
         {title: 'SecondaryButton isWide', component: <SecondaryButton isWide>Secondary wide</SecondaryButton>},
         {title: 'ThirdButton', component: <ThirdButton>Third</ThirdButton>},
         {title: 'ThirdButton isWide', component: <ThirdButton isWide>Third</ThirdButton>},
-        {title: 'CloseButton', component: <CloseButton clickHandler={() => alert('clicked')}/>},
     ],
     [
         {title: 'Label', component: <Label>Change Password</Label>},
@@ -421,17 +416,8 @@ const componentsGroup3 = [
     ],
     [
         {
-            title: 'ImagePopupContent',
-            component: <ImageContent
-                imageUrl="https://raw.githubusercontent.com/SVladikO/testApp/master/images/4_cheese.jpg"/>
-        },
-        {
             title: 'IntroContent.Info',
             component: <IntroContent.Info>Some text Some text Some text Some text Some text</IntroContent.Info>
-        },
-        {
-            title: 'IntroContent.InfoText',
-            component: <IntroContent.InfoText >Some text Some text Some text Some text Some text</IntroContent.InfoText>
         },
         {title: 'CityPopupContent', component: <CityContent availableCityIds={getOnlyCityIds()}/>},
     ],

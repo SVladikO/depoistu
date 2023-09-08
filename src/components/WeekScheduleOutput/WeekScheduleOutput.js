@@ -18,7 +18,7 @@ const ScheduleDetails = ({scheduleAsArray}) => {
                             const {dayName, from,to, isToday} = day;
 
                             return (
-                                <ScheduleWrapper key={i.toString()}>
+                                <ScheduleWrapper key={i.toString()} className="schedule-output">
                                     <ScheduleContainer>
                                         <div>
                                             <DaySchedule isToday={isToday}>{dayName}</DaySchedule>

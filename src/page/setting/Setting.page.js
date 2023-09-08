@@ -166,16 +166,6 @@ const SettingPage = () => {
                         </AccountSettings>
                     </>)
                 }
-                {customer && (
-                    <AccountSettings groupTitle={translate(TR.PAGE.SETTINGS.GROUP_TITLE.ACCOUNTS)}>
-                        <SettingMenuRow
-                            icon={LogOutIcon}
-                            title={translate(TR.PAGE.SETTINGS.MENU_ROW.EXIT)}
-                            changeHandler={logOut}
-                        />
-                    </AccountSettings>
-                )
-                }
                 <AccountSettings
                     noTopBorder={customer}
                     groupTitle={translate(TR.PAGE.SETTINGS.GROUP_TITLE.OPTIONS)}>

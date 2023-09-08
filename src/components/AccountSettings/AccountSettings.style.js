@@ -13,8 +13,8 @@ export const GroupTitle = styled.div`
   font-size: 20px;
   color: ${COLOR.ACCENT4};
   ${p => `border-radius: ${p.noTopBorder ? border2 : border1};`}
-  background-image: linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO});
-  //background: ${COLOR.PRIMARY};
+  //background-image: linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO});
+  background: ${COLOR.ACCENT1};
 `;
 
 export const RowsWrapper = styled.div`

@@ -1,12 +1,14 @@
 import {useRef, useState} from "react";
 
-import {BackButtonWrapper, BackButtonInnerWrapper, Wrapper, CitiesWrapper} from "./CityContent.style"
+import {Header, BackButton, CloseIconWrapper, Wrapper, CitiesWrapper} from "./CityContent.style"
 
-import {SettingMenuRow} from '../../../index'
+import {SettingMenuRow} from '../../index'
 
-import {ReactComponent as BackIcon} from "../../../../assets/icons/back.svg";
-import {TRANSLATION, translate} from '../../../../utils/translation';
-import {generateRegionCityTree, CITY_TRANSLATION_IDS} from "../../../../utils/cities";
+import {ReactComponent as CloseIcon} from "../../../assets/icons/close.svg";
+import {ReactComponent as BackIcon} from "../../../assets/icons/back.svg";
+
+import {TRANSLATION, translate} from '../../../utils/translation';
+import {generateRegionCityTree, CITY_TRANSLATION_IDS} from "../../../utils/cities";
 
 const enableScrollOnBody = () => document.body.style.overflowY = 'auto';
 
@@ -27,7 +29,7 @@ export const CityContent = ({onSelectCity, availableCityIds, onClose}) => {
     const [isRegion, setIsRegion] = useState(true);
 
     const topRef = useRef()
-    const scrollToTop = () => topRef.current?.scrollIntoView({ behavior: 'smooth' });
+    const scrollToTop = () => topRef.current?.scrollIntoView({behavior: 'smooth'});
 
     const disableEventBubbling = e => {
         e.stopPropagation();
@@ -62,22 +64,26 @@ export const CityContent = ({onSelectCity, availableCityIds, onClose}) => {
         onClose()
     }
 
-    const BackButton = () => (
-        <BackButtonWrapper>
-            <BackButtonInnerWrapper onClick={handleBackButtonClick}>
-                <BackIcon/>
-                {translate(TRANSLATION.PAGE.SEARCH.ARROW_LABEL)}
-            </BackButtonInnerWrapper>
-        </BackButtonWrapper>
-    );
-
     const regionLabel = translate(TRANSLATION.COMPONENTS.POPUP.CITY.INPUT);
 
     return (
         <Wrapper onClick={disableEventBubbling}>
-            {!isRegion && <BackButton />}
+
+            <Header>
+                {!isRegion ? (
+                        <BackButton onClick={handleBackButtonClick}>
+                            <BackIcon/>
+                            {translate(TRANSLATION.PAGE.SEARCH.ARROW_LABEL)}
+                        </BackButton>
+                    )
+                    : <div/>
+                }
+                <CloseIconWrapper onClick={onClose} className="close-popup-icon-wrapper">
+                    <CloseIcon/>
+                </CloseIconWrapper>
+            </Header>
             <CitiesWrapper onClick={disableEventBubbling}>
-                <div ref={topRef} />
+                <div ref={topRef}/>
                 {/*Expected array structure: ['101', '202', ... ]*/}
                 {citiesOrRegionsToRender.map((id, i) =>
                     <SettingMenuRow

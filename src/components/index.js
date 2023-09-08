@@ -3,7 +3,6 @@ import BottomMenu from "./BottomMenu/BottomMenu";
 import CategoryItem from "./CategoryItem/CategoryItem";
 import CheckBoxWithLabel from "./CheckBoxWithLabel/CheckBoxWithLabel";
 import Checkbox from "./Checkbox/Checkbox";
-import CloseButton from "./CloseButton/CloseButton";
 import Company from "./Company/Company";
 import CustomerAccountBar from "./UserAccountBar/CustomerAccountBar";
 import Dropdown from "./Dropdown/Dropdown";
@@ -28,6 +27,7 @@ import WeekScheduleInput from "./WeekScheduleInput/WeekScheduleInput";
 import {Absolute} from "./Absolute/Absolute.style";
 import {ContentContainer} from "./ContentContainer/ContentContainer.style.js";
 import {Discount} from "./Discount/Discount.style";
+import {DisabledButton} from "./Buttons/DisabledButton";
 import {Flex} from "./Flex/Flex.style";
 import Footer from "./Footer/Footer";
 import {FixedWrapper} from "./FixedWrapper/FixedWrapper.style";
@@ -39,7 +39,8 @@ import {PrimaryButton} from "./Buttons/PrimaryButton";
 import {RowSplitterStyle as RowSplitter} from "./RowSplitter/RowSplitter.style";
 import {SecondaryButton} from "./Buttons/SecondaryButton";
 import {ThirdButton} from "./Buttons/ThirdButton";
-import {DisabledButton} from "./Buttons/DisabledButton";
+import {Text22} from "./Text/Text.style";
+
 export {
     Absolute,
     AccountSettings,
@@ -48,7 +49,6 @@ export {
     DisabledButton,
     CheckBoxWithLabel,
     Checkbox,
-    CloseButton,
     Company,
     ContentContainer,
     CustomerAccountBar,
@@ -81,6 +81,7 @@ export {
     RowSplitter,
     SecondaryButton,
     SettingMenuRow,
+    Text22,
     Textarea,
     ThirdButton,
     ToggleCheckbox,

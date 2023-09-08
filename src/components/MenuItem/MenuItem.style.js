@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {BORDER_RADIUS, COLOR, FONT_14_BOLD, FONT_16, FONT_18_500, FONT_24_700, SHADOW} from "../../utils/theme";
+import {BORDER_RADIUS, COLOR, FONT, SHADOW} from "../../utils/theme";
 import {Flex} from "../Flex/Flex.style";
 
 export const Wrapper = styled.div`
@@ -32,7 +32,7 @@ export const MainInfo = styled.div`
 `
 
 export const NewFlag = styled.div`
-  ${FONT_14_BOLD};
+  ${FONT.SIZE_14};
   position: absolute;
   padding: 5px 12px;
   background-color: ${COLOR.ACCENT3};
@@ -67,7 +67,8 @@ export const FoodImage = styled.img`
 `;
 
 export const Title = styled.div`
-  ${FONT_24_700};
+  ${FONT.SIZE_24};
+  ${FONT.WEIGHT_700};
   color: ${COLOR.ACCENT1};
   margin: 0 5px 4px 0;
   display: flex;
@@ -76,10 +77,8 @@ export const Title = styled.div`
 `;
 
 export const Description = styled.div`
-  //width: 250px;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 16px;
+  ${FONT.SIZE_16};
+  ${FONT.WEIGHT_400};
   margin-top: 8px;
   margin-right: 58px;
 `;
@@ -95,14 +94,14 @@ export const EditWrapper = styled.div`
 `;
 
 export const EditLabel = styled.span`
-  font-size: 16px;
-  line-height: 16px;
+  ${FONT.SIZE_16};
   color: ${COLOR.ACCENT1};
   margin: 0 0 0 6px;
 `;
 
 export const AdditionalDetails = styled(Flex)`
-  ${FONT_18_500};
+  ${FONT.SIZE_18};
+  ${FONT.WEIGHT_500};
   color: ${COLOR.ACCENT1};
   border-top: 1px solid ${p => p.isVisible ? COLOR.ACCENT8: COLOR.ACCENT4};
   padding: 16px;
@@ -140,7 +139,8 @@ export const SeeMore = styled.span`
 `
 
 export const StatusHidden = styled.div`
-  ${FONT_16};
+  ${FONT.SIZE_16};
+  
   display: flex;
   justify-content: center;
   margin-top: 10px;
@@ -154,7 +154,7 @@ export const EditRow = styled.div`
   border-top: 1px solid ${p => p.isVisible ? COLOR.ACCENT8: COLOR.ACCENT4};
   
   .ToggleCheckbox, .EditButton {
-    ${FONT_16};
+    ${FONT.SIZE_16};
     position: relative;
     display: flex;
     align-items: center;

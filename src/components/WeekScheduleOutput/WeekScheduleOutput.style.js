@@ -48,7 +48,7 @@ export const From = styled.div`
   border: ${props => props.isToday ? `${COLOR.ACCENT3} solid 1px` : '1px solid #e7e7e7'};
   display: flex;
   justify-content: center;
-  border-radius: ${BORDER_RADIUS.BUTTON} ${BORDER_RADIUS.BUTTON} 0 0;
+  border-radius: ${BORDER_RADIUS.DAY_IN_SCHEDULE} ${BORDER_RADIUS.DAY_IN_SCHEDULE} 0 0;
 `;
 export const To = styled.div`
   font-weight: 500;
@@ -58,7 +58,7 @@ export const To = styled.div`
   justify-content: center;
   color: ${props => props.isToday ? COLOR.ACCENT3 : COLOR.ACCENT1};
   border: ${props => props.isToday ? `${COLOR.ACCENT3} solid 1px` : '1px solid #e7e7e7'};
-  border-radius: 0 0 ${BORDER_RADIUS.BUTTON} ${BORDER_RADIUS.BUTTON};
+  border-radius: 0 0 ${BORDER_RADIUS.DAY_IN_SCHEDULE} ${BORDER_RADIUS.DAY_IN_SCHEDULE};
 `;
 
 export const ScheduleContainer = styled.div`
@@ -79,6 +79,7 @@ export const ScheduleContent = styled.div`
   & > div {
     margin: 0 1px 0 0;
   }
+  padding: 0 0 6px;
 `;
 
 export const Border = styled.div`

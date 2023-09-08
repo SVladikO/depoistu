@@ -70,11 +70,11 @@ const CustomerCompaniesPage = () => {
                     </Company>
             )
             }
-            <Link to={URL.ADD_COMPANY}>
-                <PrimaryButton isWide>
-                    {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.ADD_COMPANY)}
-                </PrimaryButton>
-            </Link>
+                <Link to={URL.ADD_COMPANY}>
+                    <PrimaryButton isWide>
+                        {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.ADD_COMPANY)}
+                    </PrimaryButton>
+                </Link>
         < />
     )
 };
@@ -94,11 +94,11 @@ const PopupQRCode = ({companyId, onClose}) => {
         .catch(err => setQrCodeGenerationError(err))
 
     return (
-        <Popup.InfoText onClose={onClose}>
+        <Popup.Bottom onClose={onClose}>
             <QRCodeMenuTitle>Menu</QRCodeMenuTitle>
             {src && <ImageQR src={src}/>}
             {qrCodeGenerationError}
-        </Popup.InfoText>
+        </Popup.Bottom>
     )
 }
 

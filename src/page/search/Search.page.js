@@ -3,7 +3,7 @@ import React, {useMemo, useState} from "react";
 
 import {ReactComponent as LocationIcon} from "../../assets/icons/location.svg";
 
-import {PInput, ContentContainer, Company, NotificationLoading, Popup} from "../../components";
+import {PInput, ContentContainer, Company, NotificationLoading, Popup, RowSplitter} from "../../components";
 
 import {URL} from "../../utils/config";
 import {BE_API, fetchData} from "../../utils/fetch";
@@ -96,7 +96,7 @@ const SearchPage = () => {
 
                 {isLoadingCityIds && <NotificationLoading>Loading available cities ...</NotificationLoading>}
                 {isLoadingCompanies && <NotificationLoading>Loading companies ...</NotificationLoading>}
-
+                <RowSplitter height="10px" />
                 {!isLoadingCompanies && companies && !!companies.length && selectedCityId &&
                     companies?.map(company =>
                         <Link to={`${URL.SEARCH_DETAILS}${company.id}`} key={company.id}>

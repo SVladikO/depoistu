@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Link, useParams} from "react-router-dom";
 
-import {RowSplitter, PrimaryButton, ContentContainer} from "../../components";
+import {RowSplitter, PrimaryButton, ContentContainer, SecondaryButton} from "../../components";
 
 import {ReactComponent as RemoveIcon} from "../../assets/icons/remove_icon.svg";
 
@@ -17,7 +17,7 @@ import {useRedirectToSettingPage, useScrollUp} from "../../utils/hook";
 import {translate, TRANSLATION} from "../../utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import Popup, {enableScrollOnBody, disableScrollOnBody} from "../../components/Popup/Popup";
-import {PopupButtons, PopupTitle} from "./EditCompany.style";
+import {PopupButtons, PopupContentContainer, PopupTitle} from "./EditCompany.style";
 import {publishNotificationEvent} from "../../utils/event";
 
 //We need this variable after call LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES) on delete company success
@@ -136,9 +136,9 @@ const EditCompany = () => {
         </PrimaryButton>
     );
     const DeleteCompanyButton = () => (
-        <PrimaryButton isWide isLoading={isLoadingDelete} clickHandler={openDeletePopup}><RemoveIcon/>
+        <SecondaryButton isWide isLoading={isLoadingDelete} clickHandler={openDeletePopup}><RemoveIcon/>
             {translate(TRANSLATION.PAGE.EDIT_COMPANY.BUTTON.DELETE_COMPANY)}
-        </PrimaryButton>
+        </SecondaryButton>
     )
 
     return (
@@ -149,24 +149,29 @@ const EditCompany = () => {
             >
                 <>
                     {isConfirmDeletePopupOpen && (
-                        <Popup.Info showCloseButton={false}>
-                            <PopupTitle>
-                                {translate(TRANSLATION.COMPONENTS.POPUP.ARE_YOU_SURE)}
-                            </PopupTitle>
-                            <PopupButtons>
-                                <PrimaryButton isWide clickHandler={deleteCompany}>
-                                    {translate(TRANSLATION.YES)}
-                                </PrimaryButton>
-                                <PrimaryButton isWide clickHandler={closeDeletePopup}>
-                                    {translate(TRANSLATION.NO)}
-                                </PrimaryButton>
-                            </PopupButtons>
-                        </Popup.Info>
+                        <Popup.Center showCloseButton={false}>
+                            <PopupContentContainer>
+                                <PopupTitle>
+                                    {translate(TRANSLATION.COMPONENTS.POPUP.ARE_YOU_SURE)}
+                                </PopupTitle>
+                                <PopupTitle>
+                                    {translate(TRANSLATION.COMPONENTS.POPUP.DELETE_COMPANY_QUESTION)}
+                                </PopupTitle>
+                                <PopupButtons>
+                                    <SecondaryButton clickHandler={closeDeletePopup}>
+                                        {translate(TRANSLATION.NO)}
+                                    </SecondaryButton>
+                                    <PrimaryButton clickHandler={deleteCompany}>
+                                        {translate(TRANSLATION.YES)}
+                                    </PrimaryButton>
+                                </PopupButtons>
+                            </PopupContentContainer>
+                        </Popup.Center>
                     )}
-                    <EditCompanyButton/>
-                    <RowSplitter height={'25px'}/>
-                    <RowSplitter height={'25px'}/>
-                    <DeleteCompanyButton/>
+                        <RowSplitter height={'10px'}/>
+                        <EditCompanyButton/>
+                        <RowSplitter height={'50px'}/>
+                        <DeleteCompanyButton/>
                 </>
             </CompanyView>
         </>

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {COLOR, FONT_16} from "../../utils/theme";
+import {COLOR} from "../../utils/theme";
 
 export const Wrapper = styled.label`
   position: relative;
