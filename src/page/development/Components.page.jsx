@@ -81,6 +81,19 @@ const colors = Object.keys(COLOR).map(key =>
     // )
 // }
 
+const mockMenuItem = {
+    id: 10,
+    name: '4 Cheese',
+    categoryId: 1,
+    description: 'spicy , tomato, sauce, chilies, mozzare, lla, spicy, ice, tomato, sauce, chili, mozzarella, sauce, chili',
+    imageUrl: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
+    cookingTime: 15,
+    price: 170,
+    size: 150,
+    likes: 5,
+
+}
+
 const [UnselectedDropdown, SelectedDropdown, WithErrorDropdown] = (() => {
     const options = [
         {value: 1, title: 'Burger1'},
@@ -148,16 +161,16 @@ const componentsGroup1 = [
         {title: 'Price', component: <Price>50</Price>},
     ],
     [
-        {title: 'PrimaryButton', component: <PrimaryButton><GoogleIcon/>Google</PrimaryButton>},
-        {title: 'PrimaryButton', component: <PrimaryButton>Sing in</PrimaryButton>},
-        {title: 'PrimaryButton isWide', component: <PrimaryButton isWide>Sing in</PrimaryButton>},
-        {title: 'FetchButton isWide', component: <PrimaryButton isWide>Sing in</PrimaryButton>},
-        {title: 'FetchButton isLoading isWide', component: <FetchButton isLoading isWide>Loading</FetchButton>},
-        {title: 'SecondaryButton', component: <SecondaryButton><FacebookIcon/>facebook</SecondaryButton>},
-        {title: 'SecondaryButton', component: <SecondaryButton>Cancel</SecondaryButton>},
-        {title: 'SecondaryButton isWide', component: <SecondaryButton isWide>Cancel</SecondaryButton>},
-        {title: 'ThirdButton', component: <ThirdButton><FacebookIcon/>Cancel</ThirdButton>},
-        {title: 'ThirdButton isWide', component: <ThirdButton isWide><FacebookIcon/>Cancel</ThirdButton>},
+        {title: 'PrimaryButton', component: <PrimaryButton>Primary</PrimaryButton>},
+        {title: 'PrimaryButton isDisabled', component: <PrimaryButton isDisabled>Primary</PrimaryButton>},
+        {title: 'PrimaryButton isLoading', component: <PrimaryButton isLoading>Primary</PrimaryButton>},
+        {title: 'PrimaryButton isWide', component: <PrimaryButton isWide>Primary wide</PrimaryButton>},
+        {title: 'SecondaryButton', component: <SecondaryButton>Secondary</SecondaryButton>},
+        {title: 'SecondaryButton isDisabled', component: <SecondaryButton isDisabled>Secondary</SecondaryButton>},
+        {title: 'SecondaryButton isLoading', component: <SecondaryButton isLoading={true}>Secondary</SecondaryButton>},
+        {title: 'SecondaryButton isWide', component: <SecondaryButton isWide>Secondary wide</SecondaryButton>},
+        {title: 'ThirdButton', component: <ThirdButton>Third</ThirdButton>},
+        {title: 'ThirdButton isWide', component: <ThirdButton isWide>Third</ThirdButton>},
         {title: 'CloseButton', component: <CloseButton clickHandler={() => alert('clicked')}/>},
     ],
     [
@@ -219,51 +232,53 @@ const componentsGroup2 = [
     ],
     [
         {
-            title: 'MenuItemDetails',
+            title: 'MenuItemDetails without description',
             component:
                 <MenuItemDetails
-                    item={{
-                        id: 10,
-                        name: '4 Cheese',
-                        categoryId: 1,
-                        description: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella',
-                        imageUrl: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
-                        cookingTime: 15,
-                        price: 170,
-                        size: 150,
-                    }}
+                    item={{...mockMenuItem, description: ''}}
+                    isVisible
+                />
+        },{
+            title: 'MenuItemDetails with description',
+            component:
+                <MenuItemDetails
+                    item={mockMenuItem}
+                    isVisible
                 />
         },
         {
-            title: 'MenuItem',
+            title: 'MenuItemDetails with image',
+            component:
+                <MenuItemDetails
+                    item={{...mockMenuItem, description: ''}}
+                    isWithImage
+                    isVisible
+                />
+        },{
+            title: 'MenuItemDetails with image & description',
+            component:
+                <MenuItemDetails
+                    item={mockMenuItem}
+                    isWithImage
+                    isVisible
+                />
+        },{
+            title: 'MenuItemDetails with image & description & "new" flag',
+            component:
+                <MenuItemDetails
+                    item={mockMenuItem}
+                    isWithImage
+                    isNewItemFlag
+                    isVisible
+                />
+        },
+        {
+            title: 'MenuItem editing',
             component:
                 <MenuItem
-                    item={{
-                        id: 10,
-                        name: '4 Cheese',
-                        categoryId: 1,
-                        description: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella',
-                        imageUrl: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
-                        cookingTime: 15,
-                        price: 170,
-                        size: 150,
-                    }}
-                />
-        },
-        {
-            title: 'MenuItem',
-            component:
-                <MenuItem withEditIcon
-                          item={{
-                              id: 10,
-                              name: '4 Cheese',
-                              categoryId: 5,
-                              description: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella',
-                              imageUrl: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
-                              cookingTime: 15,
-                              price: 170,
-                              size: 150,
-                          }}
+                    item={mockMenuItem}
+                    withEditIcon
+                    isWithImage
                 />
         },
         {
@@ -329,9 +344,9 @@ const componentsGroup2 = [
                 }}
             >
                 <EditBar>
-                    <DisabledButton><EditIcon/>Company</DisabledButton>
+                    <PrimaryButton><EditIcon/>Company</PrimaryButton>
                     <QRCodeButton><QRCodeIcon/></QRCodeButton>
-                    <DisabledButton><EditIcon/>Menu</DisabledButton>
+                    <PrimaryButton><EditIcon/>Menu</PrimaryButton>
                 </EditBar>
             </Company>
         },
@@ -433,7 +448,7 @@ const componentsGroup3 = [
                     description="Looks like you haven't made your order yet."
                 >
                     <Link to={''}>
-                        <FetchButton isWide>Shop Now</FetchButton>
+                        <PrimaryButton isWide>Shop Now</PrimaryButton>
                     </Link>
                 </NotificationTDB>
         },

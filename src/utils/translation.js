@@ -38,6 +38,14 @@ export const TRANSLATION = {
         ua: 'DEPOISTU',
         en: 'DEPOISTU'
     },
+    SEE_MORE: {
+        ua: 'більше',
+        en: 'see more'
+    },
+    GO_TO_A_SEARCH_PAGE: {
+        ua: 'Перейти на сторінку пошуку',
+        en: 'Go to a search page'
+    },
     INTRODUCTION: {
         BUTTON: {
             ua: 'Далі',
@@ -263,6 +271,10 @@ export const TRANSLATION = {
             MENU_PROBLEM: {
                 ua: 'Меню компанії відсутнє',
                 en: 'There is no menu in company'
+            },
+            COMPANY_DOESNT_EXIST: {
+                ua: 'Компанії не існує',
+                en: "Company doesn't exist"
             }
         },
         CUSTOMER_COMPANIES: {
@@ -504,6 +516,10 @@ export const TRANSLATION = {
                 }
             },
             GROUP_TITLE: {
+                DO_YOU_LIKE: {
+                    ua: "Вам подобається цей сайт?",
+                    en: "Do you like this website?"
+                },
                 ACCOUNTS: {
                     ua: "Остобистий кабiнет",
                     en: "My account"
@@ -696,6 +712,10 @@ export const TRANSLATION = {
                     en: "Edit",
                     ua: "Редагувати"
                 },
+                CHANGE_VISIBILITY: {
+                    en: "Change visibility",
+                    ua: "Змінити відоб"
+                },
                 HIDDEN: {
                     en: "HIDDEN",
                     ua: "ПРИХОВАНО"
@@ -720,7 +740,12 @@ export const TRANSLATION = {
             ua: "Завантаження ...",
             en: "Loading ..."
         },
+        NO_COMPANY: {
+            ua: 'Нема зареєстрованих закладів',
+            en: 'No companies in db yet'
+        },
     },
+
     BOTTOM_MENU: {
         SEARCH_TAB: {
             ua: "Пошук",
