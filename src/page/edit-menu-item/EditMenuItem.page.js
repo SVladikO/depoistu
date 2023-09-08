@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
-import {FetchButton, RowSplitter} from "../../components";
+import {PrimaryButton, RowSplitter} from "../../components";
 import MenuItemView from "../../page-view/menu-item/menu-item-view";
 import {ReactComponent as RemoveIcon} from "../../assets/icons/remove_icon.svg";
 
@@ -67,23 +67,23 @@ const EditMenuItemPage = () => {
                 submitButtonTitle={translate(TRANSLATION.PAGE.EDIT_MENU_ITEM.BUTTON.EDIT_MENU_ITEM)}
             >
                 <>
-                    <FetchButton
+                    <PrimaryButton
                         isWide
                         type="submit"
                         isLoading={isLoadingUpdate}
                     >
                         {translate(TRANSLATION.PAGE.ADD_MENU_ITEM.BUTTON.UPDATE_MENU_ITEM)}
-                    </FetchButton>
+                    </PrimaryButton>
                     <RowSplitter height={'25px'}/>
                     <RowSplitter height={'25px'}/>
-                    <FetchButton
+                    <PrimaryButton
                         isWide
                         isLoading={isLoadingDelete}
                         clickHandler={deleteCompany}
                     >
                         <RemoveIcon/>
                         {translate(TRANSLATION.PAGE.EDIT_MENU_ITEM.BUTTON.DELETE_MENU_ITEM)}
-                    </FetchButton>
+                    </PrimaryButton>
                 </>
 
             </MenuItemView>

@@ -19,7 +19,10 @@ export const FONT_16_BOLD = `
     ${FONT_16};
     font-weight: 600;
 `
-
+export const FONT_16_700 = `
+    ${FONT_16};
+    font-weight: 700;
+`
 export const FONT_18 = `
     font-size: 18px;
     line-height: 26px;
@@ -91,7 +94,7 @@ export const MEDIA = {
 export const SHADOW = `box-shadow: 0px 2px 2px 0px #00000033;`
 
 export const BORDER_RADIUS = {
-    BUTTON: '5px',
+    BUTTON: '8px',
     SUB_CATEGORY: '4px',
     COMPANY: '0px',
     MENU_ITEM: '',

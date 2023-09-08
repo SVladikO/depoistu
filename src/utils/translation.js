@@ -42,6 +42,10 @@ export const TRANSLATION = {
         ua: 'більше',
         en: 'see more'
     },
+    GO_TO_A_SEARCH_PAGE: {
+        ua: 'Перейти на сторінку пошуку',
+        en: 'Go to a search page'
+    },
     INTRODUCTION: {
         BUTTON: {
             ua: 'Далі',
@@ -267,6 +271,10 @@ export const TRANSLATION = {
             MENU_PROBLEM: {
                 ua: 'Меню компанії відсутнє',
                 en: 'There is no menu in company'
+            },
+            COMPANY_DOESNT_EXIST: {
+                ua: 'Компанії не існує',
+                en: "Company doesn't exist"
             }
         },
         CUSTOMER_COMPANIES: {
@@ -508,6 +516,10 @@ export const TRANSLATION = {
                 }
             },
             GROUP_TITLE: {
+                DO_YOU_LIKE: {
+                    ua: "Вам подобається цей сайт?",
+                    en: "Do you like this website?"
+                },
                 ACCOUNTS: {
                     ua: "Остобистий кабiнет",
                     en: "My account"
