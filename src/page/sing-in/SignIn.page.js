@@ -5,10 +5,10 @@ import {Link, useNavigate} from "react-router-dom";
 
 import {
     Input,
-    FetchButton,
     ContentContainer,
     Label,
     NavigationLabelHref,
+    PrimaryButton,
 } from "../../components";
 
 import {ReactComponent as LockIcon} from "../../assets/icons/lock.svg";
@@ -91,13 +91,13 @@ const SignInPage = () => {
                                 label={translate(TRANSLATION.PAGE.SIGN_IN.ACCOUNT_CONFIRMATION)}
                             />
                         </ContentContainer>
-                        <FetchButton
+                        <PrimaryButton
                             isWide
                             type="submit"
                             isLoading={isLoading}
                         >
                             {translate(TRANSLATION.PAGE.SIGN_IN.TOP_TITLE)}
-                        </FetchButton>
+                        </PrimaryButton>
                     </form>
                 )}
             </Formik>
