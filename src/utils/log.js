@@ -1,4 +1,3 @@
-import packageInfo from '../../package.json';
 import {DEV_ROUTER, BE_DOMAIN, AVAILABLE_DOMAINS, SELECTED_BE_DOMAIN} from "./config";
 import {fetchData} from "./fetch";
 
@@ -21,17 +20,17 @@ function logRemoteFEDomains() {
 }
 
 export function showDevelopmentPageUrls() {
-    fetchData(`${BE_DOMAIN}/db-mode`)
-        .then(res => {
-            console.log(`v${packageInfo.version}`);
-            console.log('ENV: ', SELECTED_BE_DOMAIN.name.toUpperCase());
-            console.log('DB: ', res.body.mode.toUpperCase());
-            console.log('BE_DOMAIN: ', SELECTED_BE_DOMAIN.url);
+    const {REACT_APP_IS_DEVELOPMENT} = process.env;
 
-            logDevelopmentPages()
-            console.log('')
-            logRemoteFEDomains()
-        })
-
-
+    if (REACT_APP_IS_DEVELOPMENT) {
+        fetchData(`${BE_DOMAIN}/db-mode`)
+            .then(res => {
+                console.log('ENV: ', SELECTED_BE_DOMAIN.name.toUpperCase());
+                console.log('DB: ', res.body.mode.toUpperCase());
+                console.log('BE_DOMAIN: ', SELECTED_BE_DOMAIN.url);
+                logDevelopmentPages()
+                console.log('')
+                logRemoteFEDomains()
+            })
+    }
 }

@@ -29,15 +29,18 @@ export const Question = styled(Flex)`
 `;
 
 export const Row = styled.div`
-  ${FONT.SIZE_18};
-  ${FONT.WEIGHT_400};
-  color: ${COLOR.ACCENT1}
-  border-bottom: 1px ${COLOR.ACCENT2} solid;
   width: 100%;
   display: flex;
-  justify-content: center;
-  color: ${COLOR.ACCENT1};
   padding: 8px;
+  justify-content: center;
+  ${FONT.SIZE_18};
+  ${FONT.WEIGHT_400};
+  border-bottom: 1px ${COLOR.ACCENT2} solid;
+  color: ${COLOR.ACCENT1};
+  
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const LocationInfo = styled.div`

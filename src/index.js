@@ -11,10 +11,12 @@ import reportWebVitals from './reportWebVitals';
 import {checkAccess} from "./utils/security";
 import {showDevelopmentPageUrls} from "./utils/log";
 import {LocalStorage, LOCAL_STORAGE_KEY} from "./utils/localStorage";
+import packageInfo from "../package.json";
 
 const container = document.getElementById('root');
 const root = createRoot(container);
 
+console.log(`v${packageInfo.version}`);
 checkAccess();
 showDevelopmentPageUrls();
 
