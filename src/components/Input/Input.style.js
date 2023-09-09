@@ -48,7 +48,7 @@ export const ClearWrapper = styled.div`
 export const CityInputWrapper = styled.div`
   padding: 1px;
   border-radius: 4px;
-  border: solid 2px ${COLOR.ACCENT1};
+  border: solid 2px ${COLOR.ACCENT5};
   position: relative;
   
   &:hover {

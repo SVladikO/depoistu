@@ -36,9 +36,9 @@ export const ImageSection = styled.div`
 export const Content = styled.div`
   padding: 16px 16px 20px 16px;
 `;
+
 export const CompanyInfo = styled.div`
   & > * {
-    display: block;
     margin: 0 0 10px 0;
   }
 
@@ -60,11 +60,12 @@ export const OpenStatus = styled.span`
   color: ${COLOR.ACCENT1};
   display: inline-flex;
   margin: 0 7px 0 0;
+  
   svg {
     display: inline-block;
     width: 15px;
     height: 18px;
-    color: ${COLOR.ACCENT3};
+    color: ${COLOR.ACCENT1};
     margin: 4px 8px 0 -1px;
   }
 `;
@@ -78,7 +79,7 @@ export const CloseStatus = styled.span`
     display: inline-block;
     width: 15px;
     height: 18px;
-    color: ${COLOR.ACCENT3};
+    color: ${COLOR.ACCENT1};
     margin: 4px 8px 0 -1px;
   }
 `;
@@ -108,6 +109,7 @@ export const LocationWrapper = styled.div`
   display: flex;
   flex-wrap: nowrap;
   justify-content: flex-start;
+  align-items: center;
   width: 100%;
   font-size: 20px;
   border-radius: ${BORDER_RADIUS.FOURTH};
@@ -120,7 +122,7 @@ export const LocationWrapper = styled.div`
     height: 16px;
     display: block;
     margin: 0 10px 0 0;
-    color: ${COLOR.ACCENT3};
+    color: ${COLOR.ACCENT1};
   }
 `;
 

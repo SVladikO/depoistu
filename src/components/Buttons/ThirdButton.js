@@ -24,8 +24,8 @@ export const ThirdButton = styled(button)`
   & > svg {
     width: 15px;
     height: 15px;
-    color: ${COLOR.ACCENT3};
-    fill: ${COLOR.ACCENT3};
+    color: ${COLOR.ACCENT1};
+    fill: ${COLOR.ACCENT1};
     display: inline-block;
     margin: 0 10px 0 0;
   }

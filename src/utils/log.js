@@ -22,15 +22,13 @@ function logRemoteFEDomains() {
 export function showDevelopmentPageUrls() {
     const {REACT_APP_IS_DEVELOPMENT} = process.env;
 
-    if (REACT_APP_IS_DEVELOPMENT) {
-        fetchData(`${BE_DOMAIN}/db-mode`)
-            .then(res => {
-                console.log('ENV: ', SELECTED_BE_DOMAIN.name.toUpperCase());
-                console.log('DB: ', res.body.mode.toUpperCase());
-                console.log('BE_DOMAIN: ', SELECTED_BE_DOMAIN.url);
-                logDevelopmentPages()
-                console.log('')
-                logRemoteFEDomains()
-            })
-    }
+    fetchData(`${BE_DOMAIN}/db-mode`)
+        .then(res => {
+            console.log('ENV: ', SELECTED_BE_DOMAIN.name.toUpperCase());
+            console.log('DB: ', res.body.mode.toUpperCase());
+            console.log('BE_DOMAIN: ', SELECTED_BE_DOMAIN.url);
+            logDevelopmentPages()
+            console.log('')
+            logRemoteFEDomains()
+        })
 }
