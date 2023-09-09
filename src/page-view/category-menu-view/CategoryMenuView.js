@@ -32,7 +32,7 @@ import {
 } from "./utils";
 
 const CATEGORY_TITLE_CLASS_NAME = 'CATEGORY_TITLE_CLASS_NAME';
-const CATEGORY_ROW_HEIGHT = 100;
+const CATEGORY_ROW_HEIGHT = 96;
 
 
 const CategoryMenuView = ({
