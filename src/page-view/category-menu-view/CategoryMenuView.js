@@ -9,7 +9,7 @@ import 'swiper/css/scrollbar';
 import {
     TopCategoryWrapper,
     TopCategoryItem,
-    BottomLine,
+    BgWrapper,
     SubCategoryWrapper,
     CategoryTitle
 } from "./CategoryMenuView.style";
@@ -135,19 +135,22 @@ const CategoryMenuView = ({
 
     }, [menuItems]);
 
-    const TopCategories = useMemo(() => (<div>
-        <BottomLine/>
-        <TopCategoryWrapper>
-            {topCategories.map((tc, index) => (
-                <TopCategoryItem
-                    key={tc.key}
-                    isSelected={index === selectedCategory.topCategoryId}
-                    onClick={onChangeTopCategory(index)}
-                >
-                    {translate(tc.translationKey)}
-                </TopCategoryItem>))}
-        </TopCategoryWrapper>
-    </div>), [selectedCategory, topCategories])
+    const TopCategories = useMemo(() => (
+        <div>
+            <TopCategoryWrapper>
+                {topCategories.map((tc, index) => (
+                    <TopCategoryItem
+                        key={tc.key}
+                        isSelected={index === selectedCategory.topCategoryId}
+                        onClick={onChangeTopCategory(index)}
+                    >
+                        {translate(tc.translationKey)}
+                    </TopCategoryItem>))}
+                {/*If you commit this row and check CategoryMenuRow you understand everything. */}
+                <TopCategoryItem style={{width: '90%'}}/>
+            </TopCategoryWrapper>
+        </div>
+    ), [selectedCategory, topCategories])
 
     const SubCategories = useMemo(() => (
         <SubCategoryWrapper className="category_menu_row_wrapper">
@@ -215,8 +218,10 @@ const CategoryMenuView = ({
             {
                 !!menuItems.length && (
                     <MenuHeader>
-                        {TopCategories}
-                        {SubCategories}
+                        <BgWrapper>
+                            {TopCategories}
+                            {SubCategories}
+                        </BgWrapper>
                     </MenuHeader>
                 )
             }
