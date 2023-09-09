@@ -16,7 +16,7 @@ export const disableScrollOnBody = () => {
 };
 
 const Popup = (props) => {
-    const {onClose, Component, showCloseButton = true, popupPosition = 'center'} = props;
+    const {onClose = () => {}, Component, showCloseButton = true, popupPosition = 'center'} = props;
     useEffect(() => {
         disableScrollOnBody();
     })
