@@ -144,7 +144,7 @@ const CategoryMenuView = ({
                         isSelected={index === selectedCategory.topCategoryId}
                         onClick={onChangeTopCategory(index)}
                     >
-                        {translate(tc.translationKey)}
+                        {translate(tc.translationKey).toUpperCase()}
                     </TopCategoryItem>))}
                 {/*If you commit this row and check CategoryMenuRow you understand everything. */}
                 <TopCategoryItem style={{width: '90%'}}/>
