@@ -15,7 +15,7 @@ export const SubCategoryWrapper = styled.div`
   background: none;
 `;
 export const BgWrapper = styled.div`
-  background: ${COLOR.ACCENT3};
+  background: ${COLOR.ACCENT1};
   //background-image: linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO});  
 `;
 export const TopCategoryWrapper = styled.div`
