@@ -36,7 +36,7 @@ export const TopCategoryItem = styled.div`
 export const CategoryTitle = styled.div`
   font-size: 20px;
   line-height: 24px;
-  padding: 20px 0 16px 16px;
+  padding: 22px 0 16px 16px;
   color: ${hexToRgbA(COLOR.ACCENT1, 0.7)};
   //background: rgb(0 0 0 / 70%);
 `;

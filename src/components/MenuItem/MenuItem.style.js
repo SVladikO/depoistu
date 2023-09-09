@@ -107,7 +107,7 @@ export const AdditionalDetails = styled(Flex)`
   padding: 16px;
 
   & > svg {
-    fill: #b5b5b5;
+    fill: ${COLOR.ACCENT1};
     height: 14px;
     width: 16px;
     margin: 0 2px 0 0;
