@@ -19,11 +19,6 @@ export const Wrapper = styled.div`
   }
 
 `;
-
-export const Placeholder = styled.span`
-  color: ${COLOR.ACCENT5};  
-  font-weight: bold;
-`;
 export const SwitchIconWrapper = styled.div`
   position: absolute;
   display: block;

@@ -2,7 +2,7 @@ import React from 'react';
 import {AllRoutes} from "utils/routes";
 import {useLocalStorage} from "utils/hook";
 import {LOCAL_STORAGE_KEY} from "utils/localStorage";
-import {Popup, Text22} from "components";
+import {ContentContainer, Popup, Text22} from "components";
 import {translate, TRANSLATION} from "utils/translation";
 import LanguagePopup from "features/language/LanguagePopup";
 import {PrimaryButton} from "components";
@@ -15,7 +15,7 @@ const App = () => {
         <>
             {showIntro && (
                 <Popup.Bottom onClose={closeIntroPopup}>
-                    <>
+                    <ContentContainer noPadding noShadow>
                         <Text22>
                             {translate(TRANSLATION.INTRODUCTION.INTRODUCTION_MAIN)}
                         </Text22>
@@ -28,7 +28,7 @@ const App = () => {
                         <PrimaryButton isWide clickHandler={closeIntroPopup}>
                             {translate(TRANSLATION.INTRODUCTION.BUTTON)}
                         </PrimaryButton>
-                    </>
+                    </ContentContainer>
                 </Popup.Bottom>)
             }
             <LanguagePopup/>

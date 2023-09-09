@@ -25,7 +25,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  ${p => p.popupPosition === 'end' && 'padding: 40px 23px 40px'};
+  ${p => p.popupPosition === 'end' && 'padding: 40px 23px 100px'};
   ${p => p.popupPosition === 'end' && 'border-radius: 28px 28px 0 0'};
   ${p => p.popupPosition === 'end' && 'background: white'};
   

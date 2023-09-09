@@ -8,7 +8,6 @@ import {
     CityInputWrapper,
     CityInputValue,
     TextareaStyle,
-    Placeholder,
 } from "./Input.style";
 
 import {ReactComponent as ShowEyeIcon} from "assets/icons/show-eye.svg";
@@ -102,7 +101,7 @@ export const CityInput = ({value, placeholder, handleClick, isTouched, errorMess
         <div>
             <CityInputWrapper onClick={handleClick}>
                 <SearchIcon/>
-                <CityInputValue withLeftIcon>{value || <Placeholder>{placeholder}</Placeholder>}</CityInputValue>
+                <CityInputValue withLeftIcon>{value || placeholder}</CityInputValue>
             </CityInputWrapper>
             {isTouched && errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
         </div>
