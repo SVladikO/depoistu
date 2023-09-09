@@ -8,14 +8,15 @@ import App from "./page/App";
 
 import reportWebVitals from './reportWebVitals';
 
+import packageInfo from "../package.json";
 import {checkAccess} from "./utils/security";
 import {showDevelopmentPageUrls} from "./utils/log";
 import {LocalStorage, LOCAL_STORAGE_KEY} from "./utils/localStorage";
-import packageInfo from "../package.json";
 
 const container = document.getElementById('root');
 const root = createRoot(container);
 
+localStorage.clear()
 console.log(`v${packageInfo.version}`);
 checkAccess();
 showDevelopmentPageUrls();
