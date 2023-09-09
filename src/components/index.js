@@ -31,7 +31,7 @@ import {DisabledButton} from "./Buttons/DisabledButton";
 import {Flex} from "./Flex/Flex.style";
 import Footer from "./Footer/Footer";
 import {FixedWrapper} from "./FixedWrapper/FixedWrapper.style";
-import {Input, PInput, Textarea} from "./Input/Input";
+import {Input, CityInput, Textarea} from "./Input/Input";
 import {Label} from "./Label/Label.style";
 import {MenuItemDetails} from "./MenuItem/MenuItem";
 import {NotificationFactory, NOTIFICATION_STATUS, NotificationLoading} from "./Notification/Notification";
@@ -73,7 +73,7 @@ export {
     NotificationLoading,
     OrderHistoryRow,
     OrderIconWithCounter,
-    PInput,
+    CityInput,
     Popup,
     Price,
     PrimaryButton,

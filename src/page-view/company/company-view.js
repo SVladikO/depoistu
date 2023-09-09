@@ -9,7 +9,7 @@ import {
     ContentContainer,
     Input,
     Label,
-    PInput,
+    CityInput,
     Popup,
     SecondaryButton,
     WeekScheduleInput
@@ -102,7 +102,7 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                             errorMessage={errors.name}
                         />
                         <Label>{translate(TRANSLATION.INPUT_LABEL.COMPANY.CITY)}</Label>
-                        <PInput
+                        <CityInput
                             withIcon
                             Icon={LocationIcon}
                             handleClick={openCityPopup}

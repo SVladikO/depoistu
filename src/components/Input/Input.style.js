@@ -1,4 +1,4 @@
-import styled,{css} from 'styled-components'
+import styled from 'styled-components'
 import {COLOR} from "utils/theme";
 
 export const Wrapper = styled.div`
@@ -50,19 +50,31 @@ export const ClearWrapper = styled.div`
   }
 `;
 
-export const PInputWrapper = styled.div`
+export const CityInputWrapper = styled.div`
+  padding: 1px;
+  border-radius: 4px;
+  border: solid 2px ${COLOR.ACCENT1};
   position: relative;
+  
+  &:hover {
+    cursor: pointer;
+  }
+  
   & > svg {
     position: absolute;
     top: 15px;
     left: 11px;
     z-index: 1;
-    height: 20px;
     width: 14px;
-    fill: ${COLOR.PRIMARY};
+    fill: ${COLOR.ACCENT1};
   }
 `;
 
+export const CityInputValue = styled.p`
+  ${p => st(p)};
+  font-size: 20px;
+  font-weight: 500;
+`;
 const st = p => `
   background: ${COLOR.ACCENT2};
   color: ${COLOR.ACCENT1};
@@ -74,12 +86,6 @@ const st = p => `
   align-items: center;
   padding: 14px  ${p.withRightIcon ? '40px' : '10px'} 17px ${p.withLeftIcon ? '35px' : '10px'};
 `;
-
-export const PStyle = styled.p`
-  ${p => st(p)};
-  font-size: 20px;
-  font-weight: 500;
-`
 
 export const TextareaStyle = styled.textarea`
   ${p => st(p)};

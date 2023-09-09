@@ -5,8 +5,8 @@ import {
     SwitchIconWrapper,
     CenterWrapper,
     ClearWrapper,
-    PInputWrapper,
-    PStyle,
+    CityInputWrapper,
+    CityInputValue,
     TextareaStyle,
     Placeholder,
 } from "./Input.style";
@@ -14,6 +14,7 @@ import {
 import {ReactComponent as ShowEyeIcon} from "assets/icons/show-eye.svg";
 import {ReactComponent as HideEyeIcon} from "assets/icons/hide-eye.svg";
 import {ReactComponent as ClearIcon} from "assets/icons/close.svg";
+import {ReactComponent as SearchIcon} from "assets/icons/search.svg";
 
 import {WarningMessage} from "components";
 
@@ -96,13 +97,13 @@ export const Input = memo(function ({
     )
 });
 
-export const PInput = ({Icon, value, placeholder, handleClick, isTouched, errorMessage}) => {
+export const CityInput = ({value, placeholder, handleClick, isTouched, errorMessage}) => {
     return (
         <div>
-            <PInputWrapper onClick={handleClick}>
-                {Icon && <Icon/>}
-                <PStyle withLeftIcon={!!Icon}>{value || <Placeholder>{placeholder}</Placeholder>}</PStyle>
-            </PInputWrapper>
+            <CityInputWrapper onClick={handleClick}>
+                <SearchIcon/>
+                <CityInputValue withLeftIcon>{value || <Placeholder>{placeholder}</Placeholder>}</CityInputValue>
+            </CityInputWrapper>
             {isTouched && errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
         </div>
     )

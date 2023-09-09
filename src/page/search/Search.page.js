@@ -3,7 +3,7 @@ import React, {useMemo, useState} from "react";
 
 import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
 
-import {PInput, ContentContainer, Company, NotificationLoading, Popup, RowSplitter} from "components";
+import {CityInput, ContentContainer, Company, NotificationLoading, Popup, RowSplitter} from "components";
 
 import {URL} from "utils/config";
 import {BE_API, fetchData} from "utils/fetch";
@@ -80,8 +80,8 @@ const SearchPage = () => {
         return (
             <>
 
-                <ContentContainer>
-                    <PInput
+                <ContentContainer noBg noShadow>
+                    <CityInput
                         handleClick={onOpenCityPopup}
                         withIcon
                         Icon={LocationIcon}

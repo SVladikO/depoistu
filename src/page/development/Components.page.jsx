@@ -5,7 +5,7 @@ import {Wrapper, Column, Component, Row, ColorCircle, Header, Space} from './Com
 import
 {
     Input,
-    PInput,
+    CityInput,
     Price,
     HistoryTabBar,
     Rating,
@@ -197,7 +197,7 @@ const componentsGroup1 = [
     ],
     [
         {
-            title: 'PInput', component: <PInput withIcon Icon={LocationIcon} value={'Vinnica'} handleClick={() => {
+            title: 'CityInput', component: <CityInput withIcon Icon={LocationIcon} value={'Vinnica'} handleClick={() => {
             }}/>
         },
         {
