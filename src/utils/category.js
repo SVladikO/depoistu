@@ -8,7 +8,7 @@ export const MEASUREMENTS = {
 // We have all category ids on frontend side
 // Position category title in this array responsible by position in horizontal sub categories
 //TODO: Migrate category id to db as after moving to another countries we will be unable to support their menu and categories
-export const CATEGORY_MAPPER_AS_ARRAY = [
+export const CATEGORY_KITCHEN = [
     // KITCHEN
     {id: 31, title: translate(TR.SUB_CATEGORIES.CHILDREN), measurement: MEASUREMENTS.WEIGHT},
     {id: 32, title: translate(TR.SUB_CATEGORIES.VEGETARIAN), measurement: MEASUREMENTS.WEIGHT},
@@ -34,7 +34,7 @@ export const CATEGORY_MAPPER_AS_ARRAY = [
     {id: 44, title: translate(TR.SUB_CATEGORIES.HOT_DOGS), measurement: MEASUREMENTS.WEIGHT},
     {id: 9, title: translate(TR.SUB_CATEGORIES.SANDWITCH), measurement: MEASUREMENTS.WEIGHT},
     {id: 10, title: translate(TR.SUB_CATEGORIES.BURGERS), measurement: MEASUREMENTS.WEIGHT},
-    {id: 44, title: translate(TR.SUB_CATEGORIES.STEAK), measurement: MEASUREMENTS.WEIGHT},
+    {id: 90, title: translate(TR.SUB_CATEGORIES.STEAK), measurement: MEASUREMENTS.WEIGHT},
     {id: 11, title: translate(TR.SUB_CATEGORIES.SUSHI), measurement: MEASUREMENTS.WEIGHT},
     {id: 12, title: translate(TR.SUB_CATEGORIES.ROLLS), measurement: MEASUREMENTS.WEIGHT},
     {id: 13, title: translate(TR.SUB_CATEGORIES.SUSHI_SETS), measurement: MEASUREMENTS.WEIGHT},
@@ -54,28 +54,34 @@ export const CATEGORY_MAPPER_AS_ARRAY = [
     {id: 21, title: translate(TR.SUB_CATEGORIES.DISHES_ON_FIRE), measurement: MEASUREMENTS.WEIGHT},
     {id: 22, title: translate(TR.SUB_CATEGORIES.SAUCES), measurement: MEASUREMENTS.WEIGHT},
     {id: 23, title: translate(TR.SUB_CATEGORIES.ADDICTIVES), measurement: MEASUREMENTS.LIQUID},
-    // DESSERTS
+];
+
+export const CATEGORY_DESSERTS = [
     {id: 24, title: translate(TR.SUB_CATEGORIES.BAKERY), measurement: MEASUREMENTS.WEIGHT},
     {id: 25, title: translate(TR.SUB_CATEGORIES.DESSERTS), measurement: MEASUREMENTS.WEIGHT},
     {id: 51, title: translate(TR.SUB_CATEGORIES.ICE_CREAM), measurement: MEASUREMENTS.LIQUID},
-    // HOT_DRINKS
+];
+//
+export const CATEGORY_HOT_DRINKS = [
     {id: 27, title: translate(TR.SUB_CATEGORIES.TEA), measurement: MEASUREMENTS.LIQUID},
     {id: 54, title: translate(TR.SUB_CATEGORIES.PUERH), measurement: MEASUREMENTS.LIQUID},
     {id: 55, title: translate(TR.SUB_CATEGORIES.COFFEE), measurement: MEASUREMENTS.LIQUID},
     {id: 75, title: translate(TR.SUB_CATEGORIES.MULLED_WINE), measurement: MEASUREMENTS.LIQUID},
-    // BAR
+];
+// BAR
+export const CATEGORY_BAR = [
     {id: 26, title: translate(TR.SUB_CATEGORIES.DRINKS), measurement: MEASUREMENTS.LIQUID},
     {id: 56, title: translate(TR.SUB_CATEGORIES.FRESH), measurement: MEASUREMENTS.LIQUID},
     {id: 28, title: translate(TR.SUB_CATEGORIES.COCKTAILS), measurement: MEASUREMENTS.LIQUID},
     {id: 57, title: translate(TR.SUB_CATEGORIES.BEER), measurement: MEASUREMENTS.LIQUID},
     {id: 58, title: translate(TR.SUB_CATEGORIES.SHOTS), measurement: MEASUREMENTS.LIQUID},
     {id: 59, title: translate(TR.SUB_CATEGORIES.LONGS), measurement: MEASUREMENTS.LIQUID},
-    {id: 28, title: translate(TR.SUB_CATEGORIES.WINE_CARD), measurement: MEASUREMENTS.LIQUID},
+    {id: 29, title: translate(TR.SUB_CATEGORIES.WINE_CARD), measurement: MEASUREMENTS.LIQUID},
     {id: 60, title: translate(TR.SUB_CATEGORIES.WINE_GEORGIA), measurement: MEASUREMENTS.LIQUID},
     {id: 61, title: translate(TR.SUB_CATEGORIES.WINE_ITALY), measurement: MEASUREMENTS.LIQUID},
     {id: 62, title: translate(TR.SUB_CATEGORIES.WINE_FRANCE), measurement: MEASUREMENTS.LIQUID},
     {id: 63, title: translate(TR.SUB_CATEGORIES.WINE_SPARKLING), measurement: MEASUREMENTS.LIQUID},
-    {id: 29, title: translate(TR.SUB_CATEGORIES.WINE_CHILE), measurement: MEASUREMENTS.LIQUID},
+    {id: 30, title: translate(TR.SUB_CATEGORIES.WINE_CHILE), measurement: MEASUREMENTS.LIQUID},
     {id: 65, title: translate(TR.SUB_CATEGORIES.NALUVKU), measurement: MEASUREMENTS.LIQUID},
     {id: 66, title: translate(TR.SUB_CATEGORIES.VERMOUTH), measurement: MEASUREMENTS.LIQUID},
     {id: 67, title: translate(TR.SUB_CATEGORIES.TINCTURE), measurement: MEASUREMENTS.LIQUID},
@@ -88,6 +94,28 @@ export const CATEGORY_MAPPER_AS_ARRAY = [
     {id: 30, title: translate(TR.SUB_CATEGORIES.HORILKA), measurement: MEASUREMENTS.LIQUID},
 ];
 
+export const CATEGORY_MAPPER_AS_ARRAY = [
+    ...CATEGORY_KITCHEN,
+    ...CATEGORY_DESSERTS,
+    ...CATEGORY_HOT_DRINKS,
+    ...CATEGORY_BAR
+]
+
+export const TOP_CATEGORIES = {
+    KITCHEN: CATEGORY_KITCHEN.map(category => category.id),
+    DESSERTS: CATEGORY_DESSERTS.map(category => category.id),
+    HOT_DRINKS: CATEGORY_HOT_DRINKS.map(category => category.id),
+    BAR: CATEGORY_BAR.map(category => category.id),
+}
+
+console.log('expected category length: ',
+    CATEGORY_KITCHEN.length +
+    CATEGORY_DESSERTS.length +
+    CATEGORY_HOT_DRINKS.length +
+    CATEGORY_BAR.length
+, CATEGORY_MAPPER_AS_ARRAY.length
+)
+
 // It's simpler to get data from object than from array
 // That's why we create object from array.
 // Where we will be able to get all info by key and even position. Index is responsible by position.
@@ -97,11 +125,35 @@ export const CATEGORY_ID_MAPPER_AS_OBJECT = (() => {
     return result;
 })();
 
-export const TOP_CATEGORIES = {
-    KITCHEN: [31, 32, 1, 33, 34, 2, 35, 36, 7, 8, 37, 38, 3, 4, 39, 40, 5, 41, 42, 6, 43, 44, 9, 10, 44, 11, 12, 13, 45, 48, 14, 46, 15, 16, 17, 47, 49, 18, 50, 19, 20, 21, 22, 23],
-    DESSERTS: [24, 25, 51],
-    HOT_DRINKS: [27, 54, 55, 75],
-    BAR: [26, 56, 28, 57, 58, 59, 28, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74],
+export const getTopCategories = (categoryIds = []) => {
+    // Empty arrays where we will add ids
+    const topCategories = {
+        KITCHEN: {ids: [], translationKey: TR.TOP_CATEGORIES.KITCHEN},
+        DESSERTS: {ids: [], translationKey: TR.TOP_CATEGORIES.DESSERTS},
+        HOT_DRINKS: {ids: [], translationKey: TR.TOP_CATEGORIES.HOT_DRINKS},
+        BAR: {ids: [], translationKey: TR.TOP_CATEGORIES.BAR},
+    }
+
+    categoryIds.forEach(categoryId => {
+        if (TOP_CATEGORIES.KITCHEN.includes(categoryId)) {
+            topCategories.KITCHEN.ids.push(categoryId)
+        }
+        if (TOP_CATEGORIES.DESSERTS.includes(categoryId)) {
+            topCategories.DESSERTS.ids.push(categoryId)
+        }
+        if (TOP_CATEGORIES.HOT_DRINKS.includes(categoryId)) {
+            topCategories.HOT_DRINKS.ids.push(categoryId)
+        }
+        if (TOP_CATEGORIES.BAR.includes(categoryId)) {
+            topCategories.BAR.ids.push(categoryId)
+        }
+    })
+
+    // Let's filter from an empty id arrays
+    const t = Object.keys(topCategories)
+        .map(key => (topCategories[key].ids.length > 0 ? { ...topCategories[key], key} : false));
+    console.log('TOP CATEGORIES', t);
+    return t.filter(Boolean)
 }
 
 export const getSortedUniqueCategoryIds = (menuItems = []) => {
@@ -141,41 +193,3 @@ export const getTopCategoryId = (categoryId, topCategories) => {
     return topCategoryIndex;
 }
 
-export const getTopCategories = (categoryIds = []) => {
-    const topCategories = {
-        KITCHEN: {ids: [], translationKey: TR.TOP_CATEGORIES.KITCHEN},
-        DESSERTS: {ids: [], translationKey: TR.TOP_CATEGORIES.DESSERTS},
-        HOT_DRINKS: {ids: [], translationKey: TR.TOP_CATEGORIES.HOT_DRINKS},
-        BAR: {ids: [], translationKey: TR.TOP_CATEGORIES.BAR},
-    }
-
-    categoryIds.forEach(categoryId => {
-        if (TOP_CATEGORIES.KITCHEN.includes(categoryId)) {
-            topCategories.KITCHEN.ids.push(categoryId)
-        }
-        if (TOP_CATEGORIES.DESSERTS.includes(categoryId)) {
-            topCategories.DESSERTS.ids.push(categoryId)
-        }
-        if (TOP_CATEGORIES.HOT_DRINKS.includes(categoryId)) {
-            topCategories.HOT_DRINKS.ids.push(categoryId)
-        }
-        if (TOP_CATEGORIES.BAR.includes(categoryId)) {
-            topCategories.BAR.ids.push(categoryId)
-        }
-    })
-
-    const t = Object.keys(topCategories)
-        .map(key => {
-            if (topCategories[key].ids.length > 0) {
-                return {
-                    ...topCategories[key],
-                    key
-                }
-            }
-
-            return false;
-
-        })
-
-    return t.filter(Boolean)
-}

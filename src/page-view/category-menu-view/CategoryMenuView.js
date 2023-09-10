@@ -34,10 +34,17 @@ import {
     disableScrollListener,
     getIsScrollDisabled
 } from "./utils";
+import menuItem from "../../components/MenuItem/MenuItem";
 
 const CATEGORY_TITLE_CLASS_NAME = 'CATEGORY_TITLE_CLASS_NAME';
 const CATEGORY_ROW_HEIGHT = 96;
 
+
+const sortByIndex = (menuItems = []) => {
+    menuItems.sort((menuItem1, menuItem2) =>
+        CATEGORY_ID_MAPPER_AS_OBJECT[menuItem1.categoryId].index - CATEGORY_ID_MAPPER_AS_OBJECT[menuItem2.categoryId].index
+    )
+}
 
 const CategoryMenuView = ({
                               menuItems = [],
@@ -45,6 +52,8 @@ const CategoryMenuView = ({
                               withEditIcon,
                               editPage = false,
                           }) => {
+
+
     const navigate = useNavigate();
     const [topCategories, setTopCategories] = useState([]);
 
@@ -122,11 +131,7 @@ const CategoryMenuView = ({
     }, [])
 
     useEffect(() => {
-        //Very important to use undefined as initial value to menuItems SearchDetailsPage, EditMenuPage.
-        if (!menuItems) {
-            return
-        }
-
+        // sortByIndex(menuItems)
         const uniqueCategoryIds = getSortedUniqueCategoryIds(menuItems);
         const availableTopCategories = getTopCategories(uniqueCategoryIds);
         setTopCategories(availableTopCategories)
@@ -136,6 +141,7 @@ const CategoryMenuView = ({
             index,
             topCategoryId: getTopCategoryId(id, availableTopCategories)
         }))
+        debugger;
         setId_Index_TopId_uniqueCategories(categories)
 
     }, [menuItems]);
@@ -186,13 +192,11 @@ const CategoryMenuView = ({
         if (!id_Index_TopId_uniqueCategories?.length) {
             return;
         }
-
+        console.log('-----')
+        sortByIndex(menuItems)
         return menuItems
-            ?.sort((menuItem1, menuItem2) =>
-                CATEGORY_ID_MAPPER_AS_OBJECT[menuItem1.categoryId].index - CATEGORY_ID_MAPPER_AS_OBJECT[menuItem2.categoryId].index
-            )
             ?.map(menuItem => {
-
+                console.log(menuItem.categoryId);
                 const MenuItemComponent = <MenuItem
                     key={menuItem.id}
                     item={menuItem}
