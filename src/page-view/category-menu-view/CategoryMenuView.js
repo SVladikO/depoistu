@@ -199,6 +199,7 @@ const CategoryMenuView = ({
                                                         clickHandler={() => {
                                                             setSelectedSubCategoryId(categoryId)
                                                             setSelectedTopCategoryId(topCategoryIndex)
+                                                            scrollTo(categoryId, topCategoryIndex)
                                                         }}
                                                         itemsAmountPerCategory={
                                                             showMenuItemAmount

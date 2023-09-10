@@ -8,7 +8,6 @@ const HorizontalSwiper = ({subCategoryIndex, children}) => {
 
     const slideTo = index => {
         // we should let 0 pass if too.
-        debugger
         if (swiper && (index || index === 0)) {
             swiper.slideTo(index)
         }
