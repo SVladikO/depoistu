@@ -10,12 +10,7 @@ const CATEGORY_ID_PREFIX = 'category_'
  * @param topCategoryId
  * @return {`category_id/${string}_index/${string}_topId/${string}`}
  */
-export const generateTagId = ({id, index, topCategoryId}) => `${CATEGORY_ID_PREFIX}id/${id}_index/${index}_topId/${topCategoryId}`;
-
-/**
- * Get object which needed to generate Category Title id for tag.
- */
-export const findObjectByCategoryId = (categoryId, id_Index_TopId_uniqueCategories) => id_Index_TopId_uniqueCategories.find(elem => elem.id === categoryId);
+export const generateTagId = ({id, index, topCategoryId}) => `${CATEGORY_ID_PREFIX}${id}_${index}_${topCategoryId}`;
 
 export const MenuHeader = ({children}) => (
     <div className="wrapper_1" style={{position: 'sticky', top: -1, zIndex: 10}} className="category-row-wrapper">

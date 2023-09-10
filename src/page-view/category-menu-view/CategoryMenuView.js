@@ -31,7 +31,6 @@ import {
     enableScrollListener,
     MenuHeader,
     generateTagId,
-    findObjectByCategoryId,
     disableScrollListener,
     getIsScrollDisabled
 } from "./utils";
@@ -64,10 +63,7 @@ const CategoryMenuView = ({
                 const y = element.offsetTop - window.scrollY - CATEGORY_ROW_HEIGHT;
 
                 if (y < 60 && y > 0) {
-                    let [idName, candidateCategoryId, candidateCategoryIndex, candidateTopCategoryId] = element.id.split('_')
-                    candidateCategoryId = +candidateCategoryId.split('/')[1];
-                    candidateCategoryIndex = +candidateCategoryIndex.split('/')[1];
-                    candidateTopCategoryId = +candidateTopCategoryId.split('/')[1];
+                    let [idName, candidateCategoryId, candidateCategoryIndex, candidateTopCategoryId] = element.id.split('_').map(Number);
 
                     if (candidateCategoryId !== selectedCategory.id) {
                         setSelectedCategory({
@@ -107,7 +103,7 @@ const CategoryMenuView = ({
 
     const onChangeTopCategory = index => () => {
         const firstCategoryIdInTopCategories = topCategories[index].ids[0];
-        const candidateCategory = findObjectByCategoryId(firstCategoryIdInTopCategories, id_Index_TopId_uniqueCategories)
+        const candidateCategory = id_Index_TopId_uniqueCategories.find(elem => elem.id === firstCategoryIdInTopCategories)
         setSelectedCategory(candidateCategory);
         scrollTo(candidateCategory);
     }
@@ -213,7 +209,7 @@ const CategoryMenuView = ({
                 return [
                     <CategoryTitle
                         className={CATEGORY_TITLE_CLASS_NAME}
-                        id={generateTagId(findObjectByCategoryId(menuItem.categoryId, id_Index_TopId_uniqueCategories))}
+                        id={generateTagId(id_Index_TopId_uniqueCategories.find(elem => elem.id === menuItem.categoryId))}
                         key={CATEGORY_MAPPER_AS_ARRAY[menuItem.categoryId].title}
                     >
                         {CATEGORY_MAPPER_AS_ARRAY[menuItem.categoryId].title.toUpperCase()}
