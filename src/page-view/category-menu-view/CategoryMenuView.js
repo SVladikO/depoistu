@@ -21,12 +21,17 @@ import {useScrollUp} from "utils/hook";
 import {getTopCategories} from 'utils/category';
 import {translate, TRANSLATION} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
-import {CATEGORY_MAPPER, getTopCategoryId, getCategoryUniqueIds} from 'utils/category';
+import {
+    CATEGORY_MAPPER_AS_ARRAY,
+    CATEGORY_ID_MAPPER_AS_OBJECT,
+    getTopCategoryId,
+    getSortedUniqueCategoryIds
+} from 'utils/category';
 import {
     enableScrollListener,
     MenuHeader,
     generateTagId,
-    getCategoryIndex,
+    findObjectByCategoryId,
     disableScrollListener,
     getIsScrollDisabled
 } from "./utils";
@@ -43,7 +48,8 @@ const CategoryMenuView = ({
                           }) => {
     const navigate = useNavigate();
     const [topCategories, setTopCategories] = useState([]);
-    const [uniqueCategories, setUniqueCategories] = useState();
+
+    const [id_Index_TopId_uniqueCategories, setId_Index_TopId_uniqueCategories] = useState();
     const [selectedCategory, setSelectedCategory] = useState({});
 
     useScrollUp()
@@ -58,7 +64,10 @@ const CategoryMenuView = ({
                 const y = element.offsetTop - window.scrollY - CATEGORY_ROW_HEIGHT;
 
                 if (y < 60 && y > 0) {
-                    const [idName, candidateCategoryId, candidateCategoryIndex, candidateTopCategoryId] = element.id.split('_').map(Number)
+                    let [idName, candidateCategoryId, candidateCategoryIndex, candidateTopCategoryId] = element.id.split('_')
+                    candidateCategoryId = +candidateCategoryId.split('/')[1];
+                    candidateCategoryIndex = +candidateCategoryIndex.split('/')[1];
+                    candidateTopCategoryId = +candidateTopCategoryId.split('/')[1];
 
                     if (candidateCategoryId !== selectedCategory.id) {
                         setSelectedCategory({
@@ -97,8 +106,8 @@ const CategoryMenuView = ({
     };
 
     const onChangeTopCategory = index => () => {
-        const firstCategoryIdInTop = topCategories[index].ids[0];
-        const candidateCategory = uniqueCategories.find(category => category.id === firstCategoryIdInTop)
+        const firstCategoryIdInTopCategories = topCategories[index].ids[0];
+        const candidateCategory = findObjectByCategoryId(firstCategoryIdInTopCategories, id_Index_TopId_uniqueCategories)
         setSelectedCategory(candidateCategory);
         scrollTo(candidateCategory);
     }
@@ -122,7 +131,7 @@ const CategoryMenuView = ({
             return
         }
 
-        const uniqueCategoryIds = getCategoryUniqueIds(menuItems);
+        const uniqueCategoryIds = getSortedUniqueCategoryIds(menuItems);
         const availableTopCategories = getTopCategories(uniqueCategoryIds);
         setTopCategories(availableTopCategories)
 
@@ -131,7 +140,7 @@ const CategoryMenuView = ({
             index,
             topCategoryId: getTopCategoryId(id, availableTopCategories)
         }))
-        setUniqueCategories(categories)
+        setId_Index_TopId_uniqueCategories(categories)
 
     }, [menuItems]);
 
@@ -156,10 +165,10 @@ const CategoryMenuView = ({
         <SubCategoryWrapper className="category_menu_row_wrapper">
             <HorizontalSwiper selectedCategory={selectedCategory}>
                 {
-                    uniqueCategories?.map(category => (
+                    id_Index_TopId_uniqueCategories?.map(category => (
                         <SwiperSlide key={category.id}>
                             <CategoryItem
-                                category={CATEGORY_MAPPER[category.id]}
+                                category={CATEGORY_MAPPER_AS_ARRAY[category.id]}
                                 isSelected={selectedCategory.id === category.id}
                                 clickHandler={() => onChangeCategoryWithScroll(category)}
                                 itemsAmountPerCategory={
@@ -173,17 +182,19 @@ const CategoryMenuView = ({
                 }
             </HorizontalSwiper>
         </SubCategoryWrapper>
-    ), [uniqueCategories, selectedCategory]);
+    ), [id_Index_TopId_uniqueCategories, selectedCategory]);
 
     const MenuItemComponents = useMemo(() => {
         const ids = [];
 
-        if (!uniqueCategories?.length) {
+        if (!id_Index_TopId_uniqueCategories?.length) {
             return;
         }
 
         return menuItems
-            ?.sort((a, b) => a.CATEGORY_ID - b.CATEGORY_ID)
+            ?.sort((menuItem1, menuItem2) =>
+                CATEGORY_ID_MAPPER_AS_OBJECT[menuItem1.categoryId].index - CATEGORY_ID_MAPPER_AS_OBJECT[menuItem2.categoryId].index
+            )
             ?.map(menuItem => {
 
                 const MenuItemComponent = <MenuItem
@@ -202,15 +213,15 @@ const CategoryMenuView = ({
                 return [
                     <CategoryTitle
                         className={CATEGORY_TITLE_CLASS_NAME}
-                        id={generateTagId(getCategoryIndex(menuItem.categoryId, uniqueCategories))}
-                        key={CATEGORY_MAPPER[menuItem.categoryId].title}
+                        id={generateTagId(findObjectByCategoryId(menuItem.categoryId, id_Index_TopId_uniqueCategories))}
+                        key={CATEGORY_MAPPER_AS_ARRAY[menuItem.categoryId].title}
                     >
-                        {CATEGORY_MAPPER[menuItem.categoryId].title.toUpperCase()}
+                        {CATEGORY_MAPPER_AS_ARRAY[menuItem.categoryId].title.toUpperCase()}
                     </CategoryTitle>,
                     MenuItemComponent
                 ];
             })?.flat()
-    }, [menuItems, uniqueCategories]);
+    }, [menuItems, id_Index_TopId_uniqueCategories]);
 
     // *** render ***
     return (

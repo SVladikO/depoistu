@@ -2,9 +2,20 @@ import React from "react";
 
 const CATEGORY_ID_PREFIX = 'category_'
 
-export const generateTagId = ({id, index, topCategoryId}) => `${CATEGORY_ID_PREFIX}${id}_${index}_${topCategoryId}`;
+/**
+ * Generate element id from categoryId, index(position in menu) and parent topCategoryId.
+ * We need these information to handle .scroll method
+ * @param id
+ * @param index
+ * @param topCategoryId
+ * @return {`category_id/${string}_index/${string}_topId/${string}`}
+ */
+export const generateTagId = ({id, index, topCategoryId}) => `${CATEGORY_ID_PREFIX}id/${id}_index/${index}_topId/${topCategoryId}`;
 
-export const getCategoryIndex = (categoryId, uniqueCategories) => uniqueCategories.find(uc => uc.id === categoryId);
+/**
+ * Get object which needed to generate Category Title id for tag.
+ */
+export const findObjectByCategoryId = (categoryId, id_Index_TopId_uniqueCategories) => id_Index_TopId_uniqueCategories.find(elem => elem.id === categoryId);
 
 export const MenuHeader = ({children}) => (
     <div className="wrapper_1" style={{position: 'sticky', top: -1, zIndex: 10}} className="category-row-wrapper">
