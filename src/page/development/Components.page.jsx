@@ -11,7 +11,7 @@ import
     HistoryTabBar,
     Rating,
     Discount,
-    CategoryItem,
+    SubCategoryItem,
     SettingMenuRow,
     ToggleCheckbox,
     CheckBoxWithLabel,
@@ -217,7 +217,7 @@ const componentsGroup2 = [
     [
         {
             title: 'CategoryItem',
-            component: <CategoryItem category={{icon: LanguageIcon, title: 'Language'}} title="Sandwich"><SandwichIcon/></CategoryItem>
+            component: <SubCategoryItem category={{icon: LanguageIcon, title: 'Language'}} title="Sandwich"><SandwichIcon/></SubCategoryItem>
         },
         // {
         //     title: 'CategoryMenuRow',

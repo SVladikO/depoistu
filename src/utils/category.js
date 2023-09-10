@@ -81,7 +81,7 @@ export const CATEGORY_BAR = [
     {id: 61, title: translate(TR.SUB_CATEGORIES.WINE_ITALY), measurement: MEASUREMENTS.LIQUID},
     {id: 62, title: translate(TR.SUB_CATEGORIES.WINE_FRANCE), measurement: MEASUREMENTS.LIQUID},
     {id: 63, title: translate(TR.SUB_CATEGORIES.WINE_SPARKLING), measurement: MEASUREMENTS.LIQUID},
-    {id: 30, title: translate(TR.SUB_CATEGORIES.WINE_CHILE), measurement: MEASUREMENTS.LIQUID},
+    {id: 76, title: translate(TR.SUB_CATEGORIES.WINE_CHILE), measurement: MEASUREMENTS.LIQUID},
     {id: 65, title: translate(TR.SUB_CATEGORIES.NALUVKU), measurement: MEASUREMENTS.LIQUID},
     {id: 66, title: translate(TR.SUB_CATEGORIES.VERMOUTH), measurement: MEASUREMENTS.LIQUID},
     {id: 67, title: translate(TR.SUB_CATEGORIES.TINCTURE), measurement: MEASUREMENTS.LIQUID},
@@ -113,52 +113,58 @@ console.log('expected category length: ',
     CATEGORY_DESSERTS.length +
     CATEGORY_HOT_DRINKS.length +
     CATEGORY_BAR.length
-, CATEGORY_MAPPER_AS_ARRAY.length
+    , CATEGORY_MAPPER_AS_ARRAY.length
 )
 
-// It's simpler to get data from object than from array
-// That's why we create object from array.
-// Where we will be able to get all info by key and even position. Index is responsible by position.
-export const CATEGORY_ID_MAPPER_AS_OBJECT = (() => {
+// Get category title is simpler to get from object.
+// That's why we convert array to object.
+// Index is crucial for us as he handls position in sub category
+// All subcategories should be grouped
+// It will be bad if half of bur in start of menu and in the end
+const convertCategoryArrayToObject = () => {
     const result = {}
-    CATEGORY_MAPPER_AS_ARRAY.forEach(((category, index) => result[category.id] = {...category, index}))
+    CATEGORY_MAPPER_AS_ARRAY.forEach(
+        (category, index) => result[category.id] = {...category, index}
+    )
     return result;
-})();
+}
 
-export const getTopCategories = (categoryIds = []) => {
-    // Empty arrays where we will add ids
+export const CATEGORY_ID_MAPPER_AS_OBJECT = convertCategoryArrayToObject()
+
+export const getMenuTree = (categoryIds = [], menuItems = []) => {
     const topCategories = {
-        KITCHEN: {ids: [], translationKey: TR.TOP_CATEGORIES.KITCHEN},
-        DESSERTS: {ids: [], translationKey: TR.TOP_CATEGORIES.DESSERTS},
-        HOT_DRINKS: {ids: [], translationKey: TR.TOP_CATEGORIES.HOT_DRINKS},
-        BAR: {ids: [], translationKey: TR.TOP_CATEGORIES.BAR},
+        KITCHEN: {menuItems: {}, translationKey: TR.TOP_CATEGORIES.KITCHEN},
+        DESSERTS: {menuItems: {}, translationKey: TR.TOP_CATEGORIES.DESSERTS},
+        HOT_DRINKS: {menuItems: {}, translationKey: TR.TOP_CATEGORIES.HOT_DRINKS},
+        BAR: {menuItems: {}, translationKey: TR.TOP_CATEGORIES.BAR},
     }
 
     categoryIds.forEach(categoryId => {
         if (TOP_CATEGORIES.KITCHEN.includes(categoryId)) {
-            topCategories.KITCHEN.ids.push(categoryId)
+            topCategories.KITCHEN.menuItems[categoryId] = menuItems.filter(element => element.categoryId === categoryId)
         }
         if (TOP_CATEGORIES.DESSERTS.includes(categoryId)) {
-            topCategories.DESSERTS.ids.push(categoryId)
+            topCategories.DESSERTS.menuItems[categoryId] = menuItems.filter(element => element.categoryId === categoryId)
         }
         if (TOP_CATEGORIES.HOT_DRINKS.includes(categoryId)) {
-            topCategories.HOT_DRINKS.ids.push(categoryId)
+            topCategories.HOT_DRINKS.menuItems[categoryId] = menuItems.filter(element => element.categoryId === categoryId)
         }
         if (TOP_CATEGORIES.BAR.includes(categoryId)) {
-            topCategories.BAR.ids.push(categoryId)
+            topCategories.BAR.menuItems[categoryId] = menuItems.filter(element => element.categoryId === categoryId)
         }
     })
 
     // Let's filter from an empty id arrays
-    const t = Object.keys(topCategories)
-        .map(key => (topCategories[key].ids.length > 0 ? { ...topCategories[key], key} : false));
-    console.log('TOP CATEGORIES', t);
-    return t.filter(Boolean)
+    return Object.values(topCategories)
+        .filter(topCategory => Object.values(topCategory.menuItems).length)
 }
 
 export const getSortedUniqueCategoryIds = (menuItems = []) => {
     const categoryIds = menuItems.map(mi => mi.categoryId);
     const uniqueCategories = [...new Set([...categoryIds])];
+    uniqueCategories.sort((categoryId1, categoryId2) =>
+        CATEGORY_ID_MAPPER_AS_OBJECT[categoryId1].index - CATEGORY_ID_MAPPER_AS_OBJECT[categoryId2].index
+    )
     return uniqueCategories;
 }
 

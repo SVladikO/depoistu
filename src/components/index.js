@@ -1,6 +1,6 @@
 import AccountSettings from "./AccountSettings/AccountSettings";
 import BottomMenu from "./BottomMenu/BottomMenu";
-import CategoryItem from "./CategoryItem/CategoryItem";
+import SubCategoryItem from "./SubCategoryItem/SubCategoryItem";
 import CheckBoxWithLabel from "./CheckBoxWithLabel/CheckBoxWithLabel";
 import Checkbox from "./Checkbox/Checkbox";
 import Company from "./Company/Company";
@@ -45,7 +45,7 @@ export {
     Absolute,
     AccountSettings,
     BottomMenu,
-    CategoryItem,
+    SubCategoryItem,
     DisabledButton,
     CheckBoxWithLabel,
     Checkbox,

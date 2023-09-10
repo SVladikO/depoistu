@@ -14,11 +14,11 @@ import {
     CategoryTitle
 } from "./CategoryMenuView.style";
 
-import {CategoryItem, MenuItem, RowSplitter, HorizontalSwiper, PrimaryButton} from "components";
+import {SubCategoryItem, MenuItem, RowSplitter, HorizontalSwiper, PrimaryButton} from "components";
 
 import {URL} from "utils/config";
 import {useScrollUp} from "utils/hook";
-import {getTopCategories} from 'utils/category';
+import {getMenuTree} from 'utils/category';
 import {translate, TRANSLATION} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 import {
@@ -41,9 +41,7 @@ const CATEGORY_ROW_HEIGHT = 96;
 
 
 const sortByIndex = (menuItems = []) => {
-    menuItems.sort((menuItem1, menuItem2) =>
-        CATEGORY_ID_MAPPER_AS_OBJECT[menuItem1.categoryId].index - CATEGORY_ID_MAPPER_AS_OBJECT[menuItem2.categoryId].index
-    )
+
 }
 
 const CategoryMenuView = ({
@@ -54,13 +52,12 @@ const CategoryMenuView = ({
                           }) => {
 
 
+    useScrollUp();
     const navigate = useNavigate();
-    const [topCategories, setTopCategories] = useState([]);
-
-    const [id_Index_TopId_uniqueCategories, setId_Index_TopId_uniqueCategories] = useState();
+    const [menuTree, setMenuTree] = useState([]);
+    const [tree, setTree] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState({});
 
-    useScrollUp()
 
     const onScrollPage = () => {
         if (getIsScrollDisabled()) {
@@ -111,10 +108,10 @@ const CategoryMenuView = ({
     };
 
     const onChangeTopCategory = index => () => {
-        const firstCategoryIdInTopCategories = topCategories[index].ids[0];
-        const candidateCategory = id_Index_TopId_uniqueCategories.find(elem => elem.id === firstCategoryIdInTopCategories)
-        setSelectedCategory(candidateCategory);
-        scrollTo(candidateCategory);
+        const firstCategoryIdInTopCategories = menuTree[index].ids[0];
+        // const candidateCategory = idIndexTopIdObjects.find(elem => elem.id === firstCategoryIdInTopCategories)
+        // setSelectedCategory(candidateCategory);
+        // scrollTo(candidateCategory);
     }
 
     const navigateToEditMenuItemPage = menuItem => () => {
@@ -130,114 +127,87 @@ const CategoryMenuView = ({
         }
     }, [])
 
+
     useEffect(() => {
-        // sortByIndex(menuItems)
-        const uniqueCategoryIds = getSortedUniqueCategoryIds(menuItems);
-        const availableTopCategories = getTopCategories(uniqueCategoryIds);
-        setTopCategories(availableTopCategories)
-
-        const categories = uniqueCategoryIds.map((id, index) => ({
-            id,
-            index,
-            topCategoryId: getTopCategoryId(id, availableTopCategories)
-        }))
-        debugger;
-        setId_Index_TopId_uniqueCategories(categories)
-
-    }, [menuItems]);
-
-    const TopCategories = useMemo(() => (
-        <div>
-            <TopCategoryWrapper>
-                {topCategories.map((tc, index) => (
-                    <TopCategoryItem
-                        key={tc.key}
-                        isSelected={index === selectedCategory.topCategoryId}
-                        onClick={onChangeTopCategory(index)}
-                    >
-                        {translate(tc.translationKey).toUpperCase()}
-                    </TopCategoryItem>))}
-                {/*If you commit this row and check CategoryMenuRow you understand everything. */}
-                <TopCategoryItem style={{width: '90%'}}/>
-            </TopCategoryWrapper>
-        </div>
-    ), [selectedCategory, topCategories])
-
-    const SubCategories = useMemo(() => (
-        <SubCategoryWrapper className="category_menu_row_wrapper">
-            <HorizontalSwiper selectedCategory={selectedCategory}>
-                {
-                    id_Index_TopId_uniqueCategories?.map(category => (
-                        <SwiperSlide key={category.id}>
-                            <CategoryItem
-                                category={CATEGORY_MAPPER_AS_ARRAY[category.id]}
-                                isSelected={selectedCategory.id === category.id}
-                                clickHandler={() => onChangeCategoryWithScroll(category)}
-                                itemsAmountPerCategory={
-                                    showMenuItemAmount
-                                        ? menuItems.filter(mi => mi.categoryId === category.id).length
-                                        : 0
-                                }
-                            />
-                        </SwiperSlide>
-                    ))
-                }
-            </HorizontalSwiper>
-        </SubCategoryWrapper>
-    ), [id_Index_TopId_uniqueCategories, selectedCategory]);
-
-    const MenuItemComponents = useMemo(() => {
-        const ids = [];
-
-        if (!id_Index_TopId_uniqueCategories?.length) {
-            return;
-        }
-        console.log('-----')
         sortByIndex(menuItems)
-        return menuItems
-            ?.map(menuItem => {
-                console.log(menuItem.categoryId);
-                const MenuItemComponent = <MenuItem
-                    key={menuItem.id}
-                    item={menuItem}
-                    withEditIcon={withEditIcon}
-                    onEditClick={navigateToEditMenuItemPage(menuItem)}
-                />
+        const uniqueCategoryIds = getSortedUniqueCategoryIds(menuItems);
+        setMenuTree(getMenuTree(uniqueCategoryIds, menuItems));
+    }, menuItems)
 
-                if (ids.includes(menuItem.categoryId)) {
-                    return MenuItemComponent;
-                }
-
-                ids.push(menuItem.categoryId);
-
-                return [
-                    <CategoryTitle
-                        className={CATEGORY_TITLE_CLASS_NAME}
-                        id={generateTagId(id_Index_TopId_uniqueCategories.find(elem => elem.id === menuItem.categoryId))}
-                        key={CATEGORY_MAPPER_AS_ARRAY[menuItem.categoryId].title}
-                    >
-                        {CATEGORY_MAPPER_AS_ARRAY[menuItem.categoryId].title.toUpperCase()}
-                    </CategoryTitle>,
-                    MenuItemComponent
-                ];
-            })?.flat()
-    }, [menuItems, id_Index_TopId_uniqueCategories]);
-
-    // *** render ***
     return (
         <>
-            {
-                !!menuItems.length && (
-                    <MenuHeader>
-                        <BgWrapper>
-                            {TopCategories}
-                            {SubCategories}
-                        </BgWrapper>
-                    </MenuHeader>
-                )
-            }
+            <MenuHeader>
+                <BgWrapper>
+                    {/*** TOP CATEGORIES ***/}
+                    <div>
+                        <TopCategoryWrapper>
+                            {menuTree.map((topCategory, index) => (
+                                <TopCategoryItem
+                                    key={topCategory.key}
+                                    isSelected={index === selectedCategory.topCategoryId}
+                                    onClick={onChangeTopCategory(index)}
+                                >
+                                    {translate(topCategory.translationKey).toUpperCase()}
+                                </TopCategoryItem>))}
+                            {/*If you commit this row and check CategoryMenuRow you understand everything. */}
+                            <TopCategoryItem style={{width: '90%'}}/>
+                        </TopCategoryWrapper>
+                    </div>
+                    {/*** SUB CATEGORIES ***/}
+                    <SubCategoryWrapper className="category_menu_row_wrapper">
+                        <HorizontalSwiper selectedCategory={selectedCategory}>
+                            {
+                                menuTree?.map(topCategory => (
+                                    Object.keys(topCategory.menuItems).map(categoryId => {
+                                            const menuItem = topCategory.menuItems[categoryId];
+
+                                            return (
+                                                <SwiperSlide key={menuItem.id}>
+                                                    <SubCategoryItem
+                                                        title={CATEGORY_ID_MAPPER_AS_OBJECT[categoryId].title}
+                                                        isSelected={selectedCategory.id === menuItem.id}
+                                                        clickHandler={() => onChangeCategoryWithScroll(menuItem)}
+                                                        itemsAmountPerCategory={
+                                                            showMenuItemAmount
+                                                                ? menuItems.filter(mi => mi.categoryId === menuItem.id).length
+                                                                : 0
+                                                        }
+                                                    />
+                                                </SwiperSlide>
+                                            )
+                                        }
+                                    )))
+                            }
+                        </HorizontalSwiper>
+                    </SubCategoryWrapper>
+                </BgWrapper>
+            </MenuHeader>
             <RowSplitter height={'100px'}/>
-            {MenuItemComponents}
+            {/***  MENU ITEM  ***/}
+            {/*{*/}
+            {/*    menuTree.map(*/}
+            {/*        topCategory =>*/}
+            {/*            topCategory.menuItems*/}
+            {/*                ?.map(menuItem => {*/}
+            {/*                    const MenuItemComponent = <MenuItem*/}
+            {/*                        key={menuItem.id}*/}
+            {/*                        item={menuItem}*/}
+            {/*                        withEditIcon={withEditIcon}*/}
+            {/*                        onEditClick={navigateToEditMenuItemPage(menuItem)}*/}
+            {/*                    />*/}
+
+            {/*                    return [*/}
+            {/*                        <CategoryTitle*/}
+            {/*                            className={CATEGORY_TITLE_CLASS_NAME}*/}
+            {/*                            key={CATEGORY_MAPPER_AS_ARRAY[menuItem.categoryId].title}*/}
+            {/*                        >*/}
+            {/*                            {CATEGORY_MAPPER_AS_ARRAY[menuItem.categoryId].title.toUpperCase()}*/}
+            {/*                        </CategoryTitle>,*/}
+            {/*                        MenuItemComponent*/}
+            {/*                    ];*/}
+            {/*                })*/}
+            {/*    )*/}
+            {/*}*/}
             {
                 editPage &&
                 <>
