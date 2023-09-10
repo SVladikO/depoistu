@@ -25,7 +25,8 @@ export const MenuHeader = ({children}) => (
 
 export function enableScrollListener() {
     setTimeout(() => {
-        const domElement = document.getElementsByClassName("category-menu-row-wrapper")[0]
+        const domElement = document.getElementsByClassName("category_menu_row_wrapper")[0]
+        console.log('ENABLED SCROLL')
         domElement.classList.remove('stop-scroll')
     }, 2500);
 }
@@ -37,12 +38,9 @@ export function disableScrollListener() {
 
     //The only possible way to stop scroll listener when you triggerred scrollTo is adding class
     const domElement = document.getElementsByClassName("category_menu_row_wrapper")[0]
+    debugger;
     domElement.classList.add('stop-scroll');
 }
 
-export function getIsScrollDisabled() {
-    const stopScroll = document.getElementsByClassName("stop-scroll");
-
-    return !!stopScroll?.length
-}
+export const getIsScrollDisabled = () => !!document.getElementsByClassName("stop-scroll").length;
 

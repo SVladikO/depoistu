@@ -3,7 +3,7 @@ import {SliderStyle} from "./HorizontalSwiper.style";
 import {Swiper} from "swiper/react";
 import {FreeMode, Scrollbar} from "swiper";
 
-const HorizontalSwiper = ({selectedCategory, children}) => {
+const HorizontalSwiper = ({selectedCategoryId, children}) => {
     const [swiper, setSwiper] = useState(null);
 
     const slideTo = category => {
@@ -14,8 +14,8 @@ const HorizontalSwiper = ({selectedCategory, children}) => {
     };
 
     useEffect(() => {
-        slideTo(selectedCategory.categoryId)
-    }, [selectedCategory])
+        slideTo(selectedCategoryId)
+    }, [selectedCategoryId])
 
     return (
         <SliderStyle>
