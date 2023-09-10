@@ -30,7 +30,7 @@ import {
     MenuHeader,
     generateTagId,
     disableScrollListener,
-    getIsScrollDisabled
+    getIsScrollDisabled, CATEGORY_CLASSNAME
 } from "./utils";
 
 const CATEGORY_TITLE_CLASS_NAME = 'CATEGORY_TITLE_CLASS_NAME';
@@ -78,7 +78,6 @@ const CategoryMenuView = ({
             return
         }
 
-        debugger
         disableScrollListener();
 
         const topOfElement = categoryTitleTag.offsetTop - CATEGORY_ROW_HEIGHT;
@@ -169,7 +168,7 @@ const CategoryMenuView = ({
                         </TopCategoryWrapper>
                     </div>
                     {/*** SUB CATEGORIES ***/}
-                    <SubCategoryWrapper className="category_menu_row_wrapper">
+                    <SubCategoryWrapper className={CATEGORY_CLASSNAME}>
                         <HorizontalSwiper selectedCategoryId={selectedSubCategoryId}>
                             {
                                 // EXAMPLE OF menuTree data structure
