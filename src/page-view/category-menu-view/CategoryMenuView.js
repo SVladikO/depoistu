@@ -36,6 +36,9 @@ import {
 const CATEGORY_TITLE_CLASS_NAME = 'CATEGORY_TITLE_CLASS_NAME';
 const CATEGORY_ROW_HEIGHT = 96;
 
+let indexCalculator = 0;
+let categoryIdIndexMapper = {};
+
 const CategoryMenuView = ({
                               menuItems = [],
                               showMenuItemAmount,
@@ -87,7 +90,7 @@ const CategoryMenuView = ({
     }
 
     const onChangeTopCategory = topCategoryId => () => {
-        const categoryId = Object.keys(menuTree[topCategoryId].menuItems)[0];
+        const categoryId = +Object.keys(menuTree[topCategoryId].menuItems)[0];
         setSelectedSubCategoryId(categoryId)
         setSelectedTopCategoryId(topCategoryId);
         scrollTo(categoryId, topCategoryId)
@@ -155,11 +158,11 @@ const CategoryMenuView = ({
                     {/*** TOP CATEGORIES ***/}
                     <div>
                         <TopCategoryWrapper>
-                            {menuTree.map((topCategory, index) => (
+                            {menuTree.map((topCategory, topCategoryIndex) => (
                                 <TopCategoryItem
-                                    key={index}
-                                    isSelected={index === selectedTopCategoryId}
-                                    onClick={onChangeTopCategory(index)}
+                                    key={topCategoryIndex}
+                                    isSelected={topCategoryIndex === selectedTopCategoryId}
+                                    onClick={onChangeTopCategory(topCategoryIndex)}
                                 >
                                     {translate(topCategory.translationKey).toUpperCase()}
                                 </TopCategoryItem>))}
@@ -169,7 +172,7 @@ const CategoryMenuView = ({
                     </div>
                     {/*** SUB CATEGORIES ***/}
                     <SubCategoryWrapper className={CATEGORY_CLASSNAME}>
-                        <HorizontalSwiper selectedCategoryId={selectedSubCategoryId}>
+                        <HorizontalSwiper subCategoryIndex={categoryIdIndexMapper[selectedSubCategoryId]}>
                             {
                                 // EXAMPLE OF menuTree data structure
                                 // [
@@ -185,6 +188,9 @@ const CategoryMenuView = ({
                                 menuTree?.map((topCategory, topCategoryIndex) => (
                                     Object.keys(topCategory.menuItems).map((categoryId, index) => {
                                             const menuItem = topCategory.menuItems[categoryId];
+                                            if (categoryIdIndexMapper[categoryId] === undefined) {
+                                                categoryIdIndexMapper[categoryId] = indexCalculator++;
+                                            }
                                             return (
                                                 <SwiperSlide key={index}>
                                                     <SubCategoryItem

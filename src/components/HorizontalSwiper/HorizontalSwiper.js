@@ -3,19 +3,20 @@ import {SliderStyle} from "./HorizontalSwiper.style";
 import {Swiper} from "swiper/react";
 import {FreeMode, Scrollbar} from "swiper";
 
-const HorizontalSwiper = ({selectedCategoryId, children}) => {
+const HorizontalSwiper = ({subCategoryIndex, children}) => {
     const [swiper, setSwiper] = useState(null);
 
-    const slideTo = category => {
+    const slideTo = index => {
         // we should let 0 pass if too.
-        if (swiper && (category?.index || category?.index === 0)) {
-            swiper.slideTo(category.index)
+        debugger
+        if (swiper && (index || index === 0)) {
+            swiper.slideTo(index)
         }
     };
 
     useEffect(() => {
-        slideTo(selectedCategoryId)
-    }, [selectedCategoryId])
+        slideTo(subCategoryIndex)
+    }, [subCategoryIndex])
 
     return (
         <SliderStyle>

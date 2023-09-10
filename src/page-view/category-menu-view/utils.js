@@ -11,7 +11,6 @@ const CATEGORY_ID_PREFIX = 'category_'
  * @return {`category_id/${string}_index/${string}_topId/${string}`}
  */
 export const generateTagId = (id, topCategoryId) => `${CATEGORY_ID_PREFIX}${id}_${topCategoryId}`;
-// export const generateTagId = (id, index, topCategoryId) => `${CATEGORY_ID_PREFIX}${id}_${index}_${topCategoryId}`;
 
 export const MenuHeader = ({children}) => (
     <div className="wrapper_1" style={{position: 'sticky', top: -1, zIndex: 10}} className="category-row-wrapper">
