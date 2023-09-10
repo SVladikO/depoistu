@@ -14,7 +14,7 @@ const HorizontalSwiper = ({selectedCategory, children}) => {
     };
 
     useEffect(() => {
-        slideTo(selectedCategory)
+        slideTo(selectedCategory.categoryId)
     }, [selectedCategory])
 
     return (

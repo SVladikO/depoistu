@@ -141,16 +141,16 @@ export const getMenuTree = (categoryIds = [], menuItems = []) => {
 
     categoryIds.forEach(categoryId => {
         if (TOP_CATEGORIES.KITCHEN.includes(categoryId)) {
-            topCategories.KITCHEN.menuItems[categoryId] = menuItems.filter(element => element.categoryId === categoryId)
+            topCategories.KITCHEN.menuItems[categoryId] = menuItems.filter(el => el.categoryId === categoryId)
         }
         if (TOP_CATEGORIES.DESSERTS.includes(categoryId)) {
-            topCategories.DESSERTS.menuItems[categoryId] = menuItems.filter(element => element.categoryId === categoryId)
+            topCategories.DESSERTS.menuItems[categoryId] = menuItems.filter(el => el.categoryId === categoryId)
         }
         if (TOP_CATEGORIES.HOT_DRINKS.includes(categoryId)) {
-            topCategories.HOT_DRINKS.menuItems[categoryId] = menuItems.filter(element => element.categoryId === categoryId)
+            topCategories.HOT_DRINKS.menuItems[categoryId] = menuItems.filter(el => el.categoryId === categoryId)
         }
         if (TOP_CATEGORIES.BAR.includes(categoryId)) {
-            topCategories.BAR.menuItems[categoryId] = menuItems.filter(element => element.categoryId === categoryId)
+            topCategories.BAR.menuItems[categoryId] = menuItems.filter(el => el.categoryId === categoryId)
         }
     })
 

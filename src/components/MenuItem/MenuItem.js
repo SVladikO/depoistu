@@ -21,7 +21,7 @@ import {Price, Flex, ToggleCheckbox} from "components";
 
 import {URL} from "utils/config";
 import {BE_API, fetchData} from "utils/fetch";
-import {CATEGORY_MAPPER_AS_ARRAY} from "utils/category";
+import {CATEGORY_ID_MAPPER_AS_OBJECT, CATEGORY_MAPPER_AS_ARRAY} from "utils/category";
 import {translate, TRANSLATION as TR, TRANSLATION} from "utils/translation";
 
 export const MenuItemDetails = ({
@@ -97,7 +97,7 @@ export const MenuItemDetails = ({
                 justifyContent="center"
                 alignItems="center"
             >
-                <MeasureIcon /> {item.size} {CATEGORY_MAPPER_AS_ARRAY[item.categoryId].measurement}
+                <MeasureIcon /> {item.size} {CATEGORY_ID_MAPPER_AS_OBJECT[item.categoryId].measurement}
                 <GreyDot />
                 <TimeIcon/> {item.cookingTime} {translate(TRANSLATION.MEASUREMENTS.PREPARING)}
             </AdditionalDetails>

@@ -6,7 +6,7 @@ import {ImagePlace, MenuItemPhoto} from "./menu-item-view.style";
 import {Dropdown,ContentContainer, Input, Label, SecondaryButton, Textarea} from "components";
 
 import validation from "utils/validation";
-import {CATEGORY_MAPPER_AS_ARRAY} from "utils/category";
+import {CATEGORY_ID_MAPPER_AS_OBJECT, CATEGORY_MAPPER_AS_ARRAY} from "utils/category";
 import {translate, TRANSLATION} from "utils/translation";
 
 const EditMenuItemSchema = Yup.object().shape(validation.menuItem);
@@ -100,7 +100,7 @@ const MenuItemView = ({initialValue, onSubmit, children}) => {
                             errorMessage={errors.cookingTime}
                             withCleaner
                         />
-                        <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.MEAL_SIZE)} {CATEGORY_MAPPER_AS_ARRAY[values.categoryId].measurement}</Label>
+                        <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.MEAL_SIZE)} {CATEGORY_ID_MAPPER_AS_OBJECT[values.categoryId].measurement}</Label>
                         <Input
                             value={values.size}
                             name="size"
