@@ -24,6 +24,7 @@ export const TopCategoryWrapper = styled.div`
   
 `;
 export const TopCategoryItem = styled.div`
+  height: 60px;
   display: flex;
   align-items: center;
   cursor: pointer;

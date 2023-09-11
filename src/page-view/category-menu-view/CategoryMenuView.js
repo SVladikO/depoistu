@@ -34,7 +34,7 @@ import {
 } from "./utils";
 
 const CATEGORY_TITLE_CLASS_NAME = 'CATEGORY_TITLE_CLASS_NAME';
-const CATEGORY_ROW_HEIGHT = 110;
+const CATEGORY_ROW_HEIGHT = 116;
 
 let indexCalculator = 0;
 let categoryIdIndexMapper = {};
@@ -192,7 +192,7 @@ const CategoryMenuView = ({
                                                 categoryIdIndexMapper[categoryId] = indexCalculator++;
                                             }
 
-                                        console.log(1111,selectedSubCategoryId, +categoryId,  selectedSubCategoryId === +categoryId)
+                                            console.log(1111, selectedSubCategoryId, +categoryId, selectedSubCategoryId === +categoryId)
 
                                             return (
                                                 <SwiperSlide key={index}>
@@ -219,7 +219,11 @@ const CategoryMenuView = ({
                     </SubCategoryWrapper>
                 </BgWrapper>
             </MenuHeader>
-            {/* We use RowSplitter here because MenuHeader use fixed position and lost his height and we added fake element the same height under it*/}
+            {/*
+                We use RowSplitter here because MenuHeader use fixed position and
+                lost his height and we added fake element the same height under it.
+                This is only for the first CategoryTitle
+             */}
             <RowSplitter height={`${CATEGORY_ROW_HEIGHT + 10}px`}/>
             {/***  MENU ITEM  ***/}
             {renderMenuItems()}
