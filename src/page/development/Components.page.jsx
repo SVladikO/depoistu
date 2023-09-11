@@ -41,8 +41,6 @@ import
 
 import {ReactComponent as QRCodeIcon} from "assets/icons/qr_code.svg";
 import {ReactComponent as EmptyBasketIcon} from "assets/icons/empty_basket.svg";
-import {ReactComponent as GoogleIcon} from 'assets/icons/google.svg';
-import {ReactComponent as FacebookIcon} from 'assets/icons/facebook.svg';
 import {ReactComponent as MailIcon} from 'assets/icons/mail.svg';
 import {ReactComponent as EditIcon} from "assets/icons/edit.svg";
 import {ReactComponent as LockIcon} from 'assets/icons/lock.svg';
@@ -59,8 +57,12 @@ import {EditBar, QRCodeButton} from "page/customer-companies/CustomerCompanies.s
 
 import {COLOR} from "utils/theme";
 import {getOnlyCityIds} from "utils/cities";
-import {CATEGORY_MAPPER_AS_ARRAY} from "../../utils/category";
-import {translate} from "../../utils/translation";
+import {
+    CATEGORY_BAR,
+    CATEGORY_DESSERTS,
+    CATEGORY_HOT_DRINKS,
+    CATEGORY_KITCHEN,
+} from "../../utils/category";
 
 const colors = Object.keys(COLOR).map(key =>
     ({title: key, component: <ColorCircle key={key} bg={COLOR[key]}/>, value: COLOR[key], width: '50px'})
@@ -482,25 +484,45 @@ function ComponentsPage() {
     }
 
     const renderCategoryTranslations = () => {
+        const renderGroup = from =>
+            <tr style={{textAlign: 'center', color: 'red'}}>
+                <td colSpan={5}>{from}</td>
+            </tr>
+
+        ;
+        const render = from =>
+            from.map(
+                category => (
+                    <tr>
+                        <td style={{padding: '4px'}}>{category.id}</td>
+                        <td style={{padding: '4px'}}>{category.title.en}</td>
+                        <td style={{padding: '4px'}}>{category.title.ua}</td>
+                        <td style={{padding: '4px'}}>{category.measurement.en}</td>
+                        <td style={{padding: '4px'}}>{category.measurement.ua}</td>
+                    </tr>
+                ))
+
         return (
             <div>
                 <table>
                     <thead>
                     <tr>
                         <th>id</th>
-                        <th>title</th>
-                        <th>measurements</th>
+                        <th>title en</th>
+                        <th>title ua</th>
+                        <th>en</th>
+                        <th>ua</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {CATEGORY_MAPPER_AS_ARRAY.map(
-                        category => (
-                            <tr>
-                                <td style={{padding: '4px'}}>{category.id}</td>
-                                <td style={{padding: '4px'}}>{category.title}</td>
-                                <td style={{padding: '4px'}}>{category.measurement}</td>
-                            </tr>
-                        ))}
+                    {renderGroup('CATEGORY_KITCHEN')}
+                    {render(CATEGORY_KITCHEN)}
+                    {renderGroup('CATEGORY_DESSERTS')}
+                    {render(CATEGORY_DESSERTS)}
+                    {renderGroup('CATEGORY_HOT_DRINKS')}
+                    {render(CATEGORY_HOT_DRINKS)}
+                    {renderGroup('CATEGORY_BAR')}
+                    {render(CATEGORY_BAR)}
                     </tbody>
                 </table>
             </div>

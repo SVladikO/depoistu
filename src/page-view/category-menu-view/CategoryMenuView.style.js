@@ -16,6 +16,7 @@ export const SubCategoryWrapper = styled.div`
 `;
 export const BgWrapper = styled.div`
   background: ${COLOR.ACCENT1};
+  overflow: hidden;
   //background-image: linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO});  
 `;
 export const TopCategoryWrapper = styled.div`

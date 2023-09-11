@@ -65,7 +65,6 @@ const CategoryMenuView = ({
                 if (y < 60 && y > 0) {
                     let [HeyHowAreYou, categoryId, topCategoryId] = element.id.split('_').map(Number);
                     if (categoryId !== selectedSubCategoryId) {
-                        console.log(222, categoryId, topCategoryId, 'selectedSubCategoryId: ', selectedSubCategoryId)
                         setSelectedSubCategoryId(categoryId)
                         setSelectedTopCategoryId(topCategoryId);
                     }
@@ -191,9 +190,6 @@ const CategoryMenuView = ({
                                             if (categoryIdIndexMapper[categoryId] === undefined) {
                                                 categoryIdIndexMapper[categoryId] = indexCalculator++;
                                             }
-
-                                            console.log(1111, selectedSubCategoryId, +categoryId, selectedSubCategoryId === +categoryId)
-
                                             return (
                                                 <SwiperSlide key={index}>
                                                     <SubCategoryItem
