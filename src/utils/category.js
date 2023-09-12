@@ -53,7 +53,7 @@ export const CATEGORY_KITCHEN = [
     {id: 20, title: TR.SUB_CATEGORIES.FISH_DISHES, measurement: MEASUREMENTS.WEIGHT},
     {id: 21, title: TR.SUB_CATEGORIES.DISHES_ON_FIRE, measurement: MEASUREMENTS.WEIGHT},
     {id: 22, title: TR.SUB_CATEGORIES.SAUCES, measurement: MEASUREMENTS.WEIGHT},
-    {id: 23, title: TR.SUB_CATEGORIES.ADDICTIVES, measurement: {en: '', ua: ''}},
+    {id: 23, title: TR.SUB_CATEGORIES.ADDICTIVES, measurement: MEASUREMENTS.WEIGHT},
 ];
 
 export const CATEGORY_DESSERTS = [
