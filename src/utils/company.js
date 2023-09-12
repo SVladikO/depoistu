@@ -67,7 +67,7 @@ export function parseSchedule(scheduleAsString) {
 }
 
 function convertToObject(day) {
-    const [from = '', to = ''] = day ? day?.split('-') : ['', ''];
+    const [from = '', to = ''] = day ? day?.split('-') : ['-', '-'];
 
     return {from, to};
 }

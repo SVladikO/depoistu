@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {COLOR} from "../../utils/theme";
+import {COLOR} from "utils/theme";
 
 export const Divider = styled.div`
   margin: 5px auto 10px auto;

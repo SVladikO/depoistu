@@ -7,14 +7,14 @@ import {
     Text,
 } from "./Notification.style";
 
-import {ReactComponent as CloseIcon} from "../../assets/icons/close.svg";
-import {ReactComponent as LoadingIcon} from "../../assets/icons/spinner.svg";
-import {ReactComponent as SuccessIcon} from "../../assets/icons/success.svg";
-import {ReactComponent as ErrorIcon} from "../../assets/icons/error.svg";
-import {ReactComponent as WarningIcon} from "../../assets/icons/warning.svg";
-import {ReactComponent as InfoIcon} from "../../assets/icons/info.svg";
+import {ReactComponent as CloseIcon} from "assets/icons/close.svg";
+import {ReactComponent as LoadingIcon} from "assets/icons/spinner.svg";
+import {ReactComponent as SuccessIcon} from "assets/icons/success.svg";
+import {ReactComponent as ErrorIcon} from "assets/icons/error.svg";
+import {ReactComponent as WarningIcon} from "assets/icons/warning.svg";
+import {ReactComponent as InfoIcon} from "assets/icons/info.svg";
 
-import {TRANSLATION, translate} from "../../utils/translation";
+import {TRANSLATION, translate} from "utils/translation";
 
 export const NOTIFICATION_STATUS = {
     INFO: 'INFO',

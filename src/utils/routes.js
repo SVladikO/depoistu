@@ -2,20 +2,20 @@ import React from 'react';
 import styled from 'styled-components'
 import {Route, Routes} from "react-router-dom";
 
-import {FixedWrapper, Footer} from "../components";
+import {FixedWrapper, Footer} from "components";
 
 import {DEV_ROUTER, ROUTERS} from "./config";
 
-import ApiPage from "../page/development/Api.page";
-import AdminPage from "../page/development/Admin.page";
-import ComponentsPage from '../page/development/Components.page';
+import ApiPage from "page/development/Api.page";
+import AdminPage from "page/development/Admin.page";
+import ComponentsPage from 'page/development/Components.page';
 
 import {COLOR, DEVICE_WIDTH} from './theme';
 import {useHideOnScroll, useScrollUp} from "./hook";
 
-import {BottomMenu, NavigationHeader} from "../components";
+import {BottomMenu, NavigationHeader} from "components";
 
-import NotificationView from "../page-view/notification/NotificationView";
+import NotificationView from "page-view/notification/NotificationView";
 
 export const MobileWrapper = styled.div`
   min-height: 90vh;

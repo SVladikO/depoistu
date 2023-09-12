@@ -1,11 +1,11 @@
-import styled,{css} from 'styled-components'
-import {BORDER_RADIUS, COLOR, FONT_16} from "../../utils/theme";
+import styled from 'styled-components'
+import {COLOR} from "utils/theme";
 
 export const Wrapper = styled.div`
   position: relative;
   margin-top: 25px;
   border: 1px solid ${p => p.isTouched || p.errorMessage ? COLOR.PRIMARY :COLOR.ACCENT1};
-  border-radius: ${BORDER_RADIUS.INPUT};
+  border-radius: 5px;
   
   & > svg {
     position: absolute;
@@ -21,12 +21,9 @@ export const Wrapper = styled.div`
     -webkit-appearance: none;
     margin: 0;
   }
+
 `;
 
-export const Placeholder = styled.span`
-  color: ${COLOR.ACCENT5};  
-  font-weight: bold;
-`;
 export const SwitchIconWrapper = styled.div`
   position: absolute;
   display: block;
@@ -55,27 +52,44 @@ export const ClearWrapper = styled.div`
   height: 18px;
   display: block;
   & > svg:first-child {
-    color: ${COLOR.ACCENT1};
+    color: ${COLOR.ACCENT5};
   }
 `;
 
+export const CityInputWrapper = styled.div`
+  padding: 1px;
+  border-radius: 4px;
+  border: solid 2px ${COLOR.ACCENT5};
+  position: relative;
+  
+  &:hover {
+    cursor: pointer;
+  }
+  
+  & > svg {
+    position: absolute;
+    top: 15px;
+    left: 11px;
+    z-index: 1;
+    width: 14px;
+    fill: ${COLOR.ACCENT1};
+  }
+`;
+
+export const CityInputValue = styled.p`
+  ${p => st(p)};
+  font-size: 20px;
+  font-weight: 500;
+`;
 const st = p => `
-  ${FONT_16};
-  background: ${COLOR.ACCENT4};
+  background: ${COLOR.ACCENT2};
   color: ${COLOR.ACCENT1};
-    border-radius: ${BORDER_RADIUS.INPUT};
   width: 100%;
   height: 50px;
   display: flex;
   align-items: center;
   padding: 14px  ${p.withRightIcon ? '40px' : '10px'} 17px ${p.withLeftIcon ? '35px' : '10px'};
 `;
-
-export const PStyle = styled.p`
-  ${p => st(p)};
-  font-size: 20px;
-  font-weight: 500;
-`
 
 export const TextareaStyle = styled.textarea`
   ${p => st(p)};
@@ -86,7 +100,6 @@ export const TextareaStyle = styled.textarea`
 `;
 
 export const Label = styled.label`
-  ${FONT_16};
   position: absolute;
   left: 16px;
   top: -13px;

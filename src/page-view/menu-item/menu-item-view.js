@@ -3,18 +3,22 @@ import {Formik} from "formik";
 import * as Yup from 'yup';
 
 import {ImagePlace, MenuItemPhoto} from "./menu-item-view.style";
-import {Dropdown,ContentContainer, Input, Label, SecondaryButton, Textarea} from "../../components";
+import {Dropdown,ContentContainer, Input, Label, SecondaryButton, Textarea} from "components";
 
-import validation from "../../utils/validation";
-import {CATEGORY_MAPPER} from "../../utils/category";
-import {translate, TRANSLATION} from "../../utils/translation";
+import validation from "utils/validation";
+import {CATEGORY_ID_MAPPER_AS_OBJECT, CATEGORY_MAPPER_AS_ARRAY} from "utils/category";
+import {translate, TRANSLATION} from "utils/translation";
 
 const EditMenuItemSchema = Yup.object().shape(validation.menuItem);
 
 const MenuItemView = ({initialValue, onSubmit, children}) => {
     const [wasSubmitted, setWasSubmitted] = useState(false);
     const [imageURL] = useState(initialValue.imageURL);
-    const options  = useMemo(() => Object.values(CATEGORY_MAPPER).map(({id,title}) => ({value: id, title})),[initialValue])
+    const options  = useMemo(() => CATEGORY_MAPPER_AS_ARRAY.map(({id,title}) =>
+        ({
+            value: id,
+            title: translate(title)
+        })),[])
 
     const renderImages = () => (
         <MenuItemPhoto>

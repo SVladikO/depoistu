@@ -3,14 +3,13 @@ import {Link} from "react-router-dom";
 
 import {Wrapper, Row, LocationInfo, Support, Question} from './Footer.style';
 
-import {ReactComponent as ThumbUpClickedIcon} from "../../assets/icons/thump-up-clicked.svg";
-import {ReactComponent as ThumbDownNotClickedIcon} from "../../assets/icons/thump-down-not-clicked.svg";
+import {ReactComponent as ThumbUpClickedIcon} from "assets/icons/thump-up-clicked.svg";
+import {ReactComponent as ThumbDownNotClickedIcon} from "assets/icons/thump-down-not-clicked.svg";
 
-import {RowSplitter} from "../index";
+import {RowSplitter} from "components";
 
-import {URL} from "../../utils/config";
-import {translate, TRANSLATION as TR} from "../../utils/translation";
-
+import {URL} from "utils/config";
+import {translate, TRANSLATION as TR} from "utils/translation";
 
 const Footer = () => {
     const [isLike, setIsLike] = useState()
@@ -27,7 +26,7 @@ const Footer = () => {
 
     return (
         <>
-            <RowSplitter height={'241px'}/>
+            <RowSplitter height={'340px'} />
             <Wrapper>
                 <Question justifyContent="center" alignItems="center" gap={'10px'}>
                     <span>{translate(TR.PAGE.SETTINGS.GROUP_TITLE.DO_YOU_LIKE)}</span>

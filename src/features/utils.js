@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {LOCAL_STORAGE_KEY} from "../utils/localStorage";
+import {LOCAL_STORAGE_KEY} from "utils/localStorage";
 
 function createSliceCustom(config) {
     const state = localStorage.getItem(LOCAL_STORAGE_KEY.REDUX_STATE);

@@ -1,20 +1,19 @@
 import styled, {css} from 'styled-components';
-import {BORDER_RADIUS, COLOR, SHADOW} from "../../utils/theme";
+import {COLOR, SHADOW} from "utils/theme";
 
 export const ContentContainerDefault = css`
-  ${SHADOW};
   width: 100%;
-  background: ${COLOR.ACCENT4};
-  padding: 10px;
-  border-radius: ${p => p.borderRadius ? p.borderRadius : BORDER_RADIUS.SECOND};
-  margin: 0 0 15px;
+  background: ${p => p.noBg ? 'none' : COLOR.ACCENT4};
+  padding: ${p => p.noPadding ? 0 : '10px'};
+  ${p => p.noShadow ? '' : SHADOW};
+  
 
   & > a {
     color: ${COLOR.ACCENT3};
   }
 
   & > * {
-    margin-top: 10px;
+    margin-bottom: 22px;
   }
 
   & > *:last-child {

@@ -1,6 +1,6 @@
 import {useDispatch} from "react-redux";
 
-import {deleteOrderItem, addOrderItem, decrementOrderItem} from "../../features/order/orderSlice";
+import {deleteOrderItem, addOrderItem, decrementOrderItem} from "features/order/orderSlice";
 
 import {
     Wrapper,
@@ -16,9 +16,11 @@ import {
     Image,
     Status, RowLeftSide
 } from "./OrderHistoryRow.style";
-import Price from "../Price/Price";
-import {ReactComponent as AvatarIcon} from "../../assets/icons/avatar.svg";
-import {ReactComponent as DeleteIcon} from "../../assets/icons/delete.svg";
+
+import {ReactComponent as AvatarIcon} from "assets/icons/avatar.svg";
+import {ReactComponent as DeleteIcon} from "assets/icons/delete.svg";
+
+import Price from "components/Price/Price";
 
 const OrderHistoryRow = ({item, isHistory}) => {
     const dispatch = useDispatch();

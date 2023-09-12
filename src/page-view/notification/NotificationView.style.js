@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {hexToRgbA} from "../../utils/theme";
+import {hexToRgbA} from "utils/theme";
 
 
 export const Wrapper = styled.div`

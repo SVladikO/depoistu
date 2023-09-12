@@ -5,15 +5,18 @@ import {
     SwitchIconWrapper,
     CenterWrapper,
     ClearWrapper,
-    PStyle,
+    CityInputWrapper,
+    CityInputValue,
     TextareaStyle,
-    Placeholder, Label,
+    Label,
 } from "./Input.style";
 
-import {ReactComponent as ShowEyeIcon} from "../../assets/icons/show-eye.svg";
-import {ReactComponent as HideEyeIcon} from "../../assets/icons/hide-eye.svg";
-import {ReactComponent as ClearIcon} from "../../assets/icons/close.svg";
-import {WarningMessage} from "../index";
+import {ReactComponent as ShowEyeIcon} from "assets/icons/show-eye.svg";
+import {ReactComponent as HideEyeIcon} from "assets/icons/hide-eye.svg";
+import {ReactComponent as ClearIcon} from "assets/icons/close.svg";
+import {ReactComponent as SearchIcon} from "assets/icons/search.svg";
+
+import {WarningMessage} from "components";
 
 export const Textarea = memo(function ({
                                            errorMessage,
@@ -21,14 +24,13 @@ export const Textarea = memo(function ({
                                            isTouched,
                                            value,
                                            name,
-                                           changeHandler = () => {
-                                           },
-                                           clearHandler = () => {
-                                           },
+                                           changeHandler = () => {},
+                                           clearHandler = () => {},
                                            labelName = '',
                                            isRequired = false,
                                            placeholder = ''
                                        }) {
+
     return (
         <div>
             <Wrapper isTouched={value ? false : isTouched} errorMessage={errorMessage}>
@@ -105,7 +107,7 @@ export const Input = memo(function ({
     )
 });
 
-export const PInput = (props) => {
+export const CityInput = (props) => {
     const {
         Icon,
         value,
@@ -119,24 +121,15 @@ export const PInput = (props) => {
 
     return (
         <div>
-            <Wrapper
+            <CityInputWrapper
                 onClick={handleClick}
                 isTouched={value ? false : isTouched}
                 errorMessage={errorMessage}
             >
-                {Icon && <Icon />}
-                {labelName && (
-                    <Label isRequired={isRequired}>
-                        {labelName}
-                    </Label>
-                )}
-                <PStyle
-                    errorMessage={value ? '' : errorMessage}
-                    withLeftIcon={!!Icon}>
-                    {value || <Placeholder>{placeholder}</Placeholder>}
-                </PStyle>
-                {isTouched && errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
-            </Wrapper>
+                <SearchIcon/>
+                <CityInputValue withLeftIcon>{value || placeholder}</CityInputValue>
+            </CityInputWrapper>
+            {isTouched && errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
         </div>
     )
 };

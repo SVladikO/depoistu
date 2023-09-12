@@ -1,21 +1,23 @@
 import {useEffect, useState} from "react";
-import {NavLink, useParams} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import {Wrapper} from "./SearchDetails.style";
 
-import {Company, NotificationLoading, PrimaryButton} from "../../components";
+import {Company, NotificationLoading, PrimaryButton} from "components";
 
-import CategoryMenuView from '../../page-view/category-menu-view/CategoryMenuView'
+import CategoryMenuView from 'page-view/category-menu-view/CategoryMenuView'
 
-import {BE_API, fetchData} from "../../utils/fetch";
-import {translate, TRANSLATION as TR} from "../../utils/translation";
-import {publishNotificationEvent} from "../../utils/event";
-import {stopLoadingWithDelay} from "../../utils/utils";
-import {useScrollUp} from "../../utils/hook";
-import {ROUTER} from "../../utils/config";
-import NotificationTDB from "../../components/NotificationTDB/NotificationTDB";
+import {BE_API, fetchData} from "utils/fetch";
+import {translate, TRANSLATION as TR} from "utils/translation";
+import {publishNotificationEvent} from "utils/event";
+import {stopLoadingWithDelay} from "utils/utils";
+import {useScrollUp} from "utils/hook";
+import {ROUTER} from "utils/config";
+import NotificationTDB from "components/NotificationTDB/NotificationTDB";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 
 const SearchDetailsPage = () => {
     useScrollUp();
+    const navigate = useNavigate();
     let companyId = +useParams().companyId;
     const [isLoadingMenu, setIsLoadingMenu] = useState(false);
     const [isLoadingCompany, setIsLoadingCompany] = useState(false);
@@ -54,11 +56,21 @@ const SearchDetailsPage = () => {
     if (menuItems !== undefined && !menuItems?.length) {
         return (
             <NotificationTDB title={translate(TR.PAGE.COMPANY_DETAILS.COMPANY_DOESNT_EXIST)}>
-                <NavLink to={ROUTER.SEARCH.URL}>
-                    <PrimaryButton isWide>
-                        {translate(TR.GO_TO_A_SEARCH_PAGE)}
-                    </PrimaryButton>
-                </NavLink>
+                <PrimaryButton isWide clickHandler={() => {
+
+                    // We delete these data for case when
+                    // company was deleted between
+                    // customer found list of companies per city
+                    // and
+                    // open company
+                    LocalStorage.remove(LOCAL_STORAGE_KEY.COMPANY_SEARCH_SELECTED_CITY_ID)
+                    LocalStorage.remove(LOCAL_STORAGE_KEY.COMPANY_SEARCH_SELECTED_REGION_ID)
+                    LocalStorage.remove(LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT)
+
+                    navigate(ROUTER.SEARCH.URL)
+                }}>
+                    {translate(TR.GO_TO_A_SEARCH_PAGE)}
+                </PrimaryButton>
             </NotificationTDB>
         )
     }

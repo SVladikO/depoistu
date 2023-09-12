@@ -2,12 +2,12 @@ import {useEffect, useState} from "react";
 
 import {Wrapper, Header, SubHeader, Table, LedError, LedSuccess, A, SpinnerWrapper} from './Admin.style';
 
-import {ReactComponent as LoadingIcon} from "../../assets/icons/spinner.svg";
-import {RowSplitter} from "../../components";
-import {fetchData} from "../../utils/fetch";
+import {ReactComponent as LoadingIcon} from "assets/icons/spinner.svg";
+import {RowSplitter} from "components";
+import {fetchData} from "utils/fetch";
 
-import {BE_API} from '../../utils/fetch'
-import {BE_DOMAIN} from "../../utils/config";
+import {BE_API} from 'utils/fetch'
+import {BE_DOMAIN} from "utils/config";
 
 const COMPANY_FIELDS_TO_CHECK = ['id', 'customer_id', 'name', 'phone', 'cityId', 'street', 'photos', 'schedule'];
 const MENU_ITEM_FIELDS_TO_CHECK = ['id', 'categoryId', 'companyId', 'cookingTime', 'description', 'imageUrl', 'name', 'price', 'size'];

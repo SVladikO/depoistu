@@ -1,6 +1,6 @@
 
 import styled from "styled-components";
-import {COLOR, BORDER_RADIUS} from "../../utils/theme";
+import {COLOR, BORDER_RADIUS} from "utils/theme";
 
 export const Wrapper = styled.div`
   margin: 0 auto;

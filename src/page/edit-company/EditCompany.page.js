@@ -1,24 +1,24 @@
 import React, {useState} from "react";
 import {Link, useParams} from "react-router-dom";
 
-import {RowSplitter, PrimaryButton, FetchButton, ContentContainer} from "../../components";
+import {RowSplitter, PrimaryButton, ContentContainer, SecondaryButton} from "components";
 
-import {ReactComponent as RemoveIcon} from "../../assets/icons/remove_icon.svg";
+import {ReactComponent as RemoveIcon} from "assets/icons/remove_icon.svg";
 
-import CompanyView from "../../page-view/company/company-view";
+import CompanyView from "page-view/company/company-view";
 
 import getInitialValues from "./utils";
-import {URL} from "../../utils/config";
-import {BE_API} from '../../utils/fetch'
-import {fetchData} from "../../utils/fetch";
-import {initSchedule} from "../../utils/company";
-import {getScheduleAsString} from "../../utils/company";
-import {useRedirectToSettingPage, useScrollUp} from "../../utils/hook";
-import {translate, TRANSLATION} from "../../utils/translation";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import Popup, {enableScrollOnBody, disableScrollOnBody} from "../../components/Popup/Popup";
-import {PopupButtons, PopupTitle} from "./EditCompany.style";
-import {publishNotificationEvent} from "../../utils/event";
+import {URL} from "utils/config";
+import {BE_API} from 'utils/fetch'
+import {fetchData} from "utils/fetch";
+import {initSchedule} from "utils/company";
+import {getScheduleAsString} from "utils/company";
+import {useRedirectToSettingPage, useScrollUp} from "utils/hook";
+import {translate, TRANSLATION} from "utils/translation";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
+import Popup, {enableScrollOnBody, disableScrollOnBody} from "components/Popup/Popup";
+import {PopupButtons, PopupContentContainer, PopupTitle} from "./EditCompany.style";
+import {publishNotificationEvent} from "utils/event";
 
 //We need this variable after call LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES) on delete company success
 //when we open customer companies page it will make request to BE and user will have updated list of companies.
@@ -127,18 +127,19 @@ const EditCompany = () => {
     }
 
     const EditCompanyButton = () => (
-        <FetchButton
+        <PrimaryButton
             isWide
             type="submit"
             isLoading={isLoadingUpdate}
         >
             {translate(TRANSLATION.PAGE.EDIT_COMPANY.BUTTON.EDIT_COMPANY)}
-        </FetchButton>
+        </PrimaryButton>
     );
+
     const DeleteCompanyButton = () => (
-        <FetchButton isWide isLoading={isLoadingDelete} clickHandler={openDeletePopup}><RemoveIcon/>
+        <SecondaryButton isWide isLoading={isLoadingDelete} type="button" clickHandler={openDeletePopup}><RemoveIcon/>
             {translate(TRANSLATION.PAGE.EDIT_COMPANY.BUTTON.DELETE_COMPANY)}
-        </FetchButton>
+        </SecondaryButton>
     )
 
     return (
@@ -149,24 +150,29 @@ const EditCompany = () => {
             >
                 <>
                     {isConfirmDeletePopupOpen && (
-                        <Popup.Info showCloseButton={false}>
-                            <PopupTitle>
-                                {translate(TRANSLATION.COMPONENTS.POPUP.ARE_YOU_SURE)}
-                            </PopupTitle>
-                            <PopupButtons>
-                                <PrimaryButton isWide onClick={deleteCompany}>
-                                    {translate(TRANSLATION.YES)}
-                                </PrimaryButton>
-                                <PrimaryButton isWide onClick={closeDeletePopup}>
-                                    {translate(TRANSLATION.NO)}
-                                </PrimaryButton>
-                            </PopupButtons>
-                        </Popup.Info>
+                        <Popup.Center showCloseButton={false}>
+                            <PopupContentContainer>
+                                <PopupTitle>
+                                    {translate(TRANSLATION.COMPONENTS.POPUP.ARE_YOU_SURE)}
+                                </PopupTitle>
+                                <PopupTitle>
+                                    {translate(TRANSLATION.COMPONENTS.POPUP.DELETE_COMPANY_QUESTION)}
+                                </PopupTitle>
+                                <PopupButtons>
+                                    <SecondaryButton clickHandler={closeDeletePopup}>
+                                        {translate(TRANSLATION.NO)}
+                                    </SecondaryButton>
+                                    <PrimaryButton clickHandler={deleteCompany}>
+                                        {translate(TRANSLATION.YES)}
+                                    </PrimaryButton>
+                                </PopupButtons>
+                            </PopupContentContainer>
+                        </Popup.Center>
                     )}
-                    <EditCompanyButton/>
-                    <RowSplitter height={'25px'}/>
-                    <RowSplitter height={'25px'}/>
-                    <DeleteCompanyButton/>
+                        <RowSplitter height={'10px'}/>
+                        <EditCompanyButton/>
+                        <RowSplitter height={'50px'}/>
+                        <DeleteCompanyButton/>
                 </>
             </CompanyView>
         </>

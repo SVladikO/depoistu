@@ -6,16 +6,15 @@ import {
     Label,
     Input,
     RowSplitter,
-    FetchButton,
-    ContentContainer,
-} from "../../components";
+    ContentContainer, PrimaryButton,
+} from "components";
 
-import validation from "../../utils/validation";
-import {BE_API, fetchData} from "../../utils/fetch";
-import {useRedirectToSettingPage} from "../../utils/hook";
-import {TRANSLATION, translate} from '../../utils/translation';
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {publishNotificationEvent} from "../../utils/event";
+import validation from "utils/validation";
+import {BE_API, fetchData} from "utils/fetch";
+import {useRedirectToSettingPage} from "utils/hook";
+import {TRANSLATION, translate} from 'utils/translation';
+import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
+import {publishNotificationEvent} from "utils/event";
 
 const ChangePassWordSchema = Yup.object().shape(validation.customer.changePassword);
 
@@ -86,13 +85,13 @@ const ChangePasswordPage = () => {
                                 errorMessage={errors.confirmedPassword}
                             />
                             <RowSplitter margin="20px 0 0"/>
-                            <FetchButton
+                            <PrimaryButton
                                 isWide
                                 type="submit"
                                 isLoading={isLoading}
                             >
                                 {translate(TRANSLATION.PAGE.CHANGE_PASSWORD.BUTTON.SAVE_PASSWORD)}
-                            </FetchButton>
+                            </PrimaryButton>
                         </ContentContainer>
                     </form>
                 )}

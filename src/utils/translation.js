@@ -38,6 +38,10 @@ export const TRANSLATION = {
         ua: 'DEPOISTU',
         en: 'DEPOISTU'
     },
+    SEE_MORE: {
+        ua: 'більше',
+        en: 'see more'
+    },
     GO_TO_A_SEARCH_PAGE: {
         ua: 'Перейти на сторінку пошуку',
         en: 'Go to a search page'
@@ -551,7 +555,7 @@ export const TRANSLATION = {
                     {
                         question: "Who we are?",
                         answers: ["We are a team of soulmates from different places of Ukraine, who want to resolve common problem:",
-                                  "Find cafes very fast."
+                            "Find cafes very fast."
                         ]
                     },
                     {
@@ -569,7 +573,7 @@ export const TRANSLATION = {
                     {
                         question: "Main idea of the project",
                         answers: ["All restaurants of Ukraine in one place.",
-                                  "If your institution is not on our website, then you do not exist at all."
+                            "If your institution is not on our website, then you do not exist at all."
                         ]
                     },
                     {
@@ -598,7 +602,7 @@ export const TRANSLATION = {
                     {
                         question: "Головна ідея проекту",
                         answers: ["Всі заклади України в одному місці.",
-                                  "Якщо вашого закладу немає на нашому сайті, значить вас взагалі не існує."
+                            "Якщо вашого закладу немає на нашому сайті, значить вас взагалі не існує."
                         ]
                     },
                     {
@@ -629,7 +633,7 @@ export const TRANSLATION = {
             },
         },
         FOOTER: {
-            BACK_TO_TOP_BUTTON:{
+            BACK_TO_TOP_BUTTON: {
                 ua: 'Догори',
                 en: 'Back to top'
             }
@@ -708,6 +712,10 @@ export const TRANSLATION = {
                     en: "Edit",
                     ua: "Редагувати"
                 },
+                CHANGE_VISIBILITY: {
+                    en: "Change visibility",
+                    ua: "Змінити відоб"
+                },
                 HIDDEN: {
                     en: "HIDDEN",
                     ua: "ПРИХОВАНО"
@@ -721,9 +729,13 @@ export const TRANSLATION = {
                     ua: " область"
                 }
             },
-            ARE_YOU_SURE: {
+            DELETE_COMPANY_QUESTION: {
                 en: "Are you sure you want to delete the company and menu? ",
                 ua: "Ви впевнені, що хочете видалити компанію та меню?"
+            },
+            ARE_YOU_SURE: {
+                en: "Are you sure? ",
+                ua: "Ви впевнені?"
             }
         }
     },
@@ -732,7 +744,12 @@ export const TRANSLATION = {
             ua: "Завантаження ...",
             en: "Loading ..."
         },
+        NO_COMPANY: {
+            ua: 'Нема зареєстрованих закладів',
+            en: 'No companies in db yet'
+        },
     },
+
     BOTTOM_MENU: {
         SEARCH_TAB: {
             ua: "Пошук",
@@ -752,12 +769,213 @@ export const TRANSLATION = {
             ua: "Десерти",
             en: "Desserts",
         },
+        HOT_DRINKS: {
+            ua: "Гарячі напої",
+            en: "Hot drinks",
+        },
         BAR: {
             ua: "Бар",
             en: "Bar",
         },
     },
     SUB_CATEGORIES: {
+        CHILDREN: {
+            en: "Children’s menu",
+            ua: "Дитяче меню"
+        },
+        VEGETARIAN: {
+            ua: "Вегaнське",
+            en: "Vegetarian"
+        },
+
+        FIRST_DISHES: {
+            en: "First dishes",
+            ua: "Перші страви"
+        },
+        SECOND_DISHES: {
+            en: "Second dishes",
+            ua: "Другі страви"
+        },
+        DUMPLING: {
+            en: "Dumplings",
+            ua: "Вареники"
+        },
+        PANCAKES: {
+            en: "Pancakes",
+            ua: "Млинці"
+        },
+        PANS: {
+            en: "Pans",
+            ua: "Пательні"
+        },
+        FOR_COMPANY: {
+            en: "For the company",
+            ua: "Для компанії"
+        },
+        HOT_APPETIZERS: {
+            en: "Hot appetizers",
+            ua: "Гарячі закуски"
+        },
+        SNACKS: {
+            en: "Snacks",
+            ua: "Снеки"
+        },
+        KHINKALI: {
+            en: "Khinkali",
+            ua: "Хінкалі"
+        },
+        WOC: {
+            en: "Woc",
+            ua: "Вок"
+        },
+
+        HOT_DOGS: {
+            en: "Hot dogs",
+            ua: "Хот-доги"
+        },
+        PASTA: {
+            en: "Pasta",
+            ua: "Паста"
+        },
+        OYSTERS: {
+            en: "Oysters",
+            ua: "Устриці"
+        },
+
+        BOWLS: {
+            en: "Bowls",
+            ua: "Боули"
+        },
+        MUSSELS: {
+            en: "Mussels",
+            ua: "Мідії"
+        },
+
+        TARTARS: {
+            en: "Tartars",
+            ua: "Тартари"
+        },
+        ICE_CREAM: {
+            en: "Ice cream",
+            ua: "Морозиво"
+        },
+
+        FRESH: {
+            en: "Fresh",
+            ua: "Фреші"
+        },
+        SHOTS: {
+            en: "Shots",
+            ua: "Шоти"
+        },
+        LONGS: {
+            en: "Longs",
+            ua: "Лонги"
+        },
+        NO_ALCOHOL: {
+            en: "Non-alcoholic",
+            ua: "Без алкогольні"
+        },
+        WINE_GEORGIA: {
+            en: "Wines of Georgia",
+            ua: "Вина Грузії"
+        },
+        WINE_ITALY: {
+            en: "Wines of Italy",
+            ua: "Вина Італії"
+        },
+        WINE_FRANCE: {
+            en: "Wines of France",
+            ua: "Вина Франції"
+        },
+        WINE_SPARKLING: {
+            en: "Sparkling wines",
+            ua: "Ігристі вина"
+        },
+        WINE_CHILE: {
+            en: "Chile wines",
+            ua: "Вина Чілі"
+        },
+        VERMOUTH: {
+            en: "Vermouth",
+            ua: "Вермут"
+        },
+        TINCTURE: {
+            en: "Tincture",
+            ua: "Настоянки"
+        },
+        LIQUEUR: {
+            en: "Liqueur",
+            ua: "Лікер"
+        },
+        TEQUILA: {
+            en: "Tequila",
+            ua: "Текіла"
+        },
+        GIN: {
+            en: "Gin",
+            ua: "Джин"
+        },
+        RUM: {
+            en: "Rum",
+            ua: "Ром"
+        },
+        WHISKEY: {
+            en: "Whiskey",
+            ua: "Віскі"
+        },
+        HORILKA: {
+            en: "Horilka",
+            ua: "Горілка"
+        },
+        COGNAC: {
+            en: "Cognac",
+            ua: "Коньяк"
+        },
+        NALUVKU: {
+            en: "Naluvku",
+            ua: "Наливки"
+        },
+        BEER: {
+            en: "Beer",
+            ua: "Пиво"
+        },
+        COFFEE: {
+            en: "Coffee",
+            ua: "Кава"
+        },
+        TEA: {
+            en: "Tea",
+            ua: "Чай"
+        },
+        BLACK_TEA: {
+            en: "Black tea",
+            ua: "Чорний чай"
+        },
+        GREEN_TEA: {
+            en: "Green tea",
+            ua: "Зелений чай"
+        },
+        HERBAL_TEA: {
+            en: "Herbal tea",
+            ua: "Травяний чай"
+        },
+        PUERH: {
+            en: "Puerh",
+            ua: "Пуери"
+        },
+        STEAK: {
+            en: "Steak",
+            ua: "Стейк"
+        },
+        HOME: {
+            en: "Home kitchen",
+            ua: "Домашня кухня"
+        },
+        SEASONAL: {
+            en: "Seasonal",
+            ua: "Сезонне"
+        },
         BAKERY: {
             ua: "Випiчка",
             en: "Bakery"
@@ -765,6 +983,10 @@ export const TRANSLATION = {
         DRINKS: {
             ua: "Напої",
             en: "Drinks"
+        },
+        MULLED_WINE: {
+            ua: "Глінтвейн",
+            en: "Mulled wine"
         },
         BURGERS: {
             ua: "Бургери",

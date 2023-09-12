@@ -1,27 +1,27 @@
-import SearchPage from "../page/search/Search.page";
-import SignInPage from "../page/sing-in/SignIn.page";
-import SingUpPage from "../page/sing-up/SingUp.page";
-import SettingPage from "../page/setting/Setting.page";
-import AboutUsPage from "../page/about-us/AboutUs.page";
-import OurTeamPage from "../page/our-team/OurTeam.page";
-import EditMenuPage from "../page/edit-menu/EditMenu.page";
-import AddCompanyPage from "../page/add-company/AddCompany.page";
-import AddMenuItemPage from "../page/add-menu-item/AddMenuItem.page";
-import EditCompanyPage from "../page/edit-company/EditCompany.page";
-import EditMenuItemPage from "../page/edit-menu-item/EditMenuItem.page";
-import SearchDetailsPage from "../page/search-details/SearchDetails.page";
-import ChangePasswordPage from "../page/change-password/ChangePassword.page";
-import ForgetPasswordPage from "../page/forgot-password/ForgetPassword.page";
-import CustomerCompaniesPage from "../page/customer-companies/CustomerCompanies.page";
+import SearchPage from "page/search/Search.page";
+import SignInPage from "page/sing-in/SignIn.page";
+import SingUpPage from "page/sing-up/SingUp.page";
+import SettingPage from "page/setting/Setting.page";
+import AboutUsPage from "page/about-us/AboutUs.page";
+import OurTeamPage from "page/our-team/OurTeam.page";
+import EditMenuPage from "page/edit-menu/EditMenu.page";
+import AddCompanyPage from "page/add-company/AddCompany.page";
+import AddMenuItemPage from "page/add-menu-item/AddMenuItem.page";
+import EditCompanyPage from "page/edit-company/EditCompany.page";
+import EditMenuItemPage from "page/edit-menu-item/EditMenuItem.page";
+import SearchDetailsPage from "page/search-details/SearchDetails.page";
+import ChangePasswordPage from "page/change-password/ChangePassword.page";
+import ForgetPasswordPage from "page/forgot-password/ForgetPassword.page";
+import CustomerCompaniesPage from "page/customer-companies/CustomerCompanies.page";
 
 // TODO: Hidden second version
-// import OrderPage from "../page/order/Order.page";
-// import CategoryPage from "../page/category/Category.page";
-// import OrderHistoryPage from "../page/order-history/OrderHistory.page";
-// import {HistoryTabBar} from "../components";
+// import OrderPage from "page/order/Order.page";
+// import CategoryPage from "page/category/Category.page";
+// import OrderHistoryPage from "page/order-history/OrderHistory.page";
+// import {HistoryTabBar} from "components";
 
 import {TRANSLATION, translate} from "./translation.js";
-import EditCustomerPage from "../page/edit-customer/EditCustomer.page";
+import EditCustomerPage from "page/edit-customer/EditCustomer.page";
 
 export const DEV_ROUTER = {
     COMPONENTS: 'components',

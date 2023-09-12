@@ -6,8 +6,9 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import {ReactComponent as LocationIcon} from "../../assets/icons/location.svg";
-import {ReactComponent as PhoneIcon} from "../../assets/icons/phone.svg";
+import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
+import {ReactComponent as PhoneIcon} from "assets/icons/phone.svg";
+import {ReactComponent as TimeIcon} from "assets/icons/time.svg";
 import {
     Wrapper,
     ImageSection,
@@ -21,11 +22,12 @@ import {
     CloseStatus
 } from "./Company.style";
 
-import {parseSchedule} from "../../utils/company";
-import ScheduleDetails from "../WeekScheduleOutput/WeekScheduleOutput";
-import {CITY_TRANSLATION_IDS} from "../../utils/cities";
-import {translate, TRANSLATION as TR, truncate} from "../../utils/translation";
-import {ThirdButton} from "../Buttons/ThirdButton";
+import {ThirdButton} from "components/Buttons/ThirdButton";
+import ScheduleDetails from "components/WeekScheduleOutput/WeekScheduleOutput";
+
+import {parseSchedule} from "utils/company";
+import {CITY_TRANSLATION_IDS} from "utils/cities";
+import {translate, TRANSLATION as TR, truncate} from "utils/translation";
 
 const Company = ({company, withMoreInfo, children}) => {
     if (!company) {
@@ -51,8 +53,8 @@ const Company = ({company, withMoreInfo, children}) => {
 
         return (
             <LocationWrapper>
-            {translate(CITY_TRANSLATION_IDS[company.cityId])}, {company.street}
-        </LocationWrapper>
+                <LocationIcon />{translate(CITY_TRANSLATION_IDS[company.cityId])}, {company.street}
+            </LocationWrapper>
         );
     }
 
@@ -79,16 +81,16 @@ const Company = ({company, withMoreInfo, children}) => {
         <Schedule>
             {parsedSchedule.isCompanyOpenNow
                 ? <>
-                    <OpenStatus>{translate(TR.COMPONENTS.COMPANY.STATUS_OPEN)}</OpenStatus>
+                    <OpenStatus><TimeIcon/>{translate(TR.COMPONENTS.COMPANY.STATUS_OPEN)}</OpenStatus>
                     <Closes><span>{translate(TR.COMPONENTS.COMPANY.TILL)} {parsedSchedule.currentDay.to}</span></Closes>
                 </>
-                : <CloseStatus>{translate(TR.COMPONENTS.COMPANY.STATUS_CLOSE)}</CloseStatus>
+                : <CloseStatus><TimeIcon/>{translate(TR.COMPONENTS.COMPANY.STATUS_CLOSE)}</CloseStatus>
             }
         </Schedule>
     )
 
     return (
-        <Wrapper>
+        <Wrapper withMoreInfo={withMoreInfo}>
             {/*<Images />*/}
             <Content>
                 <CompanyInfo>

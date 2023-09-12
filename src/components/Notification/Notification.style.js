@@ -1,5 +1,5 @@
 import styled, {css} from "styled-components";
-import {BORDER_RADIUS, COLOR, SHADOW} from "../../utils/theme";
+import {BORDER_RADIUS, COLOR, SHADOW} from "utils/theme";
 import {NOTIFICATION_STATUS} from "./Notification";
 
 export const DefaultNotification = css`

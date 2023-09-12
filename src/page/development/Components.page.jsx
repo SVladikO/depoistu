@@ -1,19 +1,21 @@
 import React, {useCallback, useEffect, useState} from "react";
+import {Link} from "react-router-dom";
+
 import {Wrapper, Column, Component, Row, ColorCircle, Header, Space} from './Components.style';
+
 import
 {
     Input,
-    PInput,
+    CityInput,
     Price,
     HistoryTabBar,
     Rating,
     Discount,
-    CategoryItem,
+    SubCategoryItem,
     SettingMenuRow,
     ToggleCheckbox,
     CheckBoxWithLabel,
     SecondaryButton,
-    FetchButton,
     ContentContainer,
     NotificationLoading,
     NavigationHeader,
@@ -29,36 +31,38 @@ import
     Textarea,
     Company,
     Label,
-    CloseButton,
     MenuItemDetails,
     Dropdown,
     PrimaryButton,
     NotificationFactory,
     NOTIFICATION_STATUS,
     Footer
-} from "../../components";
+} from "components";
 
-import {ReactComponent as QRCodeIcon} from "../../assets/icons/qr_code.svg";
-import {ReactComponent as EmptyBasketIcon} from "../../assets/icons/empty_basket.svg";
-import {ReactComponent as GoogleIcon} from '../../assets/icons/google.svg';
-import {ReactComponent as FacebookIcon} from '../../assets/icons/facebook.svg';
-import {ReactComponent as MailIcon} from '../../assets/icons/mail.svg';
-import {ReactComponent as LockIcon} from '../../assets/icons/lock.svg';
-import {ReactComponent as LogOutIcon} from "../../assets/icons/logout.svg";
-import {ReactComponent as SandwichIcon} from '../../assets/icons/sandwich.svg';
-import {ReactComponent as LanguageIcon} from "../../assets/icons/language.svg";
+import {ReactComponent as QRCodeIcon} from "assets/icons/qr_code.svg";
+import {ReactComponent as EmptyBasketIcon} from "assets/icons/empty_basket.svg";
+import {ReactComponent as MailIcon} from 'assets/icons/mail.svg';
+import {ReactComponent as EditIcon} from "assets/icons/edit.svg";
+import {ReactComponent as LockIcon} from 'assets/icons/lock.svg';
+import {ReactComponent as LogOutIcon} from "assets/icons/logout.svg";
+import {ReactComponent as SandwichIcon} from 'assets/icons/sandwich.svg';
+import {ReactComponent as LanguageIcon} from "assets/icons/language.svg";
 
-import {COLOR} from "../../utils/theme";
-import AccountSettings from "../../components/AccountSettings/AccountSettings";
-import ImageContent from "../../components/Popup/content/image/ImageContent";
-import IntroContent from "../../components/Popup/content/info/Info";
-import CityContent from "../../components/Popup/content/city/CityContent"
-import {ReactComponent as LocationIcon} from "../../assets/icons/location.svg";
-import Checkbox from "../../components/Checkbox/Checkbox";
-import {EditBar, QRCodeButton} from "../customer-companies/CustomerCompanies.style";
-import {ReactComponent as EditIcon} from "../../assets/icons/edit.svg";
-import {Link} from "react-router-dom";
-import {getOnlyCityIds} from "../../utils/cities";
+import Checkbox from "components/Checkbox/Checkbox";
+import IntroContent from "components/Popup/info/Info";
+import CityContent from "components/Popup/city/CityContent"
+import AccountSettings from "components/AccountSettings/AccountSettings";
+import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
+import {EditBar, QRCodeButton} from "page/customer-companies/CustomerCompanies.style";
+
+import {COLOR} from "utils/theme";
+import {getOnlyCityIds} from "utils/cities";
+import {
+    CATEGORY_BAR,
+    CATEGORY_DESSERTS,
+    CATEGORY_HOT_DRINKS,
+    CATEGORY_KITCHEN,
+} from "../../utils/category";
 
 const colors = Object.keys(COLOR).map(key =>
     ({title: key, component: <ColorCircle key={key} bg={COLOR[key]}/>, value: COLOR[key], width: '50px'})
@@ -68,16 +72,29 @@ const colors = Object.keys(COLOR).map(key =>
 //     const menuItems = [{CATEGORY_ID: 1}, {CATEGORY_ID: 2}, {CATEGORY_ID: 3}];
 //     const [selectedCategoryId, setSelectedCategoryId] = useState(menuItems[0].CATEGORY_ID)
 
-    // return (
-    //     <CategoryMenuRow
-    //         showAllCategories
-    //         showMenuItemAmount
-    //         menuItems={menuItems}
-    //         selectedCategoryId={selectedCategoryId}
-    //         changeCategory={id => setSelectedCategoryId(id)}
-    //     />
-    // )
+// return (
+//     <CategoryMenuRow
+//         showAllCategories
+//         showMenuItemAmount
+//         menuItems={menuItems}
+//         selectedCategoryId={selectedCategoryId}
+//         changeCategory={id => setSelectedCategoryId(id)}
+//     />
+// )
 // }
+
+const mockMenuItem = {
+    id: 10,
+    name: '4 Cheese',
+    categoryId: 1,
+    description: 'spicy , tomato, sauce, chilies, mozzare, lla, spicy, ice, tomato, sauce, chili, mozzarella, sauce, chili',
+    imageUrl: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
+    cookingTime: 15,
+    price: 170,
+    size: 150,
+    likes: 5,
+
+}
 
 const [UnselectedDropdown, SelectedDropdown, WithErrorDropdown] = (() => {
     const options = [
@@ -96,7 +113,7 @@ const [UnselectedDropdown, SelectedDropdown, WithErrorDropdown] = (() => {
     ];
 
     return [
-         () => {
+        () => {
             const [selectedOption, setSelectedOption] = useState();
             return (
                 <Dropdown
@@ -146,17 +163,16 @@ const componentsGroup1 = [
         {title: 'Price', component: <Price>50</Price>},
     ],
     [
-        {title: 'PrimaryButton', component: <PrimaryButton><GoogleIcon/>Google</PrimaryButton>},
-        {title: 'PrimaryButton', component: <PrimaryButton>Sing in</PrimaryButton>},
-        {title: 'PrimaryButton isWide', component: <PrimaryButton isWide>Sing in</PrimaryButton>},
-        {title: 'FetchButton isWide', component: <PrimaryButton isWide>Sing in</PrimaryButton>},
-        {title: 'FetchButton isLoading isWide', component: <FetchButton isLoading isWide>Loading</FetchButton>},
-        {title: 'SecondaryButton', component: <SecondaryButton><FacebookIcon/>facebook</SecondaryButton>},
-        {title: 'SecondaryButton', component: <SecondaryButton>Cancel</SecondaryButton>},
-        {title: 'SecondaryButton isWide', component: <SecondaryButton isWide>Cancel</SecondaryButton>},
-        {title: 'ThirdButton', component: <ThirdButton><FacebookIcon/>Cancel</ThirdButton>},
-        {title: 'ThirdButton isWide', component: <ThirdButton isWide><FacebookIcon/>Cancel</ThirdButton>},
-        {title: 'CloseButton', component: <CloseButton clickHandler={() => alert('clicked')}/>},
+        {title: 'PrimaryButton', component: <PrimaryButton>Primary</PrimaryButton>},
+        {title: 'PrimaryButton isDisabled', component: <PrimaryButton isDisabled>Primary</PrimaryButton>},
+        {title: 'PrimaryButton isLoading', component: <PrimaryButton isLoading>Primary</PrimaryButton>},
+        {title: 'PrimaryButton isWide', component: <PrimaryButton isWide>Primary wide</PrimaryButton>},
+        {title: 'SecondaryButton', component: <SecondaryButton>Secondary</SecondaryButton>},
+        {title: 'SecondaryButton isDisabled', component: <SecondaryButton isDisabled>Secondary</SecondaryButton>},
+        {title: 'SecondaryButton isLoading', component: <SecondaryButton isLoading={true}>Secondary</SecondaryButton>},
+        {title: 'SecondaryButton isWide', component: <SecondaryButton isWide>Secondary wide</SecondaryButton>},
+        {title: 'ThirdButton', component: <ThirdButton>Third</ThirdButton>},
+        {title: 'ThirdButton isWide', component: <ThirdButton isWide>Third</ThirdButton>},
     ],
     [
         {title: 'Label', component: <Label>Change Password</Label>},
@@ -180,15 +196,15 @@ const componentsGroup1 = [
     ],
     [
         {
-            title: 'PInput', component: <PInput withIcon Icon={LocationIcon} value={'Vinnica'} />
+            title: 'CityInput',
+            component: <CityInput withIcon Icon={LocationIcon} value={'Vinnica'} />
         },
         {
-            title: 'FromToTime', component: <FromToTime prefix='mon' dayName='Mon' values={{}} handleChange={() => {}}/>
+            title: 'FromToTime', component: <FromToTime prefix='mon' dayName='Mon' values={{}} />
         },
         {
             title: 'FromToTime',
-            component: <FromToTime prefix='mon' dayName='Mon' values={{monIsChecked: true}} handleChange={() => {
-            }}/>
+            component: <FromToTime prefix='mon' dayName='Mon' values={{monIsChecked: true}} />
         },
         {title: 'Textarea', component: <Textarea labelName={'Textarea'} isRequired withCleaner placeholder={'Write here'}/>},
         {title: 'Textarea withCleaner', component: <Textarea labelName={'Textarea'} withCleaner value={222} placeholder={'Write here'}/>},
@@ -198,7 +214,8 @@ const componentsGroup2 = [
     [
         {
             title: 'CategoryItem',
-            component: <CategoryItem category={{icon: LanguageIcon, title: 'Language'}} title="Sandwich"><SandwichIcon/></CategoryItem>
+            component: <SubCategoryItem category={{icon: LanguageIcon, title: 'Language'}}
+                                        title="Sandwich"><SandwichIcon/></SubCategoryItem>
         },
         // {
         //     title: 'CategoryMenuRow',
@@ -210,51 +227,53 @@ const componentsGroup2 = [
     ],
     [
         {
-            title: 'MenuItemDetails',
+            title: 'MenuItemDetails without description',
             component:
                 <MenuItemDetails
-                    item={{
-                        id: 10,
-                        name: '4 Cheese',
-                        categoryId: 1,
-                        description: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella',
-                        imageUrl: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
-                        cookingTime: 15,
-                        price: 170,
-                        size: 150,
-                    }}
+                    item={{...mockMenuItem, description: ''}}
+                    isVisible
                 />
-        },
+        }, {
+        title: 'MenuItemDetails with description',
+        component:
+            <MenuItemDetails
+                item={mockMenuItem}
+                isVisible
+            />
+    },
         {
-            title: 'MenuItem',
+            title: 'MenuItemDetails with image',
+            component:
+                <MenuItemDetails
+                    item={{...mockMenuItem, description: ''}}
+                    isWithImage
+                    isVisible
+                />
+        }, {
+        title: 'MenuItemDetails with image & description',
+        component:
+            <MenuItemDetails
+                item={mockMenuItem}
+                isWithImage
+                isVisible
+            />
+    }, {
+        title: 'MenuItemDetails with image & description & "new" flag',
+        component:
+            <MenuItemDetails
+                item={mockMenuItem}
+                isWithImage
+                isNewItemFlag
+                isVisible
+            />
+    },
+        {
+            title: 'MenuItem editing',
             component:
                 <MenuItem
-                    item={{
-                        id: 10,
-                        name: '4 Cheese',
-                        categoryId: 1,
-                        description: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella',
-                        imageUrl: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
-                        cookingTime: 15,
-                        price: 170,
-                        size: 150,
-                    }}
-                />
-        },
-        {
-            title: 'MenuItem',
-            component:
-                <MenuItem withEditIcon
-                          item={{
-                              id: 10,
-                              name: '4 Cheese',
-                              categoryId: 5,
-                              description: 'spicy , tomato, sauce, chili, mozzarella, spicy , tomato, sauce, chili, mozzarella',
-                              imageUrl: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
-                              cookingTime: 15,
-                              price: 170,
-                              size: 150,
-                          }}
+                    item={mockMenuItem}
+                    withEditIcon
+                    isWithImage
                 />
         },
         {
@@ -320,22 +339,38 @@ const componentsGroup2 = [
                 }}
             >
                 <EditBar>
-                    <FetchButton><EditIcon/>Company</FetchButton>
+                    <PrimaryButton><EditIcon/>Company</PrimaryButton>
                     <QRCodeButton><QRCodeIcon/></QRCodeButton>
-                    <FetchButton><EditIcon/>Menu</FetchButton>
+                    <PrimaryButton><EditIcon/>Menu</PrimaryButton>
                 </EditBar>
             </Company>
         },
     ],
     [
-        {title: 'StatusNotification info', component: <NotificationFactory type={NOTIFICATION_STATUS.INFO}>No Internet Connection.</NotificationFactory>},
-        {title: 'StatusNotification error', component: <NotificationFactory type={NOTIFICATION_STATUS.ERROR}>No Internet Connection.</NotificationFactory>},
-        {title: 'StatusNotification success', component: <NotificationFactory type={NOTIFICATION_STATUS.SUCCESS}>Order placed. Order placed.</NotificationFactory>},
-        {title: 'StatusNotification warning', component: <NotificationFactory type={NOTIFICATION_STATUS.WARNING}>No Internet Connection.</NotificationFactory>},
+        {
+            title: 'StatusNotification info',
+            component: <NotificationFactory type={NOTIFICATION_STATUS.INFO}>No Internet
+                Connection.</NotificationFactory>
+        },
+        {
+            title: 'StatusNotification error',
+            component: <NotificationFactory type={NOTIFICATION_STATUS.ERROR}>No Internet
+                Connection.</NotificationFactory>
+        },
+        {
+            title: 'StatusNotification success',
+            component: <NotificationFactory type={NOTIFICATION_STATUS.SUCCESS}>Order placed. Order
+                placed.</NotificationFactory>
+        },
+        {
+            title: 'StatusNotification warning',
+            component: <NotificationFactory type={NOTIFICATION_STATUS.WARNING}>No Internet
+                Connection.</NotificationFactory>
+        },
         {title: 'NotificationLoading', component: <NotificationLoading/>},
-        {title: 'Dropdown Unselected', component: <UnselectedDropdown />},
-        {title: 'Dropdown WithSelected', component:<SelectedDropdown />},
-        {title: 'Dropdown WithError', component: <WithErrorDropdown />},
+        {title: 'Dropdown Unselected', component: <UnselectedDropdown/>},
+        {title: 'Dropdown WithSelected', component: <SelectedDropdown/>},
+        {title: 'Dropdown WithError', component: <WithErrorDropdown/>},
     ],
 ];
 const componentsGroup3 = [
@@ -397,17 +432,8 @@ const componentsGroup3 = [
     ],
     [
         {
-            title: 'ImagePopupContent',
-            component: <ImageContent
-                imageUrl="https://raw.githubusercontent.com/SVladikO/testApp/master/images/4_cheese.jpg"/>
-        },
-        {
             title: 'IntroContent.Info',
             component: <IntroContent.Info>Some text Some text Some text Some text Some text</IntroContent.Info>
-        },
-        {
-            title: 'IntroContent.InfoText',
-            component: <IntroContent.InfoText >Some text Some text Some text Some text Some text</IntroContent.InfoText>
         },
         {title: 'CityPopupContent', component: <CityContent availableCityIds={getOnlyCityIds()}/>},
     ],
@@ -424,7 +450,7 @@ const componentsGroup3 = [
                     description="Looks like you haven't made your order yet."
                 >
                     <Link to={''}>
-                        <FetchButton isWide>Shop Now</FetchButton>
+                        <PrimaryButton isWide>Shop Now</PrimaryButton>
                     </Link>
                 </NotificationTDB>
         },
@@ -449,6 +475,51 @@ function ComponentsPage() {
         )
     }
 
+    const renderCategoryTranslations = () => {
+        const renderGroup = from =>
+            <tr style={{textAlign: 'center', color: 'red'}}>
+                <td colSpan={5}>{from}</td>
+            </tr>
+
+        ;
+        const render = from =>
+            from.map(
+                category => (
+                    <tr>
+                        <td style={{padding: '4px'}}>{category.id}</td>
+                        <td style={{padding: '4px'}}>{category.title.en}</td>
+                        <td style={{padding: '4px'}}>{category.title.ua}</td>
+                        <td style={{padding: '4px'}}>{category.measurement.en}</td>
+                        <td style={{padding: '4px'}}>{category.measurement.ua}</td>
+                    </tr>
+                ))
+
+        return (
+            <div>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>title en</th>
+                        <th>title ua</th>
+                        <th>en</th>
+                        <th>ua</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {renderGroup('CATEGORY_KITCHEN')}
+                    {render(CATEGORY_KITCHEN)}
+                    {renderGroup('CATEGORY_DESSERTS')}
+                    {render(CATEGORY_DESSERTS)}
+                    {renderGroup('CATEGORY_HOT_DRINKS')}
+                    {render(CATEGORY_HOT_DRINKS)}
+                    {renderGroup('CATEGORY_BAR')}
+                    {render(CATEGORY_BAR)}
+                    </tbody>
+                </table>
+            </div>
+        )
+    }
     const renderGroup = (group) => {
         return (
             <Wrapper>
@@ -477,10 +548,11 @@ function ComponentsPage() {
                 <Space/>
                 {renderRows(colors)}
             </Header>
-            <RowSplitter height="140px" />
+            <RowSplitter height="140px"/>
             {renderGroup(componentsGroup1)}
             {renderGroup(componentsGroup2)}
             {renderGroup(componentsGroup3)}
+            {renderCategoryTranslations()}
             {/*<CatalogPage/>*/}
         </div>
     )
