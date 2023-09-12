@@ -11,7 +11,7 @@ import
     HistoryTabBar,
     Rating,
     Discount,
-    CategoryItem,
+    SubCategoryItem,
     SettingMenuRow,
     ToggleCheckbox,
     CheckBoxWithLabel,
@@ -41,8 +41,6 @@ import
 
 import {ReactComponent as QRCodeIcon} from "assets/icons/qr_code.svg";
 import {ReactComponent as EmptyBasketIcon} from "assets/icons/empty_basket.svg";
-import {ReactComponent as GoogleIcon} from 'assets/icons/google.svg';
-import {ReactComponent as FacebookIcon} from 'assets/icons/facebook.svg';
 import {ReactComponent as MailIcon} from 'assets/icons/mail.svg';
 import {ReactComponent as EditIcon} from "assets/icons/edit.svg";
 import {ReactComponent as LockIcon} from 'assets/icons/lock.svg';
@@ -59,6 +57,12 @@ import {EditBar, QRCodeButton} from "page/customer-companies/CustomerCompanies.s
 
 import {COLOR} from "utils/theme";
 import {getOnlyCityIds} from "utils/cities";
+import {
+    CATEGORY_BAR,
+    CATEGORY_DESSERTS,
+    CATEGORY_HOT_DRINKS,
+    CATEGORY_KITCHEN,
+} from "../../utils/category";
 
 const colors = Object.keys(COLOR).map(key =>
     ({title: key, component: <ColorCircle key={key} bg={COLOR[key]}/>, value: COLOR[key], width: '50px'})
@@ -68,15 +72,15 @@ const colors = Object.keys(COLOR).map(key =>
 //     const menuItems = [{CATEGORY_ID: 1}, {CATEGORY_ID: 2}, {CATEGORY_ID: 3}];
 //     const [selectedCategoryId, setSelectedCategoryId] = useState(menuItems[0].CATEGORY_ID)
 
-    // return (
-    //     <CategoryMenuRow
-    //         showAllCategories
-    //         showMenuItemAmount
-    //         menuItems={menuItems}
-    //         selectedCategoryId={selectedCategoryId}
-    //         changeCategory={id => setSelectedCategoryId(id)}
-    //     />
-    // )
+// return (
+//     <CategoryMenuRow
+//         showAllCategories
+//         showMenuItemAmount
+//         menuItems={menuItems}
+//         selectedCategoryId={selectedCategoryId}
+//         changeCategory={id => setSelectedCategoryId(id)}
+//     />
+// )
 // }
 
 const mockMenuItem = {
@@ -109,7 +113,7 @@ const [UnselectedDropdown, SelectedDropdown, WithErrorDropdown] = (() => {
     ];
 
     return [
-         () => {
+        () => {
             const [selectedOption, setSelectedOption] = useState();
             return (
                 <Dropdown
@@ -197,7 +201,8 @@ const componentsGroup1 = [
     ],
     [
         {
-            title: 'CityInput', component: <CityInput withIcon Icon={LocationIcon} value={'Vinnica'} handleClick={() => {
+            title: 'CityInput',
+            component: <CityInput withIcon Icon={LocationIcon} value={'Vinnica'} handleClick={() => {
             }}/>
         },
         {
@@ -217,7 +222,8 @@ const componentsGroup2 = [
     [
         {
             title: 'CategoryItem',
-            component: <CategoryItem category={{icon: LanguageIcon, title: 'Language'}} title="Sandwich"><SandwichIcon/></CategoryItem>
+            component: <SubCategoryItem category={{icon: LanguageIcon, title: 'Language'}}
+                                        title="Sandwich"><SandwichIcon/></SubCategoryItem>
         },
         // {
         //     title: 'CategoryMenuRow',
@@ -235,14 +241,14 @@ const componentsGroup2 = [
                     item={{...mockMenuItem, description: ''}}
                     isVisible
                 />
-        },{
-            title: 'MenuItemDetails with description',
-            component:
-                <MenuItemDetails
-                    item={mockMenuItem}
-                    isVisible
-                />
-        },
+        }, {
+        title: 'MenuItemDetails with description',
+        component:
+            <MenuItemDetails
+                item={mockMenuItem}
+                isVisible
+            />
+    },
         {
             title: 'MenuItemDetails with image',
             component:
@@ -251,24 +257,24 @@ const componentsGroup2 = [
                     isWithImage
                     isVisible
                 />
-        },{
-            title: 'MenuItemDetails with image & description',
-            component:
-                <MenuItemDetails
-                    item={mockMenuItem}
-                    isWithImage
-                    isVisible
-                />
-        },{
-            title: 'MenuItemDetails with image & description & "new" flag',
-            component:
-                <MenuItemDetails
-                    item={mockMenuItem}
-                    isWithImage
-                    isNewItemFlag
-                    isVisible
-                />
-        },
+        }, {
+        title: 'MenuItemDetails with image & description',
+        component:
+            <MenuItemDetails
+                item={mockMenuItem}
+                isWithImage
+                isVisible
+            />
+    }, {
+        title: 'MenuItemDetails with image & description & "new" flag',
+        component:
+            <MenuItemDetails
+                item={mockMenuItem}
+                isWithImage
+                isNewItemFlag
+                isVisible
+            />
+    },
         {
             title: 'MenuItem editing',
             component:
@@ -349,14 +355,30 @@ const componentsGroup2 = [
         },
     ],
     [
-        {title: 'StatusNotification info', component: <NotificationFactory type={NOTIFICATION_STATUS.INFO}>No Internet Connection.</NotificationFactory>},
-        {title: 'StatusNotification error', component: <NotificationFactory type={NOTIFICATION_STATUS.ERROR}>No Internet Connection.</NotificationFactory>},
-        {title: 'StatusNotification success', component: <NotificationFactory type={NOTIFICATION_STATUS.SUCCESS}>Order placed. Order placed.</NotificationFactory>},
-        {title: 'StatusNotification warning', component: <NotificationFactory type={NOTIFICATION_STATUS.WARNING}>No Internet Connection.</NotificationFactory>},
+        {
+            title: 'StatusNotification info',
+            component: <NotificationFactory type={NOTIFICATION_STATUS.INFO}>No Internet
+                Connection.</NotificationFactory>
+        },
+        {
+            title: 'StatusNotification error',
+            component: <NotificationFactory type={NOTIFICATION_STATUS.ERROR}>No Internet
+                Connection.</NotificationFactory>
+        },
+        {
+            title: 'StatusNotification success',
+            component: <NotificationFactory type={NOTIFICATION_STATUS.SUCCESS}>Order placed. Order
+                placed.</NotificationFactory>
+        },
+        {
+            title: 'StatusNotification warning',
+            component: <NotificationFactory type={NOTIFICATION_STATUS.WARNING}>No Internet
+                Connection.</NotificationFactory>
+        },
         {title: 'NotificationLoading', component: <NotificationLoading/>},
-        {title: 'Dropdown Unselected', component: <UnselectedDropdown />},
-        {title: 'Dropdown WithSelected', component:<SelectedDropdown />},
-        {title: 'Dropdown WithError', component: <WithErrorDropdown />},
+        {title: 'Dropdown Unselected', component: <UnselectedDropdown/>},
+        {title: 'Dropdown WithSelected', component: <SelectedDropdown/>},
+        {title: 'Dropdown WithError', component: <WithErrorDropdown/>},
     ],
 ];
 const componentsGroup3 = [
@@ -461,6 +483,51 @@ function ComponentsPage() {
         )
     }
 
+    const renderCategoryTranslations = () => {
+        const renderGroup = from =>
+            <tr style={{textAlign: 'center', color: 'red'}}>
+                <td colSpan={5}>{from}</td>
+            </tr>
+
+        ;
+        const render = from =>
+            from.map(
+                category => (
+                    <tr>
+                        <td style={{padding: '4px'}}>{category.id}</td>
+                        <td style={{padding: '4px'}}>{category.title.en}</td>
+                        <td style={{padding: '4px'}}>{category.title.ua}</td>
+                        <td style={{padding: '4px'}}>{category.measurement.en}</td>
+                        <td style={{padding: '4px'}}>{category.measurement.ua}</td>
+                    </tr>
+                ))
+
+        return (
+            <div>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>title en</th>
+                        <th>title ua</th>
+                        <th>en</th>
+                        <th>ua</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {renderGroup('CATEGORY_KITCHEN')}
+                    {render(CATEGORY_KITCHEN)}
+                    {renderGroup('CATEGORY_DESSERTS')}
+                    {render(CATEGORY_DESSERTS)}
+                    {renderGroup('CATEGORY_HOT_DRINKS')}
+                    {render(CATEGORY_HOT_DRINKS)}
+                    {renderGroup('CATEGORY_BAR')}
+                    {render(CATEGORY_BAR)}
+                    </tbody>
+                </table>
+            </div>
+        )
+    }
     const renderGroup = (group) => {
         return (
             <Wrapper>
@@ -489,10 +556,11 @@ function ComponentsPage() {
                 <Space/>
                 {renderRows(colors)}
             </Header>
-            <RowSplitter height="140px" />
+            <RowSplitter height="140px"/>
             {renderGroup(componentsGroup1)}
             {renderGroup(componentsGroup2)}
             {renderGroup(componentsGroup3)}
+            {renderCategoryTranslations()}
             {/*<CatalogPage/>*/}
         </div>
     )

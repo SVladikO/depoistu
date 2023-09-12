@@ -67,6 +67,7 @@ const EditMenuItemPage = () => {
                 submitButtonTitle={translate(TRANSLATION.PAGE.EDIT_MENU_ITEM.BUTTON.EDIT_MENU_ITEM)}
             >
                 <>
+                    <RowSplitter height={'10px'}/>
                     <PrimaryButton
                         isWide
                         type="submit"

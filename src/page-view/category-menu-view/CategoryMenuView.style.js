@@ -16,6 +16,7 @@ export const SubCategoryWrapper = styled.div`
 `;
 export const BgWrapper = styled.div`
   background: ${COLOR.ACCENT1};
+  overflow: hidden;
   //background-image: linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO});  
 `;
 export const TopCategoryWrapper = styled.div`
@@ -24,6 +25,9 @@ export const TopCategoryWrapper = styled.div`
   
 `;
 export const TopCategoryItem = styled.div`
+  height: 60px;
+  display: flex;
+  align-items: center;
   cursor: pointer;
   z-index: 1;
   color: ${COLOR.ACCENT1};
