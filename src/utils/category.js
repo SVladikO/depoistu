@@ -108,16 +108,7 @@ export const TOP_CATEGORIES = {
     BAR: CATEGORY_BAR.map(category => category.id),
 }
 
-// For debug only.
-// console.log('expected category length: ',
-//     CATEGORY_KITCHEN.length +
-//     CATEGORY_DESSERTS.length +
-//     CATEGORY_HOT_DRINKS.length +
-//     CATEGORY_BAR.length
-//     , CATEGORY_MAPPER_AS_ARRAY.length
-// )
-
-// Get category title is simpler to get from object.
+// Get category title is simpler from object.
 // That's why we convert array to object.
 // Index is crucial for us as he handls position in sub category
 // All subcategories should be grouped
@@ -131,36 +122,7 @@ const convertCategoryArrayToObject = () => {
         )
     return result;
 }
-
 export const CATEGORY_ID_MAPPER_AS_OBJECT = convertCategoryArrayToObject()
-
-export const getMenuTree = (categoryIds = [], menuItems = []) => {
-    const topCategories = {
-        KITCHEN: {menuItems: {}, translationKey: TR.TOP_CATEGORIES.KITCHEN},
-        DESSERTS: {menuItems: {}, translationKey: TR.TOP_CATEGORIES.DESSERTS},
-        HOT_DRINKS: {menuItems: {}, translationKey: TR.TOP_CATEGORIES.HOT_DRINKS},
-        BAR: {menuItems: {}, translationKey: TR.TOP_CATEGORIES.BAR},
-    }
-
-    categoryIds.forEach(categoryId => {
-        if (TOP_CATEGORIES.KITCHEN.includes(categoryId)) {
-            topCategories.KITCHEN.menuItems[categoryId] = menuItems.filter(el => el.categoryId === categoryId)
-        }
-        if (TOP_CATEGORIES.DESSERTS.includes(categoryId)) {
-            topCategories.DESSERTS.menuItems[categoryId] = menuItems.filter(el => el.categoryId === categoryId)
-        }
-        if (TOP_CATEGORIES.HOT_DRINKS.includes(categoryId)) {
-            topCategories.HOT_DRINKS.menuItems[categoryId] = menuItems.filter(el => el.categoryId === categoryId)
-        }
-        if (TOP_CATEGORIES.BAR.includes(categoryId)) {
-            topCategories.BAR.menuItems[categoryId] = menuItems.filter(el => el.categoryId === categoryId)
-        }
-    })
-
-    // Let's filter from an empty id arrays
-    return Object.values(topCategories)
-        .filter(topCategory => Object.values(topCategory.menuItems).length)
-}
 
 export const getSortedUniqueCategoryIds = (menuItems = []) => {
     const categoryIds = menuItems.map(mi => mi.categoryId);
@@ -175,30 +137,4 @@ export const sortMenuItemPosition = (menuItems = []) =>
     menuItems.sort((menuItem1, menuItem2) => {
         return CATEGORY_ID_MAPPER_AS_OBJECT[menuItem1.categoryId].index - CATEGORY_ID_MAPPER_AS_OBJECT[menuItem2.categoryId].index;
     })
-
-export const getTopCategoryId = (categoryId, topCategories) => {
-    let topCategoryName = '';
-
-    if (TOP_CATEGORIES.KITCHEN.includes(categoryId)) {
-        topCategoryName = 'KITCHEN'
-    }
-
-    if (TOP_CATEGORIES.DESSERTS.includes(categoryId)) {
-        topCategoryName = 'DESSERTS'
-    }
-
-    if (TOP_CATEGORIES.BAR.includes(categoryId)) {
-        topCategoryName = 'BAR'
-    }
-
-    let topCategoryIndex = 0;
-
-    topCategories.forEach((tp, index) => {
-        if (tp.key === topCategoryName) {
-            topCategoryIndex = index;
-        }
-    })
-
-    return topCategoryIndex;
-}
 

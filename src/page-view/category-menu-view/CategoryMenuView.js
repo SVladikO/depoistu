@@ -18,12 +18,11 @@ import {SubCategoryItem, MenuItem, RowSplitter, HorizontalSwiper, PrimaryButton}
 
 import {URL} from "utils/config";
 import {useScrollUp} from "utils/hook";
-import {getMenuTree} from 'utils/category';
-import {translate, TRANSLATION} from "utils/translation";
+import {translate, TRANSLATION as TR, TRANSLATION} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 import {
     CATEGORY_ID_MAPPER_AS_OBJECT,
-    getSortedUniqueCategoryIds
+    TOP_CATEGORIES
 } from 'utils/category';
 import {
     enableScrollListener,
@@ -39,16 +38,17 @@ const CATEGORY_ROW_HEIGHT = 116;
 let indexCalculator = 0;
 let categoryIdIndexMapper = {};
 
+
+
+
 const CategoryMenuView = ({
                               menuItems = [],
-                              showMenuItemAmount,
                               withEditIcon,
                               editPage = false,
                           }) => {
 
     useScrollUp();
     const navigate = useNavigate();
-    const [menuTree, setMenuTree] = useState([]);
     const [selectedTopCategoryId, setSelectedTopCategoryId] = useState();
     const [selectedSubCategoryId, setSelectedSubCategoryId] = useState();
 
@@ -88,8 +88,7 @@ const CategoryMenuView = ({
         enableScrollListener()
     }
 
-    const onChangeTopCategory = topCategoryId => () => {
-        const categoryId = +Object.keys(menuTree[topCategoryId].menuItems)[0];
+    const onChangeTopCategory = (topCategoryId, categoryId) => () => {
         setSelectedSubCategoryId(categoryId)
         setSelectedTopCategoryId(topCategoryId);
         scrollTo(categoryId, topCategoryId)
@@ -100,42 +99,6 @@ const CategoryMenuView = ({
         return navigate(URL.EDIT_MENU_ITEM)
     }
 
-    const renderMenuItems = () => {
-        const menuItems = []
-        menuTree.length && menuTree.map(
-            (topCategory, topCategoryIndex) => {
-                return Object.keys(topCategory.menuItems)
-                    ?.map(
-                        (categoryId) => {
-                            const oneCategoryMenuItems = topCategory.menuItems[categoryId];
-                            const categoryTitle = CATEGORY_ID_MAPPER_AS_OBJECT[+categoryId].title;
-
-                            menuItems.push(
-                                <CategoryTitle
-                                    key={categoryTitle}
-                                    className={CATEGORY_TITLE_CLASS_NAME}
-                                    id={generateTagId(categoryId, topCategoryIndex)}
-                                >
-                                    {categoryId} {categoryTitle.toUpperCase()}
-                                </CategoryTitle>
-                            );
-
-                            menuItems.push(oneCategoryMenuItems.map(
-                                    (mi, index) =>
-                                        <MenuItem
-                                            key={`menu_item${index}${mi.id}`}
-                                            item={mi}
-                                            withEditIcon={withEditIcon}
-                                            onEditClick={navigateToEditMenuItemPage(mi)}
-                                        />
-                                )
-                            );
-                        }
-                    )
-            })
-        return menuItems.flat();
-    }
-
     useEffect(() => {
         document.addEventListener("scroll", onScrollPage)
 
@@ -144,11 +107,87 @@ const CategoryMenuView = ({
         }
     }, [])
 
+    const renderTopCategory = (topCategoryKey, topCategoryIndex, categoryId) => (
+        <TopCategoryItem
+            key={topCategoryIndex}
+            isSelected={topCategoryIndex === selectedTopCategoryId}
+            onClick={onChangeTopCategory(topCategoryIndex, categoryId)}
+        >
+            {translate(TR.TOP_CATEGORIES[topCategoryKey]).toUpperCase()}
+        </TopCategoryItem>
+    )
 
-    useEffect(() => {
-        const uniqueCategoryIds = getSortedUniqueCategoryIds(menuItems);
-        setMenuTree(getMenuTree(uniqueCategoryIds, menuItems));
-    }, menuItems)
+    const renderSubCategory = (categoryId, topCategoryIndex, subCategoryIndex) => {
+        debugger
+        return (
+            <SwiperSlide key={subCategoryIndex}>
+                <SubCategoryItem
+                    title={categoryId + ' ' + CATEGORY_ID_MAPPER_AS_OBJECT[categoryId].title}
+                    isSelected={+selectedSubCategoryId === +categoryId}
+                    clickHandler={() => {
+                        setSelectedSubCategoryId(categoryId)
+                        setSelectedTopCategoryId(topCategoryIndex)
+                        scrollTo(categoryId, topCategoryIndex)
+                    }}
+                />
+            </SwiperSlide>
+        )
+    };
+
+    const renderCategoryTitle = (categoryId, topCategoryIndex) => {
+        const categoryTitle = CATEGORY_ID_MAPPER_AS_OBJECT[categoryId].title;
+
+        return (
+            <CategoryTitle
+                key={categoryTitle}
+                className={CATEGORY_TITLE_CLASS_NAME}
+                id={generateTagId(categoryId, topCategoryIndex)}
+            >
+                {categoryId} {categoryTitle.toUpperCase()}
+            </CategoryTitle>
+        )
+    }
+
+    const renderMenuItem = (mi, index) =>
+        <MenuItem
+            key={`menu_item${index}${mi.id}`}
+            item={mi}
+            withEditIcon={withEditIcon}
+            onEditClick={navigateToEditMenuItemPage(mi)}
+        />
+
+    const topCategories = []; // Contain array of top category components
+    const subCategories = []; // Contain array of sub category components
+    const resultMenuItems = []; // Contain array of category title, menu items
+
+    // TOP_CATEGORIES contain uniq array of sub categories per category
+    Object.keys(TOP_CATEGORIES).forEach((topCategoryKey, topCategoryIndex) => {
+        TOP_CATEGORIES[topCategoryKey].forEach(categoryId => {
+            const items = menuItems.filter(menuItem => menuItem.categoryId === categoryId)
+
+            // No items nothing to do
+            if (!items.length) {
+                return
+            }
+
+            // TOP CATEGORY
+            // Add top category if it wasn't added before
+            if (!topCategories[topCategoryIndex]) {
+                topCategories.push(renderTopCategory(topCategoryKey, topCategoryIndex, categoryId))
+            }
+
+            // We need categoryIdIndexMapper to handle sub category scroll when you scroll vertically
+            if (categoryIdIndexMapper[categoryId] === undefined) {
+                categoryIdIndexMapper[categoryId] = indexCalculator++;
+            }
+
+            subCategories.push(renderSubCategory(categoryId, topCategoryIndex, categoryIdIndexMapper[categoryId]))
+            resultMenuItems.push(renderCategoryTitle(categoryId, topCategoryIndex))
+            resultMenuItems.push(items.map(renderMenuItem))
+
+        })
+    })
+
 
     return (
         <>
@@ -157,14 +196,7 @@ const CategoryMenuView = ({
                     {/*** TOP CATEGORIES ***/}
                     <div>
                         <TopCategoryWrapper>
-                            {menuTree.map((topCategory, topCategoryIndex) => (
-                                <TopCategoryItem
-                                    key={topCategoryIndex}
-                                    isSelected={topCategoryIndex === selectedTopCategoryId}
-                                    onClick={onChangeTopCategory(topCategoryIndex)}
-                                >
-                                    {translate(topCategory.translationKey).toUpperCase()}
-                                </TopCategoryItem>))}
+                            {topCategories}
                             {/*If you commit this row and check CategoryMenuRow you understand everything. */}
                             <TopCategoryItem style={{width: '90%'}}/>
                         </TopCategoryWrapper>
@@ -172,45 +204,7 @@ const CategoryMenuView = ({
                     {/*** SUB CATEGORIES ***/}
                     <SubCategoryWrapper className={CATEGORY_CLASSNAME}>
                         <HorizontalSwiper subCategoryIndex={categoryIdIndexMapper[selectedSubCategoryId]}>
-                            {
-                                // EXAMPLE OF menuTree data structure
-                                // [
-                                //   {
-                                //     translationKey: 'TRANSLATION_KEY',
-                                //     menuItems: {
-                                //                  1: [{id, categoryId, title,}, ...],  where key 1 is categoryKey
-                                //                  2: [{id, categoryId, title,}, ...],
-                                //                  ...
-                                //    }
-                                // ]
-
-                                menuTree?.map((topCategory, topCategoryIndex) => (
-                                    Object.keys(topCategory.menuItems).map((categoryId, index) => {
-                                            const menuItem = topCategory.menuItems[categoryId];
-                                            if (categoryIdIndexMapper[categoryId] === undefined) {
-                                                categoryIdIndexMapper[categoryId] = indexCalculator++;
-                                            }
-                                            return (
-                                                <SwiperSlide key={index}>
-                                                    <SubCategoryItem
-                                                        title={categoryId + ' ' + CATEGORY_ID_MAPPER_AS_OBJECT[categoryId].title }
-                                                        isSelected={+selectedSubCategoryId === +categoryId}
-                                                        clickHandler={() => {
-                                                            setSelectedSubCategoryId(categoryId)
-                                                            setSelectedTopCategoryId(topCategoryIndex)
-                                                            scrollTo(categoryId, topCategoryIndex)
-                                                        }}
-                                                        itemsAmountPerCategory={
-                                                            showMenuItemAmount
-                                                                ? menuItems.filter(mi => mi.categoryId === menuItem.id).length
-                                                                : 0
-                                                        }
-                                                    />
-                                                </SwiperSlide>
-                                            )
-                                        }
-                                    )))
-                            }
+                            {subCategories}
                         </HorizontalSwiper>
                     </SubCategoryWrapper>
                 </BgWrapper>
@@ -222,7 +216,7 @@ const CategoryMenuView = ({
              */}
             <RowSplitter height={`${CATEGORY_ROW_HEIGHT + 10}px`}/>
             {/***  MENU ITEM  ***/}
-            {renderMenuItems()}
+            {resultMenuItems}
             {
                 editPage &&
                 <>
