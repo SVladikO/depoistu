@@ -102,7 +102,6 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                             labelName={translate(TRANSLATION.INPUT_LABEL.COMPANY.NAME)}
                             isRequired
                         />
-                        <Label>{translate(TRANSLATION.INPUT_LABEL.COMPANY.CITY)}</Label>
                         <CityInput
                             withIcon
                             Icon={LocationIcon}
@@ -113,7 +112,6 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                             errorMessage={errors.city || errors.cityId}
                             isRequired
                         />
-                        {}
                         <Input
                             name='street'
                             value={values.street}

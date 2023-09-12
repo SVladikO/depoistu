@@ -109,7 +109,6 @@ export const Input = memo(function ({
 
 export const CityInput = (props) => {
     const {
-        Icon,
         value,
         placeholder,
         handleClick,
@@ -126,6 +125,7 @@ export const CityInput = (props) => {
                 isTouched={value ? false : isTouched}
                 errorMessage={errorMessage}
             >
+                {labelName && <Label isRequired={isRequired}>{labelName}</Label>}
                 <SearchIcon/>
                 <CityInputValue withLeftIcon>{value || placeholder}</CityInputValue>
             </CityInputWrapper>

@@ -177,27 +177,38 @@ const componentsGroup1 = [
     [
         {title: 'Label', component: <Label>Change Password</Label>},
         {
-            title: 'Input', component: <Input labelName={'Label'} />
+            title: 'Input', component: <Input />
         },
         {
-            title: 'Input {withCleaner} isRequired', component: <Input labelName={'Label'} withCleaner value={111} isRequired/>
+            title: 'Input {labelName}', component: <Input labelName={'Label'} />
         },
         {
-            title: 'Input {withSwitcher}', component: <Input labelName={'Label name'} value={1111} withSwitcher />
+            title: 'Input {labelName, withCleaner, isRequired} ', component: <Input labelName={'Label'} withCleaner value={111} isRequired/>
         },
         {
-            title: 'Input with icon',
-            component: <Input Icon={MailIcon} value="jodode@mail.com" withCleaner labelName={'Label name'}  />
+            title: 'Input {labelName, withSwitcher}', component: <Input labelName={'Label name'} value={1111} withSwitcher />
         },
         {
-            title: 'Input with errorMessage',
-            component: <Input isTouched errorMessage={'Max length 12.'} isRequired value="+380970663322" labelName={'Label'}/>
+            title: 'Input  {labelName, Icon, isRequired}',
+            component: <Input Icon={MailIcon} isRequired value="jodode@mail.com" withCleaner labelName={'Label name'}  />
+        },
+        {
+            title: 'Input  {labelName, errorMessage, isRequired}',
+            component: <Input isTouched isRequired errorMessage={'Max length 12.'} value="+380970663322" labelName={'Label'}/>
+        },
+        {
+            title: 'Input  {labelName, Icon, errorMessage, isRequired}',
+            component: <Input isTouched Icon={MailIcon} isRequired errorMessage={'Max length 12.'} value="+380970663322" labelName={'Label'}/>
         },
     ],
     [
         {
             title: 'CityInput',
             component: <CityInput withIcon Icon={LocationIcon} value={'Vinnica'} />
+        },
+        {
+            title: 'CityInput {labelName}',
+            component: <CityInput withIcon  labelName={'Label'} Icon={LocationIcon} value={'Vinnica'} />
         },
         {
             title: 'FromToTime', component: <FromToTime prefix='mon' dayName='Mon' values={{}} />
