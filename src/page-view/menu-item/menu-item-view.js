@@ -64,8 +64,8 @@ const MenuItemView = ({initialValue, onSubmit, children}) => {
                             labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.NAME)}
                             changeHandler={handleChange}
                             clearHandler={() => setFieldValue('name', '')}
-                            // isTouched={touched.name || wasSubmitted}
-                            // errorMessage={errors.name}
+                            isTouched={touched.name || wasSubmitted}
+                            errorMessage={errors.name}
                             withCleaner
                         />
                         <Input
@@ -76,8 +76,8 @@ const MenuItemView = ({initialValue, onSubmit, children}) => {
                             onBlur={handleBlur}
                             changeHandler={handleChange}
                             clearHandler={() => setFieldValue('price', '')}
-                            // isTouched={touched.price || wasSubmitted}
-                            // errorMessage={errors.price}
+                            isTouched={touched.price || wasSubmitted}
+                            errorMessage={errors.price}
                             withCleaner
                         />
 
@@ -88,8 +88,8 @@ const MenuItemView = ({initialValue, onSubmit, children}) => {
                             onBlur={handleBlur}
                             changeHandler={handleChange}
                             clearHandler={() => setFieldValue('description', '')}
-                            // isTouched={touched.description || wasSubmitted}
-                            // errorMessage={errors.description}
+                            isTouched={touched.description || wasSubmitted}
+                            errorMessage={errors.description}
                             withCleaner
                         />
                         <Input
@@ -100,8 +100,8 @@ const MenuItemView = ({initialValue, onSubmit, children}) => {
                             onBlur={handleBlur}
                             changeHandler={handleChange}
                             clearHandler={() => setFieldValue('cookingTime', '')}
-                            // isTouched={touched.cookingTime || wasSubmitted}
-                            // errorMessage={errors.cookingTime}
+                            isTouched={touched.cookingTime || wasSubmitted}
+                            errorMessage={errors.cookingTime}
                             withCleaner
                         />
                         <Input
@@ -112,8 +112,8 @@ const MenuItemView = ({initialValue, onSubmit, children}) => {
                             onBlur={handleBlur}
                             changeHandler={handleChange}
                             clearHandler={() => setFieldValue('size', '')}
-                            // isTouched={touched.size || wasSubmitted}
-                            // errorMessage={errors.size}
+                            isTouched={touched.size || wasSubmitted}
+                            errorMessage={errors.size}
                             withCleaner
                         />
                     </ContentContainer>

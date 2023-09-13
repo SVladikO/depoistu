@@ -144,7 +144,7 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                             type="number"
                             value={values.phone2}
                             errorMessage={errors.phone2}
-                            // isTouched={touched.phone2 || wasSubmitted}
+                            isTouched={touched.phone2 || wasSubmitted}
                             changeHandler={handleChange}
                             clearHandler={() => setFieldValue('phone2', '')}
                             withCleaner
@@ -156,7 +156,7 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                             value={values.phone3}
                             errorMessage={errors.phone3}
                             labelName={`${translate(TRANSLATION.INPUT_LABEL.COMPANY.PHONE)} 3`}
-                            // isTouched={touched.phone3 || wasSubmitted}
+                            isTouched={touched.phone3 || wasSubmitted}
                             changeHandler={handleChange}
                             clearHandler={() => setFieldValue('phone3', '')}
                             withCleaner
