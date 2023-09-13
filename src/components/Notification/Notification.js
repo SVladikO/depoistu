@@ -1,3 +1,4 @@
+import React, {useEffect} from "react";
 import {
     NotificationInfo,
     NotificationError,
@@ -25,6 +26,15 @@ export const NOTIFICATION_STATUS = {
 }
 
 export const NotificationFactory = ({type, children, onClose}) => {
+
+    useEffect(() => {
+        const timeoutId = setTimeout(() => {
+            onClose();
+        }, 3000);
+        return () => clearTimeout(timeoutId);
+    }, [onClose]);
+
+
     switch (type) {
         case NOTIFICATION_STATUS.INFO: {
             return (
