@@ -44,7 +44,7 @@ export const CompanyInfo = styled.div`
   }
 
   & > *:last-child {
-    margin: 0 0 20px 0;
+    margin: 0;
   }
 `;
 

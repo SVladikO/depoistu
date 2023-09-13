@@ -32,6 +32,7 @@ export const EditBar = styled.div`
   justify-content: space-between;
   align-items: stretch;
   width: 100%;
+  padding: 20px 0 0 0;
 `;
 
 
