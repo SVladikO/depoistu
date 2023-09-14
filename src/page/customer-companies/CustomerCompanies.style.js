@@ -10,8 +10,8 @@ export const QRCodeButton = styled(DisabledButton)`
   padding: 10px;
   
   & > svg {
-    width: 30px;
-    height: 30px;
+    width: 24px;
+    height: 24px;
     margin: 0;
     display: block;
   }
