@@ -118,7 +118,6 @@ const CategoryMenuView = ({
     )
 
     const renderSubCategory = (categoryId, topCategoryIndex, subCategoryIndex) => {
-        debugger
         return (
             <SwiperSlide key={subCategoryIndex}>
                 <SubCategoryItem
