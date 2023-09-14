@@ -1041,7 +1041,7 @@ export const TRANSLATION = {
             en: "Hot drinks"
         },
         SPECIALITIES: {
-            ua: 'Фірмові страві',
+            ua: 'Фірмові страви',
             en: 'Specialities'
         },
         BREAKFAST: {
