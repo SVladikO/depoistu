@@ -121,7 +121,7 @@ const CategoryMenuView = ({
         return (
             <SwiperSlide key={subCategoryIndex}>
                 <SubCategoryItem
-                    title={categoryId + ' ' + CATEGORY_ID_MAPPER_AS_OBJECT[categoryId].title}
+                    title={CATEGORY_ID_MAPPER_AS_OBJECT[categoryId].title}
                     isSelected={+selectedSubCategoryId === +categoryId}
                     clickHandler={() => {
                         setSelectedSubCategoryId(categoryId)
@@ -142,7 +142,7 @@ const CategoryMenuView = ({
                 className={CATEGORY_TITLE_CLASS_NAME}
                 id={generateTagId(categoryId, topCategoryIndex)}
             >
-                {categoryId} {categoryTitle.toUpperCase()}
+               {categoryTitle.toUpperCase()}
             </CategoryTitle>
         )
     }
