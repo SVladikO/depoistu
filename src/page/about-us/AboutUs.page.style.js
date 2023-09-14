@@ -14,12 +14,12 @@ export const Title = styled.div`
   ${FONT.SIZE_22};
   ${FONT.WEIGHT_500};
   line-height: 26.4px;
-  margin: 0 0 10px 0;
+  margin: 0 0 8px 0;
   text-transform: uppercase;
 `;
 export const Description = styled.div`
   ${FONT.SIZE_20};
-  margin: 0 0 20px 0;
+  margin: 0 0 35px 0;
   &:last-child {
     margin: 0;
   }
