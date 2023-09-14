@@ -2,8 +2,10 @@ import styled from "styled-components";
 import {DisabledButton} from "components/Buttons/DisabledButton";
 
 export const ImageQR = styled.img`
-  height: 250px;
-  width: 250px;
+  height: 320px;
+  width: 320px;
+  margin: 0 auto;
+  display: block;
 `;
 
 export const QRCodeButton = styled(DisabledButton)`
