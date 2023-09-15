@@ -38,9 +38,6 @@ const CATEGORY_ROW_HEIGHT = 116;
 let indexCalculator = 0;
 let categoryIdIndexMapper = {};
 
-
-
-
 const CategoryMenuView = ({
                               menuItems = [],
                               withEditIcon,
@@ -54,7 +51,6 @@ const CategoryMenuView = ({
 
     const onScrollPage = () => {
         if (getIsScrollDisabled()) {
-            console.log('scroll disabled')
             return;
         }
 
@@ -124,8 +120,8 @@ const CategoryMenuView = ({
                     title={CATEGORY_ID_MAPPER_AS_OBJECT[categoryId].title}
                     isSelected={+selectedSubCategoryId === +categoryId}
                     clickHandler={() => {
-                        setSelectedSubCategoryId(categoryId)
                         setSelectedTopCategoryId(topCategoryIndex)
+                        setSelectedSubCategoryId(categoryId)
                         scrollTo(categoryId, topCategoryIndex)
                     }}
                 />
@@ -142,7 +138,7 @@ const CategoryMenuView = ({
                 className={CATEGORY_TITLE_CLASS_NAME}
                 id={generateTagId(categoryId, topCategoryIndex)}
             >
-               {categoryTitle.toUpperCase()}
+                {categoryTitle.toUpperCase()}
             </CategoryTitle>
         )
     }
@@ -155,38 +151,38 @@ const CategoryMenuView = ({
             onEditClick={navigateToEditMenuItemPage(mi)}
         />
 
-    const topCategories = []; // Contain array of top category components
-    const subCategories = []; // Contain array of sub category components
-    const resultMenuItems = []; // Contain array of category title, menu items
+        const topCategories = []; // Contain array of top category components
+        const subCategories = []; // Contain array of sub category components
+        const resultMenuItems = []; // Contain array of category title, menu items
 
-    // TOP_CATEGORIES contain uniq array of sub categories per category
-    Object.keys(TOP_CATEGORIES).forEach((topCategoryKey, topCategoryIndex) => {
-        TOP_CATEGORIES[topCategoryKey].forEach(categoryId => {
-            const items = menuItems.filter(menuItem => menuItem.categoryId === categoryId)
+        // TOP_CATEGORIES contain uniq array of sub categories per category
+        Object.keys(TOP_CATEGORIES).forEach((topCategoryKey, topCategoryIndex) => {
+            let wasTopSet = false;
 
-            // No items nothing to do
-            if (!items.length) {
-                return
-            }
+            TOP_CATEGORIES[topCategoryKey].forEach(categoryId => {
+                const items = menuItems.filter(menuItem => menuItem.categoryId === categoryId)
 
-            // TOP CATEGORY
-            // Add top category if it wasn't added before
-            if (!topCategories[topCategoryIndex]) {
-                topCategories.push(renderTopCategory(topCategoryKey, topCategoryIndex, categoryId))
-            }
+                // No items nothing to do
+                if (!items.length) {
+                    return
+                }
 
-            // We need categoryIdIndexMapper to handle sub category scroll when you scroll vertically
-            if (categoryIdIndexMapper[categoryId] === undefined) {
-                categoryIdIndexMapper[categoryId] = indexCalculator++;
-            }
+                if (!wasTopSet) {
+                    wasTopSet = true;
+                    topCategories.push(renderTopCategory(topCategoryKey, topCategoryIndex, categoryId));
+                }
 
-            subCategories.push(renderSubCategory(categoryId, topCategoryIndex, categoryIdIndexMapper[categoryId]))
-            resultMenuItems.push(renderCategoryTitle(categoryId, topCategoryIndex))
-            resultMenuItems.push(items.map(renderMenuItem))
+                // We need categoryIdIndexMapper to handle sub category scroll when you scroll vertically
+                if (categoryIdIndexMapper[categoryId] === undefined) {
+                    categoryIdIndexMapper[categoryId] = indexCalculator++;
+                }
 
+                subCategories.push(renderSubCategory(categoryId, topCategoryIndex, categoryIdIndexMapper[categoryId]))
+                resultMenuItems.push(renderCategoryTitle(categoryId, topCategoryIndex))
+                resultMenuItems.push(items.map(renderMenuItem))
+
+            })
         })
-    })
-
 
     return (
         <>
