@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {COLOR} from "utils/theme";
+import {Link} from "react-router-dom";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -22,15 +23,13 @@ export const Title = styled.div`
   display: block;
   z-index: 3;
 `
-export const BackButton = styled.div`
+export const BackButton = styled(Link)`
   position: absolute;
-  top: 0;
-  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 25px 15px 20px 15px;
-
+  z-index: 4;
   & > svg {
     height: 16px;
     width: 16px;

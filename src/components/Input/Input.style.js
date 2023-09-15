@@ -3,7 +3,6 @@ import {COLOR, BORDER_RADIUS, FONT} from "utils/theme";
 
 export const Wrapper = styled.div`
   position: relative;
-  margin-top: 25px;
   border: 1px solid ${p => p.isTouched || p.errorMessage ? COLOR.PRIMARY :COLOR.ACCENT1};
   border-radius: 5px;
   
@@ -92,7 +91,7 @@ const st = p => `
   display: flex;
   align-items: center;
   border-radius: ${BORDER_RADIUS.INPUT};
-  padding: 14px  ${p.withRightIcon ? '46px' : '10px'} 17px ${p.withLeftIcon ? '35px' : '16px'};
+  padding: 18px  ${p.withRightIcon ? '46px' : '10px'} 17px ${p.withLeftIcon ? '35px' : '16px'};
 `;
 
 export const TextareaStyle = styled.textarea`
