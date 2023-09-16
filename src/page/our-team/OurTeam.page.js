@@ -12,7 +12,7 @@ const contributors = [
     {
         name: "David Yarmolenko",
         linkedInLink: "https://www.linkedin.com/in/david-yarmolenko-778a7a279",
-        position: "Junior UI desiner",
+        position: ["Junior UI desiner"],
         twitter: "",
         facebook: "",
         instagram: "",
@@ -22,7 +22,7 @@ const contributors = [
     {
         name: "Olexandr Chernukha",
         linkedInLink: "https://www.linkedin.com/in/%D0%B0%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80-%D1%87%D0%B5%D1%80%D0%BD%D1%83%D1%85%D0%B0/",
-        position: "Junior FE developer",
+        position: ["Junior FE developer"],
         twitter: "",
         facebook: "",
         instagram: "",
@@ -32,7 +32,7 @@ const contributors = [
     {
         name: "Irina Serhiichuk",
         linkedInLink: "https://www.linkedin.com/in/irina-serhiichuk-556886279",
-        position: "Junior QA",
+        position: ["Junior QA"],
         twitter: "",
         facebook: "",
         instagram: "",
@@ -42,7 +42,7 @@ const contributors = [
     {
         name: "Vlad Serhiychuk",
         linkedInLink: "https://www.linkedin.com/in/vlad-serhiychuk-b753b7188",
-        position: "Team Leader, Full-stack developer",
+        position: ["Team Leader", "Full-stack developer"],
         twitter: "",
         facebook: "",
         instagram: "",
@@ -63,23 +63,22 @@ const OurTeamPage = () => {
                                 <Photo src={employee.src}/>
                             </EmployeeView>
                             <EmployeeInfo>
-                                <Position>{employee.position.split(',')[0]}</Position>
-                                <Position>{employee.position.split(',')[1]}</Position>
+                                {employee.position.map(post  => <Position>{post}</Position>)}
                                 <FullName>
                                     <a href={employee.linkedInLink} target="_blank" rel="noopener">
                                         {employee.name}
                                     </a>
                                 </FullName>
                                 <Socials>
-                                    <a href="">
+                                    {employee.instagram && <a href="">
                                         <Instagram/>
-                                    </a>
-                                    <a href="">
+                                    </a>}
+                                    {employee.facebook && <a href="">
                                         <Facebook/>
-                                    </a>
-                                    <a href="">
+                                    </a>}
+                                    {employee.twitter && <a href="">
                                         <Twitter/>
-                                    </a>
+                                    </a>}
                                 </Socials>
                             </EmployeeInfo>
                         </Employee>
