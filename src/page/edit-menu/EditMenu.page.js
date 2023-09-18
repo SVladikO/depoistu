@@ -24,7 +24,7 @@ const EditMenu = () => {
     const dispatch = useDispatch();
     const companyId = LocalStorage.get(LOCAL_STORAGE_KEY.COMPANY_ID_TO_EDIT_MENU_PAGE);
     const isLoading = useSelector(state => state.request.value.isLoading);
-    const [menuItems, setMenuItems] = useState();
+    const [menuItems, setMenuItems] = useState([]);
     const [customer] = useLocalStorage(LOCAL_STORAGE_KEY.CUSTOMER);
     const [customerCompanies] = useLocalStorageFetch(
         LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES,
@@ -62,7 +62,7 @@ const EditMenu = () => {
                 </CompanyDetails>
             }
             <Wrapper>
-                {menuItems &&
+                {!!menuItems?.length &&
                     <CategoryMenuView
                         // showAllCategories
                         showMenuItemAmount
@@ -71,7 +71,6 @@ const EditMenu = () => {
                         editPage
                     />
                 }
-
             </Wrapper>
         </>
     )
