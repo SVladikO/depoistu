@@ -62,7 +62,7 @@ const EditMenu = () => {
                 </CompanyDetails>
             }
             <Wrapper>
-                {!!menuItems?.length &&
+                {menuItems.length &&
                     <CategoryMenuView
                         // showAllCategories
                         showMenuItemAmount
