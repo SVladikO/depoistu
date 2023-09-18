@@ -12,8 +12,8 @@ export const QRCodeButton = styled(DisabledButton)`
   padding: 10px;
   
   & > svg {
-    width: 30px;
-    height: 30px;
+    width: 24px;
+    height: 24px;
     margin: 0;
     display: block;
   }
@@ -34,6 +34,7 @@ export const EditBar = styled.div`
   justify-content: space-between;
   align-items: stretch;
   width: 100%;
+  padding: 20px 0 0 0;
 `;
 
 
