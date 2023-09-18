@@ -26,7 +26,7 @@ const Footer = () => {
 
     return (
         <>
-            <RowSplitter height={'241px'}/>
+            <RowSplitter height={'340px'} />
             <Wrapper>
                 <Question justifyContent="center" alignItems="center" gap={'10px'}>
                     <span>{translate(TR.PAGE.SETTINGS.GROUP_TITLE.DO_YOU_LIKE)}</span>

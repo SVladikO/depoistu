@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import {COLOR, SHADOW, BORDER_RADIUS} from "utils/theme";
+import {COLOR, SHADOW, FONT, BORDER_RADIUS} from "utils/theme";
 
 export const Wrapper = styled.div`
   width: 100%;
-  padding: 10px;
+  padding: 16px;
   ${SHADOW};
   color: ${COLOR.ACCENT1};
   background: ${COLOR.ACCENT4};
@@ -11,14 +11,15 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.div`
-  font-size: 24px;
+  ${FONT.SIZE_22};
+  ${FONT.WEIGHT_500};
   line-height: 26.4px;
-  margin: 0 0 10px 0;
+  margin: 0 0 8px 0;
   text-transform: uppercase;
 `;
 export const Description = styled.div`
-  font-size: 20px;
-  margin: 0 0 20px 0;
+  ${FONT.SIZE_20};
+  margin: 0 0 35px 0;
   &:last-child {
     margin: 0;
   }
