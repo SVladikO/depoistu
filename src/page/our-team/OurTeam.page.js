@@ -7,6 +7,7 @@ import {useScrollUp} from "utils/hook";
 import {ReactComponent as Instagram} from "../../assets/icons/instagram.svg";
 import {ReactComponent as Facebook} from "../../assets/icons/facebook2.svg";
 import {ReactComponent as Twitter} from "../../assets/icons/twitter.svg";
+import {ReactComponent as LinkedIn} from "../../assets/icons/linkedin.svg";
 
 const contributors = [
     {
@@ -65,9 +66,7 @@ const OurTeamPage = () => {
                             <EmployeeInfo>
                                 {employee.position.map(post  => <Position>{post}</Position>)}
                                 <FullName>
-                                    <a href={employee.linkedInLink} target="_blank" rel="noopener">
-                                        {employee.name}
-                                    </a>
+                                    {employee.name}
                                 </FullName>
                                 <Socials>
                                     {employee.instagram && <a href="">
@@ -78,6 +77,9 @@ const OurTeamPage = () => {
                                     </a>}
                                     {employee.twitter && <a href="">
                                         <Twitter/>
+                                    </a>}
+                                    {employee.linkedInLink && <a href={employee.linkedInLink}>
+                                        <LinkedIn/>
                                     </a>}
                                 </Socials>
                             </EmployeeInfo>
