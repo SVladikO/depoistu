@@ -16,9 +16,6 @@ export const GroupWrapper = styled.div`
   align-items: center;
   gap: 10px;
   padding: 5px;
-  & > .pma-input {
-    max-width: 62px;
-  }
 `
 
 export const Weekend = styled.div`
