@@ -58,7 +58,7 @@ export const ClearWrapper = styled.div`
 export const CityInputWrapper = styled.div`
   padding: 1px;
   border-radius: 4px;
-  border: solid 2px ${COLOR.ACCENT5};
+  border: solid 1px ${COLOR.ACCENT1};
   position: relative;
   
   &:hover {
@@ -84,13 +84,13 @@ export const CityInputValue = styled.p`
 `;
 const st = p => `
   ${FONT.SIZE_16};
-  background: ${COLOR.ACCENT4};
   color: ${COLOR.ACCENT1};
   width: 100%;
   height: 50px;
   display: flex;
   align-items: center;
   border-radius: ${BORDER_RADIUS.INPUT};
+  background: none;
   padding: 18px  ${p.withRightIcon ? '46px' : '10px'} 17px ${p.withLeftIcon ? '35px' : '16px'};
 `;
 
@@ -108,7 +108,7 @@ export const Label = styled.label`
   top: -13px;
   z-index: 2;
   padding: 3px 5px;
-  background-color: ${COLOR.ACCENT4};
+  background: ${COLOR.ACCENT8};
   
   ${p => p.isRequired && css`
     &:after {
