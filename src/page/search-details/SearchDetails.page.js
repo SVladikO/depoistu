@@ -7,7 +7,7 @@ import {Company, NotificationLoading, PrimaryButton} from "components";
 import CategoryMenuView from 'page-view/category-menu-view/CategoryMenuView'
 
 import {BE_API, fetchData} from "utils/fetch";
-import {translate, TRANSLATION as TR} from "utils/translation";
+import {translate, TRANSLATION, TRANSLATION as TR} from "utils/translation";
 import {publishNotificationEvent} from "utils/event";
 import {stopLoadingWithDelay} from "utils/utils";
 import {useScrollUp} from "utils/hook";
@@ -77,10 +77,10 @@ const SearchDetailsPage = () => {
 
     return (
         <Wrapper>
-            {isLoadingCompany && <NotificationLoading>Loading company ...</NotificationLoading>}
+            {isLoadingCompany && <NotificationLoading>{translate(TRANSLATION.NOTIFICATION.COMPANY.LOADING_COMPANY)}</NotificationLoading>}
             {!isLoadingCompany && company && <Company company={company} withMoreInfo/>}
 
-            {isLoadingMenu && <NotificationLoading>Loading menu ... </NotificationLoading>}
+            {isLoadingMenu && <NotificationLoading>{translate(TRANSLATION.NOTIFICATION.LOADING_MENU)}</NotificationLoading>}
 
             {!isLoadingMenu && !!menuItems?.length && (
                 <>

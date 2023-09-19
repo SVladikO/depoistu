@@ -80,7 +80,7 @@ const EditCompany = () => {
         fetchData(BE_API.COMPANY.DELETE(), {method: 'delete', companyId})
             .then(() => {
                 LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
-                publishNotificationEvent.success(translate(TRANSLATION.PAGE.EDIT_COMPANY.NOTIFICATION.COMPANY_WAS_DELETED))
+                publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.COMPANY.WAS_DELETED))
                 setWasCompanyDeleted(true)
             })
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))
@@ -117,11 +117,11 @@ const EditCompany = () => {
     }
 
     if (!customerCompaniesFromLocalStorage.length || !company) {
-        publishNotificationEvent.error(translate(TRANSLATION.PAGE.EDIT_COMPANY.NOTIFICATION.NO_COMPANY_BY_THIS_ID));
+        publishNotificationEvent.error(translate(TRANSLATION.NOTIFICATION.NO_COMPANY_BY_THIS_ID));
 
         return (
             <Link to={URL.CUSTOMER_COMPANIES}>
-                {translate(TRANSLATION.PAGE.EDIT_COMPANY.NOTIFICATION.OPEN_MY_COMPANIES_PAGE)}
+                {translate(TRANSLATION.NOTIFICATION.OPEN_MY_COMPANIES_PAGE)}
             </Link>
         );
     }

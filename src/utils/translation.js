@@ -310,7 +310,12 @@ export const TRANSLATION = {
                 ADD_COMPANY: {
                     en: 'Add company',
                     ua: "Додати компанію"
-                }
+                },
+                ADD_MENU: {
+                    en: 'Add menu for this company',
+                    ua: "Додати меню"
+                },
+
             }
         },
         EDIT_MENU: {
@@ -356,21 +361,6 @@ export const TRANSLATION = {
                     ua: "Видалити компанію"
                 }
             },
-            NOTIFICATION: {
-                COMPANY_WAS_DELETED: {
-                    en: 'Company was deleted.',
-                    ua: "Компанію видалено."
-                },
-                OPEN_MY_COMPANIES_PAGE: {
-                    en: 'Open my companies page.',
-                    ua: "Відкрийте сторінку моїх компаній."
-                },
-                NO_COMPANY_BY_THIS_ID: {
-                    en: 'No company by this id',
-                    ua: "Немає компанії з цим ідентифікатором"
-                },
-
-            }
         },
         ADD_MENU_ITEM: {
             TOP_TITLE: {
@@ -740,6 +730,14 @@ export const TRANSLATION = {
         }
     },
     NOTIFICATION: {
+        OPEN_MY_COMPANIES_PAGE: {
+            en: 'Open my companies page.',
+            ua: "Відкрийте сторінку моїх компаній."
+        },
+        NO_COMPANY_BY_THIS_ID: {
+            en: 'No company by this id',
+            ua: "Немає компанії з цим ідентифікатором"
+        },
         LOADING: {
             ua: "Завантаження ...",
             en: "Loading ..."
@@ -748,6 +746,50 @@ export const TRANSLATION = {
             ua: 'Нема зареєстрованих закладів',
             en: 'No companies in db yet'
         },
+        MENU_ITEM: {
+            WAS_CREATED: {
+                en: 'Menu item was created.',
+                ua: "Меню додано."
+            }
+        },
+        CUSTOMER: {
+            UPDATED_PASSWORD: {
+                en: "Password was updated.",
+                ua: "Пароль оновлено."
+            }
+        },
+        COMPANY: {
+            WAS_DELETED: {
+                en: 'Company was deleted.',
+                ua: "Компанію видалено."
+            },
+            WAS_CREATED: {
+                ua: 'Заклад створено.',
+                en: 'Company was created.'
+            },
+            CREATE_MENU_SUGGESTION: {
+                ua: 'Без меню заклад не побачать користувачі.',
+                en: "Customers won't see this company without menu."
+            },
+            LOADING_AVAILABLE_CITIES: {
+                en: "Loading available cities ...",
+                ua: "Загрузка доступних міст ..."
+            },
+
+            LOADING_COMPANY: {
+                en: "Loading company ...",
+                ua: "Загрузка закладу ..."
+            },
+        },
+        LOADING_AVAILABLE_COMPANIES: {
+            en: "Loading companies ...",
+            ua: "Загрузка закладів ..."
+        },
+        LOADING_MENU: {
+            en: "Loading menu ...",
+            ua: "Загрузка меню ..."
+        },
+
     },
 
     BOTTOM_MENU: {

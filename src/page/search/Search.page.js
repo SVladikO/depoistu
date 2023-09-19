@@ -94,8 +94,8 @@ const SearchPage = () => {
                     />
                 </ContentContainer>
 
-                {isLoadingCityIds && <NotificationLoading>Loading available cities ...</NotificationLoading>}
-                {isLoadingCompanies && <NotificationLoading>Loading companies ...</NotificationLoading>}
+                {isLoadingCityIds && <NotificationLoading>{translate(TRANSLATION.NOTIFICATION.COMPANY.LOADING_AVAILABLE_CITIES)}</NotificationLoading>}
+                {isLoadingCompanies && <NotificationLoading>{translate(TRANSLATION.NOTIFICATION.LOADING_AVAILABLE_COMPANIES)}</NotificationLoading>}
                 <RowSplitter height="10px" />
                 {!isLoadingCompanies && companies && !!companies.length && selectedCityId &&
                     companies?.map(company =>
