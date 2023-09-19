@@ -11,13 +11,13 @@ export const SubCategoryWrapper = styled.div`
   border-radius: 0;
   margin: 0;
   z-index: 10;
-  height: 56px;
+  height: 64px;
   background: none;
 `;
 export const BgWrapper = styled.div`
   background: ${COLOR.ACCENT1};
   overflow: hidden;
-  //background-image: linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO});  
+  background-image: linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO});  
 `;
 export const TopCategoryWrapper = styled.div`
   display: flex;
