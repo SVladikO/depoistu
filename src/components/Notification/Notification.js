@@ -30,7 +30,7 @@ export const NotificationFactory = ({type, children, onClose}) => {
     useEffect(() => {
         const timeoutId = setTimeout(() => {
             onClose();
-        }, 3000);
+        }, 6000);
         return () => clearTimeout(timeoutId);
     }, [onClose]);
 
