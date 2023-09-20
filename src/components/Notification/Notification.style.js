@@ -1,9 +1,8 @@
 import styled, {css} from "styled-components";
-import {BORDER_RADIUS, COLOR, SHADOW} from "utils/theme";
+import {BORDER_RADIUS, COLOR, FONT} from "utils/theme";
 import {NOTIFICATION_STATUS} from "./Notification";
 
 export const DefaultNotification = css`
-  ${SHADOW};
   display: inline-flex;
   position: relative;
   align-items: ${p => p.status === NOTIFICATION_STATUS.LOADING ? 'center': 'start'};
@@ -12,6 +11,7 @@ export const DefaultNotification = css`
   padding: 10px 30px 10px 10px;
   border-radius: ${p => p.borderRadius ? p.borderRadius : BORDER_RADIUS.SECOND};
   margin: 0 0 15px;
+  ${FONT.SIZE_18};
   
   & > svg:first-child {
     min-height: 40px;
@@ -60,11 +60,18 @@ export const NotificationSuccess = styled.div`
 export const NotificationLoadingWrapper = styled.div`
   ${DefaultNotification};
   background: ${COLOR.ACCENT2};
+  padding: 10px 16px;
+  
+  & > svg:first-child {
+    min-height: 24px;
+    max-height: 24px;
+    min-width: 24px;
+    max-width: 24px;
+  }
 `;
 
 export const Text = styled.div`
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
+  ${FONT.SIZE_20};
+  ${FONT.WEIGHT_400};
   color: ${COLOR.ACCENT1};
 `;
