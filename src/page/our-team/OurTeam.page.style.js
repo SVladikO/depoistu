@@ -40,12 +40,11 @@ export const FullName = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  margin: 0 0 10px 0;
-  
+  margin: 0 0 4px 0;
+  font-size: 24px;
   > a {
     color: ${COLOR.ACCENT1};
     font-weight: 400;
-    font-size: 24px;
     line-height: 29px;
   }
   
@@ -60,7 +59,7 @@ export const Position = styled.div`
   font-size: 24px;
   line-height: 29px;
   color: ${COLOR.ACCENT5};
-  margin: 0 0 10px 0;
+  margin: 0 0 4px 0;
 `;
 export const Border = styled.div`
   border: 1px solid ${COLOR.ACCENT2};
