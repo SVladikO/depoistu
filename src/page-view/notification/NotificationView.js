@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 
-import {Wrapper} from './NotificationView.style';
+import {Wrapper, CloseAll} from './NotificationView.style';
 
 import {NotificationFactory, FixedWrapper} from "components";
 
@@ -24,12 +24,17 @@ const NotificationView = () => {
         return;
     }
 
+    function closeAllNotifications(){
+        setNotifications([]);
+    }
+
     const deleteNotification = key => () => {
         setNotifications(notifications.filter(n => n.key !== key))
     }
 
     return (
         <FixedWrapper fixTop>
+
             <Wrapper>
                 {notifications.map(n => (
                     <NotificationFactory key={n.key} type={n.type}
@@ -37,6 +42,7 @@ const NotificationView = () => {
                 ))
                 }
             </Wrapper>
+            <CloseAll onClick={closeAllNotifications}>Close All</CloseAll>
         </FixedWrapper>
     )
 }
