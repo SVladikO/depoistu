@@ -20,8 +20,18 @@ const NotificationView = () => {
         // return () => document.removeEventListener(EVENT_TYPE.NOTIFICATION)
     }, [])
 
+    const closeAllNotification = () => {
+        setNotifications([]);
+    }
+
     if (!notifications.length) {
         return;
+    }
+
+    if(notifications?.length){
+        setTimeout(() => {
+            closeAllNotification();
+        }, 5000);
     }
 
     const deleteNotification = key => () => {

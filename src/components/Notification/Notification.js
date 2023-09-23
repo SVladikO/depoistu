@@ -27,14 +27,6 @@ export const NOTIFICATION_STATUS = {
 
 export const NotificationFactory = ({type, children, onClose}) => {
 
-    useEffect(() => {
-        const timeoutId = setTimeout(() => {
-            onClose();
-        }, 6000);
-        return () => clearTimeout(timeoutId);
-    }, [onClose]);
-
-
     switch (type) {
         case NOTIFICATION_STATUS.INFO: {
             return (
