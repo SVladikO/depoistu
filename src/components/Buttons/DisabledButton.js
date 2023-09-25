@@ -3,7 +3,6 @@ import {button} from "./button";
 import {COLOR} from "utils/theme";
 
 export const DisabledButton = styled(button)`
-  //min-width: 33.3%;
   font-size: 16px;
   font-weight: 400;
   height: 40px;
@@ -17,5 +16,6 @@ export const DisabledButton = styled(button)`
     height: 17px;
     width: 17px;
     display: block;
+    margin: ${p => p.isOnlyIcon ? 0 : '0 12px 0 0'};
   }
 `;
