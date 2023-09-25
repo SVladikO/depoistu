@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import {BORDER_RADIUS, COLOR, hexToRgbA} from "utils/theme";
+import {BORDER_RADIUS, COLOR, FONT, hexToRgbA} from "utils/theme";
 
 
 export const Wrapper = styled.div`
-  padding: 15px 6px 0;
+  padding: 16px 16px;
   position: absolute;
-  top: 45px;
+  top: 0;
   width: 100%;
   background: ${hexToRgbA('#000', 0.5)};
   z-index: 8;
@@ -18,13 +18,15 @@ export const Wrapper = styled.div`
   }
 `;
 export const CloseAll = styled.button`
+  ${FONT.SIZE_18};
   display: block;
   position: relative; 
   z-index: 10; 
   height: 40px;
-  background: ${COLOR.WARNING2};
-  border-radius: ${BORDER_RADIUS.CITY_POPUP};
-  border: 1px solid #000;
-  animation: myfirst 3s;
-  transition: 0.5s ease-in;
+  color: ${COLOR.ACCENT4};
+  background: ${hexToRgbA('#000', 0.85)};
+  //background: ${COLOR.WARNING2};
+  // border-radius: ${BORDER_RADIUS.CITY_POPUP};
+  // border: 1px solid #000;
+  width: 100%;
 `;

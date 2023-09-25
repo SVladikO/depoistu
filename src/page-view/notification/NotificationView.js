@@ -41,8 +41,8 @@ const NotificationView = () => {
                                          onClose={deleteNotification(n.key)}>{n.message}</NotificationFactory>
                 ))
                 }
-            </Wrapper>
             <CloseAll onClick={closeAllNotifications}>Close All</CloseAll>
+            </Wrapper>
         </FixedWrapper>
     )
 }
