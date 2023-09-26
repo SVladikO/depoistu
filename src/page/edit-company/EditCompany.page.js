@@ -57,7 +57,7 @@ const EditCompany = () => {
             <ContentContainer>
                 <Link to={URL.CUSTOMER_COMPANIES}>
                     <PrimaryButton isWide>
-                        Open my companies page
+                        {translate(TRANSLATION.PAGE.EDIT_COMPANY.BUTTON.OPEN_COMPANIES_PAGE)}
                     </PrimaryButton>
                 </Link>
             </ContentContainer>
@@ -110,7 +110,7 @@ const EditCompany = () => {
                 const updatedCompany = res.body[0];
                 updateCompaniesInLocalStorage(updatedCompany)
 
-                publishNotificationEvent.success('Company was updated')
+                publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.COMPANY.WAS_UPDATED))
             })
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))
             .finally(() => setIsLoadingUpdate(false))

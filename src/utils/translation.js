@@ -82,11 +82,11 @@ export const TRANSLATION = {
             ua: "Приклад"
         },
         PASSWORD_MUST_MUCH: {
-            en: "Password must much",
+            en: "Passwords must much",
             ua: "Паролі мають співпадати"
         },
         OLD_PASSWORD_MUST_MUCH: {
-            en: "Old password must much",
+            en: "Old password must match",
             ua: "Старий пароль має співпасти"
         },
         INVALID_EMAIL: {
@@ -318,6 +318,26 @@ export const TRANSLATION = {
 
             }
         },
+        EDIT_COMPANY: {
+            TOP_TITLE: {
+                ua: "Редагувати заклад",
+                en: 'Edit company'
+            },
+            BUTTON: {
+                EDIT_COMPANY: {
+                    en: 'Save',
+                    ua: "Зберегти"
+                },
+                DELETE_COMPANY: {
+                    en: 'Delete company',
+                    ua: "Видалити заклад"
+                },
+                OPEN_COMPANIES_PAGE: {
+                    en: 'Open my companies page',
+                    ua: "Відкрити мої компанії"
+                }
+            },
+        },
         EDIT_MENU: {
             TOP_TITLE: {
                 en: 'Edit menu',
@@ -343,22 +363,6 @@ export const TRANSLATION = {
                 EDIT_MENU_ITEM: {
                     en: 'Save changes',
                     ua: "Зберегти зміни",
-                }
-            },
-        },
-        EDIT_COMPANY: {
-            TOP_TITLE: {
-                ua: "Редагувати заклад",
-                en: 'Edit company'
-            },
-            BUTTON: {
-                EDIT_COMPANY: {
-                    en: 'Save',
-                    ua: "Зберегти"
-                },
-                DELETE_COMPANY: {
-                    en: 'Delete company',
-                    ua: "Видалити заклад"
                 }
             },
         },
@@ -647,7 +651,7 @@ export const TRANSLATION = {
             },
             ACCOUNT_CONFIRMATION: {
                 ua: "Ви зареєстрованi?",
-                en: "You don’t have an account?"
+                en: "Do you have an account?"
             }
         },
         FORGOT_PASSWORD: {
@@ -685,7 +689,7 @@ export const TRANSLATION = {
             },
             STATUS_CLOSE: {
                 ua: "Закрито",
-                en: "Close"
+                en: "Closed"
             },
             TILL: {
                 ua: "до",
@@ -753,8 +757,16 @@ export const TRANSLATION = {
         MENU_ITEM: {
             WAS_CREATED: {
                 en: 'Menu item was created.',
-                ua: "Меню додано."
-            }
+                ua: "Позицію меню додано."
+            },
+            WAS_DELETED: {
+                en: 'Menu item was deleted.',
+                ua: "Позицію меню видалено."
+            },
+            WAS_UPDATED: {
+                en: 'Menu item was updated.',
+                ua: 'Позицію меню оновлено.'
+            },
         },
         CUSTOMER: {
             UPDATED_PASSWORD: {
@@ -765,11 +777,15 @@ export const TRANSLATION = {
         COMPANY: {
             WAS_DELETED: {
                 en: 'Company was deleted.',
-                ua: "Закла видалено."
+                ua: "Заклад видалено."
             },
             WAS_CREATED: {
                 ua: 'Заклад створено.',
                 en: 'Company was created.'
+            },
+            WAS_UPDATED: {
+                ua: 'Дані оновлено.',
+                en: 'Data was updated.'
             },
             CREATE_MENU_SUGGESTION: {
                 ua: 'Без меню заклад не побачать користувачі.',
