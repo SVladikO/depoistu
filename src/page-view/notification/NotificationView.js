@@ -6,6 +6,7 @@ import {NotificationFactory, FixedWrapper} from "components";
 
 import {EVENT_TYPE} from "utils/event";
 import {getRandom} from "utils/utils";
+import {TRANSLATION,translate} from "../../utils/translation";
 
 const NotificationView = () => {
     const [notifications, setNotifications] = useState([]);
@@ -41,7 +42,7 @@ const NotificationView = () => {
                                          onClose={deleteNotification(n.key)}>{n.message}</NotificationFactory>
                 ))
                 }
-                {notifications && <CloseAll onClick={closeAllNotifications}>Close All</CloseAll>}
+                {notifications && <CloseAll onClick={closeAllNotifications}>{translate(TRANSLATION.NOTIFICATION.CLOSE_ALL_NOTIFICATIONS_BUTTON)}</CloseAll>}
             </Wrapper>
         </FixedWrapper>
     )
