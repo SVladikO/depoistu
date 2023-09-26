@@ -68,7 +68,7 @@ export const FoodImage = styled.img`
 `;
 
 export const Title = styled.div`
-  ${FONT.SIZE_24};
+  ${FONT.SIZE_20};
   ${FONT.WEIGHT_700};
   color: ${COLOR.ACCENT1};
   margin: 0 5px 4px 0;
