@@ -5,6 +5,7 @@ import {useWindowScrollPositions} from "../../utils/hook";
 
 const ToTopButton = () => {
     const { scrollY } = useWindowScrollPositions()
+    const rightMargin = window.innerWidth < 400 ? '175px': '192px'
 
     const scrollToTop = () => {
         window.scrollTo({
@@ -12,9 +13,12 @@ const ToTopButton = () => {
             behavior: "smooth"
         });
     };
-
     return (
-        <ToTopButtonWrapper isVisible={scrollY > 820} onClick={scrollToTop}>
+        <ToTopButtonWrapper
+            isVisible={scrollY > 820}
+            onClick={scrollToTop}
+            rightMargin={rightMargin}
+        >
             <DropdownIcon />
         </ToTopButtonWrapper>
     );
