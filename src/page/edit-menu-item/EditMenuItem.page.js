@@ -71,6 +71,7 @@ const EditMenuItemPage = () => {
                     isWide
                     type="submit"
                     isLoading={isLoadingUpdate}
+                    withPadding
                 >
                     {translate(TRANSLATION.PAGE.ADD_MENU_ITEM.BUTTON.UPDATE_MENU_ITEM)}
                 </PrimaryButton>
@@ -80,6 +81,7 @@ const EditMenuItemPage = () => {
                 isWide
                 isLoading={isLoadingDelete}
                 clickHandler={deleteMenuItem}
+                withPadding
             >
                 <RemoveIcon />
                 {translate(TRANSLATION.PAGE.EDIT_MENU_ITEM.BUTTON.DELETE_MENU_ITEM)}

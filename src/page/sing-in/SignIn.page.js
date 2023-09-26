@@ -96,6 +96,7 @@ const SignInPage = () => {
                             isWide
                             type="submit"
                             isLoading={isLoading}
+                            withPadding
                         >
                             {translate(TRANSLATION.PAGE.SIGN_IN.TOP_TITLE)}
                         </PrimaryButton>

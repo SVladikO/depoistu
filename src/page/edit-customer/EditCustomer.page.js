@@ -67,10 +67,10 @@ const EditCustomerPage = () => {
                                 clearHandler={() => setFieldValue('email', '')}
                                 errorMessage={errors.email}
                             />
-                        </ContentContainer>
                         <PrimaryButton type="submit" isWide>
                             {translate(TRANSLATION.PAGE.CHANGE_PASSWORD.BUTTON.SAVE_CHANGES)}
                         </PrimaryButton>
+                        </ContentContainer>
                     </form>
                 )}
             </Formik>

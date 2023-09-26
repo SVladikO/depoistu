@@ -119,6 +119,7 @@ const SingUpPage = () => {
                             isWide
                             type="submit"
                             isLoading={isLoading}
+                            withPadding
                         >
                             {translate(TRANSLATION.PAGE.SING_UP.TOP_TITLE)}
                         </PrimaryButton>
