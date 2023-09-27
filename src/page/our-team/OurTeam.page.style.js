@@ -67,7 +67,7 @@ export const Border = styled.div`
   width: 100%;
 `;
 export const Socials = styled.div`
-  margin: 0 0 16px 0;
+  margin: 10px 0 16px 0;
   svg {
     width: 28px;
     height: 28px;
