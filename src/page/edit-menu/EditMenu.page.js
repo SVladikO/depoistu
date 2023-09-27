@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Wrapper, CompanyDetails} from "./EditMenu.style";
 
 import {
-    NotificationLoading,
+    NotificationLoading, PrimaryButton,
 } from "components";
 
 import {startLoading, stopLoading} from "features/request/requestSlice";
@@ -12,11 +12,13 @@ import {startLoading, stopLoading} from "features/request/requestSlice";
 import {BE_API} from 'utils/fetch'
 import {fetchData} from "utils/fetch";
 import {useLocalStorage, useLocalStorageFetch, useRedirectToSettingPage, useScrollUp} from "utils/hook";
-import {translate} from "utils/translation";
+import {translate, TRANSLATION} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 import {CITY_TRANSLATION_IDS} from "utils/cities";
 import CategoryMenuView from "page-view/category-menu-view/CategoryMenuView";
 import {publishNotificationEvent} from "utils/event";
+import {URL} from "../../utils/config";
+import {Link} from "react-router-dom";
 
 const EditMenu = () => {
     useRedirectToSettingPage();
@@ -71,6 +73,11 @@ const EditMenu = () => {
                         editPage
                     />
                 }
+                {!menuItems?.length && <Link to={`${URL.ADD_MENU_ITEM}`}>
+                    <PrimaryButton isWide>
+                        {translate(TRANSLATION.PAGE.EDIT_MENU.BUTTON.ADD_MENU_ITEM)}
+                    </PrimaryButton>
+                </Link>}
             </Wrapper>
         </>
     )
