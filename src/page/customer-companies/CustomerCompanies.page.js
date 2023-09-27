@@ -70,11 +70,13 @@ const CustomerCompaniesPage = () => {
                     </Company>
             )
             }
+            {customer.canCreateCompanies > customerCompanies.length &&
                 <Link to={URL.ADD_COMPANY}>
                     <PrimaryButton isWide>
                         {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.ADD_COMPANY)}
                     </PrimaryButton>
                 </Link>
+            }
         < />
     )
 };

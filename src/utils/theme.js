@@ -1,10 +1,10 @@
 import {keyframes} from "styled-components";
 
 export const COLOR = {
-    PRIMARY: '#FF3937', //'#709900',
+    PRIMARY:  '#709900',
     ACCENT1: '#3F3D56',
     ACCENT2: '#F5F6FB',
-    ACCENT3: '#FF7E5B', //'#96CC00',
+    ACCENT3:  '#96CC00',
     ACCENT4: '#FFFFFF',
     ACCENT5: '#B5B5B5',
     ACCENT6: '#FF3937',
@@ -62,12 +62,13 @@ export const BORDER_RADIUS = {
     DAY_IN_SCHEDULE: '8px',
     SUB_CATEGORY: '12px',
     COMPANY: '0px',
-    MENU_ITEM: '',
+    MENU_ITEM: '10px',
     FIRST: '0px',
     CITY_POPUP: '20px',
     THIRD: '0px',
     FOURTH: '0px',
-    CIRCLE: '50%'
+    CIRCLE: '50%',
+    INPUT: '4px'
 }
 
 export const DEVICE_WIDTH = {

@@ -118,7 +118,12 @@ const SettingPage = () => {
 
     return (
         <>
-            {!customer && singInSingUpNotification}
+            {!customer && (
+                <>
+                    {singInSingUpNotification}
+                    <RowSplitter height="10px" />
+                    </>
+            )}
             {/*{customer && !customer.isVerifiedEmail && emailVerificationNotification}*/}
             {isLoading && <NotificationLoading/>}
             <LanguagePopup />

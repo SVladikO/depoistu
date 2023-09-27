@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Formik} from "formik";
 import * as Yup from "yup";
 import {Link} from "react-router-dom";
-import {Input, Label, ContentContainer, NotificationTDB, PrimaryButton} from "components";
+import {Input, ContentContainer, NotificationTDB, PrimaryButton} from "components";
 import {ReactComponent as MailIcon} from "assets/icons/mail.svg";
 import {translate, TRANSLATION} from "utils/translation";
 import {URL} from "utils/config";
@@ -40,8 +40,8 @@ const ForgetPasswordPage = () => {
             {({values, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                 <form onSubmit={handleSubmit}>
                     <ContentContainer>
-                        <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.EMAIL)}</Label>
                         <Input
+                            labelName={translate(TRANSLATION.INPUT_LABEL.CUSTOMER.EMAIL)}
                             withCleaner
                             Icon={MailIcon}
                             name='email'

@@ -2,16 +2,18 @@ import styled from "styled-components";
 import {DisabledButton} from "components/Buttons/DisabledButton";
 
 export const ImageQR = styled.img`
-  height: 250px;
-  width: 250px;
+  height: 320px;
+  width: 320px;
+  margin: 0 auto;
+  display: block;
 `;
 
 export const QRCodeButton = styled(DisabledButton)`
   padding: 10px;
   
   & > svg {
-    width: 30px;
-    height: 30px;
+    width: 24px;
+    height: 24px;
     margin: 0;
     display: block;
   }
@@ -32,6 +34,7 @@ export const EditBar = styled.div`
   justify-content: space-between;
   align-items: stretch;
   width: 100%;
+  padding: 20px 0 0 0;
 `;
 
 
