@@ -6,7 +6,6 @@ import {Link, useNavigate} from "react-router-dom";
 import {
     Input,
     ContentContainer,
-    Label,
     NavigationLabelHref,
     PrimaryButton,
 } from "components";
@@ -62,26 +61,28 @@ const SignInPage = () => {
                 {({values, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                     <form onSubmit={handleSubmit}>
                         <ContentContainer>
-                            <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.EMAIL)}</Label>
                             <Input
+                                isRequired
+                                withCleaner
                                 Icon={MailIcon}
                                 name='email'
                                 type='email'
                                 value={values.email}
-                                withCleaner
                                 isTouched={wasSubmitted || touched.email}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('email', '')}
+                                labelName={translate(TRANSLATION.INPUT_LABEL.CUSTOMER.EMAIL)}
                                 errorMessage={errors.email}
                             />
-                            <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.PASSWORD)}</Label>
                             <Input
+                                isRequired
+                                withSwitcher
                                 Icon={LockIcon}
                                 name='password'
                                 isTouched={wasSubmitted || touched.password}
                                 value={values.password}
                                 changeHandler={handleChange}
-                                withSwitcher
+                                labelName={translate(TRANSLATION.INPUT_LABEL.CUSTOMER.PASSWORD)}
                                 errorMessage={errors.password}
                             />
                             <Link to={URL.FORGOT_PASSWORD}>{translate(TRANSLATION.PAGE.SIGN_IN.FORGOT_PASSWORD)}</Link>

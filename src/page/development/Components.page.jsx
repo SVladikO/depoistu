@@ -177,45 +177,48 @@ const componentsGroup1 = [
     [
         {title: 'Label', component: <Label>Change Password</Label>},
         {
-            title: 'Input', component: <Input onChange={() => {
-            }}/>
+            title: 'Input', component: <Input />
         },
         {
-            title: 'Input {withCleaner}', component: <Input withCleaner value={111} onChange={() => {
-            }}/>
+            title: 'Input {labelName}', component: <Input labelName={'Label'} />
         },
         {
-            title: 'Input {withSwitcher}', component: <Input value={1111} withSwitcher onChange={() => {
-            }}/>
+            title: 'Input {labelName, withCleaner, isRequired} ', component: <Input labelName={'Label'} withCleaner value={111} isRequired/>
         },
         {
-            title: 'Input',
-            component: <Input Icon={MailIcon} isTouched value="jodode@mail.com" withCleaner onChange={() => {
-            }}/>
+            title: 'Input {labelName, withSwitcher}', component: <Input labelName={'Label name'} value={1111} withSwitcher />
         },
         {
-            title: 'Input',
-            component: <Input isTouched errorMessage={'Max length 12.'} value="++380970663322" onChange={() => {
-            }}/>
+            title: 'Input  {labelName, Icon, isRequired}',
+            component: <Input Icon={MailIcon} isRequired value="jodode@mail.com" withCleaner labelName={'Label name'}  />
+        },
+        {
+            title: 'Input  {labelName, errorMessage, isRequired}',
+            component: <Input isTouched isRequired errorMessage={'Max length 12.'} value="+380970663322" labelName={'Label'}/>
+        },
+        {
+            title: 'Input  {labelName, Icon, errorMessage, isRequired}',
+            component: <Input isTouched Icon={MailIcon} isRequired errorMessage={'Max length 12.'} value="+380970663322" labelName={'Label'}/>
         },
     ],
     [
         {
             title: 'CityInput',
-            component: <CityInput withIcon Icon={LocationIcon} value={'Vinnica'} handleClick={() => {
-            }}/>
+            component: <CityInput withIcon Icon={LocationIcon} value={'Vinnica'} />
         },
         {
-            title: 'FromToTime', component: <FromToTime prefix='mon' dayName='Mon' values={{}} handleChange={() => {
-            }}/>
+            title: 'CityInput {labelName}',
+            component: <CityInput withIcon  labelName={'Label'} Icon={LocationIcon} value={'Vinnica'} />
+        },
+        {
+            title: 'FromToTime', component: <FromToTime prefix='mon' dayName='Mon' values={{}} />
         },
         {
             title: 'FromToTime',
-            component: <FromToTime prefix='mon' dayName='Mon' values={{monIsChecked: true}} handleChange={() => {
-            }}/>
+            component: <FromToTime prefix='mon' dayName='Mon' values={{monIsChecked: true}} />
         },
-        {title: 'Textarea withCleaner', component: <Textarea withCleaner/>},
-        {title: 'Textarea withCleaner', component: <Textarea withCleaner value={222}/>},
+        {title: 'Textarea', component: <Textarea labelName={'Textarea'} isRequired withCleaner placeholder={'Write here'}/>},
+        {title: 'Textarea withCleaner', component: <Textarea labelName={'Textarea'} withCleaner value={222} placeholder={'Write here'}/>},
     ]
 ];
 const componentsGroup2 = [

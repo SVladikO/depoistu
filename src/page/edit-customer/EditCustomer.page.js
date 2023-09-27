@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Formik} from "formik";
 import * as Yup from "yup";
-import {Label, Input, ContentContainer, PrimaryButton} from "components";
+import {Input, ContentContainer, PrimaryButton} from "components";
 
 import validation from "utils/validation";
 import {useRedirectToSettingPage, useScrollUp} from "utils/hook";
@@ -33,7 +33,6 @@ const EditCustomerPage = () => {
                 {({values, handleBlur, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                     <form onSubmit={handleSubmit}>
                         <ContentContainer>
-                            <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.NAME)}</Label>
                             <Input
                                 withCleaner
                                 isTouched={wasSubmitted || touched.name}
@@ -42,9 +41,9 @@ const EditCustomerPage = () => {
                                 value={values.name}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('name', '')}
+                                labelName={translate(TRANSLATION.INPUT_LABEL.CUSTOMER.NAME)}
                                 errorMessage={errors.name}
                             />
-                            <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.PHONE)}</Label>
                             <Input
                                 withCleaner
                                 name="phone"
@@ -53,9 +52,9 @@ const EditCustomerPage = () => {
                                 value={values.phone}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('phone', '')}
+                                labelName={translate(TRANSLATION.INPUT_LABEL.CUSTOMER.PHONE)}
                                 errorMessage={errors.phone}
                             />
-                            <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.EMAIL)}</Label>
                             <Input
                                 withCleaner
                                 type="email"
@@ -64,6 +63,7 @@ const EditCustomerPage = () => {
                                 isTouched={wasSubmitted || touched.email}
                                 value={values.email}
                                 changeHandler={handleChange}
+                                labelName={translate(TRANSLATION.INPUT_LABEL.CUSTOMER.EMAIL)}
                                 clearHandler={() => setFieldValue('email', '')}
                                 errorMessage={errors.email}
                             />

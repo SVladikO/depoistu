@@ -3,8 +3,7 @@ import {COLOR, SHADOW} from "utils/theme";
 
 export const ContentContainerDefault = css`
   width: 100%;
-  background: ${p => p.noBg ? 'none' : COLOR.ACCENT4};
-  padding: ${p => p.noPadding ? 0 : '10px'};
+  padding: ${p => p.noPadding ? 0 : '16px'};
   ${p => p.noShadow ? '' : SHADOW};
   
 

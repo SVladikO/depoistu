@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import {Formik} from "formik";
 
 import {Wrapper} from "./SingUp.style";
-import {Label, Input, ContentContainer, PrimaryButton} from "components";
+import {Input, ContentContainer, PrimaryButton} from "components";
 import NavigationLabelHref from "components/NavigationLabelHref/NavigationLabelHref";
 
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
@@ -51,7 +51,6 @@ const SingUpPage = () => {
                 {({values, handleBlur, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                     <form onSubmit={handleSubmit}>
                         <ContentContainer>
-                            <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.NAME)}</Label>
                             <Input
                                 withCleaner
                                 isTouched={wasSubmitted || touched.name}
@@ -60,9 +59,9 @@ const SingUpPage = () => {
                                 value={values.name}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('name', '')}
+                                labelName={translate(TRANSLATION.INPUT_LABEL.CUSTOMER.NAME)}
                                 errorMessage={errors.name}
                             />
-                            <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.PHONE)}</Label>
                             <Input
                                 withCleaner
                                 name="phone"
@@ -71,9 +70,9 @@ const SingUpPage = () => {
                                 value={values.phone}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('phone', '')}
+                                labelName={translate(TRANSLATION.INPUT_LABEL.CUSTOMER.PHONE)}
                                 errorMessage={errors.phone}
                             />
-                            <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.EMAIL)}</Label>
                             <Input
                                 withCleaner
                                 type="email"
@@ -82,10 +81,10 @@ const SingUpPage = () => {
                                 isTouched={wasSubmitted || touched.email}
                                 value={values.email}
                                 changeHandler={handleChange}
+                                labelName={translate(TRANSLATION.INPUT_LABEL.CUSTOMER.EMAIL)}
                                 clearHandler={() => setFieldValue('email', '')}
                                 errorMessage={errors.email}
                             />
-                            <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.PASSWORD)}</Label>
                             <Input
                                 withSwitcher
                                 name="newPassword"
@@ -94,9 +93,9 @@ const SingUpPage = () => {
                                 value={values.newPassword}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('newPassword', '')}
+                                labelName={translate(TRANSLATION.INPUT_LABEL.CUSTOMER.PASSWORD)}
                                 errorMessage={errors.newPassword}
                             />
-                            <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.CONFIRM_PASSWORD)}</Label>
                             <Input
                                 withSwitcher
                                 value={values.confirmedPassword}
@@ -105,6 +104,7 @@ const SingUpPage = () => {
                                 name="confirmedPassword"
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('confirmedPassword', '')}
+                                labelName={translate(TRANSLATION.INPUT_LABEL.CUSTOMER.CONFIRM_PASSWORD)}
                                 errorMessage={errors.confirmedPassword}
                             />
                         </ContentContainer>

@@ -3,7 +3,6 @@ import {Formik} from "formik";
 import * as Yup from 'yup';
 
 import {
-    Label,
     Input,
     RowSplitter,
     ContentContainer, PrimaryButton,
@@ -53,35 +52,35 @@ const ChangePasswordPage = () => {
                 {({values, handleBlur, touched, handleSubmit, handleChange, errors}) => (
                     <form onSubmit={handleSubmit}>
                         <ContentContainer>
-                            <Label>{translate(TRANSLATION.PAGE.CHANGE_PASSWORD.LABEL.OLD_PASSWORD)}</Label>
                             <Input
                                 withSwitcher
-                                onBlur={handleBlur}
-                                isTouched={wasSubmitted || touched.oldPassword}
-                                name="oldPassword"
                                 value={values.oldPassword}
+                                onBlur={handleBlur}
+                                name="oldPassword"
                                 changeHandler={handleChange}
+                                labelName={translate(TRANSLATION.PAGE.CHANGE_PASSWORD.LABEL.OLD_PASSWORD)}
+                                isTouched={wasSubmitted || touched.oldPassword}
                                 errorMessage={errors.oldPassword}
                             />
                             <RowSplitter height='10px'/>
-                            <Label>{translate(TRANSLATION.PAGE.CHANGE_PASSWORD.LABEL.NEW_PASSWORD)}</Label>
                             <Input
                                 withSwitcher
                                 name="newPassword"
+                                value={values.newPassword}
                                 onBlur={handleBlur}
                                 isTouched={wasSubmitted || touched.newPassword}
-                                value={values.newPassword}
                                 changeHandler={handleChange}
+                                labelName={translate(TRANSLATION.PAGE.CHANGE_PASSWORD.LABEL.NEW_PASSWORD)}
                                 errorMessage={errors.newPassword}
                             />
-                            <Label>{translate(TRANSLATION.PAGE.CHANGE_PASSWORD.LABEL.CONFIRM_PASSWORD)}</Label>
                             <Input
                                 withSwitcher
                                 name="confirmedPassword"
-                                nBlur={handleBlur}
-                                isTouched={wasSubmitted || touched.confirmedPassword}
                                 value={values.confirmedPassword}
+                                onBlur={handleBlur}
                                 changeHandler={handleChange}
+                                labelName={translate(TRANSLATION.PAGE.CHANGE_PASSWORD.LABEL.CONFIRM_PASSWORD)}
+                                isTouched={wasSubmitted || touched.confirmedPassword}
                                 errorMessage={errors.confirmedPassword}
                             />
                             <RowSplitter margin="20px 0 0"/>
