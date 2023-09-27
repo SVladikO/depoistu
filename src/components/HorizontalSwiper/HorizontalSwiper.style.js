@@ -13,7 +13,7 @@ export const SliderStyle = styled.div`
     //width: auto !important;
     //min-width: 100px;
     & > div {
-      height: 36px;
+      padding: 10px 16px;
       display: flex;
       justify-content: center;
       align-items: center;
