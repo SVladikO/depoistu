@@ -11,9 +11,10 @@ import AdminPage from "page/development/Admin.page";
 import ComponentsPage from 'page/development/Components.page';
 
 import {COLOR, DEVICE_WIDTH} from './theme';
-import {useHideOnScroll, useScrollUp} from "./hook";
+import {useScrollUp, useHideOnScroll} from "./hook";
 
 import {BottomMenu, NavigationHeader} from "components";
+import ToTopButton from "../components/ToTopButton/ToTopButton";
 
 import NotificationView from "page-view/notification/NotificationView";
 
@@ -52,6 +53,7 @@ const Element = (props) => {
                 <BottomMenu/>
             </FixedWrapper>
             <Footer/>
+            <ToTopButton />
         </MobileWrapper>
     )
 };
@@ -71,7 +73,6 @@ export const AllRoutes = () => {
                     />
                 ))}
             </Routes>
-
             <NotificationView/>
         </>
     );
