@@ -82,7 +82,7 @@ export const TRANSLATION = {
             ua: "Приклад"
         },
         PASSWORD_MUST_MUCH: {
-            en: "Passwords must much",
+            en: "Passwords must match",
             ua: "Паролі мають співпадати"
         },
         OLD_PASSWORD_MUST_MUCH: {
