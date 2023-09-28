@@ -1,5 +1,6 @@
 import {BE_DOMAIN} from "./config";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
+import {translate, TRANSLATION} from "./translation";
 
 // it's function because we take data from localStorage
 const getOptions = body => {
@@ -30,7 +31,7 @@ export const fetchData = async (url, body) => {
         response = await fetch(decodeURIComponent(url), getOptions(body));
     } catch (error) {
         return new Promise((resolve, reject) => {
-            reject({status: 500, body: {errorMessage: 'Unable to make request.'}});
+            reject({status: 500, body: {errorMessage: translate(TRANSLATION.NOTIFICATION.UN_ABLE_MAKE_REQUEST)}});
         })
     }
 

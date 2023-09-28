@@ -10,8 +10,10 @@ import {RowSplitter} from "components";
 
 import {URL} from "utils/config";
 import {translate, TRANSLATION as TR} from "utils/translation";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 
 const Footer = () => {
+    const customer = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER);
     const [isLike, setIsLike] = useState()
 
     const scrollToTop = () => {
@@ -26,32 +28,37 @@ const Footer = () => {
 
     return (
         <>
-            <RowSplitter height={'340px'} />
+            <RowSplitter height={'340px'}/>
             <Wrapper>
-                <Question justifyContent="center" alignItems="center" gap={'10px'}>
-                    <span>{translate(TR.PAGE.SETTINGS.GROUP_TITLE.DO_YOU_LIKE)}</span>
-                    {isLike === undefined
-                        ? (
-                            <>
-                                <ThumbDownNotClickedIcon onClick={onLikeWebsite} className="reversed unClicked"/>
-                                <ThumbDownNotClickedIcon onClick={onDislikeWebsite} className="unClicked"/>
-                            </>
-                        ) : isLike ? (
-                            <>
-                                <ThumbUpClickedIcon/>
-                                <ThumbDownNotClickedIcon/>
-                            </>
-                        ) : (
-                            <>
-                                <ThumbDownNotClickedIcon className="reversed"/>
-                                <ThumbUpClickedIcon className="reversed"/>
-                            </>
-                        )}
-                </Question>
+                {customer && (
+                    <Question justifyContent="center" alignItems="center" gap={'10px'}>
+                        <span>{translate(TR.PAGE.SETTINGS.GROUP_TITLE.DO_YOU_LIKE)}</span>
+                        {isLike === undefined
+                            ? (
+                                <>
+                                    <ThumbDownNotClickedIcon onClick={onLikeWebsite} className="reversed unClicked"/>
+                                    <ThumbDownNotClickedIcon onClick={onDislikeWebsite} className="unClicked"/>
+                                </>
+                            ) : isLike ? (
+                                <>
+                                    <ThumbUpClickedIcon/>
+                                    <ThumbDownNotClickedIcon/>
+                                </>
+                            ) : (
+                                <>
+                                    <ThumbDownNotClickedIcon className="reversed"/>
+                                    <ThumbUpClickedIcon className="reversed"/>
+                                </>
+                            )}
+                    </Question>
+                )
+                }
                 <Row onClick={scrollToTop}>{translate(TR.PAGE.FOOTER.BACK_TO_TOP_BUTTON)}</Row>
-                <Link to={URL.CUSTOMER_COMPANIES}>
-                    <Row>{translate(TR.PAGE.SETTINGS.GROUP_TITLE.FOR_BUSINESS)}</Row>
-                </Link>
+                {customer && (
+                    <Link to={URL.CUSTOMER_COMPANIES}>
+                        <Row>{translate(TR.PAGE.SETTINGS.GROUP_TITLE.FOR_BUSINESS)}</Row>
+                    </Link>
+                )}
                 <Link to={URL.ABOUT_US}>
                     <Row>{translate(TR.PAGE.SETTINGS.MENU_ROW.ABOUT_US)}</Row>
                 </Link>

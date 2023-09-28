@@ -1,4 +1,4 @@
-import {Wrapper, Employee, Photo, FullName, Position, EmployeeView, EmployeeInfo, Border, Socials} from "./OurTeam.page.style";
+import {Wrapper, Employee, Photo, FullName, Position, EmployeeView, EmployeeInfo, Socials} from "./OurTeam.page.style";
 import Vlad_imgSrc from 'assets/images/team/Vlad.png';
 import David_imgSrc from 'assets/images/team/David.png';
 import Irina_imgSrc from 'assets/images/team/Irina.png';
@@ -58,34 +58,23 @@ const OurTeamPage = () => {
         <Wrapper>
             {contributors.map(employee => {
                 return (
-                    <>
-                        <Employee>
+                        <Employee key={employee.name}>
                             <EmployeeView>
                                 <Photo src={employee.src}/>
                             </EmployeeView>
                             <EmployeeInfo>
-                                {employee.position.map(post  => <Position>{post}</Position>)}
+                                {employee.position.map(post  => <Position key={post}>{post}</Position>)}
                                 <FullName>
                                     {employee.name}
                                 </FullName>
                                 <Socials>
-                                    {employee.instagram && <a href="">
-                                        <Instagram/>
-                                    </a>}
-                                    {employee.facebook && <a href="">
-                                        <Facebook/>
-                                    </a>}
-                                    {employee.twitter && <a href="">
-                                        <Twitter/>
-                                    </a>}
-                                    {employee.linkedInLink && <a href={employee.linkedInLink}>
-                                        <LinkedIn/>
-                                    </a>}
+                                    {employee.instagram && <a href=""><Instagram/></a>}
+                                    {employee.facebook && <a href=""><Facebook/></a>}
+                                    {employee.twitter && <a href=""><Twitter/></a>}
+                                    {employee.linkedInLink && <a href={employee.linkedInLink}><LinkedIn/></a>}
                                 </Socials>
                             </EmployeeInfo>
                         </Employee>
-                        <Border/>
-                    </>
                     )
             })}
 

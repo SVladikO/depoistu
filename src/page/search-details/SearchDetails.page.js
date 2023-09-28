@@ -1,18 +1,18 @@
 import {useEffect, useState} from "react";
 import {useNavigate, useParams} from 'react-router-dom';
+
 import {Wrapper} from "./SearchDetails.style";
 
-import {Company, NotificationLoading, PrimaryButton} from "components";
+import {Company, NotificationLoading, PrimaryButton, NotificationTDB} from "components";
 
 import CategoryMenuView from 'page-view/category-menu-view/CategoryMenuView'
 
-import {BE_API, fetchData} from "utils/fetch";
-import {translate, TRANSLATION as TR} from "utils/translation";
-import {publishNotificationEvent} from "utils/event";
-import {stopLoadingWithDelay} from "utils/utils";
-import {useScrollUp} from "utils/hook";
 import {ROUTER} from "utils/config";
-import NotificationTDB from "components/NotificationTDB/NotificationTDB";
+import {useScrollUp} from "utils/hook";
+import {BE_API, fetchData} from "utils/fetch";
+import {stopLoadingWithDelay} from "utils/utils";
+import {publishNotificationEvent} from "utils/event";
+import {translate, TRANSLATION, TRANSLATION as TR} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 
 const SearchDetailsPage = () => {
@@ -26,23 +26,25 @@ const SearchDetailsPage = () => {
 
     useEffect(() => {
         setIsLoadingCompany(true)
-
         const companyLoadingDelay = stopLoadingWithDelay([() => setIsLoadingCompany(false)])
 
         fetchData(BE_API.COMPANY.GET_BY_COMPANY_ID(companyId))
             .then(res => {
                 setCompany(res.body[0]);
             })
-            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
+            .catch(e => {
+                setMenuItems([])
+                publishNotificationEvent.error(e.body.errorMessage)
+            })
             .finally(() => companyLoadingDelay.allow());
     }, [companyId])
 
     useEffect(() => {
         setIsLoadingMenu(true);
         const menuLoadingDelay = stopLoadingWithDelay([() => setIsLoadingMenu(false)]);
-        fetch(BE_API.MENU_ITEM.GET_ONLY_VISIBLE_BY_COMPANY_ID(companyId))
-            .then(res => res.json())
-            .then(data => data.sort((a, b) => a.CATEGORY_ID - b.CATEGORY_ID))
+
+        fetchData(BE_API.MENU_ITEM.GET_ONLY_VISIBLE_BY_COMPANY_ID(companyId))
+            .then(res => res.body.sort((a, b) => a.categoryId - b.categoryId))
             .then(menuItems => {
                 setMenuItems(menuItems)
                 if (!menuItems.length) {
@@ -51,6 +53,7 @@ const SearchDetailsPage = () => {
             })
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))
             .finally(() => menuLoadingDelay.allow());
+
     }, [companyId]);
 
     if (menuItems !== undefined && !menuItems?.length) {
@@ -77,10 +80,10 @@ const SearchDetailsPage = () => {
 
     return (
         <Wrapper>
-            {isLoadingCompany && <NotificationLoading>Loading company ...</NotificationLoading>}
+            {isLoadingCompany && <NotificationLoading>{translate(TRANSLATION.NOTIFICATION.COMPANY.LOADING_COMPANY)}</NotificationLoading>}
             {!isLoadingCompany && company && <Company company={company} withMoreInfo/>}
 
-            {isLoadingMenu && <NotificationLoading>Loading menu ... </NotificationLoading>}
+            {isLoadingMenu && <NotificationLoading>{translate(TRANSLATION.NOTIFICATION.LOADING_MENU)}</NotificationLoading>}
 
             {!isLoadingMenu && !!menuItems?.length && (
                 <>

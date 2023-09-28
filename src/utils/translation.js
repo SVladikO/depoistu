@@ -265,31 +265,31 @@ export const TRANSLATION = {
     PAGE: {
         COMPANY_DETAILS: {
             TOP_TITLE: {
-                ua: "Деталі компанії",
+                ua: "Деталі закладу",
                 en: 'Company details'
             },
             MENU_PROBLEM: {
-                ua: 'Меню компанії відсутнє',
+                ua: 'Меню закладу відсутнє',
                 en: 'There is no menu in company'
             },
             COMPANY_DOESNT_EXIST: {
-                ua: 'Компанії не існує',
+                ua: 'Заклад не існує',
                 en: "Company doesn't exist"
             }
         },
         CUSTOMER_COMPANIES: {
             TOP_TITLE: {
-                ua: "Ваші компанії",
+                ua: "Ваші заклади",
                 en: 'Your companies'
             },
             WARNING: {
-                ua: "Не додавайте компанії заради розваги. Інакше будемо змушені заблокувати ваш аккаунт. Не витрачайте ваш і наш час дарма.",
+                ua: "Не додавайте заклади заради розваги. Інакше будемо змушені заблокувати ваш аккаунт. Не витрачайте ваш і наш час дарма.",
                 en: "Don't add companies for fun as we will block your account.  Don't waste your time and ours."
             },
             BUTTON: {
                 COMPANY: {
                     en: 'Company',
-                    ua: "Компанія"
+                    ua: "Заклад"
                 },
                 MENU: {
                     en: 'Menu',
@@ -297,21 +297,46 @@ export const TRANSLATION = {
                 },
                 ADD_COMPANY: {
                     en: 'Add company',
-                    ua: "Додати компанію"
+                    ua: "Додати заклад"
                 }
             }
         },
         ADD_COMPANY: {
             TOP_TITLE: {
                 en: 'Add company',
-                ua: "Додати компанію"
+                ua: "Додати заклад"
             },
             BUTTON: {
                 ADD_COMPANY: {
                     en: 'Add company',
-                    ua: "Додати компанію"
-                }
+                    ua: "Додати заклад"
+                },
+                ADD_MENU: {
+                    en: 'Add menu for this company',
+                    ua: "Додати меню"
+                },
+
             }
+        },
+        EDIT_COMPANY: {
+            TOP_TITLE: {
+                ua: "Редагувати заклад",
+                en: 'Edit company'
+            },
+            BUTTON: {
+                EDIT_COMPANY: {
+                    en: 'Save',
+                    ua: "Зберегти"
+                },
+                DELETE_COMPANY: {
+                    en: 'Delete company',
+                    ua: "Видалити заклад"
+                },
+                OPEN_COMPANIES_PAGE: {
+                    en: 'Open my companies page',
+                    ua: "Відкрити мої компанії"
+                }
+            },
         },
         EDIT_MENU: {
             TOP_TITLE: {
@@ -340,37 +365,6 @@ export const TRANSLATION = {
                     ua: "Зберегти зміни",
                 }
             },
-        },
-        EDIT_COMPANY: {
-            TOP_TITLE: {
-                ua: "Редагувати компанію",
-                en: 'Edit company'
-            },
-            BUTTON: {
-                EDIT_COMPANY: {
-                    en: 'Save',
-                    ua: "Зберегти"
-                },
-                DELETE_COMPANY: {
-                    en: 'Delete company',
-                    ua: "Видалити компанію"
-                }
-            },
-            NOTIFICATION: {
-                COMPANY_WAS_DELETED: {
-                    en: 'Company was deleted.',
-                    ua: "Компанію видалено."
-                },
-                OPEN_MY_COMPANIES_PAGE: {
-                    en: 'Open my companies page.',
-                    ua: "Відкрийте сторінку моїх компаній."
-                },
-                NO_COMPANY_BY_THIS_ID: {
-                    en: 'No company by this id',
-                    ua: "Немає компанії з цим ідентифікатором"
-                },
-
-            }
         },
         ADD_MENU_ITEM: {
             TOP_TITLE: {
@@ -547,7 +541,7 @@ export const TRANSLATION = {
         },
         ABOUT_US: {
             TOP_TITLE: {
-                ua: "Про нашу компанію",
+                ua: "Про наш заклад",
                 en: "About our company"
             },
             CONTENT: {
@@ -657,7 +651,7 @@ export const TRANSLATION = {
             },
             ACCOUNT_CONFIRMATION: {
                 ua: "Ви зареєстрованi?",
-                en: "You don’t have an account?"
+                en: "Do you have an account?"
             }
         },
         FORGOT_PASSWORD: {
@@ -695,7 +689,7 @@ export const TRANSLATION = {
             },
             STATUS_CLOSE: {
                 ua: "Закрито",
-                en: "Close"
+                en: "Closed"
             },
             TILL: {
                 ua: "до",
@@ -731,7 +725,7 @@ export const TRANSLATION = {
             },
             DELETE_COMPANY_QUESTION: {
                 en: "Are you sure you want to delete the company and menu? ",
-                ua: "Ви впевнені, що хочете видалити компанію та меню?"
+                ua: "Ви впевнені, що хочете видалити заклад та меню?"
             },
             ARE_YOU_SURE: {
                 en: "Are you sure? ",
@@ -740,6 +734,18 @@ export const TRANSLATION = {
         }
     },
     NOTIFICATION: {
+        UN_ABLE_MAKE_REQUEST: {
+            en: "Backend doesn't response. If you want to fix this problem faster you can message us. Email in footer. Sorry by this situation.",
+            ua: "Бекенд не відповідає. Якщо хочете швидше вирішити тех. проблему напишіть нам лист. Пошта знаходиться в низу сайту. Вибачаємось за дану ситуацію."
+        },
+        OPEN_MY_COMPANIES_PAGE: {
+            en: 'Open my companies page.',
+            ua: "Відкрийте сторінку моїх закладів."
+        },
+        NO_COMPANY_BY_THIS_ID: {
+            en: 'No company by this id',
+            ua: "Немає закладу з цим ідентифікатором"
+        },
         LOADING: {
             ua: "Завантаження ...",
             en: "Loading ..."
@@ -748,6 +754,66 @@ export const TRANSLATION = {
             ua: 'Нема зареєстрованих закладів',
             en: 'No companies in db yet'
         },
+        CLOSE_ALL_NOTIFICATIONS_BUTTON: {
+            ua: 'Закрити всі',
+            en: 'Close all'
+        },
+        MENU_ITEM: {
+            WAS_CREATED: {
+                en: 'Menu item was created.',
+                ua: "Позицію меню додано."
+            },
+            WAS_DELETED: {
+                en: 'Menu item was deleted.',
+                ua: "Позицію меню видалено."
+            },
+            WAS_UPDATED: {
+                en: 'Menu item was updated.',
+                ua: 'Позицію меню оновлено.'
+            },
+        },
+        CUSTOMER: {
+            UPDATED_PASSWORD: {
+                en: "Password was updated.",
+                ua: "Пароль оновлено."
+            }
+        },
+        COMPANY: {
+            WAS_DELETED: {
+                en: 'Company was deleted.',
+                ua: "Заклад видалено."
+            },
+            WAS_CREATED: {
+                ua: 'Заклад створено.',
+                en: 'Company was created.'
+            },
+            WAS_UPDATED: {
+                ua: 'Дані оновлено.',
+                en: 'Data was updated.'
+            },
+            CREATE_MENU_SUGGESTION: {
+                ua: 'Без меню заклад не побачать користувачі.',
+                en: "Customers won't see this company without menu."
+            },
+            LOADING_AVAILABLE_CITIES: {
+                en: "Loading available cities ...",
+                ua: "Загрузка доступних міст ..."
+            },
+
+            LOADING_COMPANY: {
+                en: "Loading company ...",
+                ua: "Загрузка закладу ..."
+            },
+        },
+        LOADING_AVAILABLE_COMPANIES: {
+            en: "Loading companies ...",
+            ua: "Загрузка закладів ..."
+        },
+        LOADING_MENU: {
+            en: "Loading menu ...",
+            ua: "Загрузка меню ..."
+        },
+
     },
 
     BOTTOM_MENU: {
@@ -810,7 +876,7 @@ export const TRANSLATION = {
         },
         FOR_COMPANY: {
             en: "For the company",
-            ua: "Для компанії"
+            ua: "Для закладу"
         },
         HOT_APPETIZERS: {
             en: "Hot appetizers",
