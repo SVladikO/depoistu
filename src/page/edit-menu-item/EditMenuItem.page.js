@@ -42,7 +42,7 @@ const EditMenuItemPage = () => {
             .finally(() => setIsLoadingUpdate(false))
     }
 
-    const deleteCompany = () => {
+    const deleteMenuItem = () => {
         setIsLoadingDelete(true)
 
         fetchData(BE_API.MENU_ITEM.DELETE(),
@@ -66,31 +66,28 @@ const EditMenuItemPage = () => {
                 onSubmit={onSubmit}
                 submitButtonTitle={translate(TRANSLATION.PAGE.EDIT_MENU_ITEM.BUTTON.EDIT_MENU_ITEM)}
             >
-                <>
-                    <RowSplitter height={'10px'}/>
-                    <PrimaryButton
-                        isWide
-                        type="submit"
-                        isLoading={isLoadingUpdate}
-                    >
-                        {translate(TRANSLATION.PAGE.ADD_MENU_ITEM.BUTTON.UPDATE_MENU_ITEM)}
-                    </PrimaryButton>
-                    <RowSplitter height={'25px'}/>
-                    <RowSplitter height={'25px'}/>
-                    <PrimaryButton
-                        isWide
-                        isLoading={isLoadingDelete}
-                        clickHandler={deleteCompany}
-                    >
-                        <RemoveIcon/>
-                        {translate(TRANSLATION.PAGE.EDIT_MENU_ITEM.BUTTON.DELETE_MENU_ITEM)}
-                    </PrimaryButton>
-                </>
-
+                <RowSplitter height={'10px'} />
+                <PrimaryButton
+                    isWide
+                    type="submit"
+                    isLoading={isLoadingUpdate}
+                    withPadding
+                >
+                    {translate(TRANSLATION.PAGE.ADD_MENU_ITEM.BUTTON.UPDATE_MENU_ITEM)}
+                </PrimaryButton>
             </MenuItemView>
+            <RowSplitter height={'50px'} />
+            <PrimaryButton
+                isWide
+                isLoading={isLoadingDelete}
+                clickHandler={deleteMenuItem}
+                withPadding
+            >
+                <RemoveIcon />
+                {translate(TRANSLATION.PAGE.EDIT_MENU_ITEM.BUTTON.DELETE_MENU_ITEM)}
+            </PrimaryButton>
         </>
     )
-
 }
 
 export default EditMenuItemPage;

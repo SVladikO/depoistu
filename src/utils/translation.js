@@ -754,6 +754,10 @@ export const TRANSLATION = {
             ua: 'Нема зареєстрованих закладів',
             en: 'No companies in db yet'
         },
+        CLOSE_ALL_NOTIFICATIONS_BUTTON: {
+            ua: 'Закрити всі',
+            en: 'Close all'
+        },
         MENU_ITEM: {
             WAS_CREATED: {
                 en: 'Menu item was created.',

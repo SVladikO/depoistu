@@ -52,6 +52,7 @@ const AddMenuItemPage = () => {
                         isWide
                         type="submit"
                         isLoading={isLoading}
+                        withPadding
                     >
                         {translate(TRANSLATION.PAGE.ADD_MENU_ITEM.BUTTON.ADD_MENU_ITEM)}
                     </PrimaryButton>

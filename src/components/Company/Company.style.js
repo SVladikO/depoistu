@@ -1,14 +1,13 @@
 import styled from "styled-components";
-import {COLOR, BORDER_RADIUS, SHADOW} from "utils/theme";
+import {COLOR, BORDER_RADIUS} from "utils/theme";
 
 export const Wrapper = styled.div`
-  ${SHADOW};
   border-radius: ${BORDER_RADIUS.COMPANY};
   height: auto;
   overflow: hidden;
   perspective: 1px;
   background-color: ${COLOR.ACCENT4};
-  margin: ${p => p.withMoreInfo ? '0 0 2px 0' : '0 0 10px 0'};
+  border-bottom: solid 1px ${COLOR.ACCENT1};
 
   .swiper-pagination-bullet {
     width: 10px;

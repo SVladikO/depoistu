@@ -45,7 +45,7 @@ const MenuItemView = ({initialValue, onSubmit, children}) => {
         >
             {({values, handleBlur, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                 <form onSubmit={handleSubmit}>
-                    <ContentContainer>
+                    <ContentContainer noShadow>
                         {/*{renderImages()}*/}
                         <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.CATEGORY)}</Label>
                         <Dropdown

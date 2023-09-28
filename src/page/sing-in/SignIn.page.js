@@ -60,7 +60,7 @@ const SignInPage = () => {
             >
                 {({values, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                     <form onSubmit={handleSubmit}>
-                        <ContentContainer>
+                        <ContentContainer noShadow>
                             <Input
                                 isRequired
                                 withCleaner
@@ -96,6 +96,7 @@ const SignInPage = () => {
                             isWide
                             type="submit"
                             isLoading={isLoading}
+                            withPadding
                         >
                             {translate(TRANSLATION.PAGE.SIGN_IN.TOP_TITLE)}
                         </PrimaryButton>

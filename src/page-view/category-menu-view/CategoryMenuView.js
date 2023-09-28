@@ -217,7 +217,7 @@ const CategoryMenuView = ({
                 <>
                     <RowSplitter height={'15px'}/>
                     <Link to={`${URL.ADD_MENU_ITEM}`}>
-                        <PrimaryButton isWide>
+                        <PrimaryButton isWide withPadding>
                             {translate(TRANSLATION.PAGE.EDIT_MENU.BUTTON.ADD_MENU_ITEM)}
                         </PrimaryButton>
                     </Link>

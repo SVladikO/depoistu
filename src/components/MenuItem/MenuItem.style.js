@@ -5,14 +5,15 @@ import {Flex} from "components/Flex/Flex.style";
 export const Wrapper = styled.div`
   ${SHADOW};
   position: relative;
-  width: 100%;
+  width: 96%;
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
   line-height: 19px;
   background: ${COLOR.ACCENT4};
-  border-radius: ${BORDER_RADIUS.SECOND};
-  margin: 0 0 2px;
+  border-radius: ${BORDER_RADIUS.MENU_ITEM};
+  border: solid 1px ${COLOR.ACCENT9};
+  margin: 0 auto 6px;
   svg{
     width: 25px;
     height: 25px;
@@ -67,7 +68,7 @@ export const FoodImage = styled.img`
 `;
 
 export const Title = styled.div`
-  ${FONT.SIZE_24};
+  ${FONT.SIZE_20};
   ${FONT.WEIGHT_700};
   color: ${COLOR.ACCENT1};
   margin: 0 5px 4px 0;
@@ -104,7 +105,7 @@ export const AdditionalDetails = styled(Flex)`
   ${FONT.WEIGHT_500};
   color: ${COLOR.ACCENT1};
   border-top: 1px solid ${p => p.isVisible ? COLOR.ACCENT8: COLOR.ACCENT4};
-  padding: 16px;
+  padding: 10px 16px;
 
   & > svg {
     fill: ${COLOR.ACCENT1};
