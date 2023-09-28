@@ -82,11 +82,11 @@ export const TRANSLATION = {
             ua: "Приклад"
         },
         PASSWORD_MUST_MUCH: {
-            en: "Password must much",
+            en: "Passwords must match",
             ua: "Паролі мають співпадати"
         },
         OLD_PASSWORD_MUST_MUCH: {
-            en: "Old password must much",
+            en: "Old password must match",
             ua: "Старий пароль має співпасти"
         },
         INVALID_EMAIL: {

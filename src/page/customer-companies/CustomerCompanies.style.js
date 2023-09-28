@@ -28,12 +28,12 @@ export const QRCodeMenuTitle = styled.div`
 `
 
 export const EditBar = styled.div`
-  margin: 0px -16px -20px -16px;
+  margin: 0 -16px -20px -16px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: stretch;
-  width: 100%;
+  width: calc(100% + 35px);
   padding: 20px 0 0 0;
 `;
 

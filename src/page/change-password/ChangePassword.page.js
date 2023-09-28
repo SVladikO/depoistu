@@ -51,7 +51,7 @@ const ChangePasswordPage = () => {
             >
                 {({values, handleBlur, touched, handleSubmit, handleChange, errors}) => (
                     <form onSubmit={handleSubmit}>
-                        <ContentContainer>
+                        <ContentContainer noShadow>
                             <Input
                                 withSwitcher
                                 value={values.oldPassword}

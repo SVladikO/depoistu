@@ -50,7 +50,7 @@ const SingUpPage = () => {
             >
                 {({values, handleBlur, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                     <form onSubmit={handleSubmit}>
-                        <ContentContainer>
+                        <ContentContainer noShadow>
                             <Input
                                 withCleaner
                                 isTouched={wasSubmitted || touched.name}
@@ -119,6 +119,7 @@ const SingUpPage = () => {
                             isWide
                             type="submit"
                             isLoading={isLoading}
+                            withPadding
                         >
                             {translate(TRANSLATION.PAGE.SING_UP.TOP_TITLE)}
                         </PrimaryButton>
