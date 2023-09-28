@@ -548,21 +548,9 @@ export const TRANSLATION = {
                 en: [
                     {
                         question: "Who we are?",
-                        answers: ["We are a team of soulmates from different places of Ukraine, who want to resolve common problem:",
-                            "Find cafes very fast."
+                        answers: ["We are team of soulmates from different places of Ukraine, who want to solve common problem:",
+                            "Easy find place where you can eat in Ukraine."
                         ]
-                    },
-                    {
-                        question: "What united us?",
-                        answers: ["Willingness to learn and create something new."]
-                    },
-                    {
-                        question: "When did we start?",
-                        answers: ["1.11.22"]
-                    },
-                    {
-                        question: "When was the first version released?",
-                        answers: ["1.09.23"]
                     },
                     {
                         question: "Main idea of the project",
@@ -574,24 +562,23 @@ export const TRANSLATION = {
                         question: "Cost",
                         answers: ["This set of functionality is free for visitors and businesses."]
                     },
-
+                    {
+                        question: "When did we start make this project?",
+                        answers: ["01.11.2022"]
+                    },
+                    {
+                        question: "When was the first version released?",
+                        answers: ["01.11.23"]
+                    },
+                    {
+                        question: "What united us?",
+                        answers: ["Willingness to learn and create something new."]
+                    },
                 ],
                 ua: [
                     {
                         question: "Хто ми?",
-                        answers: ["Ми команда однодумців з різних куточків України, які хочуть вирішити спільну проблему:", "Швидко знаходити заклади харчування."]
-                    },
-                    {
-                        question: "Що нас об`єднує?",
-                        answers: ["Бажання навчатись і створювати щось нове."]
-                    },
-                    {
-                        question: "Коли ми почали?",
-                        answers: ["1.11.22"]
-                    },
-                    {
-                        question: "Коли випустили першу версію?",
-                        answers: ["1.09.23"]
+                        answers: ["Ми команда однодумців з різних куточків України, які хочуть вирішити спільну проблему:", "Швидко знаходити заклади харчування в Україні."]
                     },
                     {
                         question: "Головна ідея проекту",
@@ -602,6 +589,18 @@ export const TRANSLATION = {
                     {
                         question: "Вартість",
                         answers: ["Даний набір функціоналу безкоштовний для користувачів та бізнесу."]
+                    },
+                    {
+                        question: "Коли ми почали розробляти проект?",
+                        answers: ["1 Листопада 2022 року"]
+                    },
+                    {
+                        question: "Коли випустили першу версію?",
+                        answers: ["1 Листопада 2023 року"]
+                    },
+                    {
+                        question: "Що нас об`єднує?",
+                        answers: ["Бажання навчатись і створювати щось нове."]
                     },
                 ],
             }
