@@ -80,7 +80,6 @@ const CategoryMenuView = ({
 
         const topOfElement = categoryTitleTag.offsetTop - CATEGORY_ROW_HEIGHT;
         window.scroll({top: topOfElement, behavior: "smooth"});
-
         enableScrollListener()
     }
 

@@ -24,11 +24,17 @@ export const MenuHeader = ({children}) => (
 
 export const CATEGORY_CLASSNAME = 'category_menu_row_wrapper'
 
+let myTimeout;
+
 export function enableScrollListener() {
-    setTimeout(() => {
+    // When we click few times on topCategories or subCategories we need to stop previous enable scroll
+    if (myTimeout) {
+        clearTimeout(myTimeout);
+    }
+
+    myTimeout = setTimeout(() => {
         const domElement = document.getElementsByClassName(CATEGORY_CLASSNAME)[0]
-        console.log('ENABLED SCROLL')
-        domElement.classList.remove('stop-scroll')
+        domElement.classList.remove('disable_verticall_scroll_listener')
     }, 2500);
 }
 
@@ -39,8 +45,8 @@ export function disableScrollListener() {
 
     //The only possible way to stop scroll listener when you triggerred scrollTo is adding class
     const domElement = document.getElementsByClassName(CATEGORY_CLASSNAME)[0]
-    domElement.classList.add('stop-scroll');
+    domElement.classList.add('disable_verticall_scroll_listener');
 }
 
-export const getIsScrollDisabled = () => !!document.getElementsByClassName("stop-scroll").length;
+export const getIsScrollDisabled = () => !!document.getElementsByClassName("disable_verticall_scroll_listener").length;
 
