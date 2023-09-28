@@ -53,7 +53,7 @@ const ForgetPasswordPage = () => {
                             errorMessage={errors.email}
                         />
                     </ContentContainer>
-                    <PrimaryButton type="submit" isWide>
+                    <PrimaryButton type="submit" isWide withPadding>
                         {translate(TRANSLATION.PAGE.FORGOT_PASSWORD.SUBMIT_BUTTON)}
                     </PrimaryButton>
                 </form>

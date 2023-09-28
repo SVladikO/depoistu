@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import {BORDER_RADIUS, COLOR, rotationAnimation, FONT} from "utils/theme";
 
+export const ButtonWrapper = styled.div`
+    padding: ${p => p.withPadding ? '0 16px': 0};
+  `;
 export const button = styled.button`
   height: 50px;
   padding: 10px 24px;
@@ -8,7 +11,7 @@ export const button = styled.button`
   justify-content: center;
   align-items: center;
   ${FONT.SIZE_20};
-  
+    
   border-radius: ${BORDER_RADIUS.BUTTON};
   ${p => p.isLoading && 'opacity: 0.7'};
   ${p => p.minWidth && `min-width: ${p.minWidth}`};

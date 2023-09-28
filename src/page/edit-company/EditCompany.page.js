@@ -131,13 +131,15 @@ const EditCompany = () => {
             isWide
             type="submit"
             isLoading={isLoadingUpdate}
+            withPadding
         >
             {translate(TRANSLATION.PAGE.EDIT_COMPANY.BUTTON.EDIT_COMPANY)}
         </PrimaryButton>
     );
 
     const DeleteCompanyButton = () => (
-        <SecondaryButton isWide isLoading={isLoadingDelete} type="button" clickHandler={openDeletePopup}><RemoveIcon/>
+        <SecondaryButton isWide isLoading={isLoadingDelete} type="button" clickHandler={openDeletePopup} withPadding>
+            <RemoveIcon/>
             {translate(TRANSLATION.PAGE.EDIT_COMPANY.BUTTON.DELETE_COMPANY)}
         </SecondaryButton>
     )
