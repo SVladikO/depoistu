@@ -24,8 +24,6 @@ export const CloseAll = styled.button`
   position: relative;
   z-index: 10;
   height: 40px;
-  animation: myfirst 3s;
-  transition: 0.5s ease-in;
   color: ${COLOR.ACCENT4};
   background: ${hexToRgbA('#000', 0.85)};
   width: 100%;
