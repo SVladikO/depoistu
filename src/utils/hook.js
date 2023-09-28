@@ -71,7 +71,10 @@ export const useRedirectToSettingPage = () => {
 }
 export const useScrollUp = () => {
     useEffect(() => {
-        window.scrollTo(0, 0)
+        window.scrollTo({
+            top: -100,
+            behavior: "smooth",
+        })
     }, [])
 };
 
