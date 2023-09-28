@@ -45,7 +45,7 @@ const AddCompany = () => {
 
     if (wasCompanyCreated) {
         return (
-            <ContentContainer>
+            <ContentContainer noShadow>
                 <PrimaryButton
                     isWide
                     clickHandler={() => {

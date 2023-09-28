@@ -89,7 +89,7 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
             {({values, touched, handleBlur, setFieldValue, handleSubmit, handleChange, errors}) => (
                 <form onSubmit={handleSubmit}>
                     {/*{renderCompanyPhotos(initialValues.photos, pictures => setFieldValue('photos', pictures))}*/}
-                    <ContentContainer>
+                    <ContentContainer noShadow>
                         <Input
                             name='name'
                             value={values.name}
