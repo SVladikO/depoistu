@@ -54,7 +54,7 @@ const EditCompany = () => {
 
     if (wasCompanyDeleted) {
         return (
-            <ContentContainer>
+            <ContentContainer noShadow>
                 <Link to={URL.CUSTOMER_COMPANIES}>
                     <PrimaryButton isWide>
                         Open my companies page

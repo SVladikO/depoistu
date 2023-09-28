@@ -39,7 +39,7 @@ const ForgetPasswordPage = () => {
         >
             {({values, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                 <form onSubmit={handleSubmit}>
-                    <ContentContainer>
+                    <ContentContainer noShadow>
                         <Input
                             labelName={translate(TRANSLATION.INPUT_LABEL.CUSTOMER.EMAIL)}
                             withCleaner
