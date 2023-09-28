@@ -70,7 +70,7 @@ const Footer = () => {
                 <Support>
                     <a href="mailto:support@depoistu.com">support@depoistu.com</a>
                 </Support>
-                <LocationInfo>1.11.2023 Kyiv</LocationInfo>
+                <LocationInfo>1.11.2023 Ukraine</LocationInfo>
             </Wrapper>
         </>
     );
