@@ -23,10 +23,10 @@ export const SecondaryButtonWrapper = styled(button)`
 `;
 
 export const SecondaryButton = (props) => {
-    const {children, isLoading, withPadding=false} = props
+    const {children, isLoading, isDisabled, withPadding=false} = props;
     return (
         <ButtonWrapper withPadding={withPadding}>
-            <SecondaryButtonWrapper {...props} onClick={props.clickHandler}>
+            <SecondaryButtonWrapper isDisabled={isDisabled}  disabled={isLoading} {...props} onClick={props.clickHandler}>
                 {isLoading && <LoadingIcon className="loading"/>}
                 {children}
             </SecondaryButtonWrapper>

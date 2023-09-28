@@ -23,6 +23,7 @@ export const PrimaryButton = ({clickHandler, children, isLoading, isWide, isDisa
                 isDisabled={isDisabled}
                 isPrimary
                 isLoading={isLoading}
+                disabled={isLoading}
             >
                 {isLoading && <LoadingIcon className="loading"/>}
                 {children}
