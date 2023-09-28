@@ -1,4 +1,4 @@
-import {Wrapper, Employee, Photo, FullName, Position, EmployeeView, EmployeeInfo, Border, Socials} from "./OurTeam.page.style";
+import {Wrapper, Employee, Photo, FullName, Position, EmployeeView, EmployeeInfo, Socials} from "./OurTeam.page.style";
 import Vlad_imgSrc from 'assets/images/team/Vlad.png';
 import David_imgSrc from 'assets/images/team/David.png';
 import Irina_imgSrc from 'assets/images/team/Irina.png';
