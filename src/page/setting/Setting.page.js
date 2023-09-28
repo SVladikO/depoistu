@@ -200,8 +200,8 @@ const SettingPage = () => {
                     />
                     <SettingMenuRow
                         icon={RocketIcon}
-                        title={packageInfo.version}
-                        href={URL.SETTING}
+                        title={`${translate(TR.PAGE.SETTINGS.MENU_ROW.VERSION)} ${packageInfo.version}`}
+                        href={'#'}
                     />
                     {/*<SettingMenuRow icon={LinkedAccountIcon} title={translate(TR.PAGE.SETTINGS.MENU_ROW.LINKED_ACCOUNTS)} href='/catalog' label='Facebook, go ...'/>*/}
                 </AccountSettings>
