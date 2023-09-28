@@ -62,7 +62,7 @@ const EditMenuItemPage = () => {
         <>
             <RowSplitter height={'15px'}/>
             <MenuItemView
-                initialValue={menuItemCandidateToEdit || {}}
+                defaultInitialValue={menuItemCandidateToEdit || {}}
                 onSubmit={onSubmit}
                 submitButtonTitle={translate(TRANSLATION.PAGE.EDIT_MENU_ITEM.BUTTON.EDIT_MENU_ITEM)}
             >

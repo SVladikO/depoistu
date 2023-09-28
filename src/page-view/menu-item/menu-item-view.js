@@ -11,9 +11,10 @@ import {translate, TRANSLATION} from "utils/translation";
 
 const EditMenuItemSchema = Yup.object().shape(validation.menuItem);
 
-const MenuItemView = ({initialValue, onSubmit, children}) => {
+const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
     const [wasSubmitted, setWasSubmitted] = useState(false);
-    const [imageURL] = useState(initialValue.imageURL);
+    const [imageURL] = useState(defaultInitialValue.imageURL);
+    const [initialValues, setInitValues] = useState(defaultInitialValue);
     const options  = useMemo(() => CATEGORY_MAPPER_AS_ARRAY.map(({id,title}) =>
         ({
             value: id,
@@ -36,11 +37,13 @@ const MenuItemView = ({initialValue, onSubmit, children}) => {
 
     return (
         <Formik
-            initialValues={initialValue}
+            enableReinitialize
+            initialValues={initialValues}
             validationSchema={EditMenuItemSchema}
             onSubmit={values => {
                 setWasSubmitted(true);
                 onSubmit(values)
+                setInitValues({categoryId: values.categoryId, ...defaultInitialValue})
             }}
         >
             {({values, handleBlur, touched, setFieldValue, handleSubmit, handleChange, errors}) => (

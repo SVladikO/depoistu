@@ -9,22 +9,21 @@ import {translate, TRANSLATION} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 import {publishNotificationEvent} from "utils/event";
 
+const defaultInitialValue = {
+    name: '',
+    price: '',
+    description: '',
+    cookingTime: '',
+    size: '',
+    imageUrl: ''
+}
+
 const AddMenuItemPage = () => {
     useRedirectToSettingPage();
     useScrollUp();
     const companyId = LocalStorage.get(LOCAL_STORAGE_KEY.COMPANY_ID_FOR_EDIT_MENU);
 
     const [isLoading, setIsLoading] = useState(false);
-
-    const initialValue = {
-        name: '',
-        price: '',
-        categoryId: 1,
-        description: '',
-        cookingTime: '',
-        size: '',
-        imageUrl: ''
-    }
 
     const onSubmit = values => {
         setIsLoading(true);
@@ -43,11 +42,11 @@ const AddMenuItemPage = () => {
     return (
         <>
             <MenuItemView
-                initialValue={initialValue}
+                defaultInitialValue={defaultInitialValue}
                 onSubmit={onSubmit}
             >
                 <>
-                    <RowSplitter height="10px" />
+                    <RowSplitter height="10px"/>
                     <PrimaryButton
                         isWide
                         type="submit"
