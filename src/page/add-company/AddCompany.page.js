@@ -36,8 +36,8 @@ const AddCompany = () => {
                 setWasCompanyCreated(true);
                 setNewCompanyId(res.body.insertId);
                 LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES)
-                publishNotificationEvent.success("Company was created");
-                publishNotificationEvent.warning("Without menu this company won’t be shown in search")
+                publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.COMPANY.WAS_CREATED));
+                publishNotificationEvent.warning(translate(TRANSLATION.NOTIFICATION.COMPANY.CREATE_MENU_SUGGESTION))
             })
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))
             .finally(() => setIsLoading(false))
@@ -52,7 +52,7 @@ const AddCompany = () => {
                         LocalStorage.set(LOCAL_STORAGE_KEY.COMPANY_ID_TO_EDIT_MENU_PAGE, newCompanyId)
                         navigate(URL.EDIT_MENU)
                     }}
-                >Add menu for this company</PrimaryButton>
+                >{translate(TRANSLATION.PAGE.ADD_COMPANY.BUTTON.ADD_MENU)}</PrimaryButton>
             </ContentContainer>
         )
     }

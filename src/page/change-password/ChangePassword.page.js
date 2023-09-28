@@ -32,7 +32,7 @@ const ChangePasswordPage = () => {
         fetchData(BE_API.CUSTOMER.CHANGE_PASSWORD(), reqObj)
             .then(res => {
                 LocalStorage.set(LOCAL_STORAGE_KEY.CUSTOMER, res.body);
-                publishNotificationEvent.success("Password was updated.")
+                publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.CUSTOMER.UPDATED_PASSWORD))
             })
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))
             .finally(() => setIsLoading(false));
