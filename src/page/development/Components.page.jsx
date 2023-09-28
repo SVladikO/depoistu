@@ -63,6 +63,8 @@ import {
     CATEGORY_HOT_DRINKS,
     CATEGORY_KITCHEN,
 } from "../../utils/category";
+import {AVAILABLE_DOMAINS, BE_DOMAIN} from "../../utils/config";
+import {fetchData} from "../../utils/fetch";
 
 const colors = Object.keys(COLOR).map(key =>
     ({title: key, component: <ColorCircle key={key} bg={COLOR[key]}/>, value: COLOR[key], width: '50px'})
@@ -177,48 +179,58 @@ const componentsGroup1 = [
     [
         {title: 'Label', component: <Label>Change Password</Label>},
         {
-            title: 'Input', component: <Input />
+            title: 'Input', component: <Input/>
         },
         {
-            title: 'Input {labelName}', component: <Input labelName={'Label'} />
+            title: 'Input {labelName}', component: <Input labelName={'Label'}/>
         },
         {
-            title: 'Input {labelName, withCleaner, isRequired} ', component: <Input labelName={'Label'} withCleaner value={111} isRequired/>
+            title: 'Input {labelName, withCleaner, isRequired} ',
+            component: <Input labelName={'Label'} withCleaner value={111} isRequired/>
         },
         {
-            title: 'Input {labelName, withSwitcher}', component: <Input labelName={'Label name'} value={1111} withSwitcher />
+            title: 'Input {labelName, withSwitcher}',
+            component: <Input labelName={'Label name'} value={1111} withSwitcher/>
         },
         {
             title: 'Input  {labelName, Icon, isRequired}',
-            component: <Input Icon={MailIcon} isRequired value="jodode@mail.com" withCleaner labelName={'Label name'}  />
+            component: <Input Icon={MailIcon} isRequired value="jodode@mail.com" withCleaner labelName={'Label name'}/>
         },
         {
             title: 'Input  {labelName, errorMessage, isRequired}',
-            component: <Input isTouched isRequired errorMessage={'Max length 12.'} value="+380970663322" labelName={'Label'}/>
+            component: <Input isTouched isRequired errorMessage={'Max length 12.'} value="+380970663322"
+                              labelName={'Label'}/>
         },
         {
             title: 'Input  {labelName, Icon, errorMessage, isRequired}',
-            component: <Input isTouched Icon={MailIcon} isRequired errorMessage={'Max length 12.'} value="+380970663322" labelName={'Label'}/>
+            component: <Input isTouched Icon={MailIcon} isRequired errorMessage={'Max length 12.'} value="+380970663322"
+                              labelName={'Label'}/>
         },
     ],
     [
         {
             title: 'CityInput',
-            component: <CityInput withIcon Icon={LocationIcon} value={'Vinnica'} />
+            component: <CityInput withIcon Icon={LocationIcon} value={'Vinnica'}/>
         },
         {
             title: 'CityInput {labelName}',
-            component: <CityInput withIcon  labelName={'Label'} Icon={LocationIcon} value={'Vinnica'} />
+            component: <CityInput withIcon labelName={'Label'} Icon={LocationIcon} value={'Vinnica'}/>
         },
         {
-            title: 'FromToTime', component: <FromToTime prefix='mon' dayName='Mon' values={{}} />
+            title: 'FromToTime', component: <FromToTime prefix='mon' dayName='Mon' values={{}}/>
         },
         {
             title: 'FromToTime',
-            component: <FromToTime prefix='mon' dayName='Mon' values={{monIsChecked: true}} />
+            component: <FromToTime prefix='mon' dayName='Mon' values={{monIsChecked: true}}/>
         },
-        {title: 'Textarea', component: <Textarea labelName={'Textarea'} isRequired withCleaner placeholder={'Write here'}/>},
-        {title: 'Textarea withCleaner', component: <Textarea labelName={'Textarea'} withCleaner value={222} placeholder={'Write here'}/>},
+        {
+            title: 'Textarea',
+            component: <Textarea labelName={'Textarea'} isRequired withCleaner placeholder={'Write here'}/>
+        },
+        {
+            title: 'Textarea withCleaner',
+            component: <Textarea labelName={'Textarea'} withCleaner value={222} placeholder={'Write here'}/>
+        },
     ]
 ];
 const componentsGroup2 = [
@@ -472,6 +484,7 @@ const componentsGroup3 = [
 // document.body.style.backgroundColor = '#d8d8d8'
 
 function ComponentsPage() {
+    const [dbMode, setDBMode] = useState('')
     const setWhiteBackground = useCallback(() => document.body.style.background = '#ffffff', []);
     const setGreyBackground = useCallback(() => document.body.style.background = '#d8d8d8', []);
     const setBlueBackground = useCallback(() => document.body.style.background = '#001993', []);
@@ -545,6 +558,32 @@ function ComponentsPage() {
         document.body.style.background = '#ffffff'
     }, [])
 
+    const renderLinks = () => {
+        fetchData(`${BE_DOMAIN}/db-mode`)
+            .then(res => setDBMode(res.body.mode.toUpperCase()))
+
+        return (
+            <Wrapper>
+                <Column>
+                    <h3>BE domain: {BE_DOMAIN}</h3>
+                    <h3>DB move: {dbMode}</h3>
+                </Column>
+                <Column>
+                    <h3>FE remote domains:</h3>
+                    <a href="https://depoistu.com">PRODUCTION</a>----
+                    <a href="https://depoistu-stage.onrender.com">STAGE</a>----
+                    <a href="https://depoistu-develop.onrender.com">DEVELOP</a>
+                </Column>
+                <Column>
+                    <h3>BE remote domains::</h3>
+                    <a href={AVAILABLE_DOMAINS[1].url}>{AVAILABLE_DOMAINS[1].name.toUpperCase()}</a>---
+                    <a href={AVAILABLE_DOMAINS[2].url}>{AVAILABLE_DOMAINS[2].name.toUpperCase()}</a>---
+                    <a href={AVAILABLE_DOMAINS[3].url}>{AVAILABLE_DOMAINS[3].name.toUpperCase()}</a>
+                </Column>
+            </Wrapper>
+        )
+    }
+
     return (
         <div>
             <Header>
@@ -560,6 +599,7 @@ function ComponentsPage() {
                 {renderRows(colors)}
             </Header>
             <RowSplitter height="140px"/>
+            {renderLinks()}
             {renderGroup(componentsGroup1)}
             {renderGroup(componentsGroup2)}
             {renderGroup(componentsGroup3)}

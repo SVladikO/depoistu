@@ -14,7 +14,7 @@ import {LocalStorage, LOCAL_STORAGE_KEY} from "./utils/localStorage";
 const container = document.getElementById('root');
 const root = createRoot(container);
 
-devManagement()
+devManagement();
 
 store.subscribe(() => {
     LocalStorage.set(LOCAL_STORAGE_KEY.REDUX_STATE, store.getState());
