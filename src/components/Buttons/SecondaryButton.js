@@ -18,6 +18,9 @@ export const SecondaryButtonWrapper = styled(button)`
     height: 20px;
     width: 20px;
     margin-right: 10px;
+  }
+  
+  & > svg.loading {
     ${p => p.isLoading && css`animation: ${rotationAnimation} 1s infinite linear;`};
   }
 `;
