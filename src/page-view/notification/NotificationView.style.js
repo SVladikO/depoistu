@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import {hexToRgbA} from "utils/theme";
+import {BORDER_RADIUS, COLOR, FONT, hexToRgbA} from "utils/theme";
 
 
 export const Wrapper = styled.div`
-  padding: 15px 6px 0;
+  padding: 16px 16px;
   position: absolute;
   top: 0;
   width: 100%;
@@ -16,4 +16,17 @@ export const Wrapper = styled.div`
     0%   {top: -300px;}
     100% {top: 0;}
   }
+`;
+
+export const CloseAll = styled.button`
+  ${FONT.SIZE_18};
+  display: block;
+  position: relative;
+  z-index: 10;
+  height: 40px;
+  animation: myfirst 3s;
+  transition: 0.5s ease-in;
+  color: ${COLOR.ACCENT4};
+  background: ${hexToRgbA('#000', 0.85)};
+  width: 100%;
 `;

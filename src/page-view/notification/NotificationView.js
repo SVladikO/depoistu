@@ -1,11 +1,12 @@
 import {useEffect, useState} from "react";
 
-import {Wrapper} from './NotificationView.style';
+import {Wrapper, CloseAll} from './NotificationView.style';
 
 import {NotificationFactory, FixedWrapper} from "components";
 
 import {EVENT_TYPE} from "utils/event";
 import {getRandom} from "utils/utils";
+import {TRANSLATION,translate} from "../../utils/translation";
 
 const NotificationView = () => {
     const [notifications, setNotifications] = useState([]);
@@ -24,18 +25,24 @@ const NotificationView = () => {
         return;
     }
 
+    function closeAllNotifications(){
+        setNotifications([]);
+    }
+
     const deleteNotification = key => () => {
         setNotifications(notifications.filter(n => n.key !== key))
     }
 
     return (
         <FixedWrapper fixTop>
+
             <Wrapper>
                 {notifications.map(n => (
                     <NotificationFactory key={n.key} type={n.type}
                                          onClose={deleteNotification(n.key)}>{n.message}</NotificationFactory>
                 ))
                 }
+                {notifications && <CloseAll onClick={closeAllNotifications}>{translate(TRANSLATION.NOTIFICATION.CLOSE_ALL_NOTIFICATIONS_BUTTON)}</CloseAll>}
             </Wrapper>
         </FixedWrapper>
     )
