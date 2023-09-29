@@ -184,6 +184,12 @@ const CategoryMenuView = ({
             })
         })
 
+    useEffect(() => {
+        if (!!menuItems?.length) {
+            setSelectedTopCategoryId(0)
+        }
+    })
+
     return (
         <>
             <MenuHeader className="menu-header">
