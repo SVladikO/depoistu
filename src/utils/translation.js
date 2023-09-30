@@ -476,6 +476,10 @@ export const TRANSLATION = {
                     ua: "Мова",
                     en: "Language"
                 },
+                VERSION: {
+                    ua: 'Версія',
+                    en: 'Version'
+                },
                 LINKED_ACCOUNTS: {
                     ua: "Пов'язанi Аккаути",
                     en: "Linked Accounts"

@@ -22,6 +22,7 @@ import {ReactComponent as AboutUsIcon} from "assets/icons/about_us.svg";
 // import {ReactComponent as LinkedAccountIcon} from 'icons/linked_account.svg';
 import {ReactComponent as StoreIcon} from 'assets/icons/house.svg';
 import {ReactComponent as TeamIcon} from "assets/icons/team.svg";
+import {ReactComponent as RocketIcon} from "assets/icons/rocket.svg";
 // import {ReactComponent as ConditionsIcon} from 'icons/list.svg';
 // import {ReactComponent as HelpIcon} from 'icons/chat.svg';
 
@@ -45,6 +46,8 @@ import {BE_API, fetchData} from "utils/fetch";
 import {TRANSLATION as TR, translate} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 import {publishNotificationEvent} from "utils/event";
+import packageInfo from '../../../package.json';
+
 
 const SettingPage = () => {
     useScrollUp();
@@ -194,6 +197,11 @@ const SettingPage = () => {
                         icon={TeamIcon}
                         title={translate(TR.PAGE.OUR_TEAM.TOP_TITLE)}
                         href={URL.OUR_TEAM}
+                    />
+                    <SettingMenuRow
+                        icon={RocketIcon}
+                        title={`${translate(TR.PAGE.SETTINGS.MENU_ROW.VERSION)} ${packageInfo.version}`}
+                        href={'#'}
                     />
                     {/*<SettingMenuRow icon={LinkedAccountIcon} title={translate(TR.PAGE.SETTINGS.MENU_ROW.LINKED_ACCOUNTS)} href='/catalog' label='Facebook, go ...'/>*/}
                 </AccountSettings>
