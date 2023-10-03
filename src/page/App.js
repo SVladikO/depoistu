@@ -16,15 +16,10 @@ const App = () => {
             {showIntro && (
                 <Popup.Bottom onClose={closeIntroPopup}>
                     <ContentContainer noPadding noShadow>
-                        <Text22>
-                            {translate(TRANSLATION.INTRODUCTION.INTRODUCTION_MAIN)}
-                        </Text22>
-                        <Text22>
-                            {translate(TRANSLATION.INTRODUCTION.INTRODUCTION_HELP)}
-                        </Text22>
-                        <Text22>
-                            {translate(TRANSLATION.INTRODUCTION.INTRODUCTION_TELL)}
-                        </Text22>
+                        {
+                            translate(TRANSLATION.INTRODUCTION.TEXT)
+                                .map(text => <Text22 key={text}>{text}</Text22>)
+                        }
                         <PrimaryButton isWide clickHandler={closeIntroPopup}>
                             {translate(TRANSLATION.INTRODUCTION.BUTTON)}
                         </PrimaryButton>
