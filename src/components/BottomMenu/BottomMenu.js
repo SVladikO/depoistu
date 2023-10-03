@@ -5,7 +5,7 @@ import {Wrapper, MenuItem, Label} from './BottomMenu.style';
 import {ReactComponent as HomeIcon} from "assets/icons/home.svg";
 import {ReactComponent as MenuIcon} from "assets/icons/menu.svg";
 import {ReactComponent as BookMarkIcon} from "assets/icons/book_mark.svg";
-import {ReactComponent as UserIcon} from "assets/icons/user.svg";
+import {ReactComponent as SettingIcon} from "assets/icons/setting.svg";
 // import {ReactComponent as HomeIcon} from "icons/menu.svg";
 // import {OrderIconWithCounter} from 'index'
 
@@ -54,8 +54,8 @@ const BottomMenu = () => {
                 selected={isSelected(ROUTER.SETTING.URL)}
                 onClick={() => navigate(ROUTER.SETTING.URL)}
             >
-                <UserIcon/>
-                <Label>{translate(TRANSLATION.BOTTOM_MENU.ACCOUNT_TAB)}</Label>
+                <SettingIcon/>
+                <Label>{translate(TRANSLATION.BOTTOM_MENU.SETTINGS)}</Label>
             </MenuItem>
         </Wrapper>
     );

@@ -617,6 +617,12 @@ export const TRANSLATION = {
                 en: "Our Team"
             }
         },
+        FAVORITE: {
+            TOP_TITLE: {
+                ua: "Улюблені",
+                en: "Favorite"
+            },
+        },
         SEARCH: {
             TOP_TITLE: {
                 ua: "Пошук",
@@ -834,10 +840,9 @@ export const TRANSLATION = {
             ua: "Улюблені",
             en: "Favorite"
         },
-
-        ACCOUNT_TAB: {
-            ua: "Кабинет",
-            en: "Account"
+        SETTINGS: {
+            ua: "Системні",
+            en: "Settings"
         },
     },
     TOP_CATEGORIES: {

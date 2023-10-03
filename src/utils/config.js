@@ -79,7 +79,11 @@ export const URL = {
 export const ROUTER = {
     // ORDER_REVIEW: {URL: '/order',  TITLE: 'Order review', page: OrderPage, showBottomMenu: true},
     // ORDER_HISTORY: {URL: '/history',  TITLE: 'Order History', page: OrderHistoryPage, subHeader: HistoryTabBar, showBottomMenu: true},
-    FAVORITE: {URL: URL.FAVORITE,  TITLE: 'Favorite', page: () => {}},
+    FAVORITE: {
+        URL: URL.FAVORITE,
+        TITLE: translate(TRANSLATION.PAGE.FAVORITE.TOP_TITLE),
+        page: () => {}
+    },
     MENU: {URL: '/menu',  TITLE: 'Favorite Cart', page: () => {}},
     // Profile: {URL: '/Profile',  TITLE: 'Profile', page: () => {}},
     // USER_ACCOUNT = {URL: '/user_account',  TITLE: 'USER_ACCOUNT', page: () => {}, showBottomMenu: true, BACK_URL: ROUTER.SETTING.URL};
