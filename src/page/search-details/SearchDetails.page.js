@@ -32,9 +32,9 @@ const SearchDetailsPage = () => {
     const [menuItems, setMenuItems] = useLocalStorage(LOCAL_STORAGE_KEY.SEARCH_DETAILS_MENU);
 
     useEffect(() => {
-        // if (company && company.id !== companyId) {
+        if (companyId) {
             dispatch(addCompanyIdForSearchDetailsPage(companyId))
-        // }
+        }
     })
 
     useEffect(() => {
