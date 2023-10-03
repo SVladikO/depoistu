@@ -822,9 +822,9 @@ export const TRANSLATION = {
     },
 
     BOTTOM_MENU: {
-        SEARCH_TAB: {
-            ua: "Пошук",
-            en: "Search"
+        MAIN: {
+            ua: "Головна",
+            en: "Main"
         },
         ACCOUNT_TAB: {
             ua: "Кабинет",
