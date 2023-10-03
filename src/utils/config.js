@@ -56,11 +56,12 @@ export const BE_DOMAIN = SELECTED_BE_DOMAIN.url;
 
 export const URL = {
     SEARCH: '/',
-    SEARCH_DETAILS: '/',
+    SEARCH_DETAILS: '/company-details',
     MENU: '/menu',
     SING_IN: '/sign-in',
     SING_UP: '/sing-up',
     SETTING: '/setting',
+    FAVORITE: '/favorite',
     CHANGE_PASSWORD: '/change-password',
     FORGOT_PASSWORD: '/forgot-password',
     ABOUT_US: '/about-us',
@@ -78,7 +79,7 @@ export const URL = {
 export const ROUTER = {
     // ORDER_REVIEW: {URL: '/order',  TITLE: 'Order review', page: OrderPage, showBottomMenu: true},
     // ORDER_HISTORY: {URL: '/history',  TITLE: 'Order History', page: OrderHistoryPage, subHeader: HistoryTabBar, showBottomMenu: true},
-    FAVORITE: {URL: '/Favorite',  TITLE: 'Favorite Cart', page: () => {}},
+    FAVORITE: {URL: URL.FAVORITE,  TITLE: 'Favorite', page: () => {}},
     MENU: {URL: '/menu',  TITLE: 'Favorite Cart', page: () => {}},
     // Profile: {URL: '/Profile',  TITLE: 'Profile', page: () => {}},
     // USER_ACCOUNT = {URL: '/user_account',  TITLE: 'USER_ACCOUNT', page: () => {}, showBottomMenu: true, BACK_URL: ROUTER.SETTING.URL};
@@ -90,7 +91,7 @@ export const ROUTER = {
     },
     SEARCH_DETAILS: {
         URL: URL.SEARCH_DETAILS,
-        PARAMS: 'company/:companyId',
+        PARAMS: '/:companyId',
         TITLE: translate(TRANSLATION.PAGE.COMPANY_DETAILS.TOP_TITLE),
         page: SearchDetailsPage,
         showBottomMenu: true,

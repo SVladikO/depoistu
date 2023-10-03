@@ -9,8 +9,9 @@ import {ReactComponent as UserIcon} from "assets/icons/user.svg";
 // import {ReactComponent as HomeIcon} from "icons/menu.svg";
 // import {OrderIconWithCounter} from 'index'
 
-import {ROUTER} from "utils/config";
+import {ROUTER, URL} from "utils/config";
 import {TRANSLATION, translate} from "utils/translation";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 
 const BottomMenu = () => {
     const navigate = useNavigate();
@@ -33,18 +34,21 @@ const BottomMenu = () => {
                 <Label>{translate(TRANSLATION.BOTTOM_MENU.MAIN)}</Label>
             </MenuItem>
             <MenuItem
-                selected={isSelected(ROUTER.SEARCH_DETAILS.URL)}
-                onClick={() => navigate(ROUTER.SEARCH_DETAILS.URL)}
+                selected={isSelected(`${URL.SEARCH_DETAILS}/${LocalStorage.get(LOCAL_STORAGE_KEY.SEARCH_DETAILS_SELECTED_COMPANY_ID)}`)}
+                onClick={() => {
+                    const companyId = LocalStorage.get(LOCAL_STORAGE_KEY.SEARCH_DETAILS_SELECTED_COMPANY_ID)
+                    navigate(`${ROUTER.SEARCH_DETAILS.URL}/${companyId}`)
+                }}
             >
                 <MenuIcon/>
-                <Label>Menu</Label>
+                <Label>{translate(TRANSLATION.BOTTOM_MENU.MENU)}</Label>
             </MenuItem>
             <MenuItem
-                selected={isSelected(ROUTER.FAVORITE.URL)}
+                selected={isSelected(URL.FAVORITE)}
                 onClick={() => navigate(ROUTER.FAVORITE.URL)}
             >
                 <BookMarkIcon/>
-                <Label>Favorite</Label>
+                <Label>{translate(TRANSLATION.BOTTOM_MENU.FAVORITE)}</Label>
             </MenuItem>
             <MenuItem
                 selected={isSelected(ROUTER.SETTING.URL)}

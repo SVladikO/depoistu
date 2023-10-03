@@ -8,7 +8,7 @@ import {Company, NotificationLoading, PrimaryButton, NotificationTDB} from "comp
 import CategoryMenuView from 'page-view/category-menu-view/CategoryMenuView'
 
 import {ROUTER} from "utils/config";
-import {useScrollUp} from "utils/hook";
+import {useLocalStorage, useScrollUp} from "utils/hook";
 import {BE_API, fetchData} from "utils/fetch";
 import {stopLoadingWithDelay} from "utils/utils";
 import {publishNotificationEvent} from "utils/event";
@@ -21,12 +21,17 @@ const SearchDetailsPage = () => {
     let companyId = +useParams().companyId;
     const [isLoadingMenu, setIsLoadingMenu] = useState(false);
     const [isLoadingCompany, setIsLoadingCompany] = useState(false);
-    const [company, setCompany] = useState()
-    const [menuItems, setMenuItems] = useState();
+    const [company, setCompany] = useLocalStorage(LOCAL_STORAGE_KEY.SEARCH_DETAILS_COMPANY)
+    const [menuItems, setMenuItems] = useLocalStorage(LOCAL_STORAGE_KEY.SEARCH_DETAILS_MENU);
 
     useEffect(() => {
+        if (company) {
+            return
+        }
+
         setIsLoadingCompany(true)
         const companyLoadingDelay = stopLoadingWithDelay([() => setIsLoadingCompany(false)])
+
 
         fetchData(BE_API.COMPANY.GET_BY_COMPANY_ID(companyId))
             .then(res => {
@@ -40,6 +45,9 @@ const SearchDetailsPage = () => {
     }, [companyId])
 
     useEffect(() => {
+        if (menuItems) {
+            return
+        }
         setIsLoadingMenu(true);
         const menuLoadingDelay = stopLoadingWithDelay([() => setIsLoadingMenu(false)]);
 
