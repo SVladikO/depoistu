@@ -70,7 +70,7 @@ const CustomerCompaniesPage = () => {
                     </Company>
             )
             }
-            {customer.canCreateCompanies > customerCompanies.length &&
+            {customer && customer.canCreateCompanies > customerCompanies.length &&
                 <Link to={URL.ADD_COMPANY}>
                     <PrimaryButton isWide withPadding>
                         {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.ADD_COMPANY)}
