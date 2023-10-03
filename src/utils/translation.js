@@ -51,18 +51,20 @@ export const TRANSLATION = {
             ua: 'Далі',
             en: 'Continue'
         },
-        INTRODUCTION_MAIN: {
-            ua: 'Меню всіх закладів харчування України має бути в  одному місці. На цьому сайті.',
-            en: 'The menu of all cafes and restaurants of Ukraine should be in one place. On this site.'
+        TEXT: {
+            ua: [
+                'Меню всіх закладів харчування України має бути в  одному місці. На цьому сайті.',
+                'Знайомтесь з меню до або під час візиту.',
+                'Ми не показуємо в пошуку міста в яких ще не зареєструвались заклади.',
+                'Вартість в гривні.'
+            ],
+            en: [
+                'The menu of all cafes and restaurants of Ukraine should be in one place. On this site.',
+                'Familiarize yourself with the menu before or during your visit.',
+                'We don`t show in the search engine cities in which establishments have not yet been registered.',
+                'All price in uah.'
+            ]
         },
-        INTRODUCTION_HELP: {
-            ua: 'Знайомтесь з меню до або під час візиту. Вартість в гривні.',
-            en: 'Familiarize yourself with the menu before or during your visit. All price in uah.',
-        },
-        INTRODUCTION_TELL: {
-            ua: 'Ми не показуємо в пошуку міста в яких ще не зареєструвались заклади.',
-            en: 'We don`t show in the search engine cities in which establishments have not yet been registered.'
-        }
     },
     VALIDATION: {
         REQUIRED: {
@@ -475,6 +477,10 @@ export const TRANSLATION = {
                 LANGUAGE: {
                     ua: "Мова",
                     en: "Language"
+                },
+                VERSION: {
+                    ua: 'Версія',
+                    en: 'Version'
                 },
                 LINKED_ACCOUNTS: {
                     ua: "Пов'язанi Аккаути",
