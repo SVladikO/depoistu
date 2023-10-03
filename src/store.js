@@ -4,6 +4,7 @@ import errorReducer from "./features/error/errorSlice";
 import requestReducer from "./features/request/requestSlice";
 import languageReducer from "./features/language/languageSlice";
 import imagePopupReducer from "./features/imagePopup/imagePopupSlice";
+import searchDetailsPageReducer from "./features/searchDetailsPage/searchDetailsPageSlice";
 
 import {LOCAL_STORAGE_KEY, LocalStorage} from "./utils/localStorage";
 
@@ -14,6 +15,7 @@ export const store = configureStore({
         request: requestReducer,
         language: languageReducer,
         imagePopup: imagePopupReducer,
+        searchDetailsPage: searchDetailsPageReducer
     }
 })
 

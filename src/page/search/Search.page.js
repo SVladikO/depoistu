@@ -1,4 +1,5 @@
 import {useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
 import React, {useMemo, useState} from "react";
 
 import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
@@ -13,10 +14,13 @@ import {publishNotificationEvent} from "utils/event";
 import {translate, TRANSLATION, truncate} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 import {useLocalStorage, useScrollUp, useLocalStorageFetch} from "utils/hook";
+import {addCompanyIdForSearchDetailsPage} from "../../features/searchDetailsPage/searchDetailsPageSlice";
 
 const SearchPage = () => {
         useScrollUp();
         const navigate = useNavigate();
+        const dispatch = useDispatch();
+
         const [isLoadingCityIds, setIsLoadingCityIds] = useState(false);
         const [isLoadingCompanies, setIsLoadingCompanies] = useState(false);
 
@@ -106,7 +110,7 @@ const SearchPage = () => {
                             key={company.id}
                             company={company}
                             clickHandler={() => {
-                                LocalStorage.set(LOCAL_STORAGE_KEY.SEARCH_DETAILS_SELECTED_COMPANY_ID, company.id);
+                                dispatch(addCompanyIdForSearchDetailsPage(company.id))
                                 LocalStorage.remove(LOCAL_STORAGE_KEY.SEARCH_DETAILS_COMPANY)
                                 LocalStorage.remove(LOCAL_STORAGE_KEY.SEARCH_DETAILS_MENU)
                                 navigate(`${URL.SEARCH_DETAILS}/${company.id}`)

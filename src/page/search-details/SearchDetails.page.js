@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import {useDispatch} from "react-redux";
 import {useNavigate, useParams} from 'react-router-dom';
 
 import {Wrapper} from "./SearchDetails.style";
@@ -6,6 +7,8 @@ import {Wrapper} from "./SearchDetails.style";
 import {Company, NotificationLoading, PrimaryButton, NotificationTDB} from "components";
 
 import CategoryMenuView from 'page-view/category-menu-view/CategoryMenuView'
+
+import {addCompanyIdForSearchDetailsPage} from '../../features/searchDetailsPage/searchDetailsPageSlice'
 
 import {ROUTER} from "utils/config";
 import {useLocalStorage, useScrollUp} from "utils/hook";
@@ -18,6 +21,7 @@ import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 const SearchDetailsPage = () => {
     useScrollUp();
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     let companyId = +useParams().companyId;
 
     const [isCompanyExist, setIsCompanyExist] = useState(true);
@@ -28,11 +32,14 @@ const SearchDetailsPage = () => {
     const [menuItems, setMenuItems] = useLocalStorage(LOCAL_STORAGE_KEY.SEARCH_DETAILS_MENU);
 
     useEffect(() => {
-        LocalStorage.set(LOCAL_STORAGE_KEY.SEARCH_DETAILS_SELECTED_COMPANY_ID, companyId)
+        // if (company && company.id !== companyId) {
+            dispatch(addCompanyIdForSearchDetailsPage(companyId))
+        // }
     })
 
     useEffect(() => {
         if (!companyId) {
+            setIsCompanyExist(false)
             return
         }
 

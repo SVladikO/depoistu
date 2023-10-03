@@ -11,9 +11,10 @@ import {ReactComponent as SettingIcon} from "assets/icons/setting.svg";
 
 import {ROUTER, URL} from "utils/config";
 import {TRANSLATION, translate} from "utils/translation";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
+import {useSelector} from "react-redux";
 
 const BottomMenu = () => {
+    const companyId = useSelector(state => state.searchDetailsPage.companyId);
     const navigate = useNavigate();
     const isSelected = url => window.location.pathname === url;
 
@@ -34,9 +35,8 @@ const BottomMenu = () => {
                 <Label>{translate(TRANSLATION.BOTTOM_MENU.MAIN)}</Label>
             </MenuItem>
             <MenuItem
-                selected={isSelected(`${URL.SEARCH_DETAILS}/${LocalStorage.get(LOCAL_STORAGE_KEY.SEARCH_DETAILS_SELECTED_COMPANY_ID)}`)}
+                selected={isSelected(`${URL.SEARCH_DETAILS}/${companyId}`)}
                 onClick={() => {
-                    const companyId = LocalStorage.get(LOCAL_STORAGE_KEY.SEARCH_DETAILS_SELECTED_COMPANY_ID)
                     navigate(`${ROUTER.SEARCH_DETAILS.URL}/${companyId}`)
                 }}
             >
