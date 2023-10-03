@@ -185,7 +185,8 @@ const CategoryMenuView = ({
         })
 
     useEffect(() => {
-        if (!!menuItems?.length) {
+        if (!!menuItems?.length && selectedTopCategoryId === undefined) {
+            console.log('ogo')
             setSelectedTopCategoryId(0)
         }
     })
