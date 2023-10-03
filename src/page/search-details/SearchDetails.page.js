@@ -20,6 +20,7 @@ const SearchDetailsPage = () => {
     const navigate = useNavigate();
     let companyId = +useParams().companyId;
 
+    const [isCompanyExist, setIsCompanyExist] = useState(true);
     const [isLoadingMenu, setIsLoadingMenu] = useState(false);
     const [isLoadingCompany, setIsLoadingCompany] = useState(false);
 
@@ -48,7 +49,7 @@ const SearchDetailsPage = () => {
                 setCompany(res.body[0]);
             })
             .catch(e => {
-                setMenuItems([])
+                setIsCompanyExist(false)
                 publishNotificationEvent.error(e.body.errorMessage)
             })
             .finally(() => companyLoadingDelay.allow());
@@ -79,7 +80,7 @@ const SearchDetailsPage = () => {
 
     }, [companyId]);
 
-    if (menuItems !== undefined && !menuItems?.length) {
+    if (!isCompanyExist) {
         return (
             <NotificationTDB title={translate(TR.PAGE.COMPANY_DETAILS.COMPANY_DOESNT_EXIST)}>
                 <PrimaryButton isWide clickHandler={() => {
@@ -100,29 +101,6 @@ const SearchDetailsPage = () => {
             </NotificationTDB>
         )
     }
-    //         <NotificationTDB title={translate(TR.PAGE.COMPANY_DETAILS.COMPANY_DOESNT_EXIST)}>
-    //             <PrimaryButton isWide clickHandler={() => {
-    //
-    //                 // We delete these data for case when
-    //                 // company was deleted between
-    {/*                // customer found list of companies per city*/
-    }
-    {/*                // and*/
-    }
-    {/*                // open company*/
-    }
-    {/*                LocalStorage.remove(LOCAL_STORAGE_KEY.COMPANY_SEARCH_SELECTED_CITY_ID)*/
-    }
-    //                 LocalStorage.remove(LOCAL_STORAGE_KEY.COMPANY_SEARCH_SELECTED_REGION_ID)
-    //                 LocalStorage.remove(LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT)
-    //
-    //                 navigate(ROUTER.SEARCH.URL)
-    //             }}>
-    //                 {translate(TR.GO_TO_A_SEARCH_PAGE)}
-    //             </PrimaryButton>
-    //         </NotificationTDB>
-    //     )
-    // }
 
     return (
         <Wrapper>
