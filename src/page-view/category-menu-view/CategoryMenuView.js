@@ -102,7 +102,7 @@ const CategoryMenuView = ({
         }
     }, [])
 
-    const renderTopCategory = (topCategoryKey, topCategoryIndex, categoryId) => (
+    const renderTopCategory = ({topCategoryKey, topCategoryIndex, categoryId}) => (
         <TopCategoryItem
             key={topCategoryIndex}
             isSelected={topCategoryIndex === selectedTopCategoryId}
@@ -168,7 +168,7 @@ const CategoryMenuView = ({
 
                 if (!wasTopSet) {
                     wasTopSet = true;
-                    topCategories.push(renderTopCategory(topCategoryKey, topCategoryIndex, categoryId));
+                    topCategories.push({topCategoryKey, topCategoryIndex, categoryId});
                 }
 
                 // We need categoryIdIndexMapper to handle sub category scroll when you scroll vertically
@@ -179,16 +179,23 @@ const CategoryMenuView = ({
                 subCategories.push(renderSubCategory(categoryId, topCategoryIndex, categoryIdIndexMapper[categoryId]))
                 resultMenuItems.push(renderCategoryTitle(categoryId, topCategoryIndex))
                 resultMenuItems.push(items.map(renderMenuItem))
-
             })
         })
 
     useEffect(() => {
         if (!!menuItems?.length && selectedTopCategoryId === undefined) {
-            console.log('ogo')
-            setSelectedTopCategoryId(0)
+            setSelectedTopCategoryId(topCategories[0].topCategoryIndex)
+        }
+
+        //This is a fix of main bug. Thanks God. After you leave page where we use CategoryMenuRow
+        // you didn't clear after yourself and had wrong indexes.
+        return () => {
+            categoryIdIndexMapper = {};
+            indexCalculator = 0;
         }
     })
+
+    console.log({selectedSubCategoryId})
 
     return (
         <>
@@ -197,7 +204,7 @@ const CategoryMenuView = ({
                     {/*** TOP CATEGORIES ***/}
                     <div>
                         <TopCategoryWrapper>
-                            {topCategories}
+                            {topCategories.map(details => renderTopCategory(details))}
                             {/*If you commit this row and check CategoryMenuRow you understand everything. */}
                             <TopCategoryItem style={{width: '90%'}}/>
                         </TopCategoryWrapper>

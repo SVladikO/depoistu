@@ -8,7 +8,7 @@ export const SliderStyle = styled.div`
   }
 
   .swiper-wrapper {
-    padding: 0 8px;
+    padding: 0;
   }
   
   .swiper-slide {
