@@ -3,7 +3,7 @@ import {COLOR, GRADIENT, hexToRgbA} from "utils/theme";
 import {ContentContainerDefault} from "components/ContentContainer/ContentContainer.style";
 
 export const SubCategoryWrapper = styled.div`
-  ${ContentContainerDefault};
+  padding: 8px 2px;
   position: sticky;
   top: 0;
   left: 0;
@@ -11,7 +11,7 @@ export const SubCategoryWrapper = styled.div`
   border-radius: 0;
   margin: 0;
   z-index: 10;
-  height: 64px;
+  height: 58px;
   background: none;
 `;
 export const BgWrapper = styled.div`
