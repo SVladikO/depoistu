@@ -110,7 +110,7 @@ const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
                         <Input
                             value={values.size}
                             name="size"
-                            type="number"
+                            type="text"
                             labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.MEAL_SIZE)}
                             onBlur={handleBlur}
                             changeHandler={handleChange}

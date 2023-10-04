@@ -112,10 +112,8 @@ const menu_item_validation = {
         .required(MESSAGE.REQUIRED)
         .moreThan(0, `${MESSAGE.MIN_VALUE} 1`)
         .lessThan(100, `${MESSAGE.MAX_VALUE} 99`),
-    size: Yup.number()
+    size: Yup.string()
         .required(MESSAGE.REQUIRED)
-        .moreThan(0, `${MESSAGE.MIN_VALUE} 1`)
-        .lessThan(10000, `${MESSAGE.MAX_VALUE} 9999`),
 }
 
 const COMPANY = {

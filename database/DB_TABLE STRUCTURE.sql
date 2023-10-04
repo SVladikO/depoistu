@@ -9,7 +9,7 @@ CREATE TABLE MENU_ITEM
     DESCRIPTION  CHAR(255),
     COOKING_TIME CHAR(2)       NOT NULL,
     PRICE        CHAR(7)       NOT NULL,
-    SIZE         CHAR(4)       NOT NULL,
+    SIZE         CHAR(20)       NOT NULL,
     IMAGE_URL    VARCHAR(400)  NOT NULL
 );
 
