@@ -1,9 +1,11 @@
 import styled from "styled-components";
-import {COLOR, hexToRgbA, SHADOW} from "utils/theme";
+import {BORDER_RADIUS, COLOR, SHADOW} from "utils/theme";
 
 export const SelectWrapper = styled.div`
   position: relative;
   width: 100%;
+  border: ${p=> p.isOpen ? '3px': '1px'} solid ${COLOR.ACCENT1};
+  border-radius: ${BORDER_RADIUS.INPUT};
 `;
 
 export const SelectButton = styled.div`
@@ -11,14 +13,13 @@ export const SelectButton = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 50px;
-  padding: 10px;
-  background-color: ${COLOR.ACCENT2};
+  height: ${p => p.isOpen ? '49px' : '50px'};
+  padding: ${p => p.isOpen ? '8px 10px 10px 9px': '10px'};
   cursor: pointer;
   font-size: 16px;
   line-height: 19px;
   color: ${COLOR.ACCENT1};
-  transition: all 0.2s;
+  border-radius: ${BORDER_RADIUS.INPUT};
   svg {
     display: inline-block;
     transform: rotate(${p => p.isOpen ? 0 : '180deg'});
@@ -29,13 +30,14 @@ export const SelectButton = styled.div`
 
 export const OptionsContainer = styled.div`
   position: absolute;
-  top: 100%;
+  top: 106%;
   left: 0;
   width: 100%;
   max-height: 250px;
   overflow-y: auto;
-  z-index: 2;
+  z-index: 3;
   background-color: ${COLOR.ACCENT4};
+  border-radius: ${BORDER_RADIUS.INPUT};
   ${SHADOW};
 `;
 
@@ -44,12 +46,12 @@ export const Option = styled.div`
   cursor: pointer;
   font-size: 16px;
   line-height: 19px;
-  color: ${COLOR.ACCENT1};
-  border-bottom: solid 0.1px ${hexToRgbA(COLOR.ACCENT5, 0.4)};
+  color: ${p => p.isSelected ? COLOR.ACCENT4 : COLOR.ACCENT1};
   display: flex;
   justify-content: flex-start;
-  background-color: ${p => p.isSelected ? hexToRgbA(COLOR.ACCENT3, 0.3) : ''};
+  background-color: ${p => p.isSelected ? COLOR.PRIMARY : ''};
   &:hover {
-    background-color: ${COLOR.ACCENT3};
+    background-color: ${COLOR.ACCENT8};
+    color: ${COLOR.ACCENT1};
   }
 `;
