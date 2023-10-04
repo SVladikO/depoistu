@@ -183,6 +183,13 @@ const CategoryMenuView = ({
             })
         })
 
+    useEffect(() => {
+        if (!!menuItems?.length && selectedTopCategoryId === undefined) {
+            console.log('ogo')
+            setSelectedTopCategoryId(0)
+        }
+    })
+
     return (
         <>
             <MenuHeader className="menu-header">
