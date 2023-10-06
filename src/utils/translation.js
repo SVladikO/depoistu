@@ -867,6 +867,10 @@ export const TRANSLATION = {
             en: "Second dishes",
             ua: "Другі страви"
         },
+        MAIN_DISHES: {
+            en: "Main dishes",
+            ua: "Основні страви"
+        },
         DUMPLING: {
             en: "Dumplings",
             ua: "Вареники"
@@ -1174,6 +1178,10 @@ export const TRANSLATION = {
         DISHES_ON_FIRE: {
             ua: 'Монгал',
             en: 'Dishes on fire'
+        },
+        GRILL: {
+            ua: 'Гриль',
+            en: 'Grill'
         },
         SAUCES: {
             ua: 'Соуси',
