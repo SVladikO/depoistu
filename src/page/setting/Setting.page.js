@@ -21,6 +21,7 @@ import {ReactComponent as LanguageIcon} from 'assets/icons/language.svg';
 import {ReactComponent as AboutUsIcon} from "assets/icons/about_us.svg";
 // import {ReactComponent as LinkedAccountIcon} from 'icons/linked_account.svg';
 import {ReactComponent as StoreIcon} from 'assets/icons/house.svg';
+import {ReactComponent as InstructionIcon} from 'assets/icons/instruction.svg';
 import {ReactComponent as TeamIcon} from "assets/icons/team.svg";
 import {ReactComponent as RocketIcon} from "assets/icons/rocket.svg";
 // import {ReactComponent as ConditionsIcon} from 'icons/list.svg';
@@ -47,7 +48,6 @@ import {TRANSLATION as TR, translate} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 import {publishNotificationEvent} from "utils/event";
 import packageInfo from '../../../package.json';
-
 
 const SettingPage = () => {
     useScrollUp();
@@ -166,6 +166,11 @@ const SettingPage = () => {
                             noTopBorder
                             groupTitle={translate(TR.PAGE.SETTINGS.GROUP_TITLE.FOR_BUSINESS)}
                         >
+                            <SettingMenuRow
+                                icon={InstructionIcon}
+                                title={translate(TR.PAGE.SETTINGS.MENU_ROW.INSTRUCTION_FOR_BUSINESS_OWNER)}
+                                href={URL.INSTRUCTION_FOR_BUSINESS_OWNER}
+                            />
                             <SettingMenuRow
                                 icon={StoreIcon}
                                 title={translate(TR.PAGE.SETTINGS.MENU_ROW.COMPANY)}
