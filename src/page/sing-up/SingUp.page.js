@@ -23,7 +23,7 @@ const SingUpPage = () => {
     const [wasSubmitted, setWasSubmitted] = useState(false);
 
     const onSubmit = ({name, email, newPassword, phone}) => {
-        email = email.toLowerCase();
+        email.toLowerCase();
         setWasSubmitted(true);
         setIsLoading(true);
 
