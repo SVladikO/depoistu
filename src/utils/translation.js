@@ -939,6 +939,18 @@ export const TRANSLATION = {
             en: "Fresh",
             ua: "Фреші"
         },
+        HOMEMADE_LEMONADE: {
+            en: "Homemade lemonades",
+            ua: "Домашні лимонади"
+        },
+        BRANDY: {
+            en: "Brandy",
+            ua: "Бренді"
+        },
+         BOURBON: {
+            en: "Bourbon",
+            ua: "Бурбон"
+        },
         MORSES_AND_UZVAR: {
             en: "Morses and Uzvars",
             ua: "Морси та узвари"
