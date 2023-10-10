@@ -18,12 +18,10 @@ export const PrimaryButton = ({clickHandler, children, isLoading, isWide, isDisa
     return (
         <ButtonWrapper withPadding={withPadding}>
             <PrimaryButtonWrapper
-                onClick={clickHandler}
+                onClick={() => !isLoading && clickHandler()}
                 isWide={isWide}
-                isDisabled={isDisabled}
                 isPrimary
                 isLoading={isLoading}
-                disabled={isLoading}
             >
                 {isLoading && <LoadingIcon className="loading"/>}
                 {children}
