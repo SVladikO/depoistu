@@ -4,9 +4,9 @@ const defaultTo = '21:00';
 export const initialValues = {
     photos: [],
     name: '',
-    city_id: '',
+    cityId: '',
     street: '',
-    phone1: '',
+    phone1: '380',
     phone2: '',
     phone3: '',
     monIsChecked: false,

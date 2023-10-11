@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {BORDER_RADIUS, COLOR} from "../../utils/theme";
+import {COLOR} from "utils/theme";
 
 export const Divider = styled.div`
   margin: 5px auto 10px auto;
@@ -22,7 +22,6 @@ export const Pictures = styled.div`
   .swiper-slide{
     img{
       max-width: 178px;
-      border-radius: ${BORDER_RADIUS.FOURTH};
       max-height: 100px;
       min-height: 100px;
       min-width: 178px;

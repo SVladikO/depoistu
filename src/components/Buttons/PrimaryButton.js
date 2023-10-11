@@ -1,11 +1,32 @@
 import styled from "styled-components";
-import {button} from "./button";
-import {COLOR, GRADIENT} from "../../utils/theme";
 
-export const PrimaryButton = styled(button)`
-  background-image: linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO});
+import {button, ButtonWrapper} from "./button";
+import {ReactComponent as LoadingIcon} from "assets/icons/loading-white.svg";
 
-  & > svg {
-    fill: ${COLOR.ACCENT4};
+import {COLOR} from "utils/theme";
+
+const PrimaryButtonWrapper = styled(button)`
+  color: ${COLOR.ACCENT4};
+  background: ${p => p.isDisabled ? COLOR.ACCENT5 : p.isLoading ? COLOR.PRIMARY : COLOR.ACCENT3};
+
+  &:active {
+    background: ${p => p.isDisabled ? COLOR.ACCENT5 : COLOR.PRIMARY};
   }
 `;
+
+export const PrimaryButton = ({clickHandler, children, isLoading, isWide, isDisabled, withPadding=false}) => {
+    return (
+        <ButtonWrapper withPadding={withPadding}>
+            <PrimaryButtonWrapper
+                onClick={clickHandler}
+                isWide={isWide}
+                isDisabled={isDisabled}
+                isPrimary
+                isLoading={isLoading}
+            >
+                {isLoading && <LoadingIcon className="loading"/>}
+                {children}
+            </PrimaryButtonWrapper>
+        </ButtonWrapper>
+    )
+}

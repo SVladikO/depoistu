@@ -1,17 +1,19 @@
 import styled from "styled-components";
-import {PrimaryButton} from "../../components/Buttons/PrimaryButton";
+import {DisabledButton} from "components/Buttons/DisabledButton";
 
 export const ImageQR = styled.img`
-  height: 250px;
-  width: 250px;
+  height: 320px;
+  width: 320px;
+  margin: 0 auto;
+  display: block;
 `;
 
-export const QRCodeButton = styled(PrimaryButton)`
+export const QRCodeButton = styled(DisabledButton)`
   padding: 10px;
-
+  
   & > svg {
-    width: 30px;
-    height: 30px;
+    width: 24px;
+    height: 24px;
     margin: 0;
     display: block;
   }
@@ -26,11 +28,13 @@ export const QRCodeMenuTitle = styled.div`
 `
 
 export const EditBar = styled.div`
-  padding: 10px 0 0 0;
+  margin: 0 -16px -20px -16px;
   display: flex;
   flex-direction: row;
-  align-items: stretch;
   justify-content: space-between;
-  gap: 18px;
+  align-items: stretch;
+  width: calc(100% + 35px);
+  padding: 20px 0 0 0;
 `;
+
 

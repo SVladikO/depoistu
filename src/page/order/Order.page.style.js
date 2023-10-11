@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import {COLOR} from '../../utils/theme';
-import {FetchButton} from '../../components';
+import {COLOR} from 'utils/theme';
+
 export const Wrapper = styled.div`
   padding: 0 0 18px 0;
   display: flex;

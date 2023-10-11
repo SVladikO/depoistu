@@ -1,6 +1,5 @@
 import { configureStore} from "@reduxjs/toolkit";
 import orderReducer from './features/order/orderSlice'
-import introReducer from "./features/intro/introSlice";
 import errorReducer from "./features/error/errorSlice";
 import requestReducer from "./features/request/requestSlice";
 import languageReducer from "./features/language/languageSlice";
@@ -11,7 +10,6 @@ import {LOCAL_STORAGE_KEY, LocalStorage} from "./utils/localStorage";
 export const store = configureStore({
     reducer: {
         order: orderReducer,
-        intro: introReducer,
         error: errorReducer,
         request: requestReducer,
         language: languageReducer,

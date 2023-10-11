@@ -1,7 +1,7 @@
-import createSliceCustom from "../utils";
+import createSliceCustom from "features/utils";
 
 const initialState = {
-    isLanguagePopupVisible: true,
+    isLanguagePopupVisible: false,
     siteLanguage: 'ua',
 }
 

@@ -6,46 +6,48 @@ import * as Yup from "yup";
 
 import {Wrapper, EditBar} from './Setting.style';
 
-import {ReactComponent as LockIcon} from '../../assets/icons/lock.svg';
-// import {ReactComponent as OrderHistoryIcon} from '../../icons/order_history.svg';
-// import {ReactComponent as NotificationIcon} from '../../icons/notification.svg';
-// import {ReactComponent as NewsletterIcon} from '../../icons/newsletter.svg';
-// import {ReactComponent as PhoneCallIcon} from '../../icons/phone_call.svg';
-// import {ReactComponent as PaymentIcon} from '../../icons/payment.svg';
-// import {ReactComponent as LikeIcon} from '../../icons/favorite.svg';
-// import {ReactComponent as DeliveryAddressIcon} from '../../icons/location.svg';
-import {ReactComponent as LogOutIcon} from '../../assets/icons/logout.svg';
-import {ReactComponent as ProfileIcon} from '../../assets/icons/profile.svg';
-// import {ReactComponent as CurrencyIcon} from '../../icons/currency.svg';
-import {ReactComponent as LanguageIcon} from '../../assets/icons/language.svg';
-import {ReactComponent as AboutUsIcon} from "../../assets/icons/about_us.svg";
-// import {ReactComponent as LinkedAccountIcon} from '../../icons/linked_account.svg';
-import {ReactComponent as StoreIcon} from '../../assets/icons/house.svg';
-import {ReactComponent as TeamIcon} from "../../assets/icons/team.svg";
-// import {ReactComponent as ConditionsIcon} from '../../icons/list.svg';
-// import {ReactComponent as HelpIcon} from '../../icons/chat.svg';
+import {ReactComponent as LockIcon} from 'assets/icons/lock.svg';
+// import {ReactComponent as OrderHistoryIcon} from 'icons/order_history.svg';
+// import {ReactComponent as NotificationIcon} from 'icons/notification.svg';
+// import {ReactComponent as NewsletterIcon} from 'icons/newsletter.svg';
+// import {ReactComponent as PhoneCallIcon} from 'icons/phone_call.svg';
+// import {ReactComponent as PaymentIcon} from 'icons/payment.svg';
+// import {ReactComponent as LikeIcon} from 'icons/favorite.svg';
+// import {ReactComponent as DeliveryAddressIcon} from 'icons/location.svg';
+import {ReactComponent as LogOutIcon} from 'assets/icons/logout.svg';
+import {ReactComponent as ProfileIcon} from 'assets/icons/profile.svg';
+// import {ReactComponent as CurrencyIcon} from 'icons/currency.svg';
+import {ReactComponent as LanguageIcon} from 'assets/icons/language.svg';
+import {ReactComponent as AboutUsIcon} from "assets/icons/about_us.svg";
+// import {ReactComponent as LinkedAccountIcon} from 'icons/linked_account.svg';
+import {ReactComponent as StoreIcon} from 'assets/icons/house.svg';
+import {ReactComponent as TeamIcon} from "assets/icons/team.svg";
+import {ReactComponent as RocketIcon} from "assets/icons/rocket.svg";
+// import {ReactComponent as ConditionsIcon} from 'icons/list.svg';
+// import {ReactComponent as HelpIcon} from 'icons/chat.svg';
 
 import {
     SettingMenuRow,
     AccountSettings,
     NotificationTDB,
-    FetchButton,
     Input,
     NotificationLoading,
     RowSplitter,
     PrimaryButton
-} from '../../components'
+} from 'components'
 
-import LanguagePopup from "../../features/language/LanguagePopup";
-import {openLanguagePopup} from '../../features/language/languageSlice';
+import LanguagePopup from "features/language/LanguagePopup";
+import {openLanguagePopup} from 'features/language/languageSlice';
 
-import {URL} from '../../utils/config';
-import validation from "../../utils/validation";
-import {useLocalStorage, useScrollUp} from "../../utils/hook";
-import {BE_API, fetchData} from "../../utils/fetch";
-import {TRANSLATION as TR, translate} from "../../utils/translation";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {publishNotificationEvent} from "../../utils/event";
+import {URL} from 'utils/config';
+import validation from "utils/validation";
+import {useLocalStorage, useScrollUp} from "utils/hook";
+import {BE_API, fetchData} from "utils/fetch";
+import {TRANSLATION as TR, translate} from "utils/translation";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
+import {publishNotificationEvent} from "utils/event";
+import packageInfo from '../../../package.json';
+
 
 const SettingPage = () => {
     useScrollUp();
@@ -59,21 +61,21 @@ const SettingPage = () => {
             description={translate(TR.PAGE.SETTINGS.NOTIFICATION.DESCRIPTION)}
         >
             <EditBar>
-                <Link to={URL.SING_IN}>
-                    <PrimaryButton isWide minWidth="120px">{translate(TR.PAGE.SETTINGS.BUTTONS.SING_IN)}</PrimaryButton>
-                </Link>
                 <Link to={URL.SING_UP}>
                     <PrimaryButton isWide minWidth="120px">{translate(TR.PAGE.SETTINGS.BUTTONS.SING_UP)}</PrimaryButton>
+                </Link>
+                <Link to={URL.SING_IN}>
+                    <PrimaryButton isWide minWidth="120px">{translate(TR.PAGE.SETTINGS.BUTTONS.SING_IN)}</PrimaryButton>
                 </Link>
             </EditBar>
         </NotificationTDB>
     );
     const onCheckVerification = ({emailVerificationCode}) => {
         setIsLoading(true)
-        fetchData(BE_API.CUSTOMER.PUT_VERIFY_EMAIL(), {email: customer.EMAIL, emailVerificationCode, method: 'put'})
+        fetchData(BE_API.CUSTOMER.PUT_VERIFY_EMAIL(), {email: customer.email, emailVerificationCode, method: 'put'})
             .then(res => {
                 if (res.body.isEmailVerified) {
-                    setCustomer({...customer, IS_VERIFIED_EMAIL: true})
+                    setCustomer({...customer, isVerifiedEmail: true})
                 }
             })
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))
@@ -105,7 +107,7 @@ const SettingPage = () => {
                             withCleaner
                         />
                         <RowSplitter height={'10px'}/>
-                        <FetchButton type="submit" isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.VERIFICATION)}</FetchButton>
+                        <PrimaryButton type="submit" isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.VERIFICATION)}</PrimaryButton>
                     </form>
                 )}
             </Formik>
@@ -119,14 +121,20 @@ const SettingPage = () => {
 
     return (
         <>
-            {!customer && singInSingUpNotification}
-            {customer && !customer.IS_VERIFIED_EMAIL && emailVerificationNotification}
+            {!customer && (
+                <>
+                    {singInSingUpNotification}
+                    <RowSplitter height="10px" />
+                    </>
+            )}
+            {/*{customer && !customer.isVerifiedEmail && emailVerificationNotification}*/}
             {isLoading && <NotificationLoading/>}
             <LanguagePopup />
             <Wrapper>
                 {/*<CustomerAccountBar fullName='Jhon Smith' phone="+14844731243"/>*/}
                 {/*<RowSplitter height='20px'/>*/}
-                {customer && !!customer.IS_VERIFIED_EMAIL && (
+                {/*{customer && !!customer.isVerifiedEmail && (*/}
+                {customer && (
                     <>
                         <AccountSettings
                             groupTitle={translate(TR.PAGE.SETTINGS.GROUP_TITLE.ACCOUNTS)}>
@@ -166,16 +174,6 @@ const SettingPage = () => {
                         </AccountSettings>
                     </>)
                 }
-                {customer && !customer.IS_VERIFIED_EMAIL && (
-                    <AccountSettings groupTitle={translate(TR.PAGE.SETTINGS.GROUP_TITLE.ACCOUNTS)}>
-                        <SettingMenuRow
-                            icon={LogOutIcon}
-                            title={translate(TR.PAGE.SETTINGS.MENU_ROW.EXIT)}
-                            changeHandler={logOut}
-                        />
-                    </AccountSettings>
-                )
-                }
                 <AccountSettings
                     noTopBorder={customer}
                     groupTitle={translate(TR.PAGE.SETTINGS.GROUP_TITLE.OPTIONS)}>
@@ -199,6 +197,11 @@ const SettingPage = () => {
                         icon={TeamIcon}
                         title={translate(TR.PAGE.OUR_TEAM.TOP_TITLE)}
                         href={URL.OUR_TEAM}
+                    />
+                    <SettingMenuRow
+                        icon={RocketIcon}
+                        title={`${translate(TR.PAGE.SETTINGS.MENU_ROW.VERSION)} ${packageInfo.version}`}
+                        href={'#'}
                     />
                     {/*<SettingMenuRow icon={LinkedAccountIcon} title={translate(TR.PAGE.SETTINGS.MENU_ROW.LINKED_ACCOUNTS)} href='/catalog' label='Facebook, go ...'/>*/}
                 </AccountSettings>

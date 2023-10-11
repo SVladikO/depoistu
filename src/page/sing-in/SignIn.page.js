@@ -5,21 +5,20 @@ import {Link, useNavigate} from "react-router-dom";
 
 import {
     Input,
-    FetchButton,
     ContentContainer,
-    Label,
     NavigationLabelHref,
-} from "../../components";
+    PrimaryButton,
+} from "components";
 
-import {ReactComponent as LockIcon} from "../../assets/icons/lock.svg";
-import {ReactComponent as MailIcon} from "../../assets/icons/mail.svg";
+import {ReactComponent as LockIcon} from "assets/icons/lock.svg";
+import {ReactComponent as MailIcon} from "assets/icons/mail.svg";
 
-import validation from '../../utils/validation';
-import {ROUTER, URL} from '../../utils/config';
-import {fetchData, BE_API} from "../../utils/fetch";
-import {TRANSLATION, translate} from "../../utils/translation";
-import {LocalStorage, LOCAL_STORAGE_KEY} from "../../utils/localStorage"
-import {publishNotificationEvent} from "../../utils/event";
+import validation from 'utils/validation';
+import {ROUTER, URL} from 'utils/config';
+import {fetchData, BE_API} from "utils/fetch";
+import {TRANSLATION, translate} from "utils/translation";
+import {LocalStorage, LOCAL_STORAGE_KEY} from "utils/localStorage"
+import {publishNotificationEvent} from "utils/event";
 
 const SignInSchema = Yup.object().shape(validation.customer.singIn);
 
@@ -61,27 +60,29 @@ const SignInPage = () => {
             >
                 {({values, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                     <form onSubmit={handleSubmit}>
-                        <ContentContainer>
-                            <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.EMAIL)}</Label>
+                        <ContentContainer noShadow>
                             <Input
+                                isRequired
+                                withCleaner
                                 Icon={MailIcon}
                                 name='email'
                                 type='email'
                                 value={values.email}
-                                withCleaner
                                 isTouched={wasSubmitted || touched.email}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('email', '')}
+                                labelName={translate(TRANSLATION.INPUT_LABEL.CUSTOMER.EMAIL)}
                                 errorMessage={errors.email}
                             />
-                            <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.PASSWORD)}</Label>
                             <Input
+                                isRequired
+                                withSwitcher
                                 Icon={LockIcon}
                                 name='password'
                                 isTouched={wasSubmitted || touched.password}
                                 value={values.password}
                                 changeHandler={handleChange}
-                                withSwitcher
+                                labelName={translate(TRANSLATION.INPUT_LABEL.CUSTOMER.PASSWORD)}
                                 errorMessage={errors.password}
                             />
                             <Link to={URL.FORGOT_PASSWORD}>{translate(TRANSLATION.PAGE.SIGN_IN.FORGOT_PASSWORD)}</Link>
@@ -91,13 +92,14 @@ const SignInPage = () => {
                                 label={translate(TRANSLATION.PAGE.SIGN_IN.ACCOUNT_CONFIRMATION)}
                             />
                         </ContentContainer>
-                        <FetchButton
+                        <PrimaryButton
                             isWide
                             type="submit"
                             isLoading={isLoading}
+                            withPadding
                         >
                             {translate(TRANSLATION.PAGE.SIGN_IN.TOP_TITLE)}
-                        </FetchButton>
+                        </PrimaryButton>
                     </form>
                 )}
             </Formik>

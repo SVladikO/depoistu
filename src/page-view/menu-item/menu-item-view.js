@@ -3,18 +3,23 @@ import {Formik} from "formik";
 import * as Yup from 'yup';
 
 import {ImagePlace, MenuItemPhoto} from "./menu-item-view.style";
-import {Dropdown,ContentContainer, Input, Label, SecondaryButton, Textarea} from "../../components";
+import {Dropdown,ContentContainer, Input, Label, SecondaryButton, Textarea} from "components";
 
-import validation from "../../utils/validation";
-import {CATEGORY_MAPPER} from "../../utils/category";
-import {translate, TRANSLATION} from "../../utils/translation";
+import validation from "utils/validation";
+import {CATEGORY_ID_MAPPER_AS_OBJECT, CATEGORY_MAPPER_AS_ARRAY} from "utils/category";
+import {translate, TRANSLATION} from "utils/translation";
 
 const EditMenuItemSchema = Yup.object().shape(validation.menuItem);
 
-const MenuItemView = ({initialValue, onSubmit, children}) => {
+const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
     const [wasSubmitted, setWasSubmitted] = useState(false);
-    const [imageURL] = useState(initialValue.imageURL);
-    const options  = useMemo(() => Object.values(CATEGORY_MAPPER).map(({id,title}) => ({value: id, title})),[initialValue])
+    const [imageURL] = useState(defaultInitialValue.imageURL);
+    const [initialValues, setInitValues] = useState(defaultInitialValue);
+    const options  = useMemo(() => CATEGORY_MAPPER_AS_ARRAY.map(({id,title}) =>
+        ({
+            value: id,
+            title: translate(title)
+        })),[])
 
     const renderImages = () => (
         <MenuItemPhoto>
@@ -32,83 +37,85 @@ const MenuItemView = ({initialValue, onSubmit, children}) => {
 
     return (
         <Formik
-            initialValues={initialValue}
+            enableReinitialize
+            initialValues={initialValues}
             validationSchema={EditMenuItemSchema}
             onSubmit={values => {
                 setWasSubmitted(true);
                 onSubmit(values)
+                setInitValues({categoryId: values.categoryId, ...defaultInitialValue})
             }}
         >
             {({values, handleBlur, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                 <form onSubmit={handleSubmit}>
-                    <ContentContainer>
+                    <ContentContainer noShadow>
                         {/*{renderImages()}*/}
                         <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.CATEGORY)}</Label>
                         <Dropdown
                             options={options}
-                            selectedOption={(options.filter(o => o.value === values.category_id))[0]}
-                            onSelect={option => setFieldValue( 'category_id', +option.value)}
+                            selectedOption={(options.filter(o => o.value === values.categoryId))[0]}
+                            onSelect={option => setFieldValue( 'categoryId', +option.value)}
                             as="select"
-                            name="category_id"
+                            name="categoryId"
                             isTouched={touched.category_id || wasSubmitted}
                             errorMessage={errors.category_id}
                         />
-                        <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.NAME)}</Label>
                         <Input
                             value={values.name}
                             name="name"
                             onBlur={handleBlur}
-                            isTouched={touched.name || wasSubmitted}
+                            labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.NAME)}
                             changeHandler={handleChange}
                             clearHandler={() => setFieldValue('name', '')}
+                            isTouched={touched.name || wasSubmitted}
                             errorMessage={errors.name}
                             withCleaner
                         />
-                        <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.PRICE)}</Label>
                         <Input
                             value={values.price}
                             name="price"
                             type="number"
+                            labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.PRICE)}
                             onBlur={handleBlur}
-                            isTouched={touched.price || wasSubmitted}
                             changeHandler={handleChange}
                             clearHandler={() => setFieldValue('price', '')}
+                            isTouched={touched.price || wasSubmitted}
                             errorMessage={errors.price}
                             withCleaner
                         />
 
-                        <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.DESCRIPTION)}</Label>
                         <Textarea
+                            labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.DESCRIPTION)}
                             value={values.description}
                             name="description"
                             onBlur={handleBlur}
-                            isTouched={touched.description || wasSubmitted}
                             changeHandler={handleChange}
                             clearHandler={() => setFieldValue('description', '')}
+                            isTouched={touched.description || wasSubmitted}
                             errorMessage={errors.description}
                             withCleaner
                         />
-                        <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.COOKING_TIME)}</Label>
                         <Input
                             value={values.cookingTime}
                             type="number"
                             name="cookingTime"
+                            labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.COOKING_TIME)}
                             onBlur={handleBlur}
-                            isTouched={touched.cookingTime || wasSubmitted}
                             changeHandler={handleChange}
                             clearHandler={() => setFieldValue('cookingTime', '')}
+                            isTouched={touched.cookingTime || wasSubmitted}
                             errorMessage={errors.cookingTime}
                             withCleaner
                         />
-                        <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.MEAL_SIZE)} {CATEGORY_MAPPER[values.category_id].measurement}</Label>
                         <Input
                             value={values.size}
                             name="size"
                             type="number"
+                            labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.MEAL_SIZE)}
                             onBlur={handleBlur}
-                            isTouched={touched.size || wasSubmitted}
                             changeHandler={handleChange}
                             clearHandler={() => setFieldValue('size', '')}
+                            isTouched={touched.size || wasSubmitted}
                             errorMessage={errors.size}
                             withCleaner
                         />

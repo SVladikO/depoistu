@@ -1,13 +1,22 @@
 import React, {useState} from "react";
 
-import {FetchButton} from "../../components";
-import MenuItemView from "../../page-view/menu-item/menu-item-view";
+import {PrimaryButton, RowSplitter} from "components";
+import MenuItemView from "page-view/menu-item/menu-item-view";
 
-import {fetchData, BE_API} from "../../utils/fetch";
-import {useRedirectToSettingPage, useScrollUp} from "../../utils/hook";
-import {translate, TRANSLATION} from "../../utils/translation";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {publishNotificationEvent} from "../../utils/event";
+import {fetchData, BE_API} from "utils/fetch";
+import {useRedirectToSettingPage, useScrollUp} from "utils/hook";
+import {translate, TRANSLATION} from "utils/translation";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
+import {publishNotificationEvent} from "utils/event";
+
+const defaultInitialValue = {
+    name: '',
+    price: '',
+    description: '',
+    cookingTime: '',
+    size: '',
+    imageUrl: ''
+}
 
 const AddMenuItemPage = () => {
     useRedirectToSettingPage();
@@ -16,26 +25,16 @@ const AddMenuItemPage = () => {
 
     const [isLoading, setIsLoading] = useState(false);
 
-    const initialValue = {
-        name: '',
-        price: '',
-        category_id: 1,
-        description: '',
-        cookingTime: '',
-        size: '',
-        image_url: ''
-    }
-
     const onSubmit = values => {
         setIsLoading(true);
 
         const requestObj = {
             ...values,
-            company_id: companyId,
+            companyId,
         }
 
         fetchData(BE_API.MENU_ITEM.POST_CREATE(), requestObj)
-            .then(() => publishNotificationEvent.success("Menu item was created."))
+            .then(() => publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.MENU_ITEM.WAS_CREATED)))
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))
             .finally(() => setIsLoading(false))
     }
@@ -43,17 +42,19 @@ const AddMenuItemPage = () => {
     return (
         <>
             <MenuItemView
-                initialValue={initialValue}
+                defaultInitialValue={defaultInitialValue}
                 onSubmit={onSubmit}
             >
                 <>
-                    <FetchButton
+                    <RowSplitter height="10px"/>
+                    <PrimaryButton
                         isWide
                         type="submit"
                         isLoading={isLoading}
+                        withPadding
                     >
                         {translate(TRANSLATION.PAGE.ADD_MENU_ITEM.BUTTON.ADD_MENU_ITEM)}
-                    </FetchButton>
+                    </PrimaryButton>
                 </>
 
             </MenuItemView>

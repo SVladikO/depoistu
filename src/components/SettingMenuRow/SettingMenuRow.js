@@ -1,9 +1,9 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 
-import {Wrapper, Title, LeftContent, RightContent, RightAnchor, Label} from "./SettingMenuRow.style";
+import {Wrapper, Title, LeftContent, RightContent, Label} from "./SettingMenuRow.style";
 
-import ToggleCheckbox from "../ToggleCheckbox/ToggleCheckbox";
+import ToggleCheckbox from "components/ToggleCheckbox/ToggleCheckbox";
 
 const SettingMenuRow = ({
                             icon: Icon,
@@ -38,7 +38,6 @@ const SettingMenuRow = ({
                     </LeftContent>
                     <RightContent>
                         <Label>{label}</Label>
-                        <RightAnchor/>
                     </RightContent>
                 </Wrapper>
             </Link>
@@ -53,7 +52,6 @@ const SettingMenuRow = ({
                 </LeftContent>
                 <RightContent>
                     <Label>{label}</Label>
-                    <RightAnchor/>
                 </RightContent>
             </Wrapper>
         )

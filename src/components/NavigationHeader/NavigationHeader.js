@@ -2,23 +2,20 @@ import React from 'react';
 
 import {Wrapper, BackButton, Title} from "./NavigationHeader.style";
 
-// import {ROUTER} from "../../WeekScheduleOutput.js/config";
-// import {OrderIconWithCounter} from "../index";
+// import {ROUTER} from "WeekScheduleOutput.js/config";
+// import {OrderIconWithCounter} from "index";
 
-import {ReactComponent as BackArrow} from "../../assets/icons/back_arrow.svg";
+import {ReactComponent as BackArrow} from "assets/icons/back_arrow.svg";
 import {Link} from "react-router-dom";
 
 const NavigationHeader = (props) => {
     const {title, backUrl} = props;
-
     return (
         <Wrapper className='pm-NavigationHeader'>
                 {backUrl &&
-                    <Link to={backUrl}>
-                        <BackButton className="back-button">
+                    <BackButton to={backUrl}>
                             <BackArrow/>
-                        </BackButton>
-                    </Link>
+                    </BackButton>
                 }
                 <Title>{title}</Title>
                 {/*TODO: Hidden second version*/}

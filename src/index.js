@@ -8,15 +8,13 @@ import App from "./page/App";
 
 import reportWebVitals from './reportWebVitals';
 
-import {checkAccess} from "./utils/security";
-import {showDevelopmentPageUrls} from "./utils/log";
+import devManagement from "./utils/management";
 import {LocalStorage, LOCAL_STORAGE_KEY} from "./utils/localStorage";
 
 const container = document.getElementById('root');
 const root = createRoot(container);
 
-checkAccess();
-showDevelopmentPageUrls();
+devManagement();
 
 store.subscribe(() => {
     LocalStorage.set(LOCAL_STORAGE_KEY.REDUX_STATE, store.getState());

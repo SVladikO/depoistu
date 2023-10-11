@@ -71,7 +71,10 @@ export const useRedirectToSettingPage = () => {
 }
 export const useScrollUp = () => {
     useEffect(() => {
-        window.scrollTo(0, 0)
+        window.scrollTo({
+            top: -100,
+            behavior: "smooth",
+        })
     }, [])
 };
 
@@ -99,7 +102,6 @@ export const useLocalStorageFetch = (
                 localStorage.setItem(storageKey, JSON.stringify(res.body))
             })
             .catch(e => {
-                console.log(1111, e);
                 publishNotificationEvent.error(e.body.errorMessage)
             })
             .finally(() => stopLoading.allow())
@@ -107,3 +109,20 @@ export const useLocalStorageFetch = (
 
     return [value, setValue];
 };
+
+export const useWindowScrollPositions = () => {
+    const [scrollPosition, setPosition] = useState({ scrollX: 0, scrollY: 0 })
+
+    useEffect(() => {
+        function updatePosition() {
+            setPosition({ scrollX: window.scrollX, scrollY: window.scrollY })
+        }
+
+        window.addEventListener('scroll', updatePosition)
+        updatePosition()
+
+        return () => window.removeEventListener('scroll', updatePosition)
+    }, [])
+
+    return scrollPosition
+}

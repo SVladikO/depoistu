@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {COLOR, hexToRgbA, SHADOW} from "../../utils/theme";
+import {COLOR, hexToRgbA, SHADOW} from "utils/theme";
 
 export const SelectWrapper = styled.div`
   position: relative;

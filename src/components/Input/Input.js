@@ -5,17 +5,18 @@ import {
     SwitchIconWrapper,
     CenterWrapper,
     ClearWrapper,
-    PInputWrapper,
-    PStyle,
+    CityInputWrapper,
+    CityInputValue,
     TextareaStyle,
-    Placeholder,
+    Label,
 } from "./Input.style";
 
-import {ReactComponent as ShowEyeIcon} from "../../assets/icons/show-eye.svg";
-import {ReactComponent as HideEyeIcon} from "../../assets/icons/hide-eye.svg";
-import {ReactComponent as ClearIcon} from "../../assets/icons/close.svg";
+import {ReactComponent as ShowEyeIcon} from "assets/icons/show-eye.svg";
+import {ReactComponent as HideEyeIcon} from "assets/icons/hide-eye.svg";
+import {ReactComponent as ClearIcon} from "assets/icons/close.svg";
+import {ReactComponent as SearchIcon} from "assets/icons/search.svg";
 
-import {WarningMessage} from "../../components";
+import {WarningMessage} from "components";
 
 export const Textarea = memo(function ({
                                            errorMessage,
@@ -25,17 +26,22 @@ export const Textarea = memo(function ({
                                            name,
                                            changeHandler = () => {},
                                            clearHandler = () => {},
+                                           labelName = '',
+                                           isRequired = false,
+                                           placeholder = ''
                                        }) {
 
     return (
         <div>
-            <Wrapper>
+            <Wrapper isTouched={value ? false : isTouched} errorMessage={errorMessage}>
+                {labelName && <Label isRequired={isRequired}>{labelName}</Label>}
                 <TextareaStyle
                     value={value}
                     name={name}
                     onChange={changeHandler}
+                    placeholder={placeholder}
                 />
-                {value && withCleaner && <ClearWrapper onClick={clearHandler}><ClearIcon/></ClearWrapper>}
+                {value && withCleaner && <ClearWrapper onClick={clearHandler}><ClearIcon /></ClearWrapper>}
             </Wrapper>
             {isTouched && errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
         </div>
@@ -58,51 +64,71 @@ export const Input = memo(function ({
                                         isTouched,
                                         withSwitcher = false,
                                         withCleaner = false,
-                                        changeHandler,
+                                        changeHandler = () => {},
                                         clearHandler,
-                                        ...props
+                                        labelName,
+                                        isRequired
                                     }) {
     const [inputType, setInputType] = useState(withSwitcher ? INPUT_TYPE.PASSWORD : type);
     const handleSwitch = () => setInputType(inputType === INPUT_TYPE.PASSWORD ? INPUT_TYPE.TEXT : INPUT_TYPE.PASSWORD);
 
     return (
-        <div>
-            <Wrapper className='pma-input'>
-                {Icon && <Icon/>}
-                <InputText
-                    name={name}
-                    value={value}
-                    onChange={changeHandler}
-                    type={inputType}
-                    withRightIcon={withSwitcher || withCleaner}
-                    withLeftIcon={!!Icon}
-                    withSwitcher={withSwitcher}
-                    {...props}
-                />
-                {withSwitcher &&
-                    <SwitchIconWrapper onClick={handleSwitch}>
-                        <CenterWrapper>
-                            {inputType === INPUT_TYPE.PASSWORD ? <ShowEyeIcon/> : <HideEyeIcon/>}
-                        </CenterWrapper>
-                    </SwitchIconWrapper>
-                }
-                {!!value && withCleaner &&
-                    <ClearWrapper {...props} onClick={clearHandler}>
-                        <ClearIcon/>
-                    </ClearWrapper>}
-            </Wrapper>
+        <Wrapper
+            className='pma-input'
+            isTouched={value ? false : isTouched}
+            errorMessage={errorMessage}
+        >
+            {Icon && <Icon />}
+            {labelName && <Label isRequired={isRequired}>{labelName}</Label>}
+            <InputText
+                name={name}
+                value={value}
+                onChange={changeHandler}
+                type={inputType}
+                withRightIcon={withSwitcher || withCleaner}
+                withLeftIcon={!!Icon}
+                withSwitcher={withSwitcher}
+                isTouched={value ? false : isTouched}
+                errorMessage={errorMessage}
+            />
+            {withSwitcher &&
+                <SwitchIconWrapper onClick={handleSwitch}>
+                    <CenterWrapper>
+                        {inputType === INPUT_TYPE.PASSWORD ? <ShowEyeIcon /> : <HideEyeIcon />}
+                    </CenterWrapper>
+                </SwitchIconWrapper>
+            }
+            {!!value && withCleaner &&
+                <ClearWrapper onClick={clearHandler}>
+                    <ClearIcon />
+                </ClearWrapper>}
             {isTouched && errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
-        </div>
+        </Wrapper>
     )
 });
 
-export const PInput = ({Icon, value, placeholder, handleClick, isTouched, errorMessage}) => {
+export const CityInput = (props) => {
+    const {
+        value,
+        placeholder,
+        handleClick,
+        isTouched,
+        errorMessage,
+        labelName,
+        isRequired,
+    } = props
+
     return (
         <div>
-            <PInputWrapper onClick={handleClick}>
-                {Icon && <Icon/>}
-                <PStyle withLeftIcon={!!Icon}>{value || <Placeholder>{placeholder}</Placeholder>}</PStyle>
-            </PInputWrapper>
+            <CityInputWrapper
+                onClick={handleClick}
+                isTouched={value ? false : isTouched}
+                errorMessage={errorMessage}
+            >
+                {labelName && <Label isRequired={isRequired}>{labelName}</Label>}
+                <SearchIcon/>
+                <CityInputValue withLeftIcon>{value || placeholder}</CityInputValue>
+            </CityInputWrapper>
             {isTouched && errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
         </div>
     )

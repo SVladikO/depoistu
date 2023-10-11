@@ -28,7 +28,7 @@ export const stopLoadingWithDelay = callbacks => {
                 }
             }, 1000)
         }
-    }, 1500)
+    }, 2000)
 
     return {
         /**
