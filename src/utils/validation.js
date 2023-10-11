@@ -98,11 +98,11 @@ const changePasswordValidation = {
 }
 
 const menu_item_validation = {
+    categoryId: Yup.string().required(MESSAGE.REQUIRED),
     name: Yup.string()
         .required(MESSAGE.REQUIRED)
         .min(2, `${MESSAGE.MIN_SYMBOLS} 2`)
-        .max(30, `${MESSAGE.MAX_SYMBOLS} 30`),
-    categoryId: Yup.string().required(MESSAGE.REQUIRED),
+        .max(50, `${MESSAGE.MAX_SYMBOLS} 30`),
     price: Yup.number()
         .required(MESSAGE.REQUIRED)
         .moreThan(0, `${MESSAGE.MIN_VALUE} 1`),
