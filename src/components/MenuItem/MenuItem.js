@@ -87,9 +87,12 @@ export const MenuItemDetails = ({
                     <Flex justifyContent="space-between" width={'100%'}>
                         <Title>{item.name}</Title>
                         {/*<Like liked={isLiked}/>*/}
-                        <Price>{item.price}</Price>
+
                     </Flex>
                     {item.description && <DescriptionContent/>}
+                    <div> {item.size_1 && item.size_1 + ' ' + CATEGORY_ID_MAPPER_AS_OBJECT[item.categoryId].measurement + ' - '}  {!!item.price_1 && item.price_1 + ' ₴'} </div>
+                    <div> {item.size_2 && item.size_2 + ' ' + CATEGORY_ID_MAPPER_AS_OBJECT[item.categoryId].measurement + ' - '}  {!!item.price_2 && item.price_2 + ' ₴'} </div>
+                    <div> {item.size_3 && item.size_3 + ' ' + CATEGORY_ID_MAPPER_AS_OBJECT[item.categoryId].measurement + ' - '}  {!!item.price_3 && item.price_3 + ' ₴'} </div>
                 </MainInfo>
             </MainInfoWrapper>
             <AdditionalDetails
@@ -97,7 +100,6 @@ export const MenuItemDetails = ({
                 justifyContent="center"
                 alignItems="center"
             >
-                <MeasureIcon /> {item.size} {CATEGORY_ID_MAPPER_AS_OBJECT[item.categoryId].measurement}
                 <GreyDot />
                 <TimeIcon/> {item.cookingTime} {translate(TRANSLATION.MEASUREMENTS.PREPARING)}
             </AdditionalDetails>

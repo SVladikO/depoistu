@@ -1,9 +1,9 @@
 import React from 'react';
-import {ToTopButtonWrapper} from "./ToTopButton.style";
+import {ToTopButtonWrapper} from "./ScrollUpButton.style";
 import {ReactComponent as DropdownIcon} from "assets/icons/chevron.svg";
 import {useWindowScrollPositions} from "../../utils/hook";
 
-const ToTopButton = () => {
+const ScrollUpButton = () => {
     const { scrollY } = useWindowScrollPositions()
     const rightMargin = window.innerWidth < 400 ? '175px': '192px'
 
@@ -15,6 +15,7 @@ const ToTopButton = () => {
     };
     return (
         <ToTopButtonWrapper
+            className="scroll_up_button"
             isVisible={scrollY > 820}
             onClick={scrollToTop}
             rightMargin={rightMargin}
@@ -24,4 +25,4 @@ const ToTopButton = () => {
     );
 };
 
-export default ToTopButton;
+export default ScrollUpButton;

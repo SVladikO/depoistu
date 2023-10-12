@@ -47,7 +47,7 @@ const CustomerCompaniesPage = () => {
             <PopupQRCode companyId={companyIdForQRCode} onClose={() => setCompanyIdForQRCode('')}/>
             {customerCompanies.map(
                 company =>
-                    <Company company={company} key={company.id}>
+                    <Company company={company} key={company.id} withMoreInfo>
                         <EditBar>
                             <Link to={ROUTER.EDIT_COMPANY.URL + '/' + company.id} style={{width: '140px'}}>
                                 <DisabledButton>
@@ -70,7 +70,7 @@ const CustomerCompaniesPage = () => {
                     </Company>
             )
             }
-            {customer.canCreateCompanies > customerCompanies.length &&
+            {customer && customer.canCreateCompanies > customerCompanies.length &&
                 <Link to={URL.ADD_COMPANY}>
                     <PrimaryButton isWide withPadding>
                         {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.ADD_COMPANY)}

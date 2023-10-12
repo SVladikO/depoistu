@@ -61,11 +61,11 @@ const SettingPage = () => {
             description={translate(TR.PAGE.SETTINGS.NOTIFICATION.DESCRIPTION)}
         >
             <EditBar>
-                <Link to={URL.SING_IN}>
-                    <PrimaryButton isWide minWidth="120px">{translate(TR.PAGE.SETTINGS.BUTTONS.SING_IN)}</PrimaryButton>
-                </Link>
                 <Link to={URL.SING_UP}>
                     <PrimaryButton isWide minWidth="120px">{translate(TR.PAGE.SETTINGS.BUTTONS.SING_UP)}</PrimaryButton>
+                </Link>
+                <Link to={URL.SING_IN}>
+                    <PrimaryButton isWide minWidth="120px">{translate(TR.PAGE.SETTINGS.BUTTONS.SING_IN)}</PrimaryButton>
                 </Link>
             </EditBar>
         </NotificationTDB>
