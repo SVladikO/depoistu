@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 import {Link, useNavigate} from "react-router-dom";
 import QRCode from 'qrcode';
@@ -31,10 +31,13 @@ const CustomerCompaniesPage = () => {
         BE_API.COMPANY.GET_BY_CUSTOMER_ID(customer?.id)
     );
 
-    if (!wasWarningShown) {
-        publishNotificationEvent.warning(translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.WARNING))
-        setWasWarningShown(true);
-    }
+    useEffect(() => {
+        if (!wasWarningShown) {
+            publishNotificationEvent.warning(translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.WARNING))
+            setWasWarningShown(true);
+        }
+    },[wasWarningShown]);
+
 
     if (isLoading) {
         return <NotificationLoading/>;
