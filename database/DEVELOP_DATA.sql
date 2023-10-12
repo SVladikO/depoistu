@@ -15,7 +15,7 @@ INSERT INTO CUSTOMER (id, name, phone, password, email, is_verified_phone, is_ve
   (DEFAULT, 'Customer5',    '380981112233', 'depoistu', 'customer5@gmail.com',        false, true, '1686300364887', 1);
 
 
-INSERT INTO MENU_ITEM (id, category_id, company_id, name, is_visible, description, cooking_time, price, size, image_url) VALUES
+INSERT INTO MENU_ITEM (id, category_id, company_id, name, is_visible, description, cooking_time, price_1, size_1, image_url) VALUES
   (DEFAULT, 76,   1,   'Wiiine',                     1,  '',                                                                                                    '15',  90,  '200',  'https://img.postershop.me/2859/Products/2225048_1637841235.206_original.jpg'),
   (DEFAULT, 26,   1,   'Some drink',                 1,  '',                                                                                                    '15',  90,  '200',  'https://img.postershop.me/2859/Products/2225048_1637841235.206_original.jpg'),
   (DEFAULT, 32,   1,   'Салатік осінь',              1,  'листочки капусти, яблука',                                                                            '15',  90,  '200',  'https://img.postershop.me/2859/Products/2225048_1637841235.206_original.jpg'),
