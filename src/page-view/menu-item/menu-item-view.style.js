@@ -20,3 +20,8 @@ export const ImagePlace = styled.div`
   border-radius: ${BORDER_RADIUS.CIRCLE};
   margin: 5px;
 `;
+
+export const GroupSizePrice = styled.div`
+ display: flex;
+  gap: 10px;
+`
