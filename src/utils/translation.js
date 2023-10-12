@@ -174,10 +174,7 @@ export const TRANSLATION = {
                 en: "Name",
                 ua: "Ім'я"
             },
-            PRICE: {
-                en: "Price",
-                ua: "Ціна"
-            },
+
             CATEGORY: {
                 en: "Category",
                 ua: "Категорія"
@@ -193,7 +190,11 @@ export const TRANSLATION = {
             MEAL_SIZE: {
                 en: "Size",
                 ua: "Розмір"
-            }
+            },
+            PRICE: {
+                en: "Price",
+                ua: "Ціна"
+            },
         },
         CUSTOMER: {
             NAME: {

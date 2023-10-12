@@ -103,19 +103,29 @@ const menu_item_validation = {
         .required(MESSAGE.REQUIRED)
         .min(2, `${MESSAGE.MIN_SYMBOLS} 2`)
         .max(50, `${MESSAGE.MAX_SYMBOLS} 30`),
-    price: Yup.number()
-        .required(MESSAGE.REQUIRED)
-        .moreThan(0, `${MESSAGE.MIN_VALUE} 1`),
     description: Yup.string()
         .max(100, `${MESSAGE.MAX_SYMBOLS} 100`),
     cookingTime: Yup.number()
         .required(MESSAGE.REQUIRED)
         .moreThan(0, `${MESSAGE.MIN_VALUE} 1`)
         .lessThan(100, `${MESSAGE.MAX_VALUE} 99`),
-    size: Yup.number()
+    size_1: Yup.number()
         .required(MESSAGE.REQUIRED)
         .moreThan(0, `${MESSAGE.MIN_VALUE} 1`)
         .lessThan(10000, `${MESSAGE.MAX_VALUE} 9999`),
+    price_1: Yup.number()
+        .required(MESSAGE.REQUIRED)
+        .moreThan(0, `${MESSAGE.MIN_VALUE} 1`),
+    size_2: Yup.number()
+        .moreThan(0, `${MESSAGE.MIN_VALUE} 1`)
+        .lessThan(10000, `${MESSAGE.MAX_VALUE} 9999`),
+    price_2: Yup.number()
+        .moreThan(0, `${MESSAGE.MIN_VALUE} 1`),
+    size_3: Yup.number()
+        .moreThan(0, `${MESSAGE.MIN_VALUE} 1`)
+        .lessThan(10000, `${MESSAGE.MAX_VALUE} 9999`),
+    price_3: Yup.number()
+        .moreThan(0, `${MESSAGE.MIN_VALUE} 1`),
 }
 
 const COMPANY = {
