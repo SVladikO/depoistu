@@ -29,7 +29,7 @@ import {parseSchedule} from "utils/company";
 import {CITY_TRANSLATION_IDS} from "utils/cities";
 import {translate, TRANSLATION as TR, truncate} from "utils/translation";
 
-const Company = ({company, withMoreInfo, children}) => {
+const Company = ({company, withMoreInfo, children, clickHandler}) => {
     if (!company) {
         return null;
     }
@@ -90,7 +90,7 @@ const Company = ({company, withMoreInfo, children}) => {
     )
 
     return (
-        <Wrapper withMoreInfo={withMoreInfo}>
+        <Wrapper withMoreInfo={withMoreInfo} onClick={clickHandler}>
             {/*<Images />*/}
             <Content>
                 <CompanyInfo>

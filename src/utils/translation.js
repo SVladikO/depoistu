@@ -276,8 +276,8 @@ export const TRANSLATION = {
                 en: 'There is no menu in company'
             },
             COMPANY_DOESNT_EXIST: {
-                ua: 'Заклад не існує',
-                en: "Company doesn't exist"
+                ua: 'Заклад не знайдено',
+                en: "Company wasn't found"
             }
         },
         CUSTOMER_COMPANIES: {
@@ -286,8 +286,8 @@ export const TRANSLATION = {
                 en: 'Your companies'
             },
             WARNING: {
-                ua: "Не додавайте заклади заради розваги. Інакше будемо змушені заблокувати ваш аккаунт. Не витрачайте ваш і наш час дарма.",
-                en: "Don't add companies for fun as we will block your account.  Don't waste your time and ours."
+                ua: "Не додавайте заклади заради розваги. Інакше будемо змушені заблокувати ваш аккаунт. Не витрачайте ваш і наш час дарма. Дякуєм.",
+                en: "Don't add companies for fun as we will block your account.  Don't waste your time and ours. Thanks."
             },
             BUTTON: {
                 COMPANY: {
@@ -618,6 +618,12 @@ export const TRANSLATION = {
                 en: "Our Team"
             }
         },
+        FAVORITE: {
+            TOP_TITLE: {
+                ua: "Улюблені",
+                en: "Favorite"
+            },
+        },
         SEARCH: {
             TOP_TITLE: {
                 ua: "Пошук",
@@ -823,13 +829,21 @@ export const TRANSLATION = {
     },
 
     BOTTOM_MENU: {
-        SEARCH_TAB: {
-            ua: "Пошук",
-            en: "Search"
+        MAIN: {
+            ua: "Головна",
+            en: "Main"
         },
-        ACCOUNT_TAB: {
-            ua: "Кабинет",
-            en: "Account"
+        MENU: {
+            ua: "Меню",
+            en: "Menu"
+        },
+        FAVORITE: {
+            ua: "Улюблені",
+            en: "Favorite"
+        },
+        SETTINGS: {
+            ua: "Системні",
+            en: "Settings"
         },
     },
     TOP_CATEGORIES: {

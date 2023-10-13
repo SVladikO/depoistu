@@ -1,4 +1,5 @@
-import {Link} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
 import React, {useMemo, useState} from "react";
 
 import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
@@ -13,9 +14,13 @@ import {publishNotificationEvent} from "utils/event";
 import {translate, TRANSLATION, truncate} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 import {useLocalStorage, useScrollUp, useLocalStorageFetch} from "utils/hook";
+import {addCompanyIdForSearchDetailsPage} from "../../features/searchDetailsPage/searchDetailsPageSlice";
 
 const SearchPage = () => {
         useScrollUp();
+        const navigate = useNavigate();
+        const dispatch = useDispatch();
+
         const [isLoadingCityIds, setIsLoadingCityIds] = useState(false);
         const [isLoadingCompanies, setIsLoadingCompanies] = useState(false);
 
@@ -94,14 +99,22 @@ const SearchPage = () => {
                     />
                 </ContentContainer>
 
-                {isLoadingCityIds && <NotificationLoading>{translate(TRANSLATION.NOTIFICATION.COMPANY.LOADING_AVAILABLE_CITIES)}</NotificationLoading>}
-                {isLoadingCompanies && <NotificationLoading>{translate(TRANSLATION.NOTIFICATION.LOADING_AVAILABLE_COMPANIES)}</NotificationLoading>}
-                <RowSplitter height="10px" />
+                {isLoadingCityIds &&
+                    <NotificationLoading>{translate(TRANSLATION.NOTIFICATION.COMPANY.LOADING_AVAILABLE_CITIES)}</NotificationLoading>}
+                {isLoadingCompanies &&
+                    <NotificationLoading>{translate(TRANSLATION.NOTIFICATION.LOADING_AVAILABLE_COMPANIES)}</NotificationLoading>}
+                <RowSplitter height="10px"/>
                 {!isLoadingCompanies && companies && !!companies.length && selectedCityId &&
                     companies?.map(company =>
-                        <Link to={`${URL.SEARCH_DETAILS}${company.id}`} key={company.id}>
-                            <Company key={company.id} company={company}/>
-                        </Link>
+                        <Company
+                            key={company.id}
+                            company={company}
+                            clickHandler={() => {
+                                dispatch(addCompanyIdForSearchDetailsPage(company.id))
+                                LocalStorage.remove(LOCAL_STORAGE_KEY.SEARCH_DETAILS_COMPANY)
+                                LocalStorage.remove(LOCAL_STORAGE_KEY.SEARCH_DETAILS_MENU)
+                                navigate(`${URL.SEARCH_DETAILS}/${company.id}`)
+                            }}/>
                     )
                 }
                 {showCityPopup && cityPopup}
