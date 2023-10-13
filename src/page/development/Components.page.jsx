@@ -91,8 +91,12 @@ const mockMenuItem = {
     categoryId: 1,
     description: 'spicy , tomato, sauce, chilies, mozzare, lla, spicy, ice, tomato, sauce, chili, mozzarella, sauce, chili',
     imageUrl: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
-    price: 170,
-    size: 150,
+    size_1: 100,
+    price_1: 120,
+    size_2: 200,
+    price_2: 220,
+    size_3: 300,
+    price_3: 300,
     likes: 5,
 
 }
