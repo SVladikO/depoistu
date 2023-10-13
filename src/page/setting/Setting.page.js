@@ -48,6 +48,7 @@ import {TRANSLATION as TR, translate} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 import {publishNotificationEvent} from "utils/event";
 import packageInfo from '../../../package.json';
+import SingInSingUpView from "../../page-view/singInSingUp/singInSingUp.view";
 
 
 const SettingPage = () => {
@@ -56,21 +57,6 @@ const SettingPage = () => {
     const [isLoading, setIsLoading] = useState(false);
     const customer = useSelector(state => state.customer.value);
 
-    const singInSingUpNotification = (
-        <NotificationTDB
-            title={translate(TR.PAGE.SETTINGS.NOTIFICATION.TITLE)}
-            description={translate(TR.PAGE.SETTINGS.NOTIFICATION.DESCRIPTION)}
-        >
-            <EditBar>
-                <Link to={URL.SING_UP}>
-                    <PrimaryButton isWide minWidth="120px">{translate(TR.PAGE.SETTINGS.BUTTONS.SING_UP)}</PrimaryButton>
-                </Link>
-                <Link to={URL.SING_IN}>
-                    <PrimaryButton isWide minWidth="120px">{translate(TR.PAGE.SETTINGS.BUTTONS.SING_IN)}</PrimaryButton>
-                </Link>
-            </EditBar>
-        </NotificationTDB>
-    );
     const onCheckVerification = ({emailVerificationCode}) => {
         setIsLoading(true)
         fetchData(BE_API.CUSTOMER.PUT_VERIFY_EMAIL(), {email: customer.email, emailVerificationCode, method: 'put'})
@@ -122,12 +108,7 @@ const SettingPage = () => {
 
     return (
         <>
-            {!customer && (
-                <>
-                    {singInSingUpNotification}
-                    <RowSplitter height="10px" />
-                    </>
-            )}
+            <SingInSingUpView />
             {/*{customer && !customer.isVerifiedEmail && emailVerificationNotification}*/}
             {isLoading && <NotificationLoading/>}
             <LanguagePopup />
