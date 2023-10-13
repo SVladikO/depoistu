@@ -8,13 +8,13 @@ import {
     EditWrapper,
     ImagesWrapper,
     EditLabel,
-    EditRow, MainInfo, SeeMore, MainInfoWrapper, NewFlag, SizePriceTd, SizePriceWrapper,
+    EditRow, Info, SeeMore, InfoWrapper, NewFlag, SizePriceTd, SizePriceWrapper, InfoOneRow,
 } from "./MenuItem.style";
 
 import {ReactComponent as ZoomIcon} from "assets/icons/zoom.svg";
 import {ReactComponent as EditIcon} from "assets/icons/edit.svg";
 
-import {Flex, ToggleCheckbox} from "components";
+import {ToggleCheckbox} from "components";
 
 import {URL} from "utils/config";
 import {BE_API, fetchData} from "utils/fetch";
@@ -109,17 +109,19 @@ export const MenuItemDetails = ({
         )
     }
 
+    const InfoStyle = !item.description && item?.name?.length < 18 ? InfoOneRow : Info;
+
     return (
         <>
             {isNewItemFlag && <NewFlag>New</NewFlag>}
-            <MainInfoWrapper isWithImage={isWithImage}>
+            <InfoWrapper isWithImage={isWithImage}>
                 {isWithImage && <MenuItemImages/>}
-                <MainInfo>
+                <InfoStyle>
                     <FoodTitle>{item.name}</FoodTitle>
                     {renderDescription()}
                     {renderSizePrice()}
-                </MainInfo>
-            </MainInfoWrapper>
+                </InfoStyle>
+            </InfoWrapper>
 
             {withEditIcon &&
                 <EditRow isVisible={isVisible}>

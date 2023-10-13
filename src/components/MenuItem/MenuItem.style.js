@@ -20,14 +20,22 @@ export const Wrapper = styled.div`
   transition: background-color 0.5s;
 `
 
-export const MainInfoWrapper = styled.div`
+export const InfoWrapper = styled.div`
   display: grid;
   grid-template-columns: ${props => props.isWithImage ? '1fr 3fr': '1fr'};
   align-self:center
 `
 
-export const MainInfo = styled.div`
+export const Info = styled.div`
   padding: 16px;
+`
+
+export const InfoOneRow = styled.div`
+  padding: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border: solild 1px red;
 `
 
 export const NewFlag = styled.div`
