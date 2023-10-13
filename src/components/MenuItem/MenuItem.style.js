@@ -77,6 +77,7 @@ export const SizePriceWrapper = styled.div`
   display: flex;
   justify-content: end;
 `;
+
 export const FoodTitle = styled.div`
   ${FONT.SIZE_20};
   ${FONT.WEIGHT_600};
