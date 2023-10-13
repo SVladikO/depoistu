@@ -8,7 +8,14 @@ import {
     EditWrapper,
     ImagesWrapper,
     EditLabel,
-    EditRow, Info, SeeMore, InfoWrapper, NewFlag, SizePriceTd, SizePriceWrapper, InfoOneRow,
+    EditRow,
+    Info,
+    SeeMore,
+    InfoWrapper,
+    NewFlag,
+    SizePriceTd,
+    SizePriceWrapper,
+    InfoOneRow,
 } from "./MenuItem.style";
 
 import {ReactComponent as ZoomIcon} from "assets/icons/zoom.svg";
@@ -34,18 +41,14 @@ export const MenuItemDetails = ({
     const [isShowItemDescription, setIsShowItemDescription] = useState(false)
     const [imageUrl, setImageUrl] = useState('');
 
-    const MenuItemImages = () => (
-        <ImagesWrapper>
+    const MenuItemImages = () => (<ImagesWrapper>
             <FoodImage src={item.imageUrl} onClick={() => setImageUrl(item.imageUrl)}/>
             <ZoomIcon/>
-        </ImagesWrapper>
-    );
+        </ImagesWrapper>);
 
     const toggleIsMenuItemVisible = async () => {
         const requestBody = {
-            id: item.id,
-            isVisible: !isVisible,
-            method: 'put',
+            id: item.id, isVisible: !isVisible, method: 'put',
         }
         try {
             await fetchData(BE_API.MENU_ITEM.CHANGE_IS_VISIBLE(), requestBody)
@@ -66,53 +69,43 @@ export const MenuItemDetails = ({
             return;
         }
 
-        return (
-            <Description>
-                {item.description.length > 62 && !isShowItemDescription
-                    ? <>
-                        {shortDescription}...&nbsp;
-                        <SeeMore onClick={showItemDescription}>
-                            {translate(TR.SEE_MORE)}
-                        </SeeMore>
-                    </>
-                    : item.description}
-            </Description>
-        )
+        return (<Description>
+                {item.description.length > 62 && !isShowItemDescription ? <>
+                    {shortDescription}...&nbsp;
+                    <SeeMore onClick={showItemDescription}>
+                        {translate(TR.SEE_MORE)}
+                    </SeeMore>
+                </> : item.description}
+            </Description>)
     }
 
-    const renderTableRow = (size, measurement, price) => (
-        <tr>
+    const renderTableRow = (size, measurement, price) => (<tr>
             <SizePriceTd>{size} {size && measurement}</SizePriceTd>
             <SizePriceTd>{size && '-'}</SizePriceTd>
             <SizePriceTd>{price} {price && '₴'}</SizePriceTd>
-        </tr>
-    )
+        </tr>)
 
     const renderSizePrice = () => {
         const {
-            categoryId,
-            size_1, price_1,
-            size_2, price_2,
-            size_3, price_3,
+            categoryId, size_1, price_1, size_2, price_2, size_3, price_3,
         } = item;
 
         const measurement = CATEGORY_ID_MAPPER_AS_OBJECT[categoryId].measurement;
 
-        return (
-            <SizePriceWrapper>
+        return (<SizePriceWrapper>
                 <table>
-                    {renderTableRow(size_1, measurement, price_1)}
-                    {renderTableRow(size_2, measurement, price_2)}
-                    {renderTableRow(size_3, measurement, price_3)}
+                    <tbody>
+                        {renderTableRow(size_1, measurement, price_1)}
+                        {renderTableRow(size_2, measurement, price_2)}
+                        {renderTableRow(size_3, measurement, price_3)}
+                    </tbody>
                 </table>
-            </SizePriceWrapper>
-        )
+            </SizePriceWrapper>)
     }
 
     const InfoStyle = !item.description && item?.name?.length < 18 ? InfoOneRow : Info;
 
-    return (
-        <>
+    return (<>
             {isNewItemFlag && <NewFlag>New</NewFlag>}
             <InfoWrapper isWithImage={isWithImage}>
                 {isWithImage && <MenuItemImages/>}
@@ -123,24 +116,21 @@ export const MenuItemDetails = ({
                 </InfoStyle>
             </InfoWrapper>
 
-            {withEditIcon &&
-                <EditRow isVisible={isVisible}>
-                    <ToggleCheckbox
-                        isChecked={isVisible}
-                        changeHandler={toggleIsMenuItemVisible}
-                        className="ToggleCheckbox"
-                        title={translate(TRANSLATION.COMPONENTS.MENU_ITEM.BUTTON.CHANGE_VISIBILITY)}
-                    />
-                    <Link to={URL.EDIT_MENU_ITEM} className="EditButton">
-                        <EditWrapper onClick={onEditClick}>
-                            <EditIcon/>
-                            <EditLabel>{translate(TRANSLATION.COMPONENTS.MENU_ITEM.BUTTON.EDIT_MENU_ITEM)}</EditLabel>
-                        </EditWrapper>
-                    </Link>
-                </EditRow>
-            }
-        </>
-    )
+            {withEditIcon && <EditRow isVisible={isVisible}>
+                <ToggleCheckbox
+                    isChecked={isVisible}
+                    changeHandler={toggleIsMenuItemVisible}
+                    className="ToggleCheckbox"
+                    title={translate(TRANSLATION.COMPONENTS.MENU_ITEM.BUTTON.CHANGE_VISIBILITY)}
+                />
+                <Link to={URL.EDIT_MENU_ITEM} className="EditButton">
+                    <EditWrapper onClick={onEditClick}>
+                        <EditIcon/>
+                        <EditLabel>{translate(TRANSLATION.COMPONENTS.MENU_ITEM.BUTTON.EDIT_MENU_ITEM)}</EditLabel>
+                    </EditWrapper>
+                </Link>
+            </EditRow>}
+        </>)
 }
 
 const MenuItem = (props) => {
@@ -162,8 +152,7 @@ const MenuItem = (props) => {
     //     </Popup.Image>
     // )
 
-    return (
-        <Wrapper
+    return (<Wrapper
             isVisible={isVisible}
             className='pm-MenuItem'
         >
@@ -173,8 +162,7 @@ const MenuItem = (props) => {
                 setIsVisible={setIsVisible}
             />
             {/*<MenuItemPopup />*/}
-        </Wrapper>
-    );
+        </Wrapper>);
 };
 
 export default MenuItem;
