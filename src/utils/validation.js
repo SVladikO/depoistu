@@ -105,10 +105,6 @@ const menu_item_validation = {
         .max(50, `${MESSAGE.MAX_SYMBOLS} 30`),
     description: Yup.string()
         .max(100, `${MESSAGE.MAX_SYMBOLS} 100`),
-    cookingTime: Yup.number()
-        .required(MESSAGE.REQUIRED)
-        .moreThan(0, `${MESSAGE.MIN_VALUE} 1`)
-        .lessThan(100, `${MESSAGE.MAX_VALUE} 99`),
     size_1: Yup.number()
         .required(MESSAGE.REQUIRED)
         .moreThan(0, `${MESSAGE.MIN_VALUE} 1`)
