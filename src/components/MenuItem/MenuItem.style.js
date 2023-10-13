@@ -6,7 +6,6 @@ export const Wrapper = styled.div`
   position: relative;
   width: 96%;
   font-style: normal;
-  font-weight: 700;
   font-size: 16px;
   line-height: 19px;
   background: ${COLOR.ACCENT4};
@@ -66,9 +65,13 @@ export const FoodImage = styled.img`
   border-radius: ${BORDER_RADIUS.CIRCLE};
 `;
 
-export const Title = styled.div`
+export const SizePriceWrapper = styled.div`
+  display: flex;
+  justify-content: end;
+`;
+export const FoodTitle = styled.div`
   ${FONT.SIZE_20};
-  ${FONT.WEIGHT_700};
+  ${FONT.WEIGHT_600};
   color: ${COLOR.ACCENT1};
   margin: 0 5px 4px 0;
   display: flex;
@@ -105,7 +108,11 @@ export const SeeMore = styled.span`
   &:hover {
     text-decoration: underline;
   }
-`
+`;
+
+export const SizePriceTd = styled.td`
+  ${FONT.SIZE_20};
+`;
 
 export const EditRow = styled.div`
   display: grid;

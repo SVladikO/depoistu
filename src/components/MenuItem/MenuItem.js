@@ -3,12 +3,12 @@ import {useState} from "react";
 import {
     Wrapper,
     FoodImage,
-    Title,
+    FoodTitle,
     Description,
     EditWrapper,
     ImagesWrapper,
     EditLabel,
-    EditRow, MainInfo, SeeMore, MainInfoWrapper, NewFlag,
+    EditRow, MainInfo, SeeMore, MainInfoWrapper, NewFlag, SizePriceTd, SizePriceWrapper,
 } from "./MenuItem.style";
 
 import {ReactComponent as ZoomIcon} from "assets/icons/zoom.svg";
@@ -59,19 +59,53 @@ export const MenuItemDetails = ({
         setIsShowItemDescription(true)
     }
 
-    const DescriptionContent = () => {
+    const renderDescription = () => {
         const shortDescription = item.description.split('').slice(0, 62).join('')
+
+        if (!item.description) {
+            return;
+        }
+
         return (
-             <Description>
-                 {item.description.length > 62 && !isShowItemDescription
-                     ? <>
-                         {shortDescription}...&nbsp;
-                         <SeeMore onClick={showItemDescription}>
-                             {translate(TR.SEE_MORE)}
-                         </SeeMore>
-                     </>
-                 : item.description}
-                </Description>
+            <Description>
+                {item.description.length > 62 && !isShowItemDescription
+                    ? <>
+                        {shortDescription}...&nbsp;
+                        <SeeMore onClick={showItemDescription}>
+                            {translate(TR.SEE_MORE)}
+                        </SeeMore>
+                    </>
+                    : item.description}
+            </Description>
+        )
+    }
+
+    const renderTableRow = (size, measurement, price) => (
+        <tr>
+            <SizePriceTd>{size} {size && measurement}</SizePriceTd>
+            <SizePriceTd>{size && '-'}</SizePriceTd>
+            <SizePriceTd>{price} {price && '₴'}</SizePriceTd>
+        </tr>
+    )
+
+    const renderSizePrice = () => {
+        const {
+            categoryId,
+            size_1, price_1,
+            size_2, price_2,
+            size_3, price_3,
+        } = item;
+
+        const measurement = CATEGORY_ID_MAPPER_AS_OBJECT[categoryId].measurement;
+
+        return (
+            <SizePriceWrapper>
+                <table>
+                    {renderTableRow(size_1, measurement, price_1)}
+                    {renderTableRow(size_2, measurement, price_2)}
+                    {renderTableRow(size_3, measurement, price_3)}
+                </table>
+            </SizePriceWrapper>
         )
     }
 
@@ -79,17 +113,11 @@ export const MenuItemDetails = ({
         <>
             {isNewItemFlag && <NewFlag>New</NewFlag>}
             <MainInfoWrapper isWithImage={isWithImage}>
-                {isWithImage && <MenuItemImages />}
+                {isWithImage && <MenuItemImages/>}
                 <MainInfo>
-                    <Flex justifyContent="space-between" width={'100%'}>
-                        <Title>{item.name}</Title>
-                        {/*<Like liked={isLiked}/>*/}
-
-                    </Flex>
-                    {item.description && <DescriptionContent/>}
-                    <div> {item.size_1 && item.size_1 + ' ' + CATEGORY_ID_MAPPER_AS_OBJECT[item.categoryId].measurement + ' - '}  {!!item.price_1 && item.price_1 + ' ₴'} </div>
-                    <div> {item.size_2 && item.size_2 + ' ' + CATEGORY_ID_MAPPER_AS_OBJECT[item.categoryId].measurement + ' - '}  {!!item.price_2 && item.price_2 + ' ₴'} </div>
-                    <div> {item.size_3 && item.size_3 + ' ' + CATEGORY_ID_MAPPER_AS_OBJECT[item.categoryId].measurement + ' - '}  {!!item.price_3 && item.price_3 + ' ₴'} </div>
+                    <FoodTitle>{item.name}</FoodTitle>
+                    {renderDescription()}
+                    {renderSizePrice()}
                 </MainInfo>
             </MainInfoWrapper>
 
@@ -107,7 +135,7 @@ export const MenuItemDetails = ({
                             <EditLabel>{translate(TRANSLATION.COMPONENTS.MENU_ITEM.BUTTON.EDIT_MENU_ITEM)}</EditLabel>
                         </EditWrapper>
                     </Link>
-            </EditRow>
+                </EditRow>
             }
         </>
     )
@@ -137,11 +165,11 @@ const MenuItem = (props) => {
             isVisible={isVisible}
             className='pm-MenuItem'
         >
-                <MenuItemDetails
-                    {...props}
-                    isVisible={isVisible}
-                    setIsVisible={setIsVisible}
-                />
+            <MenuItemDetails
+                {...props}
+                isVisible={isVisible}
+                setIsVisible={setIsVisible}
+            />
             {/*<MenuItemPopup />*/}
         </Wrapper>
     );
