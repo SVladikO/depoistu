@@ -122,6 +122,8 @@ const [UnselectedDropdown, SelectedDropdown, WithErrorDropdown] = (() => {
                     selectedOption={selectedOption}
                     options={options}
                     onSelect={setSelectedOption}
+                    label={'Label'}
+                    isRequired
                 />
             )
         },
