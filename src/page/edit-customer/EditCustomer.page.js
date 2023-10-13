@@ -6,7 +6,6 @@ import {Input, ContentContainer, PrimaryButton} from "components";
 import validation from "utils/validation";
 import {useRedirectToSettingPage, useScrollUp} from "utils/hook";
 import {TRANSLATION, translate} from "utils/translation";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 import {useSelector} from "react-redux";
 
 const SignUpSchema = Yup.object().shape(validation.customer.singUp);

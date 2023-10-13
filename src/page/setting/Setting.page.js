@@ -1,4 +1,3 @@
-import {Link} from "react-router-dom";
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {Formik} from "formik";
@@ -38,11 +37,11 @@ import {
 
 import LanguagePopup from "features/language/LanguagePopup";
 import {openLanguagePopup} from 'features/language/languageSlice';
-import {addCustomer, deleteCustomer} from "../../features/customer/customerSlice";
+import {deleteCustomer} from "../../features/customer/customerSlice";
 
 import {URL} from 'utils/config';
 import validation from "utils/validation";
-import {useLocalStorage, useScrollUp} from "utils/hook";
+import {useScrollUp} from "utils/hook";
 import {BE_API, fetchData} from "utils/fetch";
 import {TRANSLATION as TR, translate} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
@@ -62,7 +61,7 @@ const SettingPage = () => {
         fetchData(BE_API.CUSTOMER.PUT_VERIFY_EMAIL(), {email: customer.email, emailVerificationCode, method: 'put'})
             .then(res => {
                 if (res.body.isEmailVerified) {
-                    addCustomer({...customer, isVerifiedEmail: true})
+                    // addCustomer({...customer, isVerifiedEmail: true})
                 }
             })
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))

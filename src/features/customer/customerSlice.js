@@ -5,11 +5,10 @@ const initialState = {
 }
 
 export const customerSlice = createSliceCustom({
-    name: 'language',
+    name: 'customer',
     initialState,
     reducers: {
         addCustomer: (state, action) => {
-            console.log(1111, action.payload)
             state.value = action.payload;
         },
         deleteCustomer: (state) => {

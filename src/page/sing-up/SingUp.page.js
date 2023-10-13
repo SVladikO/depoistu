@@ -7,19 +7,19 @@ import {Wrapper} from "./SingUp.style";
 import {Input, ContentContainer, PrimaryButton} from "components";
 import NavigationLabelHref from "components/NavigationLabelHref/NavigationLabelHref";
 
-import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 import validation from 'utils/validation';
 import {BE_API, fetchData} from "utils/fetch";
 import {TRANSLATION, translate} from "utils/translation";
 import {ROUTER, URL} from 'utils/config';
 import {publishNotificationEvent} from "utils/event";
-import {addCustomer} from "../../features/customer/customerSlice";
+import {addCustomer} from "features/customer/customerSlice";
+import {useDispatch} from "react-redux";
 
 const SignUpSchema = Yup.object().shape(validation.customer.singUp);
 
 const SingUpPage = () => {
     const navigate = useNavigate();
-
+    const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(false);
     const [wasSubmitted, setWasSubmitted] = useState(false);
 
@@ -29,7 +29,8 @@ const SingUpPage = () => {
 
         fetchData(BE_API.CUSTOMER.SING_UP(), {name, email, password: newPassword, phone})
             .then(res => {
-                addCustomer(res.body);
+                debugger
+                dispatch(addCustomer(res.body));
                 navigate(URL.SETTING);
             })
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))

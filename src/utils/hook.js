@@ -1,11 +1,11 @@
 import {useState, useEffect} from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
 
 import {fetchData} from "./fetch";
 
 import {URL} from "./config";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
+import {LocalStorage} from "./localStorage";
 import {publishNotificationEvent} from "./event";
 import {stopLoadingWithDelay} from "./utils";
 
@@ -60,7 +60,7 @@ export const useHideOnScroll = (id, top) => {
  *
  */
 export const useRedirectToSettingPage = () => {
-    const [customer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
+    const customer = useSelector(state => state.customer.value);
     const navigate = useNavigate();
 
     useEffect(() => {

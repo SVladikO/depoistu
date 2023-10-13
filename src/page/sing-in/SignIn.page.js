@@ -17,10 +17,9 @@ import validation from 'utils/validation';
 import {ROUTER, URL} from 'utils/config';
 import {fetchData, BE_API} from "utils/fetch";
 import {TRANSLATION, translate} from "utils/translation";
-import {LocalStorage, LOCAL_STORAGE_KEY} from "utils/localStorage"
 import {publishNotificationEvent} from "utils/event";
 import {useDispatch} from "react-redux";
-import {addCustomer} from "../../features/customer/customerSlice";
+import {addCustomer} from "features/customer/customerSlice";
 
 const SignInSchema = Yup.object().shape(validation.customer.singIn);
 
@@ -41,7 +40,6 @@ const SignInPage = () => {
         fetchData(BE_API.CUSTOMER.SING_IN(), {email, password})
             .then(res => {
                 dispatch(addCustomer(res.body))
-                LocalStorage.set(LOCAL_STORAGE_KEY.CUSTOMER, res.body)
                 navigate(URL.SETTING);
                 setIsLoading(false);
             })
@@ -53,7 +51,6 @@ const SignInPage = () => {
         handleSingIn(values)
         setWasSubmitted(true);
     }
-
 
     return (
         <>

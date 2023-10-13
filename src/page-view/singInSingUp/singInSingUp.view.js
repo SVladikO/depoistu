@@ -5,12 +5,11 @@ import {NotificationTDB, PrimaryButton, RowSplitter} from "../../components";
 import {EditBar} from "../../page/setting/Setting.style";
 
 import {URL} from "../../utils/config";
-import {useLocalStorage} from "../../utils/hook";
-import {LOCAL_STORAGE_KEY} from "../../utils/localStorage";
 import {translate, TRANSLATION as TR} from "../../utils/translation";
+import {useSelector} from "react-redux";
 
 const SingInSingUpView = () => {
-    const [customer] = useLocalStorage(LOCAL_STORAGE_KEY.CUSTOMER);
+    const customer = useSelector(state => state.customer.value);
 
     const singInSingUpNotification = (
         <NotificationTDB
