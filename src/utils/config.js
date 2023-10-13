@@ -22,6 +22,7 @@ import CustomerCompaniesPage from "page/customer-companies/CustomerCompanies.pag
 
 import {TRANSLATION, translate} from "./translation.js";
 import EditCustomerPage from "page/edit-customer/EditCustomer.page";
+import FavoritePage from "../page/favorite/Favorite.page";
 
 export const DEV_ROUTER = {
     COMPONENTS: 'components',
@@ -51,7 +52,7 @@ export const AVAILABLE_DOMAINS = {
     }
 }
 
-export const SELECTED_BE_DOMAIN = AVAILABLE_DOMAINS[REACT_APP_NODE_ENV || 0];
+export const SELECTED_BE_DOMAIN = AVAILABLE_DOMAINS[REACT_APP_NODE_ENV || 1];
 export const BE_DOMAIN = SELECTED_BE_DOMAIN.url;
 
 export const URL = {
@@ -82,7 +83,7 @@ export const ROUTER = {
     FAVORITE: {
         URL: URL.FAVORITE,
         TITLE: translate(TRANSLATION.PAGE.FAVORITE.TOP_TITLE),
-        page: () => {}
+        page: FavoritePage,
     },
     MENU: {URL: '/menu',  TITLE: 'Favorite Cart', page: () => {}},
     // Profile: {URL: '/Profile',  TITLE: 'Profile', page: () => {}},

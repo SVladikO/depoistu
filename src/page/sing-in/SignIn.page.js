@@ -1,6 +1,7 @@
+import React, {useState} from 'react';
+import {useDispatch} from "react-redux";
 import * as Yup from 'yup';
 import {Formik} from "formik";
-import React, {useState} from 'react';
 import {Link, useNavigate} from "react-router-dom";
 
 import {
@@ -17,8 +18,9 @@ import validation from 'utils/validation';
 import {ROUTER, URL} from 'utils/config';
 import {fetchData, BE_API} from "utils/fetch";
 import {TRANSLATION, translate} from "utils/translation";
-import {LocalStorage, LOCAL_STORAGE_KEY} from "utils/localStorage"
 import {publishNotificationEvent} from "utils/event";
+import {addCustomer} from "features/customer/customerSlice";
+import {useQuery} from "../../utils/hook";
 
 const SignInSchema = Yup.object().shape(validation.customer.singIn);
 
@@ -29,6 +31,9 @@ const signInInitialValues = {
 
 const SignInPage = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    let query = useQuery()
+    const backUrl = query.get("backUrl") || URL.SETTING;
     const [wasSubmitted, setWasSubmitted] = useState(false);
     const [isLoading, setIsLoading] = useState(false)
 
@@ -37,8 +42,8 @@ const SignInPage = () => {
 
         fetchData(BE_API.CUSTOMER.SING_IN(), {email, password})
             .then(res => {
-                LocalStorage.set(LOCAL_STORAGE_KEY.CUSTOMER, res.body)
-                navigate(URL.SETTING);
+                dispatch(addCustomer(res.body))
+                navigate(backUrl);
                 setIsLoading(false);
             })
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))
@@ -49,7 +54,6 @@ const SignInPage = () => {
         handleSingIn(values)
         setWasSubmitted(true);
     }
-
 
     return (
         <>
