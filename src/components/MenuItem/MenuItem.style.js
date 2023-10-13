@@ -112,6 +112,7 @@ export const SeeMore = styled.span`
 
 export const SizePriceTd = styled.td`
   ${FONT.SIZE_20};
+  text-align: right;
 `;
 
 export const EditRow = styled.div`
