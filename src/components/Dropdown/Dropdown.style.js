@@ -17,7 +17,8 @@ export const SelectButton = styled.div`
   padding: ${p => p.isOpen ? '8px 10px 10px 9px': '10px'};
   cursor: pointer;
   font-size: 16px;
-  line-height: 19px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
   color: ${COLOR.ACCENT1};
   border-radius: ${BORDER_RADIUS.INPUT};
   svg {
