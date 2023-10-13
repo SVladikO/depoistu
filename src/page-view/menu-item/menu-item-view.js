@@ -6,7 +6,7 @@ import {GroupSizePrice, ImagePlace, MenuItemPhoto} from "./menu-item-view.style"
 import {Dropdown, ContentContainer, Input, Label, SecondaryButton, Textarea} from "components";
 
 import validation from "utils/validation";
-import {CATEGORY_ID_MAPPER_AS_OBJECT, CATEGORY_MAPPER_AS_ARRAY} from "utils/category";
+import {CATEGORY_MAPPER_AS_ARRAY} from "utils/category";
 import {translate, TRANSLATION} from "utils/translation";
 
 const EditMenuItemSchema = Yup.object().shape(validation.menuItem);
@@ -160,18 +160,6 @@ const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
                             clearHandler={() => setFieldValue('description', '')}
                             isTouched={touched.description || wasSubmitted}
                             errorMessage={errors.description}
-                            withCleaner
-                        />
-                        <Input
-                            value={values.cookingTime}
-                            type="number"
-                            name="cookingTime"
-                            labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.COOKING_TIME)}
-                            onBlur={handleBlur}
-                            changeHandler={handleChange}
-                            clearHandler={() => setFieldValue('cookingTime', '')}
-                            isTouched={touched.cookingTime || wasSubmitted}
-                            errorMessage={errors.cookingTime}
                             withCleaner
                         />
 

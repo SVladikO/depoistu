@@ -12,7 +12,6 @@ import {publishNotificationEvent} from "utils/event";
 const defaultInitialValue = {
     name: '',
     description: '',
-    cookingTime: '',
     size_1: '',
     price_1: '',
     size_2: '',

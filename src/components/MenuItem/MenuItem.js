@@ -5,23 +5,20 @@ import {
     FoodImage,
     Title,
     Description,
-    AdditionalDetails,
     EditWrapper,
     ImagesWrapper,
     EditLabel,
-    EditRow, MainInfo, GreyDot, SeeMore, MainInfoWrapper, NewFlag,
+    EditRow, MainInfo, SeeMore, MainInfoWrapper, NewFlag,
 } from "./MenuItem.style";
 
-import {ReactComponent as TimeIcon} from "assets/icons/time.svg";
-import {ReactComponent as MeasureIcon} from "assets/icons/sss.svg";
 import {ReactComponent as ZoomIcon} from "assets/icons/zoom.svg";
 import {ReactComponent as EditIcon} from "assets/icons/edit.svg";
 
-import {Price, Flex, ToggleCheckbox} from "components";
+import {Flex, ToggleCheckbox} from "components";
 
 import {URL} from "utils/config";
 import {BE_API, fetchData} from "utils/fetch";
-import {CATEGORY_ID_MAPPER_AS_OBJECT, CATEGORY_MAPPER_AS_ARRAY} from "utils/category";
+import {CATEGORY_ID_MAPPER_AS_OBJECT} from "utils/category";
 import {translate, TRANSLATION as TR, TRANSLATION} from "utils/translation";
 
 export const MenuItemDetails = ({
@@ -95,14 +92,7 @@ export const MenuItemDetails = ({
                     <div> {item.size_3 && item.size_3 + ' ' + CATEGORY_ID_MAPPER_AS_OBJECT[item.categoryId].measurement + ' - '}  {!!item.price_3 && item.price_3 + ' ₴'} </div>
                 </MainInfo>
             </MainInfoWrapper>
-            <AdditionalDetails
-                isVisible={isVisible}
-                justifyContent="center"
-                alignItems="center"
-            >
-                <GreyDot />
-                <TimeIcon/> {item.cookingTime} {translate(TRANSLATION.MEASUREMENTS.PREPARING)}
-            </AdditionalDetails>
+
             {withEditIcon &&
                 <EditRow isVisible={isVisible}>
                     <ToggleCheckbox

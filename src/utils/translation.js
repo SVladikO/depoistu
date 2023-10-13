@@ -236,10 +236,6 @@ export const TRANSLATION = {
             ua: "мл",
             en: 'ml'
         },
-        PREPARING: {
-            ua: "хв",
-            en: 'min'
-        },
     },
     PAGE_VIEW: {
         COMPANY: {

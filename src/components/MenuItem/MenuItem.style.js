@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import {BORDER_RADIUS, COLOR, FONT, SHADOW} from "utils/theme";
-import {Flex} from "components/Flex/Flex.style";
 
 export const Wrapper = styled.div`
   ${SHADOW};
@@ -100,52 +99,12 @@ export const EditLabel = styled.span`
   margin: 0 0 0 6px;
 `;
 
-export const AdditionalDetails = styled(Flex)`
-  ${FONT.SIZE_18};
-  ${FONT.WEIGHT_500};
-  color: ${COLOR.ACCENT1};
-  border-top: 1px solid ${p => p.isVisible ? COLOR.ACCENT8: COLOR.ACCENT4};
-  padding: 10px 16px;
-
-  & > svg {
-    fill: ${COLOR.ACCENT1};
-    height: 14px;
-    width: 16px;
-    margin: 0 2px 0 0;
-  } 
-  
-  & > svg:nth-child(2) {
-    margin: 0 2px 0 12px;
-  }
-  
-  .ToggleCheckbox {
-    margin-left: auto;
-  }
-`;
-
-export const GreyDot = styled.div`
-  width: 5px;
-  height: 5px;
-  background-color: ${COLOR.ACCENT8};
-  border-radius: 50%;
-  margin: 0 14px;
-`
-
 export const SeeMore = styled.span`
   cursor: pointer;
   color: ${COLOR.INFO1};
   &:hover {
     text-decoration: underline;
   }
-`
-
-export const StatusHidden = styled.div`
-  ${FONT.SIZE_16};
-  
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-  color: ${COLOR.ERROR1};
 `
 
 export const EditRow = styled.div`
