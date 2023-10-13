@@ -2,13 +2,13 @@ import React from "react";
 import {Link} from "react-router-dom";
 
 import {NotificationTDB, PrimaryButton, RowSplitter} from "../../components";
-import {EditBar} from "../../page/setting/Setting.style";
+import {EditBar} from "./singInSingUp.view.style";
 
 import {URL} from "../../utils/config";
 import {translate, TRANSLATION as TR} from "../../utils/translation";
 import {useSelector} from "react-redux";
 
-const SingInSingUpView = () => {
+const SingInSingUpView = ({backUrl = URL.SETTING}) => {
     const customer = useSelector(state => state.customer.value);
 
     const singInSingUpNotification = (
@@ -17,10 +17,10 @@ const SingInSingUpView = () => {
             description={translate(TR.PAGE.SETTINGS.NOTIFICATION.DESCRIPTION)}
         >
             <EditBar>
-                <Link to={URL.SING_UP}>
+                <Link to={`${URL.SING_UP}?backUrl=${backUrl}`}>
                     <PrimaryButton isWide minWidth="120px">{translate(TR.PAGE.SETTINGS.BUTTONS.SING_UP)}</PrimaryButton>
                 </Link>
-                <Link to={URL.SING_IN}>
+                <Link to={`${URL.SING_IN}?backUrl=${backUrl}`}>
                     <PrimaryButton isWide minWidth="120px">{translate(TR.PAGE.SETTINGS.BUTTONS.SING_IN)}</PrimaryButton>
                 </Link>
             </EditBar>
@@ -36,8 +36,6 @@ const SingInSingUpView = () => {
             </>
         )
     }
-
-    return;
 }
 
 export default SingInSingUpView;

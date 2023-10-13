@@ -4,7 +4,6 @@ import {translate, TRANSLATION} from "./translation";
 
 // it's function because we take data from localStorage
 const getOptions = body => {
-    debugger
     const defaultOption = {
         headers: {
             'Content-Type': 'application/json',

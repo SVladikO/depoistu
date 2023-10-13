@@ -14,12 +14,15 @@ import {ROUTER, URL} from 'utils/config';
 import {publishNotificationEvent} from "utils/event";
 import {addCustomer} from "features/customer/customerSlice";
 import {useDispatch} from "react-redux";
+import {useQuery} from "../../utils/hook";
 
 const SignUpSchema = Yup.object().shape(validation.customer.singUp);
 
 const SingUpPage = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    let query = useQuery()
+    const backUrl = query.get("backUrl") || URL.SETTING;
     const [isLoading, setIsLoading] = useState(false);
     const [wasSubmitted, setWasSubmitted] = useState(false);
 
@@ -29,9 +32,9 @@ const SingUpPage = () => {
 
         fetchData(BE_API.CUSTOMER.SING_UP(), {name, email, password: newPassword, phone})
             .then(res => {
-                debugger
                 dispatch(addCustomer(res.body));
-                navigate(URL.SETTING);
+                debugger
+                navigate(backUrl);
             })
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))
             .finally(() => setIsLoading(false));

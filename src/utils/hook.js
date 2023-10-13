@@ -1,7 +1,6 @@
-import {useState, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {useNavigate} from "react-router-dom";
-
+import {useNavigate, useLocation} from "react-router-dom";
 import {fetchData} from "./fetch";
 
 import {URL} from "./config";
@@ -52,6 +51,14 @@ export const useHideOnScroll = (id, top) => {
         window.addEventListener('scroll', onScroll);
         return () => window.removeEventListener('scroll', onScroll);
     }, [id, top])
+}
+
+// A custom hook that builds on useLocation to parse
+// the query string for you.
+export function useQuery() {
+    const { search } = useLocation();
+
+    return React.useMemo(() => new URLSearchParams(search), [search]);
 }
 
 /**

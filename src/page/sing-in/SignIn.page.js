@@ -1,6 +1,7 @@
+import React, {useState} from 'react';
+import {useDispatch} from "react-redux";
 import * as Yup from 'yup';
 import {Formik} from "formik";
-import React, {useState} from 'react';
 import {Link, useNavigate} from "react-router-dom";
 
 import {
@@ -18,8 +19,8 @@ import {ROUTER, URL} from 'utils/config';
 import {fetchData, BE_API} from "utils/fetch";
 import {TRANSLATION, translate} from "utils/translation";
 import {publishNotificationEvent} from "utils/event";
-import {useDispatch} from "react-redux";
 import {addCustomer} from "features/customer/customerSlice";
+import {useQuery} from "../../utils/hook";
 
 const SignInSchema = Yup.object().shape(validation.customer.singIn);
 
@@ -31,6 +32,8 @@ const signInInitialValues = {
 const SignInPage = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    let query = useQuery()
+    const backUrl = query.get("backUrl") || URL.SETTING;
     const [wasSubmitted, setWasSubmitted] = useState(false);
     const [isLoading, setIsLoading] = useState(false)
 
@@ -40,7 +43,7 @@ const SignInPage = () => {
         fetchData(BE_API.CUSTOMER.SING_IN(), {email, password})
             .then(res => {
                 dispatch(addCustomer(res.body))
-                navigate(URL.SETTING);
+                navigate(backUrl);
                 setIsLoading(false);
             })
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))
