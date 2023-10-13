@@ -27,7 +27,7 @@ const EditMenu = () => {
     const companyId = LocalStorage.get(LOCAL_STORAGE_KEY.COMPANY_ID_TO_EDIT_MENU_PAGE);
     const isLoading = useSelector(state => state.request.value.isLoading);
     const [menuItems, setMenuItems] = useState([]);
-    const [customer] = useLocalStorage(LOCAL_STORAGE_KEY.CUSTOMER);
+    const customer = useSelector(state => state.customer.value);
     const [customerCompanies] = useLocalStorageFetch(
         LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES,
         [],

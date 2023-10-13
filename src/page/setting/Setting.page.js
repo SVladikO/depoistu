@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 import React, {useState} from 'react';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {Formik} from "formik";
 import * as Yup from "yup";
 
@@ -38,6 +38,7 @@ import {
 
 import LanguagePopup from "features/language/LanguagePopup";
 import {openLanguagePopup} from 'features/language/languageSlice';
+import {addCustomer, deleteCustomer} from "../../features/customer/customerSlice";
 
 import {URL} from 'utils/config';
 import validation from "utils/validation";
@@ -53,7 +54,7 @@ const SettingPage = () => {
     useScrollUp();
     const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(false);
-    const [customer, setCustomer] = useLocalStorage(LOCAL_STORAGE_KEY.CUSTOMER);
+    const customer = useSelector(state => state.customer.value);
 
     const singInSingUpNotification = (
         <NotificationTDB
@@ -75,7 +76,7 @@ const SettingPage = () => {
         fetchData(BE_API.CUSTOMER.PUT_VERIFY_EMAIL(), {email: customer.email, emailVerificationCode, method: 'put'})
             .then(res => {
                 if (res.body.isEmailVerified) {
-                    setCustomer({...customer, isVerifiedEmail: true})
+                    addCustomer({...customer, isVerifiedEmail: true})
                 }
             })
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))
@@ -115,7 +116,7 @@ const SettingPage = () => {
     );
 
     const logOut = () => {
-        setCustomer(undefined);
+        dispatch(deleteCustomer())
         LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
     }
 

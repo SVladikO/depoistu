@@ -13,6 +13,7 @@ import {BE_API, fetchData} from "utils/fetch";
 import {TRANSLATION, translate} from "utils/translation";
 import {ROUTER, URL} from 'utils/config';
 import {publishNotificationEvent} from "utils/event";
+import {addCustomer} from "../../features/customer/customerSlice";
 
 const SignUpSchema = Yup.object().shape(validation.customer.singUp);
 
@@ -28,7 +29,7 @@ const SingUpPage = () => {
 
         fetchData(BE_API.CUSTOMER.SING_UP(), {name, email, password: newPassword, phone})
             .then(res => {
-                LocalStorage.set(LOCAL_STORAGE_KEY.CUSTOMER, res.body)
+                addCustomer(res.body);
                 navigate(URL.SETTING);
             })
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))

@@ -7,7 +7,7 @@ const getOptions = body => {
     const defaultOption = {
         headers: {
             'Content-Type': 'application/json',
-            "x-access-token": LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER)?.token,
+            "x-access-token": LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE)?.customer?.token,
             "current-language": LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE).language.siteLanguage,
         }
     };

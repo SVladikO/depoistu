@@ -7,6 +7,7 @@ import validation from "utils/validation";
 import {useRedirectToSettingPage, useScrollUp} from "utils/hook";
 import {TRANSLATION, translate} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
+import {useSelector} from "react-redux";
 
 const SignUpSchema = Yup.object().shape(validation.customer.singUp);
 
@@ -14,7 +15,7 @@ const EditCustomerPage = () => {
     useRedirectToSettingPage();
     useScrollUp();
     const [wasSubmitted, setWasSubmitted] = useState(false);
-    const customer = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER) || {};
+    const customer = useSelector(state => state.customer.value);
 
     return (
         <>
