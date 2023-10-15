@@ -616,8 +616,8 @@ export const TRANSLATION = {
         },
         FAVORITE: {
             TOP_TITLE: {
-                ua: "Улюблені",
-                en: "Favorite"
+                ua: "Улюблені заклади",
+                en: "Favorite companies"
             },
         },
         SEARCH: {

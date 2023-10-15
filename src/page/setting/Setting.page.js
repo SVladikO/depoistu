@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Formik} from "formik";
 import * as Yup from "yup";
 
-import {Wrapper, EditBar} from './Setting.style';
+import {Wrapper} from './Setting.style';
 
 import {ReactComponent as LockIcon} from 'assets/icons/lock.svg';
 // import {ReactComponent as OrderHistoryIcon} from 'icons/order_history.svg';

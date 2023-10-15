@@ -239,6 +239,12 @@ INSERT INTO COMPANY (id, customer_id, name, phone1, phone2, phone3, city_id, str
 --   (DEFAULT, 1, 'Дівайн',      '380664441217',   '',             '',   '1018',   'Набережна, 75',     '03.05.2018', '08:00-21:00, 08:00-21:00, 08:00-21:00, 08:00-21:00, 08:00-21:00, 10:00-22:00, 10:00-22:00', 'https://cdn.pixabay.com/photo/2020/04/02/23/01/rain-4996916__340.jpg, https://cdn.pixabay.com/photo/2019/09/12/18/29/street-cafe-4472312__340.jpg'),
 --   (DEFAULT, 1, 'CherryHouse', '380972526788',   '',             '',   '1018',   'Південна, 17/3',    '21.10.2022', '08:00-21:00, 08:00-21:00, 08:00-21:00, 08:00-21:00, 08:00-21:00, 10:00-22:00, 10:00-22:00', 'https://cdn.pixabay.com/photo/2017/09/03/16/29/terrace-2710990__340.jpg, https://cdn.pixabay.com/photo/2017/06/05/09/10/food-2373414__340.jpg'),
 
+
+INSERT INTO FAVORITE_COMPANY (id, customer_id, company_id) values
+    (DEFAULT, 2, 1),
+    (DEFAULT, 2, 2),
+    (DEFAULT, 2, 3);
+
 INSERT INTO HISTORY
 (id, customer_id, company_id, order_details, date_time, is_paid, is_prepared) VALUES
   (DEFAULT, 1, 1, '5 S 1 113',                                    '03.12.2022', true,  true),
