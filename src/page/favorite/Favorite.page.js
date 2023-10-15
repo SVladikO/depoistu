@@ -3,14 +3,14 @@ import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 
 
-import {Company} from "../../components";
+import {Company, NotificationTDB, PrimaryButton} from "../../components";
 
 import SingInSingUpView from "../../page-view/singInSingUp/singInSingUp.view";
 
 import {initFavoriteCompanies} from "features/favorite-company/favoriteComapnySlice";
 import {addCompanyIdForSearchDetailsPage} from "features/searchDetailsPage/searchDetailsPageSlice";
 
-import {URL} from 'utils/config'
+import {ROUTER, URL} from 'utils/config'
 import {useScrollUp} from "utils/hook";
 import {BE_API, fetchData} from "utils/fetch";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
@@ -43,9 +43,18 @@ const FavoritePage = () => {
 
     return (
         <>
-        <SingInSingUpView backUrl={URL.FAVORITE}/>
+            <SingInSingUpView backUrl={URL.FAVORITE}/>
             {!favoriteCompany.length && (
-                <div>{translate(TRANSLATION.PAGE.FAVORITE.NO_CONTENT)}</div>
+                <NotificationTDB
+                    title={translate(TRANSLATION.PAGE.FAVORITE.NO_CONTENT)}
+                >
+                    <PrimaryButton
+                        isWide
+                        clickHandler={() => navigate(ROUTER.SEARCH.URL)}
+                    >
+                        {translate(TRANSLATION.GO_TO_A_SEARCH_PAGE)}
+                    </PrimaryButton>
+                </NotificationTDB>
             )}
             {!!favoriteCompany && favoriteCompany.map(company =>
                 <Company
