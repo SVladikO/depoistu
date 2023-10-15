@@ -15,6 +15,7 @@ import {useScrollUp} from "utils/hook";
 import {BE_API, fetchData} from "utils/fetch";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 import {publishNotificationEvent} from "utils/event";
+import {translate, TRANSLATION} from "../../utils/translation";
 
 const FavoritePage = () => {
     useScrollUp();
@@ -43,6 +44,9 @@ const FavoritePage = () => {
     return (
         <>
         <SingInSingUpView backUrl={URL.FAVORITE}/>
+            {!favoriteCompany.length && (
+                <div>{translate(TRANSLATION.PAGE.FAVORITE.NO_CONTENT)}</div>
+            )}
             {!!favoriteCompany && favoriteCompany.map(company =>
                 <Company
                     key={company.id}
