@@ -28,8 +28,7 @@ const getOptions = body => {
 export const fetchData = async (url, body) => {
     let response;
     try {
-        response = await fetch(url, getOptions(body));
-        // response = await fetch(decodeURIComponent(url), getOptions(body));
+        response = await fetch(decodeURIComponent(url), getOptions(body));
     } catch (error) {
         return new Promise((resolve, reject) => {
             reject({status: 500, body: {errorMessage: translate(TRANSLATION.NOTIFICATION.UN_ABLE_MAKE_REQUEST)}});
@@ -65,6 +64,8 @@ export const BE_API = {
     },
     FAVORITE_COMPANY: {
         GET: () => `${BE_DOMAIN}/favorite-companies`,
+        ADD: () => `${BE_DOMAIN}/favorite-companies`,
+        DELETE: () => `${BE_DOMAIN}/favorite-companies`,
     },
     COMPANY: {
         GET_BY_CUSTOMER_ID: () => `${BE_DOMAIN}/companies/by/customer`,

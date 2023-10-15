@@ -9,11 +9,24 @@ const favoriteCompanySlice = createSliceCustom({
     initialState,
     reducers: {
         initFavoriteCompanies: (state, action) => {
-            console.log(22222, action.payload)
             state.value = action.payload;
         },
+        addToFavoriteCompanies: (state, action) => {
+            state.value = [...state.value, action.payload];
+        },
+        deleteFromFavoriteCompanies: (state, action) => {
+            state.value = state.value.filter(fc => fc.id !== action.payload.id);
+        },
+        cleanFavoriteCompanies: state => {
+            state.value = null
+        }
     }
 });
 
-export const {initFavoriteCompanies} = favoriteCompanySlice.actions;
+export const {
+    initFavoriteCompanies,
+    addToFavoriteCompanies,
+    deleteFromFavoriteCompanies,
+    cleanFavoriteCompanies
+} = favoriteCompanySlice.actions;
 export default favoriteCompanySlice.reducer;

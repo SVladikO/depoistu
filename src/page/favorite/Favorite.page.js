@@ -43,9 +43,8 @@ const FavoritePage = () => {
     return (
         <>
         <SingInSingUpView backUrl={URL.FAVORITE}/>
-            {favoriteCompany && favoriteCompany.length && favoriteCompany.map(company =>
+            {!!favoriteCompany && favoriteCompany.map(company =>
                 <Company
-                    isLikedByCurrentCustomer
                     key={company.id}
                     company={company}
                     clickHandler={() => {

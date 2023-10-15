@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {Pagination, Navigation} from "swiper";
 import {Swiper, SwiperSlide} from "swiper/react";
 
@@ -32,12 +32,20 @@ import {ThirdButton} from "components/Buttons/ThirdButton";
 import ScheduleDetails from "components/WeekScheduleOutput/WeekScheduleOutput";
 
 import {parseSchedule} from "utils/company";
+import {BE_API, fetchData} from "utils/fetch";
 import {CITY_TRANSLATION_IDS} from "utils/cities";
 import {translate, TRANSLATION as TR, truncate} from "utils/translation";
+import {addToFavoriteCompanies, deleteFromFavoriteCompanies} from "../../features/favorite-company/favoriteComapnySlice";
+import {publishNotificationEvent} from "../../utils/event";
 
-const Company = ({company, withMoreInfo, isLikedByCurrentCustomer = false, children, clickHandler}) => {
+const Company = ({company, withMoreInfo, children, clickHandler}) => {
+
+    const dispatch = useDispatch();
 
     const customer = useSelector(state => state.customer.value);
+    const favotireCompanies = useSelector(state => state.favoriteCompany.value);
+
+    const isLikedByCurrentCustomer = favotireCompanies?.find(fc => fc.id == company.id)
 
     if (!company) {
         return null;
@@ -98,6 +106,20 @@ const Company = ({company, withMoreInfo, isLikedByCurrentCustomer = false, child
         </Schedule>
     )
 
+    const likeCompany = e => {
+        e.stopPropagation();
+        fetchData(BE_API.FAVORITE_COMPANY.ADD(), {company_id: company.id})
+            .then( () => dispatch(addToFavoriteCompanies(company)))
+            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
+    }
+
+    const unlikeCompany = e => {
+        e.stopPropagation();
+        fetchData(BE_API.FAVORITE_COMPANY.ADD(), {company_id: company.id, method: 'delete'})
+            .then( () => dispatch(deleteFromFavoriteCompanies(company)))
+            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
+    }
+
     return (
         <Wrapper withMoreInfo={withMoreInfo} onClick={clickHandler}>
             {/*<Images />*/}
@@ -105,7 +127,13 @@ const Company = ({company, withMoreInfo, isLikedByCurrentCustomer = false, child
                 <CompanyInfo>
                     <FirstRow>
                         <Name>{company.name}</Name>
-                        {customer && isLikedByCurrentCustomer ? <Heart2Icon/> : <Heart1Icon/> }
+                        {
+                            customer
+                                ? isLikedByCurrentCustomer
+                                    ? <Heart2Icon onClick={unlikeCompany} />
+                                    : <Heart1Icon onClick={likeCompany} />
+                                : null
+                        }
 
                     </FirstRow>
                     {renderDaySchedule()}

@@ -37,18 +37,20 @@ import {
 
 import LanguagePopup from "features/language/LanguagePopup";
 import {openLanguagePopup} from 'features/language/languageSlice';
-import {deleteCustomer} from "../../features/customer/customerSlice";
+import {deleteCustomer} from "features/customer/customerSlice";
+import {cleanFavoriteCompanies} from 'features/favorite-company/favoriteComapnySlice'
+
+import SingInSingUpView from "page-view/singInSingUp/singInSingUp.view";
 
 import {URL} from 'utils/config';
-import validation from "utils/validation";
 import {useScrollUp} from "utils/hook";
+import validation from "utils/validation";
 import {BE_API, fetchData} from "utils/fetch";
+import {publishNotificationEvent} from "utils/event";
 import {TRANSLATION as TR, translate} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
-import {publishNotificationEvent} from "utils/event";
-import packageInfo from '../../../package.json';
-import SingInSingUpView from "../../page-view/singInSingUp/singInSingUp.view";
 
+import packageInfo from '../../../package.json';
 
 const SettingPage = () => {
     useScrollUp();
@@ -102,6 +104,7 @@ const SettingPage = () => {
 
     const logOut = () => {
         dispatch(deleteCustomer())
+        dispatch(cleanFavoriteCompanies())
         LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
     }
 

@@ -240,7 +240,7 @@ INSERT INTO COMPANY (id, customer_id, name, phone1, phone2, phone3, city_id, str
 --   (DEFAULT, 1, 'CherryHouse', '380972526788',   '',             '',   '1018',   'Південна, 17/3',    '21.10.2022', '08:00-21:00, 08:00-21:00, 08:00-21:00, 08:00-21:00, 08:00-21:00, 10:00-22:00, 10:00-22:00', 'https://cdn.pixabay.com/photo/2017/09/03/16/29/terrace-2710990__340.jpg, https://cdn.pixabay.com/photo/2017/06/05/09/10/food-2373414__340.jpg'),
 
 
-INSERT INTO FAVORITE_COMPANY (id, customer_id, company_id) values
+INSERT INTO FAVORITE_COMPANY (customer_id, company_id) values
     (2, 1),
     (2, 2),
     (2, 3);
