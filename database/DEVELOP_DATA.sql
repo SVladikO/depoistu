@@ -241,9 +241,9 @@ INSERT INTO COMPANY (id, customer_id, name, phone1, phone2, phone3, city_id, str
 
 
 INSERT INTO FAVORITE_COMPANY (id, customer_id, company_id) values
-    (DEFAULT, 2, 1),
-    (DEFAULT, 2, 2),
-    (DEFAULT, 2, 3);
+    (2, 1),
+    (2, 2),
+    (2, 3);
 
 INSERT INTO HISTORY
 (id, customer_id, company_id, order_details, date_time, is_paid, is_prepared) VALUES
