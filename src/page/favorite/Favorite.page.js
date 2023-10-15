@@ -1,41 +1,49 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
+import {useNavigate} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
 
-import {URL} from 'utils/config'
+
+import {Company} from "../../components";
 
 import SingInSingUpView from "../../page-view/singInSingUp/singInSingUp.view";
-import {useScrollUp} from "../../utils/hook";
-import {BE_API, fetchData} from "../../utils/fetch";
-import {Company} from "../../components";
-import {addCompanyIdForSearchDetailsPage} from "../../features/searchDetailsPage/searchDetailsPageSlice";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {useDispatch} from "react-redux";
-import {useNavigate} from "react-router-dom";
+
+import {initFavoriteCompanies} from "features/favorite-company/favoriteComapnySlice";
+import {addCompanyIdForSearchDetailsPage} from "features/searchDetailsPage/searchDetailsPageSlice";
+
+import {URL} from 'utils/config'
+import {useScrollUp} from "utils/hook";
+import {BE_API, fetchData} from "utils/fetch";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
+import {publishNotificationEvent} from "utils/event";
 
 const FavoritePage = () => {
     useScrollUp();
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const [companies, setCompanies] = useState();
-
+    const customer = useSelector(state => state.customer.value)
+    const favoriteCompany = useSelector(state => state.favoriteCompany.value)
 
     useEffect(() => {
+        if (!customer) {
+            return;
+        }
 
-        if (companies) {
+        if (favoriteCompany) {
             return
         }
 
-        fetchData(BE_API.FAVORITE_COMPANY)
+        fetchData(BE_API.FAVORITE_COMPANY.GET())
             .then(res => {
-                setCompanies(res.body)
+                dispatch(initFavoriteCompanies(res.body))
             })
-            .catch(res => console.log('error'))
+            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
     })
 
     return (
         <>
         <SingInSingUpView backUrl={URL.FAVORITE}/>
-            {companies && companies.length && companies.map(company =>
+            {favoriteCompany && favoriteCompany.length && favoriteCompany.map(company =>
                 <Company
                     key={company.id}
                     company={company}

@@ -27,7 +27,6 @@ const getOptions = body => {
 
 export const fetchData = async (url, body) => {
     let response;
-    console.log(1111, url);
     try {
         response = await fetch(url, getOptions(body));
         // response = await fetch(decodeURIComponent(url), getOptions(body));
@@ -65,7 +64,7 @@ export const BE_API = {
         PUT_VERIFY_EMAIL: () => `${BE_DOMAIN}/verify-email`,
     },
     FAVORITE_COMPANY: {
-        GET_BY_CUSTOMER_ID: () => `${BE_DOMAIN}/favorite-companies`,
+        GET: () => `${BE_DOMAIN}/favorite-companies`,
     },
     COMPANY: {
         GET_BY_CUSTOMER_ID: () => `${BE_DOMAIN}/companies/by/customer`,
