@@ -1,5 +1,5 @@
 import {TRANSLATION, translate} from "./translation.js";
-
+import packageInfo from "../../package.json";
 export const setBrowserTabTitle = () => document.title = translate(TRANSLATION.COMPANY_NAME);
 
 export const getRandom = () => (Math.random() + 1).toString(36).substring(7);
@@ -45,6 +45,16 @@ export const stopLoadingWithDelay = callbacks => {
 
 export const getRegions = cities => Object.keys(cities);
 
+export function checkUpdates() {
+    const currentVersion = packageInfo.version;
+    const storageVersion = localStorage.getItem('LAST_UPDATE_DATE');
+    if(currentVersion !==  storageVersion){
+        window.localStorage.clear();
+        console.log('it was some update');
+    }else{
+        console.log('No update detected');
+    }
+}
 
 
 
