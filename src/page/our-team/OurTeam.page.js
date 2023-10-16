@@ -81,7 +81,7 @@ const OurTeamPage = () => {
                                     {employee.instagram && <a href=""><Instagram/></a>}
                                     {employee.facebook && <a href=""><Facebook/></a>}
                                     {employee.twitter && <a href=""><Twitter/></a>}
-                                    {employee.linkedInLink && <a href={employee.linkedInLink}><LinkedIn/></a>}
+                                    {employee.linkedInLink && <a href={employee.linkedInLink} target="_blank"><LinkedIn/></a>}
                                 </Socials>
                             </EmployeeInfo>
                         </Employee>
