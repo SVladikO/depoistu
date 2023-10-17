@@ -282,6 +282,12 @@ export const TRANSLATION = {
                 en: 'Usage instruction'
             },
         },
+        AVAILABLE_MENU_CATEGORIES: {
+            TOP_TITLE: {
+                ua: " Доступні категорії меню",
+                en: 'Available menu categories'
+            },
+        },
         CUSTOMER_COMPANIES: {
             TOP_TITLE: {
                 ua: "Ваші заклади",
@@ -448,6 +454,10 @@ export const TRANSLATION = {
                 COMPANY: {
                     en: "My сompanies",
                     ua: "Мої заклади"
+                },
+                AVAILABLE_MENU_CATEGORIES: {
+                    en: "Available menu categories",
+                    ua: "Доступні категорії меню"
                 },
                 EDIT_PROFILE: {
                     en: "Edit Profile",

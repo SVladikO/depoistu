@@ -13,6 +13,7 @@ import SearchDetailsPage from "page/search-details/SearchDetails.page";
 import ChangePasswordPage from "page/change-password/ChangePassword.page";
 import ForgetPasswordPage from "page/forgot-password/ForgetPassword.page";
 import CustomerCompaniesPage from "page/customer-companies/CustomerCompanies.page";
+import AvailableMenuCategoriesPage from "page/available-menu-categories/AvailableMenuCategories.page";
 
 // TODO: Hidden second version
 // import OrderPage from "page/order/Order.page";
@@ -70,6 +71,7 @@ export const URL = {
     EDIT_CUSTOMER: '/edit-customer',
     OUR_TEAM: '/our-team',
 
+    AVAILABLE_MENU_CATEGORIES: '/available-menu-categories',
     INSTRUCTION_FOR_BUSINESS_OWNER: '/instruction-for-business-owner',
     CUSTOMER_COMPANIES: '/customer-companies',
     ADD_COMPANY: '/add-company',
@@ -169,6 +171,13 @@ export const ROUTER = {
         URL: URL.CUSTOMER_COMPANIES,
         TITLE: translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.TOP_TITLE),
         page: CustomerCompaniesPage,
+        showBottomMenu: true,
+        backUrl: URL.SETTING
+    },
+    AVAILABLE_MENU_CATEGORIES: {
+        URL: URL.AVAILABLE_MENU_CATEGORIES,
+        TITLE: translate(TRANSLATION.PAGE.AVAILABLE_MENU_CATEGORIES.TOP_TITLE),
+        page: AvailableMenuCategoriesPage,
         showBottomMenu: true,
         backUrl: URL.SETTING
     },
