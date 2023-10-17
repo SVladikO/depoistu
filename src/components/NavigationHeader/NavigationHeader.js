@@ -6,10 +6,13 @@ import {Wrapper, BackButton, Title} from "./NavigationHeader.style";
 // import {OrderIconWithCounter} from "index";
 
 import {ReactComponent as BackArrow} from "assets/icons/back_arrow.svg";
-import {Link} from "react-router-dom";
+
+import {useQuery} from "../../utils/hook";
 
 const NavigationHeader = (props) => {
-    const {title, backUrl} = props;
+    let query = useQuery()
+    const backUrl = query.get("backUrl") || props.backUrl;
+
     return (
         <Wrapper className='pm-NavigationHeader'>
                 {backUrl &&
@@ -17,7 +20,7 @@ const NavigationHeader = (props) => {
                             <BackArrow/>
                     </BackButton>
                 }
-                <Title>{title}</Title>
+                <Title>{props.title}</Title>
                 {/*TODO: Hidden second version*/}
                 {/*<Link to={ROUTER.ORDER_REVIEW.URL}>*/}
                 {/*    <OrderIconWithCounter hideOnZeroOrderAmount/>*/}

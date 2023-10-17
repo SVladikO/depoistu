@@ -11,10 +11,13 @@ import {publishNotificationEvent} from "utils/event";
 
 const defaultInitialValue = {
     name: '',
-    price: '',
     description: '',
-    cookingTime: '',
-    size: '',
+    size_1: '',
+    price_1: '',
+    size_2: '',
+    price_2: '',
+    size_3: '',
+    price_3: '',
     imageUrl: ''
 }
 

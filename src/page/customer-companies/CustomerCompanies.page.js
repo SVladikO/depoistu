@@ -21,7 +21,7 @@ const CustomerCompaniesPage = () => {
     useScrollUp();
     useRedirectToSettingPage();
     const navigate = useNavigate();
-    const [customer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
+    const customer = useSelector(state => state.customer.value);
     const isLoading = useSelector(state => state.request.value.isLoading);
     const [wasWarningShown, setWasWarningShown] = useLocalStorage(LOCAL_STORAGE_KEY.WAS_COMPANY_CREATION_WARNING_SHOW, false)
     const [companyIdForQRCode, setCompanyIdForQRCode] = useState();

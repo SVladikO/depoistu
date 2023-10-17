@@ -1,13 +1,11 @@
 import styled from "styled-components";
 import {BORDER_RADIUS, COLOR, FONT, SHADOW} from "utils/theme";
-import {Flex} from "components/Flex/Flex.style";
 
 export const Wrapper = styled.div`
   ${SHADOW};
   position: relative;
   width: 96%;
   font-style: normal;
-  font-weight: 700;
   font-size: 16px;
   line-height: 19px;
   background: ${COLOR.ACCENT4};
@@ -22,14 +20,22 @@ export const Wrapper = styled.div`
   transition: background-color 0.5s;
 `
 
-export const MainInfoWrapper = styled.div`
+export const InfoWrapper = styled.div`
   display: grid;
   grid-template-columns: ${props => props.isWithImage ? '1fr 3fr': '1fr'};
   align-self:center
 `
 
-export const MainInfo = styled.div`
+export const Info = styled.div`
   padding: 16px;
+`
+
+export const InfoOneRow = styled.div`
+  padding: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border: solild 1px red;
 `
 
 export const NewFlag = styled.div`
@@ -67,9 +73,14 @@ export const FoodImage = styled.img`
   border-radius: ${BORDER_RADIUS.CIRCLE};
 `;
 
-export const Title = styled.div`
+export const SizePriceWrapper = styled.div`
+  display: flex;
+  justify-content: end;
+`;
+
+export const FoodTitle = styled.div`
   ${FONT.SIZE_20};
-  ${FONT.WEIGHT_700};
+  ${FONT.WEIGHT_600};
   color: ${COLOR.ACCENT1};
   margin: 0 5px 4px 0;
   display: flex;
@@ -100,53 +111,18 @@ export const EditLabel = styled.span`
   margin: 0 0 0 6px;
 `;
 
-export const AdditionalDetails = styled(Flex)`
-  ${FONT.SIZE_18};
-  ${FONT.WEIGHT_500};
-  color: ${COLOR.ACCENT1};
-  border-top: 1px solid ${p => p.isVisible ? COLOR.ACCENT8: COLOR.ACCENT4};
-  padding: 10px 16px;
-
-  & > svg {
-    fill: ${COLOR.ACCENT1};
-    height: 14px;
-    width: 16px;
-    margin: 0 2px 0 0;
-  } 
-  
-  & > svg:nth-child(2) {
-    margin: 0 2px 0 12px;
-  }
-  
-  .ToggleCheckbox {
-    margin-left: auto;
-  }
-`;
-
-export const GreyDot = styled.div`
-  width: 5px;
-  height: 5px;
-  background-color: ${COLOR.ACCENT8};
-  border-radius: 50%;
-  margin: 0 14px;
-`
-
 export const SeeMore = styled.span`
   cursor: pointer;
   color: ${COLOR.INFO1};
   &:hover {
     text-decoration: underline;
   }
-`
+`;
 
-export const StatusHidden = styled.div`
-  ${FONT.SIZE_16};
-  
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-  color: ${COLOR.ERROR1};
-`
+export const SizePriceTd = styled.td`
+  ${FONT.SIZE_20};
+  text-align: right;
+`;
 
 export const EditRow = styled.div`
   display: grid;
