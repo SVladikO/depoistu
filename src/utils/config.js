@@ -22,7 +22,8 @@ import CustomerCompaniesPage from "page/customer-companies/CustomerCompanies.pag
 
 import {TRANSLATION, translate} from "./translation.js";
 import EditCustomerPage from "page/edit-customer/EditCustomer.page";
-import FavoritePage from "../page/favorite/Favorite.page";
+import FavoritePage from "page/favorite/Favorite.page";
+import InstructionForBusinessOwnerPage from "page/instruction-for-bussines-owner/InstructionForBusinessOwner.page";
 
 export const DEV_ROUTER = {
     COMPONENTS: 'components',
@@ -69,6 +70,7 @@ export const URL = {
     EDIT_CUSTOMER: '/edit-customer',
     OUR_TEAM: '/our-team',
 
+    INSTRUCTION_FOR_BUSINESS_OWNER: '/instruction-for-business-owner',
     CUSTOMER_COMPANIES: '/customer-companies',
     ADD_COMPANY: '/add-company',
     EDIT_COMPANY: '/edit-company',
@@ -153,6 +155,13 @@ export const ROUTER = {
         URL: URL.EDIT_CUSTOMER,
         TITLE: translate(TRANSLATION.PAGE.EDIT_USER_PROFILE.TOP_TITLE),
         page: EditCustomerPage,
+        showBottomMenu: true,
+        backUrl: URL.SETTING
+    },
+    INSTRUCTION_FOR_BUSINESS_OWNER: {
+        URL: URL.INSTRUCTION_FOR_BUSINESS_OWNER,
+        TITLE: translate(TRANSLATION.PAGE.INSTRUCTION_FOR_BUSINESS_OWNER.TOP_TITLE),
+        page: InstructionForBusinessOwnerPage,
         showBottomMenu: true,
         backUrl: URL.SETTING
     },

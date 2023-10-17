@@ -276,6 +276,12 @@ export const TRANSLATION = {
                 en: "Company wasn't found"
             }
         },
+        INSTRUCTION_FOR_BUSINESS_OWNER: {
+            TOP_TITLE: {
+                ua: "Інструкція по користуванню",
+                en: 'Usage instruction'
+            },
+        },
         CUSTOMER_COMPANIES: {
             TOP_TITLE: {
                 ua: "Ваші заклади",
@@ -434,6 +440,10 @@ export const TRANSLATION = {
                 CHANGE_PASS: {
                     ua: "Змiнити пароль",
                     en: "Change Password"
+                },
+                INSTRUCTION_FOR_BUSINESS_OWNER: {
+                    en: "Usage instruction",
+                    ua: "Інструкція по користуванню"
                 },
                 COMPANY: {
                     en: "My сompanies",
