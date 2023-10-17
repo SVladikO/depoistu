@@ -22,7 +22,8 @@ import CustomerCompaniesPage from "page/customer-companies/CustomerCompanies.pag
 
 import {TRANSLATION, translate} from "./translation.js";
 import EditCustomerPage from "page/edit-customer/EditCustomer.page";
-import InstructionForBusinessOwnerPage from "../page/instruction-for-bussines-owner/InstructionForBusinessOwner.page";
+import FavoritePage from "page/favorite/Favorite.page";
+import InstructionForBusinessOwnerPage from "page/instruction-for-bussines-owner/InstructionForBusinessOwner.page";
 
 export const DEV_ROUTER = {
     COMPONENTS: 'components',
@@ -52,16 +53,17 @@ export const AVAILABLE_DOMAINS = {
     }
 }
 
-export const SELECTED_BE_DOMAIN = AVAILABLE_DOMAINS[REACT_APP_NODE_ENV || 0];
+export const SELECTED_BE_DOMAIN = AVAILABLE_DOMAINS[REACT_APP_NODE_ENV || 1];
 export const BE_DOMAIN = SELECTED_BE_DOMAIN.url;
 
 export const URL = {
     SEARCH: '/',
-    SEARCH_DETAILS: '/',
+    SEARCH_DETAILS: '/company-details',
     MENU: '/menu',
     SING_IN: '/sign-in',
     SING_UP: '/sing-up',
     SETTING: '/setting',
+    FAVORITE: '/favorite',
     CHANGE_PASSWORD: '/change-password',
     FORGOT_PASSWORD: '/forgot-password',
     ABOUT_US: '/about-us',
@@ -80,7 +82,12 @@ export const URL = {
 export const ROUTER = {
     // ORDER_REVIEW: {URL: '/order',  TITLE: 'Order review', page: OrderPage, showBottomMenu: true},
     // ORDER_HISTORY: {URL: '/history',  TITLE: 'Order History', page: OrderHistoryPage, subHeader: HistoryTabBar, showBottomMenu: true},
-    // Favorite: {URL: '/Favorite',  TITLE: 'Favorite Cart', page: () => {}},
+    FAVORITE: {
+        URL: URL.FAVORITE,
+        TITLE: translate(TRANSLATION.PAGE.FAVORITE.TOP_TITLE),
+        page: FavoritePage,
+    },
+    MENU: {URL: '/menu',  TITLE: 'Favorite Cart', page: () => {}},
     // Profile: {URL: '/Profile',  TITLE: 'Profile', page: () => {}},
     // USER_ACCOUNT = {URL: '/user_account',  TITLE: 'USER_ACCOUNT', page: () => {}, showBottomMenu: true, BACK_URL: ROUTER.SETTING.URL};
     SEARCH: {

@@ -9,6 +9,10 @@ export const Wrapper = styled.div`
   background-color: ${COLOR.ACCENT4};
   border-bottom: solid 1px ${COLOR.ACCENT1};
 
+  &:hover {
+    cursor: pointer;
+  }
+  
   .swiper-pagination-bullet {
     width: 10px;
     height: 10px;

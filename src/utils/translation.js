@@ -174,10 +174,7 @@ export const TRANSLATION = {
                 en: "Name",
                 ua: "Ім'я"
             },
-            PRICE: {
-                en: "Price",
-                ua: "Ціна"
-            },
+
             CATEGORY: {
                 en: "Category",
                 ua: "Категорія"
@@ -193,7 +190,11 @@ export const TRANSLATION = {
             MEAL_SIZE: {
                 en: "Size",
                 ua: "Розмір"
-            }
+            },
+            PRICE: {
+                en: "Price",
+                ua: "Ціна"
+            },
         },
         CUSTOMER: {
             NAME: {
@@ -235,10 +236,6 @@ export const TRANSLATION = {
             ua: "мл",
             en: 'ml'
         },
-        PREPARING: {
-            ua: "хв",
-            en: 'min'
-        },
     },
     PAGE_VIEW: {
         COMPANY: {
@@ -275,8 +272,8 @@ export const TRANSLATION = {
                 en: 'There is no menu in company'
             },
             COMPANY_DOESNT_EXIST: {
-                ua: 'Заклад не існує',
-                en: "Company doesn't exist"
+                ua: 'Заклад не знайдено',
+                en: "Company wasn't found"
             }
         },
         INSTRUCTION_FOR_BUSINESS_OWNER: {
@@ -291,8 +288,8 @@ export const TRANSLATION = {
                 en: 'Your companies'
             },
             WARNING: {
-                ua: "Не додавайте заклади заради розваги. Інакше будемо змушені заблокувати ваш аккаунт. Не витрачайте ваш і наш час дарма.",
-                en: "Don't add companies for fun as we will block your account.  Don't waste your time and ours."
+                ua: "Не додавайте заклади заради розваги. Інакше будемо змушені заблокувати ваш аккаунт. Не витрачайте ваш і наш час дарма. Дякуєм.",
+                en: "Don't add companies for fun as we will block your account.  Don't waste your time and ours. Thanks."
             },
             BUTTON: {
                 COMPANY: {
@@ -627,6 +624,12 @@ export const TRANSLATION = {
                 en: "Our Team"
             }
         },
+        FAVORITE: {
+            TOP_TITLE: {
+                ua: "Улюблені",
+                en: "Favorite"
+            },
+        },
         SEARCH: {
             TOP_TITLE: {
                 ua: "Пошук",
@@ -832,13 +835,21 @@ export const TRANSLATION = {
     },
 
     BOTTOM_MENU: {
-        SEARCH_TAB: {
-            ua: "Пошук",
-            en: "Search"
+        MAIN: {
+            ua: "Головна",
+            en: "Main"
         },
-        ACCOUNT_TAB: {
-            ua: "Кабинет",
-            en: "Account"
+        MENU: {
+            ua: "Меню",
+            en: "Menu"
+        },
+        FAVORITE: {
+            ua: "Улюблені",
+            en: "Favorite"
+        },
+        SETTINGS: {
+            ua: "Системні",
+            en: "Settings"
         },
     },
     TOP_CATEGORIES: {
@@ -877,6 +888,10 @@ export const TRANSLATION = {
             en: "Second dishes",
             ua: "Другі страви"
         },
+        MAIN_DISHES: {
+            en: "Main dishes",
+            ua: "Основні страви"
+        },
         DUMPLING: {
             en: "Dumplings",
             ua: "Вареники"
@@ -890,8 +905,8 @@ export const TRANSLATION = {
             ua: "Пательні"
         },
         FOR_COMPANY: {
-            en: "For the company",
-            ua: "Для закладу"
+            en: "For company",
+            ua: "Для компанії"
         },
         HOT_APPETIZERS: {
             en: "Hot appetizers",
@@ -945,6 +960,22 @@ export const TRANSLATION = {
             en: "Fresh",
             ua: "Фреші"
         },
+        HOMEMADE_LEMONADE: {
+            en: "Homemade lemonades",
+            ua: "Домашні лимонади"
+        },
+        BRANDY: {
+            en: "Brandy",
+            ua: "Бренді"
+        },
+         BOURBON: {
+            en: "Bourbon",
+            ua: "Бурбон"
+        },
+        MORSES_AND_UZVAR: {
+            en: "Morses and Uzvars",
+            ua: "Морси та узвари"
+        },
         SHOTS: {
             en: "Shots",
             ua: "Шоти"
@@ -968,6 +999,22 @@ export const TRANSLATION = {
         WINE_FRANCE: {
             en: "Wines of France",
             ua: "Вина Франції"
+        },
+        WHITE_WINE: {
+            en: "White wines",
+            ua: "Білі вина"
+        },
+        RED_WINE: {
+            en: "Red wines",
+            ua: "Червоні вина"
+        },
+        PING_WINE: {
+            en: "Pink wines",
+            ua: "Рожеві вина"
+        },
+        NO_ALCOHOL_WINE: {
+            en: "No alcohol wines",
+            ua: "Безалкогольні вина"
         },
         WINE_SPARKLING: {
             en: "Sparkling wines",
@@ -1025,9 +1072,21 @@ export const TRANSLATION = {
             en: "Coffee",
             ua: "Кава"
         },
+        HOME_TEA: {
+            en: "Home tea",
+            ua: "Домашній чай"
+        },
+        BREWED_TEA: {
+            en: "Brewed tea",
+            ua: "Заварний чай"
+        },
         TEA: {
             en: "Tea",
             ua: "Чай"
+        },
+        TEA_ADDITION: {
+            en: "Addition to tea",
+            ua: "Доповнення до чаю"
         },
         BLACK_TEA: {
             en: "Black tea",
@@ -1089,6 +1148,10 @@ export const TRANSLATION = {
             ua: "Додатки",
             en: "Additives"
         },
+        CRAFT_BREAD: {
+            ua: "Хліб крафтовий",
+            en: "Craft bread"
+        },
         NOODLES: {
             ua: "Локшина",
             en: "Noodles"
@@ -1106,7 +1169,7 @@ export const TRANSLATION = {
             en: "Seafood"
         },
         SALADS: {
-            ua: "Овочевi страви",
+            ua: "Салати",
             en: "Salads"
         },
         ALCOHOL: {
@@ -1149,6 +1212,10 @@ export const TRANSLATION = {
             ua: 'Монгал',
             en: 'Dishes on fire'
         },
+        GRILL: {
+            ua: 'Гриль',
+            en: 'Grill'
+        },
         SAUCES: {
             ua: 'Соуси',
             en: 'Sauces'
@@ -1173,9 +1240,13 @@ export const TRANSLATION = {
             ua: 'Суші',
             en: 'Sushi'
         },
+        COCKTAILS_ALCOHOL: {
+            ua: 'Коктейлі алкогольні',
+            en: 'Cocktails alcohol'
+        },
         COCKTAILS: {
-            ua: 'Коктейлі',
-            en: 'Cocktails'
+            ua: 'Коктейлі без алкогольні',
+            en: 'Cocktails no alcohol'
         },
         SHAWARMA: {
             ua: 'Шаверма',
