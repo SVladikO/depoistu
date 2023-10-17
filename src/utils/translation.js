@@ -735,8 +735,8 @@ export const TRANSLATION = {
                     ua: "Редагувати"
                 },
                 CHANGE_VISIBILITY: {
-                    en: "Hide",
-                    ua: "Приховати"
+                    en: "Show in menu",
+                    ua: "Показати в меню"
                 },
                 HIDDEN: {
                     en: "HIDDEN",
