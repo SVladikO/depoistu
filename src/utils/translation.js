@@ -824,8 +824,8 @@ export const TRANSLATION = {
                 en: "Customers won't see this company without menu."
             },
             LOADING_AVAILABLE_CITIES: {
-                en: "Loading available cities ...",
-                ua: "Загрузка доступних міст ..."
+                en: "Loading cities with registered cities",
+                ua: "Загрузка міст де зареєстровані заклади"
             },
 
             LOADING_COMPANY: {
