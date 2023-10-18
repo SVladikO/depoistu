@@ -10,10 +10,10 @@ import {RowSplitter} from "components";
 
 import {URL} from "utils/config";
 import {translate, TRANSLATION as TR} from "utils/translation";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
+import {useSelector} from "react-redux";
 
 const Footer = () => {
-    const customer = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER);
+    const customer = useSelector(state => state.customer.value);
     const [isLike, setIsLike] = useState()
 
     const scrollToTop = () => {
@@ -70,7 +70,7 @@ const Footer = () => {
                 <Support>
                     <a href="mailto:support@depoistu.com">support@depoistu.com</a>
                 </Support>
-                <LocationInfo>1.11.2023 Kyiv</LocationInfo>
+                <LocationInfo>1.11.2023 Ukraine</LocationInfo>
             </Wrapper>
         </>
     );

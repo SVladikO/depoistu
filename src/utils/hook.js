@@ -1,11 +1,10 @@
-import {useState, useEffect} from "react";
-import {useDispatch} from "react-redux";
-import {useNavigate} from "react-router-dom";
-
+import React, {useState, useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {useNavigate, useLocation} from "react-router-dom";
 import {fetchData} from "./fetch";
 
 import {URL} from "./config";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
+import {LocalStorage} from "./localStorage";
 import {publishNotificationEvent} from "./event";
 import {stopLoadingWithDelay} from "./utils";
 
@@ -54,13 +53,21 @@ export const useHideOnScroll = (id, top) => {
     }, [id, top])
 }
 
+// A custom hook that builds on useLocation to parse
+// the query string for you.
+export function useQuery() {
+    const { search } = useLocation();
+
+    return React.useMemo(() => new URLSearchParams(search), [search]);
+}
+
 /**
  * Redirect to settings page is customer isn't signed in.
  * That's for security reasons on frontend side.
  *
  */
 export const useRedirectToSettingPage = () => {
-    const [customer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
+    const customer = useSelector(state => state.customer.value);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -71,7 +78,10 @@ export const useRedirectToSettingPage = () => {
 }
 export const useScrollUp = () => {
     useEffect(() => {
-        window.scrollTo(0, 0)
+        window.scrollTo({
+            top: -100,
+            behavior: "smooth",
+        })
     }, [])
 };
 
@@ -99,7 +109,6 @@ export const useLocalStorageFetch = (
                 localStorage.setItem(storageKey, JSON.stringify(res.body))
             })
             .catch(e => {
-                console.log(1111, e);
                 publishNotificationEvent.error(e.body.errorMessage)
             })
             .finally(() => stopLoading.allow())

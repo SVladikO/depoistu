@@ -62,7 +62,7 @@ const AddCompany = () => {
             initialValues={initialValues}
             onSubmit={onSubmit}
         >
-                <PrimaryButton isWide type="submit" isLoading={isLoading}>
+                <PrimaryButton isWide type="submit" isLoading={isLoading} withPadding>
                     {translate(TRANSLATION.PAGE.ADD_COMPANY.BUTTON.ADD_COMPANY)}
                 </PrimaryButton>
         </CompanyView>

@@ -104,10 +104,11 @@ export const TextareaStyle = styled.textarea`
 
 export const Label = styled.label`
   position: absolute;
-  left: 11px;
-  top: -13px;
+  left: ${p => p.isOpen ? '10px': '11px'};
+  top: ${p => p.isOpen ? '-14.5px': '-13px'};
   z-index: 2;
   padding: 3px 5px;
+  color: ${COLOR.ACCENT1};
   background: ${COLOR.ACCENT8};
   
   ${p => p.isRequired && css`
