@@ -65,6 +65,7 @@ import {
 } from "../../utils/category";
 import {AVAILABLE_DOMAINS, BE_DOMAIN} from "../../utils/config";
 import {fetchData} from "../../utils/fetch";
+import {log} from "qrcode/lib/core/galois-field";
 
 const colors = Object.keys(COLOR).map(key =>
     ({title: key, component: <ColorCircle key={key} bg={COLOR[key]}/>, value: COLOR[key], width: '50px'})
@@ -171,7 +172,7 @@ const componentsGroup1 = [
     ],
     [
         {title: 'PrimaryButton', component: <PrimaryButton>Primary</PrimaryButton>},
-        {title: 'PrimaryButton isDisabled', component: <PrimaryButton isDisabled>Primary</PrimaryButton>},
+        {title: 'PrimaryButton isDisabled', component: <PrimaryButton  isDisabled>Primary</PrimaryButton>},
         {title: 'PrimaryButton isLoading', component: <PrimaryButton isLoading>Primary</PrimaryButton>},
         {title: 'PrimaryButton isWide', component: <PrimaryButton isWide>Primary wide</PrimaryButton>},
         {title: 'SecondaryButton', component: <SecondaryButton>Secondary</SecondaryButton>},
@@ -514,7 +515,7 @@ function ComponentsPage() {
         const render = from =>
             from.map(
                 category => (
-                    <tr>
+                    <tr key={JSON.stringify(category)}>
                         <td style={{padding: '4px'}}>{category.id}</td>
                         <td style={{padding: '4px'}}>{category.title.en}</td>
                         <td style={{padding: '4px'}}>{category.title.ua}</td>
