@@ -50,18 +50,23 @@ export const getRegions = cities => Object.keys(cities);
 
 export function checkUpdates() {
     const currentVersion = packageInfo.lastUpdateDate;
-    const storageVersion = localStorage.setItem('LAST_UPDATE_DATE', '09.08.2023') ?? localStorage.getItem('LAST_UPDATE_DATE');
+    const storageVersion = localStorage.getItem('LAST_UPDATE_DATE') ?? '09.08.2023';
 
     if (currentVersion !== storageVersion) {
         const localStorageKey = 'REDUX_STATE';
-        const storedDataField = JSON.parse(localStorage.getItem(localStorageKey)) || {};
-        const fieldToPreserve = 'language';
-        for (const field in storedDataField) {
-            if (field !== fieldToPreserve) {
-                delete storedDataField[field];
+        for(let key in localStorage){
+            if(key !== localStorageKey){
+                localStorage.removeItem(key)
             }
+            const storedDataField = JSON.parse(localStorage.getItem(localStorageKey)) || {};
+            const fieldToPreserve = 'language';
+            for (const field in storedDataField) {
+                if (field !== fieldToPreserve) {
+                    delete storedDataField[field];
+                }
+            }
+            localStorage.setItem(localStorageKey, JSON.stringify(storedDataField));
         }
-        localStorage.setItem(localStorageKey, JSON.stringify(storedDataField));
         console.log('it was some update');
     } else {
         console.log('No update detected');
