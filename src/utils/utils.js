@@ -1,5 +1,7 @@
 import {TRANSLATION, translate} from "./translation.js";
 import packageInfo from "../../package.json";
+import {LocalStorage} from "./localStorage";
+import {LOCAL_STORAGE_KEY} from "./localStorage";
 
 export const setBrowserTabTitle = () => document.title = translate(TRANSLATION.COMPANY_NAME);
 
@@ -49,27 +51,14 @@ export const stopLoadingWithDelay = callbacks => {
 export const getRegions = cities => Object.keys(cities);
 
 export function checkUpdates() {
-    const currentVersion = packageInfo.lastUpdateDate;
-    const storageVersion = localStorage.getItem('LAST_UPDATE_DATE') ?? '09.08.2023';
 
-    if (currentVersion !== storageVersion) {
-        const localStorageKey = 'REDUX_STATE';
-        for(let key in localStorage){
-            if(key !== localStorageKey){
-                localStorage.removeItem(key)
-            }
-            const storedDataField = JSON.parse(localStorage.getItem(localStorageKey)) || {};
-            const fieldToPreserve = 'language';
-            for (const field in storedDataField) {
-                if (field !== fieldToPreserve) {
-                    delete storedDataField[field];
-                }
-            }
-            localStorage.setItem(localStorageKey, JSON.stringify(storedDataField));
-        }
-        console.log('it was some update');
-    } else {
-        console.log('No update detected');
+    const lastUpdateDate = LocalStorage.get(LOCAL_STORAGE_KEY.LAST_UPDATE_DATE);
+
+    if (packageInfo.lastUpdateDate !== lastUpdateDate) {
+        const siteLanguage = LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE)?.language?.siteLanguage || 'ua';
+        window.localStorage.clear();
+        LocalStorage.set(LOCAL_STORAGE_KEY.REDUX_STATE, {language: {siteLanguage}});
+        LocalStorage.set(LOCAL_STORAGE_KEY.LAST_UPDATE_DATE, packageInfo.lastUpdateDate);
     }
 }
 
