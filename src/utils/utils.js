@@ -50,19 +50,18 @@ export const getRegions = cities => Object.keys(cities);
 
 export function checkUpdates() {
     const currentVersion = packageInfo.lastUpdateDate;
-    const storageVersion = localStorage.getItem('LAST_UPDATE_DATE') ?? localStorage.setItem('LAST_UPDATE_DATE', '06.08.2023');
-    const reduxStore = JSON.parse(localStorage.getItem('REDUX_STATE'));
+    const storageVersion = localStorage.setItem('LAST_UPDATE_DATE', '09.08.2023') ?? localStorage.getItem('LAST_UPDATE_DATE');
 
-    const preserveKey = reduxStore.language.siteLanguage;
-    console.log(1, currentVersion);
-    console.log(2, storageVersion);
     if (currentVersion !== storageVersion) {
-        for (let i = 0; i < localStorage.length; i++) {
-            const key = localStorage.key(i);
-            if (key !== preserveKey) {
-                localStorage.removeItem(key);
+        const localStorageKey = 'REDUX_STATE';
+        const storedDataField = JSON.parse(localStorage.getItem(localStorageKey)) || {};
+        const fieldToPreserve = 'language';
+        for (const field in storedDataField) {
+            if (field !== fieldToPreserve) {
+                delete storedDataField[field];
             }
         }
+        localStorage.setItem(localStorageKey, JSON.stringify(storedDataField));
         console.log('it was some update');
     } else {
         console.log('No update detected');
