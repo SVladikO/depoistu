@@ -44,7 +44,7 @@ const FavoritePage = () => {
     return (
         <>
             <SingInSingUpView backUrl={URL.FAVORITE}/>
-            {!favoriteCompany?.length && (
+            {(customer && !favoriteCompany?.length) && (
                 <NotificationTDB
                     title={translate(TRANSLATION.PAGE.FAVORITE.NO_CONTENT)}
                 >
