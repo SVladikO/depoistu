@@ -4,7 +4,7 @@ const initialState = {
     value: null
 }
 
-export const customerSlice = createSliceCustom({
+const customerSlice = createSliceCustom({
     name: 'customer',
     initialState,
     reducers: {

@@ -62,6 +62,11 @@ export const BE_API = {
         CHANGE_PASSWORD: () => `${BE_DOMAIN}/change-password`,
         PUT_VERIFY_EMAIL: () => `${BE_DOMAIN}/verify-email`,
     },
+    FAVORITE_COMPANY: {
+        GET: () => `${BE_DOMAIN}/favorite-companies`,
+        ADD: () => `${BE_DOMAIN}/favorite-companies`,
+        DELETE: () => `${BE_DOMAIN}/favorite-companies`,
+    },
     COMPANY: {
         GET_BY_CUSTOMER_ID: () => `${BE_DOMAIN}/companies/by/customer`,
         GET_BY_COMPANY_ID: companyId => `${BE_DOMAIN}/companies/by/id/${companyId}`,
