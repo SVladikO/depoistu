@@ -10,7 +10,7 @@ import searchDetailsPageReducer from "./searchDetailsPage/searchDetailsPageSlice
 
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../utils/localStorage";
 
-export const store = configureStore({
+export const createStore = () => configureStore({
     reducer: {
         order: orderReducer,
         error: errorReducer,
@@ -23,5 +23,5 @@ export const store = configureStore({
     }
 })
 
-LocalStorage.set(LOCAL_STORAGE_KEY.REDUX_STATE, store.getState());
+
 

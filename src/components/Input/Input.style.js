@@ -108,6 +108,7 @@ export const Label = styled.label`
   top: ${p => p.isOpen ? '-14.5px': '-13px'};
   z-index: 2;
   padding: 3px 5px;
+  color: ${COLOR.ACCENT1};
   background: ${COLOR.ACCENT8};
   
   ${p => p.isRequired && css`

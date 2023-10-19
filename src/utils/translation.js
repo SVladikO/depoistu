@@ -276,6 +276,18 @@ export const TRANSLATION = {
                 en: "Company wasn't found"
             }
         },
+        INSTRUCTION_FOR_BUSINESS_OWNER: {
+            TOP_TITLE: {
+                ua: "Інструкція по користуванню",
+                en: 'Usage instruction'
+            },
+        },
+        AVAILABLE_MENU_CATEGORIES: {
+            TOP_TITLE: {
+                ua: " Доступні категорії меню",
+                en: 'Available menu categories'
+            },
+        },
         CUSTOMER_COMPANIES: {
             TOP_TITLE: {
                 ua: "Ваші заклади",
@@ -435,9 +447,17 @@ export const TRANSLATION = {
                     ua: "Змiнити пароль",
                     en: "Change Password"
                 },
+                INSTRUCTION_FOR_BUSINESS_OWNER: {
+                    en: "Usage instruction",
+                    ua: "Інструкція по користуванню"
+                },
                 COMPANY: {
                     en: "My сompanies",
                     ua: "Мої заклади"
+                },
+                AVAILABLE_MENU_CATEGORIES: {
+                    en: "Available menu categories",
+                    ua: "Доступні категорії меню"
                 },
                 EDIT_PROFILE: {
                     en: "Edit Profile",
@@ -719,8 +739,8 @@ export const TRANSLATION = {
                     ua: "Редагувати"
                 },
                 CHANGE_VISIBILITY: {
-                    en: "Change visibility",
-                    ua: "Змінити відоб"
+                    en: "Show in menu",
+                    ua: "Показати в меню"
                 },
                 HIDDEN: {
                     en: "HIDDEN",
@@ -808,8 +828,8 @@ export const TRANSLATION = {
                 en: "Customers won't see this company without menu."
             },
             LOADING_AVAILABLE_CITIES: {
-                en: "Loading available cities ...",
-                ua: "Загрузка доступних міст ..."
+                en: "Loading cities with registered cities",
+                ua: "Загрузка міст де зареєстровані заклади"
             },
 
             LOADING_COMPANY: {

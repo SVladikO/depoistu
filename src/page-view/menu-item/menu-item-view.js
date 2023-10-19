@@ -50,8 +50,8 @@ const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
                 <form onSubmit={handleSubmit}>
                     <ContentContainer noShadow>
                         {/*{renderImages()}*/}
-                        <Label>{translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.CATEGORY)}</Label>
                         <Dropdown
+                            label={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.CATEGORY)}
                             options={options}
                             selectedOption={(options.filter(o => o.value === values.categoryId))[0]}
                             onSelect={option => setFieldValue('categoryId', +option.value)}

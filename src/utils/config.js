@@ -13,6 +13,7 @@ import SearchDetailsPage from "page/search-details/SearchDetails.page";
 import ChangePasswordPage from "page/change-password/ChangePassword.page";
 import ForgetPasswordPage from "page/forgot-password/ForgetPassword.page";
 import CustomerCompaniesPage from "page/customer-companies/CustomerCompanies.page";
+import AvailableMenuCategoriesPage from "page/available-menu-categories/AvailableMenuCategories.page";
 
 // TODO: Hidden second version
 // import OrderPage from "page/order/Order.page";
@@ -22,7 +23,8 @@ import CustomerCompaniesPage from "page/customer-companies/CustomerCompanies.pag
 
 import {TRANSLATION, translate} from "./translation.js";
 import EditCustomerPage from "page/edit-customer/EditCustomer.page";
-import FavoritePage from "../page/favorite/Favorite.page";
+import FavoritePage from "page/favorite/Favorite.page";
+import InstructionForBusinessOwnerPage from "page/instruction-for-bussines-owner/InstructionForBusinessOwner.page";
 
 export const DEV_ROUTER = {
     COMPONENTS: 'components',
@@ -69,6 +71,8 @@ export const URL = {
     EDIT_CUSTOMER: '/edit-customer',
     OUR_TEAM: '/our-team',
 
+    AVAILABLE_MENU_CATEGORIES: '/available-menu-categories',
+    INSTRUCTION_FOR_BUSINESS_OWNER: '/instruction-for-business-owner',
     CUSTOMER_COMPANIES: '/customer-companies',
     ADD_COMPANY: '/add-company',
     EDIT_COMPANY: '/edit-company',
@@ -156,10 +160,24 @@ export const ROUTER = {
         showBottomMenu: true,
         backUrl: URL.SETTING
     },
+    INSTRUCTION_FOR_BUSINESS_OWNER: {
+        URL: URL.INSTRUCTION_FOR_BUSINESS_OWNER,
+        TITLE: translate(TRANSLATION.PAGE.INSTRUCTION_FOR_BUSINESS_OWNER.TOP_TITLE),
+        page: InstructionForBusinessOwnerPage,
+        showBottomMenu: true,
+        backUrl: URL.SETTING
+    },
     CUSTOMER_COMPANIES: {
         URL: URL.CUSTOMER_COMPANIES,
         TITLE: translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.TOP_TITLE),
         page: CustomerCompaniesPage,
+        showBottomMenu: true,
+        backUrl: URL.SETTING
+    },
+    AVAILABLE_MENU_CATEGORIES: {
+        URL: URL.AVAILABLE_MENU_CATEGORIES,
+        TITLE: translate(TRANSLATION.PAGE.AVAILABLE_MENU_CATEGORIES.TOP_TITLE),
+        page: AvailableMenuCategoriesPage,
         showBottomMenu: true,
         backUrl: URL.SETTING
     },
