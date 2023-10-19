@@ -42,8 +42,6 @@ import {openLanguagePopup} from 'features/language/languageSlice';
 import {deleteCustomer} from "features/customer/customerSlice";
 import {cleanFavoriteCompanies} from 'features/favorite-company/favoriteComapnySlice'
 
-import SingInSingUpView from "page-view/singInSingUp/singInSingUp.view";
-
 import {URL} from 'utils/config';
 import {useScrollUp} from "utils/hook";
 import validation from "utils/validation";
