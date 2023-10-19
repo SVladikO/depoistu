@@ -1,7 +1,4 @@
 import {TRANSLATION, translate} from "./translation.js";
-import packageInfo from "../../package.json";
-import {LocalStorage} from "./localStorage";
-import {LOCAL_STORAGE_KEY} from "./localStorage";
 
 export const setBrowserTabTitle = () => document.title = translate(TRANSLATION.COMPANY_NAME);
 
@@ -50,19 +47,7 @@ export const stopLoadingWithDelay = callbacks => {
 
 export const getRegions = cities => Object.keys(cities);
 
-export function checkUpdates() {
 
-    const lastUpdateDate = LocalStorage.get(LOCAL_STORAGE_KEY.LAST_UPDATE_DATE);
-
-    if (packageInfo.lastUpdateDate !== lastUpdateDate) {
-        const siteLanguage = LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE)?.language?.siteLanguage || 'ua';
-        const isShowIntro = LocalStorage.get(LOCAL_STORAGE_KEY.SHOW_INTRO);
-        localStorage.clear();
-
-        LocalStorage.set(LOCAL_STORAGE_KEY.LAST_UPDATE_DATE, packageInfo.lastUpdateDate);
-        LocalStorage.set(LOCAL_STORAGE_KEY.SHOW_INTRO, !!isShowIntro);
-    }
-}
 
 
 

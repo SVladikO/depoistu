@@ -3,12 +3,11 @@ import {Provider} from 'react-redux';
 import {createRoot} from 'react-dom/client';
 import {BrowserRouter} from "react-router-dom";
 
+import reportWebVitals from './reportWebVitals';
+// devManagement should be above other imports as it's responsible by page reload
+import devManagement from "./utils/management";
 import {createStore} from './features/store';
 import App from "./page/App";
-
-import reportWebVitals from './reportWebVitals';
-
-import devManagement from "./utils/management";
 import {LocalStorage, LOCAL_STORAGE_KEY} from "./utils/localStorage";
 
 const container = document.getElementById('root');
@@ -19,7 +18,6 @@ const store = createStore();
 
 LocalStorage.set(LOCAL_STORAGE_KEY.REDUX_STATE, store.getState());
 store.subscribe(() => {
-    console.log(2222,store.getState());
     LocalStorage.set(LOCAL_STORAGE_KEY.REDUX_STATE, store.getState());
 })
 
