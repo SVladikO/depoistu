@@ -16,7 +16,8 @@ INSERT INTO CUSTOMER (id, name, phone, password, email, is_verified_phone, is_ve
   (DEFAULT, 'Customer5', '380981112233', 'depoistu',     'customer5@gmail.com',        false, true, '1686300364887');
 
 INSERT INTO COMPANY (id, customer_id, name, phone1, phone2, phone3, city_id, street, join_date, schedule, photos) VALUES
-    (1, 1, 'Родичі',              '380661005878', '', '', '2304', 'Vulytsya Odesʹka, 50',              '22.05.2020', '09:00-21:00, 09:00-21:00, 09:00-21:00, 09:00-21:00, 09:00-21:00, 09:00-21:00, 09:00-21:00', '');
+    (1, 1, 'Родичі',              '380661005878', '', '', '2304', 'Vulytsya Odesʹka, 50',               '22.05.2020', '09:00-21:00, 09:00-21:00, 09:00-21:00, 09:00-21:00, 09:00-21:00, 09:00-21:00, 09:00-21:00', '');
+    (2, 1, 'Суліко',              '380981117411', '', '', '1003', 'Vulytsya Chkalova, 11',              '22.05.2020', '12:00-22:00, 12:00-22:00, 12:00-22:00, 12:00-22:00, 12:00-22:00, 12:00-22:00, 12:00-22:00', '');
 
 INSERT INTO MENU_ITEM (ID,        CATEGORY_ID, COMPANY_ID, IS_VISIBLE, NAME,                                                DESCRIPTION,                                                                                                                            SIZE_1,           PRICE_1,    SIZE_2,      PRICE_2,      IMAGE_URL) VALUES
                       (default,   1,           1,          1,          'Яєчня оката/омлет/скрембл (на вибір)',              'з беконом, картоплею та хрустким тостом',                                                                                     '250',            190,          '',        '',           ''),
@@ -222,4 +223,5 @@ INSERT INTO MENU_ITEM (ID,        CATEGORY_ID, COMPANY_ID, IS_VISIBLE, NAME,    
                       (default,   57,          1,          1,          'Corona extra',                                      '',                                                                                                                            '330',            125,          '',        '',           ''),
                       (default,   57,          1,          1,          'Корк фі',                                           'міцний алкоголь',                                                                                                             '500',            100,          '',        '',           ''),
                       (default,   57,          1,          1,          'Корк фі',                                           'легкй алкоголь',                                                                                                              '750',            100,          '',        '',           '')
+                      (default,   57,          2,          1,          '',                                                  '',                                                                                                              '750',            100,          '',        '',           '')
 ;
