@@ -829,7 +829,7 @@ export const TRANSLATION = {
             },
             LOADING_AVAILABLE_CITIES: {
                 en: "Loading cities with registered cities",
-                ua: "Загрузка міст де зареєстровані заклади"
+                ua: "Загрузка міст де є зареєстровані заклади"
             },
 
             LOADING_COMPANY: {
