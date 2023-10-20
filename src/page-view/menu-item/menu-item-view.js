@@ -3,7 +3,7 @@ import {Formik} from "formik";
 import * as Yup from 'yup';
 
 import {GroupSizePrice, ImagePlace, MenuItemPhoto} from "./menu-item-view.style";
-import {Dropdown, ContentContainer, Input, Label, SecondaryButton, Textarea} from "components";
+import {Dropdown, ContentContainer, Input, SecondaryButton, Textarea} from "components";
 
 import validation from "utils/validation";
 import {CATEGORY_MAPPER_AS_ARRAY} from "utils/category";
@@ -14,7 +14,6 @@ const EditMenuItemSchema = Yup.object().shape(validation.menuItem);
 const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
     const [wasSubmitted, setWasSubmitted] = useState(false);
     const [imageURL] = useState(defaultInitialValue.imageURL);
-    const [initialValues, setInitValues] = useState(defaultInitialValue);
     const CATEGORY_ID_MEASUREMENTS = useMemo(() => {
             const mapper = {};
             CATEGORY_MAPPER_AS_ARRAY.map(({id, measurement}) => mapper[id] = measurement);
@@ -47,12 +46,11 @@ const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
     return (
         <Formik
             enableReinitialize
-            initialValues={initialValues}
+            initialValues={defaultInitialValue}
             validationSchema={EditMenuItemSchema}
             onSubmit={values => {
                 setWasSubmitted(true);
                 onSubmit(values)
-                setInitValues({categoryId: values.categoryId, ...defaultInitialValue})
             }}
         >
             {({values, handleBlur, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
@@ -66,8 +64,8 @@ const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
                             onSelect={option => setFieldValue('categoryId', +option.value)}
                             as="select"
                             name="categoryId"
-                            isTouched={touched.category_id || wasSubmitted}
-                            errorMessage={errors.category_id}
+                            isTouched={touched.categoryId || wasSubmitted}
+                            errorMessage={errors.categoryId}
                         />
                         <Input
                             value={values.name}
