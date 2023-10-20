@@ -114,7 +114,7 @@ export const CATEGORY_MAPPER_AS_ARRAY = [
     ...CATEGORY_DESSERTS,
     ...CATEGORY_HOT_DRINKS,
     ...CATEGORY_BAR
-]
+];
 
 export const TOP_CATEGORIES = {
     KITCHEN: CATEGORY_KITCHEN.map(category => category.id),
