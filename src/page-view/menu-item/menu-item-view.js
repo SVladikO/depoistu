@@ -74,7 +74,7 @@ const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
                         <GroupSizePrice>
                             <Input
                                 name="size_1"
-                                type="number"
+                                type="text"
                                 value={values.size_1}
                                 labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.MEAL_SIZE) + ' 1'}
                                 onBlur={handleBlur}
@@ -101,7 +101,7 @@ const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
                         <GroupSizePrice>
                             <Input
                                 name="size_2"
-                                type="number"
+                                type="text"
                                 value={values.size_2}
                                 labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.MEAL_SIZE) + ' 2'}
                                 onBlur={handleBlur}
@@ -128,7 +128,7 @@ const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
                         <GroupSizePrice>
                             <Input
                                 name="size_3"
-                                type="number"
+                                type="text"
                                 value={values.size_3}
                                 labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.MEAL_SIZE) + ' 3'}
                                 onBlur={handleBlur}
