@@ -23,7 +23,7 @@ export const CATEGORY_KITCHEN = [
     {id: 33, title: TR.SUB_CATEGORIES.HOME, measurement: MEASUREMENTS.WEIGHT},
     {id: 34, title: TR.SUB_CATEGORIES.SEASONAL, measurement: MEASUREMENTS.WEIGHT},
     {id: 2, title: TR.SUB_CATEGORIES.SOUPS, measurement: MEASUREMENTS.LIQUID},
-    {id: 93, title: TR.SUB_CATEGORIES.DOUGH, measurement: MEASUREMENTS.LIQUID},
+    {id: 93, title: TR.SUB_CATEGORIES.DOUGH, measurement: MEASUREMENTS.WEIGHT},
     {id: 4, title: TR.SUB_CATEGORIES.HOT_DISHES, measurement: MEASUREMENTS.WEIGHT},
     {id: 7, title: TR.SUB_CATEGORIES.SPECIALITIES, measurement: MEASUREMENTS.WEIGHT},
     {id: 8, title: TR.SUB_CATEGORIES.BANQUET_MENU, measurement: MEASUREMENTS.WEIGHT},
