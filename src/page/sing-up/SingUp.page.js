@@ -33,7 +33,6 @@ const SingUpPage = () => {
         fetchData(BE_API.CUSTOMER.SING_UP(), {name, email, password: newPassword, phone})
             .then(res => {
                 dispatch(addCustomer(res.body));
-                debugger
                 navigate(backUrl);
             })
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))

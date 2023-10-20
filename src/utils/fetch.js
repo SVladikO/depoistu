@@ -2,8 +2,41 @@ import {BE_DOMAIN} from "./config";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
 import {translate, TRANSLATION} from "./translation";
 
+export const fetchData = async (url, body) => {
+    let response;
+
+    // No internet no request
+    if (!window.navigator.onLine) {
+        return new Promise((resolve, reject) => {
+            reject({body: {errorMessage: translate(TRANSLATION.NOTIFICATION.NO_INTERNET)}});
+        })
+    }
+
+    try {
+        response = await fetch(decodeURIComponent(url), getOptions(body));
+    } catch (error) {
+        return new Promise((resolve, reject) => {
+            reject({status: 500, body: {errorMessage: translate(TRANSLATION.NOTIFICATION.UN_ABLE_MAKE_REQUEST)}});
+        })
+    }
+
+    const json = await response.json();
+
+    const {status, statusText, headers} = response;
+
+    if (response.ok) {
+        return new Promise((resolve) => {
+            resolve({status, statusText, headers, body: json});
+        })
+    }
+
+    return new Promise((resolve, reject) => {
+        reject({status, statusText, headers, body: json});
+    })
+}
+
 // it's function because we take data from localStorage
-const getOptions = body => {
+function getOptions(body) {
     const defaultOption = {
         headers: {
             'Content-Type': 'application/json',
@@ -24,32 +57,6 @@ const getOptions = body => {
         }
     }
 };
-
-export const fetchData = async (url, body) => {
-    let response;
-    try {
-        response = await fetch(decodeURIComponent(url), getOptions(body));
-    } catch (error) {
-        return new Promise((resolve, reject) => {
-            reject({status: 500, body: {errorMessage: translate(TRANSLATION.NOTIFICATION.UN_ABLE_MAKE_REQUEST)}});
-        })
-    }
-
-    const json = await response.json();
-
-    const {status, statusText, headers} = response;
-
-    if (response.ok) {
-        return new Promise((resolve) => {
-            resolve({status, statusText, headers, body: json});
-        })
-    }
-
-
-    return new Promise((resolve, reject) => {
-        reject({status, statusText, headers, body: json});
-    })
-}
 
 export const BE_API = {
     //TODO candidate to delete
