@@ -906,6 +906,10 @@ export const TRANSLATION = {
             en: "Main dishes",
             ua: "Основні страви"
         },
+        LENTEN_DISHES: {
+            en: "Lenten dishes",
+            ua: "Пісні страви"
+        },
         DUMPLING: {
             en: "Dumplings",
             ua: "Вареники"
@@ -981,6 +985,10 @@ export const TRANSLATION = {
         BRANDY: {
             en: "Brandy",
             ua: "Бренді"
+        },
+        CHACHA: {
+            en: "Chacha",
+            ua: "Чача"
         },
          BOURBON: {
             en: "Bourbon",
@@ -1226,6 +1234,10 @@ export const TRANSLATION = {
             ua: 'Монгал',
             en: 'Dishes on fire'
         },
+        OWN_SMOKING: {
+            ua: 'Власне копчення',
+            en: 'Own smoking'
+        },
         GRILL: {
             ua: 'Гриль',
             en: 'Grill'
@@ -1241,6 +1253,10 @@ export const TRANSLATION = {
         SOUPS: {
             ua: 'Супи',
             en: 'Soups'
+        },
+        DOUGH: {
+            ua: 'Тісто',
+            en: 'Dough'
         },
         DESSERTS: {
             ua: 'Десерти',
