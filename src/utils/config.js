@@ -54,7 +54,7 @@ export const AVAILABLE_DOMAINS = {
     }
 }
 
-export const SELECTED_BE_DOMAIN = AVAILABLE_DOMAINS[REACT_APP_NODE_ENV || 0];
+export const SELECTED_BE_DOMAIN = AVAILABLE_DOMAINS[REACT_APP_NODE_ENV || 1];
 export const BE_DOMAIN = SELECTED_BE_DOMAIN.url;
 
 export const URL = {

@@ -3,7 +3,7 @@ import {Formik} from "formik";
 import * as Yup from 'yup';
 
 import {GroupSizePrice, ImagePlace, MenuItemPhoto} from "./menu-item-view.style";
-import {Dropdown, ContentContainer, Input, Label, SecondaryButton, Textarea} from "components";
+import {Dropdown, ContentContainer, Input, SecondaryButton, Textarea} from "components";
 
 import validation from "utils/validation";
 import {CATEGORY_MAPPER_AS_ARRAY} from "utils/category";
@@ -14,7 +14,15 @@ const EditMenuItemSchema = Yup.object().shape(validation.menuItem);
 const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
     const [wasSubmitted, setWasSubmitted] = useState(false);
     const [imageURL] = useState(defaultInitialValue.imageURL);
-    const [initialValues, setInitValues] = useState(defaultInitialValue);
+    const CATEGORY_ID_MEASUREMENTS = useMemo(() => {
+            const mapper = {};
+            CATEGORY_MAPPER_AS_ARRAY.map(({id, measurement}) => mapper[id] = measurement);
+            return mapper;
+        }
+    )
+
+    const getMeasurements = id => id ? translate(CATEGORY_ID_MEASUREMENTS[id]) : ' ';
+
     const options = useMemo(() => CATEGORY_MAPPER_AS_ARRAY.map(({id, title}) =>
         ({
             value: id,
@@ -38,12 +46,11 @@ const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
     return (
         <Formik
             enableReinitialize
-            initialValues={initialValues}
+            initialValues={defaultInitialValue}
             validationSchema={EditMenuItemSchema}
             onSubmit={values => {
                 setWasSubmitted(true);
                 onSubmit(values)
-                setInitValues({categoryId: values.categoryId, ...defaultInitialValue})
             }}
         >
             {({values, handleBlur, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
@@ -57,8 +64,8 @@ const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
                             onSelect={option => setFieldValue('categoryId', +option.value)}
                             as="select"
                             name="categoryId"
-                            isTouched={touched.category_id || wasSubmitted}
-                            errorMessage={errors.category_id}
+                            isTouched={touched.categoryId || wasSubmitted}
+                            errorMessage={errors.categoryId}
                         />
                         <Input
                             value={values.name}
@@ -76,7 +83,7 @@ const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
                                 name="size_1"
                                 type="number"
                                 value={values.size_1}
-                                labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.MEAL_SIZE) + ' 1'}
+                                labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.MEAL_SIZE) + ` 1 ${getMeasurements(values.categoryId)}`}
                                 onBlur={handleBlur}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('size_1', '')}
@@ -103,7 +110,7 @@ const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
                                 name="size_2"
                                 type="number"
                                 value={values.size_2}
-                                labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.MEAL_SIZE) + ' 2'}
+                                labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.MEAL_SIZE) + ` 2 ${getMeasurements(values.categoryId)}`}
                                 onBlur={handleBlur}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('size_2', '')}
@@ -130,7 +137,7 @@ const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
                                 name="size_3"
                                 type="number"
                                 value={values.size_3}
-                                labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.MEAL_SIZE) + ' 3'}
+                                labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.MEAL_SIZE) + ` 3 ${getMeasurements(values.categoryId)}`}
                                 onBlur={handleBlur}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('size_3', '')}

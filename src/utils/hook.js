@@ -56,7 +56,7 @@ export const useHideOnScroll = (id, top) => {
 // A custom hook that builds on useLocation to parse
 // the query string for you.
 export function useQuery() {
-    const { search } = useLocation();
+    const {search} = useLocation();
 
     return React.useMemo(() => new URLSearchParams(search), [search]);
 }
@@ -77,20 +77,27 @@ export const useRedirectToSettingPage = () => {
     })
 }
 export const useScrollUp = () => {
-    useEffect(() => {
+    const scrollUp = () => {
         window.scrollTo({
             top: -100,
             behavior: "smooth",
         })
+    }
+    useEffect(() => {
+        scrollUp()
     }, [])
+
+    return scrollUp;
 };
 
 export const useLocalStorageFetch = (
     storageKey,
     initialState,
     url,
-    setLoading = () => {},
-    customCondition = () => {}
+    setLoading = () => {
+    },
+    customCondition = () => {
+    }
 ) => {
     const localStorageState = LocalStorage.get(storageKey);
     const [value, setValue] = useState(localStorageState ?? initialState);
@@ -118,11 +125,11 @@ export const useLocalStorageFetch = (
 };
 
 export const useWindowScrollPositions = () => {
-    const [scrollPosition, setPosition] = useState({ scrollX: 0, scrollY: 0 })
+    const [scrollPosition, setPosition] = useState({scrollX: 0, scrollY: 0})
 
     useEffect(() => {
         function updatePosition() {
-            setPosition({ scrollX: window.scrollX, scrollY: window.scrollY })
+            setPosition({scrollX: window.scrollX, scrollY: window.scrollY})
         }
 
         window.addEventListener('scroll', updatePosition)
