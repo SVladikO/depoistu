@@ -23,7 +23,7 @@ const defaultInitialValue = {
 
 const AddMenuItemPage = () => {
     useRedirectToSettingPage();
-    useScrollUp();
+    const scrollUp = useScrollUp();
 
     const companyId = LocalStorage.get(LOCAL_STORAGE_KEY.COMPANY_ID_FOR_EDIT_MENU);
     const [isLoading, setIsLoading] = useState(false);
@@ -39,6 +39,7 @@ const AddMenuItemPage = () => {
 
         fetchData(BE_API.MENU_ITEM.POST_CREATE(), requestObj)
             .then(() => {
+                scrollUp();
                 publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.MENU_ITEM.WAS_CREATED))
                 setInitialValues({...defaultInitialValue, categoryId: values.categoryId})
             })
