@@ -354,6 +354,14 @@ export const TRANSLATION = {
                 en: 'Edit menu',
                 ua: "Редагувати меню"
             },
+            CITY: {
+                en: 'City',
+                ua: "Місто"
+            },
+            STREET: {
+                en: 'Street',
+                ua: "Вулиця"
+            },
             BUTTON: {
                 ADD_MENU_ITEM: {
                     en: 'Add menu item',

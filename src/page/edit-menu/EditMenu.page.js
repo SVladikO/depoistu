@@ -57,8 +57,9 @@ const EditMenu = () => {
         <>
             {currentCompany &&
                 <CompanyDetails>
-                    {translate(CITY_TRANSLATION_IDS[currentCompany.cityId])}, {" "}
-                    {currentCompany.street}
+                    <div>{currentCompany.name}</div>
+                    <div>{translate(TRANSLATION.PAGE.EDIT_MENU.CITY)}: {translate(CITY_TRANSLATION_IDS[currentCompany.cityId])}, {" "}</div>
+                    <div>{translate(TRANSLATION.PAGE.EDIT_MENU.STREET)}: {currentCompany.street}</div>
                 </CompanyDetails>
             }
 

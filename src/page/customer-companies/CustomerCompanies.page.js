@@ -25,7 +25,7 @@ const CustomerCompaniesPage = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [wasWarningShown, setWasWarningShown] = useLocalStorage(LOCAL_STORAGE_KEY.WAS_COMPANY_CREATION_WARNING_SHOW, false)
     const [companyIdForQRCode, setCompanyIdForQRCode] = useState();
-    const [customerCompanies, setCustomerCompanies] = useState();
+    const [customerCompanies, setCustomerCompanies] = useLocalStorage(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
 
     useEffect(() => {
         if (customerCompanies || isLoading) {
