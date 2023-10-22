@@ -51,7 +51,7 @@ const AddCompany = () => {
                     isWide
                     clickHandler={() => {
                         LocalStorage.set(LOCAL_STORAGE_KEY.COMPANY_ID_TO_EDIT_MENU_PAGE, newCompanyId)
-                        navigate(URL.EDIT_MENU)
+                        navigate(URL.ADD_MENU_ITEM)
                     }}
                 >{translate(TRANSLATION.PAGE.ADD_COMPANY.BUTTON.ADD_MENU)}</PrimaryButton>
             </ContentContainer>
