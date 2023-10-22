@@ -13,7 +13,7 @@ const checkUpdates = () => {
 
         LocalStorage.set(LOCAL_STORAGE_KEY.REDUX_STATE, {language: {siteLanguage}})
         LocalStorage.set(LOCAL_STORAGE_KEY.LAST_UPDATE_DATE, packageInfo.lastUpdateDate);
-        LocalStorage.set(LOCAL_STORAGE_KEY.SHOW_INTRO, !!isShowIntro);
+        LocalStorage.set(LOCAL_STORAGE_KEY.SHOW_INTRO, isShowIntro === undefined ? true : isShowIntro);
     }
 }
 
