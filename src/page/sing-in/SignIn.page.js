@@ -89,6 +89,7 @@ const SignInPage = () => {
                                 labelName={translate(TRANSLATION.INPUT_LABEL.CUSTOMER.PASSWORD)}
                                 errorMessage={errors.password}
                             />
+                            {/*TODO: Add forget password link after we start to send email from BE. */}
                             {/*<Link to={URL.FORGOT_PASSWORD}>{translate(TRANSLATION.PAGE.SIGN_IN.FORGOT_PASSWORD)}</Link>*/}
 
                         </ContentContainer>
