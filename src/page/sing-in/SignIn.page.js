@@ -89,12 +89,8 @@ const SignInPage = () => {
                                 labelName={translate(TRANSLATION.INPUT_LABEL.CUSTOMER.PASSWORD)}
                                 errorMessage={errors.password}
                             />
-                            <Link to={URL.FORGOT_PASSWORD}>{translate(TRANSLATION.PAGE.SIGN_IN.FORGOT_PASSWORD)}</Link>
-                            <NavigationLabelHref
-                                hrefTitle={translate(TRANSLATION.PAGE.SIGN_IN.SING_UP_LINK)}
-                                to={ROUTER.SING_UP.URL}
-                                label={translate(TRANSLATION.PAGE.SIGN_IN.ACCOUNT_CONFIRMATION)}
-                            />
+                            {/*<Link to={URL.FORGOT_PASSWORD}>{translate(TRANSLATION.PAGE.SIGN_IN.FORGOT_PASSWORD)}</Link>*/}
+
                         </ContentContainer>
                         <PrimaryButton
                             isWide
@@ -104,6 +100,11 @@ const SignInPage = () => {
                         >
                             {translate(TRANSLATION.PAGE.SIGN_IN.TOP_TITLE)}
                         </PrimaryButton>
+                        <NavigationLabelHref
+                            hrefTitle={translate(TRANSLATION.PAGE.SIGN_IN.SING_UP_LINK)}
+                            to={ROUTER.SING_UP.URL}
+                            label={translate(TRANSLATION.PAGE.SIGN_IN.ACCOUNT_CONFIRMATION)}
+                        />
                     </form>
                 )}
             </Formik>
