@@ -1,6 +1,6 @@
 import React, {memo, useEffect, useState} from 'react';
 import {SwiperSlide} from 'swiper/react';
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -14,11 +14,11 @@ import {
     CategoryTitle
 } from "./CategoryMenuView.style";
 
-import {SubCategoryItem, MenuItem, RowSplitter, HorizontalSwiper, PrimaryButton} from "components";
+import {SubCategoryItem, MenuItem, RowSplitter, HorizontalSwiper} from "components";
 
 import {URL} from "utils/config";
 import {useScrollUp} from "utils/hook";
-import {translate, TRANSLATION as TR, TRANSLATION} from "utils/translation";
+import {translate, TRANSLATION as TR} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 import {
     CATEGORY_ID_MAPPER_AS_OBJECT,
@@ -41,7 +41,6 @@ let categoryIdIndexMapper = {};
 const CategoryMenuView = ({
                               menuItems = [],
                               withEditIcon,
-                              editPage = false,
                           }) => {
 
     useScrollUp();
@@ -225,17 +224,6 @@ const CategoryMenuView = ({
             <RowSplitter height={`${CATEGORY_ROW_HEIGHT + 10}px`}/>
             {/***  MENU ITEM  ***/}
             {resultMenuItems}
-            {
-                editPage &&
-                <>
-                    <RowSplitter height={'15px'}/>
-                    <Link to={`${URL.ADD_MENU_ITEM}`}>
-                        <PrimaryButton isWide withPadding>
-                            {translate(TRANSLATION.PAGE.EDIT_MENU.BUTTON.ADD_MENU_ITEM)}
-                        </PrimaryButton>
-                    </Link>
-                </>
-            }
         </>
     )
 }

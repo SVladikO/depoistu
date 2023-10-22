@@ -4,14 +4,13 @@ import {useDispatch, useSelector} from "react-redux";
 import {Wrapper, CompanyDetails} from "./EditMenu.style";
 
 import {
-    NotificationLoading, PrimaryButton,
-} from "components";
+    NotificationLoading, PrimaryButton, RowSplitter} from "components";
 
 import {startLoading, stopLoading} from "features/request/requestSlice";
 
 import {BE_API} from 'utils/fetch'
 import {fetchData} from "utils/fetch";
-import {useLocalStorage, useLocalStorageFetch, useRedirectToSettingPage, useScrollUp} from "utils/hook";
+import {useLocalStorageFetch, useRedirectToSettingPage, useScrollUp} from "utils/hook";
 import {translate, TRANSLATION} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 import {CITY_TRANSLATION_IDS} from "utils/cities";
@@ -58,11 +57,18 @@ const EditMenu = () => {
         <>
             {currentCompany &&
                 <CompanyDetails>
-                    {currentCompany.name}, {" "}
                     {translate(CITY_TRANSLATION_IDS[currentCompany.cityId])}, {" "}
                     {currentCompany.street}
                 </CompanyDetails>
             }
+
+            <Link to={`${URL.ADD_MENU_ITEM}`}>
+                <PrimaryButton isWide withPadding>
+                    {translate(TRANSLATION.PAGE.EDIT_MENU.BUTTON.ADD_MENU_ITEM)}
+                </PrimaryButton>
+            </Link>
+            <RowSplitter height="40px" />
+
             <Wrapper>
                 {!!menuItems?.length &&
                     <CategoryMenuView
@@ -73,11 +79,7 @@ const EditMenu = () => {
                         editPage
                     />
                 }
-                {!menuItems?.length && <Link to={`${URL.ADD_MENU_ITEM}`}>
-                    <PrimaryButton isWide withPadding>
-                        {translate(TRANSLATION.PAGE.EDIT_MENU.BUTTON.ADD_MENU_ITEM)}
-                    </PrimaryButton>
-                </Link>}
+
             </Wrapper>
         </>
     )
