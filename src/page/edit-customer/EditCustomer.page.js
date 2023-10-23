@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
-import * as Yup from "yup";
 import {Input, ContentContainer,ToggleCheckbox, NotificationLoading} from "components";
 
-import validation from "utils/validation";
 import {useRedirectToSettingPage, useScrollUp} from "utils/hook";
 import {TRANSLATION, translate} from "utils/translation";
 import {useDispatch, useSelector} from "react-redux";
@@ -48,10 +46,9 @@ const EditCustomerPage = () => {
             />
 
             <ToggleCheckbox
-                name="isBusinessOwner"
+                label={translate(TRANSLATION.PAGE.PROFILE.ARE_YOU_BUSINESS_OWNER)}
                 isChecked={customer.isBusinessOwner}
                 changeHandler={changeAccountType}
-                title={"Are you business owner ?"}
             />
         </ContentContainer>
     )

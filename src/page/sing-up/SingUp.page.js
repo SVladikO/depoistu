@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import {Formik} from "formik";
 
 import {Wrapper} from "./SingUp.style";
-import {Input, ContentContainer, PrimaryButton, Checkbox, ToggleCheckbox} from "components";
+import {Input, ContentContainer, PrimaryButton, Checkbox} from "components";
 import NavigationLabelHref from "components/NavigationLabelHref/NavigationLabelHref";
 
 import validation from 'utils/validation';
@@ -116,7 +116,7 @@ const SingUpPage = () => {
                                 name="isBusinessOwner"
                                 value={values.isBusinessOwner}
                                 changeHandler={handleChange}
-                                lableName={"Are you business owner ?"}
+                                lableName={translate(TRANSLATION.PAGE.PROFILE.ARE_YOU_BUSINESS_OWNER)}
                             />
                         </ContentContainer>
                         <Wrapper>

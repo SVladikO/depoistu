@@ -268,8 +268,12 @@ export const TRANSLATION = {
     },
     PAGE: {
         PROFILE: {
+            ARE_YOU_BUSINESS_OWNER: {
+                ua: "Ви власник бізнесу ?",
+                en: "Are you business owner ?"
+            },
             BUTTON: {
-                CHANGE: {
+                SAVE_CHANGE: {
                     ua: "Зберегти змінити",
                     en: "Save change"
                 },
