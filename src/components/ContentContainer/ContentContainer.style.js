@@ -14,10 +14,15 @@ export const ContentContainerDefault = css`
   & > * {
     margin-bottom: 22px;
   }
-
+  
+  button {
+    margin-top: 40px;
+  }
+  
   & > *:last-child {
     margin-bottom: 0;
   }
+  
 `
 export const ContentContainer = styled.div.attrs({
     className: 'ContentContainer',

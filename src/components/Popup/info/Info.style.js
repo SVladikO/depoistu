@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {BORDER_RADIUS} from "utils/theme";
+import {BORDER_RADIUS, COLOR} from "utils/theme";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -14,4 +14,18 @@ export const Wrapper = styled.div`
   }
 `;
 
-
+export const LogoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 34px 0;
+  & > a {
+    color: ${COLOR.ACCENT3};
+    font-size: 20px;
+  }
+  svg {
+    display: block;
+    margin: 0 0 10px 0;
+  }
+`;
