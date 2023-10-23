@@ -1,20 +1,28 @@
 import React, {useState} from 'react';
 import {Formik} from "formik";
 import * as Yup from "yup";
-import {Input, ContentContainer, PrimaryButton} from "components";
+import {Input, ContentContainer, PrimaryButton, Checkbox} from "components";
 
 import validation from "utils/validation";
 import {useRedirectToSettingPage, useScrollUp} from "utils/hook";
 import {TRANSLATION, translate} from "utils/translation";
 import {useSelector} from "react-redux";
+import {BE_API, fetchData} from "../../utils/fetch";
+import {addCustomer} from "../../features/customer/customerSlice";
+import {publishNotificationEvent} from "../../utils/event";
 
-const SignUpSchema = Yup.object().shape(validation.customer.singUp);
+const EditCustomerSchema = Yup.object().shape(validation.customer.editCustomer);
 
 const EditCustomerPage = () => {
     useRedirectToSettingPage();
     useScrollUp();
     const [wasSubmitted, setWasSubmitted] = useState(false);
     const customer = useSelector(state => state.customer.value);
+    console.log(2222, customer);
+
+    const onSubmit = values => {
+        setWasSubmitted(true);
+    }
 
     return (
         <>
@@ -23,12 +31,10 @@ const EditCustomerPage = () => {
                     name: customer.name,
                     phone: customer.phone,
                     email: customer.email,
+                    isBusinessOwner: customer.isBusinessOwner,
                 }}
-                validationSchema={SignUpSchema}
-                onSubmit={values => {
-                    console.log(values);
-                    setWasSubmitted(true);
-                }}
+                validationSchema={EditCustomerSchema}
+                onSubmit={onSubmit}
             >
                 {({values, handleBlur, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                     <form onSubmit={handleSubmit}>
@@ -67,9 +73,15 @@ const EditCustomerPage = () => {
                                 clearHandler={() => setFieldValue('email', '')}
                                 errorMessage={errors.email}
                             />
-                        <PrimaryButton type="submit" isWide>
-                            {translate(TRANSLATION.PAGE.CHANGE_PASSWORD.BUTTON.SAVE_CHANGES)}
-                        </PrimaryButton>
+                            <Checkbox
+                                name="isBusinessOwner"
+                                value={values.isBusinessOwner}
+                                changeHandler={handleChange}
+                                lableName={"Are you business owner ?"}
+                            />
+                            <PrimaryButton type="submit" isWide>
+                                {translate(TRANSLATION.PAGE.PROFILE.BUTTON.CHANGE)}
+                            </PrimaryButton>
                         </ContentContainer>
                     </form>
                 )}
