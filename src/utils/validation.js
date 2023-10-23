@@ -134,7 +134,7 @@ const COMPANY = {
     },
     STREET: {
         MIN: 2,
-        MAX: 30
+        MAX: 60
     },
     PHONE,
     SCHEDULE: {},
