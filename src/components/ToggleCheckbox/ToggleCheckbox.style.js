@@ -3,6 +3,8 @@ import {COLOR} from "utils/theme";
 
 export const Wrapper = styled.label`
   position: relative;
+  display: flex;
+  
 `;
 
 export const Input = styled.input`
