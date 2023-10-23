@@ -1038,6 +1038,10 @@ export const TRANSLATION = {
             en: "No alcohol wines",
             ua: "Безалкогольні вина"
         },
+        HOMEMADE_WINE: {
+            en: "Homemade wines",
+            ua: "Домашні вина"
+        },
         WINE_SPARKLING: {
             en: "Sparkling wines",
             ua: "Ігристі вина"
