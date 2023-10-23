@@ -110,6 +110,11 @@ export const TRANSLATION = {
         MAX_SYMBOLS: {
             en: "Max number of characters is ",
             ua: "Максимальне кількість символів "
+        },
+        SCHEDULE_IS_REQUIRED: {
+            en: "Schedule is a required field.",
+            ua: "Графік обовязкове поле. "
+
         }
     },
     WEEK_DAY: {
