@@ -10,7 +10,7 @@ import {BE_API} from 'utils/fetch'
 import {BE_DOMAIN} from "utils/config";
 
 const COMPANY_FIELDS_TO_CHECK = ['id', 'customer_id', 'name', 'phone', 'cityId', 'street', 'photos', 'schedule'];
-const MENU_ITEM_FIELDS_TO_CHECK = ['id', 'categoryId', 'companyId', 'cookingTime', 'description', 'imageUrl', 'name', 'price', 'size'];
+const MENU_ITEM_FIELDS_TO_CHECK = ['id', 'categoryId', 'companyId', 'description', 'imageUrl', 'name', 'price', 'size'];
 
 const isObject = yourVariable => typeof yourVariable === 'object' && !Array.isArray(yourVariable) && yourVariable !== null;
 

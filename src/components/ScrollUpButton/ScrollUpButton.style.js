@@ -15,8 +15,12 @@ export const ToTopButtonWrapper = styled.a`
   align-items: center;
   visibility: ${p => p.isVisible ? 'visible' : 'hidden'};
   border-radius: ${BORDER_RADIUS.CIRCLE};
-  background-color: ${COLOR.ACCENT4};
+  background-color: ${COLOR.ACCENT1};
   box-shadow: 0px -1px 4px 0px rgba(0,0,0, 0.11);
   opacity: ${p => p.isVisible ? 1: 0};
   transition: opacity 0.5s, visibility 0.3s;
+  
+  & > svg {
+    fill: ${COLOR.ACCENT4};
+  }
 `

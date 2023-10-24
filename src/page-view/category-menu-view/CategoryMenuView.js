@@ -1,6 +1,6 @@
 import React, {memo, useEffect, useState} from 'react';
 import {SwiperSlide} from 'swiper/react';
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -14,11 +14,11 @@ import {
     CategoryTitle
 } from "./CategoryMenuView.style";
 
-import {SubCategoryItem, MenuItem, RowSplitter, HorizontalSwiper, PrimaryButton} from "components";
+import {SubCategoryItem, MenuItem, RowSplitter, HorizontalSwiper} from "components";
 
 import {URL} from "utils/config";
 import {useScrollUp} from "utils/hook";
-import {translate, TRANSLATION as TR, TRANSLATION} from "utils/translation";
+import {translate, TRANSLATION as TR} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 import {
     CATEGORY_ID_MAPPER_AS_OBJECT,
@@ -41,7 +41,6 @@ let categoryIdIndexMapper = {};
 const CategoryMenuView = ({
                               menuItems = [],
                               withEditIcon,
-                              editPage = false,
                           }) => {
 
     useScrollUp();
@@ -80,7 +79,6 @@ const CategoryMenuView = ({
 
         const topOfElement = categoryTitleTag.offsetTop - CATEGORY_ROW_HEIGHT;
         window.scroll({top: topOfElement, behavior: "smooth"});
-
         enableScrollListener()
     }
 
@@ -103,7 +101,7 @@ const CategoryMenuView = ({
         }
     }, [])
 
-    const renderTopCategory = (topCategoryKey, topCategoryIndex, categoryId) => (
+    const renderTopCategory = ({topCategoryKey, topCategoryIndex, categoryId}) => (
         <TopCategoryItem
             key={topCategoryIndex}
             isSelected={topCategoryIndex === selectedTopCategoryId}
@@ -169,7 +167,7 @@ const CategoryMenuView = ({
 
                 if (!wasTopSet) {
                     wasTopSet = true;
-                    topCategories.push(renderTopCategory(topCategoryKey, topCategoryIndex, categoryId));
+                    topCategories.push({topCategoryKey, topCategoryIndex, categoryId});
                 }
 
                 // We need categoryIdIndexMapper to handle sub category scroll when you scroll vertically
@@ -180,9 +178,23 @@ const CategoryMenuView = ({
                 subCategories.push(renderSubCategory(categoryId, topCategoryIndex, categoryIdIndexMapper[categoryId]))
                 resultMenuItems.push(renderCategoryTitle(categoryId, topCategoryIndex))
                 resultMenuItems.push(items.map(renderMenuItem))
-
             })
         })
+
+    useEffect(() => {
+        if (!!menuItems?.length && selectedTopCategoryId === undefined) {
+            setSelectedTopCategoryId(topCategories[0].topCategoryIndex)
+        }
+
+        //This is a fix of main bug. Thanks God. After you leave page where we use CategoryMenuRow
+        // you didn't clear after yourself and had wrong indexes.
+        return () => {
+            categoryIdIndexMapper = {};
+            indexCalculator = 0;
+        }
+    })
+
+    console.log({selectedSubCategoryId})
 
     return (
         <>
@@ -191,7 +203,7 @@ const CategoryMenuView = ({
                     {/*** TOP CATEGORIES ***/}
                     <div>
                         <TopCategoryWrapper>
-                            {topCategories}
+                            {topCategories.map(details => renderTopCategory(details))}
                             {/*If you commit this row and check CategoryMenuRow you understand everything. */}
                             <TopCategoryItem style={{width: '90%'}}/>
                         </TopCategoryWrapper>
@@ -212,17 +224,6 @@ const CategoryMenuView = ({
             <RowSplitter height={`${CATEGORY_ROW_HEIGHT + 10}px`}/>
             {/***  MENU ITEM  ***/}
             {resultMenuItems}
-            {
-                editPage &&
-                <>
-                    <RowSplitter height={'15px'}/>
-                    <Link to={`${URL.ADD_MENU_ITEM}`}>
-                        <PrimaryButton isWide withPadding>
-                            {translate(TRANSLATION.PAGE.EDIT_MENU.BUTTON.ADD_MENU_ITEM)}
-                        </PrimaryButton>
-                    </Link>
-                </>
-            }
         </>
     )
 }

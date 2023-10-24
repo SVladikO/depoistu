@@ -3,6 +3,7 @@ import Vlad_imgSrc from 'assets/images/team/Vlad.png';
 import David_imgSrc from 'assets/images/team/David.png';
 import Irina_imgSrc from 'assets/images/team/Irina.png';
 import Alex_imgSrc from 'assets/images/team/Alex.png';
+import Pavlo_imgSrc from 'assets/images/team/Pavlo.png';
 import {useScrollUp} from "utils/hook";
 import {ReactComponent as Instagram} from "../../assets/icons/instagram.svg";
 import {ReactComponent as Facebook} from "../../assets/icons/facebook2.svg";
@@ -28,6 +29,15 @@ const contributors = [
         facebook: "",
         instagram: "",
         src: Alex_imgSrc,
+    },
+    {
+        name: "Pavlo Serhiychuk",
+        linkedInLink: "https://www.linkedin.com/in/pavlo-serhiichuk-160816204/",
+        position: ["FE developer"],
+        twitter: "",
+        facebook: "",
+        instagram: "",
+        src: Pavlo_imgSrc
     }
     ,
     {
@@ -71,7 +81,7 @@ const OurTeamPage = () => {
                                     {employee.instagram && <a href=""><Instagram/></a>}
                                     {employee.facebook && <a href=""><Facebook/></a>}
                                     {employee.twitter && <a href=""><Twitter/></a>}
-                                    {employee.linkedInLink && <a href={employee.linkedInLink}><LinkedIn/></a>}
+                                    {employee.linkedInLink && <a href={employee.linkedInLink} target="_blank"><LinkedIn/></a>}
                                 </Socials>
                             </EmployeeInfo>
                         </Employee>

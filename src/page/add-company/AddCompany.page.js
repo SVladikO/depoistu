@@ -19,7 +19,7 @@ import {publishNotificationEvent} from "utils/event";
 
 const AddCompany = () => {
     useRedirectToSettingPage();
-    useScrollUp();
+    const scrollUp = useScrollUp();
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
     const [wasCompanyCreated, setWasCompanyCreated] = useState(false);
@@ -38,6 +38,7 @@ const AddCompany = () => {
                 LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES)
                 publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.COMPANY.WAS_CREATED));
                 publishNotificationEvent.warning(translate(TRANSLATION.NOTIFICATION.COMPANY.CREATE_MENU_SUGGESTION))
+                scrollUp()
             })
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))
             .finally(() => setIsLoading(false))

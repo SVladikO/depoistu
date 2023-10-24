@@ -14,7 +14,7 @@ import {COLOR, DEVICE_WIDTH} from './theme';
 import {useScrollUp, useHideOnScroll} from "./hook";
 
 import {BottomMenu, NavigationHeader} from "components";
-import ToTopButton from "../components/ToTopButton/ToTopButton";
+import ScrollUpButton from "../components/ScrollUpButton/ScrollUpButton";
 
 import NotificationView from "page-view/notification/NotificationView";
 
@@ -53,7 +53,7 @@ const Element = (props) => {
                 <BottomMenu/>
             </FixedWrapper>
             <Footer/>
-            <ToTopButton />
+            <ScrollUpButton />
         </MobileWrapper>
     )
 };

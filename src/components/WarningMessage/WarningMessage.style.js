@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {COLOR} from "utils/theme";
+import {BORDER_RADIUS, COLOR} from "utils/theme";
 
 export const WarningMessageWrapper = styled.div`
   font-weight: 400;
@@ -10,4 +10,5 @@ export const WarningMessageWrapper = styled.div`
   padding: 2px 0 4px 13px;
   display: flex;
   justify-content: left;
+  border-radius: 0 0 ${BORDER_RADIUS.INPUT} ${BORDER_RADIUS.INPUT};
 `;

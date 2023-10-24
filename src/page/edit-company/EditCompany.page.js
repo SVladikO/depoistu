@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Link, useParams} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 
 import {RowSplitter, PrimaryButton, ContentContainer, SecondaryButton} from "components";
 
@@ -32,6 +32,7 @@ const companyFakeData = {
 const EditCompany = () => {
     useRedirectToSettingPage();
     useScrollUp();
+    const navigate = useNavigate();
     const companyId = +useParams().companyId;
     const customerCompaniesFromLocalStorage = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES) || [{ID: companyId, ...companyFakeData}];
     const companies = customerCompaniesFromLocalStorage.length ? customerCompaniesFromLocalStorage : [{ID: companyId, ...companyFakeData}];
@@ -82,6 +83,7 @@ const EditCompany = () => {
                 LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
                 publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.COMPANY.WAS_DELETED))
                 setWasCompanyDeleted(true)
+                navigate(URL.CUSTOMER_COMPANIES);
             })
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))
             .finally(() => setIsLoadingDelete(false))

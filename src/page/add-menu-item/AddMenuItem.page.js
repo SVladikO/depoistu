@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-import {PrimaryButton, RowSplitter} from "components";
+import {NotificationLoading, PrimaryButton, RowSplitter} from "components";
 import MenuItemView from "page-view/menu-item/menu-item-view";
 
 import {fetchData, BE_API} from "utils/fetch";
@@ -11,19 +11,23 @@ import {publishNotificationEvent} from "utils/event";
 
 const defaultInitialValue = {
     name: '',
-    price: '',
     description: '',
-    cookingTime: '',
-    size: '',
+    size_1: '',
+    price_1: '',
+    size_2: '',
+    price_2: '',
+    size_3: '',
+    price_3: '',
     imageUrl: ''
 }
 
 const AddMenuItemPage = () => {
     useRedirectToSettingPage();
-    useScrollUp();
-    const companyId = LocalStorage.get(LOCAL_STORAGE_KEY.COMPANY_ID_FOR_EDIT_MENU);
+    const scrollUp = useScrollUp();
 
+    const companyId = LocalStorage.get(LOCAL_STORAGE_KEY.COMPANY_ID_FOR_EDIT_MENU);
     const [isLoading, setIsLoading] = useState(false);
+    const [initialValues, setInitialValues] = useState(defaultInitialValue)
 
     const onSubmit = values => {
         setIsLoading(true);
@@ -34,15 +38,24 @@ const AddMenuItemPage = () => {
         }
 
         fetchData(BE_API.MENU_ITEM.POST_CREATE(), requestObj)
-            .then(() => publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.MENU_ITEM.WAS_CREATED)))
+            .then(() => {
+                scrollUp();
+                publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.MENU_ITEM.WAS_CREATED))
+                setInitialValues({...defaultInitialValue, categoryId: values.categoryId})
+            })
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))
             .finally(() => setIsLoading(false))
     }
 
+    if (isLoading) {
+        return <NotificationLoading />
+    }
+
     return (
         <>
+
             <MenuItemView
-                defaultInitialValue={defaultInitialValue}
+                defaultInitialValue={initialValues}
                 onSubmit={onSubmit}
             >
                 <>

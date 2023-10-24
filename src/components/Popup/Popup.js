@@ -28,8 +28,8 @@ const Popup = (props) => {
 
     return (
         <InvisibleWrapper popupPosition={popupPosition} className="invisible-wrapper">
-            <Wrapper popupPosition={popupPosition} onClick={closePopup}>
-                {showCloseButton && <CloseButtonWrapper popupPosition={popupPosition}>
+            <Wrapper popupPosition={popupPosition}>
+                {showCloseButton && <CloseButtonWrapper popupPosition={popupPosition} onClick={closePopup}>
                     <CloseIcon/>
                 </CloseButtonWrapper>
                 }

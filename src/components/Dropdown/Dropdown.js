@@ -1,13 +1,14 @@
 import React, {useEffect, useRef, useState} from 'react';
 
-import {SelectWrapper,SelectButton, OptionsContainer, Option} from "./Dropdown.style";
+import {SelectWrapper, SelectButton, OptionsContainer, Option} from "./Dropdown.style";
 
 import {ReactComponent as DropdownIcon} from "assets/icons/chevron.svg";
 
 import {WarningMessage} from "components";
 import {TRANSLATION, translate} from "utils/translation";
+import {Label} from "../Input/Input.style";
 
-const Dropdown = ({ options, selectedOption , onSelect, isTouched, errorMessage }) => {
+const Dropdown = ({ options, selectedOption , onSelect, errorMessage, label, isRequired }) => {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);
 
@@ -30,9 +31,13 @@ const Dropdown = ({ options, selectedOption , onSelect, isTouched, errorMessage 
 
         return () => document.removeEventListener('click', handleClickOutside);
     },[])
-
     return (
-        <SelectWrapper ref={dropdownRef}>
+        <SelectWrapper isOpen={isOpen} ref={dropdownRef}>
+            {label ? (
+                <Label isRequired={isRequired} isOpen={isOpen}>
+                    {label}
+                </Label>
+            ) : null}
             <SelectButton type="button" isOpen={isOpen} onClick={toggleDropdown}>
                 {selectedOption?.title || translate(TRANSLATION.INPUT_LABEL.DROPDOWN_TITLE)}
                 <DropdownIcon/>
@@ -50,7 +55,7 @@ const Dropdown = ({ options, selectedOption , onSelect, isTouched, errorMessage 
                     ))}
                 </OptionsContainer>
             )}
-            {isTouched && errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
+            {errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
         </SelectWrapper>
     );
 };

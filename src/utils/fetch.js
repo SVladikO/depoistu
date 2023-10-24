@@ -2,31 +2,16 @@ import {BE_DOMAIN} from "./config";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
 import {translate, TRANSLATION} from "./translation";
 
-// it's function because we take data from localStorage
-const getOptions = body => {
-    const defaultOption = {
-        headers: {
-            'Content-Type': 'application/json',
-            "x-access-token": LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER)?.token,
-            "current-language": LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE).language.siteLanguage,
-        }
-    };
-
-    if (!body) {
-        return defaultOption;
-    }
-
-    return {
-        ...defaultOption,
-        ...{
-            method: body?.method || 'POST',
-            body: JSON.stringify(body)
-        }
-    }
-};
-
 export const fetchData = async (url, body) => {
     let response;
+
+    // No internet no request
+    if (!window.navigator.onLine) {
+        return new Promise((resolve, reject) => {
+            reject({body: {errorMessage: translate(TRANSLATION.NOTIFICATION.NO_INTERNET)}});
+        })
+    }
+
     try {
         response = await fetch(decodeURIComponent(url), getOptions(body));
     } catch (error) {
@@ -45,11 +30,33 @@ export const fetchData = async (url, body) => {
         })
     }
 
-
     return new Promise((resolve, reject) => {
         reject({status, statusText, headers, body: json});
     })
 }
+
+// it's function because we take data from localStorage
+function getOptions(body) {
+    const defaultOption = {
+        headers: {
+            'Content-Type': 'application/json',
+            "x-access-token": LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE)?.customer?.value?.token,
+            "current-language": LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE).language.siteLanguage,
+        }
+    };
+
+    if (!body) {
+        return defaultOption;
+    }
+
+    return {
+        ...defaultOption,
+        ...{
+            method: body?.method || 'POST',
+            body: JSON.stringify(body)
+        }
+    }
+};
 
 export const BE_API = {
     //TODO candidate to delete
@@ -61,6 +68,11 @@ export const BE_API = {
         SING_UP: () => `${BE_DOMAIN}/sign-up`,
         CHANGE_PASSWORD: () => `${BE_DOMAIN}/change-password`,
         PUT_VERIFY_EMAIL: () => `${BE_DOMAIN}/verify-email`,
+    },
+    FAVORITE_COMPANY: {
+        GET: () => `${BE_DOMAIN}/favorite-companies`,
+        ADD: () => `${BE_DOMAIN}/favorite-companies`,
+        DELETE: () => `${BE_DOMAIN}/favorite-companies`,
     },
     COMPANY: {
         GET_BY_CUSTOMER_ID: () => `${BE_DOMAIN}/companies/by/customer`,

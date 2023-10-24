@@ -14,6 +14,7 @@ import {useRedirectToSettingPage} from "utils/hook";
 import {TRANSLATION, translate} from 'utils/translation';
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 import {publishNotificationEvent} from "utils/event";
+import {useSelector} from "react-redux";
 
 const ChangePassWordSchema = Yup.object().shape(validation.customer.changePassword);
 
@@ -21,13 +22,14 @@ const ChangePasswordPage = () => {
     useRedirectToSettingPage();
     const [isLoading, setIsLoading] = useState(false);
     const [wasSubmitted, setWasSubmitted] = useState(false);
+    const customer = useSelector(state => state.customer.value);
 
     const onSubmit = values => {
         setWasSubmitted(true);
         setIsLoading(true)
         const {newPassword} = values;
-        const {PASSWORD, EMAIL} = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER);
-        const reqObj = {newPassword, password: PASSWORD, email: EMAIL};
+        const {password, email} = customer || {};
+        const reqObj = {newPassword, password, email};
 
         fetchData(BE_API.CUSTOMER.CHANGE_PASSWORD(), reqObj)
             .then(res => {
