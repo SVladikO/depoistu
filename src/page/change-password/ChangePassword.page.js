@@ -25,6 +25,10 @@ const ChangePasswordPage = () => {
     const customer = useSelector(state => state.customer.value);
 
     const onSubmit = values => {
+        if (isLoading) {
+            return;
+        }
+
         setWasSubmitted(true);
         setIsLoading(true)
         const {newPassword} = values;

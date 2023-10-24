@@ -27,6 +27,10 @@ const SingUpPage = () => {
     const [wasSubmitted, setWasSubmitted] = useState(false);
 
     const onSubmit = ({name, email, newPassword, phone, isBusinessOwner}) => {
+        if (isLoading) {
+            return;
+        }
+
         setWasSubmitted(true);
         setIsLoading(true);
 

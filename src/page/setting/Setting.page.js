@@ -60,6 +60,10 @@ const SettingPage = () => {
     const customer = useSelector(state => state.customer.value);
 
     const onCheckVerification = ({emailVerificationCode}) => {
+        if (isLoading) {
+            return;
+        }
+
         setIsLoading(true)
         fetchData(BE_API.CUSTOMER.PUT_VERIFY_EMAIL(), {email: customer.email, emailVerificationCode, method: 'put'})
             .then(res => {

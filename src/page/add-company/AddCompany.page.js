@@ -26,6 +26,11 @@ const AddCompany = () => {
     const [newCompanyId, setNewCompanyId] = useState();
 
     const onSubmit = values => {
+
+        if (isLoading) {
+            return;
+        }
+
         const {name, cityId, street, phone1, phone2, phone3} = values;
         const schedule = getScheduleAsString(values)
         const reqObj = {name, cityId, street, phone1, phone2, phone3, schedule};

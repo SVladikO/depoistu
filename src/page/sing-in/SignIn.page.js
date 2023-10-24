@@ -38,6 +38,10 @@ const SignInPage = () => {
     const [isLoading, setIsLoading] = useState(false)
 
     const handleSingIn = ({email, password}) => {
+        if (isLoading) {
+            return;
+        }
+
         setIsLoading(true)
 
         fetchData(BE_API.CUSTOMER.SING_IN(), {email, password})

@@ -1,12 +1,11 @@
 import React, {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 
 import {Wrapper, CompanyDetails} from "./EditMenu.style";
 
 import {
     NotificationLoading, PrimaryButton, RowSplitter} from "components";
 
-import {startLoading, stopLoading} from "features/request/requestSlice";
 
 import {BE_API} from 'utils/fetch'
 import {fetchData} from "utils/fetch";
@@ -22,9 +21,8 @@ import {Link} from "react-router-dom";
 const EditMenu = () => {
     useRedirectToSettingPage();
     useScrollUp();
-    const dispatch = useDispatch();
     const companyId = LocalStorage.get(LOCAL_STORAGE_KEY.COMPANY_ID_TO_EDIT_MENU_PAGE);
-    const isLoading = useSelector(state => state.request.value.isLoading);
+    const [isLoading, setIsLoading] = useState();
     const [menuItems, setMenuItems] = useState([]);
     const customer = useSelector(state => state.customer.value);
     const [customerCompanies] = useLocalStorageFetch(
@@ -38,15 +36,19 @@ const EditMenu = () => {
     })
 
     useEffect(() => {
-        dispatch(startLoading());
+        if (isLoading) {
+            return;
+        }
+
+        setIsLoading(true);
         //TODO: SHOW WARNING WRONG PARAM
         companyId && fetchData(BE_API.MENU_ITEM.GET_BY_COMPANY_ID(companyId))
             .then(res => {
                 setMenuItems(res.body);
-                setTimeout(() => dispatch(stopLoading()), 1000)
+                setTimeout(() => setIsLoading(false), 1000)
             })
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))
-            .finally(() => setTimeout(() => dispatch(stopLoading()), 1000))
+            .finally(() => setTimeout(() => setIsLoading(false), 1000))
     }, [companyId])
 
     if (isLoading) {

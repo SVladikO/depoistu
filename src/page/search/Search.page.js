@@ -48,6 +48,7 @@ const SearchPage = () => {
         const onCloseCityPopup = () => setShowCityPopup(false);
 
         const onOpenCityPopup = () => {
+
             setIsLoadingCityIds(true);
 
             const cityLoadingDelay = stopLoadingWithDelay([() => setIsLoadingCityIds(false)]);

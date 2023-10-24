@@ -25,6 +25,10 @@ const EditMenuItemPage = () => {
     }
 
     const onSubmit = values => {
+        if (isLoadingUpdate) {
+            return;
+        }
+
         setIsLoadingUpdate(true);
         const reqObj = {
             method: 'put',
@@ -43,6 +47,10 @@ const EditMenuItemPage = () => {
     }
 
     const deleteMenuItem = () => {
+        if (isLoadingDelete) {
+            return;
+        }
+
         setIsLoadingDelete(true)
 
         fetchData(BE_API.MENU_ITEM.DELETE(),

@@ -16,6 +16,10 @@ const EditCustomerPage = () => {
     const customer = useSelector(state => state.customer.value);
 
     const changeAccountType = () => {
+        if (isLoading) {
+            return;
+        }
+
         setIsLoading(true);
 
         fetchData(BE_API.CUSTOMER.EDIT_CUSTOMER_TYPE(), {isBusinessOwner: !customer.isBusinessOwner})

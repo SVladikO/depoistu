@@ -46,6 +46,9 @@ const SearchDetailsPage = () => {
         if (company && company.id === companyId) {
             return;
         }
+        if (isLoadingCompany) {
+            return;
+        }
 
         setIsLoadingCompany(true)
         const companyLoadingDelay = stopLoadingWithDelay([() => setIsLoadingCompany(false)])
@@ -69,6 +72,9 @@ const SearchDetailsPage = () => {
 
         if (menuItems && company.id === companyId) {
             return
+        }
+        if (isLoadingMenu) {
+            return;
         }
 
         setIsLoadingMenu(true);

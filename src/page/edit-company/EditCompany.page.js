@@ -74,6 +74,10 @@ const EditCompany = () => {
     }
 
     const deleteCompany = () => {
+        if (isLoadingDelete) {
+            return;
+        }
+
         setIsLoadingDelete(true)
         closeDeletePopup()
         document.body.style.overflowY = 'auto';
@@ -90,6 +94,9 @@ const EditCompany = () => {
     }
 
     const updateCompaniesInLocalStorage = updatedCompany => {
+        if(isLoadingUpdate) {
+            return;
+        }
         const updatedCompanies = customerCompaniesFromLocalStorage.map(company => {
             if (company.id === updatedCompany.id) {
                 return updatedCompany;
@@ -102,6 +109,10 @@ const EditCompany = () => {
     }
 
     const onSubmit = values => {
+        if (isLoadingUpdate) {
+            return;
+        }
+
         const {name, cityId, street, phone1, phone2, phone3} = values;
         const schedule = getScheduleAsString(values)
         const reqObj = {id: companyId, name, cityId, street, phone1, phone2, phone3, schedule, method: 'put'};

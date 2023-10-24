@@ -30,6 +30,10 @@ const AddMenuItemPage = () => {
     const [initialValues, setInitialValues] = useState(defaultInitialValue)
 
     const onSubmit = values => {
+        if (isLoading) {
+            return;
+        }
+
         setIsLoading(true);
 
         const requestObj = {
