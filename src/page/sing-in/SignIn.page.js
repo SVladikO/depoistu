@@ -53,7 +53,11 @@ const SignInPage = () => {
     }
 
     const onSubmitForm = (values) => {
-        handleSingIn(values)
+        const lowercaseValues = {
+            ...values,
+            email: values.email.toLowerCase(),
+        };
+        handleSingIn(lowercaseValues);
         setWasSubmitted(true);
     }
 
