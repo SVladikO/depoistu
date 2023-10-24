@@ -54,7 +54,7 @@ const Footer = () => {
                 )
                 }
                 <Row onClick={scrollToTop}>{translate(TR.PAGE.FOOTER.BACK_TO_TOP_BUTTON)}</Row>
-                {customer && (
+                {customer && customer.isBusinessOwner && (
                     <Link to={URL.CUSTOMER_COMPANIES}>
                         <Row>{translate(TR.PAGE.SETTINGS.GROUP_TITLE.FOR_BUSINESS)}</Row>
                     </Link>
