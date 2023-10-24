@@ -20,7 +20,7 @@ export const LogoContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0 0 34px 0;
-  & > a {
+  & > div {
     color: ${COLOR.ACCENT3};
     font-size: 20px;
   }

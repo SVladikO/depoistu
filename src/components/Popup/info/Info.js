@@ -6,7 +6,7 @@ export const Info = (props) => (
     <ContentContainer noBg noShadow {...props}>
         <LogoContainer>
             <Logo/>
-            <a href={"https://depoistu-develop.onrender.com/"}>depoistu.com</a>
+            <div>depoistu.com</div>
         </LogoContainer>
         {props.children}
     </ContentContainer>
