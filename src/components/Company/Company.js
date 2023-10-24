@@ -108,8 +108,8 @@ const Company = ({company, withMoreInfo, children, clickHandler}) => {
 
     const likeCompany = e => {
         e.stopPropagation();
+        dispatch(addToFavoriteCompanies(company))
         fetchData(BE_API.FAVORITE_COMPANY.ADD(), {company_id: company.id})
-            .then( () => dispatch(addToFavoriteCompanies(company)))
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))
     }
 
