@@ -14,10 +14,11 @@ const PrimaryButtonWrapper = styled(button)`
   }
 `;
 
-export const PrimaryButton = ({clickHandler, children, isLoading, isWide, isDisabled, withPadding=false}) => {
+export const PrimaryButton = ({type='button', clickHandler, children, isLoading, isWide, isDisabled, withPadding=false}) => {
     return (
         <ButtonWrapper withPadding={withPadding}>
             <PrimaryButtonWrapper
+                type={type}
                 onClick={clickHandler}
                 isWide={isWide}
                 isDisabled={isDisabled}

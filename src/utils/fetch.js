@@ -67,6 +67,7 @@ export const BE_API = {
         SING_IN: () => `${BE_DOMAIN}/sign-in`,
         SING_UP: () => `${BE_DOMAIN}/sign-up`,
         CHANGE_PASSWORD: () => `${BE_DOMAIN}/change-password`,
+        EDIT_CUSTOMER_TYPE: () => `${BE_DOMAIN}/edit-business-type`,
         PUT_VERIFY_EMAIL: () => `${BE_DOMAIN}/verify-email`,
     },
     FAVORITE_COMPANY: {

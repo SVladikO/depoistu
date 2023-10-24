@@ -84,6 +84,12 @@ const forgetPasswordValidation = {
 const emailVerificationCodeValidation = {
     emailVerificationCode: customer_validation.emailVerificationCode,
 }
+const EditCustomerValidation = {
+    name: customer_validation.name,
+    email: customer_validation.email,
+    phone: customer_validation.phone,
+}
+
 const singUpValidation = {
     name: customer_validation.name,
     email: customer_validation.email,
@@ -152,6 +158,7 @@ const validation = {
     customer: {
         singIn: singInValidation,
         singUp: singUpValidation,
+        editCustomer: EditCustomerValidation,
         emailVerificationCode: emailVerificationCodeValidation,
         changePassword: changePasswordValidation,
         forgetPassword: forgetPasswordValidation
