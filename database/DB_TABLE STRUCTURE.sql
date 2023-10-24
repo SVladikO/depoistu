@@ -3,7 +3,7 @@ CREATE TABLE MENU_ITEM
     ID           SERIAL       NOT NULL,
     CATEGORY_ID  INT          NOT NULL,
     COMPANY_ID   INT          NOT NULL,
-    NAME         CHAR(50)     NOT NULL,
+    NAME         CHAR(100)     NOT NULL,
     IS_VISIBLE   BOOLEAN      NOT NULL,
     DESCRIPTION  CHAR(255),
     SIZE_1       CHAR(20)     NOT NULL,

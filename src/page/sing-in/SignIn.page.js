@@ -46,7 +46,9 @@ const SignInPage = () => {
                 navigate(backUrl);
                 setIsLoading(false);
             })
-            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
+            .catch(e => {
+                publishNotificationEvent.error(e.body.errorMessage)
+            })
             .finally(() => setIsLoading(false));
     }
 

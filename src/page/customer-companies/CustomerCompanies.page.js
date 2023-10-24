@@ -44,10 +44,13 @@ const CustomerCompaniesPage = () => {
         return <NotificationLoading/>
     }
 
-    if (!wasWarningShown) {
-        publishNotificationEvent.warning(translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.WARNING))
-        setWasWarningShown(true);
-    }
+    useEffect(() => {
+        if (!wasWarningShown) {
+            publishNotificationEvent.warning(translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.WARNING))
+            setWasWarningShown(true);
+        }
+    },[wasWarningShown]);
+
 
     const showQRCode = companyId => () => setCompanyIdForQRCode(companyId);
 

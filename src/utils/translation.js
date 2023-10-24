@@ -779,6 +779,10 @@ export const TRANSLATION = {
         }
     },
     NOTIFICATION: {
+        NO_INTERNET: {
+            en: "No internet connection. We can't make request. Check connection and try again.",
+            ua: "Інтернет відсутній. Неможливо зробити запит. Перевіте зєднання і спробуйте ще раз."
+        },
         UN_ABLE_MAKE_REQUEST: {
             en: "Backend doesn't response. If you want to fix this problem faster you can message us. Email in footer. Sorry by this situation.",
             ua: "Бекенд не відповідає. Якщо хочете швидше вирішити тех. проблему напишіть нам лист. Пошта знаходиться в низу сайту. Вибачаємось за дану ситуацію."
@@ -919,6 +923,10 @@ export const TRANSLATION = {
             en: "Main dishes",
             ua: "Основні страви"
         },
+        LENTEN_DISHES: {
+            en: "Lenten dishes",
+            ua: "Пісні страви"
+        },
         DUMPLING: {
             en: "Dumplings",
             ua: "Вареники"
@@ -995,6 +1003,10 @@ export const TRANSLATION = {
             en: "Brandy",
             ua: "Бренді"
         },
+        CHACHA: {
+            en: "Chacha",
+            ua: "Чача"
+        },
          BOURBON: {
             en: "Bourbon",
             ua: "Бурбон"
@@ -1042,6 +1054,10 @@ export const TRANSLATION = {
         NO_ALCOHOL_WINE: {
             en: "No alcohol wines",
             ua: "Безалкогольні вина"
+        },
+        HOMEMADE_WINE: {
+            en: "Homemade wines",
+            ua: "Домашні вина"
         },
         WINE_SPARKLING: {
             en: "Sparkling wines",
@@ -1239,6 +1255,10 @@ export const TRANSLATION = {
             ua: 'Монгал',
             en: 'Dishes on fire'
         },
+        OWN_SMOKING: {
+            ua: 'Власне копчення',
+            en: 'Own smoking'
+        },
         GRILL: {
             ua: 'Гриль',
             en: 'Grill'
@@ -1254,6 +1274,10 @@ export const TRANSLATION = {
         SOUPS: {
             ua: 'Супи',
             en: 'Soups'
+        },
+        DOUGH: {
+            ua: 'Тісто',
+            en: 'Dough'
         },
         DESSERTS: {
             ua: 'Десерти',

@@ -105,21 +105,14 @@ const menu_item_validation = {
         .max(50, `${MESSAGE.MAX_SYMBOLS} 30`),
     description: Yup.string()
         .max(100, `${MESSAGE.MAX_SYMBOLS} 100`),
-    size_1: Yup.number()
-        .required(MESSAGE.REQUIRED)
-        .moreThan(0, `${MESSAGE.MIN_VALUE} 1`)
-        .lessThan(10000, `${MESSAGE.MAX_VALUE} 9999`),
+    size_1: Yup.string().required(MESSAGE.REQUIRED),
     price_1: Yup.number()
         .required(MESSAGE.REQUIRED)
         .moreThan(0, `${MESSAGE.MIN_VALUE} 1`),
-    size_2: Yup.number()
-        .moreThan(0, `${MESSAGE.MIN_VALUE} 1`)
-        .lessThan(10000, `${MESSAGE.MAX_VALUE} 9999`),
+    size_2: Yup.string(),
     price_2: Yup.number()
         .moreThan(0, `${MESSAGE.MIN_VALUE} 1`),
-    size_3: Yup.number()
-        .moreThan(0, `${MESSAGE.MIN_VALUE} 1`)
-        .lessThan(10000, `${MESSAGE.MAX_VALUE} 9999`),
+    size_3: Yup.string(),
     price_3: Yup.number()
         .moreThan(0, `${MESSAGE.MIN_VALUE} 1`),
 }
