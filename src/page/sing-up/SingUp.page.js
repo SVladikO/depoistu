@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import {Formik} from "formik";
 
 import {Wrapper} from "./SingUp.style";
-import {Input, ContentContainer, PrimaryButton} from "components";
+import {Input, ContentContainer, PrimaryButton, Checkbox} from "components";
 import NavigationLabelHref from "components/NavigationLabelHref/NavigationLabelHref";
 
 import validation from 'utils/validation';
@@ -26,11 +26,11 @@ const SingUpPage = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [wasSubmitted, setWasSubmitted] = useState(false);
 
-    const onSubmit = ({name, email, newPassword, phone}) => {
+    const onSubmit = ({name, email, newPassword, phone, isBusinessOwner}) => {
         setWasSubmitted(true);
         setIsLoading(true);
 
-        fetchData(BE_API.CUSTOMER.SING_UP(), {name, email, password: newPassword, phone})
+        fetchData(BE_API.CUSTOMER.SING_UP(), {name, email, password: newPassword, phone, isBusinessOwner})
             .then(res => {
                 dispatch(addCustomer(res.body));
                 navigate(backUrl);
@@ -48,6 +48,7 @@ const SingUpPage = () => {
                     phone: '380',
                     newPassword: '',
                     confirmedPassword: '',
+                    isBusinessOwner: false,
                 }}
                 validationSchema={SignUpSchema}
                 onSubmit={onSubmit}
@@ -110,6 +111,12 @@ const SingUpPage = () => {
                                 clearHandler={() => setFieldValue('confirmedPassword', '')}
                                 labelName={translate(TRANSLATION.INPUT_LABEL.CUSTOMER.CONFIRM_PASSWORD)}
                                 errorMessage={errors.confirmedPassword}
+                            />
+                            <Checkbox
+                                name="isBusinessOwner"
+                                value={values.isBusinessOwner}
+                                changeHandler={handleChange}
+                                lableName={translate(TRANSLATION.PAGE.PROFILE.ARE_YOU_BUSINESS_OWNER)}
                             />
                         </ContentContainer>
                         <Wrapper>

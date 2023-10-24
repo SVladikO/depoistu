@@ -35,7 +35,6 @@ export const InfoOneRow = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  border: solild 1px red;
 `
 
 export const NewFlag = styled.div`
@@ -145,7 +144,4 @@ export const EditRow = styled.div`
     border-right: 1px solid ${p => p.isVisible ? COLOR.ACCENT8: COLOR.ACCENT4};
   }
   
-  .EditButton {
-    
-  }
 `;

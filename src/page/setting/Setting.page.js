@@ -96,7 +96,8 @@ const SettingPage = () => {
                             withCleaner
                         />
                         <RowSplitter height={'10px'}/>
-                        <PrimaryButton type="submit" isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.VERIFICATION)}</PrimaryButton>
+                        <PrimaryButton type="submit"
+                                       isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.VERIFICATION)}</PrimaryButton>
                     </form>
                 )}
             </Formik>
@@ -111,10 +112,10 @@ const SettingPage = () => {
 
     return (
         <>
-            <SingInSingUpView />
+            <SingInSingUpView/>
             {/*{customer && !customer.isVerifiedEmail && emailVerificationNotification}*/}
             {isLoading && <NotificationLoading/>}
-            <LanguagePopup />
+            <LanguagePopup/>
             <Wrapper>
                 {/*<CustomerAccountBar fullName='Jhon Smith' phone="+14844731243"/>*/}
                 {/*<RowSplitter height='20px'/>*/}
@@ -147,26 +148,28 @@ const SettingPage = () => {
                             />
                         </AccountSettings>
 
-                        <AccountSettings
-                            noTopBorder
-                            groupTitle={translate(TR.PAGE.SETTINGS.GROUP_TITLE.FOR_BUSINESS)}
-                        >
-                            <SettingMenuRow
-                                icon={InstructionIcon}
-                                title={translate(TR.PAGE.SETTINGS.MENU_ROW.INSTRUCTION_FOR_BUSINESS_OWNER)}
-                                href={URL.INSTRUCTION_FOR_BUSINESS_OWNER}
-                            />
-                            <SettingMenuRow
-                                icon={MenuCategoryIcon}
-                                title={translate(TR.PAGE.SETTINGS.MENU_ROW.AVAILABLE_MENU_CATEGORIES)}
-                                href={URL.AVAILABLE_MENU_CATEGORIES}
-                            />
-                            <SettingMenuRow
-                                icon={StoreIcon}
-                                title={translate(TR.PAGE.SETTINGS.MENU_ROW.COMPANY)}
-                                href={URL.CUSTOMER_COMPANIES}
-                            />
-                        </AccountSettings>
+                        {!!customer.isBusinessOwner &&
+                            <AccountSettings
+                                noTopBorder
+                                groupTitle={translate(TR.PAGE.SETTINGS.GROUP_TITLE.FOR_BUSINESS)}
+                            >
+                                <SettingMenuRow
+                                    icon={InstructionIcon}
+                                    title={translate(TR.PAGE.SETTINGS.MENU_ROW.INSTRUCTION_FOR_BUSINESS_OWNER)}
+                                    href={URL.INSTRUCTION_FOR_BUSINESS_OWNER}
+                                />
+                                <SettingMenuRow
+                                    icon={MenuCategoryIcon}
+                                    title={translate(TR.PAGE.SETTINGS.MENU_ROW.AVAILABLE_MENU_CATEGORIES)}
+                                    href={URL.AVAILABLE_MENU_CATEGORIES}
+                                />
+                                <SettingMenuRow
+                                    icon={StoreIcon}
+                                    title={translate(TR.PAGE.SETTINGS.MENU_ROW.COMPANY)}
+                                    href={URL.CUSTOMER_COMPANIES}
+                                />
+                            </AccountSettings>
+                        }
                     </>)
                 }
                 <AccountSettings

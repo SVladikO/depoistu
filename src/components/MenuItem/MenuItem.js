@@ -116,12 +116,12 @@ export const MenuItemDetails = ({
                 </InfoStyle>
             </InfoWrapper>
 
-            {withEditIcon && <EditRow isVisible={isVisible}>
+            {withEditIcon && <EditRow >
                 <ToggleCheckbox
+                    isVisible={isVisible}
                     isChecked={isVisible}
                     changeHandler={toggleIsMenuItemVisible}
-                    className="ToggleCheckbox"
-                    title={translate(TRANSLATION.COMPONENTS.MENU_ITEM.BUTTON.CHANGE_VISIBILITY)}
+                    label={translate(TRANSLATION.COMPONENTS.MENU_ITEM.BUTTON.CHANGE_VISIBILITY)}
                 />
                 <Link to={URL.EDIT_MENU_ITEM} className="EditButton">
                     <EditWrapper onClick={onEditClick}>

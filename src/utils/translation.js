@@ -267,6 +267,18 @@ export const TRANSLATION = {
         }
     },
     PAGE: {
+        PROFILE: {
+            ARE_YOU_BUSINESS_OWNER: {
+                ua: "Ви власник бізнесу ?",
+                en: "Are you business owner ?"
+            },
+            BUTTON: {
+                SAVE_CHANGE: {
+                    ua: "Зберегти змінити",
+                    en: "Save change"
+                },
+            }
+        },
         COMPANY_DETAILS: {
             TOP_TITLE: {
                 ua: "Деталі закладу",
@@ -283,7 +295,7 @@ export const TRANSLATION = {
         },
         INSTRUCTION_FOR_BUSINESS_OWNER: {
             TOP_TITLE: {
-                ua: "Інструкція по користуванню",
+                ua: "Інструкція користувача",
                 en: 'Usage instruction'
             },
         },
@@ -462,7 +474,7 @@ export const TRANSLATION = {
                 },
                 INSTRUCTION_FOR_BUSINESS_OWNER: {
                     en: "Usage instruction",
-                    ua: "Інструкція по користуванню"
+                    ua: "Інструкція користувача"
                 },
                 COMPANY: {
                     en: "My сompanies",
@@ -473,8 +485,8 @@ export const TRANSLATION = {
                     ua: "Доступні категорії меню"
                 },
                 EDIT_PROFILE: {
-                    en: "Edit Profile",
-                    ua: "Редагувати профіль"
+                    en: "Profile",
+                    ua: "Профіль"
                 },
                 MENU: {
                     ua: "Налаштувати меню",
@@ -571,8 +583,8 @@ export const TRANSLATION = {
         },
         EDIT_USER_PROFILE: {
             TOP_TITLE: {
-                ua: "Змінити профіль",
-                en: "Edit profile"
+                ua: "Профіль",
+                en: "Profile"
             }
         },
         ABOUT_US: {
