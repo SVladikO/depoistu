@@ -2,8 +2,41 @@ import {BE_DOMAIN} from "./config";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
 import {translate, TRANSLATION} from "./translation";
 
+export const fetchData = async (url, body) => {
+    let response;
+
+    // No internet no request
+    if (!window.navigator.onLine) {
+        return new Promise((resolve, reject) => {
+            reject({body: {errorMessage: translate(TRANSLATION.NOTIFICATION.NO_INTERNET)}});
+        })
+    }
+
+    try {
+        response = await fetch(decodeURIComponent(url), getOptions(body));
+    } catch (error) {
+        return new Promise((resolve, reject) => {
+            reject({status: 500, body: {errorMessage: translate(TRANSLATION.NOTIFICATION.UN_ABLE_MAKE_REQUEST)}});
+        })
+    }
+
+    const json = await response.json();
+
+    const {status, statusText, headers} = response;
+
+    if (response.ok) {
+        return new Promise((resolve) => {
+            resolve({status, statusText, headers, body: json});
+        })
+    }
+
+    return new Promise((resolve, reject) => {
+        reject({status, statusText, headers, body: json});
+    })
+}
+
 // it's function because we take data from localStorage
-const getOptions = body => {
+function getOptions(body) {
     const defaultOption = {
         headers: {
             'Content-Type': 'application/json',
@@ -25,32 +58,6 @@ const getOptions = body => {
     }
 };
 
-export const fetchData = async (url, body) => {
-    let response;
-    try {
-        response = await fetch(decodeURIComponent(url), getOptions(body));
-    } catch (error) {
-        return new Promise((resolve, reject) => {
-            reject({status: 500, body: {errorMessage: translate(TRANSLATION.NOTIFICATION.UN_ABLE_MAKE_REQUEST)}});
-        })
-    }
-
-    const json = await response.json();
-
-    const {status, statusText, headers} = response;
-
-    if (response.ok) {
-        return new Promise((resolve) => {
-            resolve({status, statusText, headers, body: json});
-        })
-    }
-
-
-    return new Promise((resolve, reject) => {
-        reject({status, statusText, headers, body: json});
-    })
-}
-
 export const BE_API = {
     //TODO candidate to delete
     // GET_ALL_CATEGORIES_ID_FOR_COMPANY: companyId => `${BE_DOMAIN}/company/${companyId}/category`,
@@ -61,6 +68,11 @@ export const BE_API = {
         SING_UP: () => `${BE_DOMAIN}/sign-up`,
         CHANGE_PASSWORD: () => `${BE_DOMAIN}/change-password`,
         PUT_VERIFY_EMAIL: () => `${BE_DOMAIN}/verify-email`,
+    },
+    FAVORITE_COMPANY: {
+        GET: () => `${BE_DOMAIN}/favorite-companies`,
+        ADD: () => `${BE_DOMAIN}/favorite-companies`,
+        DELETE: () => `${BE_DOMAIN}/favorite-companies`,
     },
     COMPANY: {
         GET_BY_CUSTOMER_ID: () => `${BE_DOMAIN}/companies/by/customer`,

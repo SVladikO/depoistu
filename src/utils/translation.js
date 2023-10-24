@@ -110,6 +110,11 @@ export const TRANSLATION = {
         MAX_SYMBOLS: {
             en: "Max number of characters is ",
             ua: "Максимальне кількість символів "
+        },
+        SCHEDULE_IS_REQUIRED: {
+            en: "Schedule is a required field.",
+            ua: "Графік обовязкове поле. "
+
         }
     },
     WEEK_DAY: {
@@ -353,6 +358,14 @@ export const TRANSLATION = {
             TOP_TITLE: {
                 en: 'Edit menu',
                 ua: "Редагувати меню"
+            },
+            CITY: {
+                en: 'City',
+                ua: "Місто"
+            },
+            STREET: {
+                en: 'Street',
+                ua: "Вулиця"
             },
             BUTTON: {
                 ADD_MENU_ITEM: {
@@ -636,9 +649,13 @@ export const TRANSLATION = {
         },
         FAVORITE: {
             TOP_TITLE: {
-                ua: "Улюблені",
-                en: "Favorite"
+                ua: "Улюблені заклади",
+                en: "Favorite companies"
             },
+            NO_CONTENT: {
+                ua: "У вас ще нема улюблених закладів",
+                en: "You don't have favorite companies yet"
+            }
         },
         SEARCH: {
             TOP_TITLE: {
@@ -762,6 +779,10 @@ export const TRANSLATION = {
         }
     },
     NOTIFICATION: {
+        NO_INTERNET: {
+            en: "No internet connection. We can't make request. Check connection and try again.",
+            ua: "Інтернет відсутній. Неможливо зробити запит. Перевіте зєднання і спробуйте ще раз."
+        },
         UN_ABLE_MAKE_REQUEST: {
             en: "Backend doesn't response. If you want to fix this problem faster you can message us. Email in footer. Sorry by this situation.",
             ua: "Бекенд не відповідає. Якщо хочете швидше вирішити тех. проблему напишіть нам лист. Пошта знаходиться в низу сайту. Вибачаємось за дану ситуацію."
@@ -825,7 +846,7 @@ export const TRANSLATION = {
             },
             LOADING_AVAILABLE_CITIES: {
                 en: "Loading cities with registered cities",
-                ua: "Загрузка міст де зареєстровані заклади"
+                ua: "Загрузка міст де є зареєстровані заклади"
             },
 
             LOADING_COMPANY: {
@@ -901,6 +922,10 @@ export const TRANSLATION = {
         MAIN_DISHES: {
             en: "Main dishes",
             ua: "Основні страви"
+        },
+        LENTEN_DISHES: {
+            en: "Lenten dishes",
+            ua: "Пісні страви"
         },
         DUMPLING: {
             en: "Dumplings",
@@ -978,6 +1003,10 @@ export const TRANSLATION = {
             en: "Brandy",
             ua: "Бренді"
         },
+        CHACHA: {
+            en: "Chacha",
+            ua: "Чача"
+        },
          BOURBON: {
             en: "Bourbon",
             ua: "Бурбон"
@@ -1025,6 +1054,10 @@ export const TRANSLATION = {
         NO_ALCOHOL_WINE: {
             en: "No alcohol wines",
             ua: "Безалкогольні вина"
+        },
+        HOMEMADE_WINE: {
+            en: "Homemade wines",
+            ua: "Домашні вина"
         },
         WINE_SPARKLING: {
             en: "Sparkling wines",
@@ -1222,6 +1255,10 @@ export const TRANSLATION = {
             ua: 'Монгал',
             en: 'Dishes on fire'
         },
+        OWN_SMOKING: {
+            ua: 'Власне копчення',
+            en: 'Own smoking'
+        },
         GRILL: {
             ua: 'Гриль',
             en: 'Grill'
@@ -1237,6 +1274,10 @@ export const TRANSLATION = {
         SOUPS: {
             ua: 'Супи',
             en: 'Soups'
+        },
+        DOUGH: {
+            ua: 'Тісто',
+            en: 'Dough'
         },
         DESSERTS: {
             ua: 'Десерти',

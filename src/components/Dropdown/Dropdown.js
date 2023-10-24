@@ -8,7 +8,7 @@ import {WarningMessage} from "components";
 import {TRANSLATION, translate} from "utils/translation";
 import {Label} from "../Input/Input.style";
 
-const Dropdown = ({ options, selectedOption , onSelect, isTouched, errorMessage, label, isRequired }) => {
+const Dropdown = ({ options, selectedOption , onSelect, errorMessage, label, isRequired }) => {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);
 
@@ -55,7 +55,7 @@ const Dropdown = ({ options, selectedOption , onSelect, isTouched, errorMessage,
                     ))}
                 </OptionsContainer>
             )}
-            {isTouched && errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
+            {errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
         </SelectWrapper>
     );
 };

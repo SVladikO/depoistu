@@ -19,12 +19,15 @@ export const CATEGORY_KITCHEN = [
     {id: 35, title: TR.SUB_CATEGORIES.FIRST_DISHES, measurement: MEASUREMENTS.WEIGHT},
     {id: 36, title: TR.SUB_CATEGORIES.SECOND_DISHES, measurement: MEASUREMENTS.WEIGHT},
     {id: 87, title: TR.SUB_CATEGORIES.MAIN_DISHES, measurement: MEASUREMENTS.WEIGHT},
+    {id: 94, title: TR.SUB_CATEGORIES.LENTEN_DISHES, measurement: MEASUREMENTS.WEIGHT},
     {id: 33, title: TR.SUB_CATEGORIES.HOME, measurement: MEASUREMENTS.WEIGHT},
     {id: 34, title: TR.SUB_CATEGORIES.SEASONAL, measurement: MEASUREMENTS.WEIGHT},
-    {id: 2, title: TR.SUB_CATEGORIES.SOUPS, measurement: MEASUREMENTS.LIQUID},
+    {id: 2, title: TR.SUB_CATEGORIES.SOUPS, measurement: MEASUREMENTS.WEIGHT},
+    {id: 93, title: TR.SUB_CATEGORIES.DOUGH, measurement: MEASUREMENTS.WEIGHT},
     {id: 4, title: TR.SUB_CATEGORIES.HOT_DISHES, measurement: MEASUREMENTS.WEIGHT},
     {id: 7, title: TR.SUB_CATEGORIES.SPECIALITIES, measurement: MEASUREMENTS.WEIGHT},
     {id: 8, title: TR.SUB_CATEGORIES.BANQUET_MENU, measurement: MEASUREMENTS.WEIGHT},
+    {id: 95, title: TR.SUB_CATEGORIES.OWN_SMOKING, measurement: MEASUREMENTS.WEIGHT},
     {id: 88, title: TR.SUB_CATEGORIES.GRILL, measurement: MEASUREMENTS.WEIGHT},
     {id: 37, title: TR.SUB_CATEGORIES.DUMPLING, measurement: MEASUREMENTS.WEIGHT},
     {id: 38, title: TR.SUB_CATEGORIES.PANCAKES, measurement: MEASUREMENTS.WEIGHT},
@@ -94,6 +97,7 @@ export const CATEGORY_BAR = [
     {id: 84, title: TR.SUB_CATEGORIES.RED_WINE, measurement: MEASUREMENTS.LIQUID},
     {id: 86, title: TR.SUB_CATEGORIES.PING_WINE, measurement: MEASUREMENTS.LIQUID},
     {id: 85, title: TR.SUB_CATEGORIES.NO_ALCOHOL_WINE, measurement: MEASUREMENTS.LIQUID},
+    {id: 97, title: TR.SUB_CATEGORIES.HOMEMADE_WINE, measurement: MEASUREMENTS.LIQUID},
     {id: 65, title: TR.SUB_CATEGORIES.NALUVKU, measurement: MEASUREMENTS.LIQUID},
     {id: 66, title: TR.SUB_CATEGORIES.VERMOUTH, measurement: MEASUREMENTS.LIQUID},
     {id: 68, title: TR.SUB_CATEGORIES.LIQUEUR, measurement: MEASUREMENTS.LIQUID},
@@ -104,6 +108,7 @@ export const CATEGORY_BAR = [
     {id: 92, title: TR.SUB_CATEGORIES.BOURBON, measurement: MEASUREMENTS.LIQUID},
     {id: 73, title: TR.SUB_CATEGORIES.COGNAC, measurement: MEASUREMENTS.LIQUID},
     {id: 91, title: TR.SUB_CATEGORIES.BRANDY, measurement: MEASUREMENTS.LIQUID},
+    {id: 96, title: TR.SUB_CATEGORIES.CHACHA, measurement: MEASUREMENTS.LIQUID},
     {id: 30, title: TR.SUB_CATEGORIES.HORILKA, measurement: MEASUREMENTS.LIQUID},
     {id: 67, title: TR.SUB_CATEGORIES.TINCTURE, measurement: MEASUREMENTS.LIQUID},
     {id: 57, title: TR.SUB_CATEGORIES.BEER, measurement: MEASUREMENTS.LIQUID},
@@ -114,7 +119,7 @@ export const CATEGORY_MAPPER_AS_ARRAY = [
     ...CATEGORY_DESSERTS,
     ...CATEGORY_HOT_DRINKS,
     ...CATEGORY_BAR
-]
+];
 
 export const TOP_CATEGORIES = {
     KITCHEN: CATEGORY_KITCHEN.map(category => category.id),
