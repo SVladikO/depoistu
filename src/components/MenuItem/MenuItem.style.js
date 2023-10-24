@@ -84,6 +84,7 @@ export const FoodTitle = styled.div`
   color: ${COLOR.ACCENT1};
   margin: 0 5px 4px 0;
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   word-break: break-word;
 `;
