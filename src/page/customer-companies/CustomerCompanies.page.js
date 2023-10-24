@@ -40,10 +40,6 @@ const CustomerCompaniesPage = () => {
             .finally(() => setIsLoading(false))
     });
 
-    if (isLoading) {
-        return <NotificationLoading/>
-    }
-
     useEffect(() => {
         if (!wasWarningShown) {
             publishNotificationEvent.warning(translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.WARNING))
@@ -51,6 +47,9 @@ const CustomerCompaniesPage = () => {
         }
     },[wasWarningShown]);
 
+    if (isLoading) {
+        return <NotificationLoading/>
+    }
 
     const showQRCode = companyId => () => setCompanyIdForQRCode(companyId);
 
