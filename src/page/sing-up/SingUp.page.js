@@ -52,7 +52,7 @@ const SingUpPage = () => {
                 validationSchema={SignUpSchema}
                 onSubmit={onSubmit}
             >
-                {({values, handleBlur, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
+                {({values, isSubmitting, handleBlur, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                     <form onSubmit={handleSubmit}>
                         <ContentContainer noShadow>
                             <Input
@@ -124,6 +124,7 @@ const SingUpPage = () => {
                             type="submit"
                             isLoading={isLoading}
                             withPadding
+                            isDisabled={isSubmitting}
                         >
                             {translate(TRANSLATION.PAGE.SING_UP.TOP_TITLE)}
                         </PrimaryButton>

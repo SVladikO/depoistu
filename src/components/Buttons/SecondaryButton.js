@@ -7,7 +7,8 @@ export const SecondaryButtonWrapper = styled(button)`
   color: ${p => p.isDisabled ? COLOR.ACCENT5 : COLOR.ACCENT3};
   background: ${p => p.isDisabled ? COLOR.ACCENT4 : hexToRgbA(COLOR.ACCENT3, 0.1)};
   border: 2px solid ${p => p.isDisabled ? COLOR.ACCENT5 : COLOR.ACCENT3};
-
+  pointer-events:${p => p.isDisabled ? 'none' : null};
+  
   &:active {
     border: 2px solid ${p => p.isDisabled ? COLOR.ACCENT5 : COLOR.PRIMARY};
     color: ${p => p.isDisabled ? COLOR.ACCENT5 : COLOR.PRIMARY};
@@ -29,7 +30,7 @@ export const SecondaryButton = (props) => {
     const {children, clickHandler = () => {}, isLoading, isDisabled, withPadding=false} = props;
     return (
         <ButtonWrapper withPadding={withPadding}>
-            <SecondaryButtonWrapper {...props} onClick={()=>!isLoading && clickHandler()}>
+            <SecondaryButtonWrapper {...props} isDisabled={isDisabled} onClick={()=>!isLoading && clickHandler()}>
                 {isLoading && <LoadingIcon className="loading"/>}
                 {children}
             </SecondaryButtonWrapper>

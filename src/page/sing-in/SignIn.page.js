@@ -64,7 +64,7 @@ const SignInPage = () => {
                 validationSchema={SignInSchema}
                 onSubmit={onSubmitForm}
             >
-                {({values, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
+                {({values,isSubmitting, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                     <form onSubmit={handleSubmit}>
                         <ContentContainer noShadow>
                             <Input
@@ -100,6 +100,7 @@ const SignInPage = () => {
                             type="submit"
                             isLoading={isLoading}
                             withPadding
+                            isDisabled={isSubmitting}
                         >
                             {translate(TRANSLATION.PAGE.SIGN_IN.TOP_TITLE)}
                         </PrimaryButton>
