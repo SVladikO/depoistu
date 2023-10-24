@@ -30,29 +30,30 @@ const Footer = () => {
         <>
             <RowSplitter height={'340px'}/>
             <Wrapper>
-                {customer && (
-                    <Question justifyContent="center" alignItems="center" gap={'10px'}>
-                        <span>{translate(TR.PAGE.SETTINGS.GROUP_TITLE.DO_YOU_LIKE)}</span>
-                        {isLike === undefined
-                            ? (
-                                <>
-                                    <ThumbDownNotClickedIcon onClick={onLikeWebsite} className="reversed unClicked"/>
-                                    <ThumbDownNotClickedIcon onClick={onDislikeWebsite} className="unClicked"/>
-                                </>
-                            ) : isLike ? (
-                                <>
-                                    <ThumbUpClickedIcon/>
-                                    <ThumbDownNotClickedIcon/>
-                                </>
-                            ) : (
-                                <>
-                                    <ThumbDownNotClickedIcon className="reversed"/>
-                                    <ThumbUpClickedIcon className="reversed"/>
-                                </>
-                            )}
-                    </Question>
-                )
-                }
+                {/*TODO: DO you like this website BE part will be added a bit later as it isn't hight priority */}
+                {/*{customer && (*/}
+                {/*    <Question justifyContent="center" alignItems="center" gap={'10px'}>*/}
+                {/*        <span>{translate(TR.PAGE.SETTINGS.GROUP_TITLE.DO_YOU_LIKE)}</span>*/}
+                {/*        {isLike === undefined*/}
+                {/*            ? (*/}
+                {/*                <>*/}
+                {/*                    <ThumbDownNotClickedIcon onClick={onLikeWebsite} className="reversed unClicked"/>*/}
+                {/*                    <ThumbDownNotClickedIcon onClick={onDislikeWebsite} className="unClicked"/>*/}
+                {/*                </>*/}
+                {/*            ) : isLike ? (*/}
+                {/*                <>*/}
+                {/*                    <ThumbUpClickedIcon/>*/}
+                {/*                    <ThumbDownNotClickedIcon/>*/}
+                {/*                </>*/}
+                {/*            ) : (*/}
+                {/*                <>*/}
+                {/*                    <ThumbDownNotClickedIcon className="reversed"/>*/}
+                {/*                    <ThumbUpClickedIcon className="reversed"/>*/}
+                {/*                </>*/}
+                {/*            )}*/}
+                {/*    </Question>*/}
+                {/*)*/}
+                {/*}*/}
                 <Row onClick={scrollToTop}>{translate(TR.PAGE.FOOTER.BACK_TO_TOP_BUTTON)}</Row>
                 {customer && (
                     <Link to={URL.CUSTOMER_COMPANIES}>
