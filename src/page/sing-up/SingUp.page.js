@@ -27,11 +27,10 @@ const SingUpPage = () => {
     const [wasSubmitted, setWasSubmitted] = useState(false);
 
     const onSubmit = ({name, email, newPassword, phone}) => {
-        email.toLowerCase();
         setWasSubmitted(true);
         setIsLoading(true);
 
-        fetchData(BE_API.CUSTOMER.SING_UP(), {name, email, password: newPassword, phone})
+        fetchData(BE_API.CUSTOMER.SING_UP(), {name, email: email.toLowerCase(), password: newPassword, phone})
             .then(res => {
                 dispatch(addCustomer(res.body));
                 navigate(backUrl);
