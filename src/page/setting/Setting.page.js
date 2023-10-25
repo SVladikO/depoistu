@@ -136,11 +136,12 @@ const SettingPage = () => {
                                 title={translate(TR.PAGE.SETTINGS.MENU_ROW.EDIT_PROFILE)}
                                 href={URL.EDIT_CUSTOMER}
                             />
-                            <SettingMenuRow
-                                icon={LockIcon}
-                                title={translate(TR.PAGE.SETTINGS.MENU_ROW.CHANGE_PASS)}
-                                href={URL.CHANGE_PASSWORD}
-                            />
+                            {/*TODO: Change password page disabled as BE isn't ready yet. */}
+                            {/*<SettingMenuRow*/}
+                            {/*    icon={LockIcon}*/}
+                            {/*    title={translate(TR.PAGE.SETTINGS.MENU_ROW.CHANGE_PASS)}*/}
+                            {/*    href={URL.CHANGE_PASSWORD}*/}
+                            {/*/>*/}
                             <SettingMenuRow
                                 icon={LogOutIcon}
                                 title={translate(TR.PAGE.SETTINGS.MENU_ROW.EXIT)}
