@@ -609,7 +609,7 @@ export const TRANSLATION = {
                         ]
                     },
                     {
-                        question: "Why do businesses need you?",
+                        question: "Why do businesses need us?",
                         withCounter: true,
                         answers: [
                             "With us you save time, money, energy, nerves for planning, creating, maintaining and promoting your own website. Cool, don't you agree?",
@@ -620,7 +620,7 @@ export const TRANSLATION = {
                         ]
                     },
                     {
-                        question: "Why do customers need you?",
+                        question: "Why do customers need us?",
                         withCounter: true,
                         answers: [
                             "Find a restaurant in any corner of Ukraine faster.",
@@ -644,7 +644,7 @@ export const TRANSLATION = {
                         answers: ["November 1, 2023"]
                     },
                     {
-                        question: "What unites you?",
+                        question: "What unites us?",
                         answers: [
                             "We want to solve a common problem: 'Quickly find food establishments in Ukraine.' ",
                         ]
@@ -666,7 +666,7 @@ export const TRANSLATION = {
                         ]
                     },
                     {
-                        question: "Чому ви потрібні бізнесу ?",
+                        question: "Чому ми потрібні бізнесу ?",
                         withCounter: true,
                         answers: [
                             "З нами ви економите час, гроші, сили, нерви на планування, створення, підтримку, просування власного сайту. Круто, погодьтесь. ",
@@ -678,7 +678,7 @@ export const TRANSLATION = {
                     },
 
                     {
-                        question: "Чому ви потрібні клієнтам ?",
+                        question: "Чому ми потрібні клієнтам ?",
                         withCounter: true,
                         answers: [
                             "Швидше знаходите заклад харчування в любому куточку України.",
@@ -694,7 +694,7 @@ export const TRANSLATION = {
                             "Це ваша інвестиція в загальний успіх.",
                             "Всі бізнеси познайомлять своїх клієнтів з цим сайтом.",
                             "І от ми отримали екосистему.",
-                            "Всі лієнти і всі бізнеси в одному місці."
+                            "Всі клієнти і всі бізнеси в одному місці."
                         ]
                     },
                     {
@@ -702,7 +702,7 @@ export const TRANSLATION = {
                         answers: ["1 Листопада 2023 року"]
                     },
                     {
-                        question: "Що вас об`єднує?",
+                        question: "Що нас об`єднує?",
                         answers: [
                             "Бажаємо вирішити спільну проблему: 'Швидко знаходити заклади харчування в Україні.' ",
                         ]
