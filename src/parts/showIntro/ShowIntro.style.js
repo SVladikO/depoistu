@@ -12,6 +12,8 @@ export const LogoContainer = styled.div`
     font-size: 20px;
   }
   svg {
+    width: 150px;
+    height: 150px;
     display: block;
     margin: 0 0 10px 0;
   }
