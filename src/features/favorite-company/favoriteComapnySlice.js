@@ -12,7 +12,7 @@ const favoriteCompanySlice = createSliceCustom({
             state.value = action.payload;
         },
         addToFavoriteCompanies: (state, action) => {
-            state.value = [...state.value, action.payload];
+            state.value = [...(state.value || []), action.payload];
         },
         deleteFromFavoriteCompanies: (state, action) => {
             state.value = state.value.filter(fc => fc.id !== action.payload.id);
