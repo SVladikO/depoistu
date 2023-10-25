@@ -24,3 +24,12 @@ export const Description = styled.div`
     margin: 0;
   }
 `;
+
+export const AnswerWrapper = styled.div`
+  display: ${p => p.withCounter ? 'flex' : 'block'};
+`;
+
+export const Answer = styled.div`
+  padding: ${p => p.withCounter ? '0 0 0 4px' : 0};
+    
+`;

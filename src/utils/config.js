@@ -2,7 +2,7 @@ import SearchPage from "page/search/Search.page";
 import SignInPage from "page/sing-in/SignIn.page";
 import SingUpPage from "page/sing-up/SingUp.page";
 import SettingPage from "page/setting/Setting.page";
-import AboutUsPage from "page/about-us/AboutUs.page";
+import AboutProjectPage from "../page/about-project/AboutProject.page";
 import OurTeamPage from "page/our-team/OurTeam.page";
 import EditMenuPage from "page/edit-menu/EditMenu.page";
 import AddCompanyPage from "page/add-company/AddCompany.page";
@@ -67,7 +67,7 @@ export const URL = {
     FAVORITE: '/favorite',
     CHANGE_PASSWORD: '/change-password',
     FORGOT_PASSWORD: '/forgot-password',
-    ABOUT_US: '/about-us',
+    ABOUT_PROJECT: '/about-project',
     EDIT_CUSTOMER: '/edit-customer',
     OUR_TEAM: '/our-team',
 
@@ -139,10 +139,10 @@ export const ROUTER = {
         showBottomMenu: true,
         backUrl: URL.SETTING
     },
-    ABOUT_US: {
-        URL: URL.ABOUT_US,
-        TITLE: translate(TRANSLATION.PAGE.ABOUT_US.TOP_TITLE),
-        page: AboutUsPage,
+    ABOUT_PROJECT: {
+        URL: URL.ABOUT_PROJECT,
+        TITLE: translate(TRANSLATION.PAGE.ABOUT_PROJECT.TOP_TITLE),
+        page: AboutProjectPage,
         showBottomMenu: true,
         backUrl: URL.SETTING
     },

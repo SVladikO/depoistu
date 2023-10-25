@@ -492,9 +492,9 @@ export const TRANSLATION = {
                     ua: "Налаштувати меню",
                     en: "Set up menu"
                 },
-                ABOUT_US: {
-                    ua: "Про нас",
-                    en: "About us"
+                ABOUT_PROJECT: {
+                    ua: "Про проект",
+                    en: "About project"
                 },
                 LOCATION: {
                     ua: "Мicце знаходження",
@@ -587,60 +587,115 @@ export const TRANSLATION = {
                 en: "Profile"
             }
         },
-        ABOUT_US: {
+        ABOUT_PROJECT: {
             TOP_TITLE: {
-                ua: "Про наш заклад",
-                en: "About our company"
+                ua: "Про проект",
+                en: "About project"
             },
             CONTENT: {
                 en: [
                     {
-                        question: "Who we are?",
-                        answers: ["We are team of soulmates from different places of Ukraine, who want to solve common problem:",
-                            "Easy find place where you can eat in Ukraine."
+                        question: "What is the main idea of the project?",
+                        answers: [
+                            "All catering establishments of Ukraine on one website depoistu.com",
+                            "If your catering establishments is not on our website, then you do not exist at all."
                         ]
                     },
                     {
-                        question: "Main idea of the project",
-                        answers: ["All restaurants of Ukraine in one place.",
-                            "If your institution is not on our website, then you do not exist at all."
+                        question: "What is the cost?",
+                        answers: [
+                            "The first four months after the launch of the project are FREE.",
+                            "From 1.11.2023 - 1.04.2024",
                         ]
                     },
                     {
-                        question: "Cost",
-                        answers: ["This set of functionality is free for visitors and businesses."]
+                        question: "Why do businesses need us?",
+                        withCounter: true,
+                        answers: [
+                            "With us you save time, money, energy, nerves for planning, creating, maintaining and promoting your own website. Cool, don't you agree?",
+                            "The possibility of changing the menu at any time of the day.",
+                            "The opportunity to be modern.",
+                            "Your customers can now view the menu from any distance at any time of the day.",
+                            "More people know about you."
+                        ]
                     },
                     {
-                        question: "When did we start make this project?",
-                        answers: ["01.11.2022"]
+                        question: "Why do customers need us?",
+                        withCounter: true,
+                        answers: [
+                            "Find a restaurant in any corner of Ukraine faster.",
+                            "Find the menu position faster.",
+                            "Order faster.",
+                            "You get what you want faster.",
+                        ]
+                    },
+                    {
+                        question: "How can a business make money faster?",
+                        answers: [
+                            "Place a QR MENU in your establishment on every table.",
+                            "This is your investment in overall success.",
+                            "All businesses will introduce their customers to this site.",
+                            "And so we got an ecosystem.",
+                            "All clients and all businesses in one place."
+                        ]
                     },
                     {
                         question: "When was the first version released?",
-                        answers: ["01.11.23"]
+                        answers: ["November 1, 2023"]
                     },
                     {
-                        question: "What united us?",
-                        answers: ["Willingness to learn and create something new."]
+                        question: "What unites us?",
+                        answers: [
+                            "We want to solve a common problem: 'Quickly find food establishments in Ukraine.' ",
+                        ]
                     },
                 ],
                 ua: [
                     {
-                        question: "Хто ми?",
-                        answers: ["Ми команда однодумців з різних куточків України, які хочуть вирішити спільну проблему:", "Швидко знаходити заклади харчування в Україні."]
-                    },
-                    {
-                        question: "Головна ідея проекту",
-                        answers: ["Всі заклади України в одному місці.",
+                        question: "Яка головна ідея проекту ?",
+                        answers: [
+                            "Всі заклади харчування України на одному сайті depoistu.com",
                             "Якщо вашого закладу немає на нашому сайті, значить вас взагалі не існує."
                         ]
                     },
                     {
-                        question: "Вартість",
-                        answers: ["Даний набір функціоналу безкоштовний для користувачів та бізнесу."]
+                        question: "Яка вартість ?",
+                        answers: [
+                            "Перші чотири місяці після запуску проекту БЕЗКОШТОВНО.",
+                            "З 1.11.2023 - 1.04.2024",
+                        ]
                     },
                     {
-                        question: "Коли ми почали розробляти проект?",
-                        answers: ["1 Листопада 2022 року"]
+                        question: "Чому ми потрібні бізнесу ?",
+                        withCounter: true,
+                        answers: [
+                            "З нами ви економите час, гроші, сили, нерви на планування, створення, підтримку, просування власного сайту. Круто, погодьтесь. ",
+                            "Можливість змінювати меню в будь-яку пору доби.",
+                            "Можливість бути сучасними.",
+                            "Ваші клієнти тепер переглядають меню на будь-якій відстані в будь-яку пору доби.",
+                            "Більше людей знають про вас."
+                        ]
+                    },
+
+                    {
+                        question: "Чому ми потрібні клієнтам ?",
+                        withCounter: true,
+                        answers: [
+                            "Швидше знаходите заклад харчування в любому куточку України.",
+                            "Швидше знаходите позицію меню.",
+                            "Швидше замовляєте.",
+                            "Швидше отримуєте бажане.",
+                        ]
+                    },
+                    {
+                        question: "Як бізнесу заробляти швидше ?",
+                        answers: [
+                            "Розмістіть QR MENU в своєму закладі на кожному столі.",
+                            "Це ваша інвестиція в загальний успіх.",
+                            "Всі бізнеси познайомлять своїх клієнтів з цим сайтом.",
+                            "І от ми отримали екосистему.",
+                            "Всі клієнти і всі бізнеси в одному місці."
+                        ]
                     },
                     {
                         question: "Коли випустили першу версію?",
@@ -648,7 +703,9 @@ export const TRANSLATION = {
                     },
                     {
                         question: "Що нас об`єднує?",
-                        answers: ["Бажання навчатись і створювати щось нове."]
+                        answers: [
+                            "Бажаємо вирішити спільну проблему: 'Швидко знаходити заклади харчування в Україні.' ",
+                        ]
                     },
                 ],
             }
@@ -1019,7 +1076,7 @@ export const TRANSLATION = {
             en: "Chacha",
             ua: "Чача"
         },
-         BOURBON: {
+        BOURBON: {
             en: "Bourbon",
             ua: "Бурбон"
         },

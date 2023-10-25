@@ -189,8 +189,8 @@ const SettingPage = () => {
                     />
                     <SettingMenuRow
                         icon={AboutUsIcon}
-                        title={translate(TR.PAGE.SETTINGS.MENU_ROW.ABOUT_US)}
-                        href={URL.ABOUT_US}
+                        title={translate(TR.PAGE.SETTINGS.MENU_ROW.ABOUT_PROJECT)}
+                        href={URL.ABOUT_PROJECT}
                     />
                     <SettingMenuRow
                         icon={TeamIcon}
