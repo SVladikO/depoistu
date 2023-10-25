@@ -605,14 +605,14 @@ export const TRANSLATION = {
                         question: "What is the cost?",
                         answers: [
                             "The first four months after the launch of the project are FREE.",
-                            "З 1.11.2023 - 1.04.2024",
+                            "From 1.11.2023 - 1.04.2024",
                         ]
                     },
                     {
                         question: "Why do businesses need you?",
                         withCounter: true,
                         answers: [
-                            "With us, you save time, money, energy, and nerves for planning, creating, maintaining, and promoting your own website. Cool, don't you agree?",
+                            "With us you save time, money, energy, nerves for planning, creating, maintaining and promoting your own website. Cool, don't you agree?",
                             "The possibility of changing the menu at any time of the day.",
                             "The opportunity to be modern.",
                             "Your customers can now view the menu from any distance at any time of the day.",
@@ -623,7 +623,7 @@ export const TRANSLATION = {
                         question: "Why do customers need you?",
                         withCounter: true,
                         answers: [
-                            "Find a restaurant in any corner of Ukraine faster. In a new place.",
+                            "Find a restaurant in any corner of Ukraine faster.",
                             "Find the menu position faster.",
                             "Order faster.",
                             "You get what you want faster.",
@@ -636,7 +636,7 @@ export const TRANSLATION = {
                             "This is your investment in overall success.",
                             "All businesses will introduce their customers to this site.",
                             "And so we got an ecosystem.",
-                            "Client - Business."
+                            "All clients and all businesses in one place."
                         ]
                     },
                     {
@@ -681,7 +681,7 @@ export const TRANSLATION = {
                         question: "Чому ви потрібні клієнтам ?",
                         withCounter: true,
                         answers: [
-                            "Швидше знаходите заклад харчування в любому куточку України. В новому місці.",
+                            "Швидше знаходите заклад харчування в любому куточку України.",
                             "Швидше знаходите позицію меню.",
                             "Швидше замовляєте.",
                             "Швидше отримуєте бажане.",
@@ -694,7 +694,7 @@ export const TRANSLATION = {
                             "Це ваша інвестиція в загальний успіх.",
                             "Всі бізнеси познайомлять своїх клієнтів з цим сайтом.",
                             "І от ми отримали екосистему.",
-                            "Клієнт - Бізнес."
+                            "Всі лієнти і всі бізнеси в одному місці."
                         ]
                     },
                     {
