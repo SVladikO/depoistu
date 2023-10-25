@@ -1,10 +1,9 @@
-import {Link} from "react-router-dom";
 import React, {useState} from 'react';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {Formik} from "formik";
 import * as Yup from "yup";
 
-import {Wrapper, EditBar} from './Setting.style';
+import {Wrapper} from './Setting.style';
 
 import {ReactComponent as LockIcon} from 'assets/icons/lock.svg';
 // import {ReactComponent as OrderHistoryIcon} from 'icons/order_history.svg';
@@ -21,6 +20,8 @@ import {ReactComponent as LanguageIcon} from 'assets/icons/language.svg';
 import {ReactComponent as AboutUsIcon} from "assets/icons/about_us.svg";
 // import {ReactComponent as LinkedAccountIcon} from 'icons/linked_account.svg';
 import {ReactComponent as StoreIcon} from 'assets/icons/house.svg';
+import {ReactComponent as InstructionIcon} from 'assets/icons/instruction.svg';
+import {ReactComponent as MenuCategoryIcon} from 'assets/icons/menu_category.svg';
 import {ReactComponent as TeamIcon} from "assets/icons/team.svg";
 import {ReactComponent as RocketIcon} from "assets/icons/rocket.svg";
 // import {ReactComponent as ConditionsIcon} from 'icons/list.svg';
@@ -38,44 +39,32 @@ import {
 
 import LanguagePopup from "features/language/LanguagePopup";
 import {openLanguagePopup} from 'features/language/languageSlice';
+import {deleteCustomer} from "features/customer/customerSlice";
+import {cleanFavoriteCompanies} from 'features/favorite-company/favoriteComapnySlice'
 
 import {URL} from 'utils/config';
+import {useScrollUp} from "utils/hook";
 import validation from "utils/validation";
-import {useLocalStorage, useScrollUp} from "utils/hook";
 import {BE_API, fetchData} from "utils/fetch";
+import {publishNotificationEvent} from "utils/event";
 import {TRANSLATION as TR, translate} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
-import {publishNotificationEvent} from "utils/event";
-import packageInfo from '../../../package.json';
 
+import packageInfo from '../../../package.json';
+import SingInSingUpView from "../../page-view/singInSingUp/singInSingUp.view";
 
 const SettingPage = () => {
     useScrollUp();
     const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(false);
-    const [customer, setCustomer] = useLocalStorage(LOCAL_STORAGE_KEY.CUSTOMER);
+    const customer = useSelector(state => state.customer.value);
 
-    const singInSingUpNotification = (
-        <NotificationTDB
-            title={translate(TR.PAGE.SETTINGS.NOTIFICATION.TITLE)}
-            description={translate(TR.PAGE.SETTINGS.NOTIFICATION.DESCRIPTION)}
-        >
-            <EditBar>
-                <Link to={URL.SING_UP}>
-                    <PrimaryButton isWide minWidth="120px">{translate(TR.PAGE.SETTINGS.BUTTONS.SING_UP)}</PrimaryButton>
-                </Link>
-                <Link to={URL.SING_IN}>
-                    <PrimaryButton isWide minWidth="120px">{translate(TR.PAGE.SETTINGS.BUTTONS.SING_IN)}</PrimaryButton>
-                </Link>
-            </EditBar>
-        </NotificationTDB>
-    );
     const onCheckVerification = ({emailVerificationCode}) => {
         setIsLoading(true)
         fetchData(BE_API.CUSTOMER.PUT_VERIFY_EMAIL(), {email: customer.email, emailVerificationCode, method: 'put'})
             .then(res => {
                 if (res.body.isEmailVerified) {
-                    setCustomer({...customer, isVerifiedEmail: true})
+                    // addCustomer({...customer, isVerifiedEmail: true})
                 }
             })
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))
@@ -107,7 +96,8 @@ const SettingPage = () => {
                             withCleaner
                         />
                         <RowSplitter height={'10px'}/>
-                        <PrimaryButton type="submit" isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.VERIFICATION)}</PrimaryButton>
+                        <PrimaryButton type="submit"
+                                       isWide>{translate(TR.PAGE.SETTINGS.BUTTONS.VERIFICATION)}</PrimaryButton>
                     </form>
                 )}
             </Formik>
@@ -115,21 +105,17 @@ const SettingPage = () => {
     );
 
     const logOut = () => {
-        setCustomer(undefined);
+        dispatch(deleteCustomer())
+        dispatch(cleanFavoriteCompanies())
         LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
     }
 
     return (
         <>
-            {!customer && (
-                <>
-                    {singInSingUpNotification}
-                    <RowSplitter height="10px" />
-                    </>
-            )}
+            <SingInSingUpView/>
             {/*{customer && !customer.isVerifiedEmail && emailVerificationNotification}*/}
             {isLoading && <NotificationLoading/>}
-            <LanguagePopup />
+            <LanguagePopup/>
             <Wrapper>
                 {/*<CustomerAccountBar fullName='Jhon Smith' phone="+14844731243"/>*/}
                 {/*<RowSplitter height='20px'/>*/}
@@ -150,11 +136,12 @@ const SettingPage = () => {
                                 title={translate(TR.PAGE.SETTINGS.MENU_ROW.EDIT_PROFILE)}
                                 href={URL.EDIT_CUSTOMER}
                             />
-                            <SettingMenuRow
-                                icon={LockIcon}
-                                title={translate(TR.PAGE.SETTINGS.MENU_ROW.CHANGE_PASS)}
-                                href={URL.CHANGE_PASSWORD}
-                            />
+                            {/*TODO: Change password page disabled as BE isn't ready yet. */}
+                            {/*<SettingMenuRow*/}
+                            {/*    icon={LockIcon}*/}
+                            {/*    title={translate(TR.PAGE.SETTINGS.MENU_ROW.CHANGE_PASS)}*/}
+                            {/*    href={URL.CHANGE_PASSWORD}*/}
+                            {/*/>*/}
                             <SettingMenuRow
                                 icon={LogOutIcon}
                                 title={translate(TR.PAGE.SETTINGS.MENU_ROW.EXIT)}
@@ -162,16 +149,28 @@ const SettingPage = () => {
                             />
                         </AccountSettings>
 
-                        <AccountSettings
-                            noTopBorder
-                            groupTitle={translate(TR.PAGE.SETTINGS.GROUP_TITLE.FOR_BUSINESS)}
-                        >
-                            <SettingMenuRow
-                                icon={StoreIcon}
-                                title={translate(TR.PAGE.SETTINGS.MENU_ROW.COMPANY)}
-                                href={URL.CUSTOMER_COMPANIES}
-                            />
-                        </AccountSettings>
+                        {!!customer.isBusinessOwner &&
+                            <AccountSettings
+                                noTopBorder
+                                groupTitle={translate(TR.PAGE.SETTINGS.GROUP_TITLE.FOR_BUSINESS)}
+                            >
+                                <SettingMenuRow
+                                    icon={InstructionIcon}
+                                    title={translate(TR.PAGE.SETTINGS.MENU_ROW.INSTRUCTION_FOR_BUSINESS_OWNER)}
+                                    href={URL.INSTRUCTION_FOR_BUSINESS_OWNER}
+                                />
+                                <SettingMenuRow
+                                    icon={MenuCategoryIcon}
+                                    title={translate(TR.PAGE.SETTINGS.MENU_ROW.AVAILABLE_MENU_CATEGORIES)}
+                                    href={URL.AVAILABLE_MENU_CATEGORIES}
+                                />
+                                <SettingMenuRow
+                                    icon={StoreIcon}
+                                    title={translate(TR.PAGE.SETTINGS.MENU_ROW.COMPANY)}
+                                    href={URL.CUSTOMER_COMPANIES}
+                                />
+                            </AccountSettings>
+                        }
                     </>)
                 }
                 <AccountSettings
@@ -190,8 +189,8 @@ const SettingPage = () => {
                     />
                     <SettingMenuRow
                         icon={AboutUsIcon}
-                        title={translate(TR.PAGE.SETTINGS.MENU_ROW.ABOUT_US)}
-                        href={URL.ABOUT_US}
+                        title={translate(TR.PAGE.SETTINGS.MENU_ROW.ABOUT_PROJECT)}
+                        href={URL.ABOUT_PROJECT}
                     />
                     <SettingMenuRow
                         icon={TeamIcon}

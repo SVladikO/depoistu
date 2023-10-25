@@ -20,7 +20,6 @@
 | name        | 2   | 30  | true       |
 | price       | 1   |     | true       |
 | description |     | 100 | false      |
-| cookingTime | 1   | 2   | false      |
 | mealSize    | 1   | 4   | false      |
 
 

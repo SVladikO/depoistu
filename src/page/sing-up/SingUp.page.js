@@ -4,32 +4,36 @@ import * as Yup from 'yup';
 import {Formik} from "formik";
 
 import {Wrapper} from "./SingUp.style";
-import {Input, ContentContainer, PrimaryButton} from "components";
+import {Input, ContentContainer, PrimaryButton, Checkbox} from "components";
 import NavigationLabelHref from "components/NavigationLabelHref/NavigationLabelHref";
 
-import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 import validation from 'utils/validation';
 import {BE_API, fetchData} from "utils/fetch";
 import {TRANSLATION, translate} from "utils/translation";
 import {ROUTER, URL} from 'utils/config';
 import {publishNotificationEvent} from "utils/event";
+import {addCustomer} from "features/customer/customerSlice";
+import {useDispatch} from "react-redux";
+import {useQuery} from "../../utils/hook";
 
 const SignUpSchema = Yup.object().shape(validation.customer.singUp);
 
 const SingUpPage = () => {
     const navigate = useNavigate();
-
+    const dispatch = useDispatch();
+    let query = useQuery()
+    const backUrl = query.get("backUrl") || URL.SETTING;
     const [isLoading, setIsLoading] = useState(false);
     const [wasSubmitted, setWasSubmitted] = useState(false);
 
-    const onSubmit = ({name, email, newPassword, phone}) => {
+    const onSubmit = ({name, email, newPassword, phone, isBusinessOwner}) => {
         setWasSubmitted(true);
         setIsLoading(true);
 
-        fetchData(BE_API.CUSTOMER.SING_UP(), {name, email, password: newPassword, phone})
+        fetchData(BE_API.CUSTOMER.SING_UP(), {name, email: email.toLowerCase(), password: newPassword, phone, isBusinessOwner})
             .then(res => {
-                LocalStorage.set(LOCAL_STORAGE_KEY.CUSTOMER, res.body)
-                navigate(URL.SETTING);
+                dispatch(addCustomer(res.body));
+                navigate(backUrl);
             })
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))
             .finally(() => setIsLoading(false));
@@ -44,6 +48,7 @@ const SingUpPage = () => {
                     phone: '380',
                     newPassword: '',
                     confirmedPassword: '',
+                    isBusinessOwner: false,
                 }}
                 validationSchema={SignUpSchema}
                 onSubmit={onSubmit}
@@ -106,6 +111,12 @@ const SingUpPage = () => {
                                 clearHandler={() => setFieldValue('confirmedPassword', '')}
                                 labelName={translate(TRANSLATION.INPUT_LABEL.CUSTOMER.CONFIRM_PASSWORD)}
                                 errorMessage={errors.confirmedPassword}
+                            />
+                            <Checkbox
+                                name="isBusinessOwner"
+                                value={values.isBusinessOwner}
+                                changeHandler={handleChange}
+                                lableName={translate(TRANSLATION.PAGE.PROFILE.ARE_YOU_BUSINESS_OWNER)}
                             />
                         </ContentContainer>
                         <Wrapper>

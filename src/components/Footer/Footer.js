@@ -10,10 +10,9 @@ import {RowSplitter} from "components";
 
 import {URL} from "utils/config";
 import {translate, TRANSLATION as TR} from "utils/translation";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
+import {useSelector} from "react-redux";
 
 const Footer = () => {
-    const customer = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER);
     const [isLike, setIsLike] = useState()
 
     const scrollToTop = () => {
@@ -30,37 +29,33 @@ const Footer = () => {
         <>
             <RowSplitter height={'340px'}/>
             <Wrapper>
-                {customer && (
-                    <Question justifyContent="center" alignItems="center" gap={'10px'}>
-                        <span>{translate(TR.PAGE.SETTINGS.GROUP_TITLE.DO_YOU_LIKE)}</span>
-                        {isLike === undefined
-                            ? (
-                                <>
-                                    <ThumbDownNotClickedIcon onClick={onLikeWebsite} className="reversed unClicked"/>
-                                    <ThumbDownNotClickedIcon onClick={onDislikeWebsite} className="unClicked"/>
-                                </>
-                            ) : isLike ? (
-                                <>
-                                    <ThumbUpClickedIcon/>
-                                    <ThumbDownNotClickedIcon/>
-                                </>
-                            ) : (
-                                <>
-                                    <ThumbDownNotClickedIcon className="reversed"/>
-                                    <ThumbUpClickedIcon className="reversed"/>
-                                </>
-                            )}
-                    </Question>
-                )
-                }
+                {/*TODO: DO you like this website BE part will be added a bit later as it isn't hight priority */}
+                {/*{customer && (*/}
+                {/*    <Question justifyContent="center" alignItems="center" gap={'10px'}>*/}
+                {/*        <span>{translate(TR.PAGE.SETTINGS.GROUP_TITLE.DO_YOU_LIKE)}</span>*/}
+                {/*        {isLike === undefined*/}
+                {/*            ? (*/}
+                {/*                <>*/}
+                {/*                    <ThumbDownNotClickedIcon onClick={onLikeWebsite} className="reversed unClicked"/>*/}
+                {/*                    <ThumbDownNotClickedIcon onClick={onDislikeWebsite} className="unClicked"/>*/}
+                {/*                </>*/}
+                {/*            ) : isLike ? (*/}
+                {/*                <>*/}
+                {/*                    <ThumbUpClickedIcon/>*/}
+                {/*                    <ThumbDownNotClickedIcon/>*/}
+                {/*                </>*/}
+                {/*            ) : (*/}
+                {/*                <>*/}
+                {/*                    <ThumbDownNotClickedIcon className="reversed"/>*/}
+                {/*                    <ThumbUpClickedIcon className="reversed"/>*/}
+                {/*                </>*/}
+                {/*            )}*/}
+                {/*    </Question>*/}
+                {/*)*/}
+                {/*}*/}
                 <Row onClick={scrollToTop}>{translate(TR.PAGE.FOOTER.BACK_TO_TOP_BUTTON)}</Row>
-                {customer && (
-                    <Link to={URL.CUSTOMER_COMPANIES}>
-                        <Row>{translate(TR.PAGE.SETTINGS.GROUP_TITLE.FOR_BUSINESS)}</Row>
-                    </Link>
-                )}
-                <Link to={URL.ABOUT_US}>
-                    <Row>{translate(TR.PAGE.SETTINGS.MENU_ROW.ABOUT_US)}</Row>
+                <Link to={URL.ABOUT_PROJECT}>
+                    <Row>{translate(TR.PAGE.SETTINGS.MENU_ROW.ABOUT_PROJECT)}</Row>
                 </Link>
                 <Link to={URL.OUR_TEAM}>
                     <Row>{translate(TR.PAGE.OUR_TEAM.TOP_TITLE)}</Row>

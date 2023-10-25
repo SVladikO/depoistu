@@ -9,6 +9,10 @@ export const Wrapper = styled.div`
   background-color: ${COLOR.ACCENT4};
   border-bottom: solid 1px ${COLOR.ACCENT1};
 
+  &:hover {
+    cursor: pointer;
+  }
+  
   .swiper-pagination-bullet {
     width: 10px;
     height: 10px;
@@ -21,6 +25,15 @@ export const Wrapper = styled.div`
   }
 `;
 
+export const FirstRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  
+  & > svg {
+    height: 30px;
+    width: 30px;
+  }
+`;
 export const ImageSection = styled.div`
   display: flex;
   height: 200px;

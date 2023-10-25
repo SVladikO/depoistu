@@ -2,7 +2,7 @@ import SearchPage from "page/search/Search.page";
 import SignInPage from "page/sing-in/SignIn.page";
 import SingUpPage from "page/sing-up/SingUp.page";
 import SettingPage from "page/setting/Setting.page";
-import AboutUsPage from "page/about-us/AboutUs.page";
+import AboutProjectPage from "../page/about-project/AboutProject.page";
 import OurTeamPage from "page/our-team/OurTeam.page";
 import EditMenuPage from "page/edit-menu/EditMenu.page";
 import AddCompanyPage from "page/add-company/AddCompany.page";
@@ -13,6 +13,7 @@ import SearchDetailsPage from "page/search-details/SearchDetails.page";
 import ChangePasswordPage from "page/change-password/ChangePassword.page";
 import ForgetPasswordPage from "page/forgot-password/ForgetPassword.page";
 import CustomerCompaniesPage from "page/customer-companies/CustomerCompanies.page";
+import AvailableMenuCategoriesPage from "page/available-menu-categories/AvailableMenuCategories.page";
 
 // TODO: Hidden second version
 // import OrderPage from "page/order/Order.page";
@@ -22,6 +23,8 @@ import CustomerCompaniesPage from "page/customer-companies/CustomerCompanies.pag
 
 import {TRANSLATION, translate} from "./translation.js";
 import EditCustomerPage from "page/edit-customer/EditCustomer.page";
+import FavoritePage from "page/favorite/Favorite.page";
+import InstructionForBusinessOwnerPage from "page/instruction-for-bussines-owner/InstructionForBusinessOwner.page";
 
 export const DEV_ROUTER = {
     COMPONENTS: 'components',
@@ -56,17 +59,20 @@ export const BE_DOMAIN = SELECTED_BE_DOMAIN.url;
 
 export const URL = {
     SEARCH: '/',
-    SEARCH_DETAILS: '/',
+    SEARCH_DETAILS: '/company-details',
     MENU: '/menu',
     SING_IN: '/sign-in',
     SING_UP: '/sing-up',
     SETTING: '/setting',
+    FAVORITE: '/favorite',
     CHANGE_PASSWORD: '/change-password',
     FORGOT_PASSWORD: '/forgot-password',
-    ABOUT_US: '/about-us',
+    ABOUT_PROJECT: '/about-project',
     EDIT_CUSTOMER: '/edit-customer',
     OUR_TEAM: '/our-team',
 
+    AVAILABLE_MENU_CATEGORIES: '/available-menu-categories',
+    INSTRUCTION_FOR_BUSINESS_OWNER: '/instruction-for-business-owner',
     CUSTOMER_COMPANIES: '/customer-companies',
     ADD_COMPANY: '/add-company',
     EDIT_COMPANY: '/edit-company',
@@ -78,7 +84,12 @@ export const URL = {
 export const ROUTER = {
     // ORDER_REVIEW: {URL: '/order',  TITLE: 'Order review', page: OrderPage, showBottomMenu: true},
     // ORDER_HISTORY: {URL: '/history',  TITLE: 'Order History', page: OrderHistoryPage, subHeader: HistoryTabBar, showBottomMenu: true},
-    // Favorite: {URL: '/Favorite',  TITLE: 'Favorite Cart', page: () => {}},
+    FAVORITE: {
+        URL: URL.FAVORITE,
+        TITLE: translate(TRANSLATION.PAGE.FAVORITE.TOP_TITLE),
+        page: FavoritePage,
+    },
+    MENU: {URL: '/menu',  TITLE: 'Favorite Cart', page: () => {}},
     // Profile: {URL: '/Profile',  TITLE: 'Profile', page: () => {}},
     // USER_ACCOUNT = {URL: '/user_account',  TITLE: 'USER_ACCOUNT', page: () => {}, showBottomMenu: true, BACK_URL: ROUTER.SETTING.URL};
     SEARCH: {
@@ -128,10 +139,10 @@ export const ROUTER = {
         showBottomMenu: true,
         backUrl: URL.SETTING
     },
-    ABOUT_US: {
-        URL: URL.ABOUT_US,
-        TITLE: translate(TRANSLATION.PAGE.ABOUT_US.TOP_TITLE),
-        page: AboutUsPage,
+    ABOUT_PROJECT: {
+        URL: URL.ABOUT_PROJECT,
+        TITLE: translate(TRANSLATION.PAGE.ABOUT_PROJECT.TOP_TITLE),
+        page: AboutProjectPage,
         showBottomMenu: true,
         backUrl: URL.SETTING
     },
@@ -149,10 +160,24 @@ export const ROUTER = {
         showBottomMenu: true,
         backUrl: URL.SETTING
     },
+    INSTRUCTION_FOR_BUSINESS_OWNER: {
+        URL: URL.INSTRUCTION_FOR_BUSINESS_OWNER,
+        TITLE: translate(TRANSLATION.PAGE.INSTRUCTION_FOR_BUSINESS_OWNER.TOP_TITLE),
+        page: InstructionForBusinessOwnerPage,
+        showBottomMenu: true,
+        backUrl: URL.SETTING
+    },
     CUSTOMER_COMPANIES: {
         URL: URL.CUSTOMER_COMPANIES,
         TITLE: translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.TOP_TITLE),
         page: CustomerCompaniesPage,
+        showBottomMenu: true,
+        backUrl: URL.SETTING
+    },
+    AVAILABLE_MENU_CATEGORIES: {
+        URL: URL.AVAILABLE_MENU_CATEGORIES,
+        TITLE: translate(TRANSLATION.PAGE.AVAILABLE_MENU_CATEGORIES.TOP_TITLE),
+        page: AvailableMenuCategoriesPage,
         showBottomMenu: true,
         backUrl: URL.SETTING
     },

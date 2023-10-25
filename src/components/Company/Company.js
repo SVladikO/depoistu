@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
 import {Pagination, Navigation} from "swiper";
 import {Swiper, SwiperSlide} from "swiper/react";
 
@@ -9,6 +10,10 @@ import "swiper/css/pagination";
 import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
 import {ReactComponent as PhoneIcon} from "assets/icons/phone.svg";
 import {ReactComponent as TimeIcon} from "assets/icons/time.svg";
+import {ReactComponent as Heart1Icon} from "assets/icons/heart1.svg";
+import {ReactComponent as Heart2Icon} from "assets/icons/heart2.svg";
+
+
 import {
     Wrapper,
     ImageSection,
@@ -17,6 +22,7 @@ import {
     CompanyInfo,
     Schedule,
     OpenStatus,
+    FirstRow,
     Closes,
     LocationWrapper,
     CloseStatus
@@ -26,10 +32,21 @@ import {ThirdButton} from "components/Buttons/ThirdButton";
 import ScheduleDetails from "components/WeekScheduleOutput/WeekScheduleOutput";
 
 import {parseSchedule} from "utils/company";
+import {BE_API, fetchData} from "utils/fetch";
 import {CITY_TRANSLATION_IDS} from "utils/cities";
 import {translate, TRANSLATION as TR, truncate} from "utils/translation";
+import {addToFavoriteCompanies, deleteFromFavoriteCompanies} from "../../features/favorite-company/favoriteComapnySlice";
+import {publishNotificationEvent} from "../../utils/event";
 
-const Company = ({company, withMoreInfo, children}) => {
+const Company = ({company, withMoreInfo, children, clickHandler}) => {
+
+    const dispatch = useDispatch();
+
+    const customer = useSelector(state => state.customer.value);
+    const favotireCompanies = useSelector(state => state.favoriteCompany.value);
+
+    const isLikedByCurrentCustomer = favotireCompanies?.find(fc => fc.id == company.id)
+
     if (!company) {
         return null;
     }
@@ -44,7 +61,7 @@ const Company = ({company, withMoreInfo, children}) => {
             return (
                 <Link to={addressUrl} target="_blank" rel="noopener">
                     <ThirdButton>
-                        <LocationIcon />
+                        <LocationIcon/>
                         {truncate(`${translate(CITY_TRANSLATION_IDS[company.cityId])}, ${company.street}`, 28)}
                     </ThirdButton>
                 </Link>
@@ -53,7 +70,7 @@ const Company = ({company, withMoreInfo, children}) => {
 
         return (
             <LocationWrapper>
-                <LocationIcon />{translate(CITY_TRANSLATION_IDS[company.cityId])}, {company.street}
+                <LocationIcon/>{translate(CITY_TRANSLATION_IDS[company.cityId])}, {company.street}
             </LocationWrapper>
         );
     }
@@ -89,18 +106,46 @@ const Company = ({company, withMoreInfo, children}) => {
         </Schedule>
     )
 
+    const likeCompany = e => {
+        e.stopPropagation();
+        dispatch(addToFavoriteCompanies(company))
+        fetchData(BE_API.FAVORITE_COMPANY.ADD(), {company_id: company.id})
+            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
+    }
+
+    const unlikeCompany = e => {
+        e.stopPropagation();
+        fetchData(BE_API.FAVORITE_COMPANY.ADD(), {company_id: company.id, method: 'delete'})
+            .then( () => dispatch(deleteFromFavoriteCompanies(company)))
+            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
+    }
+
     return (
-        <Wrapper withMoreInfo={withMoreInfo}>
+        <Wrapper withMoreInfo={withMoreInfo} onClick={clickHandler}>
             {/*<Images />*/}
             <Content>
                 <CompanyInfo>
-                    <Name>{company.name}</Name>
+                    <FirstRow>
+                        <Name>{company.name}</Name>
+                        {
+                            customer
+                                ? isLikedByCurrentCustomer
+                                    ? <Heart2Icon onClick={unlikeCompany} />
+                                    : <Heart1Icon onClick={likeCompany} />
+                                : null
+                        }
+
+                    </FirstRow>
                     {renderDaySchedule()}
-                    <CompanyLocationButton />
-                    {withMoreInfo && <a href={`tel:${company.phone1}`}><ThirdButton><PhoneIcon/>{company.phone1}</ThirdButton></a>}
-                    {withMoreInfo && company.phone2 && <a href={`tel:${company.phone2}`}><ThirdButton><PhoneIcon/>{company.phone2}</ThirdButton></a>}
-                    {withMoreInfo && company.phone3 && <a href={`tel:${company.phone3}`}><ThirdButton><PhoneIcon/>{company.phone3}</ThirdButton></a>}
-                    {withMoreInfo && company.schedule && company.schedule.length && <ScheduleDetails scheduleAsArray={parsedSchedule.workDays}/>}
+                    <CompanyLocationButton/>
+                    {withMoreInfo &&
+                        <a href={`tel:${company.phone1}`}><ThirdButton><PhoneIcon/>{company.phone1}</ThirdButton></a>}
+                    {withMoreInfo && company.phone2 &&
+                        <a href={`tel:${company.phone2}`}><ThirdButton><PhoneIcon/>{company.phone2}</ThirdButton></a>}
+                    {withMoreInfo && company.phone3 &&
+                        <a href={`tel:${company.phone3}`}><ThirdButton><PhoneIcon/>{company.phone3}</ThirdButton></a>}
+                    {withMoreInfo && company.schedule && company.schedule.length &&
+                        <ScheduleDetails scheduleAsArray={parsedSchedule.workDays}/>}
                 </CompanyInfo>
                 {children}
             </Content>
