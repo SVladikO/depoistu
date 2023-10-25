@@ -13,7 +13,8 @@ import {LocalStorage, LOCAL_STORAGE_KEY} from "./utils/localStorage";
 const container = document.getElementById('root');
 const root = createRoot(container);
 
-devManagement();
+// TODO: Hided check access alert
+// devManagement();
 const store = createStore();
 
 LocalStorage.set(LOCAL_STORAGE_KEY.REDUX_STATE, store.getState());
