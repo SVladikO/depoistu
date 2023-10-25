@@ -108,7 +108,7 @@ const menu_item_validation = {
     name: Yup.string()
         .required(MESSAGE.REQUIRED)
         .min(2, `${MESSAGE.MIN_SYMBOLS} 2`)
-        .max(50, `${MESSAGE.MAX_SYMBOLS} 30`),
+        .max(100, `${MESSAGE.MAX_SYMBOLS} 100`),
     description: Yup.string()
         .max(255, `${MESSAGE.MAX_SYMBOLS} 255`),
     size_1: Yup.string().required(MESSAGE.REQUIRED),
