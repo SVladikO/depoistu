@@ -20,9 +20,9 @@ export const Wrapper = styled.div`
 export const LeftContent = styled.div`
   display: flex;
   & > svg {
-    width: 16.82px;
-    height: 19.22px;
-    margin-right: 16px;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
     fill: ${COLOR.ACCENT1};
   }
 `;
