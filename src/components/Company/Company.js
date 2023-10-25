@@ -115,8 +115,8 @@ const Company = ({company, withMoreInfo, children, clickHandler}) => {
 
     const unlikeCompany = e => {
         e.stopPropagation();
+        dispatch(deleteFromFavoriteCompanies(company))
         fetchData(BE_API.FAVORITE_COMPANY.ADD(), {company_id: company.id, method: 'delete'})
-            .then( () => dispatch(deleteFromFavoriteCompanies(company)))
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))
     }
 
