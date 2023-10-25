@@ -1,5 +1,16 @@
 import styled from "styled-components";
-import {COLOR} from "../../utils/theme";
+import {COLOR} from "utils/theme";
+
+export const Wrapper = styled.div`
+  margin: 0 0 40px 0;
+  & > * {
+    margin-bottom: 22px;
+  }
+  
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+`;
 
 export const LogoContainer = styled.div`
   display: flex;
@@ -7,12 +18,14 @@ export const LogoContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0 0 34px 0;
-  & > div {
-    color: ${COLOR.ACCENT3};
-    font-size: 20px;
-  }
+
   svg {
     display: block;
     margin: 0 0 10px 0;
   }
+`;
+
+export const Address = styled.div`
+  color: ${COLOR.ACCENT3};
+  font-size: 20px;
 `;

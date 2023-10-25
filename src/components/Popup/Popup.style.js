@@ -28,9 +28,7 @@ export const Wrapper = styled.div`
   ${p => p.popupPosition === 'end' && 'padding: 40px 23px 100px'};
   ${p => p.popupPosition === 'end' && 'border-radius: 28px 28px 0 0'};
   ${p => p.popupPosition === 'end' && 'background: white'};
-  button {
-    margin-top: 40px;
-  }
+  
 `;
 
 export const CloseButtonWrapper = styled.div`
