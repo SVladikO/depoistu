@@ -52,7 +52,7 @@ export const NotificationError = styled.div`
   background: ${COLOR.ERROR2};
   
 `;
-export const NotificationSuccess = styled.div`
+export const NotificationSuccessWrapper = styled.div`
   ${DefaultNotification};
   background: ${COLOR.SUCCESS2};
 `;
