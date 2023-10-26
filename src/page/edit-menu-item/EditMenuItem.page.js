@@ -18,7 +18,20 @@ const EditMenuItemPage = () => {
     const navigate = useNavigate();
     const [isLoadingUpdate, setIsLoadingUpdate] = useState(false);
     const [isLoadingDelete, setIsLoadingDelete] = useState(false);
-    const menuItemCandidateToEdit = LocalStorage.get(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT);
+    let menuItemCandidateToEdit = LocalStorage.get(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT);
+
+    //Bug fix (  When we inserted data trough sql we put null which now in input ( which can't handle null.
+    const price_1 = menuItemCandidateToEdit.price_1 || "";
+    const price_2 = menuItemCandidateToEdit.price_2 || "";
+    const price_3 = menuItemCandidateToEdit.price_3 || "";
+    const size_1 = menuItemCandidateToEdit.size_1 || "";
+    const size_2 = menuItemCandidateToEdit.size_2 || "";
+    const size_3 = menuItemCandidateToEdit.size_3 || "";
+
+    console.log(1, menuItemCandidateToEdit)
+    menuItemCandidateToEdit = {...menuItemCandidateToEdit, price_1, price_2, price_3, size_1, size_2, size_3}
+
+    console.log(222, menuItemCandidateToEdit)
 
     if (!menuItemCandidateToEdit) {
         return navigate(URL.SETTING)
@@ -66,7 +79,7 @@ const EditMenuItemPage = () => {
                 onSubmit={onSubmit}
                 submitButtonTitle={translate(TRANSLATION.PAGE.EDIT_MENU_ITEM.BUTTON.EDIT_MENU_ITEM)}
             >
-                <RowSplitter height={'10px'} />
+                <RowSplitter height={'10px'}/>
                 <PrimaryButton
                     isWide
                     type="submit"
@@ -76,14 +89,14 @@ const EditMenuItemPage = () => {
                     {translate(TRANSLATION.PAGE.ADD_MENU_ITEM.BUTTON.UPDATE_MENU_ITEM)}
                 </PrimaryButton>
             </MenuItemView>
-            <RowSplitter height={'50px'} />
+            <RowSplitter height={'50px'}/>
             <SecondaryButton
                 isWide
                 isLoading={isLoadingDelete}
                 clickHandler={deleteMenuItem}
                 withPadding
             >
-                <RemoveIcon />
+                <RemoveIcon/>
                 {translate(TRANSLATION.PAGE.EDIT_MENU_ITEM.BUTTON.DELETE_MENU_ITEM)}
             </SecondaryButton>
         </>
