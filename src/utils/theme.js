@@ -11,6 +11,7 @@ export const COLOR = {
     ACCENT7: '#F6EBEF',
     ACCENT8: '#F5F6FB',
     ACCENT9: '#E6E8E9',
+    ACCENT10: '#013f09',
     WARNING1: '#F1C21B',
     WARNING2: '#FFF8E1',
     INFO1: '#0244CF',
@@ -58,7 +59,7 @@ export const FONT = {
 }
 
 export const BORDER_RADIUS = {
-    BUTTON: '0px',
+    BUTTON: '5px',
     DAY_IN_SCHEDULE: '8px',
     SUB_CATEGORY: '12px',
     COMPANY: '0px',

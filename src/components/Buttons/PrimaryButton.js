@@ -1,16 +1,21 @@
 import styled from "styled-components";
 
 import {button, ButtonWrapper} from "./button";
-import {ReactComponent as LoadingIcon} from "assets/icons/loading-white.svg";
+import {ReactComponent as LoadingIcon} from "assets/icons/loading.svg";
 
 import {COLOR} from "utils/theme";
 
 const PrimaryButtonWrapper = styled(button)`
-  color: ${COLOR.ACCENT4};
-  background: ${p => p.isDisabled ? COLOR.ACCENT5 : p.isLoading ? COLOR.PRIMARY : COLOR.ACCENT3};
+  color: ${p => p.isDisabled ? COLOR.ACCENT4 : COLOR.ACCENT10};
+  background: ${p => p.isDisabled ? COLOR.ACCENT5 : COLOR.ACCENT3};
 
+  & > svg {
+    fill: ${COLOR.ACCENT10};
+  }
+  
   &:active {
-    background: ${p => p.isDisabled ? COLOR.ACCENT5 : COLOR.PRIMARY};
+    color: ${p => p.isDisabled ? COLOR.ACCENT4 : COLOR.ACCENT3};
+    background: ${p => p.isDisabled ? COLOR.ACCENT5 : COLOR.ACCENT10};
   }
 `;
 

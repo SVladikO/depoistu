@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
-import {PrimaryButton, RowSplitter} from "components";
+import {PrimaryButton, RowSplitter, SecondaryButton} from "components";
 import MenuItemView from "page-view/menu-item/menu-item-view";
 import {ReactComponent as RemoveIcon} from "assets/icons/remove_icon.svg";
 
@@ -77,7 +77,7 @@ const EditMenuItemPage = () => {
                 </PrimaryButton>
             </MenuItemView>
             <RowSplitter height={'50px'} />
-            <PrimaryButton
+            <SecondaryButton
                 isWide
                 isLoading={isLoadingDelete}
                 clickHandler={deleteMenuItem}
@@ -85,7 +85,7 @@ const EditMenuItemPage = () => {
             >
                 <RemoveIcon />
                 {translate(TRANSLATION.PAGE.EDIT_MENU_ITEM.BUTTON.DELETE_MENU_ITEM)}
-            </PrimaryButton>
+            </SecondaryButton>
         </>
     )
 }

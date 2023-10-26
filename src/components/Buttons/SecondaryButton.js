@@ -1,20 +1,21 @@
 import styled, {css} from "styled-components";
 import {button, ButtonWrapper} from "./button";
 import {COLOR, hexToRgbA, rotationAnimation} from "utils/theme";
-import {ReactComponent as LoadingIcon} from "assets/icons/loading-red.svg";
+import {ReactComponent as LoadingIcon} from "assets/icons/loading.svg";
 
 export const SecondaryButtonWrapper = styled(button)`
-  color: ${p => p.isDisabled ? COLOR.ACCENT5 : COLOR.ACCENT3};
+  color: ${p => p.isDisabled ? COLOR.ACCENT5 : COLOR.PRIMARY};
   background: ${p => p.isDisabled ? COLOR.ACCENT4 : hexToRgbA(COLOR.ACCENT3, 0.1)};
-  border: 2px solid ${p => p.isDisabled ? COLOR.ACCENT5 : COLOR.ACCENT3};
+  border: 2px solid ${p => p.isDisabled ? COLOR.ACCENT5 : COLOR.PRIMARY};
 
   &:active {
     border: 2px solid ${p => p.isDisabled ? COLOR.ACCENT5 : COLOR.PRIMARY};
     color: ${p => p.isDisabled ? COLOR.ACCENT5 : COLOR.PRIMARY};
+    background: ${p => p.isDisabled ? COLOR.ACCENT4 : hexToRgbA(COLOR.ACCENT3, 0.4)};
   }
 
   & > svg {
-    fill: ${COLOR.ACCENT3};
+    fill: ${COLOR.PRIMARY};
     height: 20px;
     width: 20px;
     margin-right: 10px;
