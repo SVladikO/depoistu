@@ -780,6 +780,10 @@ export const TRANSLATION = {
             TOP_TITLE: {
                 ua: "Реєстрацiя",
                 en: "Sing up"
+            },
+            BUTTON: {
+                ua: "Зареєструватись",
+                en: "Sing up"
             }
         },
     },

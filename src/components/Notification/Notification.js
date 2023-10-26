@@ -1,7 +1,7 @@
 import {
     NotificationInfo,
     NotificationError,
-    NotificationSuccess,
+    NotificationSuccessWrapper,
     NotificationWarning,
     NotificationLoadingWrapper,
     Text,
@@ -47,11 +47,11 @@ export const NotificationFactory = ({type, children, onClose}) => {
 
         case NOTIFICATION_STATUS.SUCCESS: {
             return (
-                <NotificationSuccess>
+                <NotificationSuccessWrapper>
                     <SuccessIcon/>
                     <CloseIcon className="close" onClick={onClose}/>
                     {children}
-                </NotificationSuccess>
+                </NotificationSuccessWrapper>
             )
         }
         case NOTIFICATION_STATUS.WARNING: {
@@ -65,6 +65,14 @@ export const NotificationFactory = ({type, children, onClose}) => {
         }
     }
 };
+
+export const NotificationSuccess = ({children, onClose}) => (
+    <NotificationSuccessWrapper>
+        <SuccessIcon/>
+        <CloseIcon className="close" onClick={onClose}/>
+        {children}
+    </NotificationSuccessWrapper>
+)
 
 export const NotificationLoading = ({children}) => (
     <NotificationLoadingWrapper>

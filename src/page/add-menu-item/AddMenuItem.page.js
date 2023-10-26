@@ -8,6 +8,7 @@ import {useRedirectToSettingPage, useScrollUp} from "utils/hook";
 import {translate, TRANSLATION} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 import {publishNotificationEvent} from "utils/event";
+import {NotificationSuccess} from "../../components/Notification/Notification";
 
 const defaultInitialValue = {
     name: '',
@@ -53,7 +54,9 @@ const AddMenuItemPage = () => {
 
     return (
         <>
-
+            <NotificationSuccess>
+                {translate(TRANSLATION.NOTIFICATION.MENU_ITEM.WAS_CREATED)}
+            </NotificationSuccess>
             <MenuItemView
                 defaultInitialValue={initialValues}
                 onSubmit={onSubmit}

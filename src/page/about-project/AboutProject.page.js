@@ -2,10 +2,14 @@ import React from 'react';
 import {Wrapper, Title, Description, AnswerWrapper, Answer} from "./AboutProject.page.style";
 
 import {useScrollUp} from "utils/hook";
-import {translate, TRANSLATION} from "utils/translation";
+import {translate, TRANSLATION as TR, TRANSLATION} from "utils/translation";
+import {ROUTER} from "../../utils/config";
+import {PrimaryButton} from "../../components";
+import {useNavigate} from "react-router-dom";
 
 const AboutProjectPage = () => {
     useScrollUp();
+    const navigate = useNavigate();
 
     return (
         <Wrapper>
@@ -31,6 +35,10 @@ const AboutProjectPage = () => {
                     )
                 }
             )}
+
+            <PrimaryButton isWide clickHandler={() => navigate(ROUTER.SEARCH.URL)}>
+                {translate(TR.GO_TO_A_SEARCH_PAGE)}
+            </PrimaryButton>
         </Wrapper>
     );
 };
