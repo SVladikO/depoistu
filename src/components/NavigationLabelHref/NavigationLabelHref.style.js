@@ -16,5 +16,5 @@ export const Label = styled.span`
 `;
 
 export const Title = styled(Label)`
-  color: ${COLOR.ACCENT3};
+  color: ${COLOR.INFO1};
 `;

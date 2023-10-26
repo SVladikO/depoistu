@@ -30,7 +30,13 @@ const SingUpPage = () => {
         setWasSubmitted(true);
         setIsLoading(true);
 
-        fetchData(BE_API.CUSTOMER.SING_UP(), {name, email: email.toLowerCase(), password: newPassword, phone, isBusinessOwner})
+        fetchData(BE_API.CUSTOMER.SING_UP(), {
+            name,
+            email: email.toLowerCase(),
+            password: newPassword,
+            phone,
+            isBusinessOwner
+        })
             .then(res => {
                 dispatch(addCustomer(res.body));
                 navigate(backUrl);
@@ -118,7 +124,15 @@ const SingUpPage = () => {
                                 changeHandler={handleChange}
                                 lableName={translate(TRANSLATION.PAGE.PROFILE.ARE_YOU_BUSINESS_OWNER)}
                             />
+                            <PrimaryButton
+                                isWide
+                                type="submit"
+                                isLoading={isLoading}
+                            >
+                                {translate(TRANSLATION.PAGE.SING_UP.BUTTON)}
+                            </PrimaryButton>
                         </ContentContainer>
+
                         <Wrapper>
                             <NavigationLabelHref
                                 hrefTitle={translate(TRANSLATION.PAGE.SIGN_IN.TOP_TITLE)}
@@ -126,14 +140,6 @@ const SingUpPage = () => {
                                 label={translate(TRANSLATION.PAGE.SIGN_IN.ACCOUNT_CONFIRMATION)}
                             />
                         </Wrapper>
-                        <PrimaryButton
-                            isWide
-                            type="submit"
-                            isLoading={isLoading}
-                            withPadding
-                        >
-                            {translate(TRANSLATION.PAGE.SING_UP.TOP_TITLE)}
-                        </PrimaryButton>
                     </form>
                 )}
             </Formik>
