@@ -20,7 +20,7 @@ const EditMenuItemPage = () => {
     const [isLoadingDelete, setIsLoadingDelete] = useState(false);
     let menuItemCandidateToEdit = LocalStorage.get(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT);
 
-    //Bug fix (  When we inserted data trough sql we put null which now in input ( which can't handle null.
+    //Bugfix.  When we inserted data trough sql we put null which now in input which can't handle null.
     const price_1 = menuItemCandidateToEdit.price_1 || "";
     const price_2 = menuItemCandidateToEdit.price_2 || "";
     const price_3 = menuItemCandidateToEdit.price_3 || "";
@@ -28,10 +28,7 @@ const EditMenuItemPage = () => {
     const size_2 = menuItemCandidateToEdit.size_2 || "";
     const size_3 = menuItemCandidateToEdit.size_3 || "";
 
-    console.log(1, menuItemCandidateToEdit)
     menuItemCandidateToEdit = {...menuItemCandidateToEdit, price_1, price_2, price_3, size_1, size_2, size_3}
-
-    console.log(222, menuItemCandidateToEdit)
 
     if (!menuItemCandidateToEdit) {
         return navigate(URL.SETTING)
