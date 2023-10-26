@@ -54,15 +54,11 @@ export const TRANSLATION = {
         TEXT: {
             ua: [
                 'Меню всіх закладів харчування України має бути в  одному місці. На цьому сайті.',
-                'Знайомтесь з меню до або під час візиту.',
                 'Ми не показуємо в пошуку міста в яких ще не зареєструвались заклади.',
-                'Вартість в гривні.'
             ],
             en: [
                 'The menu of all cafes and restaurants of Ukraine should be in one place. On this site.',
-                'Familiarize yourself with the menu before or during your visit.',
                 'We don`t show in the search engine cities in which establishments have not yet been registered.',
-                'All price in uah.'
             ]
         },
     },
@@ -598,7 +594,6 @@ export const TRANSLATION = {
                         question: "What is the main idea of the project?",
                         answers: [
                             "All catering establishments of Ukraine on one website depoistu.com",
-                            "If your catering establishments is not on our website, then you do not exist at all."
                         ]
                     },
                     {
@@ -655,7 +650,6 @@ export const TRANSLATION = {
                         question: "Яка головна ідея проекту ?",
                         answers: [
                             "Всі заклади харчування України на одному сайті depoistu.com",
-                            "Якщо вашого закладу немає на нашому сайті, значить вас взагалі не існує."
                         ]
                     },
                     {
