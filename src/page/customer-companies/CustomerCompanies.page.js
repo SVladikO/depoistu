@@ -5,7 +5,7 @@ import QRCode from 'qrcode';
 
 import {EditBar, QRCodeButton, QRCodeMenuTitle, ImageQR} from "./CustomerCompanies.style";
 
-import {Company, NotificationLoading, Popup, PrimaryButton} from "components";
+import {Company, NotificationLoading, Popup, PrimaryButton, RowSplitter} from "components";
 import {ReactComponent as EditIcon} from "assets/icons/edit.svg";
 
 import {BE_API, fetchData} from 'utils/fetch'
@@ -82,6 +82,7 @@ const CustomerCompaniesPage = () => {
                     </Company>
             )
             }
+            <RowSplitter height={"20px"} />
             {customer && customer.canCreateCompanies > !!customerCompanies?.length &&
                 <Link to={URL.ADD_COMPANY}>
                     <PrimaryButton isWide withPadding>
