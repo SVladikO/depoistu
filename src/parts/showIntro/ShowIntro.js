@@ -5,10 +5,14 @@ import {ReactComponent as LogoIcon} from "assets/icons/logo.svg";
 import {LogoContainer, Address, Wrapper} from "./ShowIntro.style";
 import {useLocalStorage} from "utils/hook";
 import {LOCAL_STORAGE_KEY} from "utils/localStorage";
+import {enableScrollOnBody} from "../../components/Popup/Popup";
 
 const ShowIntro = () => {
     const [showIntro, setHideIntro] = useLocalStorage(LOCAL_STORAGE_KEY.SHOW_INTRO, true);
-    const closeIntroPopup = () => setHideIntro(false);
+    const closeIntroPopup = () => {
+        enableScrollOnBody();
+        setHideIntro(false);
+    }
     return (
         <>
             {showIntro && (<Popup.Bottom onClose={closeIntroPopup}>
