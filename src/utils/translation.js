@@ -598,7 +598,6 @@ export const TRANSLATION = {
                         question: "What is the main idea of the project?",
                         answers: [
                             "All catering establishments of Ukraine on one website depoistu.com",
-                            "If your catering establishments is not on our website, then you do not exist at all."
                         ]
                     },
                     {
@@ -655,7 +654,6 @@ export const TRANSLATION = {
                         question: "Яка головна ідея проекту ?",
                         answers: [
                             "Всі заклади харчування України на одному сайті depoistu.com",
-                            "Якщо вашого закладу немає на нашому сайті, значить вас взагалі не існує."
                         ]
                     },
                     {
