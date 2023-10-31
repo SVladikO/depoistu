@@ -9,7 +9,7 @@ import {Company, NotificationLoading, Popup, PrimaryButton, RowSplitter} from "c
 import {ReactComponent as EditIcon} from "assets/icons/edit.svg";
 
 import {BE_API, fetchData} from 'utils/fetch'
-import {ORDER_PRINT, ROUTER, URL} from "utils/config";
+import {ORDER_PRINT_URL, ROUTER, URL} from "utils/config";
 import {translate, TRANSLATION} from "utils/translation";
 import {ReactComponent as QRCodeIcon} from "assets/icons/qr_code.svg";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
@@ -109,15 +109,17 @@ const PopupQRCode = ({companyId, onClose}) => {
 
     return (
         <Popup.Bottom onClose={onClose}>
-            <QRCodeMenuTitle>{translate(TRANSLATION.MENU)}</QRCodeMenuTitle>
+            <QRCodeMenuTitle>
+                {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.QR_MENU_TITLE)}
+            </QRCodeMenuTitle>
             {src && <ImageQR src={src}/>}
             {qrCodeGenerationError}
             <OrderPrint
-                href={ORDER_PRINT}
+                href={ORDER_PRINT_URL}
                 target="_blank"
                 rel="noreferrer"
             >
-                {translate(TRANSLATION.ORDER_PRINT)}
+                {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.ORDER_PRINT)}
             </OrderPrint>
         </Popup.Bottom>
     )

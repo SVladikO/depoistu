@@ -46,14 +46,6 @@ export const TRANSLATION = {
         ua: 'Перейти на сторінку пошуку',
         en: 'Go to a search page'
     },
-    MENU: {
-        ua: 'МЕНЮ',
-        en: 'MENU'
-    },
-    ORDER_PRINT: {
-        ua: 'замовити друк',
-        en: 'order printing'
-    },
     INTRODUCTION: {
         BUTTON: {
             ua: 'Далі',
@@ -313,6 +305,14 @@ export const TRANSLATION = {
             TOP_TITLE: {
                 ua: "Ваші заклади",
                 en: 'Your companies'
+            },
+            QR_MENU_TITLE: {
+                ua: 'МЕНЮ',
+                en: 'MENU'
+            },
+            ORDER_PRINT: {
+                ua: 'замовити друк',
+                en: 'order printing'
             },
             WARNING: {
                 ua: "Не додавайте заклади заради розваги. Інакше будемо змушені заблокувати ваш аккаунт. Не витрачайте ваш і наш час дарма. Дякуєм.",
