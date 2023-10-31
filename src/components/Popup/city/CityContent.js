@@ -85,11 +85,19 @@ export const CityContent = ({onSelectCity, availableCityIds, onClose}) => {
             <CitiesWrapper onClick={disableEventBubbling}>
                 <div ref={topRef}/>
                 {/*Expected array structure: ['101', '202', ... ]*/}
-                {citiesOrRegionsToRender.map((id, i) =>
+                {citiesOrRegionsToRender
+                    .map(id => {
+                        return {
+                            id,
+                            title: translate(CITY_TRANSLATION_IDS[id]) + (isRegion ? regionLabel : '')
+                        }
+                    })
+                    .sort((a, b) => a.title - b.title)
+                    .map((city, i) =>
                     <SettingMenuRow
-                        changeHandler={changeHandlerSettingMenuRow(id)}
+                        changeHandler={changeHandlerSettingMenuRow(city.id)}
                         key={i.toString()}
-                        title={isRegion ? translate(CITY_TRANSLATION_IDS[id]) + regionLabel : translate(CITY_TRANSLATION_IDS[id])}
+                        title={city.title}
                         label=""
                         style={{margin: 0, padding: '0 0 20px'}}
                     />
