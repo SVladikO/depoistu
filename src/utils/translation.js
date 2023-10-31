@@ -46,6 +46,14 @@ export const TRANSLATION = {
         ua: 'Перейти на сторінку пошуку',
         en: 'Go to a search page'
     },
+    MENU: {
+        ua: 'МЕНЮ',
+        en: 'MENU'
+    },
+    ORDER_PRINT: {
+        ua: 'замовити друк',
+        en: 'order printing'
+    },
     INTRODUCTION: {
         BUTTON: {
             ua: 'Далі',
