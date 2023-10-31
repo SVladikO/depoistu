@@ -1187,7 +1187,7 @@ export const TRANSLATION = {
         },
         BEER_ADDICTIVES: {
             en: "Beer addictives",
-            ua: "Додатки до пиво"
+            ua: "Додатки до пива"
         },
         COFFEE: {
             en: "Coffee",
@@ -1338,7 +1338,7 @@ export const TRANSLATION = {
             en: 'Fish dishes'
         },
         DISHES_ON_FIRE: {
-            ua: 'Монгал',
+            ua: 'Мангал',
             en: 'Dishes on fire'
         },
         DISHES_WITH_SMOKE: {
@@ -1469,6 +1469,10 @@ export const TRANSLATION = {
             ua: 'Коктейлі алкогольні',
             en: 'Cocktails alcohol'
         },
+        HALLOWEEN_MENU: {
+            ua: 'Хелоуінське меню',
+            en: 'Halloween menu'
+        },
         KHACHAPURI: {
             ua: 'Хачапурі',
             en: 'Khachapuri'
@@ -1476,6 +1480,10 @@ export const TRANSLATION = {
         COCKTAILS: {
             ua: 'Коктейлі без алкогольні',
             en: 'Cocktails no alcohol'
+        },
+        MILK_COCKTAILS: {
+            ua: 'Молочні коктейлі',
+            en: 'Milk coctails'
         },
         SHAWARMA: {
             ua: 'Шаверма',
