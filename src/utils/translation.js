@@ -13,7 +13,7 @@ export const truncate = (text, availableLength = 1) => {
     return text.substring(0, availableLength) + ' ...';
 };
 
-export const currentLanguage = LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE).language.siteLanguage;
+export const currentLanguage = LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE)?.language?.siteLanguage;
 
 export const translate = obj => {
     let language = currentLanguage;
@@ -52,12 +52,8 @@ export const TRANSLATION = {
             en: 'Continue'
         },
         TEXT: {
-            ua: [
-                'Меню України.',
-            ],
-            en: [
-                'Menu of Ukraine.',
-            ]
+            ua: ['Все меню України.'],
+            en: ['All menu of Ukraine.']
         },
     },
     VALIDATION: {
