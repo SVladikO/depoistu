@@ -3,6 +3,6 @@ import {COLOR, FONT} from "utils/theme";
 
 export const Text22 = styled.div`
   ${FONT.SIZE_22};
-  text-align: left;
+  text-align: center;
   color: ${COLOR.ACCENT1};
 `;

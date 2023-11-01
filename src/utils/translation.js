@@ -53,12 +53,10 @@ export const TRANSLATION = {
         },
         TEXT: {
             ua: [
-                'Меню всіх закладів харчування України має бути в  одному місці. На цьому сайті.',
-                'Ми не показуємо в пошуку міста в яких ще не зареєструвались заклади.',
+                'Меню України.',
             ],
             en: [
-                'The menu of all cafes and restaurants of Ukraine should be in one place. On this site.',
-                'We don`t show in the search engine cities in which establishments have not yet been registered.',
+                'Menu of Ukraine.',
             ]
         },
     },
