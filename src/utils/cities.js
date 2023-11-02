@@ -292,6 +292,7 @@ export const CITY_TRANSLATION_IDS = {
     1033: {ua: "Фастів", en: "Fastiv"},
     1034: {ua: "Чорнобиль", en: "Chornobyl"},
     1035: {ua: "Яготин", en: "Yahotyn"},
+    1036: {ua: "Білогородка", en: "Bilogorodka"},
 
     1100: {ua: "Крим (АРК)", en: "Crimea"},
     1101: {ua: "Алупка", en: "Alupka"},
