@@ -33,7 +33,7 @@ const Popup = (props) => {
                     <CloseIcon/>
                 </CloseButtonWrapper>
                 }
-                <Component onClose={closePopup} {...props} />
+                <Component {...props} onClose={closePopup}/>
             </Wrapper>
         </InvisibleWrapper>
     );
