@@ -13,7 +13,7 @@ export const truncate = (text, availableLength = 1) => {
     return text.substring(0, availableLength) + ' ...';
 };
 
-export const currentLanguage = LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE).language.siteLanguage;
+export const currentLanguage = LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE)?.language?.siteLanguage;
 
 export const translate = obj => {
     let language = currentLanguage;
@@ -52,14 +52,8 @@ export const TRANSLATION = {
             en: 'Continue'
         },
         TEXT: {
-            ua: [
-                'Меню всіх закладів харчування України має бути в  одному місці. На цьому сайті.',
-                'Ми не показуємо в пошуку міста в яких ще не зареєструвались заклади.',
-            ],
-            en: [
-                'The menu of all cafes and restaurants of Ukraine should be in one place. On this site.',
-                'We don`t show in the search engine cities in which establishments have not yet been registered.',
-            ]
+            ua: ['Все меню України.'],
+            en: ['All menu of Ukraine.']
         },
     },
     VALIDATION: {
