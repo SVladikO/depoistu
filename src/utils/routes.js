@@ -32,7 +32,7 @@ export const Content = styled.div`
   flex-direction: column;
   justify-content: start;
   padding: 90px 0 0;
-  min-height: 500px;
+  min-height: 400px;
 `;
 
 const Element = (props) => {
