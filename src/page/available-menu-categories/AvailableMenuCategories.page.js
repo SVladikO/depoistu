@@ -1,5 +1,5 @@
 import React from 'react';
-import {Wrapper, Table} from "./AvailableMenuCategories.page.style";
+import {Table} from "./AvailableMenuCategories.page.style";
 
 import {useScrollUp} from "utils/hook";
 import {translate, TRANSLATION} from "utils/translation";
