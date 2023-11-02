@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {DisabledButton} from "components/Buttons/DisabledButton";
+import {COLOR, FONT} from "utils/theme";
 
 export const ImageQR = styled.img`
   height: 320px;
@@ -37,4 +38,12 @@ export const EditBar = styled.div`
   padding: 20px 0 0 0;
 `;
 
+export const OrderPrint = styled.a`
+  ${FONT.SIZE_32};
+  ${FONT.WEIGHT_700};
+  display: flex;
+  justify-content: center;
+  color: ${COLOR.INFO1} !important;
+  margin-top: 23px;
+`
 

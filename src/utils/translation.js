@@ -306,6 +306,14 @@ export const TRANSLATION = {
                 ua: "Ваші заклади",
                 en: 'Your companies'
             },
+            QR_MENU_TITLE: {
+                ua: 'МЕНЮ',
+                en: 'MENU'
+            },
+            ORDER_PRINT: {
+                ua: 'замовити друк',
+                en: 'order printing'
+            },
             WARNING: {
                 ua: "Не додавайте заклади заради розваги. Інакше будемо змушені заблокувати ваш аккаунт. Не витрачайте ваш і наш час дарма. Дякуєм.",
                 en: "Don't add companies for fun as we will block your account.  Don't waste your time and ours. Thanks."
