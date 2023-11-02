@@ -62,9 +62,9 @@ export const AllRoutes = () => {
     return (
         <>
             <Routes>
-                {/*<Route path={DEV_ROUTER.COMPONENTS} element={<ComponentsPage/>}/>*/}
-                {/*<Route path={DEV_ROUTER.ADMIN} element={<AdminPage/>}/>*/}
-                {/*<Route path={DEV_ROUTER.API} element={<ApiPage/>}/>*/}
+                <Route path={DEV_ROUTER.COMPONENTS} element={<ComponentsPage/>}/>
+                <Route path={DEV_ROUTER.ADMIN} element={<AdminPage/>}/>
+                <Route path={DEV_ROUTER.API} element={<ApiPage/>}/>
                 {ROUTERS.map(r => (
                     <Route
                         key={r.URL}
