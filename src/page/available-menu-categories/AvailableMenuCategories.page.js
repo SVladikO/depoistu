@@ -1,9 +1,9 @@
 import React from 'react';
-import {Wrapper, Table} from "./AvailableMenuCategories.page.style";
+import {Table} from "./AvailableMenuCategories.page.style";
 
 import {useScrollUp} from "utils/hook";
 import {translate, TRANSLATION} from "utils/translation";
-import {CATEGORY_BAR, CATEGORY_DESSERTS, CATEGORY_HOT_DRINKS, CATEGORY_KITCHEN} from "utils/category";
+import {CATEGORY_BAR, CATEGORY_DESSERTS, CATEGORY_HOT_DRINKS, CATEGORY_KITCHEN, CATEGORY_SUSHI} from "utils/category";
 
 const AvailableMenuCategoriesPage = () => {
     useScrollUp();
@@ -31,6 +31,8 @@ const AvailableMenuCategoriesPage = () => {
                 <tbody>
                 {renderGroup(translate(TRANSLATION.TOP_CATEGORIES.KITCHEN))}
                 {render(CATEGORY_KITCHEN)}
+                {renderGroup(translate(TRANSLATION.TOP_CATEGORIES.SUSHI))}
+                {render(CATEGORY_SUSHI)}
                 {renderGroup(translate(TRANSLATION.TOP_CATEGORIES.DESSERTS))}
                 {render(CATEGORY_DESSERTS)}
                 {renderGroup(translate(TRANSLATION.TOP_CATEGORIES.HOT_DRINKS))}

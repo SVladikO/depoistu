@@ -1,14 +1,16 @@
 import {Wrapper, Employee, Photo, FullName, Position, EmployeeView, EmployeeInfo, Socials} from "./OurTeam.page.style";
-import Vlad_imgSrc from 'assets/images/team/Vlad.png';
+
 import David_imgSrc from 'assets/images/team/David.png';
 import Irina_imgSrc from 'assets/images/team/Irina.png';
 import Alex_imgSrc from 'assets/images/team/Alex.png';
 import Pavlo_imgSrc from 'assets/images/team/Pavlo.png';
-import {useScrollUp} from "utils/hook";
+
 import {ReactComponent as Instagram} from "../../assets/icons/instagram.svg";
 import {ReactComponent as Facebook} from "../../assets/icons/facebook2.svg";
 import {ReactComponent as Twitter} from "../../assets/icons/twitter.svg";
 import {ReactComponent as LinkedIn} from "../../assets/icons/linkedin.svg";
+
+import {useScrollUp} from "utils/hook";
 
 const contributors = [
     {
@@ -51,13 +53,13 @@ const contributors = [
     }
     ,
     {
-        name: "Vlad Serhiychuk",
-        linkedInLink: "https://www.linkedin.com/in/vlad-serhiychuk-b753b7188",
-        position: ["Team Leader", "Full-stack developer"],
+        name: "Mr cat",
+        linkedInLink: "",
+        position: ["Owner", "Manager", "Team Leader", "Full-stack developer"],
         twitter: "",
         facebook: "",
         instagram: "",
-        src: Vlad_imgSrc
+        src: "https://png.pngtree.com/png-clipart/20230511/ourmid/pngtree-isolated-front-view-cat-on-white-background-png-image_7094909.png"
     }
 ]
 

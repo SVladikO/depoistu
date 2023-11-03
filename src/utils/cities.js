@@ -292,6 +292,7 @@ export const CITY_TRANSLATION_IDS = {
     1033: {ua: "Фастів", en: "Fastiv"},
     1034: {ua: "Чорнобиль", en: "Chornobyl"},
     1035: {ua: "Яготин", en: "Yahotyn"},
+    1036: {ua: "Білогородка", en: "Bilogorodka"},
 
     1100: {ua: "Крим (АРК)", en: "Crimea"},
     1101: {ua: "Алупка", en: "Alupka"},
@@ -653,4 +654,63 @@ export const CITY_TRANSLATION_IDS = {
     2514: {ua: "Семенівка", en: "Semenivka"},
     2515: {ua: "Чернігів", en: "Chernihiv"},
     2516: {ua: "Щорс", en: "Shchors"},
+}
+
+/**
+ * We need this function to sort cities in ua.
+ * We don't have problems with sort cities in en.
+ *
+ * @param {array[object]} cities - [{id, title}]
+ * @param {string} currentLanguage - Website language
+ * @return {*}
+ */
+export const sortCities = (cities, currentLanguage) => {
+    const alphabetSequence = sequenceAlphabetUA[currentLanguage]
+
+    if (alphabetSequence) {
+        //We take only first letter from city and use it as a key for alphabetSequence
+        return cities.sort((a, b) => alphabetSequence[a.title[0]] - alphabetSequence[b.title[0]])
+    } else {
+        // en alphabet is well sorted by this way and it will default way to sort.
+        return cities.sort()
+    }
+}
+
+// Solution on problem sort ua cities.
+const sequenceAlphabetUA = {
+    ua: {
+        'А': 1,
+        'Б': 2,
+        'В': 3,
+        'Г': 4,
+        'Ґ': 5,
+        'Д': 6,
+        'Е': 7,
+        'Є': 8,
+        'Ж': 9,
+        'З': 10,
+        'И': 11,
+        'І': 12,
+        'Ї': 13,
+        'Й': 14,
+        'К': 15,
+        'Л': 16,
+        'М': 17,
+        'Н': 18,
+        'О': 19,
+        'П': 20,
+        'Р': 21,
+        'С': 22,
+        'Т': 23,
+        'У': 24,
+        'Ф': 25,
+        'Х': 26,
+        'Ц': 27,
+        'Ч': 28,
+        'Ш': 29,
+        'Щ': 30,
+        'Ь': 31,
+        'Ю': 32,
+        'Я': 33
+    }
 }

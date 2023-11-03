@@ -1,14 +1,15 @@
 import {useRef, useState} from "react";
+import {useSelector} from "react-redux";
 
 import {Header, BackButton, CloseIconWrapper, Wrapper, CitiesWrapper} from "./CityContent.style"
 
 import {SettingMenuRow} from 'components'
 
-import {ReactComponent as CloseIcon} from "assets/icons/close.svg";
 import {ReactComponent as BackIcon} from "assets/icons/back.svg";
+import {ReactComponent as CloseIcon} from "assets/icons/close.svg";
 
 import {TRANSLATION, translate} from 'utils/translation';
-import {generateRegionCityTree, CITY_TRANSLATION_IDS} from "utils/cities";
+import {generateRegionCityTree, CITY_TRANSLATION_IDS, sortCities} from "utils/cities";
 
 const enableScrollOnBody = () => document.body.style.overflowY = 'auto';
 
@@ -22,6 +23,9 @@ const enableScrollOnBody = () => document.body.style.overflowY = 'auto';
  * @constructor
  */
 export const CityContent = ({onSelectCity, availableCityIds, onClose}) => {
+
+    const currentLanguage = useSelector(state => state.language.siteLanguage);
+
     const regionCityTree = generateRegionCityTree(availableCityIds);
     const regionIds = Object.keys(regionCityTree);
     const [selectedRegionId, setSelectedRegionId] = useState('');
@@ -66,9 +70,14 @@ export const CityContent = ({onSelectCity, availableCityIds, onClose}) => {
 
     const regionLabel = translate(TRANSLATION.COMPONENTS.POPUP.CITY.INPUT);
 
+    let cities = citiesOrRegionsToRender
+        .map(id => ({id, title: translate(CITY_TRANSLATION_IDS[id]) + (isRegion ? regionLabel : '')}));
+
+    cities = sortCities(cities, currentLanguage)
+
+
     return (
         <Wrapper onClick={disableEventBubbling}>
-
             <Header>
                 {!isRegion ? (
                         <BackButton onClick={handleBackButtonClick}>
@@ -85,18 +94,22 @@ export const CityContent = ({onSelectCity, availableCityIds, onClose}) => {
             <CitiesWrapper onClick={disableEventBubbling}>
                 <div ref={topRef}/>
                 {/*Expected array structure: ['101', '202', ... ]*/}
-                {citiesOrRegionsToRender.map((id, i) =>
-                    <SettingMenuRow
-                        changeHandler={changeHandlerSettingMenuRow(id)}
-                        key={i.toString()}
-                        title={isRegion ? translate(CITY_TRANSLATION_IDS[id]) + regionLabel : translate(CITY_TRANSLATION_IDS[id])}
-                        label=""
-                        style={{margin: 0, padding: '0 0 20px'}}
-                    />
-                )}
+                {cities
+                    .map((city, i) =>
+                        <SettingMenuRow
+                            changeHandler={changeHandlerSettingMenuRow(city.id)}
+                            key={i.toString()}
+                            title={city.title}
+                            label=""
+                            style={{margin: 0, padding: '0 0 20px'}}
+                        />
+                    )}
             </CitiesWrapper>
         </Wrapper>
     )
 };
+
+
+
 
 export default CityContent;

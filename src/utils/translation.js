@@ -13,7 +13,7 @@ export const truncate = (text, availableLength = 1) => {
     return text.substring(0, availableLength) + ' ...';
 };
 
-export const currentLanguage = LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE).language.siteLanguage;
+export const currentLanguage = LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE)?.language?.siteLanguage;
 
 export const translate = obj => {
     let language = currentLanguage;
@@ -52,14 +52,8 @@ export const TRANSLATION = {
             en: 'Continue'
         },
         TEXT: {
-            ua: [
-                'Меню всіх закладів харчування України має бути в  одному місці. На цьому сайті.',
-                'Ми не показуємо в пошуку міста в яких ще не зареєструвались заклади.',
-            ],
-            en: [
-                'The menu of all cafes and restaurants of Ukraine should be in one place. On this site.',
-                'We don`t show in the search engine cities in which establishments have not yet been registered.',
-            ]
+            ua: ['Все меню України.'],
+            en: ['All menu of Ukraine.']
         },
     },
     VALIDATION: {
@@ -305,6 +299,14 @@ export const TRANSLATION = {
             TOP_TITLE: {
                 ua: "Ваші заклади",
                 en: 'Your companies'
+            },
+            QR_MENU_TITLE: {
+                ua: 'МЕНЮ',
+                en: 'MENU'
+            },
+            ORDER_PRINT: {
+                ua: 'замовити друк',
+                en: 'order printing'
             },
             WARNING: {
                 ua: "Не додавайте заклади заради розваги. Інакше будемо змушені заблокувати ваш аккаунт. Не витрачайте ваш і наш час дарма. Дякуєм.",
@@ -955,6 +957,10 @@ export const TRANSLATION = {
             ua: "Кухня",
             en: "Kitchen",
         },
+        SUSHI: {
+            ua: "Суші",
+            en: "Sushi",
+        },
         DESSERTS: {
             ua: "Десерти",
             en: "Desserts",
@@ -1057,10 +1063,13 @@ export const TRANSLATION = {
             en: "Ice cream",
             ua: "Морозиво"
         },
-
         FRESH: {
             en: "Fresh",
             ua: "Фреші"
+        },
+        JUICE: {
+            en: "Juice",
+            ua: "Сік"
         },
         HOMEMADE_LEMONADE: {
             en: "Homemade lemonades",
@@ -1178,6 +1187,10 @@ export const TRANSLATION = {
             en: "Beer",
             ua: "Пиво"
         },
+        BEER_ADDICTIVES: {
+            en: "Beer addictives",
+            ua: "Додатки до пива"
+        },
         COFFEE: {
             en: "Coffee",
             ua: "Кава"
@@ -1242,6 +1255,10 @@ export const TRANSLATION = {
             ua: "Бургери",
             en: "Burgers"
         },
+        HONG_KONG_WAFFLES: {
+            ua: "Гонконгські вафлі",
+            en: "Hong Kong waffles"
+        },
         ROLLS: {
             ua: "Роли",
             en: "Rolls"
@@ -1267,8 +1284,12 @@ export const TRANSLATION = {
             en: "Noodles"
         },
         PIZZA: {
-            ua: "Пiцца",
+            ua: "Пiца",
             en: "Pizza"
+        },
+        PIZZA_ADDICTIVES: {
+            ua: "Додатки до пiци",
+            en: "Pizza addictives"
         },
         SANDWITCH: {
             ua: "Сендвичi",
@@ -1319,8 +1340,96 @@ export const TRANSLATION = {
             en: 'Fish dishes'
         },
         DISHES_ON_FIRE: {
-            ua: 'Монгал',
+            ua: 'Мангал',
             en: 'Dishes on fire'
+        },
+        DISHES_WITH_SMOKE: {
+            ua: 'Страви з димком',
+            en: 'Dishes with smoke'
+        },
+        HOT_ROLLS: {
+            ua: 'Гарячі роли',
+            en: 'Hot rolls'
+        },
+        GRILLED_ROLLS: {
+            ua: 'Гриль роли',
+            en: 'Grilled rolls'
+        },
+        NOGIRI: {
+            ua: 'Нігірі',
+            en: 'Nigiri'
+        },
+        GUNKANS: {
+            ua: 'Гункани',
+            en: 'Gunkans'
+        },
+        SPRING_ROLLS: {
+            ua: 'Спрінг роли',
+            en: 'Spring rolls'
+        },
+        SIGNATURE_ROLLS: {
+            ua: 'Фірмові роли',
+            en: 'Signature rolls'
+        },
+        TAR_TAR_ROLES: {
+            ua: 'Роли тар-тар',
+            en: 'Tar-tar roles'
+        },
+        PHILADELPHIA_DE_LUXE: {
+            ua: 'Філадельфія де люкс',
+            en: 'Philadelphia de luxe'
+        },
+        DRAGONS: {
+            ua: 'Дракони',
+            en: 'Dragons'
+        },
+        CALIFORNIA: {
+            ua: 'Каліфорнія',
+            en: 'California'
+        },
+        CALIFORNIAN: {
+            ua: 'Каліфорнійський',
+            en: 'Californian'
+        },
+        PHILADELPHIA: {
+            ua: 'Філадельфія',
+            en: 'Philadelphia'
+        },
+        MAKI: {
+            ua: 'Макі',
+            en: 'Maki'
+        },
+        FUTO: {
+            ua: 'Футо',
+            en: 'Futo'
+        },
+        YAQUIMESI: {
+            ua: 'Якімесі',
+            en: 'Yaquimesi'
+        },
+        WOK_UDON_NOODLES: {
+            ua: 'Лапша вок удон',
+            en: 'Wok udon noodles'
+        },
+        SARADA: {
+            ua: 'Сарада',
+            en: 'Sarada'
+        },
+        HALLOWEEN: {
+            ua: 'Хелоуїнське',
+            en: 'Halloween'
+        },
+        LIGHT_MEALS: {
+            ua: 'Легкі страви',
+            en: 'Light meals'
+        },
+        ROLLINI: {
+            ua: 'Роліні',
+            en: 'Rollini'
+        },
+        AUTHORS_TEAS: {
+            ua: 'Авторські чаї',
+            en: "Author's teas"
         },
         OWN_SMOKING: {
             ua: 'Власне копчення',
@@ -1362,9 +1471,21 @@ export const TRANSLATION = {
             ua: 'Коктейлі алкогольні',
             en: 'Cocktails alcohol'
         },
+        HALLOWEEN_MENU: {
+            ua: 'Хелоуінське меню',
+            en: 'Halloween menu'
+        },
+        KHACHAPURI: {
+            ua: 'Хачапурі',
+            en: 'Khachapuri'
+        },
         COCKTAILS: {
             ua: 'Коктейлі без алкогольні',
             en: 'Cocktails no alcohol'
+        },
+        MILK_COCKTAILS: {
+            ua: 'Молочні коктейлі',
+            en: 'Milk coctails'
         },
         SHAWARMA: {
             ua: 'Шаверма',

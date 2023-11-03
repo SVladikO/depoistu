@@ -27,7 +27,7 @@ const Footer = () => {
 
     return (
         <>
-            <RowSplitter height={'340px'}/>
+            <RowSplitter height={'100px'}/>
             <Wrapper>
                 {/*TODO: DO you like this website BE part will be added a bit later as it isn't hight priority */}
                 {/*{customer && (*/}

@@ -32,7 +32,7 @@ export const Content = styled.div`
   flex-direction: column;
   justify-content: start;
   padding: 90px 0 0;
-  min-height: 500px;
+  min-height: 400px;
 `;
 
 const Element = (props) => {
@@ -62,9 +62,9 @@ export const AllRoutes = () => {
     return (
         <>
             <Routes>
-                {/*<Route path={DEV_ROUTER.COMPONENTS} element={<ComponentsPage/>}/>*/}
-                {/*<Route path={DEV_ROUTER.ADMIN} element={<AdminPage/>}/>*/}
-                {/*<Route path={DEV_ROUTER.API} element={<ApiPage/>}/>*/}
+                <Route path={DEV_ROUTER.COMPONENTS} element={<ComponentsPage/>}/>
+                <Route path={DEV_ROUTER.ADMIN} element={<AdminPage/>}/>
+                <Route path={DEV_ROUTER.API} element={<ApiPage/>}/>
                 {ROUTERS.map(r => (
                     <Route
                         key={r.URL}

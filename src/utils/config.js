@@ -220,3 +220,5 @@ export const ROUTER = {
 };
 
 export const ROUTERS = Object.keys(ROUTER).map(key => ROUTER[key]);
+
+export const ORDER_PRINT_URL = 'https://art-teh.kiev.ua/naklejki-s-qr---kodom-40h40-mm'
