@@ -23,6 +23,7 @@ export const Header = styled.div`
   z-index: 30;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   margin: auto;
 `;
 export const Row = styled.div`
