@@ -6,9 +6,7 @@ import {FixedWrapper, Footer} from "components";
 
 import {DEV_ROUTER, ROUTERS} from "./config";
 
-import ApiPage from "page/development/Api.page";
 import AdminPage from "page/development/Admin.page";
-import ComponentsPage from 'page/development/Components.page';
 
 import {COLOR, DEVICE_WIDTH} from './theme';
 import {useScrollUp, useHideOnScroll} from "./hook";
@@ -62,9 +60,7 @@ export const AllRoutes = () => {
     return (
         <>
             <Routes>
-                <Route path={DEV_ROUTER.COMPONENTS} element={<ComponentsPage/>}/>
                 <Route path={DEV_ROUTER.ADMIN} element={<AdminPage/>}/>
-                <Route path={DEV_ROUTER.API} element={<ApiPage/>}/>
                 {ROUTERS.map(r => (
                     <Route
                         key={r.URL}
