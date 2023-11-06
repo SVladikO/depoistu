@@ -127,7 +127,7 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                         <Input
                             Icon={PhoneIcon}
                             name="phone1"
-                            type="number"
+                            type="text"
                             value={values.phone1}
                             labelName={`${translate(TRANSLATION.INPUT_LABEL.COMPANY.PHONE)} 1`}
                             errorMessage={errors.phone1}
@@ -141,7 +141,7 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                             labelName={`${translate(TRANSLATION.INPUT_LABEL.COMPANY.PHONE)} 2`}
                             Icon={PhoneIcon}
                             name="phone2"
-                            type="number"
+                            type="text"
                             value={values.phone2}
                             errorMessage={errors.phone2}
                             isTouched={touched.phone2 || wasSubmitted}
@@ -152,7 +152,7 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                         <Input
                             Icon={PhoneIcon}
                             name="phone3"
-                            type="number"
+                            type="text"
                             value={values.phone3}
                             errorMessage={errors.phone3}
                             labelName={`${translate(TRANSLATION.INPUT_LABEL.COMPANY.PHONE)} 3`}
