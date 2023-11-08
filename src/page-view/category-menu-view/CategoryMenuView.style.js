@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {COLOR, GRADIENT, hexToRgbA} from "utils/theme";
+import {COLOR, FONT, GRADIENT, hexToRgbA} from "utils/theme";
 import {ContentContainerDefault} from "components/ContentContainer/ContentContainer.style";
 
 export const SubCategoryWrapper = styled.div`
@@ -15,26 +15,25 @@ export const SubCategoryWrapper = styled.div`
   background: none;
 `;
 export const BgWrapper = styled.div`
-  background: ${COLOR.ACCENT1};
+  //background: ${COLOR.ACCENT1};
   overflow: hidden;
-  background-image: linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO});  
+   background-image: linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO});  
 `;
 export const TopCategoryWrapper = styled.div`
   display: flex;
-  //background: ${COLOR.ACCENT4};
-  
 `;
 export const TopCategoryItem = styled.div`
-  height: 60px;
+  height: 50px;
   display: flex;
-  align-items: center;
+  align-items: baseline;
   cursor: pointer;
   z-index: 1;
   color: ${COLOR.ACCENT1};
-  font-size: 20px;
-  padding: 10px 14px;
-  color: ${p => p.isSelected ? COLOR.ACCENT4 : COLOR.ACCENT1};
-  background: ${p => p.isSelected ? 'none' : COLOR.ACCENT4};
+  ${FONT.SIZE_18};
+  padding: 10px 14px 20px;
+  border-bottom: solid 3px ${p => p.isSelected ? COLOR.ACCENT3 : COLOR.ACCENT4};
+  color: ${p => p.isSelected ? COLOR.ACCENT1 : COLOR.ACCENT1};
+  background: ${p => p.isSelected ? COLOR.ACCENT4 : 'none'};
 `;
 
 export const CategoryTitle = styled.div`
