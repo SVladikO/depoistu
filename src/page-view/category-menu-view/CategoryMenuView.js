@@ -7,7 +7,6 @@ import "swiper/css/pagination";
 import 'swiper/css/scrollbar';
 
 import {
-    TopCategoryWrapper,
     TopCategoryItem,
     BgWrapper,
     SubCategoryWrapper,
@@ -33,7 +32,7 @@ import {
 } from "./utils";
 
 const CATEGORY_TITLE_CLASS_NAME = 'CATEGORY_TITLE_CLASS_NAME';
-const CATEGORY_ROW_HEIGHT = 124;
+const CATEGORY_ROW_HEIGHT = 120;
 
 let indexCalculator = 0;
 let categoryIdIndexMapper = {};
@@ -206,7 +205,7 @@ const CategoryMenuView = ({
                     {/*** TOP CATEGORIES ***/}
                     <HorizontalSwiper
                         slidesPerView={4}
-                        sliderStylePadding='0 0 8px'
+                        sliderStylePadding='0 6px 8px'
                         subCategoryIndex={selectedTopCategoryId}
                     >
                         {topCategories.map(details => renderTopCategory(details))}
@@ -215,7 +214,7 @@ const CategoryMenuView = ({
                     <BgWrapper>
                         <SubCategoryWrapper className={CATEGORY_CLASSNAME}>
                             <HorizontalSwiper
-                                sliderStylePadding={'0 0 14px 0'}
+                                sliderStylePadding={'0 6px 14px'}
                                 subCategoryIndex={categoryIdIndexMapper[selectedSubCategoryId]}
                             >
                                 {subCategories}
