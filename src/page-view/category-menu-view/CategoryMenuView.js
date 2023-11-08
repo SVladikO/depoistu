@@ -194,8 +194,6 @@ const CategoryMenuView = ({
         }
     })
 
-    console.log({selectedSubCategoryId})
-
     return (
         <>
             <MenuHeader className="menu-header">

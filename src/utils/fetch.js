@@ -1,6 +1,29 @@
 import {BE_DOMAIN} from "./config";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
-import {translate, TRANSLATION} from "./translation";
+import {DEFAULT_LANGUAGE, getCurrentLanguage, translate, TRANSLATION} from "./translation";
+
+// it's function because we take data from localStorage
+function getOptions(body) {
+    const defaultOption = {
+        headers: {
+            'Content-Type': 'application/json',
+            "x-access-token": LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE)?.customer?.value?.token,
+            "current-language": getCurrentLanguage() || DEFAULT_LANGUAGE
+        }
+    };
+
+    if (!body) {
+        return defaultOption;
+    }
+
+    return {
+        ...defaultOption,
+        ...{
+            method: body?.method || 'POST',
+            body: JSON.stringify(body)
+        }
+    }
+}
 
 export const fetchData = async (url, body) => {
     let response;
@@ -16,7 +39,15 @@ export const fetchData = async (url, body) => {
         response = await fetch(decodeURIComponent(url), getOptions(body));
     } catch (error) {
         return new Promise((resolve, reject) => {
-            reject({status: 500, body: {errorMessage: translate(TRANSLATION.NOTIFICATION.UN_ABLE_MAKE_REQUEST)}});
+            reject({
+                    status: 500,
+                    body: {
+                        errorMessage: error.message === 'Failed to fetch'
+                            ? translate(TRANSLATION.NOTIFICATION.UN_ABLE_MAKE_REQUEST)
+                            : error.message
+                    }
+                }
+            );
         })
     }
 
@@ -35,28 +66,6 @@ export const fetchData = async (url, body) => {
     })
 }
 
-// it's function because we take data from localStorage
-function getOptions(body) {
-    const defaultOption = {
-        headers: {
-            'Content-Type': 'application/json',
-            "x-access-token": LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE)?.customer?.value?.token,
-            "current-language": LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE).language.siteLanguage,
-        }
-    };
-
-    if (!body) {
-        return defaultOption;
-    }
-
-    return {
-        ...defaultOption,
-        ...{
-            method: body?.method || 'POST',
-            body: JSON.stringify(body)
-        }
-    }
-};
 
 export const BE_API = {
     //TODO candidate to delete
@@ -93,8 +102,8 @@ export const BE_API = {
         CHANGE_IS_VISIBLE: () => `${BE_DOMAIN}/menu/visible`
     },
     DEVELOPMENT: {
-        API: () =>   `${BE_DOMAIN}/api`,
-        DB_MODE: () =>   `${BE_DOMAIN}/db-mode`
+        API: () => `${BE_DOMAIN}/api`,
+        DB_MODE: () => `${BE_DOMAIN}/db-mode`
     }
     // PLACE_ORDER: () => `${BE_DOMAIN}/place-order`,
 };

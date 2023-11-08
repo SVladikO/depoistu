@@ -1,5 +1,7 @@
 import {LocalStorage, LOCAL_STORAGE_KEY} from "./localStorage";
 
+export const DEFAULT_LANGUAGE = 'ua';
+
 export const LANGUAGE_KEYS = {
     UA: 'ua',
     EN: 'en'
@@ -13,17 +15,8 @@ export const truncate = (text, availableLength = 1) => {
     return text.substring(0, availableLength) + ' ...';
 };
 
-export const currentLanguage = LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE)?.language?.siteLanguage;
-
-export const translate = obj => {
-    let language = currentLanguage;
-
-    if (!currentLanguage) {
-        language = 'en'
-    }
-
-    return obj[language];
-}
+export const getCurrentLanguage = () => LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE)?.language?.siteLanguage;
+export const translate = obj => obj[getCurrentLanguage() || DEFAULT_LANGUAGE];
 
 export const TRANSLATION = {
     YES: {
