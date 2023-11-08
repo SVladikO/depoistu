@@ -155,19 +155,14 @@ const SettingPage = () => {
                                 groupTitle={translate(TR.PAGE.SETTINGS.GROUP_TITLE.FOR_BUSINESS)}
                             >
                                 <SettingMenuRow
-                                    icon={InstructionIcon}
-                                    title={translate(TR.PAGE.SETTINGS.MENU_ROW.INSTRUCTION_FOR_BUSINESS_OWNER)}
-                                    href={URL.INSTRUCTION_FOR_BUSINESS_OWNER}
+                                    icon={StoreIcon}
+                                    title={translate(TR.PAGE.SETTINGS.MENU_ROW.COMPANY)}
+                                    href={URL.CUSTOMER_COMPANIES}
                                 />
                                 <SettingMenuRow
                                     icon={MenuCategoryIcon}
                                     title={translate(TR.PAGE.SETTINGS.MENU_ROW.AVAILABLE_MENU_CATEGORIES)}
                                     href={URL.AVAILABLE_MENU_CATEGORIES}
-                                />
-                                <SettingMenuRow
-                                    icon={StoreIcon}
-                                    title={translate(TR.PAGE.SETTINGS.MENU_ROW.COMPANY)}
-                                    href={URL.CUSTOMER_COMPANIES}
                                 />
                             </AccountSettings>
                         }
@@ -175,12 +170,17 @@ const SettingPage = () => {
                 }
                 <AccountSettings
                     noTopBorder={customer}
-                    groupTitle={translate(TR.PAGE.SETTINGS.GROUP_TITLE.OPTIONS)}>
+                    groupTitle={translate(TR.PAGE.SETTINGS.GROUP_TITLE.OTHERS)}>
                     {/*<SettingMenuRow icon={NewsletterIcon} title='Newsletter' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
                     {/*<SettingMenuRow icon={NotificationIcon} title='Notification' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
                     {/*<SettingMenuRow icon={PhoneCallIcon} title='Phone Call' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
                     {/*<SettingMenuRow icon={CurrencyIcon} title={translate(TR.PAGE.SETTINGS.MENU_ROW.CURRENCY)} href='/catalog' label='$USD'/>*/}
                     {/*<SettingMenuRow icon={HelpIcon} title={translate(TR.PAGE.SETTINGS.MENU_ROW.HELP)} href='/catalog'/>*/}
+                    <SettingMenuRow
+                        icon={InstructionIcon}
+                        title={translate(TR.PAGE.SETTINGS.MENU_ROW.INSTRUCTION_FOR_BUSINESS_OWNER)}
+                        href={URL.INSTRUCTION_FOR_BUSINESS_OWNER}
+                    />
                     <SettingMenuRow
                         icon={LanguageIcon}
                         title={translate(TR.PAGE.SETTINGS.MENU_ROW.LANGUAGE)}
