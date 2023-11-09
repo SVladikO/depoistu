@@ -471,8 +471,8 @@ export const TRANSLATION = {
                     en: "Change Password"
                 },
                 INSTRUCTION_FOR_BUSINESS_OWNER: {
-                    en: "Usage instruction",
-                    ua: "Інструкція користувача"
+                    en: "Business instructions",
+                    ua: "Інструкції для бізнесу"
                 },
                 COMPANY: {
                     en: "My сompanies",
@@ -568,9 +568,9 @@ export const TRANSLATION = {
                     ua: "Для бізнесу",
                     en: "For business"
                 },
-                OPTIONS: {
-                    ua: "Розширенi налаштування",
-                    en: "More Options"
+                OTHERS: {
+                    ua: "Інше",
+                    en: "Others"
                 },
             },
             USER_PHONE_LABEL: {
