@@ -915,21 +915,21 @@ export const TRANSLATION = {
             },
             LOADING_AVAILABLE_CITIES: {
                 en: "Loading cities with registered cities",
-                ua: "Загрузка міст де є зареєстровані заклади"
+                ua: "Завантаження міст де є зареєстровані заклади"
             },
 
             LOADING_COMPANY: {
                 en: "Loading company ...",
-                ua: "Загрузка закладу ..."
+                ua: "Завантаження закладу ..."
             },
         },
         LOADING_AVAILABLE_COMPANIES: {
             en: "Loading companies ...",
-            ua: "Загрузка закладів ..."
+            ua: "Завантаження закладів ..."
         },
         LOADING_MENU: {
             en: "Loading menu ...",
-            ua: "Загрузка меню ..."
+            ua: "Завантаження меню ..."
         },
 
     },
