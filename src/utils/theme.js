@@ -67,7 +67,7 @@ export const BORDER_RADIUS = {
     DAY_IN_SCHEDULE: '8px',
     SUB_CATEGORY: '12px',
     COMPANY: '0px',
-    MENU_ITEM: '10px',
+    MENU_ITEM: '0',
     FIRST: '0px',
     CITY_POPUP: '20px',
     THIRD: '0px',

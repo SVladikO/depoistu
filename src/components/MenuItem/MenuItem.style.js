@@ -1,18 +1,15 @@
 import styled from "styled-components";
-import {BORDER_RADIUS, COLOR, FONT, SHADOW} from "utils/theme";
+import {BORDER_RADIUS, COLOR, FONT} from "utils/theme";
 
 export const Wrapper = styled.div`
-  ${SHADOW};
   position: relative;
-  width: 96%;
   font-style: normal;
   font-size: 16px;
   line-height: 19px;
   background: ${COLOR.ACCENT4};
   border-radius: ${BORDER_RADIUS.MENU_ITEM};
   border: solid 1px ${COLOR.ACCENT9};
-  margin: 0 auto 6px;
-  svg{
+  svg {
     width: 25px;
     height: 25px;
   }
@@ -28,13 +25,6 @@ export const InfoWrapper = styled.div`
 
 export const Info = styled.div`
   padding: 16px;
-`
-
-export const InfoOneRow = styled.div`
-  padding: 16px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
 `
 
 export const NewFlag = styled.div`
@@ -74,7 +64,7 @@ export const FoodImage = styled.img`
 
 export const SizePriceWrapper = styled.div`
   display: flex;
-  justify-content: end;
+  justify-content: left;
 `;
 
 export const FoodTitle = styled.div`
@@ -112,15 +102,19 @@ export const EditLabel = styled.span`
 
 export const SeeMore = styled.span`
   cursor: pointer;
-  color: ${COLOR.INFO1};
+  color: ${COLOR.ACCENT3};
   &:hover {
     text-decoration: underline;
   }
 `;
 
+export const SpanWeight600 = styled.span`
+  ${FONT.WEIGHT_600};
+`;
 export const SizePriceTd = styled.td`
   ${FONT.SIZE_20};
-  text-align: right;
+  color: ${COLOR.ACCENT1};
+  //text-align: right;
 `;
 
 export const EditRow = styled.div`
