@@ -14,7 +14,7 @@ import {
 } from './Admin.style';
 
 import {ReactComponent as LoadingIcon} from "assets/icons/spinner.svg";
-import {NavigationHeader, PrimaryButton, RowSplitter} from "components";
+import {NavigationHeader, PrimaryButton, RowSplitter, SecondaryButton} from "components";
 import {fetchData} from "utils/fetch";
 
 import {BE_API} from 'utils/fetch'
@@ -24,8 +24,6 @@ import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import ApiPage from "./Api.page";
 import ComponentsPage from "./Components.page";
 import {CATEGORY_BAR, CATEGORY_DESSERTS, CATEGORY_HOT_DRINKS, CATEGORY_KITCHEN} from "../../utils/category";
-
-const isObject = yourVariable => typeof yourVariable === 'object' && !Array.isArray(yourVariable) && yourVariable !== null;
 
 function AdminPage() {
     const [dbMode, setDBMode] = useState('')
@@ -48,6 +46,9 @@ function AdminPage() {
             <NavigationHeader title={"ADMIN PAGE"} backUrl={''}/>
             <h3 className={'text_center'}>DB: {dbMode}</h3>
             <StyledLink href={BE_DOMAIN} target="_blank" rel="noreferrer">{BE_DOMAIN}</StyledLink>
+            <RowSplitter height={'10px'} />
+            <SecondaryButton isWide withPadding clickHandler={() => localStorage.clear()}>Clear localStorage</SecondaryButton>
+            <RowSplitter height={'10px'} />
             <PrimaryButton isWide withPadding clickHandler={singOutAdmin}>Sing out admin</PrimaryButton>
             <GroupTitle>Test be request</GroupTitle>
             <Table>
