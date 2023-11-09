@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   overflow: hidden;
   perspective: 1px;
   background-color: ${COLOR.ACCENT4};
-  border-bottom: solid 1px ${COLOR.ACCENT1};
+  border-bottom: solid 1px ${COLOR.ACCENT5};
 
   &:hover {
     cursor: pointer;
