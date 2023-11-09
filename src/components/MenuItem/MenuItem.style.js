@@ -101,8 +101,11 @@ export const EditLabel = styled.span`
 `;
 
 export const SeeMore = styled.span`
+  display: inline;
   cursor: pointer;
-  color: ${COLOR.ACCENT3};
+  color: ${COLOR.ACCENT1};
+  ${FONT.WEIGHT_600};
+  ${FONT.SIZE_14};
   &:hover {
     text-decoration: underline;
   }

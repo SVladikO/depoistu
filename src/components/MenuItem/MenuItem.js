@@ -70,12 +70,12 @@ export const MenuItemDetails = ({
         }
 
         return (<Description>
-            {item.description.length > 80 && !isShowItemDescription ? <>
-                {shortDescription}...&nbsp;
-                <SeeMore onClick={showItemDescription}>
-                    {translate(TR.SEE_MORE)}
-                </SeeMore>
-            </> : item.description}
+            {item.description.length > 80 && !isShowItemDescription
+                ? <>
+                    {shortDescription}...
+                    <SeeMore onClick={showItemDescription}> {translate(TR.SEE_MORE)}</SeeMore>
+                </>
+                : item.description}
         </Description>)
     }
 
