@@ -204,8 +204,12 @@ const CategoryMenuView = ({
                 <BgWrapper style={{background: 'white'}}>
                     {/*** TOP CATEGORIES ***/}
                     <HorizontalSwiper
-                        slidesPerView={4}
-                        sliderStylePadding='0 6px 8px'
+                        slidesPerView={
+                            topCategories.length < 3
+                                ? 2
+                                : 4
+                        }
+                        sliderStylePadding='0 6px 12px'
                         subCategoryIndex={selectedTopCategoryId}
                     >
                         {topCategories.map(details => renderTopCategory(details))}

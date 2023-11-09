@@ -29,6 +29,7 @@ export const TopCategoryItem = styled.div`
   padding: 10px 14px 20px;
   border-bottom: solid 3px ${p => p.isSelected ? COLOR.ACCENT3 : COLOR.ACCENT4};
   color: ${p => p.isSelected ? COLOR.ACCENT1 : COLOR.ACCENT1};
+  ${p => p.isSelected ? FONT.WEIGHT_600 : FONT.WEIGHT_400};
   background: ${p => p.isSelected ? COLOR.ACCENT4 : 'none'};
 `;
 

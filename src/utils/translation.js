@@ -966,8 +966,8 @@ export const TRANSLATION = {
             en: "Desserts",
         },
         HOT_DRINKS: {
-            ua: "Гарячі",
-            en: "Hot",
+            ua: "Гарячі напої",
+            en: "Hot drinks",
         },
         BAR: {
             ua: "Бар",
