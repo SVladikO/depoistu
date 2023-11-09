@@ -6,7 +6,7 @@ export const initialValues = {
     name: '',
     cityId: '',
     street: '',
-    phone1: '380',
+    phone1: '',
     phone2: '',
     phone3: '',
     monIsChecked: false,
