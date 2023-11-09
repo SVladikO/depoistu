@@ -57,33 +57,11 @@ import {EditBar, QRCodeButton} from "page/customer-companies/CustomerCompanies.s
 
 import {COLOR} from "utils/theme";
 import {getOnlyCityIds} from "utils/cities";
-import {
-    CATEGORY_BAR,
-    CATEGORY_DESSERTS,
-    CATEGORY_HOT_DRINKS,
-    CATEGORY_KITCHEN,
-} from "../../utils/category";
-import {AVAILABLE_DOMAINS, BE_DOMAIN} from "../../utils/config";
-import {fetchData} from "../../utils/fetch";
 
-const colors = Object.keys(COLOR).map(key =>
-    ({title: key, component: <ColorCircle key={key} bg={COLOR[key]}/>, value: COLOR[key], width: '50px'})
-)
-
-// function ExampleCategoryWithSelected() {
-//     const menuItems = [{CATEGORY_ID: 1}, {CATEGORY_ID: 2}, {CATEGORY_ID: 3}];
-//     const [selectedCategoryId, setSelectedCategoryId] = useState(menuItems[0].CATEGORY_ID)
-
-// return (
-//     <CategoryMenuRow
-//         showAllCategories
-//         showMenuItemAmount
-//         menuItems={menuItems}
-//         selectedCategoryId={selectedCategoryId}
-//         changeCategory={id => setSelectedCategoryId(id)}
-//     />
-// )
-// }
+const colors = Object
+    .keys(COLOR)
+    .map(key => ({title: key, component: <ColorCircle key={key} bg={COLOR[key]}/>, value: COLOR[key], width: '85px'})
+    )
 
 const mockMenuItem = {
     id: 10,
@@ -155,7 +133,7 @@ const [UnselectedDropdown, SelectedDropdown, WithErrorDropdown] = (() => {
     ]
 })();
 
-const componentsGroup1 = [
+const componentsGroup0 = [
     [
         {
             title: 'Checkbox', component: <Checkbox changeHandler={() => {
@@ -169,6 +147,58 @@ const componentsGroup1 = [
         {title: 'Discount', component: <Discount>{`-10`}</Discount>},
         {title: 'Price', component: <Price>50</Price>},
     ],
+    [
+        {
+            title: 'CategoryItem',
+            component: <SubCategoryItem category={{icon: LanguageIcon, title: 'Language'}}
+                                        title="Sandwich"><SandwichIcon/></SubCategoryItem>
+        },
+        // {
+        //     title: 'CategoryMenuRow',
+        //     component: <CategoryMenuRow menuItems={[{CATEGORY_ID: 1}, {CATEGORY_ID: 2}, {CATEGORY_ID: 3}]}/>
+        // },
+        // {
+        //     title: 'CategoryMenuRow', component: <ExampleCategoryWithSelected/>
+        // },
+    ],
+    [
+        {
+            title: 'SettingMenuRow',
+            component:
+                <SettingMenuRow
+                    icon={LockIcon}
+                    title={`Change Password`}
+                    toggleHandler={() => {
+                    }}
+                    toggleStatus={true}
+                />
+        },
+        {
+            title: 'SettingMenuRow',
+            component:
+                <SettingMenuRow
+                    icon={LogOutIcon}
+                    title="Only change handler"
+                    changeHandler={() => console.log('clicked')}
+                />
+        },
+        {
+            title: 'SettingMenuRow',
+            component: <SettingMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
+        },
+
+        {
+            title: 'AccountSettings', component:
+                <AccountSettings groupTitle="Accounts">
+                    <SettingMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
+                    <SettingMenuRow icon={LogOutIcon} title="Only change handler"
+                                    changeHandler={() => console.log('clicked')}/>
+                </AccountSettings>
+        },
+    ],
+];
+
+const componentsGroup1 = [
     [
         {title: 'PrimaryButton', component: <PrimaryButton>Primary</PrimaryButton>},
         {title: 'PrimaryButton isDisabled', component: <PrimaryButton isDisabled>Primary</PrimaryButton>},
@@ -239,20 +269,6 @@ const componentsGroup1 = [
     ]
 ];
 const componentsGroup2 = [
-    [
-        {
-            title: 'CategoryItem',
-            component: <SubCategoryItem category={{icon: LanguageIcon, title: 'Language'}}
-                                        title="Sandwich"><SandwichIcon/></SubCategoryItem>
-        },
-        // {
-        //     title: 'CategoryMenuRow',
-        //     component: <CategoryMenuRow menuItems={[{CATEGORY_ID: 1}, {CATEGORY_ID: 2}, {CATEGORY_ID: 3}]}/>
-        // },
-        // {
-        //     title: 'CategoryMenuRow', component: <ExampleCategoryWithSelected/>
-        // },
-    ],
     [
         {
             title: 'MenuItemDetails without description',
@@ -402,41 +418,7 @@ const componentsGroup2 = [
     ],
 ];
 const componentsGroup3 = [
-    [
-        {
-            title: 'SettingMenuRow',
-            component:
-                <SettingMenuRow
-                    icon={LockIcon}
-                    title={`Change Password`}
-                    toggleHandler={() => {
-                    }}
-                    toggleStatus={true}
-                />
-        },
-        {
-            title: 'SettingMenuRow',
-            component:
-                <SettingMenuRow
-                    icon={LogOutIcon}
-                    title="Only change handler"
-                    changeHandler={() => console.log('clicked')}
-                />
-        },
-        {
-            title: 'SettingMenuRow',
-            component: <SettingMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
-        },
 
-        {
-            title: 'AccountSettings', component:
-                <AccountSettings groupTitle="Accounts">
-                    <SettingMenuRow icon={LanguageIcon} title="Language" href="/catalog" label="English"/>
-                    <SettingMenuRow icon={LogOutIcon} title="Only change handler"
-                                    changeHandler={() => console.log('clicked')}/>
-                </AccountSettings>
-        },
-    ],
     [
         {title: "NavigationHeader", component: <NavigationHeader title="category"/>},
         {title: 'HistoryTabBar', component: <HistoryTabBar/>},
@@ -489,7 +471,6 @@ const componentsGroup3 = [
 // document.body.style.backgroundColor = '#d8d8d8'
 
 function ComponentsPage() {
-    const [dbMode, setDBMode] = useState('')
     const setWhiteBackground = useCallback(() => document.body.style.background = '#ffffff', []);
     const setGreyBackground = useCallback(() => document.body.style.background = '#d8d8d8', []);
     const setBlueBackground = useCallback(() => document.body.style.background = '#001993', []);
@@ -504,51 +485,7 @@ function ComponentsPage() {
         )
     }
 
-    const renderCategoryTranslations = () => {
-        const renderGroup = from =>
-            <tr style={{textAlign: 'center', color: 'red'}}>
-                <td colSpan={5}>{from}</td>
-            </tr>
 
-        ;
-        const render = from =>
-            from.map(
-                category => (
-                    <tr>
-                        <td style={{padding: '4px'}}>{category.id}</td>
-                        <td style={{padding: '4px'}}>{category.title.en}</td>
-                        <td style={{padding: '4px'}}>{category.title.ua}</td>
-                        <td style={{padding: '4px'}}>{category.measurement.en}</td>
-                        <td style={{padding: '4px'}}>{category.measurement.ua}</td>
-                    </tr>
-                ))
-
-        return (
-            <div>
-                <table>
-                    <thead>
-                    <tr>
-                        <th>id</th>
-                        <th>title en</th>
-                        <th>title ua</th>
-                        <th>en</th>
-                        <th>ua</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {renderGroup('CATEGORY_KITCHEN')}
-                    {render(CATEGORY_KITCHEN)}
-                    {renderGroup('CATEGORY_DESSERTS')}
-                    {render(CATEGORY_DESSERTS)}
-                    {renderGroup('CATEGORY_HOT_DRINKS')}
-                    {render(CATEGORY_HOT_DRINKS)}
-                    {renderGroup('CATEGORY_BAR')}
-                    {render(CATEGORY_BAR)}
-                    </tbody>
-                </table>
-            </div>
-        )
-    }
     const renderGroup = (group) => {
         return (
             <Wrapper>
@@ -563,54 +500,26 @@ function ComponentsPage() {
         document.body.style.background = '#ffffff'
     }, [])
 
-    const renderLinks = () => {
-        fetchData(`${BE_DOMAIN}/db-mode`)
-            .then(res => setDBMode(res.body.mode.toUpperCase()))
-
-        return (
-            <Wrapper>
-                <Column>
-                    <h3>BE domain: {BE_DOMAIN}</h3>
-                    <h3>DB move: {dbMode}</h3>
-                </Column>
-                <Column>
-                    <h3>FE remote domains:</h3>
-                    <a href="https://depoistu.com">PRODUCTION</a>----
-                    <a href="https://depoistu-stage.onrender.com">STAGE</a>----
-                    <a href="https://depoistu-develop.onrender.com">DEVELOP</a>
-                </Column>
-                <Column>
-                    <h3>BE remote domains::</h3>
-                    <a href={AVAILABLE_DOMAINS[1].url}>{AVAILABLE_DOMAINS[1].name.toUpperCase()}</a>---
-                    <a href={AVAILABLE_DOMAINS[2].url}>{AVAILABLE_DOMAINS[2].name.toUpperCase()}</a>---
-                    <a href={AVAILABLE_DOMAINS[3].url}>{AVAILABLE_DOMAINS[3].name.toUpperCase()}</a>
-                </Column>
-            </Wrapper>
-        )
-    }
 
     return (
-        <div>
+        <>
             <Header>
-                <Space/>
+                {renderRows(colors)}
+            </Header>
+            <Header>
                 <PrimaryButton onClick={setWhiteBackground}>White</PrimaryButton>
                 <Space/>
                 <PrimaryButton onClick={setGreyBackground}>Grey</PrimaryButton>
                 <Space/>
                 <PrimaryButton onClick={setBlueBackground}>Blue</PrimaryButton>
-                <Space/>
-                <Space/>
-                <Space/>
-                {renderRows(colors)}
             </Header>
             <RowSplitter height="140px"/>
-            {renderLinks()}
+            {renderGroup(componentsGroup0)}
             {renderGroup(componentsGroup1)}
             {renderGroup(componentsGroup2)}
             {renderGroup(componentsGroup3)}
-            {renderCategoryTranslations()}
             {/*<CatalogPage/>*/}
-        </div>
+        </>
     )
 }
 

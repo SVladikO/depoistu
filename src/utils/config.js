@@ -27,10 +27,7 @@ import FavoritePage from "page/favorite/Favorite.page";
 import InstructionForBusinessOwnerPage from "page/instruction-for-bussines-owner/InstructionForBusinessOwner.page";
 
 export const DEV_ROUTER = {
-    COMPONENTS: 'components',
-    PAGES: 'pages',
     ADMIN: 'admin',
-    API: 'api'
 };
 
 export const {REACT_APP_NODE_ENV} = process.env;

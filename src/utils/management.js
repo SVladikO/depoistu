@@ -1,4 +1,3 @@
-import {checkAccess} from "./security";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
 import packageInfo from "../../package.json";
 
@@ -19,8 +18,3 @@ const checkUpdates = () => {
 
 checkUpdates();
 
-const devManagement = () => {
-    checkAccess();
-}
-
-export default devManagement;

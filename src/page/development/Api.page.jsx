@@ -14,36 +14,21 @@ import {
 import {Flex} from 'components/index'
 
 import {ReactComponent as ProtectedIcon} from "assets/icons/secure.svg";
-import {BE_DOMAIN, SELECTED_BE_DOMAIN} from "utils/config";
+import {BE_DOMAIN} from "utils/config";
 
 const ApiPage = () => {
-    const [modeDB, setModeDB] = useState('')
     const [api, setApi] = useState([])
-
-    // fetch(window.location.origin + '/db-mode')
-    //     .then(res => res.json())
-
-
-    useEffect(() => {
-        fetch(BE_API.DEVELOPMENT.DB_MODE())
-            .then(res => res.json())
-            .then(res => {
-                setModeDB(res)
-            })
-    }, [])
 
     useEffect(() => {
         fetch(BE_API.DEVELOPMENT.API())
             .then(res => res.json())
             .then(res => {
-                console.log('api res: ', res);
                 setApi(res)
             })
     }, [])
 
     return (
         <ContentWrapper>
-            <h2>{modeDB?.mode?.toUpperCase()} DB - {SELECTED_BE_DOMAIN.name.toUpperCase()} API</h2>
             {
                 api.length && api.map(entity => (
                     <div key={entity.name}>

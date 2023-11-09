@@ -1,27 +1,31 @@
 import styled from "styled-components";
+import {COLOR} from "utils/theme";
 
 export const Wrapper = styled.div`
   background: white;
   height: 150vh;
-`;
-export const Header = styled.div`
-  background: #81ca11;
-  color: white;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 5px 0;
-`;
-export const SubHeader = styled.div`
-  display: flex;
-  justify-content: center;
+  margin: auto;
 `;
 export const Table = styled.table`
   margin: auto;
 `;
-export const A = styled.a`
-  margin: 10px;
+export const TD = styled.td`
+  padding: 4px;
+  word-wrap: break-word;
+  max-width: 360px;
+`;
+export const LinksWrapper = styled.div`
+  width: 275px;
+  margin: auto;
+`;
+export const StyledLink = styled.a`
+  padding: 10px;
+  margin: 2px;
+  border: solid 1px blue;
+  color: blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 export const SpinnerWrapper = styled.span`
   & > svg {
@@ -29,6 +33,22 @@ export const SpinnerWrapper = styled.span`
     height: 16px;
     width: 16px;
   }
+`;
+export const GroupTitle = styled.div`
+  font-size: 40px;
+  text-align: center;
+  text-transform: uppercase;
+  color: ${COLOR.ACCENT1};
+  padding: 40px 0 20px;
+  margin: auto;
+`;
+export const GroupTitle2 = styled.div`
+  font-size: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  color: ${COLOR.ACCENT1};
+  padding: 40px 0 20px;
+  margin: auto;
 `;
 export const LedError = styled.span`
   margin: 0 10px;

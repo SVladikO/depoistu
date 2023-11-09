@@ -56,7 +56,7 @@ function getOptions(body) {
             body: JSON.stringify(body)
         }
     }
-};
+}
 
 export const BE_API = {
     //TODO candidate to delete
@@ -93,7 +93,7 @@ export const BE_API = {
         CHANGE_IS_VISIBLE: () => `${BE_DOMAIN}/menu/visible`
     },
     DEVELOPMENT: {
-        API: () =>   `${BE_DOMAIN}/api`,
+        API: () =>   `${BE_DOMAIN}/api-list`,
         DB_MODE: () =>   `${BE_DOMAIN}/db-mode`
     }
     // PLACE_ORDER: () => `${BE_DOMAIN}/place-order`,
