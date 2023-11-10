@@ -66,29 +66,6 @@ export const fetchData = async (url, body) => {
     })
 }
 
-// it's function because we take data from localStorage
-function getOptions(body) {
-    const defaultOption = {
-        headers: {
-            'Content-Type': 'application/json',
-            "x-access-token": LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE)?.customer?.value?.token,
-            "current-language": LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE).language.siteLanguage,
-        }
-    };
-
-    if (!body) {
-        return defaultOption;
-    }
-
-    return {
-        ...defaultOption,
-        ...{
-            method: body?.method || 'POST',
-            body: JSON.stringify(body)
-        }
-    }
-};
-
 export const BE_API = {
     //TODO candidate to delete
     // GET_ALL_CATEGORIES_ID_FOR_COMPANY: companyId => `${BE_DOMAIN}/company/${companyId}/category`,
