@@ -46,10 +46,19 @@ function AdminPage() {
             <NavigationHeader title={"ADMIN PAGE"} backUrl={''}/>
             <h3 className={'text_center'}>DB: {dbMode}</h3>
             <StyledLink href={BE_DOMAIN} target="_blank" rel="noreferrer">{BE_DOMAIN}</StyledLink>
-            <RowSplitter height={'10px'} />
-            <SecondaryButton isWide withPadding clickHandler={() => localStorage.clear()}>Clear localStorage</SecondaryButton>
-            <RowSplitter height={'10px'} />
-            <PrimaryButton isWide withPadding clickHandler={singOutAdmin}>Sing out admin</PrimaryButton>
+            <RowSplitter height={'10px'}/>
+            <SecondaryButton
+                isWide
+                withPadding
+                clickHandler={
+                    () => {
+                        localStorage.clear()
+                        window.location.href = window.location.origin
+                    }
+                }>
+                Clear localStorage
+            </SecondaryButton>
+            <RowSplitter height={'10px'}/>
             <GroupTitle>Test be request</GroupTitle>
             <Table>
                 <tbody>{checkSuccessRequest}</tbody>
@@ -92,11 +101,11 @@ const AllCategories = () => {
             <GroupTitle2>CATEGORY_KITCHEN</GroupTitle2>
             {render(CATEGORY_KITCHEN)}
             <GroupTitle2>CATEGORY_DESSERTS</GroupTitle2>
-                {render(CATEGORY_DESSERTS)}
+            {render(CATEGORY_DESSERTS)}
             <GroupTitle2>CATEGORY_HOT_DRINKS</GroupTitle2>
-                {render(CATEGORY_HOT_DRINKS)}
+            {render(CATEGORY_HOT_DRINKS)}
             <GroupTitle2>CATEGORY_BAR</GroupTitle2>
-                {render(CATEGORY_BAR)}
+            {render(CATEGORY_BAR)}
         </>
     )
 }

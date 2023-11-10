@@ -54,9 +54,6 @@ const AddMenuItemPage = () => {
 
     return (
         <>
-            <NotificationSuccess>
-                {translate(TRANSLATION.NOTIFICATION.MENU_ITEM.WAS_CREATED)}
-            </NotificationSuccess>
             <MenuItemView
                 defaultInitialValue={initialValues}
                 onSubmit={onSubmit}
