@@ -3,7 +3,7 @@ import {SliderStyle} from "./HorizontalSwiper.style";
 import {Swiper} from "swiper/react";
 import {FreeMode, Scrollbar} from "swiper";
 
-const HorizontalSwiper = ({subCategoryIndex, children}) => {
+const HorizontalSwiper = ({subCategoryIndex, children, slidesPerView = 3, sliderStylePadding = '0'}) => {
     const [swiper, setSwiper] = useState(null);
 
     const slideTo = index => {
@@ -18,7 +18,7 @@ const HorizontalSwiper = ({subCategoryIndex, children}) => {
     }, [subCategoryIndex])
 
     return (
-        <SliderStyle>
+        <SliderStyle sliderStylePadding={sliderStylePadding}>
             {/*https://studio.swiperjs.com/play*/}
             <Swiper
                 modules={[Scrollbar, FreeMode]}
@@ -32,7 +32,7 @@ const HorizontalSwiper = ({subCategoryIndex, children}) => {
                     momentumRatio: 1,
                     momentumVelocityRatio: 1
                 }}
-                slidesPerView={3}
+                slidesPerView={slidesPerView}
                 spaceBetween={10}
                 className="category-slider"
             >

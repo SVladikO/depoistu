@@ -27,10 +27,7 @@ import FavoritePage from "page/favorite/Favorite.page";
 import InstructionForBusinessOwnerPage from "page/instruction-for-bussines-owner/InstructionForBusinessOwner.page";
 
 export const DEV_ROUTER = {
-    COMPONENTS: 'components',
-    PAGES: 'pages',
     ADMIN: 'admin',
-    API: 'api'
 };
 
 export const {REACT_APP_NODE_ENV} = process.env;
@@ -54,7 +51,7 @@ export const AVAILABLE_DOMAINS = {
     }
 }
 
-export const SELECTED_BE_DOMAIN = AVAILABLE_DOMAINS[REACT_APP_NODE_ENV || 0];
+export const SELECTED_BE_DOMAIN = AVAILABLE_DOMAINS[REACT_APP_NODE_ENV || 1];
 export const BE_DOMAIN = SELECTED_BE_DOMAIN.url;
 
 export const URL = {

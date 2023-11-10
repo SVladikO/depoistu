@@ -1,4 +1,3 @@
-import {checkAccess} from "./security";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
 import packageInfo from "../../package.json";
 import {DEFAULT_LANGUAGE, getCurrentLanguage} from "./translation";
@@ -20,8 +19,3 @@ const checkUpdates = () => {
 
 checkUpdates();
 
-const devManagement = () => {
-    checkAccess();
-}
-
-export default devManagement;

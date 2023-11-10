@@ -7,8 +7,12 @@ export const Wrapper = styled.div`
   overflow: hidden;
   perspective: 1px;
   background-color: ${COLOR.ACCENT4};
-  border-bottom: solid 1px ${COLOR.ACCENT1};
+  border-bottom: solid 1px ${COLOR.ACCENT5};
 
+  .like_company_icon {
+    fill: ${COLOR.ACCENT1};
+  }
+  
   &:hover {
     cursor: pointer;
   }
@@ -51,8 +55,28 @@ export const Content = styled.div`
 `;
 
 export const CompanyInfo = styled.div`
-  & > * {
-    margin: 0 0 10px 0;
+  & > a {
+    display: block;
+  }
+  
+  svg.location_icon {
+    height: 20px;
+    width: 12px;
+  } 
+  
+  svg.time_icon {
+    height: 18px;
+    width: 15px;
+  } 
+  svg.phone_icon {
+    height: 18px;
+    width: 18px;
+  }
+  
+  & > div,
+  & > a,
+  & > button {
+    margin: 0 0 6px 0;
   }
 
   & > *:last-child {
@@ -62,8 +86,8 @@ export const CompanyInfo = styled.div`
 
 export const Schedule = styled.div`
   display: flex;
-  height: 19px;
-  margin: 0 0 12px 0;
+  align-items: center;
+  height: 30px;
 `;
 
 export const OpenStatus = styled.span`
@@ -82,21 +106,7 @@ export const OpenStatus = styled.span`
     margin: 4px 8px 0 -1px;
   }
 `;
-export const CloseStatus = styled.span`
-  color: ${COLOR.ACCENT1};
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 24px;
-  display: inline-flex;
 
-  svg {
-    display: inline-block;
-    width: 15px;
-    height: 18px;
-    color: ${COLOR.ACCENT1};
-    margin: 4px 8px 0 -1px;
-  }
-`;
 
 export const Closes = styled.span`
   font-weight: 400;

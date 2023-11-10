@@ -1,196 +1,226 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 
-import {Wrapper, Header, SubHeader, Table, LedError, LedSuccess, A, SpinnerWrapper} from './Admin.style';
+import {
+    Wrapper,
+    LinksWrapper,
+    Table,
+    LedError,
+    LedSuccess,
+    StyledLink,
+    SpinnerWrapper,
+    TD,
+    GroupTitle,
+    GroupTitle2
+} from './Admin.style';
 
 import {ReactComponent as LoadingIcon} from "assets/icons/spinner.svg";
-import {RowSplitter} from "components";
+import {NavigationHeader, PrimaryButton, RowSplitter, SecondaryButton} from "components";
 import {fetchData} from "utils/fetch";
 
 import {BE_API} from 'utils/fetch'
-import {BE_DOMAIN} from "utils/config";
+import {AVAILABLE_DOMAINS, BE_DOMAIN} from "utils/config";
+import {checkAccess} from "utils/security";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
+import ApiPage from "./Api.page";
+import ComponentsPage from "./Components.page";
+import {CATEGORY_BAR, CATEGORY_DESSERTS, CATEGORY_HOT_DRINKS, CATEGORY_KITCHEN} from "../../utils/category";
 
-const COMPANY_FIELDS_TO_CHECK = ['id', 'customer_id', 'name', 'phone', 'cityId', 'street', 'photos', 'schedule'];
-const MENU_ITEM_FIELDS_TO_CHECK = ['id', 'categoryId', 'companyId', 'description', 'imageUrl', 'name', 'price', 'size'];
+function AdminPage() {
+    const [dbMode, setDBMode] = useState('')
 
-const isObject = yourVariable => typeof yourVariable === 'object' && !Array.isArray(yourVariable) && yourVariable !== null;
 
-const checkArrayOfObjects = (objectFieldsToCheck = []) => data => {
-    if (!Array.isArray(data)) {
-        return {type: false, message: "it isn't an array"};
+    checkAccess(LOCAL_STORAGE_KEY.IS_ADMIN)
+
+
+    useEffect(() => {
+        fetchData(`${BE_DOMAIN}/db-mode`)
+            .then(res => setDBMode(res.body.mode.toUpperCase()))
+    })
+
+    const singOutAdmin = () => {
+        LocalStorage.remove(LOCAL_STORAGE_KEY.IS_ADMIN);
     }
 
-    if (!data.length) {
-        return {type: false, message: "it is empty an array"};
-    }
-
-    const firstObjectInArray = data[0];
-
-    if (!isObject(firstObjectInArray)) {
-        return {type: false, message: "it isn't first object in array"};
-    }
-
-    if (objectFieldsToCheck.length) {
-        const firstObjectKeys = Object.keys(firstObjectInArray);
-
-        for (let i = 0; i < objectFieldsToCheck.length; i++) {
-            if (!firstObjectKeys.includes(objectFieldsToCheck[i])) {
-                return {type: false, message: `First object in array doesn't contain: ${objectFieldsToCheck[i]}`};
-            }
-        }
-    }
-
-    return {type: true, message: "it is array of objects"};
+    return (
+        <Wrapper>
+            <NavigationHeader title={"ADMIN PAGE"} backUrl={''}/>
+            <h3 className={'text_center'}>DB: {dbMode}</h3>
+            <StyledLink href={BE_DOMAIN} target="_blank" rel="noreferrer">{BE_DOMAIN}</StyledLink>
+            <RowSplitter height={'10px'}/>
+            <SecondaryButton
+                isWide
+                withPadding
+                clickHandler={
+                    () => {
+                        localStorage.clear()
+                        window.location.href = window.location.origin
+                    }
+                }>
+                Clear localStorage
+            </SecondaryButton>
+            <RowSplitter height={'10px'}/>
+            <GroupTitle>Test be request</GroupTitle>
+            <Table>
+                <tbody>{checkSuccessRequest}</tbody>
+            </Table>
+            <RowSplitter height='40px'/>
+            <GroupTitle>Domains mapping</GroupTitle>
+            <AllLinks/>
+            <RowSplitter height='40px'/>
+            <GroupTitle>BE API</GroupTitle>
+            <ApiPage/>
+            <GroupTitle>COMPONENTS</GroupTitle>
+            <ComponentsPage/>
+            <RowSplitter height='20px'/>
+            <GroupTitle>All food categories</GroupTitle>
+            <AllCategories/>
+        </Wrapper>
+    )
 }
 
-function Row({url, validateSuccessResponse, validateErrorResponse}) {
 
+const AllCategories = () => {
+    const render = from =>
+        <table style={{margin: 'auto'}}>
+            <tbody>
+            {from.map(
+                category => (
+                    <tr>
+                        <td style={{padding: '4px'}}>{category.id}</td>
+                        <td style={{padding: '4px'}}>{category.title.en}</td>
+                        <td style={{padding: '4px'}}>{category.title.ua}</td>
+                        <td style={{padding: '4px'}}>{category.measurement.en}</td>
+                        <td style={{padding: '4px'}}>{category.measurement.ua}</td>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+
+    return (
+        <>
+            <GroupTitle2>CATEGORY_KITCHEN</GroupTitle2>
+            {render(CATEGORY_KITCHEN)}
+            <GroupTitle2>CATEGORY_DESSERTS</GroupTitle2>
+            {render(CATEGORY_DESSERTS)}
+            <GroupTitle2>CATEGORY_HOT_DRINKS</GroupTitle2>
+            {render(CATEGORY_HOT_DRINKS)}
+            <GroupTitle2>CATEGORY_BAR</GroupTitle2>
+            {render(CATEGORY_BAR)}
+        </>
+    )
+}
+const AllLinks = () => {
+
+
+    return (
+        <LinksWrapper>
+
+            <table>
+                <thead>
+                <tr>
+                    <td className={'text_center'}>FE</td>
+                    <td className={'text_center'}>BE</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><StyledLink href="https://depoistu.com">PRODUCTION</StyledLink></td>
+                    <td><StyledLink
+                        href={AVAILABLE_DOMAINS[3].url}>{AVAILABLE_DOMAINS[3].name.toUpperCase()}</StyledLink></td>
+                </tr>
+                <tr>
+                    <td><StyledLink href="https://depoistu-stage.onrender.com">STAGE</StyledLink></td>
+                    <td><StyledLink
+                        href={AVAILABLE_DOMAINS[2].url}>{AVAILABLE_DOMAINS[2].name.toUpperCase()}</StyledLink></td>
+                </tr>
+                <tr>
+                    <td>
+                        <StyledLink href="https://depoistu-develop.onrender.com">DEVELOP</StyledLink>
+                    </td>
+                    <td>
+                        <StyledLink
+                            href={AVAILABLE_DOMAINS[1].url}>{AVAILABLE_DOMAINS[1].name.toUpperCase()}</StyledLink>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </LinksWrapper>
+    )
+}
+
+const CheckRequest = ({type, title, url,}) => {
     const [isLoading, setIsLoading] = useState(true);
     const [status, setStatus] = useState('')
     const [response, setResponse] = useState('')
     const [errorResponse, setErrorResponse] = useState('');
-    const [validation, setValidation] = useState({});
+    const [validateResponse, setValidation] = useState({});
 
     useEffect(() => {
         fetch(decodeURIComponent(url))
             .then(res => {
-                setStatus(res.status);
-                return res.json();
+                setStatus(res.status)
+                return res.json()
             })
             .then(res => {
-                setIsLoading(false);
-                setValidation(validateSuccessResponse(res));
-                setResponse(res);
+                setResponse(res)
+                setValidation(true);
             })
             .catch(res => {
-                setIsLoading(false);
-                setValidation(validateErrorResponse(res));
+                setStatus(res.status)
+                setValidation(false);
                 setErrorResponse(res);
+            })
+            .finally(() => {
+                setIsLoading(false);
             });
     }, [url])
 
     return (
-        <table>
-            <tbody>
+        <>
             <tr>
                 <td>
                     {isLoading
                         ? <SpinnerWrapper>
                             <LoadingIcon className="animated_svg"/>
                         </SpinnerWrapper>
-                        : validation && validation.type
+                        : validateResponse
                             ? <LedSuccess/>
                             : <LedError/>
                     }
-                    <span>{!validation.type && validation.message}</span>
                 </td>
                 <td>{status}</td>
                 <td>
-                    <A href={url} target="_blank" rel="noreferrer">_link</A>
+                    <StyledLink href={url} target="_blank" rel="noreferrer">{type}: {title}</StyledLink>
                 </td>
+
             </tr>
-            </tbody>
-        </table>
+            <tr>
+                <TD colSpan={3} style={{color: 'green'}}>
+                    {response && response.toString()}
+                </TD>
+            </tr>
+            <tr>
+                <TD colSpan={3} style={{color: 'red'}}>
+                    {errorResponse && errorResponse.toString()}
+                </TD>
+            </tr>
+        </>
     )
 }
-
-const CheckRequest = ({
-                          type,
-                          title,
-                          urlForError,
-                          urlForSuccess,
-                          validateErrorResponse,
-                          validateSuccessResponse,
-                      }) => (
-    <tr>
-        <td>{type}</td>
-        <td>{title}</td>
-        <td>
-            <Row
-                key={urlForSuccess}
-                validateSuccessResponse={validateSuccessResponse}
-                url={urlForSuccess}
-            />
-        </td>
-        <td>
-            <Row
-                key={urlForError}
-                url={urlForError}
-                validateErrorResponse={validateErrorResponse}
-            />
-        </td>
-    </tr>
-)
 
 const checkSuccessRequest = [
     <CheckRequest
         key={1}
         type='GET'
-        title='companies by customer id'
-        validateSuccessResponse={checkArrayOfObjects(COMPANY_FIELDS_TO_CHECK)}
-        urlForSuccess={BE_API.COMPANY.GET_BY_CUSTOMER_ID(1)}
-        urlForError={BE_API.COMPANY.GET_BY_CUSTOMER_ID()}
+        title='Avaliable cities'
+        url={BE_API.COMPANY.GET_AVAILABLE_CITIES()}
     />,
     <CheckRequest
         key={2}
         type='GET'
-        title='companies by company id'
-        validateSuccessResponse={checkArrayOfObjects(COMPANY_FIELDS_TO_CHECK)}
-        urlForSuccess={BE_API.COMPANY.GET_BY_COMPANY_ID(2)}
-        urlForError={BE_API.COMPANY.GET_BY_COMPANY_ID()}
+        title='company by companyId'
+        url={BE_API.COMPANY.GET_BY_COMPANY_ID(1)}
     />,
-    <CheckRequest
-        key={3}
-        type='GET'
-        title='companies by city'
-        validateSuccessResponse={checkArrayOfObjects(COMPANY_FIELDS_TO_CHECK)}
-        urlForSuccess={BE_API.COMPANY.GET_BY_CITY_ID('204')}
-        urlForError={BE_API.COMPANY.GET_BY_CITY_ID(1)}
-    />,
-    <CheckRequest
-        key={4}
-        type='GET'
-        title='menu by company id'
-        validateSuccessResponse={checkArrayOfObjects(MENU_ITEM_FIELDS_TO_CHECK)}
-        urlForSuccess={BE_API.MENU_ITEM.GET_BY_COMPANY_ID(1)}
-        urlForError={BE_API.MENU_ITEM.GET_BY_COMPANY_ID()}
-    />
 ];
-
-function AdminPage() {
-    const [beRoutesAmount, setBeRoutesAmount] = useState('');
-
-    useEffect(() => {
-        fetchData(BE_DOMAIN + '/api')
-            .then(res => {
-                let routesAmount = 0;
-                res.body.forEach(i => routesAmount += i.routes.length)
-                setBeRoutesAmount(routesAmount)
-            })
-    })
-
-    const getCoverage = () => `BE has ${beRoutesAmount}/FE use ${Object.keys(BE_API).length}/Tested ${checkSuccessRequest.length}`;
-
-    return (
-        <Wrapper>
-            <Header>TEST BE DOMAIN</Header>
-            <SubHeader>
-                <A href={BE_DOMAIN} target="_blank" rel="noreferrer">{BE_DOMAIN}</A>
-            </SubHeader>
-            <SubHeader>{getCoverage()}</SubHeader>
-            <RowSplitter height='20px'/>
-            <Table>
-                <thead>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td>Expect success <RowSplitter height='10px'/></td>
-                    <td>Expect error <RowSplitter height='10px'/></td>
-                </tr>
-                </thead>
-                <tbody>{checkSuccessRequest}</tbody>
-            </Table>
-            <RowSplitter height='20px'/>
-        </Wrapper>)
-}
 
 export default AdminPage;

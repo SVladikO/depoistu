@@ -3,7 +3,6 @@ import {button} from "./button";
 import {COLOR} from "utils/theme";
 
 export const ThirdButton = styled(button)`
-  border: none;
   background-color: ${COLOR.ACCENT4};
   color: ${COLOR.ACCENT5};
   height: 30px;
@@ -11,7 +10,7 @@ export const ThirdButton = styled(button)`
   font-size: 20px;
   line-height: 24px;
   padding: 0;
-  color: ${props => props.isShowDetails ? COLOR.INFO1 : COLOR.ACCENT1};
+  color: ${COLOR.ACCENT1};
   display: flex;
   flex-wrap: nowrap;
   justify-content: flex-start;

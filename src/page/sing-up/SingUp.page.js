@@ -51,7 +51,7 @@ const SingUpPage = () => {
                 initialValues={{
                     name: '',
                     email: '',
-                    phone: '380',
+                    phone: '',
                     newPassword: '',
                     confirmedPassword: '',
                     isBusinessOwner: false,

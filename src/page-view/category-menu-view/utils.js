@@ -13,7 +13,7 @@ const DISABLE_VERTICAL_SCROLL_LISTENER_CLASS_NAME = 'disable_verticall_scroll_li
  */
 export const generateTagId = (id, topCategoryId) => `${CATEGORY_ID_PREFIX}${id}_${topCategoryId}`;
 
-export const MenuHeader = ({children}) => (
+export const FixTop = ({children}) => (
     <div className="wrapper_1" style={{position: 'sticky', top: -1, zIndex: 10}} className="category-row-wrapper">
         <div className="wrapper_2" style={{position: 'relative', top: 0, zIndex: 10, left: 0, right: 0}}>
             <div className="wrapper_3" style={{position: 'absolute', top: 0, zIndex: 10, left: 0, right: 0}}>

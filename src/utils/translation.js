@@ -464,8 +464,8 @@ export const TRANSLATION = {
                     en: "Change Password"
                 },
                 INSTRUCTION_FOR_BUSINESS_OWNER: {
-                    en: "Usage instruction",
-                    ua: "Інструкція користувача"
+                    en: "Business instructions",
+                    ua: "Інструкції для бізнесу"
                 },
                 COMPANY: {
                     en: "My сompanies",
@@ -561,9 +561,9 @@ export const TRANSLATION = {
                     ua: "Для бізнесу",
                     en: "For business"
                 },
-                OPTIONS: {
-                    ua: "Розширенi налаштування",
-                    en: "More Options"
+                OTHERS: {
+                    ua: "Інше",
+                    en: "Others"
                 },
             },
             USER_PHONE_LABEL: {
@@ -907,22 +907,22 @@ export const TRANSLATION = {
                 en: "Customers won't see this company without menu."
             },
             LOADING_AVAILABLE_CITIES: {
-                en: "Loading cities with registered cities",
-                ua: "Загрузка міст де є зареєстровані заклади"
+                en: "Loading cities with registered restorans.",
+                ua: "Завантаження міст де зареєстровані заклади."
             },
 
             LOADING_COMPANY: {
                 en: "Loading company ...",
-                ua: "Загрузка закладу ..."
+                ua: "Завантаження закладу ..."
             },
         },
         LOADING_AVAILABLE_COMPANIES: {
             en: "Loading companies ...",
-            ua: "Загрузка закладів ..."
+            ua: "Завантаження закладів ..."
         },
         LOADING_MENU: {
             en: "Loading menu ...",
-            ua: "Загрузка меню ..."
+            ua: "Завантаження меню ..."
         },
 
     },

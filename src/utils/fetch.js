@@ -66,6 +66,28 @@ export const fetchData = async (url, body) => {
     })
 }
 
+// it's function because we take data from localStorage
+function getOptions(body) {
+    const defaultOption = {
+        headers: {
+            'Content-Type': 'application/json',
+            "x-access-token": LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE)?.customer?.value?.token,
+            "current-language": LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE).language.siteLanguage,
+        }
+    };
+
+    if (!body) {
+        return defaultOption;
+    }
+
+    return {
+        ...defaultOption,
+        ...{
+            method: body?.method || 'POST',
+            body: JSON.stringify(body)
+        }
+    }
+};
 
 export const BE_API = {
     //TODO candidate to delete
@@ -102,8 +124,8 @@ export const BE_API = {
         CHANGE_IS_VISIBLE: () => `${BE_DOMAIN}/menu/visible`
     },
     DEVELOPMENT: {
-        API: () => `${BE_DOMAIN}/api`,
-        DB_MODE: () => `${BE_DOMAIN}/db-mode`
+        API: () =>   `${BE_DOMAIN}/api-list`,
+        DB_MODE: () =>   `${BE_DOMAIN}/db-mode`
     }
     // PLACE_ORDER: () => `${BE_DOMAIN}/place-order`,
 };
