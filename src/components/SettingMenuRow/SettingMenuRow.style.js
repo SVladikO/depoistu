@@ -1,11 +1,13 @@
 import styled from "styled-components";
-import {COLOR} from "../../utils/theme";
+import {COLOR} from "utils/theme";
 
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
+  padding: 13px 10px 13px 16px;
+  margin: 0 0 1px 0;
+  background: ${COLOR.ACCENT4};
   //border: solid 1px red;
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
@@ -18,9 +20,9 @@ export const Wrapper = styled.div`
 export const LeftContent = styled.div`
   display: flex;
   & > svg {
-    width: 16.82px;
-    height: 19.22px;
-    margin-right: 16px;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
     fill: ${COLOR.ACCENT1};
   }
 `;
@@ -54,5 +56,4 @@ export const RightAnchor = styled.div`
 export const Label = styled.div`
   color: #B4C2CD;
   font-size: 18px;
-  margin-right: 11.5px;
 `;

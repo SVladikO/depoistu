@@ -1,13 +1,14 @@
 import {BE_DOMAIN} from "./config";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
+import {DEFAULT_LANGUAGE, getCurrentLanguage, translate, TRANSLATION} from "./translation";
 
 // it's function because we take data from localStorage
-const getOptions = body => {
+function getOptions(body) {
     const defaultOption = {
         headers: {
             'Content-Type': 'application/json',
-            "x-access-token": LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER)?.token,
-            "current-language": LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE).language.siteLanguage,
+            "x-access-token": LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE)?.customer?.value?.token,
+            "current-language": getCurrentLanguage() || DEFAULT_LANGUAGE
         }
     };
 
@@ -22,15 +23,31 @@ const getOptions = body => {
             body: JSON.stringify(body)
         }
     }
-};
+}
 
 export const fetchData = async (url, body) => {
     let response;
+
+    // No internet no request
+    if (!window.navigator.onLine) {
+        return new Promise((resolve, reject) => {
+            reject({body: {errorMessage: translate(TRANSLATION.NOTIFICATION.NO_INTERNET)}});
+        })
+    }
+
     try {
         response = await fetch(decodeURIComponent(url), getOptions(body));
     } catch (error) {
         return new Promise((resolve, reject) => {
-            reject({status: 500, body: {errorMessage: 'Unable to make request.'}});
+            reject({
+                    status: 500,
+                    body: {
+                        errorMessage: error.message === 'Failed to fetch'
+                            ? translate(TRANSLATION.NOTIFICATION.UN_ABLE_MAKE_REQUEST)
+                            : error.message
+                    }
+                }
+            );
         })
     }
 
@@ -43,7 +60,6 @@ export const fetchData = async (url, body) => {
             resolve({status, statusText, headers, body: json});
         })
     }
-
 
     return new Promise((resolve, reject) => {
         reject({status, statusText, headers, body: json});
@@ -59,7 +75,13 @@ export const BE_API = {
         SING_IN: () => `${BE_DOMAIN}/sign-in`,
         SING_UP: () => `${BE_DOMAIN}/sign-up`,
         CHANGE_PASSWORD: () => `${BE_DOMAIN}/change-password`,
+        EDIT_CUSTOMER_TYPE: () => `${BE_DOMAIN}/edit-business-type`,
         PUT_VERIFY_EMAIL: () => `${BE_DOMAIN}/verify-email`,
+    },
+    FAVORITE_COMPANY: {
+        GET: () => `${BE_DOMAIN}/favorite-companies`,
+        ADD: () => `${BE_DOMAIN}/favorite-companies`,
+        DELETE: () => `${BE_DOMAIN}/favorite-companies`,
     },
     COMPANY: {
         GET_BY_CUSTOMER_ID: () => `${BE_DOMAIN}/companies/by/customer`,
@@ -79,7 +101,7 @@ export const BE_API = {
         CHANGE_IS_VISIBLE: () => `${BE_DOMAIN}/menu/visible`
     },
     DEVELOPMENT: {
-        API: () =>   `${BE_DOMAIN}/api`,
+        API: () =>   `${BE_DOMAIN}/api-list`,
         DB_MODE: () =>   `${BE_DOMAIN}/db-mode`
     }
     // PLACE_ORDER: () => `${BE_DOMAIN}/place-order`,

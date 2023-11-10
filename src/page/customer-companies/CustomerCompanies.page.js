@@ -1,42 +1,54 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 import {Link, useNavigate} from "react-router-dom";
 import QRCode from 'qrcode';
 
-import {EditBar, QRCodeButton, QRCodeMenuTitle, ImageQR} from "./CustomerCompanies.style";
+import {EditBar, QRCodeButton, QRCodeMenuTitle, ImageQR, OrderPrint} from "./CustomerCompanies.style";
 
-import {Company, NotificationLoading, Popup, PrimaryButton} from "../../components";
-import {ReactComponent as EditIcon} from "../../assets/icons/edit.svg";
+import {Company, NotificationLoading, Popup, PrimaryButton, RowSplitter} from "components";
+import {ReactComponent as EditIcon} from "assets/icons/edit.svg";
 
-import {BE_API} from '../../utils/fetch'
-import {ROUTER, URL} from "../../utils/config";
-import {translate, TRANSLATION} from "../../utils/translation";
-import {ReactComponent as QRCodeIcon} from "../../assets/icons/qr_code.svg";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {useLocalStorage, useLocalStorageFetch, useRedirectToSettingPage, useScrollUp} from "../../utils/hook";
-import {publishNotificationEvent} from "../../utils/event";
+import {BE_API, fetchData} from 'utils/fetch'
+import {ORDER_PRINT_URL, ROUTER, URL} from "utils/config";
+import {translate, TRANSLATION} from "utils/translation";
+import {ReactComponent as QRCodeIcon} from "assets/icons/qr_code.svg";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
+import {useLocalStorage, useRedirectToSettingPage, useScrollUp} from "utils/hook";
+import {publishNotificationEvent} from "utils/event";
+import {DisabledButton} from "components/Buttons/DisabledButton";
 
 const CustomerCompaniesPage = () => {
     useScrollUp();
     useRedirectToSettingPage();
     const navigate = useNavigate();
-    const [customer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
-    const isLoading = useSelector(state => state.request.value.isLoading);
+    const customer = useSelector(state => state.customer.value);
+    const [isLoading, setIsLoading] = useState(false);
     const [wasWarningShown, setWasWarningShown] = useLocalStorage(LOCAL_STORAGE_KEY.WAS_COMPANY_CREATION_WARNING_SHOW, false)
     const [companyIdForQRCode, setCompanyIdForQRCode] = useState();
-    const [customerCompanies] = useLocalStorageFetch(
-        LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES,
-        [],
-        BE_API.COMPANY.GET_BY_CUSTOMER_ID(customer?.ID)
-    );
+    const [customerCompanies, setCustomerCompanies] = useLocalStorage(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
 
-    if (!wasWarningShown) {
-        publishNotificationEvent.warning(translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.WARNING))
-        setWasWarningShown(true);
-    }
+    useEffect(() => {
+        if (customerCompanies || isLoading) {
+            return;
+        }
+
+        setIsLoading(true);
+
+        fetchData(BE_API.COMPANY.GET_BY_CUSTOMER_ID(customer?.id))
+            .then(res => setCustomerCompanies(res.body))
+            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
+            .finally(() => setIsLoading(false))
+    });
+
+    useEffect(() => {
+        if (!wasWarningShown) {
+            publishNotificationEvent.warning(translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.WARNING))
+            setWasWarningShown(true);
+        }
+    },[wasWarningShown]);
 
     if (isLoading) {
-        return <NotificationLoading/>;
+        return <NotificationLoading/>
     }
 
     const showQRCode = companyId => () => setCompanyIdForQRCode(companyId);
@@ -44,38 +56,39 @@ const CustomerCompaniesPage = () => {
     return (
         <>
             <PopupQRCode companyId={companyIdForQRCode} onClose={() => setCompanyIdForQRCode('')}/>
-            {customerCompanies.map(
+            {customerCompanies && !!customerCompanies?.length && customerCompanies?.map(
                 company =>
-                    <Company company={company} key={company.ID}>
+                    <Company company={company} key={company.id} withMoreInfo>
                         <EditBar>
-                            <Link to={ROUTER.EDIT_COMPANY.URL + '/' + company.ID} style={{width: '140px'}}>
-                                <PrimaryButton isWide>
+                            <Link to={ROUTER.EDIT_COMPANY.URL + '/' + company.id} style={{width: '140px'}}>
+                                <DisabledButton>
                                     <EditIcon/>
                                     {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.COMPANY)}
-                                </PrimaryButton>
+                                </DisabledButton>
                             </Link>
-                            <QRCodeButton onClick={showQRCode(company.ID)}><QRCodeIcon/></QRCodeButton>
-                            <PrimaryButton
-                                isWide
-                                style={{width: '140px'}}
+                            <QRCodeButton onClick={showQRCode(company.id)}><QRCodeIcon/></QRCodeButton>
+                            <DisabledButton
                                 onClick={
                                     () => {
-                                        LocalStorage.set(LOCAL_STORAGE_KEY.COMPANY_ID_TO_EDIT_MENU_PAGE, company.ID)
+                                        LocalStorage.set(LOCAL_STORAGE_KEY.COMPANY_ID_TO_EDIT_MENU_PAGE, company.id)
                                         navigate(ROUTER.EDIT_MENU.URL)
                                     }
                                 }>
                                 <EditIcon/>
                                 {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.MENU)}
-                            </PrimaryButton>
+                            </DisabledButton>
                         </EditBar>
                     </Company>
             )
             }
-            <Link to={URL.ADD_COMPANY}>
-                <PrimaryButton isWide>
-                    {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.ADD_COMPANY)}
-                </PrimaryButton>
-            </Link>
+            <RowSplitter height={"20px"} />
+            {customer && customer.canCreateCompanies > !!customerCompanies?.length &&
+                <Link to={URL.ADD_COMPANY}>
+                    <PrimaryButton isWide withPadding>
+                        {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.ADD_COMPANY)}
+                    </PrimaryButton>
+                </Link>
+            }
         < />
     )
 };
@@ -95,11 +108,20 @@ const PopupQRCode = ({companyId, onClose}) => {
         .catch(err => setQrCodeGenerationError(err))
 
     return (
-        <Popup.InfoText onClose={onClose}>
-            <QRCodeMenuTitle>Menu</QRCodeMenuTitle>
+        <Popup.Bottom onClose={onClose}>
+            <QRCodeMenuTitle>
+                {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.QR_MENU_TITLE)}
+            </QRCodeMenuTitle>
             {src && <ImageQR src={src}/>}
             {qrCodeGenerationError}
-        </Popup.InfoText>
+            <OrderPrint
+                href={ORDER_PRINT_URL}
+                target="_blank"
+                rel="noreferrer"
+            >
+                {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.ORDER_PRINT)}
+            </OrderPrint>
+        </Popup.Bottom>
     )
 }
 

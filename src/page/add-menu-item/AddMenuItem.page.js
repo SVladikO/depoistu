@@ -1,59 +1,72 @@
 import React, {useState} from "react";
 
-import {FetchButton} from "../../components";
-import MenuItemView from "../../page-view/menu-item/menu-item-view";
+import {NotificationLoading, PrimaryButton, RowSplitter} from "components";
+import MenuItemView from "page-view/menu-item/menu-item-view";
 
-import {fetchData, BE_API} from "../../utils/fetch";
-import {useRedirectToSettingPage, useScrollUp} from "../../utils/hook";
-import {translate, TRANSLATION} from "../../utils/translation";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {publishNotificationEvent} from "../../utils/event";
+import {fetchData, BE_API} from "utils/fetch";
+import {useRedirectToSettingPage, useScrollUp} from "utils/hook";
+import {translate, TRANSLATION} from "utils/translation";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
+import {publishNotificationEvent} from "utils/event";
+
+const defaultInitialValue = {
+    name: '',
+    description: '',
+    size_1: '',
+    price_1: '',
+    size_2: '',
+    price_2: '',
+    size_3: '',
+    price_3: '',
+    imageUrl: ''
+}
 
 const AddMenuItemPage = () => {
     useRedirectToSettingPage();
-    useScrollUp();
+    const scrollUp = useScrollUp();
+
     const companyId = LocalStorage.get(LOCAL_STORAGE_KEY.COMPANY_ID_FOR_EDIT_MENU);
-
     const [isLoading, setIsLoading] = useState(false);
-
-    const initialValue = {
-        name: '',
-        price: '',
-        category_id: 1,
-        description: '',
-        cookingTime: '',
-        size: '',
-        image_url: ''
-    }
+    const [initialValues, setInitialValues] = useState(defaultInitialValue)
 
     const onSubmit = values => {
         setIsLoading(true);
 
         const requestObj = {
             ...values,
-            company_id: companyId,
+            companyId,
         }
 
         fetchData(BE_API.MENU_ITEM.POST_CREATE(), requestObj)
-            .then(() => publishNotificationEvent.success("Menu item was created."))
+            .then(() => {
+                scrollUp();
+                publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.MENU_ITEM.WAS_CREATED))
+                setInitialValues({...defaultInitialValue, categoryId: values.categoryId})
+            })
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))
             .finally(() => setIsLoading(false))
+    }
+
+    if (isLoading) {
+        return <NotificationLoading />
     }
 
     return (
         <>
             <MenuItemView
-                initialValue={initialValue}
+                defaultInitialValue={initialValues}
                 onSubmit={onSubmit}
             >
                 <>
-                    <FetchButton
+                    <RowSplitter height="10px"/>
+                    <PrimaryButton
                         isWide
                         type="submit"
                         isLoading={isLoading}
+                        withPadding
                     >
                         {translate(TRANSLATION.PAGE.ADD_MENU_ITEM.BUTTON.ADD_MENU_ITEM)}
-                    </FetchButton>
+                    </PrimaryButton>
                 </>
 
             </MenuItemView>

@@ -1,8 +1,10 @@
 import styled from "styled-components";
-import {DEVICE_WIDTH} from "../../utils/theme";
+import {DEVICE_WIDTH} from "utils/theme";
 
 export const Wrapper = styled.div`
   display: flex;
+  margin: auto;
+  width: 1260px;
 `;
 export const Column = styled.div`
   border: solid .5px;
@@ -16,13 +18,13 @@ export const Space = styled.span`
 `;
 
 export const Header = styled.div`
-  position: fixed;
   background: white;
   border-bottom: solid 1px black;
-  width: 100%;
   z-index: 30;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  margin: auto;
 `;
 export const Row = styled.div`
   padding: 10px;
@@ -35,7 +37,7 @@ export const Component = styled.div`
 
 export const ColorCircle = styled.div`
   background: ${p => p.bg};
-  border-radius: 20px;
-  width: 40px;
-  height: 40px;;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;;
 `;

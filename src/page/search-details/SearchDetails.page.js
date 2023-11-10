@@ -1,42 +1,81 @@
 import {useEffect, useState} from "react";
-import {useParams} from 'react-router-dom';
-import {CategoryTitle, Wrapper} from "./SearchDetails.style";
+import {useDispatch} from "react-redux";
+import {useNavigate, useParams} from 'react-router-dom';
 
-import {Company, NotificationLoading, RowSplitter} from "../../components";
+import {Wrapper} from "./SearchDetails.style";
 
-import CategoryMenuView from '../../page-view/category-menu-view/CategoryMenuView'
+import {Company, NotificationLoading, PrimaryButton, NotificationTDB, RowSplitter} from "components";
 
-import {BE_API, fetchData} from "../../utils/fetch";
-import {translate, TRANSLATION as TR} from "../../utils/translation";
-import {publishNotificationEvent} from "../../utils/event";
-import {stopLoadingWithDelay} from "../../utils/utils";
+import CategoryMenuView from 'page-view/category-menu-view/CategoryMenuView'
+
+import {addCompanyIdForSearchDetailsPage} from '../../features/searchDetailsPage/searchDetailsPageSlice'
+
+import {ROUTER} from "utils/config";
+import {useLocalStorage, useScrollUp} from "utils/hook";
+import {BE_API, fetchData} from "utils/fetch";
+import {stopLoadingWithDelay} from "utils/utils";
+import {publishNotificationEvent} from "utils/event";
+import {translate, TRANSLATION, TRANSLATION as TR} from "utils/translation";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 
 const SearchDetailsPage = () => {
+    useScrollUp();
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     let companyId = +useParams().companyId;
+
+    const [isCompanyExist, setIsCompanyExist] = useState(true);
     const [isLoadingMenu, setIsLoadingMenu] = useState(false);
     const [isLoadingCompany, setIsLoadingCompany] = useState(false);
-    const [company, setCompany] = useState()
-    const [menuItems, setMenuItems] = useState();
+
+    const [company, setCompany] = useLocalStorage(LOCAL_STORAGE_KEY.SEARCH_DETAILS_COMPANY)
+    const [menuItems, setMenuItems] = useLocalStorage(LOCAL_STORAGE_KEY.SEARCH_DETAILS_MENU);
 
     useEffect(() => {
-        setIsLoadingCompany(true)
+        if (companyId) {
+            dispatch(addCompanyIdForSearchDetailsPage(companyId))
+        }
+    })
 
+    useEffect(() => {
+        if (!companyId) {
+            setIsCompanyExist(false)
+            return
+        }
+
+        if (company && company.id === companyId) {
+            return;
+        }
+
+        setIsLoadingCompany(true)
         const companyLoadingDelay = stopLoadingWithDelay([() => setIsLoadingCompany(false)])
+
 
         fetchData(BE_API.COMPANY.GET_BY_COMPANY_ID(companyId))
             .then(res => {
                 setCompany(res.body[0]);
             })
-            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
+            .catch(e => {
+                setIsCompanyExist(false)
+                publishNotificationEvent.error(e.body.errorMessage)
+            })
             .finally(() => companyLoadingDelay.allow());
     }, [companyId])
 
     useEffect(() => {
+        if (!companyId) {
+            return
+        }
+
+        if (menuItems && company.id === companyId) {
+            return
+        }
+
         setIsLoadingMenu(true);
         const menuLoadingDelay = stopLoadingWithDelay([() => setIsLoadingMenu(false)]);
-        fetch(BE_API.MENU_ITEM.GET_ONLY_VISIBLE_BY_COMPANY_ID(companyId))
-            .then(res => res.json())
-            .then(data => data.sort((a, b) => a.CATEGORY_ID - b.CATEGORY_ID))
+
+        fetchData(BE_API.MENU_ITEM.GET_ONLY_VISIBLE_BY_COMPANY_ID(companyId))
+            .then(res => res.body.sort((a, b) => a.categoryId - b.categoryId))
             .then(menuItems => {
                 setMenuItems(menuItems)
                 if (!menuItems.length) {
@@ -45,18 +84,42 @@ const SearchDetailsPage = () => {
             })
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))
             .finally(() => menuLoadingDelay.allow());
+
     }, [companyId]);
+
+    if (!isCompanyExist) {
+        return (
+            <NotificationTDB title={translate(TR.PAGE.COMPANY_DETAILS.COMPANY_DOESNT_EXIST)}>
+                <PrimaryButton isWide clickHandler={() => {
+
+                    // We delete these data for case when
+                    // company was deleted between
+                    // customer found list of companies per city
+                    // and
+                    // open company
+                    LocalStorage.remove(LOCAL_STORAGE_KEY.COMPANY_SEARCH_SELECTED_CITY_ID)
+                    LocalStorage.remove(LOCAL_STORAGE_KEY.COMPANY_SEARCH_SELECTED_REGION_ID)
+                    LocalStorage.remove(LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT)
+
+                    navigate(ROUTER.SEARCH.URL)
+                }}>
+                    {translate(TR.GO_TO_A_SEARCH_PAGE)}
+                </PrimaryButton>
+            </NotificationTDB>
+        )
+    }
 
     return (
         <Wrapper>
-            {isLoadingCompany && <NotificationLoading>Loading company ...</NotificationLoading>}
+            {isLoadingCompany &&
+                <NotificationLoading>{translate(TRANSLATION.NOTIFICATION.COMPANY.LOADING_COMPANY)}</NotificationLoading>}
             {!isLoadingCompany && company && <Company company={company} withMoreInfo/>}
 
-            {isLoadingMenu && <NotificationLoading>Loading menu ... </NotificationLoading>}
+            {isLoadingMenu &&
+                <NotificationLoading>{translate(TRANSLATION.NOTIFICATION.LOADING_MENU)}</NotificationLoading>}
 
-            {!isLoadingMenu && menuItems?.length && (
+            {!isLoadingMenu && !!menuItems?.length && (
                 <>
-                    <CategoryTitle id="menu">{translate(TR.PAGE.COMPANY_DETAILS.MENU_TITLE)}</CategoryTitle>
                     <CategoryMenuView
                         className="category-menu-row"
                         menuItems={menuItems}
@@ -64,9 +127,8 @@ const SearchDetailsPage = () => {
                 </>
             )
             }
-
             {/*Let's scroll work after click on the last sub category */}
-            <RowSplitter height={'550px'}/>
+            <RowSplitter height={'200px'} />
         </Wrapper>
     );
 };

@@ -17,20 +17,20 @@ const MESSAGE = {
 }
 
 const PHONE = {
-    MIN: 12,
-    MAX: 12
+    MIN: 10,
+    MAX: 13
 };
 
 const PHONE_VALIDATION = from =>
     Yup.string()
         .required(MESSAGE.REQUIRED)
-        .min(from.PHONE.MIN, `${MESSAGE.EXAMPLE}: 380970122333`)
-        .max(from.PHONE.MAX, `${MESSAGE.EXAMPLE}: 380970122333`)
+        .min(from.PHONE.MIN, `${MESSAGE.EXAMPLE}: 0970223340`)
+        .max(from.PHONE.MAX, `${MESSAGE.EXAMPLE}: +380970223340`)
 
 const PHONE_VALIDATION_WITHOUT_REQUIRED = from =>
     Yup.string()
-        .min(from.PHONE.MIN, `${MESSAGE.EXAMPLE}: 380970122333`)
-        .max(from.PHONE.MAX, `${MESSAGE.EXAMPLE}: 380970122333`)
+        .min(from.PHONE.MIN, `${MESSAGE.EXAMPLE}: 0970223340`)
+        .max(from.PHONE.MAX, `${MESSAGE.EXAMPLE}: +380970223340`)
 
 const CUSTOMER = {
     NAME: {
@@ -84,6 +84,12 @@ const forgetPasswordValidation = {
 const emailVerificationCodeValidation = {
     emailVerificationCode: customer_validation.emailVerificationCode,
 }
+const EditCustomerValidation = {
+    name: customer_validation.name,
+    email: customer_validation.email,
+    phone: customer_validation.phone,
+}
+
 const singUpValidation = {
     name: customer_validation.name,
     email: customer_validation.email,
@@ -98,24 +104,22 @@ const changePasswordValidation = {
 }
 
 const menu_item_validation = {
+    categoryId: Yup.string().required(MESSAGE.REQUIRED),
     name: Yup.string()
         .required(MESSAGE.REQUIRED)
         .min(2, `${MESSAGE.MIN_SYMBOLS} 2`)
-        .max(30, `${MESSAGE.MAX_SYMBOLS} 30`),
-    category_id: Yup.string().required(MESSAGE.REQUIRED),
-    price: Yup.number()
-        .required(MESSAGE.REQUIRED)
-        .moreThan(0, `${MESSAGE.MIN_VALUE} 1`),
-    description: Yup.string()
         .max(100, `${MESSAGE.MAX_SYMBOLS} 100`),
-    cookingTime: Yup.number()
-        .required(MESSAGE.REQUIRED)
-        .moreThan(0, `${MESSAGE.MIN_VALUE} 1`)
-        .lessThan(100, `${MESSAGE.MAX_VALUE} 99`),
-    size: Yup.number()
-        .required(MESSAGE.REQUIRED)
-        .moreThan(0, `${MESSAGE.MIN_VALUE} 1`)
-        .lessThan(10000, `${MESSAGE.MAX_VALUE} 9999`),
+    description: Yup.string()
+        .max(255, `${MESSAGE.MAX_SYMBOLS} 255`),
+    size_1: Yup.string(),
+    price_1: Yup.number()
+        .moreThan(0, `${MESSAGE.MIN_VALUE} 1`),
+    size_2: Yup.string(),
+    price_2: Yup.number()
+        .moreThan(0, `${MESSAGE.MIN_VALUE} 1`),
+    size_3: Yup.string(),
+    price_3: Yup.number()
+        .moreThan(0, `${MESSAGE.MIN_VALUE} 1`),
 }
 
 const COMPANY = {
@@ -128,7 +132,7 @@ const COMPANY = {
     },
     STREET: {
         MIN: 2,
-        MAX: 30
+        MAX: 60
     },
     PHONE,
     SCHEDULE: {},
@@ -139,7 +143,7 @@ const company_validation = {
         .required(MESSAGE.REQUIRED)
         .min(COMPANY.NAME.MIN, `${MESSAGE.MIN_LENGTH} ${COMPANY.NAME.MIN}`)
         .max(COMPANY.NAME.MAX, `${MESSAGE.MAX_LENGTH} ${COMPANY.NAME.MAX}`),
-    city_id: Yup.string().required(MESSAGE.REQUIRED),
+    cityId: Yup.string().required(MESSAGE.REQUIRED),
     street: Yup.string()
         .required(MESSAGE.REQUIRED)
         .min(COMPANY.STREET.MIN, `${MESSAGE.MIN_LENGTH} ${COMPANY.STREET.MIN}`)
@@ -153,6 +157,7 @@ const validation = {
     customer: {
         singIn: singInValidation,
         singUp: singUpValidation,
+        editCustomer: EditCustomerValidation,
         emailVerificationCode: emailVerificationCodeValidation,
         changePassword: changePasswordValidation,
         forgetPassword: forgetPasswordValidation

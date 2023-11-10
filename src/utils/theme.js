@@ -1,32 +1,17 @@
 import {keyframes} from "styled-components";
 
-export const FONT_16 = `
-    font-size: 16px;
-    font-height: 24px;
-    font-weight: 400;
-`
-export const FONT_16_BOLD = `
-    ${FONT_16};
-    font-weight: 600;
-`
-export const FONT_22 = `
-    font-size: 22px;
-    font-height: 26.4px;
-`
-
-export const FONT_22_500 = `
-    ${FONT_22};
-    font-weight: 500;
-`
 export const COLOR = {
-    PRIMARY: '#FF3937', //'#709900',
+    PRIMARY:  '#709900',
     ACCENT1: '#3F3D56',
     ACCENT2: '#F5F6FB',
-    ACCENT3: '#FF7E5B', //'#96CC00',
+    ACCENT3:  '#96CC00',
     ACCENT4: '#FFFFFF',
     ACCENT5: '#B5B5B5',
     ACCENT6: '#FF3937',
     ACCENT7: '#F6EBEF',
+    ACCENT8: '#F5F6FB',
+    ACCENT9: '#E6E8E9',
+    ACCENT10: '#013f09',
     WARNING1: '#F1C21B',
     WARNING2: '#FFF8E1',
     INFO1: '#0244CF',
@@ -42,18 +27,53 @@ export const GRADIENT = {
     TO: COLOR.PRIMARY,
 }
 
-export const MEDIA = {
-    phone: "(max-width: 414px) and (min-width: 370px)"
+export const FONT = {
+    SIZE_14: `
+        font-size: 14px;
+        line-height: 16px;
+        `,
+    SIZE_16: `
+        font-size: 16px;
+        line-height: 19px;
+        `,
+    SIZE_18: `
+        font-size: 18px;
+        line-height: 22px;
+        `,
+    SIZE_20: `
+        font-size: 20px;
+        line-height: 24px;
+        `,
+    SIZE_22: `
+        font-size: 22px;
+        line-height: 26px;
+        `,
+    SIZE_24: `
+        font-size: 24px;
+        line-height: 29px;
+        `,
+    SIZE_32: `
+        font-size: 32px;
+        line-height: 38px;
+        `,
+    WEIGHT_400: `font-weight: 400;`,
+    WEIGHT_500: `font-weight: 500;`,
+    WEIGHT_600: `font-weight: 600;`,
+    WEIGHT_700: `font-weight: 700;`
 }
 
-export const SHADOW = `box-shadow: 0px 2px 2px 0px #00000033;`
-
 export const BORDER_RADIUS = {
-    FIRST: '25px',
-    SECOND: '10px',
-    THIRD: '8px',
-    FOURTH: '5px',
-    CIRCLE: '50%'
+    BUTTON: '5px',
+    DAY_IN_SCHEDULE: '8px',
+    SUB_CATEGORY: '12px',
+    COMPANY: '0px',
+    MENU_ITEM: '0',
+    FIRST: '0px',
+    CITY_POPUP: '20px',
+    THIRD: '0px',
+    FOURTH: '0px',
+    CIRCLE: '50%',
+    INPUT: '4px'
 }
 
 export const DEVICE_WIDTH = {
@@ -61,15 +81,23 @@ export const DEVICE_WIDTH = {
     MAX: '414px',
 }
 
-export function hexToRgbA(hex, a=1){
+export const MEDIA = {
+    phone: "(max-width: 414px) and (min-width: 370px)"
+}
+
+export const SHADOW = `box-shadow: 0px 2px 2px 0px #00000033;`
+
+
+
+export function hexToRgbA(hex, a = 1) {
     var c;
-    if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
-        c= hex.substring(1).split('');
-        if(c.length=== 3){
-            c= [c[0], c[0], c[1], c[1], c[2], c[2]];
+    if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
+        c = hex.substring(1).split('');
+        if (c.length === 3) {
+            c = [c[0], c[0], c[1], c[1], c[2], c[2]];
         }
-        c= '0x'+c.join('');
-        return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+',' +a+')';
+        c = '0x' + c.join('');
+        return 'rgba(' + [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',') + ',' + a + ')';
     }
     throw new Error('Bad Hex');
 }

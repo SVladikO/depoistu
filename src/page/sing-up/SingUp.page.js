@@ -4,32 +4,42 @@ import * as Yup from 'yup';
 import {Formik} from "formik";
 
 import {Wrapper} from "./SingUp.style";
-import {FetchButton, Label, Input, ContentContainer} from "../../components";
-import NavigationLabelHref from "../../components/NavigationLabelHref/NavigationLabelHref";
+import {Input, ContentContainer, PrimaryButton, Checkbox} from "components";
+import NavigationLabelHref from "components/NavigationLabelHref/NavigationLabelHref";
 
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import validation from '../../utils/validation';
-import {BE_API, fetchData} from "../../utils/fetch";
-import {TRANSLATION, translate} from "../../utils/translation";
-import {ROUTER, URL} from '../../utils/config';
-import {publishNotificationEvent} from "../../utils/event";
+import validation from 'utils/validation';
+import {BE_API, fetchData} from "utils/fetch";
+import {TRANSLATION, translate} from "utils/translation";
+import {ROUTER, URL} from 'utils/config';
+import {publishNotificationEvent} from "utils/event";
+import {addCustomer} from "features/customer/customerSlice";
+import {useDispatch} from "react-redux";
+import {useQuery} from "../../utils/hook";
 
 const SignUpSchema = Yup.object().shape(validation.customer.singUp);
 
 const SingUpPage = () => {
     const navigate = useNavigate();
-
+    const dispatch = useDispatch();
+    let query = useQuery()
+    const backUrl = query.get("backUrl") || URL.SETTING;
     const [isLoading, setIsLoading] = useState(false);
     const [wasSubmitted, setWasSubmitted] = useState(false);
 
-    const onSubmit = ({name, email, newPassword, phone}) => {
+    const onSubmit = ({name, email, newPassword, phone, isBusinessOwner}) => {
         setWasSubmitted(true);
         setIsLoading(true);
 
-        fetchData(BE_API.CUSTOMER.SING_UP(), {name, email, password: newPassword, phone})
+        fetchData(BE_API.CUSTOMER.SING_UP(), {
+            name,
+            email: email.toLowerCase(),
+            password: newPassword,
+            phone,
+            isBusinessOwner
+        })
             .then(res => {
-                LocalStorage.set(LOCAL_STORAGE_KEY.CUSTOMER, res.body)
-                navigate(URL.SETTING);
+                dispatch(addCustomer(res.body));
+                navigate(backUrl);
             })
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))
             .finally(() => setIsLoading(false));
@@ -44,14 +54,14 @@ const SingUpPage = () => {
                     phone: '',
                     newPassword: '',
                     confirmedPassword: '',
+                    isBusinessOwner: false,
                 }}
                 validationSchema={SignUpSchema}
                 onSubmit={onSubmit}
             >
                 {({values, handleBlur, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                     <form onSubmit={handleSubmit}>
-                        <ContentContainer>
-                            <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.NAME)}</Label>
+                        <ContentContainer noShadow>
                             <Input
                                 withCleaner
                                 isTouched={wasSubmitted || touched.name}
@@ -60,9 +70,9 @@ const SingUpPage = () => {
                                 value={values.name}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('name', '')}
+                                labelName={translate(TRANSLATION.INPUT_LABEL.CUSTOMER.NAME)}
                                 errorMessage={errors.name}
                             />
-                            <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.PHONE)}</Label>
                             <Input
                                 withCleaner
                                 name="phone"
@@ -71,9 +81,9 @@ const SingUpPage = () => {
                                 value={values.phone}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('phone', '')}
+                                labelName={translate(TRANSLATION.INPUT_LABEL.CUSTOMER.PHONE)}
                                 errorMessage={errors.phone}
                             />
-                            <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.EMAIL)}</Label>
                             <Input
                                 withCleaner
                                 type="email"
@@ -82,10 +92,10 @@ const SingUpPage = () => {
                                 isTouched={wasSubmitted || touched.email}
                                 value={values.email}
                                 changeHandler={handleChange}
+                                labelName={translate(TRANSLATION.INPUT_LABEL.CUSTOMER.EMAIL)}
                                 clearHandler={() => setFieldValue('email', '')}
                                 errorMessage={errors.email}
                             />
-                            <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.PASSWORD)}</Label>
                             <Input
                                 withSwitcher
                                 name="newPassword"
@@ -94,9 +104,9 @@ const SingUpPage = () => {
                                 value={values.newPassword}
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('newPassword', '')}
+                                labelName={translate(TRANSLATION.INPUT_LABEL.CUSTOMER.PASSWORD)}
                                 errorMessage={errors.newPassword}
                             />
-                            <Label>{translate(TRANSLATION.INPUT_LABEL.CUSTOMER.CONFIRM_PASSWORD)}</Label>
                             <Input
                                 withSwitcher
                                 value={values.confirmedPassword}
@@ -105,9 +115,24 @@ const SingUpPage = () => {
                                 name="confirmedPassword"
                                 changeHandler={handleChange}
                                 clearHandler={() => setFieldValue('confirmedPassword', '')}
+                                labelName={translate(TRANSLATION.INPUT_LABEL.CUSTOMER.CONFIRM_PASSWORD)}
                                 errorMessage={errors.confirmedPassword}
                             />
+                            <Checkbox
+                                name="isBusinessOwner"
+                                value={values.isBusinessOwner}
+                                changeHandler={handleChange}
+                                lableName={translate(TRANSLATION.PAGE.PROFILE.ARE_YOU_BUSINESS_OWNER)}
+                            />
+                            <PrimaryButton
+                                isWide
+                                type="submit"
+                                isLoading={isLoading}
+                            >
+                                {translate(TRANSLATION.PAGE.SING_UP.BUTTON)}
+                            </PrimaryButton>
                         </ContentContainer>
+
                         <Wrapper>
                             <NavigationLabelHref
                                 hrefTitle={translate(TRANSLATION.PAGE.SIGN_IN.TOP_TITLE)}
@@ -115,13 +140,6 @@ const SingUpPage = () => {
                                 label={translate(TRANSLATION.PAGE.SIGN_IN.ACCOUNT_CONFIRMATION)}
                             />
                         </Wrapper>
-                        <FetchButton
-                            isWide
-                            type="submit"
-                            isLoading={isLoading}
-                        >
-                            {translate(TRANSLATION.PAGE.SING_UP.TOP_TITLE)}
-                        </FetchButton>
                     </form>
                 )}
             </Formik>

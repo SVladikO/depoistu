@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {Wrapper} from './CheckBoxWithLabel.style';
-import {Checkbox} from "../index";
+import Checkbox from "components/Checkbox/Checkbox";
 
 const CheckBoxWithLabel = ({label,id}) => {
     const [isChecked, setIsChecked] = useState(false);

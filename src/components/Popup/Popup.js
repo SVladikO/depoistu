@@ -2,10 +2,10 @@ import {useEffect} from "react";
 
 import {InvisibleWrapper, CloseButtonWrapper, Wrapper} from "./Popup.style";
 
-import {CloseButton} from "../index";
-import CityContent from "./content/city/CityContent";
-import ImageContent from "./content/image/ImageContent";
-import {Info as _Info, InfoText as _InfoText} from "./content/info/Info";
+import {ReactComponent as CloseIcon} from "assets/icons/close.svg";
+
+import CityContent from "./city/CityContent";
+import {Info as _Info} from "./info/Info";
 
 export const enableScrollOnBody = () => {
     document.body.style.overflowY = 'auto';
@@ -16,8 +16,7 @@ export const disableScrollOnBody = () => {
 };
 
 const Popup = (props) => {
-    const {onClose, Component, showCloseButton = true} = props;
-
+    const {onClose = () => {}, Component, showCloseButton = true, popupPosition = 'center'} = props;
     useEffect(() => {
         disableScrollOnBody();
     })
@@ -28,25 +27,24 @@ const Popup = (props) => {
     }
 
     return (
-        <InvisibleWrapper>
-            <Wrapper>
-                <CloseButtonWrapper>
-                    {showCloseButton && <CloseButton clickHandler={closePopup}/>}
+        <InvisibleWrapper popupPosition={popupPosition} className="invisible-wrapper">
+            <Wrapper popupPosition={popupPosition}>
+                {showCloseButton && <CloseButtonWrapper popupPosition={popupPosition} onClick={closePopup}>
+                    <CloseIcon/>
                 </CloseButtonWrapper>
-                <Component onClose={closePopup} {...props} />
+                }
+                <Component {...props} onClose={closePopup}/>
             </Wrapper>
         </InvisibleWrapper>
     );
 };
 
-const City = props => <Popup Component={CityContent} {...props} />;
-const Image = props => <Popup Component={ImageContent} {...props} />;
-const Info = props => <Popup Component={_Info} {...props} />;
-const InfoText = props => <Popup Component={_InfoText} {...props} />;
+const City = props => <Popup Component={CityContent} {...props} popupPosition="center" showCloseButton={false} />;
+const Center = props => <Popup Component={_Info} {...props} popupPosition='center'/>;
+const Bottom = props => <Popup Component={_Info} {...props} popupPosition='end' noPadding />;
 
 export default {
     City,
-    Image,
-    Info,
-    InfoText
+    Center,
+    Bottom
 }

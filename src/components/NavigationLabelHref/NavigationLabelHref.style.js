@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {COLOR} from "../../utils/theme";
+import {COLOR} from "utils/theme";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -16,5 +16,5 @@ export const Label = styled.span`
 `;
 
 export const Title = styled(Label)`
-  color: ${COLOR.ACCENT3};
+  color: ${COLOR.INFO1};
 `;

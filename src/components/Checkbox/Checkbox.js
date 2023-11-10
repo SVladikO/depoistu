@@ -1,13 +1,18 @@
-import {CheckboxStyle} from './Checkbox.style'
+import {Wrapper, CheckboxStyle} from './Checkbox.style'
 
-const Checkbox = ({id, name, type = 'checkbox', isChecked, changeHandler}) =>
-    <CheckboxStyle
-        name={name}
-        defaultCheked
-        type={type}
-        checked={isChecked}
-        onChange={changeHandler}
-        id={id}
-    />;
+const Checkbox = ({id, name, lableName, value, type = 'checkbox', isChecked, changeHandler}) =>
+    <Wrapper>
+        <CheckboxStyle
+            type={type}
+            value={value}
+            name={name}
+            onChange={changeHandler}
+            defaultCheked
+            isLabelExist={!!lableName}
+            checked={isChecked}
+            id={id}
+        />
+        {lableName}
+    </Wrapper>
 
 export default Checkbox;

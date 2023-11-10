@@ -1,15 +1,15 @@
 import AccountSettings from "./AccountSettings/AccountSettings";
 import BottomMenu from "./BottomMenu/BottomMenu";
-import CategoryItem from "./CategoryItem/CategoryItem";
+import SubCategoryItem from "./SubCategoryItem/SubCategoryItem";
 import CheckBoxWithLabel from "./CheckBoxWithLabel/CheckBoxWithLabel";
 import Checkbox from "./Checkbox/Checkbox";
-import CloseButton from "./CloseButton/CloseButton";
 import Company from "./Company/Company";
 import CustomerAccountBar from "./UserAccountBar/CustomerAccountBar";
 import Dropdown from "./Dropdown/Dropdown";
 import EditMenuRow from "./EditMenuRow/EditMenuRow";
 import FromToTime from "./FromToTime/FromToTime";
 import HistoryTabBar from "./HistoryTabBar/HistoryTabBar";
+import HorizontalSwiper from "./HorizontalSwiper/HorizontalSwiper";
 import Like from "./Like/Like";
 import MenuItem from "./MenuItem/MenuItem";
 import NavigationHeader from "./NavigationHeader/NavigationHeader";
@@ -27,11 +27,11 @@ import WeekScheduleInput from "./WeekScheduleInput/WeekScheduleInput";
 import {Absolute} from "./Absolute/Absolute.style";
 import {ContentContainer} from "./ContentContainer/ContentContainer.style.js";
 import {Discount} from "./Discount/Discount.style";
-import {FetchButton} from "./Buttons/FetchButton";
+import {DisabledButton} from "./Buttons/DisabledButton";
 import {Flex} from "./Flex/Flex.style";
 import Footer from "./Footer/Footer";
 import {FixedWrapper} from "./FixedWrapper/FixedWrapper.style";
-import {Input, PInput, Textarea} from "./Input/Input";
+import {Input, CityInput, Textarea} from "./Input/Input";
 import {Label} from "./Label/Label.style";
 import {MenuItemDetails} from "./MenuItem/MenuItem";
 import {NotificationFactory, NOTIFICATION_STATUS, NotificationLoading} from "./Notification/Notification";
@@ -39,27 +39,28 @@ import {PrimaryButton} from "./Buttons/PrimaryButton";
 import {RowSplitterStyle as RowSplitter} from "./RowSplitter/RowSplitter.style";
 import {SecondaryButton} from "./Buttons/SecondaryButton";
 import {ThirdButton} from "./Buttons/ThirdButton";
+import {Text22} from "./Text/Text.style";
 
 export {
     Absolute,
     AccountSettings,
     BottomMenu,
-    CategoryItem,
+    SubCategoryItem,
+    DisabledButton,
     CheckBoxWithLabel,
     Checkbox,
-    CloseButton,
     Company,
     ContentContainer,
     CustomerAccountBar,
     Discount,
     Dropdown,
     EditMenuRow,
-    FetchButton,
     Flex,
     Footer,
     FixedWrapper,
     FromToTime,
     HistoryTabBar,
+    HorizontalSwiper,
     Input,
     Label,
     Like,
@@ -72,7 +73,7 @@ export {
     NotificationLoading,
     OrderHistoryRow,
     OrderIconWithCounter,
-    PInput,
+    CityInput,
     Popup,
     Price,
     PrimaryButton,
@@ -80,6 +81,7 @@ export {
     RowSplitter,
     SecondaryButton,
     SettingMenuRow,
+    Text22,
     Textarea,
     ThirdButton,
     ToggleCheckbox,

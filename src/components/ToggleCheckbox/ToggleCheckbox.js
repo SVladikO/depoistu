@@ -1,14 +1,17 @@
 import React from 'react';
-import {Wrapper, RoundSlider, Input} from "./ToggleCheckbox.style";
 
-const ToggleCheckbox = ({isChecked, changeHandler, className}) => {
+import {Wrapper, RoundSlider, InnerInput, Label} from "./ToggleCheckbox.style";
+
+const ToggleCheckbox = ({isChecked, changeHandler, label = ''}) => {
     return (
-        <Wrapper className={className}>
-            <Input
+        <Wrapper onClick={changeHandler} className="ToggleCheckbox">
+            <InnerInput
                 checked={isChecked}
-                onChange={changeHandler}
-                type="checkbox"/>
-            <RoundSlider/>
+                type="checkbox"
+                onChange={() => {}}
+            />
+            <RoundSlider width={"20px"}/>
+            <Label>{label}</Label>
         </Wrapper>
     );
 };

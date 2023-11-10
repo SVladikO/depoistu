@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {COLOR,BORDER_RADIUS} from "../../utils/theme";
+import {COLOR,BORDER_RADIUS} from "utils/theme";
 
 export const Wrapper = styled.div`
   z-index: 2;
@@ -8,6 +8,10 @@ export const Wrapper = styled.div`
   border-radius: ${BORDER_RADIUS.SECOND} ${BORDER_RADIUS.SECOND} 0 0;
   display: flex;
   justify-content: space-around;
+
+  &:hover {
+    cursor: pointer;
+  }
 
   & > a {
     width: 25%;

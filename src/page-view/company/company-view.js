@@ -9,23 +9,23 @@ import {
     ContentContainer,
     Input,
     Label,
-    PInput,
+    CityInput,
     Popup,
     SecondaryButton,
     WeekScheduleInput
-} from "../../components";
+} from "components";
 
-import {ReactComponent as LocationIcon} from "../../assets/icons/location.svg";
-import {ReactComponent as PhoneIcon} from "../../assets/icons/phone.svg";
+import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
+import {ReactComponent as PhoneIcon} from "assets/icons/phone.svg";
 
-import WarningMessage from "../../components/WarningMessage/WarningMessage";
+import WarningMessage from "components/WarningMessage/WarningMessage";
 
-import {ReactComponent as DeleteBasketIcon} from "../../assets/icons/delete_basket.svg";
+import {ReactComponent as DeleteBasketIcon} from "assets/icons/delete_basket.svg";
 
-import validation from "../../utils/validation";
-import {isScheduleValid} from "../../utils/company";
-import {CITY_TRANSLATION_IDS, getOnlyCityIds} from '../../utils/cities'
-import {translate, TRANSLATION} from "../../utils/translation";
+import validation from "utils/validation";
+import {isScheduleValid} from "utils/company";
+import {CITY_TRANSLATION_IDS, getOnlyCityIds} from 'utils/cities'
+import {translate, TRANSLATION} from "utils/translation";
 
 const renderCompanyPhotos = (photos, setPictures) => {
     const deleteImage = index => setPictures(photos.filter((_, i) => i !== index));
@@ -89,8 +89,7 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
             {({values, touched, handleBlur, setFieldValue, handleSubmit, handleChange, errors}) => (
                 <form onSubmit={handleSubmit}>
                     {/*{renderCompanyPhotos(initialValues.photos, pictures => setFieldValue('photos', pictures))}*/}
-                    <ContentContainer>
-                        <Label>{translate(TRANSLATION.INPUT_LABEL.COMPANY.NAME)}</Label>
+                    <ContentContainer noShadow>
                         <Input
                             name='name'
                             value={values.name}
@@ -100,45 +99,49 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                             changeHandler={handleChange}
                             clearHandler={() => setFieldValue('name', '')}
                             errorMessage={errors.name}
+                            labelName={translate(TRANSLATION.INPUT_LABEL.COMPANY.NAME)}
+                            isRequired
                         />
-                        <Label>{translate(TRANSLATION.INPUT_LABEL.COMPANY.CITY)}</Label>
-                        <PInput
+                        <CityInput
                             withIcon
                             Icon={LocationIcon}
                             handleClick={openCityPopup}
-                            value={values.city_id && translate(CITY_TRANSLATION_IDS[values.city_id])}
-                            isTouched={wasSubmitted || touched.city_id}
-                            errorMessage={errors.city || errors.city_id}
+                            labelName={translate(TRANSLATION.INPUT_LABEL.COMPANY.CITY)}
+                            value={values.cityId && translate(CITY_TRANSLATION_IDS[values.cityId])}
+                            isTouched={wasSubmitted || touched.cityId}
+                            errorMessage={errors.city || errors.cityId}
+                            isRequired
                         />
-                        {}
-                        <Label>{translate(TRANSLATION.INPUT_LABEL.COMPANY.STREET)}</Label>
                         <Input
                             name='street'
                             value={values.street}
                             onBlur={handleBlur}
+                            labelName={translate(TRANSLATION.INPUT_LABEL.COMPANY.STREET)}
                             isTouched={wasSubmitted || touched.street}
                             withCleaner
                             changeHandler={handleChange}
                             clearHandler={() => setFieldValue('street', '')}
                             errorMessage={errors.street}
+                            isRequired
                         />
-                        <Label>{translate(TRANSLATION.INPUT_LABEL.COMPANY.PHONE)} 1</Label>
                         <Input
                             Icon={PhoneIcon}
                             name="phone1"
-                            type="number"
+                            type="text"
                             value={values.phone1}
+                            labelName={`${translate(TRANSLATION.INPUT_LABEL.COMPANY.PHONE)} 1`}
                             errorMessage={errors.phone1}
                             isTouched={touched.phone1 || wasSubmitted}
                             changeHandler={handleChange}
                             clearHandler={() => setFieldValue('phone1', '')}
                             withCleaner
+                            isRequired
                         />
-                        <Label>{translate(TRANSLATION.INPUT_LABEL.COMPANY.PHONE)} 2</Label>
                         <Input
+                            labelName={`${translate(TRANSLATION.INPUT_LABEL.COMPANY.PHONE)} 2`}
                             Icon={PhoneIcon}
                             name="phone2"
-                            type="number"
+                            type="text"
                             value={values.phone2}
                             errorMessage={errors.phone2}
                             isTouched={touched.phone2 || wasSubmitted}
@@ -146,13 +149,13 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                             clearHandler={() => setFieldValue('phone2', '')}
                             withCleaner
                         />
-                        <Label>{translate(TRANSLATION.INPUT_LABEL.COMPANY.PHONE)} 3</Label>
                         <Input
                             Icon={PhoneIcon}
                             name="phone3"
-                            type="number"
+                            type="text"
                             value={values.phone3}
                             errorMessage={errors.phone3}
+                            labelName={`${translate(TRANSLATION.INPUT_LABEL.COMPANY.PHONE)} 3`}
                             isTouched={touched.phone3 || wasSubmitted}
                             changeHandler={handleChange}
                             clearHandler={() => setFieldValue('phone3', '')}
@@ -160,13 +163,13 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                         />
                         <Label>{translate(TRANSLATION.INPUT_LABEL.COMPANY.WORK_SCHEDULE)}</Label>
                         <WeekScheduleInput values={values} handleChange={handleChange} setFieldValue={setFieldValue}/>
-                        {wasSubmitted && !isScheduleValid(values) && <WarningMessage>Schedule is a required field</WarningMessage>}
+                        {wasSubmitted && !isScheduleValid(values) && <WarningMessage>{translate(TRANSLATION.VALIDATION.SCHEDULE_IS_REQUIRED)}</WarningMessage>}
                     </ContentContainer>
                     {showCityPopup && (
                         <Popup.City
                             availableCityIds={availableAllCityIds}
                             onSelectCity={selectCity(cityId => {
-                                setFieldValue('city_id', cityId)
+                                setFieldValue('cityId', cityId)
                             })}
                             onClose={closeCityPopup}
                         />

@@ -19,7 +19,7 @@ export const stopLoadingWithDelay = callbacks => {
         if (isLoaded) {
             callbacks.forEach(cb => cb())
         } else {
-             intervalId = setInterval(() => {
+            intervalId = setInterval(() => {
                 console.log('interval')
                 if (isLoaded) {
                     console.log('DONE')
@@ -28,7 +28,7 @@ export const stopLoadingWithDelay = callbacks => {
                 }
             }, 1000)
         }
-    }, 1500)
+    }, 2000)
 
     return {
         /**
@@ -38,12 +38,15 @@ export const stopLoadingWithDelay = callbacks => {
         /**
          * Let run callback
          */
-        allow: () => {isLoaded = true}
+        allow: () => {
+            isLoaded = true
+        }
     }
 }
 
 
 export const getRegions = cities => Object.keys(cities);
+
 
 
 

@@ -1,11 +1,10 @@
-import {useState, useEffect} from "react";
-import {useDispatch} from "react-redux";
-import {useNavigate} from "react-router-dom";
-
+import React, {useState, useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {useNavigate, useLocation} from "react-router-dom";
 import {fetchData} from "./fetch";
 
 import {URL} from "./config";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
+import {LocalStorage} from "./localStorage";
 import {publishNotificationEvent} from "./event";
 import {stopLoadingWithDelay} from "./utils";
 
@@ -54,13 +53,21 @@ export const useHideOnScroll = (id, top) => {
     }, [id, top])
 }
 
+// A custom hook that builds on useLocation to parse
+// the query string for you.
+export function useQuery() {
+    const {search} = useLocation();
+
+    return React.useMemo(() => new URLSearchParams(search), [search]);
+}
+
 /**
  * Redirect to settings page is customer isn't signed in.
  * That's for security reasons on frontend side.
  *
  */
 export const useRedirectToSettingPage = () => {
-    const [customer] = useState(LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER));
+    const customer = useSelector(state => state.customer.value);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -70,17 +77,27 @@ export const useRedirectToSettingPage = () => {
     })
 }
 export const useScrollUp = () => {
+    const scrollUp = () => {
+        window.scrollTo({
+            top: -100,
+            behavior: "smooth",
+        })
+    }
     useEffect(() => {
-        window.scrollTo(0, 0)
+        scrollUp()
     }, [])
+
+    return scrollUp;
 };
 
 export const useLocalStorageFetch = (
     storageKey,
     initialState,
     url,
-    setLoading = () => {},
-    customCondition = () => {}
+    setLoading = () => {
+    },
+    customCondition = () => {
+    }
 ) => {
     const localStorageState = LocalStorage.get(storageKey);
     const [value, setValue] = useState(localStorageState ?? initialState);
@@ -99,7 +116,6 @@ export const useLocalStorageFetch = (
                 localStorage.setItem(storageKey, JSON.stringify(res.body))
             })
             .catch(e => {
-                console.log(1111, e);
                 publishNotificationEvent.error(e.body.errorMessage)
             })
             .finally(() => stopLoading.allow())
@@ -107,3 +123,20 @@ export const useLocalStorageFetch = (
 
     return [value, setValue];
 };
+
+export const useWindowScrollPositions = () => {
+    const [scrollPosition, setPosition] = useState({scrollX: 0, scrollY: 0})
+
+    useEffect(() => {
+        function updatePosition() {
+            setPosition({scrollX: window.scrollX, scrollY: window.scrollY})
+        }
+
+        window.addEventListener('scroll', updatePosition)
+        updatePosition()
+
+        return () => window.removeEventListener('scroll', updatePosition)
+    }, [])
+
+    return scrollPosition
+}

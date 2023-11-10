@@ -1,9 +1,12 @@
-import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
+import {LocalStorage} from "./localStorage";
 
-export const checkAccess = () => {
-    const isTrustedCustomer = LocalStorage.get(LOCAL_STORAGE_KEY.IS_TRUSTED_CUSTOMER);
+export const checkAccess = (key) => {
+    if (!key) {
+        return;
+    }
+    const isExist = LocalStorage.get(key);
 
-    if(isTrustedCustomer) return;
+    if(isExist || window.location.host === 'localhost:3000') return;
 
     const secretKey = "****";
     let test = prompt("Entry secret key");
@@ -11,7 +14,5 @@ export const checkAccess = () => {
     if (test !== secretKey) {
         return checkAccess();
     }
-    LocalStorage.set(LOCAL_STORAGE_KEY.IS_TRUSTED_CUSTOMER, true);
-
-
+    LocalStorage.set(key, true);
 }

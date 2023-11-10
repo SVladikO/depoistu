@@ -5,6 +5,8 @@ export const ContentWrapper = styled.div`
   width: 1000px;
   margin: auto;
   font-size: 18px;
+  background: white;
+  padding: 6px;
 `;
 export const RouteWrapper = styled.div`
   position: relative;

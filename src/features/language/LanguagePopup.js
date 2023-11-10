@@ -1,12 +1,12 @@
 import React from "react";
 import {useSelector, useDispatch} from "react-redux";
 
-import {Popup, PrimaryButton} from "../../components";
-import {enableScrollOnBody} from "../../components/Popup/Popup";
+import {Popup, PrimaryButton} from "components";
+import {enableScrollOnBody} from "components/Popup/Popup";
 
 import {closeLanguagePopup, setWebsiteLanguage} from "./languageSlice";
 
-import {LANGUAGE_KEYS} from "../../utils/translation";
+import {LANGUAGE_KEYS} from "utils/translation";
 
 const LanguagePopup = () => {
     const dispatch = useDispatch();
@@ -31,10 +31,10 @@ const LanguagePopup = () => {
     }
 
     return (
-        <Popup.Info showCloseButton={false}>
-            <PrimaryButton isWide onClick={setUA}>Українська</PrimaryButton>
-            <PrimaryButton isWide onClick={setEN}>English</PrimaryButton>
-        </Popup.Info>
+        <Popup.Center showCloseButton={false}>
+            <PrimaryButton isWide clickHandler={setUA}>Українська</PrimaryButton>
+            <PrimaryButton isWide clickHandler={setEN}>English</PrimaryButton>
+        </Popup.Center>
     );
 }
 

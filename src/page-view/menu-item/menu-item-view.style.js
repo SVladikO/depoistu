@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {BORDER_RADIUS, COLOR} from "../../utils/theme";
+import {BORDER_RADIUS, COLOR} from "utils/theme";
 
 export const Wrapper = styled.div`
   & > * {
@@ -20,3 +20,8 @@ export const ImagePlace = styled.div`
   border-radius: ${BORDER_RADIUS.CIRCLE};
   margin: 5px;
 `;
+
+export const GroupSizePrice = styled.div`
+ display: flex;
+  gap: 10px;
+`

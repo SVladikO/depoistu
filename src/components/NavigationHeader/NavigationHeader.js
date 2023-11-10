@@ -2,25 +2,25 @@ import React from 'react';
 
 import {Wrapper, BackButton, Title} from "./NavigationHeader.style";
 
-// import {ROUTER} from "../../WeekScheduleOutput.js/config";
-// import {OrderIconWithCounter} from "../index";
+// import {ROUTER} from "WeekScheduleOutput.js/config";
+// import {OrderIconWithCounter} from "index";
 
-import {ReactComponent as BackArrow} from "../../assets/icons/back_arrow.svg";
-import {Link} from "react-router-dom";
+import {ReactComponent as BackArrow} from "assets/icons/back_arrow.svg";
+
+import {useQuery} from "../../utils/hook";
 
 const NavigationHeader = (props) => {
-    const {title, backUrl} = props;
+    let query = useQuery()
+    const backUrl = query.get("backUrl") || props.backUrl;
 
     return (
         <Wrapper className='pm-NavigationHeader'>
                 {backUrl &&
-                    <Link to={backUrl}>
-                        <BackButton className="back-button">
+                    <BackButton to={backUrl}>
                             <BackArrow/>
-                        </BackButton>
-                    </Link>
+                    </BackButton>
                 }
-                <Title>{title}</Title>
+                <Title>{props.title}</Title>
                 {/*TODO: Hidden second version*/}
                 {/*<Link to={ROUTER.ORDER_REVIEW.URL}>*/}
                 {/*    <OrderIconWithCounter hideOnZeroOrderAmount/>*/}
