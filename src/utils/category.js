@@ -150,6 +150,23 @@ export const CATEGORY_MAPPER_AS_ARRAY = [
     ...CATEGORY_BAR
 ];
 
+/**
+ * Inner function to check id duplication.
+ */
+function checkCategoryIdDuplication() {
+    const result = {};
+
+    CATEGORY_MAPPER_AS_ARRAY.map(item => {
+        if (result[item.id]) {
+            console.error('Duplicated food category id: ', item.id);
+        }
+
+        result[item.id] = item;
+    })
+}
+
+checkCategoryIdDuplication();
+
 export const TOP_CATEGORIES = {
     KITCHEN: CATEGORY_KITCHEN.map(category => category.id),
     SUSHI: CATEGORY_SUSHI.map(category => category.id),
