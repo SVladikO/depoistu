@@ -196,8 +196,6 @@ const CategoryMenuView = ({
         }
     })
 
-    console.log({selectedSubCategoryId})
-
     return (
         <>
             <FixTop className="menu-header">

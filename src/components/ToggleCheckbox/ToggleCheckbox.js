@@ -8,6 +8,7 @@ const ToggleCheckbox = ({isChecked, changeHandler, label = ''}) => {
             <InnerInput
                 checked={isChecked}
                 type="checkbox"
+                onChange={() => {}}
             />
             <RoundSlider width={"20px"}/>
             <Label>{label}</Label>

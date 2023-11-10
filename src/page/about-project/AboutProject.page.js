@@ -16,13 +16,13 @@ const AboutProjectPage = () => {
             {translate(TRANSLATION.PAGE.ABOUT_PROJECT.CONTENT).map(
                 el => {
                     return (
-                        <>
-                            <Title>{el.question}</Title>
+                        <div key={el.question + '_wrapper'}>
+                            <Title key={el.question}>{el.question}</Title>
 
-                            <Description>
+                            <Description key={el.question + '_description'}>
                                 {
                                     el.answers.map((answer, index) =>
-                                        <AnswerWrapper withCounter={el.withCounter}>
+                                        <AnswerWrapper withCounter={el.withCounter} key={answer}>
                                             {el.withCounter ? index + 1 + '. ' : ''}
                                             <Answer withCounter={el.withCounter}>
                                                 {answer}
@@ -31,7 +31,7 @@ const AboutProjectPage = () => {
                                     )
                                 }
                             </Description>
-                        </>
+                        </div>
                     )
                 }
             )}

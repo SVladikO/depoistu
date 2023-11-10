@@ -27,6 +27,7 @@ import {URL} from "utils/config";
 import {BE_API, fetchData} from "utils/fetch";
 import {CATEGORY_ID_MAPPER_AS_OBJECT} from "utils/category";
 import {translate, TRANSLATION as TR, TRANSLATION} from "utils/translation";
+import {publishNotificationEvent} from "../../utils/event";
 
 export const MenuItemDetails = ({
                                     item = {},
@@ -46,16 +47,14 @@ export const MenuItemDetails = ({
         <ZoomIcon/>
     </ImagesWrapper>);
 
-    const toggleIsMenuItemVisible = async () => {
+    const toggleIsMenuItemVisible = () => {
         const requestBody = {
             id: item.id, isVisible: !isVisible, method: 'put',
         }
-        try {
-            await fetchData(BE_API.MENU_ITEM.CHANGE_IS_VISIBLE(), requestBody)
-            setIsVisible(!isVisible)
-        } catch (e) {
-            console.log(e.body.errorMessage)
-        }
+            fetchData(BE_API.MENU_ITEM.CHANGE_IS_VISIBLE(), requestBody)
+                .then(() => setIsVisible(!isVisible))
+                .catch(e => publishNotificationEvent.error(e.body.errorMessage))
+
     }
 
     const showItemDescription = () => {
