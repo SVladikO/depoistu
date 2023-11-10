@@ -17,7 +17,7 @@ const AboutProjectPage = () => {
                 el => {
                     return (
                         <div key={el.question + '_wrapper'}>
-                            <Title key={el.question}>{el.question}</Title>
+                            <Title key={el.question} className="question_title">{el.question}</Title>
 
                             <Description key={el.question + '_description'}>
                                 {

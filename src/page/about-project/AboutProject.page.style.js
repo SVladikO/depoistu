@@ -8,6 +8,10 @@ export const Wrapper = styled.div`
   color: ${COLOR.ACCENT1};
   background: ${COLOR.ACCENT4};
   border-radius: ${p => p.borderRadius ? p.borderRadius : BORDER_RADIUS.SECOND};
+  
+  & > div:first-child .question_title {
+    margin-top: 0;
+  }
 `;
 
 export const Title = styled.div`
