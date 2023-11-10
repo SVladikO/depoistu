@@ -1224,7 +1224,7 @@ export const TRANSLATION = {
             en: "Steak",
             ua: "Стейк"
         },
-        HOME: {
+        HOME_KITCHEN: {
             en: "Home kitchen",
             ua: "Домашня кухня"
         },
@@ -1360,6 +1360,10 @@ export const TRANSLATION = {
             ua: 'Спрінг роли',
             en: 'Spring rolls'
         },
+        TEMPURA_ROLLS: {
+            ua: 'Темпура роли ',
+            en: 'Tempura  rolls'
+        },
         SIGNATURE_ROLLS: {
             ua: 'Фірмові роли',
             en: 'Signature rolls'
@@ -1443,6 +1447,10 @@ export const TRANSLATION = {
         SOUPS: {
             ua: 'Супи',
             en: 'Soups'
+        },
+        BAKING: {
+            ua: 'Випічка',
+            en: 'Baking'
         },
         DOUGH: {
             ua: 'Тісто',
