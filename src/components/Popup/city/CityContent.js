@@ -1,4 +1,4 @@
-import {useRef, useState} from "react";
+import {useState} from "react";
 import {useSelector} from "react-redux";
 
 import {Header, BackButton, CloseIconWrapper, Wrapper, CitiesWrapper} from "./CityContent.style"
@@ -23,6 +23,11 @@ const enableScrollOnBody = () => document.body.style.overflowY = 'auto';
  * @constructor
  */
 export const CityContent = ({onSelectCity, availableCityIds, onClose}) => {
+    const scrollToTop = () => document.getElementsByClassName("cities_wrapper")[0]
+        .scrollTo({
+            top: -100,
+            behavior: "smooth",
+        })
 
     const currentLanguage = useSelector(state => state.language.siteLanguage);
 
@@ -32,16 +37,13 @@ export const CityContent = ({onSelectCity, availableCityIds, onClose}) => {
     const [citiesOrRegionsToRender, setCitiesOrRegionsToRender] = useState(regionIds);
     const [isRegion, setIsRegion] = useState(true);
 
-    const topRef = useRef()
-    const scrollToTop = () => topRef.current?.scrollIntoView({behavior: 'smooth'});
-
     const disableEventBubbling = e => {
         e.stopPropagation();
         e.preventDefault();
     }
 
     const handleBackButtonClick = () => {
-        scrollToTop();
+        scrollToTop()
         setIsRegion(true);
         setCitiesOrRegionsToRender(regionIds);
         setSelectedRegionId('')
@@ -54,7 +56,7 @@ export const CityContent = ({onSelectCity, availableCityIds, onClose}) => {
      * @return {(function(): void)|*}
      */
     const changeHandlerSettingMenuRow = id => () => {
-        scrollToTop();
+        scrollToTop()
 
         if (isRegion) {
             setSelectedRegionId(id)
@@ -91,8 +93,7 @@ export const CityContent = ({onSelectCity, availableCityIds, onClose}) => {
                     <CloseIcon/>
                 </CloseIconWrapper>
             </Header>
-            <CitiesWrapper onClick={disableEventBubbling}>
-                <div ref={topRef}/>
+            <CitiesWrapper onClick={disableEventBubbling} className="cities_wrapper">
                 {/*Expected array structure: ['101', '202', ... ]*/}
                 {cities
                     .map((city, i) =>
@@ -108,8 +109,6 @@ export const CityContent = ({onSelectCity, availableCityIds, onClose}) => {
         </Wrapper>
     )
 };
-
-
 
 
 export default CityContent;
