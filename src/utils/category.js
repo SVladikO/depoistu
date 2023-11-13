@@ -90,9 +90,20 @@ export const CATEGORY_SUSHI = [
 ];
 
 export const CATEGORY_DESSERTS = [
-    {id: 24, title: TR.SUB_CATEGORIES.BAKERY, measurement: MEASUREMENTS.WEIGHT},
     {id: 25, title: TR.SUB_CATEGORIES.DESSERTS, measurement: MEASUREMENTS.WEIGHT},
+    {id: 24, title: TR.SUB_CATEGORIES.BAKERY, measurement: MEASUREMENTS.WEIGHT},
     {id: 51, title: TR.SUB_CATEGORIES.ICE_CREAM, measurement: MEASUREMENTS.WEIGHT},
+];
+
+export const CATEGORY_DRINKS = [
+    {id: 26, title: TR.SUB_CATEGORIES.DRINKS, measurement: MEASUREMENTS.LIQUID},
+    {id: 98, title: TR.SUB_CATEGORIES.JUICE, measurement: MEASUREMENTS.LIQUID},
+    {id: 56, title: TR.SUB_CATEGORIES.FRESH, measurement: MEASUREMENTS.LIQUID},
+    {id: 124, title: TR.SUB_CATEGORIES.LEMONADE, measurement: MEASUREMENTS.LIQUID},
+    {id: 89, title: TR.SUB_CATEGORIES.HOMEMADE_LEMONADE, measurement: MEASUREMENTS.LIQUID},
+    {id: 78, title: TR.SUB_CATEGORIES.COCKTAILS, measurement: MEASUREMENTS.LIQUID},
+    {id: 122, title: TR.SUB_CATEGORIES.MILK_COCKTAILS, measurement: MEASUREMENTS.LIQUID},
+    {id: 79, title: TR.SUB_CATEGORIES.MORSES_AND_UZVAR, measurement: MEASUREMENTS.LIQUID},
 ];
 
 export const CATEGORY_HOT_DRINKS = [
@@ -105,15 +116,9 @@ export const CATEGORY_HOT_DRINKS = [
     {id: 55, title: TR.SUB_CATEGORIES.COFFEE, measurement: MEASUREMENTS.LIQUID},
     {id: 75, title: TR.SUB_CATEGORIES.MULLED_WINE, measurement: MEASUREMENTS.LIQUID},
 ];
+
 // BAR
 export const CATEGORY_BAR = [
-    {id: 26, title: TR.SUB_CATEGORIES.DRINKS, measurement: MEASUREMENTS.LIQUID},
-    {id: 56, title: TR.SUB_CATEGORIES.FRESH, measurement: MEASUREMENTS.LIQUID},
-    {id: 98, title: TR.SUB_CATEGORIES.JUICE, measurement: MEASUREMENTS.LIQUID},
-    {id: 79, title: TR.SUB_CATEGORIES.MORSES_AND_UZVAR, measurement: MEASUREMENTS.LIQUID},
-    {id: 89, title: TR.SUB_CATEGORIES.HOMEMADE_LEMONADE, measurement: MEASUREMENTS.LIQUID},
-    {id: 78, title: TR.SUB_CATEGORIES.COCKTAILS, measurement: MEASUREMENTS.LIQUID},
-    {id: 122, title: TR.SUB_CATEGORIES.MILK_COCKTAILS, measurement: MEASUREMENTS.LIQUID},
     {id: 28, title: TR.SUB_CATEGORIES.COCKTAILS_ALCOHOL, measurement: MEASUREMENTS.LIQUID},
     {id: 58, title: TR.SUB_CATEGORIES.SHOTS, measurement: MEASUREMENTS.LIQUID},
     {id: 59, title: TR.SUB_CATEGORIES.LONGS, measurement: MEASUREMENTS.LIQUID},
@@ -148,6 +153,7 @@ export const CATEGORY_MAPPER_AS_ARRAY = [
     ...CATEGORY_KITCHEN,
     ...CATEGORY_SUSHI,
     ...CATEGORY_DESSERTS,
+    ...CATEGORY_DRINKS,
     ...CATEGORY_HOT_DRINKS,
     ...CATEGORY_BAR
 ];
@@ -173,6 +179,7 @@ export const TOP_CATEGORIES = {
     KITCHEN: CATEGORY_KITCHEN.map(category => category.id),
     SUSHI: CATEGORY_SUSHI.map(category => category.id),
     DESSERTS: CATEGORY_DESSERTS.map(category => category.id),
+    DRINKS: CATEGORY_DRINKS.map(category => category.id),
     HOT_DRINKS: CATEGORY_HOT_DRINKS.map(category => category.id),
     BAR: CATEGORY_BAR.map(category => category.id),
 }

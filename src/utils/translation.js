@@ -958,6 +958,10 @@ export const TRANSLATION = {
             ua: "Десерти",
             en: "Desserts",
         },
+        DRINKS: {
+            ua: "Напої",
+            en: "Drinks",
+        },
         HOT_DRINKS: {
             ua: "Гарячі напої",
             en: "Hot drinks",
@@ -1063,6 +1067,10 @@ export const TRANSLATION = {
         JUICE: {
             en: "Juice",
             ua: "Сік"
+        },
+        LEMONADE: {
+            en: "Lemonades",
+            ua: "Лимонади"
         },
         HOMEMADE_LEMONADE: {
             en: "Homemade lemonades",
@@ -1481,8 +1489,8 @@ export const TRANSLATION = {
             en: 'Khachapuri'
         },
         COCKTAILS: {
-            ua: 'Коктейлі без алкогольні',
-            en: 'Cocktails no alcohol'
+            ua: 'Коктейлі',
+            en: 'Cocktails'
         },
         MILK_COCKTAILS: {
             ua: 'Молочні коктейлі',
