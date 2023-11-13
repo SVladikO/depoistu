@@ -16,8 +16,11 @@ import ScrollUpButton from "../components/ScrollUpButton/ScrollUpButton";
 
 import NotificationView from "page-view/notification/NotificationView";
 
+export const HeightWrapper = styled.div`
+  min-height: 100vh;
+`;
+
 export const MobileWrapper = styled.div`
-  min-height: 90vh;
   min-width: ${DEVICE_WIDTH.MIN};
   max-width: ${DEVICE_WIDTH.MAX};
   margin: 0 auto;
@@ -41,17 +44,19 @@ const Element = (props) => {
 
     return (
         <MobileWrapper className="mobile-wrapper">
-            <FixedWrapper fixTop id="NavigationHeader">
-                <NavigationHeader title={route.TITLE} backUrl={route.backUrl}/>
-            </FixedWrapper>
-            <Content className="content-centralazer">
-                <route.page/>
-            </Content>
-            <FixedWrapper fixBottom className='ta-BottomMenu'>
-                <BottomMenu/>
-            </FixedWrapper>
+            <HeightWrapper>
+                <FixedWrapper fixTop id="NavigationHeader">
+                    <NavigationHeader title={route.TITLE} backUrl={route.backUrl}/>
+                </FixedWrapper>
+                <Content className="content-centralazer">
+                    <route.page/>
+                </Content>
+                <FixedWrapper fixBottom className='ta-BottomMenu'>
+                    <BottomMenu/>
+                </FixedWrapper>
+            </HeightWrapper>
             <Footer/>
-            <ScrollUpButton />
+            <ScrollUpButton/>
         </MobileWrapper>
     )
 };

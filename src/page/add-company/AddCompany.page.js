@@ -3,7 +3,7 @@ import "swiper/css/pagination";
 import {useNavigate} from "react-router-dom";
 import React, {useState} from "react";
 
-import {ContentContainer, PrimaryButton} from "components";
+import {PrimaryButton} from "components";
 
 import CompanyView from "page-view/company/company-view";
 
@@ -22,40 +22,24 @@ const AddCompany = () => {
     const scrollUp = useScrollUp();
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
-    const [wasCompanyCreated, setWasCompanyCreated] = useState(false);
-    const [newCompanyId, setNewCompanyId] = useState();
 
     const onSubmit = values => {
         const {name, cityId, street, phone1, phone2, phone3} = values;
         const schedule = getScheduleAsString(values)
         const reqObj = {name, cityId, street, phone1, phone2, phone3, schedule};
+        scrollUp();
 
         setIsLoading(true);
         fetchData(BE_API.COMPANY.POST_CREATE(), reqObj)
-            .then(res => {
-                setWasCompanyCreated(true);
-                setNewCompanyId(res.body.insertId);
+            .then(() => {
                 LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES)
                 publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.COMPANY.WAS_CREATED));
                 publishNotificationEvent.warning(translate(TRANSLATION.NOTIFICATION.COMPANY.CREATE_MENU_SUGGESTION))
-                scrollUp()
+
+                navigate(URL.CUSTOMER_COMPANIES);
             })
             .catch(e => publishNotificationEvent.error(e.body.errorMessage))
             .finally(() => setIsLoading(false))
-    }
-
-    if (wasCompanyCreated) {
-        return (
-            <ContentContainer noShadow>
-                <PrimaryButton
-                    isWide
-                    clickHandler={() => {
-                        LocalStorage.set(LOCAL_STORAGE_KEY.COMPANY_ID_TO_EDIT_MENU_PAGE, newCompanyId)
-                        navigate(URL.EDIT_MENU)
-                    }}
-                >{translate(TRANSLATION.PAGE.ADD_COMPANY.BUTTON.ADD_MENU)}</PrimaryButton>
-            </ContentContainer>
-        )
     }
 
     return (

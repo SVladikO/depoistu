@@ -134,7 +134,7 @@ export const TRANSLATION = {
         COMPANY: {
             NAME: {
                 en: "Name",
-                ua: "Ім'я"
+                ua: "Назва закладу"
             },
             CITY: {
                 en: "City",
@@ -160,7 +160,7 @@ export const TRANSLATION = {
         MENU_ITEM: {
             NAME: {
                 en: "Name",
-                ua: "Ім'я"
+                ua: "Назва"
             },
 
             CATEGORY: {
@@ -958,6 +958,10 @@ export const TRANSLATION = {
             ua: "Десерти",
             en: "Desserts",
         },
+        DRINKS: {
+            ua: "Напої",
+            en: "Drinks",
+        },
         HOT_DRINKS: {
             ua: "Гарячі напої",
             en: "Hot drinks",
@@ -1063,6 +1067,10 @@ export const TRANSLATION = {
         JUICE: {
             en: "Juice",
             ua: "Сік"
+        },
+        LEMONADE: {
+            en: "Lemonades",
+            ua: "Лимонади"
         },
         HOMEMADE_LEMONADE: {
             en: "Homemade lemonades",
@@ -1224,7 +1232,7 @@ export const TRANSLATION = {
             en: "Steak",
             ua: "Стейк"
         },
-        HOME: {
+        HOME_KITCHEN: {
             en: "Home kitchen",
             ua: "Домашня кухня"
         },
@@ -1360,6 +1368,10 @@ export const TRANSLATION = {
             ua: 'Спрінг роли',
             en: 'Spring rolls'
         },
+        TEMPURA_ROLLS: {
+            ua: 'Темпура роли ',
+            en: 'Tempura  rolls'
+        },
         SIGNATURE_ROLLS: {
             ua: 'Фірмові роли',
             en: 'Signature rolls'
@@ -1444,6 +1456,10 @@ export const TRANSLATION = {
             ua: 'Супи',
             en: 'Soups'
         },
+        BAKING: {
+            ua: 'Випічка',
+            en: 'Baking'
+        },
         DOUGH: {
             ua: 'Тісто',
             en: 'Dough'
@@ -1473,8 +1489,8 @@ export const TRANSLATION = {
             en: 'Khachapuri'
         },
         COCKTAILS: {
-            ua: 'Коктейлі без алкогольні',
-            en: 'Cocktails no alcohol'
+            ua: 'Коктейлі',
+            en: 'Cocktails'
         },
         MILK_COCKTAILS: {
             ua: 'Молочні коктейлі',

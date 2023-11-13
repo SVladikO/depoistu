@@ -10,11 +10,10 @@ import {
     SpinnerWrapper,
     TD,
     GroupTitle,
-    GroupTitle2
 } from './Admin.style';
 
 import {ReactComponent as LoadingIcon} from "assets/icons/spinner.svg";
-import {NavigationHeader, PrimaryButton, RowSplitter, SecondaryButton} from "components";
+import {NavigationHeader, RowSplitter, SecondaryButton} from "components";
 import {fetchData} from "utils/fetch";
 
 import {BE_API} from 'utils/fetch'
@@ -23,7 +22,6 @@ import {checkAccess} from "utils/security";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import ApiPage from "./Api.page";
 import ComponentsPage from "./Components.page";
-import {CATEGORY_BAR, CATEGORY_DESSERTS, CATEGORY_HOT_DRINKS, CATEGORY_KITCHEN} from "../../utils/category";
 
 function AdminPage() {
     const [dbMode, setDBMode] = useState('')
@@ -72,43 +70,11 @@ function AdminPage() {
             <GroupTitle>COMPONENTS</GroupTitle>
             <ComponentsPage/>
             <RowSplitter height='20px'/>
-            <GroupTitle>All food categories</GroupTitle>
-            <AllCategories/>
         </Wrapper>
     )
 }
 
 
-const AllCategories = () => {
-    const render = from =>
-        <table style={{margin: 'auto'}}>
-            <tbody>
-            {from.map(
-                category => (
-                    <tr>
-                        <td style={{padding: '4px'}}>{category.id}</td>
-                        <td style={{padding: '4px'}}>{category.title.en}</td>
-                        <td style={{padding: '4px'}}>{category.title.ua}</td>
-                        <td style={{padding: '4px'}}>{category.measurement.en}</td>
-                        <td style={{padding: '4px'}}>{category.measurement.ua}</td>
-                    </tr>
-                ))}
-            </tbody>
-        </table>
-
-    return (
-        <>
-            <GroupTitle2>CATEGORY_KITCHEN</GroupTitle2>
-            {render(CATEGORY_KITCHEN)}
-            <GroupTitle2>CATEGORY_DESSERTS</GroupTitle2>
-            {render(CATEGORY_DESSERTS)}
-            <GroupTitle2>CATEGORY_HOT_DRINKS</GroupTitle2>
-            {render(CATEGORY_HOT_DRINKS)}
-            <GroupTitle2>CATEGORY_BAR</GroupTitle2>
-            {render(CATEGORY_BAR)}
-        </>
-    )
-}
 const AllLinks = () => {
 
 
