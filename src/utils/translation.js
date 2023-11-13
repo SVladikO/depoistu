@@ -134,7 +134,7 @@ export const TRANSLATION = {
         COMPANY: {
             NAME: {
                 en: "Name",
-                ua: "Ім'я"
+                ua: "Назва закладу"
             },
             CITY: {
                 en: "City",
@@ -160,7 +160,7 @@ export const TRANSLATION = {
         MENU_ITEM: {
             NAME: {
                 en: "Name",
-                ua: "Ім'я"
+                ua: "Назва"
             },
 
             CATEGORY: {
