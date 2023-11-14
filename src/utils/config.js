@@ -30,7 +30,7 @@ export const DEV_ROUTER = {
     ADMIN: 'admin',
 };
 
-export const {REACT_APP_NODE_ENV} = process.env;
+export const {REACT_APP_PRODUCTION_BE} = process.env;
 
 export const AVAILABLE_DOMAINS = {
     0: {
@@ -51,7 +51,7 @@ export const AVAILABLE_DOMAINS = {
     }
 }
 
-export const SELECTED_BE_DOMAIN = AVAILABLE_DOMAINS[REACT_APP_NODE_ENV || 1];
+export const SELECTED_BE_DOMAIN = AVAILABLE_DOMAINS[REACT_APP_PRODUCTION_BE || 1];
 export const BE_DOMAIN = SELECTED_BE_DOMAIN.url;
 
 export const URL = {
