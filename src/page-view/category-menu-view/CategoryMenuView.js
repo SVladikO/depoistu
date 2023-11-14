@@ -7,7 +7,6 @@ import "swiper/css/pagination";
 import 'swiper/css/scrollbar';
 
 import {
-    TopCategoryWrapper,
     TopCategoryItem,
     BgWrapper,
     SubCategoryWrapper,
@@ -26,14 +25,14 @@ import {
 } from 'utils/category';
 import {
     enableScrollListener,
-    MenuHeader,
+    FixTop,
     generateTagId,
     disableScrollListener,
     getIsScrollDisabled, CATEGORY_CLASSNAME
 } from "./utils";
 
 const CATEGORY_TITLE_CLASS_NAME = 'CATEGORY_TITLE_CLASS_NAME';
-const CATEGORY_ROW_HEIGHT = 124;
+const CATEGORY_ROW_HEIGHT = 120;
 
 let indexCalculator = 0;
 let categoryIdIndexMapper = {};
@@ -102,13 +101,16 @@ const CategoryMenuView = ({
     }, [])
 
     const renderTopCategory = ({topCategoryKey, topCategoryIndex, categoryId}) => (
-        <TopCategoryItem
-            key={topCategoryIndex}
-            isSelected={topCategoryIndex === selectedTopCategoryId}
-            onClick={onChangeTopCategory(topCategoryIndex, categoryId)}
-        >
-            {translate(TR.TOP_CATEGORIES[topCategoryKey]).toUpperCase()}
-        </TopCategoryItem>
+        <SwiperSlide key={topCategoryIndex}>
+            <TopCategoryItem
+                className="TopCategoryItem"
+                key={topCategoryIndex}
+                isSelected={topCategoryIndex === selectedTopCategoryId}
+                onClick={onChangeTopCategory(topCategoryIndex, categoryId)}
+            >
+                {translate(TR.TOP_CATEGORIES[topCategoryKey]).toUpperCase()}
+            </TopCategoryItem>
+        </SwiperSlide>
     )
 
     const renderSubCategory = (categoryId, topCategoryIndex, subCategoryIndex) => {
@@ -149,37 +151,37 @@ const CategoryMenuView = ({
             onEditClick={navigateToEditMenuItemPage(mi)}
         />
 
-        const topCategories = []; // Contain array of top category components
-        const subCategories = []; // Contain array of sub category components
-        const resultMenuItems = []; // Contain array of category title, menu items
+    const topCategories = []; // Contain array of top category components
+    const subCategories = []; // Contain array of sub category components
+    const resultMenuItems = []; // Contain array of category title, menu items
 
-        // TOP_CATEGORIES contain uniq array of sub categories per category
-        Object.keys(TOP_CATEGORIES).forEach((topCategoryKey, topCategoryIndex) => {
-            let wasTopSet = false;
+    // TOP_CATEGORIES contain uniq array of sub categories per category
+    Object.keys(TOP_CATEGORIES).forEach((topCategoryKey, topCategoryIndex) => {
+        let wasTopSet = false;
 
-            TOP_CATEGORIES[topCategoryKey].forEach(categoryId => {
-                const items = menuItems.filter(menuItem => menuItem.categoryId === categoryId)
+        TOP_CATEGORIES[topCategoryKey].forEach(categoryId => {
+            const items = menuItems.filter(menuItem => menuItem.categoryId === categoryId)
 
-                // No items nothing to do
-                if (!items.length) {
-                    return
-                }
+            // No items nothing to do
+            if (!items.length) {
+                return
+            }
 
-                if (!wasTopSet) {
-                    wasTopSet = true;
-                    topCategories.push({topCategoryKey, topCategoryIndex, categoryId});
-                }
+            if (!wasTopSet) {
+                wasTopSet = true;
+                topCategories.push({topCategoryKey, topCategoryIndex, categoryId});
+            }
 
-                // We need categoryIdIndexMapper to handle sub category scroll when you scroll vertically
-                if (categoryIdIndexMapper[categoryId] === undefined) {
-                    categoryIdIndexMapper[categoryId] = indexCalculator++;
-                }
+            // We need categoryIdIndexMapper to handle sub category scroll when you scroll vertically
+            if (categoryIdIndexMapper[categoryId] === undefined) {
+                categoryIdIndexMapper[categoryId] = indexCalculator++;
+            }
 
-                subCategories.push(renderSubCategory(categoryId, topCategoryIndex, categoryIdIndexMapper[categoryId]))
-                resultMenuItems.push(renderCategoryTitle(categoryId, topCategoryIndex))
-                resultMenuItems.push(items.map(renderMenuItem))
-            })
+            subCategories.push(renderSubCategory(categoryId, topCategoryIndex, categoryIdIndexMapper[categoryId]))
+            resultMenuItems.push(renderCategoryTitle(categoryId, topCategoryIndex))
+            resultMenuItems.push(items.map(renderMenuItem))
         })
+    })
 
     useEffect(() => {
         if (!!menuItems?.length && selectedTopCategoryId === undefined) {
@@ -194,28 +196,35 @@ const CategoryMenuView = ({
         }
     })
 
-    console.log({selectedSubCategoryId})
-
     return (
         <>
-            <MenuHeader className="menu-header">
-                <BgWrapper>
+            <FixTop className="menu-header">
+                <BgWrapper style={{background: 'white'}}>
                     {/*** TOP CATEGORIES ***/}
-                    <div>
-                        <TopCategoryWrapper>
-                            {topCategories.map(details => renderTopCategory(details))}
-                            {/*If you commit this row and check CategoryMenuRow you understand everything. */}
-                            <TopCategoryItem style={{width: '90%'}}/>
-                        </TopCategoryWrapper>
-                    </div>
+                    <HorizontalSwiper
+                        slidesPerView={
+                            topCategories.length < 3
+                                ? 2
+                                : 4
+                        }
+                        sliderStylePadding='0 6px 12px'
+                        subCategoryIndex={selectedTopCategoryId}
+                    >
+                        {topCategories.map(details => renderTopCategory(details))}
+                    </HorizontalSwiper>
                     {/*** SUB CATEGORIES ***/}
-                    <SubCategoryWrapper className={CATEGORY_CLASSNAME}>
-                        <HorizontalSwiper subCategoryIndex={categoryIdIndexMapper[selectedSubCategoryId]}>
-                            {subCategories}
-                        </HorizontalSwiper>
-                    </SubCategoryWrapper>
+                    <BgWrapper>
+                        <SubCategoryWrapper className={CATEGORY_CLASSNAME}>
+                            <HorizontalSwiper
+                                sliderStylePadding={'0 6px 14px'}
+                                subCategoryIndex={categoryIdIndexMapper[selectedSubCategoryId]}
+                            >
+                                {subCategories}
+                            </HorizontalSwiper>
+                        </SubCategoryWrapper>
+                    </BgWrapper>
                 </BgWrapper>
-            </MenuHeader>
+            </FixTop>
             {/*
                 We use RowSplitter here because MenuHeader use fixed position and
                 lost his height and we added fake element the same height under it.

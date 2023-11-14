@@ -1,5 +1,7 @@
 import {LocalStorage, LOCAL_STORAGE_KEY} from "./localStorage";
 
+export const DEFAULT_LANGUAGE = 'ua';
+
 export const LANGUAGE_KEYS = {
     UA: 'ua',
     EN: 'en'
@@ -13,17 +15,8 @@ export const truncate = (text, availableLength = 1) => {
     return text.substring(0, availableLength) + ' ...';
 };
 
-export const currentLanguage = LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE).language.siteLanguage;
-
-export const translate = obj => {
-    let language = currentLanguage;
-
-    if (!currentLanguage) {
-        language = 'en'
-    }
-
-    return obj[language];
-}
+export const getCurrentLanguage = () => LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE)?.language?.siteLanguage;
+export const translate = obj => obj[getCurrentLanguage() || DEFAULT_LANGUAGE];
 
 export const TRANSLATION = {
     YES: {
@@ -52,18 +45,8 @@ export const TRANSLATION = {
             en: 'Continue'
         },
         TEXT: {
-            ua: [
-                'Меню всіх закладів харчування України має бути в  одному місці. На цьому сайті.',
-                'Знайомтесь з меню до або під час візиту.',
-                'Ми не показуємо в пошуку міста в яких ще не зареєструвались заклади.',
-                'Вартість в гривні.'
-            ],
-            en: [
-                'The menu of all cafes and restaurants of Ukraine should be in one place. On this site.',
-                'Familiarize yourself with the menu before or during your visit.',
-                'We don`t show in the search engine cities in which establishments have not yet been registered.',
-                'All price in uah.'
-            ]
+            ua: ['Все меню України.'],
+            en: ['All menu of Ukraine.']
         },
     },
     VALIDATION: {
@@ -151,7 +134,7 @@ export const TRANSLATION = {
         COMPANY: {
             NAME: {
                 en: "Name",
-                ua: "Ім'я"
+                ua: "Назва закладу"
             },
             CITY: {
                 en: "City",
@@ -177,7 +160,7 @@ export const TRANSLATION = {
         MENU_ITEM: {
             NAME: {
                 en: "Name",
-                ua: "Ім'я"
+                ua: "Назва"
             },
 
             CATEGORY: {
@@ -309,6 +292,14 @@ export const TRANSLATION = {
             TOP_TITLE: {
                 ua: "Ваші заклади",
                 en: 'Your companies'
+            },
+            QR_MENU_TITLE: {
+                ua: 'МЕНЮ',
+                en: 'MENU'
+            },
+            ORDER_PRINT: {
+                ua: 'замовити друк',
+                en: 'order printing'
             },
             WARNING: {
                 ua: "Не додавайте заклади заради розваги. Інакше будемо змушені заблокувати ваш аккаунт. Не витрачайте ваш і наш час дарма. Дякуєм.",
@@ -473,8 +464,8 @@ export const TRANSLATION = {
                     en: "Change Password"
                 },
                 INSTRUCTION_FOR_BUSINESS_OWNER: {
-                    en: "Usage instruction",
-                    ua: "Інструкція користувача"
+                    en: "Business instructions",
+                    ua: "Інструкції для бізнесу"
                 },
                 COMPANY: {
                     en: "My сompanies",
@@ -570,9 +561,9 @@ export const TRANSLATION = {
                     ua: "Для бізнесу",
                     en: "For business"
                 },
-                OPTIONS: {
-                    ua: "Розширенi налаштування",
-                    en: "More Options"
+                OTHERS: {
+                    ua: "Інше",
+                    en: "Others"
                 },
             },
             USER_PHONE_LABEL: {
@@ -784,6 +775,10 @@ export const TRANSLATION = {
             TOP_TITLE: {
                 ua: "Реєстрацiя",
                 en: "Sing up"
+            },
+            BUTTON: {
+                ua: "Зареєструватись",
+                en: "Sing up"
             }
         },
     },
@@ -912,22 +907,22 @@ export const TRANSLATION = {
                 en: "Customers won't see this company without menu."
             },
             LOADING_AVAILABLE_CITIES: {
-                en: "Loading cities with registered cities",
-                ua: "Загрузка міст де є зареєстровані заклади"
+                en: "Loading cities with registered restorans.",
+                ua: "Завантаження міст де зареєстровані заклади."
             },
 
             LOADING_COMPANY: {
                 en: "Loading company ...",
-                ua: "Загрузка закладу ..."
+                ua: "Завантаження закладу ..."
             },
         },
         LOADING_AVAILABLE_COMPANIES: {
             en: "Loading companies ...",
-            ua: "Загрузка закладів ..."
+            ua: "Завантаження закладів ..."
         },
         LOADING_MENU: {
             en: "Loading menu ...",
-            ua: "Загрузка меню ..."
+            ua: "Завантаження меню ..."
         },
 
     },
@@ -955,9 +950,17 @@ export const TRANSLATION = {
             ua: "Кухня",
             en: "Kitchen",
         },
+        SUSHI: {
+            ua: "Суші",
+            en: "Sushi",
+        },
         DESSERTS: {
             ua: "Десерти",
             en: "Desserts",
+        },
+        DRINKS: {
+            ua: "Напої",
+            en: "Drinks",
         },
         HOT_DRINKS: {
             ua: "Гарячі напої",
@@ -1057,10 +1060,17 @@ export const TRANSLATION = {
             en: "Ice cream",
             ua: "Морозиво"
         },
-
         FRESH: {
             en: "Fresh",
             ua: "Фреші"
+        },
+        JUICE: {
+            en: "Juice",
+            ua: "Сік"
+        },
+        LEMONADE: {
+            en: "Lemonades",
+            ua: "Лимонади"
         },
         HOMEMADE_LEMONADE: {
             en: "Homemade lemonades",
@@ -1178,6 +1188,10 @@ export const TRANSLATION = {
             en: "Beer",
             ua: "Пиво"
         },
+        BEER_ADDICTIVES: {
+            en: "Beer addictives",
+            ua: "Додатки до пива"
+        },
         COFFEE: {
             en: "Coffee",
             ua: "Кава"
@@ -1218,7 +1232,7 @@ export const TRANSLATION = {
             en: "Steak",
             ua: "Стейк"
         },
-        HOME: {
+        HOME_KITCHEN: {
             en: "Home kitchen",
             ua: "Домашня кухня"
         },
@@ -1241,6 +1255,10 @@ export const TRANSLATION = {
         BURGERS: {
             ua: "Бургери",
             en: "Burgers"
+        },
+        HONG_KONG_WAFFLES: {
+            ua: "Гонконгські вафлі",
+            en: "Hong Kong waffles"
         },
         ROLLS: {
             ua: "Роли",
@@ -1267,8 +1285,12 @@ export const TRANSLATION = {
             en: "Noodles"
         },
         PIZZA: {
-            ua: "Пiцца",
+            ua: "Пiца",
             en: "Pizza"
+        },
+        PIZZA_ADDICTIVES: {
+            ua: "Додатки до пiци",
+            en: "Pizza addictives"
         },
         SANDWITCH: {
             ua: "Сендвичi",
@@ -1319,8 +1341,100 @@ export const TRANSLATION = {
             en: 'Fish dishes'
         },
         DISHES_ON_FIRE: {
-            ua: 'Монгал',
+            ua: 'Мангал',
             en: 'Dishes on fire'
+        },
+        DISHES_WITH_SMOKE: {
+            ua: 'Страви з димком',
+            en: 'Dishes with smoke'
+        },
+        HOT_ROLLS: {
+            ua: 'Гарячі роли',
+            en: 'Hot rolls'
+        },
+        GRILLED_ROLLS: {
+            ua: 'Гриль роли',
+            en: 'Grilled rolls'
+        },
+        NOGIRI: {
+            ua: 'Нігірі',
+            en: 'Nigiri'
+        },
+        GUNKANS: {
+            ua: 'Гункани',
+            en: 'Gunkans'
+        },
+        SPRING_ROLLS: {
+            ua: 'Спрінг роли',
+            en: 'Spring rolls'
+        },
+        TEMPURA_ROLLS: {
+            ua: 'Темпура роли ',
+            en: 'Tempura  rolls'
+        },
+        SIGNATURE_ROLLS: {
+            ua: 'Фірмові роли',
+            en: 'Signature rolls'
+        },
+        TAR_TAR_ROLES: {
+            ua: 'Роли тар-тар',
+            en: 'Tar-tar roles'
+        },
+        PHILADELPHIA_DE_LUXE: {
+            ua: 'Філадельфія де люкс',
+            en: 'Philadelphia de luxe'
+        },
+        DRAGONS: {
+            ua: 'Дракони',
+            en: 'Dragons'
+        },
+        CALIFORNIA: {
+            ua: 'Каліфорнія',
+            en: 'California'
+        },
+        CALIFORNIAN: {
+            ua: 'Каліфорнійський',
+            en: 'Californian'
+        },
+        PHILADELPHIA: {
+            ua: 'Філадельфія',
+            en: 'Philadelphia'
+        },
+        MAKI: {
+            ua: 'Макі',
+            en: 'Maki'
+        },
+        FUTO: {
+            ua: 'Футо',
+            en: 'Futo'
+        },
+        YAQUIMESI: {
+            ua: 'Якімесі',
+            en: 'Yaquimesi'
+        },
+        WOK_UDON_NOODLES: {
+            ua: 'Лапша вок удон',
+            en: 'Wok udon noodles'
+        },
+        SARADA: {
+            ua: 'Сарада',
+            en: 'Sarada'
+        },
+        HALLOWEEN: {
+            ua: 'Хелоуїнське',
+            en: 'Halloween'
+        },
+        LIGHT_MEALS: {
+            ua: 'Легкі страви',
+            en: 'Light meals'
+        },
+        ROLLINI: {
+            ua: 'Роліні',
+            en: 'Rollini'
+        },
+        AUTHORS_TEAS: {
+            ua: 'Авторські чаї',
+            en: "Author's teas"
         },
         OWN_SMOKING: {
             ua: 'Власне копчення',
@@ -1342,6 +1456,10 @@ export const TRANSLATION = {
             ua: 'Супи',
             en: 'Soups'
         },
+        BAKING: {
+            ua: 'Випічка',
+            en: 'Baking'
+        },
         DOUGH: {
             ua: 'Тісто',
             en: 'Dough'
@@ -1362,9 +1480,21 @@ export const TRANSLATION = {
             ua: 'Коктейлі алкогольні',
             en: 'Cocktails alcohol'
         },
+        HALLOWEEN_MENU: {
+            ua: 'Хелоуінське меню',
+            en: 'Halloween menu'
+        },
+        KHACHAPURI: {
+            ua: 'Хачапурі',
+            en: 'Khachapuri'
+        },
         COCKTAILS: {
-            ua: 'Коктейлі без алкогольні',
-            en: 'Cocktails no alcohol'
+            ua: 'Коктейлі',
+            en: 'Cocktails'
+        },
+        MILK_COCKTAILS: {
+            ua: 'Молочні коктейлі',
+            en: 'Milk coctails'
         },
         SHAWARMA: {
             ua: 'Шаверма',

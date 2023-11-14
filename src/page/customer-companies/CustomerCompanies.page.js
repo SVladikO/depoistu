@@ -3,13 +3,13 @@ import {useSelector} from "react-redux";
 import {Link, useNavigate} from "react-router-dom";
 import QRCode from 'qrcode';
 
-import {EditBar, QRCodeButton, QRCodeMenuTitle, ImageQR} from "./CustomerCompanies.style";
+import {EditBar, QRCodeButton, QRCodeMenuTitle, ImageQR, OrderPrint} from "./CustomerCompanies.style";
 
-import {Company, NotificationLoading, Popup, PrimaryButton} from "components";
+import {Company, NotificationLoading, Popup, PrimaryButton, RowSplitter} from "components";
 import {ReactComponent as EditIcon} from "assets/icons/edit.svg";
 
 import {BE_API, fetchData} from 'utils/fetch'
-import {ROUTER, URL} from "utils/config";
+import {ORDER_PRINT_URL, ROUTER, URL} from "utils/config";
 import {translate, TRANSLATION} from "utils/translation";
 import {ReactComponent as QRCodeIcon} from "assets/icons/qr_code.svg";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
@@ -55,7 +55,6 @@ const CustomerCompaniesPage = () => {
 
     return (
         <>
-
             <PopupQRCode companyId={companyIdForQRCode} onClose={() => setCompanyIdForQRCode('')}/>
             {customerCompanies && !!customerCompanies?.length && customerCompanies?.map(
                 company =>
@@ -82,6 +81,7 @@ const CustomerCompaniesPage = () => {
                     </Company>
             )
             }
+            <RowSplitter height={"20px"} />
             {customer && customer.canCreateCompanies > !!customerCompanies?.length &&
                 <Link to={URL.ADD_COMPANY}>
                     <PrimaryButton isWide withPadding>
@@ -109,9 +109,18 @@ const PopupQRCode = ({companyId, onClose}) => {
 
     return (
         <Popup.Bottom onClose={onClose}>
-            <QRCodeMenuTitle>Menu</QRCodeMenuTitle>
+            <QRCodeMenuTitle>
+                {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.QR_MENU_TITLE)}
+            </QRCodeMenuTitle>
             {src && <ImageQR src={src}/>}
             {qrCodeGenerationError}
+            <OrderPrint
+                href={ORDER_PRINT_URL}
+                target="_blank"
+                rel="noreferrer"
+            >
+                {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.ORDER_PRINT)}
+            </OrderPrint>
         </Popup.Bottom>
     )
 }

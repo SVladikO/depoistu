@@ -11,6 +11,7 @@ export const COLOR = {
     ACCENT7: '#F6EBEF',
     ACCENT8: '#F5F6FB',
     ACCENT9: '#E6E8E9',
+    ACCENT10: '#013f09',
     WARNING1: '#F1C21B',
     WARNING2: '#FFF8E1',
     INFO1: '#0244CF',
@@ -51,6 +52,10 @@ export const FONT = {
         font-size: 24px;
         line-height: 29px;
         `,
+    SIZE_32: `
+        font-size: 32px;
+        line-height: 38px;
+        `,
     WEIGHT_400: `font-weight: 400;`,
     WEIGHT_500: `font-weight: 500;`,
     WEIGHT_600: `font-weight: 600;`,
@@ -58,11 +63,11 @@ export const FONT = {
 }
 
 export const BORDER_RADIUS = {
-    BUTTON: '0px',
+    BUTTON: '5px',
     DAY_IN_SCHEDULE: '8px',
     SUB_CATEGORY: '12px',
     COMPANY: '0px',
-    MENU_ITEM: '10px',
+    MENU_ITEM: '0',
     FIRST: '0px',
     CITY_POPUP: '20px',
     THIRD: '0px',

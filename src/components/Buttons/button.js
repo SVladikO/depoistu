@@ -13,7 +13,7 @@ export const button = styled.button`
   ${FONT.SIZE_20};
     
   border-radius: ${BORDER_RADIUS.BUTTON};
-  ${p => p.isLoading && 'opacity: 0.7'};
+  ${p => p.isLoading && 'opacity: 0.8'};
   ${p => p.minWidth && `min-width: ${p.minWidth}`};
   width: ${p => p.isWide ? '100%' : 'auto'};
   cursor: ${p => p.isDisabled ? 'default' : 'pointer'};
@@ -25,7 +25,6 @@ export const button = styled.button`
   }
 
   & > svg.loading {
-    fill: ${COLOR.ACCENT4};
     height: 20px;
     width: 20px;
     margin-right: 10px;

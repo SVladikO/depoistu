@@ -6,9 +6,7 @@ import {FixedWrapper, Footer} from "components";
 
 import {DEV_ROUTER, ROUTERS} from "./config";
 
-import ApiPage from "page/development/Api.page";
 import AdminPage from "page/development/Admin.page";
-import ComponentsPage from 'page/development/Components.page';
 
 import {COLOR, DEVICE_WIDTH} from './theme';
 import {useScrollUp, useHideOnScroll} from "./hook";
@@ -18,8 +16,11 @@ import ScrollUpButton from "../components/ScrollUpButton/ScrollUpButton";
 
 import NotificationView from "page-view/notification/NotificationView";
 
+export const HeightWrapper = styled.div`
+  min-height: 100vh;
+`;
+
 export const MobileWrapper = styled.div`
-  min-height: 90vh;
   min-width: ${DEVICE_WIDTH.MIN};
   max-width: ${DEVICE_WIDTH.MAX};
   margin: 0 auto;
@@ -32,7 +33,7 @@ export const Content = styled.div`
   flex-direction: column;
   justify-content: start;
   padding: 90px 0 0;
-  min-height: 500px;
+  min-height: 400px;
 `;
 
 const Element = (props) => {
@@ -43,17 +44,19 @@ const Element = (props) => {
 
     return (
         <MobileWrapper className="mobile-wrapper">
-            <FixedWrapper fixTop id="NavigationHeader">
-                <NavigationHeader title={route.TITLE} backUrl={route.backUrl}/>
-            </FixedWrapper>
-            <Content className="content-centralazer">
-                <route.page/>
-            </Content>
-            <FixedWrapper fixBottom className='ta-BottomMenu'>
-                <BottomMenu/>
-            </FixedWrapper>
+            <HeightWrapper>
+                <FixedWrapper fixTop id="NavigationHeader">
+                    <NavigationHeader title={route.TITLE} backUrl={route.backUrl}/>
+                </FixedWrapper>
+                <Content className="content-centralazer">
+                    <route.page/>
+                </Content>
+                <FixedWrapper fixBottom className='ta-BottomMenu'>
+                    <BottomMenu/>
+                </FixedWrapper>
+            </HeightWrapper>
             <Footer/>
-            <ScrollUpButton />
+            <ScrollUpButton/>
         </MobileWrapper>
     )
 };
@@ -62,9 +65,7 @@ export const AllRoutes = () => {
     return (
         <>
             <Routes>
-                {/*<Route path={DEV_ROUTER.COMPONENTS} element={<ComponentsPage/>}/>*/}
-                {/*<Route path={DEV_ROUTER.ADMIN} element={<AdminPage/>}/>*/}
-                {/*<Route path={DEV_ROUTER.API} element={<ApiPage/>}/>*/}
+                <Route path={DEV_ROUTER.ADMIN} element={<AdminPage/>}/>
                 {ROUTERS.map(r => (
                     <Route
                         key={r.URL}

@@ -53,7 +53,6 @@ const AddMenuItemPage = () => {
 
     return (
         <>
-
             <MenuItemView
                 defaultInitialValue={initialValues}
                 onSubmit={onSubmit}

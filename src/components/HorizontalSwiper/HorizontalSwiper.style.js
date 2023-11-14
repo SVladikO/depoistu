@@ -4,7 +4,7 @@ export const SliderStyle = styled.div`
   .swiper {
     display: flex;
     width: 100%;
-    padding: 0 0 14px 0;
+    padding: ${p => p.sliderStylePadding};
   }
 
   .swiper-wrapper {
