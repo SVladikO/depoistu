@@ -22,13 +22,13 @@ const CustomerCompaniesPage = () => {
     useRedirectToSettingPage();
     const navigate = useNavigate();
     const customer = useSelector(state => state.customer.value);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState();
     const [wasWarningShown, setWasWarningShown] = useLocalStorage(LOCAL_STORAGE_KEY.WAS_COMPANY_CREATION_WARNING_SHOW, false)
     const [companyIdForQRCode, setCompanyIdForQRCode] = useState();
     const [customerCompanies, setCustomerCompanies] = useLocalStorage(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
 
     useEffect(() => {
-        if (customerCompanies || isLoading) {
+        if (customerCompanies || isLoading === false || isLoading ) {
             return;
         }
 
