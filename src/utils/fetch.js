@@ -84,7 +84,7 @@ export const BE_API = {
         DELETE: () => `${BE_DOMAIN}/favorite-companies`,
     },
     COMPANY: {
-        GET_BY_CUSTOMER_ID: () => `${BE_DOMAIN}/companies/by/customer`,
+        GET_BY_CUSTOMER_ID: customerId => `${BE_DOMAIN}/companies/customers/${customerId}`,
         GET_BY_COMPANY_ID: companyId => `${BE_DOMAIN}/companies/${companyId}`,
         GET_AVAILABLE_CITIES: () => `${BE_DOMAIN}/available-city-ids`,
         GET_BY_CITY_ID: city_id => `${BE_DOMAIN}/companies/cities/${city_id}`,
