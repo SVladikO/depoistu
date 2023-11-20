@@ -79,7 +79,7 @@ export const BE_API = {
         PUT_VERIFY_EMAIL: () => `${BE_DOMAIN}/verify-email`,
     },
     FAVORITE_COMPANY: {
-        GET: () => `${BE_DOMAIN}/favorite-companies`,
+        GET: customerId => `${BE_DOMAIN}/favorite-companies/${customerId}`,
         ADD: () => `${BE_DOMAIN}/favorite-companies`,
         DELETE: () => `${BE_DOMAIN}/favorite-companies`,
     },
