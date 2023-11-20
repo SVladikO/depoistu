@@ -7,13 +7,20 @@ function getOptions(body) {
     const defaultOption = {
         headers: {
             'Content-Type': 'application/json',
-            "x-access-token": LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE)?.customer?.value?.token,
             "current-language": getCurrentLanguage() || DEFAULT_LANGUAGE
         }
     };
 
+    //Only GET method works without body
     if (!body) {
         return defaultOption;
+    }
+
+    const customer = LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE)?.customer.value;
+
+    //Let's send x-access-token for POST, PUT, DELETE only after customer sing in.
+    if (customer) {
+        defaultOption.headers["x-access-token"] = customer.token;
     }
 
     return {
@@ -101,8 +108,8 @@ export const BE_API = {
         CHANGE_IS_VISIBLE: () => `${BE_DOMAIN}/menu/visible`
     },
     DEVELOPMENT: {
-        API: () =>   `${BE_DOMAIN}/api-list`,
-        DB_MODE: () =>   `${BE_DOMAIN}/db-mode`
+        API: () => `${BE_DOMAIN}/api-list`,
+        DB_MODE: () => `${BE_DOMAIN}/db-mode`
     }
     // PLACE_ORDER: () => `${BE_DOMAIN}/place-order`,
 };
