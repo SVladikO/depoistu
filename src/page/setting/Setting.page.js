@@ -108,6 +108,9 @@ const SettingPage = () => {
         dispatch(deleteCustomer())
         dispatch(cleanFavoriteCompanies())
         LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
+        LocalStorage.remove(LOCAL_STORAGE_KEY.COMPANY_ID_FOR_EDIT_MENU);
+        LocalStorage.remove(LOCAL_STORAGE_KEY.COMPANY_ID_TO_EDIT_MENU_PAGE);
+        LocalStorage.remove(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT);
     }
 
     return (
