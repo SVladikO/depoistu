@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 
 import {
     Wrapper,
-    LinksWrapper,
     Table,
     LedError,
     LedSuccess,
@@ -17,9 +16,9 @@ import {NavigationHeader, RowSplitter, SecondaryButton} from "components";
 import {fetchData} from "utils/fetch";
 
 import {BE_API} from 'utils/fetch'
-import {AVAILABLE_DOMAINS, BE_DOMAIN} from "utils/config";
+import {BE_DOMAIN} from "utils/config";
 import {checkAccess} from "utils/security";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
+import {LOCAL_STORAGE_KEY} from "../../utils/localStorage";
 import ApiPage from "./Api.page";
 import ComponentsPage from "./Components.page";
 
@@ -56,8 +55,7 @@ function AdminPage() {
                 <tbody>{checkSuccessRequest}</tbody>
             </Table>
             <RowSplitter height='40px'/>
-            <GroupTitle>Domains mapping</GroupTitle>
-            <AllLinks/>
+
             <RowSplitter height='40px'/>
             <GroupTitle>BE API</GroupTitle>
             <ApiPage/>
@@ -153,45 +151,6 @@ const CheckRequest555 = () => {
         {method: 'get', url: '/favorite-companies'},// with broken token
         {method: 'get', url: '/favorite-companies'},// with token broken validation
     ]
-}
-
-const AllLinks = () => {
-
-
-    return (
-        <LinksWrapper>
-
-            <table>
-                <thead>
-                <tr>
-                    <td className={'text_center'}>FE</td>
-                    <td className={'text_center'}>BE</td>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td><StyledLink href="https://depoistu.com">PRODUCTION</StyledLink></td>
-                    <td><StyledLink
-                        href={AVAILABLE_DOMAINS[3].url}>{AVAILABLE_DOMAINS[3].name.toUpperCase()}</StyledLink></td>
-                </tr>
-                <tr>
-                    <td><StyledLink href="https://depoistu-stage.onrender.com">STAGE</StyledLink></td>
-                    <td><StyledLink
-                        href={AVAILABLE_DOMAINS[2].url}>{AVAILABLE_DOMAINS[2].name.toUpperCase()}</StyledLink></td>
-                </tr>
-                <tr>
-                    <td>
-                        <StyledLink href="https://depoistu-develop.onrender.com">DEVELOP</StyledLink>
-                    </td>
-                    <td>
-                        <StyledLink
-                            href={AVAILABLE_DOMAINS[1].url}>{AVAILABLE_DOMAINS[1].name.toUpperCase()}</StyledLink>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </LinksWrapper>
-    )
 }
 
 const CheckRequest = ({type, title, url,}) => {
