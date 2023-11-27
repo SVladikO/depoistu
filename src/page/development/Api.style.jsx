@@ -94,9 +94,10 @@ export const Method = {
     `
 };
 
-export const Description = styled.button`
+export const Description = styled.div`
   width: 400px;
   display: flex;
+  justify-content: left;
   font-size: 20px;
   background: none;
 `;

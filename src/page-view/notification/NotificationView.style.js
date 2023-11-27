@@ -1,10 +1,12 @@
 import styled from "styled-components";
-import {BORDER_RADIUS, COLOR, FONT, hexToRgbA} from "utils/theme";
+import {COLOR, FONT, hexToRgbA} from "utils/theme";
 
 
 export const Wrapper = styled.div`
-  padding: 16px 16px;
-  position: absolute;
+  overflow-y: auto;
+  max-height: 100vh;
+  padding: 16px;
+  position: relative;
   top: 0;
   width: 100%;
   background: ${hexToRgbA('#000', 0.5)};

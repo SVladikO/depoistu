@@ -2,7 +2,7 @@ import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
 import packageInfo from "../../package.json";
 import {DEFAULT_LANGUAGE, getCurrentLanguage} from "./translation";
 
-const checkUpdates = () => {
+export const checkUpdates = () => {
     const lastUpdateDate = LocalStorage.get(LOCAL_STORAGE_KEY.LAST_UPDATE_DATE);
 
     if (packageInfo.lastUpdateDate !== lastUpdateDate) {
@@ -17,5 +17,5 @@ const checkUpdates = () => {
     }
 }
 
-checkUpdates();
+
 

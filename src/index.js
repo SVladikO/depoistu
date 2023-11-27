@@ -8,6 +8,9 @@ import reportWebVitals from './reportWebVitals';
 import {createStore} from './features/store';
 import App from "./page/App";
 import {LocalStorage, LOCAL_STORAGE_KEY} from "./utils/localStorage";
+import {checkUpdates} from "./utils/management";
+
+checkUpdates();
 
 const container = document.getElementById('root');
 const root = createRoot(container);

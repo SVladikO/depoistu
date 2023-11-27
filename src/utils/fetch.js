@@ -7,13 +7,20 @@ function getOptions(body) {
     const defaultOption = {
         headers: {
             'Content-Type': 'application/json',
-            "x-access-token": LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE)?.customer?.value?.token,
             "current-language": getCurrentLanguage() || DEFAULT_LANGUAGE
         }
     };
 
+    //Only GET method works without body
     if (!body) {
         return defaultOption;
+    }
+
+    const customer = LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE)?.customer.value;
+
+    //Let's send x-access-token for POST, PUT, DELETE only after customer sing in.
+    if (customer) {
+        defaultOption.headers["x-access-token"] = customer.token;
     }
 
     return {
@@ -79,15 +86,15 @@ export const BE_API = {
         PUT_VERIFY_EMAIL: () => `${BE_DOMAIN}/verify-email`,
     },
     FAVORITE_COMPANY: {
-        GET: () => `${BE_DOMAIN}/favorite-companies`,
+        GET: customerId => `${BE_DOMAIN}/favorite-companies/${customerId}`,
         ADD: () => `${BE_DOMAIN}/favorite-companies`,
         DELETE: () => `${BE_DOMAIN}/favorite-companies`,
     },
     COMPANY: {
-        GET_BY_CUSTOMER_ID: () => `${BE_DOMAIN}/companies/by/customer`,
-        GET_BY_COMPANY_ID: companyId => `${BE_DOMAIN}/companies/by/id/${companyId}`,
-        GET_AVAILABLE_CITIES: () => `${BE_DOMAIN}/companies/cities`,
-        GET_BY_CITY_ID: city_id => `${BE_DOMAIN}/companies/by/city_id/${city_id}`,
+        GET_BY_CUSTOMER_ID: customerId => `${BE_DOMAIN}/companies/customers/${customerId}`,
+        GET_BY_COMPANY_ID: companyId => `${BE_DOMAIN}/companies/${companyId}`,
+        GET_AVAILABLE_CITIES: () => `${BE_DOMAIN}/available-city-ids`,
+        GET_BY_CITY_ID: city_id => `${BE_DOMAIN}/companies/cities/${city_id}`,
         POST_CREATE: () => `${BE_DOMAIN}/companies`,
         PUT_UPDATE: () => `${BE_DOMAIN}/companies`,
         DELETE: () => `${BE_DOMAIN}/companies`,
@@ -101,8 +108,8 @@ export const BE_API = {
         CHANGE_IS_VISIBLE: () => `${BE_DOMAIN}/menu/visible`
     },
     DEVELOPMENT: {
-        API: () =>   `${BE_DOMAIN}/api-list`,
-        DB_MODE: () =>   `${BE_DOMAIN}/db-mode`
+        API: () => `${BE_DOMAIN}/api-list`,
+        DB_MODE: () => `${BE_DOMAIN}/db-mode`
     }
     // PLACE_ORDER: () => `${BE_DOMAIN}/place-order`,
 };

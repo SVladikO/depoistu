@@ -34,7 +34,7 @@ const FavoritePage = () => {
             return
         }
 
-        fetchData(BE_API.FAVORITE_COMPANY.GET())
+        fetchData(BE_API.FAVORITE_COMPANY.GET(customer.id))
             .then(res => {
                 dispatch(initFavoriteCompanies(res.body))
             })

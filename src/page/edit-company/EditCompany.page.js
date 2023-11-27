@@ -78,7 +78,7 @@ const EditCompany = () => {
         closeDeletePopup()
         document.body.style.overflowY = 'auto';
 
-        fetchData(BE_API.COMPANY.DELETE(), {method: 'delete', companyId})
+        fetchData(BE_API.COMPANY.DELETE(), {method: 'delete', id: companyId})
             .then(() => {
                 LocalStorage.remove(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
                 publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.COMPANY.WAS_DELETED))

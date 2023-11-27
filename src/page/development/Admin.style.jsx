@@ -14,10 +14,6 @@ export const TD = styled.td`
   word-wrap: break-word;
   max-width: 360px;
 `;
-export const LinksWrapper = styled.div`
-  width: 275px;
-  margin: auto;
-`;
 export const StyledLink = styled.a`
   padding: 10px;
   margin: 2px;
