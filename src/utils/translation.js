@@ -916,10 +916,6 @@ export const TRANSLATION = {
                 ua: "Завантаження закладу ..."
             },
         },
-        LOADING_AVAILABLE_COMPANIES: {
-            en: "Loading companies ...",
-            ua: "Завантаження закладів ..."
-        },
         LOADING_MENU: {
             en: "Loading menu ...",
             ua: "Завантаження меню ..."
