@@ -95,6 +95,7 @@ export const BE_API = {
         GET_BY_COMPANY_ID: companyId => `${BE_DOMAIN}/companies/${companyId}`,
         GET_AVAILABLE_CITIES: () => `${BE_DOMAIN}/available-city-ids`,
         GET_BY_CITY_ID: city_id => `${BE_DOMAIN}/companies/cities/${city_id}`,
+        GET_ALL: () => `${BE_DOMAIN}/companies`,
         POST_CREATE: () => `${BE_DOMAIN}/companies`,
         PUT_UPDATE: () => `${BE_DOMAIN}/companies`,
         DELETE: () => `${BE_DOMAIN}/companies`,
