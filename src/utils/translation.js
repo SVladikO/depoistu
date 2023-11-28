@@ -602,21 +602,21 @@ export const TRANSLATION = {
                         question: "Why do businesses need us?",
                         withCounter: true,
                         answers: [
-                            "With us you save time, money, energy, nerves for planning, creating, maintaining and promoting your own website. Cool, don't you agree?",
-                            "The possibility of changing the menu at any time of the day.",
-                            "The opportunity to be modern.",
-                            "Your customers can now view the menu from any distance at any time of the day.",
-                            "More people know about you."
+                            "With us, you save time, money, energy and nerves for planning, creating, maintaining and promoting your own website. Cool, agree.",
+                            "Your menu becomes digital. Now you can conveniently add, remove, hide and change your own dishes and drinks.",
+                            "The opportunity to be modern. Visitors will appreciate and remember the service you provided.",
+                            "Your customers can now view the Menu from any distance at any time of the day.",
+                            "More people know about you. You get a new platform to promote your own establishments, and you also join a new ecosystem."
                         ]
                     },
                     {
-                        question: "Why do customers need us?",
+                        question: "What do all depoistu.com customers get?",
                         withCounter: true,
                         answers: [
-                            "Find a restaurant in any corner of Ukraine faster.",
-                            "Find the menu position faster.",
-                            "Order faster.",
-                            "You get what you want faster.",
+                            "Quick search for food establishments in any corner of Ukraine.",
+                            "Opportunity to find out all relevant information about the institution.",
+                            "The ability to study different Menus, compare prices and find the desired food in advance.",
+                            "Always be in touch with establishments. Choose and store your favorite dishes and drinks.",
                         ]
                     },
                     {
@@ -624,7 +624,7 @@ export const TRANSLATION = {
                         answers: [
                             "Place a QR MENU in your establishment on every table.",
                             "This is your investment in overall success.",
-                            "All businesses will introduce their customers to this site.",
+                            "You introduce your customers to our service. We introduce our users to your establishment.",
                             "And so we got an ecosystem.",
                             "All clients and all businesses in one place."
                         ]
@@ -636,26 +636,26 @@ export const TRANSLATION = {
                     {
                         question: "What unites us?",
                         answers: [
-                            "We want to solve a common problem: 'Quickly find food establishments in Ukraine.' ",
+                            "The desire to improve the sphere of services among catering establishments of Ukraine."
                         ]
                     },
                 ],
                 ua: [
                     {
-                        question: "Яка головна ідея проекту ?",
+                        question: "Яка головна ідея проекту?",
                         answers: [
                             "Всі заклади харчування України на одному сайті depoistu.com",
                         ]
                     },
                     {
-                        question: "Яка вартість ?",
+                        question: "Яка вартість?",
                         answers: [
                             "Перші чотири місяці після запуску проекту БЕЗКОШТОВНО.",
                             "З 1.11.2023 - 1.04.2024",
                         ]
                     },
                     {
-                        question: "Чому ми потрібні бізнесу ?",
+                        question: "Чому ми потрібні бізнесу?",
                         withCounter: true,
                         answers: [
                             "З нами Ви зберігаєте час, кошти, сили та нерви на планування, створення, підтримку та просування власного сайту. Круто, погодьтесь.",
@@ -663,7 +663,6 @@ export const TRANSLATION = {
                             "Можливість бути сучасними. Відвідувачі гідно оцінять та запамятають надану вами послугу.",
                             "Ваші клієнти тепер переглядають Меню на будь-якій відстані в будь-яку пору доби.",
                             "Більше людей знають про Вас. Ви отримуєте новий майданчик для просування власних закладів, а також доєднуєтесь до нової екосистеми.",
-
                         ]
                     },
 
@@ -675,7 +674,6 @@ export const TRANSLATION = {
                             "Можливість дізнатися всю актуальну інформацію про заклад.",
                             "Можливість вивчати різні Меню, зрівнювати ціни та заздалегідь знаходити для себе бажану їжу.",
                             "Бути завжди на звязку з закладами. Вибирати та зберігати улюблені страви та напої.",
-
                         ]
                     },
                     {
