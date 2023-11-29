@@ -30,9 +30,10 @@ From another side we meet business who even don't won't work with us for free. )
 # To make right design we need
 1. investigate income from advertisement depending from visitors.
 
-# Till 1st of June we provide customer subscription functional
-# Let's enable advertisement from 1st of September
-# Let's enable customer subscription from 1st of September too
+# NOW We can enable donates or buy me a coffy
+# LATER Till 1st of June we provide customer subscription functional
+# LATER Let's enable advertisement from 1st of September
+# LATER Let's enable customer subscription from 1st of September too
 
 
 
