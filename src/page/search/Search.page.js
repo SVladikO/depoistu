@@ -1,6 +1,6 @@
 import {useNavigate} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import React, {useMemo, useState} from "react";
+import {useDispatch} from "react-redux";
+import React, {useEffect, useMemo, useState} from "react";
 
 import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
 
@@ -13,7 +13,7 @@ import {CITY_TRANSLATION_IDS} from "utils/cities";
 import {publishNotificationEvent} from "utils/event";
 import {translate, TRANSLATION, truncate} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
-import {useLocalStorage, useScrollUp, useLocalStorageFetch} from "utils/hook";
+import {useLocalStorage, useScrollUp} from "utils/hook";
 import {addCompanyIdForSearchDetailsPage} from "../../features/searchDetailsPage/searchDetailsPageSlice";
 
 const SearchPage = () => {
@@ -21,36 +21,50 @@ const SearchPage = () => {
         const navigate = useNavigate();
         const dispatch = useDispatch();
 
-        const [isLoadingCityIds, setIsLoadingCityIds] = useState(false);
-        const [isLoadingCompanies, setIsLoadingCompanies] = useState(false);
+        const [isLoading, setIsLoading] = useState(false);
+
 
         const [selectedCityId, setSelectedCity] = useLocalStorage(LOCAL_STORAGE_KEY.COMPANY_SEARCH_SELECTED_CITY_ID, '');
         const [selectedRegionId, setSelectedRegion] = useLocalStorage(LOCAL_STORAGE_KEY.COMPANY_SEARCH_SELECTED_REGION_ID, '');
         const [showCityPopup, setShowCityPopup] = useState(false);
         const [availableFromDatabaseCityIds, setAvailableFromDatabaseCityIds] = useState([]);
 
-        let [companies] = useLocalStorageFetch(
-            LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT,
-            [],
-            BE_API.COMPANY.GET_BY_CITY_ID(selectedCityId),
-            setIsLoadingCompanies,
-            () => !selectedCityId
-        );
+        let [companies, setCompanies] = useLocalStorage(LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT, [])
 
+        useEffect(() => {
+            if (isLoading || companies?.length) {
+                return;
+            }
+
+            setIsLoading(true);
+
+            fetchData(BE_API.COMPANY.GET_ALL())
+                .then(res => {
+                    console.log(45, res)
+                    setCompanies(res.body)
+                })
+                .catch(e => publishNotificationEvent.error(e.body.errorMessage))
+                .finally(() => setIsLoading(false))
+        }, [])
 
         const onSelectCity = ([city, region]) => {
             LocalStorage.remove(LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT)
-            setSelectedCity(city);
             setSelectedRegion(region);
             onCloseCityPopup();
+            setSelectedCity(city);
+
+            fetchData(BE_API.COMPANY.GET_BY_CITY_ID(city))
+                .then(res => setCompanies(res.body))
+                .catch(e => publishNotificationEvent.error(e.body.errorMessage))
+                .finally(() => setIsLoading(false))
         }
 
         const onCloseCityPopup = () => setShowCityPopup(false);
 
         const onOpenCityPopup = () => {
-            setIsLoadingCityIds(true);
+            setIsLoading(true);
 
-            const cityLoadingDelay = stopLoadingWithDelay([() => setIsLoadingCityIds(false)]);
+            const cityLoadingDelay = stopLoadingWithDelay([() => setIsLoading(false)]);
             const showCityPopupDelay = stopLoadingWithDelay([() => setShowCityPopup(true)]);
 
             fetchData(BE_API.COMPANY.GET_AVAILABLE_CITIES())
@@ -99,23 +113,25 @@ const SearchPage = () => {
                     />
                 </ContentContainer>
 
-                {isLoadingCityIds &&
+                {isLoading &&
                     <NotificationLoading>{translate(TRANSLATION.NOTIFICATION.COMPANY.LOADING_AVAILABLE_CITIES)}</NotificationLoading>}
-                {isLoadingCompanies &&
-                    <NotificationLoading>{translate(TRANSLATION.NOTIFICATION.LOADING_AVAILABLE_COMPANIES)}</NotificationLoading>}
                 <RowSplitter height="10px"/>
-                {!isLoadingCompanies && companies && !!companies.length && selectedCityId &&
-                    companies?.map(company =>
+                {!isLoading && companies && companies.map(company =>
+                    <div key={company.id}>
                         <Company
-                            key={company.id}
+
                             company={company}
-                            clickHandler={() => {
-                                dispatch(addCompanyIdForSearchDetailsPage(company.id))
-                                LocalStorage.remove(LOCAL_STORAGE_KEY.SEARCH_DETAILS_COMPANY)
-                                LocalStorage.remove(LOCAL_STORAGE_KEY.SEARCH_DETAILS_MENU)
-                                navigate(`${URL.SEARCH_DETAILS}/${company.id}`)
-                            }}/>
-                    )
+                            clickHandler={
+                                () => {
+                                    dispatch(addCompanyIdForSearchDetailsPage(company.id))
+                                    LocalStorage.remove(LOCAL_STORAGE_KEY.SEARCH_DETAILS_COMPANY)
+                                    LocalStorage.remove(LOCAL_STORAGE_KEY.SEARCH_DETAILS_MENU)
+                                    navigate(`${URL.SEARCH_DETAILS}/${company.id}`)
+                                }
+                            }
+                        />
+                    </div>
+                )
                 }
                 {showCityPopup && cityPopup}
             </>

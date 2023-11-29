@@ -23,8 +23,8 @@ export const isScheduleValid = values =>
     values.satIsChecked ||
     values.sunIsChecked;
 
-export function initSchedule(schedule) {
-    const times = schedule.split(',')?.map(el => el.trim());
+export function initSchedule(schedule = ',,,,,,,') {
+    const times = schedule?.split(',')?.map(el => el.trim());
     let result = {};
     ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
         .forEach((key, index) => {
@@ -49,7 +49,7 @@ export const weekDayNames = [
 ];
 
 const getCurrentDay = days => days.find((el, i) => isToday(i));
-const cutOnDays = schedule => schedule.split(',')?.map(el => el.trim());
+const cutOnDays = (schedule = ',,,,,,,') => schedule.split(',')?.map(el => el.trim());
 const isToday = dayIndex => (dayIndex + 1) === (new Date().getDay() || 7);
 const addMarkerToCurrentDay = (el, i) => isToday(i) ? {...el, isToday: true} : el;
 const addDayName = (fromTo, index) => ({dayName: weekDayNames[index], ...fromTo});
