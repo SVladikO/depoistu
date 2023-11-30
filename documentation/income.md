@@ -11,16 +11,10 @@ From another side we meet business who even don't won't work with us for free. )
 
 ### For business owner:
 ###### BASIC
-- 100 uah/mon
-- 200 uah/mon region center
+- 300 uah/mon 
 
 ###### STANDARD
-- 450 uah/mon with photo
-- 900 uah/mon region center with photo
-
 ###### PREMIUM
-- ? what we can propose for them more ?))
-- ?
 
 ### For customers:
 - 50 uah/month no advertisement
@@ -35,18 +29,16 @@ From another side we meet business who even don't won't work with us for free. )
 
 
 #### Optimistic income per month
-100(busines) * 100(per month) = 10'000 uah/mon   <br>
-100(busines) * 450(per month) = 45'000 uah/mon   <br>
-100(busines) * 900(per month) = 90'000 uah/mon   <br>
-1000(customers) * 50(per month) = 50'000 uah/mon <br>
-Advertisement                     10'000 uah/mon <br>
-Total: 205'000 uah                               <br>
+1500(busines) * 300(per month) = 450'000 uah/mon  <br>
+1000(customers) * 50(per month) = 50'000 uah/mon  <br>
+Advertisement                     200'000 uah/mon <br>
+Total: 700'000 uah                                <br>
 <br>
 
 #### Optimistic income per year before taxes
-205'000 * 12 = 2'460'000 uah <br>
+205'000 * 12 = 8'400'000 uah <br>
 or <br>
-66'000 $ <br>
+220'000 $ <br>
 
 
 
