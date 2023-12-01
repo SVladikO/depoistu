@@ -594,8 +594,7 @@ export const TRANSLATION = {
                     {
                         question: "What is the cost?",
                         answers: [
-                            "The first four months after the launch of the project are FREE.",
-                            "From 1.11.2023 - 1.04.2024",
+                            "It's free until 1st of June 2024.",
                         ]
                     },
                     {
@@ -650,8 +649,7 @@ export const TRANSLATION = {
                     {
                         question: "Яка вартість ?",
                         answers: [
-                            "Перші чотири місяці після запуску проекту БЕЗКОШТОВНО.",
-                            "З 1.11.2023 - 1.04.2024",
+                            "До 1го Червня 2024 БЕЗКОШТОВНО.",
                         ]
                     },
                     {

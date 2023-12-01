@@ -97,10 +97,7 @@ export const ROUTER = {
         TITLE: translate(TRANSLATION.PAGE.FAVORITE.TOP_TITLE),
         page: FavoritePage,
     },
-    MENU: {
-        URL: '/menu', TITLE: 'Favorite Cart', page: () => {
-        }
-    },
+    MENU: {URL: '/menu',  TITLE: 'Favorite Cart', page: () => {}},
     // Profile: {URL: '/Profile',  TITLE: 'Profile', page: () => {}},
     // USER_ACCOUNT = {URL: '/user_account',  TITLE: 'USER_ACCOUNT', page: () => {}, showBottomMenu: true, BACK_URL: ROUTER.SETTING.URL};
     SEARCH: {
