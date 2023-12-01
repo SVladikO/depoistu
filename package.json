@@ -1,8 +1,8 @@
 {
   "name": "depoistu",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
-  "lastUpdateDate": "27.11.2023",
+  "lastUpdateDate": "1.12.2023",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.16.5",
