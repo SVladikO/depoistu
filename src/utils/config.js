@@ -32,26 +32,37 @@ export const DEV_ROUTER = {
 
 export const {REACT_APP_PRODUCTION_BE} = process.env;
 
-export const AVAILABLE_DOMAINS = {
-    0: {
-        name: 'localhost',
-        url: 'http://localhost:4000'
-    },
-    1: {
-        name: 'develop',
-        url: 'https://depoistu-develop-ab315caf64ab.herokuapp.com'
-    },
-    2: {
-        name: 'stage',
-        url: 'https://depoistu-stage-8139a3f5250c.herokuapp.com'
-    },
-    3: {
-        name: 'production',
-        url: 'https://depoistu-main-bb2676f3bc70.herokuapp.com'
+function getDomainBE() {
+    const {origin} = window.location;
+
+    switch (origin) {
+        case "https://depoistu.com":
+            return {
+                name: 'production',
+                url: 'https://depoistu-main-bb2676f3bc70.herokuapp.com'
+            }
+
+        case "https://depoistu-stage.onrender.com":
+            return {
+                name: 'stage',
+                url: 'https://depoistu-stage-8139a3f5250c.herokuapp.com'
+            }
+
+        case "https://depoistu-develop.onrender.com":
+            return {
+                name: 'develop',
+                url: 'https://depoistu-develop-ab315caf64ab.herokuapp.com'
+            }
+
+        default:
+            return {
+                name: 'localhost',
+                url: 'http://localhost:4000'
+            }
     }
 }
 
-export const SELECTED_BE_DOMAIN = AVAILABLE_DOMAINS[REACT_APP_PRODUCTION_BE || 1];
+export const SELECTED_BE_DOMAIN = getDomainBE();
 export const BE_DOMAIN = SELECTED_BE_DOMAIN.url;
 
 export const URL = {

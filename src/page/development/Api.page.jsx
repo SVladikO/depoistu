@@ -66,10 +66,9 @@ const Route = ({route}) => {
                 </RowInnerWrapper>
                 {isDetailsVisible &&
                     <Details>
-                        <div>EXAMPLE:{' '}
-                            <a href={BE_DOMAIN + url_example} target="_blank">
-                                <span style={{color: 'red'}}>{BE_DOMAIN}</span>
-                                <span style={{color: 'blue'}}>{url_example}</span> ->>>
+                        <div>
+                            <a href={BE_DOMAIN + url_example} target="_blank" style={{color: 'blue'}}>
+                                {BE_DOMAIN}{url_example}
                             </a>
 
                         </div>

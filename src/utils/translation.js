@@ -601,21 +601,21 @@ export const TRANSLATION = {
                         question: "Why do businesses need us?",
                         withCounter: true,
                         answers: [
-                            "With us you save time, money, energy, nerves for planning, creating, maintaining and promoting your own website. Cool, don't you agree?",
-                            "The possibility of changing the menu at any time of the day.",
-                            "The opportunity to be modern.",
-                            "Your customers can now view the menu from any distance at any time of the day.",
-                            "More people know about you."
+                            "With us, you save time, money, energy and nerves for planning, creating, maintaining and promoting your own website. Cool, agree.",
+                            "Your menu becomes digital. Now you can conveniently add, remove, hide and change your own dishes and drinks.",
+                            "The opportunity to be modern. Visitors will appreciate and remember the service you provided.",
+                            "Your customers can now view the Menu from any distance at any time of the day.",
+                            "More people know about you. You get a new platform to promote your own establishments, and you also join a new ecosystem."
                         ]
                     },
                     {
-                        question: "Why do customers need us?",
+                        question: "What do all depoistu.com customers get?",
                         withCounter: true,
                         answers: [
-                            "Find a restaurant in any corner of Ukraine faster.",
-                            "Find the menu position faster.",
-                            "Order faster.",
-                            "You get what you want faster.",
+                            "Quick search for food establishments in any corner of Ukraine.",
+                            "Opportunity to find out all relevant information about the institution.",
+                            "The ability to study different Menus, compare prices and find the desired food in advance.",
+                            "Always be in touch with establishments. Choose and store your favorite dishes and drinks.",
                         ]
                     },
                     {
@@ -623,7 +623,7 @@ export const TRANSLATION = {
                         answers: [
                             "Place a QR MENU in your establishment on every table.",
                             "This is your investment in overall success.",
-                            "All businesses will introduce their customers to this site.",
+                            "You introduce your customers to our service. We introduce our users to your establishment.",
                             "And so we got an ecosystem.",
                             "All clients and all businesses in one place."
                         ]
@@ -635,63 +635,63 @@ export const TRANSLATION = {
                     {
                         question: "What unites us?",
                         answers: [
-                            "We want to solve a common problem: 'Quickly find food establishments in Ukraine.' ",
+                            "The desire to improve the sphere of services among catering establishments of Ukraine."
                         ]
                     },
                 ],
                 ua: [
                     {
-                        question: "Яка головна ідея проекту ?",
+                        question: "Яка головна ідея проекту?",
                         answers: [
                             "Всі заклади харчування України на одному сайті depoistu.com",
                         ]
                     },
                     {
-                        question: "Яка вартість ?",
+                        question: "Яка вартість?",
                         answers: [
                             "До 1го Червня 2024 БЕЗКОШТОВНО.",
                         ]
                     },
                     {
-                        question: "Чому ми потрібні бізнесу ?",
+                        question: "Чому ми потрібні бізнесу?",
                         withCounter: true,
                         answers: [
-                            "З нами ви економите час, гроші, сили, нерви на планування, створення, підтримку, просування власного сайту. Круто, погодьтесь. ",
-                            "Можливість змінювати меню в будь-яку пору доби.",
-                            "Можливість бути сучасними.",
-                            "Ваші клієнти тепер переглядають меню на будь-якій відстані в будь-яку пору доби.",
-                            "Більше людей знають про вас."
+                            "З нами Ви зберігаєте час, кошти, сили та нерви на планування, створення, підтримку та просування власного сайту. Круто, погодьтесь.",
+                            "Ваше меню стає цифровим. Тепер Ви можете зручно добавляти, видаляти, приховувати та змінювати власні страви та напої.",
+                            "Можливість бути сучасними. Відвідувачі гідно оцінять та запамʼятають надану вами послугу.",
+                            "Ваші клієнти тепер переглядають Меню на будь-якій відстані в будь-яку пору доби.",
+                            "Більше людей знають про Вас. Ви отримуєте новий майданчик для просування власних закладів, а також доєднуєтесь до нової екосистеми.",
                         ]
                     },
 
                     {
-                        question: "Чому ми потрібні клієнтам ?",
+                        question: "Що отримують всі клієнти depoistu.com?",
                         withCounter: true,
                         answers: [
-                            "Швидше знаходите заклад харчування в любому куточку України.",
-                            "Швидше знаходите позицію меню.",
-                            "Швидше замовляєте.",
-                            "Швидше отримуєте бажане.",
+                            "Швидкий пошук закладів харчування в будь-якому куточку України.",
+                            "Можливість дізнатися всю актуальну інформацію про заклад.",
+                            "Можливість вивчати різні Меню, зрівнювати ціни та заздалегідь знаходити для себе бажану їжу.",
+                            "Бути завжди на звязку з закладами. Вибирати та зберігати улюблені страви та напої.",
                         ]
                     },
                     {
-                        question: "Як бізнесу заробляти швидше ?",
+                        question: "Як бізнесу заробляти швидше?",
                         answers: [
                             "Розмістіть QR MENU в своєму закладі на кожному столі.",
                             "Це ваша інвестиція в загальний успіх.",
-                            "Всі бізнеси познайомлять своїх клієнтів з цим сайтом.",
+                            "Ви знайомите своїх клієнтів з нашим сервісом. Ми знайомимо наших користувачів з вашим закладом.",
                             "І от ми отримали екосистему.",
                             "Всі клієнти і всі бізнеси в одному місці."
                         ]
                     },
                     {
-                        question: "Коли випустили першу версію?",
+                        question: "Коли ми випустили першу версію?",
                         answers: ["1 Листопада 2023 року"]
                     },
                     {
                         question: "Що нас об`єднує?",
                         answers: [
-                            "Бажаємо вирішити спільну проблему: 'Швидко знаходити заклади харчування в Україні.' ",
+                            "Бажання покращити сферу послуг серед закладів харчування України.",
                         ]
                     },
                 ],
@@ -905,18 +905,14 @@ export const TRANSLATION = {
                 en: "Customers won't see this company without menu."
             },
             LOADING_AVAILABLE_CITIES: {
-                en: "Loading cities with registered restorans.",
-                ua: "Завантаження міст де зареєстровані заклади."
+                en: "Loading ...",
+                ua: "Завантаження ..."
             },
 
             LOADING_COMPANY: {
                 en: "Loading company ...",
                 ua: "Завантаження закладу ..."
             },
-        },
-        LOADING_AVAILABLE_COMPANIES: {
-            en: "Loading companies ...",
-            ua: "Завантаження закладів ..."
         },
         LOADING_MENU: {
             en: "Loading menu ...",

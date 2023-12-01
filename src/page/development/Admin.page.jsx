@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 
 import {
     Wrapper,
-    LinksWrapper,
     Table,
     LedError,
     LedSuccess,
@@ -17,27 +16,21 @@ import {NavigationHeader, RowSplitter, SecondaryButton} from "components";
 import {fetchData} from "utils/fetch";
 
 import {BE_API} from 'utils/fetch'
-import {AVAILABLE_DOMAINS, BE_DOMAIN} from "utils/config";
+import {BE_DOMAIN} from "utils/config";
 import {checkAccess} from "utils/security";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
+import {LOCAL_STORAGE_KEY} from "../../utils/localStorage";
 import ApiPage from "./Api.page";
 import ComponentsPage from "./Components.page";
 
 function AdminPage() {
     const [dbMode, setDBMode] = useState('')
 
-
     checkAccess(LOCAL_STORAGE_KEY.IS_ADMIN)
-
 
     useEffect(() => {
         fetchData(`${BE_DOMAIN}/db-mode`)
             .then(res => setDBMode(res.body.mode.toUpperCase()))
     })
-
-    const singOutAdmin = () => {
-        LocalStorage.remove(LOCAL_STORAGE_KEY.IS_ADMIN);
-    }
 
     return (
         <Wrapper>
@@ -62,8 +55,7 @@ function AdminPage() {
                 <tbody>{checkSuccessRequest}</tbody>
             </Table>
             <RowSplitter height='40px'/>
-            <GroupTitle>Domains mapping</GroupTitle>
-            <AllLinks/>
+
             <RowSplitter height='40px'/>
             <GroupTitle>BE API</GroupTitle>
             <ApiPage/>
@@ -74,44 +66,91 @@ function AdminPage() {
     )
 }
 
+const CheckRequest555 = () => {
+    const routes = [
+        //MENU
+        {method: 'get', url: '/menu/1'},
+        {method: 'get', url: '/menu/str'},
 
-const AllLinks = () => {
+        {method: 'get', url: '/menu/only-visible/1'},
+        {method: 'get', url: '/menu/only-visible/srt'},
 
+        {method: 'post', url: '/menu'}, // with token
+        {method: 'post', url: '/menu'}, // without token
+        {method: 'post', url: '/menu'}, // without broken
+        // ??{method: 'post', url: '/menu'}, // with token broken validation
 
-    return (
-        <LinksWrapper>
+        {method: 'put', url: '/menu'}, // with token
+        {method: 'put', url: '/menu'}, // without token
+        {method: 'put', url: '/menu'}, // with broken token
+        {method: 'put', url: '/menu'}, // with wrong owner
+        //validation issues
 
-            <table>
-                <thead>
-                <tr>
-                    <td className={'text_center'}>FE</td>
-                    <td className={'text_center'}>BE</td>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td><StyledLink href="https://depoistu.com">PRODUCTION</StyledLink></td>
-                    <td><StyledLink
-                        href={AVAILABLE_DOMAINS[3].url}>{AVAILABLE_DOMAINS[3].name.toUpperCase()}</StyledLink></td>
-                </tr>
-                <tr>
-                    <td><StyledLink href="https://depoistu-stage.onrender.com">STAGE</StyledLink></td>
-                    <td><StyledLink
-                        href={AVAILABLE_DOMAINS[2].url}>{AVAILABLE_DOMAINS[2].name.toUpperCase()}</StyledLink></td>
-                </tr>
-                <tr>
-                    <td>
-                        <StyledLink href="https://depoistu-develop.onrender.com">DEVELOP</StyledLink>
-                    </td>
-                    <td>
-                        <StyledLink
-                            href={AVAILABLE_DOMAINS[1].url}>{AVAILABLE_DOMAINS[1].name.toUpperCase()}</StyledLink>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </LinksWrapper>
-    )
+        {method: 'put', url: '/menu/visible'}, // with token
+        {method: 'put', url: '/menu/visible'}, // without token
+        {method: 'put', url: '/menu/visible'}, // with broken token
+        {method: 'put', url: '/menu/visible'}, // with wrong token
+        // validation errors ?
+
+        {method: 'delete', url: '/menu'}, // with token
+        {method: 'delete', url: '/menu'}, // without token
+        {method: 'delete', url: '/menu'}, // with broken token
+        {method: 'delete', url: '/menu'}, // with wrong token
+        //validation
+
+        {method: 'get', url: '/available-city-ids'},
+
+        {method: 'get', url: '/companies/cities/204'},
+        {method: 'get', url: '/companies/cities/srrt'},
+
+        {method: 'get', url: '/companies/1'},
+        {method: 'get', url: '/companies/sdf'},
+
+        {method: 'get', url: '/companies/customers/1'},
+        {method: 'get', url: '/companies/customers/asdfas'},
+
+        {method: 'post', url: '/companies'}, // with token
+        {method: 'post', url: '/companies'}, // without token
+        {method: 'post', url: '/companies'}, // with broken token
+        {method: 'post', url: '/companies'}, // with token broken validation
+
+        {method: 'put', url: '/companies'}, // with token
+        {method: 'put', url: '/companies'}, // without token
+        {method: 'put', url: '/companies'}, // with broken token
+        {method: 'put', url: '/companies'}, // with token broken validation
+
+        {method: 'delete', url: '/companies'}, // with token
+        {method: 'delete', url: '/companies'}, // without token
+        {method: 'delete', url: '/companies'}, // with broken token
+        {method: 'delete', url: '/companies'}, // with token broken validation
+
+        {method: 'post', url: '/sing-in'}, // correct
+        {method: 'post', url: '/sing-in'}, // with broken validation
+
+        {method: 'post', url: '/sing-up'}, // correct
+        {method: 'post', url: '/sing-up'}, // with broken validation
+
+        {method: 'post', url: '/edit-business-type'}, // with token
+        {method: 'post', url: '/edit-business-type'}, // without token
+        {method: 'post', url: '/edit-business-type'}, // with broken token
+        {method: 'post', url: '/edit-business-type'}, // with token broken validation
+
+        // {method: 'post', url: '/change-password'},
+        // {method: 'post', url: '/verify-email'},
+
+        {method: 'get', url: '/favorite-companies/1'},
+        {method: 'get', url: '/favorite-companies/asdf'},
+
+        {method: 'post', url: '/favorite-companies'}, // with token
+        {method: 'post', url: '/favorite-companies'}, // without token
+        {method: 'post', url: '/favorite-companies'}, // with broken token
+        {method: 'post', url: '/favorite-companies'}, // with token broken validation
+
+        {method: 'get', url: '/favorite-companies'},// with token
+        {method: 'get', url: '/favorite-companies'},// without token
+        {method: 'get', url: '/favorite-companies'},// with broken token
+        {method: 'get', url: '/favorite-companies'},// with token broken validation
+    ]
 }
 
 const CheckRequest = ({type, title, url,}) => {
