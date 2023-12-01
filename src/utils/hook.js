@@ -6,7 +6,6 @@ import {fetchData} from "./fetch";
 import {URL} from "./config";
 import {LocalStorage} from "./localStorage";
 import {publishNotificationEvent} from "./event";
-import {stopLoadingWithDelay} from "./utils";
 
 export const useLocalStorage = (storageKey, initialState) => {
     const localStorageState = LocalStorage.get(storageKey);
@@ -94,10 +93,8 @@ export const useLocalStorageFetch = (
     storageKey,
     initialState,
     url,
-    setLoading = () => {
-    },
-    customCondition = () => {
-    }
+    setLoading = () => {},
+    customCondition = () => {}
 ) => {
     const localStorageState = LocalStorage.get(storageKey);
     const [value, setValue] = useState(localStorageState ?? initialState);
@@ -107,9 +104,6 @@ export const useLocalStorageFetch = (
             return;
         }
 
-        setLoading(true)
-        const stopLoading = stopLoadingWithDelay([() => setLoading(false)])
-
         fetchData(url)
             .then(res => {
                 setValue(res.body)
@@ -118,7 +112,6 @@ export const useLocalStorageFetch = (
             .catch(e => {
                 publishNotificationEvent.error(e.body.errorMessage)
             })
-            .finally(() => stopLoading.allow())
     }, [value, storageKey, dispatch, localStorageState, url]);
 
     return [value, setValue];
