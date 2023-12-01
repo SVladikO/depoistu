@@ -11,11 +11,9 @@ From another side we meet business who even don't won't work with us for free. )
 
 ### For business owner:
 ###### BASIC
-- 100 uah/mon
-- 200 uah/mon region center
+- 300 uah/mon 
 
 ###### STANDARD
-- 450 uah/mon with photo
 - 900 uah/mon region center with photo
 
 ###### PREMIUM

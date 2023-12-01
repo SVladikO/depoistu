@@ -1,1 +1,0 @@
-`page-view` folder contains components with logic which we can reuse  
