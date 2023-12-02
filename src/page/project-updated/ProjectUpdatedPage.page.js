@@ -1,7 +1,7 @@
 import React from 'react';
 import {useNavigate} from "react-router-dom";
 
-import {Wrapper, Address, LogoContainer} from "./Introduction.page.style";
+import {Wrapper, Address, LogoContainer} from "./ProjectUpdated.page.style";
 
 import {ReactComponent as LogoIcon} from "assets/icons/logo.svg";
 

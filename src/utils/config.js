@@ -25,7 +25,7 @@ import {TRANSLATION, translate} from "./translation.js";
 import EditCustomerPage from "page/edit-customer/EditCustomer.page";
 import FavoritePage from "page/favorite/Favorite.page";
 import InstructionForBusinessOwnerPage from "page/instruction-for-bussines-owner/InstructionForBusinessOwner.page";
-import ProjectUpdatedPagePage from "../page/introduction/ProjectUpdatedPage.page";
+import ProjectUpdatedPagePage from "../page/project-updated/ProjectUpdatedPage.page";
 
 export const DEV_ROUTER = {
     ADMIN: 'admin',
