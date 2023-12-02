@@ -25,6 +25,7 @@ import {TRANSLATION, translate} from "./translation.js";
 import EditCustomerPage from "page/edit-customer/EditCustomer.page";
 import FavoritePage from "page/favorite/Favorite.page";
 import InstructionForBusinessOwnerPage from "page/instruction-for-bussines-owner/InstructionForBusinessOwner.page";
+import ProjectUpdatedPagePage from "../page/introduction/ProjectUpdatedPage.page";
 
 export const DEV_ROUTER = {
     ADMIN: 'admin',
@@ -67,6 +68,7 @@ export const BE_DOMAIN = SELECTED_BE_DOMAIN.url;
 
 export const URL = {
     SEARCH: '/',
+    PROJECT_UPDATED: '/project-update',
     SEARCH_DETAILS: '/company-details',
     MENU: '/menu',
     SING_IN: '/sign-in',
@@ -105,6 +107,10 @@ export const ROUTER = {
         TITLE: translate(TRANSLATION.PAGE.SEARCH.TOP_TITLE),
         page: SearchPage,
         showBottomMenu: true
+    },
+    PROJECT_UPDATED: {
+        URL: URL.PROJECT_UPDATED,
+        page: ProjectUpdatedPagePage,
     },
     SEARCH_DETAILS: {
         URL: URL.SEARCH_DETAILS,

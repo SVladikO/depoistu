@@ -49,6 +49,10 @@ export const TRANSLATION = {
             en: ['All menu of Ukraine.']
         },
     },
+    PROJECT_UPDATED: {
+
+
+    },
     VALIDATION: {
         REQUIRED: {
             en: "Required",
@@ -712,6 +716,21 @@ export const TRANSLATION = {
                 ua: "У вас ще нема улюблених закладів",
                 en: "You don't have favorite companies yet"
             }
+        },
+        PROJECT_UPDATED: {
+            TOP_TITLE: {
+                ua: "Пошук",
+                en: "Search"
+            },
+            CONTENT: {
+                ua: 'Проект оновлено.',
+                en: 'Project was updated.'
+            },
+
+            BUTTON: {
+                ua: 'Далі',
+                en: 'Continue'
+            },
         },
         SEARCH: {
             TOP_TITLE: {
