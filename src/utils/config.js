@@ -98,8 +98,12 @@ export const ROUTER = {
         URL: URL.FAVORITE,
         TITLE: translate(TRANSLATION.PAGE.FAVORITE.TOP_TITLE),
         page: FavoritePage,
+        showBottomMenu: true
     },
-    MENU: {URL: '/menu',  TITLE: 'Favorite Cart', page: () => {}},
+    MENU: {
+        URL: '/menu',
+        TITLE: 'Favorite Cart',
+        page: () => {}},
     // Profile: {URL: '/Profile',  TITLE: 'Profile', page: () => {}},
     // USER_ACCOUNT = {URL: '/user_account',  TITLE: 'USER_ACCOUNT', page: () => {}, showBottomMenu: true, BACK_URL: ROUTER.SETTING.URL};
     SEARCH: {
@@ -144,21 +148,22 @@ export const ROUTER = {
         URL: URL.FORGOT_PASSWORD,
         TITLE: translate(TRANSLATION.PAGE.FORGOT_PASSWORD.TOP_TITLE),
         page: ForgetPasswordPage,
-        backUrl: URL.SETTING
+        backUrl: URL.SETTING,
+        showBottomMenu: true
     },
     CHANGE_PASSWORD: {
         URL: URL.CHANGE_PASSWORD,
         TITLE: translate(TRANSLATION.PAGE.CHANGE_PASSWORD.TOP_TITLE),
         page: ChangePasswordPage,
+        backUrl: URL.SETTING,
         showBottomMenu: true,
-        backUrl: URL.SETTING
     },
     ABOUT_PROJECT: {
         URL: URL.ABOUT_PROJECT,
         TITLE: translate(TRANSLATION.PAGE.ABOUT_PROJECT.TOP_TITLE),
         page: AboutProjectPage,
+        backUrl: URL.SETTING,
         showBottomMenu: true,
-        backUrl: URL.SETTING
     },
     OUR_TEAM: {
         URL: URL.OUR_TEAM,
