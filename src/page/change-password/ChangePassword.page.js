@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {useSelector} from "react-redux";
 import {Formik} from "formik";
 import * as Yup from 'yup';
 
@@ -14,7 +15,7 @@ import {useRedirectToSettingPage} from "utils/hook";
 import {TRANSLATION, translate} from 'utils/translation';
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 import {publishNotificationEvent} from "utils/event";
-import {useSelector} from "react-redux";
+import {errorHandler} from "utils/management";
 
 const ChangePassWordSchema = Yup.object().shape(validation.customer.changePassword);
 
@@ -36,7 +37,7 @@ const ChangePasswordPage = () => {
                 LocalStorage.set(LOCAL_STORAGE_KEY.CUSTOMER, res.body);
                 publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.CUSTOMER.UPDATED_PASSWORD))
             })
-            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
+            .catch(errorHandler)
             .finally(() => setIsLoading(false));
     }
 

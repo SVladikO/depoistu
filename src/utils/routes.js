@@ -45,15 +45,21 @@ const Element = (props) => {
     return (
         <MobileWrapper className="mobile-wrapper">
             <HeightWrapper>
-                <FixedWrapper fixTop id="NavigationHeader">
-                    <NavigationHeader title={route.TITLE} backUrl={route.backUrl}/>
-                </FixedWrapper>
+                {route.TITLE && (
+                    <FixedWrapper fixTop id="NavigationHeader">
+                        <NavigationHeader title={route.TITLE} backUrl={route.backUrl}/>
+                    </FixedWrapper>
+                )
+                }
                 <Content className="content-centralazer">
                     <route.page/>
                 </Content>
-                <FixedWrapper fixBottom className='ta-BottomMenu'>
-                    <BottomMenu/>
-                </FixedWrapper>
+                {route.showBottomMenu && (
+                    <FixedWrapper fixBottom className='ta-BottomMenu'>
+                        <BottomMenu/>
+                    </FixedWrapper>
+                )
+                }
             </HeightWrapper>
             <Footer/>
             <ScrollUpButton/>

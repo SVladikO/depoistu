@@ -16,7 +16,13 @@ export const disableScrollOnBody = () => {
 };
 
 const Popup = (props) => {
-    const {onClose = () => {}, Component, showCloseButton = true, popupPosition = 'center'} = props;
+    const {
+        onClose = () => {},
+        Component,
+        showCloseButton = true,
+        popupPosition = 'center',
+        margin,
+    } = props;
     useEffect(() => {
         disableScrollOnBody();
     })
@@ -28,7 +34,7 @@ const Popup = (props) => {
 
     return (
         <InvisibleWrapper popupPosition={popupPosition} className="invisible-wrapper">
-            <Wrapper popupPosition={popupPosition}>
+            <Wrapper popupPosition={popupPosition} margin={margin}>
                 {showCloseButton && <CloseButtonWrapper popupPosition={popupPosition} onClick={closePopup}>
                     <CloseIcon/>
                 </CloseButtonWrapper>
@@ -39,7 +45,7 @@ const Popup = (props) => {
     );
 };
 
-const City = props => <Popup Component={CityContent} {...props} popupPosition="center" showCloseButton={false} />;
+const City = props => <Popup Component={CityContent} {...props} popupPosition="top" showCloseButton={false} margin="60px 0" />;
 const Center = props => <Popup Component={_Info} {...props} popupPosition='center'/>;
 const Bottom = props => <Popup Component={_Info} {...props} popupPosition='end' noPadding />;
 

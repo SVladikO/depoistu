@@ -25,6 +25,7 @@ import {TRANSLATION, translate} from "./translation.js";
 import EditCustomerPage from "page/edit-customer/EditCustomer.page";
 import FavoritePage from "page/favorite/Favorite.page";
 import InstructionForBusinessOwnerPage from "page/instruction-for-bussines-owner/InstructionForBusinessOwner.page";
+import ProjectUpdatedPagePage from "../page/project-updated/ProjectUpdatedPage.page";
 
 export const DEV_ROUTER = {
     ADMIN: 'admin',
@@ -67,6 +68,7 @@ export const BE_DOMAIN = SELECTED_BE_DOMAIN.url;
 
 export const URL = {
     SEARCH: '/',
+    PROJECT_UPDATED: '/project-update',
     SEARCH_DETAILS: '/company-details',
     MENU: '/menu',
     SING_IN: '/sign-in',
@@ -96,8 +98,12 @@ export const ROUTER = {
         URL: URL.FAVORITE,
         TITLE: translate(TRANSLATION.PAGE.FAVORITE.TOP_TITLE),
         page: FavoritePage,
+        showBottomMenu: true
     },
-    MENU: {URL: '/menu',  TITLE: 'Favorite Cart', page: () => {}},
+    MENU: {
+        URL: '/menu',
+        TITLE: 'Favorite Cart',
+        page: () => {}},
     // Profile: {URL: '/Profile',  TITLE: 'Profile', page: () => {}},
     // USER_ACCOUNT = {URL: '/user_account',  TITLE: 'USER_ACCOUNT', page: () => {}, showBottomMenu: true, BACK_URL: ROUTER.SETTING.URL};
     SEARCH: {
@@ -105,6 +111,10 @@ export const ROUTER = {
         TITLE: translate(TRANSLATION.PAGE.SEARCH.TOP_TITLE),
         page: SearchPage,
         showBottomMenu: true
+    },
+    PROJECT_UPDATED: {
+        URL: URL.PROJECT_UPDATED,
+        page: ProjectUpdatedPagePage,
     },
     SEARCH_DETAILS: {
         URL: URL.SEARCH_DETAILS,
@@ -138,21 +148,22 @@ export const ROUTER = {
         URL: URL.FORGOT_PASSWORD,
         TITLE: translate(TRANSLATION.PAGE.FORGOT_PASSWORD.TOP_TITLE),
         page: ForgetPasswordPage,
-        backUrl: URL.SETTING
+        backUrl: URL.SETTING,
+        showBottomMenu: true
     },
     CHANGE_PASSWORD: {
         URL: URL.CHANGE_PASSWORD,
         TITLE: translate(TRANSLATION.PAGE.CHANGE_PASSWORD.TOP_TITLE),
         page: ChangePasswordPage,
+        backUrl: URL.SETTING,
         showBottomMenu: true,
-        backUrl: URL.SETTING
     },
     ABOUT_PROJECT: {
         URL: URL.ABOUT_PROJECT,
         TITLE: translate(TRANSLATION.PAGE.ABOUT_PROJECT.TOP_TITLE),
         page: AboutProjectPage,
+        backUrl: URL.SETTING,
         showBottomMenu: true,
-        backUrl: URL.SETTING
     },
     OUR_TEAM: {
         URL: URL.OUR_TEAM,

@@ -9,6 +9,7 @@ import CompanyView from "page-view/company/company-view";
 
 import getInitialValues from "./utils";
 import {URL} from "utils/config";
+import {errorHandler} from "utils/management";
 import {BE_API} from 'utils/fetch'
 import {fetchData} from "utils/fetch";
 import {initSchedule} from "utils/company";
@@ -85,7 +86,7 @@ const EditCompany = () => {
                 setWasCompanyDeleted(true)
                 navigate(URL.CUSTOMER_COMPANIES);
             })
-            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
+            .catch(errorHandler)
             .finally(() => setIsLoadingDelete(false))
     }
 
@@ -114,7 +115,7 @@ const EditCompany = () => {
 
                 publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.COMPANY.WAS_UPDATED))
             })
-            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
+            .catch(errorHandler)
             .finally(() => setIsLoadingUpdate(false))
     }
 

@@ -1,6 +1,14 @@
 #### RELEASE STEPS
-1. Merge tested stage to main FE & BE
-2. Change version FE & BE and commit
+
+Update version in time when people doesn't use app
+
+##### !!! IMPORTANT
+##### project version on BE,FE is responsible by update FE localStorage.
+
+Steps
+1. Set new the same versions on stage for FE, BE
+2. Create tag for both and push
+3. 
 3. Change lastUpdateDate for FE to current
 3. Create new tag with new version > commit > push
 4. Make build of FE

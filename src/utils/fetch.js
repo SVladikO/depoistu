@@ -2,10 +2,11 @@ import {BE_DOMAIN} from "./config";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
 import {DEFAULT_LANGUAGE, getCurrentLanguage, translate, TRANSLATION} from "./translation";
 
-// it's function because we take data from localStorage
+// prepare options conditionally
 function getOptions(body) {
     const defaultOption = {
         headers: {
+            'client-version': LocalStorage.get(LOCAL_STORAGE_KEY.PROJECT_VERSION),
             'Content-Type': 'application/json',
             "current-language": getCurrentLanguage() || DEFAULT_LANGUAGE
         }
@@ -16,7 +17,7 @@ function getOptions(body) {
         return defaultOption;
     }
 
-    const customer = LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE)?.customer.value;
+    const customer = LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE)?.customer?.value;
 
     //Let's send x-access-token for POST, PUT, DELETE only after customer sing in.
     if (customer) {
