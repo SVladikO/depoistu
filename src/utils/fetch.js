@@ -17,9 +17,7 @@ function getOptions(body) {
         return defaultOption;
     }
 
-    console.log(2222)
     const customer = LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE)?.customer?.value;
-    console.log(3333)
 
     //Let's send x-access-token for POST, PUT, DELETE only after customer sing in.
     if (customer) {
