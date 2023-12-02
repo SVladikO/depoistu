@@ -5,7 +5,7 @@ import {fetchData} from "./fetch";
 
 import {URL} from "./config";
 import {LocalStorage} from "./localStorage";
-import {publishNotificationEvent} from "./event";
+import {errorHandler} from "utils/management";
 
 export const useLocalStorage = (storageKey, initialState) => {
     const localStorageState = LocalStorage.get(storageKey);
@@ -109,9 +109,7 @@ export const useLocalStorageFetch = (
                 setValue(res.body)
                 localStorage.setItem(storageKey, JSON.stringify(res.body))
             })
-            .catch(e => {
-                publishNotificationEvent.error(e.body.errorMessage)
-            })
+            .catch(errorHandler)
     }, [value, storageKey, dispatch, localStorageState, url]);
 
     return [value, setValue];

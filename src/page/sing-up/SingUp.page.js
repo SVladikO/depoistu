@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
 import * as Yup from 'yup';
 import {Formik} from "formik";
 
@@ -11,10 +12,9 @@ import validation from 'utils/validation';
 import {BE_API, fetchData} from "utils/fetch";
 import {TRANSLATION, translate} from "utils/translation";
 import {ROUTER, URL} from 'utils/config';
-import {publishNotificationEvent} from "utils/event";
 import {addCustomer} from "features/customer/customerSlice";
-import {useDispatch} from "react-redux";
-import {useQuery} from "../../utils/hook";
+import {useQuery} from "utils/hook";
+import {errorHandler} from "utils/management";
 
 const SignUpSchema = Yup.object().shape(validation.customer.singUp);
 
@@ -41,7 +41,7 @@ const SingUpPage = () => {
                 dispatch(addCustomer(res.body));
                 navigate(backUrl);
             })
-            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
+            .catch(errorHandler)
             .finally(() => setIsLoading(false));
     }
 

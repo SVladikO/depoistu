@@ -16,6 +16,7 @@ import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 import {useLocalStorage, useRedirectToSettingPage, useScrollUp} from "utils/hook";
 import {publishNotificationEvent} from "utils/event";
 import {DisabledButton} from "components/Buttons/DisabledButton";
+import {errorHandler} from "utils/management";
 
 const CustomerCompaniesPage = () => {
     useScrollUp();
@@ -36,7 +37,7 @@ const CustomerCompaniesPage = () => {
 
         fetchData(BE_API.COMPANY.GET_BY_CUSTOMER_ID(customer?.id))
             .then(res => setCustomerCompanies(res.body))
-            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
+            .catch(errorHandler)
             .finally(() => setIsLoading(false))
     });
 

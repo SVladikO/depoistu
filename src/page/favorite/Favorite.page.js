@@ -12,10 +12,10 @@ import {addCompanyIdForSearchDetailsPage} from "features/searchDetailsPage/searc
 
 import {ROUTER, URL} from 'utils/config'
 import {useScrollUp} from "utils/hook";
+import {errorHandler} from "utils/management";
 import {BE_API, fetchData} from "utils/fetch";
+import {translate, TRANSLATION} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
-import {publishNotificationEvent} from "utils/event";
-import {translate, TRANSLATION} from "../../utils/translation";
 
 const FavoritePage = () => {
     useScrollUp();
@@ -38,7 +38,7 @@ const FavoritePage = () => {
             .then(res => {
                 dispatch(initFavoriteCompanies(res.body))
             })
-            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
+            .catch(errorHandler)
     })
 
     return (

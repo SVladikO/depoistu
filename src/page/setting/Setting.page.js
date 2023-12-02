@@ -5,27 +5,15 @@ import * as Yup from "yup";
 
 import {Wrapper} from './Setting.style';
 
-import {ReactComponent as LockIcon} from 'assets/icons/lock.svg';
-// import {ReactComponent as OrderHistoryIcon} from 'icons/order_history.svg';
-// import {ReactComponent as NotificationIcon} from 'icons/notification.svg';
-// import {ReactComponent as NewsletterIcon} from 'icons/newsletter.svg';
-// import {ReactComponent as PhoneCallIcon} from 'icons/phone_call.svg';
-// import {ReactComponent as PaymentIcon} from 'icons/payment.svg';
-// import {ReactComponent as LikeIcon} from 'icons/favorite.svg';
-// import {ReactComponent as DeliveryAddressIcon} from 'icons/location.svg';
 import {ReactComponent as LogOutIcon} from 'assets/icons/logout.svg';
 import {ReactComponent as ProfileIcon} from 'assets/icons/profile.svg';
-// import {ReactComponent as CurrencyIcon} from 'icons/currency.svg';
 import {ReactComponent as LanguageIcon} from 'assets/icons/language.svg';
 import {ReactComponent as AboutUsIcon} from "assets/icons/about_us.svg";
-// import {ReactComponent as LinkedAccountIcon} from 'icons/linked_account.svg';
 import {ReactComponent as StoreIcon} from 'assets/icons/house.svg';
 import {ReactComponent as InstructionIcon} from 'assets/icons/instruction.svg';
 import {ReactComponent as MenuCategoryIcon} from 'assets/icons/menu_category.svg';
 import {ReactComponent as TeamIcon} from "assets/icons/team.svg";
 import {ReactComponent as RocketIcon} from "assets/icons/rocket.svg";
-// import {ReactComponent as ConditionsIcon} from 'icons/list.svg';
-// import {ReactComponent as HelpIcon} from 'icons/chat.svg';
 
 import {
     SettingMenuRow,
@@ -41,6 +29,7 @@ import LanguagePopup from "features/language/LanguagePopup";
 import {openLanguagePopup} from 'features/language/languageSlice';
 import {deleteCustomer} from "features/customer/customerSlice";
 import {cleanFavoriteCompanies} from 'features/favorite-company/favoriteComapnySlice'
+import {errorHandler} from "utils/management";
 
 import {URL} from 'utils/config';
 import {useScrollUp} from "utils/hook";
@@ -67,7 +56,7 @@ const SettingPage = () => {
                     // addCustomer({...customer, isVerifiedEmail: true})
                 }
             })
-            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
+            .catch(errorHandler)
             .finally(() => setIsLoading(false));
     }
 

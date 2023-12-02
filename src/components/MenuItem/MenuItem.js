@@ -27,8 +27,7 @@ import {URL} from "utils/config";
 import {BE_API, fetchData} from "utils/fetch";
 import {CATEGORY_ID_MAPPER_AS_OBJECT} from "utils/category";
 import {translate, TRANSLATION as TR, TRANSLATION} from "utils/translation";
-import {publishNotificationEvent} from "../../utils/event";
-
+import {errorHandler} from "utils/management";
 export const MenuItemDetails = ({
                                     item = {},
                                     isVisible,
@@ -53,7 +52,7 @@ export const MenuItemDetails = ({
         }
             fetchData(BE_API.MENU_ITEM.CHANGE_IS_VISIBLE(), requestBody)
                 .then(() => setIsVisible(!isVisible))
-                .catch(e => publishNotificationEvent.error(e.body.errorMessage))
+                .catch(errorHandler)
 
     }
 

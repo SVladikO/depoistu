@@ -17,6 +17,7 @@ import {stopLoadingWithDelay} from "utils/utils";
 import {publishNotificationEvent} from "utils/event";
 import {translate, TRANSLATION, TRANSLATION as TR} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
+import {errorHandler} from "utils/management";
 
 const SearchDetailsPage = () => {
     useScrollUp();
@@ -52,12 +53,10 @@ const SearchDetailsPage = () => {
 
 
         fetchData(BE_API.COMPANY.GET_BY_COMPANY_ID(companyId))
-            .then(res => {
-                setCompany(res.body[0]);
-            })
+            .then(res => setCompany(res.body[0]))
             .catch(e => {
                 setIsCompanyExist(false)
-                publishNotificationEvent.error(e.body.errorMessage)
+                errorHandler(e)
             })
             .finally(() => companyLoadingDelay.allow());
     }, [companyId])
@@ -82,7 +81,7 @@ const SearchDetailsPage = () => {
                     publishNotificationEvent.warning(translate(TR.PAGE.COMPANY_DETAILS.MENU_PROBLEM));
                 }
             })
-            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
+            .catch(errorHandler)
             .finally(() => menuLoadingDelay.allow());
 
     }, [companyId]);

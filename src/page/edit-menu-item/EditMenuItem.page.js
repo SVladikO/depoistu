@@ -11,6 +11,7 @@ import {useRedirectToSettingPage, useScrollUp} from "utils/hook";
 import {translate, TRANSLATION} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 import {publishNotificationEvent} from "utils/event";
+import {errorHandler} from "utils/management";
 
 const EditMenuItemPage = () => {
     useRedirectToSettingPage();
@@ -48,7 +49,7 @@ const EditMenuItemPage = () => {
                 LocalStorage.set(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT, updatedMenuItem);
                 publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.MENU_ITEM.WAS_UPDATED))
             })
-            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
+            .catch(errorHandler)
             .finally(() => setIsLoadingUpdate(false))
     }
 
@@ -64,7 +65,7 @@ const EditMenuItemPage = () => {
                 navigate(URL.EDIT_MENU)
                 publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.MENU_ITEM.WAS_DELETED))
             })
-            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
+            .catch(errorHandler)
             .finally(() => setTimeout(() => setIsLoadingDelete(false), 1000))
     }
 

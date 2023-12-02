@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
 import * as Yup from 'yup';
 import {Formik} from "formik";
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 import {
     Input,
@@ -18,9 +18,9 @@ import validation from 'utils/validation';
 import {ROUTER, URL} from 'utils/config';
 import {fetchData, BE_API} from "utils/fetch";
 import {TRANSLATION, translate} from "utils/translation";
-import {publishNotificationEvent} from "utils/event";
 import {addCustomer} from "features/customer/customerSlice";
 import {useQuery} from "../../utils/hook";
+import {errorHandler} from "utils/management";
 
 const SignInSchema = Yup.object().shape(validation.customer.singIn);
 
@@ -46,9 +46,7 @@ const SignInPage = () => {
                 navigate(backUrl);
                 setIsLoading(false);
             })
-            .catch(e => {
-                publishNotificationEvent.error(e.body.errorMessage)
-            })
+            .catch(errorHandler)
             .finally(() => setIsLoading(false));
     }
 
