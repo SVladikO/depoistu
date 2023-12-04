@@ -17,7 +17,7 @@ import ScrollUpButton from "../components/ScrollUpButton/ScrollUpButton";
 import NotificationView from "page-view/notification/NotificationView";
 
 export const HeightWrapper = styled.div`
-  min-height: 100vh;
+  min-height: 60vh;
 `;
 
 export const MobileWrapper = styled.div`
