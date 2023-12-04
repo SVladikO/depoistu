@@ -27,7 +27,7 @@ import {translate, TRANSLATION as TR, truncate} from "utils/translation";
 import {
     addToFavoriteCompanies, deleteFromFavoriteCompanies
 } from "../../features/favorite-company/favoriteComapnySlice";
-import {publishNotificationEvent} from "../../utils/event";
+import {errorHandler} from "utils/management";
 
 const Company = ({company, withMoreInfo, children, clickHandler}) => {
 
@@ -102,14 +102,14 @@ const Company = ({company, withMoreInfo, children, clickHandler}) => {
         e.stopPropagation();
         dispatch(addToFavoriteCompanies(company))
         fetchData(BE_API.FAVORITE_COMPANY.ADD(), {company_id: company.id})
-            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
+            .catch(errorHandler)
     }
 
     const unlikeCompany = e => {
         e.stopPropagation();
         dispatch(deleteFromFavoriteCompanies(company))
         fetchData(BE_API.FAVORITE_COMPANY.ADD(), {company_id: company.id, method: 'delete'})
-            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
+            .catch(errorHandler)
     }
 
     return (<Wrapper withMoreInfo={withMoreInfo} onClick={clickHandler}>

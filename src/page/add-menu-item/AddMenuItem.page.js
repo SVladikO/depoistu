@@ -8,6 +8,7 @@ import {useRedirectToSettingPage, useScrollUp} from "utils/hook";
 import {translate, TRANSLATION} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 import {publishNotificationEvent} from "utils/event";
+import {errorHandler} from "utils/management";
 
 const defaultInitialValue = {
     name: '',
@@ -43,7 +44,7 @@ const AddMenuItemPage = () => {
                 publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.MENU_ITEM.WAS_CREATED))
                 setInitialValues({...defaultInitialValue, categoryId: values.categoryId})
             })
-            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
+            .catch(errorHandler)
             .finally(() => setIsLoading(false))
     }
 

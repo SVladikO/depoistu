@@ -713,6 +713,17 @@ export const TRANSLATION = {
                 en: "You don't have favorite companies yet"
             }
         },
+        PROJECT_UPDATED: {
+            CONTENT: {
+                ua: 'Проект оновлено.',
+                en: 'Project was updated.'
+            },
+
+            BUTTON: {
+                ua: 'Далі',
+                en: 'Continue'
+            },
+        },
         SEARCH: {
             TOP_TITLE: {
                 ua: "Пошук",

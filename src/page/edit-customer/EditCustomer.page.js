@@ -6,7 +6,7 @@ import {TRANSLATION, translate} from "utils/translation";
 import {useDispatch, useSelector} from "react-redux";
 import {BE_API, fetchData} from "../../utils/fetch";
 import {addCustomer} from "../../features/customer/customerSlice";
-import {publishNotificationEvent} from "../../utils/event";
+import {errorHandler} from "utils/management";
 
 const EditCustomerPage = () => {
     useRedirectToSettingPage();
@@ -22,7 +22,7 @@ const EditCustomerPage = () => {
             .then(() => {
                 dispatch(addCustomer({...customer, isBusinessOwner: !customer.isBusinessOwner}))
             })
-            .catch(e => publishNotificationEvent.error(e.body.errorMessage))
+            .catch(errorHandler)
             .finally(() => setIsLoading(false))
     }
 

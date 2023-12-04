@@ -15,6 +15,7 @@ import {translate, TRANSLATION, truncate} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 import {useLocalStorage, useScrollUp} from "utils/hook";
 import {addCompanyIdForSearchDetailsPage} from "../../features/searchDetailsPage/searchDetailsPageSlice";
+import {errorHandler} from "utils/management";
 
 const SearchPage = () => {
         useScrollUp();
@@ -40,10 +41,9 @@ const SearchPage = () => {
 
             fetchData(BE_API.COMPANY.GET_ALL())
                 .then(res => {
-                    console.log(45, res)
                     setCompanies(res.body)
                 })
-                .catch(e => publishNotificationEvent.error(e.body.errorMessage))
+                .catch(errorHandler)
                 .finally(() => setIsLoading(false))
         }, [])
 
@@ -55,7 +55,7 @@ const SearchPage = () => {
 
             fetchData(BE_API.COMPANY.GET_BY_CITY_ID(city))
                 .then(res => setCompanies(res.body))
-                .catch(e => publishNotificationEvent.error(e.body.errorMessage))
+                .catch(errorHandler)
                 .finally(() => setIsLoading(false))
         }
 
@@ -78,7 +78,7 @@ const SearchPage = () => {
                     setAvailableFromDatabaseCityIds(res.body);
                 })
                 .catch(e => {
-                    publishNotificationEvent.error(e.body.errorMessage)
+                    errorHandler(e)
                     showCityPopupDelay.onError()
                 })
                 .finally(() => {

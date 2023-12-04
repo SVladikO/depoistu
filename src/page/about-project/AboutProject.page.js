@@ -4,7 +4,7 @@ import {Wrapper, Title, Description, AnswerWrapper, Answer} from "./AboutProject
 import {useScrollUp} from "utils/hook";
 import {translate, TRANSLATION as TR, TRANSLATION} from "utils/translation";
 import {ROUTER} from "../../utils/config";
-import {PrimaryButton} from "../../components";
+import {PrimaryButton, RowSplitter} from "../../components";
 import {useNavigate} from "react-router-dom";
 
 const AboutProjectPage = () => {
@@ -35,7 +35,7 @@ const AboutProjectPage = () => {
                     )
                 }
             )}
-
+            <RowSplitter height="30px" />
             <PrimaryButton isWide clickHandler={() => navigate(ROUTER.SEARCH.URL)}>
                 {translate(TR.GO_TO_A_SEARCH_PAGE)}
             </PrimaryButton>
