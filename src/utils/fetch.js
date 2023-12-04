@@ -9,7 +9,8 @@ function getOptions(body) {
             'client-version': LocalStorage.get(LOCAL_STORAGE_KEY.PROJECT_VERSION),
             'Content-Type': 'application/json',
             "current-language": getCurrentLanguage() || DEFAULT_LANGUAGE
-        }
+        },
+        mode: 'cors',
     };
 
     //Only GET method works without body
