@@ -17,8 +17,6 @@ const NotificationView = () => {
             console.log({key: getRandom(), type, message})
             setNotifications(prevState => [...prevState, {key: getRandom(), type, message}])
         })
-
-        // return () => document.removeEventListener(EVENT_TYPE.NOTIFICATION)
     }, [])
 
     if (!notifications.length) {
@@ -47,19 +45,5 @@ const NotificationView = () => {
         </FixedWrapper>
     )
 }
-//
-// const AutoCloseNotification = () => {
-//     const [time, setTime] = useState(3)
-//
-//     useEffect(() => {
-//             setInterval(() => {
-//                 setTime(time - 1)
-//             }, 1000)
-//     })
-//
-//     return (
-//         <NotificationFactory key={key} type={n.type} time={time}>{n.message}</NotificationFactory>
-//     )
-// }
 
 export default NotificationView;
