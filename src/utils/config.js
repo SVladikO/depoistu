@@ -34,31 +34,32 @@ export const DEV_ROUTER = {
 function getDomainBE() {
     const {origin} = window.location;
 
-    // switch (origin) {
-    //     case "https://depoistu.com":
+    switch (origin) {
+        case "https://depoistu.com":
+        case "https://www.depoistu.com":
             return {
                 name: 'production',
                 url: 'https://depoistu-main-bb2676f3bc70.herokuapp.com'
             }
+        case "https://depoistu-stage.onrender.com":
+            return {
+                name: 'stage',
+                url: 'https://depoistu-stage-8139a3f5250c.herokuapp.com'
+            }
 
-    //     case "https://depoistu-stage.onrender.com":
-    //         return {
-    //             name: 'stage',
-    //             url: 'https://depoistu-stage-8139a3f5250c.herokuapp.com'
-    //         }
-    //
-    //     case "https://depoistu-develop.onrender.com":
-    //         return {
-    //             name: 'develop',
-    //             url: 'https://depoistu-develop-ab315caf64ab.herokuapp.com'
-    //         }
-    //
-    //     default:
-    //         return {
-    //             name: 'localhost',
-    //             url: 'http://localhost:4000'
-    //         }
-    // }
+        case "https://depoistu-develop.onrender.com":
+        case "http://localhost:3000":
+            return {
+                name: 'develop',
+                url: 'https://depoistu-develop-ab315caf64ab.herokuapp.com'
+            }
+
+        default:
+            return {
+                name: 'localhost',
+                url: 'http://localhost:4000'
+            }
+    }
 }
 
 export const SELECTED_BE_DOMAIN = getDomainBE();
