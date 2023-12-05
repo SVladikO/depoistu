@@ -35,7 +35,6 @@ function AdminPage() {
     return (
         <Wrapper>
             <NavigationHeader title={"ADMIN PAGE"} backUrl={''}/>
-            <h1>window.location.origin {window.location.origin}</h1>
             <h3 className={'text_center'}>DB: {dbMode}</h3>
             <StyledLink href={BE_DOMAIN} target="_blank" rel="noreferrer">{BE_DOMAIN}</StyledLink>
             <RowSplitter height={'10px'}/>
