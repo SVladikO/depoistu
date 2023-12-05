@@ -1,6 +1,5 @@
 import styled, {css} from "styled-components";
 
-
 export const ContentWrapper = styled.div`
   width: 1000px;
   margin: auto;
@@ -43,23 +42,15 @@ export const RowDefault = css`
 `
 export const Row = {
     get: styled.div`
-      //border: solid 2px dodgerblue;
-      //background-color: rgba(30, 144, 255, 0.2);
       ${RowDefault}
     `,
     post: styled.div`
-    //border: solid 2px limegreen;
-    //background-color: rgba(50, 205, 50, 0.2);
     ${RowDefault}
     `,
     put: styled.div`
-      //border: solid 2px orange;
-      //background: rgba(255, 165, 0, 0.2);
       ${RowDefault}
     `,
     delete: styled.div`
-      //border: solid 2px red;
-      //background: rgba(255, 0, 0, 0.2);
       ${RowDefault}
     `
 };
@@ -109,23 +100,15 @@ export const ButtonDefault = css`
 `;
 export const Button = {
     get: styled.button`
-      //color: dodgerblue;
-      //border: solid 2px dodgerblue;
       ${ButtonDefault}
     `,
     post: styled.button`
-      //color: limegreen;
-      //border: solid 2px limegreen;
       ${ButtonDefault}
     `,
     put: styled.button`
-      //color: orange;
-      //border: solid 2px orange;
       ${ButtonDefault}
     `,
     delete: styled.button`
-      //color: red;
-      //border: solid 2px red;
       ${ButtonDefault}
     `
 };

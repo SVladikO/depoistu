@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import {BORDER_RADIUS, COLOR} from "utils/theme";
 
-
 export const Discount = styled.div`
   width: 40px;
   background-color: ${COLOR.PRIMARY};
