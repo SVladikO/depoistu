@@ -224,6 +224,10 @@ export const TRANSLATION = {
             ua: "мл",
             en: 'ml'
         },
+        BIT: {
+            ua: "шт",
+            en: 'pc'
+        },
     },
     PAGE_VIEW: {
         COMPANY: {
@@ -975,6 +979,10 @@ export const TRANSLATION = {
             ua: "Бар",
             en: "Bar",
         },
+        HOOKAH: {
+            ua: "Кальян",
+            en: "Hookah",
+        },
     },
     SUB_CATEGORIES: {
         CHILDREN: {
@@ -1504,6 +1512,31 @@ export const TRANSLATION = {
         SHAWARMA: {
             ua: 'Шаверма',
             en: 'Shawarma'
-        }
+        },
+        LIGHT_HOOKAH: {
+            ua: 'Легкий',
+            en: 'Light'
+        },
+        MEDIUM_HOOKAH: {
+            ua: 'Середній',
+            en: 'Medium'
+        },
+        STRONG_HOOKAH: {
+            ua: 'Міцний',
+            en: 'Strong'
+        },
+        DIFFICULT_HOOKAH: {
+            ua: 'Важкий',
+            en: 'Difficult'
+        },
+        ADDITION_HOOKAH: {
+            ua: 'Додатки',
+            en: 'Addition'
+        },
+        CUP_HOOKAH: {
+            ua: 'Чаши',
+            en: 'Cup'
+        },
+
     },
 }

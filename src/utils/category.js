@@ -3,6 +3,7 @@ import {translate, TRANSLATION, TRANSLATION as TR} from "./translation";
 export const MEASUREMENTS = {
     WEIGHT: TRANSLATION.MEASUREMENTS.WEIGHT,
     LIQUID: TRANSLATION.MEASUREMENTS.LIQUID,
+    BIT: TRANSLATION.MEASUREMENTS.BIT,
 }
 
 // We have all category ids on frontend side
@@ -149,31 +150,24 @@ export const CATEGORY_BAR = [
     {id: 57, title: TR.SUB_CATEGORIES.BEER, measurement: MEASUREMENTS.LIQUID},
 ];
 
+export const CATEGORY_HOOKAH = [
+    {id: 127, title: TR.SUB_CATEGORIES.LIGHT_HOOKAH, measurement: MEASUREMENTS.BIT},
+    {id: 128, title: TR.SUB_CATEGORIES.MEDIUM_HOOKAH, measurement: MEASUREMENTS.BIT},
+    {id: 129, title: TR.SUB_CATEGORIES.STRONG_HOOKAH, measurement: MEASUREMENTS.BIT},
+    {id: 130, title: TR.SUB_CATEGORIES.DIFFICULT_HOOKAH, measurement: MEASUREMENTS.BIT},
+    {id: 130, title: TR.SUB_CATEGORIES.ADDITION_HOOKAH, measurement: MEASUREMENTS.BIT},
+    {id: 130, title: TR.SUB_CATEGORIES.CUP_HOOKAH, measurement: MEASUREMENTS.BIT},
+];
+
 export const CATEGORY_MAPPER_AS_ARRAY = [
     ...CATEGORY_KITCHEN,
     ...CATEGORY_SUSHI,
     ...CATEGORY_DESSERTS,
     ...CATEGORY_DRINKS,
     ...CATEGORY_HOT_DRINKS,
-    ...CATEGORY_BAR
+    ...CATEGORY_BAR,
+    ...CATEGORY_HOOKAH,
 ];
-
-/**
- * Inner function to check id duplication.
- */
-function checkCategoryIdDuplication() {
-    const result = {};
-
-    CATEGORY_MAPPER_AS_ARRAY.map(item => {
-        if (result[item.id]) {
-            console.error('Duplicated food category id: ', item.id);
-        }
-
-        result[item.id] = item;
-    })
-}
-
-checkCategoryIdDuplication();
 
 export const TOP_CATEGORIES = {
     KITCHEN: CATEGORY_KITCHEN.map(category => category.id),
@@ -182,7 +176,10 @@ export const TOP_CATEGORIES = {
     DRINKS: CATEGORY_DRINKS.map(category => category.id),
     HOT_DRINKS: CATEGORY_HOT_DRINKS.map(category => category.id),
     BAR: CATEGORY_BAR.map(category => category.id),
+    HOOKAH: CATEGORY_HOOKAH.map(category => category.id),
 }
+
+checkCategoryIdDuplication();
 
 // Get category title is simpler from object.
 // That's why we convert array to object.
@@ -200,6 +197,7 @@ const convertCategoryArrayToObject = () => {
         .forEach(
             (category, index) => result[category.id] = {...category, index}
         )
+
     return result;
 }
 export const CATEGORY_ID_MAPPER_AS_OBJECT = convertCategoryArrayToObject()
@@ -217,4 +215,20 @@ export const sortMenuItemPosition = (menuItems = []) =>
     menuItems.sort((menuItem1, menuItem2) => {
         return CATEGORY_ID_MAPPER_AS_OBJECT[menuItem1.categoryId].index - CATEGORY_ID_MAPPER_AS_OBJECT[menuItem2.categoryId].index;
     })
+
+
+/**
+ * Inner function to check id duplication.
+ */
+function checkCategoryIdDuplication() {
+    const result = {};
+
+    CATEGORY_MAPPER_AS_ARRAY.map(item => {
+        if (result[item.id]) {
+            console.error('Duplicated food category id: ', item.id);
+        }
+
+        result[item.id] = item;
+    })
+}
 

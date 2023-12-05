@@ -3,7 +3,7 @@ import {GroupTitle, Table, TD} from "./AvailableMenuCategories.page.style";
 
 import {useScrollUp} from "utils/hook";
 import {translate, TRANSLATION} from "utils/translation";
-import {CATEGORY_BAR, CATEGORY_DESSERTS, CATEGORY_DRINKS, CATEGORY_HOT_DRINKS, CATEGORY_KITCHEN, CATEGORY_SUSHI} from "utils/category";
+import {CATEGORY_BAR, CATEGORY_DESSERTS, CATEGORY_DRINKS, CATEGORY_HOT_DRINKS, CATEGORY_KITCHEN, CATEGORY_SUSHI, CATEGORY_HOOKAH} from "utils/category";
 
 const AvailableMenuCategoriesPage = () => {
     useScrollUp();
@@ -41,6 +41,8 @@ const AvailableMenuCategoriesPage = () => {
                 {render(CATEGORY_HOT_DRINKS)}
                 {renderGroup(translate(TRANSLATION.TOP_CATEGORIES.BAR))}
                 {render(CATEGORY_BAR)}
+                {renderGroup(translate(TRANSLATION.TOP_CATEGORIES.HOOKAH))}
+                {render(CATEGORY_HOOKAH)}
                 </tbody>
             </Table>
         </>
