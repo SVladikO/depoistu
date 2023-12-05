@@ -1,5 +1,5 @@
 import React from 'react';
-import {Table} from "./AvailableMenuCategories.page.style";
+import {GroupTitle, Table, TD} from "./AvailableMenuCategories.page.style";
 
 import {useScrollUp} from "utils/hook";
 import {translate, TRANSLATION} from "utils/translation";
@@ -11,7 +11,7 @@ const AvailableMenuCategoriesPage = () => {
     const renderGroup = groupTitle =>
         <tr>
             <td colSpan={2} style={{padding: "10px 0"}}>
-                <h2 style={{textAlign: 'center'}}>{groupTitle}</h2>
+                <GroupTitle>{groupTitle}</GroupTitle>
             </td>
         </tr>
 
@@ -19,8 +19,8 @@ const AvailableMenuCategoriesPage = () => {
         categories.map(
             (category, index) => (
                 <tr key={category.title + index}>
-                    <td style={{padding: '4px'}}>{translate(category.title)}</td>
-                    <td style={{padding: '4px'}}>{translate(category.measurement)}</td>
+                    <TD>{translate(category.title)}</TD>
+                    <TD>{translate(category.measurement)}</TD>
                 </tr>
             ))
 
