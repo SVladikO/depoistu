@@ -10,7 +10,7 @@ export const MEASUREMENTS = {
 // Position category title in this array responsible by position in horizontal sub categories
 //TODO: Migrate category id to db as after moving to another countries we will be unable to support their menu and categories
 export const CATEGORY_KITCHEN = [
-    // KITCHEN
+    {id: 10000, isGroupTitle: true, title: TR.TOP_CATEGORIES.KITCHEN},
     {id: 8, title: TR.SUB_CATEGORIES.BANQUET_MENU, measurement: MEASUREMENTS.WEIGHT},
     {id: 31, title: TR.SUB_CATEGORIES.CHILDREN, measurement: MEASUREMENTS.WEIGHT},
     {id: 32, title: TR.SUB_CATEGORIES.VEGETARIAN, measurement: MEASUREMENTS.WEIGHT},
@@ -68,7 +68,9 @@ export const CATEGORY_KITCHEN = [
     {id: 22, title: TR.SUB_CATEGORIES.SAUCES, measurement: MEASUREMENTS.WEIGHT},
     {id: 23, title: TR.SUB_CATEGORIES.ADDICTIVES, measurement: MEASUREMENTS.WEIGHT},
 ];
+
 export const CATEGORY_SUSHI = [
+    {id: 10001, isGroupTitle: true, title: TR.TOP_CATEGORIES.SUSHI},
     {id: 11, title: TR.SUB_CATEGORIES.SUSHI, measurement: MEASUREMENTS.WEIGHT},
     {id: 13, title: TR.SUB_CATEGORIES.SUSHI_SETS, measurement: MEASUREMENTS.WEIGHT},
     {id: 12, title: TR.SUB_CATEGORIES.ROLLS, measurement: MEASUREMENTS.WEIGHT},
@@ -91,12 +93,14 @@ export const CATEGORY_SUSHI = [
 ];
 
 export const CATEGORY_DESSERTS = [
+    {id: 10002, isGroupTitle: true, title: TR.TOP_CATEGORIES.DESSERTS},
     {id: 25, title: TR.SUB_CATEGORIES.DESSERTS, measurement: MEASUREMENTS.WEIGHT},
     {id: 24, title: TR.SUB_CATEGORIES.BAKERY, measurement: MEASUREMENTS.WEIGHT},
     {id: 51, title: TR.SUB_CATEGORIES.ICE_CREAM, measurement: MEASUREMENTS.WEIGHT},
 ];
 
 export const CATEGORY_DRINKS = [
+    {id: 10003, isGroupTitle: true, title: TR.TOP_CATEGORIES.DRINKS},
     {id: 26, title: TR.SUB_CATEGORIES.DRINKS, measurement: MEASUREMENTS.LIQUID},
     {id: 98, title: TR.SUB_CATEGORIES.JUICE, measurement: MEASUREMENTS.LIQUID},
     {id: 56, title: TR.SUB_CATEGORIES.FRESH, measurement: MEASUREMENTS.LIQUID},
@@ -108,6 +112,7 @@ export const CATEGORY_DRINKS = [
 ];
 
 export const CATEGORY_HOT_DRINKS = [
+    {id: 10004, isGroupTitle: true, title: TR.TOP_CATEGORIES.HOT_DRINKS},
     {id: 80, title: TR.SUB_CATEGORIES.HOME_TEA, measurement: MEASUREMENTS.LIQUID},
     {id: 121, title: TR.SUB_CATEGORIES.AUTHORS_TEAS, measurement: MEASUREMENTS.LIQUID},
     {id: 81, title: TR.SUB_CATEGORIES.BREWED_TEA, measurement: MEASUREMENTS.LIQUID},
@@ -118,8 +123,8 @@ export const CATEGORY_HOT_DRINKS = [
     {id: 75, title: TR.SUB_CATEGORIES.MULLED_WINE, measurement: MEASUREMENTS.LIQUID},
 ];
 
-// BAR
 export const CATEGORY_BAR = [
+    {id: 10005, isGroupTitle: true, title: TR.TOP_CATEGORIES.BAR},
     {id: 28, title: TR.SUB_CATEGORIES.COCKTAILS_ALCOHOL, measurement: MEASUREMENTS.LIQUID},
     {id: 58, title: TR.SUB_CATEGORIES.SHOTS, measurement: MEASUREMENTS.LIQUID},
     {id: 59, title: TR.SUB_CATEGORIES.LONGS, measurement: MEASUREMENTS.LIQUID},
@@ -151,12 +156,13 @@ export const CATEGORY_BAR = [
 ];
 
 export const CATEGORY_HOOKAH = [
+    {id: 10006, isGroupTitle: true, title: TR.TOP_CATEGORIES.HOOKAH},
     {id: 127, title: TR.SUB_CATEGORIES.LIGHT_HOOKAH, measurement: MEASUREMENTS.BIT},
     {id: 128, title: TR.SUB_CATEGORIES.MEDIUM_HOOKAH, measurement: MEASUREMENTS.BIT},
     {id: 129, title: TR.SUB_CATEGORIES.STRONG_HOOKAH, measurement: MEASUREMENTS.BIT},
     {id: 130, title: TR.SUB_CATEGORIES.DIFFICULT_HOOKAH, measurement: MEASUREMENTS.BIT},
-    {id: 130, title: TR.SUB_CATEGORIES.ADDITION_HOOKAH, measurement: MEASUREMENTS.BIT},
-    {id: 130, title: TR.SUB_CATEGORIES.CUP_HOOKAH, measurement: MEASUREMENTS.BIT},
+    {id: 131, title: TR.SUB_CATEGORIES.ADDITION_HOOKAH, measurement: MEASUREMENTS.BIT},
+    {id: 132, title: TR.SUB_CATEGORIES.CUP_HOOKAH, measurement: MEASUREMENTS.BIT},
 ];
 
 export const CATEGORY_MAPPER_AS_ARRAY = [
@@ -169,14 +175,17 @@ export const CATEGORY_MAPPER_AS_ARRAY = [
     ...CATEGORY_HOOKAH,
 ];
 
+const withoutGroupTitle = e => !e.isGroupTitle;
+const getIds = categories => categories.filter(withoutGroupTitle).map(category => category.id)
+
 export const TOP_CATEGORIES = {
-    KITCHEN: CATEGORY_KITCHEN.map(category => category.id),
-    SUSHI: CATEGORY_SUSHI.map(category => category.id),
-    DESSERTS: CATEGORY_DESSERTS.map(category => category.id),
-    DRINKS: CATEGORY_DRINKS.map(category => category.id),
-    HOT_DRINKS: CATEGORY_HOT_DRINKS.map(category => category.id),
-    BAR: CATEGORY_BAR.map(category => category.id),
-    HOOKAH: CATEGORY_HOOKAH.map(category => category.id),
+    KITCHEN: getIds(CATEGORY_KITCHEN),
+    SUSHI: getIds(CATEGORY_SUSHI),
+    DESSERTS: getIds(CATEGORY_DESSERTS),
+    DRINKS: getIds(CATEGORY_DRINKS),
+    HOT_DRINKS: getIds(CATEGORY_HOT_DRINKS),
+    BAR: getIds(CATEGORY_BAR),
+    HOOKAH: getIds(CATEGORY_HOOKAH),
 }
 
 checkCategoryIdDuplication();
@@ -189,14 +198,13 @@ checkCategoryIdDuplication();
 const convertCategoryArrayToObject = () => {
     const result = {}
     CATEGORY_MAPPER_AS_ARRAY
+        .filter(e => !e.isGroupTitle)
         .map(category => ({
-            ...category,
-            title: translate(category.title),
-            measurement: translate(category.measurement)
-        }))
-        .forEach(
-            (category, index) => result[category.id] = {...category, index}
-        )
+                ...category,
+                title: translate(category.title),
+                measurement: translate(category.measurement)
+            }))
+        .forEach((category, index) => result[category.id] = {...category, index})
 
     return result;
 }

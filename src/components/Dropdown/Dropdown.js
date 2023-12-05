@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 
-import {SelectWrapper, SelectButton, OptionsContainer, Option} from "./Dropdown.style";
+
+import {SelectWrapper, SelectButton, OptionsContainer, Option, GroupTitleOption } from "./Dropdown.style";
 
 import {ReactComponent as DropdownIcon} from "assets/icons/chevron.svg";
 
@@ -8,7 +9,7 @@ import {WarningMessage} from "components";
 import {TRANSLATION, translate} from "utils/translation";
 import {Label} from "../Input/Input.style";
 
-const Dropdown = ({ options, selectedOption , onSelect, errorMessage, label, isRequired }) => {
+const Dropdown = ({options, selectedOption, onSelect, errorMessage, label, isRequired}) => {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);
 
@@ -22,7 +23,7 @@ const Dropdown = ({ options, selectedOption , onSelect, errorMessage, label, isR
     useEffect(() => {
 
         const handleClickOutside = event => {
-            if(dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
                 setIsOpen(false);
             }
         }
@@ -30,7 +31,7 @@ const Dropdown = ({ options, selectedOption , onSelect, errorMessage, label, isR
         document.addEventListener('click', handleClickOutside);
 
         return () => document.removeEventListener('click', handleClickOutside);
-    },[])
+    }, [])
     return (
         <SelectWrapper isOpen={isOpen} ref={dropdownRef}>
             {label ? (
@@ -45,13 +46,15 @@ const Dropdown = ({ options, selectedOption , onSelect, errorMessage, label, isR
             {isOpen && (
                 <OptionsContainer>
                     {options.map(option => (
-                        <Option
-                            isSelected={selectedOption?.value === option.value}
-                            key={option.value}
-                            onClick={() => handleOptionSelect(option)}
-                        >
-                            {option.title}
-                        </Option>
+                        option.isGroupTitle
+                            ? <GroupTitleOption>{option.title}</GroupTitleOption>
+                            : <Option
+                                isSelected={selectedOption?.value === option.value}
+                                key={option.value}
+                                onClick={() => handleOptionSelect(option)}
+                            >
+                                {option.title}
+                            </Option>
                     ))}
                 </OptionsContainer>
             )}
