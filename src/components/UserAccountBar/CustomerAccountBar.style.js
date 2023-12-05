@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {COLOR, BORDER_RADIUS, hexToRgbA} from "utils/theme";
+import {COLOR, BORDER_RADIUS} from "utils/theme";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -41,8 +41,4 @@ export const Phone = styled.div`
   line-height: 19px;
   color: ${COLOR.ACCENT1};
 `;
-export const Anchor = styled.div`
-    & > svg {
-      fill: ${hexToRgbA('#000', 0.25)};
-    }
-`;
+

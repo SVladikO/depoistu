@@ -59,8 +59,6 @@ export const Input = memo(function ({
                                         value,
                                         name,
                                         errorMessage,
-                                        focusHandler,
-                                        blurHandler,
                                         isTouched,
                                         withSwitcher = false,
                                         withCleaner = false,

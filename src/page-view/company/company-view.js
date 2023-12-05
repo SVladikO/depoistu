@@ -1,9 +1,6 @@
 import React, {useState, useMemo} from "react";
 import * as Yup from "yup";
 import {Formik} from "formik";
-import {Swiper, SwiperSlide} from "swiper/react";
-
-import {Pictures, BasketButton, Divider} from './company-view.style'
 
 import {
     ContentContainer,
@@ -11,7 +8,6 @@ import {
     Label,
     CityInput,
     Popup,
-    SecondaryButton,
     WeekScheduleInput
 } from "components";
 
@@ -20,41 +16,10 @@ import {ReactComponent as PhoneIcon} from "assets/icons/phone.svg";
 
 import WarningMessage from "components/WarningMessage/WarningMessage";
 
-import {ReactComponent as DeleteBasketIcon} from "assets/icons/delete_basket.svg";
-
 import validation from "utils/validation";
 import {isScheduleValid} from "utils/company";
 import {CITY_TRANSLATION_IDS, getOnlyCityIds} from 'utils/cities'
 import {translate, TRANSLATION} from "utils/translation";
-
-const renderCompanyPhotos = (photos, setPictures) => {
-    const deleteImage = index => setPictures(photos.filter((_, i) => i !== index));
-
-    return (
-        <>
-            <Pictures>
-                <Swiper
-                    className="mySwiper"
-                    slidesPerView={2}
-                    spaceBetween={10}
-                >
-                    {
-                        photos?.map((src, index) => (
-                            <SwiperSlide key={Math.random()}>
-                                <img src={src} alt=''/>
-                                <BasketButton onClick={() => deleteImage(index)}>
-                                    <DeleteBasketIcon/>
-                                </BasketButton>
-                            </SwiperSlide>
-                        ))
-                    }
-                </Swiper>
-            </Pictures>
-            <SecondaryButton isWide>{translate(TRANSLATION.PAGE_VIEW.COMPANY.ADD_IMAGE)}</SecondaryButton>
-            <Divider/>
-        </>
-    );
-}
 
 const CompanyView = ({initialValues, onSubmit, children}) => {
     const [showCityPopup, setShowCityPopup] = useState(false);
@@ -88,7 +53,6 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
         >
             {({values, touched, handleBlur, setFieldValue, handleSubmit, handleChange, errors}) => (
                 <form onSubmit={handleSubmit}>
-                    {/*{renderCompanyPhotos(initialValues.photos, pictures => setFieldValue('photos', pictures))}*/}
                     <ContentContainer noShadow>
                         <Input
                             name='name'

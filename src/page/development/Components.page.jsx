@@ -5,6 +5,7 @@ import {Wrapper, Column, Component, Row, ColorCircle, Header, Space} from './Com
 
 import
 {
+    AccountSettings,
     Input,
     CityInput,
     Price,
@@ -51,7 +52,6 @@ import {ReactComponent as LanguageIcon} from "assets/icons/language.svg";
 import Checkbox from "components/Checkbox/Checkbox";
 import IntroContent from "components/Popup/info/Info";
 import CityContent from "components/Popup/city/CityContent"
-import AccountSettings from "components/AccountSettings/AccountSettings";
 import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
 import {EditBar, QRCodeButton} from "page/customer-companies/CustomerCompanies.style";
 
@@ -153,13 +153,6 @@ const componentsGroup0 = [
             component: <SubCategoryItem category={{icon: LanguageIcon, title: 'Language'}}
                                         title="Sandwich"><SandwichIcon/></SubCategoryItem>
         },
-        // {
-        //     title: 'CategoryMenuRow',
-        //     component: <CategoryMenuRow menuItems={[{CATEGORY_ID: 1}, {CATEGORY_ID: 2}, {CATEGORY_ID: 3}]}/>
-        // },
-        // {
-        //     title: 'CategoryMenuRow', component: <ExampleCategoryWithSelected/>
-        // },
     ],
     [
         {

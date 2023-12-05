@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import {COLOR, FONT, GRADIENT, hexToRgbA} from "utils/theme";
-import {ContentContainerDefault} from "components/ContentContainer/ContentContainer.style";
 
 export const SubCategoryWrapper = styled.div`
   padding: 8px 2px;
@@ -38,7 +37,6 @@ export const CategoryTitle = styled.div`
   line-height: 24px;
   padding: 22px 0 16px 16px;
   color: ${hexToRgbA(COLOR.ACCENT1, 0.7)};
-  //background: rgb(0 0 0 / 70%);
 `;
 
 

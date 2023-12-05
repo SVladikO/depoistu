@@ -13,7 +13,5 @@ export const Wrapper = styled.div`
     color: ${COLOR.ACCENT1};
     text-align: center;
     display: flex;
-    //padding-right: 12px;
-    
   }
 `;
