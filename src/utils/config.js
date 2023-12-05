@@ -31,8 +31,6 @@ export const DEV_ROUTER = {
     ADMIN: 'admin',
 };
 
-export const {REACT_APP_PRODUCTION_BE} = process.env;
-
 function getDomainBE() {
     const {origin} = window.location;
 
