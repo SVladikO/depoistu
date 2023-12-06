@@ -36,22 +36,22 @@ export const DefaultNotification = css`
   }
 `
 
-export const NotificationInfo = styled.div`
+export const NotificationInfoWrapper = styled.div`
   ${DefaultNotification};
   background: ${COLOR.INFO2};
   
   
 `;
-export const NotificationWarning = styled.div`
+export const NotificationWarningWrapper = styled.div`
   ${DefaultNotification};
   background: ${COLOR.WARNING2};
-  
 `;
-export const NotificationError = styled.div`
+
+export const NotificationErrorWrapper = styled.div`
   ${DefaultNotification};
   background: ${COLOR.ERROR2};
-  
 `;
+
 export const NotificationSuccessWrapper = styled.div`
   ${DefaultNotification};
   background: ${COLOR.SUCCESS2};

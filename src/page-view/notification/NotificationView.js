@@ -35,7 +35,6 @@ const NotificationView = () => {
 
     return (
         <FixedWrapper fixTop>
-
             <Wrapper>
                 {notifications.map(n => (
                     <NotificationFactory key={n.key} type={n.type}
