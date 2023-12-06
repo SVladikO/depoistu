@@ -34,7 +34,6 @@ export const OptionsContainer = styled.div`
   position: absolute;
   top: 106%;
   left: 0;
-  display: ${p => p.isOpen ? 'block' : 'none'};
   width: 100%;
   max-height: 350px;
   overflow-y: auto;

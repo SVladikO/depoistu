@@ -13,9 +13,16 @@ const Dropdown = ({options, selectedOption, onSelect, errorMessage, label, isReq
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);
 
-    const toggleDropdown = () => setIsOpen(!isOpen);
+    const toggleDropdown = () => {
+        setIsOpen(!isOpen);
 
-    console.log(2222, selectedOption)
+        setTimeout(()=>{
+            const selectedEl = document.getElementsByClassName("MyDropdown__option--is-selected")[0];
+            if(selectedEl){
+                selectedEl.scrollIntoView({behavior:'smooth', block:'nearest', inline: 'start'});
+            }
+        },15);
+    }
 
     const handleOptionSelect = option => {
         setIsOpen(false);
@@ -45,19 +52,22 @@ const Dropdown = ({options, selectedOption, onSelect, errorMessage, label, isReq
                 {selectedOption?.title || translate(TRANSLATION.INPUT_LABEL.DROPDOWN_TITLE)}
                 <DropdownIcon/>
             </SelectButton>
-            <OptionsContainer isOpen={isOpen}>
+            {isOpen && (
+                <OptionsContainer isOpen={isOpen}>
                 {options.map((option, i) => (
                     option.isGroupTitle
                         ? <GroupTitleOption key={i}>{option.title}</GroupTitleOption>
                         : <Option
                             key={i}
                             isSelected={selectedOption?.value === option.value}
+                            className={selectedOption?.value === option.value ? 'MyDropdown__option--is-selected' : ''}
                             onClick={() => handleOptionSelect(option)}
                         >
                             {option.title}
                         </Option>
                 ))}
             </OptionsContainer>
+            )}
             {errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
         </SelectWrapper>
     );
