@@ -17,8 +17,6 @@ const Dropdown = ({options, selectedOption, onSelect, errorMessage, label, isReq
 
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
-        debugger
-
     }
 
     const handleOptionSelect = option => e => {
