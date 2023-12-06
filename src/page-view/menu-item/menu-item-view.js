@@ -22,10 +22,11 @@ const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
 
     const getMeasurements = id => id ? translate(CATEGORY_ID_MEASUREMENTS[id]) : ' ';
 
-    const options = useMemo(() => CATEGORY_MAPPER_AS_ARRAY.map(({id, title}) =>
+    const options = useMemo(() => CATEGORY_MAPPER_AS_ARRAY.map(({id, title, isGroupTitle}) =>
         ({
             value: id,
-            title: translate(title)
+            title: translate(title),
+            isGroupTitle,
         })), [])
 
     return (

@@ -29,8 +29,6 @@ const Footer = () => {
                 <Link to={URL.OUR_TEAM}>
                     <Row>{translate(TR.PAGE.OUR_TEAM.TOP_TITLE)}</Row>
                 </Link>
-
-
                 <Support>
                     <a href="mailto:support@depoistu.com">support@depoistu.com</a>
                 </Support>

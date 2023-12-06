@@ -134,7 +134,7 @@ const CategoryMenuView = ({
 
         return (
             <CategoryTitle
-                key={categoryTitle}
+                key={categoryTitle + topCategoryIndex}
                 className={CATEGORY_TITLE_CLASS_NAME}
                 id={generateTagId(categoryId, topCategoryIndex)}
             >
