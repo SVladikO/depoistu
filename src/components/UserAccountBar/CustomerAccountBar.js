@@ -2,8 +2,6 @@ import {Link} from "react-router-dom";
 import {Avatar, ContentWrapper, Name, Phone, TextContent, Wrapper} from "./CustomerAccountBar.style";
 import avatar from 'assets/icons/avatar.svg';
 import {TRANSLATION, translate} from 'utils/translation';
-// import {ROUTER} from "utils/config";
-
 
 const CustomerAccountBar = ({ fullName, phone}) => {
     return (

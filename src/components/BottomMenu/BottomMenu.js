@@ -6,8 +6,6 @@ import {ReactComponent as HomeIcon} from "assets/icons/home.svg";
 import {ReactComponent as MenuIcon} from "assets/icons/menu.svg";
 import {ReactComponent as BookMarkIcon} from "assets/icons/book_mark.svg";
 import {ReactComponent as SettingIcon} from "assets/icons/setting.svg";
-// import {ReactComponent as HomeIcon} from "icons/menu.svg";
-// import {OrderIconWithCounter} from 'index'
 
 import {ROUTER, URL} from "utils/config";
 import {TRANSLATION, translate} from "utils/translation";
@@ -21,12 +19,6 @@ const BottomMenu = () => {
     return (
         <Wrapper>
             {/*TODO: Hidden second version*/}
-            {/*<NavLink to={ROUTER.ORDER_REVIEW.URL}>*/}
-            {/*    <MenuItem selected={isSelected(ROUTER.ORDER_REVIEW.URL)}>*/}
-            {/*        <OrderIconWithCounter selected={isSelected(ROUTER.ORDER_REVIEW.URL)}/>*/}
-            {/*        <Label>Cart</Label>*/}
-            {/*    </MenuItem>*/}
-            {/*</NavLink>*/}
             <MenuItem
                 selected={isSelected(ROUTER.SEARCH.URL)}
                 onClick={() => navigate(ROUTER.SEARCH.URL)}

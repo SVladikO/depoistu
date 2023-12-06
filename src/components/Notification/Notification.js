@@ -1,8 +1,8 @@
 import {
-    NotificationInfo,
-    NotificationError,
+    NotificationInfoWrapper,
+    NotificationErrorWrapper,
     NotificationSuccessWrapper,
-    NotificationWarning,
+    NotificationWarningWrapper,
     NotificationLoadingWrapper,
     Text,
 } from "./Notification.style";
@@ -28,20 +28,20 @@ export const NotificationFactory = ({type, children, onClose}) => {
     switch (type) {
         case NOTIFICATION_STATUS.INFO: {
             return (
-                <NotificationInfo>
+                <NotificationInfoWrapper>
                     <InfoIcon/>
-                    <CloseIcon className="close" onClick={onClose}/>
+                    {onClose && <CloseIcon className="close" onClick={onClose}/>}
                     {children}
-                </NotificationInfo>
+                </NotificationInfoWrapper>
             )
         }
         case NOTIFICATION_STATUS.ERROR: {
             return (
-                <NotificationError>
+                <NotificationErrorWrapper>
                     <ErrorIcon/>
                     <CloseIcon className="close" onClick={onClose}/>
                     {children}
-                </NotificationError>
+                </NotificationErrorWrapper>
             )
         }
 
@@ -56,11 +56,11 @@ export const NotificationFactory = ({type, children, onClose}) => {
         }
         case NOTIFICATION_STATUS.WARNING: {
             return (
-                <NotificationWarning>
+                <NotificationWarningWrapper>
                     <WarningIcon/>
                     <CloseIcon className="close" onClick={onClose}/>
                     {children}
-                </NotificationWarning>
+                </NotificationWarningWrapper>
             )
         }
     }
@@ -72,6 +72,12 @@ export const NotificationSuccess = ({children, onClose}) => (
         <CloseIcon className="close" onClick={onClose}/>
         {children}
     </NotificationSuccessWrapper>
+)
+
+export const NotificationInfo = ({children, onClose}) => (
+    <NotificationFactory type={NOTIFICATION_STATUS.INFO} onClose={onClose}>
+        {children}
+    </NotificationFactory>
 )
 
 export const NotificationLoading = ({children}) => (

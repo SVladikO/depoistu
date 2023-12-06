@@ -20,7 +20,6 @@ export const Wrapper = styled.div`
     -webkit-appearance: none;
     margin: 0;
   }
-
 `;
 
 export const SwitchIconWrapper = styled.div`

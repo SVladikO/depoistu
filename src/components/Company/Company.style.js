@@ -138,7 +138,6 @@ export const LocationWrapper = styled.div`
   font-size: 20px;
   border-radius: ${BORDER_RADIUS.FOURTH};
   border: ${props => props.withAdditionalStyles ? `1px solid ${COLOR.ACCENT5}` : 'none'};
-    //padding: ${props => props.withAdditionalStyles ? '2px 10px 4px 10px' : '0'};
   margin: 0 0 10px 0;
   color: ${COLOR.ACCENT1};
 
@@ -149,16 +148,4 @@ export const LocationWrapper = styled.div`
     margin: 0 10px 0 0;
     color: ${COLOR.ACCENT1};
   }
-`;
-
-export const Address = styled.div`
-  display: flex;
-  align-items: center;
-  flex-grow: 1;
-  width: 100%;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 24px;
-  color: ${COLOR.ACCENT5};
-
 `;

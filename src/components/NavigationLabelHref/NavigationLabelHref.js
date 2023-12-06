@@ -1,5 +1,6 @@
-import {Label, Title, Wrapper} from "./NavigationLabelHref.style";
 import {Link} from "react-router-dom";
+
+import {Label, Title, Wrapper} from "./NavigationLabelHref.style";
 
 const NavigationLabelHref = ({label, hrefTitle, to}) => {
     return (
