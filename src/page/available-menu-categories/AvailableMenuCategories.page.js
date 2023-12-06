@@ -44,6 +44,7 @@ const AvailableMenuCategoriesPage = () => {
                 <NotificationInfo>
                     <div>
                         {translate(TRANSLATION.PAGE.AVAILABLE_MENU_CATEGORIES.HINT)}
+                        <br />
                         <a href="mailto:support@depoistu.com">support@depoistu.com</a>
                     </div>
                 </NotificationInfo>
