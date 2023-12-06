@@ -11,17 +11,14 @@ import {Label} from "../Input/Input.style";
 
 const Dropdown = ({options, selectedOption, onSelect, errorMessage, label, isRequired}) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [top, setTop] = useState(false);
     const dropdownRef = useRef(null);
-    const optionsContainerClassName = (Math.random() + 1).toString(36).substring(7);
 
-    const toggleDropdown = () => {
-        setIsOpen(!isOpen);
-    }
+    const toggleDropdown = () => setIsOpen(!isOpen);
 
-    const handleOptionSelect = option => e => {
+    console.log(2222, selectedOption)
+
+    const handleOptionSelect = option => {
         setIsOpen(false);
-        setTop(e.target.offsetTop)
         onSelect(option);
     };
 
@@ -32,11 +29,10 @@ const Dropdown = ({options, selectedOption, onSelect, errorMessage, label, isReq
             }
         }
 
-        // document.getElementsByClassName(optionsContainerClassName)[0].scrollTo({top})
-
         document.addEventListener('click', handleClickOutside);
 
         return () => document.removeEventListener('click', handleClickOutside);
+
     }, [])
     return (
         <SelectWrapper isOpen={isOpen} ref={dropdownRef}>
@@ -49,19 +45,19 @@ const Dropdown = ({options, selectedOption, onSelect, errorMessage, label, isReq
                 {selectedOption?.title || translate(TRANSLATION.INPUT_LABEL.DROPDOWN_TITLE)}
                 <DropdownIcon/>
             </SelectButton>
-                <OptionsContainer className={optionsContainerClassName} isOpen={isOpen}>
-                    {options.map(option => (
-                        option.isGroupTitle
-                            ? <GroupTitleOption key={option.title}>{option.title}</GroupTitleOption>
-                            : <Option
-                                isSelected={selectedOption?.value === option.value}
-                                key={option.value}
-                                onClick={handleOptionSelect(option)}
-                            >
-                                {option.title}
-                            </Option>
-                    ))}
-                </OptionsContainer>
+            <OptionsContainer isOpen={isOpen}>
+                {options.map((option, i) => (
+                    option.isGroupTitle
+                        ? <GroupTitleOption key={i}>{option.title}</GroupTitleOption>
+                        : <Option
+                            key={i}
+                            isSelected={selectedOption?.value === option.value}
+                            onClick={() => handleOptionSelect(option)}
+                        >
+                            {option.title}
+                        </Option>
+                ))}
+            </OptionsContainer>
             {errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
         </SelectWrapper>
     );

@@ -36,7 +36,7 @@ export const OptionsContainer = styled.div`
   left: 0;
   display: ${p => p.isOpen ? 'block' : 'none'};
   width: 100%;
-  max-height: 400px;
+  max-height: 350px;
   overflow-y: auto;
   z-index: 3;
   background-color: ${COLOR.ACCENT4};
