@@ -47,7 +47,7 @@ const Dropdown = ({options, selectedOption, onSelect, errorMessage, label, isReq
                 <OptionsContainer>
                     {options.map(option => (
                         option.isGroupTitle
-                            ? <GroupTitleOption>{option.title}</GroupTitleOption>
+                            ? <GroupTitleOption key={option.title}>{option.title}</GroupTitleOption>
                             : <Option
                                 isSelected={selectedOption?.value === option.value}
                                 key={option.value}

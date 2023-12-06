@@ -17,10 +17,6 @@ export const truncate = (text, availableLength = 1) => {
 
 export const getCurrentLanguage = () => LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE)?.language?.siteLanguage;
 export const translate = obj => {
-    console.log(obj)
-    if (!obj) {
-        debugger
-    }
     return obj[getCurrentLanguage() || DEFAULT_LANGUAGE];
 }
 
