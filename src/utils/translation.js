@@ -294,8 +294,8 @@ export const TRANSLATION = {
                 en: 'Available menu categories'
             },
             HINT: {
-                ua: "Додати більше категорії support@depoistu.com",
-                en: "Add new categories support@depoistu.com"
+                ua: "Додати більше категорії ",
+                en: "Add new categories"
             }
         },
         CUSTOMER_COMPANIES: {

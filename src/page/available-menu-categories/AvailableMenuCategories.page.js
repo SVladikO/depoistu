@@ -39,10 +39,13 @@ const AvailableMenuCategoriesPage = () => {
                 }
                 </tbody>
             </Table>
-            <RowSplitter height={'20px'} />
+            <RowSplitter height={'20px'}/>
             <ContentContainer noShadow bg={hexToRgbA('#000', 0.5)}>
-                <NotificationInfo >
-                    {translate(TRANSLATION.PAGE.AVAILABLE_MENU_CATEGORIES.HINT)}
+                <NotificationInfo>
+                    <div>
+                        {translate(TRANSLATION.PAGE.AVAILABLE_MENU_CATEGORIES.HINT)}
+                        <a href="mailto:support@depoistu.com">support@depoistu.com</a>
+                    </div>
                 </NotificationInfo>
             </ContentContainer>
         </>
