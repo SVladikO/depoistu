@@ -1,14 +1,14 @@
 import {Wrapper, Employee, Photo, FullName, Position, EmployeeView, EmployeeInfo, Socials} from "./OurTeam.page.style";
 
-import David_imgSrc from 'assets/images/team/David.png';
-import Irina_imgSrc from 'assets/images/team/Irina.png';
-import Alex_imgSrc from 'assets/images/team/Alex.png';
-import Pavlo_imgSrc from 'assets/images/team/Pavlo.png';
+import David_imgSrc from 'assets/images/team/David.webp';
+import Irina_imgSrc from 'assets/images/team/Irina.webp';
+import Alex_imgSrc from 'assets/images/team/Alex.webp';
+import Pavlo_imgSrc from 'assets/images/team/Pavlo.webp';
 
-import {ReactComponent as Instagram} from "../../assets/icons/instagram.svg";
-import {ReactComponent as Facebook} from "../../assets/icons/facebook2.svg";
-import {ReactComponent as Twitter} from "../../assets/icons/twitter.svg";
-import {ReactComponent as LinkedIn} from "../../assets/icons/linkedin.svg";
+import {ReactComponent as Instagram} from "assets/icons/instagram.svg";
+import {ReactComponent as Facebook} from "assets/icons/facebook2.svg";
+import {ReactComponent as Twitter} from "assets/icons/twitter.svg";
+import {ReactComponent as LinkedIn} from "assets/icons/linkedin.svg";
 
 import {useScrollUp} from "utils/hook";
 

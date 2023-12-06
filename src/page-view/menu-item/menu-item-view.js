@@ -2,8 +2,8 @@ import React, {useMemo, useState} from "react";
 import {Formik} from "formik";
 import * as Yup from 'yup';
 
-import {GroupSizePrice, ImagePlace, MenuItemPhoto} from "./menu-item-view.style";
-import {Dropdown, ContentContainer, Input, SecondaryButton, Textarea} from "components";
+import {GroupSizePrice} from "./menu-item-view.style";
+import {Dropdown, ContentContainer, Input, Textarea} from "components";
 
 import validation from "utils/validation";
 import {CATEGORY_MAPPER_AS_ARRAY} from "utils/category";
@@ -13,7 +13,6 @@ const EditMenuItemSchema = Yup.object().shape(validation.menuItem);
 
 const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
     const [wasSubmitted, setWasSubmitted] = useState(false);
-    const [imageURL] = useState(defaultInitialValue.imageURL);
     const CATEGORY_ID_MEASUREMENTS = useMemo(() => {
             const mapper = {};
             CATEGORY_MAPPER_AS_ARRAY.map(({id, measurement}) => mapper[id] = measurement);
@@ -30,20 +29,6 @@ const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
             isGroupTitle,
         })), [])
 
-    const renderImages = () => (
-        <MenuItemPhoto>
-            {imageURL
-                ? <img src={imageURL} alt='Food'/>   // setImageURL
-                : <ImagePlace/>}
-            <SecondaryButton>
-                {imageURL
-                    ? translate(TRANSLATION.PAGE_VIEW.MENU_ITEM.BUTTON.CHANGE_IMAGE)
-                    : translate(TRANSLATION.PAGE_VIEW.MENU_ITEM.BUTTON.ADD_IMAGE)
-                }
-            </SecondaryButton>
-        </MenuItemPhoto>
-    );
-
     return (
         <Formik
             enableReinitialize
@@ -57,7 +42,6 @@ const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
             {({values, handleBlur, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                 <form onSubmit={handleSubmit}>
                     <ContentContainer noShadow>
-                        {/*{renderImages()}*/}
                         <Dropdown
                             label={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.CATEGORY)}
                             options={options}

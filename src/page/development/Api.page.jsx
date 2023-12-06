@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {BE_API} from "utils/fetch";
+import {BE_API, fetchData} from "utils/fetch";
 
 import {
     URL,
@@ -20,10 +20,9 @@ const ApiPage = () => {
     const [api, setApi] = useState([])
 
     useEffect(() => {
-        fetch(BE_API.DEVELOPMENT.API())
-            .then(res => res.json())
+        fetchData(BE_API.DEVELOPMENT.API())
             .then(res => {
-                setApi(res)
+                setApi(res.body)
             })
     }, [])
 

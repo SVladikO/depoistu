@@ -38,14 +38,7 @@ export const GroupTitle = styled.div`
   padding: 40px 0 20px;
   margin: auto;
 `;
-export const GroupTitle2 = styled.div`
-  font-size: 30px;
-  text-align: center;
-  text-transform: uppercase;
-  color: ${COLOR.ACCENT1};
-  padding: 40px 0 20px;
-  margin: auto;
-`;
+
 export const LedError = styled.span`
   margin: 0 10px;
   display: inline-block;
