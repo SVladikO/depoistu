@@ -34,6 +34,7 @@ export const OptionsContainer = styled.div`
   position: absolute;
   top: 106%;
   left: 0;
+  display: ${p => p.isOpen ? 'block' : 'none'};
   width: 100%;
   max-height: 400px;
   overflow-y: auto;
@@ -49,7 +50,7 @@ export const GroupTitleOption = styled.div`
   cursor: pointer;
   ${FONT.SIZE_20};
   ${FONT.WEIGHT_500};
-  
+
 `;
 
 export const Option = styled.div`
