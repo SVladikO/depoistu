@@ -18,8 +18,9 @@ export const InvisibleWrapper = styled.div`
 `;
 
 export const Wrapper = styled.div`
-   min-width: ${DEVICE_WIDTH.MIN};
-   max-width: ${DEVICE_WIDTH.MAX};
+  min-height: 80vh;
+  min-width: ${DEVICE_WIDTH.MIN};
+  max-width: ${DEVICE_WIDTH.MAX};
   width: 100%;
   display: flex;
   flex-direction: column;
