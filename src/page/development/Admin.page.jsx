@@ -12,13 +12,13 @@ import {
 } from './Admin.style';
 
 import {ReactComponent as LoadingIcon} from "assets/icons/spinner.svg";
-import {NavigationHeader, RowSplitter, SecondaryButton} from "components";
+import {NavigationHeader, PrimaryButton, RowSplitter, SecondaryButton} from "components";
 import {fetchData} from "utils/fetch";
 
 import {BE_API} from 'utils/fetch'
 import {BE_DOMAIN} from "utils/config";
 import {checkAccess} from "utils/security";
-import {LOCAL_STORAGE_KEY} from "../../utils/localStorage";
+import {LOCAL_STORAGE_KEY} from "utils/localStorage";
 import ApiPage from "./Api.page";
 import ComponentsPage from "./Components.page";
 
@@ -36,7 +36,26 @@ function AdminPage() {
         <Wrapper>
             <NavigationHeader title={"ADMIN PAGE"} backUrl={''}/>
             <h3 className={'text_center'}>DB: {dbMode}</h3>
+
             <StyledLink href={BE_DOMAIN} target="_blank" rel="noreferrer">{BE_DOMAIN}</StyledLink>
+
+            <RowSplitter height={'10px'}/>
+
+            <GroupTitle>Test be request</GroupTitle>
+            <Table>
+                <tbody>{checkSuccessRequest}</tbody>
+            </Table>
+            <RowSplitter height={'10px'}/>
+            <PrimaryButton
+                isWide
+                withPadding
+                clickHandler={
+                    () => {
+                        window.location.href = window.location.origin
+                    }
+                }>
+                /home
+            </PrimaryButton>
             <RowSplitter height={'10px'}/>
             <SecondaryButton
                 isWide
@@ -49,13 +68,6 @@ function AdminPage() {
                 }>
                 Clear localStorage
             </SecondaryButton>
-            <RowSplitter height={'10px'}/>
-            <GroupTitle>Test be request</GroupTitle>
-            <Table>
-                <tbody>{checkSuccessRequest}</tbody>
-            </Table>
-            <RowSplitter height='40px'/>
-
             <RowSplitter height='40px'/>
             <GroupTitle>BE API</GroupTitle>
             <ApiPage/>
@@ -74,10 +86,10 @@ const CheckRequest = ({type, title, url,}) => {
     const [validateResponse, setValidation] = useState({});
 
     useEffect(() => {
-        fetch(decodeURIComponent(url))
+        fetchData(url)
             .then(res => {
                 setStatus(res.status)
-                return res.json()
+                return res
             })
             .then(res => {
                 setResponse(res)
