@@ -38,7 +38,10 @@ export const Textarea = memo(function ({
                 <TextareaStyle
                     value={value}
                     name={name}
-                    onChange={changeHandler}
+                    onChange={e => {
+                        e.target.value = e.target.value.replaceAll("'", "ʼ")
+                        changeHandler(e)
+                    }}
                     placeholder={placeholder}
                 />
                 {value && withCleaner && <ClearWrapper onClick={clearHandler}><ClearIcon /></ClearWrapper>}
@@ -81,7 +84,10 @@ export const Input = memo(function ({
             <InputText
                 name={name}
                 value={value}
-                onChange={changeHandler}
+                onChange={e => {
+                    e.target.value = e.target.value.replaceAll("'", "ʼ")
+                    changeHandler(e)
+                }}
                 type={inputType}
                 withRightIcon={withSwitcher || withCleaner}
                 withLeftIcon={!!Icon}
