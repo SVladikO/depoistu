@@ -37,10 +37,16 @@ export const CloseButtonWrapper = styled.div`
   right: 17px;
   top: 14px;
 
-  width: 14px;
-  height: 14px;
+  width: 40px;
+  height: 40px;
+  
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
 
   & > svg {
+    width: 14px;
+    height: 14px;
     fill: ${COLOR.ACCENT1} !important;
   }
 `;
