@@ -24,7 +24,6 @@ import SettingMenuRow from "./SettingMenuRow/SettingMenuRow";
 import ToggleCheckbox from "./ToggleCheckbox/ToggleCheckbox";
 import WarningMessage from "./WarningMessage/WarningMessage";
 import WeekScheduleInput from "./WeekScheduleInput/WeekScheduleInput";
-import {Absolute} from "./Absolute/Absolute.style";
 import {ContentContainer} from "./ContentContainer/ContentContainer.style.js";
 import {Discount} from "./Discount/Discount.style";
 import {DisabledButton} from "./Buttons/DisabledButton";
@@ -42,7 +41,6 @@ import {ThirdButton} from "./Buttons/ThirdButton";
 import {Text22} from "./Text/Text.style";
 
 export {
-    Absolute,
     AccountSettings,
     BottomMenu,
     SubCategoryItem,

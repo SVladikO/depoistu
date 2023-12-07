@@ -6,10 +6,7 @@ import {NotificationTDB, OrderHistoryRow, Price, PrimaryButton} from "components
 
 import {ReactComponent as EmptyBasketIcon} from "assets/icons/empty_basket.svg";
 
-// import {deleteAllOrders} from 'features/order/orderSlice'
-
 import {ROUTER} from 'utils/config'
-// import {fetchData, BE_API} from "WeekScheduleOutput.js/fetch";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 
 const OrderPage = () => {
@@ -28,12 +25,6 @@ const OrderPage = () => {
         };
 
         console.log('Order data: ', body);
-
-        // fetchData(BE_API.PLACE_ORDER(), body)
-        //     .then(res => {
-        //         alert('Order was placed');
-        //         dispatch(deleteAllOrders())
-        //     })
     }
 
     const isCustomerLogged = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER);

@@ -35,7 +35,6 @@ import {URL} from 'utils/config';
 import {useScrollUp} from "utils/hook";
 import validation from "utils/validation";
 import {BE_API, fetchData} from "utils/fetch";
-import {publishNotificationEvent} from "utils/event";
 import {TRANSLATION as TR, translate} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 
@@ -60,8 +59,8 @@ const SettingPage = () => {
             .finally(() => setIsLoading(false));
     }
 
+    // TODO: Add email verification
     const EmailVerificationCodeSchema = Yup.object().shape(validation.customer.emailVerificationCode);
-
     const emailVerificationNotification = (
         <NotificationTDB
             title={translate(TR.PAGE.SETTINGS.NOTIFICATION.VERIFICATION_TITLE)}
@@ -105,24 +104,13 @@ const SettingPage = () => {
     return (
         <>
             <SingInSingUpView/>
-            {/*{customer && !customer.isVerifiedEmail && emailVerificationNotification}*/}
             {isLoading && <NotificationLoading/>}
             <LanguagePopup/>
             <Wrapper>
-                {/*<CustomerAccountBar fullName='Jhon Smith' phone="+14844731243"/>*/}
-                {/*<RowSplitter height='20px'/>*/}
-                {/*{customer && !!customer.isVerifiedEmail && (*/}
                 {customer && (
                     <>
                         <AccountSettings
                             groupTitle={translate(TR.PAGE.SETTINGS.GROUP_TITLE.ACCOUNTS)}>
-                            {/*TODO: Hidden second version*/}
-                            {/*<SettingMenuRow icon={LikeIcon} title={ROUTER.Favorite.TITLE} href={ROUTER.Favorite.URL}/>*/}
-                            {/*<SettingMenuRow icon={OrderHistoryIcon} title={ROUTER.ORDER_HISTORY.TITLE} href={ROUTER.ORDER_HISTORY.URL}/>*/}
-                            {/*<SettingMenuRow icon={PaymentIcon} title='Payment' href='/catalog'/>*/}
-                            {/*<SettingMenuRow icon={DeliveryAddressIcon} title='Delivery Address' href='/catalog'/>*/}
-                            {/*<SettingMenuRow icon={StoreIcon} title={translate(TR.PAGE.SETTINGS.MENU_ROW.LOCATION)} href='/catalog'/>*/}
-                            {/*<SettingMenuRow icon={ConditionsIcon} title={translate(TR.PAGE.SETTINGS.MENU_ROW.TERMS)} href='/catalog'/>*/}
                             <SettingMenuRow
                                 icon={ProfileIcon}
                                 title={translate(TR.PAGE.SETTINGS.MENU_ROW.EDIT_PROFILE)}
@@ -163,11 +151,6 @@ const SettingPage = () => {
                 <AccountSettings
                     noTopBorder={customer}
                     groupTitle={translate(TR.PAGE.SETTINGS.GROUP_TITLE.OTHERS)}>
-                    {/*<SettingMenuRow icon={NewsletterIcon} title='Newsletter' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
-                    {/*<SettingMenuRow icon={NotificationIcon} title='Notification' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
-                    {/*<SettingMenuRow icon={PhoneCallIcon} title='Phone Call' toggleHandler={() => console.log('clicked toggle')} toggleStatus={true}/>*/}
-                    {/*<SettingMenuRow icon={CurrencyIcon} title={translate(TR.PAGE.SETTINGS.MENU_ROW.CURRENCY)} href='/catalog' label='$USD'/>*/}
-                    {/*<SettingMenuRow icon={HelpIcon} title={translate(TR.PAGE.SETTINGS.MENU_ROW.HELP)} href='/catalog'/>*/}
                     <SettingMenuRow
                         icon={InstructionIcon}
                         title={translate(TR.PAGE.SETTINGS.MENU_ROW.INSTRUCTION_FOR_BUSINESS_OWNER)}
@@ -194,7 +177,6 @@ const SettingPage = () => {
                         title={`${translate(TR.PAGE.SETTINGS.MENU_ROW.VERSION)} ${packageInfo.version}`}
                         href={'#'}
                     />
-                    {/*<SettingMenuRow icon={LinkedAccountIcon} title={translate(TR.PAGE.SETTINGS.MENU_ROW.LINKED_ACCOUNTS)} href='/catalog' label='Facebook, go ...'/>*/}
                 </AccountSettings>
             </Wrapper>
         </>

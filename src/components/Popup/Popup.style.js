@@ -18,8 +18,9 @@ export const InvisibleWrapper = styled.div`
 `;
 
 export const Wrapper = styled.div`
-   min-width: ${DEVICE_WIDTH.MIN};
-   max-width: ${DEVICE_WIDTH.MAX};
+  min-height: 80vh;
+  min-width: ${DEVICE_WIDTH.MIN};
+  max-width: ${DEVICE_WIDTH.MAX};
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -37,10 +38,16 @@ export const CloseButtonWrapper = styled.div`
   right: 17px;
   top: 14px;
 
-  width: 14px;
-  height: 14px;
+  width: 40px;
+  height: 40px;
+  
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
 
   & > svg {
+    width: 14px;
+    height: 14px;
     fill: ${COLOR.ACCENT1} !important;
   }
 `;
