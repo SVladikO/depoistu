@@ -1,7 +1,8 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {Link} from "react-router-dom";
+import {Marker, Popup} from "react-leaflet";
 
-import {Wrapper, Column, Component, Row, ColorCircle, Header, Space} from './Components.style';
+import {Wrapper, Column, Component, Row, ColorCircle, Header, Space, MapContainer} from './Components.style';
 
 import
 {
@@ -49,9 +50,11 @@ import {ReactComponent as LogOutIcon} from "assets/icons/logout.svg";
 import {ReactComponent as SandwichIcon} from 'assets/icons/sandwich.svg';
 import {ReactComponent as LanguageIcon} from "assets/icons/language.svg";
 
+import Map from "components/Map/Map";
 import Checkbox from "components/Checkbox/Checkbox";
 import IntroContent from "components/Popup/info/Info";
 import CityContent from "components/Popup/city/CityContent"
+import {markerIcon} from "components/Map/customUI/markerIcon/markerIcon";
 import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
 import {EditBar, QRCodeButton} from "page/customer-companies/CustomerCompanies.style";
 
@@ -457,9 +460,25 @@ const componentsGroup3 = [
                     </Link>
                 </NotificationTDB>
         },
-        {title: 'Footer', component: <Footer/>}
+        {title: 'Footer', component: <Footer/>},
     ]
 ]
+
+const componentsGroup4 = [[
+    {
+        title: 'Map',
+        component: (
+            <MapContainer>
+                <Map>
+                    <Marker icon={markerIcon} position={[51.505, -0.09]}>
+                        <Popup>
+                            Check template of popup.<br /> Example.
+                        </Popup>
+                    </Marker>
+                </Map>
+            </MapContainer>)
+    }
+]]
 
 // document.body.style.backgroundColor = '#d8d8d8'
 
@@ -511,6 +530,7 @@ function ComponentsPage() {
             {renderGroup(componentsGroup1)}
             {renderGroup(componentsGroup2)}
             {renderGroup(componentsGroup3)}
+            {renderGroup(componentsGroup4)}
             {/*<CatalogPage/>*/}
         </>
     )
