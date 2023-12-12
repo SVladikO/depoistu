@@ -3,6 +3,7 @@ import * as Yup from "yup";
 import {Formik} from "formik";
 
 import {renderCompanyPhotos} from "./utils";
+
 import {
     ContentContainer,
     Input,
@@ -55,7 +56,7 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                     return;
                 }
 
-                onSubmit({...values, photos});
+                onSubmit({...values, photos: photos.toString()});
             }}
         >
             {({values, touched, handleBlur, setFieldValue, handleSubmit, handleChange, errors}) => (

@@ -61,7 +61,7 @@ const Company = ({company, withMoreInfo, children, clickHandler}) => {
         </LocationWrapper>);
     }
 
-    const slides = !company.photos?.length ? [] : company.photos.split(', ').map(src => <img src={src} alt="#"/>)
+    const slides = !company.photos?.length ? [] : company.photos.map(src => <img src={src} alt="#"/>)
 
     const renderDaySchedule = () => (
         <Schedule>
