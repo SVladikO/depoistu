@@ -38,18 +38,7 @@ export const FirstRow = styled.div`
     width: 30px;
   }
 `;
-export const ImageSection = styled.div`
-  display: flex;
-  height: 200px;
-  max-height: 200px;
-  justify-content: center;
-  position: relative;
 
-  img {
-    width: 100%;
-    height: 100%;
-  }
-`;
 export const Content = styled.div`
   padding: 16px 16px 20px 16px;
 `;

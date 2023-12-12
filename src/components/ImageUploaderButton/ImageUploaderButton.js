@@ -2,7 +2,7 @@ import { useState } from "react";
 import {Cloudinary} from "@cloudinary/url-gen";
 import CloudinaryUploadWidget from './cloudinary-widget'
 
-export default function ImageUploader() {
+export default function ImageUploaderButton({onImageUpload}) {
     const [publicId, setPublicId] = useState("");
     const [cloudName] = useState("dgdm0wb3u");
     const [uploadPreset] = useState("nx0a8k4m");
@@ -38,11 +38,6 @@ export default function ImageUploader() {
         }
     });
 
-    const myImage = cld.image(publicId);
-
-    return (
-            <CloudinaryUploadWidget uwConfig={uwConfig} setPublicId={setPublicId} />
-
-    );
+    return <CloudinaryUploadWidget uwConfig={uwConfig} setPublicId={setPublicId} onImageUpload={onImageUpload}/>
 }
 

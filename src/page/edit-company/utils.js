@@ -3,7 +3,8 @@ const defaultTo = '21:00';
 
 const getInitialValues = (company, schedule) => (
     {
-        photos: company?.photos?.split(',') || [],
+        photos: company?.photos?.split(',') ||
+            ['https://res.cloudinary.com/dgdm0wb3u/image/upload/v1702323715/w6cny3g83vtxezqhrgb3.jpg','https://res.cloudinary.com/dgdm0wb3u/image/upload/v1702323715/w6cny3g83vtxezqhrgb3.jpg','https://res.cloudinary.com/dgdm0wb3u/image/upload/v1702323715/w6cny3g83vtxezqhrgb3.jpg'],
         name: company.name,
         cityId: company.cityId,
         street: company.street,

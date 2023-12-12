@@ -2,13 +2,15 @@ import React, {useState, useMemo} from "react";
 import * as Yup from "yup";
 import {Formik} from "formik";
 
+import {renderCompanyPhotos} from "./utils";
 import {
     ContentContainer,
     Input,
     Label,
     CityInput,
     Popup,
-    WeekScheduleInput
+    WeekScheduleInput,
+    ImageUploaderButton, RowSplitter
 } from "components";
 
 import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
@@ -24,11 +26,11 @@ import {translate, TRANSLATION} from "utils/translation";
 const CompanyView = ({initialValues, onSubmit, children}) => {
     const [showCityPopup, setShowCityPopup] = useState(false);
     const [wasSubmitted, setWasSubmitted] = useState(false);
+    const [photos, setPhotos] = useState(initialValues.photos);
+
 
     const openCityPopup = () => setShowCityPopup(true);
-
     const closeCityPopup = () => setShowCityPopup(false);
-
     const availableAllCityIds = useMemo(() => getOnlyCityIds(), []);
 
     const selectCity = callback => ([city]) => {
@@ -36,23 +38,29 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
         closeCityPopup();
     }
 
+    const onImageUpload = info => setPhotos([...photos, info.secure_url]);
+
     return (
-        <Formik
-            initialValues={initialValues}
-            validationSchema={Yup.object().shape(validation.company)}
-            onSubmit={values => {
-                setWasSubmitted(true);
+        <div>
+            <ImageUploaderButton onImageUpload={onImageUpload}/>
+            <RowSplitter height="22px" />
+            <Formik
+                initialValues={initialValues}
+                validationSchema={Yup.object().shape(validation.company)}
+                onSubmit={values => {
+                    setWasSubmitted(true);
 
                 //Don't submit if there is no schedule
                 if (!isScheduleValid(values)) {
                     return;
                 }
 
-                onSubmit(values);
+                onSubmit({...values, photos});
             }}
         >
             {({values, touched, handleBlur, setFieldValue, handleSubmit, handleChange, errors}) => (
                 <form onSubmit={handleSubmit}>
+                    {renderCompanyPhotos(photos)}
                     <ContentContainer noShadow>
                         <Input
                             name='name'
@@ -142,7 +150,10 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                 </form>
             )}
         </Formik>
+        </div>
     )
 };
+
+
 
 export default CompanyView;

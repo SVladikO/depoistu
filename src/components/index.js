@@ -21,6 +21,8 @@ import Popup from "./Popup/Popup";
 import Price from "./Price/Price";
 import Rating from "./Rating/Rating";
 import SettingMenuRow from "./SettingMenuRow/SettingMenuRow";
+import SwiperWrapper from "./SwiperWrapper/SwiperWrapper";
+import ScheduleDetails from "./ScheduleDetails/ScheduleDetails";
 import ToggleCheckbox from "./ToggleCheckbox/ToggleCheckbox";
 import WarningMessage from "./WarningMessage/WarningMessage";
 import WeekScheduleInput from "./WeekScheduleInput/WeekScheduleInput";
@@ -39,6 +41,7 @@ import {RowSplitterStyle as RowSplitter} from "./RowSplitter/RowSplitter.style";
 import {SecondaryButton} from "./Buttons/SecondaryButton";
 import {ThirdButton} from "./Buttons/ThirdButton";
 import {Text22} from "./Text/Text.style";
+import ImageUploaderButton from "./ImageUploaderButton/ImageUploaderButton";
 
 export {
     AccountSettings,
@@ -60,6 +63,7 @@ export {
     HistoryTabBar,
     HorizontalSwiper,
     Input,
+    ImageUploaderButton,
     Label,
     Like,
     MenuItem,
@@ -79,6 +83,8 @@ export {
     RowSplitter,
     SecondaryButton,
     SettingMenuRow,
+    SwiperWrapper,
+    ScheduleDetails,
     Text22,
     Textarea,
     ThirdButton,
