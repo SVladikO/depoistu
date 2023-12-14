@@ -34,7 +34,7 @@ import Footer from "./Footer/Footer";
 import {FixedWrapper} from "./FixedWrapper/FixedWrapper.style";
 import {Input, CityInput, Textarea} from "./Input/Input";
 import {Label} from "./Label/Label.style";
-import {MenuItemDetails} from "./MenuItem/MenuItem";
+import MenuItemDescription from "./MenuItem/view/menu-item-description/menu-item-description";
 import {NotificationFactory, NOTIFICATION_STATUS, NotificationLoading} from "./Notification/Notification";
 import {PrimaryButton} from "./Buttons/PrimaryButton";
 import {RowSplitterStyle as RowSplitter} from "./RowSplitter/RowSplitter.style";
@@ -91,6 +91,6 @@ export {
     ToggleCheckbox,
     WarningMessage,
     WeekScheduleInput,
-    MenuItemDetails,
+    MenuItemDescription,
 }
 
