@@ -16,17 +16,6 @@ export const Wrapper = styled.div`
   &:hover {
     cursor: pointer;
   }
-  
-  .swiper-pagination-bullet {
-    width: 10px;
-    height: 10px;
-    background-color: ${COLOR.ACCENT4};
-    opacity: 1;
-  }
-
-  .swiper-pagination-bullet-active {
-    background-color: ${COLOR.ACCENT3};
-  }
 `;
 
 export const FirstRow = styled.div`
@@ -40,6 +29,7 @@ export const FirstRow = styled.div`
 `;
 
 export const Content = styled.div`
+  border-top: solid 1px ${COLOR.ACCENT9};
   padding: 16px 16px 20px 16px;
 `;
 

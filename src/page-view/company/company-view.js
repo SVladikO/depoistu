@@ -29,7 +29,6 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
     const [wasSubmitted, setWasSubmitted] = useState(false);
     const [photos, setPhotos] = useState(initialValues.photos);
 
-
     const openCityPopup = () => setShowCityPopup(true);
     const closeCityPopup = () => setShowCityPopup(false);
     const availableAllCityIds = useMemo(() => getOnlyCityIds(), []);
@@ -39,7 +38,12 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
         closeCityPopup();
     }
 
-    const onImageUpload = info => setPhotos([...photos, info.secure_url]);
+    const onImageUpload = info => {
+        console.log(111, 'new image url: ', info.secure_url)
+        console.log(222, [...photos, info.secure_url])
+        debugger
+        setPhotos(prevState => [...prevState, info.secure_url]);
+    }
 
     return (
         <div>

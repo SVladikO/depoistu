@@ -60,8 +60,8 @@ const Company = ({company, withMoreInfo, children, clickHandler}) => {
             <LocationIcon/>{translate(CITY_TRANSLATION_IDS[company.cityId])}, {company.street}
         </LocationWrapper>);
     }
-
-    const slides = !company.photos?.length ? [] : company.photos.map(src => <img src={src} alt="#"/>)
+    const defaultCompanImg = 'https://res.cloudinary.com/dgdm0wb3u/image/upload/v1702487998/jkzakhi7ruq2jc1ndrpu.webp';
+    const slides = !company.photos?.length ? [<img  src={defaultCompanImg} />] : company.photos.map(src => <img src={src} alt="#"/>)
 
     const renderDaySchedule = () => (
         <Schedule>
@@ -104,7 +104,7 @@ const Company = ({company, withMoreInfo, children, clickHandler}) => {
     }
 
     return (<Wrapper withMoreInfo={withMoreInfo} onClick={clickHandler}>
-        <SwiperWrapper slidesPerView={1} slides={slides} />
+        <SwiperWrapper slides={slides} />
         <Content>
             <CompanyInfo>
                 <FirstRow>

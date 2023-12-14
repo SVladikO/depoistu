@@ -19,7 +19,7 @@ function CloudinaryUploadWidget({ uwConfig, setPublicId, onImageUpload}) {
                 script.addEventListener("load", () => {
                     setLoaded(true)
 
-                    var myWidget = window.cloudinary.createUploadWidget(
+                    window.myWidget = window.cloudinary.createUploadWidget(
                         uwConfig,
                         (error, result) => {
                             if (!error && result && result.event === "success") {
@@ -29,11 +29,7 @@ function CloudinaryUploadWidget({ uwConfig, setPublicId, onImageUpload}) {
                             }
                         }
                     );
-
-                    document.getElementById("upload_widget")
-                        .addEventListener("click", () => myWidget.open(), false);
-
-                });
+                 });
                 document.body.appendChild(script);
             } else {
                 // If already loaded, update the state
@@ -44,7 +40,7 @@ function CloudinaryUploadWidget({ uwConfig, setPublicId, onImageUpload}) {
 
     return (
         <CloudinaryScriptContext.Provider value={{ loaded }}>
-            <SecondaryButton id="upload_widget" isWide withPadding>
+            <SecondaryButton clickHandler={() => window.myWidget.open()} isWide withPadding>
                 Загрузити фото
             </SecondaryButton>
         </CloudinaryScriptContext.Provider>

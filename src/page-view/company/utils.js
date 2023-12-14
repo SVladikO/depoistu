@@ -18,5 +18,5 @@ export const renderCompanyPhotos = ( photos = [], setPictures ) => {
         </div>
     ));
 
-    return <SwiperWrapper slidesPerView={1} slides={slides} />
+    return <SwiperWrapper slides={slides} />
 }

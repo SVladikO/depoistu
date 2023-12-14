@@ -3,7 +3,7 @@ import {Navigation, Pagination} from "swiper";
 import {ImageSection} from "./SwiperWrapper.style";
 
 
-export default function SwiperWrapper({slidesPerView, slides}) {
+export default function SwiperWrapper({slidesPerView = 1, slides}) {
     return (
         <ImageSection>
             <Swiper
