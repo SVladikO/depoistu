@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -61,7 +62,11 @@ const Company = ({company, withMoreInfo, children, clickHandler}) => {
         </LocationWrapper>);
     }
     const defaultCompanImg = 'https://res.cloudinary.com/dgdm0wb3u/image/upload/v1702487998/jkzakhi7ruq2jc1ndrpu.webp';
-    const slides = !company.photos?.length ? [<img  src={defaultCompanImg} />] : company.photos.map(src => <img src={src} alt="#"/>)
+    const slides =
+        !company.photos?.length
+            ? [<LazyLoadImage  src={defaultCompanImg} />]
+            : company.photos
+                .map(src => <LazyLoadImage src={src} alt="#"/>)
 
     const renderDaySchedule = () => (
         <Schedule>

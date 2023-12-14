@@ -1,5 +1,7 @@
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Navigation, Pagination} from "swiper";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
 import {ImageSection} from "./SwiperWrapper.style";
 
 
@@ -13,7 +15,9 @@ export default function SwiperWrapper({slidesPerView = 1, slides}) {
                 pagination={{clickable: true}}
             >
                 { slides.map((s, i) => (
-                   <SwiperSlide key={i}>{s}</SwiperSlide>
+                   <SwiperSlide key={i}>
+                       {s}
+                   </SwiperSlide>
                 ))
                 }
             </Swiper>

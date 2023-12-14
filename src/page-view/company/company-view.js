@@ -1,8 +1,12 @@
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import React, {useState, useMemo} from "react";
 import * as Yup from "yup";
+
 import {Formik} from "formik";
 
-import {renderCompanyPhotos} from "./utils";
+import {BasketButton} from "./company-view.style";
+
+import {ReactComponent as DeleteBasketIcon} from 'assets/icons/delete_basket.svg'
 
 import {
     ContentContainer,
@@ -11,7 +15,7 @@ import {
     CityInput,
     Popup,
     WeekScheduleInput,
-    ImageUploaderButton, RowSplitter
+    ImageUploaderButton, RowSplitter, SwiperWrapper
 } from "components";
 
 import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
@@ -27,7 +31,8 @@ import {translate, TRANSLATION} from "utils/translation";
 const CompanyView = ({initialValues, onSubmit, children}) => {
     const [showCityPopup, setShowCityPopup] = useState(false);
     const [wasSubmitted, setWasSubmitted] = useState(false);
-    const [photos, setPhotos] = useState(initialValues.photos);
+    const [photos, setPhotos] = useState(initialValues.photos || []);
+    console.log(21, initialValues.photos, photos);
 
     const openCityPopup = () => setShowCityPopup(true);
     const closeCityPopup = () => setShowCityPopup(false);
@@ -39,11 +44,22 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
     }
 
     const onImageUpload = info => {
+        console.log(100, 'new image url: ', info)
         console.log(111, 'new image url: ', info.secure_url)
         console.log(222, [...photos, info.secure_url])
-        debugger
         setPhotos(prevState => [...prevState, info.secure_url]);
     }
+
+    const deleteImage = index => setPhotos(photos.filter((p, i) => i !== index));
+
+    const slides = photos?.map((src, index) => (
+        <div>
+            <LazyLoadImage src={src} />
+            <BasketButton onClick={() => deleteImage(index)}>
+                <DeleteBasketIcon />
+            </BasketButton>
+        </div>
+    ));
 
     return (
         <div>
@@ -65,7 +81,8 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
         >
             {({values, touched, handleBlur, setFieldValue, handleSubmit, handleChange, errors}) => (
                 <form onSubmit={handleSubmit}>
-                    {renderCompanyPhotos(photos)}
+                    {!!photos.length &&  <SwiperWrapper slides={slides} />}
+
                     <ContentContainer noShadow>
                         <Input
                             name='name'

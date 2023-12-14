@@ -11,5 +11,5 @@ export const BasketButton = styled.div`
   position: absolute;
   bottom: 0;
   right: 10px;
-  bottom: 10px
+  top: 10px
 `;

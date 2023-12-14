@@ -26,6 +26,7 @@ function CloudinaryUploadWidget({ uwConfig, setPublicId, onImageUpload}) {
                                 console.log("Done! Here is the image info: ", result.info);
                                 onImageUpload(result.info);
                                 setPublicId(result.info.public_id);
+                                // document.getElementsByClassName('CloseButton')[0].click()
                             }
                         }
                     );
