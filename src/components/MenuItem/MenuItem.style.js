@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   border-radius: ${BORDER_RADIUS.MENU_ITEM};
   border: solid 1px ${COLOR.ACCENT9};
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;  
   padding: 16px;
   
   svg {
@@ -21,11 +21,16 @@ export const Wrapper = styled.div`
   transition: background-color 0.5s;
 `
 
+export const InnerWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
 export const FoodImg = styled.img`
   width: 100%;
 `
 
-export const ImagesWrapper = styled.div`
+export const FoodImageWrapper = styled.div`
   min-width: 80px;
   min-height: 80px;
   max-width: 80px;

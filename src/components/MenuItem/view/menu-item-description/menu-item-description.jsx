@@ -1,5 +1,4 @@
 import {useState} from "react";
-import {Link} from "react-router-dom";
 
 import {
     Description,
@@ -11,34 +10,12 @@ import {
     SpanWeight600
 } from "./menu-item-description.style";
 
-import ToggleCheckbox from "../../../ToggleCheckbox/ToggleCheckbox";
-
-import {URL} from "utils/config";
-import {BE_API, fetchData} from "utils/fetch";
-import {errorHandler} from "utils/management";
-import {CATEGORY_ID_MAPPER_AS_OBJECT} from "utils/category";
 import {translate, TRANSLATION} from "utils/translation";
+import {CATEGORY_ID_MAPPER_AS_OBJECT} from "utils/category";
 
- const MenuItemDescription = ({
-                                    item = {},
-                                    isVisible,
-                                    setIsVisible,
-                                    isEditMode = false,
-                                    onEditClick,
-                                    isNewItemFlag
-                                }) => {
+ const MenuItemDescription = ({ item = {}, isNewItemFlag }) => {
 
     const [isShowItemDescription, setIsShowItemDescription] = useState(false)
-
-    const toggleIsMenuItemVisible = () => {
-        const requestBody = {
-            id: item.id, isVisible: !isVisible, method: 'put',
-        }
-        fetchData(BE_API.MENU_ITEM.CHANGE_IS_VISIBLE(), requestBody)
-            .then(() => setIsVisible(!isVisible))
-            .catch(errorHandler)
-
-    }
 
     const showItemDescription = () => {
         setIsShowItemDescription(true)
@@ -100,7 +77,6 @@ import {translate, TRANSLATION} from "utils/translation";
             {renderDescription()}
             {renderSizePrice()}
         </div>
-
     </>)
 }
 

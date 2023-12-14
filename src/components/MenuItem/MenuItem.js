@@ -1,8 +1,9 @@
 import {useState} from "react";
 import {
     Wrapper,
+    InnerWrapper,
     FoodImage,
-    ImagesWrapper,
+    FoodImageWrapper,
     FoodImg,
 } from "./MenuItem.style";
 
@@ -31,18 +32,21 @@ const MenuItem = (props) => {
             isVisible={isVisible}
             className='pm-MenuItem'
         >
-            <MenuItemDescription
-                {...props}
-                isVisible={isVisible}
-                setIsVisible={setIsVisible}
-            />
-            <ImagesWrapper>
-                <FoodImage src={item.imageUrl} onClick={() => setSelectedImgSrc(item.imageUrl)}/>
-                <ZoomIcon/>
-            </ImagesWrapper>
+            <InnerWrapper>
+                <MenuItemDescription
+                    {...props}
+                    isVisible={isVisible}
+                    setIsVisible={setIsVisible}
+                />
+                <FoodImageWrapper>
+                    <FoodImage src={item.imageUrl} onClick={() => setSelectedImgSrc(item.imageUrl)}/>
+                    <ZoomIcon/>
+                </FoodImageWrapper>
+            </InnerWrapper>
             <MenuItemPopup />
-            <MenuItemBottomSettings />
-    </Wrapper>);
+            <MenuItemBottomSettings {...props} />
+        </Wrapper>
+    );
 };
 
 export default MenuItem;
