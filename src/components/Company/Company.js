@@ -11,6 +11,7 @@ import {ReactComponent as TimeIcon} from "assets/icons/time.svg";
 import {ReactComponent as PhoneIcon} from "assets/icons/phone.svg";
 import {ReactComponent as Heart1Icon} from "assets/icons/heart1.svg";
 import {ReactComponent as Heart2Icon} from "assets/icons/heart2.svg";
+import defaultCompanyImg from 'assets/images/default/default_company.webp';
 
 import {
     Wrapper, Name, Content, CompanyInfo, Schedule, OpenStatus, FirstRow, Closes, LocationWrapper,
@@ -61,12 +62,18 @@ const Company = ({company, withMoreInfo, children, clickHandler}) => {
             <LocationIcon/>{translate(CITY_TRANSLATION_IDS[company.cityId])}, {company.street}
         </LocationWrapper>);
     }
-    const defaultCompanImg = 'https://res.cloudinary.com/dgdm0wb3u/image/upload/v1702487998/jkzakhi7ruq2jc1ndrpu.webp';
+
     const slides =
         !company.photos?.length
-            ? [<LazyLoadImage  src={defaultCompanImg} />]
-            : company.photos
-                .map(src => <LazyLoadImage src={src} alt="#"/>)
+            ? <LazyLoadImage src={defaultCompanyImg} width={'100%'}/>
+            : (
+                <SwiperWrapper
+                    slides={
+                        company.photos
+                            .map(src => <LazyLoadImage src={src} alt="#"/>)
+                    }
+                />
+            );
 
     const renderDaySchedule = () => (
         <Schedule>
@@ -109,7 +116,7 @@ const Company = ({company, withMoreInfo, children, clickHandler}) => {
     }
 
     return (<Wrapper withMoreInfo={withMoreInfo} onClick={clickHandler}>
-        <SwiperWrapper slides={slides} />
+        {slides}
         <Content>
             <CompanyInfo>
                 <FirstRow>

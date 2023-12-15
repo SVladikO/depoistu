@@ -6,7 +6,6 @@ import {Formik} from "formik";
 
 import {BasketButton} from "./company-view.style";
 
-import {ReactComponent as DeleteBasketIcon} from 'assets/icons/delete_basket.svg'
 
 import {
     ContentContainer,
@@ -27,6 +26,7 @@ import validation from "utils/validation";
 import {isScheduleValid} from "utils/company";
 import {CITY_TRANSLATION_IDS, getOnlyCityIds} from 'utils/cities'
 import {translate, TRANSLATION} from "utils/translation";
+import ImageWithDelete from "../../components/ImageWithDelete/image-with-delete";
 
 const CompanyView = ({initialValues, onSubmit, children}) => {
     const [showCityPopup, setShowCityPopup] = useState(false);
@@ -52,14 +52,7 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
 
     const deleteImage = index => setPhotos(photos.filter((p, i) => i !== index));
 
-    const slides = photos?.map((src, index) => (
-        <div>
-            <LazyLoadImage src={src} />
-            <BasketButton onClick={() => deleteImage(index)}>
-                <DeleteBasketIcon />
-            </BasketButton>
-        </div>
-    ));
+    const slides = photos?.map((src, index) => <ImageWithDelete src={src} onDelete={() => deleteImage(index)} />)
 
     return (
         <div>

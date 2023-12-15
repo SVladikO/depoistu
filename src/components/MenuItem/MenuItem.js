@@ -8,6 +8,7 @@ import {
 } from "./MenuItem.style";
 
 import {ReactComponent as ZoomIcon} from "assets/icons/zoom.svg";
+import imgSrc from 'assets/images/default/default_menu_item.webp';
 
 import {Popup } from "components";
 import MenuItemDescription from "./view/menu-item-description/menu-item-description";
@@ -27,6 +28,8 @@ const MenuItem = (props) => {
         )
     )
 
+    const imageUrl = item.imageUrl || imgSrc; //'https://res.cloudinary.com/dgdm0wb3u/image/upload/v1702652038/sypvmh6pkllv4wem5mu2.webp'
+
     return (
         <Wrapper
             isVisible={isVisible}
@@ -39,7 +42,7 @@ const MenuItem = (props) => {
                     setIsVisible={setIsVisible}
                 />
                 <FoodImageWrapper>
-                    <FoodImage src={item.imageUrl} onClick={() => setSelectedImgSrc(item.imageUrl)}/>
+                    <FoodImage src={imageUrl} onClick={() => setSelectedImgSrc(imageUrl)}/>
                     <ZoomIcon/>
                 </FoodImageWrapper>
             </InnerWrapper>

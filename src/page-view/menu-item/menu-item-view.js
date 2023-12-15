@@ -3,7 +3,9 @@ import {Formik} from "formik";
 import * as Yup from 'yup';
 
 import {GroupSizePrice} from "./menu-item-view.style";
-import {Dropdown, ContentContainer, Input, Textarea} from "components";
+import {Dropdown, ContentContainer, Input, Textarea, ImageUploaderButton} from "components";
+
+import ImageWithDelete from "../../components/ImageWithDelete/image-with-delete";
 
 import validation from "utils/validation";
 import {CATEGORY_MAPPER_AS_ARRAY} from "utils/category";
@@ -29,7 +31,12 @@ const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
             isGroupTitle,
         })), [])
 
+    const imageSrc = 'https://media.istockphoto.com/id/1191080960/photo/traditional-turkish-breakfast-and-people-taking-various-food-wide-composition.jpg?s=612x612&w=0&k=20&c=PP5ejMisEwzcLWrNmJ8iPPm_u-4P6rOWHEDpBPL2n7Q='
+
+
     return (
+        <div>
+            <ImageUploaderButton onImageUpload={() => {}}/>
         <Formik
             enableReinitialize
             initialValues={defaultInitialValue}
@@ -42,6 +49,7 @@ const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
             {({values, handleBlur, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                 <form onSubmit={handleSubmit}>
                     <ContentContainer noShadow>
+                        <ImageWithDelete src={imageSrc} onDelete={() => {}} />
                         <Dropdown
                             label={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.CATEGORY)}
                             options={options}
@@ -160,6 +168,7 @@ const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
                 </form>
             )}
         </Formik>
+        </div>
     )
 }
 
