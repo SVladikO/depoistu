@@ -3,7 +3,7 @@ import {SecondaryButton} from "components";
 
 const CloudinaryScriptContext = createContext();
 
-function CloudinaryUploadWidget({ uwConfig, setPublicId, onImageUpload}) {
+function CloudinaryUploadWidget({ uwConfig, onImageUpload}) {
     const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
@@ -23,19 +23,20 @@ function CloudinaryUploadWidget({ uwConfig, setPublicId, onImageUpload}) {
                         uwConfig,
                         (error, result) => {
                             if (!error && result && result.event === "success") {
-                                console.log("Done! Here is the image info: ", result.info);
+                                console.log("Image uploaded", {result}, {onImageUpload});
                                 onImageUpload(result.info);
-                                setPublicId(result.info.public_id);
-                                // document.getElementsByClassName('CloseButton')[0].click()
                             }
                         }
                     );
                  });
                 document.body.appendChild(script);
             } else {
+                alert('already loaded')
                 // If already loaded, update the state
                 setLoaded(true);
             }
+        } else {
+
         }
     }, [loaded]);
 

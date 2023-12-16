@@ -31,27 +31,28 @@ export const FoodImg = styled.img`
 `
 
 export const FoodImageWrapper = styled.div`
-  min-width: 80px;
-  min-height: 80px;
-  max-width: 80px;
-  max-height: 80px;
-  background: ${COLOR.ACCENT2};
-  border-radius: ${BORDER_RADIUS.CIRCLE};
-  border: solid 1px ${COLOR.ACCENT4};
-  margin: 0 0 0 16px;
-  position: relative;
-  svg {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 12px;
-    height: 12px;
-    color: ${COLOR.ACCENT5};
-  }
-`;
+    min-width: 80px;
+    min-height: 80px;
+    max-width: 80px;
+    max-height: 80px;
+    background: ${COLOR.ACCENT2};
+    border-radius: ${BORDER_RADIUS.CIRCLE};
+    border: solid 1px ${COLOR.ACCENT4};
+    margin: 0 0 0 16px;
+    position: relative;
 
-export const FoodImage = styled.img`
-  width: 80px;
-  height: 80px;
-  border-radius: ${BORDER_RADIUS.CIRCLE};
+    & > img {
+        width: 80px;
+        height: 80px;
+        border-radius: ${BORDER_RADIUS.CIRCLE};
+    }
+
+    svg {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 12px;
+        height: 12px;
+        color: ${COLOR.ACCENT5};
+    }
 `;

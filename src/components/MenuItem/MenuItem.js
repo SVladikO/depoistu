@@ -1,8 +1,9 @@
 import {useState} from "react";
+import {LazyLoadImage} from 'react-lazy-load-image-component';
+
 import {
     Wrapper,
     InnerWrapper,
-    FoodImage,
     FoodImageWrapper,
     FoodImg,
 } from "./MenuItem.style";
@@ -10,9 +11,10 @@ import {
 import {ReactComponent as ZoomIcon} from "assets/icons/zoom.svg";
 import imgSrc from 'assets/images/default/default_menu_item.webp';
 
-import {Popup } from "components";
+import {Popup} from "components";
 import MenuItemDescription from "./view/menu-item-description/menu-item-description";
 import MenuItemBottomSettings from "./view/menu-item-bottom-settings/menu-item-bottom-settings";
+import ImageUrlFormatter from "../../utils/image.utils";
 
 const MenuItem = (props) => {
     const {item} = props;
@@ -22,7 +24,7 @@ const MenuItem = (props) => {
     const MenuItemPopup = () => (
         !!selectedImgSrc && (
             <Popup.Bottom onClose={() => setSelectedImgSrc('')}>
-                <FoodImg src={selectedImgSrc} />
+                <FoodImg src={ImageUrlFormatter.formatForMenuItemBig(selectedImgSrc)}/>
                 <MenuItemDescription {...props} />
             </Popup.Bottom>
         )
@@ -42,11 +44,13 @@ const MenuItem = (props) => {
                     setIsVisible={setIsVisible}
                 />
                 <FoodImageWrapper>
-                    <FoodImage src={imageUrl} onClick={() => setSelectedImgSrc(imageUrl)}/>
+                    <LazyLoadImage
+                        src={ImageUrlFormatter.formatForMenuItemSmall(imageUrl)}
+                        onClick={() => setSelectedImgSrc(imageUrl)}/>
                     <ZoomIcon/>
                 </FoodImageWrapper>
             </InnerWrapper>
-            <MenuItemPopup />
+            <MenuItemPopup/>
             <MenuItemBottomSettings {...props} />
         </Wrapper>
     );

@@ -5,13 +5,16 @@ import {Wrapper, BasketButton} from "./image-with-delete.style";
 
 import {ReactComponent as DeleteBasketIcon} from 'assets/icons/delete_basket.svg'
 
-const ImageWithDelete = ({src, onDelete}) => (
-    <Wrapper className="ImageWithDelete">
-        <LazyLoadImage src={src} width={'100%'} />
-        <BasketButton onClick={onDelete}>
-            <DeleteBasketIcon/>
-        </BasketButton>
-    </Wrapper>
-)
+const ImageWithDelete = ({src, onDelete, noHeightRestriction = false}) => {
+
+    return (
+        <Wrapper className="ImageWithDelete" noHeightRestriction={noHeightRestriction}>
+            <LazyLoadImage src={src} width={'100%'}/>
+            <BasketButton onClick={onDelete}>
+                <DeleteBasketIcon/>
+            </BasketButton>
+        </Wrapper>
+    )
+}
 
 export default ImageWithDelete;

@@ -29,6 +29,7 @@ import {parseSchedule} from "utils/company";
 import {BE_API, fetchData} from "utils/fetch";
 import {CITY_TRANSLATION_IDS} from "utils/cities";
 import {translate, TRANSLATION as TR, truncate} from "utils/translation";
+import ImageUrlFormatter from "../../utils/image.utils";
 
 const Company = ({company, withMoreInfo, children, clickHandler}) => {
 
@@ -65,12 +66,12 @@ const Company = ({company, withMoreInfo, children, clickHandler}) => {
 
     const slides =
         !company.photos?.length
-            ? <LazyLoadImage src={defaultCompanyImg} width={'100%'}/>
+            ? <LazyLoadImage src={ImageUrlFormatter.formatForCompany(defaultCompanyImg)} width={'100%'}/>
             : (
                 <SwiperWrapper
                     slides={
                         company.photos
-                            .map(src => <LazyLoadImage src={src} alt="#"/>)
+                            .map(src => <LazyLoadImage src={ImageUrlFormatter.formatForCompany(src)} alt="#"/>)
                     }
                 />
             );

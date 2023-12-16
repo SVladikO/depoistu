@@ -42,6 +42,7 @@ import {SecondaryButton} from "./Buttons/SecondaryButton";
 import {ThirdButton} from "./Buttons/ThirdButton";
 import {Text22} from "./Text/Text.style";
 import ImageUploaderButton from "./ImageUploaderButton/ImageUploaderButton";
+import ImageWithDelete from "./ImageWithDelete/image-with-delete";
 
 export {
     AccountSettings,
@@ -64,6 +65,7 @@ export {
     HorizontalSwiper,
     Input,
     ImageUploaderButton,
+    ImageWithDelete,
     Label,
     Like,
     MenuItem,

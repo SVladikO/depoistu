@@ -3,7 +3,6 @@ import {Cloudinary} from "@cloudinary/url-gen";
 import CloudinaryUploadWidget from './cloudinary-widget'
 
 export default function ImageUploaderButton({onImageUpload}) {
-    const [publicId, setPublicId] = useState("");
     const [cloudName] = useState("dgdm0wb3u");
     const [uploadPreset] = useState("nx0a8k4m");
 
@@ -38,6 +37,12 @@ export default function ImageUploaderButton({onImageUpload}) {
         }
     });
 
-    return <CloudinaryUploadWidget uwConfig={uwConfig} setPublicId={setPublicId} onImageUpload={onImageUpload}/>
+    return <CloudinaryUploadWidget
+        uwConfig={uwConfig}
+        onImageUpload={ e => {
+            alert('yes')
+            onImageUpload(e);
+        }}
+    />
 }
 
