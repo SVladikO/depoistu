@@ -40,11 +40,7 @@ const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
             isGroupTitle,
         })), [])
 
-    const onImageUpload = info => {
-        alert('yes 2')
-        console.log(2222, info.secure_url)
-        setImageUrl(info.secure_url);
-    }
+    const onImageUpload = info => setImageUrl(info.secure_url);
 
     console.log({imageUrl})
 
@@ -62,10 +58,7 @@ const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
                         <ImageWithDelete
                             src={ImageUrlFormatter.formatForMenuItemBig(imageUrl)}
                             noHeightRestriction
-                            onDelete={() => {
-                                alert('ogo')
-                                setImageUrl('')
-                            }}/>
+                            onDelete={() => setImageUrl('')}/>
                     </div>
                 )
                 : (

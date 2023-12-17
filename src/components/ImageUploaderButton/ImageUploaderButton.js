@@ -39,10 +39,7 @@ export default function ImageUploaderButton({onImageUpload}) {
 
     return <CloudinaryUploadWidget
         uwConfig={uwConfig}
-        onImageUpload={ e => {
-            alert('yes')
-            onImageUpload(e);
-        }}
+        onImageUpload={onImageUpload}
     />
 }
 

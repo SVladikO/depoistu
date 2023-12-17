@@ -16,33 +16,36 @@ function CloudinaryUploadWidget({ uwConfig, onImageUpload}) {
                 script.setAttribute("async", "");
                 script.setAttribute("id", "uw");
                 script.src = "https://upload-widget.cloudinary.com/global/all.js";
+
                 script.addEventListener("load", () => {
                     setLoaded(true)
-
-                    window.myWidget = window.cloudinary.createUploadWidget(
-                        uwConfig,
-                        (error, result) => {
-                            if (!error && result && result.event === "success") {
-                                console.log("Image uploaded", {result}, {onImageUpload});
-                                onImageUpload(result.info);
-                            }
-                        }
-                    );
                  });
                 document.body.appendChild(script);
             } else {
-                alert('already loaded')
                 // If already loaded, update the state
                 setLoaded(true);
             }
-        } else {
-
         }
+
     }, [loaded]);
+
+    const openUploadWidget = () => {
+        window.myWidget = window.cloudinary.createUploadWidget(
+            uwConfig,
+            (error, result) => {
+                if (!error && result && result.event === "success") {
+                    console.log("Image uploaded", {result}, {onImageUpload});
+                    onImageUpload(result.info);
+                }
+            }
+        );
+
+        window.myWidget.open()
+    }
 
     return (
         <CloudinaryScriptContext.Provider value={{ loaded }}>
-            <SecondaryButton clickHandler={() => window.myWidget.open()} isWide withPadding>
+            <SecondaryButton clickHandler={openUploadWidget} isWide withPadding>
                 Загрузити фото
             </SecondaryButton>
         </CloudinaryScriptContext.Provider>
