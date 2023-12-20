@@ -2,18 +2,21 @@ import {useState} from "react";
 
 import {
     Description,
-    FoodTitle,
+    FoodTitle, Wrapper,
     NewFlag,
     SeeMore,
+    FirstRow,
     SizePriceTd,
     SizePriceWrapper,
     SpanWeight600
 } from "./menu-item-description.style";
 
+import {ReactComponent as PictureIcon} from "assets/icons/picture.svg";
+
 import {translate, TRANSLATION} from "utils/translation";
 import {CATEGORY_ID_MAPPER_AS_OBJECT} from "utils/category";
 
- const MenuItemDescription = ({ item = {}, isNewItemFlag }) => {
+ const MenuItemDescription = ({ isNewItemFlag, item = {}, isSwitchImageVisible, switchImageVisibility }) => {
 
     const [isShowItemDescription, setIsShowItemDescription] = useState(false)
 
@@ -71,12 +74,15 @@ import {CATEGORY_ID_MAPPER_AS_OBJECT} from "utils/category";
     }
 
     return (<>
-        {isNewItemFlag && <NewFlag>New</NewFlag>}
-        <div>
-            <FoodTitle>{item.name}</FoodTitle>
+        <Wrapper>
+            {isNewItemFlag && <NewFlag>New</NewFlag>}
+            <FirstRow>
+                <FoodTitle>{item.name}</FoodTitle>
+                {isSwitchImageVisible && <PictureIcon onClick={switchImageVisibility}/>}
+            </FirstRow>
             {renderDescription()}
             {renderSizePrice()}
-        </div>
+        </Wrapper>
     </>)
 }
 

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {BORDER_RADIUS, COLOR, FONT} from "utils/theme";
+import {BORDER_RADIUS, COLOR} from "utils/theme";
 
 export const Wrapper = styled.div`
   position: relative;
@@ -18,17 +18,6 @@ export const Wrapper = styled.div`
   }
   background-color: ${({isVisible}) => isVisible ? 'none': COLOR.ERROR2};
   transition: background-color 0.5s;
-`
-
-export const InnerWrapper = styled.div`
-    display: flex;
-    justify-content: space-between;
-    padding: 16px;
-    
-`
-
-export const FoodImg = styled.img`
-  width: 100%;
 `
 
 export const FoodImage = styled.img`

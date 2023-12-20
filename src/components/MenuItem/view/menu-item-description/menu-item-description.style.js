@@ -1,16 +1,39 @@
 import styled from "styled-components";
-import {COLOR, FONT} from "../../../../utils/theme";
+import {COLOR, FONT} from "utils/theme";
 
 export const SizePriceWrapper = styled.div`
   display: flex;
   justify-content: left;
+  padding: 14px 0 0;
+`;
+
+export const Wrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+`;
+
+export const FirstRow = styled.div`
+  position: relative;
+
+  & > svg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+  }
+
+  & > svg:hover {
+    cursor: pointer;
+  }
 `;
 
 export const FoodTitle = styled.div`
   ${FONT.SIZE_20};
   ${FONT.WEIGHT_600};
   color: ${COLOR.ACCENT1};
-  margin: 0 5px 4px 0;
+  padding: 0 38px 0 0;
   display: flex;
   flex-wrap: wrap;
   word-break: break-word;
@@ -20,7 +43,6 @@ export const Description = styled.div`
   ${FONT.SIZE_16};
   ${FONT.WEIGHT_400};
   margin-top: 8px;
-  margin-right: 58px;
 `;
 
 export const NewFlag = styled.div`
