@@ -33,7 +33,6 @@ export const FoodImg = styled.img`
 
 export const FoodImage = styled.img`
     width: 100%;
-    height: 200px;
     background: ${COLOR.ACCENT2};
     border: solid 1px ${COLOR.ACCENT4};
     position: relative;
