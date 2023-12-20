@@ -3,7 +3,7 @@ import {Formik} from "formik";
 import * as Yup from 'yup';
 
 import {GroupSizePrice} from "./menu-item-view.style";
-import {FoodImageWrapper} from '../../components/MenuItem/MenuItem.style'
+import {FoodImage} from '../../components/MenuItem/MenuItem.style'
 import {
     Dropdown,
     ContentContainer,
@@ -49,12 +49,6 @@ const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
             {imageUrl
                 ? (
                     <div>
-                        <div>Small example</div>
-                        <FoodImageWrapper>
-                            <img src={ImageUrlFormatter.formatForMenuItemSmall(imageUrl)} alt=""/>
-                        </FoodImageWrapper>
-                        <br/>
-                        <div>Popup example</div>
                         <ImageWithDelete
                             src={ImageUrlFormatter.formatForMenuItemBig(imageUrl)}
                             noHeightRestriction

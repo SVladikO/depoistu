@@ -11,7 +11,6 @@ export const Wrapper = styled.div`
   border: solid 1px ${COLOR.ACCENT9};
   display: flex;
   flex-direction: column;  
-  padding: 16px;
   
   svg {
     width: 25px;
@@ -22,23 +21,21 @@ export const Wrapper = styled.div`
 `
 
 export const InnerWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+    
 `
 
 export const FoodImg = styled.img`
   width: 100%;
 `
 
-export const FoodImageWrapper = styled.div`
-    min-width: 80px;
-    min-height: 80px;
-    max-width: 80px;
-    max-height: 80px;
+export const FoodImage = styled.img`
+    width: 100%;
+    height: 200px;
     background: ${COLOR.ACCENT2};
-    border-radius: ${BORDER_RADIUS.CIRCLE};
     border: solid 1px ${COLOR.ACCENT4};
-    margin: 0 0 0 16px;
     position: relative;
 
     & > img {

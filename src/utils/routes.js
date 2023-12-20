@@ -21,7 +21,6 @@ export const HeightWrapper = styled.div`
 `;
 
 export const MobileWrapper = styled.div`
-  overflow: hidden;
   min-width: ${DEVICE_WIDTH.MIN};
   max-width: ${DEVICE_WIDTH.MAX};
   margin: 0 auto;
