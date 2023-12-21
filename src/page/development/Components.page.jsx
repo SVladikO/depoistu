@@ -71,7 +71,7 @@ const mockMenuItem = {
     name: '4 Cheese',
     categoryId: 1,
     description: 'spicy , tomato, sauce, chilies, mozzare, lla, spicy, ice, tomato, sauce, chili, mozzarella, sauce, chili',
-    imageUrl: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
+    photos: ['https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png'],
     size_1: 100,
     price_1: 120,
     size_2: 200,
@@ -345,8 +345,8 @@ const componentsGroup2 = [
             title: 'Company',
             component: <Company
                 company={{
-                    photos: 'https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg, https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg, https://afisha.bigmir.net/i/23/51/30/9/2351309/gallery/15b8175dc297f8a58d9de22e77b7b256-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg',
                     name: 'Domono',
+                    photos: ['https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg', 'https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg'],
                     cityId: '204',
                     schedule: ', , , , , 11:00-22:00, 10:00-19:00',
                     street: 'Davidusk 15.',
@@ -358,7 +358,7 @@ const componentsGroup2 = [
             component: <Company
                 withMoreInfo
                 company={{
-                    photos: 'https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg, https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg, https://afisha.bigmir.net/i/23/51/30/9/2351309/gallery/15b8175dc297f8a58d9de22e77b7b256-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg',
+                    photos: ['https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg', 'https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg'],
                     name: 'Domono',
                     cityId: '204',
                     schedule: '01:00-21:00, 01:00-21:00, 01:00-21:00, 01:00-21:00, 01:00-21:00, 01:00-22:00, 01:00-22:00',
@@ -371,7 +371,7 @@ const componentsGroup2 = [
             title: 'Company',
             component: <Company
                 company={{
-                    photos: 'https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg, https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg, https://afisha.bigmir.net/i/23/51/30/9/2351309/gallery/15b8175dc297f8a58d9de22e77b7b256-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg',
+                    photos: ['https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg', 'https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg'],
                     name: 'Domono',
                     cityId: '204',
                     schedule: ',,,,,,',
