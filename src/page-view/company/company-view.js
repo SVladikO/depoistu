@@ -71,7 +71,7 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                         return;
                     }
 
-                    onSubmit({...values, photos: photos.toString()});
+                    onSubmit({...values, longitude: 0, latitude: 0, photos: photos.toString()});
                 }}
             >
                 {({values, touched, handleBlur, setFieldValue, handleSubmit, handleChange, errors}) => (
