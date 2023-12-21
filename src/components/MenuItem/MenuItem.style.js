@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   font-style: normal;
   font-size: 16px;
   line-height: 19px;
-  background: ${COLOR.ACCENT4};
+  background: ${p => p.isItemVisible ? COLOR.ACCENT4 : COLOR.ACCENT7};
   border-radius: ${BORDER_RADIUS.MENU_ITEM};
   border: solid 1px ${COLOR.ACCENT9};
   display: flex;
@@ -16,9 +16,8 @@ export const Wrapper = styled.div`
     width: 25px;
     height: 25px;
   }
-  background-color: ${({isVisible}) => isVisible ? 'none': COLOR.ERROR2};
   transition: background-color 0.5s;
-`
+`;
 
 export const FoodImage = styled.img`
     width: 100%;

@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 
-import { EditLabel, EditRow, EditWrapper} from "./menu-item-bottom-settings.style";
+import {EditLabel, EditRow, EditWrapper} from "./menu-item-bottom-settings.style";
 import {ReactComponent as EditIcon} from 'assets/icons/edit.svg';
 import ToggleCheckbox from "../../../ToggleCheckbox/ToggleCheckbox";
 
@@ -10,23 +10,23 @@ import {errorHandler} from "utils/management";
 import {translate, TRANSLATION} from "utils/translation";
 
 const MenuItemBottomSettings = ({
-                             item = {},
-                             isVisible,
-                             setIsVisible,
-                             isEditMode = false,
-                             onEditClick,
-                         }) => {
+                                    item = {},
+                                    isItemVisible,
+                                    setIsItemVisible,
+                                    isEditMode = false,
+                                    onEditClick,
+                                }) => {
 
     const toggleIsMenuItemVisible = () => {
         const requestBody = {
             id: item.id,
-            isVisible: !isVisible,
+            isVisible: isItemVisible,
             method: 'put',
         }
-        fetchData(BE_API.MENU_ITEM.CHANGE_IS_VISIBLE(), requestBody)
-            .then(() => setIsVisible(!isVisible))
-            .catch(errorHandler)
 
+        fetchData(BE_API.MENU_ITEM.CHANGE_IS_VISIBLE(), requestBody)
+            .then(res => setIsItemVisible(res.body.isVisible))
+            .catch(errorHandler)
     }
 
     if (!isEditMode) {
@@ -34,10 +34,10 @@ const MenuItemBottomSettings = ({
     }
 
     return (
-       <EditRow>
+        <EditRow>
             <ToggleCheckbox
-                isVisible={isVisible}
-                isChecked={isVisible}
+                isVisible={isItemVisible}
+                isChecked={isItemVisible}
                 changeHandler={toggleIsMenuItemVisible}
                 label={translate(TRANSLATION.COMPONENTS.MENU_ITEM.BUTTON.CHANGE_VISIBILITY)}
             />

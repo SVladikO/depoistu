@@ -11,25 +11,23 @@ import ImageUrlFormatter from "utils/image.utils";
 
 const MenuItem = (props) => {
     const {item} = props;
-    const [isVisible, setIsVisible] = useState(!!item.isVisible)
+    const [isItemVisible, setIsItemVisible] = useState(!!item.isVisible)
     const [isImageVisible, setIsImageVisible] = useState(false)
-
-    const imageUrl = item.imageUrl;
 
     return (
         <Wrapper
-            isVisible={isVisible}
             className='pm-MenuItem'
+            isItemVisible={isItemVisible}
         >
-            {isImageVisible && <FoodImage src={ImageUrlFormatter.formatForMenuItemBig(imageUrl)}/>}
+            {isImageVisible && <FoodImage src={ImageUrlFormatter.formatForMenuItemBig(item.imageUrl)}/>}
             <MenuItemDescription
                 {...props}
-                isVisible={isVisible}
-                setIsVisible={setIsVisible}
+                isItemVisible={isItemVisible}
+                wasImageShow={isImageVisible}
                 isSwitchImageVisible={!!item.imageUrl}
                 switchImageVisibility={() => setIsImageVisible(!isImageVisible)}
             />
-            <MenuItemBottomSettings {...props} />
+            <MenuItemBottomSettings {...props} isItemVisible={isItemVisible} setIsItemVisible={setIsItemVisible}/>
         </Wrapper>
     );
 };
