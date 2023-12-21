@@ -48,7 +48,7 @@ function getDomainBE() {
             }
 
         case "https://depoistu-develop.onrender.com":
-        // case "http://localhost:3000":
+        case "http://localhost:3000":
             return {
                 name: 'develop',
                 url: 'https://depoistu-develop-ab315caf64ab.herokuapp.com'

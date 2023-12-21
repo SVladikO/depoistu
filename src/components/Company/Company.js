@@ -122,28 +122,30 @@ const Company = ({company, withMoreInfo, children, clickHandler}) => {
             .catch(errorHandler)
     }
 
-    return (<Wrapper withMoreInfo={withMoreInfo} onClick={clickHandler}>
-        {slides}
-        <Content>
-            <CompanyInfo>
-                <FirstRow>
-                    <Name>{company.name}</Name>
-                    {customer
-                        ? isLikedByCurrentCustomer
-                            ? <Heart2Icon className="like_company_icon" onClick={unlikeCompany}/>
-                            : <Heart1Icon className="like_company_icon" onClick={likeCompany}/>
-                        : null}
+    return (
+        <Wrapper withMoreInfo={withMoreInfo} onClick={clickHandler}>
+            {slides}
+            <Content>
+                <CompanyInfo>
+                    <FirstRow>
+                        <Name>{company.name}</Name>
+                        {customer
+                            ? isLikedByCurrentCustomer
+                                ? <Heart2Icon className="like_company_icon" onClick={unlikeCompany}/>
+                                : <Heart1Icon className="like_company_icon" onClick={likeCompany}/>
+                            : null}
 
-                </FirstRow>
-                {renderCityStreet()}
-                {renderDaySchedule()}
-                {renderPhones()}
-                {withMoreInfo && company.schedule && company.schedule.length &&
-                    <ScheduleDetails scheduleAsArray={parsedSchedule.workDays}/>}
-            </CompanyInfo>
-            {children}
-        </Content>
-    </Wrapper>);
+                    </FirstRow>
+                    {renderCityStreet()}
+                    {renderDaySchedule()}
+                    {renderPhones()}
+                    {withMoreInfo && company.schedule && company.schedule.length &&
+                        <ScheduleDetails scheduleAsArray={parsedSchedule.workDays}/>
+                    }
+                </CompanyInfo>
+                {children}
+            </Content>
+        </Wrapper>);
 };
 
 

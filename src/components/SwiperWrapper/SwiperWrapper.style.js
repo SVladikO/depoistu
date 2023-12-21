@@ -3,8 +3,7 @@ import {COLOR, hexToRgbA} from "../../utils/theme";
 
 export const ImageSection = styled.div`
   display: flex;
-  height: 200px;
-  max-height: 200px;
+  height: 280px;
   justify-content: center;
   position: relative;
 
