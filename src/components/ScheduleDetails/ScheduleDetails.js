@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-import {DaySchedule, From, To, ScheduleContainer, ScheduleContent, ScheduleWrapper, Border} from "./WeekScheduleOutput.style";
+import {DaySchedule, From, To, ScheduleContainer, ScheduleContent, ScheduleWrapper, Border} from "./ScheduleDetails.style";
 
 import {translate, TRANSLATION as TR} from "utils/translation";
 import {ThirdButton} from "components/Buttons/ThirdButton";

@@ -33,7 +33,7 @@ import
     Textarea,
     Company,
     Label,
-    MenuItemDetails,
+    MenuItemDescription,
     Dropdown,
     PrimaryButton,
     NotificationFactory,
@@ -269,14 +269,14 @@ const componentsGroup2 = [
         {
             title: 'MenuItemDetails without description',
             component:
-                <MenuItemDetails
+                <MenuItemDescription
                     item={{...mockMenuItem, description: ''}}
                     isVisible
                 />
         }, {
         title: 'MenuItemDetails with description',
         component:
-            <MenuItemDetails
+            <MenuItemDescription
                 item={mockMenuItem}
                 isVisible
             />
@@ -284,7 +284,7 @@ const componentsGroup2 = [
         {
             title: 'MenuItemDetails with image',
             component:
-                <MenuItemDetails
+                <MenuItemDescription
                     item={{...mockMenuItem, description: ''}}
                     isWithImage
                     isVisible
@@ -292,7 +292,7 @@ const componentsGroup2 = [
         }, {
         title: 'MenuItemDetails with image & description',
         component:
-            <MenuItemDetails
+            <MenuItemDescription
                 item={mockMenuItem}
                 isWithImage
                 isVisible
@@ -300,7 +300,7 @@ const componentsGroup2 = [
     }, {
         title: 'MenuItemDetails with image & description & "new" flag',
         component:
-            <MenuItemDetails
+            <MenuItemDescription
                 item={mockMenuItem}
                 isWithImage
                 isNewItemFlag
@@ -312,7 +312,7 @@ const componentsGroup2 = [
             component:
                 <MenuItem
                     item={mockMenuItem}
-                    withEditIcon
+                    isEditMode
                     isWithImage
                 />
         },

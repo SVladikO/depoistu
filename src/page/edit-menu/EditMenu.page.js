@@ -75,7 +75,7 @@ const EditMenu = () => {
                         // showAllCategories
                         showMenuItemAmount
                         menuItems={menuItems}
-                        withEditIcon
+                        isEditMode
                         editPage
                     />
                 }

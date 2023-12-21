@@ -21,6 +21,8 @@ import Popup from "./Popup/Popup";
 import Price from "./Price/Price";
 import Rating from "./Rating/Rating";
 import SettingMenuRow from "./SettingMenuRow/SettingMenuRow";
+import SwiperWrapper from "./SwiperWrapper/SwiperWrapper";
+import ScheduleDetails from "./ScheduleDetails/ScheduleDetails";
 import ToggleCheckbox from "./ToggleCheckbox/ToggleCheckbox";
 import WarningMessage from "./WarningMessage/WarningMessage";
 import WeekScheduleInput from "./WeekScheduleInput/WeekScheduleInput";
@@ -32,13 +34,15 @@ import Footer from "./Footer/Footer";
 import {FixedWrapper} from "./FixedWrapper/FixedWrapper.style";
 import {Input, CityInput, Textarea} from "./Input/Input";
 import {Label} from "./Label/Label.style";
-import {MenuItemDetails} from "./MenuItem/MenuItem";
+import MenuItemDescription from "./MenuItem/view/menu-item-description/menu-item-description";
 import {NotificationFactory, NOTIFICATION_STATUS, NotificationLoading} from "./Notification/Notification";
 import {PrimaryButton} from "./Buttons/PrimaryButton";
 import {RowSplitterStyle as RowSplitter} from "./RowSplitter/RowSplitter.style";
 import {SecondaryButton} from "./Buttons/SecondaryButton";
 import {ThirdButton} from "./Buttons/ThirdButton";
 import {Text22} from "./Text/Text.style";
+import ImageUploaderButton from "./ImageUploaderButton/ImageUploaderButton";
+import ImageWithDelete from "./ImageWithDelete/image-with-delete";
 
 export {
     AccountSettings,
@@ -60,6 +64,8 @@ export {
     HistoryTabBar,
     HorizontalSwiper,
     Input,
+    ImageUploaderButton,
+    ImageWithDelete,
     Label,
     Like,
     MenuItem,
@@ -79,12 +85,14 @@ export {
     RowSplitter,
     SecondaryButton,
     SettingMenuRow,
+    SwiperWrapper,
+    ScheduleDetails,
     Text22,
     Textarea,
     ThirdButton,
     ToggleCheckbox,
     WarningMessage,
     WeekScheduleInput,
-    MenuItemDetails,
+    MenuItemDescription,
 }
 
