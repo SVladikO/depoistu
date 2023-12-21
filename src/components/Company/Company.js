@@ -1,7 +1,8 @@
 import React from 'react';
+import {SwiperSlide} from "swiper/react";
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+import {LazyLoadImage} from 'react-lazy-load-image-component';
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -59,21 +60,26 @@ const Company = ({company, withMoreInfo, children, clickHandler}) => {
             </Link>)
         }
 
-        return (<LocationWrapper>
-            <LocationIcon/>{translate(CITY_TRANSLATION_IDS[company.cityId])}, {company.street}
-        </LocationWrapper>);
+        return (
+            <LocationWrapper>
+                <LocationIcon/>{translate(CITY_TRANSLATION_IDS[company.cityId])}, {company.street}
+            </LocationWrapper>
+        );
     }
 
     const slides =
         !company.photos?.length
             ? <LazyLoadImage src={ImageUrlFormatter.formatForCompany(defaultCompanyImg)} width={'100%'}/>
             : (
-                <SwiperWrapper
-                    slides={
-                        company.photos
-                            .map(src => <LazyLoadImage src={ImageUrlFormatter.formatForCompany(src)} alt="#"/>)
+                <SwiperWrapper>
+                    {company.photos.map((src, index) => (
+                            <SwiperSlide key={index}>
+                                <LazyLoadImage src={ImageUrlFormatter.formatForCompany(src)} alt="#"/>
+                            </SwiperSlide>
+                        )
+                    )
                     }
-                />
+                </SwiperWrapper>
             );
 
     const renderDaySchedule = () => (

@@ -1,9 +1,10 @@
-import {Swiper, SwiperSlide} from "swiper/react";
+import {Swiper} from "swiper/react";
 import {Navigation, Pagination} from "swiper";
 
 import {ImageSection} from "./SwiperWrapper.style";
 
-export default function SwiperWrapper({slidesPerView = 1, slides}) {
+export default function SwiperWrapper({slidesPerView = 1, children}) {
+
     return (
         <ImageSection>
             <Swiper
@@ -12,12 +13,7 @@ export default function SwiperWrapper({slidesPerView = 1, slides}) {
                 navigation
                 pagination={{clickable: true}}
             >
-                { slides.map((s, i) => (
-                   <SwiperSlide key={i}>
-                       {s}
-                   </SwiperSlide>
-                ))
-                }
+                {children}
             </Swiper>
         </ImageSection>
     )

@@ -1,11 +1,8 @@
-import {LazyLoadImage} from 'react-lazy-load-image-component';
 import React, {useState, useMemo} from "react";
+import {SwiperSlide} from "swiper/react";
 import * as Yup from "yup";
 
 import {Formik} from "formik";
-
-import {BasketButton} from "./company-view.style";
-
 
 import {
     ContentContainer,
@@ -21,13 +18,13 @@ import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
 import {ReactComponent as PhoneIcon} from "assets/icons/phone.svg";
 
 import WarningMessage from "components/WarningMessage/WarningMessage";
+import ImageWithDelete from "components/ImageWithDelete/image-with-delete";
 
 import validation from "utils/validation";
 import {isScheduleValid} from "utils/company";
-import {CITY_TRANSLATION_IDS, getOnlyCityIds} from 'utils/cities'
+import ImageUrlFormatter from "utils/image.utils";
 import {translate, TRANSLATION} from "utils/translation";
-import ImageWithDelete from "../../components/ImageWithDelete/image-with-delete";
-import ImageUrlFormatter from "../../utils/image.utils";
+import {CITY_TRANSLATION_IDS, getOnlyCityIds} from 'utils/cities'
 
 const CompanyView = ({initialValues, onSubmit, children}) => {
     const [showCityPopup, setShowCityPopup] = useState(false);
@@ -45,24 +42,23 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
     }
 
     const onImageUpload = info => {
-        console.log(100, 'new image url: ', info)
-        console.log(111, 'new image url: ', info.secure_url)
-        console.log(222, [...photos, info.secure_url])
         setPhotos(prevState => [...prevState, info.secure_url]);
     }
 
     const deleteImage = index => setPhotos(photos.filter((p, i) => i !== index));
 
-    const slides = photos?.map((src, index) => (
-        <ImageWithDelete
-            src={ImageUrlFormatter.formatForCompany(src)}
-            onDelete={() => deleteImage(index)}
-        />
+    const imageSlides = photos?.map((src, index) => (
+        <SwiperSlide>
+            <ImageWithDelete
+                src={ImageUrlFormatter.formatForCompany(src)}
+                onDelete={() => deleteImage(index)}
+            />
+        </SwiperSlide>
     ));
 
     return (
         <div>
-            <ImageUploaderButton onImageUpload={onImageUpload}/>
+            {photos.length <= 2 && <ImageUploaderButton onImageUpload={onImageUpload}/>}
             <RowSplitter height="22px"/>
             <Formik
                 initialValues={initialValues}
@@ -80,7 +76,8 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
             >
                 {({values, touched, handleBlur, setFieldValue, handleSubmit, handleChange, errors}) => (
                     <form onSubmit={handleSubmit}>
-                        {!!photos.length && <SwiperWrapper slides={slides}/>}
+
+                        {!!photos.length && <SwiperWrapper>{imageSlides}</SwiperWrapper>}
 
                         <ContentContainer noShadow>
                             <Input
