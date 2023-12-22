@@ -25,9 +25,9 @@ const AddCompany = () => {
     const [isLoading, setIsLoading] = useState(false);
 
     const onSubmit = values => {
-        const {name, cityId, street, phone1, phone2, phone3} = values;
+        const {name, phone1, phone2, phone3, cityId, street, longitude, latitude} = values;
         const schedule = getScheduleAsString(values)
-        const reqObj = {name, cityId, street, phone1, phone2, phone3, schedule};
+        const reqObj = {name, phone1, phone2, phone3, cityId, street, longitude, latitude, schedule};
         scrollUp();
 
         setIsLoading(true);

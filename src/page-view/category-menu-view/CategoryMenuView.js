@@ -39,7 +39,7 @@ let categoryIdIndexMapper = {};
 
 const CategoryMenuView = ({
                               menuItems = [],
-                              withEditIcon,
+                              isEditMode,
                           }) => {
 
     useScrollUp();
@@ -147,7 +147,7 @@ const CategoryMenuView = ({
         <MenuItem
             key={`menu_item${index}${mi.id}`}
             item={mi}
-            withEditIcon={withEditIcon}
+            isEditMode={isEditMode}
             onEditClick={navigateToEditMenuItemPage(mi)}
         />
 

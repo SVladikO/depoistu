@@ -5,7 +5,7 @@ export const ToTopButtonWrapper = styled.a`
   position: fixed;
   bottom: 103px;
   right: ${p => `calc(100vw / 2 - ${p.rightMargin})`};
-  z-index: 100;
+  z-index: 19;
   transform: rotate(180deg);
   box-sizing: border-box;
   width: 50px;

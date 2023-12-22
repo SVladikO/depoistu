@@ -8,9 +8,9 @@ const App = () => {
 
     return (
         <>
-            <ShowIntro/>
-            <LanguagePopup/>
             <AllRoutes/>
+            <LanguagePopup/>
+            <ShowIntro/>
         </>
     );
 };
