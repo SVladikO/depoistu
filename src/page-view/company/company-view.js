@@ -20,6 +20,8 @@ import validation from "utils/validation";
 import {isScheduleValid} from "utils/company";
 import {CITY_TRANSLATION_IDS, getOnlyCityIds} from 'utils/cities'
 import {translate, TRANSLATION} from "utils/translation";
+import Map from "../../components/Map/Map";
+import {MapWrapper} from "./company-view.style";
 
 const CompanyView = ({initialValues, onSubmit, children}) => {
     const [showCityPopup, setShowCityPopup] = useState(false);
@@ -88,6 +90,11 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                             errorMessage={errors.street}
                             isRequired
                         />
+                        <MapWrapper>
+                            <Map>
+
+                            </Map>
+                        </MapWrapper>
                         <Input
                             Icon={PhoneIcon}
                             name="phone1"
