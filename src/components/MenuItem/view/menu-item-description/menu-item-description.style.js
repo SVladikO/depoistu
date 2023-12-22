@@ -22,6 +22,7 @@ export const FirstRow = styled.div`
     right: 0;
     width: 30px;
     height: 30px;
+    padding: 5px;
   }
 
   & > svg:hover {
