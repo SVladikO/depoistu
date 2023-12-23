@@ -12,7 +12,7 @@ const mapStyle = {height: '100%', width: '100%'}
 
 
 // Documentation: https://react-leaflet.js.org/docs/start-setup/
-function Map({children, center = [50.4178159, 30.5753967], zoom = 11}) {
+function Map({children, center = [50.4178159, 30.5753967], zoom = 16}) {
 
     return (
         <MapWrapper>

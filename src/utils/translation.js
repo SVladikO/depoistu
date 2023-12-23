@@ -821,9 +821,22 @@ export const TRANSLATION = {
                 ua: "до",
                 en: "till"
             },
-            SCHEDULE_BUTTON: {
+            SHOW_SCHEDULE_BUTTON: {
                 ua: "Показати графік",
                 en: "Show schedule"
+            },
+            HIDE_SCHEDULE_BUTTON: {
+                ua: "Приховати графік",
+                en: "Hide schedule"
+            },
+
+            SHOW_MAP_BUTTON: {
+                ua: "Показати на карті",
+                en: "Show on map"
+            },
+            HIDE_MAP_BUTTON: {
+                ua: "Приховати карту",
+                en: "Hide map"
             }
         },
         MENU_ITEM: {

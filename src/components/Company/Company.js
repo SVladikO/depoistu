@@ -18,6 +18,8 @@ import {
     Wrapper, Name, Content, CompanyInfo, Schedule, OpenStatus, FirstRow, Closes, LocationWrapper,
 } from "./Company.style";
 
+import MapView from "./view/map-view/map-view";
+
 import {ThirdButton, ScheduleDetails, SwiperWrapper} from "components";
 
 import {
@@ -134,7 +136,6 @@ const Company = ({company, withMoreInfo, children, clickHandler}) => {
                                 ? <Heart2Icon className="like_company_icon" onClick={unlikeCompany}/>
                                 : <Heart1Icon className="like_company_icon" onClick={likeCompany}/>
                             : null}
-
                     </FirstRow>
                     {renderCityStreet()}
                     {renderDaySchedule()}
@@ -142,6 +143,7 @@ const Company = ({company, withMoreInfo, children, clickHandler}) => {
                     {withMoreInfo && company.schedule && company.schedule.length &&
                         <ScheduleDetails scheduleAsArray={parsedSchedule.workDays}/>
                     }
+                    <MapView company={company}/>
                 </CompanyInfo>
                 {children}
             </Content>

@@ -143,7 +143,7 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                                     }
                                 }>Check address on map</SecondaryButton>
                             )}
-                            {isShowMap && <Map center={[values.longitude, values.latitude]} zoom={25}/>}
+                            {isShowMap && <Map center={[values.longitude, values.latitude]} />}
 
                             <div>
                                 <Input
