@@ -27,7 +27,6 @@ import
     NavigationLabelHref,
     BottomMenu,
     MenuItem,
-    OrderHistoryRow,
     NotificationTDB,
     RowSplitter,
     Textarea,
@@ -267,46 +266,24 @@ const componentsGroup1 = [
 const componentsGroup2 = [
     [
         {
-            title: 'MenuItemDetails without description',
+            title: 'MenuItemDetails with image & description',
             component:
                 <MenuItemDescription
-                    item={{...mockMenuItem, description: ''}}
-                    isVisible
-                />
-        }, {
-        title: 'MenuItemDetails with description',
-        component:
-            <MenuItemDescription
-                item={mockMenuItem}
-                isVisible
-            />
-    },
-        {
-            title: 'MenuItemDetails with image',
-            component:
-                <MenuItemDescription
-                    item={{...mockMenuItem, description: ''}}
+                    item={mockMenuItem}
                     isWithImage
                     isVisible
                 />
-        }, {
-        title: 'MenuItemDetails with image & description',
-        component:
-            <MenuItemDescription
-                item={mockMenuItem}
-                isWithImage
-                isVisible
-            />
-    }, {
-        title: 'MenuItemDetails with image & description & "new" flag',
-        component:
-            <MenuItemDescription
-                item={mockMenuItem}
-                isWithImage
-                isNewItemFlag
-                isVisible
-            />
-    },
+        },
+        {
+            title: 'MenuItemDetails with image & description & "new" flag',
+            component:
+                <MenuItemDescription
+                    item={mockMenuItem}
+                    isWithImage
+                    isNewItemFlag
+                    isVisible
+                />
+        },
         {
             title: 'MenuItem editing',
             component:
@@ -315,29 +292,6 @@ const componentsGroup2 = [
                     isEditMode
                     isWithImage
                 />
-        },
-        {
-            title: 'OrderHistoryRow', component:
-                (() => {
-                    const item = {
-                        name: 'Chees Bites Pizza',
-                        description: 'spicy, tomato, sauce, chili, mozzarella',
-                        price: 7
-                    }
-                    return <OrderHistoryRow item={item}/>
-                })()
-        },
-        {
-            title: 'OrderHistoryRow', component: (function () {
-                const item = {
-                    name: 'Chees Bites Pizza',
-                    description: 'spicy, tomato, sauce, chili, mozzarella',
-                    price: 7,
-                    size: 'Medium',
-                    status: 'Completed'
-                }
-                return <OrderHistoryRow isHistory item={item}/>
-            })()
         },
     ],
     [
@@ -472,7 +426,7 @@ const componentsGroup4 = [[
                 <Map>
                     <Marker icon={markerIcon} position={[51.505, -0.09]}>
                         <Popup>
-                            Check template of popup.<br /> Example.
+                            Check template of popup.<br/> Example.
                         </Popup>
                     </Marker>
                 </Map>

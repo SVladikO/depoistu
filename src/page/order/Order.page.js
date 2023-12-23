@@ -2,7 +2,7 @@ import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 
 import {Wrapper, AmountInfo, Content, FixedContent} from './Order.page.style';
-import {NotificationTDB, OrderHistoryRow, Price, PrimaryButton} from "components";
+import {NotificationTDB, Price, PrimaryButton} from "components";
 
 import {ReactComponent as EmptyBasketIcon} from "assets/icons/empty_basket.svg";
 
@@ -38,7 +38,7 @@ const OrderPage = () => {
 
     const getOrderItems = () => (
         <>
-            <Content>{orders.map(item => <OrderHistoryRow key={item.id} item={item}/>)}</Content>
+            <Content>{orders.map(item => alert(item))}</Content>
             <FixedContent>
                 <AmountInfo>
                     <div>Sub Total ( {orders.length} item ):</div>

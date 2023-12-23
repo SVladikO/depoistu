@@ -16,7 +16,6 @@ import Map from "./Map/Map";
 import NavigationHeader from "./NavigationHeader/NavigationHeader";
 import NavigationLabelHref from "./NavigationLabelHref/NavigationLabelHref";
 import NotificationTDB from "./NotificationTDB/NotificationTDB";
-import OrderHistoryRow from "./OrderHistoryRow/OrderHistoryRow";
 import OrderIconWithCounter from "./OrderIconWithCounter/OrderIconWithCounter.jsx";
 import Popup from "./Popup/Popup";
 import Price from "./Price/Price";
@@ -77,7 +76,6 @@ export {
     NotificationFactory,
     NotificationTDB,
     NotificationLoading,
-    OrderHistoryRow,
     OrderIconWithCounter,
     CityInput,
     Popup,
