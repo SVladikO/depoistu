@@ -15,8 +15,6 @@ import {
     ImageUploaderButton, RowSplitter, SwiperWrapper
 } from "components";
 
-import {MapWrapper} from "./company-view.style";
-
 import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
 import {ReactComponent as PhoneIcon} from "assets/icons/phone.svg";
 
@@ -117,11 +115,27 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                                 errorMessage={errors.street}
                                 isRequired
                             />
-                            <MapWrapper>
-                                <Map>
 
-                                </Map>
-                            </MapWrapper>
+                            <div>Correct address if it's wrong on map. We will use longitute and latitude to specify
+                                address for customers
+                            </div>
+                            <Map center={[50.4584556,30.3573324]} zoom={25}/>
+
+                            {
+                                (() => {
+                                        setTimeout(() => {
+                                            const mapInput = document.getElementsByClassName('map_input')[0];
+                                            console.log(111, mapInput)
+                                            if (!mapInput) {
+                                                return;
+                                            }
+                                            const city = translate(CITY_TRANSLATION_IDS[values.cityId]);
+                                            mapInput.value = `${city}, ${values.street}`
+                                            mapInput.dispatchEvent(new Event('keyup', {'bubbles': true}));
+                                        }, 1000)
+                                    }
+                                )()
+                            }
                             <Input
                                 Icon={PhoneIcon}
                                 name="phone1"

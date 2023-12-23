@@ -3,22 +3,15 @@
     width: 380px;
     /*left: -10px;*/
     /*top: -10px;*/
-    border: 1px solid red;
 }
 
 .HHHHH {
-    border: 1px solid blue;
     background-color: #fff;
 }
 
+.BBBBB,
 .IIIII {
-    width: 90%;
-    padding: 10px;
-    outline: none;
-}
-
-.BBBBB {
-    padding: 10px;
+    display: none;
 }
 
 .RRRR {

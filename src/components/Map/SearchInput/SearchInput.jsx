@@ -19,7 +19,7 @@ const SearchInput = () => {
             form: 'HHHHH',
             input: 'IIIII map_input',
             resetButton: 'BBBBB',
-            resultlist: 'RRRR'
+            resultlist: 'map_result_list'
         }
     });
 
