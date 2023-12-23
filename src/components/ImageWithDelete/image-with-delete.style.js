@@ -3,7 +3,6 @@ import {COLOR} from "utils/theme";
 
 export const Wrapper = styled.div`
     position: relative;
-    height: ${p => p.noHeightRestriction ? 'auto' : '200px'};
     overflow: hidden;    
 `;
 

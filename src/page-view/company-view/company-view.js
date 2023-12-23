@@ -10,8 +10,9 @@ import {
     Label,
     CityInput,
     Popup,
+    Map,
     WeekScheduleInput,
-    ImageUploaderButton, RowSplitter, SwiperWrapper
+    ImageUploaderButton, RowSplitter, SwiperWrapper, SecondaryButton
 } from "components";
 
 import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
@@ -30,7 +31,7 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
     const [showCityPopup, setShowCityPopup] = useState(false);
     const [wasSubmitted, setWasSubmitted] = useState(false);
     const [photos, setPhotos] = useState(initialValues.photos || []);
-    console.log(21, initialValues.photos, photos);
+    const [isShowMap, setIsShowMap] = useState(false);
 
     const openCityPopup = () => setShowCityPopup(true);
     const closeCityPopup = () => setShowCityPopup(false);
@@ -56,6 +57,20 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
         </SwiperSlide>
     ));
 
+    const setMapValue = values => {
+        const mapInput = document.getElementsByClassName('map_input')[0];
+
+        if (!mapInput || !values.cityId) {
+            return;
+        }
+        console.log({values})
+        const city = translate(CITY_TRANSLATION_IDS[values.cityId]);
+        mapInput.value = `${city}, ${values.street}`
+        mapInput.dispatchEvent(new Event('keyup', {'bubbles': true}));
+    }
+
+    console.log(4444444, [initialValues.longitude, initialValues.latitude])
+
     return (
         <div>
             {photos.length <= 2 && <ImageUploaderButton onImageUpload={onImageUpload}/>}
@@ -71,7 +86,7 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                         return;
                     }
 
-                    onSubmit({...values, longitude: 0, latitude: 0, photos: photos.toString()});
+                    onSubmit({...values, photos: photos.toString()});
                 }}
             >
                 {({values, touched, handleBlur, setFieldValue, handleSubmit, handleChange, errors}) => (
@@ -109,9 +124,64 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                                 labelName={translate(TRANSLATION.INPUT_LABEL.COMPANY.STREET)}
                                 isTouched={wasSubmitted || touched.street}
                                 withCleaner
-                                changeHandler={handleChange}
+                                changeHandler={
+                                    e => {
+                                        setMapValue({...values, street: e.target.value})
+                                        handleChange(e)
+                                    }
+                                }
                                 clearHandler={() => setFieldValue('street', '')}
                                 errorMessage={errors.street}
+                                isRequired
+                            />
+
+                            {!isShowMap && (
+                                <SecondaryButton isWide clickHandler={
+                                    () => {
+                                        setIsShowMap(true)
+                                        setTimeout(() => setMapValue(values), 1000)
+                                    }
+                                }>Check address on map</SecondaryButton>
+                            )}
+                            {isShowMap && <Map center={[values.longitude, values.latitude]} zoom={25}/>}
+
+                            <div>
+                                <Input
+                                    name="longitude"
+                                    type="text"
+                                    value={values.longitude}
+                                    labelName={'longitude'}
+                                    errorMessage={errors.longitude}
+                                    isTouched={touched.longitude || wasSubmitted}
+                                    changeHandler={handleChange}
+                                    clearHandler={() => setFieldValue('longitude', '')}
+                                    withCleaner
+                                    isRequired
+                                />
+                                <Input
+                                    name="latitude"
+                                    type="text"
+                                    value={values.latitude}
+                                    labelName={'latitude'}
+                                    errorMessage={errors.latitude}
+                                    isTouched={touched.latitude || wasSubmitted}
+                                    changeHandler={handleChange}
+                                    clearHandler={() => setFieldValue('latitude', '')}
+                                    withCleaner
+                                    isRequired
+                                />
+                            </div>
+                            <Input
+                                Icon={PhoneIcon}
+                                name="phone1"
+                                type="text"
+                                value={values.phone1}
+                                labelName={`${translate(TRANSLATION.INPUT_LABEL.COMPANY.PHONE)} 1`}
+                                errorMessage={errors.phone1}
+                                isTouched={touched.phone1 || wasSubmitted}
+                                changeHandler={handleChange}
+                                clearHandler={() => setFieldValue('phone1', '')}
+                                withCleaner
                                 isRequired
                             />
                             <Input
@@ -162,6 +232,7 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                                 availableCityIds={availableAllCityIds}
                                 onSelectCity={selectCity(cityId => {
                                     setFieldValue('cityId', cityId)
+                                    setMapValue({...values, cityId})
                                 })}
                                 onClose={closeCityPopup}
                             />

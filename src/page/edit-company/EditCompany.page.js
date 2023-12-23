@@ -5,7 +5,7 @@ import {RowSplitter, PrimaryButton, ContentContainer, SecondaryButton} from "com
 
 import {ReactComponent as RemoveIcon} from "assets/icons/remove_icon.svg";
 
-import CompanyView from "page-view/company/company-view";
+import CompanyView from "../../page-view/company-view/company-view";
 
 import getInitialValues from "./utils";
 import {URL} from "utils/config";

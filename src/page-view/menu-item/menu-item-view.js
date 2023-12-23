@@ -51,7 +51,6 @@ const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
                     <div>
                         <ImageWithDelete
                             src={ImageUrlFormatter.formatForMenuItemBig(imageUrl)}
-                            noHeightRestriction
                             onDelete={() => setImageUrl('')}/>
                     </div>
                 )

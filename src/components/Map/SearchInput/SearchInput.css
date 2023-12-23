@@ -1,0 +1,28 @@
+.KKKKK {
+    margin: 0 !important;
+    width: 380px;
+    /*left: -10px;*/
+    /*top: -10px;*/
+}
+
+.HHHHH {
+    background-color: #fff;
+}
+
+.BBBBB,
+.IIIII {
+    display: none;
+}
+
+.RRRR {
+    border: 1px solid green;
+    cursor: pointer;
+}
+
+div[data-key] {
+    padding: 5px;
+}
+
+div[data-key]:hover {
+    background-color: #f1f0f0;
+}
