@@ -57,6 +57,18 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
         </SwiperSlide>
     ));
 
+    const setMapValue = values => {
+        const mapInput = document.getElementsByClassName('map_input')[0];
+
+        if (!mapInput || !values.cityId) {
+            return;
+        }
+        console.log({values})
+        const city = translate(CITY_TRANSLATION_IDS[values.cityId]);
+        mapInput.value = `${city}, ${values.street}`
+        mapInput.dispatchEvent(new Event('keyup', {'bubbles': true}));
+    }
+
     return (
         <div>
             {photos.length <= 2 && <ImageUploaderButton onImageUpload={onImageUpload}/>}
@@ -110,7 +122,12 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                                 labelName={translate(TRANSLATION.INPUT_LABEL.COMPANY.STREET)}
                                 isTouched={wasSubmitted || touched.street}
                                 withCleaner
-                                changeHandler={handleChange}
+                                changeHandler={
+                                    e => {
+                                        setMapValue({...values, street: e.target.value})
+                                        handleChange(e)
+                                    }
+                                }
                                 clearHandler={() => setFieldValue('street', '')}
                                 errorMessage={errors.street}
                                 isRequired
@@ -119,23 +136,8 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                             <div>Correct address if it's wrong on map. We will use longitute and latitude to specify
                                 address for customers
                             </div>
-                            <Map center={[50.4584556,30.3573324]} zoom={25}/>
+                            <Map center={[50.4584556, 30.3573324]} zoom={25}/>
 
-                            {
-                                (() => {
-                                        setTimeout(() => {
-                                            const mapInput = document.getElementsByClassName('map_input')[0];
-                                            console.log(111, mapInput)
-                                            if (!mapInput) {
-                                                return;
-                                            }
-                                            const city = translate(CITY_TRANSLATION_IDS[values.cityId]);
-                                            mapInput.value = `${city}, ${values.street}`
-                                            mapInput.dispatchEvent(new Event('keyup', {'bubbles': true}));
-                                        }, 1000)
-                                    }
-                                )()
-                            }
                             <Input
                                 Icon={PhoneIcon}
                                 name="phone1"
@@ -184,6 +186,7 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                                 availableCityIds={availableAllCityIds}
                                 onSelectCity={selectCity(cityId => {
                                     setFieldValue('cityId', cityId)
+                                    setMapValue({...values, cityId})
                                 })}
                                 onClose={closeCityPopup}
                             />
