@@ -5,7 +5,7 @@ import {RowSplitter, PrimaryButton, ContentContainer, SecondaryButton} from "com
 
 import {ReactComponent as RemoveIcon} from "assets/icons/remove_icon.svg";
 
-import CompanyView from "page-view/company/company-view";
+import CompanyView from "../../page-view/company-view/company-view";
 
 import getInitialValues from "./utils";
 import {URL} from "utils/config";
@@ -103,6 +103,7 @@ const EditCompany = () => {
     }
 
     const onSubmit = values => {
+        console.log('onSubmit', {values})
         const {name, phone1, phone2, phone3, photos, cityId, street, longitude, latitude} = values;
         const schedule = getScheduleAsString(values)
         const reqObj = {id: companyId, name,  phone1, phone2, phone3, cityId, street, longitude, latitude, photos, schedule, method: 'put'};

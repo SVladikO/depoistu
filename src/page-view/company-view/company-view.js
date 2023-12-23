@@ -12,7 +12,7 @@ import {
     Popup,
     Map,
     WeekScheduleInput,
-    ImageUploaderButton, RowSplitter, SwiperWrapper
+    ImageUploaderButton, RowSplitter, SwiperWrapper, SecondaryButton
 } from "components";
 
 import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
@@ -31,7 +31,7 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
     const [showCityPopup, setShowCityPopup] = useState(false);
     const [wasSubmitted, setWasSubmitted] = useState(false);
     const [photos, setPhotos] = useState(initialValues.photos || []);
-    console.log(21, initialValues.photos, photos);
+    const [isShowMap, setIsShowMap] = useState(false);
 
     const openCityPopup = () => setShowCityPopup(true);
     const closeCityPopup = () => setShowCityPopup(false);
@@ -68,6 +68,8 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
         mapInput.value = `${city}, ${values.street}`
         mapInput.dispatchEvent(new Event('keyup', {'bubbles': true}));
     }
+
+    console.log(4444444, [initialValues.longitude, initialValues.latitude])
 
     return (
         <div>
@@ -133,11 +135,55 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                                 isRequired
                             />
 
-                            <div>Correct address if it's wrong on map. We will use longitute and latitude to specify
-                                address for customers
-                            </div>
-                            <Map center={[50.4584556, 30.3573324]} zoom={25}/>
+                            {!isShowMap && (
+                                <SecondaryButton isWide clickHandler={
+                                    () => {
+                                        setMapValue(values)
+                                        setIsShowMap(true)
+                                    }
+                                }>Check address on map</SecondaryButton>
+                            )}
+                            {isShowMap && <Map center={[values.longitude, values.latitude]} zoom={25}/>}
 
+                            <div>
+                                <Input
+                                    name="longitude"
+                                    type="text"
+                                    value={values.longitude}
+                                    labelName={'longitude'}
+                                    errorMessage={errors.longitude}
+                                    isTouched={touched.longitude || wasSubmitted}
+                                    changeHandler={handleChange}
+                                    clearHandler={() => setFieldValue('longitude', '')}
+                                    withCleaner
+                                    isRequired
+                                />
+                                <Input
+                                    name="latitude"
+                                    type="text"
+                                    value={values.latitude}
+                                    labelName={'latitude'}
+                                    errorMessage={errors.latitude}
+                                    isTouched={touched.latitude || wasSubmitted}
+                                    changeHandler={handleChange}
+                                    clearHandler={() => setFieldValue('latitude', '')}
+                                    withCleaner
+                                    isRequired
+                                />
+                            </div>
+                                <Input
+                                    Icon={PhoneIcon}
+                                    name="phone1"
+                                    type="text"
+                                    value={values.phone1}
+                                    labelName={`${translate(TRANSLATION.INPUT_LABEL.COMPANY.PHONE)} 1`}
+                                    errorMessage={errors.phone1}
+                                    isTouched={touched.phone1 || wasSubmitted}
+                                    changeHandler={handleChange}
+                                    clearHandler={() => setFieldValue('phone1', '')}
+                                    withCleaner
+                                    isRequired
+                                />
                             <Input
                                 Icon={PhoneIcon}
                                 name="phone1"

@@ -5,7 +5,7 @@ import React, {useState} from "react";
 
 import {PrimaryButton} from "components";
 
-import CompanyView from "page-view/company/company-view";
+import CompanyView from "../../page-view/company-view/company-view";
 
 import {initialValues} from './utils';
 import {URL} from "utils/config";
@@ -25,9 +25,9 @@ const AddCompany = () => {
     const [isLoading, setIsLoading] = useState(false);
 
     const onSubmit = values => {
-        const {name, phone1, phone2, phone3, cityId, street, longitude, latitude} = values;
+        const {name, phone1, phone2, phone3, cityId, street, photos = '', longitude, latitude} = values;
         const schedule = getScheduleAsString(values)
-        const reqObj = {name, phone1, phone2, phone3, cityId, street, longitude, latitude, schedule};
+        const reqObj = {name, phone1, phone2, phone3, photos, cityId, street, longitude, latitude, schedule};
         scrollUp();
 
         setIsLoading(true);

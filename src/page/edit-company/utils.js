@@ -10,6 +10,8 @@ const getInitialValues = (company, schedule) => (
         phone1: company.phone1,
         phone2: company.phone2,
         phone3: company.phone3,
+        longitude: company.longitude,
+        latitude: company.latitude,
         monIsChecked: !!schedule.mon.from || !!schedule.mon.to,
         monFrom: schedule.mon.from,
         monTo: schedule.mon.to,

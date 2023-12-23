@@ -9,6 +9,8 @@ export const initialValues = {
     phone1: '',
     phone2: '',
     phone3: '',
+    longitude: 50.4584556,
+    latitude: 30.3573324,
     monIsChecked: false,
     monFrom: defaultFrom,
     monTo: defaultTo,
