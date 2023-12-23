@@ -103,7 +103,6 @@ const EditCompany = () => {
     }
 
     const onSubmit = values => {
-        console.log('onSubmit', {values})
         const {name, phone1, phone2, phone3, photos, cityId, street, longitude, latitude} = values;
         const schedule = getScheduleAsString(values)
         const reqObj = {id: companyId, name,  phone1, phone2, phone3, cityId, street, longitude, latitude, photos, schedule, method: 'put'};

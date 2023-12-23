@@ -86,7 +86,7 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                         return;
                     }
 
-                    onSubmit({...values, longitude: 0, latitude: 0, photos: photos.toString()});
+                    onSubmit({...values, photos: photos.toString()});
                 }}
             >
                 {({values, touched, handleBlur, setFieldValue, handleSubmit, handleChange, errors}) => (
@@ -138,8 +138,8 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                             {!isShowMap && (
                                 <SecondaryButton isWide clickHandler={
                                     () => {
-                                        setMapValue(values)
                                         setIsShowMap(true)
+                                        setTimeout(() => setMapValue(values), 1000)
                                     }
                                 }>Check address on map</SecondaryButton>
                             )}
@@ -171,19 +171,19 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                                     isRequired
                                 />
                             </div>
-                                <Input
-                                    Icon={PhoneIcon}
-                                    name="phone1"
-                                    type="text"
-                                    value={values.phone1}
-                                    labelName={`${translate(TRANSLATION.INPUT_LABEL.COMPANY.PHONE)} 1`}
-                                    errorMessage={errors.phone1}
-                                    isTouched={touched.phone1 || wasSubmitted}
-                                    changeHandler={handleChange}
-                                    clearHandler={() => setFieldValue('phone1', '')}
-                                    withCleaner
-                                    isRequired
-                                />
+                            <Input
+                                Icon={PhoneIcon}
+                                name="phone1"
+                                type="text"
+                                value={values.phone1}
+                                labelName={`${translate(TRANSLATION.INPUT_LABEL.COMPANY.PHONE)} 1`}
+                                errorMessage={errors.phone1}
+                                isTouched={touched.phone1 || wasSubmitted}
+                                changeHandler={handleChange}
+                                clearHandler={() => setFieldValue('phone1', '')}
+                                withCleaner
+                                isRequired
+                            />
                             <Input
                                 Icon={PhoneIcon}
                                 name="phone1"
