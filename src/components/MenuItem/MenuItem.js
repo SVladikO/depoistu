@@ -10,7 +10,7 @@ import MenuItemBottomSettings from "./view/menu-item-bottom-settings/menu-item-b
 import ImageUrlFormatter from "utils/image.utils";
 
 const MenuItem = (props) => {
-    const {item} = props;
+    const {item, isSelected, onSelectMenuItem} = props;
     const [isItemVisible, setIsItemVisible] = useState(!!item.isVisible)
     const [isImageVisible, setIsImageVisible] = useState(false)
 
@@ -18,10 +18,12 @@ const MenuItem = (props) => {
         <Wrapper
             className='pm-MenuItem'
             isItemVisible={isItemVisible}
+            onClick={onSelectMenuItem}
         >
             {isImageVisible && <FoodImage src={ImageUrlFormatter.formatForMenuItemBig(item.imageUrl)}/>}
             <MenuItemDescription
                 {...props}
+                isSelected={isSelected}
                 isItemVisible={isItemVisible}
                 wasImageShow={isImageVisible}
                 isSwitchImageVisible={!!item.imageUrl}

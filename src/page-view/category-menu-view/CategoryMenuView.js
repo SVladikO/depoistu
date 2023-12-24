@@ -46,6 +46,7 @@ const CategoryMenuView = ({
     const navigate = useNavigate();
     const [selectedTopCategoryId, setSelectedTopCategoryId] = useState();
     const [selectedSubCategoryId, setSelectedSubCategoryId] = useState();
+    const [selectedMenuItemId, setSelectedMenuItemId] = useState();
 
     const onScrollPage = () => {
         if (getIsScrollDisabled()) {
@@ -142,14 +143,20 @@ const CategoryMenuView = ({
             </CategoryTitle>
         )
     }
-
-    const renderMenuItem = (mi, index) =>
+    const renderMenuItem = (mi, index) => (
         <MenuItem
             key={`menu_item${index}${mi.id}`}
             item={mi}
             isEditMode={isEditMode}
             onEditClick={navigateToEditMenuItemPage(mi)}
+
+            isSelected={mi.id === selectedMenuItemId}
+            onSelectMenuItem={() => {
+                setSelectedMenuItemId(mi.id)
+                console.log('selected id: ', mi.id)
+            }}
         />
+    )
 
     const topCategories = []; // Contain array of top category components
     const subCategories = []; // Contain array of sub category components
