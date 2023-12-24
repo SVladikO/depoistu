@@ -95,7 +95,7 @@ const Company = ({company, withMoreInfo, children, clickHandler}) => {
         </Schedule>
     )
 
-    const renderPhone = phone => withMoreInfo && phone && (
+    const renderPhone = phone => phone && (
         <a href={`tel:${phone}`}>
             <ThirdButton>
                 <PhoneIcon className="phone_icon"/>
@@ -104,11 +104,13 @@ const Company = ({company, withMoreInfo, children, clickHandler}) => {
         </a>
     )
 
-    const renderPhones = () => (<>
-        {renderPhone(company.phone1)}
-        {renderPhone(company.phone2)}
-        {renderPhone(company.phone3)}
-    </>)
+    const renderPhones = () => (
+        <>
+            {renderPhone(company.phone1)}
+            {renderPhone(company.phone2)}
+            {renderPhone(company.phone3)}
+        </>
+    )
 
     const likeCompany = e => {
         e.stopPropagation();
@@ -139,11 +141,11 @@ const Company = ({company, withMoreInfo, children, clickHandler}) => {
                     </FirstRow>
                     {renderCityStreet()}
                     {renderDaySchedule()}
-                    {renderPhones()}
+                    {withMoreInfo && renderPhones()}
                     {withMoreInfo && company.schedule && company.schedule.length &&
                         <ScheduleDetails scheduleAsArray={parsedSchedule.workDays}/>
                     }
-                    <MapView company={company}/>
+                    {withMoreInfo && <MapView company={company}/>}
                 </CompanyInfo>
                 {children}
             </Content>
