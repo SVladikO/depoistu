@@ -32,7 +32,7 @@ const OrderPage = () => {
     const orderButton =
         isCustomerLogged
             ? <PrimaryButton clickHandler={placeOrder}>Place Order</PrimaryButton>
-            : <Link to={`${ROUTER.SING_IN.URL}?backUrl=${ROUTER.ORDER_REVIEW.URL}`}>
+            : <Link to={`${ROUTER.SING_IN.URL}?backUrl=${ROUTER.ORDER.URL}`}>
                 <PrimaryButton>Login to place Order</PrimaryButton>
             </Link>
 
@@ -58,7 +58,7 @@ const OrderPage = () => {
                     title="Your Cart is empty"
                     description="Looks like you haven't made your order yet."
                 >
-                <Link to={''}>
+                <Link to={ROUTER.SEARCH.URL}>
                     <PrimaryButton isWide>Shop Now</PrimaryButton>
                 </Link>
                 </NotificationTDB>

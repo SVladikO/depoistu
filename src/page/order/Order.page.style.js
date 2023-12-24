@@ -37,6 +37,3 @@ export const AmountInfo = styled.div`
   text-align: center;
   margin-bottom: 19px;
 `;
-export const Button = styled(FetchButton)`
-  font-weight: 700;
-`;

@@ -52,6 +52,10 @@ export const FONT = {
         font-size: 24px;
         line-height: 29px;
         `,
+    SIZE_30: `
+        font-size: 30px;
+        line-height: 34px;
+        `,
     SIZE_32: `
         font-size: 32px;
         line-height: 38px;

@@ -1,6 +1,6 @@
 import {useNavigate} from 'react-router-dom';
 
-import {Wrapper, MenuItem, Label} from './BottomMenu.style';
+import {Wrapper, MenuItem, Label, OrderWrapper, OrderButton} from './BottomMenu.style';
 
 import {ReactComponent as HomeIcon} from "assets/icons/home.svg";
 import {ReactComponent as MenuIcon} from "assets/icons/menu.svg";
@@ -35,6 +35,9 @@ const BottomMenu = () => {
                 <MenuIcon/>
                 <Label>{translate(TRANSLATION.BOTTOM_MENU.MENU)}</Label>
             </MenuItem>
+            <OrderWrapper>
+                <OrderButton onClick={() => navigate(ROUTER.ORDER.URL)}>0</OrderButton>
+            </OrderWrapper>
             <MenuItem
                 selected={isSelected(URL.FAVORITE)}
                 onClick={() => navigate(ROUTER.FAVORITE.URL)}

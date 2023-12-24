@@ -16,7 +16,7 @@ import CustomerCompaniesPage from "page/customer-companies/CustomerCompanies.pag
 import AvailableMenuCategoriesPage from "page/available-menu-categories/AvailableMenuCategories.page";
 
 // TODO: Hidden second version
-// import OrderPage from "page/order/Order.page";
+import OrderPage from "page/order/Order.page";
 // import CategoryPage from "page/category/Category.page";
 // import OrderHistoryPage from "page/order-history/OrderHistory.page";
 // import {HistoryTabBar} from "components";
@@ -91,7 +91,12 @@ export const URL = {
 };
 
 export const ROUTER = {
-    // ORDER_REVIEW: {URL: '/order',  TITLE: 'Order review', page: OrderPage, showBottomMenu: true},
+    ORDER: {
+        URL: '/order',
+        TITLE: 'Order review',
+        page: OrderPage,
+        showBottomMenu: true
+    },
     // ORDER_HISTORY: {URL: '/history',  TITLE: 'Order History', page: OrderHistoryPage, subHeader: HistoryTabBar, showBottomMenu: true},
     FAVORITE: {
         URL: URL.FAVORITE,
