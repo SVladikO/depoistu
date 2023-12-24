@@ -1,11 +1,22 @@
 import {LocalStorage, LOCAL_STORAGE_KEY} from "./localStorage";
 
-export const DEFAULT_LANGUAGE = 'ua';
-
 export const LANGUAGE_KEYS = {
     UA: 'ua',
     EN: 'en'
 }
+const customerBrowserLanguage = window.navigator.language;
+export const DEFAULT_LANGUAGE =
+    customerBrowserLanguage.includes('ua') || customerBrowserLanguage.includes('ru')
+        ? 'ua'
+        : 'en';
+
+console.log({
+    DEFAULT_LANGUAGE,
+    customerBrowserLanguage,
+    "customerBrowserLanguage.includes('ua')": customerBrowserLanguage.includes('ua'),
+    "customerBrowserLanguage.includes('ru')": customerBrowserLanguage.includes('ru')
+})
+
 
 export const truncate = (text, availableLength = 1) => {
     if (text.length < availableLength) {
@@ -15,9 +26,10 @@ export const truncate = (text, availableLength = 1) => {
     return text.substring(0, availableLength) + ' ...';
 };
 
-export const getCurrentLanguage = () => LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE)?.language?.siteLanguage;
+export const getCurrentLanguage = () => LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE)?.language?.siteLanguage || DEFAULT_LANGUAGE;
+
 export const translate = obj => {
-    return obj[getCurrentLanguage() || DEFAULT_LANGUAGE];
+    return obj[getCurrentLanguage()];
 }
 
 export const TRANSLATION = {
