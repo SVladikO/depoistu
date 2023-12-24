@@ -23,8 +23,11 @@ export const FirstRow = styled.div`
   justify-content: space-between;
   
   & > svg {
-    height: 30px;
-    width: 30px;
+      height: 40px;
+      width: 40px;
+      padding: 5px;
+      top: -5px;
+      position: relative;
   }
 `;
 

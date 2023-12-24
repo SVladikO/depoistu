@@ -1,17 +1,17 @@
 import React from 'react';
 import {SwiperSlide} from "swiper/react";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {LazyLoadImage} from 'react-lazy-load-image-component';
 
 import "swiper/css";
 import "swiper/css/pagination";
 
-import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
 import {ReactComponent as TimeIcon} from "assets/icons/time.svg";
 import {ReactComponent as PhoneIcon} from "assets/icons/phone.svg";
 import {ReactComponent as Heart1Icon} from "assets/icons/heart1.svg";
 import {ReactComponent as Heart2Icon} from "assets/icons/heart2.svg";
+import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
 import defaultCompanyImg from 'assets/images/default/default_company.webp';
 
 import {
@@ -20,7 +20,7 @@ import {
 
 import MapView from "./view/map-view/map-view";
 
-import {ThirdButton, ScheduleDetails, SwiperWrapper} from "components";
+import {ThirdButton, ScheduleDetails, SwiperWrapper, PrimaryButton, Popup, NotificationTDB} from "components";
 
 import {
     addToFavoriteCompanies,
@@ -31,12 +31,14 @@ import {errorHandler} from "utils/management";
 import {parseSchedule} from "utils/company";
 import {BE_API, fetchData} from "utils/fetch";
 import {CITY_TRANSLATION_IDS} from "utils/cities";
-import {translate, TRANSLATION as TR, truncate} from "utils/translation";
+import {translate, TRANSLATION, TRANSLATION as TR, truncate} from "utils/translation";
 import ImageUrlFormatter from "../../utils/image.utils";
+import {ROUTER} from "../../utils/config";
 
 const Company = ({company, withMoreInfo, children, clickHandler}) => {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const customer = useSelector(state => state.customer.value);
     const favotireCompanies = useSelector(state => state.favoriteCompany.value);
@@ -114,6 +116,11 @@ const Company = ({company, withMoreInfo, children, clickHandler}) => {
 
     const likeCompany = e => {
         e.stopPropagation();
+
+        if (!customer) {
+            return   navigate(`${ROUTER.SING_IN.URL}?backUrl=${window.location.pathname}`)
+        }
+
         dispatch(addToFavoriteCompanies(company))
         fetchData(BE_API.FAVORITE_COMPANY.ADD(), {company_id: company.id})
             .catch(errorHandler)
@@ -133,11 +140,10 @@ const Company = ({company, withMoreInfo, children, clickHandler}) => {
                 <CompanyInfo>
                     <FirstRow>
                         <Name>{company.name}</Name>
-                        {customer
-                            ? isLikedByCurrentCustomer
-                                ? <Heart2Icon className="like_company_icon" onClick={unlikeCompany}/>
-                                : <Heart1Icon className="like_company_icon" onClick={likeCompany}/>
-                            : null}
+                        {isLikedByCurrentCustomer
+                            ? <Heart2Icon className="like_company_icon" onClick={unlikeCompany}/>
+                            : <Heart1Icon className="like_company_icon" onClick={likeCompany}/>
+                        }
                     </FirstRow>
                     {renderCityStreet()}
                     {renderDaySchedule()}
