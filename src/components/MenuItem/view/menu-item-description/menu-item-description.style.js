@@ -90,6 +90,7 @@ export const AddButtonWrapper = styled.div`
 export const AddButton = styled(SecondaryButton)`
     height: 22px;
     ${FONT.SIZE_16};
+    padding: 10px;
 `
 
 

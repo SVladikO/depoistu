@@ -54,7 +54,7 @@ const MenuItemDescription = ({isNewItemFlag, item = {}, wasImageShow, isSelected
 
         return (
             <AddButtonWrapper>
-                <AddButton onClick={e => e.stopPropagation()}>Add</AddButton>
+                <AddButton onClick={e => e.stopPropagation()}>{translate(TRANSLATION.COMPONENTS.MENU_ITEM.BUTTON.ADD_TO_BASKET)}</AddButton>
             </AddButtonWrapper>
         )
     }
