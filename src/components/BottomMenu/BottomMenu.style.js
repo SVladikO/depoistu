@@ -2,28 +2,28 @@ import styled from "styled-components";
 import {COLOR, BORDER_RADIUS, FONT} from "utils/theme";
 
 export const Wrapper = styled.div`
-  z-index: 2;
-  bottom: -1px;
-  background-color: ${COLOR.ACCENT4};
-  border-radius: ${BORDER_RADIUS.SECOND} ${BORDER_RADIUS.SECOND} 0 0;
-  display: flex;
-  justify-content: space-around;
+    z-index: 2;
+    bottom: -1px;
+    height: 60px;
+    background-color: ${COLOR.ACCENT4};
+    border-radius: ${BORDER_RADIUS.SECOND} ${BORDER_RADIUS.SECOND} 0 0;
+    display: flex;
+    justify-content: space-around;
 
-  &:hover {
-    cursor: pointer;
-  }
+    &:hover {
+        cursor: pointer;
+    }
 
-  & > a {
-    width: 25%;
-  }
-  
-  box-shadow: 0 -1px 4px 0 rgba(0,0,0,0.11);
-  -webkit-box-shadow: 0 -1px 4px 0 rgba(0,0,0,0.11);
-  -moz-box-shadow: 0 -1px 4px 0 rgba(0,0,0,0.11);
+    & > a {
+        width: 25%;
+    }
+
+    box-shadow: 0 -1px 4px 0 rgba(0, 0, 0, 0.11);
+    -webkit-box-shadow: 0 -1px 4px 0 rgba(0, 0, 0, 0.11);
+    -moz-box-shadow: 0 -1px 4px 0 rgba(0, 0, 0, 0.11);
 `;
 
 export const MenuItem = styled.div`
-    height: 80px;
     width: 40px;
     display: flex;
     flex-direction: column;
@@ -34,8 +34,8 @@ export const MenuItem = styled.div`
     color: ${p => p.selected ? COLOR.PRIMARY : COLOR.ACCENT1};
 
     & > *:first-child {
-        width: 27px;
-        height: 24px;
+        width: 23px;
+        height: 20px;
         display: block;
         margin-bottom: 5px;
         fill: ${p => p.selected ? COLOR.PRIMARY : COLOR.ACCENT1};
