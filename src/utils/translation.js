@@ -864,11 +864,7 @@ export const TRANSLATION = {
                 HIDDEN: {
                     en: "HIDDEN",
                     ua: "ПРИХОВАНО"
-                },
-                ADD_TO_BASKET: {
-                    en: "Add",
-                    ua: "Додати"
-                },
+                }
             },
         },
         POPUP: {

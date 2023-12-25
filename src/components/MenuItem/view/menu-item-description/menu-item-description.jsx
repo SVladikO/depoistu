@@ -11,7 +11,10 @@ import {
     ControlButtonTd,
     AddButton,
     SizePriceWrapper,
-    SpanWeight600, AddButtonWrapper,
+    SpanWeight600,
+    AddButtonWrapper,
+    AmountWrapper,
+    DecrementButton,
 } from "./menu-item-description.style";
 
 import {ReactComponent as PictureIcon} from "assets/icons/picture.svg";
@@ -47,19 +50,21 @@ const MenuItemDescription = ({isNewItemFlag, item = {}, wasImageShow, isSelected
         )
     }
 
-    const renderOrderButton = () => {
+    const renderOrderButton = (amount) => {
         if (!isSelected) {
             return
         }
 
         return (
             <AddButtonWrapper>
-                <AddButton onClick={e => e.stopPropagation()}>{translate(TRANSLATION.COMPONENTS.MENU_ITEM.BUTTON.ADD_TO_BASKET)}</AddButton>
+                {amount && <DecrementButton onClick={e => e.stopPropagation()}>-</DecrementButton>}
+                <AmountWrapper>{amount}</AmountWrapper>
+                <AddButton onClick={e => e.stopPropagation()}>+</AddButton>
             </AddButtonWrapper>
         )
     }
 
-    const renderTableRow = (size, measurement, price) => {
+    const renderTableRow = (size, measurement, price, amount) => {
         if (!size && !price) {
             return;
         }
@@ -74,14 +79,14 @@ const MenuItemDescription = ({isNewItemFlag, item = {}, wasImageShow, isSelected
                 </SizePriceTd>
                 <SizePriceTd>{size} {size && measurement}</SizePriceTd>
                 <ControlButtonTd>
-                    {renderOrderButton()}
+                    {renderOrderButton(amount)}
                 </ControlButtonTd>
             </tr>
         )
     }
 
     const renderSizePrice = () => {
-        const {categoryId, size_1, price_1, size_2, price_2, size_3, price_3} = item;
+        const {categoryId, size_1, price_1, size_2, price_2, size_3, price_3, amount1 = 1, amount2 = 2, amount3 = 3} = item;
 
         const measurement = CATEGORY_ID_MAPPER_AS_OBJECT[categoryId].measurement;
 
@@ -89,9 +94,9 @@ const MenuItemDescription = ({isNewItemFlag, item = {}, wasImageShow, isSelected
             <SizePriceWrapper>
                 <Table>
                     <tbody>
-                    {renderTableRow(size_1, measurement, price_1)}
-                    {renderTableRow(size_2, measurement, price_2)}
-                    {renderTableRow(size_3, measurement, price_3)}
+                    {renderTableRow(size_1, measurement, price_1, amount1)}
+                    {renderTableRow(size_2, measurement, price_2, amount2)}
+                    {renderTableRow(size_3, measurement, price_3, amount3)}
                     </tbody>
                 </Table>
             </SizePriceWrapper>)

@@ -79,18 +79,37 @@ export const SizePriceTd = styled.td`
     color: ${COLOR.ACCENT1};
     padding: 5px 0;
 `;
+
 export const ControlButtonTd = styled(SizePriceTd)`
     width: 55%;
-`
+`;
+
 export const AddButtonWrapper = styled.div`
     display: flex;
     justify-content: right;
+    
+    & > span {
+        margin: 0 10px;
+    }
+`;
+
+export const AmountWrapper = styled.div`
+    width: 40px;
+    display: flex;
+    justify-content: center;
 `;
 
 export const AddButton = styled(SecondaryButton)`
     height: 22px;
     ${FONT.SIZE_16};
-    padding: 10px;
+    padding: 10px 20px;
 `
 
-
+export const DecrementButton = styled(SecondaryButton)`
+    height: 22px;
+    ${FONT.SIZE_16};
+    padding: 10px 20px;
+    color: ${COLOR.ACCENT5};
+    border-color: ${COLOR.ACCENT5};
+    background: ${COLOR.ACCENT9};
+`
