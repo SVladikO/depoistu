@@ -8,8 +8,10 @@ import {ReactComponent as EmptyBasketIcon} from "assets/icons/empty_basket.svg";
 
 import {ROUTER} from 'utils/config'
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
+import {useScrollUp} from "../../utils/hook";
 
 const OrderPage = () => {
+    useScrollUp();
     const orders = useSelector(state => state.order.value);
 
     const placeOrder = () => {

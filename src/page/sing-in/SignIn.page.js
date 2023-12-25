@@ -19,7 +19,7 @@ import {ROUTER, URL} from 'utils/config';
 import {fetchData, BE_API} from "utils/fetch";
 import {TRANSLATION, translate} from "utils/translation";
 import {addCustomer} from "features/customer/customerSlice";
-import {useQuery} from "../../utils/hook";
+import {useQuery, useScrollUp} from "../../utils/hook";
 import {errorHandler} from "utils/management";
 
 const SignInSchema = Yup.object().shape(validation.customer.singIn);
@@ -30,6 +30,7 @@ const signInInitialValues = {
 }
 
 const SignInPage = () => {
+    useScrollUp();
     const navigate = useNavigate();
     const dispatch = useDispatch();
     let query = useQuery()
