@@ -42,8 +42,8 @@ export const TRANSLATION = {
         ua: 'Ні'
     },
     COMPANY_NAME: {
-        ua: 'DEPOISTU',
-        en: 'DEPOISTU'
+        ua: 'Де поїсти в Україні?',
+        en: 'Where to eat in Ukraine ?'
     },
     SEE_MORE: {
         ua: 'більше',
