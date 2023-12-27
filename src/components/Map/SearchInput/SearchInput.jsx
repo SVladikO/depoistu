@@ -1,26 +1,24 @@
-import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
-import { useMap } from 'react-leaflet';
 import {useEffect} from "react";
+import {useMap} from 'react-leaflet';
+import {GeoSearchControl, OpenStreetMapProvider} from 'leaflet-geosearch';
+
 import './SearchInput.css'
 import {markerIcon} from '../customUI/markerIcon/markerIcon'
 
-//this is input with search
 const SearchInput = () => {
     const map = useMap();
 
-    const provider = new OpenStreetMapProvider();
-
     const searchControl = new GeoSearchControl({
-        provider,
-        marker:  {icon: markerIcon},
+        provider: new OpenStreetMapProvider(),
         style: 'button',
+        marker:  {icon: markerIcon},
         classNames: {
-            container: 'KKKKK',
-            form: 'HHHHH',
-            input: 'IIIII map_input',
-            resetButton: 'BBBBB',
+            container: 'map_container',
+            form: 'form_container',
+            input: 'map_input',
+            resetButton: 'reset_button',
             resultlist: 'map_result_list'
-        }
+        },
     });
 
     useEffect(() => {

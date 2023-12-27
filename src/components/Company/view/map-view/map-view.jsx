@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-import {Map} from "components/index";
+import {MapEditor} from "components/index";
 import {ThirdButton} from "components/Buttons/ThirdButton";
 
 import {translate, TRANSLATION} from "utils/translation";
@@ -21,8 +21,12 @@ const MapView = ({company}) => {
             <ThirdButton onClick={() => setIsShowMap(false)}>
                 {translate(TRANSLATION.COMPONENTS.COMPANY.HIDE_MAP_BUTTON)}
             </ThirdButton>
-            <Map center={[company.longitude, company.latitude]}/>
-
+            <MapEditor
+                position={[company.longitude, company.latitude]}
+                zoom={15}
+                zoomControl
+                companyName={company.name}
+            />
         </>
     )
 }

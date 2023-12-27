@@ -12,7 +12,7 @@ import HistoryTabBar from "./HistoryTabBar/HistoryTabBar";
 import HorizontalSwiper from "./HorizontalSwiper/HorizontalSwiper";
 import Like from "./Like/Like";
 import MenuItem from "./MenuItem/MenuItem";
-import Map from "./Map/Map";
+import {MapEditor} from "./Map/Map";
 import NavigationHeader from "./NavigationHeader/NavigationHeader";
 import NavigationLabelHref from "./NavigationLabelHref/NavigationLabelHref";
 import NotificationTDB from "./NotificationTDB/NotificationTDB";
@@ -69,7 +69,7 @@ export {
     Label,
     Like,
     MenuItem,
-    Map,
+    MapEditor,
     NOTIFICATION_STATUS,
     NavigationHeader,
     NavigationLabelHref,

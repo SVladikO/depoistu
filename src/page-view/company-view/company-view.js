@@ -10,9 +10,12 @@ import {
     Label,
     CityInput,
     Popup,
-    Map,
     WeekScheduleInput,
-    ImageUploaderButton, RowSplitter, SwiperWrapper, SecondaryButton
+    ImageUploaderButton,
+    RowSplitter,
+    SwiperWrapper,
+    // SecondaryButton,
+    // MapEditor
 } from "components";
 
 import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
@@ -31,7 +34,6 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
     const [showCityPopup, setShowCityPopup] = useState(false);
     const [wasSubmitted, setWasSubmitted] = useState(false);
     const [photos, setPhotos] = useState(initialValues.photos || []);
-    const [isShowMap, setIsShowMap] = useState(false);
 
     const openCityPopup = () => setShowCityPopup(true);
     const closeCityPopup = () => setShowCityPopup(false);
@@ -69,7 +71,6 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
         mapInput.dispatchEvent(new Event('keyup', {'bubbles': true}));
     }
 
-    console.log(4444444, [initialValues.longitude, initialValues.latitude])
 
     return (
         <div>
@@ -135,55 +136,49 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                                 isRequired
                             />
 
-                            {!isShowMap && (
-                                <SecondaryButton isWide clickHandler={
-                                    () => {
-                                        setIsShowMap(true)
-                                        setTimeout(() => setMapValue(values), 1000)
-                                    }
-                                }>Check address on map</SecondaryButton>
-                            )}
-                            {isShowMap && <Map center={[values.longitude, values.latitude]} />}
+                            {/*{!isShowMap && (*/}
+                            {/*    <SecondaryButton isWide clickHandler={*/}
+                            {/*        () => {*/}
+                            {/*            setIsShowMap(true)*/}
+                            {/*            setTimeout(() => setMapValue(values), 0)*/}
+                            {/*        }*/}
+                            {/*    }>Check address on map</SecondaryButton>*/}
+                            {/*)}*/}
+                            {/*{isShowMap && (*/}
+                            {/*    <MapEditor*/}
+                            {/*        name={'map'}*/}
+                            {/*        position={[values.longitude, values.latitude]}*/}
+                            {/*        setLat={(lat) => setFieldValue('latitude', lat)}*/}
+                            {/*        setLng={(lng) => setFieldValue('longitude', lng)}*/}
+                            {/*    />*/}
+                            {/*)*/}
+                            {/*}*/}
 
-                            <div>
-                                <Input
-                                    name="longitude"
-                                    type="text"
-                                    value={values.longitude}
-                                    labelName={'longitude'}
-                                    errorMessage={errors.longitude}
-                                    isTouched={touched.longitude || wasSubmitted}
-                                    changeHandler={handleChange}
-                                    clearHandler={() => setFieldValue('longitude', '')}
-                                    withCleaner
-                                    isRequired
-                                />
-                                <Input
-                                    name="latitude"
-                                    type="text"
-                                    value={values.latitude}
-                                    labelName={'latitude'}
-                                    errorMessage={errors.latitude}
-                                    isTouched={touched.latitude || wasSubmitted}
-                                    changeHandler={handleChange}
-                                    clearHandler={() => setFieldValue('latitude', '')}
-                                    withCleaner
-                                    isRequired
-                                />
-                            </div>
-                            <Input
-                                Icon={PhoneIcon}
-                                name="phone1"
-                                type="text"
-                                value={values.phone1}
-                                labelName={`${translate(TRANSLATION.INPUT_LABEL.COMPANY.PHONE)} 1`}
-                                errorMessage={errors.phone1}
-                                isTouched={touched.phone1 || wasSubmitted}
-                                changeHandler={handleChange}
-                                clearHandler={() => setFieldValue('phone1', '')}
-                                withCleaner
-                                isRequired
-                            />
+                            {/*<div>*/}
+                                {/*<Input*/}
+                                {/*    name="longitude"*/}
+                                {/*    type="text"*/}
+                                {/*    value={values.longitude}*/}
+                                {/*    labelName={'longitude'}*/}
+                                {/*    errorMessage={errors.longitude}*/}
+                                {/*    isTouched={touched.longitude || wasSubmitted}*/}
+                                {/*    changeHandler={handleChange}*/}
+                                {/*    withCleaner*/}
+                                {/*    isRequired*/}
+                                {/*/>*/}
+                                {/*<Input*/}
+                                {/*    name="latitude"*/}
+                                {/*    type="text"*/}
+                                {/*    value={values.latitude}*/}
+                                {/*    labelName={'latitude'}*/}
+                                {/*    errorMessage={errors.latitude}*/}
+                                {/*    isTouched={touched.latitude || wasSubmitted}*/}
+                                {/*    changeHandler={handleChange}*/}
+                                {/*    clearHandler={() => setFieldValue('latitude', '')}*/}
+                                {/*    withCleaner*/}
+                                {/*    isRequired*/}
+                                {/*/>*/}
+                            {/*</div>*/}
                             <Input
                                 Icon={PhoneIcon}
                                 name="phone1"
