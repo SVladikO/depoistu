@@ -501,6 +501,10 @@ export const TRANSLATION = {
                     en: "Profile",
                     ua: "Профіль"
                 },
+                ORDER_HISTORY: {
+                    en: "Order History",
+                    ua: "Мої Замовлення"
+                },
                 MENU: {
                     ua: "Налаштувати меню",
                     en: "Set up menu"
@@ -724,6 +728,12 @@ export const TRANSLATION = {
                 ua: "Наша Команда",
                 en: "Our Team"
             }
+        },
+        ORDER_HISTORY: {
+            TOP_TITLE: {
+                ua: "Мої замовлення",
+                en: "Order History"
+            },
         },
         FAVORITE: {
             TOP_TITLE: {

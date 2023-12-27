@@ -7,6 +7,7 @@ import {Wrapper} from './Setting.style';
 
 import {ReactComponent as LogOutIcon} from 'assets/icons/logout.svg';
 import {ReactComponent as ProfileIcon} from 'assets/icons/profile.svg';
+import {ReactComponent as OrderHistoryIcon} from 'assets/icons/order_history.svg';
 import {ReactComponent as LanguageIcon} from 'assets/icons/language.svg';
 import {ReactComponent as AboutUsIcon} from "assets/icons/about_us.svg";
 import {ReactComponent as StoreIcon} from 'assets/icons/house.svg';
@@ -115,6 +116,11 @@ const SettingPage = () => {
                                 icon={ProfileIcon}
                                 title={translate(TR.PAGE.SETTINGS.MENU_ROW.EDIT_PROFILE)}
                                 href={URL.EDIT_CUSTOMER}
+                            />
+                            <SettingMenuRow
+                                icon={OrderHistoryIcon}
+                                title={translate(TR.PAGE.SETTINGS.MENU_ROW.ORDER_HISTORY)}
+                                href={URL.ORDER_HISTORY}
                             />
                             {/*TODO: Change password page disabled as BE isn't ready yet. */}
                             {/*<SettingMenuRow*/}

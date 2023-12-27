@@ -18,7 +18,7 @@ import AvailableMenuCategoriesPage from "page/available-menu-categories/Availabl
 // TODO: Hidden second version
 import OrderPage from "page/order/Order.page";
 // import CategoryPage from "page/category/Category.page";
-// import OrderHistoryPage from "page/order-history/OrderHistory.page";
+import OrderHistoryPage from "page/order-history/OrderHistory.page";
 // import {HistoryTabBar} from "components";
 
 import {TRANSLATION, translate} from "./translation.js";
@@ -79,6 +79,7 @@ export const URL = {
     ABOUT_PROJECT: '/about-project',
     EDIT_CUSTOMER: '/edit-customer',
     OUR_TEAM: '/our-team',
+    ORDER_HISTORY: '/order-history',
 
     AVAILABLE_MENU_CATEGORIES: '/available-menu-categories',
     INSTRUCTION_FOR_BUSINESS_OWNER: '/instruction-for-business-owner',
@@ -97,7 +98,13 @@ export const ROUTER = {
         page: OrderPage,
         showBottomMenu: true
     },
-    // ORDER_HISTORY: {URL: '/history',  TITLE: 'Order History', page: OrderHistoryPage, subHeader: HistoryTabBar, showBottomMenu: true},
+    ORDER_HISTORY: {
+        URL: URL.ORDER_HISTORY,
+        TITLE: translate(TRANSLATION.PAGE.ORDER_HISTORY.TOP_TITLE),
+        page: OrderHistoryPage,
+        // subHeader: HistoryTabBar,
+        showBottomMenu: true
+    },
     FAVORITE: {
         URL: URL.FAVORITE,
         TITLE: translate(TRANSLATION.PAGE.FAVORITE.TOP_TITLE),

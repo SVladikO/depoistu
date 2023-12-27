@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
     z-index: 2;
     bottom: -1px;
     height: 60px;
+    padding: 0 0 4px;
     background-color: ${COLOR.ACCENT4};
     border-radius: ${BORDER_RADIUS.SECOND} ${BORDER_RADIUS.SECOND} 0 0;
     display: flex;
