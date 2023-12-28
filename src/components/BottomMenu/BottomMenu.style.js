@@ -35,7 +35,7 @@ export const MenuItem = styled.div`
     color: ${p => p.selected ? COLOR.PRIMARY : COLOR.ACCENT1};
 
     & > *:first-child {
-        width: 23px;
+        width: 20px;
         height: 20px;
         display: block;
         margin-bottom: 5px;
