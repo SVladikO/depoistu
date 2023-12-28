@@ -12,7 +12,7 @@ import {ReactComponent as PhoneIcon} from "assets/icons/phone.svg";
 import {ReactComponent as Heart1Icon} from "assets/icons/heart1.svg";
 import {ReactComponent as Heart2Icon} from "assets/icons/heart2.svg";
 import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
-import defaultCompanyImg from 'assets/images/default/default_company.webp';
+import defaultCompanyImg from '../../assets/images/default/default.png';
 
 import {
     Wrapper, Name, Content, CompanyInfo, Schedule, OpenStatus, FirstRow, Closes, LocationWrapper,
