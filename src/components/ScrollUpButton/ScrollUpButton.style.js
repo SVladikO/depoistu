@@ -3,7 +3,7 @@ import {BORDER_RADIUS, COLOR} from "../../utils/theme";
 
 export const ToTopButtonWrapper = styled.a`
     position: fixed;
-    bottom: 103px;
+    bottom: 85px;
     right: ${p => `calc(100vw / 2 - ${p.rightMargin})`};
     z-index: 19;
     transform: rotate(180deg);
