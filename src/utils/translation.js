@@ -1154,6 +1154,10 @@ export const TRANSLATION = {
             en: "Longs",
             ua: "Лонги"
         },
+        CIDER: {
+            en: "Cider",
+            ua: "Сидр"
+        },
         NO_ALCOHOL: {
             en: "Non-alcoholic",
             ua: "Без алкогольні"
