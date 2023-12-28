@@ -214,7 +214,7 @@ const CategoryMenuView = ({
                                 ? 2
                                 : 4
                         }
-                        sliderStylePadding='0 6px 12px'
+                        sliderStylePadding='0 6px 10px'
                         subCategoryIndex={selectedTopCategoryId}
                     >
                         {topCategories.map(details => renderTopCategory(details))}
