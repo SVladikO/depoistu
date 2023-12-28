@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {COLOR, BORDER_RADIUS, FONT} from "utils/theme";
+import {COLOR, FONT} from "utils/theme";
 
 export const Wrapper = styled.div`
     z-index: 2;
@@ -7,7 +7,6 @@ export const Wrapper = styled.div`
     height: 60px;
     padding: 0 0 4px;
     background-color: ${COLOR.ACCENT4};
-    border-radius: ${BORDER_RADIUS.SECOND} ${BORDER_RADIUS.SECOND} 0 0;
     display: flex;
     justify-content: space-around;
 
@@ -38,7 +37,7 @@ export const MenuItem = styled.div`
         width: 20px;
         height: 20px;
         display: block;
-        margin-bottom: 5px;
+        margin-bottom: 2px;
         fill: ${p => p.selected ? COLOR.PRIMARY : COLOR.ACCENT1};
     }
 `;
@@ -64,7 +63,5 @@ export const OrderButton = styled.div`
 `;
 
 export const Label = styled.div`
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
+  ${FONT.SIZE_18};
 `;
