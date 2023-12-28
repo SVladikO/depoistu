@@ -4,8 +4,8 @@ import {COLOR, FONT} from "utils/theme";
 export const Wrapper = styled.div`
     z-index: 2;
     bottom: -1px;
-    height: 60px;
-    padding: 0 0 4px;
+    height: 70px;
+    padding: 0 0 8px;
     background-color: ${COLOR.ACCENT4};
     display: flex;
     justify-content: space-around;
@@ -24,6 +24,9 @@ export const Wrapper = styled.div`
 `;
 
 export const MenuItem = styled.div`
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
     width: 40px;
     display: flex;
     flex-direction: column;
@@ -34,8 +37,8 @@ export const MenuItem = styled.div`
     color: ${p => p.selected ? COLOR.PRIMARY : COLOR.ACCENT1};
 
     & > *:first-child {
-        width: 20px;
-        height: 20px;
+        width: 23px;
+        height: 23px;
         display: block;
         margin-bottom: 2px;
         fill: ${p => p.selected ? COLOR.PRIMARY : COLOR.ACCENT1};

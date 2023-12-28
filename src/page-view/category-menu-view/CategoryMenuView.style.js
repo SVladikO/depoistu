@@ -2,6 +2,9 @@ import styled from "styled-components";
 import {COLOR, FONT, GRADIENT, hexToRgbA} from "utils/theme";
 
 export const SubCategoryWrapper = styled.div`
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
   padding: 6px 2px;
   position: sticky;
   top: 0;
@@ -18,6 +21,9 @@ export const BgWrapper = styled.div`
   background-image: linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO});
 `;
 export const TopCategoryItem = styled.div`
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
   height: 46px;
   display: flex;
   align-items: baseline;
