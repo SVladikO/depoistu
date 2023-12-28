@@ -621,6 +621,7 @@ export const TRANSLATION = {
                         question: "What is the cost?",
                         answers: [
                             "It's free until 1st of June 2024.",
+                            "After 300 uah/month",
                         ]
                     },
                     {
@@ -658,12 +659,6 @@ export const TRANSLATION = {
                         question: "When was the first version released?",
                         answers: ["November 1, 2023"]
                     },
-                    {
-                        question: "What unites us?",
-                        answers: [
-                            "The desire to improve the sphere of services among catering establishments of Ukraine."
-                        ]
-                    },
                 ],
                 ua: [
                     {
@@ -676,6 +671,7 @@ export const TRANSLATION = {
                         question: "Яка вартість?",
                         answers: [
                             "До 1го Червня 2024 БЕЗКОШТОВНО.",
+                            "Після 300 грн/міс",
                         ]
                     },
                     {
@@ -713,12 +709,6 @@ export const TRANSLATION = {
                     {
                         question: "Коли ми випустили першу версію?",
                         answers: ["1 Листопада 2023 року"]
-                    },
-                    {
-                        question: "Що нас об`єднує?",
-                        answers: [
-                            "Бажання покращити сферу послуг серед закладів харчування України.",
-                        ]
                     },
                 ],
             }
