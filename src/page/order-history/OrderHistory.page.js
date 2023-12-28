@@ -1,5 +1,8 @@
+import {Link} from "react-router-dom";
+
 import {Content, Wrapper} from './OrderHistory.page.style';
 import {OrderHistoryRow} from "components";
+import {URL} from "utils/config";
 
 
 const items = [
@@ -30,7 +33,15 @@ const OrderHistoryPage = () => {
     return (
         <Wrapper>
             <Content>
-                {items.map(order => <OrderHistoryRow key={order.id} order={order} /> )}
+                {items.map((order, index) => (
+                        <div key={index}>
+                            <Link to={URL.ORDER_HISTORY_DETAILS}>
+                                <OrderHistoryRow key={order.id} order={order}/>
+                            </Link>
+                        </div>
+                    )
+                )
+                }
             </Content>
         </Wrapper>
     );

@@ -12,9 +12,6 @@ export const Content = styled.div`
   & > div {
     margin: 0 0 4px;
   }
-  & > div:first-child{
-    margin-top: 0;
-  }
 `;
 export const Date = styled.div`
   justify-self: flex-start;

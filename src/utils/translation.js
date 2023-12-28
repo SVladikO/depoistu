@@ -722,7 +722,13 @@ export const TRANSLATION = {
         ORDER_HISTORY: {
             TOP_TITLE: {
                 ua: "Мої замовлення",
-                en: "Order History"
+                en: "Orders History"
+            },
+        },
+        ORDER_HISTORY_DETAILS: {
+            TOP_TITLE: {
+                ua: "Деталі замовлення",
+                en: "Order details"
             },
         },
         FAVORITE: {

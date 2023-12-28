@@ -26,6 +26,7 @@ import EditCustomerPage from "page/edit-customer/EditCustomer.page";
 import FavoritePage from "page/favorite/Favorite.page";
 import InstructionForBusinessOwnerPage from "page/instruction-for-bussines-owner/InstructionForBusinessOwner.page";
 import ProjectUpdatedPagePage from "../page/project-updated/ProjectUpdatedPage.page";
+import OrderHistoryDetailsPage from "../page/order-history-details/OrderHistoryDetails.page";
 
 export const DEV_ROUTER = {
     ADMIN: 'admin',
@@ -80,6 +81,7 @@ export const URL = {
     EDIT_CUSTOMER: '/edit-customer',
     OUR_TEAM: '/our-team',
     ORDER_HISTORY: '/order-history',
+    ORDER_HISTORY_DETAILS: '/order-history-details',
 
     AVAILABLE_MENU_CATEGORIES: '/available-menu-categories',
     INSTRUCTION_FOR_BUSINESS_OWNER: '/instruction-for-business-owner',
@@ -102,7 +104,14 @@ export const ROUTER = {
         URL: URL.ORDER_HISTORY,
         TITLE: translate(TRANSLATION.PAGE.ORDER_HISTORY.TOP_TITLE),
         page: OrderHistoryPage,
-        // subHeader: HistoryTabBar,
+        backUrl: URL.SETTING,
+        showBottomMenu: true
+    },
+    ORDER_HISTORY_DETAILS: {
+        URL: URL.ORDER_HISTORY_DETAILS,
+        TITLE: translate(TRANSLATION.PAGE.ORDER_HISTORY_DETAILS.TOP_TITLE),
+        page: OrderHistoryDetailsPage,
+        backUrl: URL.ORDER_HISTORY,
         showBottomMenu: true
     },
     FAVORITE: {
