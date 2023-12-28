@@ -9,12 +9,11 @@ import {Info as _Info} from "./info/Info";
 
 export const enableScrollOnBody = () => {
     document.body.style.overflowY = 'auto';
-    document.html.style.overflowY = 'auto';
     document.body.style.position = 'relative';
 };
 export const disableScrollOnBody = () => {
     document.body.style.overflowY = 'hidden';
-    document.html.style.overflowY = 'hidden';
+    document.body.style.position = 'fixed';
 };
 
 const Popup = (props) => {
