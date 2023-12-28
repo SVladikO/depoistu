@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   border: ${p => p.isSelected ? `solid 2px ${COLOR.ACCENT4}` : ''};
   color: ${COLOR.ACCENT4};
   ${FONT.SIZE_16};
-  ${FONT.WEIGHT_500};
+  ${FONT.WEIGHT_700};
   text-align: center;
   
   &:hover {
