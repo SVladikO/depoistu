@@ -57,10 +57,8 @@ CREATE TABLE ORDER_HISTORY
     ID          SERIAL NOT NULL,
     CUSTOMER_ID INT    NOT NULL,
     COMPANY_ID  INT    NOT NULL,
-    TOTAL       INT,
+    TOTAL       CHAR(5)
     DATE        CHAR(14),
-    IS_PAID     BOOLEAN,
-    IS_PREPARED BOOLEAN
 );
 
 CREATE TABLE ORDER_HISTORY_DETAILS
@@ -68,9 +66,9 @@ CREATE TABLE ORDER_HISTORY_DETAILS
     ID               SERIAL NOT NULL,
     ORDER_HISTORY_ID INT    NOT NULL,
     MENU_ITEM_ID     INT    NOT NULL,
-    AMOUNT1          INT,
-    AMOUNT2          INT,
-    AMOUNT3          INT,
+    AMOUNT1          CHAR(2),
+    AMOUNT2          CHAR(2),
+    AMOUNT3          CHAR(2),
     PRICE1           CHAR(6),
     PRICE2           CHAR(6),
     PRICE3           CHAR(6),
