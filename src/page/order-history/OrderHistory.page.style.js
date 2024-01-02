@@ -7,14 +7,10 @@ export const Wrapper = styled.div`
   flex-direction: column;
   position: relative;
   z-index: 1;
-  margin-top: 50px;
 `;
 export const Content = styled.div`
   & > div {
-    margin-top: 15px;
-  }
-  & > div:first-child{
-    margin-top: 0;
+    margin: 0 0 4px;
   }
 `;
 export const Date = styled.div`

@@ -16,25 +16,20 @@ import {CITY_TRANSLATION_IDS} from "utils/cities";
 import {translate, TRANSLATION} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 import CategoryMenuView from "page-view/category-menu-view/CategoryMenuView";
-import {useLocalStorageFetch, useRedirectToSettingPage, useScrollUp} from "utils/hook";
+import {useLocalStorage, useRedirectToSettingPage, useScrollUp} from "utils/hook";
 
-const EditMenu = () => {
+const EditMenuPage = () => {
     useRedirectToSettingPage();
     useScrollUp();
     const dispatch = useDispatch();
-    const companyId = LocalStorage.get(LOCAL_STORAGE_KEY.COMPANY_ID_TO_EDIT_MENU_PAGE);
-    const isLoading = useSelector(state => state.request.value.isLoading);
     const [menuItems, setMenuItems] = useState([]);
-    const customer = useSelector(state => state.customer.value);
-    const [customerCompanies] = useLocalStorageFetch(
-        LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES,
-        [],
-        BE_API.COMPANY.GET_BY_CUSTOMER_ID(customer?.id)
-    );
+    const isLoading = useSelector(state => state.request.value.isLoading);
+
+    const companyId = LocalStorage.get(LOCAL_STORAGE_KEY.COMPANY_ID_TO_EDIT_MENU_PAGE);
+    const [customerCompanies] = useLocalStorage(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
     const currentCompany = customerCompanies?.find((c => c.id === +companyId));
-    useEffect(() => {
-        LocalStorage.set(LOCAL_STORAGE_KEY.COMPANY_ID_FOR_EDIT_MENU, companyId);
-    })
+
+    useEffect(() => LocalStorage.set(LOCAL_STORAGE_KEY.COMPANY_ID_FOR_EDIT_MENU, companyId), [])
 
     useEffect(() => {
         dispatch(startLoading());
@@ -67,7 +62,7 @@ const EditMenu = () => {
                     {translate(TRANSLATION.PAGE.EDIT_MENU.BUTTON.ADD_MENU_ITEM)}
                 </PrimaryButton>
             </Link>
-            <RowSplitter height="40px" />
+            <RowSplitter height="40px"/>
 
             <Wrapper>
                 {!!menuItems?.length &&
@@ -85,4 +80,4 @@ const EditMenu = () => {
     )
 }
 
-export default EditMenu;
+export default EditMenuPage;

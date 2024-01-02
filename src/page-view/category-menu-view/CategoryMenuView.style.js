@@ -2,7 +2,10 @@ import styled from "styled-components";
 import {COLOR, FONT, GRADIENT, hexToRgbA} from "utils/theme";
 
 export const SubCategoryWrapper = styled.div`
-  padding: 8px 2px;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+  padding: 6px 2px;
   position: sticky;
   top: 0;
   left: 0;
@@ -18,13 +21,16 @@ export const BgWrapper = styled.div`
   background-image: linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO});
 `;
 export const TopCategoryItem = styled.div`
-  height: 50px;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+  height: 46px;
   display: flex;
   align-items: baseline;
   cursor: pointer;
   z-index: 1;
   color: ${COLOR.ACCENT1};
-  ${FONT.SIZE_18};
+  ${FONT.SIZE_16};
   padding: 10px 14px 20px;
   border-bottom: solid 3px ${p => p.isSelected ? COLOR.ACCENT3 : COLOR.ACCENT4};
   color: ${p => p.isSelected ? COLOR.ACCENT1 : COLOR.ACCENT1};
@@ -33,9 +39,10 @@ export const TopCategoryItem = styled.div`
 `;
 
 export const CategoryTitle = styled.div`
+  height: ${p => p.isHidden ? '0px' : 'auto'};
   font-size: 20px;
   line-height: 24px;
-  padding: 22px 0 16px 16px;
+  padding: ${p => p.isHidden ? '0px' : '22px 0 16px 16px'};
   color: ${hexToRgbA(COLOR.ACCENT1, 0.7)};
 `;
 

@@ -34,7 +34,7 @@ export const FONT = {
         `,
     SIZE_16: `
         font-size: 16px;
-        line-height: 19px;
+        line-height: 18px;
         `,
     SIZE_18: `
         font-size: 18px;

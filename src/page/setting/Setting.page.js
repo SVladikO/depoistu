@@ -7,12 +7,12 @@ import {Wrapper} from './Setting.style';
 
 import {ReactComponent as LogOutIcon} from 'assets/icons/logout.svg';
 import {ReactComponent as ProfileIcon} from 'assets/icons/profile.svg';
+import {ReactComponent as OrderHistoryIcon} from 'assets/icons/order_history.svg';
 import {ReactComponent as LanguageIcon} from 'assets/icons/language.svg';
 import {ReactComponent as AboutUsIcon} from "assets/icons/about_us.svg";
 import {ReactComponent as StoreIcon} from 'assets/icons/house.svg';
 import {ReactComponent as InstructionIcon} from 'assets/icons/instruction.svg';
 import {ReactComponent as MenuCategoryIcon} from 'assets/icons/menu_category.svg';
-import {ReactComponent as TeamIcon} from "assets/icons/team.svg";
 import {ReactComponent as RocketIcon} from "assets/icons/rocket.svg";
 
 import {
@@ -116,6 +116,11 @@ const SettingPage = () => {
                                 title={translate(TR.PAGE.SETTINGS.MENU_ROW.EDIT_PROFILE)}
                                 href={URL.EDIT_CUSTOMER}
                             />
+                            <SettingMenuRow
+                                icon={OrderHistoryIcon}
+                                title={translate(TR.PAGE.SETTINGS.MENU_ROW.ORDER_HISTORY)}
+                                href={URL.ORDER_HISTORY}
+                            />
                             {/*TODO: Change password page disabled as BE isn't ready yet. */}
                             {/*<SettingMenuRow*/}
                             {/*    icon={LockIcon}*/}
@@ -166,11 +171,6 @@ const SettingPage = () => {
                         icon={AboutUsIcon}
                         title={translate(TR.PAGE.SETTINGS.MENU_ROW.ABOUT_PROJECT)}
                         href={URL.ABOUT_PROJECT}
-                    />
-                    <SettingMenuRow
-                        icon={TeamIcon}
-                        title={translate(TR.PAGE.OUR_TEAM.TOP_TITLE)}
-                        href={URL.OUR_TEAM}
                     />
                     <SettingMenuRow
                         icon={RocketIcon}

@@ -10,7 +10,9 @@ import App from "./page/App";
 import {LocalStorage, LOCAL_STORAGE_KEY} from "./utils/localStorage";
 import {checkUpdates} from "./utils/management";
 import ImageUploaderButton from "./components/ImageUploaderButton/ImageUploaderButton";
+import {setBrowserTabTitle} from "./utils/utils";
 
+setBrowserTabTitle()
 checkUpdates();
 
 const container = document.getElementById('root');

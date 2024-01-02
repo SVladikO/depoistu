@@ -1,20 +1,20 @@
-.KKKKK {
+.map_container {
     margin: 0 !important;
     width: 380px;
     /*left: -10px;*/
     /*top: -10px;*/
 }
 
-.HHHHH {
+.form_container {
     background-color: #fff;
 }
 
-.BBBBB,
-.IIIII {
+.reset_button,
+.map_input {
     display: none;
 }
 
-.RRRR {
+.reset_button {
     border: 1px solid green;
     cursor: pointer;
 }

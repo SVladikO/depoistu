@@ -32,7 +32,7 @@ import {
 } from "./utils";
 
 const CATEGORY_TITLE_CLASS_NAME = 'CATEGORY_TITLE_CLASS_NAME';
-const CATEGORY_ROW_HEIGHT = 120;
+const CATEGORY_ROW_HEIGHT = 114;
 
 let indexCalculator = 0;
 let categoryIdIndexMapper = {};
@@ -127,7 +127,14 @@ const CategoryMenuView = (props) => {
         )
     };
 
-    const renderCategoryTitle = (categoryId, topCategoryIndex) => {
+    /**
+     *
+     * @param categoryId
+     * @param topCategoryIndex
+     * @param isHidden - We need hide category title for case when we scroll up page and should change sub and top category.
+     * @returns {JSX.Element}
+     */
+    const renderCategoryTitle = (categoryId, topCategoryIndex, isHidden = false) => {
         const categoryTitle = CATEGORY_ID_MAPPER_AS_OBJECT[categoryId].title;
 
         return (
@@ -135,6 +142,7 @@ const CategoryMenuView = (props) => {
                 key={categoryTitle + topCategoryIndex}
                 className={CATEGORY_TITLE_CLASS_NAME}
                 id={generateTagId(categoryId, topCategoryIndex)}
+                isHidden={isHidden}
             >
                 {categoryTitle.toUpperCase()}
             </CategoryTitle>
@@ -184,7 +192,11 @@ const CategoryMenuView = (props) => {
 
             subCategories.push(renderSubCategory(categoryId, topCategoryIndex, categoryIdIndexMapper[categoryId]))
             resultMenuItems.push(renderCategoryTitle(categoryId, topCategoryIndex))
-            resultMenuItems.push(items.map(renderMenuItem))
+            const menuItem = items.map(renderMenuItem)
+            menuItem.forEach(mi => {
+                resultMenuItems.push(renderCategoryTitle(categoryId, topCategoryIndex, true))
+                resultMenuItems.push(mi)
+            })
         })
     })
 
@@ -212,7 +224,7 @@ const CategoryMenuView = (props) => {
                                 ? 2
                                 : 4
                         }
-                        sliderStylePadding='0 6px 12px'
+                        sliderStylePadding='0 6px 10px'
                         subCategoryIndex={selectedTopCategoryId}
                     >
                         {topCategories.map(details => renderTopCategory(details))}

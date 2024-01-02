@@ -12,11 +12,12 @@ import HistoryTabBar from "./HistoryTabBar/HistoryTabBar";
 import HorizontalSwiper from "./HorizontalSwiper/HorizontalSwiper";
 import Like from "./Like/Like";
 import MenuItem from "./MenuItem/MenuItem";
-import Map from "./Map/Map";
+import {MapEditor} from "./Map/Map";
 import NavigationHeader from "./NavigationHeader/NavigationHeader";
 import NavigationLabelHref from "./NavigationLabelHref/NavigationLabelHref";
 import NotificationTDB from "./NotificationTDB/NotificationTDB";
 import OrderIconWithCounter from "./OrderIconWithCounter/OrderIconWithCounter.jsx";
+import OrderHistoryRow from "./OrderHistoryRow/OrderHistoryRow.jsx";
 import Popup from "./Popup/Popup";
 import Price from "./Price/Price";
 import Rating from "./Rating/Rating";
@@ -69,7 +70,7 @@ export {
     Label,
     Like,
     MenuItem,
-    Map,
+    MapEditor,
     NOTIFICATION_STATUS,
     NavigationHeader,
     NavigationLabelHref,
@@ -77,6 +78,7 @@ export {
     NotificationTDB,
     NotificationLoading,
     OrderIconWithCounter,
+    OrderHistoryRow,
     CityInput,
     Popup,
     Price,

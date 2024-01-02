@@ -114,5 +114,3 @@ export const AddButton = styled(SecondaryButton)`
     height: 22px;
     ${FONT.SIZE_16};
 `
-
-

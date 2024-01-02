@@ -12,15 +12,13 @@ import {ReactComponent as PhoneIcon} from "assets/icons/phone.svg";
 import {ReactComponent as Heart1Icon} from "assets/icons/heart1.svg";
 import {ReactComponent as Heart2Icon} from "assets/icons/heart2.svg";
 import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
-import defaultCompanyImg from 'assets/images/default/default_company.webp';
+import defaultCompanyImg from '../../assets/images/default/default.png';
 
 import {
     Wrapper, Name, Content, CompanyInfo, Schedule, OpenStatus, FirstRow, Closes, LocationWrapper,
 } from "./Company.style";
 
-import MapView from "./view/map-view/map-view";
-
-import {ThirdButton, ScheduleDetails, SwiperWrapper, PrimaryButton, Popup, NotificationTDB} from "components";
+import {ThirdButton, ScheduleDetails, SwiperWrapper} from "components";
 
 import {
     addToFavoriteCompanies,
@@ -31,7 +29,7 @@ import {errorHandler} from "utils/management";
 import {parseSchedule} from "utils/company";
 import {BE_API, fetchData} from "utils/fetch";
 import {CITY_TRANSLATION_IDS} from "utils/cities";
-import {translate, TRANSLATION, TRANSLATION as TR, truncate} from "utils/translation";
+import {translate, TRANSLATION as TR, truncate} from "utils/translation";
 import ImageUrlFormatter from "../../utils/image.utils";
 import {ROUTER} from "../../utils/config";
 
@@ -151,7 +149,7 @@ const Company = ({company, withMoreInfo, children, clickHandler}) => {
                     {withMoreInfo && company.schedule && company.schedule.length &&
                         <ScheduleDetails scheduleAsArray={parsedSchedule.workDays}/>
                     }
-                    {withMoreInfo && <MapView company={company}/>}
+                    {/*{withMoreInfo && <MapView company={company} />}*/}
                 </CompanyInfo>
                 {children}
             </Content>

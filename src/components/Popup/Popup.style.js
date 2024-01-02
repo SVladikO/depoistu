@@ -14,7 +14,7 @@ export const InvisibleWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: ${p => p.popupPosition};
-  z-index: 20;
+  z-index: 100;
 `;
 
 export const Wrapper = styled.div`

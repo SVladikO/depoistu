@@ -42,8 +42,8 @@ export const TRANSLATION = {
         ua: 'Ні'
     },
     COMPANY_NAME: {
-        ua: 'DEPOISTU',
-        en: 'DEPOISTU'
+        ua: 'Де поїсти в Україні?',
+        en: 'Where to eat in Ukraine ?'
     },
     SEE_MORE: {
         ua: 'більше',
@@ -501,6 +501,10 @@ export const TRANSLATION = {
                     en: "Profile",
                     ua: "Профіль"
                 },
+                ORDER_HISTORY: {
+                    en: "Order History",
+                    ua: "Мої Замовлення"
+                },
                 MENU: {
                     ua: "Налаштувати меню",
                     en: "Set up menu"
@@ -617,6 +621,7 @@ export const TRANSLATION = {
                         question: "What is the cost?",
                         answers: [
                             "It's free until 1st of June 2024.",
+                            "After 300 uah/month",
                         ]
                     },
                     {
@@ -654,12 +659,6 @@ export const TRANSLATION = {
                         question: "When was the first version released?",
                         answers: ["November 1, 2023"]
                     },
-                    {
-                        question: "What unites us?",
-                        answers: [
-                            "The desire to improve the sphere of services among catering establishments of Ukraine."
-                        ]
-                    },
                 ],
                 ua: [
                     {
@@ -672,6 +671,7 @@ export const TRANSLATION = {
                         question: "Яка вартість?",
                         answers: [
                             "До 1го Червня 2024 БЕЗКОШТОВНО.",
+                            "Після 300 грн/міс",
                         ]
                     },
                     {
@@ -710,12 +710,6 @@ export const TRANSLATION = {
                         question: "Коли ми випустили першу версію?",
                         answers: ["1 Листопада 2023 року"]
                     },
-                    {
-                        question: "Що нас об`єднує?",
-                        answers: [
-                            "Бажання покращити сферу послуг серед закладів харчування України.",
-                        ]
-                    },
                 ],
             }
         },
@@ -724,6 +718,18 @@ export const TRANSLATION = {
                 ua: "Наша Команда",
                 en: "Our Team"
             }
+        },
+        ORDER_HISTORY: {
+            TOP_TITLE: {
+                ua: "Мої замовлення",
+                en: "Orders History"
+            },
+        },
+        ORDER_HISTORY_DETAILS: {
+            TOP_TITLE: {
+                ua: "Деталі замовлення",
+                en: "Order details"
+            },
         },
         FAVORITE: {
             TOP_TITLE: {
@@ -864,7 +870,7 @@ export const TRANSLATION = {
                 HIDDEN: {
                     en: "HIDDEN",
                     ua: "ПРИХОВАНО"
-                },
+                }
             },
         },
         POPUP: {
@@ -1143,6 +1149,10 @@ export const TRANSLATION = {
         LONGS: {
             en: "Longs",
             ua: "Лонги"
+        },
+        CIDER: {
+            en: "Cider",
+            ua: "Сидр"
         },
         NO_ALCOHOL: {
             en: "Non-alcoholic",
