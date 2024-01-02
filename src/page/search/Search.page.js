@@ -14,7 +14,7 @@ import {publishNotificationEvent} from "utils/event";
 import {translate, TRANSLATION, truncate} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 import {useLocalStorage, useScrollUp} from "utils/hook";
-import {addCompanyIdForSearchDetailsPage} from "../../features/searchDetailsPage/searchDetailsPageSlice";
+import {setCompanyId} from "../../features/searchDetails/searchDetailsSlice";
 import {errorHandler} from "utils/management";
 
 const SearchPage = () => {
@@ -123,7 +123,7 @@ const SearchPage = () => {
                             company={company}
                             clickHandler={
                                 () => {
-                                    dispatch(addCompanyIdForSearchDetailsPage(company.id))
+                                    dispatch(setCompanyId(company.id))
                                     LocalStorage.remove(LOCAL_STORAGE_KEY.SEARCH_DETAILS_COMPANY)
                                     LocalStorage.remove(LOCAL_STORAGE_KEY.SEARCH_DETAILS_MENU)
                                     navigate(`${URL.SEARCH_DETAILS}/${company.id}`)

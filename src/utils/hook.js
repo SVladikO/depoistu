@@ -11,6 +11,8 @@ export const useLocalStorage = (storageKey, initialState) => {
     const localStorageState = LocalStorage.get(storageKey);
     const [value, setValue] = useState(localStorageState ?? initialState);
 
+    // useEffect(() => {}, [])
+
     const set = value => {
         if (value === undefined) {
             LocalStorage.remove(storageKey, value);

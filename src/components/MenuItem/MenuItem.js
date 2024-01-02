@@ -8,8 +8,9 @@ import {
 import MenuItemDescription from "./view/menu-item-description/menu-item-description";
 import MenuItemBottomSettings from "./view/menu-item-bottom-settings/menu-item-bottom-settings";
 import ImageUrlFormatter from "utils/image.utils";
+import {useDispatch, useSelector} from "react-redux";
 
-const MenuItem = (props) => {
+const   MenuItem = (props) => {
     const {item, isSelected, onSelectMenuItem} = props;
     const [isItemVisible, setIsItemVisible] = useState(!!item.isVisible)
     const [isImageVisible, setIsImageVisible] = useState(false)

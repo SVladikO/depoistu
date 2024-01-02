@@ -6,7 +6,7 @@ import customerReducer from "./customer/customerSlice";
 import languageReducer from "./language/languageSlice";
 import imagePopupReducer from "./imagePopup/imagePopupSlice";
 import favoriteCompanyReducer from "./favorite-company/favoriteComapnySlice";
-import searchDetailsPageReducer from "./searchDetailsPage/searchDetailsPageSlice";
+import searchDetailsPageReducer from "./searchDetails/searchDetailsSlice";
 
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../utils/localStorage";
 
@@ -19,7 +19,7 @@ export const createStore = () => configureStore({
         language: languageReducer,
         imagePopup: imagePopupReducer,
         favoriteCompany: favoriteCompanyReducer,
-        searchDetailsPage: searchDetailsPageReducer
+        searchDetails: searchDetailsPageReducer
     }
 })
 

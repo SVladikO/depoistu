@@ -8,7 +8,7 @@ import {Company, NotificationTDB, PrimaryButton} from "../../components";
 import SingInSingUpView from "../../page-view/singInSingUp/singInSingUp.view";
 
 import {initFavoriteCompanies} from "features/favorite-company/favoriteComapnySlice";
-import {addCompanyIdForSearchDetailsPage} from "features/searchDetailsPage/searchDetailsPageSlice";
+import {setCompanyId} from "features/searchDetails/searchDetailsSlice";
 
 import {ROUTER, URL} from 'utils/config'
 import {useScrollUp} from "utils/hook";
@@ -61,7 +61,7 @@ const FavoritePage = () => {
                     key={company.id}
                     company={company}
                     clickHandler={() => {
-                        dispatch(addCompanyIdForSearchDetailsPage(company.id))
+                        dispatch(setCompanyId(company.id))
                         LocalStorage.remove(LOCAL_STORAGE_KEY.SEARCH_DETAILS_COMPANY)
                         LocalStorage.remove(LOCAL_STORAGE_KEY.SEARCH_DETAILS_MENU)
                         navigate(`${URL.SEARCH_DETAILS}/${company.id}`)

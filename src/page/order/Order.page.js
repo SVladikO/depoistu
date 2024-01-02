@@ -8,18 +8,22 @@ import {ReactComponent as EmptyBasketIcon} from "assets/icons/empty_basket.svg";
 
 import {ROUTER} from 'utils/config'
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
+import {useMemo} from "react";
+import {useScrollUp} from "../../utils/hook";
 
 const OrderPage = () => {
-    const orders = useSelector(state => state.order.value);
-
+    useScrollUp()
+    const {menuItems, allMenuItemsAmount} = useSelector(state => state.searchDetails);
+    const orderMenuItems = useMemo(() => menuItems.filter(item => item.amount_1 > 0 || item.amount_2 > 0 || item.amount_3 > 0), [menuItems])
+    const allMenuItemsPrice = 1000
     const placeOrder = () => {
         const {id: customer_id} = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER);
-        const order_details = orders.map(({id, amount, price}) => ({id, amount, price}))
+        const order_details = orderMenuItems.map(({id, amount, price}) => ({id, amount, price}))
 
         const body = {
             order: {
                 customer_id,
-                company_id: orders[0].company_id,
+                company_id: orderMenuItems[0].company_id,
                 order_details,
             }
         };
@@ -36,13 +40,13 @@ const OrderPage = () => {
                 <PrimaryButton>Login to place Order</PrimaryButton>
             </Link>
 
-    const getOrderItems = () => (
+    const OrderItems = () => (
         <>
-            <Content>{orders.map(item => alert(item))}</Content>
+            <Content>{orderMenuItems.map(item => alert(item))}</Content>
             <FixedContent>
                 <AmountInfo>
-                    <div>Sub Total ( {orders.length} item ):</div>
-                    <Price>{getOrdersTotal(orders)}</Price>
+                    <div>Sub Total ( {allMenuItemsAmount} item ):</div>
+                    <Price>{allMenuItemsPrice}</Price>
                 </AmountInfo>
                 {orderButton}
             </FixedContent>
@@ -51,8 +55,8 @@ const OrderPage = () => {
 
     return (
         <Wrapper>{
-            orders.length
-                ? getOrderItems()
+            orderMenuItems.length
+                ? <OrderItems />
                 : <NotificationTDB
                     Icon={EmptyBasketIcon}
                     title="Your Cart is empty"
@@ -65,13 +69,5 @@ const OrderPage = () => {
         }</Wrapper>
     );
 };
-
-function getOrdersTotal(orders) {
-    let amount = 0;
-
-    orders.forEach(order => amount += order.price * order.amount)
-
-    return amount
-}
 
 export default OrderPage;

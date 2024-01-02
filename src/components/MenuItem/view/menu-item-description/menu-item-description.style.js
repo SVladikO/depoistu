@@ -70,22 +70,45 @@ export const SeeMore = styled.span`
 export const SpanWeight600 = styled.span`
     ${FONT.WEIGHT_600};
 `;
+
 export const Table = styled.table`
     width: 100%;
 `;
 
-export const SizePriceTd = styled.td`
-    ${FONT.SIZE_20};
-    color: ${COLOR.ACCENT1};
-    padding: 5px 0;
-`;
-export const ControlButtonTd = styled(SizePriceTd)`
-    width: 55%;
+
+
+export const Details = styled.tr`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  ${FONT.SIZE_20};
+  color: ${COLOR.ACCENT1};
 `
-export const AddButtonWrapper = styled.div`
-    display: flex;
-    justify-content: right;
-`;
+
+export const SizePriceInfo = styled.td`
+  display: grid;
+  grid-template-columns: 1fr 25px 1fr;
+  width: 160px;
+  
+  span {
+    padding: 5px 0;
+    
+    &:nth-child(1) {
+      ${FONT.WEIGHT_600};
+    }
+  }
+`
+
+export const ControlButtonTd = styled.td`
+  display: ${p => p.isShow ? 'flex': 'none'};
+  justify-content: end;
+  align-items: center;
+  gap: 6px;
+`
+
+export const Amount = styled.div`
+  width: 20px;
+  text-align: center;
+`
 
 export const AddButton = styled(SecondaryButton)`
     height: 22px;
