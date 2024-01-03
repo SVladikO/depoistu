@@ -92,6 +92,13 @@ export const BE_API = {
         ADD: () => `${BE_DOMAIN}/favorite-companies`,
         DELETE: () => `${BE_DOMAIN}/favorite-companies`,
     },
+    ORDER_HISTORY: {
+        GET_ALL_BY_CUSTOMER_ID: customerId => `${BE_DOMAIN}/order-histories/${customerId}`, // we take customer id from token
+        POST_CREATE: companyId => `${BE_DOMAIN}/order-histories`,
+    },
+    ORDER_HISTORY_DETAILS: {
+        GET_BY_ORDER_HISTORY_ID: orderHistoryId => `${BE_DOMAIN}/order-history-details/${orderHistoryId}`,
+    },
     COMPANY: {
         GET_BY_CUSTOMER_ID: customerId => `${BE_DOMAIN}/companies/customers/${customerId}`,
         GET_BY_COMPANY_ID: companyId => `${BE_DOMAIN}/companies/${companyId}`,
