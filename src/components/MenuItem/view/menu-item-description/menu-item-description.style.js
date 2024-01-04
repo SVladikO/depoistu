@@ -108,16 +108,15 @@ export const DecrementButton = styled(SecondaryButton)`
   height: 22px;
   ${FONT.SIZE_16};
   background-color: ${COLOR.ACCENT2};
-  border: 1px solid ${COLOR.ACCENT5};
+  border: 2px solid ${COLOR.ACCENT5};
 
   &::before {
     content: '-'
   }
 
   &:active {
-    border: 2px solid red;
-    color: red;
-    background: red;
+    border: 2px solid ${COLOR.ACCENT5};
+    background: ${COLOR.ACCENT2};
   }
 `
 

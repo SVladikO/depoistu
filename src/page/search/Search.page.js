@@ -125,7 +125,6 @@ const SearchPage = () => {
                                 () => {
                                     dispatch(setCompanyId(company.id))
                                     LocalStorage.remove(LOCAL_STORAGE_KEY.SEARCH_DETAILS_COMPANY)
-                                    LocalStorage.remove(LOCAL_STORAGE_KEY.SEARCH_DETAILS_MENU)
                                     navigate(`${URL.SEARCH_DETAILS}/${company.id}`)
                                 }
                             }

@@ -2,23 +2,31 @@ import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 
 import {Wrapper, AmountInfo, Content, FixedContent} from './Order.page.style';
-import {MenuItem, NotificationTDB, Price, PrimaryButton, SecondaryButton} from "components";
+import {
+    MenuItem,
+    NOTIFICATION_STATUS,
+    NotificationFactory,
+    NotificationTDB,
+    PrimaryButton,
+    SecondaryButton
+} from "components";
 
 import {ReactComponent as EmptyBasketIcon} from "assets/icons/empty_basket.svg";
 
 import {ROUTER} from 'utils/config'
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
-import {useMemo} from "react";
-import {useScrollUp} from "../../utils/hook";
-import {resetOrder} from "../../features/searchDetails/searchDetailsSlice";
+import {useMemo, useState} from "react";
+import {useLocalStorage, useScrollUp} from "utils/hook";
+import {resetOrder} from "features/searchDetails/searchDetailsSlice";
+import {translate, TRANSLATION} from "utils/translation";
+import {ReactComponent as RemoveIcon} from "assets/icons/remove_icon.svg";
 
 const OrderPage = () => {
     useScrollUp()
     const dispatch = useDispatch()
     const {menuItems } = useSelector(state => state.searchDetails);
     const orderMenuItems = useMemo(() => menuItems.filter(item => item.amount_1 > 0 || item.amount_2 > 0 || item.amount_3 > 0), [menuItems])
-    const allMenuItemsAmount = menuItems.reduce((acc, cur) => acc + cur.amount_1 + cur.amount_2 + cur.amount_3, 0)
-
+    const [isOpenMessage, setIsOpenMessage] = useLocalStorage(LOCAL_STORAGE_KEY.IS_ORDER_MESSAGE_VISIBLE, true)
     const allMenuItemsPrice = orderMenuItems.length
         ? orderMenuItems.reduce((acc, cur) => acc + cur.amount_1 * cur.price_1 + cur.amount_2 * cur.price_2 + cur.amount_3 * cur.price_3, 0)
         : 0
@@ -42,22 +50,35 @@ const OrderPage = () => {
         dispatch(resetOrder())
     }
 
+    const onCloseMessage = () => {
+        setIsOpenMessage(false)
+    }
+
     const OrderItems = () => (
         <>
-            <Content>{orderMenuItems.map((mi, index) => (
+            {isOpenMessage &&
+                <NotificationFactory type={NOTIFICATION_STATUS.INFO} onClose={onCloseMessage}>
+                    {translate(TRANSLATION.ORDERS.THIS_PAGE_IS_CREATED)}
+                </NotificationFactory>}
+            <Content>
+                {orderMenuItems.map((mi, index) => (
                 <MenuItem
                     item={mi}
                     isSelected
                     isEditMode={false}
                     isOrderPage
                     key={`menu_item${index}${mi.id}`}
-                />))}</Content>
+                />))}
+            </Content>
             <FixedContent>
                 <AmountInfo>
-                    <div>Sub Total ( {allMenuItemsAmount} item ):</div>
-                    <Price>{allMenuItemsPrice}</Price>
+                    <div> {translate(TRANSLATION.ORDERS.TOTAL)}:</div>
+                    <div>₴ {allMenuItemsPrice}</div>
                 </AmountInfo>
-                <SecondaryButton isWide withPadding clickHandler={onCleanBasket}>Clear basket</SecondaryButton>
+                <SecondaryButton isWide withPadding clickHandler={onCleanBasket}>
+                    <RemoveIcon/>
+                    {translate(TRANSLATION.ORDERS.CLEAR_BASKET)}
+                </SecondaryButton>
             </FixedContent>
         </>
     );
@@ -68,11 +89,11 @@ const OrderPage = () => {
                 ? <OrderItems />
                 : <NotificationTDB
                     Icon={EmptyBasketIcon}
-                    title="Your Cart is empty"
-                    description="Looks like you haven't made your order yet."
+                    title={translate(TRANSLATION.ORDERS.BASKET_IS_EMPTY)}
+                    description={translate(TRANSLATION.ORDERS.LOOKS_LIKE)}
                 >
                 <Link to={ROUTER.SEARCH.URL}>
-                    <PrimaryButton isWide>Shop Now</PrimaryButton>
+                    <PrimaryButton isWide>{translate(TRANSLATION.ORDERS.SHOP_NOW)}</PrimaryButton>
                 </Link>
                 </NotificationTDB>
         }</Wrapper>

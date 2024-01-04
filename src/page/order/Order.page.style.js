@@ -35,5 +35,9 @@ export const AmountInfo = styled.div`
   display: flex;
   justify-content: space-between;
   text-align: center;
-  margin-bottom: 19px;
+  margin: 0 17px 19px;
+  
+  div:last-child {
+    color: ${COLOR.PRIMARY};
+  }
 `;

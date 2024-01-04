@@ -15,6 +15,7 @@ import {ReactComponent as WarningIcon} from "assets/icons/warning.svg";
 import {ReactComponent as InfoIcon} from "assets/icons/info.svg";
 
 import {TRANSLATION, translate} from "utils/translation";
+import {useState} from "react";
 
 export const NOTIFICATION_STATUS = {
     INFO: 'INFO',
