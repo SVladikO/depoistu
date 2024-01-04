@@ -1,13 +1,13 @@
 import createSliceCustom from "features/utils";
 import {fetchMenu} from "./thunks";
-import {errorHandler} from "../../utils/management";
+import {errorHandler} from "utils/management";
 
 const initialState = {
     companyId: null,
     menuItems: [],
+    defMenuItems: [],
     isMenuLoading: false,
     menuError: undefined,
-    allMenuItemsAmount: 0
 }
 
 export const searchDetailsSlice = createSliceCustom({
@@ -22,7 +22,6 @@ export const searchDetailsSlice = createSliceCustom({
             const itemToUpdate = state.menuItems.find(item => item.id === id);
             if (itemToUpdate) {
                 itemToUpdate[amountKey] += 1
-                state.allMenuItemsAmount += 1
             }
         },
         decrementMenuItemAmount: (state, action) => {
@@ -30,8 +29,10 @@ export const searchDetailsSlice = createSliceCustom({
             const itemToUpdate = state.menuItems.find(item => item.id === id);
             if (itemToUpdate) {
                 itemToUpdate[amountKey] += -1
-                state.allMenuItemsAmount += -1
             }
+        },
+        resetOrder: (state) => {
+            state.menuItems = state.defMenuItems
         }
     },
     extraReducers: {
@@ -41,7 +42,7 @@ export const searchDetailsSlice = createSliceCustom({
         [fetchMenu.fulfilled]: (state, action) => {
             state.isMenuLoading = false
             state.menuItems = action.payload
-            state.allMenuItemsAmount = 0
+            state.defMenuItems = action.payload
         },
         [fetchMenu.rejected]: (state, error) => {
             errorHandler(error)
@@ -52,6 +53,7 @@ export const searchDetailsSlice = createSliceCustom({
 export const {
     setCompanyId,
     incrementMenuItemAmount,
-    decrementMenuItemAmount
+    decrementMenuItemAmount,
+    resetOrder,
 } = searchDetailsSlice.actions;
 export default searchDetailsSlice.reducer;

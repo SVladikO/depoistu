@@ -14,7 +14,7 @@ const MenuItemBottomSettings = ({
                                     isItemVisible,
                                     setIsItemVisible,
                                     isEditMode = false,
-                                    onEditClick,
+                                    onEditClick = () => {},
                                 }) => {
 
     const toggleIsMenuItemVisible = () => {

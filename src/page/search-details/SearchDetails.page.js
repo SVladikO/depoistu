@@ -33,14 +33,7 @@ const SearchDetailsPage = () => {
     const [company, setCompany] = useLocalStorage(LOCAL_STORAGE_KEY.SEARCH_DETAILS_COMPANY)
 
     useEffect(() => {
-        if (companyId) {
-            dispatch(setCompanyId(companyId))
-        }
-    })
-
-    useEffect(() => {
         if (!companyId) {
-            setIsCompanyExist(false)
             return
         }
 
@@ -48,9 +41,11 @@ const SearchDetailsPage = () => {
             return;
         }
 
+        dispatch(setCompanyId(companyId))
         setIsLoadingCompany(true)
         const companyLoadingDelay = stopLoadingWithDelay([() => setIsLoadingCompany(false)])
 
+        dispatch(fetchMenu(companyId))
 
         fetchData(BE_API.COMPANY.GET_BY_COMPANY_ID(companyId))
             .then(res => setCompany(res.body[0]))
@@ -59,10 +54,6 @@ const SearchDetailsPage = () => {
                 errorHandler(e)
             })
             .finally(() => companyLoadingDelay.allow());
-    }, [companyId])
-
-    useEffect(() => {
-            dispatch(fetchMenu(companyId))
     }, [companyId])
 
     if (!isCompanyExist) {

@@ -15,8 +15,10 @@ const BottomMenu = () => {
     const companyId = useSelector(state => state.searchDetails.companyId);
     const navigate = useNavigate();
     const isSelected = url => window.location.pathname === url;
-    const allMenuItemsAmount = useSelector(state => state.searchDetails.allMenuItemsAmount)
-    console.log(1, allMenuItemsAmount)
+
+    const {menuItems} = useSelector(state => state.searchDetails)
+    const allMenuItemsAmount = menuItems.reduce((acc, cur) => acc + cur.amount_1 + cur.amount_2 + cur.amount_3, 0)
+
     return (
         <Wrapper>
             {/*TODO: Hidden second version*/}

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {COLOR, FONT} from "utils/theme";
+import {COLOR, FONT, hexToRgbA} from "utils/theme";
 import {SecondaryButton} from "../../../Buttons/SecondaryButton";
 
 export const SizePriceWrapper = styled.div`
@@ -67,15 +67,9 @@ export const SeeMore = styled.span`
     }
 `;
 
-export const SpanWeight600 = styled.span`
-    ${FONT.WEIGHT_600};
-`;
-
 export const Table = styled.table`
     width: 100%;
 `;
-
-
 
 export const Details = styled.tr`
   display: grid;
@@ -110,7 +104,28 @@ export const Amount = styled.div`
   text-align: center;
 `
 
-export const AddButton = styled(SecondaryButton)`
+export const DecrementButton = styled(SecondaryButton)`
+  height: 22px;
+  ${FONT.SIZE_16};
+  background-color: ${COLOR.ACCENT2};
+  border: 1px solid ${COLOR.ACCENT5};
+
+  &::before {
+    content: '-'
+  }
+
+  &:active {
+    border: 2px solid red;
+    color: red;
+    background: red;
+  }
+`
+
+export const IncrementButton = styled(SecondaryButton)`
     height: 22px;
     ${FONT.SIZE_16};
+
+  &::before {
+    content: '+'
+  }
 `

@@ -8,9 +8,9 @@ import {
     FirstRow,
     Table,
     ControlButtonTd,
-    AddButton,
+
     SizePriceWrapper,
-    Details, SizePriceInfo, Amount,
+    Details, SizePriceInfo, Amount, IncrementButton, DecrementButton,
 } from "./menu-item-description.style";
 
 import {ReactComponent as PictureIcon} from "assets/icons/picture.svg";
@@ -28,11 +28,10 @@ const MenuItemDescription = (props) => {
         isSelected,
         isSwitchImageVisible,
         switchImageVisibility,
+        isOrderPage = false
     } = props
 
     const dispatch = useDispatch()
-    // const {order} = useSelector(state => state.order)
-
     const [isShowItemDescription, setIsShowItemDescription] = useState(false)
 
     const showItemDescription = () => {
@@ -59,7 +58,6 @@ const MenuItemDescription = (props) => {
         )
     }
 
-
     const onIncrementAmount = (amountKey) => () => {
         dispatch(incrementMenuItemAmount({id: item.id, amountKey}))
     }
@@ -71,7 +69,7 @@ const MenuItemDescription = (props) => {
     const renderTableRow = (size, price, amount, amountKey) => {
         const measurement = CATEGORY_ID_MAPPER_AS_OBJECT[item.categoryId].measurement;
 
-        if (!size && !price) {
+        if ((!size && !price ) || (isOrderPage && amount === 0)) {
             return;
         }
 
@@ -82,12 +80,12 @@ const MenuItemDescription = (props) => {
                     <pre>{size && ' '}</pre>
                     <span>{size} {size && measurement}</span>
                 </SizePriceInfo>
-                <ControlButtonTd isShow={isSelected}>
+                <ControlButtonTd isShow={isSelected || amount > 0}>
                     {amount > 0 && <>
-                        <AddButton clickHandler={onDecrementAmount(amountKey)}>-</AddButton>
+                        <DecrementButton clickHandler={onDecrementAmount(amountKey)} />
                         <Amount>{amount}</Amount>
                     </>}
-                    <AddButton clickHandler={onIncrementAmount(amountKey)}>+</AddButton>
+                    <IncrementButton clickHandler={onIncrementAmount(amountKey)} />
                 </ControlButtonTd>
             </Details>
         )

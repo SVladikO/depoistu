@@ -1,4 +1,4 @@
-import React, {memo, useEffect, useState} from 'react';
+import React, {memo, useEffect, useRef, useState} from 'react';
 import {SwiperSlide} from 'swiper/react';
 import {useNavigate} from "react-router-dom";
 
@@ -139,7 +139,7 @@ const CategoryMenuView = (props) => {
 
         return (
             <CategoryTitle
-                key={categoryTitle + topCategoryIndex}
+                key={categoryTitle + topCategoryIndex + Math.random()}
                 className={CATEGORY_TITLE_CLASS_NAME}
                 id={generateTagId(categoryId, topCategoryIndex)}
                 isHidden={isHidden}
