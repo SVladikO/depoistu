@@ -59,6 +59,7 @@ export const OrderButton = styled.div`
     top: -10px;
     left: -27px;
     position: absolute;
+    color: ${COLOR.ACCENT1};
     background: ${COLOR.ACCENT2};
     border: solid 1px ${COLOR.ACCENT1};
     ${FONT.SIZE_30}
