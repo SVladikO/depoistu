@@ -8,7 +8,6 @@ export const Wrapper = styled.div`
   line-height: 19px;
   background: ${p => p.isItemVisible ? COLOR.ACCENT4 : COLOR.ACCENT7};
   border-radius: ${BORDER_RADIUS.MENU_ITEM};
-  border: solid 1px ${COLOR.ACCENT9};
   display: flex;
   flex-direction: column;  
 

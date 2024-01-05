@@ -27,7 +27,6 @@ const MenuItemDescription = (props) => {
         wasImageShow,
         isSelected,
         isSwitchImageVisible,
-        switchImageVisibility,
         isOrderPage = false
     } = props
 
@@ -58,11 +57,13 @@ const MenuItemDescription = (props) => {
         )
     }
 
-    const onIncrementAmount = (amountKey) => () => {
+    const onIncrementAmount = amountKey => e => {
+        e.stopPropagation()
         dispatch(incrementMenuItemAmount({id: item.id, amountKey}))
     }
 
-    const onDecrementAmount = (amountKey) => () => {
+    const onDecrementAmount = amountKey => e => {
+        e.stopPropagation()
         dispatch(decrementMenuItemAmount({id: item.id, amountKey}))
     }
 
@@ -112,7 +113,7 @@ const MenuItemDescription = (props) => {
             {isNewItemFlag && <NewFlag>New</NewFlag>}
             <FirstRow>
                 <FoodTitle>{item.name}</FoodTitle>
-                {isSwitchImageVisible && !wasImageShow && <PictureIcon onClick={switchImageVisibility}/>}
+                {isSwitchImageVisible && !wasImageShow && <PictureIcon />}
             </FirstRow>
             {renderDescription()}
             {renderSizePrice()}

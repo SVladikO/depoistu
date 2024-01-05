@@ -81,7 +81,7 @@ export const Details = styled.tr`
 export const SizePriceInfo = styled.td`
   display: grid;
   grid-template-columns: 1fr 25px 1fr;
-  width: 160px;
+  width: 180px;
   
   span {
     padding: 5px 0;
@@ -96,7 +96,7 @@ export const ControlButtonTd = styled.td`
   display: ${p => p.isShow ? 'flex': 'none'};
   justify-content: end;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 `
 
 export const Amount = styled.div`
@@ -109,6 +109,7 @@ export const DecrementButton = styled(SecondaryButton)`
   ${FONT.SIZE_16};
   background-color: ${COLOR.ACCENT2};
   border: 2px solid ${COLOR.ACCENT5};
+  color: ${COLOR.ACCENT5};
 
   &::before {
     content: '-'
@@ -116,7 +117,7 @@ export const DecrementButton = styled(SecondaryButton)`
 
   &:active {
     border: 2px solid ${COLOR.ACCENT5};
-    background: ${COLOR.ACCENT2};
+    background: ${hexToRgbA(COLOR.ACCENT5, 0.4)};
   }
 `
 

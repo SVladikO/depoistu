@@ -10,6 +10,7 @@ import {ReactComponent as SettingIcon} from "assets/icons/setting.svg";
 import {ROUTER, URL} from "utils/config";
 import {TRANSLATION, translate} from "utils/translation";
 import {useSelector} from "react-redux";
+import ScrollUpButton from "../ScrollUpButton/ScrollUpButton";
 
 const BottomMenu = () => {
     const companyId = useSelector(state => state.searchDetails.companyId);
@@ -39,6 +40,7 @@ const BottomMenu = () => {
                 <Label>{translate(TRANSLATION.BOTTOM_MENU.MENU)}</Label>
             </MenuItem>
             <OrderWrapper>
+                <ScrollUpButton />
                 <OrderButton onClick={() => navigate(ROUTER.ORDER.URL)}>{allMenuItemsAmount}</OrderButton>
             </OrderWrapper>
             <MenuItem

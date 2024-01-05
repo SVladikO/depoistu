@@ -2,9 +2,10 @@ import styled from 'styled-components'
 import {BORDER_RADIUS, COLOR} from "../../utils/theme";
 
 export const ToTopButtonWrapper = styled.a`
-    position: fixed;
-    bottom: 85px;
-    right: ${p => `calc(100vw / 2 - ${p.rightMargin})`};
+    top: -66px;
+    left: -25px;
+    position: absolute;
+    
     z-index: 19;
     transform: rotate(180deg);
     box-sizing: border-box;
@@ -15,13 +16,13 @@ export const ToTopButtonWrapper = styled.a`
     align-items: center;
     visibility: ${p => p.isVisible ? 'visible' : 'hidden'};
     border-radius: ${BORDER_RADIUS.CIRCLE};
-    background-color: ${COLOR.ACCENT1};
-    box-shadow: 0px -1px 4px 0px rgba(0, 0, 0, 0.11);
+    background-color: ${COLOR.ACCENT2};
+    box-shadow: 0 -1px 4px 0 rgba(0, 0, 0, 0.11);
     opacity: ${p => p.isVisible ? 1 : 0};
     transition: opacity 0.5s, visibility 0.3s;
     border: solid 2px ${COLOR.ACCENT4};
 
     & > svg {
-        fill: ${COLOR.ACCENT4};
+        fill: ${COLOR.ACCENT5};
     }
 `

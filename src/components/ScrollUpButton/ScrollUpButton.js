@@ -4,8 +4,8 @@ import {ReactComponent as DropdownIcon} from "assets/icons/chevron.svg";
 import {useWindowScrollPositions} from "../../utils/hook";
 
 const ScrollUpButton = () => {
-    const { scrollY } = useWindowScrollPositions()
-    const rightMargin = window.innerWidth < 400 ? '175px': '192px'
+    const {scrollY} = useWindowScrollPositions()
+    const rightMargin = window.innerWidth < 400 ? '175px' : '192px'
 
     const scrollToTop = () => {
         window.scrollTo({
@@ -13,6 +13,7 @@ const ScrollUpButton = () => {
             behavior: "smooth"
         });
     };
+
     return (
         <ToTopButtonWrapper
             className="scroll_up_button"
@@ -20,7 +21,7 @@ const ScrollUpButton = () => {
             onClick={scrollToTop}
             rightMargin={rightMargin}
         >
-            <DropdownIcon />
+            <DropdownIcon/>
         </ToTopButtonWrapper>
     );
 };

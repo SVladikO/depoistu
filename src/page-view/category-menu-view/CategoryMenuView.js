@@ -1,4 +1,4 @@
-import React, {memo, useEffect, useRef, useState} from 'react';
+import React, {memo, useEffect, useState} from 'react';
 import {SwiperSlide} from 'swiper/react';
 import {useNavigate} from "react-router-dom";
 
@@ -16,7 +16,7 @@ import {
 import {SubCategoryItem, MenuItem, RowSplitter, HorizontalSwiper} from "components";
 
 import {URL} from "utils/config";
-import {useLocalStorage, useScrollUp} from "utils/hook";
+import {useScrollUp} from "utils/hook";
 import {translate, TRANSLATION as TR} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 import {
@@ -32,7 +32,7 @@ import {
 } from "./utils";
 
 const CATEGORY_TITLE_CLASS_NAME = 'CATEGORY_TITLE_CLASS_NAME';
-const CATEGORY_ROW_HEIGHT = 114;
+export const CATEGORY_ROW_HEIGHT = 114;
 
 let indexCalculator = 0;
 let categoryIdIndexMapper = {};
