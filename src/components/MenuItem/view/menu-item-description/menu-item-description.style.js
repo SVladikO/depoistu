@@ -105,7 +105,7 @@ export const Amount = styled.div`
 `
 
 export const DecrementButton = styled(SecondaryButton)`
-  height: 22px;
+  height: 28px;
   ${FONT.SIZE_16};
   background-color: ${COLOR.ACCENT2};
   border: 2px solid ${COLOR.ACCENT5};
@@ -122,7 +122,7 @@ export const DecrementButton = styled(SecondaryButton)`
 `
 
 export const IncrementButton = styled(SecondaryButton)`
-    height: 22px;
+    height: 28px;
     ${FONT.SIZE_16};
 
   &::before {
