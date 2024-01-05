@@ -7,23 +7,31 @@ import {
     SeeMore,
     FirstRow,
     Table,
-    SizePriceTd,
     ControlButtonTd,
-    AddButton,
+
     SizePriceWrapper,
-    SpanWeight600,
-    AddButtonWrapper,
-    AmountWrapper,
-    DecrementButton,
+    Details, SizePriceInfo, Amount, IncrementButton, DecrementButton,
 } from "./menu-item-description.style";
 
 import {ReactComponent as PictureIcon} from "assets/icons/picture.svg";
 
 import {translate, TRANSLATION} from "utils/translation";
 import {CATEGORY_ID_MAPPER_AS_OBJECT} from "utils/category";
+import {useDispatch} from "react-redux";
+import {decrementMenuItemAmount, incrementMenuItemAmount} from "features/searchDetails/searchDetailsSlice";
 
-const MenuItemDescription = ({isNewItemFlag, item = {}, wasImageShow, isSelected, isSwitchImageVisible, switchImageVisibility}) => {
+const MenuItemDescription = (props) => {
+    const {
+        isNewItemFlag,
+        item = {},
+        wasImageShow,
+        isSelected,
+        isSwitchImageVisible,
+        switchImageVisibility,
+        isOrderPage = false
+    } = props
 
+    const dispatch = useDispatch()
     const [isShowItemDescription, setIsShowItemDescription] = useState(false)
 
     const showItemDescription = () => {
@@ -50,56 +58,53 @@ const MenuItemDescription = ({isNewItemFlag, item = {}, wasImageShow, isSelected
         )
     }
 
-    const renderOrderButton = (amount) => {
-        if (!isSelected) {
-            return
-        }
-
-        return (
-            <AddButtonWrapper>
-                {amount && <DecrementButton onClick={e => e.stopPropagation()}>-</DecrementButton>}
-                <AmountWrapper>{amount}</AmountWrapper>
-                <AddButton onClick={e => e.stopPropagation()}>+</AddButton>
-            </AddButtonWrapper>
-        )
+    const onIncrementAmount = (amountKey) => () => {
+        dispatch(incrementMenuItemAmount({id: item.id, amountKey}))
     }
 
-    const renderTableRow = (size, measurement, price, amount) => {
-        if (!size && !price) {
+    const onDecrementAmount = (amountKey) => () => {
+        dispatch(decrementMenuItemAmount({id: item.id, amountKey}))
+    }
+
+    const renderTableRow = (size, price, amount, amountKey) => {
+        const measurement = CATEGORY_ID_MAPPER_AS_OBJECT[item.categoryId].measurement;
+
+        if ((!size && !price ) || (isOrderPage && amount === 0)) {
             return;
         }
 
         return (
-            <tr>
-                <SizePriceTd>
-                    <SpanWeight600>{price && '₴'} {price}</SpanWeight600>
-                </SizePriceTd>
-                <SizePriceTd>
+            <Details>
+                <SizePriceInfo>
+                    <span>{price && '₴'} {price}</span>
                     <pre>{size && ' '}</pre>
-                </SizePriceTd>
-                <SizePriceTd>{size} {size && measurement}</SizePriceTd>
-                <ControlButtonTd>
-                    {renderOrderButton(amount)}
+                    <span>{size} {size && measurement}</span>
+                </SizePriceInfo>
+                <ControlButtonTd isShow={isSelected || amount > 0}>
+                    {amount > 0 && <>
+                        <DecrementButton clickHandler={onDecrementAmount(amountKey)} />
+                        <Amount>{amount}</Amount>
+                    </>}
+                    <IncrementButton clickHandler={onIncrementAmount(amountKey)} />
                 </ControlButtonTd>
-            </tr>
+            </Details>
         )
     }
 
     const renderSizePrice = () => {
-        const {categoryId, size_1, price_1, size_2, price_2, size_3, price_3, amount1 = 1, amount2 = 2, amount3 = 3} = item;
-
-        const measurement = CATEGORY_ID_MAPPER_AS_OBJECT[categoryId].measurement;
+        const {size_1, price_1, size_2, price_2, size_3, price_3, amount_1, amount_2, amount_3} = item;
 
         return (
             <SizePriceWrapper>
                 <Table>
                     <tbody>
-                    {renderTableRow(size_1, measurement, price_1, amount1)}
-                    {renderTableRow(size_2, measurement, price_2, amount2)}
-                    {renderTableRow(size_3, measurement, price_3, amount3)}
+                    {renderTableRow(size_1, price_1, amount_1, 'amount_1')}
+                    {renderTableRow(size_2, price_2, amount_2, 'amount_2')}
+                    {renderTableRow(size_3, price_3, amount_3, 'amount_3')}
                     </tbody>
                 </Table>
-            </SizePriceWrapper>)
+            </SizePriceWrapper>
+        )
     }
 
     return (<>

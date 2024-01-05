@@ -10,6 +10,7 @@ export const DefaultNotification = css`
   width: 100%;
   padding: 10px 30px 10px 10px;
   border-radius: ${p => p.borderRadius ? p.borderRadius : BORDER_RADIUS.SECOND};
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.20);
   margin: 0 0 15px;
   ${FONT.SIZE_18};
   

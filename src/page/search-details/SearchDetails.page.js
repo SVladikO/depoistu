@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {useNavigate, useParams} from 'react-router-dom';
 
 import {Wrapper} from "./SearchDetails.style";
@@ -8,7 +8,7 @@ import {Company, NotificationLoading, PrimaryButton, NotificationTDB, RowSplitte
 
 import CategoryMenuView from 'page-view/category-menu-view/CategoryMenuView'
 
-import {addCompanyIdForSearchDetailsPage} from '../../features/searchDetailsPage/searchDetailsPageSlice'
+import {setCompanyId} from '../../features/searchDetails/searchDetailsSlice'
 
 import {ROUTER} from "utils/config";
 import {useLocalStorage, useScrollUp} from "utils/hook";
@@ -18,6 +18,7 @@ import {publishNotificationEvent} from "utils/event";
 import {translate, TRANSLATION, TRANSLATION as TR} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {errorHandler} from "utils/management";
+import {fetchCompany, fetchMenu} from "../../features/searchDetails/thunks";
 
 const SearchDetailsPage = () => {
     useScrollUp();
@@ -25,22 +26,14 @@ const SearchDetailsPage = () => {
     const dispatch = useDispatch();
     let companyId = +useParams().companyId;
 
+    const {menuItems, isMenuLoading} = useSelector(state => state.searchDetails)
+
     const [isCompanyExist, setIsCompanyExist] = useState(true);
-    const [isLoadingMenu, setIsLoadingMenu] = useState(false);
     const [isLoadingCompany, setIsLoadingCompany] = useState(false);
-
     const [company, setCompany] = useLocalStorage(LOCAL_STORAGE_KEY.SEARCH_DETAILS_COMPANY)
-    const [menuItems, setMenuItems] = useLocalStorage(LOCAL_STORAGE_KEY.SEARCH_DETAILS_MENU);
-
-    useEffect(() => {
-        if (companyId) {
-            dispatch(addCompanyIdForSearchDetailsPage(companyId))
-        }
-    })
 
     useEffect(() => {
         if (!companyId) {
-            setIsCompanyExist(false)
             return
         }
 
@@ -48,9 +41,11 @@ const SearchDetailsPage = () => {
             return;
         }
 
+        dispatch(setCompanyId(companyId))
         setIsLoadingCompany(true)
         const companyLoadingDelay = stopLoadingWithDelay([() => setIsLoadingCompany(false)])
 
+        dispatch(fetchMenu(companyId))
 
         fetchData(BE_API.COMPANY.GET_BY_COMPANY_ID(companyId))
             .then(res => setCompany(res.body[0]))
@@ -60,31 +55,6 @@ const SearchDetailsPage = () => {
             })
             .finally(() => companyLoadingDelay.allow());
     }, [companyId])
-
-    useEffect(() => {
-        if (!companyId) {
-            return
-        }
-
-        if (menuItems && company.id === companyId) {
-            return
-        }
-
-        setIsLoadingMenu(true);
-        const menuLoadingDelay = stopLoadingWithDelay([() => setIsLoadingMenu(false)]);
-
-        fetchData(BE_API.MENU_ITEM.GET_ONLY_VISIBLE_BY_COMPANY_ID(companyId))
-            .then(res => res.body.sort((a, b) => a.categoryId - b.categoryId))
-            .then(menuItems => {
-                setMenuItems(menuItems)
-                if (!menuItems.length) {
-                    publishNotificationEvent.warning(translate(TR.PAGE.COMPANY_DETAILS.MENU_PROBLEM));
-                }
-            })
-            .catch(errorHandler)
-            .finally(() => menuLoadingDelay.allow());
-
-    }, [companyId]);
 
     if (!isCompanyExist) {
         return (
@@ -114,18 +84,11 @@ const SearchDetailsPage = () => {
                 <NotificationLoading>{translate(TRANSLATION.NOTIFICATION.COMPANY.LOADING_COMPANY)}</NotificationLoading>}
             {!isLoadingCompany && company && <Company company={company} withMoreInfo/>}
 
-            {isLoadingMenu &&
+            {isMenuLoading &&
                 <NotificationLoading>{translate(TRANSLATION.NOTIFICATION.LOADING_MENU)}</NotificationLoading>}
 
-            {!isLoadingMenu && !!menuItems?.length && (
-                <>
-                    <CategoryMenuView
-                        className="category-menu-row"
-                        menuItems={menuItems}
-                    />
-                </>
-            )
-            }
+            {!isMenuLoading && !!menuItems?.length &&
+                    <CategoryMenuView menuItems={menuItems} />}
             {/*Let's scroll work after click on the last sub category */}
             <RowSplitter height={'200px'} />
         </Wrapper>

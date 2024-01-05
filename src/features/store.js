@@ -1,3 +1,4 @@
+
 import {configureStore} from "@reduxjs/toolkit";
 import orderReducer from './order/orderSlice'
 import errorReducer from "./error/errorSlice";
@@ -11,7 +12,6 @@ import searchDetailsPageReducer from "./searchDetailsPage/searchDetailsPageSlice
 
 export const createStore = () => configureStore({
     reducer: {
-        order: orderReducer,
         error: errorReducer,
         request: requestReducer,
         customer: customerReducer,
@@ -19,7 +19,7 @@ export const createStore = () => configureStore({
         imagePopup: imagePopupReducer,
         orderHistorySlice: orderHistoryReducer,
         favoriteCompany: favoriteCompanyReducer,
-        searchDetailsPage: searchDetailsPageReducer
+        searchDetails: searchDetailsPageReducer
     }
 })
 

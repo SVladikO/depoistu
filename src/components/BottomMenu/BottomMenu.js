@@ -12,9 +12,12 @@ import {TRANSLATION, translate} from "utils/translation";
 import {useSelector} from "react-redux";
 
 const BottomMenu = () => {
-    const companyId = useSelector(state => state.searchDetailsPage.companyId);
+    const companyId = useSelector(state => state.searchDetails.companyId);
     const navigate = useNavigate();
     const isSelected = url => window.location.pathname === url;
+
+    const {menuItems} = useSelector(state => state.searchDetails)
+    const allMenuItemsAmount = menuItems.reduce((acc, cur) => acc + cur.amount_1 + cur.amount_2 + cur.amount_3, 0)
 
     return (
         <Wrapper>
@@ -36,7 +39,7 @@ const BottomMenu = () => {
                 <Label>{translate(TRANSLATION.BOTTOM_MENU.MENU)}</Label>
             </MenuItem>
             <OrderWrapper>
-                <OrderButton onClick={() => navigate(ROUTER.ORDER.URL)}>0</OrderButton>
+                <OrderButton onClick={() => navigate(ROUTER.ORDER.URL)}>{allMenuItemsAmount}</OrderButton>
             </OrderWrapper>
             <MenuItem
                 selected={isSelected(URL.FAVORITE)}

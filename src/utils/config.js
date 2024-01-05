@@ -96,7 +96,7 @@ export const URL = {
 export const ROUTER = {
     ORDER: {
         URL: '/order',
-        TITLE: 'Order review',
+        TITLE: translate(TRANSLATION.ORDERS.ORDER_REVIEW),
         page: OrderPage,
         showBottomMenu: true
     },

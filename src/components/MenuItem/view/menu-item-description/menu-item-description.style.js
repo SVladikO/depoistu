@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {COLOR, FONT} from "utils/theme";
+import {COLOR, FONT, hexToRgbA} from "utils/theme";
 import {SecondaryButton} from "../../../Buttons/SecondaryButton";
 
 export const SizePriceWrapper = styled.div`
@@ -67,49 +67,64 @@ export const SeeMore = styled.span`
     }
 `;
 
-export const SpanWeight600 = styled.span`
-    ${FONT.WEIGHT_600};
-`;
 export const Table = styled.table`
     width: 100%;
 `;
 
-export const SizePriceTd = styled.td`
-    ${FONT.SIZE_20};
-    color: ${COLOR.ACCENT1};
+export const Details = styled.tr`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  ${FONT.SIZE_20};
+  color: ${COLOR.ACCENT1};
+`
+
+export const SizePriceInfo = styled.td`
+  display: grid;
+  grid-template-columns: 1fr 25px 1fr;
+  width: 160px;
+  
+  span {
     padding: 5px 0;
-`;
-
-export const ControlButtonTd = styled(SizePriceTd)`
-    width: 55%;
-`;
-
-export const AddButtonWrapper = styled.div`
-    display: flex;
-    justify-content: right;
     
-    & > span {
-        margin: 0 10px;
+    &:nth-child(1) {
+      ${FONT.WEIGHT_600};
     }
-`;
+  }
+`
 
-export const AmountWrapper = styled.div`
-    width: 40px;
-    display: flex;
-    justify-content: center;
-`;
+export const ControlButtonTd = styled.td`
+  display: ${p => p.isShow ? 'flex': 'none'};
+  justify-content: end;
+  align-items: center;
+  gap: 6px;
+`
 
-export const AddButton = styled(SecondaryButton)`
-    height: 22px;
-    ${FONT.SIZE_16};
-    padding: 10px 20px;
+export const Amount = styled.div`
+  width: 20px;
+  text-align: center;
 `
 
 export const DecrementButton = styled(SecondaryButton)`
+  height: 22px;
+  ${FONT.SIZE_16};
+  background-color: ${COLOR.ACCENT2};
+  border: 2px solid ${COLOR.ACCENT5};
+
+  &::before {
+    content: '-'
+  }
+
+  &:active {
+    border: 2px solid ${COLOR.ACCENT5};
+    background: ${COLOR.ACCENT2};
+  }
+`
+
+export const IncrementButton = styled(SecondaryButton)`
     height: 22px;
     ${FONT.SIZE_16};
-    padding: 10px 20px;
-    color: ${COLOR.ACCENT5};
-    border-color: ${COLOR.ACCENT5};
-    background: ${COLOR.ACCENT9};
+
+  &::before {
+    content: '+'
+  }
 `

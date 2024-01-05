@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
   border: solid 1px ${COLOR.ACCENT9};
   display: flex;
   flex-direction: column;  
-  
+
   svg {
     width: 25px;
     height: 25px;

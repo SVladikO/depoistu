@@ -1,4 +1,4 @@
-import React, {memo, useEffect, useState} from 'react';
+import React, {memo, useEffect, useRef, useState} from 'react';
 import {SwiperSlide} from 'swiper/react';
 import {useNavigate} from "react-router-dom";
 
@@ -16,7 +16,7 @@ import {
 import {SubCategoryItem, MenuItem, RowSplitter, HorizontalSwiper} from "components";
 
 import {URL} from "utils/config";
-import {useScrollUp} from "utils/hook";
+import {useLocalStorage, useScrollUp} from "utils/hook";
 import {translate, TRANSLATION as TR} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 import {
@@ -37,11 +37,8 @@ const CATEGORY_ROW_HEIGHT = 114;
 let indexCalculator = 0;
 let categoryIdIndexMapper = {};
 
-const CategoryMenuView = ({
-                              menuItems = [],
-                              isEditMode,
-                          }) => {
-
+const CategoryMenuView = (props) => {
+    const {menuItems, isEditMode} = props
     useScrollUp();
     const navigate = useNavigate();
     const [selectedTopCategoryId, setSelectedTopCategoryId] = useState();
@@ -142,7 +139,7 @@ const CategoryMenuView = ({
 
         return (
             <CategoryTitle
-                key={categoryTitle + topCategoryIndex}
+                key={categoryTitle + topCategoryIndex + Math.random()}
                 className={CATEGORY_TITLE_CLASS_NAME}
                 id={generateTagId(categoryId, topCategoryIndex)}
                 isHidden={isHidden}
@@ -151,6 +148,7 @@ const CategoryMenuView = ({
             </CategoryTitle>
         )
     }
+
     const renderMenuItem = (mi, index) => (
         <MenuItem
             key={`menu_item${index}${mi.id}`}
