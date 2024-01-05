@@ -49,7 +49,7 @@ function getDomainBE() {
             }
 
         case "https://depoistu-develop.onrender.com":
-        case "http://localhost:3000":
+        // case "http://localhost:3000":
             return {
                 name: 'develop',
                 url: 'https://depoistu-develop-ab315caf64ab.herokuapp.com'
@@ -109,6 +109,7 @@ export const ROUTER = {
     },
     ORDER_HISTORY_DETAILS: {
         URL: URL.ORDER_HISTORY_DETAILS,
+        PARAMS: '/:orderHistoryId',
         TITLE: translate(TRANSLATION.PAGE.ORDER_HISTORY_DETAILS.TOP_TITLE),
         page: OrderHistoryDetailsPage,
         backUrl: URL.ORDER_HISTORY,
