@@ -1,7 +1,8 @@
+import {useMemo} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 
-import {Wrapper, AmountInfo, Content, FixedContent} from './Order.page.style';
+import {Wrapper, AmountInfo, Content} from './Order.page.style';
 import {
     MenuItem,
     NOTIFICATION_STATUS,
@@ -12,14 +13,13 @@ import {
 } from "components";
 
 import {ReactComponent as EmptyBasketIcon} from "assets/icons/empty_basket.svg";
+import {ReactComponent as RemoveIcon} from "assets/icons/remove_icon.svg";
 
 import {ROUTER} from 'utils/config'
-import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
-import {useMemo, useState} from "react";
 import {useLocalStorage, useScrollUp} from "utils/hook";
-import {resetOrder} from "features/searchDetails/searchDetailsSlice";
 import {translate, TRANSLATION} from "utils/translation";
-import {ReactComponent as RemoveIcon} from "assets/icons/remove_icon.svg";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
+import {resetOrder} from "features/searchDetails/searchDetailsSlice";
 
 const OrderPage = () => {
     useScrollUp()
@@ -69,8 +69,6 @@ const OrderPage = () => {
                     isOrderPage
                     key={`menu_item${index}${mi.id}`}
                 />))}
-            </Content>
-            <FixedContent>
                 <AmountInfo>
                     <div> {translate(TRANSLATION.ORDERS.TOTAL)}:</div>
                     <div>₴ {allMenuItemsPrice}</div>
@@ -79,7 +77,8 @@ const OrderPage = () => {
                     <RemoveIcon/>
                     {translate(TRANSLATION.ORDERS.CLEAR_BASKET)}
                 </SecondaryButton>
-            </FixedContent>
+            </Content>
+
         </>
     );
 

@@ -17,15 +17,6 @@ export const Content = styled.div`
     margin-top: 0;
   }
 `;
-export const FixedContent = styled.div`
-  display: block;
-  position: sticky;
-  bottom: 0;
-  width: inherit;
-  padding: 10px 0 90px 0;
-  background-color: ${COLOR.ACCENT2};
-
-`;
 
 export const AmountInfo = styled.div`
   font-weight: 700;
