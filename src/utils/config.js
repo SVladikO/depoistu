@@ -47,14 +47,12 @@ function getDomainBE() {
                 name: 'stage',
                 url: 'https://depoistu-stage-8139a3f5250c.herokuapp.com'
             }
-
         case "https://depoistu-develop.onrender.com":
-        // case "http://localhost:3000":
+        case "http://localhost:3000":
             return {
                 name: 'develop',
                 url: 'https://depoistu-develop-ab315caf64ab.herokuapp.com'
             }
-
         default:
             return {
                 name: 'localhost',
@@ -124,7 +122,9 @@ export const ROUTER = {
     MENU: {
         URL: '/menu',
         TITLE: 'Favorite Cart',
-        page: () => {}},
+        page: () => {
+        }
+    },
     // Profile: {URL: '/Profile',  TITLE: 'Profile', page: () => {}},
     // USER_ACCOUNT = {URL: '/user_account',  TITLE: 'USER_ACCOUNT', page: () => {}, showBottomMenu: true, BACK_URL: ROUTER.SETTING.URL};
     SEARCH: {

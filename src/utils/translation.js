@@ -973,15 +973,15 @@ export const TRANSLATION = {
     },
     ORDERS: {
         THIS_PAGE_IS_CREATED: {
-            en:  'This page is created to form your order and share it with a waiter.',
-            ua: 'Ця сторінка створена для того, щоб сформувати ваше замовлення та надіслати його офіціанту.'
+            en: 'Share order info with a waiter.',
+            ua: 'Передайте замовлення офіціанту.'
         },
         TOTAL: {
-            en:  'Sub Total',
+            en: 'Sub Total',
             ua: 'До сплати'
         },
         ORDER_REVIEW: {
-            en:  'Order review',
+            en: 'Order review',
             ua: 'Огляд замовлення'
         },
         SHOP_NOW: {
