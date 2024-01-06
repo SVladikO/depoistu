@@ -51,7 +51,6 @@ const CategoryMenuView2 = (props) => {
         return (
             <SubCategoryTitle
                 key={categoryTitle + topCategoryIndex + Math.random()}
-                className={CATEGORY_TITLE_CLASS_NAME}
                 id={generateTagId(subCategoryId, topCategoryIndex)}
                 isHidden={isHidden}
                 onClick={() => {
