@@ -92,7 +92,6 @@ const SearchDetailsPage = () => {
                     <CategoryMenuView2 menuItems={menuItems} />}
             {!isMenuLoading && !!menuItems?.length &&
                     <CategoryMenuView menuItems={menuItems} />}
-            Let's scroll work after click on the last sub category
             <RowSplitter height={'200px'} />
         </Wrapper>
     );
