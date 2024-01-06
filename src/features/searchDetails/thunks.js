@@ -6,6 +6,6 @@ export const fetchMenu = createAsyncThunk(
     async (companyId) => {
         const response = await fetchData(BE_API.MENU_ITEM.GET_ONLY_VISIBLE_BY_COMPANY_ID(companyId))
 
-        return response.body.map(item => ({...item, amount_1: 0, amount_2: 0, amount_3: 0}))
+        return response.body.map(item => ({...item, amount_1: 0, amount_2: 0, amount_3: 0, isImageVisible: false}))
     }
 )

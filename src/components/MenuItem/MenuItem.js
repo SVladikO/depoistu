@@ -1,10 +1,14 @@
 import {useState} from "react";
+import {useDispatch} from "react-redux";
 
 import {
     Wrapper,
     FoodImageWrapper,
     FoodImage,
 } from "./MenuItem.style";
+
+import {makeMenuItemImageVisible} from "features/searchDetails/searchDetailsSlice";
+
 
 import {CATEGORY_ROW_HEIGHT} from "../../page-view/category-menu-view/CategoryMenuView";
 
@@ -13,16 +17,19 @@ import MenuItemBottomSettings from "./view/menu-item-bottom-settings/menu-item-b
 import ImageUrlFormatter from "utils/image.utils";
 
 const MenuItem = (props) => {
+    const dispatch = useDispatch()
+
     const {
-        item, isSelected, onSelectMenuItem = () => {
+        item,
+        isSelected,
+        onSelectMenuItem = () => {
         }
     } = props;
     const [isItemVisible, setIsItemVisible] = useState(!!item.isVisible)
-    const [isImageVisible, setIsImageVisible] = useState(false)
 
     const onDesciptionClick = e => {
         onSelectMenuItem()
-        setIsImageVisible(true)
+        dispatch(makeMenuItemImageVisible({id: item.id}));
         const scrollTo = e.currentTarget.offsetTop - CATEGORY_ROW_HEIGHT;
         window.scroll({top: scrollTo, behavior: "smooth"});
     }
@@ -33,7 +40,7 @@ const MenuItem = (props) => {
             isItemVisible={isItemVisible}
             onClick={onDesciptionClick}
         >
-            {isImageVisible &&
+            {item.isImageVisible &&
                 <FoodImageWrapper>
                     <FoodImage src={ImageUrlFormatter.formatForMenuItemBig(item.imageUrl)}/>
                 </FoodImageWrapper>

@@ -31,6 +31,14 @@ export const searchDetailsSlice = createSliceCustom({
                 itemToUpdate[amountKey] += -1
             }
         },
+        makeMenuItemImageVisible: (state, action) => {
+            const {id} = action.payload;
+            const itemToUpdate = state.menuItems.find(item => item.id === id);
+            console.log('kyky', id, !!itemToUpdate);
+            if (itemToUpdate) {
+                itemToUpdate.isImageVisible = true;
+            }
+        },
         resetOrder: (state) => {
             state.menuItems = state.defMenuItems
         }
@@ -54,6 +62,7 @@ export const {
     setCompanyId,
     incrementMenuItemAmount,
     decrementMenuItemAmount,
+    makeMenuItemImageVisible,
     resetOrder,
 } = searchDetailsSlice.actions;
 export default searchDetailsSlice.reducer;

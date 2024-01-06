@@ -7,6 +7,7 @@ import {Wrapper} from "./SearchDetails.style";
 import {Company, NotificationLoading, PrimaryButton, NotificationTDB, RowSplitter} from "components";
 
 import CategoryMenuView from 'page-view/category-menu-view/CategoryMenuView'
+import CategoryMenuView2 from 'page-view/category-menu-view-2/CategoryMenuView2'
 
 import {setCompanyId} from '../../features/searchDetails/searchDetailsSlice'
 
@@ -88,8 +89,10 @@ const SearchDetailsPage = () => {
                 <NotificationLoading>{translate(TRANSLATION.NOTIFICATION.LOADING_MENU)}</NotificationLoading>}
 
             {!isMenuLoading && !!menuItems?.length &&
+                    <CategoryMenuView2 menuItems={menuItems} />}
+            {!isMenuLoading && !!menuItems?.length &&
                     <CategoryMenuView menuItems={menuItems} />}
-            {/*Let's scroll work after click on the last sub category */}
+            Let's scroll work after click on the last sub category
             <RowSplitter height={'200px'} />
         </Wrapper>
     );
