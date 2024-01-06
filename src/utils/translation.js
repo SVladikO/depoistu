@@ -1045,6 +1045,14 @@ export const TRANSLATION = {
             ua: "Гарячі напої",
             en: "Hot drinks",
         },
+        COCKTAILS: {
+            ua: "Коктейлі",
+            en: "Cocktails",
+        },
+        WINE: {
+            ua: "Вина",
+            en: "Wines",
+        },
         BAR: {
             ua: "Бар",
             en: "Bar",
@@ -1216,8 +1224,8 @@ export const TRANSLATION = {
             ua: "Рожеві вина"
         },
         NO_ALCOHOL_WINE: {
-            en: "No alcohol wines",
-            ua: "Безалкогольні вина"
+            en: "Wines n/a",
+            ua: "Вина н/а"
         },
         HOMEMADE_WINE: {
             en: "Homemade wines",
@@ -1335,6 +1343,10 @@ export const TRANSLATION = {
             ua: "Напої",
             en: "Drinks"
         },
+        MULLED_WINE_NO_ALCOHOL: {
+            ua: "Глінтвейн н/a",
+            en: "Mulled wine n/a"
+        },
         MULLED_WINE: {
             ua: "Глінтвейн",
             en: "Mulled wine"
@@ -1395,9 +1407,9 @@ export const TRANSLATION = {
             ua: "Алкоголь",
             en: "Alcohol"
         },
-        WINE_CARD: {
-            ua: "Винна карта",
-            en: "Wine card"
+        WINE: {
+            ua: "Вина",
+            en: "Wine"
         },
         HOT_DRINKS: {
             ua: "Гарячi напої",
@@ -1564,7 +1576,7 @@ export const TRANSLATION = {
             en: 'Sushi'
         },
         COCKTAILS_ALCOHOL: {
-            ua: 'Коктейлі алкогольні',
+            ua: 'Алкогольні коктейлі',
             en: 'Cocktails alcohol'
         },
         HALLOWEEN_MENU: {
@@ -1576,8 +1588,8 @@ export const TRANSLATION = {
             en: 'Khachapuri'
         },
         COCKTAILS: {
-            ua: 'Коктейлі',
-            en: 'Cocktails'
+            ua: 'Коктейлі н/а',
+            en: 'Cocktails n/a'
         },
         MILK_COCKTAILS: {
             ua: 'Молочні коктейлі',
