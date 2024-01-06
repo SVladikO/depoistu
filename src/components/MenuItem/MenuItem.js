@@ -23,8 +23,6 @@ const MenuItem = (props) => {
     const onDesciptionClick = e => {
         onSelectMenuItem()
         setIsImageVisible(true)
-        console.log(1111, e);
-        console.log(2222, e.currentTarget);
         const scrollTo = e.currentTarget.offsetTop - CATEGORY_ROW_HEIGHT;
         window.scroll({top: scrollTo, behavior: "smooth"});
     }
@@ -44,8 +42,6 @@ const MenuItem = (props) => {
                 {...props}
                 isSelected={isSelected}
                 isItemVisible={isItemVisible}
-                wasImageShow={isImageVisible}
-                isSwitchImageVisible={!!item.imageUrl}
             />
             <MenuItemBottomSettings {...props} isItemVisible={isItemVisible} setIsItemVisible={setIsItemVisible}/>
         </Wrapper>

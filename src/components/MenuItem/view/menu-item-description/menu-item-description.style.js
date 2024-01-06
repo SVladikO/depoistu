@@ -24,10 +24,8 @@ export const FirstRow = styled.div`
         width: 30px;
         height: 30px;
         padding: 5px;
-    }
-
-    & > svg:hover {
-        cursor: pointer;
+        fill: ${COLOR.ACCENT1};
+        opacity: 0.4;
     }
 `;
 
@@ -35,7 +33,6 @@ export const FoodTitle = styled.div`
     ${FONT.SIZE_20};
     ${FONT.WEIGHT_600};
     color: ${COLOR.ACCENT1};
-    padding: 0 38px 0 0;
     display: flex;
     flex-wrap: wrap;
     word-break: break-word;
@@ -105,7 +102,7 @@ export const Amount = styled.div`
 `
 
 export const DecrementButton = styled(SecondaryButton)`
-  height: 28px;
+  height: 26px;
   ${FONT.SIZE_16};
   background-color: ${COLOR.ACCENT2};
   border: 2px solid ${COLOR.ACCENT5};
@@ -122,7 +119,7 @@ export const DecrementButton = styled(SecondaryButton)`
 `
 
 export const IncrementButton = styled(SecondaryButton)`
-    height: 28px;
+    height: 26px;
     ${FONT.SIZE_16};
 
   &::before {

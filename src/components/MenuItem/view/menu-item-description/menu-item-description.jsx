@@ -13,8 +13,6 @@ import {
     Details, SizePriceInfo, Amount, IncrementButton, DecrementButton,
 } from "./menu-item-description.style";
 
-import {ReactComponent as PictureIcon} from "assets/icons/picture.svg";
-
 import {translate, TRANSLATION} from "utils/translation";
 import {CATEGORY_ID_MAPPER_AS_OBJECT} from "utils/category";
 import {useDispatch} from "react-redux";
@@ -24,9 +22,7 @@ const MenuItemDescription = (props) => {
     const {
         isNewItemFlag,
         item = {},
-        wasImageShow,
         isSelected,
-        isSwitchImageVisible,
         isOrderPage = false
     } = props
 
@@ -113,7 +109,6 @@ const MenuItemDescription = (props) => {
             {isNewItemFlag && <NewFlag>New</NewFlag>}
             <FirstRow>
                 <FoodTitle>{item.name}</FoodTitle>
-                {isSwitchImageVisible && !wasImageShow && <PictureIcon />}
             </FirstRow>
             {renderDescription()}
             {renderSizePrice()}

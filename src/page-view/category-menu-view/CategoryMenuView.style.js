@@ -1,21 +1,6 @@
 import styled from "styled-components";
 import {COLOR, FONT, GRADIENT, hexToRgbA} from "utils/theme";
 
-export const SubCategoryWrapper = styled.div`
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
-  padding: 6px 2px;
-  position: sticky;
-  top: 0;
-  left: 0;
-  right: 0;
-  border-radius: 0;
-  margin: 0;
-  z-index: 10;
-  height: 58px;
-  background: none;
-`;
 export const BgWrapper = styled.div`
   overflow: hidden;
   background-image: linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO});
@@ -36,6 +21,22 @@ export const TopCategoryItem = styled.div`
   color: ${p => p.isSelected ? COLOR.ACCENT1 : COLOR.ACCENT1};
   ${p => p.isSelected ? FONT.WEIGHT_600 : FONT.WEIGHT_400};
   background: ${p => p.isSelected ? COLOR.ACCENT4 : 'none'};
+`;
+
+export const SubCategoryWrapper = styled.div`
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+  padding: 6px 2px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-radius: 0;
+  margin: 0;
+  z-index: 10;
+  height: 58px;
+  background: none;
 `;
 
 export const CategoryTitle = styled.div`
