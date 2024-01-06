@@ -32,7 +32,7 @@ import {
 } from "./utils";
 
 const CATEGORY_TITLE_CLASS_NAME = 'CATEGORY_TITLE_CLASS_NAME';
-export const CATEGORY_ROW_HEIGHT = 114;
+export const CATEGORY_ROW_HEIGHT = 112;
 
 let indexCalculator = 0;
 let categoryIdIndexMapper = {};

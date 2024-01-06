@@ -2,6 +2,7 @@ import {useState} from "react";
 
 import {
     Wrapper,
+    FoodImageWrapper,
     FoodImage,
 } from "./MenuItem.style";
 
@@ -11,8 +12,11 @@ import MenuItemDescription from "./view/menu-item-description/menu-item-descript
 import MenuItemBottomSettings from "./view/menu-item-bottom-settings/menu-item-bottom-settings";
 import ImageUrlFormatter from "utils/image.utils";
 
-const   MenuItem = (props) => {
-    const {item, isSelected, onSelectMenuItem = () => {}} = props;
+const MenuItem = (props) => {
+    const {
+        item, isSelected, onSelectMenuItem = () => {
+        }
+    } = props;
     const [isItemVisible, setIsItemVisible] = useState(!!item.isVisible)
     const [isImageVisible, setIsImageVisible] = useState(false)
 
@@ -31,7 +35,11 @@ const   MenuItem = (props) => {
             isItemVisible={isItemVisible}
             onClick={onDesciptionClick}
         >
-            {isImageVisible && <FoodImage src={ImageUrlFormatter.formatForMenuItemBig(item.imageUrl)}/>}
+            {isImageVisible &&
+                <FoodImageWrapper>
+                    <FoodImage src={ImageUrlFormatter.formatForMenuItemBig(item.imageUrl)}/>
+                </FoodImageWrapper>
+            }
             <MenuItemDescription
                 {...props}
                 isSelected={isSelected}

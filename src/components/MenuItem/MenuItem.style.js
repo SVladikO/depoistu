@@ -19,8 +19,13 @@ export const Wrapper = styled.div`
   transition: background-color 0.5s;
 `;
 
+export const FoodImageWrapper = styled.div`
+    overflow: hidden;
+`;
+
 export const FoodImage = styled.img`
-    width: 100%;
+    left: -1px;
+    width: 101%;
     background: ${COLOR.ACCENT2};
     border: solid 1px ${COLOR.ACCENT4};
     position: relative;
