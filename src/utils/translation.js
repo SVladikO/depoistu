@@ -541,6 +541,10 @@ export const TRANSLATION = {
                     ua: 'Версія',
                     en: 'Version'
                 },
+                RESET_SETTINGS: {
+                    ua: 'Скинути налаштування',
+                    en: 'Reset settings'
+                },
                 LINKED_ACCOUNTS: {
                     ua: "Пов'язанi Аккаути",
                     en: "Linked Accounts"

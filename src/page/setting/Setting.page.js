@@ -14,6 +14,7 @@ import {ReactComponent as StoreIcon} from 'assets/icons/house.svg';
 import {ReactComponent as InstructionIcon} from 'assets/icons/instruction.svg';
 import {ReactComponent as MenuCategoryIcon} from 'assets/icons/menu_category.svg';
 import {ReactComponent as RocketIcon} from "assets/icons/rocket.svg";
+import {ReactComponent as ResetSettingsIcon} from "assets/icons/reset_settings.svg";
 
 import {
     SettingMenuRow,
@@ -157,11 +158,6 @@ const SettingPage = () => {
                     noTopBorder={customer}
                     groupTitle={translate(TR.PAGE.SETTINGS.GROUP_TITLE.OTHERS)}>
                     <SettingMenuRow
-                        icon={InstructionIcon}
-                        title={translate(TR.PAGE.SETTINGS.MENU_ROW.INSTRUCTION_FOR_BUSINESS_OWNER)}
-                        href={URL.INSTRUCTION_FOR_BUSINESS_OWNER}
-                    />
-                    <SettingMenuRow
                         icon={LanguageIcon}
                         title={translate(TR.PAGE.SETTINGS.MENU_ROW.LANGUAGE)}
                         changeHandler={() => dispatch(openLanguagePopup())}
@@ -173,9 +169,23 @@ const SettingPage = () => {
                         href={URL.ABOUT_PROJECT}
                     />
                     <SettingMenuRow
+                        icon={InstructionIcon}
+                        title={translate(TR.PAGE.SETTINGS.MENU_ROW.INSTRUCTION_FOR_BUSINESS_OWNER)}
+                        href={URL.INSTRUCTION_FOR_BUSINESS_OWNER}
+                    />
+                    <SettingMenuRow
                         icon={RocketIcon}
                         title={`${translate(TR.PAGE.SETTINGS.MENU_ROW.VERSION)} ${packageInfo.version}`}
                         href={'#'}
+                    />
+                    <SettingMenuRow
+                        icon={ResetSettingsIcon}
+                        title={`${translate(TR.PAGE.SETTINGS.MENU_ROW.RESET_SETTINGS)}`}
+                        changeHandler={() => {
+                            localStorage.clear()
+                            window.location.href = window.location.origin
+                            }
+                        }
                     />
                 </AccountSettings>
             </Wrapper>
