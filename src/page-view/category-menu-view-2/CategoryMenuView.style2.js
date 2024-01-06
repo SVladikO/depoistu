@@ -66,7 +66,7 @@ export const SubCategoryTitle = styled.div`
     background: ${COLOR.ACCENT2};
     position: -webkit-sticky;
     position: sticky;
-    top: 60px;
+    top: 72px;
     z-index: 1;
 `;
 
