@@ -21,8 +21,6 @@ import {
     generateTagId,
 } from "./utils";
 
-const CATEGORY_TITLE_CLASS_NAME = 'CATEGORY_TITLE_CLASS_NAME';
-
 let indexCalculator = 0;
 let categoryIdIndexMapper = {};
 
@@ -31,7 +29,7 @@ const CategoryMenuView2 = (props) => {
     useScrollUp();
     const navigate = useNavigate();
     const [selectedMenuItemId, setSelectedMenuItemId] = useState();
-    const [openSubCategoryId, setOpenSubCategoryId] = useState();
+    const [openedGroups, setOpenedGroups] = useState([]);
 
     const navigateToEditMenuItemPage = menuItem => () => {
         LocalStorage.set(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT, menuItem);
@@ -51,14 +49,14 @@ const CategoryMenuView2 = (props) => {
         return (
             <SubCategoryTitle
                 key={categoryTitle + topCategoryIndex + Math.random()}
-                id={generateTagId(subCategoryId, topCategoryIndex)}
                 isHidden={isHidden}
                 onClick={() => {
-                    if (subCategoryId === openSubCategoryId) {
-                        return setOpenSubCategoryId(null)
+
+                    if (openedGroups.includes(subCategoryId)) {
+                        return setOpenedGroups(prevState => [...openedGroups.filter(id => id !== subCategoryId)])
                     }
 
-                    setOpenSubCategoryId(subCategoryId)
+                    setOpenedGroups(prevState => [...prevState, subCategoryId])
                 }}
             >
                 {categoryTitle.toUpperCase()}
@@ -108,7 +106,7 @@ const CategoryMenuView2 = (props) => {
             resultMenuItems.push(
                 <MenuItemGroupWrapper
                     className='menu-item-group-wrapper'
-                    isOpen={+subCategoryId === +openSubCategoryId}
+                    isOpen={openedGroups.includes(subCategoryId)}
                 >
                     {items.map(renderMenuItem)}
                 </MenuItemGroupWrapper>

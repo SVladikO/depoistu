@@ -39,35 +39,17 @@ export const SubCategoryWrapper = styled.div`
     background: none;
 `;
 
-export const TopCategory = styled.div`
-    padding: 30px 0 10px;
-    display: flex;
-    justify-content: center;
-    ${FONT.SIZE_24};
-    color: ${COLOR.ACCENT1};
-    background: ${COLOR.ACCENT4};
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-`;
 export const MenuItemGroupWrapper = styled.div`
     display: ${p => p.isOpen ? 'block' : 'none'};
-    overflow: hidden;
-  
 `;
-export const SubCategoryTitle = styled.div`
+export const CategoryTitle = styled.div`
     height: ${p => p.isHidden ? '0px' : 'auto'};
     font-size: 20px;
     line-height: 24px;
     padding: ${p => p.isHidden ? '0px' : '22px 0 16px 16px'};
     color: ${hexToRgbA(COLOR.ACCENT1, 0.7)};
     border-bottom: solid 1px ${COLOR.ACCENT5};
-    background: ${COLOR.ACCENT2};
-    position: -webkit-sticky;
-    position: sticky;
-    top: 68px;
-    z-index: 1;
+    overflow: hidden;
 `;
 
 

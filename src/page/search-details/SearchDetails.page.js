@@ -8,6 +8,7 @@ import {Company, NotificationLoading, PrimaryButton, NotificationTDB, RowSplitte
 
 import CategoryMenuView from 'page-view/category-menu-view/CategoryMenuView'
 import CategoryMenuView2 from 'page-view/category-menu-view-2/CategoryMenuView2'
+import CategoryMenuView3 from 'page-view/category-menu-view-3/CategoryMenuView3'
 
 import {setCompanyId} from '../../features/searchDetails/searchDetailsSlice'
 
@@ -91,7 +92,9 @@ const SearchDetailsPage = () => {
             {!isMenuLoading && !!menuItems?.length &&
                     <CategoryMenuView2 menuItems={menuItems} />}
             {!isMenuLoading && !!menuItems?.length &&
-                    <CategoryMenuView menuItems={menuItems} />}
+                <CategoryMenuView3 menuItems={menuItems} />}
+            {/*{!isMenuLoading && !!menuItems?.length &&*/}
+            {/*        <CategoryMenuView menuItems={menuItems} />}*/}
             <RowSplitter height={'200px'} />
         </Wrapper>
     );
