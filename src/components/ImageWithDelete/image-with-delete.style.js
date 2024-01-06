@@ -4,6 +4,10 @@ import {COLOR} from "utils/theme";
 export const Wrapper = styled.div`
     position: relative;
     overflow: hidden;    
+    
+    & > img {
+        min-height: 50px;
+    }
 `;
 
 export const BasketButton = styled.div`
