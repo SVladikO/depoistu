@@ -8,10 +8,10 @@
     <meta name="description" content="Де поїсти в Україні? Меню всіх закладів харчування України на нашому сайті.
      Тепер легше обрати куди піти поїсти, відпочити. Ознайомтесь з меню до або підчас візиту.
       Ми стандартизуємо меню всієї України. Зручно клієнту - вигідно бізнесу.
-      Where to eat in Ukraine? Menu of all cafe and restaurants of Ukraine on this site." />
+      Where to eat in Ukraine? Menu of all cafe and restaurants of Ukraine on this site."/>
 
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
     <meta http-equiv="Expires" content="0"/>
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png"/>
     <title>DEPOISTU</title>
@@ -30,8 +30,10 @@
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json"/>
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
     <style>
         body {
@@ -132,6 +134,10 @@
             animation: rotateSVG 0.8s linear infinite;
         }
 
+        .animate_order_counter {
+            animation: heartbeat .2s linear;
+        }
+
         @keyframes rotateSVG {
             0% {
                 transform: rotate(0);
@@ -140,6 +146,30 @@
                 transform: rotate(360deg);
             }
         }
+
+        @keyframes beat {
+            to {
+                transform: scale(1.4);
+            }
+        }
+
+        @keyframes heartbeat
+        {
+            0% {
+                transform: scale( 1 );
+            }
+
+            50% {
+                transform: scale(1.4);
+                border: solid 3px #709900;
+                background: #96CC00;
+                box-sizing: border-box;
+            }
+            100% {
+                transform: scale( 1 );
+            }
+        }
+
     </style>
 </head>
 <body>

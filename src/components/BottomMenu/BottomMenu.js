@@ -1,3 +1,4 @@
+import React, {useEffect, useState} from "react";
 import {useNavigate} from 'react-router-dom';
 
 import {Wrapper, MenuItem, Label, OrderWrapper, OrderButton} from './BottomMenu.style';
@@ -16,9 +17,6 @@ const BottomMenu = () => {
     const companyId = useSelector(state => state.searchDetails.companyId);
     const navigate = useNavigate();
     const isSelected = url => window.location.pathname === url;
-
-    const {menuItems} = useSelector(state => state.searchDetails)
-    const allMenuItemsAmount = menuItems.reduce((acc, cur) => acc + cur.amount_1 + cur.amount_2 + cur.amount_3, 0)
 
     return (
         <Wrapper>
@@ -40,8 +38,8 @@ const BottomMenu = () => {
                 <Label>{translate(TRANSLATION.BOTTOM_MENU.MENU)}</Label>
             </MenuItem>
             <OrderWrapper>
-                <ScrollUpButton />
-                <OrderButton onClick={() => navigate(ROUTER.ORDER.URL)}>{allMenuItemsAmount}</OrderButton>
+                <ScrollUpButton/>
+                <OrderButtonNavigation/>
             </OrderWrapper>
             <MenuItem
                 selected={isSelected(URL.FAVORITE)}
@@ -60,5 +58,32 @@ const BottomMenu = () => {
         </Wrapper>
     );
 };
+
+const OrderButtonNavigation = () => {
+    const navigate = useNavigate();
+
+    const [isOpen, setOpen] = useState(false);
+    const {menuItems} = useSelector(state => state.searchDetails)
+    const allMenuItemsAmount = menuItems.reduce((acc, cur) => acc + cur.amount_1 + cur.amount_2 + cur.amount_3, 0)
+
+    const animationEndHandler = () => setOpen(false);
+
+    useEffect(() => {
+        setOpen(true)
+    }, [allMenuItemsAmount]);
+
+    return (
+        <OrderButton
+            onClick={() => {
+                navigate(ROUTER.ORDER.URL)
+                setOpen(true)
+            }}
+            onAnimationEnd={event => animationEndHandler(event)}
+            className={isOpen ? 'animate_order_counter' : ''}
+        >
+            {allMenuItemsAmount}
+        </OrderButton>
+    )
+}
 
 export default BottomMenu;

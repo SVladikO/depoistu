@@ -64,6 +64,9 @@ export const OrderButton = styled.div`
     border: solid 1px ${COLOR.ACCENT1};
     ${FONT.SIZE_30}
     ${FONT.WEIGHT_700}
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
 `;
 
 export const Label = styled.div`
