@@ -7,8 +7,6 @@ import {Wrapper} from "./SearchDetails.style";
 import {Company, NotificationLoading, PrimaryButton, NotificationTDB, RowSplitter} from "components";
 
 import CategoryMenuView from 'page-view/category-menu-view/CategoryMenuView'
-import CategoryMenuView2 from 'page-view/category-menu-view-2/CategoryMenuView2'
-import CategoryMenuView3 from 'page-view/category-menu-view-3/CategoryMenuView3'
 
 import {setCompanyId} from '../../features/searchDetails/searchDetailsSlice'
 
@@ -16,11 +14,10 @@ import {ROUTER} from "utils/config";
 import {useLocalStorage, useScrollUp} from "utils/hook";
 import {BE_API, fetchData} from "utils/fetch";
 import {stopLoadingWithDelay} from "utils/utils";
-import {publishNotificationEvent} from "utils/event";
 import {translate, TRANSLATION, TRANSLATION as TR} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 import {errorHandler} from "utils/management";
-import {fetchCompany, fetchMenu} from "../../features/searchDetails/thunks";
+import {fetchMenu} from "../../features/searchDetails/thunks";
 
 const SearchDetailsPage = () => {
     useScrollUp();
@@ -88,17 +85,11 @@ const SearchDetailsPage = () => {
 
             {isMenuLoading &&
                 <NotificationLoading>{translate(TRANSLATION.NOTIFICATION.LOADING_MENU)}</NotificationLoading>}
-
             {!isMenuLoading && !!menuItems?.length &&
-                    <CategoryMenuView2 menuItems={menuItems} />}
-            {!isMenuLoading && !!menuItems?.length &&
-                <CategoryMenuView3 menuItems={menuItems} />}
-            {/*{!isMenuLoading && !!menuItems?.length &&*/}
-            {/*        <CategoryMenuView menuItems={menuItems} />}*/}
-            <RowSplitter height={'200px'} />
+                <CategoryMenuView menuItems={menuItems}/>}
+            <RowSplitter height={'200px'}/>
         </Wrapper>
     );
 };
-
 
 export default SearchDetailsPage;
