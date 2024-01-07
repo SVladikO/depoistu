@@ -98,21 +98,22 @@ export const ROUTER = {
         page: OrderPage,
         showBottomMenu: true
     },
-    ORDER_HISTORY: {
-        URL: URL.ORDER_HISTORY,
-        TITLE: translate(TRANSLATION.PAGE.ORDER_HISTORY.TOP_TITLE),
-        page: OrderHistoryPage,
-        backUrl: URL.SETTING,
-        showBottomMenu: true
-    },
-    ORDER_HISTORY_DETAILS: {
-        URL: URL.ORDER_HISTORY_DETAILS,
-        PARAMS: '/:orderHistoryId',
-        TITLE: translate(TRANSLATION.PAGE.ORDER_HISTORY_DETAILS.TOP_TITLE),
-        page: OrderHistoryDetailsPage,
-        backUrl: URL.ORDER_HISTORY,
-        showBottomMenu: true
-    },
+
+    // ORDER_HISTORY: {
+    //     URL: URL.ORDER_HISTORY,
+    //     TITLE: translate(TRANSLATION.PAGE.ORDER_HISTORY.TOP_TITLE),
+    //     page: OrderHistoryPage,
+    //     backUrl: URL.SETTING,
+    //     showBottomMenu: true
+    // },
+    // ORDER_HISTORY_DETAILS: {
+    //     URL: URL.ORDER_HISTORY_DETAILS,
+    //     PARAMS: '/:orderHistoryId',
+    //     TITLE: translate(TRANSLATION.PAGE.ORDER_HISTORY_DETAILS.TOP_TITLE),
+    //     page: OrderHistoryDetailsPage,
+    //     backUrl: URL.ORDER_HISTORY,
+    //     showBottomMenu: true
+    // },
     FAVORITE: {
         URL: URL.FAVORITE,
         TITLE: translate(TRANSLATION.PAGE.FAVORITE.TOP_TITLE),

@@ -117,11 +117,11 @@ const SettingPage = () => {
                                 title={translate(TR.PAGE.SETTINGS.MENU_ROW.EDIT_PROFILE)}
                                 href={URL.EDIT_CUSTOMER}
                             />
-                            <SettingMenuRow
-                                icon={OrderHistoryIcon}
-                                title={translate(TR.PAGE.SETTINGS.MENU_ROW.ORDER_HISTORY)}
-                                href={URL.ORDER_HISTORY}
-                            />
+                            {/*<SettingMenuRow*/}
+                            {/*    icon={OrderHistoryIcon}*/}
+                            {/*    title={translate(TR.PAGE.SETTINGS.MENU_ROW.ORDER_HISTORY)}*/}
+                            {/*    href={URL.ORDER_HISTORY}*/}
+                            {/*/>*/}
                             {/*TODO: Change password page disabled as BE isn't ready yet. */}
                             {/*<SettingMenuRow*/}
                             {/*    icon={LockIcon}*/}
