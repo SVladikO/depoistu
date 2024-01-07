@@ -116,7 +116,7 @@ const MenuItemDescription = (props) => {
             {isNewItemFlag && <NewFlag>New</NewFlag>}
             <FirstRow>
                 <FoodTitle>{item.name}</FoodTitle>
-                {!item.isImageVisible && !isEditMode &&
+                {!item.isImageVisible && item.imageUrl && !isEditMode &&
                     <PictureIcon onClick={() => dispatch(makeMenuItemImageVisible({id: item.id}))}/>}
             </FirstRow>
             {renderDescription()}
