@@ -34,7 +34,7 @@ export const searchDetailsSlice = createSliceCustom({
         makeMenuItemImageVisible: (state, action) => {
             const {id} = action.payload;
             const itemToUpdate = state.menuItems.find(item => item.id === id);
-            console.log('kyky', id, !!itemToUpdate);
+
             if (itemToUpdate) {
                 itemToUpdate.isImageVisible = true;
             }

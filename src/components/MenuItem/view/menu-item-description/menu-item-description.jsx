@@ -13,14 +13,21 @@ import {
     Details, SizePriceInfo, Amount, IncrementButton, DecrementButton,
 } from "./menu-item-description.style";
 
+import {ReactComponent as PictureIcon} from "assets/icons/picture.svg";
+
 import {translate, TRANSLATION} from "utils/translation";
 import {CATEGORY_ID_MAPPER_AS_OBJECT} from "utils/category";
 import {useDispatch} from "react-redux";
-import {decrementMenuItemAmount, incrementMenuItemAmount} from "features/searchDetails/searchDetailsSlice";
+import {
+    decrementMenuItemAmount,
+    incrementMenuItemAmount,
+    makeMenuItemImageVisible
+} from "features/searchDetails/searchDetailsSlice";
 
 const MenuItemDescription = (props) => {
     const {
         isNewItemFlag,
+        isEditMode,
         item = {},
         isSelected,
         isOrderPage = false
@@ -66,7 +73,7 @@ const MenuItemDescription = (props) => {
     const renderTableRow = (size, price, amount, amountKey) => {
         const measurement = CATEGORY_ID_MAPPER_AS_OBJECT[item.categoryId].measurement;
 
-        if ((!size && !price ) || (isOrderPage && amount === 0)) {
+        if ((!size && !price) || (isOrderPage && amount === 0)) {
             return;
         }
 
@@ -77,12 +84,12 @@ const MenuItemDescription = (props) => {
                     <pre>{size && ' '}</pre>
                     <span>{size} {size && measurement}</span>
                 </SizePriceInfo>
-                <ControlButtonTd isShow={isSelected || amount > 0}>
+                <ControlButtonTd isShow={!isEditMode && (isSelected || amount > 0)}>
                     {amount > 0 && <>
-                        <DecrementButton clickHandler={onDecrementAmount(amountKey)} />
+                        <DecrementButton clickHandler={onDecrementAmount(amountKey)}/>
                         <Amount>{amount}</Amount>
                     </>}
-                    <IncrementButton clickHandler={onIncrementAmount(amountKey)} />
+                    <IncrementButton clickHandler={onIncrementAmount(amountKey)}/>
                 </ControlButtonTd>
             </Details>
         )
@@ -109,6 +116,8 @@ const MenuItemDescription = (props) => {
             {isNewItemFlag && <NewFlag>New</NewFlag>}
             <FirstRow>
                 <FoodTitle>{item.name}</FoodTitle>
+                {!item.isImageVisible && !isEditMode &&
+                    <PictureIcon onClick={() => dispatch(makeMenuItemImageVisible({id: item.id}))}/>}
             </FirstRow>
             {renderDescription()}
             {renderSizePrice()}

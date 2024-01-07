@@ -157,10 +157,7 @@ const CategoryMenuView = (props) => {
             onEditClick={navigateToEditMenuItemPage(mi)}
 
             isSelected={mi.id === selectedMenuItemId}
-            onSelectMenuItem={() => {
-                setSelectedMenuItemId(mi.id)
-                console.log('selected id: ', mi.id)
-            }}
+            onSelectMenuItem={() => setSelectedMenuItemId(mi.id)}
         />
     )
 

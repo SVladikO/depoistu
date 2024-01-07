@@ -19,13 +19,12 @@ export const FirstRow = styled.div`
 
     & > svg {
         position: absolute;
-        top: 0;
+        top: -4px;
         right: 0;
-        width: 30px;
-        height: 30px;
-        padding: 5px;
+        width: 40px;
+        height: 40px;
+        padding: 0 0 10px 20px;
         fill: ${COLOR.ACCENT1};
-        opacity: 0.4;
     }
 `;
 
@@ -33,6 +32,7 @@ export const FoodTitle = styled.div`
     ${FONT.SIZE_20};
     ${FONT.WEIGHT_600};
     color: ${COLOR.ACCENT1};
+    padding: 0 38px 0 0;
     display: flex;
     flex-wrap: wrap;
     word-break: break-word;
