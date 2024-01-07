@@ -20,15 +20,14 @@ const ShowIntro = () => {
             {showIntro && (<Popup.Bottom onClose={closeIntroPopup}>
                 <ContentContainer noPadding noShadow>
                     <Wrapper>
+                        <Address>depoistu.com</Address>
+                        <LogoContainer>
+                            <LogoIcon/>
+                        </LogoContainer>
                         {
                             translate(TRANSLATION.INTRODUCTION.TEXT)
                                 .map(text => <Text22 key={text}>{text}</Text22>)
                         }
-                        <LogoContainer>
-                            <LogoIcon/>
-                            <Address>depoistu.com</Address>
-                        </LogoContainer>
-
                     </Wrapper>
                     <PrimaryButton isWide clickHandler={closeIntroPopup}>
                         {translate(TRANSLATION.INTRODUCTION.BUTTON)}
