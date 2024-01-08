@@ -47,6 +47,7 @@ export const MenuItem = styled.div`
 
 export const OrderWrapper = styled.div`
     position: relative;
+    width: 10px;
 `;
 
 export const OrderButton = styled.div`
