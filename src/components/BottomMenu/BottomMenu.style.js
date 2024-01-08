@@ -27,7 +27,7 @@ export const MenuItem = styled.div`
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none; /* Standard syntax */
-    width: 40px;
+    width: 70px;
     display: flex;
     flex-direction: column;
     justify-content: center;
