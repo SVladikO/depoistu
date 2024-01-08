@@ -16,6 +16,7 @@ import ScrollUpButton from "../ScrollUpButton/ScrollUpButton";
 const BottomMenu = () => {
     const companyId = useSelector(state => state.searchDetails.companyId);
     const navigate = useNavigate();
+    //duplication
     const isSelected = url => window.location.pathname === url;
 
     return (

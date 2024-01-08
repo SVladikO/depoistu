@@ -43,6 +43,8 @@ const CategoryMenuView = (props) => {
     const {menuItems, isEditMode} = props
     useScrollUp();
     const navigate = useNavigate();
+    //duplication
+    const isSelected = url => window.location.pathname === url;
     const [selectedTopCategoryId, setSelectedTopCategoryId] = useState();
     const [selectedSubCategoryId, setSelectedSubCategoryId] = useState();
     const [selectedMenuItemId, setSelectedMenuItemId] = useState();
@@ -217,8 +219,10 @@ const CategoryMenuView = (props) => {
     })
 
     useEffect(() => {
-        const lastEdited = document.getElementsByClassName(LAST_EDITED_CLASSNAME)[0]
-        lastEdited  && window.scroll({top: lastEdited.offsetTop - CATEGORY_ROW_HEIGHT, behavior: "smooth"});
+        const lastEdited = document.getElementsByClassName(LAST_EDITED_CLASSNAME)[0];
+        if (isSelected(URL.EDIT_MENU) && lastEdited) {
+            window.scroll({top: lastEdited.offsetTop - CATEGORY_ROW_HEIGHT, behavior: "smooth"});
+        }
     }, []);
 
     return (
