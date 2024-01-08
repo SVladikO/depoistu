@@ -19,14 +19,14 @@ export const InnerInput = styled.input`
   left: 0;
   opacity: 0;
   &:checked + span {
-    outline: 1px solid ${COLOR.PRIMARY};
+    outline: 1px solid ${COLOR.ACCENT1};
     &:before {
       left: calc(100% - 2px);
       transform: translateX(-100%);
     }
   }
   &:checked + span:before {
-    background-color: ${COLOR.PRIMARY};
+    background-color: ${COLOR.ACCENT1};
   }
 `;
 
