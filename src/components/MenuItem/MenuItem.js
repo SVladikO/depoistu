@@ -17,6 +17,7 @@ const MenuItem = (props) => {
     const {
         item,
         isSelected,
+        isEditMode,
         onSelectMenuItem = () => {
         }
     } = props;
@@ -35,7 +36,7 @@ const MenuItem = (props) => {
             isItemVisible={isItemVisible}
             onClick={onDesciptionClick}
         >
-            {item.isImageVisible &&
+            {(item.isImageVisible || isEditMode) &&
                 <FoodImageWrapper>
                     <FoodImage src={ImageUrlFormatter.formatForMenuItemBig(item.imageUrl)}/>
                 </FoodImageWrapper>
