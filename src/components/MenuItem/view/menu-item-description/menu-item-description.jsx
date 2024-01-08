@@ -84,7 +84,7 @@ const MenuItemDescription = (props) => {
                     <pre>{size && ' '}</pre>
                     <span>{size} {size && measurement}</span>
                 </SizePriceInfo>
-                <ControlButtonTd isShow={!isEditMode && (isSelected || amount > 0)}>
+                <ControlButtonTd isShow={!isEditMode}>
                     {amount > 0 && <>
                         <DecrementButton clickHandler={onDecrementAmount(amountKey)}/>
                         <Amount>{amount}</Amount>
