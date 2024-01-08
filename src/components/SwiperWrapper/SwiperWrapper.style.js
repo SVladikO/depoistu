@@ -26,6 +26,6 @@ export const ImageSection = styled.div`
     }
 
     .swiper-pagination-bullet-active {
-        background-color: ${COLOR.ACCENT3};
+        background-color: ${COLOR.ACCENT1};
     }
 `;
