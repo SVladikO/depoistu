@@ -9,8 +9,8 @@ export const ToTopButtonWrapper = styled.a`
     z-index: 19;
     transform: rotate(180deg);
     box-sizing: border-box;
-    width: 50px;
-    height: 50px;
+    width: 54px;
+    height: 54px;
     display: flex;
     justify-content: center;
     align-items: center;
