@@ -14,7 +14,7 @@ export const ImageSection = styled.div`
     
     .swiper-pagination {
         background: ${hexToRgbA(COLOR.ACCENT1, 0.4)};
-        padding: 0 0 6px;
+        padding: 3px 0;
         bottom: 0;
     }
 
@@ -26,6 +26,6 @@ export const ImageSection = styled.div`
     }
 
     .swiper-pagination-bullet-active {
-        background-color: ${COLOR.ACCENT1};
+        background-color: #000;
     }
 `;
