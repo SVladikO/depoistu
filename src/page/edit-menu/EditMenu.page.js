@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {Link} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 import {Wrapper, CompanyDetails} from "./EditMenu.style";
 
@@ -21,6 +21,7 @@ import {useLocalStorage, useRedirectToSettingPage, useScrollUp} from "utils/hook
 const EditMenuPage = () => {
     useRedirectToSettingPage();
     useScrollUp();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const [menuItems, setMenuItems] = useState([]);
     const isLoading = useSelector(state => state.request.value.isLoading);
@@ -57,11 +58,16 @@ const EditMenuPage = () => {
                 </CompanyDetails>
             }
 
-            <Link to={`${URL.ADD_MENU_ITEM}`}>
-                <PrimaryButton isWide withPadding>
-                    {translate(TRANSLATION.PAGE.EDIT_MENU.BUTTON.ADD_MENU_ITEM)}
-                </PrimaryButton>
-            </Link>
+            <PrimaryButton
+                isWide
+                withPadding
+                clickHandler={() => {
+                    navigate(URL.ADD_MENU_ITEM);
+                    LocalStorage.remove(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT)
+                }}
+            >
+                {translate(TRANSLATION.PAGE.EDIT_MENU.BUTTON.ADD_MENU_ITEM)}
+            </PrimaryButton>
             <RowSplitter height="40px"/>
 
             <Wrapper>

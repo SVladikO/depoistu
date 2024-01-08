@@ -16,7 +16,7 @@ import {
 import {SubCategoryItem, MenuItem, RowSplitter, HorizontalSwiper} from "components";
 
 import {URL} from "utils/config";
-import {useScrollUp} from "utils/hook";
+import {useLocalStorage, useScrollUp} from "utils/hook";
 import {translate, TRANSLATION as TR} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 import {
@@ -32,6 +32,8 @@ import {
 } from "./utils";
 
 const CATEGORY_TITLE_CLASS_NAME = 'CATEGORY_TITLE_CLASS_NAME';
+const LAST_EDITED_CLASSNAME = 'last-edited-menu-item';
+
 export const CATEGORY_ROW_HEIGHT = 112;
 
 let indexCalculator = 0;
@@ -44,6 +46,7 @@ const CategoryMenuView = (props) => {
     const [selectedTopCategoryId, setSelectedTopCategoryId] = useState();
     const [selectedSubCategoryId, setSelectedSubCategoryId] = useState();
     const [selectedMenuItemId, setSelectedMenuItemId] = useState();
+    const [menuItemCandidateToEdit] = useLocalStorage(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT, {})
 
     const onScrollPage = () => {
         if (getIsScrollDisabled()) {
@@ -148,17 +151,18 @@ const CategoryMenuView = (props) => {
             </CategoryTitle>
         )
     }
-
     const renderMenuItem = (mi, index) => (
-        <MenuItem
-            key={`menu_item${index}${mi.id}`}
-            item={mi}
-            isEditMode={isEditMode}
-            onEditClick={navigateToEditMenuItemPage(mi)}
+        <div className={mi.id === menuItemCandidateToEdit.id ? LAST_EDITED_CLASSNAME : ''}>
+            <MenuItem
+                key={`menu_item${index}${mi.id}`}
+                item={mi}
+                isEditMode={isEditMode}
+                onEditClick={navigateToEditMenuItemPage(mi)}
 
-            isSelected={mi.id === selectedMenuItemId}
-            onSelectMenuItem={() => setSelectedMenuItemId(mi.id)}
-        />
+                isSelected={mi.id === selectedMenuItemId}
+                onSelectMenuItem={() => setSelectedMenuItemId(mi.id)}
+            />
+        </div>
     )
 
     const topCategories = []; // Contain array of top category components
@@ -189,7 +193,9 @@ const CategoryMenuView = (props) => {
 
             subCategories.push(renderSubCategory(categoryId, topCategoryIndex, categoryIdIndexMapper[categoryId]))
             resultMenuItems.push(renderCategoryTitle(categoryId, topCategoryIndex))
+
             const menuItem = items.map(renderMenuItem)
+
             menuItem.forEach(mi => {
                 resultMenuItems.push(renderCategoryTitle(categoryId, topCategoryIndex, true))
                 resultMenuItems.push(mi)
@@ -209,6 +215,11 @@ const CategoryMenuView = (props) => {
             indexCalculator = 0;
         }
     })
+
+    useEffect(() => {
+        const lastEdited = document.getElementsByClassName(LAST_EDITED_CLASSNAME)[0]
+        lastEdited  && window.scroll({top: lastEdited.offsetTop - CATEGORY_ROW_HEIGHT, behavior: "smooth"});
+    }, []);
 
     return (
         <>
