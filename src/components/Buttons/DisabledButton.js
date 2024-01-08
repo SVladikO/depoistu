@@ -9,10 +9,10 @@ export const DisabledButton = styled(button)`
   color: ${COLOR.ACCENT1};
   background-color: ${COLOR.ACCENT4};
   border-radius: 0;
-  border: 1px solid ${COLOR.ACCENT8};
+  border: 1px solid ${COLOR.ACCENT1};
   flex: 1;
   svg {
-    color: ${COLOR.ACCENT5};
+    color: ${COLOR.ACCENT1};
     height: 17px;
     width: 17px;
     display: block;

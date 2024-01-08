@@ -62,13 +62,14 @@ const CustomerCompaniesPage = () => {
                     <Company company={company} key={company.id} withMoreInfo>
                         <EditBar>
                             <Link to={ROUTER.EDIT_COMPANY.URL + '/' + company.id} style={{width: '140px'}}>
-                                <DisabledButton>
+                                <DisabledButton isWide>
                                     <EditIcon/>
                                     {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.COMPANY)}
                                 </DisabledButton>
                             </Link>
                             <QRCodeButton onClick={showQRCode(company.id)}><QRCodeIcon/></QRCodeButton>
                             <DisabledButton
+                                isWide
                                 onClick={
                                     () => {
                                         LocalStorage.set(LOCAL_STORAGE_KEY.COMPANY_ID_TO_EDIT_MENU_PAGE, company.id)

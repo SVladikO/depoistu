@@ -11,6 +11,7 @@ export const ImageQR = styled.img`
 
 export const QRCodeButton = styled(DisabledButton)`
   padding: 10px;
+  border: 1px solid ${COLOR.ACCENT1};
   
   & > svg {
     width: 24px;
