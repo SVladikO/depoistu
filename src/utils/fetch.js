@@ -2,78 +2,6 @@ import {BE_DOMAIN} from "./config";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
 import {DEFAULT_LANGUAGE, getCurrentLanguage, translate, TRANSLATION} from "./translation";
 
-// prepare options conditionally
-function getOptions(body) {
-    const defaultOption = {
-        headers: {
-            'client-version': LocalStorage.get(LOCAL_STORAGE_KEY.PROJECT_VERSION),
-            'Content-Type': 'application/json',
-            "current-language": getCurrentLanguage() || DEFAULT_LANGUAGE
-        },
-        mode: 'cors',
-    };
-
-    //Only GET method works without body
-    if (!body) {
-        return defaultOption;
-    }
-
-    const customer = LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE)?.customer?.value;
-
-    //Let's send x-access-token for POST, PUT, DELETE only after customer sing in.
-    if (customer) {
-        defaultOption.headers["x-access-token"] = customer.token;
-    }
-
-    return {
-        ...defaultOption,
-        ...{
-            method: body?.method || 'POST',
-            body: JSON.stringify(body)
-        }
-    }
-}
-
-export const fetchData = async (url, body) => {
-    let response;
-
-    // No internet no request
-    if (!window.navigator.onLine) {
-        return new Promise((resolve, reject) => {
-            reject({body: {errorMessage: translate(TRANSLATION.NOTIFICATION.NO_INTERNET)}});
-        })
-    }
-
-    try {
-        response = await fetch(decodeURIComponent(url), getOptions(body));
-    } catch (error) {
-        return new Promise((resolve, reject) => {
-            reject({
-                    status: 500,
-                    body: {
-                        errorMessage: error.message === 'Failed to fetch'
-                            ? translate(TRANSLATION.NOTIFICATION.UN_ABLE_MAKE_REQUEST)
-                            : error.message
-                    }
-                }
-            );
-        })
-    }
-
-    const json = await response.json();
-
-    const {status, statusText, headers} = response;
-
-    if (response.ok) {
-        return new Promise((resolve) => {
-            resolve({status, statusText, headers, body: json});
-        })
-    }
-
-    return new Promise((resolve, reject) => {
-        reject({status, statusText, headers, body: json});
-    })
-}
 
 export const BE_API = {
     //TODO candidate to delete
@@ -123,3 +51,66 @@ export const BE_API = {
     }
     // PLACE_ORDER: () => `${BE_DOMAIN}/place-order`,
 };
+
+export const fetchData = async (url, body) => {
+    let response;
+
+    const promiseReject = errorMessage => new Promise((resolve, reject) => reject({body: {errorMessage}}));
+
+    // No internet no request
+    if (!window.navigator.onLine) {
+        return promiseReject(translate(TRANSLATION.NOTIFICATION.NO_INTERNET));
+    }
+
+    try {
+        response = await fetch(decodeURIComponent(url), getOptions(body));
+    } catch (error) {
+        return promiseReject(
+            error.message === 'Failed to fetch'
+                ? translate(TRANSLATION.NOTIFICATION.UN_ABLE_MAKE_REQUEST)
+                : error.message
+        );
+    }
+
+    const json = await response.json();
+
+    return new Promise((resolve, reject) => {
+        response.ok
+            ? resolve({body: json})
+            : reject({body: json});
+
+    })
+}
+
+
+// prepare options conditionally
+function getOptions(body) {
+    const defaultOption = {
+        headers: {
+            'client-version': LocalStorage.get(LOCAL_STORAGE_KEY.PROJECT_VERSION),
+            'Content-Type': 'application/json',
+            "current-language": getCurrentLanguage() || DEFAULT_LANGUAGE
+        },
+        mode: 'cors',
+    };
+
+    //Only GET method works without body
+    if (!body) {
+        return defaultOption;
+    }
+
+    const customer = LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE)?.customer?.value;
+
+    //Let's send x-access-token for POST, PUT, DELETE only after customer sing in.
+    if (customer) {
+        defaultOption.headers["x-access-token"] = customer.token;
+    }
+
+    return {
+        ...defaultOption,
+        ...{
+            method: body?.method || 'POST',
+            body: JSON.stringify(body)
+        }
+    }
+}

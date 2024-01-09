@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate, useParams} from 'react-router-dom';
 
@@ -8,16 +8,11 @@ import {Company, NotificationLoading, PrimaryButton, NotificationTDB, RowSplitte
 
 import CategoryMenuView from 'page-view/category-menu-view/CategoryMenuView'
 
-import {setCompanyId} from '../../features/searchDetails/searchDetailsSlice'
-
 import {ROUTER} from "utils/config";
-import {useLocalStorage, useScrollUp} from "utils/hook";
-import {BE_API, fetchData} from "utils/fetch";
-import {stopLoadingWithDelay} from "utils/utils";
+import {useScrollUp} from "utils/hook";
 import {translate, TRANSLATION, TRANSLATION as TR} from "utils/translation";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
-import {errorHandler} from "utils/management";
-import {fetchMenu} from "../../features/searchDetails/thunks";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
+import {fetchMenu, fetchCompany} from "features/searchDetails/thunks";
 
 const SearchDetailsPage = () => {
     useScrollUp();
@@ -25,37 +20,22 @@ const SearchDetailsPage = () => {
     const dispatch = useDispatch();
     let companyId = +useParams().companyId;
 
-    const {menuItems, isMenuLoading} = useSelector(state => state.searchDetails)
-
-    const [isCompanyExist, setIsCompanyExist] = useState(true);
-    const [isLoadingCompany, setIsLoadingCompany] = useState(false);
-    const [company, setCompany] = useLocalStorage(LOCAL_STORAGE_KEY.SEARCH_DETAILS_COMPANY)
+    const {menuItems, isMenuLoading, company, isCompanyLoading} = useSelector(state => state.searchDetails)
 
     useEffect(() => {
-        if (!companyId) {
+        if (!companyId || companyId === company?.id) {
             return
         }
 
-        if (company && company.id === companyId) {
-            return;
-        }
-
-        dispatch(setCompanyId(companyId))
-        setIsLoadingCompany(true)
-        const companyLoadingDelay = stopLoadingWithDelay([() => setIsLoadingCompany(false)])
-
         dispatch(fetchMenu(companyId))
-
-        fetchData(BE_API.COMPANY.GET_BY_COMPANY_ID(companyId))
-            .then(res => setCompany(res.body[0]))
-            .catch(e => {
-                setIsCompanyExist(false)
-                errorHandler(e)
-            })
-            .finally(() => companyLoadingDelay.allow());
+        dispatch(fetchCompany(companyId))
     }, [companyId])
 
-    if (!isCompanyExist) {
+    const getNotification = translationKey => (
+        <NotificationLoading>{translate(translationKey)}</NotificationLoading>
+    )
+
+    if (!companyId || !company) {
         return (
             <NotificationTDB title={translate(TR.PAGE.COMPANY_DETAILS.COMPANY_DOESNT_EXIST)}>
                 <PrimaryButton isWide clickHandler={() => {
@@ -77,16 +57,13 @@ const SearchDetailsPage = () => {
         )
     }
 
+
     return (
         <Wrapper>
-            {isLoadingCompany &&
-                <NotificationLoading>{translate(TRANSLATION.NOTIFICATION.COMPANY.LOADING_COMPANY)}</NotificationLoading>}
-            {!isLoadingCompany && company && <Company company={company} withMoreInfo/>}
-
-            {isMenuLoading &&
-                <NotificationLoading>{translate(TRANSLATION.NOTIFICATION.LOADING_MENU)}</NotificationLoading>}
-            {!isMenuLoading && !!menuItems?.length &&
-                <CategoryMenuView menuItems={menuItems}/>}
+            {isCompanyLoading && getNotification(TRANSLATION.NOTIFICATION.COMPANY.LOADING_COMPANY)}
+            {!isCompanyLoading && company && <Company company={company} withMoreInfo/>}
+            {isMenuLoading && getNotification(TRANSLATION.NOTIFICATION.LOADING_MENU)}
+            {!isMenuLoading && !!menuItems?.length && <CategoryMenuView menuItems={menuItems}/>}
             <RowSplitter height={'200px'}/>
         </Wrapper>
     );

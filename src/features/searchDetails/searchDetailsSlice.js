@@ -1,13 +1,15 @@
 import createSliceCustom from "features/utils";
-import {fetchMenu} from "./thunks";
+import {fetchMenu, fetchCompany} from "./thunks";
 import {errorHandler} from "utils/management";
 
 const initialState = {
     companyId: null,
+    company: null,
     menuItems: [],
-    defMenuItems: [],
     isMenuLoading: false,
+    isCompanyLoading: false,
     menuError: undefined,
+    companyError: undefined,
 }
 
 export const searchDetailsSlice = createSliceCustom({
@@ -40,7 +42,7 @@ export const searchDetailsSlice = createSliceCustom({
             }
         },
         resetOrder: (state) => {
-            state.menuItems = state.defMenuItems
+            state.menuItems = []
         }
     },
     extraReducers: {
@@ -50,10 +52,23 @@ export const searchDetailsSlice = createSliceCustom({
         [fetchMenu.fulfilled]: (state, action) => {
             state.isMenuLoading = false
             state.menuItems = action.payload
-            state.defMenuItems = action.payload
         },
         [fetchMenu.rejected]: (state, error) => {
-            errorHandler(error)
+            state.isMenuLoading = false
+            state.menuItems = []
+            errorHandler(error.payload)
+        },
+        [fetchCompany.pending]: (state) => {
+            state.isCompanyLoading = true
+        },
+        [fetchCompany.fulfilled]: (state, action) => {
+            state.isCompanyLoading = false
+            state.company = action.payload
+        },
+        [fetchCompany.rejected]: (state, error) => {
+            state.isCompanyLoading = false
+            state.company = null
+            errorHandler(error.payload)
         },
     }
 });
