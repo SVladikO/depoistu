@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 
 import {Wrapper, AmountInfo, Content} from './Order.page.style';
 import {
+    ContentContainer,
     MenuItem,
     NOTIFICATION_STATUS,
     NotificationFactory,
@@ -18,32 +19,28 @@ import {ReactComponent as RemoveIcon} from "assets/icons/remove_icon.svg";
 import {ROUTER} from 'utils/config'
 import {useLocalStorage, useScrollUp} from "utils/hook";
 import {translate, TRANSLATION} from "utils/translation";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
+import {LOCAL_STORAGE_KEY} from "utils/localStorage";
 import {resetOrder} from "features/searchDetails/searchDetailsSlice";
+import {BE_API, fetchData} from "../../utils/fetch";
+import {errorHandler} from "../../utils/management";
 
 const OrderPage = () => {
     useScrollUp()
     const dispatch = useDispatch()
-    const {menuItems } = useSelector(state => state.searchDetails);
-    const orderMenuItems = useMemo(() => menuItems.filter(item => item.amount_1 > 0 || item.amount_2 > 0 || item.amount_3 > 0), [menuItems])
+    const {menuItems} = useSelector(state => state.searchDetails);
+    const order_items = useMemo(() => menuItems.filter(item => item.amount_1 > 0 || item.amount_2 > 0 || item.amount_3 > 0), [menuItems])
     const [isOpenMessage, setIsOpenMessage] = useLocalStorage(LOCAL_STORAGE_KEY.IS_ORDER_MESSAGE_VISIBLE, true)
-    const allMenuItemsPrice = orderMenuItems.length
-        ? orderMenuItems.reduce((acc, cur) => acc + cur.amount_1 * cur.price_1 + cur.amount_2 * cur.price_2 + cur.amount_3 * cur.price_3, 0)
+    const allMenuItemsPrice = order_items.length
+        ? order_items.reduce((acc, cur) => acc + cur.amount_1 * cur.price_1 + cur.amount_2 * cur.price_2 + cur.amount_3 * cur.price_3, 0)
         : 0
 
     const placeOrder = () => {
-        const {id: customer_id} = LocalStorage.get(LOCAL_STORAGE_KEY.CUSTOMER);
-        const order_details = orderMenuItems.map(({id, amount, price}) => ({id, amount, price}))
-
-        const body = {
-            order: {
-                customer_id,
-                company_id: orderMenuItems[0].company_id,
-                order_details,
-            }
-        };
-
-        console.log('Order data: ', body);
+        fetchData(BE_API.ORDER_HISTORY.POST_CREATE(), {order_items})
+            .then(res => {
+                alert('done')
+                console.log('post order: ', res)
+            })
+            .catch(errorHandler)
     }
 
     const onCleanBasket = () => {
@@ -57,22 +54,28 @@ const OrderPage = () => {
     const OrderItems = () => (
         <>
             {isOpenMessage &&
-                <NotificationFactory type={NOTIFICATION_STATUS.INFO} onClose={onCloseMessage}>
-                    {translate(TRANSLATION.ORDERS.THIS_PAGE_IS_CREATED)}
-                </NotificationFactory>}
+                <ContentContainer>
+                    <NotificationFactory type={NOTIFICATION_STATUS.INFO} onClose={onCloseMessage}>
+                        {translate(TRANSLATION.ORDERS.THIS_PAGE_IS_CREATED)}
+                    </NotificationFactory>
+                </ContentContainer>
+            }
             <Content>
-                {orderMenuItems.map((mi, index) => (
-                <MenuItem
-                    item={mi}
-                    isSelected
-                    isEditMode={false}
-                    isOrderPage
-                    key={`menu_item${index}${mi.id}`}
-                />))}
+                {order_items.map((mi, index) => (
+                    <MenuItem
+                        item={mi}
+                        isSelected
+                        isEditMode={false}
+                        isOrderPage
+                        key={`menu_item${index}${mi.id}`}
+                    />))}
                 <AmountInfo>
                     <div> {translate(TRANSLATION.ORDERS.TOTAL)}:</div>
                     <div>₴ {allMenuItemsPrice}</div>
                 </AmountInfo>
+                <PrimaryButton isWide withPadding clickHandler={placeOrder}>
+                    place order
+                </PrimaryButton>
                 <SecondaryButton isWide withPadding clickHandler={onCleanBasket}>
                     <RemoveIcon/>
                     {translate(TRANSLATION.ORDERS.CLEAR_BASKET)}
@@ -82,18 +85,19 @@ const OrderPage = () => {
         </>
     );
 
+
     return (
         <Wrapper>{
-            orderMenuItems.length
-                ? <OrderItems />
+            order_items.length
+                ? <OrderItems/>
                 : <NotificationTDB
                     Icon={EmptyBasketIcon}
                     title={translate(TRANSLATION.ORDERS.BASKET_IS_EMPTY)}
                     description={translate(TRANSLATION.ORDERS.LOOKS_LIKE)}
                 >
-                <Link to={ROUTER.SEARCH.URL}>
-                    <PrimaryButton isWide>{translate(TRANSLATION.ORDERS.SHOP_NOW)}</PrimaryButton>
-                </Link>
+                    <Link to={ROUTER.SEARCH.URL}>
+                        <PrimaryButton isWide>{translate(TRANSLATION.ORDERS.SHOP_NOW)}</PrimaryButton>
+                    </Link>
                 </NotificationTDB>
         }</Wrapper>
     );

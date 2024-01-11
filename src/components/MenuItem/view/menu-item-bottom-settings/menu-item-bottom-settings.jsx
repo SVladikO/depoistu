@@ -13,7 +13,7 @@ const MenuItemBottomSettings = ({
                                     item = {},
                                     isItemVisible,
                                     setIsItemVisible,
-                                    isEditMode = false,
+                                    isEditMenuItemPage = false,
                                     onEditClick = () => {},
                                 }) => {
 
@@ -29,7 +29,7 @@ const MenuItemBottomSettings = ({
             .catch(errorHandler)
     }
 
-    if (!isEditMode) {
+    if (!isEditMenuItemPage) {
         return
     }
 

@@ -42,7 +42,7 @@ const AddMenuItemPage = () => {
             .then(() => {
                 scrollUp();
                 publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.MENU_ITEM.WAS_CREATED))
-                setInitialValues({...defaultInitialValue, categoryId: values.categoryId})
+                setInitialValues({...defaultInitialValue, category_id: values.category_id})
             })
             .catch(errorHandler)
             .finally(() => setIsLoading(false))

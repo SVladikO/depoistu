@@ -3,7 +3,6 @@ import {Formik} from "formik";
 import * as Yup from 'yup';
 
 import {GroupSizePrice} from "./menu-item-view.style";
-import {FoodImage} from '../../components/MenuItem/MenuItem.style'
 import {
     Dropdown,
     ContentContainer,
@@ -78,12 +77,12 @@ const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
                             <Dropdown
                                 label={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.CATEGORY)}
                                 options={options}
-                                selectedOption={(options.filter(o => o.value === values.categoryId))[0]}
+                                selectedOption={(options.filter(o => o.value === values.category_id))[0]}
                                 onSelect={option => setFieldValue('categoryId', +option.value)}
                                 as="select"
                                 name="categoryId"
-                                isTouched={touched.categoryId || wasSubmitted}
-                                errorMessage={errors.categoryId}
+                                isTouched={touched.category_id || wasSubmitted}
+                                errorMessage={errors.category_id}
                             />
                             <Input
                                 value={values.name}
@@ -101,7 +100,7 @@ const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
                                     name="size_1"
                                     type="text"
                                     value={values.size_1}
-                                    labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.MEAL_SIZE) + ` 1 ${getMeasurements(values.categoryId)}`}
+                                    labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.MEAL_SIZE) + ` 1 ${getMeasurements(values.category_id)}`}
                                     onBlur={handleBlur}
                                     changeHandler={handleChange}
                                     clearHandler={() => setFieldValue('size_1', '')}
@@ -128,7 +127,7 @@ const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
                                     name="size_2"
                                     type="text"
                                     value={values.size_2}
-                                    labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.MEAL_SIZE) + ` 2 ${getMeasurements(values.categoryId)}`}
+                                    labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.MEAL_SIZE) + ` 2 ${getMeasurements(values.category_id)}`}
                                     onBlur={handleBlur}
                                     changeHandler={handleChange}
                                     clearHandler={() => setFieldValue('size_2', '')}
@@ -155,7 +154,7 @@ const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
                                     name="size_3"
                                     type="text"
                                     value={values.size_3}
-                                    labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.MEAL_SIZE) + ` 3 ${getMeasurements(values.categoryId)}`}
+                                    labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.MEAL_SIZE) + ` 3 ${getMeasurements(values.category_id)}`}
                                     onBlur={handleBlur}
                                     changeHandler={handleChange}
                                     clearHandler={() => setFieldValue('size_3', '')}

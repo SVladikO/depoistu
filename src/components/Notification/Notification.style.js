@@ -1,15 +1,16 @@
 import styled, {css} from "styled-components";
-import {BORDER_RADIUS, COLOR, FONT} from "utils/theme";
+import {BORDER_RADIUS, COLOR, FONT, SHADOW_DARK} from "utils/theme";
 import {NOTIFICATION_STATUS} from "./Notification";
 
 export const DefaultNotification = css`
+  ${p => p.noShadow ? '' : SHADOW_DARK};
   display: inline-flex;
   position: relative;
   align-items: ${p => p.status === NOTIFICATION_STATUS.LOADING ? 'center': 'start'};
   gap: 10px;
   width: 100%;
   padding: 10px 30px 10px 10px;
-  border-radius: ${p => p.borderRadius ? p.borderRadius : BORDER_RADIUS.SECOND};
+  border-radius: ${p => p.borderRadius ? p.borderRadius : BORDER_RADIUS.NOTIFICATION};
   margin: 0 0 15px;
   ${FONT.SIZE_18};
   

@@ -1,7 +1,7 @@
 import {Link} from "react-router-dom";
 
 import {Content, Wrapper} from './OrderHistory.page.style';
-import {OrderHistoryRow, PrimaryButton} from "components";
+import {OrderHistoryRow} from "components";
 import {URL} from "utils/config";
 import {useDispatch, useSelector} from "react-redux";
 import {addOrderHistories} from "../../features/order-history/orderHistorySlice";
@@ -31,24 +31,7 @@ const OrderHistoryPage = () => {
             .catch(errorHandler)
     }, [])
 
-    function placeOrder() {
-        const company_id = 1;
-        const order_items = [{
-            id: 1, amount1: 3, amount2: 3, amount3: 3, price1: 100, price2: 200, price3: 300,
-        }, {
-            id: 2, amount1: 3, price1: 100,
-        }]
-
-        fetchData(BE_API.ORDER_HISTORY.POST_CREATE(), {company_id, order_items})
-            .then(res => {
-                alert('done')
-                console.log('post order: ', res)
-            })
-            .catch(errorHandler)
-    }
-
     return (<Wrapper>
-        <PrimaryButton clickHandler={placeOrder}>Place order</PrimaryButton>
         <Content>
             {orderHistory.map((order, index) => (
                 <div key={index}>

@@ -17,12 +17,12 @@ const MenuItem = (props) => {
     const {
         item,
         isSelected,
-        isEditMode,
+        isOrderPage,
         onSelectMenuItem = () => {
         }
     } = props;
 
-    const [isItemVisible, setIsItemVisible] = useState(!!item.isVisible)
+    const [isItemVisible, setIsItemVisible] = useState(!!item.isVisible || isOrderPage)
 
     const onDesciptionClick = e => {
         onSelectMenuItem()

@@ -226,19 +226,13 @@ const convertCategoryArrayToObject = () => {
 export const CATEGORY_ID_MAPPER_AS_OBJECT = convertCategoryArrayToObject()
 
 export const getSortedUniqueCategoryIds = (menuItems = []) => {
-    const categoryIds = menuItems.map(mi => mi.categoryId);
+    const categoryIds = menuItems.map(mi => mi.category_id);
     const uniqueCategories = [...new Set([...categoryIds])];
     uniqueCategories.sort((categoryId1, categoryId2) =>
         CATEGORY_ID_MAPPER_AS_OBJECT[categoryId1].index - CATEGORY_ID_MAPPER_AS_OBJECT[categoryId2].index
     )
     return uniqueCategories;
 }
-
-export const sortMenuItemPosition = (menuItems = []) =>
-    menuItems.sort((menuItem1, menuItem2) => {
-        return CATEGORY_ID_MAPPER_AS_OBJECT[menuItem1.categoryId].index - CATEGORY_ID_MAPPER_AS_OBJECT[menuItem2.categoryId].index;
-    })
-
 
 /**
  * Inner function to check id duplication.

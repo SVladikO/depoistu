@@ -6,13 +6,13 @@ CREATE TABLE MENU_ITEM
     NAME        CHAR(100)    NOT NULL,
     IS_VISIBLE  BOOLEAN      NOT NULL,
     DESCRIPTION CHAR(255),
-    SIZE_1      CHAR(20),
-    PRICE_1     CHAR(20),
-    SIZE_2      CHAR(20),
-    PRICE_2     CHAR(20),
-    SIZE_3      CHAR(20),
-    PRICE_3     CHAR(20),
-    IMAGE_URL   VARCHAR(400) NOT NULL
+    SIZE_1      CHAR(5),
+    PRICE_1     CHAR(5),
+    SIZE_2      CHAR(5),
+    PRICE_2     CHAR(5),
+    SIZE_3      CHAR(5),
+    PRICE_3     CHAR(5),
+    IMAGE_URL   VARCHAR(200)
 );
 
 CREATE TABLE CUSTOMER
@@ -63,13 +63,19 @@ CREATE TABLE ORDER_HISTORY
 
 CREATE TABLE ORDER_HISTORY_DETAILS
 (
-    ID               SERIAL NOT NULL,
+    ID          SERIAL NOT NULL,
     ORDER_HISTORY_ID INT    NOT NULL,
-    MENU_ITEM_ID     INT    NOT NULL,
-    AMOUNT1          CHAR(2),
-    AMOUNT2          CHAR(2),
-    AMOUNT3          CHAR(2),
-    PRICE1           CHAR(6),
-    PRICE2           CHAR(6),
-    PRICE3           CHAR(6),
+    CATEGORY_ID INT          NOT NULL,
+    NAME        CHAR(100)    NOT NULL,
+    DESCRIPTION CHAR(255),
+    SIZE_1      CHAR(5),
+    SIZE_2      CHAR(5),
+    SIZE_3      CHAR(5),
+    PRICE_1     CHAR(5),
+    PRICE_2     CHAR(5),
+    PRICE_3     CHAR(5),
+    AMOUNT_1    CHAR(5),
+    AMOUNT_2    CHAR(5),
+    AMOUNT_3    CHAR(5),
+    IMAGE_URL   VARCHAR(200)
 );

@@ -27,9 +27,8 @@ import {
 const MenuItemDescription = (props) => {
     const {
         isNewItemFlag,
-        isEditMode,
+        isEditMenuItemPage,
         item = {},
-        isSelected,
         isOrderPage = false
     } = props
 
@@ -41,7 +40,7 @@ const MenuItemDescription = (props) => {
     }
 
     const renderDescription = () => {
-        const shortDescription = item.description.split('').slice(0, 55).join('')
+        const shortDescription = item.description?.split('')?.slice(0, 55)?.join('')
 
         if (!item.description) {
             return;
@@ -71,7 +70,7 @@ const MenuItemDescription = (props) => {
     }
 
     const renderTableRow = (size, price, amount, amountKey) => {
-        const measurement = CATEGORY_ID_MAPPER_AS_OBJECT[item.categoryId].measurement;
+        const measurement = CATEGORY_ID_MAPPER_AS_OBJECT[item.category_id].measurement;
 
         if ((!size && !price) || (isOrderPage && amount === 0)) {
             return;
@@ -84,7 +83,7 @@ const MenuItemDescription = (props) => {
                     <pre>{size && ' '}</pre>
                     <span>{size} {size && measurement}</span>
                 </SizePriceInfo>
-                <ControlButtonTd isShow={!isEditMode}>
+                <ControlButtonTd isShow={!isEditMenuItemPage}>
                     {amount > 0 && <>
                         <DecrementButton clickHandler={onDecrementAmount(amountKey)}/>
                         <Amount>{amount}</Amount>
@@ -116,7 +115,7 @@ const MenuItemDescription = (props) => {
             {isNewItemFlag && <NewFlag>New</NewFlag>}
             <FirstRow>
                 <FoodTitle>{item.name}</FoodTitle>
-                {!item.isImageVisible && item.imageUrl && !isEditMode &&
+                {!item.isImageVisible && item.imageUrl && !isEditMenuItemPage &&
                     <PictureIcon onClick={() => dispatch(makeMenuItemImageVisible({id: item.id}))}/>}
             </FirstRow>
             {renderDescription()}

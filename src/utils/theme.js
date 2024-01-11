@@ -77,7 +77,8 @@ export const BORDER_RADIUS = {
     THIRD: '0px',
     FOURTH: '0px',
     CIRCLE: '50%',
-    INPUT: '4px'
+    INPUT: '4px',
+    NOTIFICATION: '10px'
 }
 
 export const DEVICE_WIDTH = {
@@ -89,7 +90,8 @@ export const MEDIA = {
     phone: "(max-width: 414px) and (min-width: 370px)"
 }
 
-export const SHADOW = `box-shadow: 0px 2px 2px 0px #00000033;`
+export const SHADOW = `box-shadow: rgba(0, 0, 0, 0.11) 0px 2px 4px 0px;`
+export const SHADOW_DARK = `box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 4px 0px;`
 
 
 

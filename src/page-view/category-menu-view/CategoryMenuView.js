@@ -40,7 +40,7 @@ let indexCalculator = 0;
 let categoryIdIndexMapper = {};
 
 const CategoryMenuView = (props) => {
-    const {menuItems, isEditMode} = props
+    const {menuItems, isEditMenuItemPage} = props
     useScrollUp();
     const navigate = useNavigate();
     //duplication
@@ -158,7 +158,7 @@ const CategoryMenuView = (props) => {
             <MenuItem
                 key={`menu_item${index}${mi.id}`}
                 item={mi}
-                isEditMode={isEditMode}
+                isEditMenuItemPage={isEditMenuItemPage}
                 onEditClick={navigateToEditMenuItemPage(mi)}
 
                 isSelected={mi.id === selectedMenuItemId}
@@ -176,7 +176,7 @@ const CategoryMenuView = (props) => {
         let wasTopSet = false;
 
         TOP_CATEGORIES[topCategoryKey].forEach(categoryId => {
-            const items = menuItems.filter(menuItem => menuItem.categoryId === categoryId)
+            const items = menuItems.filter(menuItem => menuItem.category_id === categoryId)
 
             // No items nothing to do
             if (!items.length) {

@@ -17,10 +17,6 @@ import {
     TOP_CATEGORIES
 } from 'utils/category';
 
-import {
-    generateTagId,
-} from "./utils";
-
 let indexCalculator = 0;
 let categoryIdIndexMapper = {};
 
@@ -85,7 +81,7 @@ const CategoryMenuView2 = (props) => {
 
 
         TOP_CATEGORIES[topCategoryKey].forEach(subCategoryId => {
-            const items = menuItems.filter(menuItem => menuItem.categoryId === subCategoryId)
+            const items = menuItems.filter(menuItem => menuItem.category_id === subCategoryId)
 
             // No items nothing to do
             if (!items.length) {
