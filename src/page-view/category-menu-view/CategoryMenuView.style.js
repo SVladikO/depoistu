@@ -41,10 +41,9 @@ export const SubCategoryWrapper = styled.div`
 
 export const CategoryTitle = styled.div`
   height: ${p => p.isHidden ? '0px' : 'auto'};
-  font-size: 20px;
-  line-height: 24px;
-  padding: ${p => p.isHidden ? '0px' : '22px 0 16px 16px'};
+  padding: ${p => p.isHidden ? '0px' : '18px 0 16px 16px'};
   color: ${hexToRgbA(COLOR.ACCENT1, 0.7)};
+  ${FONT.SIZE_18};
 `;
 
 
