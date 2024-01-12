@@ -5,7 +5,7 @@ import {SecondaryButton} from "../../../Buttons/SecondaryButton";
 export const SizePriceWrapper = styled.div`
     display: flex;
     justify-content: left;
-    padding: 14px 0 0;
+    padding: 10px 0 0;
 `;
 
 export const Description = styled.div`
@@ -21,7 +21,7 @@ export const Table = styled.table`
 export const Details = styled.tr`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  ${FONT.SIZE_20};
+  ${FONT.SIZE_16};
   color: ${COLOR.ACCENT1};
 `
 
@@ -52,7 +52,7 @@ export const Amount = styled.div`
 `
 
 export const DecrementButton = styled(SecondaryButton)`
-  height: 26px;
+  height: 24px;
   ${FONT.SIZE_16};
   background-color: ${COLOR.ACCENT2};
   border: 2px solid ${COLOR.ACCENT5};
@@ -69,7 +69,7 @@ export const DecrementButton = styled(SecondaryButton)`
 `
 
 export const IncrementButton = styled(SecondaryButton)`
-    height: 26px;
+    height: 24px;
     ${FONT.SIZE_16};
 
   &::before {
