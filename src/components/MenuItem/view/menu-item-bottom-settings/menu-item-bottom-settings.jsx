@@ -13,7 +13,6 @@ const MenuItemBottomSettings = ({
                                     item = {},
                                     isItemVisible,
                                     setIsItemVisible,
-                                    isEditMenuItemPage = false,
                                     onEditClick = () => {},
                                 }) => {
 
@@ -27,10 +26,6 @@ const MenuItemBottomSettings = ({
         fetchData(BE_API.MENU_ITEM.CHANGE_IS_VISIBLE(), requestBody)
             .then(res => setIsItemVisible(res.body.isVisible))
             .catch(errorHandler)
-    }
-
-    if (!isEditMenuItemPage) {
-        return
     }
 
     return (

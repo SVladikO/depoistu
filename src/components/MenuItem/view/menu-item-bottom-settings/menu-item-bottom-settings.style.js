@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {COLOR, FONT} from "../../../../utils/theme";
+import {COLOR, FONT} from "utils/theme";
 
 export const EditWrapper = styled.div`
   display: flex;

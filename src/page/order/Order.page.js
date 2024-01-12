@@ -63,11 +63,10 @@ const OrderPage = () => {
             <Content>
                 {order_items.map((mi, index) => (
                     <MenuItem
+                        key={`menu_item${index}${mi.id}`}
                         item={mi}
                         isSelected
-                        isEditMode={false}
                         isOrderPage
-                        key={`menu_item${index}${mi.id}`}
                     />))}
                 <AmountInfo>
                     <div> {translate(TRANSLATION.ORDERS.TOTAL)}:</div>

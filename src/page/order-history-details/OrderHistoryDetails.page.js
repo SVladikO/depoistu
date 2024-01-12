@@ -23,7 +23,7 @@ const OrderHistoryDetailsPage = () => {
 
     return (
         <Wrapper>
-            {orderItems?.map(oi => <MenuItem key={oi.name} item={oi} isOrderPage />)}
+            {orderItems?.map(oi => <MenuItem key={oi.name} item={oi} isOrderHistoryDetailsPage />)}
         </Wrapper>
     );
 };
