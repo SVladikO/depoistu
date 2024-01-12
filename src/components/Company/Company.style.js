@@ -108,7 +108,7 @@ export const Name = styled.div`
   font-size: 24px;
   line-height: 29px;
   color: ${COLOR.ACCENT1};
-  margin: 0 0 16px 0;
+  margin: 0 0 10px 0;
 `;
 
 export const LocationWrapper = styled.div`
