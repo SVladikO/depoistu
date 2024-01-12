@@ -6,16 +6,17 @@ export const Wrapper = styled.div`
     display: flex;
     background: ${COLOR.ACCENT4};
     position: relative;
-    height: 56px;
+    height: 54px;
     -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.11);
     -moz-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.11);
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.11);
-`
+`;
+
 export const Title = styled.div`
   width: 100%;
   text-align: center;
-  font-weight: 700;
-  ${FONT.SIZE_20};
+  ${FONT.SIZE_18};
+  ${FONT.WEIGHT_700};
   justify-self: center;
   padding: 16px;
   color: ${COLOR.ACCENT1};
