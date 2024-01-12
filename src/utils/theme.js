@@ -28,6 +28,10 @@ export const GRADIENT = {
 }
 
 export const FONT = {
+    SIZE_12: `
+        font-size: 12px;
+        line-height: 14px;
+        `,
     SIZE_14: `
         font-size: 14px;
         line-height: 16px;

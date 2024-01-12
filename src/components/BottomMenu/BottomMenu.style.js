@@ -4,8 +4,7 @@ import {COLOR, FONT} from "utils/theme";
 export const Wrapper = styled.div`
     z-index: 2;
     bottom: -1px;
-    height: 70px;
-    padding: 0 0 8px;
+    height: 48px;
     background-color: ${COLOR.ACCENT4};
     display: flex;
     justify-content: space-around;
@@ -48,6 +47,9 @@ export const MenuItem = styled.div`
 export const OrderWrapper = styled.div`
     position: relative;
     width: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
 
 export const OrderButton = styled.div`
@@ -55,10 +57,9 @@ export const OrderButton = styled.div`
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    height: 54px;
-    width: 54px;
+    height: 48px;
+    width: 48px;
     top: -10px;
-    left: -27px;
     position: absolute;
     color: ${COLOR.ACCENT1};
     background: ${COLOR.ACCENT2};
@@ -71,5 +72,5 @@ export const OrderButton = styled.div`
 `;
 
 export const Label = styled.div`
-  ${FONT.SIZE_18};
+  ${FONT.SIZE_12};
 `;

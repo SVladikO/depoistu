@@ -5,7 +5,7 @@ import {Wrapper, MenuItem, Label, OrderWrapper, OrderButton} from './BottomMenu.
 
 import {ReactComponent as HomeIcon} from "assets/icons/home.svg";
 import {ReactComponent as MenuIcon} from "assets/icons/menu.svg";
-import {ReactComponent as BookMarkIcon} from "assets/icons/book_mark.svg";
+import {ReactComponent as BookMarkIcon} from "assets/icons/heart2.svg";
 import {ReactComponent as SettingIcon} from "assets/icons/setting.svg";
 
 import {ROUTER, URL} from "utils/config";
@@ -29,6 +29,7 @@ const BottomMenu = () => {
                 <HomeIcon/>
                 <Label>{translate(TRANSLATION.BOTTOM_MENU.MAIN)}</Label>
             </MenuItem>
+
             <MenuItem
                 selected={isSelected(`${URL.SEARCH_DETAILS}/${companyId}`)}
                 onClick={() => {
@@ -38,10 +39,12 @@ const BottomMenu = () => {
                 <MenuIcon/>
                 <Label>{translate(TRANSLATION.BOTTOM_MENU.MENU)}</Label>
             </MenuItem>
+
             <OrderWrapper>
                 <ScrollUpButton/>
                 <OrderButtonNavigation/>
             </OrderWrapper>
+
             <MenuItem
                 selected={isSelected(URL.FAVORITE)}
                 onClick={() => navigate(ROUTER.FAVORITE.URL)}
@@ -49,6 +52,7 @@ const BottomMenu = () => {
                 <BookMarkIcon/>
                 <Label>{translate(TRANSLATION.BOTTOM_MENU.FAVORITE)}</Label>
             </MenuItem>
+
             <MenuItem
                 selected={isSelected(ROUTER.SETTING.URL)}
                 onClick={() => navigate(ROUTER.SETTING.URL)}
