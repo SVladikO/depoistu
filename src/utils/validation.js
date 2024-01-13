@@ -111,13 +111,13 @@ const menu_item_validation = {
         .max(100, `${MESSAGE.MAX_SYMBOLS} 100`),
     description: Yup.string()
         .max(255, `${MESSAGE.MAX_SYMBOLS} 255`),
-    size_1: Yup.string(),
+    size_1: Yup.number(),
     price_1: Yup.number()
         .moreThan(0, `${MESSAGE.MIN_VALUE} 1`),
-    size_2: Yup.string(),
+    size_2: Yup.number(),
     price_2: Yup.number()
         .moreThan(0, `${MESSAGE.MIN_VALUE} 1`),
-    size_3: Yup.string(),
+    size_3: Yup.number(),
     price_3: Yup.number()
         .moreThan(0, `${MESSAGE.MIN_VALUE} 1`),
 }

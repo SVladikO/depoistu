@@ -26,6 +26,7 @@ export const EditRow = styled.div`
     }
 
     .ToggleCheckbox, .EditButton {
+        cursor: pointer;
         ${FONT.SIZE_16};
         position: relative;
         display: flex;

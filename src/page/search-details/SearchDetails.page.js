@@ -43,6 +43,8 @@ const SearchDetailsPage = () => {
             </div>
         )
     }
+
+    console.log({isMenuLoading, isCompanyLoading})
     if (!companyId || !company) {
         return (
             <NotificationTDB title={translate(TR.PAGE.COMPANY_DETAILS.COMPANY_DOESNT_EXIST)}>

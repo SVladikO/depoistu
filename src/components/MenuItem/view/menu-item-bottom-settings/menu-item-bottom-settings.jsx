@@ -1,4 +1,3 @@
-import {Link} from "react-router-dom";
 import {useDispatch} from "react-redux";
 
 import {EditLabel, EditRow, EditWrapper} from "./menu-item-bottom-settings.style";
@@ -7,12 +6,14 @@ import ToggleCheckbox from "../../../ToggleCheckbox/ToggleCheckbox";
 
 import {changeIsVisibleEditMenu} from 'features/editMenu/editMenuSlice'
 
-import {URL} from "utils/config";
 import {errorHandler} from "utils/management";
 import {BE_API, fetchData} from "utils/fetch";
 import {translate, TRANSLATION} from "utils/translation";
 
-const MenuItemBottomSettings = ({item = {}, onEditClick = () => {}}) => {
+const MenuItemBottomSettings = ({
+                                    item = {}, onEditClick = () => {
+    }
+                                }) => {
     const dispatch = useDispatch();
 
     const toggleIsMenuItemVisible = () => {
@@ -37,12 +38,10 @@ const MenuItemBottomSettings = ({item = {}, onEditClick = () => {}}) => {
                 changeHandler={toggleIsMenuItemVisible}
                 label={translate(TRANSLATION.COMPONENTS.MENU_ITEM.BUTTON.CHANGE_VISIBILITY)}
             />
-            <Link to={URL.EDIT_MENU_ITEM} className="EditButton">
-                <EditWrapper onClick={onEditClick}>
-                    <EditIcon/>
-                    <EditLabel>{translate(TRANSLATION.COMPONENTS.MENU_ITEM.BUTTON.EDIT_MENU_ITEM)}</EditLabel>
-                </EditWrapper>
-            </Link>
+            <EditWrapper onClick={onEditClick} className="EditButton">
+                <EditIcon/>
+                <EditLabel>{translate(TRANSLATION.COMPONENTS.MENU_ITEM.BUTTON.EDIT_MENU_ITEM)}</EditLabel>
+            </EditWrapper>
         </EditRow>
     )
 }

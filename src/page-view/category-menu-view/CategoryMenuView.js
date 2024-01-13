@@ -18,7 +18,6 @@ import {SubCategoryItem, MenuItem, RowSplitter, HorizontalSwiper} from "componen
 import {addEditMenuItemCandidate} from 'features/editMenu/editMenuSlice';
 
 import {URL} from "utils/config";
-import {useScrollUp} from "utils/hook";
 import {translate, TRANSLATION as TR} from "utils/translation";
 import {CATEGORY_ID_MAPPER_AS_OBJECT, TOP_CATEGORIES} from 'utils/category';
 import {
@@ -39,7 +38,6 @@ let categoryIdIndexMapper = {};
 
 const CategoryMenuView = (props) => {
     const {menuItems, isEditMenuItemPage} = props
-    useScrollUp();
     const dispatch = useDispatch()
     const navigate = useNavigate();
     //duplication
@@ -94,7 +92,7 @@ const CategoryMenuView = (props) => {
             dispatch(addEditMenuItemCandidate(menuItem))
             setTimeout(() => {
                 navigate(URL.EDIT_MENU_ITEM)
-            }, 1000)
+            }, 0)
         }
     }
 
@@ -224,7 +222,8 @@ const CategoryMenuView = (props) => {
             if (isCurrentPageEqual(URL.EDIT_MENU) && lastEdited) {
                 window.scrollTo({top: lastEdited.offsetTop - CATEGORY_ROW_HEIGHT, behavior: "smooth"});
             }
-        }, 0);
+        // Delay should be minimum 1000, because if we take smaller scroll to last edited on edit-menu page won't work.
+        }, 1000);
     }, [menuItemCandidateToEdit]);
 
     return (

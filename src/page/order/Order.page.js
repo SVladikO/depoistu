@@ -23,6 +23,10 @@ import {resetOrder} from "features/searchDetails/searchDetailsSlice";
 import {BE_API, fetchData} from "../../utils/fetch";
 import {errorHandler} from "../../utils/management";
 
+const multiplayWIthCheck = (price, amount) => {
+    console.log(!!price, price, amount, price * amount)
+    return price ? price * amount : 0;
+}
 const OrderPage = () => {
     useScrollUp()
     const dispatch = useDispatch()
@@ -30,7 +34,12 @@ const OrderPage = () => {
     const order_items = useMemo(() => menuItems.filter(item => item.amount_1 > 0 || item.amount_2 > 0 || item.amount_3 > 0), [menuItems])
     const [isOpenMessage, setIsOpenMessage] = useLocalStorage(LOCAL_STORAGE_KEY.IS_ORDER_MESSAGE_VISIBLE, true)
     const allMenuItemsPrice = order_items.length
-        ? order_items.reduce((acc, cur) => acc + cur.amount_1 * cur.price_1 + cur.amount_2 * cur.price_2 + cur.amount_3 * cur.price_3, 0)
+        ? order_items.reduce((acc, cur) =>
+                acc +
+                multiplayWIthCheck(+cur.price_1, cur.amount_1) +
+                multiplayWIthCheck(+cur.price_2, cur.amount_2) +
+                multiplayWIthCheck(+cur.price_3, cur.amount_3)
+            , 0)
         : 0
 
     const placeOrder = () => {

@@ -3,7 +3,6 @@ import {BORDER_RADIUS, COLOR} from "../../utils/theme";
 
 export const ToTopButtonWrapper = styled.a`
     top: -66px;
-    left: -25px;
     position: absolute;
     
     z-index: 19;

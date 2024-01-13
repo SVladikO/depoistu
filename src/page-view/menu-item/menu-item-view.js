@@ -42,7 +42,7 @@ const MenuItemView = ({defaultInitialValue, onSubmit, submitButtonTitle, isLoadi
         })), [])
 
     const onImageUpload = info => setImageUrl(info.secure_url);
-
+    console.log(1111, defaultInitialValue);
     return (
         <div>
             {imageUrl
@@ -97,18 +97,6 @@ const MenuItemView = ({defaultInitialValue, onSubmit, submitButtonTitle, isLoadi
                             />
                             <GroupSizePrice>
                                 <Input
-                                    name="size_1"
-                                    type="text"
-                                    value={values.size_1}
-                                    labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.MEAL_SIZE) + ` 1 ${getMeasurements(values.category_id)}`}
-                                    onBlur={handleBlur}
-                                    changeHandler={handleChange}
-                                    clearHandler={() => setFieldValue('size_1', '')}
-                                    isTouched={touched.size_1 || wasSubmitted}
-                                    errorMessage={errors.size_1}
-                                    withCleaner
-                                />
-                                <Input
                                     name="price_1"
                                     type="number"
                                     value={values.price_1}
@@ -120,21 +108,21 @@ const MenuItemView = ({defaultInitialValue, onSubmit, submitButtonTitle, isLoadi
                                     errorMessage={errors.price_1}
                                     withCleaner
                                 />
+                                <Input
+                                    name="size_1"
+                                    type="number"
+                                    value={values.size_1}
+                                    labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.MEAL_SIZE) + ` 1 ${getMeasurements(values.category_id)}`}
+                                    onBlur={handleBlur}
+                                    changeHandler={handleChange}
+                                    clearHandler={() => setFieldValue('size_1', '')}
+                                    isTouched={touched.size_1 || wasSubmitted}
+                                    errorMessage={errors.size_1}
+                                    withCleaner
+                                />
                             </GroupSizePrice>
 
                             <GroupSizePrice>
-                                <Input
-                                    name="size_2"
-                                    type="text"
-                                    value={values.size_2}
-                                    labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.MEAL_SIZE) + ` 2 ${getMeasurements(values.category_id)}`}
-                                    onBlur={handleBlur}
-                                    changeHandler={handleChange}
-                                    clearHandler={() => setFieldValue('size_2', '')}
-                                    isTouched={touched.size_2 || wasSubmitted}
-                                    errorMessage={errors.size_2}
-                                    withCleaner
-                                />
                                 <Input
                                     name="price_2"
                                     type="number"
@@ -147,21 +135,21 @@ const MenuItemView = ({defaultInitialValue, onSubmit, submitButtonTitle, isLoadi
                                     errorMessage={errors.price_2}
                                     withCleaner
                                 />
+                                <Input
+                                    name="size_2"
+                                    type="number"
+                                    value={values.size_2}
+                                    labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.MEAL_SIZE) + ` 2 ${getMeasurements(values.category_id)}`}
+                                    onBlur={handleBlur}
+                                    changeHandler={handleChange}
+                                    clearHandler={() => setFieldValue('size_2', '')}
+                                    isTouched={touched.size_2 || wasSubmitted}
+                                    errorMessage={errors.size_2}
+                                    withCleaner
+                                />
                             </GroupSizePrice>
 
                             <GroupSizePrice>
-                                <Input
-                                    name="size_3"
-                                    type="text"
-                                    value={values.size_3}
-                                    labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.MEAL_SIZE) + ` 3 ${getMeasurements(values.category_id)}`}
-                                    onBlur={handleBlur}
-                                    changeHandler={handleChange}
-                                    clearHandler={() => setFieldValue('size_3', '')}
-                                    isTouched={touched.size_3 || wasSubmitted}
-                                    errorMessage={errors.size_3}
-                                    withCleaner
-                                />
                                 <Input
                                     name="price_3"
                                     type="number"
@@ -172,6 +160,18 @@ const MenuItemView = ({defaultInitialValue, onSubmit, submitButtonTitle, isLoadi
                                     clearHandler={() => setFieldValue('price_3', '')}
                                     isTouched={touched.price_3 || wasSubmitted}
                                     errorMessage={errors.price_3}
+                                    withCleaner
+                                />
+                                <Input
+                                    name="size_3"
+                                    type="number"
+                                    value={values.size_3}
+                                    labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.MEAL_SIZE) + ` 3 ${getMeasurements(values.category_id)}`}
+                                    onBlur={handleBlur}
+                                    changeHandler={handleChange}
+                                    clearHandler={() => setFieldValue('size_3', '')}
+                                    isTouched={touched.size_3 || wasSubmitted}
+                                    errorMessage={errors.size_3}
                                     withCleaner
                                 />
                             </GroupSizePrice>
