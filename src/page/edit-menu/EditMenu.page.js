@@ -11,13 +11,12 @@ import {fetchGetMenuItemsByCompanyId} from "features/editMenu/thunks";
 import {URL} from "utils/config";
 import {translate, TRANSLATION} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
-import {useLocalStorage, useRedirectToSettingPage, useScrollUp} from "utils/hook";
+import {useLocalStorage, useRedirectToSettingPage} from "utils/hook";
 
 const EditMenuPage = () => {
     useRedirectToSettingPage();
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    useScrollUp();
     const company_id = useSelector(state => state.editMenu.company_id)
     const editMenuItems = useSelector(state => state.editMenu.editMenuItems)
     const isMenuItemsLoading = useSelector(state => state.editMenu.isGetMenuItemsLoading);

@@ -9,7 +9,7 @@ import {DEV_ROUTER, ROUTERS} from "./config";
 import AdminPage from "page/development/Admin.page";
 
 import {COLOR, DEVICE_WIDTH} from './theme';
-import {useScrollUp, useHideOnScroll} from "./hook";
+import {useHideOnScroll} from "./hook";
 
 import {BottomMenu, NavigationHeader} from "components";
 import ScrollUpButton from "../components/ScrollUpButton/ScrollUpButton";
@@ -37,7 +37,6 @@ export const Content = styled.div`
 `;
 
 const Element = (props) => {
-    useScrollUp();
     useHideOnScroll('NavigationHeader', '-65px')
 
     const {route} = props;

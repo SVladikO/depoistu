@@ -88,8 +88,10 @@ export const Input = memo(function ({
             <InputText
                 name={name}
                 value={value}
+                onWheel={event => event.currentTarget.blur()} // disabled scroll effect on value
                 onChange={e => {
                     e.target.value = e.target.value.replaceAll("'", "ʼ")
+                    console.log('onChangeInput', name, value, e.target.value, e.type);
                     changeHandler(e)
                 }}
                 type={inputType}

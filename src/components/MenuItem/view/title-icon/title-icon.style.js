@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import {COLOR, FONT, hexToRgbA} from "utils/theme";
-import {SecondaryButton} from "../../../Buttons/SecondaryButton";
+import {COLOR, FONT} from "utils/theme";
 
 export const FirstRow = styled.div`
     position: relative;
 
     & > svg {
+        cursor: pointer;
         position: absolute;
         top: -4px;
         right: 0;

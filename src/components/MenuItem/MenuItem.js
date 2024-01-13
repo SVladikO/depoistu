@@ -42,10 +42,7 @@ const MenuItem = (props) => {
             <ContentWrapper>
                 <TitleIcon {...props} />
                 <MenuItemDescription {...props}/>
-                <MenuItemPriceSizeControl
-                    {...props}
-                    isSelected={isSelected}
-                />
+                <MenuItemPriceSizeControl {...props} isSelected={isSelected} />
             </ContentWrapper>
             {isEditMenuItemPage && (
                 <MenuItemBottomSettings {...props} />
