@@ -39,16 +39,17 @@ const MenuItemPriceSizeControl = ({
         }
 
         const measurement = CATEGORY_ID_MAPPER_AS_OBJECT[item.category_id].measurement;
-
+        console.log(item.name, price, !!price, size, !!size)
         return (
             <Details>
                 <SizePriceInfoTd>
-                    <span>{price && '₴'} {price}</span>
-                    <pre>{size && ' '}</pre>
-                    <span>{size} {size && measurement}</span>
+                    {price ? <span>₴ {price}</span> : <span />}
+                    {size ? <pre>  </pre> : <span/>}
+                    {size ? <span>{size} {measurement}</span> : <span/>}
                 </SizePriceInfoTd>
                 <ControlButtonTd isShow={!isEditMenuItemPage}>
-                    {amount > 0 && !isOrderHistoryDetailsPage && <DecrementButton clickHandler={onDecrementAmount(amountKey)}/>}
+                    {amount > 0 && !isOrderHistoryDetailsPage &&
+                        <DecrementButton clickHandler={onDecrementAmount(amountKey)}/>}
                     {amount > 0 && <Amount>{amount}</Amount>}
                     {!isOrderHistoryDetailsPage && <IncrementButton clickHandler={onIncrementAmount(amountKey)}/>}
                 </ControlButtonTd>
