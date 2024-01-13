@@ -10,7 +10,8 @@ import {
     Textarea,
     ImageUploaderButton,
     ImageWithDelete,
-    RowSplitter
+    RowSplitter,
+    PrimaryButton
 } from "components";
 
 import validation from "utils/validation";
@@ -20,9 +21,10 @@ import ImageUrlFormatter from "../../utils/image.utils";
 
 const EditMenuItemSchema = Yup.object().shape(validation.menuItem);
 
-const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
+const MenuItemView = ({defaultInitialValue, onSubmit, submitButtonTitle, isLoading,}) => {
     const [wasSubmitted, setWasSubmitted] = useState(false);
     const [imageUrl, setImageUrl] = useState(defaultInitialValue.imageUrl);
+    console.log('image url: ', imageUrl)
     const CATEGORY_ID_MEASUREMENTS = useMemo(() => {
             const mapper = {};
             CATEGORY_MAPPER_AS_ARRAY.map(({id, measurement}) => mapper[id] = measurement);
@@ -40,8 +42,6 @@ const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
         })), [])
 
     const onImageUpload = info => setImageUrl(info.secure_url);
-
-    console.log({imageUrl})
 
     return (
         <div>
@@ -78,9 +78,9 @@ const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
                                 label={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.CATEGORY)}
                                 options={options}
                                 selectedOption={(options.filter(o => o.value === values.category_id))[0]}
-                                onSelect={option => setFieldValue('categoryId', +option.value)}
+                                onSelect={option => setFieldValue('category_id', +option.value)}
                                 as="select"
-                                name="categoryId"
+                                name="category_id"
                                 isTouched={touched.category_id || wasSubmitted}
                                 errorMessage={errors.category_id}
                             />
@@ -188,7 +188,15 @@ const MenuItemView = ({defaultInitialValue, onSubmit, children}) => {
                             />
 
                         </ContentContainer>
-                        {children}
+                        <RowSplitter height="10px"/>
+                        <PrimaryButton
+                            isWide
+                            type="submit"
+                            isLoading={isLoading}
+                            withPadding
+                        >
+                            {submitButtonTitle}
+                        </PrimaryButton>
                     </form>
                 )}
             </Formik>

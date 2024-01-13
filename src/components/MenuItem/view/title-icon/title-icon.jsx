@@ -6,14 +6,11 @@ import {ReactComponent as PictureIcon} from "assets/icons/picture.svg";
 
 import {makeMenuItemImageVisible} from "features/searchDetails/searchDetailsSlice";
 
-const TitleIcon = ({
-                       item,
-                       isEditMenuItemPage = false,
-                   }) => {
+const TitleIcon = ({item}) => {
     const dispatch = useDispatch()
 
     const onClickPictureIcon = () => dispatch(makeMenuItemImageVisible({id: item.id}))
-    const isShowPictureIcon = !item.isImageVisible && item.imageUrl && !isEditMenuItemPage;
+    const isShowPictureIcon = !item.isImageVisible && item.imageUrl;
 
     return (
         <FirstRow>

@@ -22,7 +22,7 @@ export const BE_API = {
     },
     ORDER_HISTORY: {
         GET_ALL_BY_CUSTOMER_ID: customerId => `${BE_DOMAIN}/order-histories/${customerId}`, // we take customer id from token
-        POST_CREATE: companyId => `${BE_DOMAIN}/order-histories`,
+        POST_CREATE: () => `${BE_DOMAIN}/order-histories`,
     },
     ORDER_HISTORY_DETAILS: {
         GET_BY_ORDER_HISTORY_ID: orderHistoryId => `${BE_DOMAIN}/order-history-details/${orderHistoryId}`,
@@ -74,14 +74,12 @@ export const fetchData = async (url, body) => {
 
     const json = await response.json();
 
-    return new Promise((resolve, reject) => {
-        response.ok
-            ? resolve({body: json})
-            : reject({body: json});
+    if (!response.ok) {
+        throw new Error(json.errorMessage)
+    }
 
-    })
+    return new Promise(resolve => resolve({body: json}))
 }
-
 
 // prepare options conditionally
 function getOptions(body) {

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {Link, useNavigate} from "react-router-dom";
 import QRCode from 'qrcode';
 
@@ -7,20 +7,24 @@ import {EditBar, QRCodeButton, QRCodeMenuTitle, ImageQR, OrderPrint} from "./Cus
 
 import {Company, NotificationLoading, Popup, PrimaryButton, RowSplitter} from "components";
 import {ReactComponent as EditIcon} from "assets/icons/edit.svg";
+import {ReactComponent as QRCodeIcon} from "assets/icons/qr_code.svg";
+
+import {DisabledButton} from "components/Buttons/DisabledButton";
+
+import {setCompanyIdToEditMenu, resetAllEditMenu} from 'features/editMenu/editMenuSlice';
 
 import {BE_API, fetchData} from 'utils/fetch'
-import {ORDER_PRINT_URL, ROUTER, URL} from "utils/config";
-import {translate, TRANSLATION} from "utils/translation";
-import {ReactComponent as QRCodeIcon} from "assets/icons/qr_code.svg";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
-import {useLocalStorage, useRedirectToSettingPage, useScrollUp} from "utils/hook";
-import {publishNotificationEvent} from "utils/event";
-import {DisabledButton} from "components/Buttons/DisabledButton";
 import {errorHandler} from "utils/management";
+import {publishNotificationEvent} from "utils/event";
+import {LOCAL_STORAGE_KEY} from "utils/localStorage";
+import {translate, TRANSLATION} from "utils/translation";
+import {ORDER_PRINT_URL, ROUTER, URL} from "utils/config";
+import {useLocalStorage, useRedirectToSettingPage, useScrollUp} from "utils/hook";
 
 const CustomerCompaniesPage = () => {
     useScrollUp();
     useRedirectToSettingPage();
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const customer = useSelector(state => state.customer.value);
     const [isLoading, setIsLoading] = useState();
@@ -72,7 +76,8 @@ const CustomerCompaniesPage = () => {
                                 isWide
                                 onClick={
                                     () => {
-                                        LocalStorage.set(LOCAL_STORAGE_KEY.COMPANY_ID_TO_EDIT_MENU_PAGE, company.id)
+                                        dispatch(resetAllEditMenu())
+                                        dispatch(setCompanyIdToEditMenu(company.id))
                                         navigate(ROUTER.EDIT_MENU.URL)
                                     }
                                 }>

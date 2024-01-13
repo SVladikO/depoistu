@@ -104,7 +104,7 @@ const changePasswordValidation = {
 }
 
 const menu_item_validation = {
-    categoryId: Yup.string().required(MESSAGE.REQUIRED),
+    category_id: Yup.string().required(MESSAGE.REQUIRED),
     name: Yup.string()
         .required(MESSAGE.REQUIRED)
         .min(2, `${MESSAGE.MIN_SYMBOLS} 2`)

@@ -10,14 +10,6 @@ export const DEFAULT_LANGUAGE =
         ? 'ua'
         : 'en';
 
-console.log({
-    DEFAULT_LANGUAGE,
-    customerBrowserLanguage,
-    "customerBrowserLanguage.includes('ua')": customerBrowserLanguage.includes('ua'),
-    "customerBrowserLanguage.includes('ru')": customerBrowserLanguage.includes('ru')
-})
-
-
 export const truncate = (text, availableLength = 1) => {
     if (text.length < availableLength) {
         return text;
@@ -29,7 +21,15 @@ export const truncate = (text, availableLength = 1) => {
 export const getCurrentLanguage = () => LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE)?.language?.siteLanguage || DEFAULT_LANGUAGE;
 
 export const translate = obj => {
-    return obj[getCurrentLanguage()];
+    let value;
+    try{
+       value = obj[getCurrentLanguage()]
+    } catch (e) {
+        value = 'NO TRANSLATIONS';
+        console.error('No translations for', obj)
+    }
+
+    return value;
 }
 
 export const TRANSLATION = {

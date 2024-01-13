@@ -15,10 +15,10 @@ export const EditRow = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    border-top: 1px solid ${COLOR.ACCENT1};
+    border-top: 1px solid ${COLOR.ACCENT9};
 
     & > div {
-        border-right: 1px solid ${COLOR.ACCENT1};
+        border-right: 1px solid ${COLOR.ACCENT9};
     }
     
     & svg {

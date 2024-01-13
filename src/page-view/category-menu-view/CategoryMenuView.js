@@ -1,6 +1,7 @@
 import React, {memo, useEffect, useState} from 'react';
 import {SwiperSlide} from 'swiper/react';
 import {useNavigate} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -14,15 +15,12 @@ import {
 } from "./CategoryMenuView.style";
 
 import {SubCategoryItem, MenuItem, RowSplitter, HorizontalSwiper} from "components";
+import {addEditMenuItemCandidate} from 'features/editMenu/editMenuSlice';
 
 import {URL} from "utils/config";
-import {useLocalStorage, useScrollUp} from "utils/hook";
+import {useScrollUp} from "utils/hook";
 import {translate, TRANSLATION as TR} from "utils/translation";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
-import {
-    CATEGORY_ID_MAPPER_AS_OBJECT,
-    TOP_CATEGORIES
-} from 'utils/category';
+import {CATEGORY_ID_MAPPER_AS_OBJECT, TOP_CATEGORIES} from 'utils/category';
 import {
     enableScrollListener,
     FixTop,
@@ -32,7 +30,7 @@ import {
 } from "./utils";
 
 const CATEGORY_TITLE_CLASS_NAME = 'CATEGORY_TITLE_CLASS_NAME';
-const LAST_EDITED_CLASSNAME = 'last-edited-menu-item';
+const LAST_EDITED_CLASSNAME = 'last_edited_menu_item';
 
 export const CATEGORY_ROW_HEIGHT = 112;
 
@@ -42,13 +40,14 @@ let categoryIdIndexMapper = {};
 const CategoryMenuView = (props) => {
     const {menuItems, isEditMenuItemPage} = props
     useScrollUp();
+    const dispatch = useDispatch()
     const navigate = useNavigate();
     //duplication
-    const isSelected = url => window.location.pathname === url;
+    const isCurrentPageEqual = url => window.location.pathname === url;
     const [selectedTopCategoryId, setSelectedTopCategoryId] = useState();
     const [selectedSubCategoryId, setSelectedSubCategoryId] = useState();
     const [selectedMenuItemId, setSelectedMenuItemId] = useState();
-    const [menuItemCandidateToEdit] = useLocalStorage(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT, {})
+    const menuItemCandidateToEdit = useSelector(state => state.editMenu.editMenuItemCandidate)
 
     const onScrollPage = () => {
         if (getIsScrollDisabled()) {
@@ -90,18 +89,14 @@ const CategoryMenuView = (props) => {
         scrollTo(categoryId, topCategoryId)
     }
 
-    const navigateToEditMenuItemPage = menuItem => () => {
-        LocalStorage.set(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT, menuItem);
-        return navigate(URL.EDIT_MENU_ITEM)
-    }
-
-    useEffect(() => {
-        document.addEventListener("scroll", onScrollPage)
-
+    const navigateToEditMenuItemPage = menuItem => {
         return () => {
-            document.removeEventListener("scroll", onScrollPage);
+            dispatch(addEditMenuItemCandidate(menuItem))
+            setTimeout(() => {
+                navigate(URL.EDIT_MENU_ITEM)
+            }, 1000)
         }
-    }, [])
+    }
 
     const renderTopCategory = ({topCategoryKey, topCategoryIndex, categoryId}) => (
         <SwiperSlide key={topCategoryIndex}>
@@ -153,14 +148,13 @@ const CategoryMenuView = (props) => {
             </CategoryTitle>
         )
     }
-    const renderMenuItem = (mi, index) => (
-        <div className={mi.id === menuItemCandidateToEdit.id ? LAST_EDITED_CLASSNAME : ''}>
+    const renderMenuItem = (mi) => (
+        <div className={mi.id === menuItemCandidateToEdit?.id ? LAST_EDITED_CLASSNAME : ''}>
             <MenuItem
-                key={`menu_item${index}${mi.id}`}
+                key={`menu_item_${mi.id}`}
                 item={mi}
-                isEditMenuItemPage={isEditMenuItemPage}
                 onEditClick={navigateToEditMenuItemPage(mi)}
-
+                isEditMenuItemPage={isEditMenuItemPage}
                 isSelected={mi.id === selectedMenuItemId}
                 onSelectMenuItem={() => setSelectedMenuItemId(mi.id)}
             />
@@ -177,7 +171,6 @@ const CategoryMenuView = (props) => {
 
         TOP_CATEGORIES[topCategoryKey].forEach(categoryId => {
             const items = menuItems.filter(menuItem => menuItem.category_id === categoryId)
-
             // No items nothing to do
             if (!items.length) {
                 return
@@ -205,6 +198,13 @@ const CategoryMenuView = (props) => {
         })
     })
 
+
+    useEffect(() => {
+        document.addEventListener("scroll", onScrollPage)
+
+        return () => document.removeEventListener("scroll", onScrollPage);
+    }, [])
+
     useEffect(() => {
         if (!!menuItems?.length && selectedTopCategoryId === undefined) {
             setSelectedTopCategoryId(topCategories[0].topCategoryIndex)
@@ -216,14 +216,16 @@ const CategoryMenuView = (props) => {
             categoryIdIndexMapper = {};
             indexCalculator = 0;
         }
-    })
+    }, [menuItems])
 
     useEffect(() => {
-        const lastEdited = document.getElementsByClassName(LAST_EDITED_CLASSNAME)[0];
-        if (isSelected(URL.EDIT_MENU) && lastEdited) {
-            window.scroll({top: lastEdited.offsetTop - CATEGORY_ROW_HEIGHT, behavior: "smooth"});
-        }
-    }, []);
+        setTimeout(() => {
+            const lastEdited = document.getElementsByClassName(LAST_EDITED_CLASSNAME)[0];
+            if (isCurrentPageEqual(URL.EDIT_MENU) && lastEdited) {
+                window.scrollTo({top: lastEdited.offsetTop - CATEGORY_ROW_HEIGHT, behavior: "smooth"});
+            }
+        }, 0);
+    }, [menuItemCandidateToEdit]);
 
     return (
         <>

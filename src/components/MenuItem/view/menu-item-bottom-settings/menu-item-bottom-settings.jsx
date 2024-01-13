@@ -1,38 +1,39 @@
 import {Link} from "react-router-dom";
+import {useDispatch} from "react-redux";
 
 import {EditLabel, EditRow, EditWrapper} from "./menu-item-bottom-settings.style";
 import {ReactComponent as EditIcon} from 'assets/icons/edit.svg';
 import ToggleCheckbox from "../../../ToggleCheckbox/ToggleCheckbox";
 
+import {changeIsVisibleEditMenu} from 'features/editMenu/editMenuSlice'
+
 import {URL} from "utils/config";
-import {BE_API, fetchData} from "utils/fetch";
 import {errorHandler} from "utils/management";
+import {BE_API, fetchData} from "utils/fetch";
 import {translate, TRANSLATION} from "utils/translation";
 
-const MenuItemBottomSettings = ({
-                                    item = {},
-                                    isItemVisible,
-                                    setIsItemVisible,
-                                    onEditClick = () => {},
-                                }) => {
+const MenuItemBottomSettings = ({item = {}, onEditClick = () => {}}) => {
+    const dispatch = useDispatch();
 
     const toggleIsMenuItemVisible = () => {
         const requestBody = {
             id: item.id,
-            isVisible: isItemVisible,
+            isVisible: +(!item.isVisible),
             method: 'put',
         }
 
         fetchData(BE_API.MENU_ITEM.CHANGE_IS_VISIBLE(), requestBody)
-            .then(res => setIsItemVisible(res.body.isVisible))
+            .then(res => {
+                dispatch(changeIsVisibleEditMenu(item.id))
+            })
             .catch(errorHandler)
     }
 
     return (
         <EditRow>
             <ToggleCheckbox
-                isVisible={isItemVisible}
-                isChecked={isItemVisible}
+                isVisible={item.isVisible}
+                isChecked={item.isVisible}
                 changeHandler={toggleIsMenuItemVisible}
                 label={translate(TRANSLATION.COMPONENTS.MENU_ITEM.BUTTON.CHANGE_VISIBILITY)}
             />

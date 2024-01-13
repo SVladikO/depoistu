@@ -1,97 +1,82 @@
-import React, {useState} from "react";
+import React from "react";
 import {useNavigate} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
 
-import {PrimaryButton, RowSplitter, SecondaryButton} from "components";
+import {RowSplitter, SecondaryButton} from "components";
 import MenuItemView from "page-view/menu-item/menu-item-view";
 import {ReactComponent as RemoveIcon} from "assets/icons/remove_icon.svg";
 
+import {fetchPutMenuItem, fetchDeleteMenuItem} from "features/editMenu/thunks";
+
 import {URL} from "utils/config";
-import {fetchData, BE_API} from "utils/fetch";
-import {useRedirectToSettingPage, useScrollUp} from "utils/hook";
 import {translate, TRANSLATION} from "utils/translation";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 import {publishNotificationEvent} from "utils/event";
-import {errorHandler} from "utils/management";
+import {useRedirectToSettingPage, useScrollUp} from "utils/hook";
 
 const EditMenuItemPage = () => {
     useRedirectToSettingPage();
     useScrollUp();
+
+    const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [isLoadingUpdate, setIsLoadingUpdate] = useState(false);
-    const [isLoadingDelete, setIsLoadingDelete] = useState(false);
-    let menuItemCandidateToEdit = LocalStorage.get(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT);
+
+    const editMenuItemCandidate = useSelector(state => state.editMenu.editMenuItemCandidate);
+    const isLoadingUpdate = useSelector(state => state.editMenu.isUpdateMenuItemLoading);
+    const isLoadingDelete = useSelector(state => state.editMenu.isDeleteMenuItemLoading);
 
     //Bugfix.  When we inserted data trough sql we put null which now in input which can't handle null.
-    const price_1 = menuItemCandidateToEdit.price_1 || "";
-    const price_2 = menuItemCandidateToEdit.price_2 || "";
-    const price_3 = menuItemCandidateToEdit.price_3 || "";
-    const size_1 = menuItemCandidateToEdit.size_1 || "";
-    const size_2 = menuItemCandidateToEdit.size_2 || "";
-    const size_3 = menuItemCandidateToEdit.size_3 || "";
+    const {
+        price_1 = '',
+        price_2 = '',
+        price_3 = '',
+        size_1 = '',
+        size_2 = '',
+        size_3 = ''
+    } = editMenuItemCandidate;
 
-    menuItemCandidateToEdit = {...menuItemCandidateToEdit, price_1, price_2, price_3, size_1, size_2, size_3}
+    const editMenuItem = {...editMenuItemCandidate, price_1, price_2, price_3, size_1, size_2, size_3}
 
-    if (!menuItemCandidateToEdit) {
+    if (!editMenuItem) {
         return navigate(URL.SETTING)
     }
 
     const onSubmit = values => {
-        setIsLoadingUpdate(true);
         const reqObj = {
             method: 'put',
-            id: menuItemCandidateToEdit.id,
+            id: editMenuItem.id,
             ...values
         };
 
-        fetchData(BE_API.MENU_ITEM.PUT_UPDATE(), reqObj)
-            .then(res => {
-                const updatedMenuItem = res.body[0]
-                LocalStorage.set(LOCAL_STORAGE_KEY.MENU_ITEM_CANDIDATE_TO_EDIT, updatedMenuItem);
-                publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.MENU_ITEM.WAS_UPDATED))
-            })
-            .catch(errorHandler)
-            .finally(() => setIsLoadingUpdate(false))
+        dispatch(fetchPutMenuItem(reqObj))
+            .then(() => {
+                    publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.MENU_ITEM.WAS_UPDATED))
+                    setTimeout(() => navigate(URL.EDIT_MENU), 0);
+                }
+            )
     }
 
-    const deleteMenuItem = () => {
-        setIsLoadingDelete(true)
-
-        fetchData(BE_API.MENU_ITEM.DELETE(),
-            {
-                method: 'delete',
-                id: menuItemCandidateToEdit.id,
-            })
+    const onClickDeleteMenuItem = () => {
+        dispatch(fetchDeleteMenuItem(editMenuItemCandidate.id))
             .then(() => {
-                navigate(URL.EDIT_MENU)
                 publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.MENU_ITEM.WAS_DELETED))
+                setTimeout(() => navigate(URL.EDIT_MENU), 0)
             })
-            .catch(errorHandler)
-            .finally(() => setTimeout(() => setIsLoadingDelete(false), 1000))
     }
 
     return (
         <>
-            <RowSplitter height={'15px'}/>
+            <h1>{editMenuItemCandidate.id}</h1>
             <MenuItemView
-                defaultInitialValue={menuItemCandidateToEdit || {}}
+                defaultInitialValue={editMenuItem}
+                isLoading={isLoadingUpdate}
                 onSubmit={onSubmit}
-                submitButtonTitle={translate(TRANSLATION.PAGE.EDIT_MENU_ITEM.BUTTON.EDIT_MENU_ITEM)}
-            >
-                <RowSplitter height={'10px'}/>
-                <PrimaryButton
-                    isWide
-                    type="submit"
-                    isLoading={isLoadingUpdate}
-                    withPadding
-                >
-                    {translate(TRANSLATION.PAGE.ADD_MENU_ITEM.BUTTON.UPDATE_MENU_ITEM)}
-                </PrimaryButton>
-            </MenuItemView>
+                submitButtonTitle={translate(TRANSLATION.PAGE.ADD_MENU_ITEM.BUTTON.UPDATE_MENU_ITEM)}
+            />
             <RowSplitter height={'50px'}/>
             <SecondaryButton
                 isWide
                 isLoading={isLoadingDelete}
-                clickHandler={deleteMenuItem}
+                clickHandler={onClickDeleteMenuItem}
                 withPadding
             >
                 <RemoveIcon/>

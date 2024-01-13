@@ -1,5 +1,3 @@
-import {useState} from "react";
-
 import {
     Wrapper,
     ContentWrapper,
@@ -27,8 +25,6 @@ const MenuItem = (props) => {
         }
     } = props;
 
-    const [isVisibleForCustomers, setIsVisibleForCustomers] = useState(!!item.isVisible || isOrderPage || isOrderHistoryDetailsPage)
-
     const onClickMenuItem = e => {
         onSelectMenuItem()
         const scrollTo = e.currentTarget.offsetTop - CATEGORY_ROW_HEIGHT;
@@ -38,7 +34,7 @@ const MenuItem = (props) => {
     return (
         <Wrapper
             className='pm-MenuItem'
-            isVisibleForCustomers={isVisibleForCustomers}
+            isVisibleForCustomers={item.isVisible}
             onClick={onClickMenuItem}
         >
             <FoodImage {...props}/>
@@ -49,15 +45,10 @@ const MenuItem = (props) => {
                 <MenuItemPriceSizeControl
                     {...props}
                     isSelected={isSelected}
-                    isItemVisible={isVisibleForCustomers}
                 />
             </ContentWrapper>
             {isEditMenuItemPage && (
-                <MenuItemBottomSettings
-                    {...props}
-                    isItemVisible={isVisibleForCustomers}
-                    setIsItemVisible={setIsVisibleForCustomers}
-                />
+                <MenuItemBottomSettings {...props} />
             )
             }
         </Wrapper>
