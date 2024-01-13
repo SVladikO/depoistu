@@ -36,6 +36,7 @@ const AddMenuItemPage = () => {
         const requestObj = {...values, company_id};
         dispatch(fetchPostMenuItem(requestObj))
             .then(e => {
+                scrollUp()
                 publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.MENU_ITEM.WAS_CREATED))
                 setInitialValues({...defaultInitialValue, category_id: values.category_id, imageUrl: ''})
             })

@@ -4,7 +4,6 @@ import {Link} from "react-router-dom";
 
 import {Wrapper, AmountInfo, Content} from './Order.page.style';
 import {
-    ContentContainer,
     MenuItem,
     NOTIFICATION_STATUS,
     NotificationFactory,
@@ -54,11 +53,9 @@ const OrderPage = () => {
     const OrderItems = () => (
         <>
             {isOpenMessage &&
-                <ContentContainer>
-                    <NotificationFactory type={NOTIFICATION_STATUS.INFO} onClose={onCloseMessage}>
-                        {translate(TRANSLATION.ORDERS.THIS_PAGE_IS_CREATED)}
-                    </NotificationFactory>
-                </ContentContainer>
+                <NotificationFactory withMargin type={NOTIFICATION_STATUS.INFO} onClose={onCloseMessage}>
+                    {translate(TRANSLATION.ORDERS.THIS_PAGE_IS_CREATED)}
+                </NotificationFactory>
             }
             <Content>
                 {order_items.map((mi, index) => (

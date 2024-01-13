@@ -15,7 +15,7 @@ export const COLOR = {
     WARNING1: '#F1C21B',
     WARNING2: '#FFF8E1',
     INFO1: '#0244CF',
-    INFO2: '#EDF5FF',
+    INFO2: '#b7d7ff',
     ERROR1: '#DA1E28',
     ERROR2: '#FFF1F1',
     SUCCESS1: '#25A249',

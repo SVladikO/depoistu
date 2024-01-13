@@ -65,7 +65,6 @@ const EditMenuItemPage = () => {
 
     return (
         <>
-            <h1>{editMenuItemCandidate.id}</h1>
             <MenuItemView
                 defaultInitialValue={editMenuItem}
                 isLoading={isLoadingUpdate}

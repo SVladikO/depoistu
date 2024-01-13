@@ -1,9 +1,8 @@
 import styled, {css} from "styled-components";
-import {BORDER_RADIUS, COLOR, FONT, SHADOW_DARK} from "utils/theme";
+import {BORDER_RADIUS, COLOR, FONT} from "utils/theme";
 import {NOTIFICATION_STATUS} from "./Notification";
 
 export const DefaultNotification = css`
-  ${p => p.noShadow ? '' : SHADOW_DARK};
   display: inline-flex;
   position: relative;
   align-items: ${p => p.status === NOTIFICATION_STATUS.LOADING ? 'center': 'start'};
