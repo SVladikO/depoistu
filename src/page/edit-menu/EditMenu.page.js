@@ -17,7 +17,6 @@ const EditMenuPage = () => {
     useRedirectToSettingPage();
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    useScrollUp();
     const company_id = useSelector(state => state.editMenu.company_id)
     const editMenuItems = useSelector(state => state.editMenu.editMenuItems)
     const isMenuItemsLoading = useSelector(state => state.editMenu.isGetMenuItemsLoading);

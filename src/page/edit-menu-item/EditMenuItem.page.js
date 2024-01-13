@@ -25,14 +25,12 @@ const EditMenuItemPage = () => {
     const isLoadingDelete = useSelector(state => state.editMenu.isDeleteMenuItemLoading);
 
     //Bugfix.  When we inserted data trough sql we put null which now in input which can't handle null.
-    const {
-        price_1 = '',
-        price_2 = '',
-        price_3 = '',
-        size_1 = '',
-        size_2 = '',
-        size_3 = ''
-    } = editMenuItemCandidate;
+    const price_1 = +editMenuItemCandidate.price_1 || undefined
+    const price_2 = +editMenuItemCandidate.price_2 || undefined
+    const price_3 = +editMenuItemCandidate.price_3 || undefined
+    const size_1 = +editMenuItemCandidate.size_1 || undefined
+    const size_2 = +editMenuItemCandidate.size_2 || undefined
+    const size_3 = +editMenuItemCandidate.size_3 || undefined
 
     const editMenuItem = {...editMenuItemCandidate, price_1, price_2, price_3, size_1, size_2, size_3}
 
@@ -50,7 +48,6 @@ const EditMenuItemPage = () => {
         dispatch(fetchPutMenuItem(reqObj))
             .then(() => {
                     publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.MENU_ITEM.WAS_UPDATED))
-                    setTimeout(() => navigate(URL.EDIT_MENU), 0);
                 }
             )
     }
