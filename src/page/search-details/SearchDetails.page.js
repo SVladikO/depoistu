@@ -35,6 +35,14 @@ const SearchDetailsPage = () => {
         <NotificationLoading>{translate(translationKey)}</NotificationLoading>
     )
 
+    if (isCompanyLoading || isMenuLoading) {
+        return (
+            <div>
+                {isCompanyLoading && getNotification(TRANSLATION.NOTIFICATION.COMPANY.LOADING_COMPANY)}
+                {isMenuLoading && getNotification(TRANSLATION.NOTIFICATION.LOADING_MENU)}
+            </div>
+        )
+    }
     if (!companyId || !company) {
         return (
             <NotificationTDB title={translate(TR.PAGE.COMPANY_DETAILS.COMPANY_DOESNT_EXIST)}>
