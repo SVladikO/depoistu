@@ -42,7 +42,7 @@ const MenuItemView = ({defaultInitialValue, onSubmit, submitButtonTitle, isLoadi
         })), [])
 
     const onImageUpload = info => setImageUrl(info.secure_url);
-
+    console.log(1111, defaultInitialValue);
     return (
         <div>
             {imageUrl

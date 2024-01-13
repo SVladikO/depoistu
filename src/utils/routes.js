@@ -37,7 +37,6 @@ export const Content = styled.div`
 `;
 
 const Element = (props) => {
-    useScrollUp();
     useHideOnScroll('NavigationHeader', '-65px')
 
     const {route} = props;

@@ -39,7 +39,6 @@ const MenuItemPriceSizeControl = ({
         }
 
         const measurement = CATEGORY_ID_MAPPER_AS_OBJECT[item.category_id].measurement;
-        console.log(item.name, price, !!price, size, !!size)
         return (
             <Details>
                 <SizePriceInfoTd>

@@ -6,6 +6,7 @@ export const FirstRow = styled.div`
     position: relative;
 
     & > svg {
+        cursor: pointer;
         position: absolute;
         top: -4px;
         right: 0;
