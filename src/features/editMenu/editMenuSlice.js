@@ -42,6 +42,10 @@ export const editMenuSlice = createSliceCustom({
             const filtered = state.editMenuItems.find(i => i.id === action.payload);
             filtered.isVisible = +(!filtered.isVisible);
         },
+        changeIsImageVisibleEditMenu: (state, action) => {
+            const filtered = state.editMenuItems.find(i => i.id === action.payload.id);
+            filtered.isImageVisible = !filtered.isImageVisible;
+        },
         addMenuItem: (state, action) => {
             console.log('addMenuItem( ', action)
             state.editMenuItems.push(action.payload)
@@ -115,6 +119,7 @@ export const {
     setCompanyIdToEditMenu,
     addEditMenuItemCandidate,
     changeIsVisibleEditMenu,
+    changeIsImageVisibleEditMenu,
     addMenuItem,
     updateMenuItem,
     deleteMenuItem
