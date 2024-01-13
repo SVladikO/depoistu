@@ -11,7 +11,7 @@ import {fetchGetMenuItemsByCompanyId} from "features/editMenu/thunks";
 import {URL} from "utils/config";
 import {translate, TRANSLATION} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
-import {useLocalStorage, useRedirectToSettingPage, useScrollUp} from "utils/hook";
+import {useLocalStorage, useRedirectToSettingPage} from "utils/hook";
 
 const EditMenuPage = () => {
     useRedirectToSettingPage();
