@@ -34,7 +34,7 @@ const MenuItem = (props) => {
     return (
         <Wrapper
             className='pm-MenuItem'
-            isVisibleForCustomers={item.isVisible}
+            isVisibleForCustomers={item.isVisible || isOrderHistoryDetailsPage}
             onClick={onClickMenuItem}
         >
             <FoodImage {...props}/>

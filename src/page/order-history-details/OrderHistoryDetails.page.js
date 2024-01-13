@@ -14,9 +14,7 @@ const OrderHistoryDetailsPage = () => {
 
     useEffect(() => {
         fetchData(BE_API.ORDER_HISTORY_DETAILS.GET_BY_ORDER_HISTORY_ID(orderHistoryId))
-            .then(res => {
-                setOrderItems(res.body)
-            })
+            .then(res => setOrderItems(res.body))
             .catch(errorHandler)
             .finally(() => {})
     }, []);
