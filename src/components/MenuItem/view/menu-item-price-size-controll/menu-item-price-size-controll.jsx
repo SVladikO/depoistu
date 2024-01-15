@@ -62,9 +62,9 @@ const MenuItemPriceSizeControl = ({
         <SizePriceWrapper>
             <Table>
                 <tbody>
-                {renderRow(+size_1, +price_1, +amount_1, 'amount_1')}
-                {renderRow(+size_2, +price_2, +amount_2, 'amount_2')}
-                {renderRow(+size_3, +price_3, +amount_3, 'amount_3')}
+                {renderRow(size_1, +price_1, +amount_1, 'amount_1')}
+                {renderRow(size_2, +price_2, +amount_2, 'amount_2')}
+                {renderRow(size_3, +price_3, +amount_3, 'amount_3')}
                 </tbody>
             </Table>
         </SizePriceWrapper>
