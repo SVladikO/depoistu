@@ -1,13 +1,15 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import {BE_API, fetchData} from "utils/fetch";
+import {BE_API, fetchData, fetchDataRedux} from "utils/fetch";
 
 export const fetchGetMenuItemsByCompanyId = createAsyncThunk(
     'editMenu/fetchGetMenuItemsByCompanyId',
     async (companyId, {rejectWithValue}) => {
         try {
-            const response = await fetchData(BE_API.MENU_ITEM.GET_BY_COMPANY_ID(companyId))
+            const response = await fetchDataRedux(BE_API.MENU_ITEM.GET_BY_COMPANY_ID(companyId))
+            debugger;
             return response.body
         } catch (e) {
+            debugger
             return rejectWithValue(e);
         }
     }

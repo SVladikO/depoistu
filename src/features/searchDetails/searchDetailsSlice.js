@@ -1,6 +1,6 @@
 import createSliceCustom from "features/utils";
 import {fetchMenu, fetchCompany} from "./thunks";
-import {errorHandler} from "utils/management";
+import {errorHandler, errorHandlerRedux} from "utils/management";
 
 const initialState = {
     companyId: null,
@@ -56,7 +56,7 @@ export const searchDetailsSlice = createSliceCustom({
         [fetchMenu.rejected]: (state, error) => {
             state.isMenuLoading = false
             state.menuItems = []
-            errorHandler(error.payload)
+            errorHandlerRedux(error.payload)
         },
         [fetchCompany.pending]: (state) => {
             state.isCompanyLoading = true
@@ -68,7 +68,7 @@ export const searchDetailsSlice = createSliceCustom({
         [fetchCompany.rejected]: (state, error) => {
             state.isCompanyLoading = false
             state.company = null
-            errorHandler(error.payload)
+            errorHandlerRedux(error.payload)
         },
     }
 });

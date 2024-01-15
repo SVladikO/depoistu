@@ -43,16 +43,17 @@ const EditMenuPage = () => {
 
     return (
         <>
-            <ContentContainer noShadow>
-                {currentCompany && <h2>{currentCompany.name}</h2>}
-            </ContentContainer>
+            {currentCompany && (
+                <ContentContainer noShadow>
+                    <h2>{currentCompany.name}</h2>
+                </ContentContainer>
+            )
+            }
             <RowSplitter height="20px"/>
             <PrimaryButton isWide withPadding clickHandler={onClickAddMenuItem}>
                 {translate(TRANSLATION.PAGE.EDIT_MENU.BUTTON.ADD_MENU_ITEM)}
             </PrimaryButton>
-
             <RowSplitter height="40px"/>
-
             {!!editMenuItems?.length && (
                 <CategoryMenuView
                     showMenuItemAmount

@@ -1,6 +1,6 @@
 import createSliceCustom from "features/utils";
 import {fetchGetMenuItemsByCompanyId, fetchPostMenuItem, fetchDeleteMenuItem, fetchPutMenuItem} from "./thunks";
-import {errorHandler} from "utils/management";
+import {errorHandlerRedux} from "utils/management";
 
 const initialState = {
     company_id: undefined,
@@ -68,7 +68,8 @@ export const editMenuSlice = createSliceCustom({
         },
         [fetchGetMenuItemsByCompanyId.rejected]: (state, error) => {
             state.isGetMenuItemsLoading = false
-            errorHandler(error.payload)
+            debugger
+            errorHandlerRedux(error.payload)
         },
 
         [fetchPostMenuItem.pending]: (state) => {
@@ -81,7 +82,7 @@ export const editMenuSlice = createSliceCustom({
         },
         [fetchPostMenuItem.rejected]: (state, error) => {
             state.isAddMenuItemLoading = false
-            errorHandler(error.payload)
+            errorHandlerRedux(error.payload)
         },
 
         [fetchPutMenuItem.pending]: (state) => {
@@ -93,7 +94,7 @@ export const editMenuSlice = createSliceCustom({
         },
         [fetchPutMenuItem.rejected]: (state, error) => {
             state.isUpdateMenuItemLoading = false
-            errorHandler(error.payload)
+            errorHandlerRedux(error.payload)
         },
 
         [fetchDeleteMenuItem.pending]: (state) => {
@@ -105,8 +106,9 @@ export const editMenuSlice = createSliceCustom({
             console.log('length:', action, state.editMenuItems.length, filtered.length)
             state.editMenuItems = filtered;
         },
-        [fetchDeleteMenuItem.rejected]: (state) => {
+        [fetchDeleteMenuItem.rejected]: (state, error) => {
             state.isCompanyLoading = false
+            errorHandlerRedux(error.payload)
         },
     }
 });

@@ -52,6 +52,17 @@ export const BE_API = {
     // PLACE_ORDER: () => `${BE_DOMAIN}/place-order`,
 };
 
+const promiseReject = errorMessage => new Promise((resolve, reject) => reject({body: {errorMessage}}));
+
+export const fetchDataRedux = async (url, body) => {
+    // No internet no request
+    if (!window.navigator.onLine) {
+        return promiseReject(translate(TRANSLATION.NOTIFICATION.NO_INTERNET));
+    }
+
+    return  await fetch(decodeURIComponent(url), getOptions(body));
+}
+
 export const fetchData = async (url, body) => {
     let response;
 
