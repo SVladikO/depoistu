@@ -28,11 +28,9 @@ export const editMenuSlice = createSliceCustom({
     initialState,
     reducers: {
         initEditMenuItems: (state, action) => {
-            console.log('initEditMenuItems( ', action)
             state.editMenuItems = action.payload.map(i => ({...i, isImageVisible: false}))
         },
         resetAllEditMenu: (state) => {
-            console.log('resetAllEditMenu( ')
             state.company_id = undefined;
             state.editMenuItems = [];
             state.editMenuItemCandidate = undefined;
@@ -43,11 +41,9 @@ export const editMenuSlice = createSliceCustom({
             state.isLoadingDeleteMenuItem = false;
         },
         setCompanyIdToEditMenu: (state, action) => {
-            console.log('setCompanyIdToEditMenu( ')
             state.company_id = action.payload
         },
         addEditMenuItemCandidate: (state, action) => {
-            console.log('addEditMenuItemCandidate(', action.payload.id, action.payload.name);
             state.editMenuItemCandidate = action.payload
         },
         changeIsVisibleEditMenu: (state, action) => {
@@ -59,7 +55,6 @@ export const editMenuSlice = createSliceCustom({
             filtered.isImageVisible = !filtered.isImageVisible;
         },
         addMenuItem: (state, action) => {
-            console.log('addMenuItem( ', action)
             state.editMenuItems.push(action.payload)
         },
         updateMenuItem: (state, action) => {
@@ -88,17 +83,14 @@ export const editMenuSlice = createSliceCustom({
         },
         [fetchPostMenuItem.fulfilled]: (state, action) => {
             state.isLoadingAddMenuItem = false
-            console.log('fetchPostMenuItem(', action.payload)
-            debugger
             state.editMenuItems.push(action.payload)
             publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.MENU_ITEM.WAS_CREATED))
         },
         [fetchPostMenuItem.rejected]: (state, error) => {
             state.isLoadingAddMenuItem = false
-            debugger
             errorHandlerRedux(error.payload)
         },
-        //
+        // fetchPutMenuItem
         [fetchPutMenuItem.pending]: (state) => {
             state.isLoadingUpdateEditMenuItem = true
         },
@@ -111,34 +103,41 @@ export const editMenuSlice = createSliceCustom({
             state.isLoadingUpdateEditMenuItem = false
             errorHandlerRedux(error.payload)
         },
-        //
+        // fetchDeleteMenuItem
         [fetchDeleteMenuItem.pending]: (state) => {
             state.isCompanyLoading = true
         },
         [fetchDeleteMenuItem.fulfilled]: (state, action) => {
             state.isCompanyLoading = false
             const filtered = state.editMenuItems.filter(i => i.id !== action.payload);
-            console.log('length:', action, state.editMenuItems.length, filtered.length)
             state.editMenuItems = filtered;
+            publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.MENU_ITEM.WAS_DELETED))
         },
         [fetchDeleteMenuItem.rejected]: (state, error) => {
             state.isCompanyLoading = false
             errorHandlerRedux(error.payload)
         },
-        //
+        // fetchPutMenuItemIsVisible
         [fetchPutMenuItemIsVisible.pending]: (state) => {
             state.isLoadingUpdateVisiblityMenuItem = true
         },
         [fetchPutMenuItemIsVisible.fulfilled]: (state, action) => {
-            state.isLoadingUpdateVisiblityMenuItem = false
-            const filtered = state.editMenuItems.filter(i => i.id !== action.payload);
-            console.log('length:', action, state.editMenuItems.length, filtered.length)
-            state.editMenuItems = filtered;
+            state.isLoadingUpdateVisiblityMenuItem = false;
+            state.editMenuItems = state.editMenuItems.map(
+                item => {
+
+                    return item.id === action.payload.id
+                        ? {...item, isVisible: action.payload.isVisible}
+                        : item
+                }
+            )
+
         },
-        [fetchPutMenuItemIsVisible.rejected]: (state, error) => {
-            state.isLoadingUpdateVisiblityMenuItem = false
-            errorHandlerRedux(error.payload)
-        },
+        [fetchPutMenuItemIsVisible.rejected]:
+            (state, error) => {
+                state.isLoadingUpdateVisiblityMenuItem = false
+                errorHandlerRedux(error.payload)
+            },
     }
 });
 

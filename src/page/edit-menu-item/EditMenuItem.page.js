@@ -56,7 +56,6 @@ const EditMenuItemPage = () => {
     const onClickDeleteMenuItem = () => {
         dispatch(fetchDeleteMenuItem(editMenuItemCandidate.id))
             .then(() => {
-                publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.MENU_ITEM.WAS_DELETED))
                 setTimeout(() => navigate(URL.EDIT_MENU), 0)
             })
     }

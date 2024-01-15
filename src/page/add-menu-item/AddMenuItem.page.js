@@ -5,7 +5,6 @@ import MenuItemView from "page-view/menu-item/menu-item-view";
 
 import {fetchPostMenuItem} from "features/editMenu/thunks";
 
-import {publishNotificationEvent} from "utils/event";
 import {translate, TRANSLATION} from "utils/translation";
 import {useRedirectToSettingPage, useScrollUp} from "utils/hook";
 import {NotificationLoading} from "../../components";

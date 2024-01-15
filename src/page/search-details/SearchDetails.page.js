@@ -29,44 +29,11 @@ const SearchDetailsPage = () => {
 
         dispatch(fetchMenu(companyId))
         dispatch(fetchCompany(companyId))
-    }, [companyId])
+    }, [companyId, dispatch])
 
     const getNotification = translationKey => (
         <NotificationLoading>{translate(translationKey)}</NotificationLoading>
     )
-
-    if (isCompanyLoading || isMenuLoading) {
-        return (
-            <div>
-                {isCompanyLoading && getNotification(TRANSLATION.NOTIFICATION.COMPANY.LOADING_COMPANY)}
-                {isMenuLoading && getNotification(TRANSLATION.NOTIFICATION.LOADING_MENU)}
-            </div>
-        )
-    }
-
-    console.log({isMenuLoading, isCompanyLoading})
-    if (!companyId || !company) {
-        return (
-            <NotificationTDB title={translate(TR.PAGE.COMPANY_DETAILS.COMPANY_DOESNT_EXIST)}>
-                <PrimaryButton isWide clickHandler={() => {
-
-                    // We delete these data for case when
-                    // company was deleted between
-                    // customer found list of companies per city
-                    // and
-                    // open company
-                    LocalStorage.remove(LOCAL_STORAGE_KEY.COMPANY_SEARCH_SELECTED_CITY_ID)
-                    LocalStorage.remove(LOCAL_STORAGE_KEY.COMPANY_SEARCH_SELECTED_REGION_ID)
-                    LocalStorage.remove(LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT)
-
-                    navigate(ROUTER.SEARCH.URL)
-                }}>
-                    {translate(TR.GO_TO_A_SEARCH_PAGE)}
-                </PrimaryButton>
-            </NotificationTDB>
-        )
-    }
-
 
     return (
         <Wrapper>
@@ -74,6 +41,26 @@ const SearchDetailsPage = () => {
             {!isCompanyLoading && company && <Company company={company} withMoreInfo/>}
             {isMenuLoading && getNotification(TRANSLATION.NOTIFICATION.LOADING_MENU)}
             {!isMenuLoading && !!menuItems?.length && <CategoryMenuView menuItems={menuItems}/>}
+            { (!companyId || !company) && !isCompanyLoading && !isMenuLoading && (
+                <NotificationTDB title={translate(TR.PAGE.COMPANY_DETAILS.COMPANY_DOESNT_EXIST)}>
+                    <PrimaryButton isWide clickHandler={() => {
+
+                        // We delete these data for case when
+                        // company was deleted between
+                        // customer found list of companies per city
+                        // and
+                        // open company
+                        LocalStorage.remove(LOCAL_STORAGE_KEY.COMPANY_SEARCH_SELECTED_CITY_ID)
+                        LocalStorage.remove(LOCAL_STORAGE_KEY.COMPANY_SEARCH_SELECTED_REGION_ID)
+                        LocalStorage.remove(LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT)
+
+                        navigate(ROUTER.SEARCH.URL)
+                    }}>
+                        {translate(TR.GO_TO_A_SEARCH_PAGE)}
+                    </PrimaryButton>
+                </NotificationTDB>
+            )
+            }
             <RowSplitter height={'200px'}/>
         </Wrapper>
     );

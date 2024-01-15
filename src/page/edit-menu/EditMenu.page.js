@@ -30,7 +30,7 @@ const EditMenuPage = () => {
         }
 
         dispatch(fetchGetMenuItemsByCompanyId(company_id))
-    }, [company_id]);
+    }, [company_id, editMenuItems, dispatch]);
 
     if (isMenuItemsLoading) {
         return <NotificationLoading/>;

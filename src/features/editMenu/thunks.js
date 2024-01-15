@@ -1,5 +1,5 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import {BE_API, fetchData, fetchDataRedux} from "utils/fetch";
+import {BE_API, fetchDataRedux} from "utils/fetch";
 
 export const fetchGetMenuItemsByCompanyId = createAsyncThunk(
     'editMenu/fetchGetMenuItemsByCompanyId',
@@ -20,7 +20,6 @@ export const fetchPostMenuItem = createAsyncThunk(
         try {
             const response = await fetchDataRedux(BE_API.MENU_ITEM.POST_CREATE(), menuItem)
             const body = await response.json()
-            debugger
             return body
         } catch (e) {
             return rejectWithValue(e);

@@ -14,7 +14,6 @@ export const publishNotificationEvent = {
     error: message => publishEventDefault(EVENT_TYPE.NOTIFICATION, {message, type: NOTIFICATION_STATUS.ERROR}),
     warning: message => publishEventDefault(EVENT_TYPE.NOTIFICATION, {message, type: NOTIFICATION_STATUS.WARNING}),
     success: message => {
-        debugger
         return publishEventDefault(EVENT_TYPE.NOTIFICATION, {message, type: NOTIFICATION_STATUS.SUCCESS})
     },
 }
