@@ -13,6 +13,11 @@ import {translate, TRANSLATION} from "utils/translation";
 import {publishNotificationEvent} from "utils/event";
 import {useRedirectToSettingPage, useScrollUp} from "utils/hook";
 
+// We have problems with data. Add menu item default for number 0, string ''
+// but when we edit we see 0. And it's a problem for edit menu item price as validation block it.
+const convertNumberIn = number => +number || undefined;
+const convertNumberOut = number => +number || 0;
+
 const EditMenuItemPage = () => {
     useRedirectToSettingPage();
     useScrollUp();
@@ -25,14 +30,11 @@ const EditMenuItemPage = () => {
     const isLoadingDelete = useSelector(state => state.editMenu.isDeleteMenuItemLoading);
 
     //Bugfix.  When we inserted data trough sql we put null which now in input which can't handle null.
-    const price_1 = +editMenuItemCandidate.price_1 || undefined
-    const price_2 = +editMenuItemCandidate.price_2 || undefined
-    const price_3 = +editMenuItemCandidate.price_3 || undefined
-    const size_1 = +editMenuItemCandidate.size_1 || undefined
-    const size_2 = +editMenuItemCandidate.size_2 || undefined
-    const size_3 = +editMenuItemCandidate.size_3 || undefined
+    const price_1 = convertNumberIn(editMenuItemCandidate.price_1);
+    const price_2 = convertNumberIn(editMenuItemCandidate.price_2);
+    const price_3 = convertNumberIn(editMenuItemCandidate.price_3)
 
-    const editMenuItem = {...editMenuItemCandidate, price_1, price_2, price_3, size_1, size_2, size_3}
+    const editMenuItem = {...editMenuItemCandidate, price_1, price_2, price_3};
 
     if (!editMenuItem) {
         return navigate(URL.SETTING)
@@ -42,7 +44,10 @@ const EditMenuItemPage = () => {
         const reqObj = {
             method: 'put',
             id: editMenuItem.id,
-            ...values
+            ...values,
+            price_1: convertNumberOut(values.price_1),
+            price_2: convertNumberOut(values.price_2),
+            price_3: convertNumberOut(values.price_3)
         };
 
         dispatch(fetchPutMenuItem(reqObj))
