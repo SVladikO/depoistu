@@ -42,7 +42,7 @@ export const searchDetailsSlice = createSliceCustom({
             }
         },
         resetOrder: (state) => {
-            state.menuItems = []
+            state.menuItems = state.menuItems.map(menuItem => ({...menuItem, amount_1: 0, amount_2: 0, amount_3: 0}))
         }
     },
     extraReducers: {
