@@ -53,11 +53,14 @@ const EditMenuPage = () => {
 
             <RowSplitter height="40px"/>
 
-            <CategoryMenuView
-                showMenuItemAmount
-                menuItems={editMenuItems}
-                isEditMenuItemPage
-            />
+            {!!editMenuItems?.length && (
+                <CategoryMenuView
+                    showMenuItemAmount
+                    menuItems={editMenuItems}
+                    isEditMenuItemPage
+                />
+            )
+            }
         </>
     )
 }
