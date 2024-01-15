@@ -51,8 +51,7 @@ export const editMenuSlice = createSliceCustom({
             state.editMenuItems.push(action.payload)
         },
         updateMenuItem: (state, action) => {
-            const filtered = state.editMenuItems.filter(i => i.id !== action.payload.id);
-            state.editMenuItems = [...filtered, action.payload];
+            state.editMenuItems = state.editMenuItems.map(item => item.id === action.payload.id ? action.payload : item);
         },
         deleteMenuItem: (state, action) => {
             const filtered = state.editMenuItems.filter(i => i.id !== action.payload.id);
@@ -90,8 +89,7 @@ export const editMenuSlice = createSliceCustom({
         },
         [fetchPutMenuItem.fulfilled]: (state, action) => {
             state.isUpdateMenuItemLoading = false
-            const filtered = state.editMenuItems.filter(i => i.id !== action.payload.id);
-            state.editMenuItems = [...filtered, action.payload];
+            state.editMenuItems = state.editMenuItems.map(item => item.id === action.payload.id ? action.payload : item)
         },
         [fetchPutMenuItem.rejected]: (state, error) => {
             state.isUpdateMenuItemLoading = false
