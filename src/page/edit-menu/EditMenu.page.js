@@ -19,7 +19,7 @@ const EditMenuPage = () => {
     const dispatch = useDispatch();
     const company_id = useSelector(state => state.editMenu.company_id)
     const editMenuItems = useSelector(state => state.editMenu.editMenuItems)
-    const isMenuItemsLoading = useSelector(state => state.editMenu.isGetMenuItemsLoading);
+    const isMenuItemsLoading = useSelector(state => state.editMenu.isLoadingGetEditMenuItems);
 
     const [customerCompanies] = useLocalStorage(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
     const currentCompany = customerCompanies?.find((c => c.id === +company_id));

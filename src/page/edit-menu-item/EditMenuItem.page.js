@@ -26,8 +26,8 @@ const EditMenuItemPage = () => {
     const navigate = useNavigate();
 
     const editMenuItemCandidate = useSelector(state => state.editMenu.editMenuItemCandidate);
-    const isLoadingUpdate = useSelector(state => state.editMenu.isUpdateMenuItemLoading);
-    const isLoadingDelete = useSelector(state => state.editMenu.isDeleteMenuItemLoading);
+    const isLoadingUpdate = useSelector(state => state.editMenu.isLoadingUpdateEditMenuItem);
+    const isLoadingDelete = useSelector(state => state.editMenu.isLoadingDeleteMenuItem);
 
     //Bugfix.  When we inserted data trough sql we put null which now in input which can't handle null.
     const price_1 = convertNumberIn(editMenuItemCandidate.price_1);
@@ -51,10 +51,6 @@ const EditMenuItemPage = () => {
         };
 
         dispatch(fetchPutMenuItem(reqObj))
-            .then(() => {
-                    publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.MENU_ITEM.WAS_UPDATED))
-                }
-            )
     }
 
     const onClickDeleteMenuItem = () => {

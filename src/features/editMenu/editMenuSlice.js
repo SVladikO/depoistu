@@ -1,15 +1,26 @@
 import createSliceCustom from "features/utils";
-import {fetchGetMenuItemsByCompanyId, fetchPostMenuItem, fetchDeleteMenuItem, fetchPutMenuItem} from "./thunks";
+import {
+    fetchGetMenuItemsByCompanyId,
+    fetchPostMenuItem,
+    fetchDeleteMenuItem,
+    fetchPutMenuItem,
+    fetchPutMenuItemIsVisible
+} from "./thunks";
+
+import {publishNotificationEvent} from "utils/event";
+
 import {errorHandlerRedux} from "utils/management";
+import {translate, TRANSLATION} from "utils/translation";
 
 const initialState = {
     company_id: undefined,
     editMenuItems: [],
     editMenuItemCandidate: undefined,
-    isGetMenuItemsLoading: false,
-    isAddMenuItemLoading: false,
-    isUpdateMenuItemLoading: false,
-    isDeleteMenuItemLoading: false,
+    isLoadingGetEditMenuItems: false,
+    isLoadingAddMenuItem: false,
+    isLoadingUpdateEditMenuItem: false,
+    isLoadingUpdateVisiblityMenuItem: false,
+    isLoadingDeleteMenuItem: false,
 }
 
 export const editMenuSlice = createSliceCustom({
@@ -25,10 +36,11 @@ export const editMenuSlice = createSliceCustom({
             state.company_id = undefined;
             state.editMenuItems = [];
             state.editMenuItemCandidate = undefined;
-            state.isGetMenuItemsLoading = false;
-            state.isAddMenuItemLoading = false;
-            state.isUpdateMenuItemLoading = false;
-            state.isDeleteMenuItemLoading = false;
+            state.isLoadingGetEditMenuItems = false;
+            state.isLoadingAddMenuItem = false;
+            state.isLoadingUpdateEditMenuItem = false;
+            state.isLoadingUpdateVisiblityMenuItem = false;
+            state.isLoadingDeleteMenuItem = false;
         },
         setCompanyIdToEditMenu: (state, action) => {
             console.log('setCompanyIdToEditMenu( ')
@@ -60,43 +72,46 @@ export const editMenuSlice = createSliceCustom({
     },
     extraReducers: {
         [fetchGetMenuItemsByCompanyId.pending]: (state) => {
-            state.isGetMenuItemsLoading = true
+            state.isLoadingGetEditMenuItems = true
         },
         [fetchGetMenuItemsByCompanyId.fulfilled]: (state, action) => {
-            state.isGetMenuItemsLoading = false
+            state.isLoadingGetEditMenuItems = false
             state.editMenuItems = action.payload;
         },
         [fetchGetMenuItemsByCompanyId.rejected]: (state, error) => {
-            state.isGetMenuItemsLoading = false
+            state.isLoadingGetEditMenuItems = false
+            errorHandlerRedux(error.payload)
+        },
+        //
+        [fetchPostMenuItem.pending]: (state) => {
+            state.isLoadingAddMenuItem = true
+        },
+        [fetchPostMenuItem.fulfilled]: (state, action) => {
+            state.isLoadingAddMenuItem = false
+            console.log('fetchPostMenuItem(', action.payload)
+            debugger
+            state.editMenuItems.push(action.payload)
+            publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.MENU_ITEM.WAS_CREATED))
+        },
+        [fetchPostMenuItem.rejected]: (state, error) => {
+            state.isLoadingAddMenuItem = false
             debugger
             errorHandlerRedux(error.payload)
         },
-
-        [fetchPostMenuItem.pending]: (state) => {
-            state.isAddMenuItemLoading = true
-        },
-        [fetchPostMenuItem.fulfilled]: (state, action) => {
-            state.isAddMenuItemLoading = false
-            console.log('fetchPostMenuItem(', action.payload)
-            state.editMenuItems.push(action.payload)
-        },
-        [fetchPostMenuItem.rejected]: (state, error) => {
-            state.isAddMenuItemLoading = false
-            errorHandlerRedux(error.payload)
-        },
-
+        //
         [fetchPutMenuItem.pending]: (state) => {
-            state.isUpdateMenuItemLoading = true
+            state.isLoadingUpdateEditMenuItem = true
         },
         [fetchPutMenuItem.fulfilled]: (state, action) => {
-            state.isUpdateMenuItemLoading = false
+            state.isLoadingUpdateEditMenuItem = false
             state.editMenuItems = state.editMenuItems.map(item => item.id === action.payload.id ? action.payload : item)
+            publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.MENU_ITEM.WAS_UPDATED))
         },
         [fetchPutMenuItem.rejected]: (state, error) => {
-            state.isUpdateMenuItemLoading = false
+            state.isLoadingUpdateEditMenuItem = false
             errorHandlerRedux(error.payload)
         },
-
+        //
         [fetchDeleteMenuItem.pending]: (state) => {
             state.isCompanyLoading = true
         },
@@ -110,6 +125,20 @@ export const editMenuSlice = createSliceCustom({
             state.isCompanyLoading = false
             errorHandlerRedux(error.payload)
         },
+        //
+        [fetchPutMenuItemIsVisible.pending]: (state) => {
+            state.isLoadingUpdateVisiblityMenuItem = true
+        },
+        [fetchPutMenuItemIsVisible.fulfilled]: (state, action) => {
+            state.isLoadingUpdateVisiblityMenuItem = false
+            const filtered = state.editMenuItems.filter(i => i.id !== action.payload);
+            console.log('length:', action, state.editMenuItems.length, filtered.length)
+            state.editMenuItems = filtered;
+        },
+        [fetchPutMenuItemIsVisible.rejected]: (state, error) => {
+            state.isLoadingUpdateVisiblityMenuItem = false
+            errorHandlerRedux(error.payload)
+        },
     }
 });
 
@@ -118,7 +147,6 @@ export const {
     resetAllEditMenu,
     setCompanyIdToEditMenu,
     addEditMenuItemCandidate,
-    changeIsVisibleEditMenu,
     changeIsImageVisibleEditMenu,
     addMenuItem,
     updateMenuItem,

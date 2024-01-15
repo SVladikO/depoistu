@@ -40,7 +40,6 @@ export function errorHandlerRedux(e) {
     } else {
         notificationMessage = e.body.errorMessage || e.message
     }
-    debugger;
     publishNotificationEvent.error(notificationMessage);
 
 }
