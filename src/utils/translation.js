@@ -778,11 +778,11 @@ export const TRANSLATION = {
         },
         SIGN_IN: {
             TOP_TITLE: {
-                ua: "Вхiд",
+                ua: "Вхід",
                 en: "Sign in"
             },
             USER_NOTIFICATION: {
-                ua: "Вхiд виконаний",
+                ua: "Вхід виконаний",
                 en: "You already logged!"
             },
             FORGOT_PASSWORD: {
@@ -1003,6 +1003,14 @@ export const TRANSLATION = {
         CLEAR_BASKET: {
             en: 'Clear basket',
             ua: 'Очистити кошик'
+        },
+        SIGN_IN_TO_PLACE: {
+            en: 'Sign in to place order',
+            ua: 'Увійдіть, щоб зробити замовлення'
+        },
+        PLACE_ORDER: {
+            en: 'Place order',
+            ua: 'Зробити замовлення'
         }
     },
 
