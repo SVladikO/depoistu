@@ -33,15 +33,15 @@ import {translate, TRANSLATION as TR, truncate} from "utils/translation";
 import ImageUrlFormatter from "../../utils/image.utils";
 import {ROUTER} from "../../utils/config";
 
-const Company = ({company, withMoreInfo, children, clickHandler}) => {
+const Company = ({company, withMoreInfo, children, clickHandler, isShowAllImages = true}) => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const customer = useSelector(state => state.customer.value);
     const favotireCompanies = useSelector(state => state.favoriteCompany.value);
-
-    const isLikedByCurrentCustomer = favotireCompanies?.find(fc => fc.id == company.id)
+    const companyPhotos = isShowAllImages ? company.photos: company.photos.slice(0, 1)
+    const isLikedByCurrentCustomer = favotireCompanies?.find(fc => fc.id === company.id)
 
     if (!company) {
         return null;
@@ -74,13 +74,12 @@ const Company = ({company, withMoreInfo, children, clickHandler}) => {
             ? <LazyLoadImage src={ImageUrlFormatter.formatForCompany(defaultCompanyImg)} width={'100%'}/>
             : (
                 <SwiperWrapper>
-                    {company.photos.map((src, index) => (
+                    {companyPhotos.map((src, index) => (
                             <SwiperSlide key={index}>
-                                <LazyLoadImage src={ImageUrlFormatter.formatForCompany(src)} alt="#"/>
+                                <LazyLoadImage src={ImageUrlFormatter.formatForCompany(src)} alt="#" />
                             </SwiperSlide>
                         )
-                    )
-                    }
+                    )}
                 </SwiperWrapper>
             );
 
