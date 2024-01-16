@@ -85,7 +85,7 @@ const OrderPage = () => {
                     </PrimaryButton>
                 ) : (
                     <Link to={`${URL.SING_IN}?backUrl=${URL.ORDER}`}>
-                        <PrimaryButton isWide withPadding clickHandler={placeOrder}>
+                        <PrimaryButton isWide withPadding>
                             {translate(TRANSLATION.ORDERS.SIGN_IN_TO_PLACE)}
                         </PrimaryButton>
                     </Link>
