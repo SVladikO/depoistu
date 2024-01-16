@@ -29,7 +29,7 @@ const SearchDetailsPage = () => {
 
         dispatch(fetchMenu(companyId))
         dispatch(fetchCompany(companyId))
-    }, [companyId, dispatch])
+    }, [companyId, dispatch, company])
 
     const getNotification = translationKey => (
         <NotificationLoading>{translate(translationKey)}</NotificationLoading>

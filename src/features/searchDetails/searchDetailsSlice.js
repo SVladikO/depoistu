@@ -1,6 +1,6 @@
 import createSliceCustom from "features/utils";
 import {fetchMenu, fetchCompany} from "./thunks";
-import {errorHandler, errorHandlerRedux} from "utils/management";
+import {errorHandlerRedux} from "utils/management";
 
 const initialState = {
     companyId: null,

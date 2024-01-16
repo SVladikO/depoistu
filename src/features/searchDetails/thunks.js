@@ -1,5 +1,5 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import {BE_API, fetchData, fetchDataRedux} from "utils/fetch";
+import {BE_API, fetchDataRedux} from "utils/fetch";
 
 export const fetchMenu = createAsyncThunk(
     'searchDetails/fetchMenu',
