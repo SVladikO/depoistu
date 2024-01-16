@@ -624,8 +624,8 @@ export const TRANSLATION = {
                     {
                         question: "What is the cost?",
                         answers: [
-                            "It's free until 1st of June 2024.",
-                            "After 300 uah/month",
+                            "It's completely free during 2024.",
+                            "After 300 uah/month.",
                         ]
                     },
                     {
@@ -668,14 +668,14 @@ export const TRANSLATION = {
                     {
                         question: "Яка головна ідея проекту?",
                         answers: [
-                            "Всі заклади харчування України на одному сайті depoistu.com",
+                            "Всі заклади харчування України на одному сайті depoistu.com.",
                         ]
                     },
                     {
                         question: "Яка вартість?",
                         answers: [
-                            "До 1го Червня 2024 БЕЗКОШТОВНО.",
-                            "Після 300 грн/міс",
+                            "Весь 2024 повністю БЕЗКОШТОВНО.",
+                            "Після 300 грн/міс.",
                         ]
                     },
                     {
