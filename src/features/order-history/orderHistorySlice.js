@@ -9,7 +9,6 @@ export const orderHistorySlice = createSliceCustom({
     initialState,
     reducers: {
         addOrderHistories: (state, action) => {
-            console.log('addOrderHistories: ', action.payload)
             state.value =  action.payload
         },
     }

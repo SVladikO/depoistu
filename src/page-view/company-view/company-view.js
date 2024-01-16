@@ -65,7 +65,6 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
         if (!mapInput || !values.cityId) {
             return;
         }
-        console.log({values})
         const city = translate(CITY_TRANSLATION_IDS[values.cityId]);
         mapInput.value = `${city}, ${values.street}`
         mapInput.dispatchEvent(new Event('keyup', {'bubbles': true}));

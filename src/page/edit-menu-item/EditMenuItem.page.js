@@ -10,7 +10,6 @@ import {fetchPutMenuItem, fetchDeleteMenuItem} from "features/editMenu/thunks";
 
 import {URL} from "utils/config";
 import {translate, TRANSLATION} from "utils/translation";
-import {publishNotificationEvent} from "utils/event";
 import {useRedirectToSettingPage, useScrollUp} from "utils/hook";
 
 // We have problems with data. Add menu item default for number 0, string ''
@@ -33,8 +32,11 @@ const EditMenuItemPage = () => {
     const price_1 = convertNumberIn(editMenuItemCandidate.price_1);
     const price_2 = convertNumberIn(editMenuItemCandidate.price_2);
     const price_3 = convertNumberIn(editMenuItemCandidate.price_3)
+    const size_1 = editMenuItemCandidate.size_1 || ''
+    const size_2 = editMenuItemCandidate.size_2 || ''
+    const size_3 = editMenuItemCandidate.size_3 || ''
 
-    const editMenuItem = {...editMenuItemCandidate, price_1, price_2, price_3};
+    const editMenuItem = {...editMenuItemCandidate, price_1, price_2, price_3, size_1, size_2, size_3};
 
     if (!editMenuItem) {
         return navigate(URL.SETTING)

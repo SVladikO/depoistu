@@ -24,7 +24,7 @@ const EditMenuItemSchema = Yup.object().shape(validation.menuItem);
 const MenuItemView = ({defaultInitialValue, onSubmit, submitButtonTitle, isLoading,}) => {
     const [wasSubmitted, setWasSubmitted] = useState(false);
     const [imageUrl, setImageUrl] = useState(defaultInitialValue.imageUrl);
-    console.log('image url: ', imageUrl)
+
     const CATEGORY_ID_MEASUREMENTS = useMemo(() => {
             const mapper = {};
             CATEGORY_MAPPER_AS_ARRAY.map(({id, measurement}) => mapper[id] = measurement);
@@ -67,7 +67,6 @@ const MenuItemView = ({defaultInitialValue, onSubmit, submitButtonTitle, isLoadi
                 validationSchema={EditMenuItemSchema}
                 onSubmit={values => {
                     setWasSubmitted(true);
-                    console.log('# onSubmit( ', {...values, imageUrl})
                     onSubmit({...values, imageUrl})
                 }}
             >

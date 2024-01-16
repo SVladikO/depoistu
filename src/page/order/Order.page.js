@@ -24,7 +24,6 @@ import {BE_API, fetchData} from "../../utils/fetch";
 import {errorHandler} from "../../utils/management";
 
 const multiplayWIthCheck = (price, amount) => {
-    console.log(!!price, price, amount, price * amount)
     return price ? price * amount : 0;
 }
 const OrderPage = () => {
@@ -46,7 +45,6 @@ const OrderPage = () => {
         fetchData(BE_API.ORDER_HISTORY.POST_CREATE(), {order_items})
             .then(res => {
                 alert('done')
-                console.log('post order: ', res)
             })
             .catch(errorHandler)
     }

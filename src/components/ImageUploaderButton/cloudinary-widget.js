@@ -34,7 +34,6 @@ function CloudinaryUploadWidget({ uwConfig, onImageUpload}) {
             uwConfig,
             (error, result) => {
                 if (!error && result && result.event === "success") {
-                    console.log("Image uploaded", {result}, {onImageUpload});
                     onImageUpload(result.info);
                 }
             }

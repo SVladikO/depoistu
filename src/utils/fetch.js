@@ -52,7 +52,7 @@ export const BE_API = {
     // PLACE_ORDER: () => `${BE_DOMAIN}/place-order`,
 };
 
-const promiseReject = errorMessage => new Promise((resolve, reject) => reject({body: {errorMessage}}));
+const promiseReject = message => new Promise((resolve, reject) => reject({body: {message}}));
 
 export const fetchDataRedux = async (url, body) => {
     // No internet no request
@@ -60,13 +60,20 @@ export const fetchDataRedux = async (url, body) => {
         return promiseReject(translate(TRANSLATION.NOTIFICATION.NO_INTERNET));
     }
 
-    return  await fetch(decodeURIComponent(url), getOptions(body));
+    const response =   await fetch(decodeURIComponent(url), getOptions(body));
+
+    if (!response.ok) {
+        const json = await response.json();
+        throw new Error(json.message)
+    }
+
+    return response;
 }
 
 export const fetchData = async (url, body) => {
     let response;
 
-    const promiseReject = errorMessage => new Promise((resolve, reject) => reject({body: {errorMessage}}));
+    const promiseReject = message => new Promise((resolve, reject) => reject({body: {message}}));
 
     // No internet no request
     if (!window.navigator.onLine) {
@@ -86,7 +93,7 @@ export const fetchData = async (url, body) => {
     const json = await response.json();
 
     if (!response.ok) {
-        throw new Error(json.errorMessage)
+        throw new Error(json.message)
     }
 
     return new Promise(resolve => resolve({body: json}))

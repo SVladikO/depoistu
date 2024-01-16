@@ -38,7 +38,7 @@ export function errorHandlerRedux(e) {
         updateLocalStorage()
         window.location.replace(window.location.origin + URL.PROJECT_UPDATED)
     } else {
-        notificationMessage = e.body.errorMessage || e.message
+        notificationMessage = e.message
     }
     publishNotificationEvent.error(notificationMessage);
 
@@ -50,7 +50,7 @@ export function errorHandler(e) {
         updateLocalStorage()
         window.location.replace(window.location.origin + URL.PROJECT_UPDATED)
     } else {
-        publishNotificationEvent.error(e.body.errorMessage)
+        publishNotificationEvent.error(e.body.message)
     }
 }
 

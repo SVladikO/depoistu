@@ -14,7 +14,6 @@ const NotificationView = () => {
     useEffect(() => {
         document.addEventListener(EVENT_TYPE.NOTIFICATION, e => {
             const {type, message} = e.detail;
-            console.log({key: getRandom(), type, message})
             setNotifications(prevState => [...prevState, {key: getRandom(), type, message}])
         })
     }, [])
