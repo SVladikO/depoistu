@@ -49,6 +49,10 @@ export const TRANSLATION = {
         ua: 'більше',
         en: 'see more'
     },
+    LOADING: {
+        ua: 'Loading...',
+        en: 'Завантаження...'
+    },
     GO_TO_A_SEARCH_PAGE: {
         ua: 'Перейти на сторінку пошуку',
         en: 'Go to a search page'
