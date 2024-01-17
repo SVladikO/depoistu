@@ -33,11 +33,9 @@ export const EditRow = styled.div`
         align-items: center;
         justify-content: center;
         gap: 13px;
-        padding: 8px 0;
+        padding: 10px 0;
     }
-
 `;
-
 
 export const EditLabel = styled.span`
   ${FONT.SIZE_16};

@@ -9,7 +9,7 @@ export const SizePriceWrapper = styled.div`
 `;
 
 export const Description = styled.div`
-    ${FONT.SIZE_16};
+    ${FONT.SIZE_18};
     ${FONT.WEIGHT_400};
     margin-top: 8px;
 `;
@@ -21,7 +21,7 @@ export const Table = styled.table`
 export const Details = styled.tr`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  ${FONT.SIZE_16};
+  ${FONT.SIZE_18};
   color: ${COLOR.ACCENT1};
 `
 
@@ -53,7 +53,7 @@ export const Amount = styled.div`
 
 export const DecrementButton = styled(SecondaryButton)`
   height: 24px;
-  ${FONT.SIZE_16};
+  ${FONT.SIZE_18};
   background-color: ${COLOR.ACCENT2};
   border: 2px solid ${COLOR.ACCENT5};
   color: ${COLOR.ACCENT5};
@@ -70,7 +70,7 @@ export const DecrementButton = styled(SecondaryButton)`
 
 export const IncrementButton = styled(SecondaryButton)`
     height: 24px;
-    ${FONT.SIZE_16};
+    ${FONT.SIZE_18};
 
   &::before {
     content: '+'
