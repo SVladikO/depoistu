@@ -15,7 +15,7 @@ import {
 import {ReactComponent as EmptyBasketIcon} from "assets/icons/empty_basket.svg";
 import {ReactComponent as RemoveIcon} from "assets/icons/remove_icon.svg";
 
-import {ROUTER} from 'utils/config'
+import {ROUTER, URL} from 'utils/config'
 import {useLocalStorage, useScrollUp} from "utils/hook";
 import {translate, TRANSLATION} from "utils/translation";
 import {LOCAL_STORAGE_KEY} from "utils/localStorage";
@@ -29,6 +29,7 @@ const multiplayWIthCheck = (price, amount) => {
 const OrderPage = () => {
     useScrollUp()
     const dispatch = useDispatch()
+    const customer = useSelector(state => state.customer.value);
     const {menuItems} = useSelector(state => state.searchDetails);
     const order_items = useMemo(() => menuItems.filter(item => item.amount_1 > 0 || item.amount_2 > 0 || item.amount_3 > 0), [menuItems])
     const [isOpenMessage, setIsOpenMessage] = useLocalStorage(LOCAL_STORAGE_KEY.IS_ORDER_MESSAGE_VISIBLE, true)
@@ -76,15 +77,22 @@ const OrderPage = () => {
                     <div> {translate(TRANSLATION.ORDERS.TOTAL)}:</div>
                     <div>₴ {allMenuItemsPrice}</div>
                 </AmountInfo>
-                <PrimaryButton isWide withPadding clickHandler={placeOrder}>
-                    place order
-                </PrimaryButton>
+                {customer ? (
+                    <PrimaryButton isWide withPadding clickHandler={placeOrder}>
+                        {translate(TRANSLATION.ORDERS.PLACE_ORDER)}
+                    </PrimaryButton>
+                ) : (
+                    <Link to={`${URL.SING_IN}?backUrl=${URL.ORDER}`}>
+                        <PrimaryButton isWide withPadding>
+                            {translate(TRANSLATION.ORDERS.SIGN_IN_TO_PLACE)}
+                        </PrimaryButton>
+                    </Link>
+                )}
                 <SecondaryButton isWide withPadding clickHandler={onCleanBasket}>
                     <RemoveIcon/>
                     {translate(TRANSLATION.ORDERS.CLEAR_BASKET)}
                 </SecondaryButton>
             </Content>
-
         </>
     );
 

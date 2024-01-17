@@ -78,6 +78,7 @@ export const URL = {
     ABOUT_PROJECT: '/about-project',
     EDIT_CUSTOMER: '/edit-customer',
     OUR_TEAM: '/our-team',
+    ORDER: '/order',
     ORDER_HISTORY: '/order-history',
     ORDER_HISTORY_DETAILS: '/order-history-details',
 
@@ -93,7 +94,7 @@ export const URL = {
 
 export const ROUTER = {
     ORDER: {
-        URL: '/order',
+        URL: URL.ORDER,
         TITLE: translate(TRANSLATION.ORDERS.ORDER_REVIEW),
         page: OrderPage,
         showBottomMenu: true
