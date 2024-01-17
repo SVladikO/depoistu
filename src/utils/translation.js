@@ -625,7 +625,6 @@ export const TRANSLATION = {
                         question: "What is the cost?",
                         answers: [
                             "It's completely free during 2024.",
-                            "After 300 uah/month.",
                         ]
                     },
                     {
@@ -675,7 +674,6 @@ export const TRANSLATION = {
                         question: "Яка вартість?",
                         answers: [
                             "Весь 2024 повністю БЕЗКОШТОВНО.",
-                            "Після 300 грн/міс.",
                         ]
                     },
                     {
