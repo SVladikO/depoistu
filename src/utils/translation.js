@@ -983,8 +983,8 @@ export const TRANSLATION = {
             ua: 'Поділіться QR-кодом замовлення з офіціантом'
         },
         TOTAL: {
-            en: 'Sub Total',
-            ua: 'До сплати'
+            en: 'Total',
+            ua: 'Всього'
         },
         ORDER_REVIEW: {
             en: 'Order review',

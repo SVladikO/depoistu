@@ -9,5 +9,6 @@ export const DatePrice = styled.div`
   justify-content: space-between;
   padding:  30px 17px;
   width: 100%;
-  ${FONT.WEIGHT_600};
+  ${FONT.SIZE_18};
+  ${FONT.WEIGHT_500};
 `;
