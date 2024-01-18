@@ -32,14 +32,14 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: start;
-  padding: 90px 0 0;
+  padding: 80px 0 0;
   min-height: 400px;
 `;
 
 const Element = (props) => {
-    useHideOnScroll('NavigationHeader', '-65px')
-
     const {route} = props;
+    //TODO: temporary desabled hide header on scroll
+    // useHideOnScroll('NavigationHeader', '-65px', route.disableHideHeaderOnScroll)
 
     return (
         <MobileWrapper className="mobile-wrapper">
