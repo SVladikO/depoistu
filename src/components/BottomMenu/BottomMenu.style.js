@@ -4,7 +4,7 @@ import {COLOR, FONT} from "utils/theme";
 export const Wrapper = styled.div`
     z-index: 2;
     bottom: -1px;
-    height: 48px;
+    height: 60px;
     background-color: ${COLOR.ACCENT4};
     display: flex;
     justify-content: space-around;
@@ -29,10 +29,11 @@ export const MenuItem = styled.div`
     width: 70px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     text-align: center;
     align-items: center;
     position: relative;
+    margin-top: 7px;
     color: ${p => p.selected ? COLOR.PRIMARY : COLOR.ACCENT1};
 
     & > *:first-child {
@@ -41,6 +42,10 @@ export const MenuItem = styled.div`
         display: block;
         margin-bottom: 2px;
         fill: ${p => p.selected ? COLOR.PRIMARY : COLOR.ACCENT1};
+    }
+  
+    span {
+      ${FONT.SIZE_14};
     }
 `;
 
@@ -71,6 +76,3 @@ export const OrderButton = styled.div`
     user-select: none; /* Standard syntax */
 `;
 
-export const Label = styled.div`
-  ${FONT.SIZE_12};
-`;

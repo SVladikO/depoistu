@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate} from 'react-router-dom';
 
-import {Wrapper, MenuItem, Label, OrderWrapper, OrderButton} from './BottomMenu.style';
+import {Wrapper, MenuItem, OrderWrapper, OrderButton} from './BottomMenu.style';
 
 import {ReactComponent as HomeIcon} from "assets/icons/home.svg";
 import {ReactComponent as MenuIcon} from "assets/icons/menu.svg";
@@ -27,7 +27,7 @@ const BottomMenu = () => {
                 onClick={() => navigate(ROUTER.SEARCH.URL)}
             >
                 <HomeIcon/>
-                <Label>{translate(TRANSLATION.BOTTOM_MENU.MAIN)}</Label>
+                <span>{translate(TRANSLATION.BOTTOM_MENU.MAIN)}</span>
             </MenuItem>
 
             <MenuItem
@@ -37,7 +37,7 @@ const BottomMenu = () => {
                 }}
             >
                 <MenuIcon/>
-                <Label>{translate(TRANSLATION.BOTTOM_MENU.MENU)}</Label>
+                <span>{translate(TRANSLATION.BOTTOM_MENU.MENU)}</span>
             </MenuItem>
 
             <OrderWrapper>
@@ -50,7 +50,7 @@ const BottomMenu = () => {
                 onClick={() => navigate(ROUTER.FAVORITE.URL)}
             >
                 <BookMarkIcon/>
-                <Label>{translate(TRANSLATION.BOTTOM_MENU.FAVORITE)}</Label>
+                <span>{translate(TRANSLATION.BOTTOM_MENU.FAVORITE)}</span>
             </MenuItem>
 
             <MenuItem
@@ -58,7 +58,7 @@ const BottomMenu = () => {
                 onClick={() => navigate(ROUTER.SETTING.URL)}
             >
                 <SettingIcon/>
-                <Label>{translate(TRANSLATION.BOTTOM_MENU.SETTINGS)}</Label>
+                <span>{translate(TRANSLATION.BOTTOM_MENU.SETTINGS)}</span>
             </MenuItem>
         </Wrapper>
     );

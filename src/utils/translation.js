@@ -1018,20 +1018,20 @@ export const TRANSLATION = {
 
     BOTTOM_MENU: {
         MAIN: {
-            ua: "ГОЛОВНА",
-            en: "MAIN"
+            ua: "Головна",
+            en: "Main"
         },
         MENU: {
-            ua: "МЕНЮ",
-            en: "MENU"
+            ua: "Меню",
+            en: "Menu"
         },
         FAVORITE: {
-            ua: "УЛЮБЛЕНІ",
-            en: "FAVORITE"
+            ua: "Улюблені",
+            en: "Favorite"
         },
         SETTINGS: {
-            ua: "СИСТЕМНІ",
-            en: "SETTINGS"
+            ua: "Системні",
+            en: "Settings"
         },
     },
     TOP_CATEGORIES: {
