@@ -975,8 +975,8 @@ export const TRANSLATION = {
     },
     ORDERS: {
         ORDER_PLACED: {
-            en: 'Order placed successfully.',
-            ua: 'Замовлення виконано успішно.'
+            en: 'Order saved.',
+            ua: 'Замовлення збережено.'
         },
         SHARE_ORDER_INFO: {
             en: 'Share order QR-code with a waiter.',
