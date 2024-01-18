@@ -20,14 +20,14 @@ export const Table = styled.table`
 
 export const Details = styled.tr`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.4fr 1fr;
   ${FONT.SIZE_18};
   color: ${COLOR.ACCENT1};
 `
 
 export const SizePriceInfoTd = styled.td`
   display: grid;
-  grid-template-columns: 1fr 25px 1fr;
+  grid-template-columns: 70px 10px 1fr;
   width: 180px;
   
   span {
