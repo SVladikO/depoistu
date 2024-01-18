@@ -4,9 +4,11 @@ import {COLOR} from "utils/theme";
 export const Wrapper = styled.div`
     position: relative;
     overflow: hidden;    
+    height: 280px;
     
     & > img {
         min-height: 50px;
+        height: 280px;
     }
 `;
 

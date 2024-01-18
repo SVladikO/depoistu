@@ -51,7 +51,7 @@ const OrderHistoryDetailsPage = () => {
             {qrCodeGenerationError}
             <DatePrice>
                 <span>20 April, 2020</span>
-                <span>{translate(TRANSLATION.ORDERS.TOTAL)}: ₴{allMenuItemsPrice}</span>
+                <span>{translate(TRANSLATION.ORDERS.TOTAL)}: ₴ {allMenuItemsPrice}</span>
             </DatePrice>
             {orderItems?.map(oi => <MenuItem key={oi.name} item={oi} isOrderHistoryDetailsPage />)}
         </Wrapper>

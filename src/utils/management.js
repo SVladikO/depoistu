@@ -28,7 +28,6 @@ export const checkUpdates = () => {
     }
 }
 
-
 export function errorHandlerRedux(e) {
     let notificationMessage;
 
@@ -41,9 +40,7 @@ export function errorHandlerRedux(e) {
         notificationMessage = e.message
     }
     publishNotificationEvent.error(notificationMessage);
-
 }
-
 
 export function errorHandler(e) {
     if (e.status === 408) {
