@@ -1,12 +1,10 @@
-import {useMemo} from "react";
+import {useMemo, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 import {Wrapper, AmountInfo, Content} from './Order.page.style';
 import {
     MenuItem,
-    NOTIFICATION_STATUS,
-    NotificationFactory,
     NotificationTDB,
     PrimaryButton,
     SecondaryButton
@@ -16,12 +14,12 @@ import {ReactComponent as EmptyBasketIcon} from "assets/icons/empty_basket.svg";
 import {ReactComponent as RemoveIcon} from "assets/icons/remove_icon.svg";
 
 import {ROUTER, URL} from 'utils/config'
-import {useLocalStorage, useScrollUp} from "utils/hook";
+import {useScrollUp} from "utils/hook";
 import {translate, TRANSLATION} from "utils/translation";
-import {LOCAL_STORAGE_KEY} from "utils/localStorage";
 import {resetOrder} from "features/searchDetails/searchDetailsSlice";
 import {BE_API, fetchData} from "../../utils/fetch";
 import {errorHandler} from "../../utils/management";
+import {publishNotificationEvent} from "../../utils/event";
 
 const multiplayWIthCheck = (price, amount) => {
     return price ? price * amount : 0;
@@ -29,10 +27,11 @@ const multiplayWIthCheck = (price, amount) => {
 const OrderPage = () => {
     useScrollUp()
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const customer = useSelector(state => state.customer.value);
     const {menuItems} = useSelector(state => state.searchDetails);
     const order_items = useMemo(() => menuItems.filter(item => item.amount_1 > 0 || item.amount_2 > 0 || item.amount_3 > 0), [menuItems])
-    const [isOpenMessage, setIsOpenMessage] = useLocalStorage(LOCAL_STORAGE_KEY.IS_ORDER_MESSAGE_VISIBLE, true)
+    const [isPlaceOrderLoading, setIsPlaceOrderLoading] = useState(false)
     const allMenuItemsPrice = order_items.length
         ? order_items.reduce((acc, cur) =>
                 acc +
@@ -43,28 +42,24 @@ const OrderPage = () => {
         : 0
 
     const placeOrder = () => {
+        setIsPlaceOrderLoading(true)
         fetchData(BE_API.ORDER_HISTORY.POST_CREATE(), {order_items})
-            .then(res => {
-                alert('done')
+            .then((res) => {
+                publishNotificationEvent.success(translate(TRANSLATION.ORDERS.ORDER_PLACED))
+                publishNotificationEvent.info(translate(TRANSLATION.ORDERS.SHARE_ORDER_INFO))
+                navigate(`${URL.ORDER_HISTORY_DETAILS}/${res.body.orderHistoryId}`)
+                dispatch(resetOrder())
             })
             .catch(errorHandler)
+            .finally(() => setIsPlaceOrderLoading(false))
     }
 
     const onCleanBasket = () => {
         dispatch(resetOrder())
     }
 
-    const onCloseMessage = () => {
-        setIsOpenMessage(false)
-    }
-
     const OrderItems = () => (
         <>
-            {isOpenMessage &&
-                <NotificationFactory withMargin type={NOTIFICATION_STATUS.INFO} onClose={onCloseMessage}>
-                    {translate(TRANSLATION.ORDERS.THIS_PAGE_IS_CREATED)}
-                </NotificationFactory>
-            }
             <Content>
                 {order_items.map((mi, index) => (
                     <MenuItem
@@ -78,7 +73,7 @@ const OrderPage = () => {
                     <div>₴ {allMenuItemsPrice}</div>
                 </AmountInfo>
                 {customer ? (
-                    <PrimaryButton isWide withPadding clickHandler={placeOrder}>
+                    <PrimaryButton isLoading={isPlaceOrderLoading} isWide withPadding clickHandler={placeOrder}>
                         {translate(TRANSLATION.ORDERS.PLACE_ORDER)}
                     </PrimaryButton>
                 ) : (

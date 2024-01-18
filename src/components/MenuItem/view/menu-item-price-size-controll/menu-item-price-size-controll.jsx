@@ -34,7 +34,8 @@ const MenuItemPriceSizeControl = ({
     }
 
     const renderRow = (size, price, amount, amountKey) => {
-        if ((!size && !price) || (isOrderPage && amount === 0)) {
+
+        if ((!size && !price) || (isOrderPage && amount === 0) || (isOrderHistoryDetailsPage && amount === 0)) {
             return;
         }
 
@@ -49,7 +50,10 @@ const MenuItemPriceSizeControl = ({
                 <ControlButtonTd isShow={!isEditMenuItemPage}>
                     {amount > 0 && !isOrderHistoryDetailsPage &&
                         <DecrementButton clickHandler={onDecrementAmount(amountKey)}/>}
-                    {amount > 0 && <Amount>{amount}</Amount>}
+                    {amount > 0 && <Amount isWide={isOrderHistoryDetailsPage}>
+                        {isOrderHistoryDetailsPage && 'x '}
+                        {amount}
+                    </Amount>}
                     {!isOrderHistoryDetailsPage && <IncrementButton clickHandler={onIncrementAmount(amountKey)}/>}
                 </ControlButtonTd>
             </Details>

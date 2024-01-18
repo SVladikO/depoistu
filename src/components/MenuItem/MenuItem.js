@@ -16,9 +16,7 @@ const MenuItem = (props) => {
 
     const {
         item,
-        isSelected,
         isNewItemFlag,
-        isOrderPage = false,
         isEditMenuItemPage = false,
         isOrderHistoryDetailsPage = false,
         onSelectMenuItem = () => {
@@ -42,7 +40,7 @@ const MenuItem = (props) => {
             <ContentWrapper>
                 <TitleIcon {...props} />
                 <MenuItemDescription {...props}/>
-                <MenuItemPriceSizeControl {...props} isSelected={isSelected} />
+                <MenuItemPriceSizeControl {...props} />
             </ContentWrapper>
             {isEditMenuItemPage && (
                 <MenuItemBottomSettings {...props} />
