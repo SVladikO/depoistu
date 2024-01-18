@@ -974,9 +974,13 @@ export const TRANSLATION = {
         }
     },
     ORDERS: {
-        THIS_PAGE_IS_CREATED: {
-            en: 'Share order info with a waiter.',
-            ua: 'Передайте замовлення офіціанту.'
+        ORDER_PLACED: {
+            en: 'Order placed successfully.',
+            ua: 'Замовлення виконано успішно.'
+        },
+        SHARE_ORDER_INFO: {
+            en: 'Share order QR-code with a waiter.',
+            ua: 'Поділіться QR-кодом замовлення з офіціантом'
         },
         TOTAL: {
             en: 'Sub Total',
