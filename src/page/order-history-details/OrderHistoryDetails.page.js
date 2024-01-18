@@ -5,11 +5,12 @@ import {DatePrice, Wrapper} from './OrderHistoryDetails.page.style';
 
 import {MenuItem} from "components";
 
-import {BE_API, fetchData} from "utils/fetch";
-import {errorHandler} from "utils/management";
-import {translate, TRANSLATION} from "utils/translation";
 import {ImageQR} from "../customer-companies/CustomerCompanies.style";
 import {URL} from "utils/config";
+import {useScrollUp} from "utils/hook";
+import {errorHandler} from "utils/management";
+import {BE_API, fetchData} from "utils/fetch";
+import {translate, TRANSLATION} from "utils/translation";
 
 const multiplayWIthCheck = (price, amount) => {
     return price ? price * amount : 0;
@@ -23,6 +24,7 @@ const calculatePrice = (items) => items?.length ?
         multiplayWIthCheck(+cur.price_3, cur.amount_3), 0): 0
 
 const OrderHistoryDetailsPage = () => {
+    useScrollUp()
     const {orderHistoryId} = useParams();
     const [orderItems, setOrderItems] = useState();
     const [src, setSrc] = useState('');
