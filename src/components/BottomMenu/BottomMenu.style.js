@@ -45,7 +45,7 @@ export const MenuItem = styled.div`
     }
   
     span {
-      ${FONT.SIZE_14};
+      ${FONT.SIZE_16};
     }
 `;
 
