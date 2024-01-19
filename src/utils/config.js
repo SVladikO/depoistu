@@ -132,11 +132,7 @@ export const ROUTER = {
         URL: URL.SEARCH,
         TITLE: translate(TRANSLATION.PAGE.SEARCH.TOP_TITLE),
         page: SearchPage,
-        showBottomMenu: true
-    },
-    PROJECT_UPDATED: {
-        URL: URL.PROJECT_UPDATED,
-        page: ProjectUpdatedPagePage,
+        showBottomMenu: true,
     },
     SEARCH_DETAILS: {
         URL: URL.SEARCH_DETAILS,
@@ -144,7 +140,12 @@ export const ROUTER = {
         TITLE: translate(TRANSLATION.PAGE.COMPANY_DETAILS.TOP_TITLE),
         page: SearchDetailsPage,
         showBottomMenu: true,
+        disablePageHeaderBottomMargin: true,
         backUrl: URL.SEARCH
+    },
+    PROJECT_UPDATED: {
+        URL: URL.PROJECT_UPDATED,
+        page: ProjectUpdatedPagePage,
     },
     SETTING: {
         URL: URL.SETTING,
