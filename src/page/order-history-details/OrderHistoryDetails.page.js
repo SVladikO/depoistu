@@ -39,7 +39,7 @@ const OrderHistoryDetailsPage = () => {
             .finally(() => {})
     }, []);
 
-    const editMenuUrl = `${window.location.origin}${URL.SEARCH_DETAILS}/${orderHistoryId}`;
+    const editMenuUrl = `${window.location.origin}${URL.ORDER_HISTORY_DETAILS}/${orderHistoryId}`;
 
     QRCode.toDataURL(editMenuUrl)
         .then(url => setSrc(url))
@@ -50,7 +50,8 @@ const OrderHistoryDetailsPage = () => {
             {src && <ImageQR src={src} />}
             {qrCodeGenerationError}
             <DatePrice>
-                <span>20 April, 2020</span>
+                {/*<span>20 April, 2020</span>*/}
+                <span></span>
                 <span>{translate(TRANSLATION.ORDERS.TOTAL)}: ₴ {allMenuItemsPrice}</span>
             </DatePrice>
             {orderItems?.map(oi => <MenuItem key={oi.name} item={oi} isOrderHistoryDetailsPage />)}
