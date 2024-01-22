@@ -7,11 +7,11 @@ export const FirstRow = styled.div`
     & > svg {
         cursor: pointer;
         position: absolute;
-        top: -4px;
+        top: -8px;
         right: 0;
         width: 40px;
         height: 40px;
-        padding: 0 0 10px 20px;
+        padding: 10px;
         fill: ${COLOR.ACCENT1};
     }
 `;

@@ -70,7 +70,7 @@ const Company = ({company, withMoreInfo, children, clickHandler, isShowAllImages
     }
 
     const slides =
-        !company.photos?.length
+        !company.is_verified || !company.photos?.length
             ? <LazyLoadImage src={ImageUrlFormatter.formatForCompany(defaultCompanyImg)} width={'100%'}/>
             : (
                 <SwiperWrapper>

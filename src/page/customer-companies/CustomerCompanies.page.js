@@ -22,7 +22,7 @@ import {ORDER_PRINT_URL, ROUTER, URL} from "utils/config";
 import {useLocalStorage, useRedirectToSettingPage, useScrollUp} from "utils/hook";
 
 const CustomerCompaniesPage = () => {
-    useScrollUp();
+    const scrollUp = useScrollUp();
     useRedirectToSettingPage();
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -76,6 +76,7 @@ const CustomerCompaniesPage = () => {
                                 isWide
                                 onClick={
                                     () => {
+                                        scrollUp();
                                         dispatch(resetAllEditMenu())
                                         dispatch(setCompanyIdToEditMenu(company.id))
                                         navigate(ROUTER.EDIT_MENU.URL)

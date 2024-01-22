@@ -32,7 +32,7 @@ export const editMenuSlice = createSliceCustom({
         },
         resetAllEditMenu: (state) => {
             state.company_id = undefined;
-            state.editMenuItems = [];
+            state.editMenuItems = undefined;
             state.editMenuItemCandidate = undefined;
             state.isLoadingGetEditMenuItems = false;
             state.isLoadingAddMenuItem = false;

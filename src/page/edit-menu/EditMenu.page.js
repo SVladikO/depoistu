@@ -25,7 +25,7 @@ const EditMenuPage = () => {
     const currentCompany = customerCompanies?.find((c => c.id === +company_id));
 
     useEffect(() => {
-        if (editMenuItems?.length) {
+        if (editMenuItems) {
             return;
         }
 
