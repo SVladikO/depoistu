@@ -10,7 +10,7 @@ import {URL} from 'utils/config';
 //duplication
 const isSelected = url => window.location.pathname === url;
 
-const TitleIcon = ({item}) => {
+const TitleIcon = ({item, isCompanyVerified}) => {
     const dispatch = useDispatch()
 
     const onClickPictureIcon = () => {
@@ -20,7 +20,7 @@ const TitleIcon = ({item}) => {
 
         dispatch(makeMenuItemImageVisible({id: item.id}))
     }
-    const isShowPictureIcon = !item.isImageVisible && item.imageUrl;
+    const isShowPictureIcon = !item.isImageVisible && item.imageUrl && isCompanyVerified;
 
     return (
         <FirstRow>

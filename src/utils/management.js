@@ -47,7 +47,8 @@ export function errorHandler(e) {
         updateLocalStorage()
         window.location.replace(window.location.origin + URL.PROJECT_UPDATED)
     } else {
-        publishNotificationEvent.error(e.body.message)
+        console.log(1111111, e);
+        publishNotificationEvent.error(e.message)
     }
 }
 

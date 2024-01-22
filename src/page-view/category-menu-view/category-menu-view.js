@@ -37,7 +37,7 @@ let indexCalculator = 0;
 let categoryIdIndexMapper = {};
 
 const CategoryMenuView = (props) => {
-    const {menuItems, isEditMenuItemPage} = props
+    const {menuItems, isEditMenuItemPage, isCompanyVerified} = props
     const dispatch = useDispatch()
     const navigate = useNavigate();
     //duplication
@@ -152,6 +152,7 @@ const CategoryMenuView = (props) => {
                 key={`menu_item_${mi.id}`}
                 item={mi}
                 onEditClick={navigateToEditMenuItemPage(mi)}
+                isCompanyVerified={isCompanyVerified}
                 isEditMenuItemPage={isEditMenuItemPage}
                 isSelected={mi.id === selectedMenuItemId}
                 onSelectMenuItem={() => setSelectedMenuItemId(mi.id)}

@@ -28,29 +28,31 @@ const CustomerCompaniesPage = () => {
     const navigate = useNavigate();
     const customer = useSelector(state => state.customer.value);
     const [isLoading, setIsLoading] = useState();
-    const [wasWarningShown, setWasWarningShown] = useLocalStorage(LOCAL_STORAGE_KEY.WAS_COMPANY_CREATION_WARNING_SHOW, false)
+    const [wasWarningsShown, setWasWarningsShown] = useLocalStorage(LOCAL_STORAGE_KEY.WAS_COMPANY_CREATION_WARNINGS_SHOW, false)
     const [companyIdForQRCode, setCompanyIdForQRCode] = useState();
-    const [customerCompanies, setCustomerCompanies] = useLocalStorage(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
+    const [customerCompanies, setCustomerCompanies] = useLocalStorage(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES, undefined);
 
     useEffect(() => {
-        if (customerCompanies || isLoading === false || isLoading ) {
+        if (customerCompanies || isLoading === false || isLoading) {
             return;
         }
 
         setIsLoading(true);
 
         fetchData(BE_API.COMPANY.GET_BY_CUSTOMER_ID(customer?.id))
-            .then(res => setCustomerCompanies(res.body))
+            .then(res => setCustomerCompanies(res.body.map(company => ({...company, is_verified: true}))))
             .catch(errorHandler)
             .finally(() => setIsLoading(false))
-    });
+    }, []);
 
     useEffect(() => {
-        if (!wasWarningShown) {
-            publishNotificationEvent.warning(translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.WARNING))
-            setWasWarningShown(true);
+        if (wasWarningsShown) {
+            return;
         }
-    },[wasWarningShown]);
+        publishNotificationEvent.warning(translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.WARNING))
+        publishNotificationEvent.info(translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.VERIFICATION_INFO))
+        setWasWarningsShown(true);
+    }, []);
 
     if (isLoading) {
         return <NotificationLoading/>
@@ -89,7 +91,7 @@ const CustomerCompaniesPage = () => {
                     </Company>
             )
             }
-            <RowSplitter height={"20px"} />
+            <RowSplitter height={"20px"}/>
             {customer && customer.canCreateCompanies > !!customerCompanies?.length &&
                 <Link to={URL.ADD_COMPANY}>
                     <PrimaryButton isWide withPadding>

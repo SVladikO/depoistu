@@ -58,6 +58,7 @@ const EditMenuPage = () => {
                 <CategoryMenuView
                     showMenuItemAmount
                     menuItems={editMenuItems}
+                    isCompanyVerified={true}
                     isEditMenuItemPage
                 />
             )
