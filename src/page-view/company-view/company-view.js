@@ -73,7 +73,7 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
 
     return (
         <div>
-            {photos.length <= 5 && <ImageUploaderButton onImageUpload={onImageUpload}/>}
+            {photos.length < 5 && <ImageUploaderButton onImageUpload={onImageUpload}/>}
             <RowSplitter height="22px"/>
             <Formik
                 initialValues={initialValues}
