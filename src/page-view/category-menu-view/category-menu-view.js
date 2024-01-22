@@ -12,7 +12,7 @@ import {
     BgWrapper,
     SubCategoryWrapper,
     CategoryTitle
-} from "./CategoryMenuView.style";
+} from "./category-menu-view.style";
 
 import {SubCategoryItem, MenuItem, RowSplitter, HorizontalSwiper} from "components";
 import {addEditMenuItemCandidate} from 'features/editMenu/editMenuSlice';

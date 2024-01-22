@@ -4,7 +4,7 @@ import {useNavigate} from "react-router-dom";
 
 import {ContentContainer, NotificationLoading, PrimaryButton, RowSplitter} from "components";
 
-import CategoryMenuView from "page-view/category-menu-view/CategoryMenuView";
+import CategoryMenuView from "../../page-view/category-menu-view/category-menu-view";
 
 import {fetchGetMenuItemsByCompanyId} from "features/editMenu/thunks";
 

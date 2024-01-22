@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 
-import {Wrapper, CloseAll} from './NotificationView.style';
+import {Wrapper, CloseAll} from './notification-view.style';
 
 import {NotificationFactory, FixedWrapper} from "components";
 

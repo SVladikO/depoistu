@@ -40,7 +40,7 @@ import {TRANSLATION as TR, translate} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 
 import packageInfo from '../../../package.json';
-import SingInSingUpView from "../../page-view/singInSingUp/singInSingUp.view";
+import SingInSingUpView from "../../page-view/sing-in-sing-up-view/sing-in-sing-up-view";
 
 const SettingPage = () => {
     useScrollUp();

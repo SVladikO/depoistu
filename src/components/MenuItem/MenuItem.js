@@ -4,7 +4,7 @@ import {
     NewFlag
 } from "./MenuItem.style";
 
-import {CATEGORY_ROW_HEIGHT} from "page-view/category-menu-view/CategoryMenuView";
+import {CATEGORY_ROW_HEIGHT} from "../../page-view/category-menu-view/category-menu-view";
 
 import TitleIcon from "./view/title-icon/title-icon";
 import MenuItemDescription from "./view/menu-item-description/menu-item-description";

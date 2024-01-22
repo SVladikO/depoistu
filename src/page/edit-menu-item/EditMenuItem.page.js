@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 
 import {RowSplitter, SecondaryButton} from "components";
-import MenuItemView from "page-view/menu-item/menu-item-view";
+import MenuItemView from "../../page-view/menu-item-view/menu-item-view";
 import {ReactComponent as RemoveIcon} from "assets/icons/remove_icon.svg";
 
 import {fetchPutMenuItem, fetchDeleteMenuItem} from "features/editMenu/thunks";

@@ -6,7 +6,7 @@ import {Wrapper} from "./SearchDetails.style";
 
 import {Company, NotificationLoading, PrimaryButton, NotificationTDB, RowSplitter} from "components";
 
-import CategoryMenuView from 'page-view/category-menu-view/CategoryMenuView'
+import CategoryMenuView from '../../page-view/category-menu-view/category-menu-view'
 
 import {ROUTER} from "utils/config";
 import {useScrollUp} from "utils/hook";

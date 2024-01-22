@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 
 import {NotificationTDB, PrimaryButton, RowSplitter} from "../../components";
-import {EditBar} from "./singInSingUp.view.style";
+import {EditBar} from "./sing-in-sing-up-view.style";
 
 import {URL} from "../../utils/config";
 import {translate, TRANSLATION as TR} from "../../utils/translation";
