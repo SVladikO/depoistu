@@ -33,7 +33,6 @@ const ForgetPasswordPage = () => {
             }}
             validationSchema={CheckEmailSchema}
             onSubmit={value => {
-                console.log(value);
                 setWasSubmitted(true);
             }}
         >

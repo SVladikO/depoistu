@@ -14,15 +14,11 @@ export const stopLoadingWithDelay = callbacks => {
     let intervalId;
 
     setTimeout(() => {
-        console.log('timeout')
-
         if (isLoaded) {
             callbacks.forEach(cb => cb())
         } else {
             intervalId = setInterval(() => {
-                console.log('interval')
                 if (isLoaded) {
-                    console.log('DONE')
                     callbacks.forEach(cb => cb())
                     clearInterval(intervalId)
                 }

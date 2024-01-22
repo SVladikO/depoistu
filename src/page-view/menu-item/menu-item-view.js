@@ -24,7 +24,7 @@ const EditMenuItemSchema = Yup.object().shape(validation.menuItem);
 const MenuItemView = ({defaultInitialValue, onSubmit, submitButtonTitle, isLoading,}) => {
     const [wasSubmitted, setWasSubmitted] = useState(false);
     const [imageUrl, setImageUrl] = useState(defaultInitialValue.imageUrl);
-    console.log('image url: ', imageUrl)
+
     const CATEGORY_ID_MEASUREMENTS = useMemo(() => {
             const mapper = {};
             CATEGORY_MAPPER_AS_ARRAY.map(({id, measurement}) => mapper[id] = measurement);
@@ -42,7 +42,7 @@ const MenuItemView = ({defaultInitialValue, onSubmit, submitButtonTitle, isLoadi
         })), [])
 
     const onImageUpload = info => setImageUrl(info.secure_url);
-    console.log(1111, defaultInitialValue);
+
     return (
         <div>
             {imageUrl
@@ -67,7 +67,6 @@ const MenuItemView = ({defaultInitialValue, onSubmit, submitButtonTitle, isLoadi
                 validationSchema={EditMenuItemSchema}
                 onSubmit={values => {
                     setWasSubmitted(true);
-                    console.log('# onSubmit( ', {...values, imageUrl})
                     onSubmit({...values, imageUrl})
                 }}
             >
@@ -110,7 +109,6 @@ const MenuItemView = ({defaultInitialValue, onSubmit, submitButtonTitle, isLoadi
                                 />
                                 <Input
                                     name="size_1"
-                                    type="number"
                                     value={values.size_1}
                                     labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.MEAL_SIZE) + ` 1 ${getMeasurements(values.category_id)}`}
                                     onBlur={handleBlur}
@@ -137,7 +135,6 @@ const MenuItemView = ({defaultInitialValue, onSubmit, submitButtonTitle, isLoadi
                                 />
                                 <Input
                                     name="size_2"
-                                    type="number"
                                     value={values.size_2}
                                     labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.MEAL_SIZE) + ` 2 ${getMeasurements(values.category_id)}`}
                                     onBlur={handleBlur}
@@ -164,7 +161,6 @@ const MenuItemView = ({defaultInitialValue, onSubmit, submitButtonTitle, isLoadi
                                 />
                                 <Input
                                     name="size_3"
-                                    type="number"
                                     value={values.size_3}
                                     labelName={translate(TRANSLATION.INPUT_LABEL.MENU_ITEM.MEAL_SIZE) + ` 3 ${getMeasurements(values.category_id)}`}
                                     onBlur={handleBlur}

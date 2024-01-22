@@ -9,7 +9,6 @@ import {DEV_ROUTER, ROUTERS} from "./config";
 import AdminPage from "page/development/Admin.page";
 
 import {COLOR, DEVICE_WIDTH} from './theme';
-import {useHideOnScroll} from "./hook";
 
 import {BottomMenu, NavigationHeader} from "components";
 import ScrollUpButton from "../components/ScrollUpButton/ScrollUpButton";
@@ -29,17 +28,17 @@ export const MobileWrapper = styled.div`
 `;
 
 export const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  padding: 90px 0 0;
-  min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    min-height: 400px;
+    padding: ${p => p.disablePageHeaderBottomMargin ? 54 : 80}px 0 0;
 `;
 
 const Element = (props) => {
-    useHideOnScroll('NavigationHeader', '-65px')
-
     const {route} = props;
+    //TODO: temporary desabled hide header on scroll
+    // useHideOnScroll('NavigationHeader', '-65px', route.disableHideHeaderOnScroll)
 
     return (
         <MobileWrapper className="mobile-wrapper">
@@ -50,7 +49,7 @@ const Element = (props) => {
                     </FixedWrapper>
                 )
                 }
-                <Content className="content-centralazer">
+                <Content className="content-centralazer" disablePageHeaderBottomMargin={route.disablePageHeaderBottomMargin}>
                     <route.page/>
                 </Content>
                 {route.showBottomMenu && (

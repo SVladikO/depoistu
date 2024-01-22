@@ -34,7 +34,8 @@ const MenuItemPriceSizeControl = ({
     }
 
     const renderRow = (size, price, amount, amountKey) => {
-        if ((!size && !price) || (isOrderPage && amount === 0)) {
+
+        if ((!size && !price) || (isOrderPage && amount === 0) || (isOrderHistoryDetailsPage && amount === 0)) {
             return;
         }
 
@@ -49,7 +50,10 @@ const MenuItemPriceSizeControl = ({
                 <ControlButtonTd isShow={!isEditMenuItemPage}>
                     {amount > 0 && !isOrderHistoryDetailsPage &&
                         <DecrementButton clickHandler={onDecrementAmount(amountKey)}/>}
-                    {amount > 0 && <Amount>{amount}</Amount>}
+                    {amount > 0 && <Amount isWide={isOrderHistoryDetailsPage}>
+                        {isOrderHistoryDetailsPage && 'x '}
+                        {amount}
+                    </Amount>}
                     {!isOrderHistoryDetailsPage && <IncrementButton clickHandler={onIncrementAmount(amountKey)}/>}
                 </ControlButtonTd>
             </Details>
@@ -62,9 +66,9 @@ const MenuItemPriceSizeControl = ({
         <SizePriceWrapper>
             <Table>
                 <tbody>
-                {renderRow(+size_1, +price_1, +amount_1, 'amount_1')}
-                {renderRow(+size_2, +price_2, +amount_2, 'amount_2')}
-                {renderRow(+size_3, +price_3, +amount_3, 'amount_3')}
+                {renderRow(size_1, +price_1, +amount_1, 'amount_1')}
+                {renderRow(size_2, +price_2, +amount_2, 'amount_2')}
+                {renderRow(size_3, +price_3, +amount_3, 'amount_3')}
                 </tbody>
             </Table>
         </SizePriceWrapper>

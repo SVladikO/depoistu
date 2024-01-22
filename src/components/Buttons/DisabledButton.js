@@ -1,10 +1,9 @@
 import styled from "styled-components";
 import {button} from "./button";
-import {COLOR} from "utils/theme";
+import {COLOR, FONT} from "utils/theme";
 
 export const DisabledButton = styled(button)`
-  font-size: 16px;
-  font-weight: 400;
+  ${FONT.SIZE_20};
   height: 40px;
   color: ${COLOR.ACCENT1};
   background-color: ${COLOR.ACCENT4};
@@ -13,8 +12,8 @@ export const DisabledButton = styled(button)`
   flex: 1;
   svg {
     color: ${COLOR.ACCENT1};
-    height: 17px;
-    width: 17px;
+    min-height: 17px;
+    min-width: 17px;
     display: block;
     margin: ${p => p.isOnlyIcon ? 0 : '0 12px 0 0'};
   }

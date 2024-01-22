@@ -1,5 +1,5 @@
 import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
-import {DEFAULT_LANGUAGE, getCurrentLanguage} from "./translation";
+import {DEFAULT_LANGUAGE, getCurrentLanguage, translate, TRANSLATION} from "./translation";
 import packageJson from "../../package.json";
 import {publishNotificationEvent} from "./event";
 import {URL} from "./config";
@@ -28,12 +28,26 @@ export const checkUpdates = () => {
     }
 }
 
+export function errorHandlerRedux(e) {
+    let notificationMessage;
+
+    if (e.message === 'Failed to fetch') {
+        notificationMessage = translate(TRANSLATION.NOTIFICATION.UN_ABLE_MAKE_REQUEST);
+    } else if (e.status === 408) {
+        updateLocalStorage()
+        window.location.replace(window.location.origin + URL.PROJECT_UPDATED)
+    } else {
+        notificationMessage = e.message
+    }
+    publishNotificationEvent.error(notificationMessage);
+}
+
 export function errorHandler(e) {
     if (e.status === 408) {
         updateLocalStorage()
         window.location.replace(window.location.origin + URL.PROJECT_UPDATED)
     } else {
-        publishNotificationEvent.error(e.body.errorMessage)
+        publishNotificationEvent.error(e.body.message)
     }
 }
 

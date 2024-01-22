@@ -27,8 +27,4 @@ export const AmountInfo = styled.div`
   justify-content: space-between;
   text-align: center;
   margin: 0 17px 19px;
-  
-  div:last-child {
-    color: ${COLOR.PRIMARY};
-  }
 `;

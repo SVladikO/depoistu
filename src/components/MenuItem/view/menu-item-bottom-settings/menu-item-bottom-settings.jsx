@@ -2,17 +2,16 @@ import {useDispatch} from "react-redux";
 
 import {EditLabel, EditRow, EditWrapper} from "./menu-item-bottom-settings.style";
 import {ReactComponent as EditIcon} from 'assets/icons/edit.svg';
+
 import ToggleCheckbox from "../../../ToggleCheckbox/ToggleCheckbox";
 
-import {changeIsVisibleEditMenu} from 'features/editMenu/editMenuSlice'
+import {fetchPutMenuItemIsVisible} from 'features/editMenu/thunks'
 
-import {errorHandler} from "utils/management";
-import {BE_API, fetchData} from "utils/fetch";
 import {translate, TRANSLATION} from "utils/translation";
 
 const MenuItemBottomSettings = ({
-                                    item = {}, onEditClick = () => {
-    }
+                                    item = {},
+                                    onEditClick = () => {}
                                 }) => {
     const dispatch = useDispatch();
 
@@ -23,11 +22,7 @@ const MenuItemBottomSettings = ({
             method: 'put',
         }
 
-        fetchData(BE_API.MENU_ITEM.CHANGE_IS_VISIBLE(), requestBody)
-            .then(res => {
-                dispatch(changeIsVisibleEditMenu(item.id))
-            })
-            .catch(errorHandler)
+        dispatch(fetchPutMenuItemIsVisible(requestBody))
     }
 
     return (

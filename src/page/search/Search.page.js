@@ -96,19 +96,24 @@ const SearchPage = () => {
 
         const regionLabel = translate(TRANSLATION.COMPONENTS.POPUP.CITY.INPUT)
 
-        return (
-            <>
+        const onClickCompany = (company) => () => {
+            dispatch(setCompanyId(company.id))
+            LocalStorage.remove(LOCAL_STORAGE_KEY.SEARCH_DETAILS_COMPANY)
+            navigate(`${URL.SEARCH_DETAILS}/${company.id}`)
+        }
 
+        const cityInputValue = selectedCityId && selectedRegionId
+            ? truncate(`${translate(CITY_TRANSLATION_IDS[selectedCityId])}, ${translate(CITY_TRANSLATION_IDS[selectedRegionId])} ${regionLabel}`, 27)
+            : ''
+
+    return (
+            <>
                 <ContentContainer noBg noShadow>
                     <CityInput
                         handleClick={onOpenCityPopup}
                         withIcon
                         Icon={LocationIcon}
-                        value={
-                            selectedCityId && selectedRegionId
-                                ? truncate(`${translate(CITY_TRANSLATION_IDS[selectedCityId])}, ${translate(CITY_TRANSLATION_IDS[selectedRegionId])} ${regionLabel}`, 27)
-                                : ''
-                        }
+                        value={cityInputValue}
                         placeholder={translate(TRANSLATION.PAGE.SEARCH.INPUT_PLACEHOLDER)}
                     />
                 </ContentContainer>
@@ -117,21 +122,13 @@ const SearchPage = () => {
                     <NotificationLoading>{translate(TRANSLATION.NOTIFICATION.COMPANY.LOADING_AVAILABLE_CITIES)}</NotificationLoading>}
                 <RowSplitter height="10px"/>
                 {!isLoading && companies && companies.map(company =>
-                    <div key={company.id}>
-                        <Company
-
-                            company={company}
-                            clickHandler={
-                                () => {
-                                    dispatch(setCompanyId(company.id))
-                                    LocalStorage.remove(LOCAL_STORAGE_KEY.SEARCH_DETAILS_COMPANY)
-                                    navigate(`${URL.SEARCH_DETAILS}/${company.id}`)
-                                }
-                            }
-                        />
-                    </div>
-                )
-                }
+                    <Company
+                        key={company.id}
+                        isShowAllImages={false}
+                        company={company}
+                        clickHandler={onClickCompany(company)}
+                    />
+                )}
                 {showCityPopup && cityPopup}
             </>
         );

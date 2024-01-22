@@ -78,6 +78,7 @@ export const URL = {
     ABOUT_PROJECT: '/about-project',
     EDIT_CUSTOMER: '/edit-customer',
     OUR_TEAM: '/our-team',
+    ORDER: '/order',
     ORDER_HISTORY: '/order-history',
     ORDER_HISTORY_DETAILS: '/order-history-details',
 
@@ -93,7 +94,7 @@ export const URL = {
 
 export const ROUTER = {
     ORDER: {
-        URL: '/order',
+        URL: URL.ORDER,
         TITLE: translate(TRANSLATION.ORDERS.ORDER_REVIEW),
         page: OrderPage,
         showBottomMenu: true
@@ -131,11 +132,7 @@ export const ROUTER = {
         URL: URL.SEARCH,
         TITLE: translate(TRANSLATION.PAGE.SEARCH.TOP_TITLE),
         page: SearchPage,
-        showBottomMenu: true
-    },
-    PROJECT_UPDATED: {
-        URL: URL.PROJECT_UPDATED,
-        page: ProjectUpdatedPagePage,
+        showBottomMenu: true,
     },
     SEARCH_DETAILS: {
         URL: URL.SEARCH_DETAILS,
@@ -143,7 +140,12 @@ export const ROUTER = {
         TITLE: translate(TRANSLATION.PAGE.COMPANY_DETAILS.TOP_TITLE),
         page: SearchDetailsPage,
         showBottomMenu: true,
+        disablePageHeaderBottomMargin: true,
         backUrl: URL.SEARCH
+    },
+    PROJECT_UPDATED: {
+        URL: URL.PROJECT_UPDATED,
+        page: ProjectUpdatedPagePage,
     },
     SETTING: {
         URL: URL.SETTING,

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import {COLOR, FONT} from "utils/theme";
 
 export const Description = styled.div`
-    ${FONT.SIZE_16};
+    ${FONT.SIZE_18};
     ${FONT.WEIGHT_400};
     margin-top: 10px;
 `;

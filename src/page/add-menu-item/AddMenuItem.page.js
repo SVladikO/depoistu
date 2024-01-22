@@ -5,7 +5,6 @@ import MenuItemView from "page-view/menu-item/menu-item-view";
 
 import {fetchPostMenuItem} from "features/editMenu/thunks";
 
-import {publishNotificationEvent} from "utils/event";
 import {translate, TRANSLATION} from "utils/translation";
 import {useRedirectToSettingPage, useScrollUp} from "utils/hook";
 import {NotificationLoading} from "../../components";
@@ -29,7 +28,7 @@ const AddMenuItemPage = () => {
     const [initialValues, setInitialValues] = useState(defaultInitialValue)
 
     const company_id = useSelector(state => state.editMenu.company_id);
-    const isAddMenuItemLoading = useSelector(state => state.editMenu.isAddMenuItemLoading);
+    const isLoadingAddMenuItem = useSelector(state => state.editMenu.isLoadingAddMenuItem);
 
     const onSubmit = values => {
         scrollUp()
@@ -37,13 +36,12 @@ const AddMenuItemPage = () => {
         dispatch(fetchPostMenuItem(requestObj))
             .then(e => {
                 scrollUp()
-                publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.MENU_ITEM.WAS_CREATED))
                 setInitialValues({...defaultInitialValue, category_id: values.category_id, imageUrl: ''})
             })
     }
 
-    if (isAddMenuItemLoading) {
-        return <NotificationLoading />
+    if (isLoadingAddMenuItem) {
+        return <NotificationLoading/>
     }
 
     return (
@@ -51,7 +49,7 @@ const AddMenuItemPage = () => {
             <MenuItemView
                 defaultInitialValue={initialValues}
                 onSubmit={onSubmit}
-                isLoading={isAddMenuItemLoading}
+                isLoading={isLoadingAddMenuItem}
                 submitButtonTitle={translate(TRANSLATION.PAGE.ADD_MENU_ITEM.BUTTON.ADD_MENU_ITEM)}
             />
         </>

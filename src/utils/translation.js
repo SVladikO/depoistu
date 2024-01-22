@@ -624,8 +624,7 @@ export const TRANSLATION = {
                     {
                         question: "What is the cost?",
                         answers: [
-                            "It's free until 1st of June 2024.",
-                            "After 300 uah/month",
+                            "It's completely free during 2024.",
                         ]
                     },
                     {
@@ -668,14 +667,13 @@ export const TRANSLATION = {
                     {
                         question: "Яка головна ідея проекту?",
                         answers: [
-                            "Всі заклади харчування України на одному сайті depoistu.com",
+                            "Всі заклади харчування України на одному сайті depoistu.com.",
                         ]
                     },
                     {
                         question: "Яка вартість?",
                         answers: [
-                            "До 1го Червня 2024 БЕЗКОШТОВНО.",
-                            "Після 300 грн/міс",
+                            "Весь 2024 повністю БЕЗКОШТОВНО.",
                         ]
                     },
                     {
@@ -778,11 +776,11 @@ export const TRANSLATION = {
         },
         SIGN_IN: {
             TOP_TITLE: {
-                ua: "Вхiд",
+                ua: "Вхід",
                 en: "Sign in"
             },
             USER_NOTIFICATION: {
-                ua: "Вхiд виконаний",
+                ua: "Вхід виконаний",
                 en: "You already logged!"
             },
             FORGOT_PASSWORD: {
@@ -976,13 +974,17 @@ export const TRANSLATION = {
         }
     },
     ORDERS: {
-        THIS_PAGE_IS_CREATED: {
-            en: 'Share order info with a waiter.',
-            ua: 'Передайте замовлення офіціанту.'
+        ORDER_PLACED: {
+            en: 'Order saved.',
+            ua: 'Замовлення збережено.'
+        },
+        SHARE_ORDER_INFO: {
+            en: 'Share order QR-code with a waiter.',
+            ua: 'Поділіться QR-кодом замовлення з офіціантом'
         },
         TOTAL: {
-            en: 'Sub Total',
-            ua: 'До сплати'
+            en: 'Total',
+            ua: 'Всього'
         },
         ORDER_REVIEW: {
             en: 'Order review',
@@ -1003,25 +1005,33 @@ export const TRANSLATION = {
         CLEAR_BASKET: {
             en: 'Clear basket',
             ua: 'Очистити кошик'
+        },
+        SIGN_IN_TO_PLACE: {
+            en: 'Sign in to place order',
+            ua: 'Увійдіть, щоб зробити замовлення'
+        },
+        PLACE_ORDER: {
+            en: 'Place order',
+            ua: 'Зробити замовлення'
         }
     },
 
     BOTTOM_MENU: {
         MAIN: {
-            ua: "ГОЛОВНА",
-            en: "MAIN"
+            ua: "Головна",
+            en: "Main"
         },
         MENU: {
-            ua: "МЕНЮ",
-            en: "MENU"
+            ua: "Меню",
+            en: "Menu"
         },
         FAVORITE: {
-            ua: "УЛЮБЛЕНІ",
-            en: "FAVORITE"
+            ua: "Улюблені",
+            en: "Favorite"
         },
         SETTINGS: {
-            ua: "СИСТЕМНІ",
-            en: "SETTINGS"
+            ua: "Системні",
+            en: "Settings"
         },
     },
     TOP_CATEGORIES: {

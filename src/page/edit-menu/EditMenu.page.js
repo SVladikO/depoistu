@@ -19,7 +19,7 @@ const EditMenuPage = () => {
     const dispatch = useDispatch();
     const company_id = useSelector(state => state.editMenu.company_id)
     const editMenuItems = useSelector(state => state.editMenu.editMenuItems)
-    const isMenuItemsLoading = useSelector(state => state.editMenu.isGetMenuItemsLoading);
+    const isMenuItemsLoading = useSelector(state => state.editMenu.isLoadingGetEditMenuItems);
 
     const [customerCompanies] = useLocalStorage(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES);
     const currentCompany = customerCompanies?.find((c => c.id === +company_id));
@@ -30,7 +30,7 @@ const EditMenuPage = () => {
         }
 
         dispatch(fetchGetMenuItemsByCompanyId(company_id))
-    }, [company_id]);
+    }, [company_id, editMenuItems, dispatch]);
 
     if (isMenuItemsLoading) {
         return <NotificationLoading/>;
@@ -43,21 +43,25 @@ const EditMenuPage = () => {
 
     return (
         <>
-            <ContentContainer noShadow>
-                {currentCompany && <h2>{currentCompany.name}</h2>}
-            </ContentContainer>
+            {currentCompany && (
+                <ContentContainer noShadow>
+                    <h2>{currentCompany.name}</h2>
+                </ContentContainer>
+            )
+            }
             <RowSplitter height="20px"/>
             <PrimaryButton isWide withPadding clickHandler={onClickAddMenuItem}>
                 {translate(TRANSLATION.PAGE.EDIT_MENU.BUTTON.ADD_MENU_ITEM)}
             </PrimaryButton>
-
             <RowSplitter height="40px"/>
-
-            <CategoryMenuView
-                showMenuItemAmount
-                menuItems={editMenuItems}
-                isEditMenuItemPage
-            />
+            {!!editMenuItems?.length && (
+                <CategoryMenuView
+                    showMenuItemAmount
+                    menuItems={editMenuItems}
+                    isEditMenuItemPage
+                />
+            )
+            }
         </>
     )
 }
