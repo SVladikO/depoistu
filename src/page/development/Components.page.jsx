@@ -53,7 +53,7 @@ import Checkbox from "components/Checkbox/Checkbox";
 import IntroContent from "components/Popup/info/Info";
 import CityContent from "components/Popup/city/CityContent"
 import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
-import {EditBar, QRCodeButton} from "page/customer-companies/CustomerCompanies.style";
+import {EditBar, QRCodeButton} from "../customer-companies/customer-companies.page.style";
 
 import {COLOR} from "utils/theme";
 import {getOnlyCityIds} from "utils/cities";

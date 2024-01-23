@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Formik} from "formik";
 import * as Yup from "yup";
 
-import {Wrapper} from './Setting.style';
+import {Wrapper} from './setting.page.style';
 
 import {ReactComponent as LogOutIcon} from 'assets/icons/logout.svg';
 import {ReactComponent as ProfileIcon} from 'assets/icons/profile.svg';

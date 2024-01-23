@@ -32,9 +32,7 @@ const ForgetPasswordPage = () => {
                 email: '',
             }}
             validationSchema={CheckEmailSchema}
-            onSubmit={value => {
-                setWasSubmitted(true);
-            }}
+            onSubmit={() => setWasSubmitted(true)}
         >
             {({values, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                 <form onSubmit={handleSubmit}>

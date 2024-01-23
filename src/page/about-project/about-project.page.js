@@ -1,5 +1,5 @@
 import React from 'react';
-import {Wrapper, Title, Description, AnswerWrapper, Answer} from "./AboutProject.page.style";
+import {Wrapper, Title, Description, AnswerWrapper, Answer} from "./about-project.page.style";
 
 import {useScrollUp} from "utils/hook";
 import {translate, TRANSLATION as TR, TRANSLATION} from "utils/translation";

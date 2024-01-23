@@ -1,5 +1,5 @@
 import React from 'react';
-import {GroupTitle, Table, TD} from "./AvailableMenuCategories.page.style";
+import {GroupTitle, Table, TD} from "./available-menu-categories.page.style";
 
 import {ContentContainer, RowSplitter} from "components";
 import {NotificationInfo} from "components/Notification/Notification";

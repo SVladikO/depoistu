@@ -2,7 +2,7 @@ import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate, useParams} from 'react-router-dom';
 
-import {Wrapper} from "./SearchDetails.style";
+import {Wrapper} from "./search-details.page.style";
 
 import {Company, NotificationLoading, PrimaryButton, NotificationTDB, RowSplitter} from "components";
 

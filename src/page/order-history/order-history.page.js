@@ -1,7 +1,7 @@
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 
-import {Content, Wrapper} from './OrderHistory.page.style';
+import {Content, Wrapper} from './order-history.page.style';
 import {OrderHistoryRow} from "components";
 import {addOrderHistories} from "features/order-history/orderHistorySlice";
 

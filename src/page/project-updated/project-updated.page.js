@@ -1,7 +1,7 @@
 import React from 'react';
 import {useNavigate} from "react-router-dom";
 
-import {Wrapper, Address, LogoContainer} from "./ProjectUpdated.page.style";
+import {Wrapper, Address, LogoContainer} from "./project-updated.page.style";
 
 import {ReactComponent as LogoIcon} from "assets/icons/logo.svg";
 
@@ -11,7 +11,7 @@ import {PrimaryButton, Text22} from "components";
 import {translate, TRANSLATION} from "utils/translation";
 import packageJson from "./../../../package.json"
 
-const ProjectUpdatedPagePage = () => {
+const ProjectUpdatedPage = () => {
     useScrollUp();
     const navigate = useNavigate();
     const closeIntroPopup = () => {
@@ -34,4 +34,4 @@ const ProjectUpdatedPagePage = () => {
     )
 }
 
-export default ProjectUpdatedPagePage;
+export default ProjectUpdatedPage;

@@ -1,32 +1,32 @@
-import SearchPage from "page/search/Search.page";
-import SignInPage from "page/sing-in/SignIn.page";
-import SingUpPage from "page/sing-up/SingUp.page";
-import SettingPage from "page/setting/Setting.page";
-import AboutProjectPage from "../page/about-project/AboutProject.page";
-import OurTeamPage from "page/our-team/OurTeam.page";
-import EditMenuPage from "page/edit-menu/EditMenu.page";
-import AddCompanyPage from "page/add-company/AddCompany.page";
-import AddMenuItemPage from "page/add-menu-item/AddMenuItem.page";
-import EditCompanyPage from "page/edit-company/EditCompany.page";
-import EditMenuItemPage from "page/edit-menu-item/EditMenuItem.page";
-import SearchDetailsPage from "page/search-details/SearchDetails.page";
-import ChangePasswordPage from "page/change-password/ChangePassword.page";
-import ForgetPasswordPage from "page/forgot-password/ForgetPassword.page";
-import CustomerCompaniesPage from "page/customer-companies/CustomerCompanies.page";
-import AvailableMenuCategoriesPage from "page/available-menu-categories/AvailableMenuCategories.page";
+import SearchPage from "../page/search/search.page";
+import SignInPage from "../page/sing-in/sign-in.page";
+import SingUpPage from "../page/sing-up/sing-up.page";
+import SettingPage from "../page/setting/setting.page";
+import AboutProjectPage from "../page/about-project/about-project.page";
+import OurTeamPage from "../page/our-team/our-team.page";
+import EditMenuPage from "../page/edit-menu/edit-menu.page";
+import AddCompanyPage from "../page/company-add/company-add.page";
+import AddMenuItemPage from "../page/menu-item-add/menu-item-add.page";
+import EditCompanyPage from "../page/company-edit/company-edit.page";
+import EditMenuItemPage from "../page/menu-item-edit/edit-menu-item.page";
+import SearchDetailsPage from "../page/search-details/search-details.page";
+import ChangePasswordPage from "../page/change-password/change-password.page";
+import ForgetPasswordPage from "../page/forgot-password/forget-password.page";
+import CustomerCompaniesPage from "../page/customer-companies/customer-companies.page";
+import AvailableMenuCategoriesPage from "../page/available-menu-categories/available-menu-categories.page";
 
 // TODO: Hidden second version
-import OrderPage from "page/order/Order.page";
+import OrderPage from "../page/order/order.page";
 // import CategoryPage from "page/category/Category.page";
-import OrderHistoryPage from "page/order-history/OrderHistory.page";
+import OrderHistoryPage from "../page/order-history/order-history.page";
 // import {HistoryTabBar} from "components";
 
 import {TRANSLATION, translate} from "./translation.js";
-import EditCustomerPage from "page/edit-customer/EditCustomer.page";
+import EditCustomerPage from "../page/edit-customer/edit-customer.page";
 import FavoriteCompanyPage from "../page/favorite-company/favorite-company.page";
-import InstructionForBusinessOwnerPage from "page/instruction-for-bussines-owner/InstructionForBusinessOwner.page";
-import ProjectUpdatedPagePage from "../page/project-updated/ProjectUpdatedPage.page";
-import OrderHistoryDetailsPage from "../page/order-history-details/OrderHistoryDetails.page";
+import InstructionForBusinessOwnerPage from "../page/instruction-for-bussines-owner/instruction-for-business-owner.page";
+import ProjectUpdatedPage from "../page/project-updated/project-updated.page";
+import OrderHistoryDetailsPage from "../page/order-history-details/order-history-details.page";
 
 export const DEV_ROUTER = {
     ADMIN: 'admin',
@@ -148,7 +148,7 @@ export const ROUTER = {
     },
     PROJECT_UPDATED: {
         URL: URL.PROJECT_UPDATED,
-        page: ProjectUpdatedPagePage,
+        page: ProjectUpdatedPage,
     },
     SETTING: {
         URL: URL.SETTING,

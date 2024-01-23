@@ -3,7 +3,7 @@ import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import QRCode from 'qrcode';
 
-import {QRCodeMenuTitle, ImageQR, OrderPrint} from "./CustomerCompanies.style";
+import {QRCodeMenuTitle, ImageQR, OrderPrint} from "./customer-companies.page.style";
 
 import {Company, NotificationLoading, Popup, PrimaryButton, RowSplitter} from "components";
 

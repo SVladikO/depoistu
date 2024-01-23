@@ -7,7 +7,7 @@ import {ReactComponent as RemoveIcon} from "assets/icons/remove_icon.svg";
 
 import CompanyView from "../../page-view/company-view/company-view";
 
-import {PopupButtons, PopupContentContainer, PopupTitle} from "./EditCompany.style";
+import {PopupButtons, PopupContentContainer, PopupTitle} from "./company-edit.page.style";
 import Popup, {enableScrollOnBody, disableScrollOnBody} from "components/Popup/Popup";
 
 import {URL} from "utils/config";

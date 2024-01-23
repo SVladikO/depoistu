@@ -4,7 +4,7 @@ import {useDispatch} from "react-redux";
 import * as Yup from 'yup';
 import {Formik} from "formik";
 
-import {Wrapper} from "./SingUp.style";
+import {Wrapper} from "./sing-up.page.style";
 import {Input, ContentContainer, PrimaryButton, Checkbox} from "components";
 import NavigationLabelHref from "components/NavigationLabelHref/NavigationLabelHref";
 

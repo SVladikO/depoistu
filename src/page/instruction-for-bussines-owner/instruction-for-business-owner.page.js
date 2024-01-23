@@ -1,5 +1,5 @@
 import React from 'react';
-import {Wrapper} from "./InstructionForBusinessOwner.style";
+import {Wrapper} from "./instruction-for-business-owner.page.style";
 
 import {useScrollUp} from "utils/hook";
 

@@ -1,9 +1,9 @@
 import {useEffect, useMemo, useState} from "react";
 import {useParams} from "react-router-dom";
 import QRCode from "qrcode";
-import {DatePrice, Wrapper} from './OrderHistoryDetails.page.style';
+import {DatePrice, Wrapper} from './order-history-details.page.style';
 
-import {ImageQR} from "../customer-companies/CustomerCompanies.style";
+import {ImageQR} from "../customer-companies/customer-companies.page.style";
 import {MenuItem} from "components";
 
 import {URL} from "utils/config";

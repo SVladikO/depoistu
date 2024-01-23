@@ -2,7 +2,7 @@ import {useMemo, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Link, useNavigate} from "react-router-dom";
 
-import {Wrapper, AmountInfo, Content} from './Order.page.style';
+import {Wrapper, AmountInfo, Content} from './order.page.style';
 import {
     MenuItem,
     PrimaryButton,

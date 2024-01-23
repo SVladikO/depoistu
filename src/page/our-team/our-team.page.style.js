@@ -61,11 +61,6 @@ export const Position = styled.div`
   color: ${COLOR.ACCENT5};
   margin: 0 0 4px 0;
 `;
-export const Border = styled.div`
-  border: 1px solid ${COLOR.ACCENT2};
-  transform: rotate(180);
-  width: 100%;
-`;
 export const Socials = styled.div`
   margin: 10px 0 16px 0;
   svg {
