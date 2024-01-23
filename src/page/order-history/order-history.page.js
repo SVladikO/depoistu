@@ -1,3 +1,4 @@
+import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 
@@ -12,17 +13,12 @@ import {BE_API, fetchData, errorHandler} from "utils/fetch";
 const OrderHistoryPage = () => {
     const dispatch = useDispatch();
 
-    const {isLoading, setIsLoading} = useState(false);
-
+    const [isLoading, setIsLoading] = useState(false);
     const customer = useSelector(state => state.customer.value)
     const orderHistory = useSelector(state => state.orderHistorySlice.value)
 
     useEffect(() => {
-        if (!customer) {
-            return;
-        }
-
-        if (orderHistory?.length) {
+        if (!customer || orderHistory?.length) {
             return;
         }
 
@@ -34,10 +30,12 @@ const OrderHistoryPage = () => {
             })
             .catch(errorHandler)
             .finally(() => setIsLoading(false))
+
+        return () => dispatch(addOrderHistories([]))
     }, [])
 
     if (isLoading) {
-        return <NotificationLoading />
+        return <NotificationLoading/>
     }
 
     return (<Wrapper>
