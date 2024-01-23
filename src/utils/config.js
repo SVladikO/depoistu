@@ -97,6 +97,7 @@ export const ROUTER = {
         URL: URL.ORDER,
         TITLE: translate(TRANSLATION.ORDERS.ORDER_REVIEW),
         page: OrderPage,
+        disablePageHeaderBottomMargin: true,
         showBottomMenu: true
     },
     ORDER_HISTORY: {
@@ -118,6 +119,7 @@ export const ROUTER = {
         URL: URL.FAVORITE,
         TITLE: translate(TRANSLATION.PAGE.FAVORITE.TOP_TITLE),
         page: FavoritePage,
+        disablePageHeaderBottomMargin: true,
         showBottomMenu: true
     },
     MENU: {
@@ -132,6 +134,7 @@ export const ROUTER = {
         URL: URL.SEARCH,
         TITLE: translate(TRANSLATION.PAGE.SEARCH.TOP_TITLE),
         page: SearchPage,
+        disablePageHeaderBottomMargin: true,
         showBottomMenu: true,
     },
     SEARCH_DETAILS: {
@@ -213,6 +216,7 @@ export const ROUTER = {
         URL: URL.CUSTOMER_COMPANIES,
         TITLE: translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.TOP_TITLE),
         page: CustomerCompaniesPage,
+        disablePageHeaderBottomMargin: true,
         showBottomMenu: true,
         backUrl: URL.SETTING
     },
