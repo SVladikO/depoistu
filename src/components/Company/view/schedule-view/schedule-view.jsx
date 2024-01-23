@@ -8,13 +8,19 @@ import {
     ScheduleContent,
     ScheduleWrapper,
     Border
-} from "./ScheduleDetails.style";
+} from "./schedule-view.style";
 
 import {translate, TRANSLATION as TR} from "utils/translation";
 import {ThirdButton} from "components/Buttons/ThirdButton";
+import {parseSchedule} from "utils/company";
 
-const ScheduleDetails = ({scheduleAsArray}) => {
+const ScheduleDetails = ({company, withMoreInfo}) => {
+    const scheduleAsArray = parseSchedule(company.schedule);
     const [isWeekScheduleVisible, setIsWeekScheduleVisible] = useState(false);
+
+    if (!withMoreInfo) {
+        return;
+    }
 
     if (!isWeekScheduleVisible) {
         return (
@@ -22,7 +28,6 @@ const ScheduleDetails = ({scheduleAsArray}) => {
                 {translate(TR.COMPONENTS.COMPANY.SHOW_SCHEDULE_BUTTON)}
             </ThirdButton>
         )
-
     }
 
     return (
@@ -33,7 +38,7 @@ const ScheduleDetails = ({scheduleAsArray}) => {
             <Border/>
             <ScheduleContent>
                 {
-                    scheduleAsArray?.map((day, i) => {
+                    scheduleAsArray.workDays?.map((day, i) => {
                         const {dayName, from, to, isToday} = day;
 
                         return (

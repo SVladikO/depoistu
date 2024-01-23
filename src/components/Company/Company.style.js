@@ -34,36 +34,34 @@ export const FirstRow = styled.div`
 export const Content = styled.div`
   border-top: solid 1px ${COLOR.ACCENT9};
   padding: 16px 16px 20px 16px;
-`;
 
-export const CompanyInfo = styled.div`
-  & > a {
-    display: block;
-  }
-  
-  svg.location_icon {
-    height: 20px;
-    width: 12px;
-  } 
-  
-  svg.time_icon {
-    height: 18px;
-    width: 15px;
-  } 
-  svg.phone_icon {
-    height: 18px;
-    width: 18px;
-  }
-  
-  & > div,
-  & > a,
-  & > button {
-    margin: 0 0 6px 0;
-  }
+    & > a {
+        display: block;
+    }
 
-  & > *:last-child {
-    margin: 0;
-  }
+    svg.location_icon {
+        height: 20px;
+        width: 12px;
+    }
+
+    svg.time_icon {
+        height: 18px;
+        width: 15px;
+    }
+    svg.phone_icon {
+        height: 18px;
+        width: 18px;
+    }
+
+    & > div,
+    & > a,
+    & > button {
+        margin: 0 0 6px 0;
+    }
+
+    & > *:last-child {
+        margin: 0;
+    }
 `;
 
 export const Schedule = styled.div`

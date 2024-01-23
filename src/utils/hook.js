@@ -6,6 +6,7 @@ import {fetchData} from "./fetch";
 import {URL} from "./config";
 import {LocalStorage} from "./localStorage";
 import {errorHandler} from "utils/management";
+import {scrollUp} from "./utils";
 
 export const useLocalStorage = (storageKey, initialState) => {
     const localStorageState = LocalStorage.get(storageKey);
@@ -77,13 +78,9 @@ export const useRedirectToSettingPage = () => {
         }
     })
 }
+
 export const useScrollUp = () => {
-    const scrollUp = () => {
-        window.scrollTo({
-            top: -100,
-            behavior: "smooth",
-        })
-    }
+
     useEffect(() => {
         scrollUp()
     }, [])

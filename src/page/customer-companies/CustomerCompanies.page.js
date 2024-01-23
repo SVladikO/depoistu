@@ -1,17 +1,12 @@
 import React, {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {Link, useNavigate} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {Link} from "react-router-dom";
 import QRCode from 'qrcode';
 
-import {EditBar, QRCodeButton, QRCodeMenuTitle, ImageQR, OrderPrint} from "./CustomerCompanies.style";
+import {QRCodeMenuTitle, ImageQR, OrderPrint} from "./CustomerCompanies.style";
 
 import {Company, NotificationLoading, Popup, PrimaryButton, RowSplitter} from "components";
-import {ReactComponent as EditIcon} from "assets/icons/edit.svg";
-import {ReactComponent as QRCodeIcon} from "assets/icons/qr_code.svg";
 
-import {DisabledButton} from "components/Buttons/DisabledButton";
-
-import {setCompanyIdToEditMenu, resetAllEditMenu} from 'features/editMenu/editMenuSlice';
 
 import {BE_API, fetchData} from 'utils/fetch'
 import {errorHandler} from "utils/management";
@@ -22,14 +17,10 @@ import {ORDER_PRINT_URL, ROUTER, URL} from "utils/config";
 import {useLocalStorage, useRedirectToSettingPage, useScrollUp} from "utils/hook";
 
 const CustomerCompaniesPage = () => {
-    const scrollUp = useScrollUp();
     useRedirectToSettingPage();
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
     const customer = useSelector(state => state.customer.value);
     const [isLoading, setIsLoading] = useState();
     const [wasWarningsShown, setWasWarningsShown] = useLocalStorage(LOCAL_STORAGE_KEY.WAS_COMPANY_CREATION_WARNINGS_SHOW, false)
-    const [companyIdForQRCode, setCompanyIdForQRCode] = useState();
     const [customerCompanies, setCustomerCompanies] = useLocalStorage(LOCAL_STORAGE_KEY.CUSTOMER_COMPANIES, undefined);
 
     useEffect(() => {
@@ -58,37 +49,12 @@ const CustomerCompaniesPage = () => {
         return <NotificationLoading/>
     }
 
-    const showQRCode = companyId => () => setCompanyIdForQRCode(companyId);
 
     return (
         <>
-            <PopupQRCode companyId={companyIdForQRCode} onClose={() => setCompanyIdForQRCode('')}/>
             {customerCompanies && !!customerCompanies?.length && customerCompanies?.map(
                 company =>
-                    <Company company={company} key={company.id} withMoreInfo>
-                        <EditBar>
-                            <Link to={ROUTER.EDIT_COMPANY.URL + '/' + company.id} style={{width: '140px'}}>
-                                <DisabledButton isWide>
-                                    <EditIcon/>
-                                    {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.COMPANY)}
-                                </DisabledButton>
-                            </Link>
-                            <QRCodeButton onClick={showQRCode(company.id)}><QRCodeIcon/></QRCodeButton>
-                            <DisabledButton
-                                isWide
-                                onClick={
-                                    () => {
-                                        scrollUp();
-                                        dispatch(resetAllEditMenu())
-                                        dispatch(setCompanyIdToEditMenu(company.id))
-                                        navigate(ROUTER.EDIT_MENU.URL)
-                                    }
-                                }>
-                                <EditIcon/>
-                                {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.MENU)}
-                            </DisabledButton>
-                        </EditBar>
-                    </Company>
+                    <Company key={company.id} company={company} withMoreInfo isCustomerCompaniesPage />
             )
             }
             <RowSplitter height={"20px"}/>
