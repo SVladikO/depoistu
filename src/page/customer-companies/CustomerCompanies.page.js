@@ -33,10 +33,7 @@ const CustomerCompaniesPage = () => {
         setIsLoading(true);
 
         fetchData(BE_API.COMPANY.GET_BY_CUSTOMER_ID(customer?.id))
-            .then(res => {
-                console.log(222222, customer, res);
-                setCustomerCompanies(res.body.map(company => ({...company, is_verified: true})))
-            })
+            .then(res => setCustomerCompanies(res.body))
             .catch(errorHandler)
             .finally(() => setIsLoading(false))
     }, []);
@@ -57,7 +54,9 @@ const CustomerCompaniesPage = () => {
 
     return (
         <>
-            {customerCompanies && !!customerCompanies?.length && customerCompanies?.map(
+            {customerCompanies && !!customerCompanies?.length && customerCompanies
+                ?.map(company => ({...company, is_verified: true}))
+                ?.map(
                 company =>
                     <Company
                         withMoreInfo
