@@ -56,50 +56,66 @@ export const BE_API = {
 
 const promiseReject = message => new Promise((resolve, reject) => reject({body: {message}}));
 
-export const fetchDataRedux = async (url, body) => {
+const verifyInternet = () => {
     // No internet no request
     if (!window.navigator.onLine) {
-        return promiseReject(translate(TRANSLATION.NOTIFICATION.NO_INTERNET));
+        throw new Error(translate(TRANSLATION.NOTIFICATION.NO_INTERNET));
     }
+}
+const handleError = message => {
+    throw new Error(
+        message === 'Failed to fetch'
+            ? translate(TRANSLATION.NOTIFICATION.UN_ABLE_MAKE_REQUEST)
+            : message
+    )
+}
 
-    const response =   await fetch(decodeURIComponent(url), getOptions(body));
+export const fetchDataRedux = async (url, body) => {
+    verifyInternet()
+
+    let response;
+
+    try {
+        response = await fetch(decodeURIComponent(url), getOptions(body));
+    } catch (error) {
+        handleError(error.message)
+    }
 
     if (!response.ok) {
         const json = await response.json();
-        throw new Error(json.message)
+        handleError(json.message)
     }
 
     return response;
 }
 
 export const fetchData = async (url, body) => {
-    let response;
-
-    const promiseReject = message => new Promise((resolve, reject) => reject({body: {message}}));
-
-    // No internet no request
-    if (!window.navigator.onLine) {
-        return promiseReject(translate(TRANSLATION.NOTIFICATION.NO_INTERNET));
-    }
-
-    try {
-        response = await fetch(decodeURIComponent(url), getOptions(body));
-    } catch (error) {
-        return promiseReject(
-            error.message === 'Failed to fetch'
-                ? translate(TRANSLATION.NOTIFICATION.UN_ABLE_MAKE_REQUEST)
-                : error.message
-        );
-    }
-
+    const response = await fetchDataRedux(url, body)
     const json = await response.json();
 
-    if (!response.ok) {
-        throw new Error(json.message)
-    }
-
-    return new Promise(resolve => resolve({body: json}))
+    return new Promise(resolve => resolve({body: json}));
 }
+
+//
+// export const fetchData = async (url, body) => {
+//     let response;
+//
+//     verifyInternet()
+//
+//     try {
+//         response = await fetch(decodeURIComponent(url), getOptions(body));
+//     } catch (error) {
+//         handleError(error.message)
+//     }
+//
+//     const json = await response.json();
+//
+//     if (!response.ok) {
+//         throw new Error(json.message)
+//     }
+//
+//     return new Promise(resolve => resolve({body: json}))
+// }
 
 // prepare options conditionally
 function getOptions(body) {
