@@ -22,8 +22,8 @@ export const getCurrentLanguage = () => LocalStorage.get(LOCAL_STORAGE_KEY.REDUX
 
 export const translate = obj => {
     let value;
-    try{
-       value = obj[getCurrentLanguage()]
+    try {
+        value = obj[getCurrentLanguage()]
     } catch (e) {
         value = 'NO TRANSLATIONS';
         console.error('No translations for', obj)
@@ -730,6 +730,16 @@ export const TRANSLATION = {
                 ua: "Мої замовлення",
                 en: "Orders History"
             },
+            TDB: {
+                TITLE: {
+                    ua: "Нема замовлень",
+                    en: "No orders"
+                },
+                DESCRIPTION: {
+                    ua: "Замовлення не знайдені.",
+                    en: "Your orders wasn't found."
+                },
+            }
         },
         ORDER_HISTORY_DETAILS: {
             TOP_TITLE: {
