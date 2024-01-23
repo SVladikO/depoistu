@@ -1,6 +1,8 @@
-import {BE_DOMAIN} from "./config";
+import {BE_DOMAIN, URL} from "./config";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
 import {DEFAULT_LANGUAGE, getCurrentLanguage, translate, TRANSLATION} from "./translation";
+import {publishNotificationEvent} from "./event";
+import {updateLocalStorage} from "./management";
 
 
 export const BE_API = {
@@ -128,5 +130,29 @@ function getOptions(body) {
             method: body?.method || 'POST',
             body: JSON.stringify(body)
         }
+    }
+}
+
+export function errorHandlerRedux(e) {
+    let notificationMessage;
+
+    if (e.message === 'Failed to fetch') {
+        notificationMessage = translate(TRANSLATION.NOTIFICATION.UN_ABLE_MAKE_REQUEST);
+    } else if (e.status === 408) {
+        updateLocalStorage()
+        window.location.replace(window.location.origin + URL.PROJECT_UPDATED)
+    } else {
+        notificationMessage = e.message
+    }
+    publishNotificationEvent.error(notificationMessage);
+}
+
+export function errorHandler(e) {
+    if (e.status === 408) {
+        updateLocalStorage()
+        window.location.replace(window.location.origin + URL.PROJECT_UPDATED)
+    } else {
+        console.log(1111111, e);
+        publishNotificationEvent.error(e.message)
     }
 }

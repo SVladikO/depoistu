@@ -10,14 +10,13 @@ import SingInSingUpView from "../../page-view/sing-in-sing-up-view/sing-in-sing-
 import {initFavoriteCompanies} from "features/favorite-company/favoriteComapnySlice";
 import {setCompanyId} from "features/searchDetails/searchDetailsSlice";
 
-import {ROUTER, URL} from 'utils/config'
 import {useScrollUp} from "utils/hook";
-import {errorHandler} from "utils/management";
-import {BE_API, fetchData} from "utils/fetch";
+import {ROUTER, URL} from 'utils/config'
 import {translate, TRANSLATION} from "utils/translation";
+import {BE_API, fetchData, errorHandler} from "utils/fetch";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 
-const FavoritePage = () => {
+const FavoriteCompanyPage = () => {
     useScrollUp();
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -71,4 +70,4 @@ const FavoritePage = () => {
     )
 }
 
-export default FavoritePage;
+export default FavoriteCompanyPage;

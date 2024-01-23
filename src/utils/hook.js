@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate, useLocation} from "react-router-dom";
-import {fetchData} from "./fetch";
 
 import {URL} from "./config";
 import {LocalStorage} from "./localStorage";
-import {errorHandler} from "utils/management";
+
 import {scrollUp} from "./utils";
+import {fetchData, errorHandler} from "./fetch";
 
 export const useLocalStorage = (storageKey, initialState) => {
     const localStorageState = LocalStorage.get(storageKey);

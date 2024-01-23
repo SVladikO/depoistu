@@ -9,7 +9,7 @@ import {
 
 import {publishNotificationEvent} from "utils/event";
 
-import {errorHandlerRedux} from "utils/management";
+import {errorHandlerRedux} from "utils/fetch";
 import {translate, TRANSLATION} from "utils/translation";
 
 const initialState = {

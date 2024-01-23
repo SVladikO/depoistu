@@ -10,8 +10,7 @@ import {
 } from "features/favorite-company/favoriteComapnySlice";
 
 import {ROUTER} from "utils/config";
-import {BE_API, fetchData} from "utils/fetch";
-import {errorHandler} from "utils/management";
+import {BE_API, fetchData, errorHandler} from "utils/fetch";
 
 import {ReactComponent as Heart1Icon} from "assets/icons/heart1.svg";
 import {ReactComponent as Heart2Icon} from "assets/icons/heart2.svg";

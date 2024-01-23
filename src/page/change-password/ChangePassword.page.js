@@ -10,12 +10,11 @@ import {
 } from "components";
 
 import validation from "utils/validation";
-import {BE_API, fetchData} from "utils/fetch";
 import {useRedirectToSettingPage} from "utils/hook";
 import {TRANSLATION, translate} from 'utils/translation';
-import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 import {publishNotificationEvent} from "utils/event";
-import {errorHandler} from "utils/management";
+import {BE_API, fetchData, errorHandler} from "utils/fetch";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 
 const ChangePassWordSchema = Yup.object().shape(validation.customer.changePassword);
 

@@ -7,12 +7,11 @@ import {QRCodeMenuTitle, ImageQR, OrderPrint} from "./CustomerCompanies.style";
 
 import {Company, NotificationLoading, Popup, PrimaryButton, RowSplitter} from "components";
 
-import {errorHandler} from "utils/management";
-import {BE_API, fetchData} from 'utils/fetch'
 import {ORDER_PRINT_URL, URL} from "utils/config";
-import {publishNotificationEvent} from "utils/event";
 import {LOCAL_STORAGE_KEY} from "utils/localStorage";
+import {publishNotificationEvent} from "utils/event";
 import {translate, TRANSLATION} from "utils/translation";
+import {BE_API, fetchData, errorHandler} from 'utils/fetch'
 import {useLocalStorage, useRedirectToSettingPage} from "utils/hook";
 
 const CustomerCompaniesPage = () => {

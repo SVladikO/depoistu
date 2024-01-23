@@ -7,16 +7,14 @@ import {PrimaryButton} from "components";
 
 import CompanyView from "../../page-view/company-view/company-view";
 
-import {initialValues} from './utils';
 import {URL} from "utils/config";
-import {BE_API} from 'utils/fetch'
-import {fetchData} from "utils/fetch";
+import {initialValues} from './utils';
 import {getScheduleAsString} from "utils/company";
-import {errorHandler} from "utils/management";
-import {useRedirectToSettingPage, useScrollUp} from "utils/hook";
-import {translate, TRANSLATION} from "utils/translation";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 import {publishNotificationEvent} from "utils/event";
+import {translate, TRANSLATION} from "utils/translation";
+import {BE_API, fetchData, errorHandler} from "utils/fetch";
+import {useRedirectToSettingPage, useScrollUp} from "utils/hook";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 
 const AddCompany = () => {
     useRedirectToSettingPage();

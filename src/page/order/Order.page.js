@@ -16,11 +16,10 @@ import {ReactComponent as RemoveIcon} from "assets/icons/remove_icon.svg";
 
 import {ROUTER, URL} from 'utils/config'
 import {useScrollUp} from "utils/hook";
+import {publishNotificationEvent} from "utils/event";
 import {translate, TRANSLATION} from "utils/translation";
+import {BE_API, fetchData, errorHandler} from "utils/fetch";
 import {resetOrder} from "features/searchDetails/searchDetailsSlice";
-import {BE_API, fetchData} from "../../utils/fetch";
-import {errorHandler} from "../../utils/management";
-import {publishNotificationEvent} from "../../utils/event";
 
 const multiplayWIthCheck = (price, amount) => {
     return price ? price * amount : 0;

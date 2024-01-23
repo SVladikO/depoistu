@@ -8,13 +8,12 @@ import {Wrapper} from "./SingUp.style";
 import {Input, ContentContainer, PrimaryButton, Checkbox} from "components";
 import NavigationLabelHref from "components/NavigationLabelHref/NavigationLabelHref";
 
-import validation from 'utils/validation';
-import {BE_API, fetchData} from "utils/fetch";
-import {TRANSLATION, translate} from "utils/translation";
-import {ROUTER, URL} from 'utils/config';
-import {addCustomer} from "features/customer/customerSlice";
 import {useQuery} from "utils/hook";
-import {errorHandler} from "utils/management";
+import validation from 'utils/validation';
+import {ROUTER, URL} from 'utils/config';
+import {BE_API, fetchData, errorHandler} from "utils/fetch";
+import {TRANSLATION, translate} from "utils/translation";
+import {addCustomer} from "features/customer/customerSlice";
 
 const SignUpSchema = Yup.object().shape(validation.customer.singUp);
 

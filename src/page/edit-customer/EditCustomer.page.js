@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
+import {useDispatch, useSelector} from "react-redux";
 import {Input, ContentContainer,ToggleCheckbox, NotificationLoading} from "components";
 
-import {useRedirectToSettingPage, useScrollUp} from "utils/hook";
 import {TRANSLATION, translate} from "utils/translation";
-import {useDispatch, useSelector} from "react-redux";
-import {BE_API, fetchData} from "../../utils/fetch";
-import {addCustomer} from "../../features/customer/customerSlice";
-import {errorHandler} from "utils/management";
+import {BE_API, fetchData, errorHandler} from "utils/fetch";
+import {addCustomer} from "features/customer/customerSlice";
+import {useRedirectToSettingPage, useScrollUp} from "utils/hook";
 
 const EditCustomerPage = () => {
     useRedirectToSettingPage();

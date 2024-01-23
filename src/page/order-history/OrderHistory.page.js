@@ -1,13 +1,13 @@
 import {Link} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
 
 import {Content, Wrapper} from './OrderHistory.page.style';
 import {OrderHistoryRow} from "components";
+import {addOrderHistories} from "features/order-history/orderHistorySlice";
+
 import {URL} from "utils/config";
-import {useDispatch, useSelector} from "react-redux";
-import {addOrderHistories} from "../../features/order-history/orderHistorySlice";
 import {useEffect} from "react";
-import {BE_API, fetchData} from "../../utils/fetch";
-import {errorHandler} from "../../utils/management";
+import {BE_API, fetchData, errorHandler} from "utils/fetch";
 
 const OrderHistoryPage = () => {
     const dispatch = useDispatch();

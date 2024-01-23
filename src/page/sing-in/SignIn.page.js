@@ -14,13 +14,13 @@ import {
 import {ReactComponent as LockIcon} from "assets/icons/lock.svg";
 import {ReactComponent as MailIcon} from "assets/icons/mail.svg";
 
+import {addCustomer} from "features/customer/customerSlice";
+
 import validation from 'utils/validation';
 import {ROUTER, URL} from 'utils/config';
-import {fetchData, BE_API} from "utils/fetch";
+import {useQuery, useScrollUp} from "utils/hook";
 import {TRANSLATION, translate} from "utils/translation";
-import {addCustomer} from "features/customer/customerSlice";
-import {useQuery, useScrollUp} from "../../utils/hook";
-import {errorHandler} from "utils/management";
+import {fetchData, BE_API, errorHandler} from "utils/fetch";
 
 const SignInSchema = Yup.object().shape(validation.customer.singIn);
 

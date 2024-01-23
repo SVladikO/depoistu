@@ -3,14 +3,13 @@ import {useParams} from "react-router-dom";
 import QRCode from "qrcode";
 import {DatePrice, Wrapper} from './OrderHistoryDetails.page.style';
 
+import {ImageQR} from "../customer-companies/CustomerCompanies.style";
 import {MenuItem} from "components";
 
-import {ImageQR} from "../customer-companies/CustomerCompanies.style";
 import {URL} from "utils/config";
 import {useScrollUp} from "utils/hook";
-import {errorHandler} from "utils/management";
-import {BE_API, fetchData} from "utils/fetch";
 import {translate, TRANSLATION} from "utils/translation";
+import {BE_API, fetchData, errorHandler} from "utils/fetch";
 
 const multiplayWIthCheck = (price, amount) => {
     return price ? price * amount : 0;

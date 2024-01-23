@@ -5,17 +5,16 @@ import React, {useEffect, useMemo, useState} from "react";
 import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
 
 import {CityInput, ContentContainer, Company, NotificationLoading, Popup, RowSplitter} from "components";
+import {setCompanyId} from "features/searchDetails/searchDetailsSlice";
 
 import {URL} from "utils/config";
-import {BE_API, fetchData} from "utils/fetch";
 import {stopLoadingWithDelay} from "utils/utils";
 import {CITY_TRANSLATION_IDS} from "utils/cities";
 import {publishNotificationEvent} from "utils/event";
+import {useLocalStorage, useScrollUp} from "utils/hook";
+import {BE_API, fetchData, errorHandler} from "utils/fetch";
 import {translate, TRANSLATION, truncate} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
-import {useLocalStorage, useScrollUp} from "utils/hook";
-import {setCompanyId} from "../../features/searchDetails/searchDetailsSlice";
-import {errorHandler} from "utils/management";
 
 const SearchPage = () => {
         useScrollUp();

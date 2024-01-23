@@ -23,7 +23,7 @@ import OrderHistoryPage from "page/order-history/OrderHistory.page";
 
 import {TRANSLATION, translate} from "./translation.js";
 import EditCustomerPage from "page/edit-customer/EditCustomer.page";
-import FavoritePage from "page/favorite/Favorite.page";
+import FavoriteCompanyPage from "../page/favorite-company/favorite-company.page";
 import InstructionForBusinessOwnerPage from "page/instruction-for-bussines-owner/InstructionForBusinessOwner.page";
 import ProjectUpdatedPagePage from "../page/project-updated/ProjectUpdatedPage.page";
 import OrderHistoryDetailsPage from "../page/order-history-details/OrderHistoryDetails.page";
@@ -118,7 +118,7 @@ export const ROUTER = {
     FAVORITE: {
         URL: URL.FAVORITE,
         TITLE: translate(TRANSLATION.PAGE.FAVORITE.TOP_TITLE),
-        page: FavoritePage,
+        page: FavoriteCompanyPage,
         disablePageHeaderBottomMargin: true,
         showBottomMenu: true
     },

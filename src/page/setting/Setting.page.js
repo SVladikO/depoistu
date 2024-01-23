@@ -30,12 +30,11 @@ import LanguagePopup from "features/language/LanguagePopup";
 import {openLanguagePopup} from 'features/language/languageSlice';
 import {deleteCustomer} from "features/customer/customerSlice";
 import {cleanFavoriteCompanies} from 'features/favorite-company/favoriteComapnySlice'
-import {errorHandler} from "utils/management";
 
 import {URL} from 'utils/config';
 import {useScrollUp} from "utils/hook";
 import validation from "utils/validation";
-import {BE_API, fetchData} from "utils/fetch";
+import {BE_API, fetchData, errorHandler} from "utils/fetch";
 import {TRANSLATION as TR, translate} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 
