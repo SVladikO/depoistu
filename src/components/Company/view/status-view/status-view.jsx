@@ -1,8 +1,11 @@
-import {Closes, OpenStatus, Schedule} from "../../Company.style";
-import {translate, TRANSLATION as TR} from "../../../../utils/translation";
 import React from "react";
-import {parseSchedule} from "../../../../utils/company";
+
+import {Closes, OpenStatus, Schedule} from "./status-view.styles";
+
 import {ReactComponent as TimeIcon} from "assets/icons/time.svg";
+
+import {parseSchedule} from "utils/company";
+import {translate, TRANSLATION as TR} from "utils/translation";
 
 const StatusView = ({company}) => {
     const parsedSchedule = parseSchedule(company.schedule);

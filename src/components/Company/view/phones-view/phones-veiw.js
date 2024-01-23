@@ -1,8 +1,8 @@
 import React from "react";
 
-import {ThirdButton} from "../../../Buttons/ThirdButton";
-
 import {ReactComponent as PhoneIcon} from "assets/icons/phone.svg";
+
+import {ThirdButton} from "../../../Buttons/ThirdButton";
 
 const PhonesView = ({company, withMoreInfo}) => {
 

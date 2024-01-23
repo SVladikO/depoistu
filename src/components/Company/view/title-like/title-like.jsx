@@ -1,7 +1,9 @@
 import React from "react";
 import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {FirstRow, Name} from "../../Company.style";
+
+import {FirstRow, Name} from "./title-like.style";
+
 import {
     addToFavoriteCompanies,
     deleteFromFavoriteCompanies

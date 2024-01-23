@@ -1,25 +1,22 @@
-import React, {useState} from "react";
+import React from "react";
+import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router-dom";
 
-import {resetAllEditMenu, setCompanyIdToEditMenu} from "features/editMenu/editMenuSlice";
 import {Wrapper} from './bottom-bar-view.style'
+import {resetAllEditMenu, setCompanyIdToEditMenu} from "features/editMenu/editMenuSlice";
 
-import {QRCodeButton} from "page/customer-companies/CustomerCompanies.style";
 import {PrimaryButton} from "components";
 
 import {ReactComponent as EditIcon} from "assets/icons/edit.svg";
 import {ReactComponent as QRCodeIcon} from "assets/icons/qr_code.svg";
 
-import {scrollUp} from "utils/utils";
 import {ROUTER} from "utils/config";
+import {scrollUp} from "utils/utils";
 import {translate, TRANSLATION} from "utils/translation";
-import {useDispatch} from "react-redux";
 
-const BottomBarView = ({company, isCustomerCompaniesPage}) => {
+const BottomBarView = ({company, isCustomerCompaniesPage, showCodeQR}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate()
-    const showQRCode = companyId => () => setCompanyIdForQRCode(companyId);
-    const [companyIdForQRCode, setCompanyIdForQRCode] = useState();
 
     if (!isCustomerCompaniesPage) {
         return;
@@ -33,7 +30,7 @@ const BottomBarView = ({company, isCustomerCompaniesPage}) => {
             </PrimaryButton>
             <PrimaryButton
                 isOnlyIcon
-                clickHandler={showQRCode(company.id)}
+                clickHandler={showCodeQR}
             >
                 <QRCodeIcon/>
             </PrimaryButton>
@@ -50,7 +47,6 @@ const BottomBarView = ({company, isCustomerCompaniesPage}) => {
                 {translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.BUTTON.MENU)}
             </PrimaryButton>
 
-            {/*<PopupQRCode companyId={companyIdForQRCode} onClose={() => setCompanyIdForQRCode('')}/>*/}
 
         </Wrapper>
     )

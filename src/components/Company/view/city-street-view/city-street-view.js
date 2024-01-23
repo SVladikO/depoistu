@@ -1,11 +1,13 @@
-import {translate, truncate} from "../../../../utils/translation";
-import {CITY_TRANSLATION_IDS} from "../../../../utils/cities";
+import React from "react";
 import {Link} from "react-router-dom";
+
 import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
 
+import {LocationWrapper} from "./city-street-view.style";
+
 import {ThirdButton} from "../../../Buttons/ThirdButton";
-import {LocationWrapper} from "../../Company.style";
-import React from "react";
+import {translate, truncate} from "utils/translation";
+import {CITY_TRANSLATION_IDS} from "utils/cities";
 
 
 const CityStreet = ({company, withMoreInfo}) => {
