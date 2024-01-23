@@ -33,7 +33,7 @@ export const MenuItem = styled.div`
     text-align: center;
     align-items: center;
     position: relative;
-    margin-top: 7px;
+    margin-top: 4px;
     color: ${p => p.selected ? COLOR.PRIMARY : COLOR.ACCENT1};
 
     & > *:first-child {
@@ -62,8 +62,8 @@ export const OrderButton = styled.div`
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    height: 48px;
-    width: 48px;
+    height: 52px;
+    width: 52px;
     top: -10px;
     position: absolute;
     color: ${COLOR.ACCENT1};
