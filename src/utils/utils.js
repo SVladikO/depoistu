@@ -9,6 +9,13 @@ export const getParam = (key) => {
     return urlParams.get(key);
 }
 
+export const scrollUp = () => {
+    window.scrollTo({
+        top: -100,
+        behavior: "smooth",
+    })
+}
+
 export const stopLoadingWithDelay = callbacks => {
     let isLoaded = false;
     let intervalId;

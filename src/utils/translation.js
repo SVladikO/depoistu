@@ -327,6 +327,10 @@ export const TRANSLATION = {
                 ua: "Не додавайте заклади заради розваги. Інакше будемо змушені заблокувати ваш аккаунт. Не витрачайте ваш і наш час дарма. Дякуєм.",
                 en: "Don't add companies for fun as we will block your account.  Don't waste your time and ours. Thanks."
             },
+            VERIFICATION_INFO: {
+                ua: "Клієнти не бачитимуть ваші зображення за умовчанням. Кожні 1-2 дні ми включаємо зображення для нових компаній з меню.",
+                en: "Customers won't see your images by default. Each 1-2 days we turn on images for new companies with menu."
+            },
             BUTTON: {
                 COMPANY: {
                     en: 'Company',

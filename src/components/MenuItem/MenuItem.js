@@ -4,7 +4,7 @@ import {
     NewFlag
 } from "./MenuItem.style";
 
-import {CATEGORY_ROW_HEIGHT} from "page-view/category-menu-view/CategoryMenuView";
+import {CATEGORY_ROW_HEIGHT} from "../../page-view/category-menu-view/category-menu-view";
 
 import TitleIcon from "./view/title-icon/title-icon";
 import MenuItemDescription from "./view/menu-item-description/menu-item-description";
@@ -17,10 +17,10 @@ const MenuItem = (props) => {
     const {
         item,
         isNewItemFlag,
+        isCompanyVerified,
         isEditMenuItemPage = false,
         isOrderHistoryDetailsPage = false,
-        onSelectMenuItem = () => {
-        }
+        onSelectMenuItem = () => {}
     } = props;
 
     const onClickMenuItem = e => {
@@ -35,10 +35,10 @@ const MenuItem = (props) => {
             isVisibleForCustomers={item.isVisible || isOrderHistoryDetailsPage}
             onClick={onClickMenuItem}
         >
-            <FoodImage {...props}/>
+            {isCompanyVerified && <FoodImage {...props}/>}
             {isNewItemFlag && <NewFlag>New</NewFlag>}
             <ContentWrapper>
-                <TitleIcon {...props} />
+                <TitleIcon {...props} isCompanyVerified={isCompanyVerified}/>
                 <MenuItemDescription {...props}/>
                 <MenuItemPriceSizeControl {...props} />
             </ContentWrapper>

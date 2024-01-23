@@ -6,7 +6,7 @@ import {Wrapper} from "./SearchDetails.style";
 
 import {Company, NotificationLoading, PrimaryButton, NotificationTDB, RowSplitter} from "components";
 
-import CategoryMenuView from 'page-view/category-menu-view/CategoryMenuView'
+import CategoryMenuView from '../../page-view/category-menu-view/category-menu-view'
 
 import {ROUTER} from "utils/config";
 import {useScrollUp} from "utils/hook";
@@ -40,11 +40,10 @@ const SearchDetailsPage = () => {
             {isCompanyLoading && getNotification(TRANSLATION.NOTIFICATION.COMPANY.LOADING_COMPANY)}
             {!isCompanyLoading && company && <Company company={company} withMoreInfo/>}
             {isMenuLoading && getNotification(TRANSLATION.NOTIFICATION.LOADING_MENU)}
-            {!isMenuLoading && !!menuItems?.length && <CategoryMenuView menuItems={menuItems}/>}
+            {!isMenuLoading && !!menuItems?.length && <CategoryMenuView menuItems={menuItems} isCompanyVerified={company?.is_verified}/>}
             { (!companyId || !company) && !isCompanyLoading && !isMenuLoading && (
                 <NotificationTDB title={translate(TR.PAGE.COMPANY_DETAILS.COMPANY_DOESNT_EXIST)}>
                     <PrimaryButton isWide clickHandler={() => {
-
                         // We delete these data for case when
                         // company was deleted between
                         // customer found list of companies per city

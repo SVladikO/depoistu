@@ -23,7 +23,6 @@ import Price from "./Price/Price";
 import Rating from "./Rating/Rating";
 import SettingMenuRow from "./SettingMenuRow/SettingMenuRow";
 import SwiperWrapper from "./SwiperWrapper/SwiperWrapper";
-import ScheduleDetails from "./ScheduleDetails/ScheduleDetails";
 import ToggleCheckbox from "./ToggleCheckbox/ToggleCheckbox";
 import WarningMessage from "./WarningMessage/WarningMessage";
 import WeekScheduleInput from "./WeekScheduleInput/WeekScheduleInput";
@@ -88,7 +87,6 @@ export {
     SecondaryButton,
     SettingMenuRow,
     SwiperWrapper,
-    ScheduleDetails,
     Text22,
     Textarea,
     ThirdButton,

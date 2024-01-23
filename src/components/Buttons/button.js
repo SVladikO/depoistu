@@ -23,8 +23,8 @@ export const button = styled.button`
     cursor: ${p => p.isDisabled ? 'default' : 'pointer'};
 
     & > svg {
-        width: 12px;
-        height: 12px;
+        width: ${p => p.isOnlyIcon ? 'auto' : '12px'};
+        height: ${p => p.isOnlyIcon ? 'auto' : '12px'};
         margin: ${p => p.isOnlyIcon ? 0 : '0 10px 0 0'};
     }
 

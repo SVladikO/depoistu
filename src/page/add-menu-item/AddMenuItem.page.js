@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 
-import MenuItemView from "page-view/menu-item/menu-item-view";
+import MenuItemView from "../../page-view/menu-item-view/menu-item-view";
 
 import {fetchPostMenuItem} from "features/editMenu/thunks";
 

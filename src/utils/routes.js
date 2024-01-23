@@ -13,7 +13,7 @@ import {COLOR, DEVICE_WIDTH} from './theme';
 import {BottomMenu, NavigationHeader} from "components";
 import ScrollUpButton from "../components/ScrollUpButton/ScrollUpButton";
 
-import NotificationView from "page-view/notification/NotificationView";
+import NotificationView from "../page-view/notification/notification-view";
 
 export const HeightWrapper = styled.div`
   min-height: 60vh;

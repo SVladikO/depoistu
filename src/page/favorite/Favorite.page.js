@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 import {Company, NotificationTDB, PrimaryButton} from "../../components";
 
-import SingInSingUpView from "../../page-view/singInSingUp/singInSingUp.view";
+import SingInSingUpView from "../../page-view/sing-in-sing-up-view/sing-in-sing-up-view";
 
 import {initFavoriteCompanies} from "features/favorite-company/favoriteComapnySlice";
 import {setCompanyId} from "features/searchDetails/searchDetailsSlice";
