@@ -4,7 +4,7 @@ import QRCode from "qrcode";
 import {DatePrice, Wrapper} from './order-history-details.page.style';
 
 import {ImageQR} from "../customer-companies/customer-companies.page.style";
-import {MenuItem} from "components";
+import {MenuItem, NotificationLoading} from "components";
 
 import {URL} from "utils/config";
 import {useScrollUp} from "utils/hook";
@@ -26,16 +26,18 @@ const OrderHistoryDetailsPage = () => {
     useScrollUp()
     const {orderHistoryId} = useParams();
     const [orderItems, setOrderItems] = useState();
+    const [isLoading, setIsLoading] = useState(false);
     const [src, setSrc] = useState('');
     const [qrCodeGenerationError, setQrCodeGenerationError] = useState('');
 
     const allMenuItemsPrice = useMemo(() => calculatePrice(orderItems), [orderItems])
 
     useEffect(() => {
+        setIsLoading(true);
         fetchData(BE_API.ORDER_HISTORY_DETAILS.GET_BY_ORDER_HISTORY_ID(orderHistoryId))
             .then(res => setOrderItems(res.body))
             .catch(errorHandler)
-            .finally(() => {})
+            .finally(() => setIsLoading(false))
     }, []);
 
     const editMenuUrl = `${window.location.origin}${URL.ORDER_HISTORY_DETAILS}/${orderHistoryId}`;
@@ -43,6 +45,10 @@ const OrderHistoryDetailsPage = () => {
     QRCode.toDataURL(editMenuUrl)
         .then(url => setSrc(url))
         .catch(err => setQrCodeGenerationError(err))
+
+    if (isLoading) {
+        return <NotificationLoading />
+    }
 
     return (
         <Wrapper>
