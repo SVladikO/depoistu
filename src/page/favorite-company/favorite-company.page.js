@@ -8,7 +8,7 @@ import {Company, NotificationTDB, PrimaryButton} from "../../components";
 import SingInSingUpView from "../../page-view/sing-in-sing-up-view/sing-in-sing-up-view";
 
 import {initFavoriteCompanies} from "features/favorite-company/favoriteComapnySlice";
-import {setCompanyId} from "features/searchDetails/searchDetailsSlice";
+import {resetSearchDetails} from "features/searchDetails/searchDetailsSlice";
 
 import {useScrollUp} from "utils/hook";
 import {ROUTER, URL} from 'utils/config'
@@ -59,7 +59,7 @@ const FavoriteCompanyPage = () => {
                     key={company.id}
                     company={company}
                     clickHandler={() => {
-                        dispatch(setCompanyId(company.id))
+                        dispatch(resetSearchDetails())
                         navigate(`${URL.SEARCH_DETAILS}/${company.id}`)
                     }}
                 />
