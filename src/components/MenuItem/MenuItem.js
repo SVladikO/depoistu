@@ -42,10 +42,7 @@ const MenuItem = (props) => {
                 <MenuItemDescription {...props}/>
                 <MenuItemPriceSizeControl {...props} />
             </ContentWrapper>
-            {isEditMenuItemPage && (
-                <MenuItemBottomSettings {...props} />
-            )
-            }
+F            {isEditMenuItemPage &&  <MenuItemBottomSettings {...props} />}
         </Wrapper>
     );
 };
