@@ -1,14 +1,13 @@
 import React, {useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 
-import {NotificationLoading, PrimaryButton, RowSplitter} from "components";
-import MenuItemView from "page-view/menu-item/menu-item-view";
+import MenuItemView from "../../page-view/menu-item-view/menu-item-view";
 
-import {fetchData, BE_API} from "utils/fetch";
-import {useRedirectToSettingPage, useScrollUp} from "utils/hook";
+import {fetchPostMenuItem} from "features/editMenu/thunks";
+
 import {translate, TRANSLATION} from "utils/translation";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
-import {publishNotificationEvent} from "utils/event";
-import {errorHandler} from "utils/management";
+import {useRedirectToSettingPage, useScrollUp} from "utils/hook";
+import {NotificationLoading} from "../../components";
 
 const defaultInitialValue = {
     name: '',
@@ -25,31 +24,24 @@ const defaultInitialValue = {
 const AddMenuItemPage = () => {
     useRedirectToSettingPage();
     const scrollUp = useScrollUp();
-
-    const companyId = LocalStorage.get(LOCAL_STORAGE_KEY.COMPANY_ID_FOR_EDIT_MENU);
-    const [isLoading, setIsLoading] = useState(false);
+    const dispatch = useDispatch();
     const [initialValues, setInitialValues] = useState(defaultInitialValue)
 
+    const company_id = useSelector(state => state.editMenu.company_id);
+    const isLoadingAddMenuItem = useSelector(state => state.editMenu.isLoadingAddMenuItem);
+
     const onSubmit = values => {
-        setIsLoading(true);
-
-        const requestObj = {
-            ...values,
-            companyId,
-        }
-
-        fetchData(BE_API.MENU_ITEM.POST_CREATE(), requestObj)
-            .then(() => {
-                scrollUp();
-                publishNotificationEvent.success(translate(TRANSLATION.NOTIFICATION.MENU_ITEM.WAS_CREATED))
-                setInitialValues({...defaultInitialValue, categoryId: values.categoryId})
+        scrollUp()
+        const requestObj = {...values, company_id};
+        dispatch(fetchPostMenuItem(requestObj))
+            .then(e => {
+                scrollUp()
+                setInitialValues({...defaultInitialValue, category_id: values.category_id, imageUrl: ''})
             })
-            .catch(errorHandler)
-            .finally(() => setIsLoading(false))
     }
 
-    if (isLoading) {
-        return <NotificationLoading />
+    if (isLoadingAddMenuItem) {
+        return <NotificationLoading/>
     }
 
     return (
@@ -57,20 +49,9 @@ const AddMenuItemPage = () => {
             <MenuItemView
                 defaultInitialValue={initialValues}
                 onSubmit={onSubmit}
-            >
-                <>
-                    <RowSplitter height="10px"/>
-                    <PrimaryButton
-                        isWide
-                        type="submit"
-                        isLoading={isLoading}
-                        withPadding
-                    >
-                        {translate(TRANSLATION.PAGE.ADD_MENU_ITEM.BUTTON.ADD_MENU_ITEM)}
-                    </PrimaryButton>
-                </>
-
-            </MenuItemView>
+                isLoading={isLoadingAddMenuItem}
+                submitButtonTitle={translate(TRANSLATION.PAGE.ADD_MENU_ITEM.BUTTON.ADD_MENU_ITEM)}
+            />
         </>
     );
 }

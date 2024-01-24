@@ -1,11 +1,14 @@
 import {LocalStorage, LOCAL_STORAGE_KEY} from "./localStorage";
 
-export const DEFAULT_LANGUAGE = 'ua';
-
 export const LANGUAGE_KEYS = {
     UA: 'ua',
     EN: 'en'
 }
+const customerBrowserLanguage = window.navigator.language;
+export const DEFAULT_LANGUAGE =
+    customerBrowserLanguage.includes('ua') || customerBrowserLanguage.includes('ru')
+        ? 'ua'
+        : 'en';
 
 export const truncate = (text, availableLength = 1) => {
     if (text.length < availableLength) {
@@ -15,9 +18,18 @@ export const truncate = (text, availableLength = 1) => {
     return text.substring(0, availableLength) + ' ...';
 };
 
-export const getCurrentLanguage = () => LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE)?.language?.siteLanguage;
+export const getCurrentLanguage = () => LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE)?.language?.siteLanguage || DEFAULT_LANGUAGE;
+
 export const translate = obj => {
-    return obj[getCurrentLanguage() || DEFAULT_LANGUAGE];
+    let value;
+    try {
+        value = obj[getCurrentLanguage()]
+    } catch (e) {
+        value = 'NO TRANSLATIONS';
+        console.error('No translations for', obj)
+    }
+
+    return value;
 }
 
 export const TRANSLATION = {
@@ -30,8 +42,8 @@ export const TRANSLATION = {
         ua: 'Ні'
     },
     COMPANY_NAME: {
-        ua: 'DEPOISTU',
-        en: 'DEPOISTU'
+        ua: 'Де поїсти в Україні?',
+        en: 'Where to eat in Ukraine ?'
     },
     SEE_MORE: {
         ua: 'більше',
@@ -315,6 +327,10 @@ export const TRANSLATION = {
                 ua: "Не додавайте заклади заради розваги. Інакше будемо змушені заблокувати ваш аккаунт. Не витрачайте ваш і наш час дарма. Дякуєм.",
                 en: "Don't add companies for fun as we will block your account.  Don't waste your time and ours. Thanks."
             },
+            VERIFICATION_INFO: {
+                ua: "Клієнти не бачитимуть ваші зображення за умовчанням. Кожні 1-2 дні ми включаємо зображення для нових компаній з меню.",
+                en: "Customers won't see your images by default. Each 1-2 days we turn on images for new companies with menu."
+            },
             BUTTON: {
                 COMPANY: {
                     en: 'Company',
@@ -489,6 +505,10 @@ export const TRANSLATION = {
                     en: "Profile",
                     ua: "Профіль"
                 },
+                ORDER_HISTORY: {
+                    en: "Order History",
+                    ua: "Мої Замовлення"
+                },
                 MENU: {
                     ua: "Налаштувати меню",
                     en: "Set up menu"
@@ -524,6 +544,10 @@ export const TRANSLATION = {
                 VERSION: {
                     ua: 'Версія',
                     en: 'Version'
+                },
+                RESET_SETTINGS: {
+                    ua: 'Скинути налаштування',
+                    en: 'Reset settings'
                 },
                 LINKED_ACCOUNTS: {
                     ua: "Пов'язанi Аккаути",
@@ -604,7 +628,7 @@ export const TRANSLATION = {
                     {
                         question: "What is the cost?",
                         answers: [
-                            "It's free until 1st of June 2024.",
+                            "It's completely free during 2024.",
                         ]
                     },
                     {
@@ -642,24 +666,18 @@ export const TRANSLATION = {
                         question: "When was the first version released?",
                         answers: ["November 1, 2023"]
                     },
-                    {
-                        question: "What unites us?",
-                        answers: [
-                            "The desire to improve the sphere of services among catering establishments of Ukraine."
-                        ]
-                    },
                 ],
                 ua: [
                     {
                         question: "Яка головна ідея проекту?",
                         answers: [
-                            "Всі заклади харчування України на одному сайті depoistu.com",
+                            "Всі заклади харчування України на одному сайті depoistu.com.",
                         ]
                     },
                     {
                         question: "Яка вартість?",
                         answers: [
-                            "До 1го Червня 2024 БЕЗКОШТОВНО.",
+                            "Весь 2024 повністю БЕЗКОШТОВНО.",
                         ]
                     },
                     {
@@ -698,12 +716,6 @@ export const TRANSLATION = {
                         question: "Коли ми випустили першу версію?",
                         answers: ["1 Листопада 2023 року"]
                     },
-                    {
-                        question: "Що нас об`єднує?",
-                        answers: [
-                            "Бажання покращити сферу послуг серед закладів харчування України.",
-                        ]
-                    },
                 ],
             }
         },
@@ -712,6 +724,28 @@ export const TRANSLATION = {
                 ua: "Наша Команда",
                 en: "Our Team"
             }
+        },
+        ORDER_HISTORY: {
+            TOP_TITLE: {
+                ua: "Мої замовлення",
+                en: "Orders History"
+            },
+            TDB: {
+                TITLE: {
+                    ua: "Нема замовлень",
+                    en: "No orders"
+                },
+                DESCRIPTION: {
+                    ua: "Замовлення не знайдені.",
+                    en: "Your orders wasn't found."
+                },
+            }
+        },
+        ORDER_HISTORY_DETAILS: {
+            TOP_TITLE: {
+                ua: "Деталі замовлення",
+                en: "Order details"
+            },
         },
         FAVORITE: {
             TOP_TITLE: {
@@ -756,11 +790,11 @@ export const TRANSLATION = {
         },
         SIGN_IN: {
             TOP_TITLE: {
-                ua: "Вхiд",
+                ua: "Вхід",
                 en: "Sign in"
             },
             USER_NOTIFICATION: {
-                ua: "Вхiд виконаний",
+                ua: "Вхід виконаний",
                 en: "You already logged!"
             },
             FORGOT_PASSWORD: {
@@ -821,9 +855,22 @@ export const TRANSLATION = {
                 ua: "до",
                 en: "till"
             },
-            SCHEDULE_BUTTON: {
+            SHOW_SCHEDULE_BUTTON: {
                 ua: "Показати графік",
                 en: "Show schedule"
+            },
+            HIDE_SCHEDULE_BUTTON: {
+                ua: "Приховати графік",
+                en: "Hide schedule"
+            },
+
+            SHOW_MAP_BUTTON: {
+                ua: "Показати на карті",
+                en: "Show on map"
+            },
+            HIDE_MAP_BUTTON: {
+                ua: "Приховати карту",
+                en: "Hide map"
             }
         },
         MENU_ITEM: {
@@ -839,7 +886,7 @@ export const TRANSLATION = {
                 HIDDEN: {
                     en: "HIDDEN",
                     ua: "ПРИХОВАНО"
-                },
+                }
             },
         },
         POPUP: {
@@ -938,8 +985,49 @@ export const TRANSLATION = {
         LOADING_MENU: {
             en: "Loading menu ...",
             ua: "Завантаження меню ..."
+        }
+    },
+    ORDERS: {
+        ORDER_PLACED: {
+            en: 'Order saved.',
+            ua: 'Замовлення збережено.'
         },
-
+        SHARE_ORDER_INFO: {
+            en: 'Share order QR-code with a waiter.',
+            ua: 'Поділіться QR-кодом замовлення з офіціантом'
+        },
+        TOTAL: {
+            en: 'Total',
+            ua: 'Всього'
+        },
+        ORDER_REVIEW: {
+            en: 'Order review',
+            ua: 'Огляд замовлення'
+        },
+        SHOP_NOW: {
+            en: 'Shop Now',
+            ua: 'Здійснити замовлення'
+        },
+        LOOKS_LIKE: {
+            en: 'Looks like you haven\'t made your order yet.',
+            ua: 'Схоже, ви ще не зробили замовлення.'
+        },
+        BASKET_IS_EMPTY: {
+            en: 'Your basket is empty',
+            ua: 'Ваш кошик чистий'
+        },
+        CLEAR_BASKET: {
+            en: 'Clear basket',
+            ua: 'Очистити кошик'
+        },
+        SIGN_IN_TO_PLACE: {
+            en: 'Sign in to place order',
+            ua: 'Увійдіть, щоб зробити замовлення'
+        },
+        PLACE_ORDER: {
+            en: 'Place order',
+            ua: 'Зробити замовлення'
+        }
     },
 
     BOTTOM_MENU: {
@@ -980,6 +1068,14 @@ export const TRANSLATION = {
         HOT_DRINKS: {
             ua: "Гарячі напої",
             en: "Hot drinks",
+        },
+        COCKTAILS: {
+            ua: "Коктейлі",
+            en: "Cocktails",
+        },
+        WINE: {
+            ua: "Вина",
+            en: "Wines",
         },
         BAR: {
             ua: "Бар",
@@ -1119,6 +1215,10 @@ export const TRANSLATION = {
             en: "Longs",
             ua: "Лонги"
         },
+        CIDER: {
+            en: "Cider",
+            ua: "Сидр"
+        },
         NO_ALCOHOL: {
             en: "Non-alcoholic",
             ua: "Без алкогольні"
@@ -1148,8 +1248,8 @@ export const TRANSLATION = {
             ua: "Рожеві вина"
         },
         NO_ALCOHOL_WINE: {
-            en: "No alcohol wines",
-            ua: "Безалкогольні вина"
+            en: "Wines n/a",
+            ua: "Вина н/а"
         },
         HOMEMADE_WINE: {
             en: "Homemade wines",
@@ -1267,6 +1367,10 @@ export const TRANSLATION = {
             ua: "Напої",
             en: "Drinks"
         },
+        MULLED_WINE_NO_ALCOHOL: {
+            ua: "Глінтвейн н/a",
+            en: "Mulled wine n/a"
+        },
         MULLED_WINE: {
             ua: "Глінтвейн",
             en: "Mulled wine"
@@ -1327,9 +1431,9 @@ export const TRANSLATION = {
             ua: "Алкоголь",
             en: "Alcohol"
         },
-        WINE_CARD: {
-            ua: "Винна карта",
-            en: "Wine card"
+        WINE: {
+            ua: "Вина",
+            en: "Wine"
         },
         HOT_DRINKS: {
             ua: "Гарячi напої",
@@ -1496,7 +1600,7 @@ export const TRANSLATION = {
             en: 'Sushi'
         },
         COCKTAILS_ALCOHOL: {
-            ua: 'Коктейлі алкогольні',
+            ua: 'Алкогольні коктейлі',
             en: 'Cocktails alcohol'
         },
         HALLOWEEN_MENU: {
@@ -1508,8 +1612,8 @@ export const TRANSLATION = {
             en: 'Khachapuri'
         },
         COCKTAILS: {
-            ua: 'Коктейлі',
-            en: 'Cocktails'
+            ua: 'Коктейлі н/а',
+            en: 'Cocktails n/a'
         },
         MILK_COCKTAILS: {
             ua: 'Молочні коктейлі',

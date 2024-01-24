@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   max-width: 414px;
   background-color: ${COLOR.ACCENT4};
   margin: 0 auto;
-  padding: 0 0 100px;
+  padding: 0 0 130px;
 `;
 
 export const Row = styled.div`

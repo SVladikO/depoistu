@@ -106,30 +106,35 @@ export const CATEGORY_DRINKS = [
     {id: 56, title: TR.SUB_CATEGORIES.FRESH, measurement: MEASUREMENTS.LIQUID},
     {id: 124, title: TR.SUB_CATEGORIES.LEMONADE, measurement: MEASUREMENTS.LIQUID},
     {id: 89, title: TR.SUB_CATEGORIES.HOMEMADE_LEMONADE, measurement: MEASUREMENTS.LIQUID},
-    {id: 78, title: TR.SUB_CATEGORIES.COCKTAILS, measurement: MEASUREMENTS.LIQUID},
-    {id: 122, title: TR.SUB_CATEGORIES.MILK_COCKTAILS, measurement: MEASUREMENTS.LIQUID},
     {id: 79, title: TR.SUB_CATEGORIES.MORSES_AND_UZVAR, measurement: MEASUREMENTS.LIQUID},
 ];
 
 export const CATEGORY_HOT_DRINKS = [
     {id: 10004, isGroupTitle: true, title: TR.TOP_CATEGORIES.HOT_DRINKS},
+    {id: 27, title: TR.SUB_CATEGORIES.TEA, measurement: MEASUREMENTS.LIQUID},
     {id: 80, title: TR.SUB_CATEGORIES.HOME_TEA, measurement: MEASUREMENTS.LIQUID},
     {id: 121, title: TR.SUB_CATEGORIES.AUTHORS_TEAS, measurement: MEASUREMENTS.LIQUID},
     {id: 81, title: TR.SUB_CATEGORIES.BREWED_TEA, measurement: MEASUREMENTS.LIQUID},
-    {id: 27, title: TR.SUB_CATEGORIES.TEA, measurement: MEASUREMENTS.LIQUID},
     {id: 54, title: TR.SUB_CATEGORIES.PUERH, measurement: MEASUREMENTS.LIQUID},
     {id: 82, title: TR.SUB_CATEGORIES.TEA_ADDITION, measurement: MEASUREMENTS.LIQUID},
     {id: 55, title: TR.SUB_CATEGORIES.COFFEE, measurement: MEASUREMENTS.LIQUID},
+    {id: 134, title: TR.SUB_CATEGORIES.MULLED_WINE_NO_ALCOHOL, measurement: MEASUREMENTS.LIQUID},
     {id: 75, title: TR.SUB_CATEGORIES.MULLED_WINE, measurement: MEASUREMENTS.LIQUID},
 ];
 
-export const CATEGORY_BAR = [
-    {id: 10005, isGroupTitle: true, title: TR.TOP_CATEGORIES.BAR},
+export const CATEGORY_COCKTAILS = [
+    {id: 10008, isGroupTitle: true, title: TR.TOP_CATEGORIES.COCKTAILS},
+    {id: 78, title: TR.SUB_CATEGORIES.COCKTAILS, measurement: MEASUREMENTS.LIQUID},
+    {id: 122, title: TR.SUB_CATEGORIES.MILK_COCKTAILS, measurement: MEASUREMENTS.LIQUID},
     {id: 28, title: TR.SUB_CATEGORIES.COCKTAILS_ALCOHOL, measurement: MEASUREMENTS.LIQUID},
     {id: 58, title: TR.SUB_CATEGORIES.SHOTS, measurement: MEASUREMENTS.LIQUID},
     {id: 59, title: TR.SUB_CATEGORIES.LONGS, measurement: MEASUREMENTS.LIQUID},
+];
+
+export const CATEGORY_WINE = [
+    {id: 10007, isGroupTitle: true, title: TR.TOP_CATEGORIES.WINE},
     {id: 85, title: TR.SUB_CATEGORIES.NO_ALCOHOL_WINE, measurement: MEASUREMENTS.LIQUID},
-    {id: 29, title: TR.SUB_CATEGORIES.WINE_CARD, measurement: MEASUREMENTS.LIQUID},
+    {id: 29, title: TR.SUB_CATEGORIES.WINE, measurement: MEASUREMENTS.LIQUID},
     {id: 60, title: TR.SUB_CATEGORIES.WINE_GEORGIA, measurement: MEASUREMENTS.LIQUID},
     {id: 61, title: TR.SUB_CATEGORIES.WINE_ITALY, measurement: MEASUREMENTS.LIQUID},
     {id: 62, title: TR.SUB_CATEGORIES.WINE_FRANCE, measurement: MEASUREMENTS.LIQUID},
@@ -139,6 +144,13 @@ export const CATEGORY_BAR = [
     {id: 84, title: TR.SUB_CATEGORIES.RED_WINE, measurement: MEASUREMENTS.LIQUID},
     {id: 86, title: TR.SUB_CATEGORIES.PING_WINE, measurement: MEASUREMENTS.LIQUID},
     {id: 97, title: TR.SUB_CATEGORIES.HOMEMADE_WINE, measurement: MEASUREMENTS.LIQUID},
+
+];
+
+export const CATEGORY_BAR = [
+    {id: 10005, isGroupTitle: true, title: TR.TOP_CATEGORIES.BAR},
+    {id: 133, title: TR.SUB_CATEGORIES.CIDER, measurement: MEASUREMENTS.LIQUID},
+    {id: 57, title: TR.SUB_CATEGORIES.BEER, measurement: MEASUREMENTS.LIQUID},
     {id: 30, title: TR.SUB_CATEGORIES.HORILKA, measurement: MEASUREMENTS.LIQUID},
     {id: 67, title: TR.SUB_CATEGORIES.TINCTURE, measurement: MEASUREMENTS.LIQUID},
     {id: 65, title: TR.SUB_CATEGORIES.NALUVKU, measurement: MEASUREMENTS.LIQUID},
@@ -152,7 +164,6 @@ export const CATEGORY_BAR = [
     {id: 73, title: TR.SUB_CATEGORIES.COGNAC, measurement: MEASUREMENTS.LIQUID},
     {id: 91, title: TR.SUB_CATEGORIES.BRANDY, measurement: MEASUREMENTS.LIQUID},
     {id: 96, title: TR.SUB_CATEGORIES.CHACHA, measurement: MEASUREMENTS.LIQUID},
-    {id: 57, title: TR.SUB_CATEGORIES.BEER, measurement: MEASUREMENTS.LIQUID},
 ];
 
 export const CATEGORY_HOOKAH = [
@@ -161,7 +172,7 @@ export const CATEGORY_HOOKAH = [
     {id: 128, title: TR.SUB_CATEGORIES.MEDIUM_HOOKAH, measurement: MEASUREMENTS.BIT},
     {id: 129, title: TR.SUB_CATEGORIES.STRONG_HOOKAH, measurement: MEASUREMENTS.BIT},
     {id: 130, title: TR.SUB_CATEGORIES.DIFFICULT_HOOKAH, measurement: MEASUREMENTS.BIT},
-    {id: 131, title: TR.SUB_CATEGORIES.ADDITION_HOOKAH, measurement: MEASUREMENTS.BIT},
+    {id: 131, title: TR.SUB_CATEGORIES.ADDITION_HOOKAH, measurement: MEASUREMENTS.WEIGHT},
     {id: 132, title: TR.SUB_CATEGORIES.CUP_HOOKAH, measurement: MEASUREMENTS.BIT},
 ];
 
@@ -171,6 +182,8 @@ export const CATEGORY_MAPPER_AS_ARRAY = [
     ...CATEGORY_DESSERTS,
     ...CATEGORY_DRINKS,
     ...CATEGORY_HOT_DRINKS,
+    ...CATEGORY_COCKTAILS,
+    ...CATEGORY_WINE,
     ...CATEGORY_BAR,
     ...CATEGORY_HOOKAH,
 ];
@@ -184,6 +197,8 @@ export const TOP_CATEGORIES = {
     DESSERTS: getIds(CATEGORY_DESSERTS),
     DRINKS: getIds(CATEGORY_DRINKS),
     HOT_DRINKS: getIds(CATEGORY_HOT_DRINKS),
+    COCKTAILS: getIds(CATEGORY_COCKTAILS),
+    WINE: getIds(CATEGORY_WINE),
     BAR: getIds(CATEGORY_BAR),
     HOOKAH: getIds(CATEGORY_HOOKAH),
 }
@@ -211,19 +226,13 @@ const convertCategoryArrayToObject = () => {
 export const CATEGORY_ID_MAPPER_AS_OBJECT = convertCategoryArrayToObject()
 
 export const getSortedUniqueCategoryIds = (menuItems = []) => {
-    const categoryIds = menuItems.map(mi => mi.categoryId);
+    const categoryIds = menuItems.map(mi => mi.category_id);
     const uniqueCategories = [...new Set([...categoryIds])];
     uniqueCategories.sort((categoryId1, categoryId2) =>
         CATEGORY_ID_MAPPER_AS_OBJECT[categoryId1].index - CATEGORY_ID_MAPPER_AS_OBJECT[categoryId2].index
     )
     return uniqueCategories;
 }
-
-export const sortMenuItemPosition = (menuItems = []) =>
-    menuItems.sort((menuItem1, menuItem2) => {
-        return CATEGORY_ID_MAPPER_AS_OBJECT[menuItem1.categoryId].index - CATEGORY_ID_MAPPER_AS_OBJECT[menuItem2.categoryId].index;
-    })
-
 
 /**
  * Inner function to check id duplication.

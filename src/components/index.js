@@ -12,15 +12,17 @@ import HistoryTabBar from "./HistoryTabBar/HistoryTabBar";
 import HorizontalSwiper from "./HorizontalSwiper/HorizontalSwiper";
 import Like from "./Like/Like";
 import MenuItem from "./MenuItem/MenuItem";
+import {MapEditor} from "./Map/Map";
 import NavigationHeader from "./NavigationHeader/NavigationHeader";
 import NavigationLabelHref from "./NavigationLabelHref/NavigationLabelHref";
 import NotificationTDB from "./NotificationTDB/NotificationTDB";
-import OrderHistoryRow from "./OrderHistoryRow/OrderHistoryRow";
 import OrderIconWithCounter from "./OrderIconWithCounter/OrderIconWithCounter.jsx";
+import OrderHistoryRow from "./OrderHistoryRow/OrderHistoryRow.jsx";
 import Popup from "./Popup/Popup";
 import Price from "./Price/Price";
 import Rating from "./Rating/Rating";
 import SettingMenuRow from "./SettingMenuRow/SettingMenuRow";
+import SwiperWrapper from "./SwiperWrapper/SwiperWrapper";
 import ToggleCheckbox from "./ToggleCheckbox/ToggleCheckbox";
 import WarningMessage from "./WarningMessage/WarningMessage";
 import WeekScheduleInput from "./WeekScheduleInput/WeekScheduleInput";
@@ -32,13 +34,15 @@ import Footer from "./Footer/Footer";
 import {FixedWrapper} from "./FixedWrapper/FixedWrapper.style";
 import {Input, CityInput, Textarea} from "./Input/Input";
 import {Label} from "./Label/Label.style";
-import {MenuItemDetails} from "./MenuItem/MenuItem";
+import MenuItemDescription from "./MenuItem/view/menu-item-description/menu-item-description";
 import {NotificationFactory, NOTIFICATION_STATUS, NotificationLoading} from "./Notification/Notification";
 import {PrimaryButton} from "./Buttons/PrimaryButton";
 import {RowSplitterStyle as RowSplitter} from "./RowSplitter/RowSplitter.style";
 import {SecondaryButton} from "./Buttons/SecondaryButton";
 import {ThirdButton} from "./Buttons/ThirdButton";
 import {Text22} from "./Text/Text.style";
+import ImageUploaderButton from "./ImageUploaderButton/ImageUploaderButton";
+import ImageWithDelete from "./ImageWithDelete/image-with-delete";
 
 export {
     AccountSettings,
@@ -60,17 +64,20 @@ export {
     HistoryTabBar,
     HorizontalSwiper,
     Input,
+    ImageUploaderButton,
+    ImageWithDelete,
     Label,
     Like,
     MenuItem,
+    MapEditor,
     NOTIFICATION_STATUS,
     NavigationHeader,
     NavigationLabelHref,
     NotificationFactory,
     NotificationTDB,
     NotificationLoading,
-    OrderHistoryRow,
     OrderIconWithCounter,
+    OrderHistoryRow,
     CityInput,
     Popup,
     Price,
@@ -79,12 +86,13 @@ export {
     RowSplitter,
     SecondaryButton,
     SettingMenuRow,
+    SwiperWrapper,
     Text22,
     Textarea,
     ThirdButton,
     ToggleCheckbox,
     WarningMessage,
     WeekScheduleInput,
-    MenuItemDetails,
+    MenuItemDescription,
 }
 

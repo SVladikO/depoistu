@@ -1,8 +1,6 @@
 import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
 import {DEFAULT_LANGUAGE, getCurrentLanguage} from "./translation";
 import packageJson from "../../package.json";
-import {publishNotificationEvent} from "./event";
-import {URL} from "./config";
 
 /**
  * Logic which clean old local storage.
@@ -28,13 +26,5 @@ export const checkUpdates = () => {
     }
 }
 
-export function errorHandler(e) {
-    if (e.status === 408) {
-        updateLocalStorage()
-        window.location.replace(window.location.origin + URL.PROJECT_UPDATED)
-    } else {
-        publishNotificationEvent.error(e.body.errorMessage)
-    }
-}
 
 

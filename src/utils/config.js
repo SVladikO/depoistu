@@ -1,31 +1,32 @@
-import SearchPage from "page/search/Search.page";
-import SignInPage from "page/sing-in/SignIn.page";
-import SingUpPage from "page/sing-up/SingUp.page";
-import SettingPage from "page/setting/Setting.page";
-import AboutProjectPage from "../page/about-project/AboutProject.page";
-import OurTeamPage from "page/our-team/OurTeam.page";
-import EditMenuPage from "page/edit-menu/EditMenu.page";
-import AddCompanyPage from "page/add-company/AddCompany.page";
-import AddMenuItemPage from "page/add-menu-item/AddMenuItem.page";
-import EditCompanyPage from "page/edit-company/EditCompany.page";
-import EditMenuItemPage from "page/edit-menu-item/EditMenuItem.page";
-import SearchDetailsPage from "page/search-details/SearchDetails.page";
-import ChangePasswordPage from "page/change-password/ChangePassword.page";
-import ForgetPasswordPage from "page/forgot-password/ForgetPassword.page";
-import CustomerCompaniesPage from "page/customer-companies/CustomerCompanies.page";
-import AvailableMenuCategoriesPage from "page/available-menu-categories/AvailableMenuCategories.page";
+import OrderPage from "page/order/order.page";
+import SearchPage from "page/search/search.page";
+import SignInPage from "page/sing-in/sign-in.page";
+import SingUpPage from "page/sing-up/sing-up.page";
+import SettingPage from "page/setting/setting.page";
+import OurTeamPage from "page/our-team/our-team.page";
+import EditMenuPage from "page/edit-menu/edit-menu.page";
+import AddCompanyPage from "page/company-add/company-add.page";
+import EditCompanyPage from "page/company-edit/company-edit.page";
+import AddMenuItemPage from "page/menu-item-add/menu-item-add.page";
+import AboutProjectPage from "page/about-project/about-project.page";
+import EditCustomerPage from "page/edit-customer/edit-customer.page";
+import OrderHistoryPage from "page/order-history/order-history.page";
+import EditMenuItemPage from "page/menu-item-edit/edit-menu-item.page";
+import SearchDetailsPage from "page/search-details/search-details.page";
+import ChangePasswordPage from "page/change-password/change-password.page";
+import ProjectUpdatedPage from "page/project-updated/project-updated.page";
+import ForgetPasswordPage from "page/forgot-password/forget-password.page";
+import FavoriteCompanyPage from "page/favorite-company/favorite-company.page";
+import CustomerCompaniesPage from "page/customer-companies/customer-companies.page";
+import AvailableMenuCategoriesPage from "page/available-menu-categories/available-menu-categories.page";
+import OrderHistoryDetailsPage from "page/order-history-details/order-history-details.page";
+import InstructionForBusinessOwnerPage from "page/instruction-for-bussines-owner/instruction-for-business-owner.page";
 
 // TODO: Hidden second version
-// import OrderPage from "page/order/Order.page";
 // import CategoryPage from "page/category/Category.page";
-// import OrderHistoryPage from "page/order-history/OrderHistory.page";
 // import {HistoryTabBar} from "components";
 
 import {TRANSLATION, translate} from "./translation.js";
-import EditCustomerPage from "page/edit-customer/EditCustomer.page";
-import FavoritePage from "page/favorite/Favorite.page";
-import InstructionForBusinessOwnerPage from "page/instruction-for-bussines-owner/InstructionForBusinessOwner.page";
-import ProjectUpdatedPagePage from "../page/project-updated/ProjectUpdatedPage.page";
 
 export const DEV_ROUTER = {
     ADMIN: 'admin',
@@ -46,14 +47,12 @@ function getDomainBE() {
                 name: 'stage',
                 url: 'https://depoistu-stage-8139a3f5250c.herokuapp.com'
             }
-
         case "https://depoistu-develop.onrender.com":
-        case "http://localhost:3000":
+        // case "http://localhost:3000":
             return {
                 name: 'develop',
                 url: 'https://depoistu-develop-ab315caf64ab.herokuapp.com'
             }
-
         default:
             return {
                 name: 'localhost',
@@ -79,6 +78,9 @@ export const URL = {
     ABOUT_PROJECT: '/about-project',
     EDIT_CUSTOMER: '/edit-customer',
     OUR_TEAM: '/our-team',
+    ORDER: '/order',
+    ORDER_HISTORY: '/order-history',
+    ORDER_HISTORY_DETAILS: '/order-history-details',
 
     AVAILABLE_MENU_CATEGORIES: '/available-menu-categories',
     INSTRUCTION_FOR_BUSINESS_OWNER: '/instruction-for-business-owner',
@@ -91,29 +93,48 @@ export const URL = {
 };
 
 export const ROUTER = {
-    // ORDER_REVIEW: {URL: '/order',  TITLE: 'Order review', page: OrderPage, showBottomMenu: true},
-    // ORDER_HISTORY: {URL: '/history',  TITLE: 'Order History', page: OrderHistoryPage, subHeader: HistoryTabBar, showBottomMenu: true},
+    ORDER: {
+        URL: URL.ORDER,
+        TITLE: translate(TRANSLATION.ORDERS.ORDER_REVIEW),
+        page: OrderPage,
+        showBottomMenu: true
+    },
+    ORDER_HISTORY: {
+        URL: URL.ORDER_HISTORY,
+        TITLE: translate(TRANSLATION.PAGE.ORDER_HISTORY.TOP_TITLE),
+        page: OrderHistoryPage,
+        backUrl: URL.SETTING,
+        showBottomMenu: true
+    },
+    ORDER_HISTORY_DETAILS: {
+        URL: URL.ORDER_HISTORY_DETAILS,
+        PARAMS: '/:orderHistoryId',
+        TITLE: translate(TRANSLATION.PAGE.ORDER_HISTORY_DETAILS.TOP_TITLE),
+        page: OrderHistoryDetailsPage,
+        backUrl: URL.ORDER_HISTORY,
+        showBottomMenu: true
+    },
     FAVORITE: {
         URL: URL.FAVORITE,
         TITLE: translate(TRANSLATION.PAGE.FAVORITE.TOP_TITLE),
-        page: FavoritePage,
+        page: FavoriteCompanyPage,
+        disablePageHeaderBottomMargin: true,
         showBottomMenu: true
     },
     MENU: {
         URL: '/menu',
         TITLE: 'Favorite Cart',
-        page: () => {}},
+        page: () => {
+        }
+    },
     // Profile: {URL: '/Profile',  TITLE: 'Profile', page: () => {}},
     // USER_ACCOUNT = {URL: '/user_account',  TITLE: 'USER_ACCOUNT', page: () => {}, showBottomMenu: true, BACK_URL: ROUTER.SETTING.URL};
     SEARCH: {
         URL: URL.SEARCH,
         TITLE: translate(TRANSLATION.PAGE.SEARCH.TOP_TITLE),
         page: SearchPage,
-        showBottomMenu: true
-    },
-    PROJECT_UPDATED: {
-        URL: URL.PROJECT_UPDATED,
-        page: ProjectUpdatedPagePage,
+        disablePageHeaderBottomMargin: true,
+        showBottomMenu: true,
     },
     SEARCH_DETAILS: {
         URL: URL.SEARCH_DETAILS,
@@ -121,7 +142,12 @@ export const ROUTER = {
         TITLE: translate(TRANSLATION.PAGE.COMPANY_DETAILS.TOP_TITLE),
         page: SearchDetailsPage,
         showBottomMenu: true,
+        disablePageHeaderBottomMargin: true,
         backUrl: URL.SEARCH
+    },
+    PROJECT_UPDATED: {
+        URL: URL.PROJECT_UPDATED,
+        page: ProjectUpdatedPage,
     },
     SETTING: {
         URL: URL.SETTING,
@@ -189,6 +215,7 @@ export const ROUTER = {
         URL: URL.CUSTOMER_COMPANIES,
         TITLE: translate(TRANSLATION.PAGE.CUSTOMER_COMPANIES.TOP_TITLE),
         page: CustomerCompaniesPage,
+        disablePageHeaderBottomMargin: true,
         showBottomMenu: true,
         backUrl: URL.SETTING
     },

@@ -15,7 +15,7 @@ export const COLOR = {
     WARNING1: '#F1C21B',
     WARNING2: '#FFF8E1',
     INFO1: '#0244CF',
-    INFO2: '#EDF5FF',
+    INFO2: '#b7d7ff',
     ERROR1: '#DA1E28',
     ERROR2: '#FFF1F1',
     SUCCESS1: '#25A249',
@@ -28,13 +28,17 @@ export const GRADIENT = {
 }
 
 export const FONT = {
+    SIZE_12: `
+        font-size: 12px;
+        line-height: 14px;
+        `,
     SIZE_14: `
         font-size: 14px;
         line-height: 16px;
         `,
     SIZE_16: `
         font-size: 16px;
-        line-height: 19px;
+        line-height: 18px;
         `,
     SIZE_18: `
         font-size: 18px;
@@ -51,6 +55,10 @@ export const FONT = {
     SIZE_24: `
         font-size: 24px;
         line-height: 29px;
+        `,
+    SIZE_30: `
+        font-size: 30px;
+        line-height: 34px;
         `,
     SIZE_32: `
         font-size: 32px;
@@ -73,7 +81,8 @@ export const BORDER_RADIUS = {
     THIRD: '0px',
     FOURTH: '0px',
     CIRCLE: '50%',
-    INPUT: '4px'
+    INPUT: '4px',
+    NOTIFICATION: '10px'
 }
 
 export const DEVICE_WIDTH = {
@@ -85,7 +94,8 @@ export const MEDIA = {
     phone: "(max-width: 414px) and (min-width: 370px)"
 }
 
-export const SHADOW = `box-shadow: 0px 2px 2px 0px #00000033;`
+export const SHADOW = `box-shadow: rgba(0, 0, 0, 0.11) 0px 2px 4px 0px;`
+export const SHADOW_DARK = `box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 4px 0px;`
 
 
 

@@ -9,7 +9,7 @@ export const DefaultNotification = css`
   gap: 10px;
   width: 100%;
   padding: 10px 30px 10px 10px;
-  border-radius: ${p => p.borderRadius ? p.borderRadius : BORDER_RADIUS.SECOND};
+  border-radius: ${p => p.borderRadius ? p.borderRadius : BORDER_RADIUS.NOTIFICATION};
   margin: 0 0 15px;
   ${FONT.SIZE_18};
   

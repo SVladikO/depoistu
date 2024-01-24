@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {COLOR} from "utils/theme";
+import {COLOR, FONT} from "utils/theme";
 
 export const Wrapper = styled.div`
   margin: 0 0 40px 0;
@@ -28,6 +28,8 @@ export const LogoContainer = styled.div`
 `;
 
 export const Address = styled.div`
-  color: ${COLOR.ACCENT3};
-  font-size: 20px;
+  color: ${COLOR.ACCENT1};
+  ${FONT.SIZE_22};
+  display: flex;
+  justify-content: center;
 `;

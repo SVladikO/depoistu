@@ -1,7 +1,7 @@
 import React from "react";
 import {useSelector, useDispatch} from "react-redux";
 
-import {Popup, PrimaryButton} from "components";
+import {Popup, PrimaryButton, RowSplitter} from "components";
 import {enableScrollOnBody} from "components/Popup/Popup";
 
 import {closeLanguagePopup, setWebsiteLanguage} from "./languageSlice";
@@ -32,6 +32,7 @@ const LanguagePopup = () => {
 
     return (
         <Popup.Center showCloseButton={false}>
+            <RowSplitter height={'220px'} />
             <PrimaryButton isWide clickHandler={setUA}>Українська</PrimaryButton>
             <PrimaryButton isWide clickHandler={setEN}>English</PrimaryButton>
         </Popup.Center>

@@ -1,16 +1,16 @@
 import styled from "styled-components";
-import {COLOR, BORDER_RADIUS} from "utils/theme";
+import {COLOR, FONT, BORDER_RADIUS} from "utils/theme";
 
 export const Wrapper = styled.div`
-  padding: 2px !important;
-  height: 38px;
+  padding: 4px !important;
+  height: 46px;
   border-radius: ${BORDER_RADIUS.SUB_CATEGORY};
   border: ${p => p.isSelected ? `solid 2px ${COLOR.ACCENT4}` : ''};
   color: ${COLOR.ACCENT4};
-  font-size: 16px;
-  font-weight: 700;
-  text-align: center;
+  ${FONT.SIZE_16};
   line-height: 16px;
+  ${FONT.WEIGHT_700};
+  text-align: center;
   
   &:hover {
     cursor: pointer;

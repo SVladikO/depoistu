@@ -14,7 +14,7 @@ export const InvisibleWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: ${p => p.popupPosition};
-  z-index: 20;
+  z-index: 100;
 `;
 
 export const Wrapper = styled.div`
@@ -35,15 +35,14 @@ export const Wrapper = styled.div`
 
 export const CloseButtonWrapper = styled.div`
   position: absolute;
-  right: 17px;
-  top: 14px;
-
+  right: 4px;
+  top: 4px;
   width: 40px;
   height: 40px;
-  
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
+  -webkit-box-pack: end;
+  justify-content: center;
+  align-items: center;
 
   & > svg {
     width: 14px;
