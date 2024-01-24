@@ -14,7 +14,6 @@ import {useScrollUp} from "utils/hook";
 import {ROUTER, URL} from 'utils/config'
 import {translate, TRANSLATION} from "utils/translation";
 import {BE_API, fetchData, errorHandler} from "utils/fetch";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 
 const FavoriteCompanyPage = () => {
     useScrollUp();
@@ -61,7 +60,6 @@ const FavoriteCompanyPage = () => {
                     company={company}
                     clickHandler={() => {
                         dispatch(setCompanyId(company.id))
-                        LocalStorage.remove(LOCAL_STORAGE_KEY.SEARCH_DETAILS_COMPANY)
                         navigate(`${URL.SEARCH_DETAILS}/${company.id}`)
                     }}
                 />

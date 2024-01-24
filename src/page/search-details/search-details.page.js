@@ -23,7 +23,7 @@ const SearchDetailsPage = () => {
     const {menuItems, isMenuLoading, company, isCompanyLoading} = useSelector(state => state.searchDetails)
 
     useEffect(() => {
-        if (!companyId || companyId === company?.id) {
+        if (company) {
             return
         }
 

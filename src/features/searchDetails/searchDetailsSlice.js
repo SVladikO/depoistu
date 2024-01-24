@@ -1,6 +1,7 @@
 import createSliceCustom from "features/utils";
 import {fetchMenu, fetchCompany} from "./thunks";
 import {errorHandlerRedux} from "utils/fetch";
+import {LOCAL_STORAGE_KEY, LocalStorage} from "../../utils/localStorage";
 
 const initialState = {
     companyId: null,
@@ -18,6 +19,10 @@ export const searchDetailsSlice = createSliceCustom({
     reducers: {
         setCompanyId: (state, action) => {
             state.companyId = action.payload;
+        },
+        resetSearchDetails: (state) => {
+            state.company = null;
+            state.menuItems = [];
         },
         incrementMenuItemAmount: (state, action) => {
             const {id, amountKey} = action.payload;
@@ -62,8 +67,18 @@ export const searchDetailsSlice = createSliceCustom({
             state.isCompanyLoading = true
         },
         [fetchCompany.fulfilled]: (state, action) => {
+            const company = action.payload;
             state.isCompanyLoading = false
-            state.company = action.payload
+            state.company = company;
+
+            // For navigation from search to search-details page it was bad idea to limit amount of call to BE
+            // All we lost our main principle "CUSTOMER ALWAYS SEE LAST VERSION OF COMPANY & MENU"
+            // Also we may have situation when somebody doesn't update his search page.
+            // He visits only one company each time.
+            // That's why was made design to update search companies from search details company.
+            const searchCompanies = LocalStorage.get(LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT);
+            const updatedCompanies = searchCompanies.map(sc => sc.id === company.id ? company : sc);
+            LocalStorage.set(LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT, updatedCompanies)
         },
         [fetchCompany.rejected]: (state, error) => {
             state.isCompanyLoading = false
@@ -75,6 +90,7 @@ export const searchDetailsSlice = createSliceCustom({
 
 export const {
     setCompanyId,
+    resetSearchDetails,
     incrementMenuItemAmount,
     decrementMenuItemAmount,
     makeMenuItemImageVisible,

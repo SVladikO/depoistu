@@ -5,7 +5,7 @@ import React, {useEffect, useMemo, useState} from "react";
 import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
 
 import {CityInput, ContentContainer, Company, NotificationLoading, Popup, RowSplitter} from "components";
-import {setCompanyId} from "features/searchDetails/searchDetailsSlice";
+import {resetSearchDetails} from "features/searchDetails/searchDetailsSlice";
 
 import {URL} from "utils/config";
 import {stopLoadingWithDelay} from "utils/utils";
@@ -95,9 +95,8 @@ const SearchPage = () => {
 
         const regionLabel = translate(TRANSLATION.COMPONENTS.POPUP.CITY.INPUT)
 
-        const onClickCompany = (company) => () => {
-            dispatch(setCompanyId(company.id))
-            LocalStorage.remove(LOCAL_STORAGE_KEY.SEARCH_DETAILS_COMPANY)
+        const onClickCompany = company => () => {
+            dispatch(resetSearchDetails())
             navigate(`${URL.SEARCH_DETAILS}/${company.id}`)
         }
 
