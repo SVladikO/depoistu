@@ -4,6 +4,7 @@ import {COLOR, FONT, GRADIENT, hexToRgbA} from "utils/theme";
 export const BgWrapper = styled.div`
   overflow: hidden;
   background-image: linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO});
+  border-top: solid 1px ${COLOR.ACCENT5};
 `;
 export const TopCategoryItem = styled.div`
   -webkit-user-select: none; /* Safari */

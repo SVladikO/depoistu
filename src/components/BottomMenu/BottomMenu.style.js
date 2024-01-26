@@ -40,12 +40,11 @@ export const MenuItem = styled.div`
         width: 23px;
         height: 23px;
         display: block;
-        margin-bottom: 2px;
         fill: ${p => p.selected ? COLOR.ACCENT1 : COLOR.ACCENT5};
     }
   
     span {
-      ${FONT.SIZE_16};
+      ${FONT.SIZE_18};
     }
 `;
 

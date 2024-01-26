@@ -27,7 +27,7 @@ const BottomMenu = () => {
                 onClick={() => navigate(ROUTER.SEARCH.URL)}
             >
                 <HomeIcon/>
-                <span>{translate(TRANSLATION.BOTTOM_MENU.MAIN)}</span>
+                <span>{translate(TRANSLATION.BOTTOM_MENU.SEARCH)}</span>
             </MenuItem>
 
             <MenuItem

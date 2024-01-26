@@ -282,8 +282,8 @@ export const TRANSLATION = {
         },
         COMPANY_DETAILS: {
             TOP_TITLE: {
-                ua: "Деталі закладу",
-                en: 'Company details'
+                ua: "Меню",
+                en: 'Menu'
             },
             MENU_PROBLEM: {
                 ua: 'Меню закладу відсутнє',
@@ -467,7 +467,7 @@ export const TRANSLATION = {
         },
         SETTINGS: {
             TOP_TITLE: {
-                ua: "Налаштування",
+                ua: "Системні",
                 en: "Settings"
             },
             BUTTONS: {
@@ -1031,9 +1031,9 @@ export const TRANSLATION = {
     },
 
     BOTTOM_MENU: {
-        MAIN: {
-            ua: "Головна",
-            en: "Main"
+        SEARCH: {
+            ua: "Пошук",
+            en: "Search"
         },
         MENU: {
             ua: "Меню",

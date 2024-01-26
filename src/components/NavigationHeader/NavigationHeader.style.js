@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
 export const Title = styled.div`
   width: 100%;
   text-align: center;
-  ${FONT.SIZE_18};
+  ${FONT.SIZE_22};
   ${FONT.WEIGHT_700};
   justify-self: center;
   padding: 16px;
