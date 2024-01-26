@@ -17,7 +17,9 @@ export const Row = styled.div`
   ${FONT.WEIGHT_400};
   border-bottom: 1px ${COLOR.ACCENT2} solid;
   color: ${COLOR.ACCENT1};
-  
+  a {
+    color: unset;
+  }
   &:hover {
     cursor: pointer;
   }
@@ -38,7 +40,5 @@ export const Support = styled.div`
   display: flex;
   justify-content: center;
   color: ${COLOR.ACCENT1};
-  a {
-    color: unset;
-  }
+  
 `;
