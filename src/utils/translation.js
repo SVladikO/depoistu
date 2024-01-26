@@ -59,8 +59,16 @@ export const TRANSLATION = {
             en: 'Continue'
         },
         TEXT: {
-            ua: ['Все меню України.'],
-            en: ['All menu of Ukraine.']
+            ua: [
+                'Ми збираєм',
+                'Всі меню України',
+                'Для вашого комфорту',
+            ],
+            en: [
+                'We collect',
+                'All menu of Ukraine',
+                'For your comfort',
+            ]
         },
     },
     VALIDATION: {
