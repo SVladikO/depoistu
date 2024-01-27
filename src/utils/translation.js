@@ -60,14 +60,10 @@ export const TRANSLATION = {
         },
         TEXT: {
             ua: [
-                'Ми збираєм',
-                'Всі меню України',
-                'Для вашого комфорту',
+                'Ми збираєм всі меню України для вашого комфорту.',
             ],
             en: [
-                'We collect',
-                'All menu of Ukraine',
-                'For your comfort',
+                'We collect all menu of Ukraine for your comfort.',
             ]
         },
     },
