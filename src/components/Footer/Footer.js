@@ -18,7 +18,7 @@ const Footer = () => {
 
     return (
         <>
-            <RowSplitter height={'100px'}/>
+            <RowSplitter height={'300px'}/>
             <Wrapper>
                 <Row onClick={scrollToTop}>{translate(TR.PAGE.FOOTER.BACK_TO_TOP_BUTTON)}</Row>
                 <Link to={URL.ABOUT_PROJECT}>

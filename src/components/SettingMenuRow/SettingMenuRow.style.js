@@ -38,6 +38,6 @@ export const Title = styled.div`
 `;
 
 export const Label = styled.div`
-  color: #B4C2CD;
+  color: ${COLOR.ACCENT5};
   font-size: 18px;
 `;
