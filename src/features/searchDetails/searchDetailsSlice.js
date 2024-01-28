@@ -76,9 +76,12 @@ export const searchDetailsSlice = createSliceCustom({
             // Also we may have situation when somebody doesn't update his search page.
             // He visits only one company each time.
             // That's why was made design to update search companies from search details company.
-            const searchCompanies = LocalStorage.get(LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT);
-            const updatedCompanies = searchCompanies.map(sc => sc.id === company.id ? company : sc);
-            LocalStorage.set(LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT, updatedCompanies)
+            const searchCompanies = LocalStorage.get(LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT) || [];
+            // When we open first time search-details page.
+            if (searchCompanies.length) {
+                const updatedCompanies = searchCompanies.map(sc => sc.id === company.id ? company : sc);
+                LocalStorage.set(LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT, updatedCompanies)
+            }
         },
         [fetchCompany.rejected]: (state, error) => {
             state.isCompanyLoading = false
