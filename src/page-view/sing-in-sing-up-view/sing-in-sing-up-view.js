@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-import {NotificationTDB, PrimaryButton, RowSplitter} from "../../components";
+import {NotificationTDB, PrimaryButton, RowSplitter, SecondaryButton} from "../../components";
 import {EditBar} from "./sing-in-sing-up-view.style";
 
 import {URL} from "../../utils/config";
@@ -21,7 +21,7 @@ const SingInSingUpView = ({backUrl = URL.SETTING}) => {
                     <PrimaryButton isWide minWidth="120px">{translate(TR.PAGE.SETTINGS.BUTTONS.SING_UP)}</PrimaryButton>
                 </Link>
                 <Link to={`${URL.SING_IN}?backUrl=${backUrl}`}>
-                    <PrimaryButton isWide minWidth="120px">{translate(TR.PAGE.SETTINGS.BUTTONS.SING_IN)}</PrimaryButton>
+                    <SecondaryButton isWide minWidth="120px">{translate(TR.PAGE.SETTINGS.BUTTONS.SING_IN)}</SecondaryButton>
                 </Link>
             </EditBar>
         </NotificationTDB>
