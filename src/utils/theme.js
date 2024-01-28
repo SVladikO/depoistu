@@ -12,6 +12,7 @@ export const COLOR = {
     ACCENT8: '#f3f3f3',
     ACCENT9: '#E6E8E9',
     ACCENT10: '#013f09',
+    ACCENT11: '#737272',
     WARNING1: '#F1C21B',
     WARNING2: '#FFF8E1',
     INFO1: '#0244CF',
