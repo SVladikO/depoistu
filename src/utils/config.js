@@ -97,6 +97,7 @@ export const ROUTER = {
         URL: URL.ORDER,
         TITLE: translate(TRANSLATION.ORDERS.ORDER_REVIEW),
         page: OrderPage,
+        disablePageHeaderBottomMargin: true,
         showBottomMenu: true
     },
     ORDER_HISTORY: {

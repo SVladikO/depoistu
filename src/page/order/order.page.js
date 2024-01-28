@@ -2,13 +2,14 @@ import {useMemo, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Link, useNavigate} from "react-router-dom";
 
-import {Wrapper, AmountInfo, Content} from './order.page.style';
+import {Wrapper, AmountInfo} from './order.page.style';
+
 import {
-    MenuItem,
     PrimaryButton,
     SecondaryButton,
     NotificationTDB,
     NotificationLoading,
+    RowSplitter,
 } from "components";
 
 import {ReactComponent as EmptyBasketIcon} from "assets/icons/empty_basket.svg";
@@ -20,6 +21,7 @@ import {publishNotificationEvent} from "utils/event";
 import {translate, TRANSLATION} from "utils/translation";
 import {BE_API, fetchData, errorHandler} from "utils/fetch";
 import {resetOrder} from "features/searchDetails/searchDetailsSlice";
+import CategoryMenuView from "../../page-view/category-menu-view/category-menu-view";
 
 const multiplayWIthCheck = (price, amount) => {
     return price ? price * amount : 0;
@@ -28,9 +30,14 @@ const OrderPage = () => {
     const scrollUp = useScrollUp()
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const company = useSelector(state => state.searchDetails.company);
     const customer = useSelector(state => state.customer.value);
     const {menuItems} = useSelector(state => state.searchDetails);
-    const order_items = useMemo(() => menuItems.filter(item => item.amount_1 > 0 || item.amount_2 > 0 || item.amount_3 > 0), [menuItems])
+    const order_items = useMemo(() =>
+            menuItems
+                .filter(item => item.amount_1 > 0 || item.amount_2 > 0 || item.amount_3 > 0)
+                .map(mi => ({...mi, isImageVisible: true}))
+        , [menuItems])
     const [isPlaceOrderLoading, setIsPlaceOrderLoading] = useState(false)
     const allMenuItemsPrice = order_items.length
         ? order_items.reduce((acc, cur) =>
@@ -58,53 +65,15 @@ const OrderPage = () => {
 
     const onCleanBasket = () => dispatch(resetOrder())
 
-    const OrderItems = () => (
-            <>
-                <Content>
-                    {order_items.map((mi, index) => (
-                        <MenuItem
-                            key={`menu_item${index}${mi.id}`}
-                            item={mi}
-                            isSelected
-                            isOrderPage
-                        />))
-                    }
-                    <AmountInfo>
-                        <div> {translate(TRANSLATION.ORDERS.TOTAL)}:</div>
-                        <div>₴ {allMenuItemsPrice}</div>
-                    </AmountInfo>
-                    {
-                        customer ? (
-                            <PrimaryButton isLoading={isPlaceOrderLoading} isWide withPadding clickHandler={placeOrder}>
-                                {translate(TRANSLATION.ORDERS.PLACE_ORDER)}
-                            </PrimaryButton>
-                        ) : (
-                            <Link to={`${URL.SING_IN}?backUrl=${URL.ORDER}`}>
-                                <PrimaryButton isWide withPadding>
-                                    {translate(TRANSLATION.ORDERS.SIGN_IN_TO_PLACE)}
-                                </PrimaryButton>
-                            </Link>
-                        )
-                    }
-
-                    <SecondaryButton isWide withPadding clickHandler={onCleanBasket}>
-                        <RemoveIcon/>
-                        {translate(TRANSLATION.ORDERS.CLEAR_BASKET)}
-                    </SecondaryButton>
-                </Content>
-            </>
-        )
-    ;
-
     if (isPlaceOrderLoading) {
         return <NotificationLoading/>
     }
 
-    return (
-        <Wrapper>{
-            order_items.length
-                ? <OrderItems/>
-                : <NotificationTDB
+    if (!order_items.length) {
+        return (
+            <>
+                <RowSplitter height={'30px'}/>
+                <NotificationTDB
                     Icon={EmptyBasketIcon}
                     title={translate(TRANSLATION.ORDERS.BASKET_IS_EMPTY)}
                     description={translate(TRANSLATION.ORDERS.LOOKS_LIKE)}
@@ -113,7 +82,43 @@ const OrderPage = () => {
                         <PrimaryButton isWide>{translate(TRANSLATION.ORDERS.SHOP_NOW)}</PrimaryButton>
                     </Link>
                 </NotificationTDB>
-        }</Wrapper>
+            </>
+        )
+    }
+
+    return (
+        <Wrapper>
+            <CategoryMenuView
+                isCompanyVerified={company?.is_verified}
+                menuItems={order_items}
+                isHideFixedTop
+                isOrderPage
+            />
+            <RowSplitter height={'40px'}/>
+
+            <AmountInfo>
+                <div> {translate(TRANSLATION.ORDERS.TOTAL)}:</div>
+                <div>₴ {allMenuItemsPrice}</div>
+            </AmountInfo>
+            {
+                customer ? (
+                    <PrimaryButton isLoading={isPlaceOrderLoading} isWide withPadding clickHandler={placeOrder}>
+                        {translate(TRANSLATION.ORDERS.PLACE_ORDER)}
+                    </PrimaryButton>
+                ) : (
+                    <Link to={`${URL.SING_IN}?backUrl=${URL.ORDER}`}>
+                        <PrimaryButton isWide withPadding>
+                            {translate(TRANSLATION.ORDERS.SIGN_IN_TO_PLACE)}
+                        </PrimaryButton>
+                    </Link>
+                )
+            }
+            <RowSplitter height={'20px'}/>
+            <SecondaryButton isWide withPadding clickHandler={onCleanBasket}>
+                <RemoveIcon/>
+                {translate(TRANSLATION.ORDERS.CLEAR_BASKET)}
+            </SecondaryButton>
+        </Wrapper>
     );
 };
 
