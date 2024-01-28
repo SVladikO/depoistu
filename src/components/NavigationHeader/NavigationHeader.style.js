@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 
 export const Wrapper = styled.div`
     display: flex;
-    background: ${COLOR.ACCENT4};
+    background: ${COLOR.WHITE};
     position: relative;
     height: 54px;
     -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.11);

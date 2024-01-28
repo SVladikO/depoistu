@@ -9,7 +9,7 @@ export const ContentContainerDefault = css`
 
 
   & > a {
-    color: ${COLOR.ACCENT3};
+    color: ${COLOR.SECONDARY};
   }
 
   & > * {

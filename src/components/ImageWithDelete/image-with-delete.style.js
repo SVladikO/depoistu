@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
 export const BasketButton = styled.div`
   width: 31px;
   height: 34px;
-  background: ${COLOR.ACCENT4};
+  background: ${COLOR.WHITE};
   display: flex;
   justify-content: center;
   align-items: center;

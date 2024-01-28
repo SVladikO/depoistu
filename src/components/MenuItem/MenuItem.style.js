@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   font-style: normal;
   font-size: 16px;
   line-height: 19px;
-  background: ${p => p.isVisibleForCustomers ? COLOR.ACCENT4 : COLOR.ACCENT7};
+  background: ${p => p.isVisibleForCustomers ? COLOR.WHITE : COLOR.ACCENT7};
   border-radius: ${BORDER_RADIUS.MENU_ITEM};
   border-bottom: solid 1px ${COLOR.ACCENT9};
   display: flex;
@@ -29,7 +29,7 @@ export const NewFlag = styled.div`
     ${FONT.SIZE_14};
     position: absolute;
     padding: 5px 12px;
-    background-color: ${COLOR.ACCENT3};
-    color: ${COLOR.ACCENT4};
+    background-color: ${COLOR.SECONDARY};
+    color: ${COLOR.WHITE};
     z-index: 2;
 `

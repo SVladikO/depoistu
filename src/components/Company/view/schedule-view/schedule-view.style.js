@@ -7,18 +7,18 @@ export const Wrapper = styled.div`
     height: auto;
     overflow: hidden;
     perspective: 1px;
-    background-color: ${COLOR.ACCENT4};
+    background-color: ${COLOR.WHITE};
     margin: 0 0 10px 0;
 
     .swiper-pagination-bullet {
         width: 10px;
         height: 10px;
-        background-color: ${COLOR.ACCENT4};
+        background-color: ${COLOR.WHITE};
         opacity: 1;
     }
 
     .swiper-pagination-bullet-active {
-        background-color: ${COLOR.ACCENT3};
+        background-color: ${COLOR.SECONDARY};
     }
 `;
 export const Content = styled.div`
@@ -44,7 +44,7 @@ export const DaySchedule = styled.div`
 const dayDefault = styled.div`
     ${FONT.SIZE_16};
     ${FONT.WEIGHT_500};
-    color: ${props => props.isToday ? COLOR.ACCENT4 : COLOR.ACCENT1};
+    color: ${props => props.isToday ? COLOR.WHITE : COLOR.ACCENT1};
     border: ${props => props.isToday ? COLOR.ACCENT1 : COLOR.ACCENT5}  solid 1px;
     background: ${props => props.isToday ? COLOR.ACCENT1 : 'none' };
     line-height: 24px;

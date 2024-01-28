@@ -3,7 +3,7 @@ import {COLOR, FONT} from "utils/theme";
 
 export const Wrapper = styled.div`
   max-width: 414px;
-  background-color: ${COLOR.ACCENT4};
+  background-color: ${COLOR.WHITE};
   margin: 0 auto;
   padding: 0 0 130px;
 `;

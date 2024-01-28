@@ -1,15 +1,15 @@
 import {keyframes} from "styled-components";
 
 export const COLOR = {
-    PRIMARY:  '#709900',
+    PRIMARY:  '#458845',
+    SECONDARY:  '#96CC00',
     ACCENT1: '#3F3D56',
     ACCENT2: '#F5F6FB',
-    ACCENT3:  '#96CC00',
     ACCENT4: '#FFFFFF',
     ACCENT5: '#B5B5B5',
     ACCENT6: '#FF3937',
     ACCENT7: '#F6EBEF',
-    ACCENT8: '#F5F6FB',
+    ACCENT8: '#f3f3f3',
     ACCENT9: '#E6E8E9',
     ACCENT10: '#013f09',
     WARNING1: '#F1C21B',
@@ -20,10 +20,11 @@ export const COLOR = {
     ERROR2: '#FFF1F1',
     SUCCESS1: '#25A249',
     SUCCESS2: '#DEFCE6',
+    WHITE: '#FFFFFF',
 }
 
 export const GRADIENT = {
-    FROM: COLOR.ACCENT3,
+    FROM: COLOR.SECONDARY,
     TO: COLOR.PRIMARY,
 }
 
@@ -97,7 +98,9 @@ export const MEDIA = {
 export const SHADOW = `box-shadow: rgba(0, 0, 0, 0.11) 0px 2px 4px 0px;`
 export const SHADOW_DARK = `box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 4px 0px;`
 
-
+export function lighterDarkerColor(color, amount) {
+    return '#' + color.replace(/^#/, '').replace(/../g, color => ('0'+Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(16)).substr(-2));
+}
 
 export function hexToRgbA(hex, a = 1) {
     var c;

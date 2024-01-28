@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
     z-index: 2;
     bottom: -1px;
     height: 60px;
-    background-color: ${COLOR.ACCENT4};
+    background-color: ${COLOR.WHITE};
     display: flex;
     justify-content: space-around;
 
@@ -66,7 +66,7 @@ export const OrderButton = styled.div`
     top: -10px;
     position: absolute;
     color: ${p => p.isSelected ? COLOR.ACCENT1 : COLOR.ACCENT5};
-    background: ${COLOR.ACCENT4};
+    background: ${COLOR.WHITE};
     border: solid 1px ${p => p.isSelected ? COLOR.ACCENT1 : COLOR.ACCENT5};
     ${FONT.SIZE_30}
     ${FONT.WEIGHT_700}

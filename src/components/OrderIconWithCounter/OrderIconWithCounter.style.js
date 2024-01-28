@@ -22,7 +22,7 @@ export const PurchaseCounter = styled.div`
   width: 18px;
   height: 18px;
   position: absolute;
-  color: ${COLOR.ACCENT4};
+  color: ${COLOR.WHITE};
   font-weight: 700;
   font-size: 12px;
   line-height: 14px;

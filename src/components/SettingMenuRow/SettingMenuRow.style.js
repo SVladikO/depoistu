@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   padding: 13px 10px 13px 16px;
   margin: 0 0 1px 0;
-  background: ${COLOR.ACCENT4};
+  background: ${COLOR.WHITE};
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
