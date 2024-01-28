@@ -10,7 +10,7 @@ export const button = styled.button`
     -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none; /* Standard syntax */
     height: 50px;
-    padding: 10px 24px;
+    padding: 10px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
