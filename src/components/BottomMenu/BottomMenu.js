@@ -32,9 +32,7 @@ const BottomMenu = () => {
 
             <MenuItem
                 selected={isSelected(`${URL.SEARCH_DETAILS}/${companyId}`)}
-                onClick={() => {
-                    navigate(`${ROUTER.SEARCH_DETAILS.URL}/${companyId}`)
-                }}
+                onClick={() => navigate(`${ROUTER.SEARCH_DETAILS.URL}/${companyId}`)}
             >
                 <MenuIcon/>
                 <span>{translate(TRANSLATION.BOTTOM_MENU.MENU)}</span>
