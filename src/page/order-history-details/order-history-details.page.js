@@ -70,7 +70,7 @@ const OrderHistoryDetailsPage = () => {
             <DatePrice>
                 {/*<span>20 April, 2020</span>*/}
                 <span></span>
-                <span>{translate(TRANSLATION.ORDERS.TOTAL)}: ₴ {allMenuItemsPrice}</span>
+                <span>{translate(TRANSLATION.ORDERS.TOTAL)}: {allMenuItemsPrice} ₴</span>
             </DatePrice>
             <CategoryMenuView menuItems={orderItems} isHideFixedTop isOrderHistoryDetailsPage />
         </Wrapper>
