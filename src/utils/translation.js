@@ -302,8 +302,8 @@ export const TRANSLATION = {
         },
         INSTRUCTION_FOR_BUSINESS_OWNER: {
             TOP_TITLE: {
-                ua: "Інструкція користувача",
-                en: 'Usage instruction'
+                ua: "Інструкції для бізнесу",
+                en: 'Business instruction'
             },
         },
         AVAILABLE_MENU_CATEGORIES: {
@@ -318,8 +318,8 @@ export const TRANSLATION = {
         },
         CUSTOMER_COMPANIES: {
             TOP_TITLE: {
-                ua: "Ваші заклади",
-                en: 'Your companies'
+                ua: "Мої заклади",
+                en: 'My companies'
             },
             QR_MENU_TITLE: {
                 ua: 'МЕНЮ',
