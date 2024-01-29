@@ -37,7 +37,8 @@ const FavoriteCompanyPage = () => {
                 dispatch(initFavoriteCompanies(res.body))
             })
             .catch(errorHandler)
-    })
+
+    }, [favoriteCompany, customer])
 
     return (
         <>
@@ -58,6 +59,7 @@ const FavoriteCompanyPage = () => {
                 <Company
                     key={company.id}
                     company={company}
+                    isShowAllImages={false}
                     clickHandler={() => {
                         dispatch(resetSearchDetails())
                         navigate(`${URL.SEARCH_DETAILS}/${company.id}`)
