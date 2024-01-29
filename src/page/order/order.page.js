@@ -36,7 +36,6 @@ const OrderPage = () => {
     const order_items = useMemo(() =>
             menuItems
                 .filter(item => item.amount_1 > 0 || item.amount_2 > 0 || item.amount_3 > 0)
-                .map(mi => ({...mi, isImageVisible: true}))
         , [menuItems])
     const [isPlaceOrderLoading, setIsPlaceOrderLoading] = useState(false)
     const allMenuItemsPrice = order_items.length
@@ -92,7 +91,6 @@ const OrderPage = () => {
                 isCompanyVerified={company?.is_verified}
                 menuItems={order_items}
                 isHideFixedTop
-                isOrderPage
             />
             <RowSplitter height={'40px'}/>
 

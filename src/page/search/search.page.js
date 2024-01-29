@@ -106,6 +106,7 @@ const SearchPage = () => {
 
     return (
             <>
+                <RowSplitter height={'20px'} />
                 <ContentContainer noBg noShadow>
                     <CityInput
                         handleClick={onOpenCityPopup}

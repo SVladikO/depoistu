@@ -27,7 +27,7 @@ export const Details = styled.tr`
 
 export const SizePriceInfoTd = styled.td`
   display: grid;
-  grid-template-columns: 70px 10px 1fr;
+  grid-template-columns: 76px 8px 150px;
   width: 180px;
   
   span {
@@ -43,7 +43,7 @@ export const ControlButtonTd = styled.td`
   display: ${p => p.isShow ? 'flex': 'none'};
   justify-content: end;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 `
 
 export const Amount = styled.div`
