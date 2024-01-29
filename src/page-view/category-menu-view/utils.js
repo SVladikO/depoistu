@@ -1,5 +1,6 @@
 import React from "react";
 
+export const CATEGORY_TITLE_CLASS_NAME = 'CATEGORY_TITLE_CLASS_NAME';
 const CATEGORY_ID_PREFIX = 'category_'
 const DISABLE_VERTICAL_SCROLL_LISTENER_CLASS_NAME = 'disable_verticall_scroll_listener'
 

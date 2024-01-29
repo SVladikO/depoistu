@@ -59,8 +59,14 @@ export const TRANSLATION = {
             en: 'Continue'
         },
         TEXT: {
-            ua: ['Все меню України.'],
-            en: ['All menu of Ukraine.']
+            ua: [
+                'Ми збираєм всі меню України для вашого комфорту в одному місці. На цьому сайті.',
+                'Ви можете допомогти вашим улюбленим закладам розмістити меню у нас безкоштовно.',
+            ],
+            en: [
+                'We collect all menu of Ukraine for your comfort in one place. On this site.',
+                "You can help your favorite establishments get to our site for free.",
+            ]
         },
     },
     VALIDATION: {
@@ -282,8 +288,8 @@ export const TRANSLATION = {
         },
         COMPANY_DETAILS: {
             TOP_TITLE: {
-                ua: "Деталі закладу",
-                en: 'Company details'
+                ua: "Меню",
+                en: 'Menu'
             },
             MENU_PROBLEM: {
                 ua: 'Меню закладу відсутнє',
@@ -467,7 +473,7 @@ export const TRANSLATION = {
         },
         SETTINGS: {
             TOP_TITLE: {
-                ua: "Налаштування",
+                ua: "Системні",
                 en: "Settings"
             },
             BUTTONS: {
@@ -1005,12 +1011,12 @@ export const TRANSLATION = {
             ua: 'Огляд замовлення'
         },
         SHOP_NOW: {
-            en: 'Shop Now',
-            ua: 'Здійснити замовлення'
+            en: 'Choose company',
+            ua: 'Обрати заклад'
         },
         LOOKS_LIKE: {
             en: 'Looks like you haven\'t made your order yet.',
-            ua: 'Схоже, ви ще не зробили замовлення.'
+            ua: 'Схоже, ви ще не вибрали страви.'
         },
         BASKET_IS_EMPTY: {
             en: 'Your basket is empty',
@@ -1031,9 +1037,9 @@ export const TRANSLATION = {
     },
 
     BOTTOM_MENU: {
-        MAIN: {
-            ua: "Головна",
-            en: "Main"
+        SEARCH: {
+            ua: "Пошук",
+            en: "Search"
         },
         MENU: {
             ua: "Меню",

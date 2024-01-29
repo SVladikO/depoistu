@@ -3,7 +3,7 @@ import {COLOR, FONT} from "utils/theme";
 
 export const Wrapper = styled.div`
   max-width: 414px;
-  background-color: ${COLOR.ACCENT4};
+  background-color: ${COLOR.WHITE};
   margin: 0 auto;
   padding: 0 0 130px;
 `;
@@ -17,7 +17,9 @@ export const Row = styled.div`
   ${FONT.WEIGHT_400};
   border-bottom: 1px ${COLOR.ACCENT2} solid;
   color: ${COLOR.ACCENT1};
-  
+  a {
+    color: unset;
+  }
   &:hover {
     cursor: pointer;
   }
@@ -38,7 +40,5 @@ export const Support = styled.div`
   display: flex;
   justify-content: center;
   color: ${COLOR.ACCENT1};
-  a {
-    color: unset;
-  }
+  
 `;

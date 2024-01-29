@@ -47,7 +47,7 @@ export const ControlButtonTd = styled.td`
 `
 
 export const Amount = styled.div`
-  width: ${p => p.isWide ? '27px': '20px'};
+  width: ${p => p.isWide ? '35px': '20px'};
   text-align: center;
 `
 

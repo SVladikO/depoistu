@@ -36,7 +36,7 @@ export const RoundSlider = styled.span`
   width: 31px;
   height: 17px;
   border-radius: 100px;
-  background: ${COLOR.ACCENT4};
+  background: ${COLOR.WHITE};
   position: relative;
   transition: background-color 0.2s;
   outline: 1px solid #B4C2CD;

@@ -28,6 +28,6 @@ export const LogoContainer = styled.div`
 `;
 
 export const Address = styled.div`
-  color: ${COLOR.ACCENT3};
+  color: ${COLOR.SECONDARY};
   font-size: 20px;
 `;

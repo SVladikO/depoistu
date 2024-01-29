@@ -11,21 +11,24 @@ import {CITY_TRANSLATION_IDS} from "utils/cities";
 
 
 const CityStreet = ({company, withMoreInfo}) => {
+    const address = truncate(`${translate(CITY_TRANSLATION_IDS[company.cityId])}, ${company.street}`, 35)
+
     if (withMoreInfo) {
-        const address = `,${company.street}, ${translate(CITY_TRANSLATION_IDS[company.cityId])}`
-        let addressUrl = `https://www.google.com/maps?q=${encodeURIComponent(address)}`
+        const addressURL = `,${company.street}, ${translate(CITY_TRANSLATION_IDS[company.cityId])}`
+        let addressUrl = `https://www.google.com/maps?q=${encodeURIComponent(addressURL)}`
 
         return (<Link to={addressUrl} target="_blank" rel="noopener">
             <ThirdButton>
                 <LocationIcon className="location_icon"/>
-                {truncate(`${translate(CITY_TRANSLATION_IDS[company.cityId])}, ${company.street}`, 40)}
+                {address}
             </ThirdButton>
         </Link>)
     }
 
     return (
         <LocationWrapper>
-            <LocationIcon/>{translate(CITY_TRANSLATION_IDS[company.cityId])}, {company.street}
+            <LocationIcon/>
+            {address}
         </LocationWrapper>
     );
 }

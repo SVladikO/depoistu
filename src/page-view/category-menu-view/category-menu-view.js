@@ -10,10 +10,10 @@ import 'swiper/css/scrollbar';
 import {
     TopCategoryItem,
     BgWrapper,
-    SubCategoryWrapper,
-    CategoryTitle
+    SubCategoryWrapper
 } from "./category-menu-view.style";
 
+import CategoryTitle from "./view/top-category-title/top-category-title";
 import {SubCategoryItem, MenuItem, RowSplitter, HorizontalSwiper} from "components";
 import {addEditMenuItemCandidate} from 'features/editMenu/editMenuSlice';
 
@@ -25,10 +25,11 @@ import {
     FixTop,
     generateTagId,
     disableScrollListener,
-    getIsScrollDisabled, CATEGORY_CLASSNAME
+    getIsScrollDisabled,
+    CATEGORY_TITLE_CLASS_NAME,
+    CATEGORY_CLASSNAME
 } from "./utils";
 
-const CATEGORY_TITLE_CLASS_NAME = 'CATEGORY_TITLE_CLASS_NAME';
 const LAST_EDITED_CLASSNAME = 'last_edited_menu_item';
 
 export const CATEGORY_ROW_HEIGHT = 112;
@@ -37,7 +38,7 @@ let indexCalculator = 0;
 let categoryIdIndexMapper = {};
 
 const CategoryMenuView = (props) => {
-    const {menuItems, isEditMenuItemPage, isCompanyVerified} = props
+    const {menuItems, isHideFixedTop = false} = props
     const dispatch = useDispatch()
     const navigate = useNavigate();
     //duplication
@@ -125,35 +126,14 @@ const CategoryMenuView = (props) => {
         )
     };
 
-    /**
-     *
-     * @param categoryId
-     * @param topCategoryIndex
-     * @param isHidden - We need hide category title for case when we scroll up page and should change sub and top category.
-     * @returns {JSX.Element}
-     */
-    const renderCategoryTitle = (categoryId, topCategoryIndex, isHidden = false) => {
-        const categoryTitle = CATEGORY_ID_MAPPER_AS_OBJECT[categoryId].title;
 
-        return (
-            <CategoryTitle
-                key={categoryTitle + topCategoryIndex + Math.random()}
-                className={CATEGORY_TITLE_CLASS_NAME}
-                id={generateTagId(categoryId, topCategoryIndex)}
-                isHidden={isHidden}
-            >
-                {categoryTitle.toUpperCase()}
-            </CategoryTitle>
-        )
-    }
     const renderMenuItem = (mi) => (
         <div className={mi.id === menuItemCandidateToEdit?.id ? LAST_EDITED_CLASSNAME : ''}>
             <MenuItem
+                {...props}
                 key={`menu_item_${mi.id}`}
                 item={mi}
                 onEditClick={navigateToEditMenuItemPage(mi)}
-                isCompanyVerified={isCompanyVerified}
-                isEditMenuItemPage={isEditMenuItemPage}
                 isSelected={mi.id === selectedMenuItemId}
                 onSelectMenuItem={() => setSelectedMenuItemId(mi.id)}
             />
@@ -186,12 +166,13 @@ const CategoryMenuView = (props) => {
             }
 
             subCategories.push(renderSubCategory(categoryId, topCategoryIndex, categoryIdIndexMapper[categoryId]))
-            resultMenuItems.push(renderCategoryTitle(categoryId, topCategoryIndex))
+            resultMenuItems.push(<CategoryTitle categoryId={categoryId} topCategoryIndex={topCategoryIndex}/>)
 
             const menuItem = items.map(renderMenuItem)
 
             menuItem.forEach(mi => {
-                resultMenuItems.push(renderCategoryTitle(categoryId, topCategoryIndex, true))
+                resultMenuItems.push(<CategoryTitle categoryId={categoryId} topCategoryIndex={topCategoryIndex}
+                                                    isHidden/>)
                 resultMenuItems.push(mi)
             })
         })
@@ -223,45 +204,48 @@ const CategoryMenuView = (props) => {
             if (isCurrentPageEqual(URL.EDIT_MENU) && lastEdited) {
                 window.scrollTo({top: lastEdited.offsetTop - CATEGORY_ROW_HEIGHT, behavior: "smooth"});
             }
-        // Delay should be minimum 1000, because if we take smaller scroll to last edited on edit-menu page won't work.
+            // Delay should be minimum 1000, because if we take smaller scroll to last edited on edit-menu page won't work.
         }, 1000);
     }, [menuItemCandidateToEdit]);
 
     return (
         <>
-            <FixTop className="menu-header">
-                <BgWrapper style={{background: 'white'}}>
-                    {/*** TOP CATEGORIES ***/}
-                    <HorizontalSwiper
-                        slidesPerView={
-                            topCategories.length < 3
-                                ? 2
-                                : 4
-                        }
-                        sliderStylePadding='0 6px 10px'
-                        subCategoryIndex={selectedTopCategoryId}
-                    >
-                        {topCategories.map(details => renderTopCategory(details))}
-                    </HorizontalSwiper>
-                    {/*** SUB CATEGORIES ***/}
-                    <BgWrapper>
-                        <SubCategoryWrapper className={CATEGORY_CLASSNAME}>
-                            <HorizontalSwiper
-                                sliderStylePadding={'0 6px 14px'}
-                                subCategoryIndex={categoryIdIndexMapper[selectedSubCategoryId]}
-                            >
-                                {subCategories}
-                            </HorizontalSwiper>
-                        </SubCategoryWrapper>
+            {!isHideFixedTop && (
+                <FixTop className="menu-header">
+                    <BgWrapper style={{background: 'white'}}>
+                        {/*** TOP CATEGORIES ***/}
+                        <HorizontalSwiper
+                            slidesPerView={
+                                topCategories.length < 3
+                                    ? 2
+                                    : 4
+                            }
+                            sliderStylePadding='0 6px 10px'
+                            subCategoryIndex={selectedTopCategoryId}
+                        >
+                            {topCategories.map(details => renderTopCategory(details))}
+                        </HorizontalSwiper>
+                        {/*** SUB CATEGORIES ***/}
+                        <BgWrapper>
+                            <SubCategoryWrapper className={CATEGORY_CLASSNAME}>
+                                <HorizontalSwiper
+                                    sliderStylePadding={'0 6px 14px'}
+                                    subCategoryIndex={categoryIdIndexMapper[selectedSubCategoryId]}
+                                >
+                                    {subCategories}
+                                </HorizontalSwiper>
+                            </SubCategoryWrapper>
+                        </BgWrapper>
                     </BgWrapper>
-                </BgWrapper>
-            </FixTop>
+                </FixTop>
+            )
+            }
             {/*
                 We use RowSplitter here because MenuHeader use fixed position and
                 lost his height and we added fake element the same height under it.
                 This is only for the first CategoryTitle
              */}
-            <RowSplitter height={`${CATEGORY_ROW_HEIGHT + 10}px`}/>
+            {!isHideFixedTop && <RowSplitter height={`${CATEGORY_ROW_HEIGHT + 10}px`}/>}
             {/***  MENU ITEM  ***/}
             {resultMenuItems}
         </>

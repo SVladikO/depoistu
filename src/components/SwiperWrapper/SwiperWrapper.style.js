@@ -21,12 +21,12 @@ export const ImageSection = styled.div`
     .swiper-pagination-bullet {
         width: 10px;
         height: 10px;
-        background-color: ${COLOR.ACCENT4};
+        background-color: ${COLOR.WHITE};
         opacity: 1;
     }
 
     .swiper-pagination-bullet-active {
         background-color: ${COLOR.ACCENT1};
-        border: solid 2px ${COLOR.ACCENT4};
+        border: solid 2px ${COLOR.WHITE};
     }
 `;

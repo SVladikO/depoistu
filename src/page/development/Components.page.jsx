@@ -66,7 +66,7 @@ const colors = Object
 const mockMenuItem = {
     id: 10,
     name: '4 Cheese',
-    categoryId: 1,
+    category_id: 1,
     description: 'spicy , tomato, sauce, chilies, mozzare, lla, spicy, ice, tomato, sauce, chili, mozzarella, sauce, chili',
     photos: ['https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png'],
     size_1: 100,
@@ -249,7 +249,7 @@ const componentsGroup1 = [
         },
         {
             title: 'FromToTime',
-            component: <FromToTime prefix='mon' dayName='Mon' values={{monIsChecked: true}}/>
+            component: <FromToTime prefix='mon' dayName='Mon' values={{monIsChecked: true}} handleChange={() => {}}/>
         },
         {
             title: 'Textarea',

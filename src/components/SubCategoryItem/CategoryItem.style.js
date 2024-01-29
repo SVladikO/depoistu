@@ -5,8 +5,8 @@ export const Wrapper = styled.div`
   padding: 4px !important;
   height: 46px;
   border-radius: ${BORDER_RADIUS.SUB_CATEGORY};
-  border: ${p => p.isSelected ? `solid 2px ${COLOR.ACCENT4}` : ''};
-  color: ${COLOR.ACCENT4};
+  border: ${p => p.isSelected ? `solid 2px ${COLOR.WHITE}` : ''};
+  color: ${COLOR.WHITE};
   ${FONT.SIZE_16};
   line-height: 16px;
   ${FONT.WEIGHT_700};

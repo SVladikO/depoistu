@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
     z-index: 2;
     bottom: -1px;
     height: 60px;
-    background-color: ${COLOR.ACCENT4};
+    background-color: ${COLOR.WHITE};
     display: flex;
     justify-content: space-around;
 
@@ -34,18 +34,17 @@ export const MenuItem = styled.div`
     align-items: center;
     position: relative;
     margin-top: 4px;
-    color: ${p => p.selected ? COLOR.PRIMARY : COLOR.ACCENT1};
+    color: ${p => p.selected ? COLOR.ACCENT1 : COLOR.ACCENT5};
 
     & > *:first-child {
         width: 23px;
         height: 23px;
         display: block;
-        margin-bottom: 2px;
-        fill: ${p => p.selected ? COLOR.PRIMARY : COLOR.ACCENT1};
+        fill: ${p => p.selected ? COLOR.ACCENT1 : COLOR.ACCENT5};
     }
   
     span {
-      ${FONT.SIZE_16};
+      ${FONT.SIZE_18};
     }
 `;
 
@@ -66,9 +65,9 @@ export const OrderButton = styled.div`
     width: 52px;
     top: -10px;
     position: absolute;
-    color: ${COLOR.ACCENT1};
-    background: ${COLOR.ACCENT2};
-    border: solid 1px ${COLOR.ACCENT1};
+    color: ${p => p.isSelected ? COLOR.ACCENT1 : COLOR.ACCENT5};
+    background: ${COLOR.WHITE};
+    border: solid 1px ${p => p.isSelected ? COLOR.ACCENT1 : COLOR.ACCENT5};
     ${FONT.SIZE_30}
     ${FONT.WEIGHT_700}
     -webkit-user-select: none; /* Safari */

@@ -3,7 +3,7 @@ import {button} from "./button";
 import {COLOR} from "utils/theme";
 
 export const ThirdButton = styled(button)`
-  background-color: ${COLOR.ACCENT4};
+  background-color: ${COLOR.WHITE};
   color: ${COLOR.ACCENT5};
   height: 30px;
   font-weight: 400;

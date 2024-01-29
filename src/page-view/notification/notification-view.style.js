@@ -26,7 +26,7 @@ export const CloseAll = styled.button`
   position: relative;
   z-index: 10;
   height: 40px;
-  color: ${COLOR.ACCENT4};
+  color: ${COLOR.WHITE};
   background: ${hexToRgbA('#000', 0.85)};
   width: 100%;
 `;
