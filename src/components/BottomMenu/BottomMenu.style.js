@@ -69,9 +69,9 @@ export const OrderButton = styled.div`
     z-index: 2;
     top: -10px;
     position: absolute;
-    color: ${p => p.isSelected ? COLOR.ACCENT1 : COLOR.ACCENT5};
-    background: ${COLOR.WHITE};
-    border: solid 2px ${p => p.isSelected ? COLOR.PRIMARY : COLOR.ACCENT5};
+    color: ${p => p.isSelected ? COLOR.WHITE : COLOR.ACCENT5};
+    background: ${p => p.isSelected ? COLOR.PRIMARY : COLOR.WHITE};
+    border: solid 2px ${p => p.isSelected ? COLOR.ACCENT1 : COLOR.ACCENT5};
     ${FONT.SIZE_30}
     ${FONT.WEIGHT_700}
     -webkit-user-select: none; /* Safari */
