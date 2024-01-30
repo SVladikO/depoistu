@@ -422,6 +422,14 @@ export const TRANSLATION = {
                 EDIT_MENU_ITEM: {
                     en: 'Save changes',
                     ua: "Зберегти зміни",
+                },
+                LOAD_IMAGE: {
+                    en: 'Load image',
+                    ua: "Загрузити зображення",
+                },
+                WIDGET_LOADING: {
+                    en: 'Load image widget',
+                    ua: "Загрузка віджету",
                 }
             },
         },
