@@ -2,6 +2,7 @@ import styled from "styled-components";
 import {COLOR} from "utils/theme";
 
 export const Wrapper = styled.div`
+    height: 100vh;
   margin: 0 0 40px 0;
   & > * {
     margin-bottom: 22px;
