@@ -101,7 +101,6 @@ const CategoryMenuView = (props) => {
         <SwiperSlide key={topCategoryIndex}>
             <TopCategoryItem
                 className="TopCategoryItem"
-                key={topCategoryIndex}
                 isSelected={topCategoryIndex === selectedTopCategoryId}
                 onClick={onChangeTopCategory(topCategoryIndex, categoryId)}
             >
@@ -128,10 +127,12 @@ const CategoryMenuView = (props) => {
 
 
     const renderMenuItem = (mi) => (
-        <div className={mi.id === menuItemCandidateToEdit?.id ? LAST_EDITED_CLASSNAME : ''}>
+        <div
+            key={`menu_item_${mi.id}`}
+            className={mi.id === menuItemCandidateToEdit?.id ? LAST_EDITED_CLASSNAME : ''}
+        >
             <MenuItem
                 {...props}
-                key={`menu_item_${mi.id}`}
                 item={mi}
                 onEditClick={navigateToEditMenuItemPage(mi)}
                 isSelected={mi.id === selectedMenuItemId}
@@ -166,13 +167,20 @@ const CategoryMenuView = (props) => {
             }
 
             subCategories.push(renderSubCategory(categoryId, topCategoryIndex, categoryIdIndexMapper[categoryId]))
-            resultMenuItems.push(<CategoryTitle categoryId={categoryId} topCategoryIndex={topCategoryIndex}/>)
+            resultMenuItems.push(<CategoryTitle key={categoryId} categoryId={categoryId}
+                                                topCategoryIndex={topCategoryIndex}/>)
 
             const menuItem = items.map(renderMenuItem)
 
-            menuItem.forEach(mi => {
-                resultMenuItems.push(<CategoryTitle categoryId={categoryId} topCategoryIndex={topCategoryIndex}
-                                                    isHidden/>)
+            menuItem.forEach((mi, index) => {
+                resultMenuItems.push(
+                    <CategoryTitle
+                        isHidden
+                        key={`${index}_${categoryId}`}
+                        categoryId={categoryId}
+                        topCategoryIndex={topCategoryIndex}
+                    />
+                )
                 resultMenuItems.push(mi)
             })
         })
