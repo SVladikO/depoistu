@@ -9,10 +9,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
-    "axios": "^1.6.3",
     "formik": "^2.2.9",
-    "leaflet": "^1.7.1",
-    "leaflet-geosearch": "^3.11.0",
     "minimatch": "^5.1.0",
     "nth-check": "^2.1.1",
     "qrcode": "^1.5.3",
@@ -40,9 +37,12 @@
     "minimatch": "^5.1.0",
     "mocha": "^10.1.0",
     "nth-check": "^2.1.1",
-    "sinon": "^9.0.3"
+    "progress-bar-webpack-plugin": "^2.1.0",
+    "sinon": "^9.0.3",
+    "webpack-bundle-analyzer": "^4.10.1"
   },
   "scripts": {
+    "analyze-build-bundle": "node scripts/analyze_build_bundle.js",
     "start": "react-scripts start",
     "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",

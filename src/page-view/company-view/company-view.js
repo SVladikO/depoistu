@@ -14,8 +14,6 @@ import {
     ImageUploaderButton,
     RowSplitter,
     SwiperWrapper,
-    // SecondaryButton,
-    // MapEditor
 } from "components";
 
 import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
