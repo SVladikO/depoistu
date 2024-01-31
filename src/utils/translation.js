@@ -429,7 +429,7 @@ export const TRANSLATION = {
                 },
                 WIDGET_LOADING: {
                     en: 'Load image widget',
-                    ua: "Загрузка віджету",
+                    ua: "Завантаження віджету",
                 }
             },
         },
