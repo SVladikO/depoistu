@@ -767,7 +767,10 @@ export const TRANSLATION = {
                 ua: 'Проект оновлено.',
                 en: 'Project was updated.'
             },
-
+            NEW_VERSION: {
+                ua: 'Версія ',
+                en: 'Version '
+            },
             BUTTON: {
                 ua: 'Далі',
                 en: 'Continue'
