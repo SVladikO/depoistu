@@ -149,6 +149,9 @@ const CategoryMenuView = (props) => {
     Object.keys(TOP_CATEGORIES).forEach((topCategoryKey) => {
         let wasTopSet = false;
 
+        // We show top category per menu_items.
+        const topIndex = topCategories.length;
+
         TOP_CATEGORIES[topCategoryKey].forEach(categoryId => {
             const items = menuItems.filter(menuItem => menuItem.category_id === categoryId)
             // No items nothing to do
@@ -156,12 +159,10 @@ const CategoryMenuView = (props) => {
                 return
             }
 
-            // We show top category per menu_items.
-            const topIndex = topCategories.length;
-
+            console.log(topCategoryKey, topIndex, categoryId)
             if (!wasTopSet) {
                 wasTopSet = true;
-                topCategories.push({topCategoryKey, topCategoryIndex:topIndex, categoryId});
+                topCategories.push({topCategoryKey, topCategoryIndex: topIndex, categoryId});
             }
 
             // We need categoryIdIndexMapper to handle sub category scroll when you scroll vertically

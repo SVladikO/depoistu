@@ -36,7 +36,7 @@ export function enableScrollListener() {
     myTimeout = setTimeout(() => {
         const domElement = document.getElementsByClassName(CATEGORY_CLASSNAME)[0]
         domElement && domElement.classList && domElement.classList.remove(DISABLE_VERTICAL_SCROLL_LISTENER_CLASS_NAME)
-    }, 2500);
+    }, 1000);
 }
 
 export function disableScrollListener() {
