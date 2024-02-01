@@ -61,11 +61,11 @@ export const TRANSLATION = {
         TEXT: {
             ua: [
                 'Ми збираєм всі меню України для вашого комфорту в одному місці. На цьому сайті.',
-                'Розповідайте вашим улюбленим закладам про наш сервіс.',
+                'Розповідайте про нас закладам. Додавайте меню безкоштовно.',
             ],
             en: [
                 'We collect all menu of Ukraine for your comfort in one place. On this site.',
-                "Tell your favorite establishments about our service.",
+                "Tell institutions about us. Add a menu for free.",
             ]
         },
     },
