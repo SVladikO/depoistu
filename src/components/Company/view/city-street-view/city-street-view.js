@@ -5,13 +5,12 @@ import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
 
 import {LocationWrapper} from "./city-street-view.style";
 
-import {ThirdButton} from "../../../Buttons/ThirdButton";
-import {translate, truncate} from "utils/translation";
+import {translate} from "utils/translation";
 import {CITY_TRANSLATION_IDS} from "utils/cities";
 
 
 const CityStreet = ({company, withMoreInfo}) => {
-    const address = truncate(`${translate(CITY_TRANSLATION_IDS[company.cityId])}, ${company.street}`, 36)
+    const address = `${translate(CITY_TRANSLATION_IDS[company.cityId])}, ${company.street}`
 
     if (withMoreInfo) {
         const addressURL = `${company.street}, ${translate(CITY_TRANSLATION_IDS[company.cityId])}`
@@ -19,10 +18,10 @@ const CityStreet = ({company, withMoreInfo}) => {
 
         return (
             <Link to={addressUrl} target="_blank" rel="noopener">
-                <ThirdButton>
-                    <LocationIcon className="location_icon"/>
+                <LocationWrapper>
+                    <LocationIcon/>
                     {address}
-                </ThirdButton>
+                </LocationWrapper>
             </Link>
         )
     }
