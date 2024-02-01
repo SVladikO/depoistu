@@ -146,7 +146,7 @@ const CategoryMenuView = (props) => {
     const resultMenuItems = []; // Contain array of category title, menu items
 
     // TOP_CATEGORIES contain uniq array of sub categories per category
-    Object.keys(TOP_CATEGORIES).forEach((topCategoryKey, topCategoryIndex) => {
+    Object.keys(TOP_CATEGORIES).forEach((topCategoryKey) => {
         let wasTopSet = false;
 
         TOP_CATEGORIES[topCategoryKey].forEach(categoryId => {
@@ -156,9 +156,12 @@ const CategoryMenuView = (props) => {
                 return
             }
 
+            // We show top category per menu_items.
+            const topIndex = topCategories.length;
+
             if (!wasTopSet) {
                 wasTopSet = true;
-                topCategories.push({topCategoryKey, topCategoryIndex, categoryId});
+                topCategories.push({topCategoryKey, topCategoryIndex:topIndex, categoryId});
             }
 
             // We need categoryIdIndexMapper to handle sub category scroll when you scroll vertically
@@ -166,9 +169,9 @@ const CategoryMenuView = (props) => {
                 categoryIdIndexMapper[categoryId] = indexCalculator++;
             }
 
-            subCategories.push(renderSubCategory(categoryId, topCategoryIndex, categoryIdIndexMapper[categoryId]))
+            subCategories.push(renderSubCategory(categoryId, topIndex, categoryIdIndexMapper[categoryId]))
             resultMenuItems.push(<CategoryTitle key={categoryId} categoryId={categoryId}
-                                                topCategoryIndex={topCategoryIndex}/>)
+                                                topCategoryIndex={topIndex}/>)
 
             const menuItem = items.map(renderMenuItem)
 
@@ -178,7 +181,7 @@ const CategoryMenuView = (props) => {
                         isHidden
                         key={`${index}_${categoryId}`}
                         categoryId={categoryId}
-                        topCategoryIndex={topCategoryIndex}
+                        topCategoryIndex={topIndex}
                     />
                 )
                 resultMenuItems.push(mi)
