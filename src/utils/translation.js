@@ -15,7 +15,7 @@ export const truncate = (text, availableLength = 1) => {
         return text;
     }
 
-    return text.substring(0, availableLength) + ' ...';
+    return text.substring(0, availableLength-5) + ' ...';
 };
 
 export const getCurrentLanguage = () => LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE)?.language?.siteLanguage || DEFAULT_LANGUAGE;

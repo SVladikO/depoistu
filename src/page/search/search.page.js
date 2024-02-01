@@ -101,7 +101,7 @@ const SearchPage = () => {
         }
 
         const cityInputValue = selectedCityId && selectedRegionId
-            ? truncate(`${translate(CITY_TRANSLATION_IDS[selectedCityId])}, ${translate(CITY_TRANSLATION_IDS[selectedRegionId])} ${regionLabel}`, 27)
+            ? truncate(`${translate(CITY_TRANSLATION_IDS[selectedCityId])}, ${translate(CITY_TRANSLATION_IDS[selectedRegionId])} ${regionLabel}`, 40)
             : ''
 
     return (
