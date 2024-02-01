@@ -1,11 +1,13 @@
 import React from 'react';
-import {ContentContainer, Popup, PrimaryButton, Text22} from "components";
-import {translate, TRANSLATION} from "utils/translation";
+
+import {LogoContainer, Address, Wrapper, Overflow} from "./ShowIntro.style";
+
+import {enableScrollOnBody} from "components/Popup/Popup";
 import {ReactComponent as LogoIcon} from "assets/icons/logo.svg";
-import {LogoContainer, Address, Wrapper} from "./ShowIntro.style";
-import {useLocalStorage, useScrollUp} from "utils/hook";
+import {Popup, PrimaryButton, Text22} from "components";
 import {LOCAL_STORAGE_KEY} from "utils/localStorage";
-import {enableScrollOnBody} from "../../components/Popup/Popup";
+import {useLocalStorage, useScrollUp} from "utils/hook";
+import {translate, TRANSLATION} from "utils/translation";
 
 const ShowIntro = () => {
     const scrollUp = useScrollUp();
@@ -15,10 +17,11 @@ const ShowIntro = () => {
         enableScrollOnBody();
         setHideIntro(false);
     }
+
     return (
         <>
             {showIntro && (<Popup.Bottom onClose={closeIntroPopup}>
-                <ContentContainer noPadding noShadow>
+                <Overflow className={"overflow-container"}>
                     <Wrapper>
                         <Address>depoistu.com</Address>
                         <LogoContainer>
@@ -28,11 +31,11 @@ const ShowIntro = () => {
                             translate(TRANSLATION.INTRODUCTION.TEXT)
                                 .map(text => <Text22 key={text}>{text}</Text22>)
                         }
+                        <PrimaryButton isWide clickHandler={closeIntroPopup}>
+                            {translate(TRANSLATION.INTRODUCTION.BUTTON)}
+                        </PrimaryButton>
                     </Wrapper>
-                    <PrimaryButton isWide clickHandler={closeIntroPopup}>
-                        {translate(TRANSLATION.INTRODUCTION.BUTTON)}
-                    </PrimaryButton>
-                </ContentContainer>
+                </Overflow>
             </Popup.Bottom>)}
         </>
 

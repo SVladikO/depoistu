@@ -19,6 +19,7 @@ export const InvisibleWrapper = styled.div`
 
 export const Wrapper = styled.div`
   min-height: 80vh;
+  max-height: 80vh;
   min-width: ${DEVICE_WIDTH.MIN};
   max-width: ${DEVICE_WIDTH.MAX};
   width: 100%;
@@ -26,8 +27,8 @@ export const Wrapper = styled.div`
   flex-direction: column;
   position: relative;
   overflow: hidden;
+  
   margin: ${p => p.margin || 0};
-  ${p => p.popupPosition === 'end' && 'padding: 40px 23px 100px'};
   ${p => p.popupPosition === 'end' && 'border-radius: 28px 28px 0 0'};
   ${p => p.popupPosition === 'end' && 'background: white'};
   
