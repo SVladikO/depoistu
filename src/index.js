@@ -3,17 +3,14 @@ import {Provider} from 'react-redux';
 import {createRoot} from 'react-dom/client';
 import {BrowserRouter} from "react-router-dom";
 
+import "./utils/version-control"
 import reportWebVitals from './reportWebVitals';
-// devManagement should be above other imports as it's responsible by page reload
 import {createStore} from './features/store';
 import App from "./page/App";
 import {LocalStorage, LOCAL_STORAGE_KEY} from "./utils/localStorage";
-import {checkUpdates} from "./utils/management";
-import ImageUploaderButton from "./components/ImageUploaderButton/ImageUploaderButton";
 import {setBrowserTabTitle} from "./utils/utils";
 
 setBrowserTabTitle()
-checkUpdates();
 
 const container = document.getElementById('root');
 const root = createRoot(container);

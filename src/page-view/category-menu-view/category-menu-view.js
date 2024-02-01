@@ -159,7 +159,6 @@ const CategoryMenuView = (props) => {
                 return
             }
 
-            console.log(topCategoryKey, topIndex, categoryId)
             if (!wasTopSet) {
                 wasTopSet = true;
                 topCategories.push({topCategoryKey, topCategoryIndex: topIndex, categoryId});
