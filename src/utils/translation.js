@@ -425,7 +425,7 @@ export const TRANSLATION = {
                 },
                 LOAD_IMAGE: {
                     en: 'Load image',
-                    ua: "Загрузити зображення",
+                    ua: "Завантажити зображення",
                 },
                 WIDGET_LOADING: {
                     en: 'Load image widget',
