@@ -11,13 +11,12 @@ const InstructionForBusinessOwnerPage = () => {
     // you have to replace only "watch?v=" with "embed/" and your video is ready to play in iframe.
     // https://www.youtube.com/embed/zXzBb-1mc6k?
 
-
     return (
         <Wrapper>
             <iframe
                 width="360"
                 height="360"
-                src="https://www.youtube.com/embed/xddB4AFBgvo"
+                src="https://www.youtube.com/embed/9i2023MsSHs"
                 allowfullscreen
             />
         </Wrapper>
