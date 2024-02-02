@@ -1,5 +1,5 @@
 // import React, {useState} from 'react';
-// import {MapContainer, Marker, Popup, TileLayer, useMapEvents} from "react-leaflet";
+// import {MapContainer, Marker, Popup, TileLayer, useMapEvents} from "react-leaflet";  // moved in package.json to dev dependecies
 //
 // import 'leaflet/dist/leaflet.css'
 // import './SearchInput/SearchInput.css'
