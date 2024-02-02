@@ -41,3 +41,8 @@ export const ColorCircle = styled.div`
   width: 80px;
   height: 80px;;
 `;
+
+export const MapContainer = styled.div`
+  height: 300px;
+  width: 100%;
+`

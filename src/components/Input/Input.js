@@ -24,8 +24,10 @@ export const Textarea = memo(function ({
                                            isTouched,
                                            value,
                                            name,
-                                           changeHandler = () => {},
-                                           clearHandler = () => {},
+                                           changeHandler = () => {
+                                           },
+                                           clearHandler = () => {
+                                           },
                                            labelName = '',
                                            isRequired = false,
                                            placeholder = ''
@@ -38,10 +40,13 @@ export const Textarea = memo(function ({
                 <TextareaStyle
                     value={value}
                     name={name}
-                    onChange={changeHandler}
+                    onChange={e => {
+                        e.target.value = e.target.value.replaceAll("'", "ʼ")
+                        changeHandler(e)
+                    }}
                     placeholder={placeholder}
                 />
-                {value && withCleaner && <ClearWrapper onClick={clearHandler}><ClearIcon /></ClearWrapper>}
+                {value && withCleaner && <ClearWrapper onClick={clearHandler}><ClearIcon/></ClearWrapper>}
             </Wrapper>
             {isTouched && errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
         </div>
@@ -62,10 +67,12 @@ export const Input = memo(function ({
                                         isTouched,
                                         withSwitcher = false,
                                         withCleaner = false,
-                                        changeHandler = () => {},
+                                        changeHandler = () => {
+                                        },
                                         clearHandler,
                                         labelName,
-                                        isRequired
+                                        isRequired,
+                                        isAutoComplite = "off"
                                     }) {
     const [inputType, setInputType] = useState(withSwitcher ? INPUT_TYPE.PASSWORD : type);
     const handleSwitch = () => setInputType(inputType === INPUT_TYPE.PASSWORD ? INPUT_TYPE.TEXT : INPUT_TYPE.PASSWORD);
@@ -76,29 +83,34 @@ export const Input = memo(function ({
             isTouched={value ? false : isTouched}
             errorMessage={errorMessage}
         >
-            {Icon && <Icon />}
+            {Icon && <Icon/>}
             {labelName && <Label isRequired={isRequired}>{labelName}</Label>}
             <InputText
                 name={name}
                 value={value}
-                onChange={changeHandler}
+                onWheel={event => event.currentTarget.blur()} // disabled scroll effect on value
+                onChange={e => {
+                    e.target.value = e.target.value.replaceAll("'", "ʼ")
+                    changeHandler(e)
+                }}
                 type={inputType}
-                withRightIcon={withSwitcher || withCleaner}
                 withLeftIcon={!!Icon}
                 withSwitcher={withSwitcher}
+                autoComplete={isAutoComplite}
                 isTouched={value ? false : isTouched}
+                withRightIcon={withSwitcher || withCleaner}
                 errorMessage={errorMessage}
             />
             {withSwitcher &&
                 <SwitchIconWrapper onClick={handleSwitch}>
                     <CenterWrapper>
-                        {inputType === INPUT_TYPE.PASSWORD ? <ShowEyeIcon /> : <HideEyeIcon />}
+                        {inputType === INPUT_TYPE.PASSWORD ? <ShowEyeIcon/> : <HideEyeIcon/>}
                     </CenterWrapper>
                 </SwitchIconWrapper>
             }
             {!!value && withCleaner &&
                 <ClearWrapper onClick={clearHandler}>
-                    <ClearIcon />
+                    <ClearIcon/>
                 </ClearWrapper>}
             {isTouched && errorMessage && <WarningMessage>{errorMessage}</WarningMessage>}
         </Wrapper>

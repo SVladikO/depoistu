@@ -1,0 +1,39 @@
+import styled from 'styled-components';
+import {COLOR, SHADOW, FONT, BORDER_RADIUS} from "utils/theme";
+
+export const Wrapper = styled.div`
+  width: 100%;
+  padding: 16px;
+  ${SHADOW};
+  color: ${COLOR.ACCENT1};
+  background: ${COLOR.WHITE};
+  border-radius: ${p => p.borderRadius ? p.borderRadius : BORDER_RADIUS.SECOND};
+  
+  & > div:first-child .question_title {
+    margin-top: 0;
+  }
+`;
+
+export const Title = styled.div`
+  ${FONT.SIZE_22};
+  ${FONT.WEIGHT_500};
+  line-height: 26.4px;
+  margin: 37px 0 5px 0;
+  text-transform: uppercase;
+`;
+export const Description = styled.div`
+  ${FONT.SIZE_20};
+  margin: 0 0 35px 0;
+  &:last-child {
+    margin: 0;
+  }
+`;
+
+export const AnswerWrapper = styled.div`
+  display: ${p => p.withCounter ? 'flex' : 'block'};
+`;
+
+export const Answer = styled.div`
+  padding: ${p => p.withCounter ? '0 0 0 4px' : 0};
+    
+`;

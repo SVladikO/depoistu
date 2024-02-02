@@ -13,6 +13,7 @@ export const enableScrollOnBody = () => {
 };
 export const disableScrollOnBody = () => {
     document.body.style.overflowY = 'hidden';
+    document.body.style.position = 'fixed';
 };
 
 const Popup = (props) => {
@@ -23,6 +24,7 @@ const Popup = (props) => {
         popupPosition = 'center',
         margin,
     } = props;
+
     useEffect(() => {
         disableScrollOnBody();
     })
@@ -45,9 +47,10 @@ const Popup = (props) => {
     );
 };
 
-const City = props => <Popup Component={CityContent} {...props} popupPosition="top" showCloseButton={false} margin="60px 0" />;
+const City = props => <Popup Component={CityContent} {...props} popupPosition="top" showCloseButton={false}
+                             margin="60px 0"/>;
 const Center = props => <Popup Component={_Info} {...props} popupPosition='center'/>;
-const Bottom = props => <Popup Component={_Info} {...props} popupPosition='end' noPadding />;
+const Bottom = props => <Popup Component={_Info} {...props} popupPosition='end' noPadding/>;
 
 export default {
     City,

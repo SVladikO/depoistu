@@ -3,23 +3,31 @@ import styled from "styled-components";
 import {button, ButtonWrapper} from "./button";
 import {ReactComponent as LoadingIcon} from "assets/icons/loading.svg";
 
-import {COLOR} from "utils/theme";
+import {COLOR, lighterDarkerColor} from "utils/theme";
 
 const PrimaryButtonWrapper = styled(button)`
-  color: ${p => p.isDisabled ? COLOR.ACCENT4 : COLOR.ACCENT10};
-  background: ${p => p.isDisabled ? COLOR.ACCENT5 : COLOR.ACCENT3};
+    color: ${p => p.isDisabled ? COLOR.WHITE : COLOR.WHITE};
+    background: ${p => p.isDisabled ? lighterDarkerColor(COLOR.ACCENT5, -20) : COLOR.PRIMARY};
 
-  & > svg {
-    fill: ${COLOR.ACCENT10};
-  }
-  
-  &:active {
-    color: ${p => p.isDisabled ? COLOR.ACCENT4 : COLOR.ACCENT3};
-    background: ${p => p.isDisabled ? COLOR.ACCENT5 : COLOR.ACCENT10};
-  }
+    & > svg {
+        fill: ${COLOR.WHITE};
+    }
+    
+    &:active {
+        background: ${p => p.isDisabled ? lighterDarkerColor(COLOR.ACCENT5, -40) : lighterDarkerColor(COLOR.PRIMARY, -20)};
+    }
 `;
 
-export const PrimaryButton = ({type='button', clickHandler, children, isLoading, isWide, isDisabled, withPadding=false}) => {
+export const PrimaryButton = ({
+                                  type='button',
+                                  clickHandler,
+                                  children,
+                                  isLoading,
+                                  isWide,
+                                  isDisabled,
+                                  isOnlyIcon,
+                                  withPadding=false
+}) => {
     return (
         <ButtonWrapper withPadding={withPadding}>
             <PrimaryButtonWrapper
@@ -29,6 +37,7 @@ export const PrimaryButton = ({type='button', clickHandler, children, isLoading,
                 isDisabled={isDisabled}
                 isPrimary
                 isLoading={isLoading}
+                isOnlyIcon={isOnlyIcon}
             >
                 {isLoading && <LoadingIcon className="loading"/>}
                 {children}

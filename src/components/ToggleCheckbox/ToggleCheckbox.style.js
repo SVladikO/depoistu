@@ -19,14 +19,14 @@ export const InnerInput = styled.input`
   left: 0;
   opacity: 0;
   &:checked + span {
-    outline: 1px solid ${COLOR.PRIMARY};
+    outline: 1px solid ${COLOR.ACCENT1};
     &:before {
       left: calc(100% - 2px);
       transform: translateX(-100%);
     }
   }
   &:checked + span:before {
-    background-color: ${COLOR.PRIMARY};
+    background-color: ${COLOR.ACCENT1};
   }
 `;
 
@@ -36,7 +36,7 @@ export const RoundSlider = styled.span`
   width: 31px;
   height: 17px;
   border-radius: 100px;
-  background: ${COLOR.ACCENT4};
+  background: ${COLOR.WHITE};
   position: relative;
   transition: background-color 0.2s;
   outline: 1px solid #B4C2CD;

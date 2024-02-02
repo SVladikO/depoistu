@@ -13,14 +13,15 @@ import {
 
 import {ReactComponent as LoadingIcon} from "assets/icons/spinner.svg";
 import {NavigationHeader, PrimaryButton, RowSplitter, SecondaryButton} from "components";
-import {fetchData} from "utils/fetch";
+
+import ComponentsPage from "./Components.page";
+import ApiPage from "./Api.page";
 
 import {BE_API} from 'utils/fetch'
+import {fetchData} from "utils/fetch";
 import {BE_DOMAIN} from "utils/config";
 import {checkAccess} from "utils/security";
 import {LOCAL_STORAGE_KEY} from "utils/localStorage";
-import ApiPage from "./Api.page";
-import ComponentsPage from "./Components.page";
 
 function AdminPage() {
     const [dbMode, setDBMode] = useState('')

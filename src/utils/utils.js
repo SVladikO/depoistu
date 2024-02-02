@@ -9,20 +9,23 @@ export const getParam = (key) => {
     return urlParams.get(key);
 }
 
+export const scrollUp = () => {
+    window.scrollTo({
+        top: -100,
+        behavior: "smooth",
+    })
+}
+
 export const stopLoadingWithDelay = callbacks => {
     let isLoaded = false;
     let intervalId;
 
     setTimeout(() => {
-        console.log('timeout')
-
         if (isLoaded) {
             callbacks.forEach(cb => cb())
         } else {
             intervalId = setInterval(() => {
-                console.log('interval')
                 if (isLoaded) {
-                    console.log('DONE')
                     callbacks.forEach(cb => cb())
                     clearInterval(intervalId)
                 }

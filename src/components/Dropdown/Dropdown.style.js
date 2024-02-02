@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {BORDER_RADIUS, COLOR, FONT, SHADOW} from "utils/theme";
+import {BORDER_RADIUS, COLOR, FONT, lighterDarkerColor, SHADOW} from "utils/theme";
 
 export const SelectWrapper = styled.div`
   position: relative;
@@ -38,17 +38,23 @@ export const OptionsContainer = styled.div`
   max-height: 350px;
   overflow-y: auto;
   z-index: 3;
-  background-color: ${COLOR.ACCENT4};
+  background-color: ${COLOR.WHITE};
   border-radius: ${BORDER_RADIUS.INPUT};
   ${SHADOW};
 `;
 
 export const GroupTitleOption = styled.div`
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
   color: ${COLOR.ACCENT1};
+  background: ${COLOR.ACCENT9};
+  border-top: solid 1px ${lighterDarkerColor(COLOR.ACCENT9, -20)};
   padding: 8px;
   cursor: pointer;
   ${FONT.SIZE_20};
   ${FONT.WEIGHT_500};
+  text-transform: uppercase;
 
 `;
 
@@ -56,7 +62,7 @@ export const Option = styled.div`
   padding: 8px;
   cursor: pointer;
   ${FONT.SIZE_16};
-  color: ${p => p.isSelected ? COLOR.ACCENT4 : COLOR.ACCENT1};
+  color: ${p => p.isSelected ? COLOR.WHITE : COLOR.ACCENT1};
   display: flex;
   justify-content: flex-start;
   background-color: ${p => p.isSelected ? COLOR.PRIMARY : ''};

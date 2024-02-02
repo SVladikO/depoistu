@@ -1,19 +1,17 @@
 {
   "name": "depoistu",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "private": true,
   "dependencies": {
+    "@cloudinary/react": "^1.11.2",
+    "@cloudinary/url-gen": "^1.14.0",
     "@reduxjs/toolkit": "^1.9.1",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^14.4.3",
     "formik": "^2.2.9",
-    "minimatch": "^5.1.0",
-    "nth-check": "^2.1.1",
     "qrcode": "^1.5.3",
     "react": "^18.2.0",
     "react_code_tag": "^1.0.2",
     "react-dom": "^18.2.0",
+    "react-lazy-load-image-component": "^1.6.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "6.10.0",
     "react-scripts": "5.0.1",
@@ -23,6 +21,7 @@
     "yup": "^1.1.1"
   },
   "devDependencies": {
+    "react-leaflet": "^4.2.1",
     "karma": "^6.4.1",
     "karma-chrome-launcher": "^3.1.1",
     "karma-firefox-launcher": "^2.1.2",
@@ -31,14 +30,19 @@
     "karma-requirejs": "^1.1.0",
     "karma-safari-launcher": "^1.0.0",
     "minimatch": "^5.1.0",
-    "mocha": "^9.1.4",
+    "mocha": "^10.1.0",
     "nth-check": "^2.1.1",
-    "sinon": "^9.0.3"
+    "progress-bar-webpack-plugin": "^2.1.0",
+    "sinon": "^9.0.3",
+    "webpack-bundle-analyzer": "^4.10.1",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3"
   },
   "scripts": {
+    "analyze-build-bundle": "node scripts/analyze_build_bundle.js",
     "start": "react-scripts start",
-
-    "build": "react-scripts build",
+    "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

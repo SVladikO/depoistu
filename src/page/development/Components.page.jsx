@@ -26,13 +26,12 @@ import
     NavigationLabelHref,
     BottomMenu,
     MenuItem,
-    OrderHistoryRow,
     NotificationTDB,
     RowSplitter,
     Textarea,
     Company,
     Label,
-    MenuItemDetails,
+    MenuItemDescription,
     Dropdown,
     PrimaryButton,
     NotificationFactory,
@@ -53,7 +52,7 @@ import Checkbox from "components/Checkbox/Checkbox";
 import IntroContent from "components/Popup/info/Info";
 import CityContent from "components/Popup/city/CityContent"
 import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
-import {EditBar, QRCodeButton} from "page/customer-companies/CustomerCompanies.style";
+import {EditBar, QRCodeButton} from "../customer-companies/customer-companies.page.style";
 
 import {COLOR} from "utils/theme";
 import {getOnlyCityIds} from "utils/cities";
@@ -66,9 +65,9 @@ const colors = Object
 const mockMenuItem = {
     id: 10,
     name: '4 Cheese',
-    categoryId: 1,
+    category_id: 1,
     description: 'spicy , tomato, sauce, chilies, mozzare, lla, spicy, ice, tomato, sauce, chili, mozzarella, sauce, chili',
-    imageUrl: 'https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png',
+    photos: ['https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-15.png'],
     size_1: 100,
     price_1: 120,
     size_2: 200,
@@ -249,7 +248,7 @@ const componentsGroup1 = [
         },
         {
             title: 'FromToTime',
-            component: <FromToTime prefix='mon' dayName='Mon' values={{monIsChecked: true}}/>
+            component: <FromToTime prefix='mon' dayName='Mon' values={{monIsChecked: true}} handleChange={() => {}}/>
         },
         {
             title: 'Textarea',
@@ -264,77 +263,32 @@ const componentsGroup1 = [
 const componentsGroup2 = [
     [
         {
-            title: 'MenuItemDetails without description',
+            title: 'MenuItemDetails with image & description',
             component:
-                <MenuItemDetails
-                    item={{...mockMenuItem, description: ''}}
-                    isVisible
-                />
-        }, {
-        title: 'MenuItemDetails with description',
-        component:
-            <MenuItemDetails
-                item={mockMenuItem}
-                isVisible
-            />
-    },
-        {
-            title: 'MenuItemDetails with image',
-            component:
-                <MenuItemDetails
-                    item={{...mockMenuItem, description: ''}}
+                <MenuItemDescription
+                    item={mockMenuItem}
                     isWithImage
                     isVisible
                 />
-        }, {
-        title: 'MenuItemDetails with image & description',
-        component:
-            <MenuItemDetails
-                item={mockMenuItem}
-                isWithImage
-                isVisible
-            />
-    }, {
-        title: 'MenuItemDetails with image & description & "new" flag',
-        component:
-            <MenuItemDetails
-                item={mockMenuItem}
-                isWithImage
-                isNewItemFlag
-                isVisible
-            />
-    },
+        },
+        {
+            title: 'MenuItemDetails with image & description & "new" flag',
+            component:
+                <MenuItemDescription
+                    item={mockMenuItem}
+                    isWithImage
+                    isNewItemFlag
+                    isVisible
+                />
+        },
         {
             title: 'MenuItem editing',
             component:
                 <MenuItem
                     item={mockMenuItem}
-                    withEditIcon
+                    isEditMode
                     isWithImage
                 />
-        },
-        {
-            title: 'OrderHistoryRow', component:
-                (() => {
-                    const item = {
-                        name: 'Chees Bites Pizza',
-                        description: 'spicy, tomato, sauce, chili, mozzarella',
-                        price: 7
-                    }
-                    return <OrderHistoryRow item={item}/>
-                })()
-        },
-        {
-            title: 'OrderHistoryRow', component: (function () {
-                const item = {
-                    name: 'Chees Bites Pizza',
-                    description: 'spicy, tomato, sauce, chili, mozzarella',
-                    price: 7,
-                    size: 'Medium',
-                    status: 'Completed'
-                }
-                return <OrderHistoryRow isHistory item={item}/>
-            })()
         },
     ],
     [
@@ -342,8 +296,8 @@ const componentsGroup2 = [
             title: 'Company',
             component: <Company
                 company={{
-                    photos: 'https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg, https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg, https://afisha.bigmir.net/i/23/51/30/9/2351309/gallery/15b8175dc297f8a58d9de22e77b7b256-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg',
                     name: 'Domono',
+                    photos: ['https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg', 'https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg'],
                     cityId: '204',
                     schedule: ', , , , , 11:00-22:00, 10:00-19:00',
                     street: 'Davidusk 15.',
@@ -355,7 +309,7 @@ const componentsGroup2 = [
             component: <Company
                 withMoreInfo
                 company={{
-                    photos: 'https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg, https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg, https://afisha.bigmir.net/i/23/51/30/9/2351309/gallery/15b8175dc297f8a58d9de22e77b7b256-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg',
+                    photos: ['https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg', 'https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg'],
                     name: 'Domono',
                     cityId: '204',
                     schedule: '01:00-21:00, 01:00-21:00, 01:00-21:00, 01:00-21:00, 01:00-21:00, 01:00-22:00, 01:00-22:00',
@@ -368,7 +322,7 @@ const componentsGroup2 = [
             title: 'Company',
             component: <Company
                 company={{
-                    photos: 'https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg, https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg, https://afisha.bigmir.net/i/23/51/30/9/2351309/gallery/15b8175dc297f8a58d9de22e77b7b256-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg',
+                    photos: ['https://topclub.ua/uploads/images/places/371-200/_0H8l4_aCp-LNAn-Z-0IzeGKpoRn2Qd-.jpg', 'https://afisha.bigmir.net/i/49/23/90/7/4923907/gallery/a9f2cb111d1abe2b2b8fe5b46db2ac54-quality_75Xresize_1Xallow_enlarge_0Xw_800Xh_0.jpg'],
                     name: 'Domono',
                     cityId: '204',
                     schedule: ',,,,,,',
@@ -457,11 +411,10 @@ const componentsGroup3 = [
                     </Link>
                 </NotificationTDB>
         },
-        {title: 'Footer', component: <Footer/>}
+        {title: 'Footer', component: <Footer/>},
     ]
 ]
 
-// document.body.style.backgroundColor = '#d8d8d8'
 
 function ComponentsPage() {
     const setWhiteBackground = useCallback(() => document.body.style.background = '#ffffff', []);

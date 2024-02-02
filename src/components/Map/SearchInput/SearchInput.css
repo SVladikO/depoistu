@@ -1,0 +1,28 @@
+.map_container {
+    margin: 0 !important;
+    width: 380px;
+    /*left: -10px;*/
+    /*top: -10px;*/
+}
+
+.form_container {
+    background-color: #fff;
+}
+
+.reset_button,
+.map_input {
+    display: none;
+}
+
+.reset_button {
+    border: 1px solid green;
+    cursor: pointer;
+}
+
+div[data-key] {
+    padding: 5px;
+}
+
+div[data-key]:hover {
+    background-color: #f1f0f0;
+}

@@ -9,7 +9,7 @@ export const DefaultNotification = css`
   gap: 10px;
   width: 100%;
   padding: 10px 30px 10px 10px;
-  border-radius: ${p => p.borderRadius ? p.borderRadius : BORDER_RADIUS.SECOND};
+  border-radius: ${p => p.borderRadius ? p.borderRadius : BORDER_RADIUS.NOTIFICATION};
   margin: 0 0 15px;
   ${FONT.SIZE_18};
   
@@ -59,8 +59,7 @@ export const NotificationSuccessWrapper = styled.div`
 
 export const NotificationLoadingWrapper = styled.div`
   ${DefaultNotification};
-  background: ${COLOR.ACCENT2};
-  padding: 10px 16px;
+  padding: 10px;
   
   & > svg:first-child {
     min-height: 24px;

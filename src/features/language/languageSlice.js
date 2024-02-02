@@ -1,8 +1,9 @@
 import createSliceCustom from "features/utils";
+import {DEFAULT_LANGUAGE} from "utils/translation";
 
 const initialState = {
     isLanguagePopupVisible: false,
-    siteLanguage: 'ua',
+    siteLanguage: DEFAULT_LANGUAGE,
 }
 
 export const languageSlice = createSliceCustom({

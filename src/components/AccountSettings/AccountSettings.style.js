@@ -11,7 +11,7 @@ export const GroupTitle = styled.div`
   height: 45px;
   padding: 0 0 0 30px;
   font-size: 20px;
-  color: ${COLOR.ACCENT4};
+  color: ${COLOR.WHITE};
   ${p => `border-radius: ${p.noTopBorder ? border2 : border1};`}
   //background-image: linear-gradient(${GRADIENT.FROM}, ${GRADIENT.TO});
   background: ${COLOR.ACCENT1};
