@@ -1235,6 +1235,10 @@ export const TRANSLATION = {
             en: "Wines of Georgia",
             ua: "Вина Грузії"
         },
+        WINE_UKRAINE: {
+            en: "Wines of Ukraine",
+            ua: "Вина України"
+        },
         WINE_ITALY: {
             en: "Wines of Italy",
             ua: "Вина Італії"
@@ -1311,12 +1315,20 @@ export const TRANSLATION = {
             en: "Naluvku",
             ua: "Наливки"
         },
+        BEER_DRAFT: {
+            en: "Draft beer",
+            ua: "Пиво розливне"
+        },
         BEER: {
             en: "Beer",
             ua: "Пиво"
         },
-        BEER_ADDICTIVES: {
-            en: "Beer addictives",
+        BEER_NA: {
+            en: "Beer n/a",
+            ua: "Пиво безалкогольне"
+        },
+        BEER_ADDITIONS: {
+            en: "Beer additions",
             ua: "Додатки до пива"
         },
         COFFEE: {
