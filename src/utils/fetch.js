@@ -1,9 +1,8 @@
-import {BE_DOMAIN, URL} from "./config";
+import {BE_DOMAIN} from "./config";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "./localStorage";
 import {DEFAULT_LANGUAGE, getCurrentLanguage, translate, TRANSLATION} from "./translation";
 import {publishNotificationEvent} from "./event";
-import {updateLocalStorage} from "./management";
-
+import {resetProjectVersion} from "./management";
 
 export const BE_API = {
     //TODO candidate to delete
@@ -62,13 +61,6 @@ const verifyInternet = () => {
         throw new Error(translate(TRANSLATION.NOTIFICATION.NO_INTERNET));
     }
 }
-const handleError = message => {
-    throw new Error(
-        message === 'Failed to fetch'
-            ? translate(TRANSLATION.NOTIFICATION.UN_ABLE_MAKE_REQUEST)
-            : message
-    )
-}
 
 export const fetchDataRedux = async (url, body) => {
     verifyInternet()
@@ -82,11 +74,26 @@ export const fetchDataRedux = async (url, body) => {
     }
 
     if (!response.ok) {
+        if (response.status === 408) {
+            resetProjectVersion()
+            return;
+        }
+
         const json = await response.json();
-        handleError(json.message)
+
+        return handleError(json.message);
     }
 
     return response;
+
+    function handleError(message) {
+        throw new Error(
+            message === 'Failed to fetch'
+                ? translate(TRANSLATION.NOTIFICATION.UN_ABLE_MAKE_REQUEST)
+                : message
+        )
+    }
+
 }
 
 export const fetchData = async (url, body) => {
@@ -95,27 +102,6 @@ export const fetchData = async (url, body) => {
 
     return new Promise(resolve => resolve({body: json}));
 }
-
-//
-// export const fetchData = async (url, body) => {
-//     let response;
-//
-//     verifyInternet()
-//
-//     try {
-//         response = await fetch(decodeURIComponent(url), getOptions(body));
-//     } catch (error) {
-//         handleError(error.message)
-//     }
-//
-//     const json = await response.json();
-//
-//     if (!response.ok) {
-//         throw new Error(json.message)
-//     }
-//
-//     return new Promise(resolve => resolve({body: json}))
-// }
 
 // prepare options conditionally
 function getOptions(body) {
@@ -151,24 +137,14 @@ function getOptions(body) {
 
 export function errorHandlerRedux(e) {
     let notificationMessage;
-
-    if (e.message === 'Failed to fetch') {
-        notificationMessage = translate(TRANSLATION.NOTIFICATION.UN_ABLE_MAKE_REQUEST);
-    } else if (e.status === 408) {
-        updateLocalStorage()
-        window.location.replace(window.location.origin + URL.PROJECT_UPDATED)
-    } else {
-        notificationMessage = e.message
-    }
+    notificationMessage = e.message
     publishNotificationEvent.error(notificationMessage);
 }
 
 export function errorHandler(e) {
     if (e.status === 408) {
-        updateLocalStorage()
-        window.location.replace(window.location.origin + URL.PROJECT_UPDATED)
+        resetProjectVersion()
     } else {
-        console.log(1111111, e);
         publishNotificationEvent.error(e.message)
     }
 }

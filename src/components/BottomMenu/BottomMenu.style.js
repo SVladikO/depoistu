@@ -46,7 +46,7 @@ export const MenuItem = styled.div`
     }
   
     span {
-      ${FONT.SIZE_20};
+      ${FONT.SIZE_16};
     }
 `;
 
@@ -69,7 +69,7 @@ export const OrderButton = styled.div`
     z-index: 2;
     top: -10px;
     position: absolute;
-    color: ${p => p.isSelected ? COLOR.WHITE : COLOR.ACCENT5};
+    color: ${p => p.isSelected ? COLOR.WHITE : COLOR.ACCENT1};
     background: ${p => p.isSelected ? COLOR.PRIMARY : COLOR.WHITE};
     border: solid 2px ${p => p.isSelected ? COLOR.ACCENT1 : COLOR.ACCENT5};
     ${FONT.SIZE_30}

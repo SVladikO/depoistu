@@ -39,7 +39,8 @@ import {TRANSLATION as TR, translate} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
 
 import packageInfo from '../../../package.json';
-import SingInSingUpView from "../../page-view/sing-in-sing-up-view/sing-in-sing-up-view";
+import SingInSingUpView from "page-view/sing-in-sing-up-view/sing-in-sing-up-view";
+import {resetSettings} from "utils/management";
 
 const SettingPage = () => {
     useScrollUp();
@@ -180,11 +181,7 @@ const SettingPage = () => {
                     <SettingMenuRow
                         icon={ResetSettingsIcon}
                         title={`${translate(TR.PAGE.SETTINGS.MENU_ROW.RESET_SETTINGS)}`}
-                        changeHandler={() => {
-                            localStorage.clear()
-                            window.location.href = window.location.origin
-                            }
-                        }
+                        changeHandler={resetSettings}
                     />
                 </AccountSettings>
             </Wrapper>

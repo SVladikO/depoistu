@@ -96,7 +96,7 @@ const OrderPage = () => {
 
             <AmountInfo>
                 <div> {translate(TRANSLATION.ORDERS.TOTAL)}:</div>
-                <div>₴ {allMenuItemsPrice}</div>
+                <div>{allMenuItemsPrice} ₴</div>
             </AmountInfo>
             {
                 customer ? (

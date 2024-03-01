@@ -101,7 +101,6 @@ const CategoryMenuView = (props) => {
         <SwiperSlide key={topCategoryIndex}>
             <TopCategoryItem
                 className="TopCategoryItem"
-                key={topCategoryIndex}
                 isSelected={topCategoryIndex === selectedTopCategoryId}
                 onClick={onChangeTopCategory(topCategoryIndex, categoryId)}
             >
@@ -128,10 +127,12 @@ const CategoryMenuView = (props) => {
 
 
     const renderMenuItem = (mi) => (
-        <div className={mi.id === menuItemCandidateToEdit?.id ? LAST_EDITED_CLASSNAME : ''}>
+        <div
+            key={`menu_item_${mi.id}`}
+            className={mi.id === menuItemCandidateToEdit?.id ? LAST_EDITED_CLASSNAME : ''}
+        >
             <MenuItem
                 {...props}
-                key={`menu_item_${mi.id}`}
                 item={mi}
                 onEditClick={navigateToEditMenuItemPage(mi)}
                 isSelected={mi.id === selectedMenuItemId}
@@ -145,8 +146,11 @@ const CategoryMenuView = (props) => {
     const resultMenuItems = []; // Contain array of category title, menu items
 
     // TOP_CATEGORIES contain uniq array of sub categories per category
-    Object.keys(TOP_CATEGORIES).forEach((topCategoryKey, topCategoryIndex) => {
+    Object.keys(TOP_CATEGORIES).forEach((topCategoryKey) => {
         let wasTopSet = false;
+
+        // We show top category per menu_items.
+        const topIndex = topCategories.length;
 
         TOP_CATEGORIES[topCategoryKey].forEach(categoryId => {
             const items = menuItems.filter(menuItem => menuItem.category_id === categoryId)
@@ -157,7 +161,7 @@ const CategoryMenuView = (props) => {
 
             if (!wasTopSet) {
                 wasTopSet = true;
-                topCategories.push({topCategoryKey, topCategoryIndex, categoryId});
+                topCategories.push({topCategoryKey, topCategoryIndex: topIndex, categoryId});
             }
 
             // We need categoryIdIndexMapper to handle sub category scroll when you scroll vertically
@@ -165,14 +169,21 @@ const CategoryMenuView = (props) => {
                 categoryIdIndexMapper[categoryId] = indexCalculator++;
             }
 
-            subCategories.push(renderSubCategory(categoryId, topCategoryIndex, categoryIdIndexMapper[categoryId]))
-            resultMenuItems.push(<CategoryTitle categoryId={categoryId} topCategoryIndex={topCategoryIndex}/>)
+            subCategories.push(renderSubCategory(categoryId, topIndex, categoryIdIndexMapper[categoryId]))
+            resultMenuItems.push(<CategoryTitle key={categoryId} categoryId={categoryId}
+                                                topCategoryIndex={topIndex}/>)
 
             const menuItem = items.map(renderMenuItem)
 
-            menuItem.forEach(mi => {
-                resultMenuItems.push(<CategoryTitle categoryId={categoryId} topCategoryIndex={topCategoryIndex}
-                                                    isHidden/>)
+            menuItem.forEach((mi, index) => {
+                resultMenuItems.push(
+                    <CategoryTitle
+                        isHidden
+                        key={`${index}_${categoryId}`}
+                        categoryId={categoryId}
+                        topCategoryIndex={topIndex}
+                    />
+                )
                 resultMenuItems.push(mi)
             })
         })

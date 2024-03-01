@@ -36,7 +36,6 @@ import
     PrimaryButton,
     NotificationFactory,
     NOTIFICATION_STATUS,
-    MapEditor,
     Footer
 } from "components";
 
@@ -416,14 +415,6 @@ const componentsGroup3 = [
     ]
 ]
 
-const componentsGroup4 = [[
-    {
-        title: 'Map',
-        component: <MapEditor position={[51.505, -0.09]} />
-    }
-]]
-
-// document.body.style.backgroundColor = '#d8d8d8'
 
 function ComponentsPage() {
     const setWhiteBackground = useCallback(() => document.body.style.background = '#ffffff', []);
@@ -473,7 +464,6 @@ function ComponentsPage() {
             {renderGroup(componentsGroup1)}
             {renderGroup(componentsGroup2)}
             {renderGroup(componentsGroup3)}
-            {renderGroup(componentsGroup4)}
             {/*<CatalogPage/>*/}
         </>
     )

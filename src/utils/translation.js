@@ -15,7 +15,7 @@ export const truncate = (text, availableLength = 1) => {
         return text;
     }
 
-    return text.substring(0, availableLength) + ' ...';
+    return text.substring(0, availableLength-5) + ' ...';
 };
 
 export const getCurrentLanguage = () => LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE)?.language?.siteLanguage || DEFAULT_LANGUAGE;
@@ -61,11 +61,11 @@ export const TRANSLATION = {
         TEXT: {
             ua: [
                 'Ми збираєм всі меню України для вашого комфорту в одному місці. На цьому сайті.',
-                'Розповідайте вашим улюбленим закладам про наш сервіс.',
+                'Розповідайте про нас закладам. Додавайте меню безкоштовно.',
             ],
             en: [
                 'We collect all menu of Ukraine for your comfort in one place. On this site.',
-                "Tell your favorite establishments about our service.",
+                "Tell institutions about us. Add a menu for free.",
             ]
         },
     },
@@ -422,6 +422,14 @@ export const TRANSLATION = {
                 EDIT_MENU_ITEM: {
                     en: 'Save changes',
                     ua: "Зберегти зміни",
+                },
+                LOAD_IMAGE: {
+                    en: 'Load image',
+                    ua: "Завантажити зображення",
+                },
+                WIDGET_LOADING: {
+                    en: 'Load image widget',
+                    ua: "Завантаження віджету",
                 }
             },
         },
@@ -759,7 +767,10 @@ export const TRANSLATION = {
                 ua: 'Проект оновлено.',
                 en: 'Project was updated.'
             },
-
+            NEW_VERSION: {
+                ua: 'Версія ',
+                en: 'Version '
+            },
             BUTTON: {
                 ua: 'Далі',
                 en: 'Continue'
@@ -1224,6 +1235,10 @@ export const TRANSLATION = {
             en: "Wines of Georgia",
             ua: "Вина Грузії"
         },
+        WINE_UKRAINE: {
+            en: "Wines of Ukraine",
+            ua: "Вина України"
+        },
         WINE_ITALY: {
             en: "Wines of Italy",
             ua: "Вина Італії"
@@ -1300,12 +1315,20 @@ export const TRANSLATION = {
             en: "Naluvku",
             ua: "Наливки"
         },
+        BEER_DRAFT: {
+            en: "Draft beer",
+            ua: "Пиво розливне"
+        },
         BEER: {
             en: "Beer",
             ua: "Пиво"
         },
-        BEER_ADDICTIVES: {
-            en: "Beer addictives",
+        BEER_NA: {
+            en: "Beer n/a",
+            ua: "Пиво безалкогольне"
+        },
+        BEER_ADDITIONS: {
+            en: "Beer additions",
             ua: "Додатки до пива"
         },
         COFFEE: {

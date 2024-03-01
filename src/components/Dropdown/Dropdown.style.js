@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {BORDER_RADIUS, COLOR, FONT, SHADOW} from "utils/theme";
+import {BORDER_RADIUS, COLOR, FONT, lighterDarkerColor, SHADOW} from "utils/theme";
 
 export const SelectWrapper = styled.div`
   position: relative;
@@ -44,11 +44,17 @@ export const OptionsContainer = styled.div`
 `;
 
 export const GroupTitleOption = styled.div`
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
   color: ${COLOR.ACCENT1};
+  background: ${COLOR.ACCENT9};
+  border-top: solid 1px ${lighterDarkerColor(COLOR.ACCENT9, -20)};
   padding: 8px;
   cursor: pointer;
   ${FONT.SIZE_20};
   ${FONT.WEIGHT_500};
+  text-transform: uppercase;
 
 `;
 
