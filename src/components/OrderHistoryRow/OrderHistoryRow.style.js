@@ -4,7 +4,7 @@ import {COLOR, FONT} from "../../utils/theme";
 export const Wrapper = styled.div`
     padding: 16px;
     color: ${COLOR.ACCENT1};
-    background: ${COLOR.ACCENT4};
+    background: ${COLOR.WHITE};
 `;
 
 export const FirstRow = styled.div`

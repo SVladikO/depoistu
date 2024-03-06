@@ -52,7 +52,7 @@ export const useHideOnScroll = (id, top) => {
     useEffect(() => {
         window.addEventListener('scroll', onScroll);
         return () => window.removeEventListener('scroll', onScroll);
-    }, [id, top])
+    }, [id, top, onScroll])
 }
 
 // A custom hook that builds on useLocation to parse

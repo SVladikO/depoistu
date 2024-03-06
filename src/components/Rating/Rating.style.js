@@ -8,12 +8,12 @@ export const Wrapper = styled.div`
   font-size: 12px;
   line-height: 16px;
   border-radius: ${BORDER_RADIUS.THIRD};
-  color: ${COLOR.ACCENT4};
+  color: ${COLOR.WHITE};
   display: flex;
   justify-content: center;
   align-items: center;
   & > svg {
-    fill: ${COLOR.ACCENT4};
+    fill: ${COLOR.WHITE};
     width: 9.61px;
     height: 9.2px;
   }

@@ -15,7 +15,7 @@ export const truncate = (text, availableLength = 1) => {
         return text;
     }
 
-    return text.substring(0, availableLength) + ' ...';
+    return text.substring(0, availableLength-5) + ' ...';
 };
 
 export const getCurrentLanguage = () => LocalStorage.get(LOCAL_STORAGE_KEY.REDUX_STATE)?.language?.siteLanguage || DEFAULT_LANGUAGE;
@@ -59,8 +59,14 @@ export const TRANSLATION = {
             en: 'Continue'
         },
         TEXT: {
-            ua: ['Все меню України.'],
-            en: ['All menu of Ukraine.']
+            ua: [
+                'Ми збираєм всі меню України для вашого комфорту в одному місці. На цьому сайті.',
+                'Розповідайте про нас закладам. Додавайте меню безкоштовно.',
+            ],
+            en: [
+                'We collect all menu of Ukraine for your comfort in one place. On this site.',
+                "Tell institutions about us. Add a menu for free.",
+            ]
         },
     },
     VALIDATION: {
@@ -282,8 +288,8 @@ export const TRANSLATION = {
         },
         COMPANY_DETAILS: {
             TOP_TITLE: {
-                ua: "Деталі закладу",
-                en: 'Company details'
+                ua: "Меню",
+                en: 'Menu'
             },
             MENU_PROBLEM: {
                 ua: 'Меню закладу відсутнє',
@@ -296,8 +302,8 @@ export const TRANSLATION = {
         },
         INSTRUCTION_FOR_BUSINESS_OWNER: {
             TOP_TITLE: {
-                ua: "Інструкція користувача",
-                en: 'Usage instruction'
+                ua: "Інструкції для бізнесу",
+                en: 'Business instruction'
             },
         },
         AVAILABLE_MENU_CATEGORIES: {
@@ -312,8 +318,8 @@ export const TRANSLATION = {
         },
         CUSTOMER_COMPANIES: {
             TOP_TITLE: {
-                ua: "Ваші заклади",
-                en: 'Your companies'
+                ua: "Мої заклади",
+                en: 'My companies'
             },
             QR_MENU_TITLE: {
                 ua: 'МЕНЮ',
@@ -416,6 +422,14 @@ export const TRANSLATION = {
                 EDIT_MENU_ITEM: {
                     en: 'Save changes',
                     ua: "Зберегти зміни",
+                },
+                LOAD_IMAGE: {
+                    en: 'Load image',
+                    ua: "Завантажити зображення",
+                },
+                WIDGET_LOADING: {
+                    en: 'Load image widget',
+                    ua: "Завантаження віджету",
                 }
             },
         },
@@ -467,7 +481,7 @@ export const TRANSLATION = {
         },
         SETTINGS: {
             TOP_TITLE: {
-                ua: "Налаштування",
+                ua: "Системні",
                 en: "Settings"
             },
             BUTTONS: {
@@ -620,101 +634,92 @@ export const TRANSLATION = {
             CONTENT: {
                 en: [
                     {
-                        question: "What is the main idea of the project?",
+                        question: "The main idea of the project",
                         answers: [
-                            "All catering establishments of Ukraine on one website depoistu.com",
+                            "All menus of the country on one site.",
+                            "An easy and fast way to find any restaurant in Ukraine with menus and prices.",
                         ]
                     },
                     {
-                        question: "What is the cost?",
+                        question: "COST OF USE",
                         answers: [
-                            "It's completely free during 2024.",
+                            "FREE throughout 2024.",
                         ]
                     },
                     {
-                        question: "Why do businesses need us?",
-                        withCounter: true,
+                        question: "IF YOU ARE THE OWNER OF A CATERING ESTABLISHMENT",
                         answers: [
-                            "With us, you save time, money, energy and nerves for planning, creating, maintaining and promoting your own website. Cool, agree.",
-                            "Your menu becomes digital. Now you can conveniently add, remove, hide and change your own dishes and drinks.",
-                            "The opportunity to be modern. Visitors will appreciate and remember the service you provided.",
-                            "Your customers can now view the Menu from any distance at any time of the day.",
-                            "More people know about you. You get a new platform to promote your own establishments, and you also join a new ecosystem."
+                            "By cooperating with us, you will receive significant advantages:",
+                            "- the ability to easily update the menu;",
+                            "- more views;",
+                            "- more visitors;",
+                            "- saving money and time;",
                         ]
                     },
                     {
-                        question: "What do all depoistu.com customers get?",
-                        withCounter: true,
+                        question: "HOW TO BECOME OUR PARTNER",
                         answers: [
-                            "Quick search for food establishments in any corner of Ukraine.",
-                            "Opportunity to find out all relevant information about the institution.",
-                            "The ability to study different Menus, compare prices and find the desired food in advance.",
-                            "Always be in touch with establishments. Choose and store your favorite dishes and drinks.",
+                            "- place the QR MENU in your establishment;",
+                            "- place a link to the establishment's menu on the pages of social networks.",
+                        ]
+
+                    },
+                    {
+                        question: "BENEFITS FOR DEPOISTU.COM VISITORS",
+                        answers: [
+                            "- quick view of the menu of restaurants, coffee shops, pizzerias and other establishments throughout Ukraine at any time of the day;",
+                            "- the ability to view the current menu;",
+                            "- the ability to compare menu items, prices of various establishments and make the best choice;",
                         ]
                     },
                     {
-                        question: "How can a business make money faster?",
-                        answers: [
-                            "Place a QR MENU in your establishment on every table.",
-                            "This is your investment in overall success.",
-                            "You introduce your customers to our service. We introduce our users to your establishment.",
-                            "And so we got an ecosystem.",
-                            "All clients and all businesses in one place."
-                        ]
-                    },
-                    {
-                        question: "When was the first version released?",
-                        answers: ["November 1, 2023"]
+                        question: "PROJECT RELEASE DATE",
+                        answers: ["07.11.2023"]
                     },
                 ],
                 ua: [
                     {
-                        question: "Яка головна ідея проекту?",
+                        question: "Головна ідея проекту",
                         answers: [
-                            "Всі заклади харчування України на одному сайті depoistu.com.",
+                            "Всі меню країни на одному сайті.",
+                            "Легкий та швидкий спосіб знайти будь-який заклад харчування України з меню та цінами.",
                         ]
                     },
                     {
-                        question: "Яка вартість?",
+                        question: "ВАРТІСТЬ КОРИСТУВАННЯ",
                         answers: [
-                            "Весь 2024 повністю БЕЗКОШТОВНО.",
+                            "Протягом 2024 року БЕЗКОШТОВНО.",
                         ]
                     },
                     {
-                        question: "Чому ми потрібні бізнесу?",
-                        withCounter: true,
+                        question: "ЯКЩО ВИ ВЛАСНИК ЗАКЛАДУ ХАРЧУВАННЯ",
                         answers: [
-                            "З нами Ви зберігаєте час, кошти, сили та нерви на планування, створення, підтримку та просування власного сайту. Круто, погодьтесь.",
-                            "Ваше меню стає цифровим. Тепер Ви можете зручно добавляти, видаляти, приховувати та змінювати власні страви та напої.",
-                            "Можливість бути сучасними. Відвідувачі гідно оцінять та запамʼятають надану вами послугу.",
-                            "Ваші клієнти тепер переглядають Меню на будь-якій відстані в будь-яку пору доби.",
-                            "Більше людей знають про Вас. Ви отримуєте новий майданчик для просування власних закладів, а також доєднуєтесь до нової екосистеми.",
+                            "Співпрацюючи з нами Ви отримаєте значні переваги:",
+                            "- можливість легко оновлювати меню;",
+                            "- більше переглядів;",
+                            "- більше відвідувачів;",
+                            "- економія коштів і часу;",
                         ]
                     },
+                    {
+                        question: "ЯК СТАТИ НАШИМ ПАРТНЕРОМ",
+                        answers: [
+                            "- розмістіть QR MENU у своєму закладі;",
+                            "- розмістіть посилання на меню закладу на сторінках соцмереж.",
+                        ]
 
+                    },
                     {
-                        question: "Що отримують всі клієнти depoistu.com?",
-                        withCounter: true,
+                        question: "ПЕРЕВАГИ ДЛЯ ВІДВІДУВАЧІВ САЙТУ DEPOISTU.COM",
                         answers: [
-                            "Швидкий пошук закладів харчування в будь-якому куточку України.",
-                            "Можливість дізнатися всю актуальну інформацію про заклад.",
-                            "Можливість вивчати різні Меню, зрівнювати ціни та заздалегідь знаходити для себе бажану їжу.",
-                            "Бути завжди на звязку з закладами. Вибирати та зберігати улюблені страви та напої.",
+                            "- швидкий перегляд меню ресторанів, кав’ярень, піцерій та інших закладів по всій Україні у будь-який час доби;",
+                            "- можливість переглянути актуальне меню;",
+                            "- можливість порівняти позиції меню,ціни різних закладів та зробити найкращий вибір;",
                         ]
                     },
                     {
-                        question: "Як бізнесу заробляти швидше?",
-                        answers: [
-                            "Розмістіть QR MENU в своєму закладі на кожному столі.",
-                            "Це ваша інвестиція в загальний успіх.",
-                            "Ви знайомите своїх клієнтів з нашим сервісом. Ми знайомимо наших користувачів з вашим закладом.",
-                            "І от ми отримали екосистему.",
-                            "Всі клієнти і всі бізнеси в одному місці."
-                        ]
-                    },
-                    {
-                        question: "Коли ми випустили першу версію?",
-                        answers: ["1 Листопада 2023 року"]
+                        question: "ДАТА ВИПУСКУ ПРОЕКТУ",
+                        answers: ["07.11.2023"]
                     },
                 ],
             }
@@ -762,7 +767,10 @@ export const TRANSLATION = {
                 ua: 'Проект оновлено.',
                 en: 'Project was updated.'
             },
-
+            NEW_VERSION: {
+                ua: 'Версія ',
+                en: 'Version '
+            },
             BUTTON: {
                 ua: 'Далі',
                 en: 'Continue'
@@ -1005,12 +1013,12 @@ export const TRANSLATION = {
             ua: 'Огляд замовлення'
         },
         SHOP_NOW: {
-            en: 'Shop Now',
-            ua: 'Здійснити замовлення'
+            en: 'Choose company',
+            ua: 'Обрати заклад'
         },
         LOOKS_LIKE: {
             en: 'Looks like you haven\'t made your order yet.',
-            ua: 'Схоже, ви ще не зробили замовлення.'
+            ua: 'Схоже, ви ще не вибрали страви.'
         },
         BASKET_IS_EMPTY: {
             en: 'Your basket is empty',
@@ -1031,9 +1039,9 @@ export const TRANSLATION = {
     },
 
     BOTTOM_MENU: {
-        MAIN: {
-            ua: "Головна",
-            en: "Main"
+        SEARCH: {
+            ua: "Пошук",
+            en: "Search"
         },
         MENU: {
             ua: "Меню",
@@ -1227,6 +1235,10 @@ export const TRANSLATION = {
             en: "Wines of Georgia",
             ua: "Вина Грузії"
         },
+        WINE_UKRAINE: {
+            en: "Wines of Ukraine",
+            ua: "Вина України"
+        },
         WINE_ITALY: {
             en: "Wines of Italy",
             ua: "Вина Італії"
@@ -1303,12 +1315,20 @@ export const TRANSLATION = {
             en: "Naluvku",
             ua: "Наливки"
         },
+        BEER_DRAFT: {
+            en: "Draft beer",
+            ua: "Пиво розливне"
+        },
         BEER: {
             en: "Beer",
             ua: "Пиво"
         },
-        BEER_ADDICTIVES: {
-            en: "Beer addictives",
+        BEER_NA: {
+            en: "Beer n/a",
+            ua: "Пиво безалкогольне"
+        },
+        BEER_ADDITIONS: {
+            en: "Beer additions",
             ua: "Додатки до пива"
         },
         COFFEE: {

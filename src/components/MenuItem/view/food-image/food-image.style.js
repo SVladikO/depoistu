@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
         width: 101%;
         height: 280px;
         background: ${COLOR.ACCENT2};
-        border: solid 1px ${COLOR.ACCENT4};
+        border: solid 1px ${COLOR.WHITE};
         position: relative;
 
         // & > img {

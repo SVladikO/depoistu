@@ -43,7 +43,7 @@ const MenuItemPriceSizeControl = ({
         return (
             <Details>
                 <SizePriceInfoTd>
-                    {price ? <span>₴ {price}</span> : <span />}
+                    {price ? <span>{price} ₴</span> : <span />}
                     {size ? <pre>  </pre> : <span/>}
                     {size ? <span>{size} {measurement}</span> : <span/>}
                 </SizePriceInfoTd>

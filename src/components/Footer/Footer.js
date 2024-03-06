@@ -3,7 +3,6 @@ import {Link} from "react-router-dom";
 
 import {Wrapper, Row, LocationInfo, Support} from './Footer.style';
 
-import cristmasImgSrc from 'assets/images/cristmas.webp';
 import {RowSplitter} from "components";
 
 import {URL} from "utils/config";
@@ -19,17 +18,18 @@ const Footer = () => {
 
     return (
         <>
-            <RowSplitter height={'100px'}/>
-            <img src={cristmasImgSrc} alt="" style={{width: '100%'}}/>
+            <RowSplitter height={'300px'}/>
             <Wrapper>
                 <Row onClick={scrollToTop}>{translate(TR.PAGE.FOOTER.BACK_TO_TOP_BUTTON)}</Row>
                 <Link to={URL.ABOUT_PROJECT}>
                     <Row>{translate(TR.PAGE.SETTINGS.MENU_ROW.ABOUT_PROJECT)}</Row>
                 </Link>
-                <Support>
+                <Row>
                     <a href="mailto:support@depoistu.com">support@depoistu.com</a>
-                </Support>
-                <LocationInfo>1.11.2023 Ukraine</LocationInfo>
+                </Row>
+                <Row>
+                    <LocationInfo>1.11.2023 Ukraine</LocationInfo>
+                </Row>
             </Wrapper>
         </>
     );

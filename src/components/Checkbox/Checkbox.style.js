@@ -15,8 +15,8 @@ export const CheckboxStyle = styled.input`
   cursor: pointer;
   content: "";
   border: 1px solid #D8DEFE;
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   flex-shrink: 0;
   display: block;
 

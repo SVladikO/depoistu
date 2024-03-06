@@ -1,5 +1,6 @@
 import React from "react";
 
+export const CATEGORY_TITLE_CLASS_NAME = 'CATEGORY_TITLE_CLASS_NAME';
 const CATEGORY_ID_PREFIX = 'category_'
 const DISABLE_VERTICAL_SCROLL_LISTENER_CLASS_NAME = 'disable_verticall_scroll_listener'
 
@@ -35,7 +36,7 @@ export function enableScrollListener() {
     myTimeout = setTimeout(() => {
         const domElement = document.getElementsByClassName(CATEGORY_CLASSNAME)[0]
         domElement && domElement.classList && domElement.classList.remove(DISABLE_VERTICAL_SCROLL_LISTENER_CLASS_NAME)
-    }, 2500);
+    }, 1000);
 }
 
 export function disableScrollListener() {

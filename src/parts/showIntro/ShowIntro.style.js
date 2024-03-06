@@ -1,8 +1,15 @@
 import styled from "styled-components";
 import {COLOR, FONT} from "utils/theme";
 
+export const Overflow = styled.div`
+  overflow: scroll;
+  height: 80vh;
+`;
 export const Wrapper = styled.div`
+  height: 700px;
   margin: 0 0 40px 0;
+  padding: 40px 23px 100px;
+
   & > * {
     margin-bottom: 22px;
   }

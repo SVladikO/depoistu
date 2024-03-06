@@ -9,7 +9,7 @@ export const Discount = styled.div`
   padding: 0 3px 0 0;
   line-height: 16px;
   border-radius: ${BORDER_RADIUS.THIRD};
-  color: ${COLOR.ACCENT4};
+  color: ${COLOR.WHITE};
   display: flex;
   justify-content: center;
   &::after {

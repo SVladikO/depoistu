@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   padding: 16px;
   ${SHADOW};
   color: ${COLOR.ACCENT1};
-  background: ${COLOR.ACCENT4};
+  background: ${COLOR.WHITE};
   border-radius: ${p => p.borderRadius ? p.borderRadius : BORDER_RADIUS.SECOND};
   
   & > div:first-child .question_title {

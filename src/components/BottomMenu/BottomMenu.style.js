@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import {COLOR, FONT} from "utils/theme";
+import {COLOR, FONT, lighterDarkerColor} from "utils/theme";
 
 export const Wrapper = styled.div`
     z-index: 2;
     bottom: -1px;
     height: 60px;
-    background-color: ${COLOR.ACCENT4};
+    background-color: ${COLOR.WHITE};
     display: flex;
     justify-content: space-around;
 
@@ -33,15 +33,16 @@ export const MenuItem = styled.div`
     text-align: center;
     align-items: center;
     position: relative;
-    margin-top: 4px;
-    color: ${p => p.selected ? COLOR.PRIMARY : COLOR.ACCENT1};
+    padding: 4px 0 0;
+    min-width: 23%;
+    color: ${p => p.selected ? COLOR.WHITE : COLOR.ACCENT1};
+    background: ${p => p.selected ? COLOR.PRIMARY : 'none'};
 
-    & > *:first-child {
+    & > svg {
         width: 23px;
         height: 23px;
         display: block;
-        margin-bottom: 2px;
-        fill: ${p => p.selected ? COLOR.PRIMARY : COLOR.ACCENT1};
+        fill: ${p => p.selected ? COLOR.WHITE : COLOR.ACCENT1};
     }
   
     span {
@@ -51,10 +52,11 @@ export const MenuItem = styled.div`
 
 export const OrderWrapper = styled.div`
     position: relative;
-    width: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 8%;
+    
 `;
 
 export const OrderButton = styled.div`
@@ -64,11 +66,12 @@ export const OrderButton = styled.div`
     border-radius: 50%;
     height: 52px;
     width: 52px;
+    z-index: 2;
     top: -10px;
     position: absolute;
-    color: ${COLOR.ACCENT1};
-    background: ${COLOR.ACCENT2};
-    border: solid 1px ${COLOR.ACCENT1};
+    color: ${p => p.isSelected ? COLOR.WHITE : COLOR.ACCENT1};
+    background: ${p => p.isSelected ? COLOR.PRIMARY : COLOR.WHITE};
+    border: solid 2px ${p => p.isSelected ? COLOR.ACCENT1 : COLOR.ACCENT5};
     ${FONT.SIZE_30}
     ${FONT.WEIGHT_700}
     -webkit-user-select: none; /* Safari */

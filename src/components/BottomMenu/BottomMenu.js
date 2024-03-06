@@ -27,14 +27,12 @@ const BottomMenu = () => {
                 onClick={() => navigate(ROUTER.SEARCH.URL)}
             >
                 <HomeIcon/>
-                <span>{translate(TRANSLATION.BOTTOM_MENU.MAIN)}</span>
+                <span>{translate(TRANSLATION.BOTTOM_MENU.SEARCH)}</span>
             </MenuItem>
 
             <MenuItem
                 selected={isSelected(`${URL.SEARCH_DETAILS}/${companyId}`)}
-                onClick={() => {
-                    navigate(`${ROUTER.SEARCH_DETAILS.URL}/${companyId}`)
-                }}
+                onClick={() => navigate(`${ROUTER.SEARCH_DETAILS.URL}/${companyId}`)}
             >
                 <MenuIcon/>
                 <span>{translate(TRANSLATION.BOTTOM_MENU.MENU)}</span>
@@ -42,7 +40,7 @@ const BottomMenu = () => {
 
             <OrderWrapper>
                 <ScrollUpButton/>
-                <OrderButtonNavigation/>
+                <OrderButtonNavigation isSelected={isSelected(URL.ORDER)}/>
             </OrderWrapper>
 
             <MenuItem
@@ -64,7 +62,7 @@ const BottomMenu = () => {
     );
 };
 
-const OrderButtonNavigation = () => {
+const OrderButtonNavigation = ({isSelected}) => {
     const navigate = useNavigate();
 
     const [isOpen, setOpen] = useState(false);
@@ -79,6 +77,7 @@ const OrderButtonNavigation = () => {
 
     return (
         <OrderButton
+            isSelected={isSelected}
             onClick={() => {
                 navigate(ROUTER.ORDER.URL)
                 setOpen(true)

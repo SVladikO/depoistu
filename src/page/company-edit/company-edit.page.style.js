@@ -11,7 +11,7 @@ export const PopupButtons = styled.div`
 export const PopupContentContainer = styled.div`
   padding: 16px;
   margin: 18px;
-  background: ${COLOR.ACCENT4};
+  background: ${COLOR.WHITE};
   border-radius: 5px;
 `;
 export const PopupTitle = styled.div`

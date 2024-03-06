@@ -59,8 +59,7 @@ export const NotificationSuccessWrapper = styled.div`
 
 export const NotificationLoadingWrapper = styled.div`
   ${DefaultNotification};
-  background: ${COLOR.ACCENT2};
-  padding: 10px 16px;
+  padding: 10px;
   
   & > svg:first-child {
     min-height: 24px;

@@ -8,15 +8,6 @@ export const Wrapper = styled.div`
   flex-direction: column;
   position: relative;
 `;
-export const Content = styled.div`
-  margin-bottom: 26px;
-  & > div {
-    margin-top: 15px;
-  }
-  & > div:first-child{
-    margin-top: 0;
-  }
-`;
 
 export const AmountInfo = styled.div`
   font-weight: 700;
