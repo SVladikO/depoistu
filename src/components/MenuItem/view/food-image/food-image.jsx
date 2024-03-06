@@ -7,20 +7,22 @@ import ImageUrlFormatter from "utils/image.utils";
 
 const FoodImage = ({item}) => {
     const [isShowLoader, setIsShowLoader] = useState(true)
-    const isShowAllImages = useSearchParams()[0].get('isShowAllImages') === 'true'
+    const isShowAllImages = useSearchParams()[0].get('sai') === 'true'
 
-    if (item.isImageVisible || isShowAllImages) {
-        return (
-            <Wrapper>
-                <img onLoad={() => setIsShowLoader(false)} src={ImageUrlFormatter.formatForMenuItemBig(item.imageUrl)}
-                     alt="food image" />
-                {isShowLoader && <LoadingWrapper className='animated_svg'>
-                    <LoadingIcon />
-                </LoadingWrapper>
-                }
-            </Wrapper>
-        )
+    if (!item.isImageVisible && !isShowAllImages) {
+        return null
     }
+
+    return (
+        <Wrapper>
+            <img onLoad={() => setIsShowLoader(false)} src={ImageUrlFormatter.formatForMenuItemBig(item.imageUrl)}
+                 alt="food image" />
+            {isShowLoader && <LoadingWrapper className='animated_svg'>
+                <LoadingIcon />
+            </LoadingWrapper>
+            }
+        </Wrapper>
+    )
 }
 
 export default FoodImage;
