@@ -108,7 +108,7 @@ export const Label = styled.label`
   z-index: 2;
   padding: 3px 5px;
   color: ${COLOR.ACCENT1};
-  background: ${COLOR.ACCENT8};
+  background: ${COLOR.ACCENT4};
   
   ${p => p.isRequired && css`
     &:after {
