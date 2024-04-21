@@ -1,23 +1,19 @@
 import React from 'react';
 
-import {Wrapper, BackButton, Title} from "./NavigationHeader.style";
+import {Wrapper, RightSubWrapper, CurrentLanguage} from "./NavigationHeader.style";
 
-import {ReactComponent as BackArrow} from "assets/icons/back_arrow.svg";
-
-import {useQuery} from "utils/hook";
+import {ReactComponent as HeaderLogoIcon} from "assets/icons/h_logo.svg";
+import {ReactComponent as FavoriteIcon} from "assets/icons/heart1.svg";
 
 const NavigationHeader = (props) => {
-    let query = useQuery()
-    const backUrl = query.get("backUrl") || props.backUrl;
 
     return (
         <Wrapper className='pm-NavigationHeader'>
-                {backUrl &&
-                    <BackButton to={backUrl}>
-                            <BackArrow/>
-                    </BackButton>
-                }
-                <Title>{props.title}</Title>
+               <HeaderLogoIcon />
+               <RightSubWrapper>
+                   <CurrentLanguage>UA</CurrentLanguage>
+                   <FavoriteIcon />
+               </RightSubWrapper>
         </Wrapper>
     );
 };
