@@ -56,6 +56,55 @@ import {EditBar, QRCodeButton} from "../customer-companies/customer-companies.pa
 
 import {COLOR} from "utils/theme";
 import {getOnlyCityIds} from "utils/cities";
+import CategoryMenuView from "page-view/category-menu-view/category-menu-view";
+
+const menuItems = [
+    {
+        "id": 1,
+        "category_id": 1,
+        "company_id": 1,
+        "name": "Яєчня оката/омлет/скрембл (на вибір)",
+        "isVisible": 1,
+        "description": "з беконом, картоплею та хрустким тостом",
+        "size_1": "250",
+        "size_2": "",
+        "size_3": null,
+        "price_1": 190,
+        "price_2": 0,
+        "price_3": 0,
+        "imageUrl": ""
+    },
+    {
+        "id": 2,
+        "category_id": 89,
+        "company_id": 1,
+        "name": "Маракуєвий лимонад",
+        "isVisible": 1,
+        "description": "з домашньою ковбасою, салатом з помідорів та картопленю зі шкварками",
+        "size_1": "400",
+        "size_2": "",
+        "size_3": null,
+        "price_1": 250,
+        "price_2": 0,
+        "price_3": 0,
+        "imageUrl": "" 
+    },
+    {
+        "id": 25,
+        "category_id": 41,
+        "company_id": 1,
+        "name": "Короп смажений по-азіатськи",
+        "isVisible": 1,
+        "description": "",
+        "size_1": "200",
+        "size_2": "",
+        "size_3": null,
+        "price_1": 400,
+        "price_2": 0,
+        "price_3": 0,
+        "imageUrl": ""
+    },
+]
 
 const colors = Object
     .keys(COLOR)
@@ -289,6 +338,11 @@ const componentsGroup2 = [
                     isEditMode
                     isWithImage
                 />
+        },
+        {
+            title: 'CategoryMenuRow',
+            component:
+                <CategoryMenuView menuItems={menuItems} />
         },
     ],
     [
