@@ -4,12 +4,32 @@ import {Link} from "react-router-dom";
 
 export const Wrapper = styled.div`
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 15px;
     background: ${COLOR.WHITE};
     position: relative;
     height: 54px;
     -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.11);
     -moz-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.11);
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.11);
+    
+`;
+
+export const CurrentLanguage = styled.div`
+    ${FONT.SIZE_20};
+`;
+
+export const RightSubWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+
+    & > svg {
+      height: 19px;
+      width: 22px;
+    }
 `;
 
 export const Title = styled.div`
