@@ -24,7 +24,7 @@ export const MobileWrapper = styled.div`
   max-width: ${DEVICE_WIDTH.MAX};
   margin: 0 auto;
   position: relative;
-  background: ${COLOR.ACCENT8};
+  background: ${COLOR.ACCENT4};
 `;
 
 export const Content = styled.div`
