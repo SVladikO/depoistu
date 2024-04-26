@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {COLOR, FONT, hexToRgbA} from "utils/theme";
+import {COLOR, FONT, hexToRgbA, lighterDarkerColor} from "utils/theme";
 import {SecondaryButton} from "../../../Buttons/SecondaryButton";
 
 export const SizePriceWrapper = styled.div`
@@ -51,28 +51,17 @@ export const Amount = styled.div`
   text-align: center;
 `
 
-export const DecrementButton = styled(SecondaryButton)`
-  height: 24px;
-  ${FONT.SIZE_18};
-  background-color: ${COLOR.ACCENT2};
-  border: 2px solid ${COLOR.ACCENT5};
-  color: ${COLOR.ACCENT5};
+export const CalculationButton = styled(SecondaryButton)`
+    background: ${p => p.isDisabled ? hexToRgbA(COLOR.ACCENT5, 0.01) : hexToRgbA(COLOR.ACCENT1, 0.09)};
+    border: 2px solid ${p => p.isDisabled ? COLOR.ACCENT5 : COLOR.ACCENT1};
+    color: ${COLOR.ACCENT1};
 
-  &::before {
-    content: '-'
-  }
+    &:active {
+      border: 2px solid ${p => p.isDisabled ? lighterDarkerColor(COLOR.ACCENT5, -20) : lighterDarkerColor(COLOR.ACCENT1, -20)};
+      color: ${p => p.isDisabled ? lighterDarkerColor(COLOR.ACCENT5, -20) : lighterDarkerColor(COLOR.ACCENT1, -20)};
+      background: ${p => p.isDisabled ? hexToRgbA(COLOR.ACCENT5, 0.04) : hexToRgbA(COLOR.ACCENT1, 0.2)};
+    }
 
-  &:active {
-    border: 2px solid ${COLOR.ACCENT5};
-    background: ${hexToRgbA(COLOR.ACCENT5, 0.4)};
-  }
-`
-
-export const IncrementButton = styled(SecondaryButton)`
     height: 24px;
     ${FONT.SIZE_18};
-
-  &::before {
-    content: '+'
-  }
 `

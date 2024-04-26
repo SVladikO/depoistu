@@ -5,8 +5,7 @@ import {
     Amount,
     Details,
     SizePriceInfoTd,
-    IncrementButton,
-    DecrementButton,
+    CalculationButton,
     ControlButtonTd,
     SizePriceWrapper,
 } from "./menu-item-price-size-controll.style.";
@@ -49,12 +48,12 @@ const MenuItemPriceSizeControl = ({
                 </SizePriceInfoTd>
                 <ControlButtonTd isShow={!isEditMenuItemPage}>
                     {amount > 0 && !isOrderHistoryDetailsPage &&
-                        <DecrementButton clickHandler={onDecrementAmount(amountKey)}/>}
+                        <CalculationButton clickHandler={onDecrementAmount(amountKey)}>-</CalculationButton>}
                     {amount > 0 && <Amount isWide={isOrderHistoryDetailsPage}>
                         {isOrderHistoryDetailsPage && 'x '}
                         {amount}
                     </Amount>}
-                    {!isOrderHistoryDetailsPage && <IncrementButton clickHandler={onIncrementAmount(amountKey)}/>}
+                    {!isOrderHistoryDetailsPage && <CalculationButton clickHandler={onIncrementAmount(amountKey)}>+</CalculationButton>}
                 </ControlButtonTd>
             </Details>
         )
