@@ -15,6 +15,8 @@ import {useLocalStorage, useScrollUp} from "utils/hook";
 import {BE_API, fetchData, errorHandler} from "utils/fetch";
 import {translate, TRANSLATION, truncate} from "utils/translation";
 import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
+import { SecondaryButton } from "components";
+import { PrimaryButton } from "components";
 
 const SearchPage = () => {
         useScrollUp();
@@ -109,19 +111,19 @@ const SearchPage = () => {
                
                 <ContentContainer noBg noShadow>
                      <Dropdown 
-                    // selectedOption={selectedOption}
-                    // options={options}
+                    selectedOption={{title: 'Kyiv', value: 'Kyiv'}}
+                    options={[{title: 'Kyiv', value: 'Kyiv'}, {title: 'Odesa', value: 'Odesa'}]}
                     // onSelect={setSelectedOption}
                     label={'Region'}
-                    isRequired
                 />
                 <Dropdown 
-                    // selectedOption={selectedOption}
-                    // options={options}
+                    selectedOption={{title: 'Kyiv', value: 'Kyiv'}}
+                    options={[{title: 'Kyiv', value: 'Kyiv'}, {title: 'Irpin', value: 'Irpin'}]}
                     // onSelect={setSelectedOption}
                     label={'City'}
-                    isRequired
                 />
+
+                <PrimaryButton isWide>Search</PrimaryButton>
                     <CityInput
                         handleClick={onOpenCityPopup}
                         withIcon
