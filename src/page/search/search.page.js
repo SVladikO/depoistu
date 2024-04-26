@@ -4,7 +4,7 @@ import React, {useEffect, useMemo, useState} from "react";
 
 import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
 
-import {CityInput, ContentContainer, Company, NotificationLoading, Popup, RowSplitter} from "components";
+import {CityInput, ContentContainer, Dropdown, Company, NotificationLoading, Popup, RowSplitter} from "components";
 import {resetSearchDetails} from "features/searchDetails/searchDetailsSlice";
 
 import {URL} from "utils/config";
@@ -22,7 +22,6 @@ const SearchPage = () => {
         const dispatch = useDispatch();
 
         const [isLoading, setIsLoading] = useState(false);
-
 
         const [selectedCityId, setSelectedCity] = useLocalStorage(LOCAL_STORAGE_KEY.COMPANY_SEARCH_SELECTED_CITY_ID, '');
         const [selectedRegionId, setSelectedRegion] = useLocalStorage(LOCAL_STORAGE_KEY.COMPANY_SEARCH_SELECTED_REGION_ID, '');
@@ -107,7 +106,22 @@ const SearchPage = () => {
     return (
             <>
                 <RowSplitter height={'20px'} />
+               
                 <ContentContainer noBg noShadow>
+                     <Dropdown 
+                    // selectedOption={selectedOption}
+                    // options={options}
+                    // onSelect={setSelectedOption}
+                    label={'Region'}
+                    isRequired
+                />
+                <Dropdown 
+                    // selectedOption={selectedOption}
+                    // options={options}
+                    // onSelect={setSelectedOption}
+                    label={'City'}
+                    isRequired
+                />
                     <CityInput
                         handleClick={onOpenCityPopup}
                         withIcon
