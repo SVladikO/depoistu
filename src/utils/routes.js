@@ -32,7 +32,6 @@ export const Content = styled.div`
     flex-direction: column;
     justify-content: start;
     min-height: 400px;
-    padding: ${p => p.disablePageHeaderBottomMargin ? 54 : 80}px 0 0;
 `;
 
 const Element = (props) => {
@@ -43,12 +42,7 @@ const Element = (props) => {
     return (
         <MobileWrapper className="mobile-wrapper">
             <HeightWrapper>
-                {route.TITLE && (
-                    <FixedWrapper fixTop id="NavigationHeader">
-                        <NavigationHeader title={route.TITLE} backUrl={route.backUrl}/>
-                    </FixedWrapper>
-                )
-                }
+                <NavigationHeader title={route.TITLE} backUrl={route.backUrl}/>
                 <Content className="content-centralazer" disablePageHeaderBottomMargin={route.disablePageHeaderBottomMargin}>
                     <route.page/>
                 </Content>
