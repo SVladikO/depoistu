@@ -10,12 +10,14 @@ import {openLanguagePopup} from "features/language/languageSlice";
 import {translate, TRANSLATION as TR} from "utils/translation";
 import {ROUTER} from "utils/config";
 
-const NavigationHeader = (props) => {
+const NavigationHeader = () => {
     const dispatch = useDispatch();
 
     return (
         <Wrapper className='pm-NavigationHeader'>
-            <HeaderLogoIcon/>
+            <Link to={ROUTER.SEARCH.URL}>
+                <HeaderLogoIcon/>
+            </Link>
             <RightSubWrapper>
                 <CurrentLanguage onClick={() => dispatch(openLanguagePopup())}>
                     {translate(TR.PAGE.SETTINGS.MENU_ROW.HEADER_LANGUAGE)}
