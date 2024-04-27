@@ -34,6 +34,26 @@ const SearchPage = () => {
 
         let [companies, setCompanies] = useLocalStorage(LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT, [])
 
+        const onSelectRegion = option => {
+            if (option.value === selectedRegion.value) {
+                return;
+            }
+
+            setSelectedRegion(option)
+            setSelectedCity({});
+        }
+
+        const onSelectCity = option => {
+            setCompanies([])
+            setSelectedCity(option);
+        }
+
+
+        const onClickCompany = company => () => {
+            dispatch(resetSearchDetails())
+            navigate(`${URL.SEARCH_DETAILS}/${company.id}`)
+        }
+
         const loadCompanies = () => {
             if (!selectedCity.value) {
                 return
@@ -48,6 +68,9 @@ const SearchPage = () => {
         }
 
         useEffect(() => {
+            if (companies.length) {
+                return
+            }
             loadCompanies()
         }, [selectedCity])
 
@@ -67,20 +90,7 @@ const SearchPage = () => {
             }, []
         )
 
-        const onClickCompany = company => () => {
-            dispatch(resetSearchDetails())
-            navigate(`${URL.SEARCH_DETAILS}/${company.id}`)
-        }
 
-        const onSelectRegion = option => {
-            if (option.value === selectedRegion.value) {
-                return;
-            }
-
-            setSelectedRegion(option)
-            setSelectedCity({});
-        }
-        const onSelectCity = option => setSelectedCity(option)
         return (
             <>
                 <RowSplitter height={'20px'}/>
