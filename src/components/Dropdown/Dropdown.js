@@ -9,6 +9,17 @@ import {WarningMessage} from "components";
 import {TRANSLATION, translate} from "utils/translation";
 import {Label} from "../Input/Input.style";
 
+/**
+ *
+ * @param {Array{object}} options - Example [{value, title, [isGroupTitle]}]
+ * @param {object} selectedOption - Example {value, title, [isGroupTitle]}
+ * @param {function} onSelect
+ * @param errorMessage
+ * @param {string} label - Label above dropdown.
+ * @param {boolean} isRequired - Add start above label.
+ * @returns {JSX.Element}
+ * @constructor
+ */
 const Dropdown = ({options, selectedOption, onSelect, errorMessage, label, isRequired}) => {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);

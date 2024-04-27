@@ -1,12 +1,17 @@
 import {LocalStorage, LOCAL_STORAGE_KEY} from "./localStorage";
 
-export const LANGUAGE_KEYS = {
-    UA: 'ua',
-    EN: 'en'
-}
-const customerBrowserLanguage = window.navigator.language;
+export const LANGUAGE_KEYS = {UA: 'ua', EN: 'en'};
+
+/**
+ * Detect client browser language.
+ *
+ * @param {string} language
+ * @returns {boolean}
+ */
+const isBrowserLanguage = language => window.navigator.language.includes(language)
+
 export const DEFAULT_LANGUAGE =
-    customerBrowserLanguage.includes('ua') || customerBrowserLanguage.includes('ru')
+    isBrowserLanguage('ua') || isBrowserLanguage('ru')
         ? 'ua'
         : 'en';
 

@@ -9,7 +9,7 @@ import {ReactComponent as BackIcon} from "assets/icons/back.svg";
 import {ReactComponent as CloseIcon} from "assets/icons/close.svg";
 
 import {TRANSLATION, translate} from 'utils/translation';
-import {generateRegionCityTree, CITY_TRANSLATION_IDS, sortCities} from "utils/cities";
+import {CITY_TRANSLATION_IDS, sortCities} from "utils/cities";
 
 const enableScrollOnBody = () => document.body.style.overflowY = 'auto';
 
@@ -31,7 +31,7 @@ export const CityContent = ({onSelectCity, availableCityIds, onClose}) => {
 
     const currentLanguage = useSelector(state => state.language.siteLanguage);
 
-    const regionCityTree = generateRegionCityTree(availableCityIds);
+    const regionCityTree = {} // generateRegionCityTree(availableCityIds);
     const regionIds = Object.keys(regionCityTree);
     const [selectedRegionId, setSelectedRegionId] = useState('');
     const [citiesOrRegionsToRender, setCitiesOrRegionsToRender] = useState(regionIds);

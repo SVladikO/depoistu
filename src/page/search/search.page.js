@@ -1,22 +1,20 @@
-import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import React, {useEffect, useMemo, useState} from "react";
+import {useNavigate} from "react-router-dom";
+import React, {useEffect, useState} from "react";
 
-import {ReactComponent as LocationIcon} from "assets/icons/location.svg";
-
-import {CityInput, ContentContainer, Dropdown, Company, NotificationLoading, Popup, RowSplitter} from "components";
+import {ContentContainer, Dropdown, Company, NotificationLoading, RowSplitter} from "components";
 import {resetSearchDetails} from "features/searchDetails/searchDetailsSlice";
 
 import {URL} from "utils/config";
-import {stopLoadingWithDelay} from "utils/utils";
-import {CITY_TRANSLATION_IDS} from "utils/cities";
+import {
+    getRegions,
+    getRegionCities, generateCityTree, CITY_TRANSLATION_IDS
+} from "utils/cities";
 import {publishNotificationEvent} from "utils/event";
 import {useLocalStorage, useScrollUp} from "utils/hook";
 import {BE_API, fetchData, errorHandler} from "utils/fetch";
-import {translate, TRANSLATION, truncate} from "utils/translation";
-import {LOCAL_STORAGE_KEY, LocalStorage} from "utils/localStorage";
-import { SecondaryButton } from "components";
-import { PrimaryButton } from "components";
+import {translate, TRANSLATION} from "utils/translation";
+import {LOCAL_STORAGE_KEY} from "utils/localStorage";
 
 const SearchPage = () => {
         useScrollUp();
@@ -24,112 +22,78 @@ const SearchPage = () => {
         const dispatch = useDispatch();
 
         const [isLoading, setIsLoading] = useState(false);
+        const [selectedRegion, setSelectedRegion] = useLocalStorage(
+            LOCAL_STORAGE_KEY.COMPANY_SEARCH_SELECTED_REGION_ID, {title: translate(CITY_TRANSLATION_IDS[1000]), value: 1000}
+        );
+        //Default is Kyiv.
+        const [selectedCity, setSelectedCity] = useLocalStorage(
+            LOCAL_STORAGE_KEY.COMPANY_SEARCH_SELECTED_CITY_ID, {title: translate(CITY_TRANSLATION_IDS[1018]), value: 1018}
+        );
 
-        const [selectedCityId, setSelectedCity] = useLocalStorage(LOCAL_STORAGE_KEY.COMPANY_SEARCH_SELECTED_CITY_ID, '');
-        const [selectedRegionId, setSelectedRegion] = useLocalStorage(LOCAL_STORAGE_KEY.COMPANY_SEARCH_SELECTED_REGION_ID, '');
-        const [showCityPopup, setShowCityPopup] = useState(false);
-        const [availableFromDatabaseCityIds, setAvailableFromDatabaseCityIds] = useState([]);
+        const [cityTree, setCityTree] = useState({});
 
         let [companies, setCompanies] = useLocalStorage(LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT, [])
 
-        useEffect(() => {
-            if (isLoading || companies?.length) {
-                return;
+        const loadCompanies = () => {
+            if (!selectedCity.value) {
+                return
             }
 
             setIsLoading(true);
 
-            fetchData(BE_API.COMPANY.GET_ALL())
-                .then(res => {
-                    setCompanies(res.body)
-                })
-                .catch(errorHandler)
-                .finally(() => setIsLoading(false))
-        }, [])
-
-        const onSelectCity = ([city, region]) => {
-            LocalStorage.remove(LOCAL_STORAGE_KEY.COMPANY_SEARCH_RESULT)
-            setSelectedRegion(region);
-            onCloseCityPopup();
-            setSelectedCity(city);
-
-            fetchData(BE_API.COMPANY.GET_BY_CITY_ID(city))
+            fetchData(BE_API.COMPANY.GET_BY_CITY_ID(selectedCity.value))
                 .then(res => setCompanies(res.body))
                 .catch(errorHandler)
                 .finally(() => setIsLoading(false))
         }
 
-        const onCloseCityPopup = () => setShowCityPopup(false);
+        useEffect(() => {
+            loadCompanies()
+        }, [selectedCity])
 
-        const onOpenCityPopup = () => {
-            setIsLoading(true);
+        useEffect(() => {
+                fetchData(BE_API.COMPANY.GET_AVAILABLE_CITIES())
+                    .then(res => {
+                        if (!res.body.length) {
+                            publishNotificationEvent.error(translate(TRANSLATION.NOTIFICATION.NO_COMPANY));
+                        }
 
-            const cityLoadingDelay = stopLoadingWithDelay([() => setIsLoading(false)]);
-            const showCityPopupDelay = stopLoadingWithDelay([() => setShowCityPopup(true)]);
+                        setCityTree(generateCityTree((res.body || []).map(i => +i)));
 
-            fetchData(BE_API.COMPANY.GET_AVAILABLE_CITIES())
-                .then(res => {
-                    if (!res.body.length) {
-                        publishNotificationEvent.error(translate(TRANSLATION.NOTIFICATION.NO_COMPANY));
-                        showCityPopupDelay.onError();
-                    } else {
-                        showCityPopupDelay.allow()
-                    }
-                    setAvailableFromDatabaseCityIds(res.body);
-                })
-                .catch(e => {
-                    errorHandler(e)
-                    showCityPopupDelay.onError()
-                })
-                .finally(() => {
-                    cityLoadingDelay.allow();
-                })
-
-        }
-
-        const cityPopup = useMemo(() =>
-            <Popup.City
-                onSelectCity={onSelectCity}
-                availableCityIds={availableFromDatabaseCityIds}
-                onClose={onCloseCityPopup}
-            />, [availableFromDatabaseCityIds]);
-
-        const regionLabel = translate(TRANSLATION.COMPONENTS.POPUP.CITY.INPUT)
+                    })
+                    .catch(e => {
+                        errorHandler(e)
+                    })
+            }, []
+        )
 
         const onClickCompany = company => () => {
             dispatch(resetSearchDetails())
             navigate(`${URL.SEARCH_DETAILS}/${company.id}`)
         }
 
-        const cityInputValue = selectedCityId && selectedRegionId
-            ? truncate(`${translate(CITY_TRANSLATION_IDS[selectedCityId])}, ${translate(CITY_TRANSLATION_IDS[selectedRegionId])} ${regionLabel}`, 40)
-            : ''
-
-    return (
+        const onSelectRegion = option => {
+            setSelectedRegion(option)
+            setSelectedCity({});
+        }
+        const onSelectCity = option => setSelectedCity(option)
+        return (
             <>
-                <RowSplitter height={'20px'} />
-               
-                <ContentContainer noBg noShadow>
-                     <Dropdown 
-                    selectedOption={{title: 'Kyiv', value: 'Kyiv'}}
-                    options={[{title: 'Kyiv', value: 'Kyiv'}, {title: 'Odesa', value: 'Odesa'}]}
-                    // onSelect={setSelectedOption}
-                    label={'Region'}
-                />
-                <Dropdown 
-                    selectedOption={{title: 'Kyiv', value: 'Kyiv'}}
-                    options={[{title: 'Kyiv', value: 'Kyiv'}, {title: 'Irpin', value: 'Irpin'}]}
-                    // onSelect={setSelectedOption}
-                    label={'City'}
-                />
+                <RowSplitter height={'20px'}/>
 
-                <PrimaryButton isWide>Search</PrimaryButton>
-                    <CityInput
-                        handleClick={onOpenCityPopup}
-                        withIcon
-                        Icon={LocationIcon}
-                        value={cityInputValue}
-                        placeholder={translate(TRANSLATION.PAGE.SEARCH.INPUT_PLACEHOLDER)}
+                <ContentContainer noBg noShadow>
+                    <Dropdown
+                        selectedOption={selectedRegion}
+                        options={getRegions(cityTree)}
+                        onSelect={onSelectRegion}
+                        label={'Region'}
+                    />
+                    <Dropdown
+                        selectedOption={selectedCity}
+                        options={getRegionCities(cityTree, selectedRegion.value)
+                        }
+                        onSelect={onSelectCity}
+                        label={'City'}
                     />
                 </ContentContainer>
 
@@ -144,7 +108,6 @@ const SearchPage = () => {
                         clickHandler={onClickCompany(company)}
                     />
                 )}
-                {showCityPopup && cityPopup}
             </>
         );
     }

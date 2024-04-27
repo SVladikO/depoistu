@@ -1,24 +1,68 @@
+import {translate} from "./translation";
+
 /**
- * Should generate tree of regions with cities which belong to that region.
+ * Should generate city tree (group by regions) from array of available cities.
  *
  * @example
- * // return { 100: [101, 102], 300: [309] }
  * generateRegionCityTree([101, 102, 309])
+ * return { 100: [101, 102], 300: [309] }
  *
  * @param {array} cityIds - Expect array of strings ['101', '102']
- * @return {object} -
+ * @return {object} - Grouped cities by region.
  */
-export const generateRegionCityTree = (cityIds) => {
-    const city = {};
+export const generateCityTree = (cityIds) => {
+    const groupedCityByRegion = {};
 
     cityIds
         .sort((a, b) => a > b)
         .forEach(cityId => {
             const regionId = getRegionId(cityId);
-            city[regionId] = [...(city[regionId] || []), cityId];
+            groupedCityByRegion[regionId] = [...(groupedCityByRegion[regionId] || []), cityId];
         })
 
-    return city;
+    return groupedCityByRegion;
+}
+
+/**
+ * Get regions from city tree. Currently, we use it to prepare data for dropdown.
+ * Available regions.
+ *
+ * @param {object} cityTree - Regions with cities. Example: { 100: [101, 102], 300: [309] }
+ * @returns {Array{title: {string}, value: {number}}}
+ */
+export const getRegions = (cityTree) => {
+    const regionIds = Object.keys(cityTree)
+    const regions = regionIds.map(id => (
+        {
+            title: translate(CITY_TRANSLATION_IDS[id]),
+            value: id
+        }));
+
+    return regions;
+}
+
+/**
+ * Get cities of selected region. Currently, we use it to prepare data for dropdown.
+ * Available cities per region
+ *
+ * @param {object} cityTree - Regions with cities. Example: { 100: [101, 102], 300: [309] }
+ * @param {number} selectedRegionId
+ * @returns {[{title: string, value: number}]}
+ */
+export const getRegionCities = (cityTree, selectedRegionId) => {
+    const citiesPerRegion = cityTree[+selectedRegionId];
+
+    if (!citiesPerRegion) {
+        return [];
+    }
+
+    const cities = citiesPerRegion.map(id => (
+        {
+            title: translate(CITY_TRANSLATION_IDS[id]),
+            value: id
+        }));
+
+    return cities;
 }
 
 const isItCityId = cityId => +cityId !== getRegionId(cityId)
@@ -33,7 +77,7 @@ const isItCityId = cityId => +cityId !== getRegionId(cityId)
  * getRegionId(1000)
  *
  * @param {number} cityId
- * @return {number}
+ * @return {number} regionId
  */
 const getRegionId = cityId => cityId - (cityId % 100)
 
