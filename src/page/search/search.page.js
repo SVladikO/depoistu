@@ -73,6 +73,10 @@ const SearchPage = () => {
         }
 
         const onSelectRegion = option => {
+            if (option.value === selectedRegion.value) {
+                return;
+            }
+
             setSelectedRegion(option)
             setSelectedCity({});
         }
