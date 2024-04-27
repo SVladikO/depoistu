@@ -42,7 +42,7 @@ const Element = (props) => {
     return (
         <MobileWrapper className="mobile-wrapper">
             <HeightWrapper>
-                <NavigationHeader title={route.TITLE} backUrl={route.backUrl}/>
+                <NavigationHeader />
                 <Content className="content-centralazer" disablePageHeaderBottomMargin={route.disablePageHeaderBottomMargin}>
                     <route.page/>
                 </Content>

@@ -560,6 +560,10 @@ export const TRANSLATION = {
                     ua: "Мова",
                     en: "Language"
                 },
+                HEADER_LANGUAGE: {
+                    ua: "UA",
+                    en: "EN"
+                },
                 VERSION: {
                     ua: 'Версія',
                     en: 'Version'

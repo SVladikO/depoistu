@@ -18,6 +18,7 @@ export const Wrapper = styled.div`
 
 export const CurrentLanguage = styled.div`
     ${FONT.SIZE_20};
+    cursor: pointer;
 `;
 
 export const RightSubWrapper = styled.div`
