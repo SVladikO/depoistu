@@ -7,7 +7,8 @@ export const Wrapper = styled.div`
   overflow: hidden;
   perspective: 1px;
   background-color: ${COLOR.WHITE};
-  border-bottom: solid 1px ${COLOR.ACCENT5};
+  border-top: 1px solid ${COLOR.ACCENT9};
+  border-bottom: 1px solid ${COLOR.ACCENT9};
 
   .like_company_icon {
     fill: ${COLOR.ACCENT1};
