@@ -51,7 +51,7 @@ function getDomainBE() {
         case "http://localhost:3000":
             return {
                 name: 'develop',
-                url: 'https://depoistu-develop-ab315caf64ab.herokuapp.com'
+                url: 'https://depoistu-develop-e5b02fe51680.herokuapp.com'
             }
         default:
             return {
