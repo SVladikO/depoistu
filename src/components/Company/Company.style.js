@@ -27,20 +27,6 @@ export const Content = styled.div`
         display: block;
     }
 
-    svg.location_icon {
-        height: 20px;
-        width: 12px;
-    }
-
-    svg.time_icon {
-        height: 18px;
-        width: 15px;
-    }
-    svg.phone_icon {
-        height: 18px;
-        width: 18px;
-    }
-
     & > div,
     & > a,
     & > button {
