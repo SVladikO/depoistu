@@ -8,8 +8,8 @@ function NotificationTDB({title, description, Icon, children }) {
     return (
         <Wrapper>
             {Icon && <Icon/>}
-            {Icon && <RowSplitter height='55px'/>}
-            <ContentContainer bg={COLOR.WHITE}>
+            {Icon && <RowSplitter height='40px'/>}
+            <ContentContainer bg={COLOR.WHITE} noShadow padding={'30px 15px 15px'}>
                 <Title>{title}</Title>
                 <Description>{description}</Description>
                 {children}

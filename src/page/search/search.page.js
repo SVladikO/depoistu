@@ -93,9 +93,7 @@ const SearchPage = () => {
 
         return (
             <>
-                <RowSplitter height={'20px'}/>
-
-                <ContentContainer noBg noShadow>
+                <ContentContainer noBg noShadow padding={'30px 15px 15px'}>
                     <Dropdown
                         selectedOption={selectedRegion}
                         options={getRegions(cityTree)}
