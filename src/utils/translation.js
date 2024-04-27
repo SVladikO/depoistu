@@ -1056,9 +1056,9 @@ export const TRANSLATION = {
             ua: "Меню",
             en: "Menu"
         },
-        FAVORITE: {
-            ua: "Улюблені",
-            en: "Favorite"
+        ORDER: {
+            ua: "Заказ",
+            en: "Order"
         },
         SETTINGS: {
             ua: "Системні",

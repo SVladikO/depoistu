@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate} from 'react-router-dom';
 
-import {Wrapper, MenuItem, OrderWrapper, OrderButton} from './BottomMenu.style';
+import {Wrapper, MenuItem, OrderButton} from './BottomMenu.style';
 
 import {ReactComponent as HomeIcon} from "assets/icons/home.svg";
 import {ReactComponent as MenuIcon} from "assets/icons/menu.svg";
-import {ReactComponent as BookMarkIcon} from "assets/icons/heart2.svg";
+import {ReactComponent as OrderIcon} from "assets/icons/order.svg";
 import {ReactComponent as SettingIcon} from "assets/icons/setting.svg";
 
 import {ROUTER, URL} from "utils/config";
@@ -37,18 +37,13 @@ const BottomMenu = () => {
                 <MenuIcon/>
                 <span>{translate(TRANSLATION.BOTTOM_MENU.MENU)}</span>
             </MenuItem>
-
-            <OrderWrapper>
-                <ScrollUpButton/>
-                <OrderButtonNavigation isSelected={isSelected(URL.ORDER)}/>
-            </OrderWrapper>
-
+            <ScrollUpButton/>
             <MenuItem
-                selected={isSelected(URL.FAVORITE)}
-                onClick={() => navigate(ROUTER.FAVORITE.URL)}
+                selected={isSelected(URL.ORDER)}
+                onClick={() => navigate(ROUTER.ORDER.URL)}
             >
-                <BookMarkIcon/>
-                <span>{translate(TRANSLATION.BOTTOM_MENU.FAVORITE)}</span>
+                <OrderIcon/>
+                <span>{translate(TRANSLATION.BOTTOM_MENU.ORDER)}</span>
             </MenuItem>
 
             <MenuItem

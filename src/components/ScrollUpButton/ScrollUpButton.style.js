@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import {BORDER_RADIUS, COLOR} from "../../utils/theme";
 
-export const ToTopButtonWrapper = styled.a`
+export const ToTopButtonWrapper = styled.div`
     top: -66px;
     position: absolute;
     
