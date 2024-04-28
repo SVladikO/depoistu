@@ -12,7 +12,6 @@ import {
     Popup,
     WeekScheduleInput,
     ImageUploaderButton,
-    RowSplitter,
     SwiperWrapper,
 } from "components";
 
@@ -71,8 +70,12 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
 
     return (
         <div>
-            {photos.length < 5 && <ImageUploaderButton onImageUpload={onImageUpload}/>}
-            <RowSplitter height="22px"/>
+            {photos.length < 5 && (
+                <ContentContainer noShadow padding={'30px 0px 15px'}>
+                    <ImageUploaderButton onImageUpload={onImageUpload}/>
+                </ContentContainer>
+            )
+            }
             <Formik
                 initialValues={initialValues}
                 validationSchema={Yup.object().shape(validation.company)}
@@ -152,29 +155,29 @@ const CompanyView = ({initialValues, onSubmit, children}) => {
                             {/*}*/}
 
                             {/*<div>*/}
-                                {/*<Input*/}
-                                {/*    name="longitude"*/}
-                                {/*    type="text"*/}
-                                {/*    value={values.longitude}*/}
-                                {/*    labelName={'longitude'}*/}
-                                {/*    errorMessage={errors.longitude}*/}
-                                {/*    isTouched={touched.longitude || wasSubmitted}*/}
-                                {/*    changeHandler={handleChange}*/}
-                                {/*    withCleaner*/}
-                                {/*    isRequired*/}
-                                {/*/>*/}
-                                {/*<Input*/}
-                                {/*    name="latitude"*/}
-                                {/*    type="text"*/}
-                                {/*    value={values.latitude}*/}
-                                {/*    labelName={'latitude'}*/}
-                                {/*    errorMessage={errors.latitude}*/}
-                                {/*    isTouched={touched.latitude || wasSubmitted}*/}
-                                {/*    changeHandler={handleChange}*/}
-                                {/*    clearHandler={() => setFieldValue('latitude', '')}*/}
-                                {/*    withCleaner*/}
-                                {/*    isRequired*/}
-                                {/*/>*/}
+                            {/*<Input*/}
+                            {/*    name="longitude"*/}
+                            {/*    type="text"*/}
+                            {/*    value={values.longitude}*/}
+                            {/*    labelName={'longitude'}*/}
+                            {/*    errorMessage={errors.longitude}*/}
+                            {/*    isTouched={touched.longitude || wasSubmitted}*/}
+                            {/*    changeHandler={handleChange}*/}
+                            {/*    withCleaner*/}
+                            {/*    isRequired*/}
+                            {/*/>*/}
+                            {/*<Input*/}
+                            {/*    name="latitude"*/}
+                            {/*    type="text"*/}
+                            {/*    value={values.latitude}*/}
+                            {/*    labelName={'latitude'}*/}
+                            {/*    errorMessage={errors.latitude}*/}
+                            {/*    isTouched={touched.latitude || wasSubmitted}*/}
+                            {/*    changeHandler={handleChange}*/}
+                            {/*    clearHandler={() => setFieldValue('latitude', '')}*/}
+                            {/*    withCleaner*/}
+                            {/*    isRequired*/}
+                            {/*/>*/}
                             {/*</div>*/}
                             <Input
                                 Icon={PhoneIcon}

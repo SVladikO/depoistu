@@ -1,11 +1,11 @@
 import styled, {css} from 'styled-components';
-import {COLOR, SHADOW} from "utils/theme";
+import {COLOR, SHADOW_LIGHT} from "utils/theme";
 
 export const ContentContainerDefault = css`
   width: 100%;
-  padding: ${p => p.noPadding ? 0 : '16px'};
+  padding: ${p => p.noPadding ? 0 : p.padding || '15px'};
   background: ${p => p.bg || 'none'};
-  ${p => p.noShadow ? '' : SHADOW};
+  ${p => p.noShadow ? '' : SHADOW_LIGHT};
 
 
   & > a {

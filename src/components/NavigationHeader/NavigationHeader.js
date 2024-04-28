@@ -1,23 +1,31 @@
 import React from 'react';
+import {useDispatch} from "react-redux";
+import {Link} from "react-router-dom";
 
-import {Wrapper, BackButton, Title} from "./NavigationHeader.style";
+import {Wrapper, RightSubWrapper, CurrentLanguage} from "./NavigationHeader.style";
 
-import {ReactComponent as BackArrow} from "assets/icons/back_arrow.svg";
+import {ReactComponent as HeaderLogoIcon} from "assets/icons/h_logo.svg";
+import {ReactComponent as Heart1Icon} from "assets/icons/heart1.svg";
+import {openLanguagePopup} from "features/language/languageSlice";
+import {translate, TRANSLATION as TR} from "utils/translation";
+import {ROUTER} from "utils/config";
 
-import {useQuery} from "utils/hook";
-
-const NavigationHeader = (props) => {
-    let query = useQuery()
-    const backUrl = query.get("backUrl") || props.backUrl;
+const NavigationHeader = () => {
+    const dispatch = useDispatch();
 
     return (
         <Wrapper className='pm-NavigationHeader'>
-                {backUrl &&
-                    <BackButton to={backUrl}>
-                            <BackArrow/>
-                    </BackButton>
-                }
-                <Title>{props.title}</Title>
+            <Link to={ROUTER.SEARCH.URL}>
+                <HeaderLogoIcon/>
+            </Link>
+            <RightSubWrapper>
+                <CurrentLanguage onClick={() => dispatch(openLanguagePopup())}>
+                    {translate(TR.PAGE.SETTINGS.MENU_ROW.HEADER_LANGUAGE)}
+                </CurrentLanguage>
+                <Link to={ROUTER.FAVORITE.URL}>
+                    <Heart1Icon/>
+                </Link>
+            </RightSubWrapper>
         </Wrapper>
     );
 };

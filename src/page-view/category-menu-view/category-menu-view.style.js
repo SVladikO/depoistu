@@ -3,7 +3,7 @@ import {COLOR, FONT} from "utils/theme";
 
 export const BgWrapper = styled.div`
   overflow: hidden;
-  background: ${COLOR.PRIMARY};
+  background: ${COLOR.ACCENT1};
   border-top: solid 1px ${COLOR.ACCENT5};
 `;
 export const TopCategoryItem = styled.div`
@@ -18,7 +18,7 @@ export const TopCategoryItem = styled.div`
   color: ${COLOR.ACCENT1};
   ${FONT.SIZE_16};
   padding: 10px 14px 20px;
-  border-bottom: solid 3px ${p => p.isSelected ? COLOR.PRIMARY : COLOR.WHITE};
+  border-bottom: solid 3px ${p => p.isSelected ? COLOR.ACCENT1 : COLOR.WHITE};
   color: ${p => p.isSelected ? COLOR.ACCENT1 : COLOR.ACCENT1};
   ${p => p.isSelected ? FONT.WEIGHT_600 : FONT.WEIGHT_400};
   background: ${p => p.isSelected ? COLOR.WHITE : 'none'};

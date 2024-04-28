@@ -3,7 +3,7 @@ import {keyframes} from "styled-components";
 export const COLOR = {
     PRIMARY:  '#458845',
     SECONDARY:  '#96CC00',
-    ACCENT1: '#3F3D56',
+    ACCENT1: '#3B3A3F',
     ACCENT2: '#f3f3f3',
     ACCENT4: '#FFFFFF',
     ACCENT5: '#B5B5B5',
@@ -96,7 +96,8 @@ export const MEDIA = {
     phone: "(max-width: 414px) and (min-width: 370px)"
 }
 
-export const SHADOW = `box-shadow: rgba(0, 0, 0, 0.11) 0px 2px 4px 0px;`
+export const SHADOW_LIGHT = `box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px 0px;`
+export const SHADOW = `box-shadow: rgba(0, 0, 0, 0.6) 0px 2px 4px 0px;`
 export const SHADOW_DARK = `box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 4px 0px;`
 
 export function lighterDarkerColor(color, amount) {

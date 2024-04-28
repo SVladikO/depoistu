@@ -7,11 +7,8 @@ export const Wrapper = styled.div`
   overflow: hidden;
   perspective: 1px;
   background-color: ${COLOR.WHITE};
-  border-bottom: solid 1px ${COLOR.ACCENT5};
-
-  .like_company_icon {
-    fill: ${COLOR.ACCENT1};
-  }
+  border-top: 1px solid ${COLOR.ACCENT9};
+  border-bottom: 1px solid ${COLOR.ACCENT9};
   
   &:hover {
     cursor: pointer;
@@ -20,26 +17,15 @@ export const Wrapper = styled.div`
 
 export const Content = styled.div`
   border-top: solid 1px ${COLOR.ACCENT9};
-  padding: 16px 16px 20px 16px;
+  padding: 14px 15px 24px;
 
     & > a {
         display: block;
     }
 
-    svg.location_icon {
-        height: 20px;
-        width: 12px;
+    & > div:first-child {
+        margin: 0 0 10px 0;
     }
-
-    svg.time_icon {
-        height: 18px;
-        width: 15px;
-    }
-    svg.phone_icon {
-        height: 18px;
-        width: 18px;
-    }
-
     & > div,
     & > a,
     & > button {

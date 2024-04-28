@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components'
 import {Route, Routes} from "react-router-dom";
 
-import {FixedWrapper, Footer} from "components";
+import {FixedWrapper, Footer, PageHeader} from "components";
 
 import {DEV_ROUTER, ROUTERS} from "./config";
 
@@ -24,7 +24,7 @@ export const MobileWrapper = styled.div`
   max-width: ${DEVICE_WIDTH.MAX};
   margin: 0 auto;
   position: relative;
-  background: ${COLOR.ACCENT8};
+  background: ${COLOR.ACCENT4};
 `;
 
 export const Content = styled.div`
@@ -32,7 +32,6 @@ export const Content = styled.div`
     flex-direction: column;
     justify-content: start;
     min-height: 400px;
-    padding: ${p => p.disablePageHeaderBottomMargin ? 54 : 80}px 0 0;
 `;
 
 const Element = (props) => {
@@ -43,12 +42,8 @@ const Element = (props) => {
     return (
         <MobileWrapper className="mobile-wrapper">
             <HeightWrapper>
-                {route.TITLE && (
-                    <FixedWrapper fixTop id="NavigationHeader">
-                        <NavigationHeader title={route.TITLE} backUrl={route.backUrl}/>
-                    </FixedWrapper>
-                )
-                }
+                <NavigationHeader />
+                {route.TITLE && <PageHeader title={route.TITLE} backUrl={route.backUrl}/>}
                 <Content className="content-centralazer" disablePageHeaderBottomMargin={route.disablePageHeaderBottomMargin}>
                     <route.page/>
                 </Content>

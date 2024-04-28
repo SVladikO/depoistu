@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import {BORDER_RADIUS, COLOR, FONT, lighterDarkerColor, SHADOW} from "utils/theme";
+import {BORDER_RADIUS, COLOR, FONT, hexToRgbA, lighterDarkerColor, SHADOW} from "utils/theme";
 
 export const SelectWrapper = styled.div`
   position: relative;
   width: 100%;
-  border: ${p => p.isOpen ? '3px' : '1px'} solid ${COLOR.ACCENT1};
+  border: 1px solid ${COLOR.ACCENT1};
   border-radius: ${BORDER_RADIUS.INPUT};
 `;
 
@@ -62,13 +62,13 @@ export const Option = styled.div`
   padding: 8px;
   cursor: pointer;
   ${FONT.SIZE_16};
-  color: ${p => p.isSelected ? COLOR.WHITE : COLOR.ACCENT1};
+  color: ${COLOR.ACCENT1};
   display: flex;
   justify-content: flex-start;
-  background-color: ${p => p.isSelected ? COLOR.PRIMARY : ''};
+  background-color: ${p => p.isSelected ? hexToRgbA(COLOR.PRIMARY, 0.2) : ''};
 
   &:hover {
-    background-color: ${COLOR.ACCENT8};
-    color: ${COLOR.ACCENT1};
+    background-color: ${COLOR.PRIMARY};
+    color: ${COLOR.WHITE};
   }
 `;

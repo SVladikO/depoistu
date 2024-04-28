@@ -60,7 +60,7 @@ const SingUpPage = () => {
             >
                 {({values, handleBlur, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                     <form onSubmit={handleSubmit}>
-                        <ContentContainer noShadow>
+                        <ContentContainer noShadow padding={'30px 15px 15px'}>
                             <Input
                                 withCleaner
                                 isTouched={wasSubmitted || touched.name}

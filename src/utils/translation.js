@@ -1,12 +1,17 @@
 import {LocalStorage, LOCAL_STORAGE_KEY} from "./localStorage";
 
-export const LANGUAGE_KEYS = {
-    UA: 'ua',
-    EN: 'en'
-}
-const customerBrowserLanguage = window.navigator.language;
+export const LANGUAGE_KEYS = {UA: 'ua', EN: 'en'};
+
+/**
+ * Detect client browser language.
+ *
+ * @param {string} language
+ * @returns {boolean}
+ */
+const isBrowserLanguage = language => window.navigator.language.includes(language)
+
 export const DEFAULT_LANGUAGE =
-    customerBrowserLanguage.includes('ua') || customerBrowserLanguage.includes('ru')
+    isBrowserLanguage('ua') || isBrowserLanguage('ru')
         ? 'ua'
         : 'en';
 
@@ -555,6 +560,10 @@ export const TRANSLATION = {
                     ua: "Мова",
                     en: "Language"
                 },
+                HEADER_LANGUAGE: {
+                    ua: "UA",
+                    en: "EN"
+                },
                 VERSION: {
                     ua: 'Версія',
                     en: 'Version'
@@ -777,10 +786,6 @@ export const TRANSLATION = {
             },
         },
         SEARCH: {
-            TOP_TITLE: {
-                ua: "Пошук",
-                en: "Search"
-            },
             ARROW_LABEL: {
                 ua: "Назад",
                 en: "Back"
@@ -1047,9 +1052,9 @@ export const TRANSLATION = {
             ua: "Меню",
             en: "Menu"
         },
-        FAVORITE: {
-            ua: "Улюблені",
-            en: "Favorite"
+        ORDER: {
+            ua: "Заказ",
+            en: "Order"
         },
         SETTINGS: {
             ua: "Системні",

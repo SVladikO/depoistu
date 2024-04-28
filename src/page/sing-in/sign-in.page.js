@@ -69,7 +69,7 @@ const SignInPage = () => {
             >
                 {({values, touched, setFieldValue, handleSubmit, handleChange, errors}) => (
                     <form onSubmit={handleSubmit}>
-                        <ContentContainer noShadow>
+                        <ContentContainer noShadow padding={'30px 15px 15px'}>
                             <Input
                                 isRequired
                                 withCleaner

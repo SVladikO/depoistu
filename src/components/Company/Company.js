@@ -18,7 +18,7 @@ const Company = props => {
     }
 
     return (
-        <Wrapper withMoreInfo={withMoreInfo} onClick={clickHandler}>
+        <Wrapper className={'dep-company'} withMoreInfo={withMoreInfo} onClick={clickHandler}>
             <ImagesView {...props}/>
             <Content>
                 <TitleLike {...props} />

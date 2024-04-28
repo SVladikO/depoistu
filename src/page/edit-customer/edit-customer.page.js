@@ -30,7 +30,7 @@ const EditCustomerPage = () => {
     }
 
     return (
-        <ContentContainer noShadow>
+        <ContentContainer noShadow padding={'30px 15px 15px'}>
             <Input
                 value={customer.name}
                 labelName={translate(TRANSLATION.INPUT_LABEL.CUSTOMER.NAME)}

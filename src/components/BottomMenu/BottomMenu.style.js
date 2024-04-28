@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {COLOR, FONT, lighterDarkerColor} from "utils/theme";
+import {COLOR, FONT} from "utils/theme";
 
 export const Wrapper = styled.div`
     z-index: 2;
@@ -34,9 +34,9 @@ export const MenuItem = styled.div`
     align-items: center;
     position: relative;
     padding: 4px 0 0;
-    min-width: 23%;
+    min-width: 25%;
     color: ${p => p.selected ? COLOR.WHITE : COLOR.ACCENT1};
-    background: ${p => p.selected ? COLOR.PRIMARY : 'none'};
+    background: ${p => p.selected ? COLOR.ACCENT1 : 'none'};
 
     & > svg {
         width: 23px;
@@ -48,15 +48,6 @@ export const MenuItem = styled.div`
     span {
       ${FONT.SIZE_16};
     }
-`;
-
-export const OrderWrapper = styled.div`
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 8%;
-    
 `;
 
 export const OrderButton = styled.div`

@@ -2,6 +2,7 @@ import React from 'react';
 import {Wrapper} from "./instruction-for-business-owner.page.style";
 
 import {useScrollUp} from "utils/hook";
+import {ContentContainer} from "components";
 
 const InstructionForBusinessOwnerPage = () => {
     useScrollUp();
@@ -12,14 +13,15 @@ const InstructionForBusinessOwnerPage = () => {
     // https://www.youtube.com/embed/zXzBb-1mc6k?
 
     return (
-        <Wrapper>
-            <iframe
-                width="360"
-                height="360"
-                src="https://www.youtube.com/embed/9i2023MsSHs"
-                allowfullscreen
-            />
-        </Wrapper>
+        <ContentContainer noShadow>
+            <Wrapper>
+                <iframe
+                    width="360"
+                    height="360"
+                    src="https://www.youtube.com/embed/9i2023MsSHs"
+                />
+            </Wrapper>
+        </ContentContainer>
     );
 };
 
