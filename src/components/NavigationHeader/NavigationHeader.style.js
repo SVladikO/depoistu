@@ -22,7 +22,7 @@ export const RightSubWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
+    gap: 15px;
 
     & > svg {
       height: 19px;

@@ -3,16 +3,14 @@ import {COLOR} from "../../../../utils/theme";
 
 
 export const FirstRow = styled.div`
-  display: flex;
-  justify-content: space-between;
-  
-  & > svg {
-      height: 40px;
-      width: 40px;
-      padding: 5px;
-      top: -5px;
-      position: relative;
-  }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & > svg {
+        height: 24px;
+        width: 22px;
+    }
 `;
 
 export const Name = styled.div`
@@ -20,5 +18,4 @@ export const Name = styled.div`
   font-size: 24px;
   line-height: 29px;
   color: ${COLOR.ACCENT1};
-  margin: 0 0 10px 0;
 `;

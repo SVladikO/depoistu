@@ -9,10 +9,6 @@ export const Wrapper = styled.div`
   background-color: ${COLOR.WHITE};
   border-top: 1px solid ${COLOR.ACCENT9};
   border-bottom: 1px solid ${COLOR.ACCENT9};
-
-  .like_company_icon {
-    fill: ${COLOR.ACCENT1};
-  }
   
   &:hover {
     cursor: pointer;
@@ -21,12 +17,15 @@ export const Wrapper = styled.div`
 
 export const Content = styled.div`
   border-top: solid 1px ${COLOR.ACCENT9};
-  padding: 16px 16px 20px 16px;
+  padding: 14px 15px 24px;
 
     & > a {
         display: block;
     }
 
+    & > div:first-child {
+        margin: 0 0 10px 0;
+    }
     & > div,
     & > a,
     & > button {
