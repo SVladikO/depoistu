@@ -18,6 +18,7 @@ import NotificationTDB from "./NotificationTDB/NotificationTDB";
 import OrderIconWithCounter from "./OrderIconWithCounter/OrderIconWithCounter.jsx";
 import OrderHistoryRow from "./OrderHistoryRow/OrderHistoryRow.jsx";
 import Popup from "./Popup/Popup";
+import PageHeader from "./PageHeader/PageHeader.js";
 import Price from "./Price/Price";
 import Rating from "./Rating/Rating";
 import SettingMenuRow from "./SettingMenuRow/SettingMenuRow";
@@ -78,6 +79,7 @@ export {
     OrderHistoryRow,
     CityInput,
     Popup,
+    PageHeader,
     Price,
     PrimaryButton,
     Rating,

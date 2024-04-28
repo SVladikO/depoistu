@@ -786,10 +786,6 @@ export const TRANSLATION = {
             },
         },
         SEARCH: {
-            TOP_TITLE: {
-                ua: "Пошук",
-                en: "Search"
-            },
             ARROW_LABEL: {
                 ua: "Назад",
                 en: "Back"

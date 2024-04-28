@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components'
 import {Route, Routes} from "react-router-dom";
 
-import {FixedWrapper, Footer} from "components";
+import {FixedWrapper, Footer, PageHeader} from "components";
 
 import {DEV_ROUTER, ROUTERS} from "./config";
 
@@ -43,6 +43,7 @@ const Element = (props) => {
         <MobileWrapper className="mobile-wrapper">
             <HeightWrapper>
                 <NavigationHeader />
+                {route.TITLE && <PageHeader title={route.TITLE} backUrl={route.backUrl}/>}
                 <Content className="content-centralazer" disablePageHeaderBottomMargin={route.disablePageHeaderBottomMargin}>
                     <route.page/>
                 </Content>

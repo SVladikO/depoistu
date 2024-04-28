@@ -132,7 +132,6 @@ export const ROUTER = {
     // USER_ACCOUNT = {URL: '/user_account',  TITLE: 'USER_ACCOUNT', page: () => {}, showBottomMenu: true, BACK_URL: ROUTER.SETTING.URL};
     SEARCH: {
         URL: URL.SEARCH,
-        TITLE: translate(TRANSLATION.PAGE.SEARCH.TOP_TITLE),
         page: SearchPage,
         disablePageHeaderBottomMargin: true,
         showBottomMenu: true,
