@@ -9,18 +9,11 @@ import {URL} from "utils/config";
 import {translate, TRANSLATION as TR} from "utils/translation";
 
 const Footer = () => {
-    const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-    };
 
     return (
         <>
             <RowSplitter height={'300px'}/>
             <Wrapper>
-                <Row onClick={scrollToTop}>{translate(TR.PAGE.FOOTER.BACK_TO_TOP_BUTTON)}</Row>
                 <Link to={URL.ABOUT_PROJECT}>
                     <Row>{translate(TR.PAGE.SETTINGS.MENU_ROW.ABOUT_PROJECT)}</Row>
                 </Link>
