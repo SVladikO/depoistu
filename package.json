@@ -1,6 +1,6 @@
 {
   "name": "depoistu",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "private": true,
   "dependencies": {
     "@cloudinary/react": "^1.11.2",
