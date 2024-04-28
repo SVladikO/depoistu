@@ -54,10 +54,9 @@ const MenuItemView = ({defaultInitialValue, onSubmit, submitButtonTitle, isLoadi
                     </div>
                 )
                 : (
-                    <div>
+                    <ContentContainer noShadow padding={'30px 0px 15px'}>
                         <ImageUploaderButton onImageUpload={onImageUpload}/>
-                        <RowSplitter height="20px"/>
-                    </div>
+                    </ContentContainer>
                 )
             }
 
