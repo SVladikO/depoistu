@@ -15,6 +15,9 @@ I wanted to collect all menu of Ukraine in one place and help people to find rig
 4. `npm run dev` for BE (run DB server before and enter right credentials to depoistu-api/package.json/scrips/dev)
 
 And it all should work.
+* User credentials: 
+* login: `masterMaster`
+* password: `masterMaster@gmail.com`
 
 #### Contributors:
 * QA - serhiichuk.irina@gmail.com
