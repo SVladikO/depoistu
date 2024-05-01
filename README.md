@@ -2,9 +2,6 @@
 Aggregator for country menu.
 I wanted to collect all menu of Ukraine in one place and help people to find right cafe in any location in Ukraine.
 
-Examples:
-![img.png](img.png)
-![img_1.png](img_1.png)
 
 ### Which repository you need to run this project locally ?
 * FE this repository
