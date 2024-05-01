@@ -1,12 +1,13 @@
 # DEPOISTU
 Aggregator for country menu.
 I wanted to collect all menu of Ukraine in one place and help people to find right cafe in any location in Ukraine.
-
+I worked on this project 18 months.
 
 ### Which repository you need to run this project locally ?
 * FE this repository
 * BE - DEPOISTU-API
-* DB SCHEMA - [DEVELOP_DATA.sql](database%2FDEVELOP_DATA.sql) 
+* DB SCHEMA - [DEVELOP_DATA.sql](database%2FDEVELOP_DATA.sql)
+* Design for figma - FIGMA_UI.fig
 
 #### Quick Start
 1. Clone FE, BE
